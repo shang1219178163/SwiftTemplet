@@ -67,7 +67,7 @@ class HomeViewController: UITabBarController {
 
     
     lazy var btnCenter : UIButton = {
-        let btn = UIButton();
+        let btn = UIButton( type: .custom);
         btn.backgroundColor = UIColor.yellow;
         btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
         btn.addTarget(self, action: #selector(handleActionSender(_ :)), for: .touchUpInside);
