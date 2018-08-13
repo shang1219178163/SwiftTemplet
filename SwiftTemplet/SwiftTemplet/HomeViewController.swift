@@ -28,7 +28,8 @@ class HomeViewController: UITabBarController {
         let itemList:Array = [
             ["FirstViewController", "first", "tabbar_1", "tabbar_selected_1"],
              ["SecondViewController", "second", "tabbar_selected_1", "tabbar_selected_2"],
-             ["CenterViewController",  "", "", ""],
+//             ["CenterViewController",  "", "", ""],
+             ["CenterViewController", "second", "tabbar_selected_1", "tabbar_selected_2"],
              ["ThirdViewController", "Third",  "tabbar_3",  "tabbar_selected_3"],
              ["FourthViewController", "Fourth",  "tabbar_4",  "tabbar_selected_4"],
         
@@ -37,13 +38,14 @@ class HomeViewController: UITabBarController {
             self.addChildVC(controller: self.getClassVC(className: obj.first!), title: obj[1], imgName: obj[2], imgName_H: obj[3]);
             
         }
-        self.configureCenterBtn();
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
+        self.configureCenterBtn();
+
     }
 
     func addChildVC(controller:UIViewController, title:String, imgName:String, imgName_H:String) -> Void {
@@ -67,10 +69,10 @@ class HomeViewController: UITabBarController {
 
     
     lazy var btnCenter : UIButton = {
-        let btn = UIButton( type: .custom);
+        let btn = UIButton();
         btn.backgroundColor = UIColor.yellow;
         btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
-        btn.addTarget(self, action: #selector(handleActionSender(_ :)), for: .touchUpInside);
+        btn.addTarget(self, action: #selector(handleActionSender), for: .touchUpInside);
         
         return btn;
     }();
@@ -85,17 +87,18 @@ class HomeViewController: UITabBarController {
         
     }
     
-    @objc func handleActionSender(_ btn:UIButton) -> Void {
+    @objc func handleActionSender(){
         let navController = UINavigationController(rootViewController: CenterViewController());
         navController.navigationBar.tintColor = UIColor.white;
-        navController.navigationBar.barTintColor = UIColor.yellow;
+        navController.navigationBar.barTintColor = UIColor.red;
         let dic:NSDictionary = [NSAttributedStringKey.foregroundColor:UIColor.white,
                                 NSAttributedStringKey.font:UIFont.systemFont(ofSize: 18),
                                 ];
         navController.navigationBar.titleTextAttributes = dic as? [NSAttributedStringKey : Any];
         self.present(navController, animated: true, completion: nil);
         
-        
+        print("111111")
+
     }
     
     
