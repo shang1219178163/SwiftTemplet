@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds);
         window?.backgroundColor = UIColor.white;
         
-        let contrllerClass = getClassVC(className: "MainViewController");
-//        let contrllerClass = getController(controllerName: "MainViewController");
+        var contrllerClass = getClassVC(className: "MainViewController");
+        contrllerClass = getClassVC(className: "HomeViewController");
         
         let rootController = UINavigationController(rootViewController: contrllerClass);
         window?.rootViewController = rootController;

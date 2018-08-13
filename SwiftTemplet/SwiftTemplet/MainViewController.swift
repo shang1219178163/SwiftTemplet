@@ -20,6 +20,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     var dataList : NSMutableArray = [];
     
+   
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -27,6 +28,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         title = "Main";
         view.backgroundColor = UIColor.red;
         
+//        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
         
         self.view.addSubview(self.tableView);
         
@@ -42,6 +44,19 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         print(self.dataList);
         
     }
+    
+    @objc func handActionBtn(){
+        print("handActionBtn");
+        
+        
+    }
+    
+//   @objc func handActionBtn(sender:UIButton) -> Void{
+//        print("__%@",sender.titleLabel?.text as Any);
+//
+//
+//    }
+    
 //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataList.count;
@@ -75,6 +90,31 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
+        label.backgroundColor = UIColor.green;
+        label.text = "header";
+        return label;
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 45;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
+        label.backgroundColor = UIColor.yellow;
+
+        label.text = "footer";
+        return label;
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

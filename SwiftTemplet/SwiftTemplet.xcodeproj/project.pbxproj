@@ -12,7 +12,14 @@
 		51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A12208EA79C00CE8099 /* MainViewController.swift */; };
 		51685A1A208EB04E00CE8099 /* Object+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A19208EB04E00CE8099 /* Object+Helper.swift */; };
 		51685A1C208EC0A700CE8099 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51685A1B208EC0A700CE8099 /* Default-568h@2x.png */; };
+		5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */; };
 		5169D34F20A51E32001B1871 /* BN_TableViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169D34E20A51E32001B1871 /* BN_TableViewCellZero.swift */; };
+		5186E923212103A0005B71AD /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186E922212103A0005B71AD /* CenterViewController.swift */; };
+		51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58A211D1793003E9AA7 /* FirstViewController.swift */; };
+		51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58C211D179E003E9AA7 /* SecondViewController.swift */; };
+		51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */; };
+		51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B590211D17B4003E9AA7 /* FourthViewController.swift */; };
+		51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B592211D17F8003E9AA7 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +32,14 @@
 		51685A15208EABE300CE8099 /* SwiftTemplet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftTemplet-Bridging-Header.h"; sourceTree = "<group>"; };
 		51685A19208EB04E00CE8099 /* Object+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Helper.swift"; sourceTree = "<group>"; };
 		51685A1B208EC0A700CE8099 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
 		5169D34E20A51E32001B1871 /* BN_TableViewCellZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_TableViewCellZero.swift; sourceTree = "<group>"; };
+		5186E922212103A0005B71AD /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		51C9B58A211D1793003E9AA7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		51C9B58C211D179E003E9AA7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		51C9B590211D17B4003E9AA7 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		51C9B592211D17F8003E9AA7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +72,15 @@
 		516859FF208EA75700CE8099 /* SwiftTemplet */ = {
 			isa = PBXGroup;
 			children = (
-				51685A19208EB04E00CE8099 /* Object+Helper.swift */,
+				51C9B587211D16D2003E9AA7 /* Expand */,
 				51685A00208EA75700CE8099 /* AppDelegate.swift */,
+				51C9B592211D17F8003E9AA7 /* HomeViewController.swift */,
 				51685A12208EA79C00CE8099 /* MainViewController.swift */,
+				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
+				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
+				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
+				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
+				5186E922212103A0005B71AD /* CenterViewController.swift */,
 				5169D34E20A51E32001B1871 /* BN_TableViewCellZero.swift */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				51685A1B208EC0A700CE8099 /* Default-568h@2x.png */,
@@ -69,6 +89,15 @@
 				51685A15208EABE300CE8099 /* SwiftTemplet-Bridging-Header.h */,
 			);
 			path = SwiftTemplet;
+			sourceTree = "<group>";
+		};
+		51C9B587211D16D2003E9AA7 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				51685A19208EB04E00CE8099 /* Object+Helper.swift */,
+				5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */,
+			);
+			path = Expand;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +172,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */,
 				51685A1A208EB04E00CE8099 /* Object+Helper.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
+				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
+				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
+				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
+				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
+				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
+				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				5169D34F20A51E32001B1871 /* BN_TableViewCellZero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
