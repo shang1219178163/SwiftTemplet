@@ -72,7 +72,7 @@ class HomeViewController: UITabBarController {
         let btn = UIButton();
         btn.backgroundColor = UIColor.yellow;
         btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
-        btn.addTarget(self, action: #selector(handleActionSender), for: .touchUpInside);
+        btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
         
         return btn;
     }();
@@ -87,7 +87,7 @@ class HomeViewController: UITabBarController {
         
     }
     
-    @objc func handleActionSender(){
+    @objc func handleActionSender(_ sender:UIButton){
         let navController = UINavigationController(rootViewController: CenterViewController());
         navController.navigationBar.tintColor = UIColor.white;
         navController.navigationBar.barTintColor = UIColor.red;

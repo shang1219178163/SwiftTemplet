@@ -16,7 +16,7 @@ class CenterViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.title = "center";
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleActionSender));
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleActionSender));
         
     }
 
