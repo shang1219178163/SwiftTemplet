@@ -15,7 +15,7 @@ import UIKit
 extension UIView{
     
     
-    func addActionHandler(block:SwiftBlock) -> Void {
+    @objc func addActionHandler(_ block:SwiftBlock) -> Void {
         
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(_:)), for: .touchUpInside);
@@ -41,18 +41,13 @@ extension UIView{
     
     @objc func handleActionSender(_ sender:AnyObject) -> (){
         
-        var block = objc_getAssociatedObject(self, #selector(addActionHandler(_:))) as? SwiftBlock;
+        let block = objc_getAssociatedObject(self, NSStringFromSelector(#selector(addActionHandler(_:)))) as? SwiftBlock;
         if let control = sender as? UISegmentedControl {
-            if block != nil {
-                block(control, control, control.selectedSegmentIndex);
-            }
+            block!(control, control, control.selectedSegmentIndex);
             
         }
         else if let control = sender as? UIButton {
-            if block != nil {
-                block(control, control, control.tag);
-                
-            }
+            block!(control, control, control.tag);
             
         }
     }
@@ -60,10 +55,8 @@ extension UIView{
  
     @objc func handleActionTapGesture(_ recognizer:UITapGestureRecognizer) -> (){
         
-        var block = objc_getAssociatedObject(self, #selector(addActionHandler(_:))) as? SwiftBlock;
-        if block != nil {
-            block(recognizer, recognizer.view, recognizer.view?.tag);
-        }
+        let block = objc_getAssociatedObject(self, NSStringFromSelector(#selector(addActionHandler(_:)))) as? SwiftBlock;
+        block!(recognizer, recognizer.view!, (recognizer.view?.tag)!);
        
     }
     

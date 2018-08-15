@@ -16,7 +16,12 @@ class CenterViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.title = "center";
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleActionSender));
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
+        
+        
+        self.imgView.frame = CGRect.init(x: 10, y: 60, width: 220, height: 220);
+        
+      
         
     }
 
@@ -31,6 +36,13 @@ class CenterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    lazy var imgView:UIImageView = {
+        let view = UIImageView.init();
+        view.backgroundColor = UIColor.red;
+        
+        
+        return view;
+    }();
 
     /*
     // MARK: - Navigation
