@@ -13,21 +13,20 @@ import UIKit
 extension NSObject{
     
     typealias SwiftBlock = (_ obj:AnyObject, _ item:AnyObject, _ idx:NSInteger) -> Void;
-//    typealias SwiftBlock = { (_ obj:uivi)->() in_
-//
-//    }
+//    typealias SwiftBlock = (AnyObject?, AnyObject?, NSInteger?) -> Void;
 
-    var block:SwiftBlock {
-        set {
-            objc_setAssociatedObject(self, &self.block, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-        
-        get {
-      
-            return objc_getAssociatedObject(self, &self.block) as! NSObject.SwiftBlock;
-        }
-        
-    }
+//    typealias SwiftBlock = (AnyObject,AnyObject,Int);
+//    var block:SwiftBlock {
+//        set {
+//            objc_setAssociatedObject(self, &self.block, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        }
+//        
+//        get {
+//      
+//            return objc_getAssociatedObject(self, &self.block) as! NSObject.SwiftBlock;
+//        }
+//        
+//    }
     
     func getAppName() -> String {
         let nameKey = "CFBundleName";

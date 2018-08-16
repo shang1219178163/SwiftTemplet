@@ -20,9 +20,8 @@ class CenterViewController: UIViewController {
         
         
         self.imgView.frame = CGRect.init(x: 10, y: 60, width: 220, height: 220);
-        
+
       
-        
     }
 
     
