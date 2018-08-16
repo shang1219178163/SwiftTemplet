@@ -14,6 +14,7 @@ typealias MyBlock = (_ message:UIViewController)->(Void);
 class MyView:UIView{
     var mb:MyBlock?
     
+    
     //假装我有一个button添加了点击事件
     @objc func buttonClick(){
         if mb != nil{
@@ -30,6 +31,8 @@ class FourthViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.green;
+
         let mView = MyView();
         self.view.addSubview(mView);
         

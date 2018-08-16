@@ -15,6 +15,8 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.backgroundColor = UIColor.yellow;
+
     }
 
     override func didReceiveMemoryWarning() {
