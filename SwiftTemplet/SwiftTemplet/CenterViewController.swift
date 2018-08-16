@@ -14,7 +14,8 @@ class CenterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        view.backgroundColor = UIColor.cyan;
+
         self.title = "center";
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
