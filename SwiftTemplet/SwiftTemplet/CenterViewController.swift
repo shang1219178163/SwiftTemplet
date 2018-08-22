@@ -25,6 +25,12 @@ class CenterViewController: UIViewController {
         
         imgView.frame = CGRect.init(x: 10, y: 80, width: 220, height: 100);
         view.addSubview(imgView);
+        imgView.addActionHandler { (view) in
+            print(view)
+
+            
+        };
+        
 
 //        self.imgView.addActionHandler = { (_ obj:AnyObject, _ item:AnyObject, _ idx:NSInteger) -> Void in
 //
