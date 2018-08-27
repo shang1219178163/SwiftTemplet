@@ -25,12 +25,13 @@ class CenterViewController: UIViewController {
         
         imgView.frame = CGRect.init(x: 10, y: 80, width: 220, height: 100);
         view.addSubview(imgView);
-        imgView.addActionHandler { (view) in
-            print(view)
-
-            
-        };
         
+        imgView.addActionHandler { (tap, view, idx) in
+            print(tap,view,idx);
+            
+        }
+      
+       
 
 //        self.imgView.addActionHandler = { (_ obj:AnyObject, _ item:AnyObject, _ idx:NSInteger) -> Void in
 //
@@ -76,18 +77,51 @@ class CenterViewController: UIViewController {
         view.addSubview(btnNew);
         
         btnNew.setTitle("99+", for: UIControlState.normal);
-        btnNew.addActionBlock { (sender) in
-            print("33333",sender,sender.tag);
-
-        };
+//        btnNew.addActionBlock { (sender) in
+//            print("33333",sender,sender.tag);
+//
+//        };
         
+//        btnNew.addActionHandler { (sender) in
+//            print("33333",sender,sender.tag);
+//
+//        }
+        
+        btnNew.addActionHandler { (tap, view, idx) in
+            print(tap,view,idx);
+            
+        }
         
         view.getViewLayer();
         
         
+        loadData { (string) in
+            print("获取结果 \(string)")
+
+        }
+        
     }
 
    
+    //加载请求数据
+    func loadData(completion: @escaping (_ result:[String]) -> ()) -> () {
+        
+        DispatchQueue.global().async {
+            print("耗时操作 \(Thread.current)")
+            
+            //获取到的json结果数据
+            let json = ["姓名","年龄","爱好"]
+            
+            //主队列回调
+            DispatchQueue.main.async {
+                print("主线程更新 UI \(Thread.current)")
+                
+                //回调异步获取的结果
+                completion(json)
+            }
+        }
+    }
+    
     
     
     @objc func handleActionSender() -> Void {
