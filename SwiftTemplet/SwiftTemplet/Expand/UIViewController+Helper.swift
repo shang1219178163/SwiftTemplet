@@ -50,6 +50,7 @@ extension UIViewController{
         return btn;
     }
     
+
     
 //    func createBarItem(titile:String, imgName:AnyObject?, isLeft:Bool, isHidden:Bool, handler:void(^)(id obj, id item, NSInteger idx)handler) -> UIButton {
 //
@@ -84,34 +85,6 @@ extension UIViewController{
 //        }
 //
 //        return btn;
-//    }
-    
-
-    
-    /**
-     关联方法待改进
-     */
-//    - (void)handleActionBtn:(id)sender{
-//    
-//    if ([sender isKindOfClass:[UISegmentedControl class]]) {
-//    UISegmentedControl * segmentCtl = sender;
-//    if (block) block(sender, sender, segmentCtl.selectedSegmentIndex);
-//    
-//    }else{
-//    if (block) block(sender, sender, ((UIButton *)sender).tag - kTAG_VIEW);
-//    
-//    }
-//    }
-//    
-//    /**
-//     关联方法待改进
-//     */
-//    - (void)handleActionTapGesture:(UITapGestureRecognizer *)tapGesture{
-//    void(^block)(id obj, id item, NSInteger idx) = objc_getAssociatedObject(self, @selector(addActionHandler:));
-//    if (block){
-//    block(tapGesture, tapGesture.view, tapGesture.view.tag - kTAG_VIEW);
-//    
-//    }
 //    }
 
     
