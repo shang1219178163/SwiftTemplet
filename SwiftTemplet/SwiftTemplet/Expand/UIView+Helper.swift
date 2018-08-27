@@ -12,7 +12,8 @@
 import Foundation
 import UIKit
 
-typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
+typealias ViewClick = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
+//typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
 
 extension UIView{
     
@@ -45,8 +46,9 @@ extension UIView{
 //        }
 //    }
    
-    func addActionHandler(action:@escaping ((UITapGestureRecognizer?,UIView,NSInteger)->())) -> Void {
-        
+    func addActionHandler(action:@escaping (ViewClick)) -> Void {
+//        func addActionHandler(action:@escaping ((UITapGestureRecognizer?,UIView,NSInteger)->())) -> Void {
+
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
 
@@ -92,31 +94,7 @@ extension UIView{
         }
     }
     
-//    func addActionHandler(action:@escaping ViewClick) -> Void {
-//        self.viewBlock = action;
-//
-//        let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap!);
-//        if recoginzer == nil {
-//            let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(view:)));
-//
-//            self.isUserInteractionEnabled = true;
-//            self.addGestureRecognizer(recoginzer);
-//
-//        }
-//        objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-//
-//    }
-//
-//    /// 点击回调
-//    @objc func handleActionTap(view:UIView) -> Void {
-//        if self.viewBlock != nil {
-//            self.viewBlock!(view);
-//        }
-//    }
-    
 
-    
-    
     func isContainRecognizer(recognizer:String?) -> Bool {
         
         for obj in (self.gestureRecognizers?.enumerated())! {
@@ -131,73 +109,6 @@ extension UIView{
     }
     
     
-//    func addActionHandler(_ block:SwiftBlock) -> Void {
-//            var tap = objc_getAssociatedObject(self, NSStringFromSelector(#function));
-//            if tap == nil {
-//                tap = UITapGestureRecognizer(target: self, action: #selector(handleActionTapGesture(_:)));
-//                self.isUserInteractionEnabled = true;
-//
-//                self.addGestureRecognizer(tap as! UIGestureRecognizer);
-//            }
-//            objc_setAssociatedObject(self, &key, block, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-//
-//        }
-//
-//    @objc func handleActionTapGesture(_ recognizer:UITapGestureRecognizer) -> (){
-//        let block = objc_getAssociatedObject(self, &key) as! NSObject.SwiftBlock;
-////        block(recognizer, recognizer.view, recognizer.view?.tag);
-//
-//
-//    }
-    
-//    @objc func addActionHandler(_ block:SwiftBlock) -> Void {
-//        if let sender = self as? UIButton {
-//            sender.addTarget(self, action:#selector(handleActionSender(_:)), for: .touchUpInside);
-//            
-//        }
-//        else if let sender = self as? UISegmentedControl {
-//            sender.addTarget(self, action: #selector(handleActionSender(_:)), for: .valueChanged);
-//            
-//        }
-//        else {
-//            var tap = objc_getAssociatedObject(self, NSStringFromSelector(#function));
-//            if tap == nil {
-//                tap = UITapGestureRecognizer(target: self, action: #selector(handleActionTapGesture(_:)));
-//                self.isUserInteractionEnabled = true;
-//                
-//                self.addGestureRecognizer(tap as! UIGestureRecognizer);
-//            }
-//        }
-//        objc_setAssociatedObject(self, NSStringFromSelector(#function), block, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-//        
-//    }
-//    
-//    
-//    @objc func handleActionSender(_ sender:AnyObject) -> (){
-//        let block = objc_getAssociatedObject(self, NSStringFromSelector(#selector(addActionHandler(_:)))) as? SwiftBlock;
-//        if let control = sender as? UISegmentedControl {
-//            if block != nil {
-//                block!(control, control, control.selectedSegmentIndex);
-//                
-//            }
-//
-//        }
-//        else if let control = sender as? UIButton {
-//            if block != nil {
-//                block!(control, control, control.tag);
-//                
-//            }
-//        }
-//    }
-//    
-// 
-//    @objc func handleActionTapGesture(_ recognizer:UITapGestureRecognizer) -> (){
-//        let block = objc_getAssociatedObject(self, NSStringFromSelector(#selector(addActionHandler(_:)))) as? SwiftBlock;
-//        if block != nil {
-//            block!(recognizer, recognizer.view!, (recognizer.view?.tag)!);
-//
-//        }
-//    }
     
     
 }

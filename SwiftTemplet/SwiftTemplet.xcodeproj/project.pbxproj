@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
+		51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51262F6E2133FC9B0032AE02 /* UIView+Add.swift */; };
 		513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513571D82125682A00627C67 /* UICollectionView+Helper.swift */; };
 		51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A00208EA75700CE8099 /* AppDelegate.swift */; };
 		51685A08208EA75800CE8099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51685A07208EA75800CE8099 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51262F6E2133FC9B0032AE02 /* UIView+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Add.swift"; sourceTree = "<group>"; };
 		513571D82125682A00627C67 /* UICollectionView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Helper.swift"; sourceTree = "<group>"; };
 		516859FD208EA75700CE8099 /* SwiftTemplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTemplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51685A00208EA75700CE8099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				51827CC4213006410084720C /* UIColor+Helper.swift */,
 				51685A19208EB04E00CE8099 /* Object+Helper.swift */,
 				516FAB042122568600DD01CA /* UIView+Helper.swift */,
+				51262F6E2133FC9B0032AE02 /* UIView+Add.swift */,
 				5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */,
 				513571D82125682A00627C67 /* UICollectionView+Helper.swift */,
 				51B3DA2521264AE900710A76 /* UIButton+Helper.swift */,
@@ -266,6 +269,7 @@
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
+				51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */,
 				5169FCCC2124FEF5004A1A42 /* MyView.swift in Sources */,
 				516FAB052122568600DD01CA /* UIView+Helper.swift in Sources */,
 				5169D34F20A51E32001B1871 /* BN_TableViewCellZero.swift in Sources */,
