@@ -73,7 +73,7 @@ class HomeViewController: UITabBarController {
     @objc func handleActionSender(_ sender:UIButton){
         let navController = UINavigationController(rootViewController: CenterViewController());
         navController.navigationBar.tintColor = UIColor.white;
-        navController.navigationBar.barTintColor = UIColor.red;
+        navController.navigationBar.barTintColor = UIColor.orange;
         let dic:NSDictionary = [NSAttributedStringKey.foregroundColor:UIColor.white,
                                 NSAttributedStringKey.font:UIFont.systemFont(ofSize: 18),
                                 ];

@@ -82,10 +82,8 @@ class CenterViewController: UIViewController {
 //
 //        };
         
-//        btnNew.addActionHandler { (sender) in
-//            print("33333",sender,sender.tag);
-//
-//        }
+
+    
         
         btnNew.addActionHandler { (tap, view, idx) in
             print(tap,view,idx);
@@ -100,6 +98,7 @@ class CenterViewController: UIViewController {
 
         }
         
+       
     }
 
    
