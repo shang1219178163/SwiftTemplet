@@ -14,9 +14,10 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//        title = NSStringFromSelector(#function);
+        view.backgroundColor = UIColor.green;
         
-        view.backgroundColor = UIColor.red;
-        
+//        self.navigationController?.title = "first";
     }
 
     override func didReceiveMemoryWarning() {

@@ -41,7 +41,7 @@ let kX_GAP = 15;
 let kY_GAP = 10;
 let kPadding = 8.0;
 
-let kW_LayerBorderWidth = 0.5;
+let kW_LayerBorder = 0.5;
 let kWH_ArrowRight = 25;
 let kTimerValue = 65;
 let kRatio_IDCard = 1.58;

@@ -21,13 +21,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds);
         window?.backgroundColor = UIColor.white;
         
-        var contrllerClass = getClassVC(className: "MainViewController");
-        contrllerClass = getClassVC(className: "HomeViewController");
+        var controller = UIViewControllerFromString(vcName: "MainViewController");
+        controller = UIViewControllerFromString(vcName: "HomeViewController");
+//        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);
+//        window?.makeKeyAndVisible();
         
-        let rootController = UINavigationController(rootViewController: contrllerClass);
-        window?.rootViewController = rootController;
-        window?.makeKeyAndVisible()
+//        UIApplication.setupRootController(controller: controller as AnyObject);
+        UIApplication.setupRootController(controller: "HomeViewController" as AnyObject);
+        UIApplication.setupNavigationBar();
+        if iOS(version: 9) {
 
+        }
+        print(self,UIApplication.shared.delegate as! AppDelegate)
+        
         
         return true
     }

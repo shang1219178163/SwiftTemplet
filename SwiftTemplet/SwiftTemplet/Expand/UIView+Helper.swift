@@ -12,10 +12,15 @@
 import Foundation
 import UIKit
 
-//typealias ViewClick = (()->()) // 定义数据类型(其实就是设置别名)
-typealias ViewClick = ((_ view:UIView)->()) // 定义数据类型(其实就是设置别名)
+typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
 
 extension UIView{
+    
+    private struct RuntimeKey {
+        static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue);
+        static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue);
+        
+    }
     
     func getViewLayer() -> () {
         let subviews = self.subviews;
@@ -30,42 +35,87 @@ extension UIView{
         }
     }
     
-    private struct RuntimeKey {
-        static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue);
-        static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue);
+//    /// 运行时关联
+//    private var viewBlock: ViewClick? {
+//        set {
+//            objc_setAssociatedObject(self, RuntimeKey.viewBlock!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC);
+//        }
+//        get {
+//            return  objc_getAssociatedObject(self, RuntimeKey.viewBlock!) as? ViewClick;
+//        }
+//    }
+   
+    func addActionHandler(action:@escaping ((UITapGestureRecognizer?,UIView,NSInteger)->())) -> Void {
         
-    }
-    
-    /// 运行时关联
-    private var viewBlock: ViewClick? {
-        set {
-            objc_setAssociatedObject(self, RuntimeKey.viewBlock!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC);
+        if let sender = self as? UIButton {
+            sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
+
         }
-        get {
-            return  objc_getAssociatedObject(self, RuntimeKey.viewBlock!) as? ViewClick;
+        else if let sender = self as? UIControl {
+            sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.valueChanged);
+
         }
-    }
-    /// 点击回调
-    @objc func handleActionTap(view:UIView){
-        if self.viewBlock != nil {
-            self.viewBlock!(view);
-        }        
-    }
-    
-    func addActionHandler(action:@escaping ViewClick) -> Void {
-        self.viewBlock = action;
-        
-        let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap!);
-        if recoginzer == nil {
-            let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(view:)));
-            
-            self.isUserInteractionEnabled = true;
-            self.addGestureRecognizer(recoginzer);
-            
+        else{
+            let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap!);
+            if recoginzer == nil {
+                let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(tap:)));
+                
+                self.isUserInteractionEnabled = true;
+                self.addGestureRecognizer(recoginzer);
+                
+            }
         }
         objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
     }
+    
+    /// 点击回调
+    @objc func handleActionTap(tap:UITapGestureRecognizer) -> Void {
+       let block = objc_getAssociatedObject(self, RuntimeKey.tap!) as? ViewClick;
+        if block != nil{
+            block!(tap, tap.view!, tap.view!.tag);
+        }
+    }
+    
+    @objc func handleActionSender(sender:UIControl) -> Void {
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap!) as? ViewClick;
+        if let sender = self as? UISegmentedControl {
+            if block != nil {
+                block!(nil, sender, sender.selectedSegmentIndex);
+            }
+            
+        }
+        else{
+            if block != nil {
+                block!(nil, sender, sender.tag);
+            }
+        }
+    }
+    
+//    func addActionHandler(action:@escaping ViewClick) -> Void {
+//        self.viewBlock = action;
+//
+//        let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap!);
+//        if recoginzer == nil {
+//            let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(view:)));
+//
+//            self.isUserInteractionEnabled = true;
+//            self.addGestureRecognizer(recoginzer);
+//
+//        }
+//        objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//
+//    }
+//
+//    /// 点击回调
+//    @objc func handleActionTap(view:UIView) -> Void {
+//        if self.viewBlock != nil {
+//            self.viewBlock!(view);
+//        }
+//    }
+    
+
+    
     
     func isContainRecognizer(recognizer:String?) -> Bool {
         
@@ -148,4 +198,6 @@ extension UIView{
 //
 //        }
 //    }
+    
+    
 }
