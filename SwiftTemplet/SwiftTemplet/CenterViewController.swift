@@ -17,7 +17,6 @@ class CenterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.cyan;
-
         title = "center";
 
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
@@ -47,7 +46,8 @@ class CenterViewController: UIViewController {
         let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (tap, view, idx) in
             print(tap,view,idx);
         };
-
+        print(itemRight);
+        
         
         imgView.frame = CGRect.init(x: 10, y: 80, width: 220, height: 100);
         view.addSubview(imgView);
@@ -58,25 +58,6 @@ class CenterViewController: UIViewController {
         }
       
        
-        let btn2 = UIButton.init(setImage: "Pinterest_round", frame: CGRect.init(x:10, y: 200, width: 50, height: 50)) { (sender) in
-       
-            print("btn11111")
-            print(self,sender)
-
-        }
-        view.addSubview(btn2)
-
-        
-        let btn = UIButton.init();
-        btn.frame = CGRect.init(x:200, y: 200, width: 50, height: 50);
-        btn.titleLabel?.text = "99999";
-        btn.backgroundColor = UIColor.green
-        view.addSubview(btn)
-
-        btn.addActionBlock { (sender) in
-            print("btn2222",sender);
-            
-        };
         
         
         let btnNew = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);

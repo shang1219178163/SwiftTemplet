@@ -13,58 +13,58 @@ typealias ButtonClick = ((_ sender:UIButton)->()) // 定义数据类型(其实�
 
 extension UIButton{
     
-    private struct RuntimeKey {
-        static let actionBlock = UnsafeRawPointer.init(bitPattern: "actionBlock".hashValue)
-        /// ...其他Key声明
-    }
+//    private struct RuntimeKey {
+//        static let actionBlock = UnsafeRawPointer.init(bitPattern: "actionBlock".hashValue)
+//        /// ...其他Key声明
+//    }
     
-    /// 运行时关联
-    private var actionBlock: ButtonClick? {
-        set {
-            objc_setAssociatedObject(self, UIButton.RuntimeKey.actionBlock!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-        }
-        get {
-            return  objc_getAssociatedObject(self, UIButton.RuntimeKey.actionBlock!) as? ButtonClick
-        }
-    }
-    /// 点击回调
-    @objc func tapped(btn:UIButton){
-        if self.actionBlock != nil {
-            self.actionBlock!(btn);
-        }
-    }
-    
-    /// 点击回调
-    @objc func addActionBlock(action:@escaping ButtonClick){
-        self.actionBlock = action;
-        if self.allTargets.count == 0 {
-            self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
-            
-        }
-    
-    }
-    
-    /// 快速创建
-    convenience init(action:@escaping ButtonClick){
-        self.init()
-        self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
-        self.actionBlock = action
-        self.sizeToFit()
-    }
-
-    /// 快速创建按钮 setImage: 图片名 frame:frame action:点击事件的回调
-    convenience init(setImage:String, frame:CGRect, action: @escaping ButtonClick){
+//    /// 运行时关联
+//    private var actionBlock: ButtonClick? {
+//        set {
+//            objc_setAssociatedObject(self, UIButton.RuntimeKey.actionBlock!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+//        }
+//        get {
+//            return  objc_getAssociatedObject(self, UIButton.RuntimeKey.actionBlock!) as? ButtonClick
+//        }
+//    }
+//    /// 点击回调
+//    @objc func tapped(btn:UIButton){
+//        if self.actionBlock != nil {
+//            self.actionBlock!(btn);
+//        }
+//    }
+//
+//    /// 点击回调
+//    @objc func addActionBlock(action:@escaping ButtonClick){
+//        self.actionBlock = action;
+//        if self.allTargets.count == 0 {
+//            self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
+//
+//        }
+//
+//    }
+//
+//    /// 快速创建
+//    convenience init(action:@escaping ButtonClick){
 //        self.init()
-        self.init(action: action);
-        
-        self.frame = frame
-        self.setImage(UIImage(named:setImage), for: UIControlState.normal)
-        self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
-        self.actionBlock = action
-        self.sizeToFit()
-        
-        self.frame = frame
-    }
+//        self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
+//        self.actionBlock = action
+//        self.sizeToFit()
+//    }
+//
+//    /// 快速创建按钮 setImage: 图片名 frame:frame action:点击事件的回调
+//    convenience init(setImage:String, frame:CGRect, action: @escaping ButtonClick){
+////        self.init()
+//        self.init(action: action);
+//
+//        self.frame = frame
+//        self.setImage(UIImage(named:setImage), for: UIControlState.normal)
+//        self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
+//        self.actionBlock = action
+//        self.sizeToFit()
+//
+//        self.frame = frame
+//    }
     
    static func createBtnImg(rect:CGRect, image_N:String!, image_H:String?) -> UIButton {
         let btn = UIButton(type:.custom);
@@ -90,10 +90,10 @@ extension UIButton{
         btn.titleLabel?.font = font;
         btn.setTitle(title, for: UIControlState.normal);
         btn.isExclusiveTouch = true;
-
+        
         if title.count >= 3 {
             let textSize:CGSize = btn.sizeThatFits(CGSize.zero);
-            btn.frame = CGRect(x: 0, y: 0, width: textSize.width, height: textSize.height);
+            btn.frame = CGRect(origin: rect.origin, size: textSize);
             btn.titleEdgeInsets = UIEdgeInsetsMake(-10, -20, -10, -20);
             
             if title.count >= 4 {

@@ -9,18 +9,7 @@
 import Foundation
 import UIKit
 
-typealias ObjClick = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
-//typealias ObjClick = ((AnyObject?,Bool) ->()) // 定义数据类型(其实就是设置别名)
-typealias ViewClick = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
-//typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
 
-
-struct RuntimeKey {
-    static let objBlock = UnsafeRawPointer.init(bitPattern: "objBlock".hashValue);
-    static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue);
-    static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue);
-    
-}
 
 extension UIView{
     
@@ -52,7 +41,7 @@ extension UIView{
 
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
-            sender.showsTouchWhenHighlighted = true;
+//            sender.showsTouchWhenHighlighted = true;
         }
         else if let sender = self as? UIControl {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.valueChanged);
