@@ -10,23 +10,25 @@ import UIKit
 
 extension UIBarButtonItem{
     
-    static func isOneItem(item:AnyObject!, sysItem:UIBarButtonSystemItem!) -> Bool {
-        
-        let style = (item as! UIBarButtonItem).value(forKey: "systemItem");
-        if UIBarButtonSystemItem(rawValue: style as! Int) == sysItem {
-            return true;
-            
+   var systemType: UIBarButtonSystemItem {
+        get {
+            return  objc_getAssociatedObject(self, RuntimeKey.item!) as! UIBarButtonSystemItem;
+
         }
-        return false;
+        set {
+            objc_setAssociatedObject(self, RuntimeKey.item!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+        }
     }
     
-    func isOneItem(sysItem:UIBarButtonSystemItem!) -> Bool {
-        
-        let style = self.value(forKey: "systemItem");
-        if UIBarButtonSystemItem(rawValue: style as! Int) == sysItem {
-            return true;
-            
-        }
-        return false;
-    }
+    
+//    func isOneItem(sysItem:UIBarButtonSystemItem!) -> Bool {
+//        
+//        let style = self.value(forKey: "systemItem");
+//        if UIBarButtonSystemItem(rawValue: style as! Int) == sysItem {
+//            return true;
+//            
+//        }
+//        return false;
+//    }
 }
