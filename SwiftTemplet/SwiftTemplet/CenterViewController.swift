@@ -74,6 +74,10 @@ class CenterViewController: UIViewController {
             }
             DDLog(String.timeNow().toTimeStamp());
             
+            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
+            
+            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
+            print(size);
         }
         
         view.getViewLayer();

@@ -11,6 +11,7 @@ import UIKit
 extension String{
     
     
+    
     static func timeNow() -> String {
         let fmt = DateFormatter.dateFormat(formatStr:kFormat_date);
         let dateStr = fmt.string(from: Date());
