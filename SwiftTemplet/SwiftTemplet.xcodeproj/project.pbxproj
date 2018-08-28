@@ -11,10 +11,10 @@
 		51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51262F6E2133FC9B0032AE02 /* UIView+Add.swift */; };
 		513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513571D82125682A00627C67 /* UICollectionView+Helper.swift */; };
 		515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */; };
+		515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */; };
 		51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A00208EA75700CE8099 /* AppDelegate.swift */; };
 		51685A08208EA75800CE8099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51685A07208EA75800CE8099 /* Assets.xcassets */; };
 		51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A12208EA79C00CE8099 /* MainViewController.swift */; };
-		51685A1A208EB04E00CE8099 /* Object+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A19208EB04E00CE8099 /* Object+Helper.swift */; };
 		5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */; };
 		5169D34F20A51E32001B1871 /* BN_TableViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169D34E20A51E32001B1871 /* BN_TableViewCellZero.swift */; };
 		5169FCCC2124FEF5004A1A42 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169FCCB2124FEF5004A1A42 /* MyView.swift */; };
@@ -39,13 +39,13 @@
 		51262F6E2133FC9B0032AE02 /* UIView+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Add.swift"; sourceTree = "<group>"; };
 		513571D82125682A00627C67 /* UICollectionView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Helper.swift"; sourceTree = "<group>"; };
 		515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helper.swift"; sourceTree = "<group>"; };
+		515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		516859FD208EA75700CE8099 /* SwiftTemplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTemplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51685A00208EA75700CE8099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51685A07208EA75800CE8099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51685A0C208EA75900CE8099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51685A12208EA79C00CE8099 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		51685A14208EA7C500CE8099 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		51685A19208EB04E00CE8099 /* Object+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Helper.swift"; sourceTree = "<group>"; };
 		5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
 		5169D34E20A51E32001B1871 /* BN_TableViewCellZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_TableViewCellZero.swift; sourceTree = "<group>"; };
 		5169FCCB2124FEF5004A1A42 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 				515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */,
 				5183537E2123A69B00A080D2 /* Macro_Globle.swift */,
 				51827CC4213006410084720C /* UIColor+Helper.swift */,
-				51685A19208EB04E00CE8099 /* Object+Helper.swift */,
+				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
 				516FAB042122568600DD01CA /* UIView+Helper.swift */,
 				51262F6E2133FC9B0032AE02 /* UIView+Add.swift */,
 				5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */,
@@ -257,13 +257,13 @@
 			files = (
 				515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */,
 				5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */,
-				51685A1A208EB04E00CE8099 /* Object+Helper.swift in Sources */,
 				5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				51B3DA2621264AE900710A76 /* UIButton+Helper.swift in Sources */,
 				51827CC721300C170084720C /* UIApplication+Helper.swift in Sources */,
 				51827CC5213006410084720C /* UIColor+Helper.swift in Sources */,
+				515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				5183537F2123A69B00A080D2 /* Macro_Globle.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,

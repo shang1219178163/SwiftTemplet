@@ -50,6 +50,10 @@ extension UIApplication{
 //        UITabBar.appearance().tintColor = UIColor.redColor()
 
     }
-    
+    func setupAppearance() -> Void {
+        UIButton.appearance().isExclusiveTouch = false;
+
+        
+    }
    
 }
