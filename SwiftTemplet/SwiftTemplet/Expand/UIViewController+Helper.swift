@@ -61,7 +61,7 @@ extension UIViewController{
     func createBarItem(systemItem:UIBarButtonSystemItem, isLeft:Bool, action:@escaping (ObjClick)) -> Void {
 
         let item:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(handleActionItem(sender:)));
-        
+        item.systemType = systemItem;
         if isLeft == true {
             navigationItem.leftBarButtonItem = item;
             
