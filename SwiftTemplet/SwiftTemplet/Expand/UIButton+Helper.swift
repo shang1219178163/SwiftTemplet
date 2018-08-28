@@ -66,46 +66,69 @@ extension UIButton{
         self.frame = frame
     }
     
- 
-    
-    static func createBtn(rect:CGRect, title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger) -> UIButton {
-
-//        assert(font is NSNull || font is NSInteger || font is UIFont, "font只能是int/UIFont类型");
-//        assert(image is NSNull || image is String || image is UIImage, "image只能是String/UIImage");
-        let btn = UIButton.init();
+   static func createBtnImg(rect:CGRect, image_N:String!, image_H:String?) -> UIButton {
+        let btn = UIButton(type:.custom);
         btn.frame = rect;
-        btn.tag = tag;
-        if image != nil {
-            if let img = image as? String {
-                btn.setImage(UIImage(named:img), for: UIControlState.normal);
-                
-            }
-            else if let img = image as? UIImage {
-                btn.setImage(img, for: UIControlState.normal);
-                
-            }
+        if UIImage(named:image_N) != nil {
+            btn.setImage(UIImage(named:image_N), for: UIControlState.normal);
             
         }
-        else{
-            if title != nil {
-                btn.titleLabel?.text = title;
-                btn.titleLabel?.font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
-
-            }
-        }
         
-        switch type {
-        case 1:
-            btn.setTitleColor(UIColor.red, for: UIControlState.normal);
-            btn.backgroundColor = UIColor.white;
+        if UIImage(named:image_H!) != nil {
+            btn.setImage(UIImage(named:image_H!), for: UIControlState.highlighted);
             
-        default:
-            btn.setTitleColor(UIColor.black, for: UIControlState.normal);
-            btn.backgroundColor = UIColor.white;
         }
-
-        
-        return btn
+        btn.sizeToFit();
+        return btn;
     }
     
+    static func createBtnTitle(rect:CGRect, title:String!, font:AnyObject, type:NSInteger) -> UIButton! {
+        let btn = UIButton(type:.custom);
+        btn.frame = rect;
+//        btn.titleLabel?.text = title;//无法显示title
+        let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
+        btn.titleLabel?.font = font;
+        btn.setTitle(title, for: UIControlState.normal);
+
+        switch type {
+            case 1:
+                btn.setTitle(title, for: UIControlState.normal);
+
+                btn.setTitleColor(UIColor.black, for: UIControlState.normal);
+                btn.backgroundColor = UIColor.white;
+            case 2:
+                btn.setTitle(title, for: UIControlState.normal);
+
+                btn.setTitleColor(UIColor.red, for: UIControlState.normal);
+                btn.backgroundColor = UIColor.white;
+
+            default:
+                btn.setTitle(title, for: UIControlState.normal);
+
+            }
+        return btn;
+    }
+ 
+    static func createBtn(rect:CGRect,title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger) -> UIButton {
+        if image != nil && image is String {
+            let btn = UIButton.createBtnImg(rect:rect, image_N: image as! String, image_H: image as? String);
+            return btn;
+        }
+  
+        let btnTitle = title != nil ? title : "UIbutton";
+        let btn = UIButton.createBtnTitle(rect:rect, title: btnTitle, font:font as AnyObject, type:0);
+        return btn!;
+    }
+    
+    static func createBtn(rect:CGRect, title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger, action:@escaping (ViewClick)) -> UIButton? {
+        
+        let btn = UIButton.createBtn(rect: rect,title: title, font:font, image:image, tag: tag, type: type);
+        btn.addActionHandler { (tap, view, idx) in
+            action(tap, view, idx);
+        }
+     
+        return btn;
+    }
+   
+
 }
