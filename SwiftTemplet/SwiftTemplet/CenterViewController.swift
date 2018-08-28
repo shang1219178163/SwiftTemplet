@@ -20,16 +20,33 @@ class CenterViewController: UIViewController {
 
         title = "center";
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
+        let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.redo, isLeft: true) { (sender) in
+//            print(sender);
+            self.dismiss(animated: true, completion: nil)
 
-        createBtnBarItem(title: "111", image: nil, tag: 17, isLeft: true, isHidden: false) { (tap, view, idx) in
-            print(tap,view,idx);
-
+            let style = (sender as! UIBarButtonItem).value(forKey: "systemItem");
+            if UIBarButtonSystemItem(rawValue: style as! Int) == UIBarButtonSystemItem.redo {
+                print("111111");
+                
+            }
             
+            if UIBarButtonItem.isOneItem(item: sender, sysItem: UIBarButtonSystemItem.redo) {
+                print("222222");
+
+            }
+            
+            if (sender as! UIBarButtonItem).isOneItem(sysItem: UIBarButtonSystemItem.redo) {
+                print("333333");
+
+            }
+         
+        }
+
+        let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (tap, view, idx) in
+            print(tap,view,idx);
         };
-        print(self.navigationItem);
-        print(navigationItem);
 
         
         imgView.frame = CGRect.init(x: 10, y: 80, width: 220, height: 100);
@@ -65,6 +82,7 @@ class CenterViewController: UIViewController {
         let btnNew = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);
         view.addSubview(btnNew);
         btnNew.setTitle("99+", for: UIControlState.normal);
+        btnNew.backgroundColor = UIColor.red;
 //        btnNew.addActionBlock { (sender) in
 //            print("33333",sender,sender.tag);
 //
