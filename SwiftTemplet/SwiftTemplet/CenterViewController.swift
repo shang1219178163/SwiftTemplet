@@ -66,6 +66,14 @@ class CenterViewController: UIViewController {
             print(tap,view,idx);
 //            DDlog(view);
             DDLog(view);
+            
+            
+            if "asdfsdgf".contains("as") {
+                DDLog(1111);
+                
+            }
+            DDLog(String.timeNow().toTimeStamp());            
+            
         }
         
         view.getViewLayer();

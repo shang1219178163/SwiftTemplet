@@ -35,7 +35,7 @@ extension DateFormatter{
         fmt.dateFormat = formatStr;
         fmt.locale = NSLocale.current;
         fmt.timeZone = NSTimeZone.local;
-        dic[formatStr] = formatStr;
+        dic[fmt] = formatStr;
         
         return fmt;
     }
