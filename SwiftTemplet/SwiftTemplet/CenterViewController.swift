@@ -63,9 +63,9 @@ class CenterViewController: UIViewController {
 //        };
 
         btn.addActionHandler { (tap, view, idx) in
-//            print(tap,view,idx);
-            DDlog(view);
-
+            print(tap,view,idx);
+//            DDlog(view);
+            DDLog(view);
         }
         
         view.getViewLayer();
@@ -76,6 +76,7 @@ class CenterViewController: UIViewController {
 
         }
         
+        DDLog(String.timeNow());
        
     }
 
