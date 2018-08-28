@@ -1,15 +1,27 @@
 
 //
-//  Object+Helper.swift
+//  NSObject+Helper.swift
 //  SwiftTemplet
 //
-//  Created by hsf on 2018/4/24.
+//  Created by hsf on 2018/8/28.
 //  Copyright © 2018年 BN. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
+typealias ObjClick = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
+//typealias ObjClick = ((AnyObject?,Bool) ->()) // 定义数据类型(其实就是设置别名)
+typealias ViewClick = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
+//typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
+
+
+struct RuntimeKey {
+    static let objBlock = UnsafeRawPointer.init(bitPattern: "objBlock".hashValue);
+    static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue);
+    static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue);
+    
+}
 
 func iOS(version:Float)->Bool{
     return (UIDevice.current.systemVersion as NSString).floatValue > version ? true : false;
@@ -18,11 +30,11 @@ func iOS(version:Float)->Bool{
 
 //func kScreen_width() -> CGFloat{
 //    return UIScreen.main.bounds.size.width;
-//    
+//
 //}
 //func kScreen_height() -> CGFloat{
 //    return UIScreen.main.bounds.size.height;
-//    
+//
 //}
 
 //func JKWidth(_ width: CGFloat) -> CGFloat {
@@ -62,30 +74,30 @@ func NSClassFromString(name:String) -> AnyClass {
     let appName = Bundle.main.infoDictionary![nameKey] as? String;
     let cls : AnyClass = NSClassFromString(appName! + "." + name)!;
     return cls;
-
+    
 }
 
 extension NSObject{
     
-//    typealias SwiftBlock = (_ obj:AnyObject, _ item:AnyObject, _ idx:NSInteger) -> Void;
-//    typealias SwiftBlock = (AnyObject?, AnyObject?, NSInteger?) -> Void;
-
+    //    typealias SwiftBlock = (_ obj:AnyObject, _ item:AnyObject, _ idx:NSInteger) -> Void;
+    //    typealias SwiftBlock = (AnyObject?, AnyObject?, NSInteger?) -> Void;
+    
     typealias SwiftBlock = (AnyObject,AnyObject,Int);
-
+    
     
     // MARK: - 关联属性的key
     private struct RunTimeKey {
         static let swiftBlockKey = UnsafeRawPointer(bitPattern: "swiftBlockKey".hashValue)
-
+        
     }
     
     var block:SwiftBlock {
         set {
-//            print("__",NSStringFromSelector(#function));
+            //            print("__",NSStringFromSelector(#function));
             objc_setAssociatedObject(self, RunTimeKey.swiftBlockKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+            
         }
-
+        
         get {
             return objc_getAssociatedObject(self, RunTimeKey.swiftBlockKey!) as! NSObject.SwiftBlock;
             
@@ -113,7 +125,7 @@ extension NSObject{
         
     }
     
-
+    
     func getController(controllerName: String) ->UIViewController {
         
         // 动态获取命名空间
@@ -131,6 +143,6 @@ extension NSObject{
         return childController;
         
     }
-
-
+    
+    
 }
