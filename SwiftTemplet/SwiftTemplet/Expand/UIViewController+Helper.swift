@@ -52,13 +52,32 @@ extension UIViewController{
         return btn;
     }
     
-    
-     func createBtnBarItem(title:String?, image:AnyObject?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ViewClick)) -> UIButton? {
-//        var size = CGSize(width: 32, height: 32);
-//        if image != nil && UIImage(named:image as! String) != nil{
-//            size = CGSize(width: 40, height: 40);
-//        }
+    @objc func handleActionItem(sender:UIBarButtonItem) -> Void {
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap!) as? ObjClick;
+        block!(sender);
         
+    }
+    
+    func createBarItem(systemItem:UIBarButtonSystemItem, isLeft:Bool, action:@escaping (ObjClick)) -> Void {
+
+        let item:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(handleActionItem(sender:)));
+        
+        if isLeft == true {
+            navigationItem.leftBarButtonItem = item;
+            
+        }
+        else{
+            navigationItem.rightBarButtonItem = item;
+            
+        }
+            
+        objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+    };
+    
+    
+     func createBtnBarItem(title:String?, image:AnyObject?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ViewClick)) -> UIButton! {
+
         let size = image != nil && UIImage(named:image as! String) != nil ? CGSize(width: 40, height: 40) : CGSize(width: 32, height: 32);
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size);
         

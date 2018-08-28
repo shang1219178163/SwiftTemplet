@@ -89,7 +89,20 @@ extension UIButton{
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
         btn.titleLabel?.font = font;
         btn.setTitle(title, for: UIControlState.normal);
+        btn.isExclusiveTouch = true;
 
+        if title.count >= 3 {
+            let textSize:CGSize = btn.sizeThatFits(CGSize.zero);
+            btn.frame = CGRect(x: 0, y: 0, width: textSize.width, height: textSize.height);
+            btn.titleEdgeInsets = UIEdgeInsetsMake(-10, -20, -10, -20);
+            
+            if title.count >= 4 {
+                btn.titleLabel?.adjustsFontSizeToFitWidth = true;
+                btn.titleLabel?.minimumScaleFactor = 1.0;
+                
+            }
+        }
+        
         switch type {
             case 1:
                 btn.setTitle(title, for: UIControlState.normal);
