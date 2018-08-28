@@ -21,7 +21,7 @@ class CenterViewController: UIViewController {
 
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
-        let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.redo, isLeft: true) { (sender) in
+        let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
 //            print(sender);
             self.dismiss(animated: true, completion: nil)
 
@@ -31,14 +31,9 @@ class CenterViewController: UIViewController {
                 
             }
             
-            if UIBarButtonItem.isOneItem(item: sender, sysItem: UIBarButtonSystemItem.redo) {
-                print("222222");
-
-            }
-            
-            if (sender as! UIBarButtonItem).isOneItem(sysItem: UIBarButtonSystemItem.redo) {
-                print("333333");
-
+            if (sender as! UIBarButtonItem).systemType == UIBarButtonSystemItem.reply {
+                print("4444");
+                
             }
          
         }
@@ -57,21 +52,20 @@ class CenterViewController: UIViewController {
             
         }
       
-       
         
-        
-        let btnNew = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);
-        view.addSubview(btnNew);
-        btnNew.setTitle("99+", for: UIControlState.normal);
-        btnNew.backgroundColor = UIColor.red;
+        let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);
+        view.addSubview(btn);
+        btn.setTitle("99+", for: UIControlState.normal);
+        btn.backgroundColor = UIColor.red;
 //        btnNew.addActionBlock { (sender) in
 //            print("33333",sender,sender.tag);
 //
 //        };
 
-        btnNew.addActionHandler { (tap, view, idx) in
-            print(tap,view,idx);
-            
+        btn.addActionHandler { (tap, view, idx) in
+//            print(tap,view,idx);
+            DDlog(view);
+
         }
         
         view.getViewLayer();
