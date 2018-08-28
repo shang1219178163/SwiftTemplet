@@ -72,44 +72,16 @@ class CenterViewController: UIViewController {
                 DDLog(1111);
                 
             }
-            DDLog(String.timeNow().toTimeStamp());            
+            DDLog(String.timeNow().toTimeStamp());
             
         }
         
         view.getViewLayer();
         
         
-        loadData { (string) in
-            print("获取结果 \(string)")
-
-        }
-        
-        DDLog(String.timeNow());
-       
     }
 
-   
-    //加载请求数据
-    func loadData(completion: @escaping (_ result:[String]) -> ()) -> () {
-        
-        DispatchQueue.global().async {
-            print("耗时操作 \(Thread.current)")
-            
-            //获取到的json结果数据
-            let json = ["姓名","年龄","爱好"]
-            
-            //主队列回调
-            DispatchQueue.main.async {
-                print("主线程更新 UI \(Thread.current)")
-                
-                //回调异步获取的结果
-                completion(json)
-            }
-        }
-    }
-    
-    
-    
+
     @objc func handleActionSender() -> Void {
         self.dismiss(animated: true, completion: nil)
         
@@ -135,14 +107,24 @@ class CenterViewController: UIViewController {
 //        btn.titleLabel?.text = "99999";
 //        return btn;
 //    }();
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //加载请求数据
+    func loadData(completion: @escaping (_ result:[String]) -> ()) -> () {
+        
+        DispatchQueue.global().async {
+            print("耗时操作 \(Thread.current)")
+            
+            //获取到的json结果数据
+            let json = ["姓名","年龄","爱好"]
+            
+            //主队列回调
+            DispatchQueue.main.async {
+                print("主线程更新 UI \(Thread.current)")
+                
+                //回调异步获取的结果
+                completion(json)
+            }
+        }
     }
-    */
-
+    
 }
