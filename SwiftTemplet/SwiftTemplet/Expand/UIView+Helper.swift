@@ -1,6 +1,3 @@
-
-
-
 //
 //  UIView+Helper.swift
 //  SwiftTemplet
@@ -95,18 +92,17 @@ extension UIView{
     }
     
 
-    func isContainRecognizer(recognizer:String?) -> Bool {
-        
-        for obj in (self.gestureRecognizers?.enumerated())! {
-            
-            if obj is UITapGestureRecognizer {
-                return true;
-                
-            }
-        }
-        return false;
-        
-    }
+//    func isContainRecognizer(recognizer:String?) -> Bool {
+//        for obj in (self.gestureRecognizers?.enumerated())! {
+//
+//            if obj is UITapGestureRecognizer {
+//                return true;
+//
+//            }
+//        }
+//        return false;
+//
+//    }
     
     
     
