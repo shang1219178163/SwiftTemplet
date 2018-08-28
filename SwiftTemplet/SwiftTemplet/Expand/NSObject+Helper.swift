@@ -75,12 +75,8 @@ func NSClassFromString(name:String) -> AnyClass {
 }
 
 extension NSObject{
-    
-    //    typealias SwiftBlock = (_ obj:AnyObject, _ item:AnyObject, _ idx:NSInteger) -> Void;
-    //    typealias SwiftBlock = (AnyObject?, AnyObject?, NSInteger?) -> Void;
-    
+ 
     typealias SwiftBlock = (AnyObject,AnyObject,Int);
-    
     
     // MARK: - 关联属性的key
     private struct RunTimeKey {
@@ -115,30 +111,80 @@ extension NSObject{
         
     }
     
-    func getClassVC(className:String) -> UIViewController {
-        let vcCls = getClassName(className: className) as! UIViewController.Type;
-        let controller:UIViewController = vcCls.init();
-        return controller;
+//    func getClassVC(className:String) -> UIViewController {
+//        let vcCls = getClassName(className: className) as! UIViewController.Type;
+//        let controller:UIViewController = vcCls.init();
+//        return controller;
+//
+//    }
+    
+    
+//    func getController(controllerName: String) ->UIViewController {
+//
+//        // 动态获取命名空间
+//        let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
+//
+//        // 0 字符串转类
+//        let cls: AnyClass? =  NSClassFromString(appName + "." + controllerName);
+//
+//        // 通过类创建对象， 不能用cls.init(),有的类可能没有init方法
+//        // 需将cls转换为制定类型，也就是
+//        let vcCls = cls as! UIViewController.Type;
+//
+//        // 创建对象
+//        let childController:UIViewController = vcCls.init();
+//        return childController;
+//
+//    }
+    
+    func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedStringKey, Any> {
+        let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
+
+        let dic = [NSAttributedStringKey.font:font,
+                   NSAttributedStringKey.foregroundColor: textColor];
+        
+        return dic;
+    }
+    
+    func attrParaDict(font:AnyObject, textColor:UIColor, alignment:NSTextAlignment) -> Dictionary<NSAttributedStringKey, Any> {
+        
+        let paraStyle = NSMutableParagraphStyle();
+        paraStyle.lineBreakMode = .byCharWrapping;
+        paraStyle.alignment = alignment;
+        
+        let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
+        
+        let mdic = NSMutableDictionary(dictionary: self.attrDict(font: font, textColor: textColor));
+        mdic.setObject(paraStyle, forKey:kCTParagraphStyleAttributeName as! NSCopying);
+        return mdic.copy() as! Dictionary<NSAttributedStringKey, Any>;
         
     }
     
-    
-    func getController(controllerName: String) ->UIViewController {
+    func sizeWithText(text:AnyObject, font:AnyObject, width:CGFloat) -> CGSize {
+//        if text == nil {
+//            return CGSize.zero;
+//        }
         
-        // 动态获取命名空间
-        let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
+        assert(text is String || text is NSAttributedString, "请检查text格式!");
+        assert(font is UIFont || font is Int, "请检查font格式!");
+
+        let attDic = self.attrParaDict(font: font, textColor: UIColor.black, alignment: NSTextAlignment.left);
+
+        let options : NSStringDrawingOptions = NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue)))
         
-        // 0 字符串转类
-        let cls: AnyClass? =  NSClassFromString(appName + "." + controllerName);
+        var size = CGSize.zero;
+        if text is String  {
+            size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options , attributes: attDic, context: nil).size;
+
+        }
+        else{
+            size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options, context: nil).size;
+            
+        }
+        size.width = ceil(size.width);
+        size.height = ceil(size.height);
         
-        // 通过类创建对象， 不能用cls.init(),有的类可能没有init方法
-        // 需将cls转换为制定类型，也就是
-        let vcCls = cls as! UIViewController.Type;
-        
-        // 创建对象
-        let childController:UIViewController = vcCls.init();
-        return childController;
-        
+        return size;
     }
     
     
