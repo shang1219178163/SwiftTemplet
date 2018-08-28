@@ -41,7 +41,7 @@ extension UIView{
 
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
-//            sender.showsTouchWhenHighlighted = true;
+            
         }
         else if let sender = self as? UIControl {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.valueChanged);
