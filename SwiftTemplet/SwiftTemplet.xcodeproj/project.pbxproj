@@ -13,6 +13,8 @@
 		515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */; };
 		515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */; };
 		515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB021350F2200B61F61 /* NSObject+Define.swift */; };
+		515B9EB3213517D200B61F61 /* NSDateFormatter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB2213517D200B61F61 /* NSDateFormatter+Helper.swift */; };
+		515B9EB521351CD400B61F61 /* NSString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB421351CD400B61F61 /* NSString+Helper.swift */; };
 		51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A00208EA75700CE8099 /* AppDelegate.swift */; };
 		51685A08208EA75800CE8099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51685A07208EA75800CE8099 /* Assets.xcassets */; };
 		51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A12208EA79C00CE8099 /* MainViewController.swift */; };
@@ -42,6 +44,8 @@
 		515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helper.swift"; sourceTree = "<group>"; };
 		515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		515B9EB021350F2200B61F61 /* NSObject+Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Define.swift"; sourceTree = "<group>"; };
+		515B9EB2213517D200B61F61 /* NSDateFormatter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Helper.swift"; sourceTree = "<group>"; };
+		515B9EB421351CD400B61F61 /* NSString+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Helper.swift"; sourceTree = "<group>"; };
 		516859FD208EA75700CE8099 /* SwiftTemplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTemplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51685A00208EA75700CE8099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51685A07208EA75800CE8099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,12 +143,14 @@
 			isa = PBXGroup;
 			children = (
 				5183537C2123A5D800A080D2 /* Macro.swift */,
-				51827CC621300C170084720C /* UIApplication+Helper.swift */,
-				515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */,
 				5183537E2123A69B00A080D2 /* Macro_Globle.swift */,
-				51827CC4213006410084720C /* UIColor+Helper.swift */,
-				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
+				51827CC621300C170084720C /* UIApplication+Helper.swift */,
 				515B9EB021350F2200B61F61 /* NSObject+Define.swift */,
+				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
+				515B9EB2213517D200B61F61 /* NSDateFormatter+Helper.swift */,
+				515B9EB421351CD400B61F61 /* NSString+Helper.swift */,
+				515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */,
+				51827CC4213006410084720C /* UIColor+Helper.swift */,
 				516FAB042122568600DD01CA /* UIView+Helper.swift */,
 				51262F6E2133FC9B0032AE02 /* UIView+Add.swift */,
 				5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */,
@@ -269,6 +275,7 @@
 				51827CC5213006410084720C /* UIColor+Helper.swift in Sources */,
 				515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
+				515B9EB521351CD400B61F61 /* NSString+Helper.swift in Sources */,
 				5183537F2123A69B00A080D2 /* Macro_Globle.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
@@ -279,6 +286,7 @@
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */,
 				5169FCCC2124FEF5004A1A42 /* MyView.swift in Sources */,
+				515B9EB3213517D200B61F61 /* NSDateFormatter+Helper.swift in Sources */,
 				516FAB052122568600DD01CA /* UIView+Helper.swift in Sources */,
 				5169D34F20A51E32001B1871 /* BN_TableViewCellZero.swift in Sources */,
 			);
