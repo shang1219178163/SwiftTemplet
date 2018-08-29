@@ -63,7 +63,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let cell: UITableViewCellOne = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
 
         cell.labelLeft.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-        cell.labelRight.text = "999";
+        cell.labelRight.text = "990" + "\(indexPath.row)";
         cell.imgViewLeft.image = UIImage(named: "dragon.png");
         cell.imgViewRight.isHidden = false;
 
