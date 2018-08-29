@@ -20,14 +20,14 @@ class FourthViewController: UIViewController {
         let mView = MyView(frame: CGRect(x:20, y:20, width:kScreen_width, height:kScreen_width));
         
         mView.backgroundColor = UIColor.purple;
-        self.view.addSubview(mView);
+        view.addSubview(mView);
         
-        mView.mblock = {(message:UIViewController)->(Void) in
-            self.present(message, animated: true, completion: nil);
-            
-            
-        }
-       
+//        mView.mblock = {(message:UIViewController)->(Void) in
+//            self.present(message, animated: true, completion: nil);
+//
+//        }
+        
+
     }
 
     override func didReceiveMemoryWarning() {
