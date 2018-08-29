@@ -53,7 +53,7 @@ func UIViewControllerFromString(vcName:String) -> UIViewController {
     let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
     
     // 0 字符串转类
-    let cls: AnyClass? =  NSClassFromString(appName + "." + vcName);
+    let cls: AnyClass? = NSClassFromString(appName + "." + vcName);
     
     // 通过类创建对象， 不能用cls.init(),有的类可能没有init方法
     // 需将cls转换为制定类型，也就是
