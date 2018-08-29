@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 
-
 extension UIView{
     
     func getViewLayer() -> () {
@@ -49,7 +48,7 @@ extension UIView{
 
         }
         else{
-            let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap!);
+            let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap);
             if recoginzer == nil {
                 let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(tap:)));
                 
@@ -58,20 +57,20 @@ extension UIView{
                 
             }
         }
-        objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
     }
     
     /// 点击回调
     @objc func handleActionTap(tap:UITapGestureRecognizer) -> Void {
-       let block = objc_getAssociatedObject(self, RuntimeKey.tap!) as? ViewClick;
+       let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClick;
         if block != nil{
             block!(tap, tap.view!, tap.view!.tag);
         }
     }
     
     @objc func handleActionSender(sender:UIControl) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.tap!) as? ViewClick;
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClick;
         if let sender = self as? UISegmentedControl {
             if block != nil {
                 block!(nil, sender, sender.selectedSegmentIndex);

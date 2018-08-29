@@ -63,14 +63,15 @@ extension UIViewController{
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn);
 
         }
-        
         return btn;
     }
     
     @objc func handleActionItem(sender:UIBarButtonItem) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.tap!) as? ObjClick;
-        block!(sender);
-        
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjClick;
+        if block != nil {
+            block!(sender);
+
+        }
     }
     
     func createBarItem(systemItem:UIBarButtonSystemItem, isLeft:Bool, action:@escaping (ObjClick)) -> Void {
@@ -86,7 +87,7 @@ extension UIViewController{
             
         }
             
-        objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     };
     

@@ -13,6 +13,9 @@ import UIKit
 let kScreen_width = UIScreen.main.bounds.width;
 let kScreen_height = UIScreen.main.bounds.height;
 
+let kScale_width = UIScreen.main.bounds.width;
+
+
 var kC_ThemeCOLOR: UIColor {
     return UIColor.colorWithHexString(hex: "#0082e0");
     

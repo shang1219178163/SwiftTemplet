@@ -12,11 +12,11 @@ extension UIBarButtonItem{
     
    var systemType: UIBarButtonSystemItem {
         get {
-            return  objc_getAssociatedObject(self, RuntimeKey.item!) as! UIBarButtonSystemItem;
+            return  objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonSystemItem;
 
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKey.item!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
         }
     }

@@ -8,17 +8,18 @@
 
 import UIKit
 
+typealias MyBlock = (_ view:UIView, _ tag:Int)->Void;
 
 class MyView: UIView {
-    
-//    internal var block: ViewClick ;
+
+    var mblock:MyBlock?
     
     override init(frame: CGRect) {
         super.init(frame: frame);
         
         self.backgroundColor = UIColor.purple;
         
-        let tap = UITapGestureRecognizer(target: self, action:#selector(handleActionTap(tap:)));
+        let tap = UITapGestureRecognizer(target: self, action:#selector(buttonClick));
         self.isUserInteractionEnabled = true;
         
         self.addGestureRecognizer(tap);
@@ -37,11 +38,11 @@ class MyView: UIView {
     }
     
     //假装我有一个button添加了点击事件
-//    @objc func handleActionTap(tap:UITapGestureRecognizer) -> Void{
-//        if block != nil{
-//            block!(CenterViewController());
-//
-//        }
-//    }
+    @objc func buttonClick(){
+        if mblock != nil{
+            mblock!(self,self.tag);
+            
+        }
+    }
 
 }

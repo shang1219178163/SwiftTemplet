@@ -16,19 +16,11 @@ func iOS(version:Float)->Bool{
     
 }
 
-//func kScreen_width() -> CGFloat{
-//    return UIScreen.main.bounds.size.width;
-//
-//}
-//func kScreen_height() -> CGFloat{
-//    return UIScreen.main.bounds.size.height;
-//
-//}
 
-//func JKWidth(_ width: CGFloat) -> CGFloat {
-//    return width * UIScreen.main.bounds.size.width / 320.0
-//
-//}
+func kScale_width(_ width: CGFloat) -> CGFloat {
+    return width * UIScreen.main.bounds.size.width / 320.0
+
+}
 
 //func DDlog<T>(_ log : T?,fileName: String = #file,methodName: String = #function, lineNumber: Int = #line){
 //    #if DEBUG
@@ -87,35 +79,18 @@ func NSStringShortFromClass(_ cls:Swift.AnyClass) -> String {
     
 }
 
-// print("__",NSStringFromSelector(#function));
-
-func AssociationKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointer! {
-    let key:UnsafeRawPointer = UnsafeRawPointer.init(bitPattern: NSStringFromSelector(aSelector).hashValue)!;
-    return key;
-}
 
 extension NSObject{
  
-    typealias SwiftBlock = (AnyObject,AnyObject,Int);
-    
-    // MARK: - 关联属性的key
-    private struct RunTimeKey {
-        static let swiftBlockKey = UnsafeRawPointer(bitPattern: "swiftBlockKey".hashValue)
-        
-    }
-    
     var block:SwiftBlock {
         set {
-//                        print("__",NSStringFromSelector(#function));
-            objc_setAssociatedObject(self, RunTimeKey.swiftBlockKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         
         get {
-            return objc_getAssociatedObject(self, RunTimeKey.swiftBlockKey!) as! NSObject.SwiftBlock;
+            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! SwiftBlock;
             
         }
-        
     }
     
     func getAppName() -> String {
@@ -130,33 +105,7 @@ extension NSObject{
         return cls;
         
     }
-    
-//    func getClassVC(className:String) -> UIViewController {
-//        let vcCls = getClassName(className: className) as! UIViewController.Type;
-//        let controller:UIViewController = vcCls.init();
-//        return controller;
-//
-//    }
-    
-    
-//    func getController(controllerName: String) ->UIViewController {
-//
-//        // 动态获取命名空间
-//        let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
-//
-//        // 0 字符串转类
-//        let cls: AnyClass? =  NSClassFromString(appName + "." + controllerName);
-//
-//        // 通过类创建对象， 不能用cls.init(),有的类可能没有init方法
-//        // 需将cls转换为制定类型，也就是
-//        let vcCls = cls as! UIViewController.Type;
-//
-//        // 创建对象
-//        let childController:UIViewController = vcCls.init();
-//        return childController;
-//
-//    }
-    
+        
     func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedStringKey, Any> {
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
 
