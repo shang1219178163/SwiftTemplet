@@ -63,7 +63,7 @@ class CenterViewController: UIViewController {
 //        };
 
         btn.addActionHandler { (tap, view, idx) in
-            print(tap,view,idx);
+//            print(tap,view,idx);
 //            DDlog(view);
             DDLog(view);
             
@@ -74,10 +74,10 @@ class CenterViewController: UIViewController {
             }
             DDLog(String.timeNow().toTimeStamp());
             
-            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
-            
-            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
-            print(size);
+//            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
+//            
+//            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
+//            print(size);
             
             
             DDLog(NSStringFromClass(self.classForCoder));

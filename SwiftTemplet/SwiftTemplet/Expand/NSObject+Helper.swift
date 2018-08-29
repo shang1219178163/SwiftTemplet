@@ -22,24 +22,6 @@ func kScale_width(_ width: CGFloat) -> CGFloat {
 
 }
 
-//func DDlog<T>(_ log : T?,fileName: String = #file,methodName: String = #function, lineNumber: Int = #line){
-//    #if DEBUG
-//    let filePath = fileName as NSString;
-//    let filePath_copy = filePath.lastPathComponent as NSString;
-//    let fileName = filePath_copy.deletingPathExtension;
-//    print("\n******[第\(lineNumber)行][\(fileName)  \(methodName)] ******\n \(String(describing: log ))")
-//    #endif
-//}
-
-func DDLog<T>(_ msg: T, fileName: String = #file, methodName: String = #function, lineNumber: Int = #line){
-    #if DEBUG
-    print("\((fileName as NSString).lastPathComponent).\(methodName)[\(lineNumber)]:\(msg)")
-//    print("\((fileName as NSString).pathComponents.last!).\(methodName)[\(lineNumber)]:\(msg)")
-
-    #endif
-}
-
-
 func UIViewControllerFromString(vcName:String) -> UIViewController {
     // 动态获取命名空间
     let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
