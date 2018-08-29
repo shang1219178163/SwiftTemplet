@@ -18,11 +18,12 @@ extension UIView{
         if subviews.count == 0 {
             return;
         }
-        for view in subviews {
-            view.layer.borderWidth = 0.5;
-            view.layer.borderColor = UIColor.blue.cgColor;
-//            view.layer.borderColor = UIColor.clear;
+        for subview in subviews {
+            subview.layer.borderWidth = kW_LayerBorder;
+            subview.layer.borderColor = UIColor.blue.cgColor;
+//            subview.layer.borderColor = UIColor.clear.cgColor;
 
+            subview.getViewLayer();
         }
     }
     

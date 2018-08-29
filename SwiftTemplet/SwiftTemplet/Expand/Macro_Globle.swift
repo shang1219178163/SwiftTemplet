@@ -32,33 +32,35 @@ let kTAG_VIEW_Picture = 1300;
 
 // MARK: -MacroGeometry与计算有关的尺寸属性
 
-let kH_StatusBar = 20;
-let kH_NaviagtionBar = 44;
-let kH_TabBar = 49;
+let kH_StatusBar = 20.0;
+let kH_NaviagtionBar = 44.0;
+let kH_TabBar = 49.0;
 
-let kXY_GAP = 15;
-let kX_GAP = 15;
-let kY_GAP = 10;
-let kPadding = 8.0;
+let kX_GAP: CGFloat = 15.0;
+let kY_GAP: CGFloat = 10.0;
+let kPadding: CGFloat = 8.0;
 
-let kW_LayerBorder = 0.5;
-let kWH_ArrowRight = 25;
+let kW_LayerBorder : CGFloat = 0.5;
+let kWH_ArrowRight = 25.0;
+
+let kArrowSize = CGSize(width: 25.0, height: 25.0);
+
 let kTimerValue = 65;
 let kRatio_IDCard = 1.58;
 let kAnimationDuration_Toast = 1.5;
 let kAnimationDuration_Drop = 0.5;
 
-let kH_CellHeight = 60;
+let kH_CellHeight = 60.0;
 
 
-let kW_item = 80;
-let kW_progressView = 130;
+let kW_item = 80.0;
+let kW_progressView = 130.0;
 
 let kH_LABEL = 25;
-let kH_LABEL_TITLE = 30;
-let kH_LABEL_SMALL = 20;
+let kH_LABEL_TITLE = 30.0;
+let kH_LABEL_SMALL = 20.0;
 
-let kH_TEXTFIELD = 30;
+let kH_TEXTFIELD = 30.0;
 let kH_LINE_VIEW =  1/3.0;
 let kW_LINE_Vert =  3.0;
 

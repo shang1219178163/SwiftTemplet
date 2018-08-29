@@ -30,6 +30,9 @@
 		519E87B621362ACB002CCD86 /* UITableViewCell+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E87B521362ACB002CCD86 /* UITableViewCell+Add.swift */; };
 		519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */; };
 		519E87BA213636EB002CCD86 /* UIViewController+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E87B9213636EB002CCD86 /* UIViewController+Add.swift */; };
+		519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */; };
+		519E87BE21366D62002CCD86 /* dragon.png in Resources */ = {isa = PBXBuildFile; fileRef = 519E87BD21366D62002CCD86 /* dragon.png */; };
+		519E87C021366DE5002CCD86 /* img_arrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 519E87BF21366DE4002CCD86 /* img_arrowRight.png */; };
 		51B3DA2621264AE900710A76 /* UIButton+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3DA2521264AE900710A76 /* UIButton+Helper.swift */; };
 		51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B3DA2821264E3800710A76 /* Default-568h@2x.png */; };
 		51B3DA2D212650FA00710A76 /* Pinterest_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B3DA2C212650FA00710A76 /* Pinterest_round.png */; };
@@ -66,6 +69,9 @@
 		519E87B521362ACB002CCD86 /* UITableViewCell+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Add.swift"; sourceTree = "<group>"; };
 		519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellZero.swift; sourceTree = "<group>"; };
 		519E87B9213636EB002CCD86 /* UIViewController+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Add.swift"; sourceTree = "<group>"; };
+		519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellOne.swift; sourceTree = "<group>"; };
+		519E87BD21366D62002CCD86 /* dragon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragon.png; sourceTree = "<group>"; };
+		519E87BF21366DE4002CCD86 /* img_arrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_arrowRight.png; sourceTree = "<group>"; };
 		51B3DA2521264AE900710A76 /* UIButton+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Helper.swift"; sourceTree = "<group>"; };
 		51B3DA2821264E3800710A76 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		51B3DA2C212650FA00710A76 /* Pinterest_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pinterest_round.png; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */,
+				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
 				5169FCCB2124FEF5004A1A42 /* MyView.swift */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -139,6 +146,8 @@
 				51B3DA2E2126511700710A76 /* SwiftTemplet-Bridging-Header.h */,
 				51B3DA2821264E3800710A76 /* Default-568h@2x.png */,
 				51B3DA2C212650FA00710A76 /* Pinterest_round.png */,
+				519E87BD21366D62002CCD86 /* dragon.png */,
+				519E87BF21366DE4002CCD86 /* img_arrowRight.png */,
 			);
 			path = SwiftTemplet;
 			sourceTree = "<group>";
@@ -236,6 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519E87BE21366D62002CCD86 /* dragon.png in Resources */,
+				519E87C021366DE5002CCD86 /* img_arrowRight.png in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
 				51B3DA2D212650FA00710A76 /* Pinterest_round.png in Resources */,
 				51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */,
@@ -288,6 +299,7 @@
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */,
+				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				519E87BA213636EB002CCD86 /* UIViewController+Add.swift in Sources */,
 				5183537D2123A5D800A080D2 /* Macro.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
