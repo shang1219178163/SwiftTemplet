@@ -15,13 +15,15 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = NSStringFromSelector(#function);
+//        title = NSStringFromSelector(#function);
         view.backgroundColor = UIColor.green;
         
         self.view.addSubview(self.tableView);
         
-       
-        
+        print(self);
+        DDLog(NSStringFromClass(self.classForCoder));
+
+        title = self.controllerName;
     }
     
 
@@ -36,7 +38,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             }
             self.dataList.add(marr);
         }
-        print(self.dataList);
+//        print(self.dataList);
         self.tableView.reloadData();
     }
 

@@ -17,7 +17,7 @@ extension UITableViewCell{
         if cell == nil {
 //            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: identifier);
             cell = self.init(style: UITableViewCellStyle.default, reuseIdentifier: identifier);
-
+            
         }
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.none;
