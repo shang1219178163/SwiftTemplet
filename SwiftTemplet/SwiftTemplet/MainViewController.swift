@@ -9,18 +9,11 @@
 import Foundation
 import UIKit
 
-extension MainViewController{
-    
-    
-    
-}
-
 class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     
-    var dataList : NSMutableArray = [];
+//    var dataList : NSMutableArray = [];
     
-   
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -74,16 +67,24 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let  identifier : String = "identifier";
-        var  cell = tableView.dequeueReusableCell(withIdentifier: identifier);
-        if cell == nil{
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier);
-        }
-
-        cell?.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
         
-        return cell!;
+        let cell = UITableViewCellZero.cellWithTableView(tableView: tableView);
+        cell.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+        
+        return cell;
     }
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let  identifier : String = "identifier";
+//        var  cell = tableView.dequeueReusableCell(withIdentifier: identifier);
+//        if cell == nil{
+//            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier);
+//        }
+//
+//        cell?.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+//
+//        return cell!;
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
@@ -122,12 +123,12 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     
     //MARK: - layz
-    lazy var tableView: UITableView = {
-        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-        table.dataSource = self;
-        table.delegate = self;
-        
-        return table;
-    }();
+//    lazy var tableView: UITableView = {
+//        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+//        table.dataSource = self;
+//        table.delegate = self;
+//
+//        return table;
+//    }();
     
 }

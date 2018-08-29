@@ -8,32 +8,106 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+
+class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        title = NSStringFromSelector(#function);
+        title = NSStringFromSelector(#function);
         view.backgroundColor = UIColor.green;
         
-//        self.navigationController?.title = "first";
+        self.view.addSubview(self.tableView);
+        
+       
+        
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        for _ in 0...5{
+            let marr : NSMutableArray = [];
+            for j in 0...3{
+                marr.add(j);
+                
+            }
+            self.dataList.add(marr);
+        }
+        print(self.dataList);
+        self.tableView.reloadData();
     }
 
+    
+    //    MARK: - tableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.dataList.count;
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let arraySection : NSArray = self.dataList[section] as! NSArray;
+        return arraySection.count;
+    };
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 60;
+    };
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCellZero.cellWithTableView(tableView: tableView);
+        cell.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+        
+        return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
+        label.backgroundColor = UIColor.green;
+        label.text = "header";
+        return label;
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 45;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
+        label.backgroundColor = UIColor.yellow;
+        
+        label.text = "footer";
+        return label;
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    //MARK: - layz
+    //    lazy var tableView: UITableView = {
+    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+    //        table.dataSource = self;
+    //        table.delegate = self;
+    //
+    //        return table;
+    //    }();
+    
 }
+
