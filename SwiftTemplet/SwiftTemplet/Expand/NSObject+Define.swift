@@ -19,5 +19,7 @@ struct RuntimeKey {
     static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue);
     static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue);
     static let item = UnsafeRawPointer.init(bitPattern: "item".hashValue);
+    static let dataList = UnsafeRawPointer.init(bitPattern: "dataList".hashValue);
+    static let tableView = UnsafeRawPointer.init(bitPattern: "tableView".hashValue);
 
 }
