@@ -128,8 +128,33 @@
 		516859FF208EA75700CE8099 /* SwiftTemplet */ = {
 			isa = PBXGroup;
 			children = (
+				519E87C22136755C002CCD86 /* Class */,
+				519E87C321367582002CCD86 /* View */,
 				51C9B587211D16D2003E9AA7 /* Expand */,
+				519E87C1213674B0002CCD86 /* Resources */,
 				51685A00208EA75700CE8099 /* AppDelegate.swift */,
+				51685A07208EA75800CE8099 /* Assets.xcassets */,
+				51685A0C208EA75900CE8099 /* Info.plist */,
+				51685A14208EA7C500CE8099 /* PrefixHeader.pch */,
+				51B3DA2E2126511700710A76 /* SwiftTemplet-Bridging-Header.h */,
+				51B3DA2821264E3800710A76 /* Default-568h@2x.png */,
+			);
+			path = SwiftTemplet;
+			sourceTree = "<group>";
+		};
+		519E87C1213674B0002CCD86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51B3DA2C212650FA00710A76 /* Pinterest_round.png */,
+				519E87BD21366D62002CCD86 /* dragon.png */,
+				519E87BF21366DE4002CCD86 /* img_arrowRight.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		519E87C22136755C002CCD86 /* Class */ = {
+			isa = PBXGroup;
+			children = (
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
 				51C9B592211D17F8003E9AA7 /* HomeViewController.swift */,
 				51685A12208EA79C00CE8099 /* MainViewController.swift */,
@@ -137,19 +162,34 @@
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		519E87C321367582002CCD86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				519E87C5213675A5002CCD86 /* View */,
+				519E87C421367593002CCD86 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		519E87C421367593002CCD86 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
 				519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */,
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
-				5169FCCB2124FEF5004A1A42 /* MyView.swift */,
-				51685A07208EA75800CE8099 /* Assets.xcassets */,
-				51685A0C208EA75900CE8099 /* Info.plist */,
-				51685A14208EA7C500CE8099 /* PrefixHeader.pch */,
-				51B3DA2E2126511700710A76 /* SwiftTemplet-Bridging-Header.h */,
-				51B3DA2821264E3800710A76 /* Default-568h@2x.png */,
-				51B3DA2C212650FA00710A76 /* Pinterest_round.png */,
-				519E87BD21366D62002CCD86 /* dragon.png */,
-				519E87BF21366DE4002CCD86 /* img_arrowRight.png */,
 			);
-			path = SwiftTemplet;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		519E87C5213675A5002CCD86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5169FCCB2124FEF5004A1A42 /* MyView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		51C9B587211D16D2003E9AA7 /* Expand */ = {
