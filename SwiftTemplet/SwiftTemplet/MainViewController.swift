@@ -68,7 +68,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCellZero.cellWithTableView(tableView: tableView);
+        let cell = UITableViewCellZero.cellWithTableView(tableView);
         cell.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
         
         return cell;

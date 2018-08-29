@@ -60,9 +60,16 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellZero.cellWithTableView(tableView: tableView);
-        cell.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+        let cell: UITableViewCellOne = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
+
+        cell.labelLeft.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+        cell.labelRight.text = "999";
+        cell.imgViewLeft.image = UIImage(named: "dragon.png");
+        cell.imgViewRight.isHidden = false;
+
+//        cell.type = 1;
         
+        cell.getViewLayer();
         return cell;
     }
     
