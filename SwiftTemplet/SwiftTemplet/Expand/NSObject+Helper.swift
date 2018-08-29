@@ -74,6 +74,19 @@ func NSClassFromString(name:String) -> AnyClass {
     
 }
 
+
+func NSStringShortFromClass(_ cls:Swift.AnyClass) -> String {
+
+    var className:String = NSStringFromClass(cls);
+    if className.contains(".") {
+        let rangePoint = className.range(of: ".");
+        className = String(className[rangePoint!.upperBound...]);
+    }
+    
+    return className;
+    
+}
+
 extension NSObject{
  
     typealias SwiftBlock = (AnyObject,AnyObject,Int);
