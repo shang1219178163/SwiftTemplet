@@ -13,6 +13,22 @@ import UIKit
 
 extension UIViewController{
     
+    var controllerName: String {
+        get {
+
+            var className:String = NSStringShortFromClass(self.classForCoder);
+            
+            if className.contains("Controller") {
+                var range = className.range(of: "Controller");
+                if className.contains("ViewController") {
+                    range = className.range(of: "ViewController");
+                    
+                }
+                className = String(className[..<range!.lowerBound]);
+            }
+            return className;
+        }
+    }
     
     
     func createBarItem(titile:String, imgName:AnyObject?, isLeft:Bool, isHidden:Bool, target:AnyObject, action:Selector) -> UIButton {
@@ -20,15 +36,14 @@ extension UIViewController{
 //        var imageName : String = (imgName as? String)!;
 //        assert(imgName?.isEmpty == true, "无效的图片名称");
         
-        
-        
         let image = UIImage(named: imgName as! String)?.withRenderingMode(.alwaysOriginal);
         
         let btn = UIButton();
         if image != nil  {
             btn.setImage(image, for: UIControlState.normal);
             
-        }else{
+        }
+        else{
             if titile.isEmpty == false{
                 btn.setTitle(titile, for: UIControlState.normal);
                 if titile.count == 4{
@@ -74,7 +89,6 @@ extension UIViewController{
         objc_setAssociatedObject(self, RuntimeKey.tap!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     };
-    
     
      func createBtnBarItem(title:String?, image:AnyObject?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ViewClick)) -> UIButton! {
 
