@@ -11,7 +11,6 @@ import UIKit
 typealias SwiftBlock = (AnyObject,AnyObject,Int);
 
 typealias ObjClick = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
-//typealias ObjClick = ((AnyObject?,Bool) ->()) // 定义数据类型(其实就是设置别名)
 typealias ViewClick = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
 //typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
 

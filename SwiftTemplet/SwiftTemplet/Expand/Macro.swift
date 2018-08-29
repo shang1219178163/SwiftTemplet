@@ -21,3 +21,13 @@ var kC_ThemeCOLOR: UIColor {
     
 }
 
+
+func DDLog<T>(_ msg: T, fileName: String = #file, methodName: String = #function, lineNumber: Int = #line){
+    #if DEBUG
+//    print("\((fileName as NSString).lastPathComponent).\(methodName)[\(lineNumber)]:\(msg)")
+    let formatter = DateFormatter.dateFormat(formatStr: "yyyy-MM-dd HH:mm:ss.SSS");
+    print(formatter.string(from: Date()),"\((fileName as NSString).lastPathComponent).\(methodName)[\(lineNumber)]:\(msg)")
+
+    #endif
+}
+
