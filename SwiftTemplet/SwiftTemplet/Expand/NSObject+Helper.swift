@@ -87,6 +87,13 @@ func NSStringShortFromClass(_ cls:Swift.AnyClass) -> String {
     
 }
 
+// print("__",NSStringFromSelector(#function));
+
+func AssociationKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointer! {
+    let key:UnsafeRawPointer = UnsafeRawPointer.init(bitPattern: NSStringFromSelector(aSelector).hashValue)!;
+    return key;
+}
+
 extension NSObject{
  
     typealias SwiftBlock = (AnyObject,AnyObject,Int);
@@ -99,7 +106,7 @@ extension NSObject{
     
     var block:SwiftBlock {
         set {
-            //            print("__",NSStringFromSelector(#function));
+//                        print("__",NSStringFromSelector(#function));
             objc_setAssociatedObject(self, RunTimeKey.swiftBlockKey!, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             
         }

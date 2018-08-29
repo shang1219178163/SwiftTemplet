@@ -46,118 +46,118 @@ extension UITableViewCell{
     
     var imgViewLeft: UIImageView {
         get {
-            var imgView = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "imgViewLeft".hashValue)!) as? UIImageView;
+            var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
             if imgView == nil {
                 imgView = UIImageView(frame: CGRect.zero);
                 imgView?.isUserInteractionEnabled = true;
                 imgView?.contentMode = UIViewContentMode.scaleAspectFit;
                 
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "imgViewLeft".hashValue)!, imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
             return imgView!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "imgViewLeft".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     var imgViewRight: UIImageView {
         get {
-            var imgView = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "imgViewRight".hashValue)!) as? UIImageView;
+            var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
             if imgView == nil {
                 imgView = UIImageView(frame: CGRect.zero);
                 imgView?.isUserInteractionEnabled = true;
                 imgView?.contentMode = UIViewContentMode.scaleAspectFit;
                 imgView?.image = UIImage(named: kIMAGE_arrowRight);
                 
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "imgViewRight".hashValue)!, imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return imgView!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "imgViewRight".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     var labelLeft: UILabel {
         get {
-            var label = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelLeft".hashValue)!) as? UILabel;
+            var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: CGRect.zero);
                 label?.textAlignment = NSTextAlignment.left;
                 label?.numberOfLines = 0;
                 label?.lineBreakMode = NSLineBreakMode.byCharWrapping;
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelLeft".hashValue)!, label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
             return label!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelLeft".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
   
     var labelLeftSub: UILabel {
         get {
-            var label = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelLeftSub".hashValue)!) as? UILabel;
+            var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: CGRect.zero);
                 label?.textAlignment = NSTextAlignment.left;
                 label?.numberOfLines = 0;
                 label?.lineBreakMode = NSLineBreakMode.byCharWrapping;
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelLeftSub".hashValue)!, label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return label!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelLeftSub".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     
     var labelRight: UILabel {
         get {
-            var label = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelRight".hashValue)!) as? UILabel;
+            var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: CGRect.zero);
                 label?.textAlignment = NSTextAlignment.left;
                 label?.numberOfLines = 0;
                 label?.lineBreakMode = NSLineBreakMode.byCharWrapping;
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelRight".hashValue)!, label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return label!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "labelRight".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     var btn: UIButton {
         get {
-            var button = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "btn".hashValue)!) as? UIButton;
+            var button = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIButton;
             if button == nil {
                 button = UIButton(type: .custom);
                 button!.titleLabel?.adjustsFontSizeToFitWidth = true;
                 button!.titleLabel?.minimumScaleFactor = 1.0;
                 button!.isExclusiveTouch = true;
                 
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "btn".hashValue)!, button, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), button, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
             return button!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "btn".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     var textField: UITextField {
         get {
-            var tf = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "textField".hashValue)!) as? UITextField;
+            var tf = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITextField;
             if tf == nil {
                 tf = UITextField(frame: CGRect.zero);
                 tf?.textAlignment = NSTextAlignment.left;
@@ -167,19 +167,19 @@ extension UITableViewCell{
                 tf?.clearButtonMode = UITextFieldViewMode.whileEditing;
                 tf?.backgroundColor = UIColor.white;
                 
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "textField".hashValue)!, tf, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), tf, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return tf!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "textField".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     var textView: UITextView {
         get {
-            var tv = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "UITextView".hashValue)!) as? UITextView;
+            var tv = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITextView;
             if tv == nil {
                 tv = UITextView(frame: CGRect.zero);
                 tv?.textAlignment = NSTextAlignment.left;
@@ -187,13 +187,13 @@ extension UITableViewCell{
                 tv?.autocorrectionType = UITextAutocorrectionType.no;
                 tv?.backgroundColor = UIColor.white;
                 
-                objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "UITextView".hashValue)!, tv, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), tv, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return tv!;
         }
         set {
-            objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: "UITextView".hashValue)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
 }
