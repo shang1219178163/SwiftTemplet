@@ -79,7 +79,6 @@ class CenterViewController: UIViewController {
 //            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
 //            print(size);
             
-            
             DDLog(NSStringFromClass(self.classForCoder));
         }
         
