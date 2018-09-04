@@ -7,51 +7,62 @@ target 'SwiftTemplet' do
 
   # Pods for SwiftTemplet
 #  pod 'AImage'
-#  pod 'Alamofire'
-#  pod 'Argo'
+    pod 'Alamofire'
+    pod 'AlamofireObjectMapper'
+
+#    pod 'Aspects'
+#   pod 'Argo'
 #
-#  pod 'BluetoothKit'
-#
-#  pod 'Dollar'
-#
-#  pod 'FoldingCell'
-#
-#  pod 'Gifu'
-#
-#  pod 'ImagePicker'
-#
-#  pod 'KeychainAccess'
-#  pod 'Kingfisher'
-#
-#  pod 'MonkeyKing'
-#
-#  pod 'Moya'
-#  
-#  pod 'Nimble'
-#  pod 'NumberMorphView'
-#
-#  pod 'ObjectMapper'
-#
-#  pod 'Permission'
-#
-#  pod 'Quick'
-#
-#  pod 'ReachabilitySwift'
-#  
-#  pod 'SQLite.swift'
-#  pod 'SnapKit'
-#  pod 'Spring'
-#  pod 'StarWars'
-#  pod 'Surge'
-#  pod 'SwiftOCR'
-#  pod 'SwiftString'
-#  pod 'SwiftyJSON'
-#  pod 'SwiftyUserDefaults'
-#
-#  pod 'TZStackView'
-#  
-#  pod 'Whisper'
+#   pod 'BluetoothKit'
+
+    pod 'CryptoSwift'
+#    pod 'EZSwiftExtensions'
 
 
+#   pod 'Dollar'
+#
+#   pod 'FoldingCell'
+#
+#   pod 'Gifu'
+#
+#   pod 'ImagePicker'
+#
+#   pod 'KeychainAccess'
+    pod 'Kingfisher'
+#
+#   pod 'MonkeyKing'
+#
+#   pod 'Moya'
+#  
+#   pod 'Nimble'
+#   pod 'NumberMorphView'
+#
+#   pod 'ObjectMapper'
+#
+#   pod 'Permission'
+#   pod 'PromiseKit'
+
+#   pod 'Quick'
+#
+#   pod 'ReachabilitySwift'
+#  
+#   pod 'SQLite.swift'
+   pod 'SnapKit'
+#   pod 'Spring'
+#   pod 'StarWars'
+   pod 'Surge'
+#   pod 'SwiftOCR'
+#   pod 'SwiftString'
+#   pod 'SwiftyJSON'
+#   pod 'SwiftyUserDefaults'
+#
+#   pod 'TZStackView'
+#   pod 'Whisper'
+
+    pod 'RxAlamofire'
+    pod 'RxBlocking'
+#    pod 'RxCocoa'
+    pod 'RxSwift'
+    
 
 end

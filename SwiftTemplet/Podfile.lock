@@ -1,3 +1,58 @@
-PODFILE CHECKSUM: f4a13b5d70bc16006b428301cda9b4f0efdfd5b9
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
+  - CryptoSwift (0.11.0)
+  - Kingfisher (4.8.1)
+  - ObjectMapper (3.3.0)
+  - RxAlamofire (4.2.0):
+    - RxAlamofire/Core (= 4.2.0)
+  - RxAlamofire/Core (4.2.0):
+    - Alamofire (~> 4.5)
+    - RxSwift (~> 4)
+  - RxBlocking (4.2.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.2.0)
+  - SnapKit (4.0.0)
+  - Surge (2.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper
+  - CryptoSwift
+  - Kingfisher
+  - RxAlamofire
+  - RxBlocking
+  - RxSwift
+  - SnapKit
+  - Surge
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - CryptoSwift
+    - Kingfisher
+    - ObjectMapper
+    - RxAlamofire
+    - RxBlocking
+    - RxSwift
+    - SnapKit
+    - Surge
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  CryptoSwift: ad5208dd2aae0a764ea4ce2c2d34bd067cae67f0
+  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
+  RxBlocking: e339d8a6e752e25ade95ff858466c55436668f59
+  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Surge: 570bf0b2cb4cc92d1744050d45c064005c6c99ad
+
+PODFILE CHECKSUM: 974ffaeef16552425b9c0766c4d7ee88df577784
 
 COCOAPODS: 1.5.0
