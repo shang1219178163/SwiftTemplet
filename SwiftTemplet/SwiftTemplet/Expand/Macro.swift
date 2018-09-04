@@ -31,3 +31,11 @@ func DDLog<T>(_ msg: T, fileName: String = #file, methodName: String = #function
     #endif
 }
 
+//func NNLog(FORMAT,...) {
+//    let formatter = DateFormatter.dateFormat(formatStr: "yyyy-MM-dd HH:mm:ss.SSS");
+//    fprintf(stderr,"%s【line -%d】%s %s\n", formatter.string(from: Date()), #line,(fileName as NSString).lastPathComponent,NSString.init(format: FORMAT, CVarArg).UTF8String,]);
+//
+//    
+//}
+
+
