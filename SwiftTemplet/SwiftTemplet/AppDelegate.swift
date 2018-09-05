@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame:UIScreen.main.bounds);
         window?.backgroundColor = UIColor.white;
         
-        var controller = UIViewControllerFromString(vcName: "MainViewController");
-        controller = UIViewControllerFromString(vcName: "HomeViewController");
+        var controller = BN_ControllerFromString("MainViewController");
+        controller = BN_ControllerFromString("HomeViewController");
 //        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);
 //        window?.makeKeyAndVisible();
         

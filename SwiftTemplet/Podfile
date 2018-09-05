@@ -8,6 +8,7 @@ target 'SwiftTemplet' do
   # Pods for SwiftTemplet
 #  pod 'AImage'
     pod 'Alamofire'
+    pod 'AlamofireImage'
     pod 'AlamofireObjectMapper'
 
 #    pod 'Aspects'
@@ -64,5 +65,6 @@ target 'SwiftTemplet' do
 #    pod 'RxCocoa'
     pod 'RxSwift'
     
+    pod 'ObjectMapper+Realm'
 
 end

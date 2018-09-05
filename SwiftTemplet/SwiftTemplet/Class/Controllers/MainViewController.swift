@@ -1,34 +1,30 @@
 //
-//  FirstViewController.swift
+//  MainViewController.swift
 //  SwiftTemplet
 //
-//  Created by hsf on 2018/8/10.
+//  Created by hsf on 2018/4/24.
 //  Copyright © 2018年 BN. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-
-class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-
+class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+    
+    
+//    var dataList : NSMutableArray = [];
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-//        title = NSStringFromSelector(#function);
-        view.backgroundColor = UIColor.green;
+        super.viewDidLoad();
+        
+        title = "Main";
+        view.backgroundColor = UIColor.red;
+        
+//        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
         
         self.view.addSubview(self.tableView);
         
-        print(self);
-        DDLog(NSStringFromClass(self.classForCoder));
-
-        title = self.controllerName;
-    }
-    
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
         
         for _ in 0...5{
             let marr : NSMutableArray = [];
@@ -38,12 +34,23 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             }
             self.dataList.add(marr);
         }
-//        print(self.dataList);
-        self.tableView.reloadData();
+        print(self.dataList);
+        
     }
-
     
-    //    MARK: - tableView
+    @objc func handActionBtn(){
+        print("handActionBtn");
+        
+        
+    }
+    
+//   @objc func handActionBtn(sender:UIButton) -> Void{
+//        print("__%@",sender.titleLabel?.text as Any);
+//
+//
+//    }
+    
+//    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.dataList.count;
         
@@ -60,21 +67,27 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCellOne = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
-
-        cell.labelLeft.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-        cell.labelRight.text = "990" + "\(indexPath.row)";
-        cell.imgViewLeft.image = UIImage(named: "dragon.png");
-        cell.imgViewRight.isHidden = false;
-
-//        cell.type = 1;
         
-        cell.getViewLayer();
+        let cell = UITableViewCellZero.cellWithTableView(tableView);
+        cell.textLabel?.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+        
         return cell;
     }
     
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let  identifier : String = "identifier";
+//        var  cell = tableView.dequeueReusableCell(withIdentifier: identifier);
+//        if cell == nil{
+//            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier);
+//        }
+//
+//        cell?.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+//
+//        return cell!;
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+       
         
         
     }
@@ -98,7 +111,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
         label.backgroundColor = UIColor.yellow;
-        
+
         label.text = "footer";
         return label;
     }
@@ -110,13 +123,12 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     //MARK: - layz
-    //    lazy var tableView: UITableView = {
-    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-    //        table.dataSource = self;
-    //        table.delegate = self;
-    //
-    //        return table;
-    //    }();
+//    lazy var tableView: UITableView = {
+//        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+//        table.dataSource = self;
+//        table.delegate = self;
+//
+//        return table;
+//    }();
     
 }
-

@@ -12,7 +12,7 @@ extension UIApplication{
     
     static func setupRootController(controller:AnyObject) -> Void {
         
-        let contr:UIViewController = controller is NSString ? UIViewControllerFromString(vcName: controller as! String) : controller as! UIViewController;
+        let contr:UIViewController = controller is NSString ? BN_ControllerFromString(controller as! String) : controller as! UIViewController;
         let rootVC = contr is UINavigationController || contr is UITabBarController ? contr : UINavigationController(rootViewController: contr);
         
         let app = UIApplication.shared.delegate as! AppDelegate;
