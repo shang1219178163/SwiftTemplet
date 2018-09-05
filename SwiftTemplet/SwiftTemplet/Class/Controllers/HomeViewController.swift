@@ -20,6 +20,7 @@ class HomeViewController: UITabBarController {
 
         self.viewControllers = self.getControllers(itemList: itemList);
 
+        self.selectedIndex = 1;
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +35,7 @@ class HomeViewController: UITabBarController {
         let marr = NSMutableArray.init();
         
         for obj in itemList {
-            let controller = UIViewControllerFromString(vcName: obj.first! as! String);
+            let controller = BN_ControllerFromString(obj.first! as! String);
             controller.title = obj[1] as? String;
             controller.tabBarItem.image = UIImage(named: obj[2] as! String)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.selectedImage = UIImage(named: obj[3] as! String)?.withRenderingMode(.alwaysOriginal);
