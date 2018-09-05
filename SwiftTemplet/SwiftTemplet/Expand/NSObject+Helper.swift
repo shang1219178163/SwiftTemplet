@@ -10,6 +10,8 @@
 import Foundation
 import UIKit
 
+import ObjectMapper
+
 
 func iOS(version:Float)->Bool{
     return (UIDevice.current.systemVersion as NSString).floatValue > version ? true : false;
@@ -22,7 +24,7 @@ func kScale_width(_ width: CGFloat) -> CGFloat {
 
 }
 
-func UIViewControllerFromString(vcName:String) -> UIViewController {
+func BN_ControllerFromString(_ vcName:String) -> UIViewController {
     // 动态获取命名空间
     let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
     
@@ -39,7 +41,7 @@ func UIViewControllerFromString(vcName:String) -> UIViewController {
     
 }
 
-func NSClassFromString(name:String) -> AnyClass {
+func BN_ClassFromString(_ name:String) -> AnyClass {
     let nameKey = "CFBundleName";
     //这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
     let appName = Bundle.main.infoDictionary![nameKey] as? String;
@@ -49,7 +51,7 @@ func NSClassFromString(name:String) -> AnyClass {
 }
 
 
-func NSStringShortFromClass(_ cls:Swift.AnyClass) -> String {
+func BN_StringShortFromClass(_ cls:Swift.AnyClass) -> String {
 
     var className:String = NSStringFromClass(cls);
     if className.contains(".") {
@@ -75,15 +77,15 @@ extension NSObject{
         }
     }
     
-    func getAppName() -> String {
+    func appName() -> String {
         let nameKey = "CFBundleName";
         //这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
         let appName = Bundle.main.infoDictionary![nameKey] as? String;
         return appName!;
     }
     
-    func getClassName(className:String) -> AnyClass {
-        let cls : AnyClass = NSClassFromString(getAppName() + "." + className)!;
+    func BN_ClassName(_ className:String) -> AnyClass {
+        let cls : AnyClass = NSClassFromString(appName() + "." + className)!;
         return cls;
         
     }
@@ -111,11 +113,8 @@ extension NSObject{
         
     }
     
-    func sizeWithText(text:AnyObject, font:AnyObject, width:CGFloat) -> CGSize {
-//        if text == nil {
-//            return CGSize.zero;
-//        }
-        
+    func sizeWithText(text:AnyObject!, font:AnyObject, width:CGFloat) -> CGSize {
+
         assert(text is String || text is NSAttributedString, "请检查text格式!");
         assert(font is UIFont || font is Int, "请检查font格式!");
 
@@ -138,5 +137,40 @@ extension NSObject{
         return size;
     }
     
+    //MARK: 转json
+    func jsonValue() -> String! {
+        
+        if JSONSerialization.isValidJSONObject(self) == false {
+            return "";
+        }
+        let data: Data! = try? JSONSerialization.data(withJSONObject: self, options: []);
+        let JSONString:String! = String(data: data, encoding: .utf8);
+        let string:String! = JSONString.removingPercentEncoding!;
+        
+        return string;
+        
+    }
+//    //MARK: 转json(备用)
+//    static func jsonValue(_ obj:AnyObject!) -> String! {
+//        if JSONSerialization.isValidJSONObject(obj) == false {
+//            return "";
+//        }
+//        let data: Data! = try? JSONSerialization.data(withJSONObject: obj, options: []);
+//        let JSONString:String! = String(data: data, encoding: .utf8);
+//        let string = JSONString.removingPercentEncoding!;
+//
+//        return string;
+//
+//    }
     
+     //MARK:数据解析通用化封装
+//   static func modelWithJSONFile(_ fileName:String) -> AnyObject? {
+//
+//        let jsonString = fileName.jsonFileToJSONString();
+//        let rootModel = Mapper<self.classForCoder()>().map(JSONString: jsonString);
+//        return rootModel;
+//    }
+
 }
+
+

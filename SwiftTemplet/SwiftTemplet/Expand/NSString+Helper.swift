@@ -10,7 +10,48 @@ import UIKit
 
 extension String{
     
+    func dictValue() -> Dictionary<String, Any>!{
+        
+        let jsonData:Data = self.data(using:.utf8)!;
+        
+        let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers);
+        if dict != nil {
+            return dict as! Dictionary;
+        }
+        return Dictionary();
+    }
     
+    func arrayValue() -> Array<Any>!{
+        
+        let jsonData:Data = self.data(using: .utf8)!
+        let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+        if array != nil {
+            return array as! Array;
+        }
+        return Array();
+        
+    }
+    
+    
+    func jsonFileToJSONString() -> String {
+        assert(self.contains(".geojson") == true);
+        
+        if self.contains(".geojson") == true {
+            let array: Array = self.components(separatedBy: ".");
+            let path = Bundle.main.path(forResource: array.first, ofType: array.last);
+            if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path!)) {
+                
+                if let jsonObj = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions(rawValue: 0)) {
+                    let jsonString = ((jsonObj as! NSDictionary).jsonValue()!).removingPercentEncoding!;
+                    print(jsonString);
+                    return jsonString;
+                }
+                return "";
+            }
+            return "";
+        }
+        return "";
+    }
     
     static func timeNow() -> String {
         let fmt = DateFormatter.dateFormat(formatStr:kFormat_date);
