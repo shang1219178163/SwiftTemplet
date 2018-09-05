@@ -19,7 +19,6 @@ class SecondViewController: UIViewController {
 
     let url = "https://httpbin.org/get";
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +32,6 @@ class SecondViewController: UIViewController {
         print(Mapper<BN_RootClass>());
         print(rootModel?.description);
         
-
         
 
     }
@@ -67,7 +65,7 @@ class SecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    //MARK: request
     func requestParamsWithRank(_ rank:Int) -> Dictionary<String, Any>! {
         
         var dic = Dictionary<String, Any>();
@@ -87,8 +85,6 @@ class SecondViewController: UIViewController {
         return dic;
     }
     
-
-
     func requestWithRank(rank:Int,handler:@escaping(closuer)) -> Void {
 
         let dic = self.requestParamsWithRank(rank);
