@@ -56,13 +56,13 @@ class BN_AnnularProgress: UIView {
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath(ovalIn: bounds).cgPath;
         
-        let trackLayer = CAShapeLayer();
-        trackLayer.frame = bounds;
-        trackLayer.fillColor = UIColor.clear.cgColor;
-        trackLayer.strokeColor = progressModel.bgColor.cgColor;
-        trackLayer.lineWidth = progressModel.width;
-        trackLayer.path = path;
-        layer.addSublayer(trackLayer);
+        let bgLayer = CAShapeLayer();
+        bgLayer.frame = bounds;
+        bgLayer.fillColor = UIColor.clear.cgColor;
+        bgLayer.strokeColor = progressModel.bgColor.cgColor;
+        bgLayer.lineWidth = progressModel.width;
+        bgLayer.path = path;
+        layer.addSublayer(bgLayer);
         
         progressLayer.frame = bounds;
         progressLayer.fillColor = UIColor.clear.cgColor;
