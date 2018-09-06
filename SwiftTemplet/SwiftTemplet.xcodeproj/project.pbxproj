@@ -27,7 +27,7 @@
 		517D143321410BB700F08FE5 /* UIView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D143221410BB700F08FE5 /* UIView+Animation.swift */; };
 		517D1435214114CC00F08FE5 /* beach.png in Resources */ = {isa = PBXBuildFile; fileRef = 517D1434214114CC00F08FE5 /* beach.png */; };
 		517D143721411B3C00F08FE5 /* BN_CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D143621411B3C00F08FE5 /* BN_CircleView.swift */; };
-		517D143B2141248000F08FE5 /* UIAnnularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D143A2141248000F08FE5 /* UIAnnularProgress.swift */; };
+		517D143B2141248000F08FE5 /* BN_AnnularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D143A2141248000F08FE5 /* BN_AnnularProgress.swift */; };
 		51824421213E4FFE00071A9D /* NSDictionary+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */; };
 		51824429213E74D400071A9D /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51824426213E74D400071A9D /* Header.swift */; };
 		5182442A213E74D400071A9D /* RootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51824427213E74D400071A9D /* RootClass.swift */; };
@@ -82,7 +82,7 @@
 		517D143221410BB700F08FE5 /* UIView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animation.swift"; sourceTree = "<group>"; };
 		517D1434214114CC00F08FE5 /* beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beach.png; sourceTree = "<group>"; };
 		517D143621411B3C00F08FE5 /* BN_CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_CircleView.swift; sourceTree = "<group>"; };
-		517D143A2141248000F08FE5 /* UIAnnularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnnularProgress.swift; sourceTree = "<group>"; };
+		517D143A2141248000F08FE5 /* BN_AnnularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BN_AnnularProgress.swift; sourceTree = "<group>"; };
 		51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDictionary+Helper.swift"; sourceTree = "<group>"; };
 		51824426213E74D400071A9D /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		51824427213E74D400071A9D /* RootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootClass.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 			children = (
 				517D14302140F93600F08FE5 /* BN_ClockView.swift */,
 				517D143621411B3C00F08FE5 /* BN_CircleView.swift */,
-				517D143A2141248000F08FE5 /* UIAnnularProgress.swift */,
+				517D143A2141248000F08FE5 /* BN_AnnularProgress.swift */,
 				5169FCCB2124FEF5004A1A42 /* MyView.swift */,
 			);
 			path = View;
@@ -435,7 +435,7 @@
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
-				517D143B2141248000F08FE5 /* UIAnnularProgress.swift in Sources */,
+				517D143B2141248000F08FE5 /* BN_AnnularProgress.swift in Sources */,
 				519E87B621362ACB002CCD86 /* UITableViewCell+Add.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				51B3DA2621264AE900710A76 /* UIButton+Helper.swift in Sources */,
