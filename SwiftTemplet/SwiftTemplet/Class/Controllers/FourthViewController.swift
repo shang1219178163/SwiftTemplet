@@ -60,8 +60,8 @@ class FourthViewController: UIViewController {
     }
     
     
-    lazy var progressView: UIAnnularProgress = {
-        let progressView = UIAnnularProgress(frame: CGRect(x:50,y:kScreen_width/2+40,width:100,height:100));
+    lazy var progressView: BN_AnnularProgress = {
+        let progressView = BN_AnnularProgress(frame: CGRect(x:50,y:kScreen_width/2+40,width:100,height:100));
         progressView.backgroundColor = UIColor.cyan;
         return progressView;
     }();
