@@ -27,6 +27,13 @@ class FourthViewController: UIViewController {
         mView.backgroundColor = UIColor.purple;
         view.addSubview(mView);
         
+        mView.block { (tap, view, idx) in
+    
+            print(tap)
+            print(view)
+            print(idx)
+
+        };
         
         //        mView.mblock = {(message:UIViewController)->(Void) in
 //            self.present(message, animated: true, completion: nil);
