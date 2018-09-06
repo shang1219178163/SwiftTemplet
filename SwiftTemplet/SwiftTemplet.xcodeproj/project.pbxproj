@@ -21,6 +21,8 @@
 		5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */; };
 		5169FCCC2124FEF5004A1A42 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169FCCB2124FEF5004A1A42 /* MyView.swift */; };
 		516FAB052122568600DD01CA /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FAB042122568600DD01CA /* UIView+Helper.swift */; };
+		517D14272140B63900F08FE5 /* NSArray+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D14262140B63900F08FE5 /* NSArray+Helper.swift */; };
+		517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */; };
 		51824421213E4FFE00071A9D /* NSDictionary+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */; };
 		51824429213E74D400071A9D /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51824426213E74D400071A9D /* Header.swift */; };
 		5182442A213E74D400071A9D /* RootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51824427213E74D400071A9D /* RootClass.swift */; };
@@ -69,6 +71,8 @@
 		5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
 		5169FCCB2124FEF5004A1A42 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		516FAB042122568600DD01CA /* UIView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helper.swift"; sourceTree = "<group>"; };
+		517D14262140B63900F08FE5 /* NSArray+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSArray+Helper.swift"; sourceTree = "<group>"; };
+		517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewControlle.swift; sourceTree = "<group>"; };
 		51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDictionary+Helper.swift"; sourceTree = "<group>"; };
 		51824426213E74D400071A9D /* Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		51824427213E74D400071A9D /* RootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootClass.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
+				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
 			);
 			path = Controllers;
@@ -254,6 +259,7 @@
 				5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */,
 				519E87B9213636EB002CCD86 /* UIViewController+Add.swift */,
 				513571D82125682A00627C67 /* UICollectionView+Helper.swift */,
+				517D14262140B63900F08FE5 /* NSArray+Helper.swift */,
 				51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */,
 				51B3DA2521264AE900710A76 /* UIButton+Helper.swift */,
 				5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */,
@@ -428,7 +434,9 @@
 				513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				519E87BA213636EB002CCD86 /* UIViewController+Add.swift in Sources */,
+				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				51824421213E4FFE00071A9D /* NSDictionary+Helper.swift in Sources */,
+				517D14272140B63900F08FE5 /* NSArray+Helper.swift in Sources */,
 				5183537D2123A5D800A080D2 /* Macro.swift in Sources */,
 				5182444D213E8CB600071A9D /* BN_Data.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,

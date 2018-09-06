@@ -7,10 +7,14 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    var imgList = ["https://www.huizhubang.com/attachment/rotation/9.jpg",
+        "https://www.huizhubang.com/attachment/rotation/8.jpg",
+        "https://www.huizhubang.com/attachment/rotation/7.jpg",]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,14 +22,17 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //        title = NSStringFromSelector(#function);
         view.backgroundColor = UIColor.green;
         
-        self.view.addSubview(self.tableView);
+        view.addSubview(self.tableView);
         
         print(self);
         DDLog(NSStringFromClass(self.classForCoder));
 
-        title = self.controllerName;
+        if title == nil {
+            title = self.controllerName;
+        }
+        
+        
     }
-    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
@@ -38,6 +45,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             }
             self.dataList.add(marr);
         }
+        
 //        print(self.dataList);
         self.tableView.reloadData();
     }
@@ -66,6 +74,16 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         cell.labelRight.text = "990" + "\(indexPath.row)";
         cell.imgViewLeft.image = UIImage(named: "dragon.png");
         cell.imgViewRight.isHidden = false;
+        
+        //随机元素
+        imgList = imgList.sorted(by: {$0 < $1});
+        imgList = imgList.sorted(by:<);
+
+//        imgList = imgList.shuffled();
+        
+//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
+//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
+        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
 
 //        cell.type = 1;
         

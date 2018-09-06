@@ -9,11 +9,18 @@
 import UIKit
 
 
+extension Dictionary{
+    
+
+}
+
 extension NSDictionary{
     
     func toJsonString() -> String! {
         let jsonString = self.jsonValue().removingPercentEncoding!;
         return jsonString;
     }
-
+    
+    
+    
 }

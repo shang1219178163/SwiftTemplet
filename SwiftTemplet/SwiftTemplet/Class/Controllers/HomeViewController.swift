@@ -15,7 +15,7 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tabBar.tintColor = UIColor.yellow;
+        tabBar.tintColor = kC_ThemeCOLOR;
         tabBar.barTintColor = UIColor.white;
 
         self.viewControllers = self.getControllers(itemList: itemList);
@@ -54,7 +54,7 @@ class HomeViewController: UITabBarController {
     
     lazy var btnCenter : UIButton = {
         let btn = UIButton();
-        btn.backgroundColor = UIColor.yellow;
+        btn.backgroundColor = kC_ThemeCOLOR;
         btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
         btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
         
@@ -68,7 +68,6 @@ class HomeViewController: UITabBarController {
         let rect = CGRect(x: 0, y: 0, width: width, height:tabBar.bounds.height);
         btnCenter.frame = rect.offsetBy(dx: width*2, dy: 0);
         
-        
     }
     
     @objc func handleActionSender(_ sender:UIButton){
@@ -81,10 +80,7 @@ class HomeViewController: UITabBarController {
         navController.navigationBar.titleTextAttributes = dic as? [NSAttributedStringKey : Any];
         self.present(navController, animated: true, completion: nil);
         
-        print("111111")
-
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -92,12 +88,14 @@ class HomeViewController: UITabBarController {
     }
     
     let itemList:Array = { () -> Array<[String]> in
+
         let list:Array = [
-            ["FirstViewController", "First", "tabbar_1", "tabbar_selected_1"],
-            ["SecondViewController", "Second", "tabbar_selected_1", "tabbar_selected_2"],
-            ["CenterViewController", "Center", "tabbar_selected_1", "tabbar_selected_2"],
-            ["ThirdViewController", "Third",  "tabbar_3",  "tabbar_selected_3"],
-            ["FourthViewController", "Fourth",  "tabbar_4",  "tabbar_selected_4"],
+            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
+            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
+//            ["CenterViewController", "概况",  "Item_center_N",  "Item_center_H"],
+            ["FifthViewControlle", "概况",  "Item_center_N",  "Item_center_H"],
+            ["ThirdViewController", "消息", "Item_third_N", "Item_third_H"],
+            ["FourthViewController", "我的",  "Item_fourth_N",  "Item_fourth_H"],
             
             ];
         return list;
