@@ -19,7 +19,6 @@ target 'SwiftTemplet' do
     pod 'CryptoSwift'
 #    pod 'EZSwiftExtensions'
 
-
 #   pod 'Dollar'
 #
 #   pod 'FoldingCell'
