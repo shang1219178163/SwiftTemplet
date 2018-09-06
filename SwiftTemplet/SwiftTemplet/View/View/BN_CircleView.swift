@@ -6,6 +6,12 @@
 //  Copyright © 2018年 BN. All rights reserved.
 //
 
+
+/*
+ 环形进度条
+ */
+
+
 import UIKit
 
 class BN_CircleView: UIView {
