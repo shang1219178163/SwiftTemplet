@@ -6,6 +6,10 @@
 //  Copyright © 2018年 fly. All rights reserved.
 //
 
+/*
+ 环形进度条
+ */
+
 import UIKit
 
 struct ProgressModel{
