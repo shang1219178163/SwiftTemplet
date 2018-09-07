@@ -23,13 +23,11 @@ class FourthViewController: UIViewController {
         view.backgroundColor = UIColor.green;
 
         
-        let mView = BN_ViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
+        let viewZero = BN_ViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
+        view.addSubview(viewZero);
         
-        mView.backgroundColor = UIColor.purple;
-        view.addSubview(mView);
-        
-        mView.block { (tap, view, idx) in
-            print(tap as Any,"\n",view,"\n",idx);
+        viewZero.block { (tap, view, idx) in
+            DDLog(tap as Any,view,idx);
 
             self.datePicker.show();
         };
@@ -54,7 +52,7 @@ class FourthViewController: UIViewController {
         clockView.layer.masksToBounds = true;
         
         clockView.addActionHandler { (tap, sender, idx) in
-            print(sender);
+            DDLog(sender);
             
         }
         
@@ -71,7 +69,23 @@ class FourthViewController: UIViewController {
     
     lazy var datePicker:BN_DatePicker = {
         let view = BN_DatePicker(.date);
+        view.block({ (sender, idx) in
+            if idx == 1 {
+                DDLog(view,sender.datePicker.date,idx);
+                
+            }
+        })
 
+//        view.block(action: { (tap, sender, idx) in
+//            DDLog(tap as Any,"\n",sender,"\n",idx);
+//
+//            if idx == 1 {
+//                if let control = sender as? BN_DatePicker {
+//                    DDLog(control.datePicker.date);
+//
+//                }
+//            }
+//        });
         return view;
     }();
     

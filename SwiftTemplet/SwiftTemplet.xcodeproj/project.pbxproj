@@ -253,10 +253,10 @@
 		519E87C5213675A5002CCD86 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5169FCCB2124FEF5004A1A42 /* BN_ViewZero.swift */,
 				517D14302140F93600F08FE5 /* BN_ClockView.swift */,
 				517D143621411B3C00F08FE5 /* BN_CircleView.swift */,
 				517D143A2141248000F08FE5 /* BN_AnnularProgress.swift */,
-				5169FCCB2124FEF5004A1A42 /* BN_ViewZero.swift */,
 				515AA756214206BC00C8D0AA /* BN_DatePicker.swift */,
 			);
 			path = View;

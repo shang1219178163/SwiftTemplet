@@ -21,33 +21,33 @@ class CenterViewController: UIViewController {
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
         let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
-//            print(sender);
+//            DDLog(sender);
             self.dismiss(animated: true, completion: nil)
 
             let style = (sender as! UIBarButtonItem).value(forKey: "systemItem");
             if UIBarButtonSystemItem(rawValue: style as! Int) == UIBarButtonSystemItem.redo {
-                print("111111");
+                DDLog("111111");
                 
             }
             
             if (sender as! UIBarButtonItem).systemType == UIBarButtonSystemItem.reply {
-                print("4444");
+                DDLog("4444");
                 
             }
          
         }
 
         let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (tap, view, idx) in
-            print(tap,view,idx);
+            DDLog(tap,view,idx);
         };
-        print(itemRight);
+        DDLog(itemRight);
         
         
         imgView.frame = CGRect.init(x: 10, y: 80, width: 220, height: 100);
         view.addSubview(imgView);
         
         imgView.addActionHandler { (tap, view, idx) in
-            print(tap,view,idx);
+            DDLog(tap,view,idx);
             
         }
       
@@ -57,12 +57,12 @@ class CenterViewController: UIViewController {
         btn.setTitle("99+", for: UIControlState.normal);
         btn.backgroundColor = UIColor.red;
 //        btnNew.addActionBlock { (sender) in
-//            print("33333",sender,sender.tag);
+//            DDLog("33333",sender,sender.tag);
 //
 //        };
 
         btn.addActionHandler { (tap, view, idx) in
-//            print(tap,view,idx);
+//            DDLog(tap,view,idx);
 //            DDlog(view);
             DDLog(view);
             
@@ -76,7 +76,7 @@ class CenterViewController: UIViewController {
 //            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
 //            
 //            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
-//            print(size);
+//            DDLog(size);
             
             DDLog(NSStringFromClass(self.classForCoder));
         }
@@ -117,14 +117,14 @@ class CenterViewController: UIViewController {
     func loadData(completion: @escaping (_ result:[String]) -> ()) -> () {
         
         DispatchQueue.global().async {
-            print("耗时操作 \(Thread.current)")
+            DDLog("耗时操作 \(Thread.current)")
             
             //获取到的json结果数据
             let json = ["姓名","年龄","爱好"]
             
             //主队列回调
             DispatchQueue.main.async {
-                print("主线程更新 UI \(Thread.current)")
+                DDLog("主线程更新 UI \(Thread.current)")
                 
                 //回调异步获取的结果
                 completion(json)

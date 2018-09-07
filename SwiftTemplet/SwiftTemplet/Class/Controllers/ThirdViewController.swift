@@ -35,9 +35,9 @@ class ThirdViewController: UIViewController {
         let c = list.subarray(NSMakeRange(1, 3));
         let d = list.subarray(1, 3);
         
-        print(b);
-        print(c);
-        print(d);
+        DDLog(b);
+        DDLog(c);
+        DDLog(d);
         
         
     }
@@ -57,14 +57,14 @@ class ThirdViewController: UIViewController {
         let dicSortedByKey = dict.sorted(by: {$0.0 < $1.0})
         let dicSortedByValue = dict.sorted(by: {$0.1 < $1.1})
         
-        print(dicSortedByKey)
-        print(dicSortedByValue)
+        DDLog(dicSortedByKey)
+        DDLog(dicSortedByValue)
         
         let dicSortedByKeyNew = dict.sorted(by:<)
         let dicSortedByValueNew = dict.sorted(by:>)
         
-        print(dicSortedByKeyNew)
-        print(dicSortedByValueNew)
+        DDLog(dicSortedByKeyNew)
+        DDLog(dicSortedByValueNew)
         
         
     }
