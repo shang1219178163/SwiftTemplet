@@ -6,7 +6,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - CryptoSwift (0.11.0)
-  - Kingfisher (4.8.1)
+  - Kingfisher (4.9.0)
   - ObjectMapper (3.3.0)
   - RxAlamofire (4.2.0):
     - RxAlamofire/Core (= 4.2.0)
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   CryptoSwift: ad5208dd2aae0a764ea4ce2c2d34bd067cae67f0
-  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
   RxBlocking: e339d8a6e752e25ade95ff858466c55436668f59

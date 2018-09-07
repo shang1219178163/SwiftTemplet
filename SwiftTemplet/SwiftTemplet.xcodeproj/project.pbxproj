@@ -19,7 +19,7 @@
 		51685A08208EA75800CE8099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51685A07208EA75800CE8099 /* Assets.xcassets */; };
 		51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A12208EA79C00CE8099 /* MainViewController.swift */; };
 		5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */; };
-		5169FCCC2124FEF5004A1A42 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169FCCB2124FEF5004A1A42 /* MyView.swift */; };
+		5169FCCC2124FEF5004A1A42 /* BN_ViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5169FCCB2124FEF5004A1A42 /* BN_ViewZero.swift */; };
 		516FAB052122568600DD01CA /* UIView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516FAB042122568600DD01CA /* UIView+Helper.swift */; };
 		517D14272140B63900F08FE5 /* NSArray+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D14262140B63900F08FE5 /* NSArray+Helper.swift */; };
 		517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */; };
@@ -74,7 +74,7 @@
 		51685A12208EA79C00CE8099 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		51685A14208EA7C500CE8099 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
-		5169FCCB2124FEF5004A1A42 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		5169FCCB2124FEF5004A1A42 /* BN_ViewZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_ViewZero.swift; sourceTree = "<group>"; };
 		516FAB042122568600DD01CA /* UIView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Helper.swift"; sourceTree = "<group>"; };
 		517D14262140B63900F08FE5 /* NSArray+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSArray+Helper.swift"; sourceTree = "<group>"; };
 		517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewControlle.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				517D14302140F93600F08FE5 /* BN_ClockView.swift */,
 				517D143621411B3C00F08FE5 /* BN_CircleView.swift */,
 				517D143A2141248000F08FE5 /* BN_AnnularProgress.swift */,
-				5169FCCB2124FEF5004A1A42 /* MyView.swift */,
+				5169FCCB2124FEF5004A1A42 /* BN_ViewZero.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,7 +465,7 @@
 				517D14312140F93600F08FE5 /* BN_ClockView.swift in Sources */,
 				5182444C213E8CB600071A9D /* BN_Result.swift in Sources */,
 				51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */,
-				5169FCCC2124FEF5004A1A42 /* MyView.swift in Sources */,
+				5169FCCC2124FEF5004A1A42 /* BN_ViewZero.swift in Sources */,
 				515B9EB3213517D200B61F61 /* NSDateFormatter+Helper.swift in Sources */,
 				5182444E213E8CB600071A9D /* BN_RootClass.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
