@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if iOS(version: 9) {
 
         }
-        print(self,UIApplication.shared.delegate as! AppDelegate)
+        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
         
         
         return true

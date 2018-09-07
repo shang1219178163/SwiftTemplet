@@ -30,7 +30,7 @@ class SecondViewController: UIViewController {
         
         let rootModel = Mapper<BN_RootClass>().map(JSONString: jsonString);
         DDLog(Mapper<BN_RootClass>());
-        DDLog(rootModel?.description);
+//        DDLog(rootModel?.description);
         
         
 
@@ -99,7 +99,7 @@ class SecondViewController: UIViewController {
             
             if let data = dataResponse.data {
                 let JSONString:String! = String(data: data, encoding: .utf8);
-                DDLog("___\n",JSONString.removingPercentEncoding!);
+//                DDLog("___\n",JSONString.removingPercentEncoding!);
             }
             
             if let value = dataResponse.value {
