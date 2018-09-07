@@ -68,27 +68,41 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCellOne = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
-
-        cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-        cell.labelRight.text = "990" + "\(indexPath.row)";
-        cell.imgViewLeft.image = UIImage(named: "dragon.png");
-        cell.imgViewRight.isHidden = false;
         
-        //随机元素
-        imgList = imgList.sorted(by: {$0 < $1});
-        imgList = imgList.sorted(by:<);
-
-//        imgList = imgList.shuffled();
-        
-//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
-//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
-        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
-
-//        cell.type = 1;
-        
-        cell.getViewLayer();
-        return cell;
+        switch indexPath.row {
+        case 0:
+            let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker;
+            cell.labelLeft.text = "日期选择:";
+            
+            cell.getViewLayer();
+            return cell;
+        default:
+            
+            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
+            
+            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+            cell.labelRight.text = "990" + "\(indexPath.row)";
+            cell.imgViewLeft.image = UIImage(named: "dragon.png");
+            cell.imgViewRight.isHidden = false;
+            
+            //随机元素
+            imgList = imgList.sorted(by: {$0 < $1});
+            imgList = imgList.sorted(by:<);
+            
+            //        imgList = imgList.shuffled();
+            
+            //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
+            //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
+            cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
+            
+            //        cell.type = 1;
+            
+            cell.getViewLayer();
+            return cell;
+            
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell");
+        return cell!;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

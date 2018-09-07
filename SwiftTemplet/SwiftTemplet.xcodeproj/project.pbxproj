@@ -13,6 +13,7 @@
 		515AA757214206BC00C8D0AA /* BN_DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BN_DatePicker.swift */; };
 		515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA7582142178300C8D0AA /* UIScreen+Helper.swift */; };
 		515AA75B21422B6100C8D0AA /* CGRect+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */; };
+		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
 		515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */; };
 		515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */; };
 		515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB021350F2200B61F61 /* NSObject+Define.swift */; };
@@ -68,6 +69,7 @@
 		515AA756214206BC00C8D0AA /* BN_DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_DatePicker.swift; sourceTree = "<group>"; };
 		515AA7582142178300C8D0AA /* UIScreen+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Helper.swift"; sourceTree = "<group>"; };
 		515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Helper.swift"; sourceTree = "<group>"; };
+		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
 		515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helper.swift"; sourceTree = "<group>"; };
 		515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		515B9EB021350F2200B61F61 /* NSObject+Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Define.swift"; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */,
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
+				515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				517D143721411B3C00F08FE5 /* BN_CircleView.swift in Sources */,
 				515AA75B21422B6100C8D0AA /* CGRect+Helper.swift in Sources */,
 				513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */,
+				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				519E87BA213636EB002CCD86 /* UIViewController+Add.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
