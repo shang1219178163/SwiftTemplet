@@ -15,7 +15,7 @@ class BN_ViewZero: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame);
         
-        self.backgroundColor = UIColor.purple;
+        self.backgroundColor = UIColor.yellow;
         
         let tap = UITapGestureRecognizer(target: self, action:#selector(handActionTap(tap:)));
         self.isUserInteractionEnabled = true;

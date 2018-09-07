@@ -24,7 +24,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         view.addSubview(self.tableView);
         
-        print(self);
+        DDLog(self);
         DDLog(NSStringFromClass(self.classForCoder));
 
         if title == nil {
@@ -46,7 +46,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             self.dataList.add(marr);
         }
         
-//        print(self.dataList);
+//        DDLog(self.dataList);
         self.tableView.reloadData();
     }
 
@@ -83,7 +83,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
 //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
 //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
-        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
+        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
 
 //        cell.type = 1;
         

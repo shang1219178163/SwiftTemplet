@@ -8,14 +8,12 @@
 
 import UIKit
 
-
-
 class BN_DatePicker: UIView {
     
-
+    typealias ViewClick = (BN_DatePicker,Int) -> Void;
     var viewblock: ViewClick?;
 
-
+    private let btnSize = CGSize(width: 60, height: kH_NaviagtionBar);
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,37 +57,8 @@ class BN_DatePicker: UIView {
         }
     }
    
-    /*
-    func show() -> Void {
-        UIApplication.shared.keyWindow?.addSubview(self);
-        
-        var tmpFrame = self.containView.frame;
-        tmpFrame.origin.y = tmpFrame.minY - tmpFrame.height;
-        
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-            self.containView.frame = tmpFrame;
-        }, completion: nil);
-    }
-    
-    func dismiss() -> Void {
-        
-        var tmpFrame = self.containView.frame;
-        tmpFrame.origin.y = tmpFrame.minY + tmpFrame.height;
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.frame = tmpFrame;
-     
-        }) { (isFinished) in
-            self.removeFromSuperview();
-            self.containView.frame = CGRect(x: 0, y: UIScreen.height, width: UIScreen.width, height: (kH_StatusBar + kH_PickerView));
-            
-        }
-    }
-    */
-    func block(action:@escaping(ViewClick)) -> Void {
+   
+    func block(_ action:@escaping ViewClick) -> Void {
         self.viewblock = action;
         
     }
@@ -101,12 +70,14 @@ class BN_DatePicker: UIView {
         
         view.backgroundColor = UIColor.RGBA(230, 230, 230, 1);
         
-        btnCancel.frame = CGRect(x: 0, y: 0, width: 60, height: kH_NaviagtionBar);
-        btnSure.frame = CGRect(x: UIScreen.width - 60, y: 0, width: 60, height: kH_NaviagtionBar);
+        btnCancel.frame = CGRect(x: 0, y: 0, width: btnSize.width, height: btnSize.height);
+        btnSure.frame = CGRect(x: UIScreen.width - 60, y: 0, width: btnSize.width, height: btnSize.height);
         datePicker.frame = CGRect(x: 0, y: kH_NaviagtionBar, width: UIScreen.width, height: kH_PickerView);
+        label.frame = CGRect(x: btnSize.width, y: 0, width: UIScreen.width - btnSize.width*2, height: kH_NaviagtionBar);
 
         view.addSubview(btnCancel);
         view.addSubview(btnSure);
+        view.addSubview(label);
         view.addSubview(datePicker);
         
         return view;
@@ -114,8 +85,9 @@ class BN_DatePicker: UIView {
     
     lazy var datePicker : UIDatePicker = {
         let datePicker: UIDatePicker = UIDatePicker();
-        datePicker.datePickerMode = UIDatePickerMode.dateAndTime;
-        datePicker.locale = Locale.current;
+        datePicker.datePickerMode = UIDatePickerMode.date;
+        datePicker.locale = Locale(identifier: "zh_CN")
+
         datePicker.backgroundColor = UIColor.white;
 
         datePicker.addTarget(self, action: #selector(handleActionControl(sender:)), for: .valueChanged);
@@ -124,7 +96,7 @@ class BN_DatePicker: UIView {
     
     lazy var btnCancel:UIButton = {
         let btn = UIButton(type: UIButtonType.system);
-        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kH_NaviagtionBar);
+//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kH_NaviagtionBar);
         btn.tag = 0;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
@@ -137,7 +109,7 @@ class BN_DatePicker: UIView {
     
     lazy var btnSure:UIButton = {
         let btn = UIButton(type: UIButtonType.system);
-        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kH_NaviagtionBar);
+//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kH_NaviagtionBar);
         btn.tag = 1;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
@@ -148,18 +120,58 @@ class BN_DatePicker: UIView {
         return btn;
     }();
     
+    lazy var label:UILabel = {
+        let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.width - btnSize.width*2, height: kH_NaviagtionBar));
+        lab.tag = 10;
+        lab.text = "请选择";
+        lab.textColor = UIColor.lightGray;
+        lab.textAlignment = NSTextAlignment.center;
+        return lab;
+    }();
+    
     //MRAK: - funtion
     @objc func handleActionControl(sender: UIControl) {
-        print(sender);
         if let control = sender as? UIDatePicker {
-            print(control.date);
+            DDLog(control.date);
             
         }
         else if let control = sender as? UIButton {
-            print(control.titleLabel?.text as Any);
-            
+            DDLog(control.titleLabel?.text as Any);
+            if control.titleLabel?.text == kActionTitle_Sure {
+                self.viewblock!(self,sender.tag);
+                
+            }
+            self.dismiss();
         }
     }
     
-    
+    /*
+     func show() -> Void {
+     UIApplication.shared.keyWindow?.addSubview(self);
+     
+     var tmpFrame = self.containView.frame;
+     tmpFrame.origin.y = tmpFrame.minY - tmpFrame.height;
+     
+     UIView.animate(withDuration: 0.5, animations: {
+         self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
+         self.containView.frame = tmpFrame;
+         }, completion: nil);
+     }
+     
+     func dismiss() -> Void {
+     
+     var tmpFrame = self.containView.frame;
+     tmpFrame.origin.y = tmpFrame.minY + tmpFrame.height;
+     
+     UIView.animate(withDuration: 0.5, animations: {
+         self.backgroundColor = UIColor.black.withAlphaComponent(0);
+         self.containView.frame = tmpFrame;
+     
+         }) { (isFinished) in
+             self.removeFromSuperview();
+             self.containView.frame = CGRect(x: 0, y: UIScreen.height, width: UIScreen.width, height: (kH_StatusBar + kH_PickerView));
+     
+         }
+     }
+     */
 }

@@ -34,18 +34,18 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             }
             self.dataList.add(marr);
         }
-        print(self.dataList);
+        DDLog(self.dataList);
         
     }
     
     @objc func handActionBtn(){
-        print("handActionBtn");
+        DDLog("handActionBtn");
         
         
     }
     
 //   @objc func handActionBtn(sender:UIButton) -> Void{
-//        print("__%@",sender.titleLabel?.text as Any);
+//        DDLog("__%@",sender.titleLabel?.text as Any);
 //
 //
 //    }

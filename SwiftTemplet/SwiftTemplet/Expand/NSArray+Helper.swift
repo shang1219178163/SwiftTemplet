@@ -11,21 +11,35 @@ import UIKit
 
 extension Array{
     
-    func randomElement() -> Element {
+    var random: Element? {
+        if self.count == 0 {
+            return nil;
+        }
         let idx = Int(arc4random_uniform(UInt32(self.count)));
         return self[idx];
     }
+    //弃用
+    func randomElement() -> Element? {
+        return self.random;
+    }
     
-
-    public func shuffled() -> Array {
-        var list = self
+    var shuffle: Array! {
+        if self.count == 0 {
+            return self;
+        }
+        var list = self;
         for index in 0..<list.count {
-            let newIndex = Int(arc4random_uniform(UInt32(list.count-index))) + index
+            let newIndex = Int(arc4random_uniform(UInt32(list.count-index))) + index;
             if index != newIndex {
-                list.swapAt(index, newIndex)
+                list.swapAt(index, newIndex);
             }
         }
-        return list
+        return list;
+    }
+
+    //弃用
+    public func shuffled() -> Array {
+        return self.shuffle;
     }
     
 
