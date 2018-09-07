@@ -18,7 +18,6 @@ func iOS(version:Float)->Bool{
     
 }
 
-
 func kScale_width(_ width: CGFloat) -> CGFloat {
     return width * UIScreen.main.bounds.size.width / 320.0
 

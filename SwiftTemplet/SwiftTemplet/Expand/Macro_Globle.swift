@@ -32,37 +32,40 @@ let kTAG_VIEW_Picture = 1300;
 
 // MARK: -MacroGeometry与计算有关的尺寸属性
 
-let kH_StatusBar = 20.0;
-let kH_NaviagtionBar = 44.0;
-let kH_TabBar = 49.0;
+let kH_StatusBar: CGFloat = 20.0;
+let kH_NaviagtionBar: CGFloat = 44.0;
+let kH_TabBar: CGFloat = 49.0;
+
+let kH_PickerView: CGFloat = 180.0;
+
 
 let kX_GAP: CGFloat = 15.0;
 let kY_GAP: CGFloat = 10.0;
 let kPadding: CGFloat = 8.0;
 
-let kW_LayerBorder : CGFloat = 0.5;
-let kWH_ArrowRight = 25.0;
+let kW_LayerBorder: CGFloat = 0.5;
+let kWH_ArrowRight: CGFloat = 25.0;
 
 let kArrowSize = CGSize(width: 25.0, height: 25.0);
 
 let kTimerValue = 65;
-let kRatio_IDCard = 1.58;
+let kRatio_IDCard: CGFloat = 1.58;
 let kAnimationDuration_Toast = 1.5;
 let kAnimationDuration_Drop = 0.5;
 
-let kH_CellHeight = 60.0;
+let kH_CellHeight: CGFloat = 60.0;
 
 
-let kW_item = 80.0;
-let kW_progressView = 130.0;
+let kW_item: CGFloat = 80.0;
+let kW_progressView: CGFloat = 130.0;
 
-let kH_LABEL = 25;
-let kH_LABEL_TITLE = 30.0;
-let kH_LABEL_SMALL = 20.0;
+let kH_LABEL: CGFloat = 25;
+let kH_LABEL_TITLE: CGFloat = 30.0;
+let kH_LABEL_SMALL: CGFloat = 20.0;
 
-let kH_TEXTFIELD = 30.0;
-let kH_LINE_VIEW =  1/3.0;
-let kW_LINE_Vert =  3.0;
+let kH_TEXTFIELD: CGFloat = 30.0;
+let kH_LINE_VIEW: CGFloat =  1/3.0;
+let kW_LINE_Vert: CGFloat =  3.0;
 
 
 // MARK: -font

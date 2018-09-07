@@ -10,6 +10,9 @@
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
 		51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51262F6E2133FC9B0032AE02 /* UIView+Add.swift */; };
 		513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513571D82125682A00627C67 /* UICollectionView+Helper.swift */; };
+		515AA757214206BC00C8D0AA /* BN_DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BN_DatePicker.swift */; };
+		515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA7582142178300C8D0AA /* UIScreen+Helper.swift */; };
+		515AA75B21422B6100C8D0AA /* CGRect+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */; };
 		515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */; };
 		515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */; };
 		515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB021350F2200B61F61 /* NSObject+Define.swift */; };
@@ -62,6 +65,9 @@
 /* Begin PBXFileReference section */
 		51262F6E2133FC9B0032AE02 /* UIView+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Add.swift"; sourceTree = "<group>"; };
 		513571D82125682A00627C67 /* UICollectionView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Helper.swift"; sourceTree = "<group>"; };
+		515AA756214206BC00C8D0AA /* BN_DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_DatePicker.swift; sourceTree = "<group>"; };
+		515AA7582142178300C8D0AA /* UIScreen+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Helper.swift"; sourceTree = "<group>"; };
+		515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Helper.swift"; sourceTree = "<group>"; };
 		515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helper.swift"; sourceTree = "<group>"; };
 		515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		515B9EB021350F2200B61F61 /* NSObject+Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Define.swift"; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 				517D143621411B3C00F08FE5 /* BN_CircleView.swift */,
 				517D143A2141248000F08FE5 /* BN_AnnularProgress.swift */,
 				5169FCCB2124FEF5004A1A42 /* BN_ViewZero.swift */,
+				515AA756214206BC00C8D0AA /* BN_DatePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -278,6 +285,8 @@
 				51B3DA2521264AE900710A76 /* UIButton+Helper.swift */,
 				5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */,
 				517D143221410BB700F08FE5 /* UIView+Animation.swift */,
+				515AA7582142178300C8D0AA /* UIScreen+Helper.swift */,
+				515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */,
 			);
 			path = Expand;
 			sourceTree = "<group>";
@@ -432,6 +441,7 @@
 				515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */,
 				5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */,
 				515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */,
+				515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
@@ -449,6 +459,7 @@
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BN_CircleView.swift in Sources */,
+				515AA75B21422B6100C8D0AA /* CGRect+Helper.swift in Sources */,
 				513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				519E87BA213636EB002CCD86 /* UIViewController+Add.swift in Sources */,
@@ -467,6 +478,7 @@
 				51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */,
 				5169FCCC2124FEF5004A1A42 /* BN_ViewZero.swift in Sources */,
 				515B9EB3213517D200B61F61 /* NSDateFormatter+Helper.swift in Sources */,
+				515AA757214206BC00C8D0AA /* BN_DatePicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* BN_RootClass.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
 				516FAB052122568600DD01CA /* UIView+Helper.swift in Sources */,
