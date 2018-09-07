@@ -1,5 +1,5 @@
 //
-//  MyView.swift
+//  BN_ViewZero.swift
 //  SwiftTemplet
 //
 //  Created by hsf on 2018/8/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyView: UIView {
+class BN_ViewZero: UIView {
 
     var mblock:ViewClick?
     
@@ -35,7 +35,7 @@ class MyView: UIView {
         
     }
     
-    //假装我有一个button添加了点击事件
+    //点击事件
     @objc func handActionTap(tap:UITapGestureRecognizer) -> Void{
         if self.mblock != nil{
             self.mblock!(tap,self,self.tag);
@@ -45,6 +45,7 @@ class MyView: UIView {
 
     func block(action:@escaping(ViewClick)) -> Void {
         self.mblock = action;
+        
     }
     
 }
