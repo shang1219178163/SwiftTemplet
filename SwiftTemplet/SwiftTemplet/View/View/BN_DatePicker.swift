@@ -86,8 +86,7 @@ class BN_DatePicker: UIView {
     lazy var datePicker : UIDatePicker = {
         let datePicker: UIDatePicker = UIDatePicker();
         datePicker.datePickerMode = UIDatePickerMode.date;
-        datePicker.locale = Locale(identifier: "zh_CN")
-
+        datePicker.locale = Locale(identifier: "zh_CN");
         datePicker.backgroundColor = UIColor.white;
 
         datePicker.addTarget(self, action: #selector(handleActionControl(sender:)), for: .valueChanged);
