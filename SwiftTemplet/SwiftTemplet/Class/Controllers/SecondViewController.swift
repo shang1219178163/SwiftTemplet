@@ -26,11 +26,11 @@ class SecondViewController: UIViewController {
         view.backgroundColor = UIColor.cyan;
 
         let jsonString = "news.geojson".jsonFileToJSONString();
-        print("************************************")
+        DDLog("************************************")
         
         let rootModel = Mapper<BN_RootClass>().map(JSONString: jsonString);
-        print(Mapper<BN_RootClass>());
-        print(rootModel?.description);
+        DDLog(Mapper<BN_RootClass>());
+        DDLog(rootModel?.description);
         
         
 
@@ -47,15 +47,15 @@ class SecondViewController: UIViewController {
         let params = ["one":"a"];
         
         Alamofire.request(url,method:.get,parameters:params).responseJSON { (dataResponse) in
-            print(dataResponse.request)  // 原始的URL请求
-//            print(dataResponse.response) // HTTP URL响应
-//            print(dataResponse.data)     // 服务器返回的数据
-//            print(dataResponse.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
-//            print(dataResponse.value)  // 原始的URL请求
+            DDLog(dataResponse.request)  // 原始的URL请求
+//            DDLog(dataResponse.response) // HTTP URL响应
+//            DDLog(dataResponse.data)     // 服务器返回的数据
+//            DDLog(dataResponse.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
+//            DDLog(dataResponse.value)  // 原始的URL请求
             
             if let json = dataResponse.value {
                 let rootModel = Mapper<RootClass>().map(JSON: json as! Dictionary);
-                print(rootModel);
+                DDLog(rootModel);
 
             }
         }
@@ -91,25 +91,25 @@ class SecondViewController: UIViewController {
         let urlString = url;
         Alamofire.request(urlString,method:.get,parameters:dic).responseJSON { (dataResponse) in
            
-//        print(dataResponse.request)  // 原始的URL请求
-//        print(dataResponse.response) // HTTP URL响应
-//        print(dataResponse.data)     // 服务器返回的数据
-//        print(dataResponse.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
-//        print(dataResponse.value)  // 原始的URL请求
+//        DDLog(dataResponse.request)  // 原始的URL请求
+//        DDLog(dataResponse.response) // HTTP URL响应
+//        DDLog(dataResponse.data)     // 服务器返回的数据
+//        DDLog(dataResponse.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
+//        DDLog(dataResponse.value)  // 原始的URL请求
             
             if let data = dataResponse.data {
                 let JSONString:String! = String(data: data, encoding: .utf8);
-                print("___\n",JSONString.removingPercentEncoding!);
+                DDLog("___\n",JSONString.removingPercentEncoding!);
             }
             
             if let value = dataResponse.value {
                 var jsonString = (value as! NSDictionary).jsonValue().removingPercentEncoding!;
                 jsonString = (value as! NSDictionary).toJsonString();
-                print(jsonString);
+                DDLog(jsonString);
 
                 //数据解析
                 let rootModel = Mapper<RootClass>().map(JSON: value as! Dictionary);
-                print(rootModel);
+                DDLog(rootModel);
 
             }
             
