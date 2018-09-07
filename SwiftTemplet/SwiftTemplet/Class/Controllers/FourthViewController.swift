@@ -22,23 +22,17 @@ class FourthViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.green;
 
-        let mView = MyView(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
+        
+        let mView = BN_ViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
         
         mView.backgroundColor = UIColor.purple;
         view.addSubview(mView);
         
         mView.block { (tap, view, idx) in
-    
-            print(tap)
-            print(view)
-            print(idx)
+            print(tap as Any,"\n",view,"\n",idx);
 
         };
         
-        //        mView.mblock = {(message:UIViewController)->(Void) in
-//            self.present(message, animated: true, completion: nil);
-//
-//        }
 //        self.addClockView();
         view.addSubview(progressView)
     }
