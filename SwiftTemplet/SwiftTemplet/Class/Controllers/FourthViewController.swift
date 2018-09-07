@@ -31,6 +31,7 @@ class FourthViewController: UIViewController {
         mView.block { (tap, view, idx) in
             print(tap as Any,"\n",view,"\n",idx);
 
+            self.datePicker.show();
         };
         
 //        self.addClockView();
@@ -67,6 +68,12 @@ class FourthViewController: UIViewController {
         return progressView;
     }();
     
+    
+    lazy var datePicker:BN_DatePicker = {
+        let view = BN_DatePicker(.date);
+
+        return view;
+    }();
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
