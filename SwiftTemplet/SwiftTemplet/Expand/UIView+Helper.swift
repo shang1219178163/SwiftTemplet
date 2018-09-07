@@ -62,14 +62,14 @@ extension UIView{
     }
     
     /// 点击回调
-    @objc func handleActionTap(tap:UITapGestureRecognizer) -> Void {
+    @objc private func handleActionTap(tap:UITapGestureRecognizer) -> Void {
        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClick;
         if block != nil{
             block!(tap, tap.view!, tap.view!.tag);
         }
     }
     
-    @objc func handleActionSender(sender:UIControl) -> Void {
+   @objc private func handleActionSender(sender:UIControl) -> Void {
         let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClick;
         if let sender = self as? UISegmentedControl {
             if block != nil {
