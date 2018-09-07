@@ -196,4 +196,10 @@ extension UITableViewCell{
             objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
+
+    
+    //MARK - -getTextFieldRightView
+  
+
+
 }
