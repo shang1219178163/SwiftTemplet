@@ -242,8 +242,8 @@
 		519E87C22136755C002CCD86 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				51824425213E74C300071A9D /* DataModel */,
 				51824424213E74B200071A9D /* Controllers */,
+				51824425213E74C300071A9D /* DataModel */,
 			);
 			path = Class;
 			sourceTree = "<group>";
