@@ -85,17 +85,64 @@ extension UIView{
     }
     
 
-//    func isContainRecognizer(recognizer:String?) -> Bool {
-//        for obj in (self.gestureRecognizers?.enumerated())! {
-//
-//            if obj is UITapGestureRecognizer {
-//                return true;
-//
-//            }
-//        }
-//        return false;
-//
-//    }
+   static func createView(rect:CGRect, list:Array<String>!, numberOfRow:Int, viewHeight:CGFloat, padding:CGFloat, type:Int, action:@escaping (UITapGestureRecognizer?,UIView,NSInteger)->()) -> UIView! {
+        
+        let rowCount: Int = list.count % numberOfRow == 0 ? list.count/numberOfRow : list.count/numberOfRow + 1;
+        
+        let backView = UIView(frame: CGRect(x: rect.minX, y: rect.minY, width: rect.width, height: CGFloat(rowCount)*viewHeight + CGFloat(rowCount - 1)*padding));
+        backView.backgroundColor = UIColor.green;
+        
+        let viewSize = CGSize(width: (backView.frame.width - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow), height: viewHeight);
+        for (i,value) in list.enumerated() {
+            
+            let x = (viewSize.width + padding) * CGFloat(i % numberOfRow);
+            let y = (viewSize.height + padding) * CGFloat(i / numberOfRow);
+            let rect = CGRect(x: x, y: y, width: viewSize.width, height: viewSize.height);
+            
+            var view: UIView;
+            switch type {
+            case 1:
+                let imgView = UIImageView(frame: rect);
+                imgView.isUserInteractionEnabled = true;
+                imgView.contentMode = UIViewContentMode.scaleAspectFit;
+                imgView.image = UIImage(named: value);
+                
+                view = imgView;
+                
+            case 2:
+                let label = UILabel(frame: rect);
+                label.text = value;
+                label.textAlignment = NSTextAlignment.center;
+                label.numberOfLines = 0;
+                label.lineBreakMode = NSLineBreakMode.byCharWrapping;
+                
+                view = label;
+                
+            default:
+                let button = UIButton(type: .custom);
+                button.frame = rect;
+                button.setTitle(value, for: UIControlState.normal);
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 15);
+                button.titleLabel?.adjustsFontSizeToFitWidth = true;
+                button.titleLabel?.minimumScaleFactor = 1.0;
+                button.isExclusiveTouch = true;
+                
+                button.setTitleColor(UIColor.black, for: UIControlState.normal);
+                button.backgroundColor = UIColor.white;
+                view = button;
+            }
+            view.tag = i;
+            
+            backView.addSubview(view);
+            
+            view.addActionHandler { (tap, itemView, idx) in
+                action(tap,itemView,idx);
+                
+            }
+        }
+        return backView;
+        
+    }
     
     
     

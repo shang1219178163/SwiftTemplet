@@ -54,11 +54,29 @@ extension Array{
         return Array(self[loc...len]);
     }
 
+   static func arrayWithItemPrefix(prefix:String, count:Int, type:Int) -> Array! {
+        
+        var marr:[Any] = [];
+        
+        for i in 0...count {
+            
+            let item = String(format: "%@%d", prefix,i);
+            
+            switch type {
+            case 1:
+                let image = UIImage(named: item)!;
+                marr.append(image);
+            default:
+                marr.append(item);
+            }
+        }
+        return marr as! Array<Element>;
+    }
     
 }
 
 extension NSArray{
-    
+
     
     
 }

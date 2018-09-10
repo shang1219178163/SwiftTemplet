@@ -13,15 +13,19 @@ import UIKit
 class FourthViewController: UIViewController {
     
 //    var progressView:UIAnnularProgress?
-
+    
     var progress: CGFloat = 0.0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = [];
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.green;
+        view.backgroundColor = UIColor.white;
 
+       
+        self.createGroupView();
+        view.getViewLayer();
+        return;
         
         let viewZero = BN_ViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
         view.addSubview(viewZero);
@@ -34,6 +38,22 @@ class FourthViewController: UIViewController {
         
 //        self.addClockView();
         view.addSubview(progressView)
+        
+        
+    }
+    
+    func createGroupView() -> Void {
+        
+        let list = Array<Any>.arrayWithItemPrefix(prefix: "按钮_", count: 16, type: 0);
+        
+        let rect = CGRect(x: 20, y: 20, width: kScreen_width - 20.0*2, height: 0);
+        let groupView = UIView.createView(rect: rect, list: list as! Array<String>, numberOfRow: 4, viewHeight: 30, padding: 5, type: 2) { (tap, itemView, idx) in
+            
+            DDLog(tap as Any,itemView,idx);
+            
+        };
+        
+        view.addSubview(groupView!);
     }
 
     
@@ -88,6 +108,8 @@ class FourthViewController: UIViewController {
 //        });
         return view;
     }();
+    
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
