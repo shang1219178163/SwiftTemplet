@@ -23,9 +23,9 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         textField.placeholder = "请选择";
         textField.textAlignment = NSTextAlignment.center;
         
-//        textField.rightView = [self getTextFieldRightView:kIMAGE_arrowDown];
-//        textField.rightViewMode = UITextFieldViewModeAlways;
-        
+        textField.asoryView(true, unitName: kIMG_arrowDown);
+//        textField.asoryView(true, unitName: "公斤(万元)");
+
         textField.delegate = self;
     }
     
@@ -56,7 +56,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         self.superview?.superview?.endEditing(true);
         
         datePicker.show();
-        return true;
+        return false;
     }
     
 //    func textFieldDidEndEditing(_ textField: UITextField) {
@@ -69,7 +69,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     
     //MARK: funtions
     func block(_ action:@escaping ViewClick) -> Void {
-        self.viewblock = action;
+        viewblock = action;
         
     }
     
@@ -77,7 +77,14 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         let view = BN_DatePicker(.date);
         view.block({ (sender, idx) in
 //                DDLog(view,sender.datePicker.date,idx);
-            self.viewblock!(self,sender,idx);
+            if self.viewblock != nil {
+                self.viewblock!(self,sender,idx);
+            
+            }
+            let formatter = DateFormatter.dateFormat(formatStr: kFormat_date);
+            let dateStr = formatter.string(from: view.datePicker.date);
+            
+            self.textField.text = idx == 1 ? dateStr : "";
         });
         return view;
     }();
