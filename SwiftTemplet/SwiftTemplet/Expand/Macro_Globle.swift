@@ -46,7 +46,7 @@ let kPadding: CGFloat = 8.0;
 let kW_LayerBorder: CGFloat = 0.5;
 let kWH_ArrowRight: CGFloat = 25.0;
 
-let kArrowSize = CGSize(width: 25.0, height: 25.0);
+let kSize_Arrow = CGSize(width: 25.0, height: 25.0);
 
 let kTimerValue = 65;
 let kRatio_IDCard: CGFloat = 1.58;
@@ -78,29 +78,34 @@ let KFZ_Fifth =  10;
 
 // MARK: -视图
 
-let kIMAGE_arrowRight = "img_arrowRight.png";
-let kIMAGE_arrowDown = "img_arrowDown_black.png";
-let kIMAGE_arrowBack = "img_btnBack.png";
 
-let kIMAGE_default_User = "img_portrait_Default.png";
-let kIMAGE_default_User_N = "img_headPortrait_N.png";
-let kIMAGE_default_User_H = "img_headPortrait_H.png";
-let kIMAGE_defaultAddPhoto = "img_photoAddDefault.png";
-let kIMAGE_photoDelete = "img_Picture_Delete.png";
+let kIMG_arrowUp = "img_arrowUp.png";
+let kIMG_arrowLeft = "img_arrowLeft.png";
+let kIMG_arrowDown = "img_arrowDown.png";
+let kIMG_arrowRight = "img_arrowRight.png";
 
-let kIMAGE_default_failed = "imageFailedDefault.png";
+let kIMG_arrowBack = "img_arrowLeft_88_w.png";
 
-let kIMAGE_SexBoy = "img_sex_boy.png";
-let kIMAGE_SexGril = "img_sex_gril.png";
 
-let kIMAGE_elemetDecrease = "decrease_elemet";
-let kIMAGE_elemetIncrease = "increase_elemet";
+let kIMG_default_User = "img_portrait_Default.png";
+let kIMG_default_User_N = "img_headPortrait_N.png";
+let kIMG_default_User_H = "img_headPortrait_H.png";
+let kIMG_defaultAddPhoto = "img_photoAddDefault.png";
+let kIMG_photoDelete = "img_Picture_Delete.png";
 
-let kIMAGE_scan = "img_scan.png";
-let kIMAGE_NFC = "img_NFC.png";
-let kIMAGE_update = "img_dialog_update";
-let kIMAGE_inquiry = "img_dialog_inquiry";
-let kIMAGE_warning = "img_dialog_warning";
+let kIMG_default_failed = "imageFailedDefault.png";
+
+let kIMG_SexBoy = "img_sex_boy.png";
+let kIMG_SexGril = "img_sex_gril.png";
+
+let kIMG_elemetDecrease = "decrease_elemet";
+let kIMG_elemetIncrease = "increase_elemet";
+
+let kIMG_scan = "img_scan.png";
+let kIMG_NFC = "img_NFC.png";
+let kIMG_update = "img_dialog_update";
+let kIMG_inquiry = "img_dialog_inquiry";
+let kIMG_warning = "img_dialog_warning";
 
 
 let kMsg_NetWorkRequesting = "网络请求中...";

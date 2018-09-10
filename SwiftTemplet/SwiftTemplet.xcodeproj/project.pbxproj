@@ -61,6 +61,11 @@
 		51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */; };
 		51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B590211D17B4003E9AA7 /* FourthViewController.swift */; };
 		51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B592211D17F8003E9AA7 /* HomeViewController.swift */; };
+		51D0701121460113006925BB /* UITextField+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D0701021460113006925BB /* UITextField+Helper.swift */; };
+		51D0701521460475006925BB /* img_arrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D0701221460474006925BB /* img_arrowLeft.png */; };
+		51D0701621460475006925BB /* img_arrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D0701321460475006925BB /* img_arrowUp.png */; };
+		51D0701721460475006925BB /* img_arrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D0701421460475006925BB /* img_arrowDown.png */; };
+		51D070192146055D006925BB /* img_arrowLeft_88_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D070182146055D006925BB /* img_arrowLeft_88_w.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +127,11 @@
 		51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		51C9B590211D17B4003E9AA7 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		51C9B592211D17F8003E9AA7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		51D0701021460113006925BB /* UITextField+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Helper.swift"; sourceTree = "<group>"; };
+		51D0701221460474006925BB /* img_arrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_arrowLeft.png; sourceTree = "<group>"; };
+		51D0701321460475006925BB /* img_arrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_arrowUp.png; sourceTree = "<group>"; };
+		51D0701421460475006925BB /* img_arrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_arrowDown.png; sourceTree = "<group>"; };
+		51D070182146055D006925BB /* img_arrowLeft_88_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_arrowLeft_88_w.png; sourceTree = "<group>"; };
 		53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTemplet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA5C4F393213F3209279EA0 /* Pods-SwiftTemplet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.debug.xcconfig"; sourceTree = "<group>"; };
 		C11EB06921399ACCA893C157 /* Pods-SwiftTemplet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,10 +227,14 @@
 		519E87C1213674B0002CCD86 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51D0701321460475006925BB /* img_arrowUp.png */,
+				51D0701221460474006925BB /* img_arrowLeft.png */,
+				51D070182146055D006925BB /* img_arrowLeft_88_w.png */,
+				51D0701421460475006925BB /* img_arrowDown.png */,
+				519E87BF21366DE4002CCD86 /* img_arrowRight.png */,
 				517D1434214114CC00F08FE5 /* beach.png */,
 				51B3DA2C212650FA00710A76 /* Pinterest_round.png */,
 				519E87BD21366D62002CCD86 /* dragon.png */,
-				519E87BF21366DE4002CCD86 /* img_arrowRight.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -286,10 +300,11 @@
 				517D14262140B63900F08FE5 /* NSArray+Helper.swift */,
 				51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */,
 				51B3DA2521264AE900710A76 /* UIButton+Helper.swift */,
-				5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */,
 				517D143221410BB700F08FE5 /* UIView+Animation.swift */,
+				51D0701021460113006925BB /* UITextField+Helper.swift */,
 				515AA7582142178300C8D0AA /* UIScreen+Helper.swift */,
 				515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */,
+				5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */,
 			);
 			path = Expand;
 			sourceTree = "<group>";
@@ -365,10 +380,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				519E87BE21366D62002CCD86 /* dragon.png in Resources */,
+				51D0701721460475006925BB /* img_arrowDown.png in Resources */,
 				519E87C021366DE5002CCD86 /* img_arrowRight.png in Resources */,
+				51D0701621460475006925BB /* img_arrowUp.png in Resources */,
+				51D0701521460475006925BB /* img_arrowLeft.png in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
 				5182442D213E75BA00071A9D /* dataList.geojson in Resources */,
 				51B3DA2D212650FA00710A76 /* Pinterest_round.png in Resources */,
+				51D070192146055D006925BB /* img_arrowLeft_88_w.png in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
 				51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */,
 				517D1435214114CC00F08FE5 /* beach.png in Resources */,
@@ -466,6 +485,7 @@
 				513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
+				51D0701121460113006925BB /* UITextField+Helper.swift in Sources */,
 				519E87BA213636EB002CCD86 /* UIViewController+Add.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				51824421213E4FFE00071A9D /* NSDictionary+Helper.swift in Sources */,

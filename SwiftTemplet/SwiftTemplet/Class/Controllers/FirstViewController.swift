@@ -73,7 +73,10 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         case 0:
             let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker;
             cell.labelLeft.text = "日期选择:";
-            
+            cell.block { (view0, view1, idx) in
+                DDLog(view0,view1,idx);
+                
+            }
             cell.getViewLayer();
             return cell;
         default:

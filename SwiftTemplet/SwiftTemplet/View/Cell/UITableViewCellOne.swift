@@ -33,7 +33,7 @@ class UITableViewCellOne: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        imgViewRight.frame = CGRect(x: (width - kArrowSize.width - kX_GAP), y: (height - kArrowSize.height)/2.0, width: kArrowSize.width, height: kArrowSize.height);
+        imgViewRight.frame = CGRect(x: (width - kSize_Arrow.width - kX_GAP), y: (height - kSize_Arrow.height)/2.0, width: kSize_Arrow.width, height: kSize_Arrow.height);
         
         if imgViewLeft.image != nil {
             imgViewLeft.frame = CGRect(x: kX_GAP, y: kY_GAP, width: height - kY_GAP*2, height: height - kY_GAP*2);

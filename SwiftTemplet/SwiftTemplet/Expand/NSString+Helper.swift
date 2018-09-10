@@ -10,6 +10,20 @@ import UIKit
 
 extension String{
     
+    func valid() -> Bool! {
+        let array = ["","nil","null"];
+//        array.forEach { (str) in
+//            if str == self {
+//                return false;
+//
+//            }
+//        }
+        if array.contains(self){
+            return false;
+        }
+        return true;
+    }
+    
     func dictValue() -> Dictionary<String, Any>!{
         
         let jsonData:Data = self.data(using:.utf8)!;
