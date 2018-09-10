@@ -69,7 +69,7 @@ extension UITableViewCell{
                 imgView = UIImageView(frame: CGRect.zero);
                 imgView?.isUserInteractionEnabled = true;
                 imgView?.contentMode = UIViewContentMode.scaleAspectFit;
-                imgView?.image = UIImage(named: kIMAGE_arrowRight);
+                imgView?.image = UIImage(named: kIMG_arrowRight);
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
@@ -198,8 +198,7 @@ extension UITableViewCell{
     }
 
     
-    //MARK - -getTextFieldRightView
-  
+
 
 
 }
