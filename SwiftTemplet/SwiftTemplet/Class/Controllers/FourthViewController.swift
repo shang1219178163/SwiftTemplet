@@ -42,6 +42,19 @@ class FourthViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        let names = ["Paula", "Elena", "Zoe"];
+        var lastNameEndingInA: String?
+        for name in names.reversed() where name.hasSuffix("a") {
+            lastNameEndingInA = name
+            break
+        }
+//        lastNameEndingInA;// Optional("Elena")”
+     
+    }
+    
     func AbountColor() -> () {
         let data = Data(bytes: [0x2,0x33,0x54,0x78,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b])
         print(data.type.toHex());
@@ -50,7 +63,7 @@ class FourthViewController: UIViewController {
     
     func createGroupView() -> Void {
         
-        let list = Array<Any>.arrayWithItemPrefix(prefix: "按钮_", count: 16, type: 0);
+        let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreen_width - 20.0*2, height: 0);
         let groupView = UIView.createView(rect: rect, list: list as! Array<String>, numberOfRow: 4, viewHeight: 30, padding: 5, type: 2) { (tap, itemView, idx) in

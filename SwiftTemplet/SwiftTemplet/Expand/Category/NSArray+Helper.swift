@@ -54,7 +54,7 @@ extension Array{
         return Array(self[loc...len]);
     }
 
-   static func arrayWithItemPrefix(prefix:String, count:Int, type:Int) -> Array! {
+   static func itemPrefix(prefix:String, count:Int, type:Int) -> Array! {
         
         var marr:[Any] = [];
         

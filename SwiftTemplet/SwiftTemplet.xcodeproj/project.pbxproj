@@ -57,6 +57,7 @@
 		51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B3DA2821264E3800710A76 /* Default-568h@2x.png */; };
 		51B3DA2D212650FA00710A76 /* Pinterest_round.png in Resources */ = {isa = PBXBuildFile; fileRef = 51B3DA2C212650FA00710A76 /* Pinterest_round.png */; };
 		51BDABF4214F56B7003B9722 /* Extension+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDABF3214F56B7003B9722 /* Extension+Protocol.swift */; };
+		51BDABFA214F8EC0003B9722 /* Sequence+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDABF9214F8EC0003B9722 /* Sequence+Helper.swift */; };
 		51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58A211D1793003E9AA7 /* FirstViewController.swift */; };
 		51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58C211D179E003E9AA7 /* SecondViewController.swift */; };
 		51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */; };
@@ -124,6 +125,7 @@
 		51B3DA2C212650FA00710A76 /* Pinterest_round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pinterest_round.png; sourceTree = "<group>"; };
 		51B3DA2E2126511700710A76 /* SwiftTemplet-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftTemplet-Bridging-Header.h"; sourceTree = "<group>"; };
 		51BDABF3214F56B7003B9722 /* Extension+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Protocol.swift"; sourceTree = "<group>"; };
+		51BDABF9214F8EC0003B9722 /* Sequence+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Helper.swift"; sourceTree = "<group>"; };
 		51C9B58A211D1793003E9AA7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		51C9B58C211D179E003E9AA7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				51D0701021460113006925BB /* UITextField+Helper.swift */,
 				515AA7582142178300C8D0AA /* UIScreen+Helper.swift */,
 				515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */,
+				51BDABF9214F8EC0003B9722 /* Sequence+Helper.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
+				51BDABFA214F8EC0003B9722 /* Sequence+Helper.swift in Sources */,
 				517D143321410BB700F08FE5 /* UIView+Animation.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				517D14312140F93600F08FE5 /* BN_ClockView.swift in Sources */,
