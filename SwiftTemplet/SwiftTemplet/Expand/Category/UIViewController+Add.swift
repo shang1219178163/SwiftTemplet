@@ -32,9 +32,10 @@ extension UIViewController{
             var table = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITableView;
             if table == nil {
                 table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+                table!.separatorStyle = .none;
                 table!.dataSource = self as! UITableViewDataSource;
                 table!.delegate = self as! UITableViewDelegate;
-                
+
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), table, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return table!;
@@ -44,4 +45,6 @@ extension UIViewController{
         }
     }
     
+ 
+
 }
