@@ -8,10 +8,23 @@
 //
 
 import UIKit
+import Foundation
 
 extension Sequence{
     
- 
+    public func all(matching predicate: (Element) -> Bool) -> Bool {
+        // 对于一个条件，如果没有元素不满足它的话，那意味着所有元素都满足它：
+        return !contains { !predicate($0) }
+    }
     
+    
+//    func last(where predicate:(Element) -> Bool) -> Element? {
+//
+//        for element in reversed() where predicate(Element) {
+//            return element;
+//        }
+//        return nil;
+//    }
+//
     
 }
