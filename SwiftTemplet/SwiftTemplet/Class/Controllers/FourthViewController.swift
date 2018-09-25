@@ -23,9 +23,9 @@ class FourthViewController: UIViewController {
         view.backgroundColor = UIColor.white;
 
        
-        self.createGroupView();
-        view.getViewLayer();
-        return;
+//        self.createGroupView();
+//        view.getViewLayer();
+//        return;
         
         let viewZero = BN_ViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
         view.addSubview(viewZero);
@@ -36,7 +36,7 @@ class FourthViewController: UIViewController {
             self.datePicker.show();
         };
         
-//        self.addClockView();
+        self.addClockView();
         view.addSubview(progressView)
         
         
