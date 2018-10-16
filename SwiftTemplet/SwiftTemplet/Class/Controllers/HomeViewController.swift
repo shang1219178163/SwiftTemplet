@@ -8,19 +8,27 @@
 
 import UIKit
 
+
 class HomeViewController: UITabBarController {
-    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tabBar.tintColor = kC_ThemeCOLOR;
+//        tabBar.tintColor = UIColor.theme;
+        tabBar.tintColor = UIColor.theme;
+
         tabBar.barTintColor = UIColor.white;
 
         self.viewControllers = self.getControllers(itemList: itemList);
 
         self.selectedIndex = 1;
+        
+        
+        let list : NSMutableArray = [1,2,3];
+        
+        list.add(4);
+        DDLog(list);
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +62,7 @@ class HomeViewController: UITabBarController {
     
     lazy var btnCenter : UIButton = {
         let btn = UIButton();
-        btn.backgroundColor = kC_ThemeCOLOR;
+        btn.backgroundColor = UIColor.theme;
         btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
         btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
         

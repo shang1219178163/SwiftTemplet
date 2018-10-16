@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor{
     
-    static func colorWithHexString(hex:String) -> UIColor {
+    static func UIColorFromHexString(_ hex:String) -> UIColor {
     
         var cString = hex.trimmingCharacters(in: CharacterSet.whitespaces).uppercased();
         if cString.hasPrefix("#") {
@@ -43,7 +43,7 @@ extension UIColor{
         return UIColor(red:CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(1.0));
     }
     
-    static func random() -> UIColor {
+   static func UIColorRandom() -> UIColor {
         
         let r = arc4random_uniform(256);
         let g = arc4random_uniform(256);
@@ -53,17 +53,17 @@ extension UIColor{
     }
     
     //MARK: - -属性
-    var random : UIColor {
+    static var random : UIColor {
         get{
-            return UIColor.random();
+            return UIColorRandom();
             
         }
     }
     
-    var theme : UIColor {
+   static var theme : UIColor {
         get{
-            return kC_ThemeCOLOR;
-            
+            return UIColorFromHexString("#0082e0");
+
         }
     }
     
