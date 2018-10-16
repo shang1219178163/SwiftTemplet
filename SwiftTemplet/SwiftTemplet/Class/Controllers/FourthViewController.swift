@@ -104,7 +104,7 @@ class FourthViewController: UIViewController {
     func addClockView(){
         let clockView = BN_ClockView(frame: CGRect(x: 20, y: 20, width: kScreen_width - 40, height: kScreen_width - 40));
         clockView.itemList = ["111","222","333","444","555","666","777","888",];
-        clockView.backgroundColor = UIColor.random();
+        clockView.backgroundColor = UIColor.random;
         clockView.image = UIImage(named: "beach");
         view.addSubview(clockView);
         

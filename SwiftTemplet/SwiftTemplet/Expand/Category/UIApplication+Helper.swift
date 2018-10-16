@@ -26,7 +26,7 @@ extension UIApplication{
     
     static func setupNavigationBar() -> Void {
         UINavigationBar.appearance().tintColor =  UIColor.white;//界面顶部透明
-        UINavigationBar.appearance().barTintColor = kC_ThemeCOLOR; //界面顶部透明
+        UINavigationBar.appearance().barTintColor = UIColor.theme; //界面顶部透明
 //        UINavigationBar.appearance().barTintColor = UIColor.orange; //界面顶部透明
 
         
