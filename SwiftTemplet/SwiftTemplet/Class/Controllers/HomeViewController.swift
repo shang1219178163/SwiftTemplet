@@ -15,20 +15,13 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        tabBar.tintColor = UIColor.theme;
         tabBar.tintColor = UIColor.theme;
-
         tabBar.barTintColor = UIColor.white;
 
         self.viewControllers = self.getControllers(itemList: itemList);
 
         self.selectedIndex = 1;
         
-        
-        let list : NSMutableArray = [1,2,3];
-        
-        list.add(4);
-        DDLog(list);
     }
     
     override func viewWillAppear(_ animated: Bool) {
