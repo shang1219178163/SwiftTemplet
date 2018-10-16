@@ -113,7 +113,7 @@ class BN_DatePicker: UIView {
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kActionTitle_Sure, for: UIControlState.normal);
-        btn.setTitleColor(kC_ThemeCOLOR, for: UIControlState.normal);
+        btn.setTitleColor(UIColor.theme, for: UIControlState.normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
 
         return btn;

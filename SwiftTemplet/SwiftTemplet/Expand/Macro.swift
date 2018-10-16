@@ -16,12 +16,6 @@ let kScreen_height = UIScreen.main.bounds.height;
 let kScale_width = UIScreen.main.bounds.width;
 
 
-var kC_ThemeCOLOR: UIColor {
-    return UIColor.colorWithHexString(hex: "#0082e0");
-    
-}
-
-
 func DDLog(_ msgs: Any..., fileName: String = #file, methodName: String = #function, lineNumber: Int = #line){
     #if DEBUG
     let params = msgs.compactMap{ "\($0)" }.joined(separator: "\n__");
