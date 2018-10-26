@@ -39,7 +39,9 @@ class FourthViewController: UIViewController {
         self.addClockView();
         view.addSubview(progressView)
         
-        
+        //元组
+        var score = (java:12.01, Swift:34, c:"abcde", oc:98)
+        DDLog(score.java,score.Swift);
     }
     
     override func viewWillAppear(_ animated: Bool) {
