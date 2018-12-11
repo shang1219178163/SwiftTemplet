@@ -13,14 +13,12 @@ import UIKit
 import ObjectMapper
 
 
-func iOS(version:Float)->Bool{
+func iOSVer(version:Float)->Bool{
     return (UIDevice.current.systemVersion as NSString).floatValue > version ? true : false;
-    
 }
 
 func kScale_width(_ width: CGFloat) -> CGFloat {
     return width * UIScreen.main.bounds.size.width / 320.0
-
 }
 
 func BN_ControllerFromString(_ vcName:String) -> UIViewController {
@@ -37,7 +35,6 @@ func BN_ControllerFromString(_ vcName:String) -> UIViewController {
     // 创建对象
     let childController:UIViewController = vcCls.init();
     return childController;
-    
 }
 
 func BN_ClassFromString(_ name:String) -> AnyClass {
@@ -46,9 +43,7 @@ func BN_ClassFromString(_ name:String) -> AnyClass {
     let appName = Bundle.main.infoDictionary![nameKey] as? String;
     let cls : AnyClass = NSClassFromString(appName! + "." + name)!;
     return cls;
-    
 }
-
 
 func BN_StringShortFromClass(_ cls:Swift.AnyClass) -> String {
 
@@ -57,11 +52,8 @@ func BN_StringShortFromClass(_ cls:Swift.AnyClass) -> String {
         let rangePoint = className.range(of: ".");
         className = String(className[rangePoint!.upperBound...]);
     }
-    
     return className;
-    
 }
-
 
 extension NSObject{
  
@@ -86,7 +78,6 @@ extension NSObject{
     func BN_ClassName(_ className:String) -> AnyClass {
         let cls : AnyClass = NSClassFromString(appName() + "." + className)!;
         return cls;
-        
     }
         
     func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedStringKey, Any> {
@@ -94,7 +85,6 @@ extension NSObject{
 
         let dic = [NSAttributedStringKey.font:font,
                    NSAttributedStringKey.foregroundColor: textColor];
-        
         return dic;
     }
     
@@ -109,7 +99,6 @@ extension NSObject{
         let mdic = NSMutableDictionary(dictionary: self.attrDict(font: font, textColor: textColor));
         mdic.setObject(paraStyle, forKey:kCTParagraphStyleAttributeName as! NSCopying);
         return mdic.copy() as! Dictionary<NSAttributedStringKey, Any>;
-        
     }
     
     func sizeWithText(text:AnyObject!, font:AnyObject, width:CGFloat) -> CGSize {
