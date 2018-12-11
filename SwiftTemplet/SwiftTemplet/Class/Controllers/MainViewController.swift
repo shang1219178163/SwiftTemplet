@@ -11,9 +11,7 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
-    
 //    var dataList : NSMutableArray = [];
-    
     
     override func viewDidLoad() {
         super.viewDidLoad();
@@ -24,7 +22,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
 //        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
         
-        self.view.addSubview(self.tableView);
+        view.addSubview(self.tableView);
         
         
         for _ in 0...5{
