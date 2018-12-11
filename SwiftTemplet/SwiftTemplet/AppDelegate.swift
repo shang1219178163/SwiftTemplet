@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        UIApplication.setupRootController(controller: controller as AnyObject);
         UIApplication.setupRootController(controller: "HomeViewController" as AnyObject);
-        UIApplication.setupNavigationBar();
-        if iOS(version: 9) {
+        UIApplication.setupAppearance();
+        if iOSVer(version: 9) {
 
         }
         DDLog(self,UIApplication.shared.delegate as! AppDelegate)

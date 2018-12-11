@@ -17,7 +17,7 @@
 		515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */; };
 		515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */; };
 		515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB021350F2200B61F61 /* NSObject+Define.swift */; };
-		515B9EB3213517D200B61F61 /* NSDateFormatter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB2213517D200B61F61 /* NSDateFormatter+Helper.swift */; };
+		515B9EB3213517D200B61F61 /* DateFormatter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB2213517D200B61F61 /* DateFormatter+Helper.swift */; };
 		515B9EB521351CD400B61F61 /* NSString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515B9EB421351CD400B61F61 /* NSString+Helper.swift */; };
 		51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A00208EA75700CE8099 /* AppDelegate.swift */; };
 		51685A08208EA75800CE8099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51685A07208EA75800CE8099 /* Assets.xcassets */; };
@@ -68,6 +68,7 @@
 		51D0701621460475006925BB /* img_arrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D0701321460475006925BB /* img_arrowUp.png */; };
 		51D0701721460475006925BB /* img_arrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D0701421460475006925BB /* img_arrowDown.png */; };
 		51D070192146055D006925BB /* img_arrowLeft_88_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 51D070182146055D006925BB /* img_arrowLeft_88_w.png */; };
+		D7C0AFE521BF452500C95048 /* NumberFormatter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFE421BF452500C95048 /* NumberFormatter+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +81,7 @@
 		515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Helper.swift"; sourceTree = "<group>"; };
 		515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		515B9EB021350F2200B61F61 /* NSObject+Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Define.swift"; sourceTree = "<group>"; };
-		515B9EB2213517D200B61F61 /* NSDateFormatter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDateFormatter+Helper.swift"; sourceTree = "<group>"; };
+		515B9EB2213517D200B61F61 /* DateFormatter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Helper.swift"; sourceTree = "<group>"; };
 		515B9EB421351CD400B61F61 /* NSString+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString+Helper.swift"; sourceTree = "<group>"; };
 		516859FD208EA75700CE8099 /* SwiftTemplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTemplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51685A00208EA75700CE8099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTemplet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA5C4F393213F3209279EA0 /* Pods-SwiftTemplet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.debug.xcconfig"; sourceTree = "<group>"; };
 		C11EB06921399ACCA893C157 /* Pods-SwiftTemplet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.release.xcconfig"; sourceTree = "<group>"; };
+		D7C0AFE421BF452500C95048 /* NumberFormatter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,7 +291,8 @@
 				51827CC621300C170084720C /* UIApplication+Helper.swift */,
 				515B9EB021350F2200B61F61 /* NSObject+Define.swift */,
 				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
-				515B9EB2213517D200B61F61 /* NSDateFormatter+Helper.swift */,
+				515B9EB2213517D200B61F61 /* DateFormatter+Helper.swift */,
+				D7C0AFE421BF452500C95048 /* NumberFormatter+Helper.swift */,
 				515B9EB421351CD400B61F61 /* NSString+Helper.swift */,
 				515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */,
 				51827CC4213006410084720C /* UIColor+Helper.swift */,
@@ -477,6 +480,7 @@
 				515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */,
 				5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */,
 				515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */,
+				D7C0AFE521BF452500C95048 /* NumberFormatter+Helper.swift in Sources */,
 				515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */,
@@ -517,7 +521,7 @@
 				5182444C213E8CB600071A9D /* BN_Result.swift in Sources */,
 				51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */,
 				5169FCCC2124FEF5004A1A42 /* BN_ViewZero.swift in Sources */,
-				515B9EB3213517D200B61F61 /* NSDateFormatter+Helper.swift in Sources */,
+				515B9EB3213517D200B61F61 /* DateFormatter+Helper.swift in Sources */,
 				515AA757214206BC00C8D0AA /* BN_DatePicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* BN_RootClass.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,

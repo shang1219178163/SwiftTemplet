@@ -18,6 +18,8 @@ class CenterViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.cyan;
 
+        DDLog("_%@_",UIApplication.shared.keyWindow);
+
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
         let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
@@ -82,7 +84,6 @@ class CenterViewController: UIViewController {
         }
         
         view.getViewLayer();
-        
         
     }
 
