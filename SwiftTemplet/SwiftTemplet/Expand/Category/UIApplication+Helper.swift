@@ -13,7 +13,8 @@ extension UIApplication{
     static var appName: String {
         get {
             let infoDic = Bundle.main.infoDictionary;
-            return  (infoDic!["CFBundleDisplayName"] != nil) ? infoDic!["CFBundleDisplayName"] as! String : infoDic!["CFBundleName"] as! String;
+            let name:String = infoDic!["CFBundleDisplayName"] as? String ?? infoDic!["CFBundleName"] as! String;
+            return name;
         }
     }
     
