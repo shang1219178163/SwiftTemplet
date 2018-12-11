@@ -11,14 +11,14 @@ import UIKit
 
 class CenterViewController: UIViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.cyan;
 
-        DDLog("_%@_",UIApplication.shared.keyWindow);
+        DDLog("_%@_",UIApplication.mainWindow);
+        DDLog("__%@_",UIApplication.shared.keyWindow);
 
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
@@ -52,7 +52,6 @@ class CenterViewController: UIViewController {
             DDLog(tap,view,idx);
             
         }
-      
         
         let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);
         view.addSubview(btn);

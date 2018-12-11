@@ -10,41 +10,55 @@ import UIKit
 
 extension UIApplication{
     
-//    static var keyWindow: UIWindow {
-//        get {
-//            let app = UIApplication.shared.delegate as! AppDelegate;
-//            if app.window != nil {
-//                return app.window!;
-//            }
-//            app.window = UIWindow.init(frame: UIScreen.main.bounds);
-//            app.window?.backgroundColor = UIColor.white;
-//            app.window?.makeKeyAndVisible();
-//            return app.window!;
-//        }
-//        set {
-//            let app = UIApplication.shared.delegate as! AppDelegate;
-//            app.window = newValue;
-//            
-//        }
-//    }
+    static var mainWindow: UIWindow {
+        get {
+            let app = UIApplication.shared.delegate as! AppDelegate;
+            if app.window != nil {
+                app.window!.backgroundColor = UIColor.white;
+                app.window!.makeKeyAndVisible();
+                return app.window!;
+            }
+            app.window = UIWindow.init(frame: UIScreen.main.bounds);
+            app.window?.backgroundColor = UIColor.white;
+            app.window?.makeKeyAndVisible();
+            return app.window!;
+        }
+        set {
+            let app = UIApplication.shared.delegate as! AppDelegate;
+            app.window = newValue;
+            
+        }
+    }
+    
+    static var rootController: UIViewController {
+        get {
+            return UIApplication.mainWindow.rootViewController!;
+        }
+        set {
+            UIApplication.mainWindow.rootViewController = newValue;
+        }
+    }
     
     
-    static func setupRootController(controller:AnyObject) -> Void {
+    static func setupRootController(_ controller:AnyObject,_ isAdjust:Bool) -> Void {
+        var contr = controller;
+        if controller is String {
+            contr = BN_ControllerFromString(controller as! String);
+        }
         
-        let contr:UIViewController = controller is NSString ? BN_ControllerFromString(controller as! String) : controller as! UIViewController;
-        let rootVC = contr is UINavigationController || contr is UITabBarController ? contr : UINavigationController(rootViewController: contr);
+        if !isAdjust {
+            UIApplication.rootController = contr as! UIViewController;
+            return;
+        }
         
-        let app = UIApplication.shared.delegate as! AppDelegate;
-        app.window = UIWindow(frame: UIScreen.main.bounds);
-        app.window?.backgroundColor = UIColor.white;
-        app.window?.rootViewController = rootVC;
-        
-        app.window?.makeKeyAndVisible();
-        
+        if controller is UINavigationController || controller is UITabBarController {
+            UIApplication.rootController = contr as! UIViewController;
+        }else{
+            UIApplication.rootController = UINavigationController(rootViewController: contr as! UIViewController);
+        }
     }
     
     static func setupAppearance() -> Void {
-
         self.setupAppearanceTabBar();
         self.setupAppearanceNavigationBar();
         
@@ -58,7 +72,6 @@ extension UIApplication{
             UIScrollView.appearance().keyboardDismissMode = .onDrag;
         }
         UIButton.appearance().isExclusiveTouch = false;
-
     }
     
     static func setupAppearanceNavigationBar() -> Void {

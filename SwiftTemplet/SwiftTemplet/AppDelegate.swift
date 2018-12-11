@@ -14,27 +14,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        window = UIWindow(frame:UIScreen.main.bounds);
-        window?.backgroundColor = UIColor.white;
-        
-        var controller = BN_ControllerFromString("MainViewController");
-        controller = BN_ControllerFromString("HomeViewController");
+//        window = UIWindow(frame:UIScreen.main.bounds);
+//        window?.backgroundColor = UIColor.white;
+//        var controller = BN_ControllerFromString("MainViewController");
+//        controller = BN_ControllerFromString("HomeViewController");
 //        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);
 //        window?.makeKeyAndVisible();
         
-//        UIApplication.setupRootController(controller: controller as AnyObject);
-        UIApplication.setupRootController(controller: "HomeViewController" as AnyObject);
+        var controller = BN_ControllerFromString("MainViewController");
+        controller = BN_ControllerFromString("HomeViewController");
+        UIApplication.setupRootController(controller, true);
         UIApplication.setupAppearance();
-        if iOSVer(version: 9) {
-
-        }
+       
         DDLog(self,UIApplication.shared.delegate as! AppDelegate)
-        
-        
+        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window);
+
         return true
     }
 
