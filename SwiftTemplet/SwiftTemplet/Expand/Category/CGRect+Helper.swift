@@ -11,25 +11,22 @@ import UIKit
 
 extension CGRect{
     
-    var orignX: CGFloat {
-        get {
-            return self.origin.x;
-        }
-        set {
-            self = CGRect(x: newValue, y: self.origin.y, width: self.size.width, height: self.size.height);
-        }
-    }
-    
-    var orignY: CGFloat {
-        get {
-            return self.origin.y;
-        }
-        set {
-            self = CGRect(x: self.origin.x, y: newValue, width: self.size.width, height: self.size.height);
-        }
-    }
-    
-    
-   
+//    var orignX: CGFloat {
+//        get {
+//            return self.origin.x;
+//        }
+//        set {
+//            self = CGRect(x: newValue, y: self.origin.y, width: self.size.width, height: self.size.height);
+//        }
+//    }
+//
+//    var orignY: CGFloat {
+//        get {
+//            return self.origin.y;
+//        }
+//        set {
+//            self = CGRect(x: self.origin.x, y: newValue, width: self.size.width, height: self.size.height);
+//        }
+//    }
     
 }

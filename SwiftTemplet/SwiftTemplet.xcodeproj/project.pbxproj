@@ -71,6 +71,7 @@
 		D7C0AFE521BF452500C95048 /* NumberFormatter+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFE421BF452500C95048 /* NumberFormatter+Helper.swift */; };
 		D7C0AFE721BF912F00C95048 /* NSInteger+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */; };
 		D7C0AFE921BF9D9300C95048 /* NSDate+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */; };
+		D7C0AFEB21BFA07900C95048 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFEA21BFA07900C95048 /* UIImage+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		D7C0AFE421BF452500C95048 /* NumberFormatter+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Helper.swift"; sourceTree = "<group>"; };
 		D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSInteger+Helper.swift"; sourceTree = "<group>"; };
 		D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Helper.swift"; sourceTree = "<group>"; };
+		D7C0AFEA21BFA07900C95048 /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 				51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */,
 				51B3DA2521264AE900710A76 /* UIButton+Helper.swift */,
 				517D143221410BB700F08FE5 /* UIView+Animation.swift */,
+				D7C0AFEA21BFA07900C95048 /* UIImage+Helper.swift */,
 				51D0701021460113006925BB /* UITextField+Helper.swift */,
 				515AA7582142178300C8D0AA /* UIScreen+Helper.swift */,
 				515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */,
@@ -502,6 +505,7 @@
 				D7C0AFE721BF912F00C95048 /* NSInteger+Helper.swift in Sources */,
 				515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */,
 				51BDABF4214F56B7003B9722 /* Extension+Protocol.swift in Sources */,
+				D7C0AFEB21BFA07900C95048 /* UIImage+Helper.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				515B9EB521351CD400B61F61 /* String+Helper.swift in Sources */,
 				5183537F2123A69B00A080D2 /* Macro_Globle.swift in Sources */,
