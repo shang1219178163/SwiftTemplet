@@ -53,7 +53,7 @@ class BNClockView: UIImageView {
             view.center =  CGPoint(x: center.x + radius*cos(angle), y: center.y + radius*sin(angle));
             //附属效果
             if aniDuration != nil {
-                view.aniRotation(isClockwise: false, aniDuration!, MAXFLOAT, nil);
+                view.animRotation(isClockwise: false, aniDuration!, MAXFLOAT, nil);
                 
             }
             

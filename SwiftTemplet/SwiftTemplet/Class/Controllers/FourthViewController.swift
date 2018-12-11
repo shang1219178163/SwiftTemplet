@@ -111,7 +111,7 @@ class FourthViewController: UIViewController {
         view.addSubview(clockView);
         
         clockView.aniDuration = 12;
-        clockView.aniRotation(isClockwise: true, clockView.aniDuration!, MAXFLOAT, nil);
+        clockView.animRotation(isClockwise: true, clockView.aniDuration!, MAXFLOAT, nil);
         clockView.layoutIfNeeded();//激活子视图动画
         
         clockView.layer.cornerRadius = clockView.frame.width/2.0;
