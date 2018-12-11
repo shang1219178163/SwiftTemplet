@@ -101,6 +101,7 @@ extension UIView{
             self.frame.origin.x = newValue - self.frame.size.width
         }
     }
+    
     var top: CGFloat {
         get {
             return self.frame.origin.y
@@ -109,6 +110,7 @@ extension UIView{
             self.frame.origin.y = newValue
         }
     }
+    
     var bottom: CGFloat {
         get {
             return self.frame.origin.y + self.frame.size.height
