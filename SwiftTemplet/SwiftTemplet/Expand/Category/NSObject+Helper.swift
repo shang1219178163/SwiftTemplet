@@ -12,16 +12,19 @@ import UIKit
 
 import ObjectMapper
 
+func StringFromIndexPath(_ indexPath:NSIndexPath) -> String {
+    return String(format: "{%d,%d}", indexPath.section, indexPath.section);
+}
 
 func iOSVer(version:Float)->Bool{
-    return (UIDevice.current.systemVersion as NSString).floatValue > version ? true : false;
+    return (UIDevice.current.systemVersion as NSString).floatValue > version;
 }
 
 func kScale_width(_ width: CGFloat) -> CGFloat {
     return width * UIScreen.main.bounds.size.width / 320.0
 }
 
-func BN_ControllerFromString(_ vcName:String) -> UIViewController {
+func UICtrFromString(_ vcName:String) -> UIViewController {
     // 动态获取命名空间
     let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
     
@@ -37,7 +40,7 @@ func BN_ControllerFromString(_ vcName:String) -> UIViewController {
     return childController;
 }
 
-func BN_ClassFromString(_ name:String) -> AnyClass {
+func BNClassFromString(_ name:String) -> AnyClass {
     let nameKey = "CFBundleName";
     //这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
     let appName = Bundle.main.infoDictionary![nameKey] as? String;
@@ -45,7 +48,7 @@ func BN_ClassFromString(_ name:String) -> AnyClass {
     return cls;
 }
 
-func BN_StringShortFromClass(_ cls:Swift.AnyClass) -> String {
+func BNStringShortFromClass(_ cls:Swift.AnyClass) -> String {
 
     var className:String = NSStringFromClass(cls);
     if className.contains(".") {
@@ -75,7 +78,7 @@ extension NSObject{
         return appName!;
     }
     
-    func BN_ClassName(_ className:String) -> AnyClass {
+    func BNClassName(_ className:String) -> AnyClass {
         let cls : AnyClass = NSClassFromString(appName() + "." + className)!;
         return cls;
     }

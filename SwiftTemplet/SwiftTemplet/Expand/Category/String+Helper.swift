@@ -12,16 +12,14 @@ extension String{
     
     func valid() -> Bool! {
         let array = ["","nil","null"];
-//        array.forEach { (str) in
-//            if str == self {
-//                return false;
-//
-//            }
-//        }
         if array.contains(self){
             return false;
         }
         return true;
+    }
+    
+    func reverse() -> String {
+        return String(self.reversed())
     }
     
     func dictValue() -> Dictionary<String, Any>!{
@@ -30,7 +28,7 @@ extension String{
         
         let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers);
         if dict != nil {
-            return dict as! Dictionary;
+            return (dict as! Dictionary);
         }
         return Dictionary();
     }
@@ -40,10 +38,9 @@ extension String{
         let jsonData:Data = self.data(using: .utf8)!
         let array = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
         if array != nil {
-            return array as! Array;
+            return (array as! Array);
         }
         return Array();
-        
     }
     
     

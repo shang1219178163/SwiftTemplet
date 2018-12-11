@@ -12,6 +12,123 @@ import UIKit
 
 extension UIView{
     
+    var width: CGFloat {
+        get {
+            return self.frame.width
+        }
+        set {
+            self.frame.size.width = newValue
+        }
+    }
+    
+    var height: CGFloat {
+        get {
+            return self.frame.size.height
+        }
+        set {
+            self.frame.size.height = newValue
+        }
+    }
+    
+    var size: CGSize  {
+        get {
+            return self.frame.size
+        }
+        set{
+            self.frame.size = newValue
+        }
+    }
+    
+    var origin: CGPoint {
+        get {
+            return self.frame.origin
+        }
+        set {
+            self.frame.origin = newValue
+        }
+    }
+    
+    var x: CGFloat {
+        get {
+            return self.frame.origin.x
+        }
+        set {
+            self.frame.origin = CGPoint(x:newValue, y:self.frame.origin.y)
+        }
+    }
+    
+    var y: CGFloat {
+        get {
+            return self.frame.origin.y
+        }
+        set {
+            self.frame.origin = CGPoint(x:self.frame.origin.x, y:newValue)
+        }
+    }
+    
+    var centerX: CGFloat {
+        get {
+            return self.center.x
+        }
+        set {
+            self.center = CGPoint(x:newValue, y:self.center.y)
+        }
+    }
+    
+    var centerY: CGFloat {
+        get {
+            return self.center.y
+        }
+        set {
+            self.center = CGPoint(x:self.center.x, y:newValue)
+        }
+    }
+    
+    var left: CGFloat {
+        get {
+            return self.frame.origin.x
+        }
+        set {
+            self.frame.origin.x = newValue
+        }
+    }
+    
+    var right: CGFloat {
+        get {
+            return self.frame.origin.x + self.frame.size.width
+        }
+        set {
+            self.frame.origin.x = newValue - self.frame.size.width
+        }
+    }
+    var top: CGFloat {
+        get {
+            return self.frame.origin.y
+        }
+        set {
+            self.frame.origin.y = newValue
+        }
+    }
+    var bottom: CGFloat {
+        get {
+            return self.frame.origin.y + self.frame.size.height
+        }
+        set {
+            self.frame.origin.y = newValue - self.frame.size.height
+        }
+    }
+    
+    var cornerRadius: CGFloat {
+        get {
+            return self.layer.cornerRadius
+        }
+        set {
+            self.layer.masksToBounds = true
+            self.layer.cornerRadius = newValue
+        }
+    }
+    
+    
     func getViewLayer() -> () {
         let subviews = self.subviews;
         if subviews.count == 0 {

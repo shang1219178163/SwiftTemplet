@@ -1,5 +1,5 @@
 //
-//  BN_ViewZero.swift
+//  BNViewZero.swift
 //  SwiftTemplet
 //
 //  Created by hsf on 2018/8/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BN_ViewZero: UIView {
+class BNViewZero: UIView {
 
     var mblock:ViewClick?
     

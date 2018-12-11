@@ -28,22 +28,7 @@ extension UITableViewCell{
         let identifier = NSStringFromClass(self.classForCoder());
         return self.cellWithTableView(tableView, identifier: identifier);
     }
-    
-    //MARK: - -属性
-    var width : CGFloat {
-        get{
-            return self.contentView.frame.width;
-            
-        }
-    }
-    
-    var height : CGFloat {
-        get{
-            return self.contentView.frame.height;
-            
-        }
-    }
-    
+        
     var imgViewLeft: UIImageView {
         get {
             var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;

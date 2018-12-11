@@ -1,5 +1,5 @@
 //
-//  BN_BaseNavigationController.swift
+//  BNBaseNavigationController.swift
 //  SwiftTemplet
 //
 //  Created by hsf on 2018/8/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BN_BaseNavigationController: UINavigationController {
+class BNBaseNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

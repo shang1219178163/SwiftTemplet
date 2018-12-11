@@ -18,8 +18,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         title = "Main";
         view.backgroundColor = UIColor.red;
-        
-        
+                
 //        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
         
         view.addSubview(self.tableView);

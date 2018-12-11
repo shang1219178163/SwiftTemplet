@@ -39,11 +39,10 @@ extension UIApplication{
         }
     }
     
-    
     static func setupRootController(_ controller:AnyObject,_ isAdjust:Bool) -> Void {
         var contr = controller;
         if controller is String {
-            contr = BN_ControllerFromString(controller as! String);
+            contr = UICtrFromString(controller as! String);
         }
         
         if !isAdjust {
