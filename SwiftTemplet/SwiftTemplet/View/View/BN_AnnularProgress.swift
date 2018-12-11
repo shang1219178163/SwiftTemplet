@@ -1,5 +1,5 @@
 //
-//  BN_AnnularProgress.swift
+//  BNAnnularProgress.swift
 //  Test
 //
 //  Created by hsf on 2018/9/6.
@@ -37,7 +37,7 @@ struct ProgressModel{
 }
 
 
-class BN_AnnularProgress: UIView {
+class BNAnnularProgress: UIView {
 
     var progressModel = ProgressModel.init()
     private let progressLayer = CAShapeLayer();

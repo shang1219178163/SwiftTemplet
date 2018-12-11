@@ -1,5 +1,5 @@
 //
-//  BN_ClockView.swift
+//  BNClockView.swift
 //  SwiftTemplet
 //
 //  Created by hsf on 2018/9/6.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BN_ClockView: UIImageView {
+class BNClockView: UIImageView {
     
     var aniDuration: Double?;
     

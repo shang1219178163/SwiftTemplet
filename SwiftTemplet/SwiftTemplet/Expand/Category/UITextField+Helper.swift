@@ -13,11 +13,11 @@ import UIKit
 extension UITextField{
     
     //    MARK: - -TextFieldRightView
-    func accessoryView(_ isRight: Bool, unitName: String!, viewSize:CGSize) -> UIView! {
+    func asoryView(_ isRight: Bool, unitName: String!, viewSize:CGSize) -> UIView! {
         
         assert(unitName != nil && unitName.valid() == true);
         
-        if unitName.contains(".png") {
+        if unitName.contains("") {
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: viewSize.width, height: viewSize.height));
             imgView.image = UIImage(named: unitName);
             imgView.tag = kTAG_IMGVIEW;
@@ -41,12 +41,12 @@ extension UITextField{
     
     func asoryView(_ isRight: Bool, unitName: String!) -> Void {
         if isRight == true {
-            self.rightView = self.accessoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
+            self.rightView = self.asoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
             self.rightViewMode = UITextFieldViewMode.always;
 
         }
         else{
-            self.leftView = self.accessoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
+            self.leftView = self.asoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
             self.leftViewMode = UITextFieldViewMode.always;
 
         }
