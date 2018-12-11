@@ -16,7 +16,7 @@ extension UIViewController{
     var controllerName: String {
         get {
 
-            var className:String = BN_StringShortFromClass(self.classForCoder);
+            var className:String = BNStringShortFromClass(self.classForCoder);
             
             if className.contains("Controller") {
                 var range = className.range(of: "Controller");

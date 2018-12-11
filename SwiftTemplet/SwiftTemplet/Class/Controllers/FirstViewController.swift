@@ -85,7 +85,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon.png");
+            cell.imgViewLeft.image = UIImage(named: "dragon");
             cell.imgViewRight.isHidden = false;
             
             //随机元素
@@ -95,8 +95,8 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             //        imgList = imgList.shuffled();
             
             //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
-            //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
-            cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()!), placeholder: UIImage(named:"dragon.png"), options: nil, progressBlock: nil, completionHandler: nil);
+            //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon"), options: nil, progressBlock: nil, completionHandler: nil);
+            cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()!), placeholder: UIImage(named:"dragon"), options: nil, progressBlock: nil, completionHandler: nil);
             
             //        cell.type = 1;
             

@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        window = UIWindow(frame:UIScreen.main.bounds);
 //        window?.backgroundColor = UIColor.white;
-//        var controller = BN_ControllerFromString("MainViewController");
-//        controller = BN_ControllerFromString("HomeViewController");
+//        var controller = BNControllerFromString("MainViewController");
+//        controller = BNControllerFromString("HomeViewController");
 //        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);
 //        window?.makeKeyAndVisible();
         
-        var controller = BN_ControllerFromString("MainViewController");
-        controller = BN_ControllerFromString("HomeViewController");
+        var controller = UICtrFromString("MainViewController");
+        controller = UICtrFromString("HomeViewController");
         UIApplication.setupRootController(controller, true);
         UIApplication.setupAppearance();
        

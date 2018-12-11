@@ -70,39 +70,38 @@ let kW_LINE_Vert: CGFloat =  3.0;
 
 // MARK: -font
 
-let KFZ_First =  18;
-let KFZ_Second = 16;
-let KFZ_Third =  14;
-let KFZ_Fouth =  12;
-let KFZ_Fifth =  10;
+let kFZ_First =  18;
+let kFZ_Second = 16;
+let kFZ_Third =  14;
+let kFZ_Fouth =  12;
+let kFZ_Fifth =  10;
 
 // MARK: -视图
 
 
-let kIMG_arrowUp = "img_arrowUp.png";
-let kIMG_arrowLeft = "img_arrowLeft.png";
-let kIMG_arrowDown = "img_arrowDown.png";
-let kIMG_arrowRight = "img_arrowRight.png";
+let kIMG_arrowUp = "img_arrowUp";
+let kIMG_arrowLeft = "img_arrowLeft";
+let kIMG_arrowDown = "img_arrowDown";
+let kIMG_arrowRight = "img_arrowRight";
+let kIMG_arrowBack = "img_arrowLeft_88_w";
 
-let kIMG_arrowBack = "img_arrowLeft_88_w.png";
 
+let kIMG_default_User = "img_portrait_Default";
+let kIMG_default_User_N = "img_headPortrait_N";
+let kIMG_default_User_H = "img_headPortrait_H";
+let kIMG_defaultAddPhoto = "img_photoAddDefault";
+let kIMG_photoDelete = "img_Picture_Delete";
 
-let kIMG_default_User = "img_portrait_Default.png";
-let kIMG_default_User_N = "img_headPortrait_N.png";
-let kIMG_default_User_H = "img_headPortrait_H.png";
-let kIMG_defaultAddPhoto = "img_photoAddDefault.png";
-let kIMG_photoDelete = "img_Picture_Delete.png";
+let kIMG_default_failed = "imageFailedDefault";
 
-let kIMG_default_failed = "imageFailedDefault.png";
-
-let kIMG_SexBoy = "img_sex_boy.png";
-let kIMG_SexGril = "img_sex_gril.png";
+let kIMG_SexBoy = "img_sex_boy";
+let kIMG_SexGril = "img_sex_gril";
 
 let kIMG_elemetDecrease = "decrease_elemet";
 let kIMG_elemetIncrease = "increase_elemet";
 
-let kIMG_scan = "img_scan.png";
-let kIMG_NFC = "img_NFC.png";
+let kIMG_scan = "img_scan";
+let kIMG_NFC = "img_NFC";
 let kIMG_update = "img_dialog_update";
 let kIMG_inquiry = "img_dialog_inquiry";
 let kIMG_warning = "img_dialog_warning";

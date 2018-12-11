@@ -65,7 +65,7 @@ target 'SwiftTemplet' do
     pod 'RxSwift'
     
 #    pod 'ObjectMapper+Realm'
-pod 'BN_AlertView'
+pod 'BNAlertView'
 
 
 end

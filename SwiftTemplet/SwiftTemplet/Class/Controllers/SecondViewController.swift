@@ -28,11 +28,13 @@ class SecondViewController: UIViewController {
         let jsonString = "news.geojson".jsonFileToJSONString();
         DDLog("************************************")
         
-        let rootModel = Mapper<BN_RootClass>().map(JSONString: jsonString);
-        DDLog(Mapper<BN_RootClass>());
+        let rootModel = Mapper<BNRootClass>().map(JSONString: jsonString);
+        DDLog(Mapper<BNRootClass>());
 //        DDLog(rootModel?.description);
         
-        
+        let age = 18;
+        DDLog(age.string);
+
 
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
 
-    typealias ViewClick = (UITableViewCellDatePicker,BN_DatePicker,Int) -> Void;
+    typealias ViewClick = (UITableViewCellDatePicker,BNDatePicker,Int) -> Void;
     var viewblock: ViewClick?;
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -73,8 +73,8 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         
     }
     
-    lazy var datePicker:BN_DatePicker = {
-        let view = BN_DatePicker(.date);
+    lazy var datePicker:BNDatePicker = {
+        let view = BNDatePicker(.date);
         view.block({ (sender, idx) in
 //                DDLog(view,sender.datePicker.date,idx);
             if self.viewblock != nil {

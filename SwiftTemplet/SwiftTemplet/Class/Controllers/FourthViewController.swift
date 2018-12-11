@@ -27,7 +27,7 @@ class FourthViewController: UIViewController {
 //        view.getViewLayer();
 //        return;
         
-        let viewZero = BN_ViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
+        let viewZero = BNViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
         view.addSubview(viewZero);
         
         viewZero.block { (tap, view, idx) in
@@ -104,7 +104,7 @@ class FourthViewController: UIViewController {
 
     
     func addClockView(){
-        let clockView = BN_ClockView(frame: CGRect(x: 20, y: 20, width: kScreen_width - 40, height: kScreen_width - 40));
+        let clockView = BNClockView(frame: CGRect(x: 20, y: 20, width: kScreen_width - 40, height: kScreen_width - 40));
         clockView.itemList = ["111","222","333","444","555","666","777","888",];
         clockView.backgroundColor = UIColor.random;
         clockView.image = UIImage(named: "beach");
@@ -126,15 +126,15 @@ class FourthViewController: UIViewController {
     }
     
     
-    lazy var progressView: BN_AnnularProgress = {
-        let progressView = BN_AnnularProgress(frame: CGRect(x:50,y:kScreen_width/2+40,width:100,height:100));
+    lazy var progressView: BNAnnularProgress = {
+        let progressView = BNAnnularProgress(frame: CGRect(x:50,y:kScreen_width/2+40,width:100,height:100));
         progressView.backgroundColor = UIColor.cyan;
         return progressView;
     }();
     
     
-    lazy var datePicker:BN_DatePicker = {
-        let view = BN_DatePicker(.date);
+    lazy var datePicker:BNDatePicker = {
+        let view = BNDatePicker(.date);
         view.block({ (sender, idx) in
             if idx == 1 {
                 DDLog(view,sender.datePicker.date,idx);
@@ -146,7 +146,7 @@ class FourthViewController: UIViewController {
 //            DDLog(tap as Any,"\n",sender,"\n",idx);
 //
 //            if idx == 1 {
-//                if let control = sender as? BN_DatePicker {
+//                if let control = sender as? BNDatePicker {
 //                    DDLog(control.datePicker.date);
 //
 //                }

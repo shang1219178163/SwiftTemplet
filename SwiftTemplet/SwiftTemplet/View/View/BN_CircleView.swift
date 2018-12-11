@@ -1,5 +1,5 @@
 //
-//  BN_CircleView.swift
+//  BNCircleView.swift
 //  SwiftTemplet
 //
 //  Created by hsf on 2018/9/6.
@@ -14,7 +14,7 @@
 
 import UIKit
 
-class BN_CircleView: UIView {
+class BNCircleView: UIView {
 
     
     var value: CGFloat = 0 {

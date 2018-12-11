@@ -1,5 +1,5 @@
 //
-//  BN_DatePicker.swift
+//  BNDatePicker.swift
 //  SwiftTemplet
 //
 //  Created by hsf on 2018/9/7.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class BN_DatePicker: UIView {
+class BNDatePicker: UIView {
     
-    typealias ViewClick = (BN_DatePicker,Int) -> Void;
+    typealias ViewClick = (BNDatePicker,Int) -> Void;
     var viewblock: ViewClick?;
 
     private let btnSize = CGSize(width: 60, height: kH_NaviagtionBar);

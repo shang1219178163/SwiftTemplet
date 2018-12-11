@@ -1,20 +1,20 @@
 //
-//	BN_RootClass.swift
+//	BNRootClass.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation 
 import ObjectMapper
 
 
-class BN_RootClass : NSObject, Mappable{
+class BNRootClass : NSObject, Mappable{
 
 	var msg : String?
-	var result : BN_Result?
+	var result : BNResult?
 	var status : Int?
 
 
 //    class func newInstance(map: Map) -> Mappable?{
-//        return BN_RootClass()
+//        return BNRootClass()
 //    }
 	required init?(map: Map){}
 
@@ -33,7 +33,7 @@ class BN_RootClass : NSObject, Mappable{
     @objc required init(coder aDecoder: NSCoder)
 	{
          msg = aDecoder.decodeObject(forKey: "msg") as? String
-         result = aDecoder.decodeObject(forKey: "result") as? BN_Result
+         result = aDecoder.decodeObject(forKey: "result") as? BNResult
          status = aDecoder.decodeObject(forKey: "status") as? Int
 
 	}
