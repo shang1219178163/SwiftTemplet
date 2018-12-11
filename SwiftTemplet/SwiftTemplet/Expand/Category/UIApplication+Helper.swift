@@ -57,6 +57,10 @@ extension UIApplication{
         }
     }
     
+    static func setupRootController(_ controller:AnyObject) -> Void {
+        return UIApplication.setupRootController(controller, true);
+    }
+    
     static func setupAppearance() -> Void {
         self.setupAppearanceTabBar();
         self.setupAppearanceNavigationBar();

@@ -39,8 +39,8 @@ class BNDatePicker: UIView {
         
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-            self.containView.frame.orignY -= self.containView.frame.height;
-            
+//            self.containView.frame.orignY -= self.containView.frame.height;
+            self.containView.y -= self.containView.frame.height;
         }, completion: nil);
     }
 
@@ -48,7 +48,8 @@ class BNDatePicker: UIView {
 
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.frame.orignY += self.containView.frame.height;
+//            self.containView.frame.orignY += self.containView.frame.height;
+            self.containView.y += self.containView.frame.height;
 
         }) { (isFinished) in
             self.removeFromSuperview();
