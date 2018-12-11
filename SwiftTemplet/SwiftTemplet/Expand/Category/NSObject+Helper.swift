@@ -12,7 +12,7 @@ import UIKit
 
 import ObjectMapper
 
-func StringFromIndexPath(_ indexPath:NSIndexPath) -> String {
+func NSStringFromIndexPath(_ indexPath:NSIndexPath) -> String {
     return String(format: "{%d,%d}", indexPath.section, indexPath.section);
 }
 
@@ -40,6 +40,54 @@ func UICtrFromString(_ vcName:String) -> UIViewController {
     return childController;
 }
 
+func UINavCtrFromObj(_ obj:AnyObject) -> UINavigationController?{
+    if obj is UINavigationController {
+        return obj as? UINavigationController;
+        
+    }else if obj is String {
+        return UINavigationController(rootViewController: UICtrFromString(obj as! String));
+        
+    }else if obj is UIViewController {
+        return UINavigationController(rootViewController: obj as! UIViewController);
+        
+    }
+    return nil;
+}
+
+func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
+    let marr = NSMutableArray();
+    for obj in list {
+        if obj is String {
+            marr.add(UINavCtrFromObj(obj as AnyObject) as Any);
+            
+        }else if obj is Array<String> {
+            let itemList = obj as! Array<String>;
+            
+            let title:String = itemList.count > 1 ? itemList[1]    :   "";
+            let img_N:String = itemList.count > 2 ? itemList[2]    :   "";
+            let img_H:String = itemList.count > 3 ? itemList[3]    :   "";
+            let badgeValue:String = itemList.count > 4 ? itemList[4]    :   "";
+
+            let controller:UIViewController = UICtrFromString(itemList.first!);
+            controller.title = title;
+            controller.tabBarItem.image = UIImage(named: img_N)?.withRenderingMode(.alwaysOriginal);
+            controller.tabBarItem.selectedImage = UIImage(named: img_H)?.withRenderingMode(.alwaysOriginal);
+            controller.tabBarItem.badgeValue = badgeValue;
+            controller.tabBarItem.badgeColor = badgeValue.isEmpty ? UIColor.clear:UIColor.red;
+            marr.add(UINavCtrFromObj(controller) as Any);
+        }else {
+            print("list只能包含字符串对象或者数组对象");
+        }
+    }
+    let tabBarController = UITabBarController();
+    tabBarController.viewControllers = marr.copy() as! [UINavigationController];
+    return tabBarController;
+}
+
+func UIColorFromDim(_ white:CGFloat, _ a:CGFloat) -> UIColor{
+    return UIColor.init(white: white, alpha: a);
+}
+    
 func BNClassFromString(_ name:String) -> AnyClass {
     let nameKey = "CFBundleName";
     //这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api

@@ -35,6 +35,7 @@ class FourthViewController: UIViewController {
 
             self.datePicker.show();
         };
+        return;
         
         self.addClockView();
         view.addSubview(progressView)
@@ -68,7 +69,7 @@ class FourthViewController: UIViewController {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreen_width - 20.0*2, height: 0);
-        let groupView = UIView.createView(rect: rect, list: list as! Array<String>, numberOfRow: 4, viewHeight: 30, padding: 5, type: 2) { (tap, itemView, idx) in
+        let groupView = UIView.createView(rect: rect, list: (list as! Array<String>), numberOfRow: 4, viewHeight: 30, padding: 5, type: 2) { (tap, itemView, idx) in
             
 //            DDLog(tap as Any,itemView,idx);
             
