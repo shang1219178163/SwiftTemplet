@@ -16,18 +16,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+        //方式一
 //        window = UIWindow(frame:UIScreen.main.bounds);
 //        window?.backgroundColor = UIColor.white;
 //        var controller = BNControllerFromString("MainViewController");
 //        controller = BNControllerFromString("HomeViewController");
 //        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);
 //        window?.makeKeyAndVisible();
-        
+        //方式二
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
         UIApplication.setupRootController(controller, true);
         UIApplication.setupAppearance();
+        //方式三
+//        let list:Array = [
+//            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
+//            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
+//            //            ["CenterViewController", "概况",  "Item_center_N",  "Item_center_H"],
+//            ["FifthViewControlle", "概况",  "Item_center_N",  "Item_center_H"],
+//            ["ThirdViewController", "消息", "Item_third_N", "Item_third_H"],
+//            ["FourthViewController", "我的",  "Item_fourth_N",  "Item_fourth_H"],
+//
+//            ];
+//        let tabBarController = UITarBarCtrFromList(list);
+//        UIApplication.setupRootController(tabBarController!);
+        
        
         DDLog(self,UIApplication.shared.delegate as! AppDelegate)
         DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window);
