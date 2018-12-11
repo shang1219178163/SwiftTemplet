@@ -10,6 +10,54 @@ import UIKit
 
 extension UIApplication{
     
+    static var appName: String {
+        get {
+            let infoDic = Bundle.main.infoDictionary;
+            return  (infoDic!["CFBundleDisplayName"] != nil) ? infoDic!["CFBundleDisplayName"] as! String : infoDic!["CFBundleName"] as! String;
+        }
+    }
+    
+    static var appIcon: UIImage {
+        get {
+            let infoDic:AnyObject = Bundle.main.infoDictionary as AnyObject;
+            let iconFiles:Array<Any> = infoDic.value(forKeyPath: "CFBundleIcons.CFBundlePrimaryIcon.CFBundleIconFiles") as! Array<Any>;
+            let imgName:String = iconFiles.last as! String;
+            return  UIImage(named: imgName)!;
+        }
+    }
+    
+    static var appVer: String {
+        get {
+            let infoDic = Bundle.main.infoDictionary;
+            return infoDic!["CFBundleShortVersionString"] as! String;
+        }
+    }
+    
+    static var appBuild: String {
+        get {
+            let infoDic = Bundle.main.infoDictionary;
+            return infoDic!["CFBundleVersion"] as! String;
+        }
+    }
+    
+    static var phoneSystemVer: String {
+        get {
+            return UIDevice.current.systemVersion;
+        }
+    }
+    
+    static var phoneSystemName: String {
+        get {
+            return UIDevice.current.systemName;
+        }
+    }
+    
+    static var phoneName: String {
+        get {
+            return UIDevice.current.name;
+        }
+    }
+    
     static var mainWindow: UIWindow {
         get {
             let app = UIApplication.shared.delegate as! AppDelegate;
@@ -104,6 +152,27 @@ extension UIApplication{
         UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0)
         // 设置图标选中时颜色
         UITabBar.appearance().tintColor = UIColor.red;
+        
+    }
+    
+    static func openURL(_ urlStr:String, _ tips:String) {
+        let set = NSCharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]").inverted;
+        let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: set)!;
+//        let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+
+        let url:NSURL? = NSURL.init(string:str);
+        if UIApplication.shared.canOpenURL(url! as URL) {
+            if iOSVer(version: 10) {
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil);
+
+            }else{
+                UIApplication.shared.openURL(url! as URL);
+                
+            }
+        }else{
+            print("链接无法打开!!!\n%@",url as Any);
+            
+        }
         
     }
 }

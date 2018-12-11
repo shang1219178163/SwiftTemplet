@@ -119,15 +119,9 @@ extension NSObject{
         }
     }
     
-    func appName() -> String {
-        let nameKey = "CFBundleName";
-        //这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
-        let appName = Bundle.main.infoDictionary![nameKey] as? String;
-        return appName!;
-    }
-    
     func BNClassName(_ className:String) -> AnyClass {
-        let cls : AnyClass = NSClassFromString(appName() + "." + className)!;
+        let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
+        let cls : AnyClass = NSClassFromString(appName + "." + className)!;
         return cls;
     }
         
