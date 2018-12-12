@@ -72,6 +72,7 @@
 		D7C0AFE721BF912F00C95048 /* NSInteger+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */; };
 		D7C0AFE921BF9D9300C95048 /* NSDate+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */; };
 		D7C0AFEB21BFA07900C95048 /* UIImage+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFEA21BFA07900C95048 /* UIImage+Helper.swift */; };
+		D7C0AFED21BFBEDC00C95048 /* NSObject+Hook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0AFEC21BFBEDC00C95048 /* NSObject+Hook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSInteger+Helper.swift"; sourceTree = "<group>"; };
 		D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Helper.swift"; sourceTree = "<group>"; };
 		D7C0AFEA21BFA07900C95048 /* UIImage+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Helper.swift"; sourceTree = "<group>"; };
+		D7C0AFEC21BFBEDC00C95048 /* NSObject+Hook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Hook.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 				51827CC621300C170084720C /* UIApplication+Helper.swift */,
 				515B9EB021350F2200B61F61 /* NSObject+Define.swift */,
 				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
+				D7C0AFEC21BFBEDC00C95048 /* NSObject+Hook.swift */,
 				D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */,
 				D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */,
 				515B9EB2213517D200B61F61 /* DateFormatter+Helper.swift */,
@@ -492,6 +495,7 @@
 				D7C0AFE521BF452500C95048 /* NumberFormatter+Helper.swift in Sources */,
 				515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
+				D7C0AFED21BFBEDC00C95048 /* NSObject+Hook.swift in Sources */,
 				5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				517D143B2141248000F08FE5 /* BNAnnularProgress.swift in Sources */,
