@@ -20,7 +20,6 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
 
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
-        view.backgroundColor = .green;
         
         view.addSubview(self.tableView);
         
@@ -109,8 +108,8 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
+        NSStringFromCGRect(tableView.frame)
+        DDLog(NSStringFromIndexPath(indexPath as NSIndexPath));
         
     }
     

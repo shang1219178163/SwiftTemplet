@@ -15,12 +15,13 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         tabBar.tintColor = UIColor.theme;
         tabBar.barTintColor = UIColor.white;
 
         self.viewControllers = self.getControllers(itemList: itemList);
 
-        self.selectedIndex = 1;
+//        self.selectedIndex = 1;
         
     }
     

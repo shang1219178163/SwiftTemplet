@@ -12,9 +12,7 @@ import UIKit
 
 extension NSObject{
     
-    static func swizzleMethodInstance(_ origSel:Selector, replSel:Selector) -> Bool {
-
-        let clz:AnyClass = classForCoder();
+    static func swizzleMethodInstance(_ clz: AnyClass, origSel:Selector, replSel:Selector) -> Bool {
         
         let oriMethod = class_getInstanceMethod(clz, origSel);
         let repMethod = class_getInstanceMethod(clz, replSel);
@@ -32,5 +30,12 @@ extension NSObject{
         }
         return true;
     }
+    
+    static func swizzleMethodInstance(_ origSel:Selector, replSel:Selector) -> Bool {
+        let clz:AnyClass = classForCoder();
+        return swizzleMethodInstance(clz, origSel: origSel, replSel: replSel);
+    }
+   
+
 }
 

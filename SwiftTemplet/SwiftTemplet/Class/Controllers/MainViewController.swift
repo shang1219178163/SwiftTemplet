@@ -17,14 +17,15 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         super.viewDidLoad();
         
         title = "Main";
-        view.backgroundColor = .red;
-                
-//        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
         
+//        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(handActionBtn));
+
+        print(view.frame,view.bounds)
+
         view.addSubview(self.tableView);
         
-        
-        for _ in 0...5{
+        for _ in 0...3{
             let marr : NSMutableArray = [];
             for j in 0...3{
                 marr.add(j);
@@ -33,14 +34,26 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             self.dataList.add(marr);
         }
         DDLog(self.dataList);
-        
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+                
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews();
+        
+        self.tableView.height = view.bounds.height;
+        print(view.frame,view.bounds)
     }
     
     @objc func handActionBtn(){
         DDLog("handActionBtn");
         
-        
+        let controller = UICtrFromString("DetailViewController");
+        navigationController?.pushViewController(controller, animated: true);
     }
     
 //   @objc func handActionBtn(sender:UIButton) -> Void{
@@ -65,30 +78,32 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         return 60;
     };
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCellZero.cellWithTableView(tableView);
-        cell.textLabel?.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-        
-        return cell;
-    }
-    
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let  identifier : String = "identifier";
-//        var  cell = tableView.dequeueReusableCell(withIdentifier: identifier);
-//        if cell == nil{
-//            cell = UITableViewCell(style: .default, reuseIdentifier: identifier);
-//        }
 //
-//        cell?.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+//        let cell = UITableViewCellZero.cellWithTableView(tableView);
+//        cell.textLabel?.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
 //
-//        return cell!;
+//        return cell;
 //    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identifier : String = "identifier";
+        var cell = tableView.dequeueReusableCell(withIdentifier: identifier);
+        if cell == nil{
+            cell = UITableViewCell(style: .default, reuseIdentifier: identifier);
+        }
+        cell?.separatorInset = .zero;
+        cell?.layoutMargins = .zero;
+        cell?.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+
+        return cell!;
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        DDLog(NSStringFromIndexPath(indexPath as NSIndexPath));
         
-        
+        let controller = UICtrFromString("DetailViewController");
+        navigationController?.pushViewController(controller, animated: true);
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
