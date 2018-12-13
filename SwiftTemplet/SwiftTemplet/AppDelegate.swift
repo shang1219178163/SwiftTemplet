@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIViewController.initializeMethod();
         // Override point for customization after application launch.
         //方式一
 //        window = UIWindow(frame:UIScreen.main.bounds);
