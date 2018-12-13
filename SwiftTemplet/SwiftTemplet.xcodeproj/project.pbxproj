@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
+		14E8692021C1E9BE009CE33E /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8691F21C1E9BE009CE33E /* DispatchQueue+Helper.swift */; };
+		14E8692221C1FB18009CE33E /* UIViewController+Hook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692121C1FB18009CE33E /* UIViewController+Hook.swift */; };
 		51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51262F6E2133FC9B0032AE02 /* UIView+Add.swift */; };
 		513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513571D82125682A00627C67 /* UICollectionView+Helper.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
@@ -76,6 +78,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14E8691F21C1E9BE009CE33E /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
+		14E8692121C1FB18009CE33E /* UIViewController+Hook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Hook.swift"; sourceTree = "<group>"; };
 		51262F6E2133FC9B0032AE02 /* UIView+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Add.swift"; sourceTree = "<group>"; };
 		513571D82125682A00627C67 /* UICollectionView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Helper.swift"; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				515B9EB021350F2200B61F61 /* NSObject+Define.swift */,
 				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
 				D7C0AFEC21BFBEDC00C95048 /* NSObject+Hook.swift */,
+				14E8692121C1FB18009CE33E /* UIViewController+Hook.swift */,
 				D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */,
 				D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */,
 				515B9EB2213517D200B61F61 /* DateFormatter+Helper.swift */,
@@ -322,6 +327,7 @@
 				515AA7582142178300C8D0AA /* UIScreen+Helper.swift */,
 				515AA75A21422B6100C8D0AA /* CGRect+Helper.swift */,
 				51BDABF9214F8EC0003B9722 /* Sequence+Helper.swift */,
+				14E8691F21C1E9BE009CE33E /* DispatchQueue+Helper.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -492,6 +498,7 @@
 				515B9EAD2134F16100B61F61 /* UIBarButtonItem+Helper.swift in Sources */,
 				5168FAC420ABB9270098A500 /* UIViewController+Helper.swift in Sources */,
 				515B9EB121350F2200B61F61 /* NSObject+Define.swift in Sources */,
+				14E8692221C1FB18009CE33E /* UIViewController+Hook.swift in Sources */,
 				D7C0AFE521BF452500C95048 /* NumberFormatter+Helper.swift in Sources */,
 				515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
@@ -532,6 +539,7 @@
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				51BDABFA214F8EC0003B9722 /* Sequence+Helper.swift in Sources */,
 				517D143321410BB700F08FE5 /* UIView+Animation.swift in Sources */,
+				14E8692021C1E9BE009CE33E /* DispatchQueue+Helper.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
 				5182444C213E8CB600071A9D /* BNResult.swift in Sources */,
