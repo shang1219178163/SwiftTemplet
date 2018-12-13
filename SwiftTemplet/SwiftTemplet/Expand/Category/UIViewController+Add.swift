@@ -31,10 +31,21 @@ extension UIViewController{
         get {
             var table = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITableView;
             if table == nil {
-                table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+                table = UITableView(frame:view.bounds, style:UITableViewStyle.grouped);
                 table!.separatorStyle = .none;
-                table!.dataSource = self as! UITableViewDataSource;
-                table!.delegate = self as! UITableViewDelegate;
+                table!.separatorInset = .zero;
+                
+            
+                if self.conforms(to: UITableViewDataSource.self) {
+                    table!.dataSource = self as? UITableViewDataSource;
+                }
+                
+                if self.conforms(to: UITableViewDelegate.self) {
+                    table!.delegate = self as? UITableViewDelegate;
+                }
+               
+//                 table!.dataSource = self as! UITableViewDataSource;
+//                table!.delegate = self as! UITableViewDelegate;
 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), table, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }

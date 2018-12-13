@@ -119,11 +119,11 @@ extension UIApplication{
             UITableView.appearance().estimatedSectionHeaderHeight = 0.0;
             UITableView.appearance().estimatedSectionFooterHeight = 0.0;
             
-            UICollectionView.appearance().contentInsetAdjustmentBehavior = .never;
-            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never;
+//            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never;
             UIScrollView.appearance().keyboardDismissMode = .onDrag;
         }
         UIButton.appearance().isExclusiveTouch = false;
+        
     }
     
     static func setupAppearanceNavigationBar() -> Void {

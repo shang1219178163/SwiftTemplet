@@ -25,7 +25,6 @@ public final class ExtensionBaseTypeAble<T>: BaseTypeAble {
     }
 }
 
-
 /// 为协议实现默认方法
 extension BaseTypeAble where WarpperType == UIColor{
     /// 获取红色

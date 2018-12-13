@@ -13,7 +13,7 @@ import UIKit
 import ObjectMapper
 
 func NSStringFromIndexPath(_ indexPath:NSIndexPath) -> String {
-    return String(format: "{%d,%d}", indexPath.section, indexPath.section);
+    return String(format: "{%d,%d}", indexPath.section, indexPath.row);
 }
 
 func iOSVer(version:Float)->Bool{
