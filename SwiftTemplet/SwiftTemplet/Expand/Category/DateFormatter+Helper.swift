@@ -33,7 +33,7 @@ extension DateFormatter{
 
         let fmt = DateFormatter();
         fmt.dateFormat = formatStr;
-        fmt.locale = NSLocale.current;
+        fmt.locale = .current;
         fmt.timeZone = NSTimeZone.local;
         dic.setObject(fmt, forKey: formatStr as NSCopying)
         return fmt;

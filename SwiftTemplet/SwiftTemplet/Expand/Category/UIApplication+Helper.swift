@@ -150,7 +150,7 @@ extension UIApplication{
 //        UITabBarItem.appearance().setTitleTextAttributes(attDic_N, for: .normal);
         UITabBarItem.appearance().setTitleTextAttributes(attDic_H, for: .selected);
         // 设置字体偏移
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0)
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0);
         // 设置图标选中时颜色
         UITabBar.appearance().tintColor = .red;
         
