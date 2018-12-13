@@ -18,7 +18,7 @@ extension NumberFormatter{
         }
         
         let fmt = NumberFormatter();
-        fmt.locale = NSLocale.current;
+        fmt.locale = .current;
         dic.setObject(fmt, forKey: identify as NSCopying)
         return fmt;
     }

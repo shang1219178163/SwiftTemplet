@@ -45,7 +45,7 @@ class CenterViewController: UIViewController {
         DDLog(itemRight);
         
         
-        imgView.frame = CGRect.init(x: 10, y: 80, width: 220, height: 100);
+        imgView.frame = .init(x: 10, y: 80, width: 220, height: 100);
         view.addSubview(imgView);
         
         imgView.addActionHandler { (tap, view, idx) in
@@ -108,7 +108,7 @@ class CenterViewController: UIViewController {
     
 //    layz var btn:UIButton = {
 //        let btn = UIButton.init();
-//        btn.frame = CGRect.init(x:10, y: 200, width: 50, height: 50);
+//        btn.frame = .init(x:10, y: 200, width: 50, height: 50);
 //        btn.titleLabel?.text = "99999";
 //        return btn;
 //    }();

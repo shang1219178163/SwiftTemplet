@@ -77,7 +77,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 //        let  identifier : String = "identifier";
 //        var  cell = tableView.dequeueReusableCell(withIdentifier: identifier);
 //        if cell == nil{
-//            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier);
+//            cell = UITableViewCell(style: .default, reuseIdentifier: identifier);
 //        }
 //
 //        cell?.textLabel?.text = String.init(format: "section_%d,row_%d", indexPath.section,indexPath.row);
