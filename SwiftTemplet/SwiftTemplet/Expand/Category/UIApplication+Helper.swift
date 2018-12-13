@@ -63,12 +63,12 @@ extension UIApplication{
         get {
             let app = UIApplication.shared.delegate as! AppDelegate;
             if app.window != nil {
-                app.window!.backgroundColor = UIColor.white;
+                app.window!.backgroundColor = .white;
                 app.window!.makeKeyAndVisible();
                 return app.window!;
             }
             app.window = UIWindow.init(frame: UIScreen.main.bounds);
-            app.window?.backgroundColor = UIColor.white;
+            app.window?.backgroundColor = .white;
             app.window?.makeKeyAndVisible();
             return app.window!;
         }
@@ -127,17 +127,17 @@ extension UIApplication{
     }
     
     static func setupAppearanceNavigationBar() -> Void {
-        UINavigationBar.appearance().tintColor =  UIColor.white;//界面顶部透明
-        UINavigationBar.appearance().barTintColor = UIColor.theme; //界面顶部透明
-        //        UINavigationBar.appearance().barTintColor = UIColor.orange; //界面顶部透明
+        UINavigationBar.appearance().tintColor =  .white;//界面顶部透明
+        UINavigationBar.appearance().barTintColor = .theme; //界面顶部透明
+        //        UINavigationBar.appearance().barTintColor = .orange; //界面顶部透明
         
         let attDic = [NSAttributedStringKey.foregroundColor :   UIColor.white,
                       NSAttributedStringKey.font    :   UIFont.boldSystemFont(ofSize:18)];
         UINavigationBar.appearance().titleTextAttributes = attDic;
         
 //        UINavigationBar.appearance().isTranslucent = true //界面顶部透明
-//        UINavigationBar.appearance().shadowImage =  UIImage.lkCreateImage(with:UIColor.clear)//阴影颜色
-//        UINavigationBar.appearance().setBackgroundImage(UIImage.lkCreateImage(with:UIColor.clear), for:UIBarMetrics.default)//背景颜色
+//        UINavigationBar.appearance().shadowImage =  UIImage.lkCreateImage(with:.clear)//阴影颜色
+//        UINavigationBar.appearance().setBackgroundImage(UIImage.lkCreateImage(with:.clear), for:UIBarMetrics.default)//背景颜色
 
 //        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0,-60), for: UIBarMetrics.default)//去掉返回图片后面的文
         
@@ -145,14 +145,14 @@ extension UIApplication{
     
     static func setupAppearanceTabBar() -> Void {
         //         设置字体颜色
-//        let attDic_N = [NSAttributedStringKey.foregroundColor:UIColor.black];
-        let attDic_H = [NSAttributedStringKey.foregroundColor:UIColor.theme];
+//        let attDic_N = [NSAttributedStringKey.foregroundColor:.black];
+        let attDic_H = [NSAttributedStringKey.foregroundColor: UIColor.theme];
 //        UITabBarItem.appearance().setTitleTextAttributes(attDic_N, for: .normal);
         UITabBarItem.appearance().setTitleTextAttributes(attDic_H, for: .selected);
         // 设置字体偏移
         UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0)
         // 设置图标选中时颜色
-        UITabBar.appearance().tintColor = UIColor.red;
+        UITabBar.appearance().tintColor = .red;
         
     }
     

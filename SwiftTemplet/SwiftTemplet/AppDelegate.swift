@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //方式一
 //        window = UIWindow(frame:UIScreen.main.bounds);
-//        window?.backgroundColor = UIColor.white;
+//        window?.backgroundColor = .white;
 //        var controller = BNControllerFromString("MainViewController");
 //        controller = BNControllerFromString("HomeViewController");
 //        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);

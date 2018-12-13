@@ -40,12 +40,12 @@ extension UIViewController{
         
         let btn = UIButton();
         if image != nil  {
-            btn.setImage(image, for: UIControlState.normal);
+            btn.setImage(image, for: .normal);
             
         }
         else{
             if titile.isEmpty == false{
-                btn.setTitle(titile, for: UIControlState.normal);
+                btn.setTitle(titile, for: .normal);
                 if titile.count == 4{
                     btn.titleLabel?.adjustsFontSizeToFitWidth = true;
                     btn.titleLabel?.minimumScaleFactor = 1;
@@ -133,11 +133,11 @@ extension UIViewController{
 //
 //        let btn = UIButton();
 //        if image != nil  {
-//            btn.setImage(image, for: UIControlState.normal);
+//            btn.setImage(image, for: .normal);
 //
 //        }else{
 //            if titile.isEmpty == false{
-//                btn.setTitle(titile, for: UIControlState.normal);
+//                btn.setTitle(titile, for: .normal);
 //                if titile.count == 4{
 //                    btn.titleLabel?.adjustsFontSizeToFitWidth = true;
 //                    btn.titleLabel?.minimumScaleFactor = 1;

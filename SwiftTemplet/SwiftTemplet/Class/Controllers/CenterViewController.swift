@@ -15,7 +15,7 @@ class CenterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.cyan;
+        view.backgroundColor = .cyan;
 
         DDLog("_%@_",UIApplication.mainWindow);
         DDLog("__%@_",UIApplication.shared.keyWindow);
@@ -55,8 +55,8 @@ class CenterViewController: UIViewController {
         
         let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);
         view.addSubview(btn);
-        btn.setTitle("99+", for: UIControlState.normal);
-        btn.backgroundColor = UIColor.red;
+        btn.setTitle("99+", for: .normal);
+        btn.backgroundColor = .red;
 //        btnNew.addActionBlock { (sender) in
 //            DDLog("33333",sender,sender.tag);
 //
@@ -99,7 +99,7 @@ class CenterViewController: UIViewController {
     
     lazy var imgView:UIImageView = {
         let view = UIImageView.init();
-        view.backgroundColor = UIColor.red;
+        view.backgroundColor = .red;
         
         
         return view;

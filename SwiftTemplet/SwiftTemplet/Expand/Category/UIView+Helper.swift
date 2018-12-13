@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 extension UIView{
     
     var width: CGFloat {
@@ -231,22 +230,23 @@ extension UIView{
             case 2:
                 let label = UILabel(frame: rect);
                 label.text = value;
-                label.textAlignment = NSTextAlignment.center;
+                label.textAlignment = .center;
+
                 label.numberOfLines = 0;
-                label.lineBreakMode = NSLineBreakMode.byCharWrapping;
+                label.lineBreakMode = .byCharWrapping;
                 
                 view = label;
                 
             default:
                 let button = UIButton(type: .custom);
                 button.frame = rect;
-                button.setTitle(value, for: UIControlState.normal);
+                button.setTitle(value, for: .normal);
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 15);
                 button.titleLabel?.adjustsFontSizeToFitWidth = true;
                 button.titleLabel?.minimumScaleFactor = 1.0;
                 button.isExclusiveTouch = true;
                 
-                button.setTitleColor(UIColor.black, for: UIControlState.normal);
+                button.setTitleColor(UIColor.black, for: .normal);
                 button.backgroundColor = UIColor.white;
                 view = button;
             }
@@ -260,7 +260,6 @@ extension UIView{
             }
         }
         return backView;
-        
     }
     
     
