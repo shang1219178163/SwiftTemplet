@@ -34,7 +34,7 @@ extension UIViewController{
                 table = UITableView(frame:view.bounds, style:UITableViewStyle.grouped);
                 table!.separatorStyle = .none;
                 table!.separatorInset = .zero;
-                
+                table!.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self));
             
                 if self.conforms(to: UITableViewDataSource.self) {
                     table!.dataSource = self as? UITableViewDataSource;
