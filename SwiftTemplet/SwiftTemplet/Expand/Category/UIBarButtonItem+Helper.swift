@@ -12,7 +12,7 @@ extension UIBarButtonItem{
     
    var systemType: UIBarButtonSystemItem {
         get {
-            return  objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonSystemItem;
+            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonSystemItem;
 
         }
         set {

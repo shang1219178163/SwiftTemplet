@@ -72,7 +72,6 @@ extension UIViewController{
         self.swz_viewWillDisappear(animated: animated)
         
         self.eventGather(isBegin: false);
-        
     }
     
     @objc func eventGather(isBegin: Bool) -> Void {
