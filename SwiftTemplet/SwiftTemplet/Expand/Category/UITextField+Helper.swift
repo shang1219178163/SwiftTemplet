@@ -42,12 +42,12 @@ extension UITextField{
     func asoryView(_ isRight: Bool, unitName: String!) -> Void {
         if isRight == true {
             self.rightView = self.asoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
-            self.rightViewMode = UITextFieldViewMode.always;
+            self.rightViewMode = .always;
 
         }
         else{
             self.leftView = self.asoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
-            self.leftViewMode = UITextFieldViewMode.always;
+            self.leftViewMode = .always;
 
         }
     }

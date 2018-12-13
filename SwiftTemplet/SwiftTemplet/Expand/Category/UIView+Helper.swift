@@ -222,7 +222,7 @@ extension UIView{
             case 1:
                 let imgView = UIImageView(frame: rect);
                 imgView.isUserInteractionEnabled = true;
-                imgView.contentMode = UIViewContentMode.scaleAspectFit;
+                imgView.contentMode = .scaleAspectFit;
                 imgView.image = UIImage(named: value);
                 
                 view = imgView;
