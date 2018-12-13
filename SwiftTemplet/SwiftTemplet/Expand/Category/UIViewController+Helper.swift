@@ -80,13 +80,10 @@ extension UIViewController{
         item.systemType = systemItem;
         if isLeft == true {
             navigationItem.leftBarButtonItem = item;
-            
         }
         else{
             navigationItem.rightBarButtonItem = item;
-            
         }
-            
         objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     };
@@ -113,13 +110,10 @@ extension UIViewController{
         let item:UIBarButtonItem = UIBarButtonItem(customView: view);
         if isLeft == true {
             navigationItem.leftBarButtonItem = item;
-            
         }
         else{
             navigationItem.rightBarButtonItem = item;
-            
         }
-
         return btn;
     }
 
