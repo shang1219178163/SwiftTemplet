@@ -11,17 +11,14 @@ import UIKit
 
 class HomeViewController: UITabBarController {
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         tabBar.tintColor = UIColor.theme;
         tabBar.barTintColor = UIColor.white;
+        viewControllers = UINavListFromList(itemList);
 
-        self.viewControllers = self.getControllers(itemList: itemList);
-
-//        self.selectedIndex = 1;
+//        selectedIndex = 1;
         
     }
     
@@ -30,28 +27,6 @@ class HomeViewController: UITabBarController {
         
         self.configureCenterBtn();
 
-    }
-    
-    func getControllers(itemList:Array<Array<Any>>) -> Array<UIViewController> {
-
-        let marr = NSMutableArray.init();
-        
-        for obj in itemList {
-            let controller = UICtrFromString(obj.first! as! String);
-            controller.title = obj[1] as? String;
-            controller.tabBarItem.image = UIImage(named: obj[2] as! String)?.withRenderingMode(.alwaysOriginal);
-            controller.tabBarItem.selectedImage = UIImage(named: obj[3] as! String)?.withRenderingMode(.alwaysOriginal);
-            
-            let navController = UINavigationController(rootViewController: controller);
-            let dic:Dictionary = [NSAttributedStringKey.foregroundColor : UIColor.white,
-                                  NSAttributedStringKey.font  : UIFont.boldSystemFont(ofSize: 17),
-                                  ];
-            
-            navController.navigationBar.titleTextAttributes = dic;
-            marr.add(navController);
-            
-        }
-        return marr as! Array<UIViewController>;
     }
     
     lazy var btnCenter : UIButton = {
@@ -89,8 +64,8 @@ class HomeViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK:属性
     let itemList:Array = { () -> Array<[String]> in
-
         let list:Array = [
             ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
             ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
