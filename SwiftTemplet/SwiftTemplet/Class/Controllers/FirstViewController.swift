@@ -29,14 +29,12 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         if title == nil {
             title = self.controllerName;
         }
-        
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        for _ in 0...5{
+        for _ in 0...3{
             let marr : NSMutableArray = [];
             for j in 0...3{
                 marr.add(j);
@@ -115,9 +113,9 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
+        let label = UILabel(frame: .zero);
         label.backgroundColor = .green;
-        label.text = "header";
+        label.text = "header\(section)";
         return label;
         
     }
@@ -127,10 +125,10 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
+        let label = UILabel(frame: .zero);
         label.backgroundColor = .yellow;
         
-        label.text = "footer";
+        label.text = "footer\(section)";
         return label;
     }
     

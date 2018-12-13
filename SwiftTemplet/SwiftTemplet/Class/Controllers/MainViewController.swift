@@ -113,7 +113,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
         label.backgroundColor = .green;
-        label.text = "header";
+        label.text = "header\(section)";
         return label;
         
     }
@@ -126,10 +126,9 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
         label.backgroundColor = .yellow;
 
-        label.text = "footer";
+        label.text = "footer\(section)";
         return label;
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
