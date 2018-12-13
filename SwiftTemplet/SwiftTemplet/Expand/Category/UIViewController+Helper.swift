@@ -1,5 +1,3 @@
-
-
 //
 //  UIViewController+Helper.swift
 //  SwiftTemplet
