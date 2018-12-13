@@ -146,13 +146,13 @@ extension UIApplication{
     static func setupAppearanceTabBar() -> Void {
         //         设置字体颜色
 //        let attDic_N = [NSAttributedStringKey.foregroundColor:.black];
-        let attDic_H = [NSAttributedStringKey.foregroundColor: UIColor.theme];
-//        UITabBarItem.appearance().setTitleTextAttributes(attDic_N, for: .normal);
-        UITabBarItem.appearance().setTitleTextAttributes(attDic_H, for: .selected);
+//        let attDic_H = [NSAttributedStringKey.foregroundColor: UIColor.theme];
+////        UITabBarItem.appearance().setTitleTextAttributes(attDic_N, for: .normal);
+//        UITabBarItem.appearance().setTitleTextAttributes(attDic_H, for: .selected);
         // 设置字体偏移
         UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0);
         // 设置图标选中时颜色
-        UITabBar.appearance().tintColor = .red;
+//        UITabBar.appearance().tintColor = .red;
         
     }
     
@@ -174,6 +174,5 @@ extension UIApplication{
             print("链接无法打开!!!\n%@",url as Any);
             
         }
-        
     }
 }

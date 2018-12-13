@@ -77,10 +77,6 @@ func UINavListFromList(_ list:Array<Any>) -> Array<UINavigationController>!{
             
             //导航控制器
             let navController = UINavCtrFromObj(controller);
-            let dic:Dictionary = [NSAttributedStringKey.foregroundColor : UIColor.white,
-                                  NSAttributedStringKey.font  : UIFont.boldSystemFont(ofSize: UIFont.systemFontSize + CGFloat(1.0)),
-                                  ];
-            navController!.navigationBar.titleTextAttributes = dic;
             marr.add(navController as Any);
         }else {
             print("list只能包含字符串对象或者数组对象");
