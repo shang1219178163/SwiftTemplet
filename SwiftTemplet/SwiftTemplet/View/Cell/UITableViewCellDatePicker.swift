@@ -21,7 +21,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(textField);
 
         textField.placeholder = "请选择";
-        textField.textAlignment = NSTextAlignment.center;
+        textField.textAlignment = .center;
         
         textField.asoryView(true, unitName: kIMG_arrowDown);
 //        textField.asoryView(true, unitName: "公斤(万元)");

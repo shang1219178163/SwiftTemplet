@@ -17,7 +17,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         super.viewDidLoad();
         
         title = "Main";
-        view.backgroundColor = UIColor.red;
+        view.backgroundColor = .red;
                 
 //        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
         
@@ -97,7 +97,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
-        label.backgroundColor = UIColor.green;
+        label.backgroundColor = .green;
         label.text = "header";
         return label;
         
@@ -109,7 +109,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel(frame: CGRect(x:0,y:0,width:0,height:0));
-        label.backgroundColor = UIColor.yellow;
+        label.backgroundColor = .yellow;
 
         label.text = "footer";
         return label;

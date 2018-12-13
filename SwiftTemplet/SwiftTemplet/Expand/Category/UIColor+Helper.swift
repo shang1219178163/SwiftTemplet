@@ -20,7 +20,7 @@ extension UIColor{
         }
         
         if cString.count != 6 {
-            return UIColor.red;
+            return .red;
         }
         
         let rIndex = cString.index(cString.startIndex, offsetBy: 2);

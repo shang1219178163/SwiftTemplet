@@ -20,7 +20,7 @@ class FourthViewController: UIViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = [];
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.white;
+        view.backgroundColor = .white;
 
        
 //        self.createGroupView();
@@ -107,7 +107,7 @@ class FourthViewController: UIViewController {
     func addClockView(){
         let clockView = BNClockView(frame: CGRect(x: 20, y: 20, width: kScreen_width - 40, height: kScreen_width - 40));
         clockView.itemList = ["111","222","333","444","555","666","777","888",];
-        clockView.backgroundColor = UIColor.random;
+        clockView.backgroundColor = .random;
         clockView.image = UIImage(named: "beach");
         view.addSubview(clockView);
         
@@ -129,7 +129,7 @@ class FourthViewController: UIViewController {
     
     lazy var progressView: BNAnnularProgress = {
         let progressView = BNAnnularProgress(frame: CGRect(x:50,y:kScreen_width/2+40,width:100,height:100));
-        progressView.backgroundColor = UIColor.cyan;
+        progressView.backgroundColor = .cyan;
         return progressView;
     }();
     

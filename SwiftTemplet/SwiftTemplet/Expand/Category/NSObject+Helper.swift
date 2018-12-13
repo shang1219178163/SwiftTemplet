@@ -73,7 +73,7 @@ func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
             controller.tabBarItem.image = UIImage(named: img_N)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.selectedImage = UIImage(named: img_H)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.badgeValue = badgeValue;
-            controller.tabBarItem.badgeColor = badgeValue.isEmpty ? UIColor.clear:UIColor.red;
+            controller.tabBarItem.badgeColor = badgeValue.isEmpty ? .clear:.red;
             marr.add(UINavCtrFromObj(controller) as Any);
         }else {
             print("list只能包含字符串对象或者数组对象");
@@ -85,7 +85,7 @@ func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
 }
 
 func UIColorFromDim(_ white:CGFloat, _ a:CGFloat) -> UIColor{
-    return UIColor.init(white: white, alpha: a);
+    return .init(white: white, alpha: a);
 }
     
 func BNClassFromString(_ name:String) -> AnyClass {
@@ -151,7 +151,7 @@ extension NSObject{
         assert(text is String || text is NSAttributedString, "请检查text格式!");
         assert(font is UIFont || font is Int, "请检查font格式!");
 
-        let attDic = self.attrParaDict(font: font, textColor: UIColor.black, alignment: NSTextAlignment.left);
+        let attDic = self.attrParaDict(font: font, textColor: .black, alignment: .left);
 
         let options : NSStringDrawingOptions = NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue)))
         
