@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
        
         DDLog(self,UIApplication.shared.delegate as! AppDelegate)
-        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window);
+        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 
         return true
     }

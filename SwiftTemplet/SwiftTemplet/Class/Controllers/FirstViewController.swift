@@ -90,13 +90,11 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             
-            //        imgList = imgList.shuffled();
-            
-            //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
-            //        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon"), options: nil, progressBlock: nil, completionHandler: nil);
+//        imgList = imgList.shuffled();
+//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
+//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon"), options: nil, progressBlock: nil, completionHandler: nil);
             cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.randomElement()!), placeholder: UIImage(named:"dragon"), options: nil, progressBlock: nil, completionHandler: nil);
-            
-            //        cell.type = 1;
+//        cell.type = 1;
             
             cell.getViewLayer();
             return cell;
