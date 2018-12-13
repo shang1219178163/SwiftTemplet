@@ -79,7 +79,6 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             cell.getViewLayer();
             return cell;
         default:
-            
             let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
