@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 
-import ObjectMapper
+//import ObjectMapper
 
 func NSStringFromIndexPath(_ indexPath:NSIndexPath) -> String {
     return String(format: "{%d,%d}", indexPath.section, indexPath.row);
@@ -54,7 +54,7 @@ func UINavCtrFromObj(_ obj:AnyObject) -> UINavigationController?{
     return nil;
 }
 
-func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
+func UINavListFromList(_ list:Array<Any>) -> Array<UINavigationController>!{
     let marr = NSMutableArray();
     for obj in list {
         if obj is String {
@@ -67,20 +67,34 @@ func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
             let img_N:String = itemList.count > 2 ? itemList[2]    :   "";
             let img_H:String = itemList.count > 3 ? itemList[3]    :   "";
             let badgeValue:String = itemList.count > 4 ? itemList[4]    :   "";
-
+            
             let controller:UIViewController = UICtrFromString(itemList.first!);
             controller.title = title;
             controller.tabBarItem.image = UIImage(named: img_N)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.selectedImage = UIImage(named: img_H)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.badgeValue = badgeValue;
             controller.tabBarItem.badgeColor = badgeValue.isEmpty ? .clear:.red;
-            marr.add(UINavCtrFromObj(controller) as Any);
+            
+            //导航控制器
+            let navController = UINavCtrFromObj(controller);
+            let dic:Dictionary = [NSAttributedStringKey.foregroundColor : UIColor.white,
+                                  NSAttributedStringKey.font  : UIFont.boldSystemFont(ofSize: UIFont.systemFontSize + CGFloat(1.0)),
+                                  ];
+            navController!.navigationBar.titleTextAttributes = dic;
+            marr.add(navController as Any);
         }else {
             print("list只能包含字符串对象或者数组对象");
         }
     }
+    let viewControllers = marr.copy() as! [UINavigationController];
+    return viewControllers;
+}
+
+func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
     let tabBarController = UITabBarController();
-    tabBarController.viewControllers = marr.copy() as! [UINavigationController];
+    tabBarController.tabBar.tintColor = .theme;
+    tabBarController.tabBar.barTintColor = .white;
+    tabBarController.viewControllers = UINavListFromList(list);
     return tabBarController;
 }
 
@@ -115,7 +129,6 @@ extension NSObject{
         
         get {
             return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! SwiftBlock;
-            
         }
     }
     
@@ -127,7 +140,6 @@ extension NSObject{
         
     func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedStringKey, Any> {
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
-
         let dic = [NSAttributedStringKey.font:font,
                    NSAttributedStringKey.foregroundColor: textColor];
         return dic;
