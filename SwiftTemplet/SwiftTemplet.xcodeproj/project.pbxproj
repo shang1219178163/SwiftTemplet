@@ -10,6 +10,8 @@
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
 		14E8692021C1E9BE009CE33E /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8691F21C1E9BE009CE33E /* DispatchQueue+Helper.swift */; };
 		14E8692221C1FB18009CE33E /* UIViewController+Hook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692121C1FB18009CE33E /* UIViewController+Hook.swift */; };
+		14E8692421C1FFD5009CE33E /* UINavigationController+Hook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692321C1FFD5009CE33E /* UINavigationController+Hook.swift */; };
+		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51262F6E2133FC9B0032AE02 /* UIView+Add.swift */; };
 		513571D92125682A00627C67 /* UICollectionView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513571D82125682A00627C67 /* UICollectionView+Helper.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
@@ -80,6 +82,8 @@
 /* Begin PBXFileReference section */
 		14E8691F21C1E9BE009CE33E /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
 		14E8692121C1FB18009CE33E /* UIViewController+Hook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Hook.swift"; sourceTree = "<group>"; };
+		14E8692321C1FFD5009CE33E /* UINavigationController+Hook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Hook.swift"; sourceTree = "<group>"; };
+		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		51262F6E2133FC9B0032AE02 /* UIView+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Add.swift"; sourceTree = "<group>"; };
 		513571D82125682A00627C67 /* UICollectionView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Helper.swift"; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
+				14E8692521C20A2E009CE33E /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -305,11 +310,11 @@
 				515B9EAE2134FA3A00B61F61 /* NSObject+Helper.swift */,
 				D7C0AFEC21BFBEDC00C95048 /* NSObject+Hook.swift */,
 				14E8692121C1FB18009CE33E /* UIViewController+Hook.swift */,
+				14E8692321C1FFD5009CE33E /* UINavigationController+Hook.swift */,
 				D7C0AFE821BF9D9300C95048 /* NSDate+Helper.swift */,
 				D7C0AFE621BF912F00C95048 /* NSInteger+Helper.swift */,
 				515B9EB2213517D200B61F61 /* DateFormatter+Helper.swift */,
 				D7C0AFE421BF452500C95048 /* NumberFormatter+Helper.swift */,
-				515B9EB421351CD400B61F61 /* String+Helper.swift */,
 				515B9EAC2134F16100B61F61 /* UIBarButtonItem+Helper.swift */,
 				51827CC4213006410084720C /* UIColor+Helper.swift */,
 				516FAB042122568600DD01CA /* UIView+Helper.swift */,
@@ -317,6 +322,7 @@
 				519E87B521362ACB002CCD86 /* UITableViewCell+Add.swift */,
 				5168FAC320ABB9270098A500 /* UIViewController+Helper.swift */,
 				519E87B9213636EB002CCD86 /* UIViewController+Add.swift */,
+				515B9EB421351CD400B61F61 /* String+Helper.swift */,
 				513571D82125682A00627C67 /* UICollectionView+Helper.swift */,
 				517D14262140B63900F08FE5 /* NSArray+Helper.swift */,
 				51824420213E4FFE00071A9D /* NSDictionary+Helper.swift */,
@@ -517,6 +523,7 @@
 				515B9EAF2134FA3A00B61F61 /* NSObject+Helper.swift in Sources */,
 				51BDABF4214F56B7003B9722 /* Extension+Protocol.swift in Sources */,
 				D7C0AFEB21BFA07900C95048 /* UIImage+Helper.swift in Sources */,
+				14E8692421C1FFD5009CE33E /* UINavigationController+Hook.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				515B9EB521351CD400B61F61 /* String+Helper.swift in Sources */,
 				5183537F2123A69B00A080D2 /* Macro_Globle.swift in Sources */,
@@ -542,6 +549,7 @@
 				14E8692021C1E9BE009CE33E /* DispatchQueue+Helper.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
+				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
 				5182444C213E8CB600071A9D /* BNResult.swift in Sources */,
 				51262F6F2133FC9B0032AE02 /* UIView+Add.swift in Sources */,
 				5169FCCC2124FEF5004A1A42 /* BNViewZero.swift in Sources */,

@@ -17,7 +17,7 @@ extension UITextField{
         
         assert(unitName != nil && unitName.valid() == true);
         
-        if unitName.contains("") {
+        if unitName.contains("img") {
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: viewSize.width, height: viewSize.height));
             imgView.image = UIImage(named: unitName);
             imgView.tag = kTAG_IMGVIEW;
