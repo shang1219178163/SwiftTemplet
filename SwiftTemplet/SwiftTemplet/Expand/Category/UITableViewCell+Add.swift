@@ -11,22 +11,40 @@ import UIKit
 
 extension UITableViewCell{
     
+    /// cell默认identifier
+    static var identifier: String {
+        get {
+            var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
+            if str == nil {
+                str = NSStringFromClass(classForCoder());
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            }
+            return str!;
+        }
+        set {
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    /// cell-源方法生成,自定义identifier
     static func cellWithTableView(_ tableView:UITableView, identifier:String) -> UITableViewCell! {
-                
         var cell = tableView.dequeueReusableCell(withIdentifier: identifier);
         if cell == nil {
             cell = self.init(style: .default, reuseIdentifier: identifier);
             
         }
-        
         cell!.selectionStyle = .none;
         cell!.separatorInset = .zero;
+        cell!.layoutMargins = .zero;
         return cell!;
     }
     
-    static func cellWithTableView(_ tableView:UITableView) -> UITableViewCell {
-        let identifier = NSStringFromClass(self.classForCoder());
-        return self.cellWithTableView(tableView, identifier: identifier);
+    /// cell-使用默认identifier生成
+    static func cellWithTableView(_ tableView:UITableView) -> UITableViewCell! {
+//        let identifier = NSStringFromClass(self.classForCoder());
+//        return self.cellWithTableView(tableView, identifier: identifier);
+        return self.cellWithTableView(tableView, identifier: self.identifier);
+
     }
         
     var imgViewLeft: UIImageView {
@@ -181,9 +199,4 @@ extension UITableViewCell{
             objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
-
-    
-
-
-
 }
