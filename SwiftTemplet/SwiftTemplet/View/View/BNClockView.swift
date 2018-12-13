@@ -18,7 +18,7 @@ class BNClockView: UIImageView {
             itemList?.forEach { (obj:String) in
                 
                 let btn = UIButton();
-                btn.backgroundColor = UIColor.theme;
+                btn.backgroundColor = .theme;
 //                btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
                 btn.setTitle(obj, for: .normal);
                 btn.titleLabel?.adjustsFontSizeToFitWidth = true;

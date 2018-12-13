@@ -58,7 +58,7 @@ extension UIButton{
 //        self.init(action: action);
 //
 //        self.frame = frame
-//        self.setImage(UIImage(named:setImage), for: UIControlState.normal)
+//        self.setImage(UIImage(named:setImage), for: .normal)
 //        self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
 //        self.actionBlock = action
 //        self.sizeToFit()
@@ -70,12 +70,12 @@ extension UIButton{
         let btn = UIButton(type:.custom);
         btn.frame = rect;
         if UIImage(named:image_N) != nil {
-            btn.setImage(UIImage(named:image_N), for: UIControlState.normal);
+            btn.setImage(UIImage(named:image_N), for: .normal);
             
         }
         
         if UIImage(named:image_H!) != nil {
-            btn.setImage(UIImage(named:image_H!), for: UIControlState.highlighted);
+            btn.setImage(UIImage(named:image_H!), for: .highlighted);
             
         }
         btn.sizeToFit();
@@ -88,7 +88,7 @@ extension UIButton{
 //        btn.titleLabel?.text = title;//无法显示title
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
         btn.titleLabel?.font = font;
-        btn.setTitle(title, for: UIControlState.normal);
+        btn.setTitle(title, for: .normal);
         btn.isExclusiveTouch = true;
         
         if title.count >= 3 {
@@ -105,18 +105,18 @@ extension UIButton{
         
         switch type {
             case 1:
-                btn.setTitle(title, for: UIControlState.normal);
+                btn.setTitle(title, for: .normal);
 
-                btn.setTitleColor(UIColor.black, for: UIControlState.normal);
-                btn.backgroundColor = UIColor.white;
+                btn.setTitleColor(.black, for: .normal);
+                btn.backgroundColor = .white;
             case 2:
-                btn.setTitle(title, for: UIControlState.normal);
+                btn.setTitle(title, for: .normal);
 
-                btn.setTitleColor(UIColor.red, for: UIControlState.normal);
-                btn.backgroundColor = UIColor.white;
+                btn.setTitleColor(.red, for: .normal);
+                btn.backgroundColor = .white;
 
             default:
-                btn.setTitle(title, for: UIControlState.normal);
+                btn.setTitle(title, for: .normal);
 
             }
         return btn;

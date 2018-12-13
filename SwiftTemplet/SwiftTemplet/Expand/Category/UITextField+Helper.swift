@@ -30,10 +30,10 @@ extension UITextField{
         label.tag = kTAG_LABEL;
         label.text = unitName;
         label.font = UIFont.systemFont(ofSize: 15);
-        label.textAlignment = NSTextAlignment.center;
-        label.lineBreakMode = NSLineBreakMode.byCharWrapping;
+        label.textAlignment = .center;
+        label.lineBreakMode = .byCharWrapping;
         label.numberOfLines = 0;
-        label.backgroundColor = UIColor.clear;
+        label.backgroundColor = .clear;
         
         return label;
      

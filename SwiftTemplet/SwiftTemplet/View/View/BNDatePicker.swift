@@ -100,8 +100,8 @@ class BNDatePicker: UIView {
         btn.tag = 0;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kActionTitle_Cancell, for: UIControlState.normal);
-        btn.setTitleColor(UIColor.red, for: UIControlState.normal);
+        btn.setTitle(kActionTitle_Cancell, for: .normal);
+        btn.setTitleColor(UIColor.red, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
         
         return btn;
@@ -113,8 +113,8 @@ class BNDatePicker: UIView {
         btn.tag = 1;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kActionTitle_Sure, for: UIControlState.normal);
-        btn.setTitleColor(UIColor.theme, for: UIControlState.normal);
+        btn.setTitle(kActionTitle_Sure, for: .normal);
+        btn.setTitleColor(UIColor.theme, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
 
         return btn;
@@ -125,7 +125,7 @@ class BNDatePicker: UIView {
         lab.tag = 10;
         lab.text = "请选择";
         lab.textColor = UIColor.lightGray;
-        lab.textAlignment = NSTextAlignment.center;
+        lab.textAlignment = .center;
         return lab;
     }();
     
