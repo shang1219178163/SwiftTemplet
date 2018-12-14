@@ -16,6 +16,15 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        let str = "Hello, playground" as CFString
+        
+        let stringType = String(format: "type id: %d", CFGetTypeID(str))
+        print(stringType)
+    }
+    
 
     /*
     // MARK: - Navigation

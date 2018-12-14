@@ -99,7 +99,13 @@ extension String{
         let doubleInt = Int(intervl);
         let timeStamp = String(doubleInt);
         return timeStamp;
-        
     }
+    
+   
+  
+}
+
+extension CFString{
+    
     
 }

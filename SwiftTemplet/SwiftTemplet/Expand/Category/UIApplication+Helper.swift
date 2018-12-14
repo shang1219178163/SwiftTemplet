@@ -13,7 +13,8 @@ extension UIApplication{
     static var appName: String {
         get {
             let infoDic = Bundle.main.infoDictionary;
-            let name:String = infoDic!["CFBundleDisplayName"] as? String ?? infoDic!["CFBundleName"] as! String;
+//            let name:String = infoDic!["CFBundleDisplayName"] as? String ?? infoDic!["CFBundleName"] as! String;
+            let name:String = infoDic![kCFBundleNameKey as String] != nil ? infoDic![kCFBundleNameKey as String] as! String : infoDic![kCFBundleExecutableKey as String] as! String;
             return name;
         }
     }
@@ -88,6 +89,22 @@ extension UIApplication{
         }
     }
     
+    static var tabBarController: UITabBarController? {
+        get {
+            var tabBarVC = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITabBarController;
+            if tabBarVC == nil {
+                if UIApplication.mainWindow.rootViewController is UITabBarController {
+                    tabBarVC = (UIApplication.mainWindow.rootViewController as! UITabBarController);
+                }
+            }
+            return tabBarVC;
+        }
+        set {
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    //MARK: func
     static func setupRootController(_ controller:AnyObject,_ isAdjust:Bool) -> Void {
         var contr = controller;
         if controller is String {
@@ -101,7 +118,7 @@ extension UIApplication{
         
         if controller is UINavigationController || controller is UITabBarController {
             UIApplication.rootController = contr as! UIViewController;
-        }else{
+        } else {
             UIApplication.rootController = UINavigationController(rootViewController: contr as! UIViewController);
         }
     }
@@ -135,7 +152,7 @@ extension UIApplication{
                       NSAttributedStringKey.font    :   UIFont.boldSystemFont(ofSize:18)];
         UINavigationBar.appearance().titleTextAttributes = attDic;
         
-//        UINavigationBar.appearance().isTranslucent = true //界面顶部透明
+        UINavigationBar.appearance().isTranslucent = true //界面顶部透明
 //        UINavigationBar.appearance().shadowImage =  UIImage.lkCreateImage(with:.clear)//阴影颜色
 //        UINavigationBar.appearance().setBackgroundImage(UIImage.lkCreateImage(with:.clear), for:UIBarMetrics.default)//背景颜色
 
@@ -153,7 +170,6 @@ extension UIApplication{
         UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0);
         // 设置图标选中时颜色
 //        UITabBar.appearance().tintColor = .red;
-        
     }
     
     static func openURL(_ urlStr:String, _ tips:String) {

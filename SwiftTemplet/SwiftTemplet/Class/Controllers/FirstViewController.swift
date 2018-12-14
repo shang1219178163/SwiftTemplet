@@ -106,6 +106,8 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         NSStringFromCGRect(tableView.frame)
         DDLog(NSStringFromIndexPath(indexPath as NSIndexPath));
         
+        let controller = UICtrFromString("DetailViewController");
+        navigationController?.pushViewController(controller, animated: true);
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
