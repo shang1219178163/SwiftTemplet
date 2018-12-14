@@ -76,7 +76,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             }
             cell.getViewLayer();
             return cell;
-        default:
+        case 1:
             let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
@@ -95,6 +95,10 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //        cell.type = 1;
             
             cell.getViewLayer();
+            return cell;
+            
+        default:
+            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
             return cell;
             
         }
