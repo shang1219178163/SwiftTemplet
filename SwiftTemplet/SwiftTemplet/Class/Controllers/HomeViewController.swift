@@ -16,10 +16,11 @@ class HomeViewController: UITabBarController {
         // Do any additional setup after loading the view.
         tabBar.tintColor = UIColor.theme;
         tabBar.barTintColor = UIColor.white;
+        tabBar.isTranslucent = false;
         viewControllers = UINavListFromList(itemList);
 
 //        selectedIndex = 1;
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +64,15 @@ class HomeViewController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: Delegate
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        DDLog(tabBar.selectedItem as Any);
+        
+        
+    }
+   
+
     
     //MARK:属性
     let itemList:Array = { () -> Array<[String]> in

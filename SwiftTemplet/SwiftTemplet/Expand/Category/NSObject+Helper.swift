@@ -24,20 +24,29 @@ func kScale_width(_ width: CGFloat) -> CGFloat {
     return width * UIScreen.main.bounds.size.width / 320.0
 }
 
+func BNClassFromString(_ name:String) -> AnyClass {
+//    let nameKey = "CFBundleName";
+//    这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
+//    let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String;
+    let nameSpace  = UIApplication.appName;
+    let cls : AnyClass = NSClassFromString(nameSpace + "." + name)!;
+    return cls;
+}
+
 func UICtrFromString(_ vcName:String) -> UIViewController {
     // 动态获取命名空间
-    let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
+//    let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
+    //字符串转类
+//    let cls: AnyClass? = NSClassFromString(appName + "." + vcName);
     
-    // 0 字符串转类
-    let cls: AnyClass? = NSClassFromString(appName + "." + vcName);
-    
+    let cls:AnyClass = BNClassFromString(vcName);
     // 通过类创建对象， 不能用cls.init(),有的类可能没有init方法
-    // 需将cls转换为制定类型，也就是
+    // 需将cls转换为制定类型
     let vcCls = cls as! UIViewController.Type;
     
     // 创建对象
-    let childController:UIViewController = vcCls.init();
-    return childController;
+    let controller:UIViewController = vcCls.init();
+    return controller;
 }
 
 func UINavCtrFromObj(_ obj:AnyObject) -> UINavigationController?{
@@ -90,6 +99,7 @@ func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
     let tabBarController = UITabBarController();
     tabBarController.tabBar.tintColor = .theme;
     tabBarController.tabBar.barTintColor = .white;
+    tabBarController.tabBar.isTranslucent = false;
     tabBarController.viewControllers = UINavListFromList(list);
     return tabBarController;
 }
@@ -97,17 +107,8 @@ func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
 func UIColorFromDim(_ white:CGFloat, _ a:CGFloat) -> UIColor{
     return .init(white: white, alpha: a);
 }
-    
-func BNClassFromString(_ name:String) -> AnyClass {
-    let nameKey = "CFBundleName";
-    //这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
-    let appName = Bundle.main.infoDictionary![nameKey] as? String;
-    let cls : AnyClass = NSClassFromString(appName! + "." + name)!;
-    return cls;
-}
 
 func BNStringShortFromClass(_ cls:Swift.AnyClass) -> String {
-
     var className:String = NSStringFromClass(cls);
     if className.contains(".") {
         let rangePoint = className.range(of: ".");
@@ -120,7 +121,7 @@ extension NSObject{
  
     var block:SwiftBlock {
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         
         get {

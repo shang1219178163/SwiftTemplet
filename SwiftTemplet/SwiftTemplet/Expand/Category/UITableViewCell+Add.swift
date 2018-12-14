@@ -52,8 +52,8 @@ extension UITableViewCell{
             var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
             if imgView == nil {
                 imgView = UIImageView(frame: .zero);
-                imgView?.isUserInteractionEnabled = true;
-                imgView?.contentMode = .scaleAspectFit;
+                imgView!.isUserInteractionEnabled = true;
+                imgView!.contentMode = .scaleAspectFit;
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
@@ -70,9 +70,9 @@ extension UITableViewCell{
             var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
             if imgView == nil {
                 imgView = UIImageView(frame: .zero);
-                imgView?.isUserInteractionEnabled = true;
-                imgView?.contentMode = .scaleAspectFit;
-                imgView?.image = UIImage(named: kIMG_arrowRight);
+                imgView!.isUserInteractionEnabled = true;
+                imgView!.contentMode = .scaleAspectFit;
+                imgView!.image = UIImage(named: kIMG_arrowRight);
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
@@ -89,9 +89,9 @@ extension UITableViewCell{
             var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: .zero);
-                label?.textAlignment = .left;
-                label?.numberOfLines = 0;
-                label?.lineBreakMode = .byCharWrapping;
+                label!.textAlignment = .left;
+                label!.numberOfLines = 0;
+                label!.lineBreakMode = .byCharWrapping;
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
@@ -107,9 +107,9 @@ extension UITableViewCell{
             var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: .zero);
-                label?.textAlignment = .left;
-                label?.numberOfLines = 0;
-                label?.lineBreakMode = .byCharWrapping;
+                label!.textAlignment = .left;
+                label!.numberOfLines = 0;
+                label!.lineBreakMode = .byCharWrapping;
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
@@ -126,9 +126,9 @@ extension UITableViewCell{
             var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: .zero);
-                label?.textAlignment = .left;
-                label?.numberOfLines = 0;
-                label?.lineBreakMode = .byCharWrapping;
+                label!.textAlignment = .left;
+                label!.numberOfLines = 0;
+                label!.lineBreakMode = .byCharWrapping;
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
@@ -163,12 +163,12 @@ extension UITableViewCell{
             var tf = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITextField;
             if tf == nil {
                 tf = UITextField(frame: .zero);
-                tf?.textAlignment = .left;
-                tf?.contentVerticalAlignment = .center;
-                tf?.autocapitalizationType = .none;
-                tf?.autocorrectionType = .no;
-                tf?.clearButtonMode = .whileEditing;
-                tf?.backgroundColor = .white;
+                tf!.textAlignment = .left;
+                tf!.contentVerticalAlignment = .center;
+                tf!.autocapitalizationType = .none;
+                tf!.autocorrectionType = .no;
+                tf!.clearButtonMode = .whileEditing;
+                tf!.backgroundColor = .white;
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), tf, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
@@ -185,10 +185,10 @@ extension UITableViewCell{
             var tv = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITextView;
             if tv == nil {
                 tv = UITextView(frame: .zero);
-                tv?.textAlignment = .left;
-                tv?.autocapitalizationType = .none;
-                tv?.autocorrectionType = .no;
-                tv?.backgroundColor = .white;
+                tv!.textAlignment = .left;
+                tv!.autocapitalizationType = .none;
+                tv!.autocorrectionType = .no;
+                tv!.backgroundColor = .white;
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), tv, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
