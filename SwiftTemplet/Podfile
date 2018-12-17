@@ -52,7 +52,7 @@ target 'SwiftTemplet' do
    pod 'Surge'
 #   pod 'SwiftOCR'
 #   pod 'SwiftString'
-#   pod 'SwiftyJSON'
+   pod 'SwiftyJSON'
 #   pod 'SwiftyUserDefaults'
 #
 #   pod 'TZStackView'
@@ -65,7 +65,6 @@ target 'SwiftTemplet' do
     pod 'RxSwift'
     
 #    pod 'ObjectMapper+Realm'
-pod 'BNAlertView'
 
 
 end

@@ -10,13 +10,10 @@
 /*
  环形进度条
  */
-
-
 import UIKit
 
 class BNCircleView: UIView {
 
-    
     var value: CGFloat = 0 {
         didSet {
             self.setNeedsDisplay();
