@@ -92,7 +92,7 @@ extension UIViewController{
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size);
         
         let btn = UIButton.createBtn(rect: rect, title: title, font:16 as AnyObject, image:image, tag: tag, type: 0);
-        btn.tag = isLeft == true ? kTAG_BTN_BackItem : kTAG_BTN_RightItem;
+        btn.tag = isLeft == true ? kTAG_BackItem : kTAG_RightItem;
         btn.isHidden = isHidden;
         
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44));

@@ -13,8 +13,8 @@ import UIKit
 
 let kTAG_LABEL = 100;
 let kTAG_BTN = 200;
-let kTAG_BTN_RightItem = 260;
-let kTAG_BTN_BackItem = 261;
+let kTAG_RightItem = 260;
+let kTAG_BackItem = 261;
 
 let kTAG_IMGVIEW = 300;
 let kTAG_TEXTFIELD = 400;
