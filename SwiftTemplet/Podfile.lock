@@ -1,23 +1,27 @@
 PODS:
-  - Alamofire (4.7.3)
-  - AlamofireImage (3.3.1):
-    - Alamofire (~> 4.5)
-  - AlamofireObjectMapper (5.1.0):
-    - Alamofire (~> 4.1)
-    - ObjectMapper (~> 3.3)
-  - CryptoSwift (0.11.0)
-  - Kingfisher (4.9.0)
-  - ObjectMapper (3.3.0)
-  - RxAlamofire (4.2.0):
-    - RxAlamofire/Core (= 4.2.0)
-  - RxAlamofire/Core (4.2.0):
+  - Alamofire (4.8.0)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - CryptoSwift (0.13.1)
+  - Kingfisher (5.0.0)
+  - ObjectMapper (3.4.1)
+  - RxAlamofire (4.3.0):
+    - RxAlamofire/Core (= 4.3.0)
+  - RxAlamofire/Core (4.3.0):
     - Alamofire (~> 4.5)
     - RxSwift (~> 4)
-  - RxBlocking (4.2.0):
+  - RxAtomic (4.4.0)
+  - RxBlocking (4.4.0):
+    - RxAtomic (~> 4.4)
     - RxSwift (~> 4.0)
-  - RxSwift (4.2.0)
-  - SnapKit (4.0.0)
-  - Surge (2.1.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SnapKit (4.2.0)
+  - Surge (2.2.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -30,9 +34,10 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit
   - Surge
+  - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
     - AlamofireObjectMapper
@@ -40,24 +45,28 @@ SPEC REPOS:
     - Kingfisher
     - ObjectMapper
     - RxAlamofire
+    - RxAtomic
     - RxBlocking
     - RxSwift
     - SnapKit
     - Surge
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
-  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
-  CryptoSwift: ad5208dd2aae0a764ea4ce2c2d34bd067cae67f0
-  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
-  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  RxAlamofire: 87a9c588541210cc3e4a1f843ccc3ecf3eb98b31
-  RxBlocking: e339d8a6e752e25ade95ff858466c55436668f59
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Surge: 570bf0b2cb4cc92d1744050d45c064005c6c99ad
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  Kingfisher: 2b0dd651e4fe5a07305b8242fde56f8e2d410f58
+  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 4eaf5c184183299cf0b8d964b91f0ba43ddccc70
+PODFILE CHECKSUM: b6017cc9326d91c7d0626a0ad24736e8a535bbb6
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
