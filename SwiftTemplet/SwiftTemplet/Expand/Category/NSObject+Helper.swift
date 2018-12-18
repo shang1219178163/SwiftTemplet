@@ -24,7 +24,7 @@ func kScale_width(_ width: CGFloat) -> CGFloat {
     return width * UIScreen.main.bounds.size.width / 320.0
 }
 
-func BNClassFromString(_ name:String) -> AnyClass {
+func SwiftClassFromString(_ name:String) -> AnyClass {
 //    let nameKey = "CFBundleName";
 //    这里也是坑，请不要翻译oc的代码，而是去NSBundle类里面看它的api
 //    let appName = Bundle.main.infoDictionary!["CFBundleName"] as? String;
@@ -39,7 +39,7 @@ func UICtrFromString(_ vcName:String) -> UIViewController {
     //字符串转类
 //    let cls: AnyClass? = NSClassFromString(appName + "." + vcName);
     
-    let cls:AnyClass = BNClassFromString(vcName);
+    let cls:AnyClass = SwiftClassFromString(vcName);
     // 通过类创建对象， 不能用cls.init(),有的类可能没有init方法
     // 需将cls转换为制定类型
     let vcCls = cls as! UIViewController.Type;

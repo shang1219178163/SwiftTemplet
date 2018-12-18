@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor{
     
-    static func UIColorFromHexString(_ hex:String) -> UIColor {
+    static func UIColorFromHex(_ hex:String) -> UIColor {
     
         var cString = hex.trimmingCharacters(in: CharacterSet.whitespaces).uppercased();
         if cString.hasPrefix("#") {
@@ -62,7 +62,7 @@ extension UIColor{
     
    static var theme : UIColor {
         get{
-            return UIColorFromHexString("#0082e0");
+            return UIColorFromHex("#0082e0");
 
         }
     }
