@@ -82,8 +82,9 @@ func UINavListFromList(_ list:Array<Any>) -> Array<UINavigationController>!{
             controller.tabBarItem.image = UIImage(named: img_N)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.selectedImage = UIImage(named: img_H)?.withRenderingMode(.alwaysOriginal);
             controller.tabBarItem.badgeValue = badgeValue;
-            controller.tabBarItem.badgeColor = badgeValue.isEmpty ? .clear:.red;
-            
+            if #available(iOS 10.0, *) {
+                controller.tabBarItem.badgeColor = badgeValue.isEmpty ? .clear:.red;
+            }
             //导航控制器
             let navController = UINavCtrFromObj(controller);
             marr.add(navController as Any);
@@ -135,14 +136,14 @@ extension NSObject{
         return cls;
     }
         
-    func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedStringKey, Any> {
+    func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedString.Key, Any> {
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
-        let dic = [NSAttributedStringKey.font:font,
-                   NSAttributedStringKey.foregroundColor: textColor];
+        let dic = [NSAttributedString.Key.font:font,
+                   NSAttributedString.Key.foregroundColor: textColor];
         return dic;
     }
     
-    func attrParaDict(font:AnyObject, textColor:UIColor, alignment:NSTextAlignment) -> Dictionary<NSAttributedStringKey, Any> {
+    func attrParaDict(font:AnyObject, textColor:UIColor, alignment:NSTextAlignment) -> Dictionary<NSAttributedString.Key, Any> {
         
         let paraStyle = NSMutableParagraphStyle();
         paraStyle.lineBreakMode = .byCharWrapping;
@@ -152,7 +153,7 @@ extension NSObject{
         
         let mdic = NSMutableDictionary(dictionary: self.attrDict(font: font, textColor: textColor));
         mdic.setObject(paraStyle, forKey:kCTParagraphStyleAttributeName as! NSCopying);
-        return mdic.copy() as! Dictionary<NSAttributedStringKey, Any>;
+        return mdic.copy() as! Dictionary<NSAttributedString.Key, Any>;
     }
     
     func sizeWithText(text:AnyObject!, font:AnyObject, width:CGFloat) -> CGSize {

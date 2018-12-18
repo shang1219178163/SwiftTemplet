@@ -51,7 +51,7 @@ extension UIViewController{
                 }
             }
         }
-        btn.addTarget(target, action:action, for: UIControlEvents.touchUpInside);
+        btn.addTarget(target, action:action, for: .touchUpInside);
         btn.sizeToFit();
         btn.isHidden = isHidden;
         
@@ -72,7 +72,7 @@ extension UIViewController{
         }
     }
     
-    func createBarItem(systemItem:UIBarButtonSystemItem, isLeft:Bool, action:@escaping (ObjClick)) -> Void {
+    func createBarItem(systemItem:UIBarButtonItem.SystemItem, isLeft:Bool, action:@escaping (ObjClick)) -> Void {
 
         let item:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(handleActionItem(sender:)));
         item.systemType = systemItem;
@@ -137,7 +137,7 @@ extension UIViewController{
 //                }
 //            }
 //        }
-////        btn.addTarget(self, action:self, for: UIControlEvents.touchUpInside);
+////        btn.addTarget(self, action:self, for: .touchUpInside);
 //        btn.sizeToFit();
 //        btn.isHidden = isHidden;
 //

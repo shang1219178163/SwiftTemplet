@@ -39,7 +39,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         
         let gapY = (height - kH_TEXTFIELD)/2.0;
         
-        let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreen_width);
+        let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreenWidth);
         labelLeft.frame = CGRect(x: kX_GAP, y: gapY, width: labSize.width, height: kH_TEXTFIELD);
 
         textField.frame = CGRect(x: labelLeft.frame.maxX + kPadding, y: gapY, width: width - labelLeft.frame.maxX - kPadding - kX_GAP, height: kH_TEXTFIELD);

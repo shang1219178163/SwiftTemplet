@@ -40,7 +40,7 @@ class UITableViewCellOne: UITableViewCell {
         }
         
         if type == 0 {
-            let labRightSize = sizeWithText(text: labelRight.text as AnyObject, font: labelRight.font, width: kScreen_width);
+            let labRightSize = sizeWithText(text: labelRight.text as AnyObject, font: labelRight.font, width: kScreenWidth);
             
             let X_right = imgViewRight.isHidden == false ? imgViewRight.frame.minX - kPadding - labRightSize.width : width - kX_GAP - labRightSize.width;
             labelRight.frame = CGRect(x: X_right, y: imgViewRight.frame.minY, width: labRightSize.width, height: imgViewRight.frame.height);
@@ -56,7 +56,7 @@ class UITableViewCellOne: UITableViewCell {
             
         }
         else{
-            let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreen_width);
+            let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreenWidth);
             
             let X_left = imgViewLeft.image != nil ? imgViewLeft.frame.maxX + kPadding : kX_GAP;
             

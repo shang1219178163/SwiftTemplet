@@ -29,7 +29,7 @@ extension UIViewController{
         get {
             var table = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITableView;
             if table == nil {
-                table = UITableView(frame:view.bounds, style:UITableViewStyle.grouped);
+                table = UITableView(frame:view.bounds, style:.grouped);
 //                table!.separatorStyle = .none;
                 table!.separatorInset = .zero;
                 table!.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self));

@@ -59,7 +59,7 @@ extension UIApplication{
             return UIDevice.current.name;
         }
     }
-    
+ 
     static var mainWindow: UIWindow {
         get {
             let app = UIApplication.shared.delegate as! AppDelegate;
@@ -76,7 +76,7 @@ extension UIApplication{
         set {
             let app = UIApplication.shared.delegate as! AppDelegate;
             app.window = newValue;
-            
+
         }
     }
     
@@ -148,26 +148,26 @@ extension UIApplication{
         UINavigationBar.appearance().barTintColor = .theme; //界面顶部透明
         //        UINavigationBar.appearance().barTintColor = .orange; //界面顶部透明
         
-        let attDic = [NSAttributedStringKey.foregroundColor :   UIColor.white,
-                      NSAttributedStringKey.font    :   UIFont.boldSystemFont(ofSize:18)];
+        let attDic = [NSAttributedString.Key.foregroundColor :   UIColor.white,
+                      NSAttributedString.Key.font    :   UIFont.boldSystemFont(ofSize:18)];
         UINavigationBar.appearance().titleTextAttributes = attDic;
         
         UINavigationBar.appearance().isTranslucent = true //界面顶部透明
 //        UINavigationBar.appearance().shadowImage =  UIImage.lkCreateImage(with:.clear)//阴影颜色
 //        UINavigationBar.appearance().setBackgroundImage(UIImage.lkCreateImage(with:.clear), for:UIBarMetrics.default)//背景颜色
 
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0,-60), for: UIBarMetrics.default)//去掉返回图片后面的文
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: 0, vertical: -60), for: UIBarMetrics.default)//去掉返回图片后面的文
         
     }
     
     static func setupAppearanceTabBar() -> Void {
         //         设置字体颜色
-//        let attDic_N = [NSAttributedStringKey.foregroundColor:.black];
-//        let attDic_H = [NSAttributedStringKey.foregroundColor: UIColor.theme];
+//        let attDic_N = [NSAttributedString.Key.foregroundColor:.black];
+//        let attDic_H = [NSAttributedString.Key.foregroundColor: UIColor.theme];
 ////        UITabBarItem.appearance().setTitleTextAttributes(attDic_N, for: .normal);
 //        UITabBarItem.appearance().setTitleTextAttributes(attDic_H, for: .selected);
         // 设置字体偏移
-        UITabBarItem.appearance().titlePositionAdjustment = UIOffsetMake(0.0, -5.0);
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset.init(horizontal: 0, vertical: -5.0);
         // 设置图标选中时颜色
 //        UITabBar.appearance().tintColor = .red;
     }
@@ -175,18 +175,17 @@ extension UIApplication{
     static func openURL(_ urlStr:String, _ tips:String) {
         let set = NSCharacterSet(charactersIn: "!*'();:@&=+$,/?%#[]").inverted;
         let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: set)!;
-//        let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
-
+        //        let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
+        
         let url:NSURL? = NSURL.init(string:str);
         if UIApplication.shared.canOpenURL(url! as URL) {
-            if iOSVer(version: 10) {
-                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil);
-
-            }else{
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+            } else {
                 UIApplication.shared.openURL(url! as URL);
                 
             }
-        }else{
+        } else {
             print("链接无法打开!!!\n%@",url as Any);
             
         }

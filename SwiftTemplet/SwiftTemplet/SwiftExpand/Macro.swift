@@ -10,8 +10,8 @@
 import UIKit
 
 
-let kScreen_width = UIScreen.main.bounds.width;
-let kScreen_height = UIScreen.main.bounds.height;
+let kScreenWidth = UIScreen.main.bounds.width;
+let kScreenHeight = UIScreen.main.bounds.height;
 
 let kScale_width = UIScreen.main.bounds.width;
 
