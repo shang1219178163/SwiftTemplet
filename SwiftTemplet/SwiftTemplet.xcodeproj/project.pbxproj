@@ -49,7 +49,6 @@
 		51827CC721300C170084720C /* UIApplication+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51827CC621300C170084720C /* UIApplication+Helper.swift */; };
 		5183537D2123A5D800A080D2 /* Macro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5183537C2123A5D800A080D2 /* Macro.swift */; };
 		5183537F2123A69B00A080D2 /* Macro_Globle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5183537E2123A69B00A080D2 /* Macro_Globle.swift */; };
-		5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */; };
 		5186E923212103A0005B71AD /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5186E922212103A0005B71AD /* CenterViewController.swift */; };
 		519E87B621362ACB002CCD86 /* UITableViewCell+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E87B521362ACB002CCD86 /* UITableViewCell+Add.swift */; };
 		519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */; };
@@ -118,7 +117,6 @@
 		51827CC621300C170084720C /* UIApplication+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Helper.swift"; sourceTree = "<group>"; };
 		5183537C2123A5D800A080D2 /* Macro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macro.swift; sourceTree = "<group>"; };
 		5183537E2123A69B00A080D2 /* Macro_Globle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macro_Globle.swift; sourceTree = "<group>"; };
-		5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BN_BaseNavigationController.swift; sourceTree = "<group>"; };
 		5186E922212103A0005B71AD /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
 		519E87B521362ACB002CCD86 /* UITableViewCell+Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Add.swift"; sourceTree = "<group>"; };
 		519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellZero.swift; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				5183537C2123A5D800A080D2 /* Macro.swift */,
 				5183537E2123A69B00A080D2 /* Macro_Globle.swift */,
 				51BDABF3214F56B7003B9722 /* Extension+Protocol.swift */,
-				5185209A21338809009C4C40 /* BN_BaseNavigationController.swift */,
 			);
 			path = Expand;
 			sourceTree = "<group>";
@@ -477,7 +474,6 @@
 				515AA7592142178300C8D0AA /* UIScreen+Helper.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				D7C0AFED21BFBEDC00C95048 /* NSObject+Hook.swift in Sources */,
-				5185209B21338809009C4C40 /* BN_BaseNavigationController.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				517D143B2141248000F08FE5 /* BNAnnularProgress.swift in Sources */,
 				519E87B621362ACB002CCD86 /* UITableViewCell+Add.swift in Sources */,
