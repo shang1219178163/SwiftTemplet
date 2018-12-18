@@ -17,7 +17,6 @@ extension UIViewController{
             if list == nil {
                 list = [];
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), list, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
             }
             return list!;
         }
@@ -25,7 +24,6 @@ extension UIViewController{
             objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
-    
     
     var tableView: UITableView {
         get {

@@ -41,15 +41,16 @@ class SecondViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
 
-        self.requestWithRank(rank: 0, handler: { (obj, idx, isSuccess) in
-            
+        request(0, handler: { (obj, idx, isSuccess) in
+            DDLog(idx);
         });
+        
+        
         return;
-        
+        /*
         let params = ["one":"a"];
-        
         Alamofire.request(url,method:.get,parameters:params).responseJSON { (dataResponse) in
-            DDLog(dataResponse.request)  // 原始的URL请求
+            DDLog(dataResponse.request as Any)  // 原始的URL请求
 //            DDLog(dataResponse.response) // HTTP URL响应
 //            DDLog(dataResponse.data)     // 服务器返回的数据
 //            DDLog(dataResponse.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
@@ -57,10 +58,11 @@ class SecondViewController: UIViewController {
             
             if let json = dataResponse.value {
                 let rootModel = Mapper<RootClass>().map(JSON: json as! Dictionary);
-                DDLog(rootModel);
+                DDLog(rootModel as Any);
 
             }
         }
+         */
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,7 +70,7 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     //MARK: request
-    func requestParamsWithRank(_ rank:Int) -> Dictionary<String, Any>! {
+    func requestParams(_ rank:Int) -> Dictionary<String, Any>! {
         
         var dic = Dictionary<String, Any>();
         dic["uid"] = "533";
@@ -87,9 +89,9 @@ class SecondViewController: UIViewController {
         return dic;
     }
     
-    func requestWithRank(rank:Int,handler:@escaping(closuer)) -> Void {
+    func request(_ rank:Int,handler:@escaping(closuer)) -> Void {
 
-        let dic = self.requestParamsWithRank(rank);
+        let dic = requestParams(rank);
         let urlString = url;
         Alamofire.request(urlString,method:.get,parameters:dic).responseJSON { (dataResponse) in
            
@@ -98,33 +100,53 @@ class SecondViewController: UIViewController {
 //        DDLog(dataResponse.data)     // 服务器返回的数据
 //        DDLog(dataResponse.result)   // 响应序列化结果，在这个闭包里，存储的是JSON数据
 //        DDLog(dataResponse.value)  // 原始的URL请求
-            
-            if let data = dataResponse.data {
-                let JSONString:String! = String(data: data, encoding: .utf8);
-//                DDLog("___\n",JSONString.removingPercentEncoding!);
+        
+            switch rank {
+            case 0:
+                DispatchQueue.global(qos:.default).async {
+                    if let data = dataResponse.data {
+                        let JSONString:String! = String(data: data, encoding: .utf8);
+                        DDLog("___\n",JSONString.removingPercentEncoding!);
+                    }
+                    
+                    if let value = dataResponse.value {
+                        var jsonString = (value as! NSDictionary).jsonValue().removingPercentEncoding!;
+                        jsonString = (value as! NSDictionary).toJsonString();
+                        DDLog(jsonString);
+                        
+                        //数据解析
+                        let rootModel = Mapper<RootClass>().map(JSON: value as! Dictionary);
+                        DDLog(rootModel as Any);
+                    }
+                    
+                    DispatchQueue.global(qos: .default).async {
+                        
+                    }
+                }
+            case 1:
+                DispatchQueue.global(qos:.default).async {
+                    if let data = dataResponse.data {
+                        let JSONString:String! = String(data: data, encoding: .utf8);
+                        DDLog("___\n",JSONString.removingPercentEncoding!);
+                    }
+                    
+                    if let value = dataResponse.value {
+                        var jsonString = (value as! NSDictionary).jsonValue().removingPercentEncoding!;
+                        jsonString = (value as! NSDictionary).toJsonString();
+                        DDLog(jsonString);
+                        
+                        //数据解析
+                        let rootModel = Mapper<RootClass>().map(JSON: value as! Dictionary);
+                        DDLog(rootModel as Any);
+                    }
+                    
+                    DispatchQueue.global(qos: .default).async {
+                        
+                    }
+                }
+            default:
+                print("尚未定义\(rank)接口逻辑")
             }
-            
-            if let value = dataResponse.value {
-                var jsonString = (value as! NSDictionary).jsonValue().removingPercentEncoding!;
-                jsonString = (value as! NSDictionary).toJsonString();
-                DDLog(jsonString);
-
-                //数据解析
-                let rootModel = Mapper<RootClass>().map(JSON: value as! Dictionary);
-                DDLog(rootModel);
-
-            }
-            
-//            switch rank {
-//            case 0:
-//
-//
-//            case 1:
-//
-//
-//            default:
-//
-//            }
         }
     }
 }

@@ -22,7 +22,6 @@ extension UITextField{
             imgView.image = UIImage(named: unitName);
             imgView.tag = kTAG_IMGVIEW;
             return imgView;
-            
         }
        
         let size = self.sizeWithText(text: unitName as AnyObject, font: self.font!, width: kScreen_width);
