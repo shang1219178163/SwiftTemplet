@@ -10,9 +10,9 @@ import UIKit
 
 extension UIBarButtonItem{
     
-   var systemType: UIBarButtonSystemItem {
+   var systemType: UIBarButtonItem.SystemItem {
         get {
-            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonSystemItem;
+            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonItem.SystemItem;
 
         }
         set {

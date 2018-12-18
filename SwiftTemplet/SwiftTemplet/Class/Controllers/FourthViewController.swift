@@ -27,7 +27,7 @@ class FourthViewController: UIViewController {
 //        view.getViewLayer();
 //        return;
         
-        let viewZero = BNViewZero(frame: CGRect(x:20, y:20, width:kScreen_width/2, height:kScreen_width/2));
+        let viewZero = BNViewZero(frame: CGRect(x:20, y:20, width:kScreenWidth/2, height:kScreenWidth/2));
         view.addSubview(viewZero);
         
         viewZero.block { (tap, view, idx) in
@@ -68,7 +68,7 @@ class FourthViewController: UIViewController {
         
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
-        let rect = CGRect(x: 20, y: 20, width: kScreen_width - 20.0*2, height: 0);
+        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: 0);
         let groupView = UIView.createView(rect: rect, list: (list as! Array<String>), numberOfRow: 4, viewHeight: 30, padding: 5, type: 2) { (tap, itemView, idx) in
             
 //            DDLog(tap as Any,itemView,idx);
@@ -105,7 +105,7 @@ class FourthViewController: UIViewController {
 
     
     func addClockView(){
-        let clockView = BNClockView(frame: CGRect(x: 20, y: 20, width: kScreen_width - 40, height: kScreen_width - 40));
+        let clockView = BNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
         clockView.itemList = ["111","222","333","444","555","666","777","888",];
         clockView.backgroundColor = .random;
         clockView.image = UIImage(named: "beach");
@@ -128,7 +128,7 @@ class FourthViewController: UIViewController {
     
     
     lazy var progressView: BNAnnularProgress = {
-        let progressView = BNAnnularProgress(frame: CGRect(x:50,y:kScreen_width/2+40,width:100,height:100));
+        let progressView = BNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
         progressView.backgroundColor = .cyan;
         return progressView;
     }();

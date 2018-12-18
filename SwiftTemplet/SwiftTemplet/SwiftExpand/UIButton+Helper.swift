@@ -94,8 +94,7 @@ extension UIButton{
         if title.count >= 3 {
             let textSize:CGSize = btn.sizeThatFits(CGSize.zero);
             btn.frame = CGRect(origin: rect.origin, size: textSize);
-            btn.titleEdgeInsets = UIEdgeInsetsMake(-10, -20, -10, -20);
-            
+            btn.titleEdgeInsets = UIEdgeInsets.init(top: -10, left: -20, bottom: -10, right: -20);
             if title.count >= 4 {
                 btn.titleLabel?.adjustsFontSizeToFitWidth = true;
                 btn.titleLabel?.minimumScaleFactor = 1.0;
@@ -124,7 +123,7 @@ extension UIButton{
  
     static func createBtn(rect:CGRect,title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger) -> UIButton {
         if image != nil && image is String {
-            let btn = UIButton.createBtnImg(rect:rect, image_N: image as! String, image_H: image as? String);
+            let btn = UIButton.createBtnImg(rect:rect, image_N: (image as! String), image_H: image as? String);
             return btn;
         }
   
