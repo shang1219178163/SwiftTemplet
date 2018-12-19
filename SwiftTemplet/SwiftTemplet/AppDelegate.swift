@@ -9,6 +9,12 @@
 import UIKit
 import Foundation
 
+import SwiftExpand
+
+import Kingfisher
+
+import Alamofire
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,7 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIViewController.initializeMethod();
         UINavigationController.initializeMethod();
+        
+        
         // Override point for customization after application launch.
+        
         //方式一
 //        window = UIWindow(frame:UIScreen.main.bounds);
 //        window?.backgroundColor = .white;
@@ -29,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
         UIApplication.setupRootController(controller, true);
+        window = UIApplication.mainWindow;
+        
+//        UIApplication.setupRootController(&(window!), controller, true);
         UIApplication.setupAppearance();
         //方式三
 //        let list:Array = [
@@ -45,9 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.tabBarController?.selectedIndex = 3;
        
-        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
+//        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
         DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
-
+        DDLog(UIApplication.shared.keyWindow);
+        DDLog(self.window);
         return true
     }
 

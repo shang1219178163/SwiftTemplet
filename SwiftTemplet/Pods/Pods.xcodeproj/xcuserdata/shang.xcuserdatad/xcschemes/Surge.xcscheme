@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "84630C92DE4445529389BDD7B01A22BD"
+               BlueprintIdentifier = "3781819B9C1C1AB5A74A00BAF8E882B8"
                BlueprintName = "Surge"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "Surge.framework">
