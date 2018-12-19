@@ -8,8 +8,7 @@
 
 import UIKit
 import SwiftExpand
-
-import Kingfisher
+import SDWebImage
 
 class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
@@ -92,21 +91,15 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             let imgUrl = imgList.randomElement()!;
-            
-//        imgList = imgList.shuffled();
-//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!);
-//        cell.imgViewLeft.kf.setImage(with: URL.init(string: imgList.first!), placeholder: UIImage(named:"dragon"), options: nil, progressBlock: nil, completionHandler: nil);
-//            cell.imgViewLeft.kf.setImage(with: imgUrl, placeholder: imgDefault, options: nil, progressBlock: nil, completionHandler: nil);
-
-            cell.imgViewLeft.kf.setImage(with: URL.init(string: imgUrl), placeholder: UIImage(named:kIMG_defaultPortrait), options: nil, progressBlock: nil) { (result) in
-                switch result {
-                case .success(let value):
-                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-                case .failure(let error):
-                    print("Job failed: \(error.localizedDescription)")
-                }
-            }
-
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//            cell.imgViewLeft.kf.setImage(with: URL(string: imgUrl), placeholder: UIImage(named:kIMG_defaultPortrait), options: nil, progressBlock: nil) { (result) in
+//                switch result {
+//                case .success(let value):
+//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+//                case .failure(let error):
+//                    print("Job failed: \(error.localizedDescription)")
+//                }
+//            }
 //        cell.type = 1;
             
             cell.getViewLayer();
