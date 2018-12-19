@@ -21,6 +21,7 @@ PODS:
     - RxAtomic (~> 4.4)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
+  - SwiftExpand (1.0.8)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - RxSwift
   - SnapKit
   - Surge
+  - SwiftExpand
   - SwiftyJSON
 
 SPEC REPOS:
@@ -50,6 +52,7 @@ SPEC REPOS:
     - RxSwift
     - SnapKit
     - Surge
+    - SwiftExpand
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -65,8 +68,9 @@ SPEC CHECKSUMS:
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
+  SwiftExpand: e06ccac8db408471853d6f4d954f31e04478095f
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: b6017cc9326d91c7d0626a0ad24736e8a535bbb6
+PODFILE CHECKSUM: 3044096e2715ba429750145785e33cbc75049262
 
 COCOAPODS: 1.5.3

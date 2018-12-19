@@ -65,6 +65,7 @@ target 'SwiftTemplet' do
     pod 'RxSwift'
     
 #    pod 'ObjectMapper+Realm'
+    pod 'SwiftExpand'
 
 
 end

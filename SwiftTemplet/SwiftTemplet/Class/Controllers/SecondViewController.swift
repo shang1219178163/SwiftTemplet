@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import SwiftExpand
 
 import Alamofire
 import ObjectMapper
