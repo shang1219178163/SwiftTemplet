@@ -29,7 +29,8 @@ target 'SwiftTemplet' do
 #
 #   pod 'KeychainAccess'
     pod 'Kingfisher'
-#
+    pod 'SDWebImage'
+
 #   pod 'MonkeyKing'
 #   pod 'Moya'
 #  

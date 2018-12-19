@@ -20,6 +20,9 @@ PODS:
     - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
   - SwiftExpand (1.1.1)
@@ -35,6 +38,7 @@ DEPENDENCIES:
   - RxAlamofire
   - RxBlocking
   - RxSwift
+  - SDWebImage
   - SnapKit
   - Surge
   - SwiftExpand
@@ -53,6 +57,7 @@ SPEC REPOS:
     - RxAtomic
     - RxBlocking
     - RxSwift
+    - SDWebImage
     - SnapKit
     - Surge
     - SwiftExpand
@@ -70,11 +75,12 @@ SPEC CHECKSUMS:
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxBlocking: 138ad53217434444d6eeeb4fb406a45431d92e31
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
   SwiftExpand: 3068f44af1751369a19dc0950c909f256ba0267f
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 5cee3268ddb010bbc05e2e7c375dd813fb9f6020
+PODFILE CHECKSUM: d250efdaaf9ef289279bb99b2be169f9528f6fc1
 
 COCOAPODS: 1.5.3
