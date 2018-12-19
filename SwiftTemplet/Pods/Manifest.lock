@@ -6,6 +6,7 @@ PODS:
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
   - CryptoSwift (0.13.1)
+  - HandyJSON (4.2.1)
   - Kingfisher (5.0.0)
   - ObjectMapper (3.4.1)
   - RxAlamofire (4.3.0):
@@ -21,7 +22,7 @@ PODS:
     - RxAtomic (~> 4.4)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
-  - SwiftExpand (1.0.8)
+  - SwiftExpand (1.1.1)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireObjectMapper
   - CryptoSwift
+  - HandyJSON
   - Kingfisher
   - RxAlamofire
   - RxBlocking
@@ -44,6 +46,7 @@ SPEC REPOS:
     - AlamofireImage
     - AlamofireObjectMapper
     - CryptoSwift
+    - HandyJSON
     - Kingfisher
     - ObjectMapper
     - RxAlamofire
@@ -60,6 +63,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   Kingfisher: 2b0dd651e4fe5a07305b8242fde56f8e2d410f58
   ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
@@ -68,9 +72,9 @@ SPEC CHECKSUMS:
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: e06ccac8db408471853d6f4d954f31e04478095f
+  SwiftExpand: 3068f44af1751369a19dc0950c909f256ba0267f
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 3044096e2715ba429750145785e33cbc75049262
+PODFILE CHECKSUM: 5cee3268ddb010bbc05e2e7c375dd813fb9f6020
 
 COCOAPODS: 1.5.3

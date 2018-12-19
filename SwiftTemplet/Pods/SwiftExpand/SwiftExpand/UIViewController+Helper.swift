@@ -63,7 +63,7 @@ public extension UIViewController{
         return btn;
     }
     
-    @objc public func handleActionItem(sender:UIBarButtonItem) -> Void {
+    @objc private func handleActionItem(sender:UIBarButtonItem) -> Void {
         let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjClick;
         if block != nil {
             block!(sender);
