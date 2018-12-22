@@ -68,27 +68,8 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
 
     }
     
-    //header高度
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        return layout.itemSize
-    }
-    //footer高度
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        return layout.itemSize
-        
-    }
-
-    //设定header和footer的方法，根据kind不同进行不同的判断即可
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let view = UICTReusableViewZero.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewZero
-        view.label.text = kind;
-        return view;
-      
-    }
     
+    //MARK: --UICollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -108,7 +89,28 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       print(indexPath.row)
     }
-
+    
+//    //header高度
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        return layout.itemSize
+//    }
+//    //footer高度
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        return layout.itemSize
+//    }
+    
+    //设定header和footer的方法，根据kind不同进行不同的判断即可
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let view = UICTReusableViewZero.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewZero
+        view.label.text = kind;
+        return view;
+        
+    }
+    
+    //MARK: -other
     func armColor()->UIColor{
         let red = CGFloat(arc4random()%256)/255.0
         let green = CGFloat(arc4random()%256)/255.0
