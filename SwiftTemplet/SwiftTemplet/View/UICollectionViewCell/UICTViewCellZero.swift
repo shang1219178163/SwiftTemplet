@@ -31,7 +31,7 @@ class UICTViewCellZero: UICollectionViewCell {
         imgView.backgroundColor = UIColor.random
 
         label.backgroundColor = UIColor.random
-        label.textAlignment = .left;
+        label.textAlignment = .center;
         label.numberOfLines = 2;
         label.lineBreakMode = .byCharWrapping;
     }
