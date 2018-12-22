@@ -18,16 +18,16 @@ public extension String{
         return true;
     }
     
-    func intValue() -> Int {
+    public func intValue() -> Int {
         return Int((self as NSString).intValue)
     }
 
-    func floatValue() -> Float {
+    public func floatValue() -> Float {
         return (self as NSString).floatValue
 
     }
 
-    func doubleValue() -> Double {
+    public func doubleValue() -> Double {
         return (self as NSString).doubleValue
     }
     

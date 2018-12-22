@@ -69,7 +69,7 @@ public extension Array{
                 marr.append(item);
             }
         }
-    return (marr as! Array<Element>);
+        return (marr as! Array<Element>);
     }
     
 }

@@ -16,7 +16,7 @@ public extension UITableViewCell{
         get {
             var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
             if str == nil {
-                str = NSStringFromClass(classForCoder());
+                str = NStringShortFromClass(classForCoder());
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return str!;
