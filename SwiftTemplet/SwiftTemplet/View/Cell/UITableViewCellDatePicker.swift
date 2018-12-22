@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+import SnapKit
 import SwiftExpand
 
 class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
@@ -19,15 +21,13 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         
         //文字+时间选择器
         contentView.addSubview(labelLeft);
-        contentView.addSubview(textField);
+        contentView.addSubview(textfield);
 
-        textField.placeholder = "请选择";
-        textField.textAlignment = .center;
-        
-        textField.asoryView(true, unitName: kIMG_arrowDown);
-//        textField.asoryView(true, unitName: "公斤(万元)");
-
-        textField.delegate = self;
+        textfield.placeholder = "请选择";
+        textfield.textAlignment = .center;
+        textfield.asoryView(true, unitName: kIMG_arrowDown);
+//        textfield.asoryView(true, unitName: "公斤(万元)");
+        textfield.delegate = self;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,13 +38,31 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        let gapY = (height - kH_TEXTFIELD)/2.0;
+        labelLeft.sizeToFit();
+        labelLeft.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(contentView.frame.midY - labelLeft.frame.height/2.0)
+            make.left.equalToSuperview().offset(kX_GAP)
+            make.width.equalTo(labelLeft.size.width);
+        }
         
-        let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreenWidth);
-        labelLeft.frame = CGRect(x: kX_GAP, y: gapY, width: labSize.width, height: kH_TEXTFIELD);
-
-        textField.frame = CGRect(x: labelLeft.frame.maxX + kPadding, y: gapY, width: width - labelLeft.frame.maxX - kPadding - kX_GAP, height: kH_TEXTFIELD);
+        textfield.snp.makeConstraints { (make) in
+            make.top.equalTo(labelLeft);
+            make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+            make.right.equalToSuperview().offset(-kX_GAP)
+            make.height.equalTo(labelLeft);
+        }
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews();
+//
+//        let gapY = (height - kH_TEXTFIELD)/2.0;
+//
+//        let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreenWidth);
+//        labelLeft.frame = CGRect(x: kX_GAP, y: gapY, width: labSize.width, height: kH_TEXTFIELD);
+//
+//        textfield.frame = CGRect(x: labelLeft.frame.maxX + kPadding, y: gapY, width: width - labelLeft.frame.maxX - kPadding - kX_GAP, height: kH_TEXTFIELD);
+//    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -82,10 +100,10 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
                 self.viewblock!(self,sender,idx);
             
             }
-            let formatter = DateFormatter.dateFormat(formatStr: kFormat_date);
+            let formatter = DateFormatter.format(kDateFormat);
             let dateStr = formatter.string(from: view.datePicker.date);
             
-            self.textField.text = idx == 1 ? dateStr : "";
+            self.textfield.text = idx == 1 ? dateStr : "";
         });
         return view;
     }();

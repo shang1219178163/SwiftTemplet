@@ -154,8 +154,6 @@ public extension UIView{
 //    }
    
     public func addActionHandler(action:@escaping (ViewClick)) -> Void {
-//        public func addActionHandler(action:@escaping ((UITapGestureRecognizer?,UIView,NSInteger)->())) -> Void {
-
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
             
@@ -164,7 +162,7 @@ public extension UIView{
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.valueChanged);
 
         }
-        else{
+        else {
             let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap);
             if recoginzer == nil {
                 let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(tap:)));

@@ -12,7 +12,7 @@ public typealias SwiftBlock = (AnyObject,AnyObject,Int);
 
 public typealias ObjClick = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
 public typealias ViewClick = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
-//public typealias ViewClick = ((_ tap:UITapGestureRecognizer?, _ view:UIView, _ idx:NSInteger)->()) // 定义数据类型(其实就是设置别名)
+public typealias ControlClick = (UIControl) ->() // 定义数据类型(其实就是设置别名)
 
 // MARK: - 关联属性的key
 public struct RuntimeKey {
@@ -20,6 +20,7 @@ public struct RuntimeKey {
 //    public static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue)!;
     public static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue)!;
     public static let item = UnsafeRawPointer.init(bitPattern: "item".hashValue)!;
+    public static let control = UnsafeRawPointer.init(bitPattern: "control".hashValue)!;
 
 }
 
@@ -30,5 +31,3 @@ public func AssociationKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointe
     let key:UnsafeRawPointer = UnsafeRawPointer.init(bitPattern: string.hashValue)!;
     return key;
 }
-
-

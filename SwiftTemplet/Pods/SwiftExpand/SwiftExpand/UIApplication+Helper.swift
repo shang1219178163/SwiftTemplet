@@ -197,7 +197,7 @@ public extension UIApplication{
         let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: set)!;
         //        let str:String = urlStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!;
         
-        let url:NSURL? = NSURL.init(string:str);
+        let url:NSURL? = NSURL(string:str);
         if UIApplication.shared.canOpenURL(url! as URL) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
