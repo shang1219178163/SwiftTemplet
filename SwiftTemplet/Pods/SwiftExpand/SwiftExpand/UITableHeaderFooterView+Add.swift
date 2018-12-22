@@ -10,21 +10,6 @@ import UIKit
 
 extension UITableViewHeaderFooterView{
     
-    /// cell默认identifier
-    public static var identifier: String {
-        get {
-            var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
-            if str == nil {
-                str = NSStringFromClass(classForCoder());
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            }
-            return str!;
-        }
-        set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-    }
-    
     /// cell-源方法生成,自定义identifier
     public static func viewWithTableView(_ tableView:UITableView, identifier:String) -> UITableViewHeaderFooterView! {
         var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
@@ -40,8 +25,8 @@ extension UITableViewHeaderFooterView{
     
     /// cell-使用默认identifier生成
     public static func viewWithTableView(_ tableView:UITableView) -> UITableViewHeaderFooterView! {
-        //        let identifier = NSStringFromClass(self.classForCoder());
-        return viewWithTableView(tableView, identifier: self.identifier);
+        let identifier = NSStringFromClass(self.classForCoder());
+        return viewWithTableView(tableView, identifier: identifier);
         
     }
     

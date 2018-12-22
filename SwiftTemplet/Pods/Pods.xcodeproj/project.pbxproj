@@ -53,7 +53,7 @@
 		147FF44521CE34DF00351E94 /* UIColor+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42321CE34CE00351E94 /* UIColor+Helper.swift */; };
 		147FF44621CE34DF00351E94 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42421CE34CF00351E94 /* NSObject+Helper.swift */; };
 		147FF44721CE34DF00351E94 /* CGRect+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42521CE34D100351E94 /* CGRect+Helper.swift */; };
-		147FF44821CE34DF00351E94 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42621CE34D200351E94 /* String+Helper.swift */; };
+		147FF44821CE34DF00351E94 /* NSString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42621CE34D200351E94 /* NSString+Helper.swift */; };
 		147FF44921CE34DF00351E94 /* UITableHeaderFooterView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42721CE34D300351E94 /* UITableHeaderFooterView+Add.swift */; };
 		147FF44A21CE34DF00351E94 /* Sequence+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42821CE34D400351E94 /* Sequence+Helper.swift */; };
 		147FF44B21CE34DF00351E94 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF42921CE34D600351E94 /* DispatchQueue+Helper.swift */; };
@@ -78,6 +78,8 @@
 		147FF45E21CE34DF00351E94 /* NSInteger+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF43C21CE34DE00351E94 /* NSInteger+Helper.swift */; };
 		147FF45F21CE34DF00351E94 /* UIApplication+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF43D21CE34DE00351E94 /* UIApplication+Helper.swift */; };
 		147FF46021CE34DF00351E94 /* UIView+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF43E21CE34DE00351E94 /* UIView+Add.swift */; };
+		147FF46B21CE4D7E00351E94 /* UICollectionViewCell+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46A21CE4D7E00351E94 /* UICollectionViewCell+Helper.swift */; };
+		147FF46D21CE56E100351E94 /* UICollectionReusableView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46C21CE56E100351E94 /* UICollectionReusableView+Helper.swift */; };
 		14A6030032E12C1B957F620FECF742EA /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465A1A1CB0E6C719B65E82FCD500241F /* Digest.swift */; };
 		1546154D2ACE9B236BA9E5EFD23F3F91 /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A5DD1DA2A8CEBAFDD4B567F9AFAFD9B /* UIImage+MultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1671BE5F0887A6A56B68A16919577A65 /* PrimitiveSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73416506CBE5D333878A74498D0B7387 /* PrimitiveSequence.swift */; };
@@ -826,7 +828,7 @@
 		147FF42321CE34CE00351E94 /* UIColor+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+Helper.swift"; path = "SwiftExpand/UIColor+Helper.swift"; sourceTree = "<group>"; };
 		147FF42421CE34CF00351E94 /* NSObject+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+Helper.swift"; path = "SwiftExpand/NSObject+Helper.swift"; sourceTree = "<group>"; };
 		147FF42521CE34D100351E94 /* CGRect+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Helper.swift"; path = "SwiftExpand/CGRect+Helper.swift"; sourceTree = "<group>"; };
-		147FF42621CE34D200351E94 /* String+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Helper.swift"; path = "SwiftExpand/String+Helper.swift"; sourceTree = "<group>"; };
+		147FF42621CE34D200351E94 /* NSString+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSString+Helper.swift"; path = "SwiftExpand/NSString+Helper.swift"; sourceTree = "<group>"; };
 		147FF42721CE34D300351E94 /* UITableHeaderFooterView+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableHeaderFooterView+Add.swift"; path = "SwiftExpand/UITableHeaderFooterView+Add.swift"; sourceTree = "<group>"; };
 		147FF42821CE34D400351E94 /* Sequence+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Sequence+Helper.swift"; path = "SwiftExpand/Sequence+Helper.swift"; sourceTree = "<group>"; };
 		147FF42921CE34D600351E94 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Helper.swift"; path = "SwiftExpand/DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
@@ -851,6 +853,8 @@
 		147FF43C21CE34DE00351E94 /* NSInteger+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSInteger+Helper.swift"; path = "SwiftExpand/NSInteger+Helper.swift"; sourceTree = "<group>"; };
 		147FF43D21CE34DE00351E94 /* UIApplication+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIApplication+Helper.swift"; path = "SwiftExpand/UIApplication+Helper.swift"; sourceTree = "<group>"; };
 		147FF43E21CE34DE00351E94 /* UIView+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Add.swift"; path = "SwiftExpand/UIView+Add.swift"; sourceTree = "<group>"; };
+		147FF46A21CE4D7E00351E94 /* UICollectionViewCell+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Helper.swift"; sourceTree = "<group>"; };
+		147FF46C21CE56E100351E94 /* UICollectionReusableView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Helper.swift"; sourceTree = "<group>"; };
 		157002B6AAC1D701103C6A96F1497943 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Source/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		1589958F115052219BAF492325B8D3F2 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		1600625743B25DB8B9F1EB77ECAF6FFE /* TailRecursiveSink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TailRecursiveSink.swift; path = RxSwift/Observers/TailRecursiveSink.swift; sourceTree = "<group>"; };
@@ -1833,12 +1837,14 @@
 				147FF42D21CE34DA00351E94 /* NSObject+Hook.swift */,
 				147FF43621CE34DD00351E94 /* NSNumber+Helper.swift */,
 				147FF42821CE34D400351E94 /* Sequence+Helper.swift */,
-				147FF42621CE34D200351E94 /* String+Helper.swift */,
+				147FF42621CE34D200351E94 /* NSString+Helper.swift */,
 				147FF43D21CE34DE00351E94 /* UIApplication+Helper.swift */,
 				147FF43021CE34DC00351E94 /* UIBarButtonItem+Helper.swift */,
 				147FF43821CE34DD00351E94 /* UIBarItem+Helper.swift */,
 				147FF42121CE34C900351E94 /* UIButton+Helper.swift */,
 				147FF43A21CE34DE00351E94 /* UICollectionView+Helper.swift */,
+				147FF46A21CE4D7E00351E94 /* UICollectionViewCell+Helper.swift */,
+				147FF46C21CE56E100351E94 /* UICollectionReusableView+Helper.swift */,
 				147FF42321CE34CE00351E94 /* UIColor+Helper.swift */,
 				147FF42021CE34C900351E94 /* UIControl+Helper.swift */,
 				147FF43521CE34DD00351E94 /* UIImage+Helper.swift */,
@@ -3262,10 +3268,11 @@
 				147FF44421CE34DF00351E94 /* UIViewController+Hook.swift in Sources */,
 				147FF45221CE34DF00351E94 /* UIBarButtonItem+Helper.swift in Sources */,
 				147FF44321CE34DF00351E94 /* UIButton+Helper.swift in Sources */,
-				147FF44821CE34DF00351E94 /* String+Helper.swift in Sources */,
+				147FF44821CE34DF00351E94 /* NSString+Helper.swift in Sources */,
 				147FF44D21CE34DF00351E94 /* UITextField+Helper.swift in Sources */,
 				147FF44721CE34DF00351E94 /* CGRect+Helper.swift in Sources */,
 				147FF44A21CE34DF00351E94 /* Sequence+Helper.swift in Sources */,
+				147FF46D21CE56E100351E94 /* UICollectionReusableView+Helper.swift in Sources */,
 				147FF44F21CE34DF00351E94 /* NSObject+Hook.swift in Sources */,
 				147FF45921CE34DF00351E94 /* NSDate+Helper.swift in Sources */,
 				147FF45121CE34DF00351E94 /* Extension+Protocol.swift in Sources */,
@@ -3287,6 +3294,7 @@
 				147FF44221CE34DF00351E94 /* UIControl+Helper.swift in Sources */,
 				D16544DA6487A075B6C9A61C4FBF32AF /* SwiftExpand-dummy.m in Sources */,
 				147FF44E21CE34DF00351E94 /* UITableViewCell+Add.swift in Sources */,
+				147FF46B21CE4D7E00351E94 /* UICollectionViewCell+Helper.swift in Sources */,
 				147FF44521CE34DF00351E94 /* UIColor+Helper.swift in Sources */,
 				147FF44921CE34DF00351E94 /* UITableHeaderFooterView+Add.swift in Sources */,
 				147FF45C21CE34DF00351E94 /* UICollectionView+Helper.swift in Sources */,

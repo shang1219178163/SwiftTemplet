@@ -15,6 +15,9 @@
 		147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */; };
 		147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */; };
 		147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */; };
+		147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */; };
+		147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */; };
+		147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -53,6 +56,9 @@
 		147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellThree.swift; sourceTree = "<group>"; };
 		147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
 		147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFive.swift; sourceTree = "<group>"; };
+		147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionDispalyController.swift; sourceTree = "<group>"; };
+		147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICTReusableViewZero.swift; sourceTree = "<group>"; };
+		147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICTViewCellZero.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -103,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		147FF46921CE48E800351E94 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */,
+				147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */,
+			);
+			path = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
 		41635A095EF8862B4E8D6F46 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +176,7 @@
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
 				14E8692521C20A2E009CE33E /* DetailViewController.swift */,
+				147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -190,13 +206,14 @@
 		519E87C321367582002CCD86 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				147FF46921CE48E800351E94 /* UICollectionViewCell */,
 				519E87C5213675A5002CCD86 /* View */,
-				519E87C421367593002CCD86 /* Cell */,
+				519E87C421367593002CCD86 /* UITbaleViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		519E87C421367593002CCD86 /* Cell */ = {
+		519E87C421367593002CCD86 /* UITbaleViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */,
@@ -209,7 +226,7 @@
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
 				515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */,
 			);
-			path = Cell;
+			path = UITbaleViewCell;
 			sourceTree = "<group>";
 		};
 		519E87C5213675A5002CCD86 /* View */ = {
@@ -395,6 +412,7 @@
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				5182444D213E8CB600071A9D /* BNData.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
+				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
@@ -402,12 +420,14 @@
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
 				5182444C213E8CB600071A9D /* BNResult.swift in Sources */,
+				147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */,
 				5169FCCC2124FEF5004A1A42 /* BNViewZero.swift in Sources */,
 				515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* BNRootClass.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
 				147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */,
 				147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */,
+				147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

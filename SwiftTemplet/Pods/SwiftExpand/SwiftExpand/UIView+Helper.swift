@@ -152,6 +152,25 @@ public extension UIView{
 //            return  objc_getAssociatedObject(self, RuntimeKey.viewBlock!) as? ViewClick;
 //        }
 //    }
+    /// 每个View都有的识别字符
+//    public static var identifier: String {
+//        get {
+//            var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
+//            if str == nil {
+//                str = NStringShortFromClass(classForCoder());
+//                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//            }
+//            return str!;
+//        }
+//        set {
+//            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        }
+//    }
+//    
+//    public class var identifier: String{
+//        return NSStringFromClass(self.classForCoder());
+//
+//    }
    
     public func addActionHandler(action:@escaping (ViewClick)) -> Void {
         if let sender = self as? UIButton {

@@ -82,10 +82,10 @@ class HomeViewController: UITabBarController {
             ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
             ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
 //            ["CenterViewController", "概况",  "Item_center_N",  "Item_center_H"],
-            ["FifthViewControlle", "概况",  "Item_center_N",  "Item_center_H"],
-            ["ThirdViewController", "消息", "Item_third_N", "Item_third_H"],
-            ["FourthViewController", "我的",  "Item_fourth_N",  "Item_fourth_H"],
-            
+            ["ThirdViewController", "概况", "Item_third_N", "Item_third_H"],
+            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
+            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
+
             ];
         return list;
     }();

@@ -40,6 +40,8 @@ public let kTAG_VIEW_Picture = 1300;
 
 
 // MARK: -MacroGeometry与计算有关的尺寸属性
+public let kScreenWidth = UIScreen.main.bounds.width;
+public let kScreenHeight = UIScreen.main.bounds.height;
 
 public let kH_StatusBar: CGFloat = 20.0;
 public let kH_NaviagtionBar: CGFloat = 44.0;

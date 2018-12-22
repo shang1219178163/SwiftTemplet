@@ -109,13 +109,16 @@ public func UIColorFromDim(_ white:CGFloat, _ a:CGFloat) -> UIColor{
     return .init(white: white, alpha: a);
 }
 
-public func BNStringShortFromClass(_ cls:Swift.AnyClass) -> String {
+///返回的类名不带明明空间
+public func NStringShortFromClass(_ cls:Swift.AnyClass) -> String {
     var className:String = NSStringFromClass(cls);
-    if className.contains(".") {
-        let rangePoint = className.range(of: ".");
-        className = String(className[rangePoint!.upperBound...]);
-    }
-    return className;
+//    if className.contains(".") {
+//        let rangePoint = className.range(of: ".");
+//        className = String(className[rangePoint!.upperBound...]);
+//    }
+//    return className;
+    let list = className.components(separatedBy: ".");
+    return list.last!;
 }
 
 public extension NSObject{
