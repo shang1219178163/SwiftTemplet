@@ -1,15 +1,14 @@
-
 //
-//  UITableViewCell+Add.swift
-//  SwiftTemplet
+//  UITableHeaderFooterView+Add.swift
+//  BuildUI
 //
-//  Created by hsf on 2018/8/29.
-//  Copyright © 2018年 BN. All rights reserved.
+//  Created by Bin Shang on 2018/12/20.
+//  Copyright © 2018 Bin Shang. All rights reserved.
 //
 
 import UIKit
 
-public extension UITableViewCell{
+extension UITableViewHeaderFooterView{
     
     /// cell默认identifier
     public static var identifier: String {
@@ -27,30 +26,25 @@ public extension UITableViewCell{
     }
     
     /// cell-源方法生成,自定义identifier
-    public static func cellWithTableView(_ tableView:UITableView, identifier:String, style:UITableViewCell.CellStyle) -> UITableViewCell! {
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier);
-        if cell == nil {
-            cell = self.init(style: style, reuseIdentifier: identifier);
-            
+    public static func viewWithTableView(_ tableView:UITableView, identifier:String) -> UITableViewHeaderFooterView! {
+        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
+        if view == nil {
+            view = self.init(reuseIdentifier: identifier)
+
         }
-     
-        cell!.selectionStyle = .none;
-        cell!.separatorInset = .zero;
-        cell!.layoutMargins = .zero;
-        return cell!;
+      
+        view!.lineTop.isHidden = false
+        view!.lineBottom.isHidden = false
+        return view!;
     }
     
-    public static func cellWithTableView(_ tableView:UITableView, identifier:String) -> UITableViewCell! {
-        return cellWithTableView(tableView, identifier: identifier, style: .default);
-    }
-
     /// cell-使用默认identifier生成
-    public static func cellWithTableView(_ tableView:UITableView) -> UITableViewCell! {
-//        let identifier = NSStringFromClass(self.classForCoder());
-        return cellWithTableView(tableView, identifier: identifier);
-
-    }
+    public static func viewWithTableView(_ tableView:UITableView) -> UITableViewHeaderFooterView! {
+        //        let identifier = NSStringFromClass(self.classForCoder());
+        return viewWithTableView(tableView, identifier: self.identifier);
         
+    }
+    
     public var imgViewLeft: UIImageView {
         get {
             var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
@@ -60,7 +54,7 @@ public extension UITableViewCell{
                 imgView!.contentMode = .scaleAspectFit;
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+                
             }
             return imgView!;
         }
@@ -97,7 +91,7 @@ public extension UITableViewCell{
                 label!.numberOfLines = 0;
                 label!.lineBreakMode = .byCharWrapping;
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+                
             }
             return label!;
         }
@@ -105,7 +99,7 @@ public extension UITableViewCell{
             objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
-  
+    
     public var labelLeftSub: UILabel {
         get {
             var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
@@ -154,7 +148,7 @@ public extension UITableViewCell{
                 button!.isExclusiveTouch = true;
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), button, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+                
             }
             return button!;
         }
@@ -185,23 +179,4 @@ public extension UITableViewCell{
         }
     }
     
-    public var textView: UITextView {
-        get {
-            var tv = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITextView;
-            if tv == nil {
-                tv = UITextView(frame: .zero);
-                tv!.textAlignment = .left;
-                tv!.autocapitalizationType = .none;
-                tv!.autocorrectionType = .no;
-                tv!.backgroundColor = .white;
-                
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), tv, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-                
-            }
-            return tv!;
-        }
-        set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-    }
 }

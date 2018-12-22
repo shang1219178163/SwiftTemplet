@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
+		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
+		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
+		147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */; };
+		147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */; };
+		147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */; };
+		147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -41,6 +47,12 @@
 
 /* Begin PBXFileReference section */
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
+		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
+		147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFour.swift; sourceTree = "<group>"; };
+		147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellThree.swift; sourceTree = "<group>"; };
+		147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
+		147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFive.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -187,6 +199,12 @@
 		519E87C421367593002CCD86 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */,
+				147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */,
+				147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */,
+				147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */,
+				147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */,
+				147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */,
 				519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */,
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
 				515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */,
@@ -366,16 +384,20 @@
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				51824429213E74D400071A9D /* Header.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
+				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
+				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BNCircleView.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
+				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				5182444D213E8CB600071A9D /* BNData.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
+				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
@@ -384,6 +406,8 @@
 				515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* BNRootClass.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
+				147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */,
+				147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

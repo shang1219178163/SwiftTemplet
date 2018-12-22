@@ -29,24 +29,32 @@ public extension Int{
     
     public var string: String {
         get {
-            var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
-            if str == nil {
-                str = NSNumber(integerLiteral: self).stringValue;
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            }
-            return str!;
+            return NSNumber(integerLiteral: self).stringValue;
+        }
+    }
+
+    public var number: NSNumber {
+        get {
+            return NSNumber(integerLiteral: self);
         }
     }
     
+//    func number() -> NSNumber {
+//        return NSNumber(integerLiteral: self)
+//    }
+    
 }
 
-extension Double{
-    public func roundedTo(decimals: Int) -> Double {
+public extension Double{
+    
+    
+    /// 保留n为小数
+    public func roundedTo(_ n: Int) -> Double {
         let format = NumberFormatter()
         format.numberStyle = NumberFormatter.Style.decimal
         format.multiplier = 2
         format.roundingMode = .up
-        format.maximumFractionDigits = decimals
+        format.maximumFractionDigits = n
         format.number(from: format.string(for: self )! )
         
         return (format.number(from: format.string(for: self )! )) as! Double
@@ -54,13 +62,12 @@ extension Double{
     
     public var string: String {
         get {
-            var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
-            if str == nil {
-                str = NSNumber(floatLiteral:self).stringValue;
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            }
-            return str!;
+            return NSNumber(floatLiteral: self).stringValue;
         }
+    }
+    
+    func number() -> NSNumber {
+        return NSNumber(floatLiteral: Double(self))
     }
     
 }

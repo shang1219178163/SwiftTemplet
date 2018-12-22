@@ -18,6 +18,19 @@ public extension String{
         return true;
     }
     
+    func intValue() -> Int {
+        return Int((self as NSString).intValue)
+    }
+
+    func floatValue() -> Float {
+        return (self as NSString).floatValue
+
+    }
+
+    func doubleValue() -> Double {
+        return (self as NSString).doubleValue
+    }
+    
     public func reverse() -> String {
         return String(self.reversed())
     }
@@ -50,6 +63,9 @@ public extension String{
         if self.contains(".geojson") == true {
             let array: Array = self.components(separatedBy: ".");
             let path = Bundle.main.path(forResource: array.first, ofType: array.last);
+            if path == nil {
+                return "";
+            }
             if let jsonData = try? Data(contentsOf: URL(fileURLWithPath: path!)) {
                 
                 if let jsonObj = try? JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions(rawValue: 0)) {
@@ -65,7 +81,7 @@ public extension String{
     }
     
     public static func timeNow() -> String {
-        let fmt = DateFormatter.dateFormat(formatStr:kFormat_date);
+        let fmt = DateFormatter.format(kDateFormat)
         let dateStr = fmt.string(from: Date());
         return dateStr;
         
@@ -74,17 +90,17 @@ public extension String{
     public func toTimeStamp() -> String {
         let dateStr = self;
         
-        var fmtStr = kFormat_date;
+        var fmtStr = kDateFormat;
         if dateStr.contains("-") && dateStr.contains(":") {
-            fmtStr = kFormat_date;
+            fmtStr = kDateFormat;
             
         }
         else if dateStr.contains("-") && !dateStr.contains(":") {
-            fmtStr = kFormat_date_one;
+            fmtStr = kDateFormat_one;
             
         }
         else if !dateStr.contains("-") && !dateStr.contains(":") {
-            fmtStr = kFormat_date_two;
+            fmtStr = kDateFormat_two;
             
         }
         else{
@@ -92,7 +108,7 @@ public extension String{
             
         }
         
-        let fmt = DateFormatter.dateFormat(formatStr: fmtStr);
+        let fmt = DateFormatter.format(fmtStr);
         let date = fmt.date(from: dateStr);
         
         let intervl:Double = (date?.timeIntervalSince1970)!;

@@ -85,26 +85,21 @@ public extension UIViewController{
 
     };
     
-     public func createBtnBarItem(title:String?, image:AnyObject?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ViewClick)) -> UIButton! {
+     public func createBtnBarItem(title:String?, image:AnyObject?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClick)) -> UIButton! {
 
         let size = image != nil && UIImage(named:image as! String) != nil ? CGSize(width: 40, height: 40) : CGSize(width: 32, height: 32);
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size);
-        
-        let btn = UIButton.createBtn(rect: rect, title: title, font:16 as AnyObject, image:image, tag: tag, type: 0);
+        let btn = UIButton.createBtn(rect: rect, title: title, font: 16 as AnyObject, image: image, tag: tag, type: 0)
         btn.tag = isLeft == true ? kTAG_BackItem : kTAG_RightItem;
         btn.isHidden = isHidden;
         
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44));
-        view.isHidden = isHidden;
-        btn.center = view.center;
-        view.addSubview(btn);
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44));
+//        view.isHidden = isHidden;
+//        btn.center = view.center;
+//        view.addSubview(btn);
         
-        
-        btn.addActionHandler { (tap, view, idx) in
-            action(tap, view, idx);
-        }
-        
-        let item:UIBarButtonItem = UIBarButtonItem(customView: view);
+        btn.addActionHandler(action, for: UIControl.Event.touchUpInside)
+        let item:UIBarButtonItem = UIBarButtonItem(customView: btn);
         if isLeft == true {
             navigationItem.leftBarButtonItem = item;
         }
