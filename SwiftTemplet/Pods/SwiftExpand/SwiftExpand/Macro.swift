@@ -9,8 +9,7 @@
 
 import UIKit
 
-public let kScreenWidth = UIScreen.main.bounds.width;
-public let kScreenHeight = UIScreen.main.bounds.height;
+
 
 public func DDLog(_ msgs: Any..., fileName: String = #file, methodName: String = #function, lineNumber: Int = #line){
     #if DEBUG

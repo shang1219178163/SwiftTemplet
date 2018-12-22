@@ -16,12 +16,18 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        let controller = UICtrFromString("UICollectionDispalyController")
+        
+        self.addChildViewController(controller)
+        self.view.addSubview(controller.view)
+        
+        DDLog(UICTReusableViewZero.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
+        return;
         self.sortArray();
         self.sortDictiony();
        
