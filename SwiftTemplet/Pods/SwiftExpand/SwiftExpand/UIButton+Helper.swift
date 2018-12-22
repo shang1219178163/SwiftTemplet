@@ -85,42 +85,51 @@ public extension UIButton{
     public static func createBtnTitle(rect:CGRect, title:String!, font:AnyObject, type:NSInteger) -> UIButton! {
         let btn = UIButton(type:.custom);
         btn.frame = rect;
-//        btn.titleLabel?.text = title;//无法显示title
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
         btn.titleLabel?.font = font;
         btn.setTitle(title, for: .normal);
         btn.isExclusiveTouch = true;
-        
-        if title.count >= 3 {
-            let textSize:CGSize = btn.sizeThatFits(CGSize.zero);
-            btn.frame = CGRect(origin: rect.origin, size: textSize);
-            btn.titleEdgeInsets = UIEdgeInsets.init(top: -10, left: -20, bottom: -10, right: -20);
-            if title.count >= 4 {
-                btn.titleLabel?.adjustsFontSizeToFitWidth = true;
-                btn.titleLabel?.minimumScaleFactor = 1.0;
-                
-            }
-        }
+        btn.adjustsImageWhenHighlighted = false;
+//        btn.sizeToFit();
+//        if title.count >= 3 {
+//            let textSize:CGSize = btn.sizeThatFits(CGSize.zero);
+//            btn.frame = CGRect(origin: rect.origin, size: textSize);
+//            btn.titleEdgeInsets = UIEdgeInsets.init(top: -10, left: -20, bottom: -10, right: -20);
+//            if title.count >= 4 {
+//                btn.titleLabel?.adjustsFontSizeToFitWidth = true;
+//                btn.titleLabel?.minimumScaleFactor = 1.0;
+//
+//            }
+//        }
         
         switch type {
-            case 1:
-                btn.setTitle(title, for: .normal);
-
-                btn.setTitleColor(.black, for: .normal);
-                btn.backgroundColor = .white;
-            case 2:
-                btn.setTitle(title, for: .normal);
-
-                btn.setTitleColor(.red, for: .normal);
-                btn.backgroundColor = .white;
-
-            default:
-                btn.setTitle(title, for: .normal);
-
-            }
+        case 1:
+            btn.setTitle(title, for: .normal);
+            
+            btn.setTitleColor(.black, for: .normal);
+            btn.backgroundColor = .white;
+            
+        case 2:
+            btn.setTitle(title, for: .normal);
+            
+            btn.setTitleColor(.red, for: .normal);
+            btn.backgroundColor = .white;
+            
+        case 3:
+            btn.setTitle(title, for: .normal);
+            
+            btn.setTitleColor(.white, for: .normal);
+            btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
+//            btn.setBackgroundImage(UIImage(color: .red), for: .selected)
+            
+        default:
+            btn.setTitle(title, for: .normal);
+            
+        }
         return btn;
     }
- 
+    
+
     public static func createBtn(rect:CGRect,title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger) -> UIButton {
         if image != nil && image is String {
             let btn = UIButton.createBtnImg(rect:rect, image_N: (image as! String), image_H: image as? String);
@@ -128,19 +137,28 @@ public extension UIButton{
         }
   
         let btnTitle = title != nil ? title : "UIbutton";
-        let btn = UIButton.createBtnTitle(rect:rect, title: btnTitle, font:font as AnyObject, type:0);
-        return btn!;
+        let btn = UIButton.createBtnTitle(rect:rect, title: btnTitle, font:font as AnyObject, type:type);
+        return btn!
     }
     
-    public static func createBtn(rect:CGRect, title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger, action:@escaping (ViewClick)) -> UIButton? {
+    public static func createBtn(rect:CGRect, title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger, action:@escaping (ControlClick)) -> UIButton {
         
         let btn = UIButton.createBtn(rect: rect,title: title, font:font, image:image, tag: tag, type: type);
-        btn.addActionHandler { (tap, view, idx) in
-            action(tap, view, idx);
-        }
-     
+        btn.tag = tag;
+        btn.addActionHandler(action, for: UIControl.Event.touchUpInside)
         return btn;
     }
+    
+//    public static func createBtn(rect:CGRect, title:String?, font:AnyObject, image:AnyObject?,tag:NSInteger, type:NSInteger, action:@escaping (ViewClick)) -> UIButton? {
+//        
+//        let btn = UIButton.createBtn(rect: rect,title: title, font:font, image:image, tag: tag, type: type);
+//        btn.addActionHandler { (tap, view, idx) in
+//            action(tap, view, idx);
+//        }
+//     
+//        return btn;
+//    }
+   
    
 
 }

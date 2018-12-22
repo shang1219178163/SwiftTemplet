@@ -16,7 +16,6 @@ class ThirdViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .yellow;
 
     }
     
@@ -26,6 +25,18 @@ class ThirdViewController: UIViewController {
         self.sortArray();
         self.sortDictiony();
        
+        let num = 123456
+        let num1 = 123456.2
+
+        let number = NSNumber(floatLiteral: 0.55);
+        let str = number.stringValue
+        let one = num.string
+        let two = num.number
+        
+        let three = num1.string
+//        let four = num1.string
+        print(number,str,0.66.string)
+        
     }
     
     func sortArray() -> Void {

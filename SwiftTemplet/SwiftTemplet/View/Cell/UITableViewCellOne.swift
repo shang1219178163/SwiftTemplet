@@ -8,11 +8,13 @@
 //
 
 import UIKit
+import SnapKit
 import SwiftExpand
+
 
 class UITableViewCellOne: UITableViewCell {
 
-    var type = 0;
+    var type = 0;//0优先显示右边文字,1代表优先显示左边文字
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -24,6 +26,9 @@ class UITableViewCellOne: UITableViewCell {
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelRight);
         
+        labelRight.numberOfLines = 1;
+        labelLeft.numberOfLines = 1;
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,43 +39,147 @@ class UITableViewCellOne: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        imgViewRight.frame = CGRect(x: (width - kSize_Arrow.width - kX_GAP), y: (height - kSize_Arrow.height)/2.0, width: kSize_Arrow.width, height: kSize_Arrow.height);
-        
-        if imgViewLeft.image != nil {
-            imgViewLeft.frame = CGRect(x: kX_GAP, y: kY_GAP, width: height - kY_GAP*2, height: height - kY_GAP*2);
-        }
-        
         if type == 0 {
-            let labRightSize = sizeWithText(text: labelRight.text as AnyObject, font: labelRight.font, width: kScreenWidth);
-            
-            let X_right = imgViewRight.isHidden == false ? imgViewRight.frame.minX - kPadding - labRightSize.width : width - kX_GAP - labRightSize.width;
-            labelRight.frame = CGRect(x: X_right, y: imgViewRight.frame.minY, width: labRightSize.width, height: imgViewRight.frame.height);
-            
-            if imgViewLeft.image != nil {
-                labelLeft.frame = CGRect(x: imgViewLeft.frame.maxX + kPadding, y: imgViewRight.frame.minY, width: labelRight.frame.minX - imgViewLeft.frame.maxX - kPadding*2, height: imgViewRight.frame.height);
-                
-            }
-            else{
-                labelLeft.frame = CGRect(x: kX_GAP, y: imgViewRight.frame.minY, width: labelRight.frame.minX - kPadding - kX_GAP, height: imgViewRight.frame.height)
-                
-            }
-            
-        }
-        else{
-            let labSize = sizeWithText(text: labelLeft.text as AnyObject, font: labelLeft.font, width: kScreenWidth);
-            
-            let X_left = imgViewLeft.image != nil ? imgViewLeft.frame.maxX + kPadding : kX_GAP;
-            
-            labelLeft.frame = CGRect(x: X_left, y: imgViewRight.frame.minY, width: labSize.width, height: imgViewRight.frame.height);
-            
-            let w_maxRight = imgViewRight.isHidden == false ? imgViewRight.frame.minX : width;
-            labelRight.frame = CGRect(x: labelLeft.frame.maxX + kPadding, y: imgViewRight.frame.minY, width: w_maxRight - kPadding - kX_GAP - labelLeft.frame.maxX, height: imgViewRight.frame.height);
-            
-            
+            //右边文字优先展示
+            labelRight.sizeToFit();
+            labelLeft.textAlignment = .left;
+
+        } else {
+            //左边文字优先展示
+            labelLeft.sizeToFit();
+            labelRight.textAlignment = .right;
+
         }
         
+        //箭头不隐藏
+        if imgViewRight.isHidden == false {
+            imgViewRight.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(contentView.frame.midY - kSize_Arrow.height/2.0)
+                make.right.equalToSuperview().offset(-kX_GAP)
+                make.size.equalTo(kSize_Arrow)
+            }
+            //头像不为空
+            if imgViewLeft.image != nil {
+                imgViewLeft.snp.makeConstraints { (make) in
+                    make.top.equalToSuperview().offset(kY_GAP)
+                    make.left.equalToSuperview().offset(kX_GAP)
+                    make.width.height.equalTo(contentView.frame.height - kY_GAP*2)
+                }
+                
+                if type == 0 {
+                    //右边文字优先展示
+                    labelRight.numberOfLines = 1;
+                    labelRight.sizeToFit();
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
+                        make.width.equalTo(labelRight.size.width);
+                    }
+                    
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
+                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                    }
+                    
+                } else {
+                    //左边文字优先展示
+                    labelLeft.numberOfLines = 1;
+                    labelLeft.sizeToFit();
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
+                        make.width.equalTo(labelLeft.size.width);
+                    }
+                    
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                        make.right.greaterThanOrEqualTo(imgViewRight.snp.left).offset(-kPadding)
+                    }
+                }
+                
+            } else {
+                //头像为空
+                imgViewLeft.snp.makeConstraints { (make) in
+                    make.top.equalToSuperview().offset(kY_GAP)
+                    make.left.equalToSuperview().offset(kX_GAP)
+                    make.width.height.equalTo(0.0)
+                }
+                
+                if type == 0 {
+                    labelRight.numberOfLines = 1;
+                    labelRight.sizeToFit();
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
+                        make.width.equalTo(labelRight.size.width);
+                    }
+                    
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.left.equalToSuperview().offset(kX_GAP)
+                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                    }
+                    
+                } else {
+                    labelLeft.numberOfLines = 1;
+                    labelLeft.sizeToFit();
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.left.equalToSuperview().offset(kX_GAP)
+                        make.width.equalTo(labelLeft.size.width);
+                    }
+                    
+                    labelRight.textAlignment = .right;
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(imgViewRight);
+                        make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                        make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
+                    }
+                }
+            }
+            
+        } else {
+            
+            let labH = kSize_Arrow.height
+            let top = contentView.frame.midY - labH/2.0
+            if type == 0 {
+                //右边文字优先展示
+                labelRight.numberOfLines = 1;
+                labelRight.sizeToFit();
+                labelRight.snp.makeConstraints { (make) in
+                    make.top.equalToSuperview().offset(top);
+                    make.right.equalToSuperview().offset(-kX_GAP);
+                    make.width.equalTo(labelRight.size.width);
+                }
+                
+                labelLeft.snp.makeConstraints { (make) in
+                    make.top.height.equalTo(labelRight);
+                    make.left.equalToSuperview().offset(kX_GAP)
+                    make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                }
+                
+            } else {
+                //左边文字优先展示
+                labelLeft.numberOfLines = 1;
+                labelLeft.sizeToFit();
+                labelLeft.snp.makeConstraints { (make) in
+                    make.top.equalTo(top);
+                    make.left.equalToSuperview().offset(kX_GAP)
+                    make.width.equalTo(labelLeft.size.width);
+                }
+                
+                labelRight.textAlignment = .right;
+                labelRight.snp.makeConstraints { (make) in
+                    make.top.height.equalTo(labelLeft);
+                    make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                    make.right.equalToSuperview().offset(-kX_GAP)
+                }
+            }
+        }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

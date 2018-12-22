@@ -30,10 +30,13 @@ public extension UIViewController{
             var table = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITableView;
             if table == nil {
                 table = UITableView(frame:view.bounds, style:.grouped);
-//                table!.separatorStyle = .none;
+                table!.separatorStyle = .singleLine;
                 table!.separatorInset = .zero;
-                table!.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self));
-            
+                table!.rowHeight = 60;
+//                table!.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self));
+                table!.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier);
+
+                table!.backgroundColor = UIColor.background;
                 if self.conforms(to: UITableViewDataSource.self) {
                     table!.dataSource = self as? UITableViewDataSource;
                 }

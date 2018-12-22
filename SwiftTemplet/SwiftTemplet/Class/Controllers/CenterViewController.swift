@@ -39,8 +39,8 @@ class CenterViewController: UIViewController {
          
         }
 
-        let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (tap, view, idx) in
-            DDLog(tap,view,idx);
+        let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (sender:UIControl) in
+            DDLog(sender);
         };
         DDLog(itemRight);
         
