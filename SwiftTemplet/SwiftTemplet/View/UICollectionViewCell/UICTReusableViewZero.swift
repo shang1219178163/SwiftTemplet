@@ -12,29 +12,28 @@ import SnapKit
 import SwiftExpand
 
 class UICTReusableViewZero: UICollectionReusableView {
-    var imgView = UIImageView()
-    var label = UILabel()
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(imgView)
-        addSubview(label)
+        addSubview(imageView)
+        addSubview(textLabel)
         
-        label.backgroundColor = .red
+        textLabel.backgroundColor = UIColor.random
+        imageView.backgroundColor = UIColor.random
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imgView.snp.makeConstraints { (make) in
+        imageView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalToSuperview()
         }
         
-        label.snp.makeConstraints { (make) in
+        textLabel.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(frame.height - kX_GAP*2)
