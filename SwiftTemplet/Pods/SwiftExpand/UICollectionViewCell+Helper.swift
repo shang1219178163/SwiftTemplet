@@ -16,4 +16,42 @@ public extension UICollectionViewCell{
         return view
     }
     
+    public var imgView: UIImageView {
+        get {
+            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
+            if view == nil {
+                view = UIImageView(frame: .zero);
+                view!.contentMode = .scaleAspectFit;
+                view!.isUserInteractionEnabled = true;
+                view!.image = UIImage(named: kIMG_arrowRight);
+
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+            }
+            return view!;
+        }
+        set {
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+
+    public var label: UILabel {
+        get {
+            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
+            if view == nil {
+                view = UILabel(frame: .zero);
+                view!.numberOfLines = 0;
+                view!.lineBreakMode = .byCharWrapping;
+                view!.textAlignment = .center;
+                view!.backgroundColor = UIColor.random
+
+                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
+            }
+            return view!;
+        }
+        set {
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
 }

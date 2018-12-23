@@ -18,6 +18,8 @@
 		147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */; };
 		147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */; };
 		147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */; };
+		147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47221CF49B000351E94 /* UICTViewCellOne.swift */; };
+		147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47421CF511800351E94 /* UICTReusableViewOne.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -59,6 +61,8 @@
 		147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionDispalyController.swift; sourceTree = "<group>"; };
 		147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICTReusableViewZero.swift; sourceTree = "<group>"; };
 		147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICTViewCellZero.swift; sourceTree = "<group>"; };
+		147FF47221CF49B000351E94 /* UICTViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellOne.swift; sourceTree = "<group>"; };
+		147FF47421CF511800351E94 /* UICTReusableViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTReusableViewOne.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -113,7 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */,
+				147FF47421CF511800351E94 /* UICTReusableViewOne.swift */,
 				147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */,
+				147FF47221CF49B000351E94 /* UICTViewCellOne.swift */,
 			);
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
@@ -206,8 +212,8 @@
 		519E87C321367582002CCD86 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				147FF46921CE48E800351E94 /* UICollectionViewCell */,
 				519E87C5213675A5002CCD86 /* View */,
+				147FF46921CE48E800351E94 /* UICollectionViewCell */,
 				519E87C421367593002CCD86 /* UITbaleViewCell */,
 			);
 			path = View;
@@ -395,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				517D143B2141248000F08FE5 /* BNAnnularProgress.swift in Sources */,
@@ -403,6 +410,7 @@
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
+				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BNCircleView.swift in Sources */,
