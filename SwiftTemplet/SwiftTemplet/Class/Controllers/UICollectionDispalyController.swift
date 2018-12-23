@@ -21,18 +21,33 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         super.viewDidLoad()
         self.navigationItem.title = "UICollectionView小解"
         self.view.backgroundColor = UIColor.white
+       
+        self.setupViews();
+        
+        view.addGestureTap { (sender:UIGestureRecognizer) in
+            let tap = sender as! UITapGestureRecognizer
+            DDLog(tap.keyOfUnsafeRawPointer)
+        }
+        
+        //        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
+        //        let one : AnyClass = NSClassFromString(namespace + "." + "UICTViewCellZero")!;
+        //
+        //        let two = UICTViewCellZero.self
+    }
+    
+    func setupViews(){
         // 初始化
         let layout = UICollectionViewFlowLayout()
         let itemW = (kScreenWidth - 5*5.0)/4.0
         layout.itemSize = CGSize(width: itemW, height: itemW)
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
-//        layout.scrollDirection = .vertical
+        //        layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         // 设置分区头视图和尾视图宽高
         layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 60)
         layout.footerReferenceSize = CGSize(width: kScreenWidth, height: 60)
-
+        
         collectionView = UICollectionView(frame: CGRect(x:0, y:64, width:kScreenWidth, height:400), collectionViewLayout: layout)
         collectionView!.backgroundColor = UIColor.white
         collectionView!.delegate = self
@@ -40,24 +55,17 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         self.view.addSubview(collectionView!)
         
         // 注册cell
-//        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
-//        // 注册headerView
-//        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
-//        // 注册footView
-//        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
+        //        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
+        //        // 注册headerView
+        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
+        //        // 注册footView
+        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
         
         collectionView!.dictClass = [UICollectionElementKindSectionHeader : ["UICTReusableViewOne",],
                                      UICollectionElementKindSectionFooter : ["UICTReusableViewZero",],
                                      UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
-                                    ]
+        ]
         collectionView?.registerAll();
-        
-        
-        
-//        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
-//        let one : AnyClass = NSClassFromString(namespace + "." + "UICTViewCellZero")!;
-//        
-//        let two = UICTViewCellZero.self
         
     }
 
