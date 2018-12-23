@@ -42,7 +42,7 @@ public extension UICollectionView{
             return
         }
         dictClass.forEach { (arg0) in
-            DDLog(arg0)
+//            DDLog(arg0)
             let (key, value) = arg0
             if key == UICollectionElementKindSectionItem {
                 registerCell(value)

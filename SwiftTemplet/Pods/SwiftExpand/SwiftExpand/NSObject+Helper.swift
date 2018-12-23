@@ -122,7 +122,7 @@ public func NStringShortFromClass(_ cls:Swift.AnyClass) -> String {
 }
 
 public extension NSObject{
- 
+
     public var block:SwiftBlock {
         set {
             objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
