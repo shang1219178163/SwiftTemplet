@@ -12,10 +12,7 @@ import SnapKit
 import SwiftExpand
 
 class UICTViewCellZero: UICollectionViewCell {
-    
-    var imgView = UIImageView()
-    var label = UILabel()
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -26,14 +23,10 @@ class UICTViewCellZero: UICollectionViewCell {
         addSubview(imgView)
         addSubview(label)
         
-        imgView.isUserInteractionEnabled = true;
-        imgView.contentMode = .scaleAspectFit;
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.random
         imgView.backgroundColor = UIColor.random
 
-        label.backgroundColor = UIColor.random
-        label.textAlignment = .center;
-        label.numberOfLines = 2;
-        label.lineBreakMode = .byCharWrapping;
     }
     
     override func layoutSubviews() {
