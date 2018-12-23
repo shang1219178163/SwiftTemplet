@@ -87,7 +87,7 @@ public extension UICollectionReusableView{
                 view = UILabel(frame: .zero);
                 view!.numberOfLines = 2;
                 view!.lineBreakMode = .byCharWrapping;
-                view!.textAlignment = .center;
+                view!.textAlignment = .left;
                 view!.backgroundColor = UIColor.random
                 
                 objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);

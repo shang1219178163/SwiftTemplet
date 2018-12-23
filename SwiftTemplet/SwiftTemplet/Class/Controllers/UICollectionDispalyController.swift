@@ -40,21 +40,17 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         self.view.addSubview(collectionView!)
         
         // 注册cell
-        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
-        // 注册headerView
-//        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
-
-        // 注册footView
-        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
-   
-
+//        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
+//        // 注册headerView
+//        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
+//        // 注册footView
+//        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
         
-//        collectionView!.dictClass = [UICollectionElementKindSectionHeader : ["UICTReusableViewZero",],
-//                                     UICollectionElementKindSectionFooter : ["UICTReusableViewZero",],
-//                                     UICollectionElementKindSectionItem : ["UICTViewCellZero",],
-//                                    ]
-//        collectionView?.registerAll();
+        collectionView!.dictClass = [UICollectionElementKindSectionHeader : ["UICTReusableViewOne",],
+                                     UICollectionElementKindSectionFooter : ["UICTReusableViewZero",],
+                                     UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
+                                    ]
+        collectionView?.registerAll();
         
         
         
@@ -84,6 +80,12 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        if indexPath.row % 2 == 0 {
+            let cell = UICTViewCellOne.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
+            cell.imgView.backgroundColor = armColor()
+            cell.label.text = String(format:"%ditem",indexPath.row)
+            return cell
+        }
         let cell = UICTViewCellZero.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellZero        
         cell.imgView.backgroundColor = armColor()
         cell.label.text = String(format:"%ditem",indexPath.row)
@@ -93,17 +95,6 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       print(indexPath.row)
     }
-    
-//    //header高度
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        return layout.itemSize
-//    }
-//    //footer高度
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        return layout.itemSize
-//    }
     
     //设定header和footer的方法，根据kind不同进行不同的判断即可
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
