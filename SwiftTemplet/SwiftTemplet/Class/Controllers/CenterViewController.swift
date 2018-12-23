@@ -26,7 +26,8 @@ class CenterViewController: UIViewController {
 //            DDLog(sender);
             self.dismiss(animated: true, completion: nil)
 
-            let style = (sender as! UIBarButtonItem).value(forKey: "systemItem");
+            let btnItem = sender as! UIBarButtonItem
+            let style = btnItem.value(forKey: "systemItem");
             if UIBarButtonSystemItem(rawValue: style as! Int) == UIBarButtonSystemItem.redo {
                 DDLog("111111");
                 
@@ -36,6 +37,8 @@ class CenterViewController: UIViewController {
                 DDLog("4444");
                 
             }
+            
+            DDLog(btnItem.tag)
          
         }
 
