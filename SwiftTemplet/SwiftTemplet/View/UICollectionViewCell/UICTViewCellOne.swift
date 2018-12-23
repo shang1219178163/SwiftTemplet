@@ -24,6 +24,7 @@ class UICTViewCellOne: UICollectionViewCell {
         addSubview(label)
         
         label.textAlignment = .center
+        imgView.image = UIImage(named: kIMG_defaultFailed_S);
         label.backgroundColor = UIColor.random
         imgView.backgroundColor = UIColor.random
         
