@@ -31,6 +31,7 @@ class UICTReusableViewZero: UICollectionReusableView {
         
         imageView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalToSuperview()
+            
         }
         
         textLabel.snp.makeConstraints { (make) in

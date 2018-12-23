@@ -56,7 +56,7 @@ public extension UICollectionView{
     ///cell注册
     public func registerCell(_ listClass: Array<String>) {
         listClass.forEach { (className: String) in
-            let obj = SwiftClassFromString(className)
+            let obj:AnyClass = SwiftClassFromString(className)
             self.register(obj, forCellWithReuseIdentifier: className)
         }
         
