@@ -44,7 +44,7 @@
 		12DBDFDA1842D0569DDE189B72B9B681 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6779DB96E9224A207AC0A100F7E74322 /* RxAtomic.framework */; };
 		13E900B217EB7AABB8685EDD051A97E5 /* CCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0487619287941527ADC8BEBF6E2284 /* CCM.swift */; };
 		145535E0C8073340CD533C142D85056E /* Zip+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9441A3269307B75C9953E8791E25E5A7 /* Zip+Collection.swift */; };
-		147FF4A621CF983D00351E94 /* UIGestureRecognizer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4A521CF983D00351E94 /* UIGestureRecognizer+Helper.swift */; };
+		147FF4A821CF9E4C00351E94 /* UIGestureRecognizer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4A721CF9E4C00351E94 /* UIGestureRecognizer+Helper.swift */; };
 		14A6030032E12C1B957F620FECF742EA /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04EA39592A80BB18E800F2E92C536E1 /* Digest.swift */; };
 		1546154D2ACE9B236BA9E5EFD23F3F91 /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = B0F29806DEF95F3122C764A4127C7E8B /* UIImage+MultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1671BE5F0887A6A56B68A16919577A65 /* PrimitiveSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C26C21B5D7C68A57320103E5B58E34 /* PrimitiveSequence.swift */; };
@@ -811,7 +811,7 @@
 		13459A1BAE8D41C0B1EE1C7976EA2A05 /* FromJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FromJSON.swift; path = Sources/FromJSON.swift; sourceTree = "<group>"; };
 		1386F4CFD51505EAFAF2563D474EF75E /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		141C3ECFFA2DFD3D994E952ECAB8022A /* Surge-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Surge-prefix.pch"; sourceTree = "<group>"; };
-		147FF4A521CF983D00351E94 /* UIGestureRecognizer+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Helper.swift"; sourceTree = "<group>"; };
+		147FF4A721CF9E4C00351E94 /* UIGestureRecognizer+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIGestureRecognizer+Helper.swift"; path = "SwiftExpand/UIGestureRecognizer+Helper.swift"; sourceTree = "<group>"; };
 		150765ACE4DE92AB356FED90517C1586 /* Bag+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bag+Rx.swift"; path = "RxSwift/Extensions/Bag+Rx.swift"; sourceTree = "<group>"; };
 		15B8FF8886CBB611B8CAA7692A9486A7 /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Image/Filter.swift; sourceTree = "<group>"; };
 		165351510572846DB7CD3247529C1A59 /* Surge-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Surge-umbrella.h"; sourceTree = "<group>"; };
@@ -1886,6 +1886,7 @@
 		747E9CB78CC417B19231CD187ACA9DDC /* SwiftExpand */ = {
 			isa = PBXGroup;
 			children = (
+				147FF4A721CF9E4C00351E94 /* UIGestureRecognizer+Helper.swift */,
 				9DC07F6F00DC72CF89CA9BA5FE60E67E /* CGRect+Helper.swift */,
 				6040DBFB1A240C6394505741EFEB649D /* DispatchQueue+Helper.swift */,
 				9AF2A2E11BBF96C3E72D6582DD2670B5 /* Extension+Protocol.swift */,
@@ -1918,7 +1919,6 @@
 				3CF1F8B4390A0BA65BA53C2B54842F49 /* UIView+Add.swift */,
 				1BEDC48FB553EB95B0793578D83EE927 /* UIView+Animation.swift */,
 				769A7497F0377AC738003F22035B9904 /* UIView+Helper.swift */,
-				147FF4A521CF983D00351E94 /* UIGestureRecognizer+Helper.swift */,
 				D7B10A4274CE7C7AB9A9AC3F735BC17A /* UIViewController+Add.swift */,
 				4ECA0BB9B811916EDF1C8C43ED411ADF /* UIViewController+Helper.swift */,
 				D6A45BA18D3F3389A5BC273B6A7CBD82 /* UIViewController+Hook.swift */,
@@ -3322,6 +3322,7 @@
 				FC1E9E00D57A9F577FB78EFA67065819 /* Macro.swift in Sources */,
 				7D735B6FC9A3A12A964456875CFC59FB /* Macro_Globle.swift in Sources */,
 				A06A796A8BDA0E524344AE666297F96F /* NSArray+Helper.swift in Sources */,
+				147FF4A821CF9E4C00351E94 /* UIGestureRecognizer+Helper.swift in Sources */,
 				257B82B408870AAF5E84363B7714C89D /* NSDate+Helper.swift in Sources */,
 				4209FA2E40CC1C3B399810A3C10ECBBE /* NSDictionary+Helper.swift in Sources */,
 				66EF846F23BFF6D9A3221BD53512CF28 /* NSInteger+Helper.swift in Sources */,
@@ -3330,7 +3331,6 @@
 				6DA5FB9BDBD0D594690CF2A81ACF767C /* NSObject+Helper.swift in Sources */,
 				32F8F21DA88D88F2E3A588B576ED209D /* NSObject+Hook.swift in Sources */,
 				E342782CB286347DD17349516679DCA1 /* NSString+Helper.swift in Sources */,
-				147FF4A621CF983D00351E94 /* UIGestureRecognizer+Helper.swift in Sources */,
 				9E74E88B02451E466B345AF959DAC88F /* Sequence+Helper.swift in Sources */,
 				C5D30795963AE41BAA6A9629AFCE8310 /* SwiftExpand-dummy.m in Sources */,
 				AEF9BFC3CDDAEC2D59394EB32DAAFAD7 /* UIApplication+Helper.swift in Sources */,
