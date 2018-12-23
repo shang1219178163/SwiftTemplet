@@ -15,7 +15,7 @@ public extension UIBarButtonItem{
             return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonItem.SystemItem;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_ASSIGN);
+            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     //待优化
