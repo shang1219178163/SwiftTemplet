@@ -101,7 +101,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DDLog(NSStringFromIndexPath(indexPath as NSIndexPath));
+        DDLog(NSStringFromIndexPath(indexPath))
         
         let controller = UICtrFromString("DetailViewController");
         navigationController?.pushViewController(controller, animated: true);
