@@ -20,8 +20,9 @@ class FleetDetailController: UIViewController,UITableViewDataSource,UITableViewD
         }
         
         view.addSubview(tableView);
-        dataList = ["车场名称:","入        口:","                 ","出        口:","                 ","开始时间:","结束时间:","操作用户:","状        态:",]
-        
+        dataList = ["车场名称:","入\(kBlankTwo)口:",kBlankFour,"出\(kBlankTwo)口:",kBlankFour,"开始时间:","结束时间:","操作用户:","状\(kBlankTwo)态:",]
+//        dataList = ["车场名称:","入        口:","                 ","出        口:","                 ","开始时间:","结束时间:","操作用户:","状        态:",]
+
         tableView.reloadData()
 
     }
@@ -62,14 +63,21 @@ class FleetDetailController: UIViewController,UITableViewDataSource,UITableViewD
         cell.labelLeft.textAlignment = .justified
         cell.labelRight.textAlignment = .center
         cell.type = 1;
-        cell.getViewLayer();
+        
+        let cellList = [1,3]
+        
+        if cellList.contains(indexPath.row) {
+            cell.separatorInset = UIEdgeInsetsMake(0, 100, 0, 0)
+//            cell.layoutMargins = UIEdgeInsetsMake(0, 100, 0, 0)
+        }
+//        cell.getViewLayer();
         return cell;
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NSStringFromCGRect(tableView.frame)
-        DDLog(NSStringFromIndexPath(indexPath as NSIndexPath));
+        DDLog(NSStringFromIndexPath(indexPath));
         
         let controller = UICtrFromString("DetailViewController");
         navigationController?.pushViewController(controller, animated: true);
