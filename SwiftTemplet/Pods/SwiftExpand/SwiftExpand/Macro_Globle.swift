@@ -154,6 +154,10 @@ public let kActionTitle_Collect = "收藏";
 public let kActionTitle_Recover = "恢复";
 
 public let kNIl_TEXT            =   "--";
+public let kBlankHalf           =   "  ";
+public let kBlankOne            =   "    ";
+public let kBlankTwo            =   "        ";
+public let kBlankFour           =   "                ";
 
 //MARK: -通用
 

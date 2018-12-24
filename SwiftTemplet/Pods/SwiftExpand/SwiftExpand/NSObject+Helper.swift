@@ -12,7 +12,7 @@ import UIKit
 
 //import ObjectMapper
 
-public func NSStringFromIndexPath(_ indexPath:NSIndexPath) -> String {
+public func NSStringFromIndexPath(_ indexPath:IndexPath) -> String {
     return String(format: "{%d,%d}", indexPath.section, indexPath.row);
 }
 
