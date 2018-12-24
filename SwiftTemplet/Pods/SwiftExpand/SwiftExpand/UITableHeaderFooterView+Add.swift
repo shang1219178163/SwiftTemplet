@@ -165,3 +165,17 @@ public extension UITableViewHeaderFooterView{
     }
     
 }
+
+public class BNFoldSectionModel: NSObject{
+    public var title = "标题"
+    public var titleSub = "子标题"
+    public var image = "图片名称"
+    public var isOpen = false
+    public var headerHeight: CGFloat = 10.0
+    public var footerHeight: CGFloat = 0.01
+    public var headerColor: UIColor = .background
+    public var footerColor: UIColor = .background
+
+    public var dataList:[Any] = []
+
+}
