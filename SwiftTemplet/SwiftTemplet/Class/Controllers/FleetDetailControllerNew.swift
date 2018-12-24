@@ -159,13 +159,10 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
 //        }
         if [1,2].contains(section) {
             containView.addActionHandler { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
-                foldModel.isOpen = !foldModel.isOpen
-                tableView.reloadSections([section], with: .fade)
-
-//                self.dataList.forEach({ (obj:Any) in
-//                    let model:BNFoldSectionModel = obj as! BNFoldSectionModel
-//                    DDLog(model.isOpen)
-//                })
+                if foldModel.isCanOpen == true {
+                    foldModel.isOpen = !foldModel.isOpen
+                    tableView.reloadSections([section], with: .fade)
+                }
             }
             return containView;
         }

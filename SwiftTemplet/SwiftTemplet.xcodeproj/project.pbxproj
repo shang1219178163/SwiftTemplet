@@ -22,8 +22,8 @@
 		147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47421CF511800351E94 /* UICTReusableViewOne.swift */; };
 		147FF4AC21D06A6900351E94 /* FleetDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4AB21D06A6900351E94 /* FleetDetailController.swift */; };
 		147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */; };
-		147FF4C521D082B900351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C421D082B900351E94 /* UITableHeaderFooterViewOne.swift */; };
 		147FF4C721D0AB9800351E94 /* BNTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */; };
+		147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -69,8 +69,8 @@
 		147FF47421CF511800351E94 /* UICTReusableViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTReusableViewOne.swift; sourceTree = "<group>"; };
 		147FF4AB21D06A6900351E94 /* FleetDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailController.swift; sourceTree = "<group>"; };
 		147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailControllerNew.swift; sourceTree = "<group>"; };
-		147FF4C421D082B900351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
 		147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTableFooterView.swift; sourceTree = "<group>"; };
+		147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -240,8 +240,8 @@
 				519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */,
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
 				515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */,
-				147FF4C421D082B900351E94 /* UITableHeaderFooterViewOne.swift */,
 				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewFour.swift */,
+				147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -423,6 +423,7 @@
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				517D143B2141248000F08FE5 /* BNAnnularProgress.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
+				147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				51824429213E74D400071A9D /* Header.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
@@ -433,7 +434,6 @@
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BNCircleView.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
-				147FF4C521D082B900351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,

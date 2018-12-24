@@ -26,6 +26,11 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .cyan;
 
+        //                self.dataList.forEach({ (obj:Any) in
+        //                    let model:BNFoldSectionModel = obj as! BNFoldSectionModel
+        //                    DDLog(model.isOpen)
+        //                })
+        
 
         var controller = UICtrFromString("FleetDetailController")
         controller = UICtrFromString("FleetDetailControllerNew")
