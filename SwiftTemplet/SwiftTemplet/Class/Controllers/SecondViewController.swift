@@ -11,6 +11,7 @@ import UIKit
 
 import Alamofire
 import ObjectMapper
+import SwiftExpand
 
 
 typealias closuer = (AnyObject,Int,Bool) -> Void;
@@ -26,6 +27,10 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .cyan;
 
 
+        let controller = UICtrFromString("FleetDetailController")
+        
+        self.addChildViewController(controller)
+        self.view.addSubview(controller.view)
     }
     
 }
