@@ -20,6 +20,10 @@ class CenterViewController: UIViewController {
         DDLog("_%@_",UIApplication.mainWindow);
         DDLog("__%@_",UIApplication.shared.keyWindow);
 
+        view.hashValue
+        
+        DDLog(view.hashValue,UIApplication.mainWindow.hashValue)
+        
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
         let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
@@ -49,10 +53,17 @@ class CenterViewController: UIViewController {
         
         
         imgView.frame = .init(x: 10, y: 80, width: 220, height: 100);
+        imgView.tag = 111;
         view.addSubview(imgView);
         
         imgView.addActionHandler { (tap, view, idx) in
-            DDLog(tap,view,idx);
+            DDLog(idx);
+            
+        }
+        
+        view.tag = 999
+        view.addActionHandler { (tap, view, idx) in
+            DDLog(idx);
             
         }
         
