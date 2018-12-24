@@ -171,6 +171,7 @@ public class BNFoldSectionModel: NSObject{
     public var titleSub = "子标题"
     public var image = "图片名称"
     public var isOpen = false
+    public var isCanOpen = false
     public var headerHeight: CGFloat = 10.0
     public var footerHeight: CGFloat = 0.01
     public var headerColor: UIColor = .background
