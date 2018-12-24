@@ -13,7 +13,7 @@
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
 		147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */; };
 		147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */; };
-		147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */; };
+		147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewFour.swift */; };
 		147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */; };
 		147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */; };
 		147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */; };
@@ -21,6 +21,9 @@
 		147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47221CF49B000351E94 /* UICTViewCellOne.swift */; };
 		147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47421CF511800351E94 /* UICTReusableViewOne.swift */; };
 		147FF4AC21D06A6900351E94 /* FleetDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4AB21D06A6900351E94 /* FleetDetailController.swift */; };
+		147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */; };
+		147FF4C521D082B900351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C421D082B900351E94 /* UITableHeaderFooterViewOne.swift */; };
+		147FF4C721D0AB9800351E94 /* BNTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -57,7 +60,7 @@
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
 		147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFour.swift; sourceTree = "<group>"; };
 		147FF3C221CE26BE00351E94 /* UITableViewCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellThree.swift; sourceTree = "<group>"; };
-		147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
+		147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewFour.swift; sourceTree = "<group>"; };
 		147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFive.swift; sourceTree = "<group>"; };
 		147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionDispalyController.swift; sourceTree = "<group>"; };
 		147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICTReusableViewZero.swift; sourceTree = "<group>"; };
@@ -65,6 +68,9 @@
 		147FF47221CF49B000351E94 /* UICTViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellOne.swift; sourceTree = "<group>"; };
 		147FF47421CF511800351E94 /* UICTReusableViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTReusableViewOne.swift; sourceTree = "<group>"; };
 		147FF4AB21D06A6900351E94 /* FleetDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailController.swift; sourceTree = "<group>"; };
+		147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailControllerNew.swift; sourceTree = "<group>"; };
+		147FF4C421D082B900351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
+		147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTableFooterView.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 				14E8692521C20A2E009CE33E /* DetailViewController.swift */,
 				147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */,
 				147FF4AB21D06A6900351E94 /* FleetDetailController.swift */,
+				147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -225,7 +232,6 @@
 		519E87C421367593002CCD86 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewOne.swift */,
 				147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */,
 				147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */,
 				147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */,
@@ -234,6 +240,8 @@
 				519E87B721362FB1002CCD86 /* UITableViewCellZero.swift */,
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
 				515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */,
+				147FF4C421D082B900351E94 /* UITableHeaderFooterViewOne.swift */,
+				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewFour.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -246,6 +254,7 @@
 				517D143621411B3C00F08FE5 /* BNCircleView.swift */,
 				517D143A2141248000F08FE5 /* BNAnnularProgress.swift */,
 				515AA756214206BC00C8D0AA /* BNDatePicker.swift */,
+				147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,8 +351,10 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -361,8 +372,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -416,18 +429,21 @@
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
+				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BNCircleView.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
+				147FF4C521D082B900351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				5182444D213E8CB600071A9D /* BNData.swift in Sources */,
+				147FF4C721D0AB9800351E94 /* BNTableFooterView.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
-				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
+				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,

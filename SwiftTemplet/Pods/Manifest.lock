@@ -6,8 +6,11 @@ PODS:
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
   - CryptoSwift (0.13.1)
+  - FBRetainCycleDetector (0.1.4)
   - HandyJSON (4.2.1)
   - Kingfisher (5.0.0)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - ObjectMapper (3.4.1)
   - RxAlamofire (4.3.0):
     - RxAlamofire/Core (= 4.3.0)
@@ -35,6 +38,7 @@ DEPENDENCIES:
   - CryptoSwift
   - HandyJSON
   - Kingfisher
+  - MLeaksFinder
   - RxAlamofire
   - RxBlocking
   - RxSwift
@@ -50,8 +54,10 @@ SPEC REPOS:
     - AlamofireImage
     - AlamofireObjectMapper
     - CryptoSwift
+    - FBRetainCycleDetector
     - HandyJSON
     - Kingfisher
+    - MLeaksFinder
     - ObjectMapper
     - RxAlamofire
     - RxAtomic
@@ -68,8 +74,10 @@ SPEC CHECKSUMS:
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   Kingfisher: 2b0dd651e4fe5a07305b8242fde56f8e2d410f58
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
@@ -81,6 +89,6 @@ SPEC CHECKSUMS:
   SwiftExpand: 482e24e34de04c3650edd83eddc08b774371ca1f
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: d250efdaaf9ef289279bb99b2be169f9528f6fc1
+PODFILE CHECKSUM: cc1a999eeb841812480d4ecc436330ee4174282f
 
 COCOAPODS: 1.5.3

@@ -60,15 +60,11 @@ class FleetDetailController: UIViewController,UITableViewDataSource,UITableViewD
         cell.imgViewRight.isHidden = true;
         
         cell.labelLeft.text = (dataList[indexPath.row] as! String)
-        cell.labelLeft.textAlignment = .justified
-        cell.labelRight.textAlignment = .center
         cell.type = 1;
+        cell.labelRight.textAlignment = .center
         
-        let cellList = [1,3]
-        
-        if cellList.contains(indexPath.row) {
+        if [1,3].contains(indexPath.row) {
             cell.separatorInset = UIEdgeInsetsMake(0, 100, 0, 0)
-//            cell.layoutMargins = UIEdgeInsetsMake(0, 100, 0, 0)
         }
 //        cell.getViewLayer();
         return cell;
@@ -89,8 +85,8 @@ class FleetDetailController: UIViewController,UITableViewDataSource,UITableViewD
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel(frame: .zero);
-        label.backgroundColor = .green;
-        label.text = "header\(section)";
+//        label.backgroundColor = .green;
+//        label.text = "header\(section)";
         return label;
         
     }
@@ -101,11 +97,11 @@ class FleetDetailController: UIViewController,UITableViewDataSource,UITableViewD
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel(frame: .zero);
-        label.backgroundColor = .yellow;
-        label.isUserInteractionEnabled = true
+//        label.backgroundColor = .yellow;
 //        label.text = "footer\(section)";
         
         btn.setTitle("关闭车队模式", for: .normal)
+        label.isUserInteractionEnabled = true
         label.addSubview(btn)
         btn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)

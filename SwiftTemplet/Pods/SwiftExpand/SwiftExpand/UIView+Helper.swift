@@ -182,7 +182,9 @@ public extension UIView{
 
         }
         else {
-            let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap);
+//            let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap);
+            let recoginzer = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: self.hashValue)!);
+
             if recoginzer == nil {
                 let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(tap:)));
                 
@@ -191,13 +193,16 @@ public extension UIView{
                 
             }
         }
-        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
+//        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, UnsafeRawPointer.init(bitPattern: self.hashValue)!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
     }
     
     /// 点击回调
     @objc private func handleActionTap(tap:UITapGestureRecognizer) -> Void {
-       let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClick;
+//       let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClick;
+        let block = objc_getAssociatedObject(self, UnsafeRawPointer.init(bitPattern: self.hashValue)!) as? ViewClick;
+
         if block != nil{
             block!(tap, tap.view!, tap.view!.tag);
         }

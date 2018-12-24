@@ -27,8 +27,9 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .cyan;
 
 
-        let controller = UICtrFromString("FleetDetailController")
-        
+        var controller = UICtrFromString("FleetDetailController")
+        controller = UICtrFromString("FleetDetailControllerNew")
+
         self.addChildViewController(controller)
         self.view.addSubview(controller.view)
     }
