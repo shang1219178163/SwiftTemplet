@@ -33,7 +33,7 @@ class BNTableFooterView: UIView {
         
         btn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(15)
-            make.left.right.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(45)
             

@@ -34,13 +34,13 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
             switch sectionIdx {
             case 0:
                 foldModel.dataList = [["选择车场:":"艾瑞停车场"]]
-                foldModel.footerHeight = 10
+//                foldModel.footerHeight = 10
 
             case 1:
                 foldModel.title = "全部入口"
                 foldModel.dataList = ["入        口1","入        口2"]
                 foldModel.headerHeight = 60
-                foldModel.footerHeight = 10
+//                foldModel.footerHeight = 10
                 
                 foldModel.headerColor = .white
 
@@ -48,7 +48,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
                 foldModel.title = "全部出口"
                 foldModel.dataList = ["出        口1","出        口2"]
                 foldModel.headerHeight = 60
-                foldModel.footerHeight = 10
+//                foldModel.footerHeight = 10
                 
                 foldModel.headerColor = .white
 
