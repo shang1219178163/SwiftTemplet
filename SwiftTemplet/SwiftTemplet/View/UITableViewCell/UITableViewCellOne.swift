@@ -14,7 +14,22 @@ import SwiftExpand
 
 class UITableViewCellOne: UITableViewCell {
 
-    var type = 0;//0优先显示右边文字,1代表优先显示左边文字
+//    var type = 0;//0优先显示右边文字,1代表优先显示左边文字
+    var type: Int = 0{
+        didSet {
+            if oldValue == 0 {
+                //右边文字优先展示
+                labelLeft.textAlignment = .left;
+                labelLeft.adjustsFontSizeToFitWidth = true
+                
+            } else {
+                //左边文字优先展示
+                labelRight.textAlignment = .right;
+                labelRight.adjustsFontSizeToFitWidth = true
+                
+            }
+        }
+    }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -39,17 +54,17 @@ class UITableViewCellOne: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if type == 0 {
-            //右边文字优先展示
-            labelRight.sizeToFit();
-            labelLeft.textAlignment = .left;
-
-        } else {
-            //左边文字优先展示
-            labelLeft.sizeToFit();
-            labelRight.textAlignment = .right;
-
-        }
+//        if type == 0 {
+//            //右边文字优先展示
+//            labelRight.sizeToFit();
+//            labelLeft.textAlignment = .left;
+//
+//        } else {
+//            //左边文字优先展示
+//            labelLeft.sizeToFit();
+//            labelRight.textAlignment = .right;
+//
+//        }
         
         //箭头不隐藏
         if imgViewRight.isHidden == false {
@@ -68,7 +83,6 @@ class UITableViewCellOne: UITableViewCell {
                 
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.numberOfLines = 1;
                     labelRight.sizeToFit();
                     labelRight.snp.makeConstraints { (make) in
                         make.top.height.equalTo(imgViewRight);
@@ -84,7 +98,6 @@ class UITableViewCellOne: UITableViewCell {
                     
                 } else {
                     //左边文字优先展示
-                    labelLeft.numberOfLines = 1;
                     labelLeft.sizeToFit();
                     labelLeft.snp.makeConstraints { (make) in
                         make.top.height.equalTo(imgViewRight);
@@ -108,7 +121,6 @@ class UITableViewCellOne: UITableViewCell {
                 }
                 
                 if type == 0 {
-                    labelRight.numberOfLines = 1;
                     labelRight.sizeToFit();
                     labelRight.snp.makeConstraints { (make) in
                         make.top.height.equalTo(imgViewRight);
@@ -123,7 +135,6 @@ class UITableViewCellOne: UITableViewCell {
                     }
                     
                 } else {
-                    labelLeft.numberOfLines = 1;
                     labelLeft.sizeToFit();
                     labelLeft.snp.makeConstraints { (make) in
                         make.top.height.equalTo(imgViewRight);
@@ -131,7 +142,6 @@ class UITableViewCellOne: UITableViewCell {
                         make.width.equalTo(labelLeft.size.width);
                     }
                     
-                    labelRight.textAlignment = .right;
                     labelRight.snp.makeConstraints { (make) in
                         make.top.height.equalTo(imgViewRight);
                         make.left.equalTo(labelLeft.snp.right).offset(kPadding)
@@ -146,7 +156,6 @@ class UITableViewCellOne: UITableViewCell {
             let top = contentView.frame.midY - labH/2.0
             if type == 0 {
                 //右边文字优先展示
-                labelRight.numberOfLines = 1;
                 labelRight.sizeToFit();
                 labelRight.snp.makeConstraints { (make) in
                     make.top.equalToSuperview().offset(top);
@@ -162,7 +171,6 @@ class UITableViewCellOne: UITableViewCell {
                 
             } else {
                 //左边文字优先展示
-                labelLeft.numberOfLines = 1;
                 labelLeft.sizeToFit();
                 labelLeft.snp.makeConstraints { (make) in
                     make.top.equalTo(top);
@@ -170,7 +178,6 @@ class UITableViewCellOne: UITableViewCell {
                     make.width.equalTo(labelLeft.size.width);
                 }
                 
-                labelRight.textAlignment = .right;
                 labelRight.snp.makeConstraints { (make) in
                     make.top.height.equalTo(labelLeft);
                     make.left.equalTo(labelLeft.snp.right).offset(kPadding)
