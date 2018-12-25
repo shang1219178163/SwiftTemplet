@@ -85,11 +85,16 @@ public extension UIViewController{
 
     };
     
-     public func createBtnBarItem(title:String?, image:AnyObject?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClick)) -> UIButton {
+     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClick)) -> UIButton {
 
-        let size = image != nil && UIImage(named:image as! String) != nil ? CGSize(width: 40, height: 40) : CGSize(width: 32, height: 32);
+        var size = CGSize(width: 32, height: 32)
+        if image != nil {
+            if UIImage(named:image!) != nil {
+                size = CGSize(width: 40, height: 40)
+            }
+        }
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: size);
-        let btn = UIButton.createBtn(rect: rect, title: title, font: 16 as AnyObject, image: image, tag: tag, type: 0, action: action)
+        let btn = UIButton.createBtn(rect: rect, title: title, font: 16.0, image: image, tag: tag, type: 0, action: action)
         btn.tag = isLeft == true ? kTAG_BackItem : kTAG_RightItem;
         btn.isHidden = isHidden;
         

@@ -67,7 +67,7 @@ class CenterViewController: UIViewController {
             
         }
         
-        let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1, action: { (sender:UIControl) in
+        let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15.0, image: nil, tag: 101, type: 1, action: { (sender:UIControl) in
             
             if "asdfsdgf".contains("as") {
                 DDLog(1111);
