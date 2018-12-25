@@ -12,38 +12,7 @@ import UIKit
 public typealias ButtonClick = ((_ sender:UIButton)->()) // 定义数据类型(其实就是设置别名)
 
 public extension UIButton{
-    
-//    private public struct RuntimeKey {
-//        public static let actionBlock = UnsafeRawPointer.init(bitPattern: "actionBlock".hashValue)
-//        /// ...其他Key声明
-//    }
-    
-//    /// 运行时关联
-//    private var actionBlock: ButtonClick? {
-//        set {
-//            objc_setAssociatedObject(self, UIButton.RuntimeKey.actionBlock!, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-//        }
-//        get {
-//            return  objc_getAssociatedObject(self, UIButton.RuntimeKey.actionBlock!) as? ButtonClick
-//        }
-//    }
-//    /// 点击回调
-//    @objc public func tapped(btn:UIButton){
-//        if self.actionBlock != nil {
-//            self.actionBlock!(btn);
-//        }
-//    }
-//
-//    /// 点击回调
-//    @objc public func addActionBlock(action:@escaping ButtonClick){
-//        self.actionBlock = action;
-//        if self.allTargets.count == 0 {
-//            self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
-//
-//        }
-//
-//    }
-//
+
 //    /// 快速创建
 //    convenience init(action:@escaping ButtonClick){
 //        self.init()
