@@ -130,7 +130,7 @@ class FleetDetailController: UIViewController,UITableViewDataSource,UITableViewD
     //    }();
     
     private lazy var btn:UIButton = {
-        var view:UIButton = UIButton.createBtn(rect: .zero, title: "+ 新建", font: 17 as AnyObject, image: nil, tag: kTAG_BTN, type: 3) { (sender:UIControl) in
+        var view:UIButton = UIButton.createBtn(rect: .zero, title: "+ 新建", font: 17.0, image: nil, tag: kTAG_BTN, type: 3) { (sender:UIControl) in
             if let obj = sender as? UIButton {
                 DDLog(obj.currentTitle as Any)
                 
