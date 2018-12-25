@@ -67,7 +67,23 @@ class CenterViewController: UIViewController {
             
         }
         
-        let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1);
+        let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15 as AnyObject, image: nil, tag: 101, type: 1, action: { (sender:UIControl) in
+            
+            if "asdfsdgf".contains("as") {
+                DDLog(1111);
+                
+            }
+            DDLog(String.timeNow().toTimeStamp());
+            
+            //            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
+            //
+            //            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
+            //            DDLog(size);
+            
+            DDLog(NSStringFromClass(self.classForCoder));
+        })
+        
+      
         view.addSubview(btn);
         btn.setTitle("99+", for: .normal);
         btn.backgroundColor = .red;
@@ -76,26 +92,6 @@ class CenterViewController: UIViewController {
 //
 //        };
 
-        btn.addActionHandler { (tap, view, idx) in
-//            DDLog(tap,view,idx);
-//            DDlog(view);
-            DDLog(view);
-            
-            
-            if "asdfsdgf".contains("as") {
-                DDLog(1111);
-                
-            }
-            DDLog(String.timeNow().toTimeStamp());
-            
-//            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
-//            
-//            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
-//            DDLog(size);
-            
-            DDLog(NSStringFromClass(self.classForCoder));
-        }
-        
         view.getViewLayer();
         
     }
