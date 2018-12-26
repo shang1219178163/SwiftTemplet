@@ -36,6 +36,11 @@ public extension NSObject{
         return swizzleMethodInstance(clz, origSel: origSel, replSel: replSel);
     }
    
-
+    //
+    public func swizzleMethodInstance(_ origSel:Selector, replSel:Selector) -> Bool {
+        let clz:AnyClass = classForCoder;
+        return NSObject.swizzleMethodInstance(clz, origSel: origSel, replSel: replSel);
+    }
+    
 }
 

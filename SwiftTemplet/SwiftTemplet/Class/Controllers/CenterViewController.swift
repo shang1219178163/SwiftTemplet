@@ -17,10 +17,11 @@ class CenterViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .cyan;
 
+       
+        
+        
         DDLog("_%@_",UIApplication.mainWindow);
         DDLog("__%@_",UIApplication.shared.keyWindow);
-
-        view.hashValue
         
         DDLog(view.hashValue,UIApplication.mainWindow.hashValue)
         
