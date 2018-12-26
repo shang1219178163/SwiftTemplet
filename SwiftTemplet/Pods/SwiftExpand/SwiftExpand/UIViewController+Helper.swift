@@ -13,7 +13,6 @@ public extension UIViewController{
     
     public var controllerName: String {
         get {
-
             var className:String = NStringShortFromClass(self.classForCoder);
             if className.contains("Controller") {
                 var range = className.range(of: "Controller");
@@ -26,7 +25,6 @@ public extension UIViewController{
             return className;
         }
     }
-    
     
     public func createBarItem(titile:String, imgName:AnyObject?, isLeft:Bool, isHidden:Bool, target:AnyObject, action:Selector) -> UIButton {
         
@@ -64,14 +62,14 @@ public extension UIViewController{
     }
     
     @objc private func handleActionItem(sender:UIBarButtonItem) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjClick;
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjBlock;
         if block != nil {
             block!(sender);
 
         }
     }
     
-    public func createBarItem(systemItem:UIBarButtonItem.SystemItem, isLeft:Bool, action:@escaping (ObjClick)) -> Void {
+    public func createBarItem(systemItem:UIBarButtonItem.SystemItem, isLeft:Bool, action:@escaping (ObjBlock)) -> Void {
 
         let item:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(handleActionItem(sender:)));
         item.systemType = systemItem;
@@ -85,7 +83,7 @@ public extension UIViewController{
 
     };
     
-     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClick)) -> UIButton {
+     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlBlock)) -> UIButton {
 
         var size = CGSize(width: 32, height: 32)
         if image != nil {

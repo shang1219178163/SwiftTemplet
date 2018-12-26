@@ -11,7 +11,7 @@ import SwiftExpand
 
 class BNViewZero: UIView {
 
-    var mblock:ViewClick?
+    var mblock:ViewBlock?
     
     override init(frame: CGRect) {
         super.init(frame: frame);
@@ -44,7 +44,7 @@ class BNViewZero: UIView {
         }
     }
 
-    func block(action:@escaping(ViewClick)) -> Void {
+    func block(action:@escaping(ViewBlock)) -> Void {
         self.mblock = action;
         
     }

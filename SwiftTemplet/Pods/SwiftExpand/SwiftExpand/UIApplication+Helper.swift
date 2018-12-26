@@ -106,7 +106,7 @@ public extension UIApplication{
     
     public static var tabBarController: UITabBarController? {
         get {
-            var tabBarVC = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITabBarController;
+            var tabBarVC = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UITabBarController;
             if tabBarVC == nil {
                 if UIApplication.mainWindow.rootViewController is UITabBarController {
                     tabBarVC = (UIApplication.mainWindow.rootViewController as! UITabBarController);
@@ -115,7 +115,7 @@ public extension UIApplication{
             return tabBarVC;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     

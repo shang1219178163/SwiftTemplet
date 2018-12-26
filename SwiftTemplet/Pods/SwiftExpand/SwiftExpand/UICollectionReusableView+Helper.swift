@@ -17,15 +17,15 @@ public extension UICollectionReusableView{
  
     public static var identifier: String {
         get {
-            var str = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? String;
+            var str = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? String;
             if str == nil {
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), str, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             str = NStringShortFromClass(classForCoder());
             return str!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -43,26 +43,26 @@ public extension UICollectionReusableView{
 
     public var imageView: UIImageView {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if view == nil {
                 view = UIImageView(frame: .zero);
                 view!.isUserInteractionEnabled = true;
                 view!.contentMode = .scaleAspectFit;
                 view!.backgroundColor = UIColor.random
 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var imageViewRight: UIImageView {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if view == nil {
                 view = UIImageView(frame: .zero);
                 view!.isUserInteractionEnabled = true;
@@ -70,19 +70,19 @@ public extension UICollectionReusableView{
                 view!.image = UIImage(named: kIMG_arrowRight);
                 view!.backgroundColor = UIColor.random
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var textLabel: UILabel {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if view == nil {
                 view = UILabel(frame: .zero);
                 view!.numberOfLines = 2;
@@ -90,19 +90,19 @@ public extension UICollectionReusableView{
                 view!.textAlignment = .left;
                 view!.backgroundColor = UIColor.random
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var textLabelRight: UILabel {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if view == nil {
                 view = UILabel(frame: .zero);
                 view!.numberOfLines = 1;
@@ -110,13 +110,13 @@ public extension UICollectionReusableView{
                 view!.textAlignment = .center;
                 view!.backgroundColor = UIColor.random
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
 }
