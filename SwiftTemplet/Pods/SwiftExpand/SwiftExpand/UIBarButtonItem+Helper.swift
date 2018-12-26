@@ -12,10 +12,10 @@ public extension UIBarButtonItem{
     
    public var systemType: UIBarButtonItem.SystemItem {
         get {
-            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UIBarButtonItem.SystemItem;
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! UIBarButtonItem.SystemItem;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     //待优化

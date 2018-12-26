@@ -13,21 +13,21 @@ public extension UIViewController{
     
     public var dataList: NSMutableArray {
         get {
-            var list = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? NSMutableArray;
+            var list = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? NSMutableArray;
             if list == nil {
                 list = [];
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), list, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), list, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return list!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var tableView: UITableView {
         get {
-            var table = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITableView;
+            var table = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UITableView;
             if table == nil {
                 table = UITableView(frame:view.bounds, style:.grouped);
                 table!.separatorStyle = .singleLine;
@@ -48,18 +48,18 @@ public extension UIViewController{
 //                 table!.dataSource = self as! UITableViewDataSource;
 //                table!.delegate = self as! UITableViewDelegate;
 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), table, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), table, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return table!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var collectionView : UICollectionView {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UICollectionView;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UICollectionView;
             if view == nil {
                 // 初始化
                 let layout = UICollectionViewFlowLayout()
@@ -87,12 +87,12 @@ public extension UIViewController{
               
                 view!.backgroundColor = UIColor.background;
            
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
 

@@ -16,20 +16,20 @@ public extension UICollectionView{
     
     public var listClass: Array<String> {
         get {
-            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! Array<String>;
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! Array<String>;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             registerCell(newValue)
         }
     }
     
     public var dictClass: Dictionary<String, Array<String>> {
         get {
-            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! Dictionary<String, Array<String>>;
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! Dictionary<String, Array<String>>;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         DDLog(newValue)
 
         }

@@ -11,10 +11,10 @@ public extension UIGestureRecognizer{
     
     public var keyOfUnsafeRawPointer: UnsafeRawPointer {
         get {
-            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! UnsafeRawPointer
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! UnsafeRawPointer
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     

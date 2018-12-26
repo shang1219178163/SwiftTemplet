@@ -32,119 +32,119 @@ public extension UITableViewHeaderFooterView{
     
     public var imgViewLeft: UIImageView {
         get {
-            var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
+            var imgView = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if imgView == nil {
                 imgView = UIImageView(frame: .zero);
                 imgView!.isUserInteractionEnabled = true;
                 imgView!.contentMode = .scaleAspectFit;
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return imgView!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var imgViewRight: UIImageView {
         get {
-            var imgView = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIImageView;
+            var imgView = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if imgView == nil {
                 imgView = UIImageView(frame: .zero);
                 imgView!.isUserInteractionEnabled = true;
                 imgView!.contentMode = .scaleAspectFit;
                 imgView!.image = UIImage(named: kIMG_arrowRight);
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), imgView, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return imgView!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var labelLeft: UILabel {
         get {
-            var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
+            var label = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: .zero);
                 label!.textAlignment = .left;
                 label!.numberOfLines = 0;
                 label!.lineBreakMode = .byCharWrapping;
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return label!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var labelLeftSub: UILabel {
         get {
-            var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
+            var label = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: .zero);
                 label!.textAlignment = .left;
                 label!.numberOfLines = 0;
                 label!.lineBreakMode = .byCharWrapping;
                 label!.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0);
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return label!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function)!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     
     public var labelRight: UILabel {
         get {
-            var label = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UILabel;
+            var label = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if label == nil {
                 label = UILabel(frame: .zero);
                 label!.textAlignment = .left;
                 label!.numberOfLines = 0;
                 label!.lineBreakMode = .byCharWrapping;
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), label, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return label!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var btn: UIButton {
         get {
-            var button = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIButton;
+            var button = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIButton;
             if button == nil {
                 button = UIButton(type: .custom);
                 button!.titleLabel?.adjustsFontSizeToFitWidth = true;
                 button!.titleLabel?.minimumScaleFactor = 1.0;
                 button!.isExclusiveTouch = true;
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), button, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), button, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return button!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var textfield: UITextField {
         get {
-            var tf = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UITextField;
+            var tf = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UITextField;
             if tf == nil {
                 tf = UITextField(frame: .zero);
                 tf!.textAlignment = .left;
@@ -154,13 +154,13 @@ public extension UITableViewHeaderFooterView{
                 tf!.clearButtonMode = .whileEditing;
                 tf!.backgroundColor = .white;
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), tf, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), tf, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }
             return tf!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
