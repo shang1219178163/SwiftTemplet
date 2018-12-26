@@ -44,9 +44,6 @@ public extension UIViewController{
                 if self.conforms(to: UITableViewDelegate.self) {
                     table!.delegate = self as? UITableViewDelegate;
                 }
-               
-//                 table!.dataSource = self as! UITableViewDataSource;
-//                table!.delegate = self as! UITableViewDelegate;
 
                 objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), table, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
