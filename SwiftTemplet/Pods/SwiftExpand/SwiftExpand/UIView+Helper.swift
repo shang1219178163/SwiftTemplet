@@ -218,7 +218,7 @@ public extension UIView{
     ///轻点手势
     func addGestureTap(action:@escaping (RecognizerBlock)) -> Void {
         let recognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-        recognizer.numberOfTapsRequired = 2  //轻点次数
+        recognizer.numberOfTapsRequired = 1  //轻点次数
         recognizer.numberOfTouchesRequired = 1  //手指个数
         
         self.isUserInteractionEnabled = true
