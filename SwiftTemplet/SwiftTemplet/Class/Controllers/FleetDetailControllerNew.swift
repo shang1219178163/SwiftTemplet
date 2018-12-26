@@ -23,59 +23,19 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
         if title == nil {
             title = self.controllerName;
         }
-        
         view.addSubview(tableView);
         
-        for sectionIdx in 0...3{
-
-            let foldModel = BNFoldSectionModel()
-            foldModel.isOpen = true
-            foldModel.title = "sectionTtitle_\(sectionIdx)"
-            switch sectionIdx {
-            case 0:
-                foldModel.dataList = [["选择车场:":"艾瑞停车场"]]
-//                foldModel.footerHeight = 10
-
-            case 1:
-                foldModel.title = "全部入口"
-                foldModel.dataList = ["入        口1","入        口2"]
-                foldModel.headerHeight = 60
-//                foldModel.footerHeight = 10
-                
-                foldModel.headerColor = .white
-
-            case 2:
-                foldModel.title = "全部出口"
-                foldModel.dataList = ["出        口1","出        口2"]
-                foldModel.headerHeight = 60
-//                foldModel.footerHeight = 10
-                
-                foldModel.headerColor = .white
-
-            case 3:
-                foldModel.dataList = ["开始时间:","结束时间:","操作用户:","状        态:"]
-                foldModel.headerHeight = 0.01
-                foldModel.footerHeight = 300
-
-            default:
-                print("出错")
-                
-            }
-            dataList.add(foldModel)
-            
-        }
-        tableView.reloadData()
+        setupData();
         
+        swizzleMethodInstance(#selector(handleActionOne), replSel: #selector(handleActionTwo))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-//        DDLog(dataList);
         tableView.reloadData()
 
     }
-    
     
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,6 +91,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        DDLog(NSStringFromIndexPath(indexPath));
 
+        handleActionOne()
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -187,7 +148,60 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    ///MARK: -lazy
+    
+    //MARK: -funtions
+    func setupData() {
+        for sectionIdx in 0...3{
+            
+            let foldModel = BNFoldSectionModel()
+            foldModel.isOpen = true
+            foldModel.title = "sectionTtitle_\(sectionIdx)"
+            switch sectionIdx {
+            case 0:
+                foldModel.dataList = [["选择车场:":"艾瑞停车场"]]
+                //                foldModel.footerHeight = 10
+                
+            case 1:
+                foldModel.title = "全部入口"
+                foldModel.dataList = ["入        口1","入        口2"]
+                foldModel.headerHeight = 60
+                //                foldModel.footerHeight = 10
+                
+                foldModel.headerColor = .white
+                
+            case 2:
+                foldModel.title = "全部出口"
+                foldModel.dataList = ["出        口1","出        口2"]
+                foldModel.headerHeight = 60
+                //                foldModel.footerHeight = 10
+                
+                foldModel.headerColor = .white
+                
+            case 3:
+                foldModel.dataList = ["开始时间:","结束时间:","操作用户:","状        态:"]
+                foldModel.headerHeight = 0.01
+                foldModel.footerHeight = 300
+                
+            default:
+                print("出错")
+                
+            }
+            dataList.add(foldModel)
+            
+        }
+        tableView.reloadData()
+    }
+    
+    
+    @objc dynamic func handleActionOne() {
+        DDLog(111)
+    }
+    
+    @objc dynamic func handleActionTwo() {
+        DDLog(222)
+    }
+    
+    //MARK: -lazy
     lazy var footerView: BNTableFooterView = {
         var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
         view.label.text = kTips_Fleet;
