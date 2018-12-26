@@ -14,33 +14,33 @@ public extension UIView {
     
     public var lineTop: UIView {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIView;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
             if view == nil {
                 view = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: kH_LINE_VIEW));
                 view!.backgroundColor = .line
 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     public var lineBottom: UIView {
         get {
-            var view = objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as? UIView;
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
             if view == nil {
                 view = UIView(frame: CGRect(x: 0, y: frame.maxY - kH_LINE_VIEW, width: frame.width, height: frame.height));
                 view!.backgroundColor = .line
                 
-                objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return view!;
         }
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     

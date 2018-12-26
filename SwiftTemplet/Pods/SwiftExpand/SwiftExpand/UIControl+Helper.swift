@@ -10,7 +10,7 @@ import UIKit
 
 extension UIControl {
     
-    public func addActionHandler(_ action:@escaping (ControlClick), for controlEvents: UIControl.Event) -> Void {
+    public func addActionHandler(_ action:@escaping (ControlBlock), for controlEvents: UIControl.Event) -> Void {
         addTarget(self, action:#selector(handleActionSender(_:)), for:controlEvents);
         objc_setAssociatedObject(self, RuntimeKey.control, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
@@ -18,7 +18,7 @@ extension UIControl {
     
     /// 点击回调
     @objc private func handleActionSender(_ sender:UIControl) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.control) as? ControlClick;
+        let block = objc_getAssociatedObject(self, RuntimeKey.control) as? ControlBlock;
         if block != nil {
             block!(sender);
         }

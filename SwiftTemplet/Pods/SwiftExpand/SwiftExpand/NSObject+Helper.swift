@@ -10,8 +10,6 @@
 import Foundation
 import UIKit
 
-//import ObjectMapper
-
 public func NSStringFromIndexPath(_ indexPath:IndexPath) -> String {
     return String(format: "{%d,%d}", indexPath.section, indexPath.row);
 }
@@ -125,11 +123,11 @@ public extension NSObject{
 
     public var block:SwiftBlock {
         set {
-            objc_setAssociatedObject(self, AssociationKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         
         get {
-            return objc_getAssociatedObject(self, AssociationKeyFromSelector(#function)) as! SwiftBlock;
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! SwiftBlock;
         }
     }
     

@@ -10,33 +10,38 @@ import UIKit
 
 public typealias SwiftBlock = (AnyObject,AnyObject,Int);
 
-public typealias ObjClick = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
-public typealias ViewClick = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
-public typealias ControlClick = (UIControl) ->() // 定义数据类型(其实就是设置别名)
-public typealias RecognizerClick = (UIGestureRecognizer) ->()
+public typealias ObjBlock = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
+public typealias ViewBlock = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
+public typealias ControlBlock = (UIControl) ->() // 定义数据类型(其实就是设置别名)
+public typealias RecognizerBlock = (UIGestureRecognizer) ->()
 
 // MARK: - 关联属性的key
 public struct RuntimeKey {
-//    public static let objBlock = UnsafeRawPointer.init(bitPattern: "objBlock".hashValue)!;
-//    public static let viewBlock = UnsafeRawPointer.init(bitPattern: "viewBlock".hashValue)!;
-    public static let tap = UnsafeRawPointer.init(bitPattern: "tap".hashValue)!;
-    public static let item = UnsafeRawPointer.init(bitPattern: "item".hashValue)!;
-    public static let control = UnsafeRawPointer.init(bitPattern: "control".hashValue)!;
-    public static let recognizerTap = UnsafeRawPointer.init(bitPattern: "recognizerTap".hashValue)!;
-    public static let recognizerSwip = UnsafeRawPointer.init(bitPattern: "recognizerSwip".hashValue)!;
-    public static let recognizerLongPress = UnsafeRawPointer.init(bitPattern: "recognizerLongPress".hashValue)!;
-    public static let recognizerPan = UnsafeRawPointer.init(bitPattern: "recognizerPan".hashValue)!;
-    public static let recognizerPinch = UnsafeRawPointer.init(bitPattern: "recognizerPinch".hashValue)!;
-    public static let recognizerRotation = UnsafeRawPointer.init(bitPattern: "recognizerRotation".hashValue)!;
-    public static let recognizerEdgPan = UnsafeRawPointer.init(bitPattern: "recognizerEdgPan".hashValue)!;
-   
+    public static let tap = UnsafeRawPointer(bitPattern: "tap".hashValue)!;
+    public static let item = UnsafeRawPointer(bitPattern: "item".hashValue)!;
+    public static let control = UnsafeRawPointer(bitPattern: "control".hashValue)!;
+    public static let recognizerTap = UnsafeRawPointer(bitPattern: "recognizerTap".hashValue)!;
+    public static let recognizerSwip = UnsafeRawPointer(bitPattern: "recognizerSwip".hashValue)!;
+    public static let recognizerLongPress = UnsafeRawPointer(bitPattern: "recognizerLongPress".hashValue)!;
+    public static let recognizerPan = UnsafeRawPointer(bitPattern: "recognizerPan".hashValue)!;
+    public static let recognizerPinch = UnsafeRawPointer(bitPattern: "recognizerPinch".hashValue)!;
+    public static let recognizerRotation = UnsafeRawPointer(bitPattern: "recognizerRotation".hashValue)!;
+    public static let recognizerEdgPan = UnsafeRawPointer(bitPattern: "recognizerEdgPan".hashValue)!;
 
 }
 
-//属性RuntimeKey获取方法
-public func AssociationKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointer! {
-    //    let key:UnsafeRawPointer = UnsafeRawPointer.init(bitPattern: NSStringFromSelector(aSelector).hashValue)!;
-    let string = NSStringFromSelector(aSelector);
-    let key:UnsafeRawPointer = UnsafeRawPointer.init(bitPattern: string.hashValue)!;
+public func RuntimeKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointer! {
+    let aSelectorName = NSStringFromSelector(aSelector);
+    let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: aSelectorName.hashValue)!;
+    return key;
+}
+
+public func RuntimeKeyFromSelName(_ aSelectorName: Selector) -> UnsafeRawPointer! {
+    let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: aSelectorName.hashValue)!;
+    return key;
+}
+
+public func RuntimeKeyFromNSObject(_ obj: NSObject) -> UnsafeRawPointer! {
+    let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: obj.hashValue)!;
     return key;
 }

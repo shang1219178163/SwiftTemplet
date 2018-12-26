@@ -107,7 +107,7 @@ public extension UIButton{
         return btn;
     }
     
-    public static func createBtn(rect:CGRect, title:String?, font:CGFloat, image:String?,tag:NSInteger, type:NSInteger, action:@escaping (ControlClick)) -> UIButton {
+    public static func createBtn(rect:CGRect, title:String?, font:CGFloat, image:String?,tag:NSInteger, type:NSInteger, action:@escaping (ControlBlock)) -> UIButton {
         let btn = UIButton.createBtn(rect: rect, title: title, font: font, image:image, tag:tag, type: type);
         btn.addActionHandler(action, for: UIControl.Event.touchUpInside)
         return btn;
