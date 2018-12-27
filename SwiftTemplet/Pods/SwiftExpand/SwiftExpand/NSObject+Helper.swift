@@ -121,13 +121,13 @@ public func NStringShortFromClass(_ cls:Swift.AnyClass) -> String {
 
 public extension NSObject{
 
-    public var block:SwiftBlock {
+    public var block:SwiftClosure {
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         
         get {
-            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! SwiftBlock;
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! SwiftClosure;
         }
     }
     

@@ -27,6 +27,11 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
         
         setupData();
         
+        let version = "3.3.5.0"
+        let ver  = version.replacingOccurrences(of: ".", with: "")
+        
+        DDLog(version, ver.intValue())
+        
         swizzleMethodInstance(#selector(handleActionOne), replSel: #selector(handleActionTwo))
     }
     
@@ -92,6 +97,16 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
 //        DDLog(NSStringFromIndexPath(indexPath));
 
         handleActionOne()
+        
+        
+        let controller = UICtrFromString("DetailViewController");
+//        navigationController?.pushViewController(controller, animated: true);
+        
+        UIView.transition(with: (self.navigationController?.view)!, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            self.navigationController?.pushViewController(controller, animated: false);
+        }, completion: { (finish) in
+            
+        })
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

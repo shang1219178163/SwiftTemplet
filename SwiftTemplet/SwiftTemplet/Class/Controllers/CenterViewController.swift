@@ -17,7 +17,10 @@ class CenterViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .cyan;
 
-       
+//                    DispatchQueue.main.after(time: .now() + 2, block: {
+//                        IOPProgressHUD.dismiss();
+//                        self!.navigationController?.popViewController(animated: true)
+//                    })
         
         
         DDLog("_%@_",UIApplication.mainWindow);

@@ -163,7 +163,7 @@ public extension UIView{
 //
 //    }
    
-    public func addActionHandler(action:@escaping (ViewBlock)) -> Void {
+    public func addActionHandler(action:@escaping (ViewClosure)) -> Void {
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
             
@@ -191,8 +191,8 @@ public extension UIView{
     
     /// 点击回调
     @objc private func handleActionTap(tap:UITapGestureRecognizer) -> Void {
-//       let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewBlock;
-        let block = objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!) as? ViewBlock;
+//       let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClosure;
+        let block = objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!) as? ViewClosure;
 
         if block != nil{
             block!(tap, tap.view!, tap.view!.tag);
@@ -200,7 +200,7 @@ public extension UIView{
     }
     
     @objc private func handleActionSender(sender:UIControl) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewBlock;
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ViewClosure;
         if let sender = self as? UISegmentedControl {
             if block != nil {
                 block!(nil, sender, sender.selectedSegmentIndex);
@@ -216,7 +216,7 @@ public extension UIView{
 
     
     ///轻点手势
-    func addGestureTap(action:@escaping (RecognizerBlock)) -> Void {
+    func addGestureTap(action:@escaping (RecognizerClosure)) -> Void {
         let recognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
         recognizer.numberOfTapsRequired = 1  //轻点次数
         recognizer.numberOfTouchesRequired = 1  //手指个数
@@ -230,7 +230,7 @@ public extension UIView{
     }
   
     ///长按手势
-    func addGestureLongPress(action:@escaping (RecognizerBlock)) -> Void {
+    func addGestureLongPress(action:@escaping (RecognizerClosure)) -> Void {
         let recognizer:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
         
         self.isUserInteractionEnabled = true
@@ -242,7 +242,7 @@ public extension UIView{
     }
     
     ///清扫手势
-    func addGestureSwip(action:@escaping (RecognizerBlock)) -> Void {
+    func addGestureSwip(action:@escaping (RecognizerClosure)) -> Void {
         let recognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
         recognizer.direction = [.right , .left]
         
@@ -255,7 +255,7 @@ public extension UIView{
     }
     
     ///拖拽手势
-    func addGesturePan(action:@escaping (RecognizerBlock)) -> Void {
+    func addGesturePan(action:@escaping (RecognizerClosure)) -> Void {
         let recognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
         //最大最小的手势触摸次数
         recognizer.minimumNumberOfTouches = 1
@@ -269,7 +269,7 @@ public extension UIView{
     }
     
     ///捏合手势
-    func addGesturePinch(action:@escaping (RecognizerBlock)) -> Void {
+    func addGesturePinch(action:@escaping (RecognizerClosure)) -> Void {
         let recognizer:UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(recognizer)
@@ -280,7 +280,7 @@ public extension UIView{
     }
     
     ///旋转手势
-    func addGestureRotation(action:@escaping (RecognizerBlock)) -> Void {
+    func addGestureRotation(action:@escaping (RecognizerClosure)) -> Void {
         let recognizer:UIRotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(recognizer)
@@ -291,7 +291,7 @@ public extension UIView{
     }
     
     ///屏幕边缘手势
-    func addGestureEdgPain(action:@escaping (RecognizerBlock), direction: UIRectEdge) -> Void {
+    func addGestureEdgPain(action:@escaping (RecognizerClosure), direction: UIRectEdge) -> Void {
         let recognizer:UIScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
 //        edgPan.edges = UIRectEdge.left
         recognizer.edges = direction
@@ -319,8 +319,8 @@ public extension UIView{
             let sender = recognizer as! UIPanGestureRecognizer;
             let translate:CGPoint = sender.translation(in: sender.view?.superview)
             sender.view?.center = CGPoint(x: sender.view?.center.x ?? 0.0 + translate.x, y: sender.view?.center.y ?? 0.0 + translate.y)
-            DDLog(sender.view?.center)
-            
+            print(sender.view?.center as Any)
+
         case is UIPinchGestureRecognizer:
             let sender = recognizer as! UIPinchGestureRecognizer;
             let location = recognizer.location(in: sender.view?.superview)
@@ -343,7 +343,7 @@ public extension UIView{
         default:
             print("无法识别手势类型")
         }
-        let block = objc_getAssociatedObject(self, recognizer.keyOfUnsafeRawPointer) as? RecognizerBlock;
+        let block = objc_getAssociatedObject(self, recognizer.keyOfUnsafeRawPointer) as? RecognizerClosure;
         if block != nil {
             block!(recognizer)
         }

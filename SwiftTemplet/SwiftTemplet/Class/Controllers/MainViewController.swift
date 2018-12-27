@@ -24,7 +24,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
         print(view.frame,view.bounds)
 
-        view.addSubview(self.tableView);
+        view.addSubview(tableView);
         
         for _ in 0...3{
             let marr : NSMutableArray = [];
@@ -32,9 +32,9 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 marr.add(j);
                 
             }
-            self.dataList.add(marr);
+            dataList.add(marr);
         }
-        DDLog(self.dataList);
+        DDLog(dataList);
     
     }
     
@@ -46,7 +46,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
         
-        self.tableView.height = view.bounds.height;
+        tableView.height = view.bounds.height;
         print(view.frame,view.bounds)
     }
     
@@ -65,12 +65,12 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
 //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataList.count;
+        return dataList.count;
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arraySection : NSArray = self.dataList[section] as! NSArray;
+        let arraySection : NSArray = dataList[section] as! NSArray;
         return arraySection.count;
     };
     

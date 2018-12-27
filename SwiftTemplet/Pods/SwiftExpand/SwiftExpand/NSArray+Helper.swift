@@ -54,7 +54,7 @@ public extension Array{
         return Array(self[loc...len]);
     }
 
-   public static func itemPrefix(prefix:String, count:Int, type:Int) -> Array! {
+    public static func itemPrefix(prefix:String, count:Int, type:Int) -> Array! {
         
         var marr:[Any] = [];
         for i in 0...count {
@@ -70,6 +70,26 @@ public extension Array{
             }
         }
         return (marr as! Array<Element>);
+    }
+    
+    ///添加多个相同元素到数组
+    public mutating func appendSame(_ item:Element, count: Int) -> Void {
+        for _ in self.enumerated() {
+            append(item)
+        }
+        
+    }
+    
+    ///模型(继承于NSObject)query对应属性为@objc声明的字符串
+    public func filterModelList(_ list:[AnyObject], query:String) -> [String] {
+        var itemList:[String] = []
+        list.forEach { (obj:AnyObject) in
+            
+            let value = obj.value(forKeyPath: query) != nil ? obj.value(forKeyPath: query) : ""
+            itemList.append(value as! String)
+            
+        }
+        return itemList
     }
     
 }

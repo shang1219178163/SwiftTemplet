@@ -54,7 +54,7 @@ public extension UIViewController{
         
         if isLeft == true {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn);
-        }else{
+        } else {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn);
 
         }
@@ -62,14 +62,14 @@ public extension UIViewController{
     }
     
     @objc private func handleActionItem(sender:UIBarButtonItem) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjBlock;
+        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjClosure;
         if block != nil {
             block!(sender);
 
         }
     }
     
-    public func createBarItem(systemItem:UIBarButtonItem.SystemItem, isLeft:Bool, action:@escaping (ObjBlock)) -> Void {
+    public func createBarItem(systemItem:UIBarButtonItem.SystemItem, isLeft:Bool, action:@escaping (ObjClosure)) -> Void {
 
         let item:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(handleActionItem(sender:)));
         item.systemType = systemItem;
@@ -83,7 +83,7 @@ public extension UIViewController{
 
     };
     
-     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlBlock)) -> UIButton {
+     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClosure)) -> UIButton {
 
         var size = CGSize(width: 32, height: 32)
         if image != nil {
@@ -123,7 +123,7 @@ public extension UIViewController{
 //        if image != nil  {
 //            btn.setImage(image, for: .normal);
 //
-//        }else{
+//        } else {
 //            if titile.isEmpty == false{
 //                btn.setTitle(titile, for: .normal);
 //                if titile.count == 4{
@@ -139,7 +139,7 @@ public extension UIViewController{
 //
 //        if isLeft == true {
 //            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn);
-//        }else{
+//        } else {
 //            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn);
 //
 //        }
