@@ -14,7 +14,7 @@ import SwiftExpand
 class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
 
     typealias ViewClick = (UITableViewCellDatePicker,BNDatePicker,Int) -> Void;
-    var viewblock: ViewClick?;
+    var ViewClosure: ViewClick?;
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -88,7 +88,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     
     //MARK: funtions
     func block(_ action:@escaping ViewClick) -> Void {
-        viewblock = action;
+        ViewClosure = action;
         
     }
     
@@ -96,8 +96,8 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         let view = BNDatePicker(.date);
         view.block({ (sender, idx) in
 //                DDLog(view,sender.datePicker.date,idx);
-            if self.viewblock != nil {
-                self.viewblock!(self,sender,idx);
+            if self.ViewClosure != nil {
+                self.ViewClosure!(self,sender,idx);
             
             }
             let formatter = DateFormatter.format(kDateFormat);

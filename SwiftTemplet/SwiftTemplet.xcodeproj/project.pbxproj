@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
+		140B6D4521D4D57900050C8F /* bug1.png in Resources */ = {isa = PBXBuildFile; fileRef = 140B6D4421D4D57900050C8F /* bug1.png */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		140B6D4421D4D57900050C8F /* bug1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug1.png; sourceTree = "<group>"; };
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				5182442C213E75BA00071A9D /* dataList.geojson */,
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
 				51824435213E82E000071A9D /* news.geojson */,
+				140B6D4421D4D57900050C8F /* bug1.png */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				144920A621C73BE900C3C2F6 /* Media.xcassets */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -331,6 +334,7 @@
 			files = (
 				144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
+				140B6D4521D4D57900050C8F /* bug1.png in Resources */,
 				5182442D213E75BA00071A9D /* dataList.geojson in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
 				51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */,

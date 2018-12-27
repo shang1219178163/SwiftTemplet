@@ -69,7 +69,7 @@ class HomeViewController: UITabBarController {
     
     //MARK: Delegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        DDLog(tabBar.selectedItem as Any);
+//        DDLog(tabBar.selectedItem as Any);
         
         
     }

@@ -8,12 +8,12 @@
 
 import UIKit
 
-public typealias SwiftBlock = (AnyObject,AnyObject,Int);
+public typealias SwiftClosure = (AnyObject,AnyObject,Int);
 
-public typealias ObjBlock = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
-public typealias ViewBlock = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
-public typealias ControlBlock = (UIControl) ->() // 定义数据类型(其实就是设置别名)
-public typealias RecognizerBlock = (UIGestureRecognizer) ->()
+public typealias ObjClosure = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
+public typealias ViewClosure = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
+public typealias ControlClosure = (UIControl) ->() // 定义数据类型(其实就是设置别名)
+public typealias RecognizerClosure = (UIGestureRecognizer) ->()
 
 // MARK: - 关联属性的key
 public struct RuntimeKey {

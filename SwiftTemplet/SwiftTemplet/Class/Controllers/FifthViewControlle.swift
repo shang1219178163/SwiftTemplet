@@ -8,13 +8,35 @@
 
 import UIKit
 
+import SwiftExpand
 
 class FifthViewControlle: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    
+        view.addSubview(imgView)
+        
+        imgView.addGestureTap { [weak self] (obj:UIGestureRecognizer) in
+            if let tap = obj as? UITapGestureRecognizer {
+                self?.imgView.tintColor = UIColor.random
+                
+                
+            }
+        }
+        
+        imgView.renderTintColor( .theme)
+//        imgView.backgroundColor = .green
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        imgView.snp.makeConstraints { (make) in
+            make.left.top.equalToSuperview().offset(20)
+            make.width.height.equalTo(100)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,14 +45,12 @@ class FifthViewControlle: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    //MARK: - layz
+    lazy var imgView: UIImageView = {
+        var view = UIImageView(frame: .zero);
+        view.image = UIImage(named: "bug1.png")
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+        return view;
+    }();
 
 }

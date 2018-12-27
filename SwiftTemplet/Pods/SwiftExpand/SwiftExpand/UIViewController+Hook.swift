@@ -22,6 +22,8 @@ public extension UIViewController{
                 //            let _ = UIViewController.swizzleMethodInstance(oriSel, replSel: repSel);
                 let _ = swizzleMethodInstance(UIViewController.self, origSel: oriSel0, replSel: repSel0);
                 
+                DDLog(UIViewController.self)
+                
                 let oriSel = #selector(UIViewController.viewWillAppear(_:))
                 let repSel = #selector(UIViewController.swz_viewWillAppear(animated:))
                 //            let _ = UIViewController.swizzleMethodInstance(oriSel, replSel: repSel);
@@ -49,13 +51,16 @@ public extension UIViewController{
     
     @objc public func swz_viewDidLoad(animated: Bool) {
         //需要注入的代码写在此处
-//        edgesForExtendedLayout = [];
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-//        if iOSVer(version: 11) {
-//            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never;
-//        } else {
-//            automaticallyAdjustsScrollViewInsets = false;
-//        }
+        edgesForExtendedLayout = [];
+        view.backgroundColor = .white;
+        if #available(iOS 11.0, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+            automaticallyAdjustsScrollViewInsets = false;
+            
+        }
 
         self.swz_viewDidLoad(animated: animated)
 
@@ -67,6 +72,7 @@ public extension UIViewController{
         
         self.eventGather(isBegin: true);
     }
+    
     @objc public func swz_viewWillDisappear(animated: Bool) {
         //需要注入的代码写在此处
         self.swz_viewWillDisappear(animated: animated)
@@ -82,10 +88,10 @@ public extension UIViewController{
             return ;
         }
         
-        if isBegin {
+        if isBegin == true {
             DDLog("\(NSStringFromClass(classForCoder))--Appear")
             
-        }else{
+        } else {
             DDLog("\(NSStringFromClass(classForCoder))--Disappear")
             
         }

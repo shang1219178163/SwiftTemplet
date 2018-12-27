@@ -18,13 +18,11 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
+     
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
         
-        view.addSubview(self.tableView);
+        view.addSubview(tableView);
         
         DDLog(self);
         DDLog(NSStringFromClass(self.classForCoder));
@@ -32,33 +30,40 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         if title == nil {
             title = self.controllerName;
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
         
-        for _ in 0...3{
+        for _ in 0...2 {
             let marr : NSMutableArray = [];
             for j in 0...3{
                 marr.add(j);
                 
             }
-            self.dataList.add(marr);
+            dataList.add(marr);
         }
         
-//        DDLog(self.dataList);
-        self.tableView.reloadData();
+        //        DDLog(dataList);
+        tableView.reloadData();
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tableView.frame = view.bounds
+    }
     
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.dataList.count;
+        return dataList.count;
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arraySection : NSArray = self.dataList[section] as! NSArray;
+        let arraySection : NSArray = dataList[section] as! NSArray;
         return arraySection.count;
     };
     

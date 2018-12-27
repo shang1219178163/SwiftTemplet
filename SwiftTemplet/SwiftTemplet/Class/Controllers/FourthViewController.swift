@@ -20,10 +20,7 @@ class FourthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = [];
         // Do any additional setup after loading the view.
-        view.backgroundColor = .white;
-
        
 //        self.createGroupView();
 //        view.getViewLayer();
