@@ -17,8 +17,7 @@ public extension Dictionary{
 public extension NSDictionary{
     
     public func toJsonString() -> String! {
-        let jsonString = self.jsonValue().removingPercentEncoding!;
-        return jsonString;
+        return jsonValue();
     }
     
     

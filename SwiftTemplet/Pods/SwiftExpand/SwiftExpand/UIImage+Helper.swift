@@ -106,9 +106,5 @@ public extension UIImage {
         self.draw(in: imageRect)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
-    
-//    public func color(_ color:UIColor){
-//
-//
-//    }
+
 }

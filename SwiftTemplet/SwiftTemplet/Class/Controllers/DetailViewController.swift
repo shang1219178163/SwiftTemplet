@@ -24,17 +24,17 @@ class DetailViewController: UIViewController {
         
         let stringType = String(format: "type id: %d", CFGetTypeID(str))
         print(stringType)
+        
+        createBarItem(systemItem: .done, isLeft: false) {[weak self] (item:AnyObject?) in
+            
+            UIView.transition(with: (self!.navigationController?.view)!, duration: 0.1, options: .transitionCrossDissolve, animations: {
+                self!.navigationController?.popViewController(animated: false)
+            }, completion: { (finish) in
+                
+            })
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
