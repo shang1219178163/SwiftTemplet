@@ -25,8 +25,8 @@ class FifthViewControlle: UIViewController {
                 
             }
         }
-        
-        imgView.renderTintColor( .theme)
+//        imgView.image = imgView.image?.withRenderingMode( .alwaysTemplate)
+//        imgView.renderTintColor( .theme)
 //        imgView.backgroundColor = .green
     }
     
