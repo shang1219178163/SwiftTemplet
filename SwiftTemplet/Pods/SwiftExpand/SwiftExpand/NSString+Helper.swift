@@ -117,7 +117,11 @@ public extension String{
         return timeStamp;
     }
     
-   
+    
+    /// 字符串本身大于string
+    public func isCompareMore(_ string:String) -> Bool {
+        return self.compare(string, options: .numeric, range: nil, locale: nil) == .orderedDescending
+    }
   
 }
 
