@@ -19,15 +19,12 @@ class FifthViewControlle: UIViewController {
         view.addSubview(imgView)
         
         imgView.addGestureTap { [weak self] (obj:UIGestureRecognizer) in
-            if let tap = obj as? UITapGestureRecognizer {
+            if obj is UITapGestureRecognizer {
                 self?.imgView.tintColor = UIColor.random
                 
                 
             }
         }
-//        imgView.image = imgView.image?.withRenderingMode( .alwaysTemplate)
-//        imgView.renderTintColor( .theme)
-//        imgView.backgroundColor = .green
     }
     
     override func viewDidLayoutSubviews() {
