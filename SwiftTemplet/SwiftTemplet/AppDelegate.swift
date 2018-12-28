@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIViewController.initializeMethod();
         UINavigationController.initializeMethod();
-        
-        
+        UIImageView.initializeMethod()
+
         // Override point for customization after application launch.
         
         //方式一
