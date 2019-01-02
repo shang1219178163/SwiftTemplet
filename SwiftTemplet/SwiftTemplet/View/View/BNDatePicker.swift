@@ -69,8 +69,8 @@ class BNDatePicker: UIView {
     //MARK: - layz
     lazy var containView:UIView = {
         let view = UIView(frame: CGRect(x: 0, y: UIScreen.height, width: UIScreen.width, height: (kH_NaviagtionBar + kH_PickerView)));
-        
-        view.backgroundColor = UIColor.RGBA(230, 230, 230, 1);
+       
+        view.backgroundColor = UIColorRGBA(230, 230, 230, 1);
         
         btnCancel.frame = CGRect(x: 0, y: 0, width: btnSize.width, height: btnSize.height);
         btnSure.frame = CGRect(x: UIScreen.width - 60, y: 0, width: btnSize.width, height: btnSize.height);
