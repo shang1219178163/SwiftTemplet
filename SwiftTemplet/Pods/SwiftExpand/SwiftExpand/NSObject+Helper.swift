@@ -7,7 +7,6 @@
 //  Copyright © 2018年 BN. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public func NSStringFromIndexPath(_ indexPath:IndexPath) -> String {
@@ -103,8 +102,46 @@ public func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
     return tabBarController;
 }
 
-public func UIColorFromDim(_ white:CGFloat, _ a:CGFloat) -> UIColor{
+public func UIColorRGBA(_ r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat) -> UIColor{
+    return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
+}
+
+public func UIColorHex(_ hex:String) -> UIColor {
+    return UIColor.hex(hex);
+}
+
+public func UIColorRandom() -> UIColor {
+    return UIColor.randomColor();
+}
+
+public func UIColorDim(_ white:CGFloat, _ a:CGFloat) -> UIColor{
     return .init(white: white, alpha: a);
+}
+
+public func UIImageNamed(_ name: String) -> UIImage?{
+    return UIImage(named: name);
+}
+
+public func UIImageNamed(_ name: String, renderingMode: UIImageRenderingMode) -> UIImage?{
+    var image = UIImageNamed(name)
+    if image != nil {
+        image = image!.withRenderingMode(renderingMode)
+    }
+    return image
+}
+
+// 把颜色转成图片
+public func UIImageColor(_ color: UIColor) -> UIImage{
+    let rect: CGRect = CGRect(x: 0, y: 0, width: 1.0, height: 1.0)
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
+    
+    let context: CGContext = UIGraphicsGetCurrentContext()!
+    context.setFillColor(color.cgColor)
+    context.fill(rect)
+    
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsGetCurrentContext()
+    return image!
 }
 
 ///返回的类名不带明明空间
