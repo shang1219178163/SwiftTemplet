@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIViewController{
     
-    class func initializeMethod() {
+    public class func initializeMethod() {
         // Make sure This isn't a subclass of UIViewController, So that It applies to all UIViewController childs
 //        return;
         if self == UIViewController.self {
@@ -22,7 +22,7 @@ public extension UIViewController{
                 //            let _ = UIViewController.swizzleMethodInstance(oriSel, replSel: repSel);
                 let _ = swizzleMethodInstance(UIViewController.self, origSel: oriSel0, replSel: repSel0);
                 
-                DDLog(UIViewController.self)
+//                DDLog(UIViewController.self)
                 
                 let oriSel = #selector(UIViewController.viewWillAppear(_:))
                 let repSel = #selector(UIViewController.swz_viewWillAppear(animated:))

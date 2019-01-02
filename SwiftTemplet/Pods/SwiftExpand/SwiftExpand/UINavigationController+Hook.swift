@@ -10,7 +10,7 @@ import UIKit
 
 public extension UINavigationController{
     
-//    class func initializeMethod() {
+//    public class func initializeMethod() {
 //        // Make sure This isn't a subclass of UIViewController, So that It applies to all UIViewController childs
 //        if self != UINavigationController.self {
 //            return
