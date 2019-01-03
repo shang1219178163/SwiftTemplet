@@ -68,9 +68,6 @@ target 'SwiftTemplet' do
 #    pod 'ObjectMapper+Realm'
     pod 'HandyJSON'
 
-
     pod 'SwiftExpand'
-    pod 'MLeaksFinder'
-
 
 end

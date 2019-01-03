@@ -96,6 +96,10 @@ public extension UIViewController{
         btn.tag = isLeft == true ? kTAG_BackItem : kTAG_RightItem;
         btn.isHidden = isHidden;
         
+        if let tintColor = UINavigationBar.appearance().tintColor {
+            btn.setTitleColor(tintColor, for: .normal);
+
+        }
 //        let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44));
 //        view.isHidden = isHidden;
 //        btn.center = view.center;

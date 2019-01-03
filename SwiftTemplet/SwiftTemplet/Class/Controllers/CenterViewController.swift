@@ -50,10 +50,7 @@ class CenterViewController: UIViewController {
          
         }
 
-        let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (sender:UIControl) in
-            DDLog(sender);
-        };
-        DDLog(itemRight);
+       
         
         
         imgView.frame = .init(x: 10, y: 80, width: 220, height: 100);
@@ -100,6 +97,14 @@ class CenterViewController: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (sender:UIControl) in
+            DDLog(sender);
+        };
+        DDLog(itemRight);
+    }
 
     @objc func handleActionSender() -> Void {
         self.dismiss(animated: true, completion: nil)
