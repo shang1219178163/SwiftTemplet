@@ -161,12 +161,15 @@ public extension UIApplication{
         }
         UIButton.appearance().isExclusiveTouch = false;
         
+        UITabBar.appearance().tintColor = UIColor.theme
+        UITabBar.appearance().barTintColor = UIColor.white
+
     }
     
     public static func setupAppearanceNavigationBar() -> Void {
-        UINavigationBar.appearance().tintColor =  .white;//界面顶部透明
-        UINavigationBar.appearance().barTintColor = .theme; //界面顶部透明
-        //        UINavigationBar.appearance().barTintColor = .orange; //界面顶部透明
+        UINavigationBar.appearance().tintColor =  .white;
+        UINavigationBar.appearance().barTintColor = .theme;
+        //        UINavigationBar.appearance().barTintColor = .orange;
         
         let attDic = [NSAttributedString.Key.foregroundColor :   UIColor.white,
                       NSAttributedString.Key.font    :   UIFont.boldSystemFont(ofSize:18)];
@@ -178,6 +181,10 @@ public extension UIApplication{
 
 //        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: 0, vertical: -60), for: UIBarMetrics.default)//去掉返回图片后面的文
         
+        let dicNomal = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                        NSAttributedStringKey.backgroundColor: UIColor.theme,
+                        ]
+        UIBarButtonItem.appearance().setTitleTextAttributes(dicNomal, for: .normal)
     }
     
     public static func setupAppearanceTabBar() -> Void {

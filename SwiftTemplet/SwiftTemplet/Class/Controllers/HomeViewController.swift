@@ -32,15 +32,6 @@ class HomeViewController: UITabBarController {
 
     }
     
-    lazy var btnCenter : UIButton = {
-        let btn = UIButton();
-        btn.backgroundColor = UIColor.theme;
-        btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
-        btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
-        
-        return btn;
-    }();
-    
     func configureCenterBtn() -> Void {
         tabBar.addSubview(btnCenter);
         
@@ -73,8 +64,6 @@ class HomeViewController: UITabBarController {
         
         
     }
-   
-
     
     //MARK:属性
     let itemList:Array = { () -> Array<[String]> in
@@ -90,4 +79,12 @@ class HomeViewController: UITabBarController {
         return list;
     }();
     
+    lazy var btnCenter : UIButton = {
+        let btn = UIButton();
+        btn.backgroundColor = UIColor.theme;
+        btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
+        btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
+        
+        return btn;
+    }();
 }
