@@ -112,4 +112,14 @@ public extension UIButton{
         btn.addActionHandler(action, for: UIControl.Event.touchUpInside)
         return btn;
     }
+    
+    
+    /// UIButton不同状态下设置富文本标题
+    public func setContent(_ content: String, attDic: Dictionary<NSAttributedStringKey, Any>, for state: UIControl.State) -> NSMutableAttributedString{
+        assert((self.titleLabel!.text?.contains(content))!)
+        let attString = self.titleLabel!.setContent(content, attDic: attDic)
+        setAttributedTitle(attString, for: state)
+        return attString
+    }
+    
 }

@@ -163,6 +163,34 @@ public func NStringShortFromClass(_ cls:Swift.AnyClass) -> String {
     return list.last!;
 }
 
+public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
+    
+    var dic : [NSAttributedStringKey: Any] = [NSAttributedStringKey.foregroundColor    :   UIColor.black,
+                                              NSAttributedStringKey.backgroundColor    :   UIColor.white,]
+    
+    switch type {
+    case 1:
+        dic = [NSAttributedString.Key.underlineStyle    :   NSUnderlineStyle.styleSingle.rawValue,
+               NSAttributedString.Key.underlineColor     :   UIColor.red,]
+    case 2:
+        dic = [NSAttributedString.Key.strikethroughStyle    :   NSUnderlineStyle.styleSingle.rawValue,
+               NSAttributedString.Key.strikethroughColor     :   UIColor.red,]
+    case 3:
+        dic = [NSAttributedString.Key.obliqueness    :   0.8,]
+    case 4:
+        dic = [NSAttributedString.Key.expansion    :   0.3,]
+        
+    case 5:
+        dic = [NSAttributedString.Key.writingDirection    :   3,]
+        
+    default:
+        break
+        
+    }
+    return dic;
+    
+}
+
 public extension NSObject{
 
     public var block:SwiftClosure {
