@@ -184,8 +184,8 @@ public extension UIView{
                 
             }
         }
-//        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        objc_setAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_COPY_NONATOMIC);
+        objc_setAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!, action, .OBJC_ASSOCIATION_COPY_NONATOMIC);
 
     }
     
@@ -215,137 +215,205 @@ public extension UIView{
     }
 
     
-    ///轻点手势
-    func addGestureTap(action:@escaping (RecognizerClosure)) -> Void {
-        let recognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-        recognizer.numberOfTapsRequired = 1  //轻点次数
-        recognizer.numberOfTouchesRequired = 1  //手指个数
+    ///手势 - 轻点
+    public func addGestureTap(_ action:@escaping (RecognizerClosure)) -> UITapGestureRecognizer {
+        let funcName = NSStringFromSelector(#function)
         
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
-        
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerTap
-        objc_setAssociatedObject(self, RuntimeKey.recognizerTap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UITapGestureRecognizer
+        if recognizer == nil {
+            recognizer = UITapGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            recognizer!.numberOfTapsRequired = 1  //轻点次数
+            recognizer!.numberOfTouchesRequired = 1  //手指个数
+            
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
 
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
   
-    ///长按手势
-    func addGestureLongPress(action:@escaping (RecognizerClosure)) -> Void {
-        let recognizer:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+    ///手势 - 长按
+    public func addGestureLongPress(_ action:@escaping (RecognizerClosure), for minimumPressDuration:TimeInterval) -> UILongPressGestureRecognizer {
+        let funcName = NSStringFromSelector(#function)
         
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
-        
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerLongPress
-        objc_setAssociatedObject(self, RuntimeKey.recognizerLongPress, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UILongPressGestureRecognizer
+        if recognizer == nil {
+            recognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            recognizer!.minimumPressDuration = minimumPressDuration;
+            
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
+            
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
     
-    ///清扫手势
-    func addGestureSwip(action:@escaping (RecognizerClosure)) -> Void {
-        let recognizer:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-        recognizer.direction = [.right , .left]
+    ///手势 - 拖拽
+    public func addGesturePan(_ action:@escaping (RecognizerClosure)) -> UIPanGestureRecognizer {
+        let funcName = NSStringFromSelector(#function)
         
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
-        
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerSwip
-        objc_setAssociatedObject(self, RuntimeKey.recognizerSwip, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UIPanGestureRecognizer
+        if recognizer == nil {
+            recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            //最大最小的手势触摸次数
+            recognizer!.minimumNumberOfTouches = 1
+            recognizer!.maximumNumberOfTouches = 3
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
+            
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
     
-    ///拖拽手势
-    func addGesturePan(action:@escaping (RecognizerClosure)) -> Void {
-        let recognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-        //最大最小的手势触摸次数
-        recognizer.minimumNumberOfTouches = 1
-        recognizer.maximumNumberOfTouches = 3
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
+    ///手势 - 屏幕边缘
+    public func addGestureEdgPan(_ action:@escaping (RecognizerClosure), for edgs: UIRectEdge) -> UIScreenEdgePanGestureRecognizer {
+        let funcName = NSStringFromSelector(#function) + "\(edgs)"
         
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerPan
-        objc_setAssociatedObject(self, RuntimeKey.recognizerPan, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UIScreenEdgePanGestureRecognizer
+        if recognizer == nil {
+            recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            recognizer!.edges = edgs
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
+            
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
     
-    ///捏合手势
-    func addGesturePinch(action:@escaping (RecognizerClosure)) -> Void {
-        let recognizer:UIPinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
+    ///手势 - 清扫
+    public func addGestureSwip(_ action:@escaping (RecognizerClosure), for direction: UISwipeGestureRecognizerDirection) -> UISwipeGestureRecognizer {
+        let funcName = NSStringFromSelector(#function) + "\(direction)"
         
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerPinch
-        objc_setAssociatedObject(self, RuntimeKey.recognizerPinch, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UISwipeGestureRecognizer
+        if recognizer == nil {
+            recognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            recognizer!.direction = direction
+            
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
+            
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
     
-    ///旋转手势
-    func addGestureRotation(action:@escaping (RecognizerClosure)) -> Void {
-        let recognizer:UIRotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
+    ///手势 - 捏合
+    public func addGesturePinch(_ action:@escaping (RecognizerClosure)) -> UIPinchGestureRecognizer {
+        let funcName = NSStringFromSelector(#function)
         
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerRotation
-        objc_setAssociatedObject(self, RuntimeKey.recognizerRotation, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UIPinchGestureRecognizer
+        if recognizer == nil {
+            recognizer = UIPinchGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
+        
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
     
-    ///屏幕边缘手势
-    func addGestureEdgPain(action:@escaping (RecognizerClosure), direction: UIRectEdge) -> Void {
-        let recognizer:UIScreenEdgePanGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-//        edgPan.edges = UIRectEdge.left
-        recognizer.edges = direction
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(recognizer)
+    ///手势 - 旋转
+    public func addGestureRotation(_ action:@escaping (RecognizerClosure)) -> UIRotationGestureRecognizer {
+        let funcName = NSStringFromSelector(#function)
         
-        recognizer.keyOfUnsafeRawPointer = RuntimeKey.recognizerEdgPan
-        objc_setAssociatedObject(self, RuntimeKey.recognizerEdgPan, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
+        var recognizer = objc_getAssociatedObject(self, RuntimeKeyFromString(funcName)) as? UIRotationGestureRecognizer
+        if recognizer == nil {
+            recognizer = UIRotationGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            
+            self.isUserInteractionEnabled = true
+            self.isMultipleTouchEnabled = true
+            self.addGestureRecognizer(recognizer!)
+            
+            recognizer!.funcName = funcName;
+            objc_setAssociatedObject(self, RuntimeKeyFromString(funcName), action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+        return recognizer!
     }
     
     @objc private func handleActionGesture(_ recognizer: UIGestureRecognizer) -> Void{
     
+        let block = objc_getAssociatedObject(self, RuntimeKeyFromString(recognizer.funcName)) as? RecognizerClosure;
+//        DDLog(recognizer.funcName,block)
         switch recognizer {
-        case is UITapGestureRecognizer:
-            print(recognizer)
-       
-        case is UILongPressGestureRecognizer:
-            print(recognizer)
-            
         case is UISwipeGestureRecognizer:
-            print(recognizer)
-            
-        case is UIPanGestureRecognizer:
-            let sender = recognizer as! UIPanGestureRecognizer;
-            let translate:CGPoint = sender.translation(in: sender.view?.superview)
-            sender.view?.center = CGPoint(x: sender.view?.center.x ?? 0.0 + translate.x, y: sender.view?.center.y ?? 0.0 + translate.y)
-            print(sender.view?.center as Any)
-
-        case is UIPinchGestureRecognizer:
-            let sender = recognizer as! UIPinchGestureRecognizer;
-            let location = recognizer.location(in: sender.view?.superview)
-            
-            sender.view!.center = location;
-            sender.view!.transform = sender.view!.transform.scaledBy(x: sender.scale, y: sender.scale)
-            sender.scale = 0.1
-
-            print(recognizer)
-            
-        case is UIRotationGestureRecognizer:
-            let sender = recognizer as! UIRotationGestureRecognizer;
-            recognizer.view?.transform = CGAffineTransform(rotationAngle: sender.rotation)
-            sender.rotation = 0.0;
-            print(recognizer)
+//            print(recognizer)
+            if block != nil {
+                block!(recognizer)
+            }
             
         case is UIScreenEdgePanGestureRecognizer:
-            print(recognizer)
+//            print(recognizer)
+            if block != nil {
+                block!(recognizer)
+            }
+            
+        case is UITapGestureRecognizer:
+//            print(recognizer)
+            if block != nil {
+                block!(recognizer)
+            }
+            
+        case is UILongPressGestureRecognizer:
+//            print(recognizer)
+            if recognizer.state == .began {
+                if block != nil {
+                    block!(recognizer)
+                }
+            }
+            
+        case is UIPanGestureRecognizer:
+            if let sender = recognizer as? UIPanGestureRecognizer {
+                let translate:CGPoint = sender.translation(in: sender.view?.superview)
+                sender.view!.center = CGPoint(x: recognizer.view!.center.x + translate.x, y: recognizer.view!.center.y + translate.y)
+                sender.setTranslation( .zero, in: recognizer.view!.superview)
+                
+                if block != nil {
+                    block!(recognizer)
+                }
+            }
+            
+        case is UIPinchGestureRecognizer:
+            if let sender = recognizer as? UIPinchGestureRecognizer {
+                let location = recognizer.location(in: sender.view!.superview)
+                sender.view!.center = location;
+                sender.view!.transform = sender.view!.transform.scaledBy(x: sender.scale, y: sender.scale)
+                sender.scale = 1.0
+                //            print(recognizer)
+                if block != nil {
+                    block!(recognizer)
+                }
+            }
+           
+        case is UIRotationGestureRecognizer:
+            if let sender = recognizer as? UIRotationGestureRecognizer {
+//                sender.view!.transform = CGAffineTransform(rotationAngle: sender.rotation)
+                sender.view!.transform = sender.view!.transform.rotated(by: sender.rotation)
+                sender.rotation = 0.0;
+                //            print(recognizer)
+                if block != nil {
+                    block!(recognizer)
+                }
+            }
             
         default:
             print("无法识别手势类型")
-        }
-        let block = objc_getAssociatedObject(self, recognizer.keyOfUnsafeRawPointer) as? RecognizerClosure;
-        if block != nil {
-            block!(recognizer)
         }
     }
 

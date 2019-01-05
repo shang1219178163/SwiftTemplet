@@ -30,18 +30,20 @@ public struct RuntimeKey {
 
 }
 
-public func RuntimeKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointer! {
-    let aSelectorName = NSStringFromSelector(aSelector);
-    let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: aSelectorName.hashValue)!;
-    return key;
-}
-
-public func RuntimeKeyFromSelName(_ aSelectorName: Selector) -> UnsafeRawPointer! {
-    let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: aSelectorName.hashValue)!;
-    return key;
-}
-
-public func RuntimeKeyFromNSObject(_ obj: NSObject) -> UnsafeRawPointer! {
+public func RuntimeKeyFromString(_ obj: String) -> UnsafeRawPointer! {
     let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: obj.hashValue)!;
     return key;
 }
+
+public func RuntimeKeyFromSelector(_ aSelector: Selector) -> UnsafeRawPointer! {
+    let aSelectorName = NSStringFromSelector(aSelector);
+    let key:UnsafeRawPointer = RuntimeKeyFromString(aSelectorName)!;
+    return key;
+}
+
+public func RuntimeKeyFromObjc(_ obj: NSObject) -> UnsafeRawPointer! {
+    let key:UnsafeRawPointer = UnsafeRawPointer(bitPattern: obj.hashValue)!;
+    return key;
+}
+
+

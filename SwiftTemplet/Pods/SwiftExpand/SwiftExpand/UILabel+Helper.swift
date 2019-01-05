@@ -5,6 +5,10 @@
 //  Created by Bin Shang on 2019/1/4.
 //
 
+/*
+ Range与NSRange区别很大
+ */
+
 import UIKit
 
 public extension UILabel{

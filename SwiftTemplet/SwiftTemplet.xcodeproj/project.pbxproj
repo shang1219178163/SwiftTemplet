@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
+		1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404FAF621E084FD00122E22 /* UIRecognizerController.swift */; };
+		1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1404FAFA21E0A70D00122E22 /* Skull.jpg */; };
 		140B6D4521D4D57900050C8F /* bug1.png in Resources */ = {isa = PBXBuildFile; fileRef = 140B6D4421D4D57900050C8F /* bug1.png */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1404FAF621E084FD00122E22 /* UIRecognizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerController.swift; sourceTree = "<group>"; };
+		1404FAFA21E0A70D00122E22 /* Skull.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Skull.jpg; sourceTree = "<group>"; };
 		140B6D4421D4D57900050C8F /* bug1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug1.png; sourceTree = "<group>"; };
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
 				51824435213E82E000071A9D /* news.geojson */,
 				140B6D4421D4D57900050C8F /* bug1.png */,
+				1404FAFA21E0A70D00122E22 /* Skull.jpg */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				144920A621C73BE900C3C2F6 /* Media.xcassets */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -193,6 +198,7 @@
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
 				14E8692521C20A2E009CE33E /* DetailViewController.swift */,
+				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
 				147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */,
 				147FF4AB21D06A6900351E94 /* FleetDetailController.swift */,
 				147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */,
@@ -332,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */,
 				144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
 				140B6D4521D4D57900050C8F /* bug1.png in Resources */,
@@ -418,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */,
+				1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */,
 				147FF4AC21D06A6900351E94 /* FleetDetailController.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
