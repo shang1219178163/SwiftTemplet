@@ -18,5 +18,12 @@ public extension UIGestureRecognizer{
         }
     }
     
-    
+    public var funcName: String {
+        get {
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! String
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
 }
