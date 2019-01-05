@@ -134,7 +134,6 @@ extension KingfisherWrapper where Base: Image {
 
 // MARK: - Image Representation
 extension KingfisherWrapper where Base: Image {
-    // MARK: - PNG
     /// Returns PNG representation of `base` image.
     ///
     /// - Returns: PNG data of image.
@@ -153,8 +152,7 @@ extension KingfisherWrapper where Base: Image {
             #endif
         #endif
     }
-    
-    // MARK: - JPEG
+
     /// Returns JPEG representation of `base` image.
     ///
     /// - Parameter compressionQuality: The compression quality when converting image to JPEG data.
@@ -174,8 +172,7 @@ extension KingfisherWrapper where Base: Image {
             #endif
         #endif
     }
-    
-    // MARK: - GIF
+
     /// Returns GIF representation of `base` image.
     ///
     /// - Returns: Original GIF data of image.
@@ -184,7 +181,7 @@ extension KingfisherWrapper where Base: Image {
     }
 }
 
-// MARK: - Create images from data
+// MARK: - Creating Images
 extension KingfisherWrapper where Base: Image {
 
     /// Creates an animated image from a given data and options. Currently only GIF data is supported.
@@ -296,7 +293,9 @@ extension KingfisherWrapper where Base: Image {
             kCGImageSourceShouldCacheImmediately: true,
             kCGImageSourceCreateThumbnailWithTransform: true,
             kCGImageSourceThumbnailMaxPixelSize: maxDimensionInPixels] as CFDictionary
-        let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions)!
+        guard let downsampledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions) else {
+            return nil
+        }
         return KingfisherWrapper.image(cgImage: downsampledImage, scale: scale, refImage: nil)
     }
 }
