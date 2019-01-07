@@ -21,72 +21,82 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         imgView.center = view.center
         view.addSubview(imgView)
         
-//        view.addGestureTap { (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UITapGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }
-//
-//        view.addGestureSwip({ (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UISwipeGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }, for: .left)
-//
-//
-//        view.addGestureSwip({ (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UISwipeGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }, for: .right)
-//
-//        view.addGestureLongPress({ (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UILongPressGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }, for: 0.5)
-//
-//        view.addGestureRotation { (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UIRotationGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }
-        
-//        view.addGesturePan { (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UIPanGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }
-//
-//
-//        view.addGestureEdgPan({ (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UIScreenEdgePanGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }, for: .left);
-//
-//        view.addGestureEdgPan({ (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UIScreenEdgePanGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }, for: .right);
-    
-        view.addGesturePinch { (sender:UIGestureRecognizer) in
-            if let recognizer = sender as? UIPinchGestureRecognizer {
+        let tap = view.addGestureTap { (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UITapGestureRecognizer {
                 DDLog(recognizer);
 
             }
         }
+        tap.delegate = self;
+
+        let swipeLeft = view.addGestureSwip({ (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UISwipeGestureRecognizer {
+                DDLog(recognizer);
+
+            }
+        }, for: .left)
+        swipeLeft.delegate = self;
+
+
+        let swipeRight = view.addGestureSwip({ (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UISwipeGestureRecognizer {
+                DDLog(recognizer);
+
+            }
+        }, for: .right)
+        swipeRight.delegate = self;
+
+        let long = view.addGestureLongPress({ (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UILongPressGestureRecognizer {
+                DDLog(recognizer);
+
+            }
+        }, for: 0.5)
+        long.delegate = self;
+
+        let rotation = view.addGestureRotation { (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UIRotationGestureRecognizer {
+                DDLog(recognizer);
+
+            }
+        }
+        rotation.delegate = self;
+
+        let pan = view.addGesturePan { (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UIPanGestureRecognizer {
+                DDLog(recognizer);
+
+            }
+        }
+        pan.delegate = self;
+
+
+        let edgPanLeft = view.addGestureEdgPan({ (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UIScreenEdgePanGestureRecognizer {
+                DDLog(recognizer);
+
+            }
+        }, for: .left);
+        edgPanLeft.delegate = self;
+
+        let edgPanRight = view.addGestureEdgPan({ (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UIScreenEdgePanGestureRecognizer {
+                DDLog(recognizer);
+                
+            }
+        }, for: .right);
+        edgPanRight.delegate = self;
+
         
-        let pan = imgView.addGesturePan { (sender:UIGestureRecognizer) in
+        let pinchView = view.addGesturePinch { (sender:UIGestureRecognizer) in
+            if let recognizer = sender as? UIPinchGestureRecognizer {
+                DDLog(recognizer);
+                
+            }
+        }
+        pinchView.delegate = self;
+        
+        let panOne = imgView.addGesturePan { (sender:UIGestureRecognizer) in
             if let recognizer = sender as? UIPanGestureRecognizer {
                 DDLog(recognizer);
 //
@@ -101,31 +111,33 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
 
             }
         }
-        pan.delegate = self;
+        panOne.delegate = self;
         
-//        imgView.addGesturePan { (sender:UIGestureRecognizer) in
-//            if let recognizer = sender as? UIPanGestureRecognizer {
-//                DDLog(recognizer);
-//
-//            }
-//        }
-        
-        let pinch = imgView.addGesturePinch { (sender:UIGestureRecognizer) in
+        let pinchOne = imgView.addGesturePinch { (sender:UIGestureRecognizer) in
             if let recognizer = sender as? UIPinchGestureRecognizer {
                 DDLog(recognizer);
                 
             }
         }
-        pinch.delegate = self;
+        pinchOne.delegate = self;
 
-        let rotation = imgView.addGestureRotation { (sender:UIGestureRecognizer) in
+        let rotationOne = imgView.addGestureRotation { (sender:UIGestureRecognizer) in
             if let recognizer = sender as? UIRotationGestureRecognizer {
                 DDLog(recognizer);
                 
             }
         }
-        rotation.delegate = self;
+        rotationOne.delegate = self;
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        for i in 100..<110{
+            let intStr = i.description
+            DDLog(intStr)
+        }
     }
     
     
