@@ -192,6 +192,15 @@ public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
 }
 
 public extension NSObject{
+    
+    public var keyOfUnsafeRawPointer: UnsafeRawPointer {
+        get {
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! UnsafeRawPointer
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
 
     public var block:SwiftClosure {
         set {
