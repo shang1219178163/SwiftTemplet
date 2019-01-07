@@ -238,7 +238,7 @@ public extension UIView{
   
     ///手势 - 长按
     public func addGestureLongPress(_ action:@escaping (RecognizerClosure), for minimumPressDuration:TimeInterval) -> UILongPressGestureRecognizer {
-        let funcAbount = NSStringFromSelector(#function)
+        let funcAbount = NSStringFromSelector(#function) + ",\(minimumPressDuration)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
         var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UILongPressGestureRecognizer
@@ -279,7 +279,7 @@ public extension UIView{
     
     ///手势 - 屏幕边缘
     public func addGestureEdgPan(_ action:@escaping (RecognizerClosure), for edgs: UIRectEdge) -> UIScreenEdgePanGestureRecognizer {
-        let funcAbount = NSStringFromSelector(#function) + "\(edgs)"
+        let funcAbount = NSStringFromSelector(#function) + ",\(edgs)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
         var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UIScreenEdgePanGestureRecognizer
@@ -298,7 +298,7 @@ public extension UIView{
     
     ///手势 - 清扫
     public func addGestureSwip(_ action:@escaping (RecognizerClosure), for direction: UISwipeGestureRecognizerDirection) -> UISwipeGestureRecognizer {
-        let funcAbount = NSStringFromSelector(#function) + "\(direction)"
+        let funcAbount = NSStringFromSelector(#function) + ",\(direction)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
         var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UISwipeGestureRecognizer
