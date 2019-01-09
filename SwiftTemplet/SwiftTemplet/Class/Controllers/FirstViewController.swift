@@ -31,9 +31,9 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             title = self.controllerName;
         }
         
-        for _ in 0...2 {
+        for _ in 0...1 {
             let marr : NSMutableArray = [];
-            for j in 0...3{
+            for j in 0...6{
                 marr.add(j);
                 
             }
@@ -90,26 +90,86 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
-            cell.imgViewRight.isHidden = false;
             
             //随机元素
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             let imgUrl = imgList.randomElement()!;
             cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-//            cell.imgViewLeft.kf.setImage(with: URL(string: imgUrl), placeholder: UIImage(named:kIMG_defaultPortrait), options: nil, progressBlock: nil) { (result) in
-//                switch result {
-//                case .success(let value):
-//                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
-//                case .failure(let error):
-//                    print("Job failed: \(error.localizedDescription)")
-//                }
-//            }
 //        cell.type = 1;
             
             cell.getViewLayer();
             return cell;
+        case 2:
+            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne1") as! UITableViewCellOne
             
+            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+            cell.labelRight.text = "990" + "\(indexPath.row)";
+            cell.imgViewLeft.image = UIImage(named: "dragon");
+            
+            //随机元素
+            imgList = imgList.sorted(by: {$0 < $1});
+            imgList = imgList.sorted(by:<);
+            let imgUrl = imgList.randomElement()!;
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.type = 1;
+            
+            cell.getViewLayer();
+            return cell;
+            
+        case 3:
+            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne2") as! UITableViewCellOne
+            
+            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+            cell.labelRight.text = "990" + "\(indexPath.row)";
+            cell.imgViewLeft.image = UIImage(named: "dragon");
+            cell.imgViewRight.isHidden = true;
+
+            //随机元素
+            imgList = imgList.sorted(by: {$0 < $1});
+            imgList = imgList.sorted(by:<);
+            let imgUrl = imgList.randomElement()!;
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//            cell.type = 1;
+            cell.labelRight.textAlignment = .right
+            
+            cell.getViewLayer();
+            return cell;
+        case 4:
+            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne3") as! UITableViewCellOne
+            
+            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+            cell.labelRight.text = "990" + "\(indexPath.row)";
+            cell.imgViewLeft.image = UIImage(named: "dragon");
+            cell.imgViewRight.isHidden = true;
+
+            //随机元素
+            imgList = imgList.sorted(by: {$0 < $1});
+            imgList = imgList.sorted(by:<);
+            let imgUrl = imgList.randomElement()!;
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.type = 1;
+            
+            cell.getViewLayer();
+            return cell;
+            
+        case 5:
+            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne4") as! UITableViewCellOne
+            
+            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+            cell.labelRight.text = "990" + "\(indexPath.row)";
+            cell.imgViewLeft.image = UIImage(named: "dragon");
+//            cell.imgViewRight.isHidden = true;
+
+            //随机元素
+            imgList = imgList.sorted(by: {$0 < $1});
+            imgList = imgList.sorted(by:<);
+            let imgUrl = imgList.randomElement()!;
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.type = 1;
+            
+            cell.getViewLayer();
+            return cell;
         default:
             let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
             return cell;

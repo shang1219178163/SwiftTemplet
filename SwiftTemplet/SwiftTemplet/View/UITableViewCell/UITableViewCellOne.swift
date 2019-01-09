@@ -54,18 +54,6 @@ class UITableViewCellOne: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-//        if type == 0 {
-//            //右边文字优先展示
-//            labelRight.sizeToFit();
-//            labelLeft.textAlignment = .left;
-//
-//        } else {
-//            //左边文字优先展示
-//            labelLeft.sizeToFit();
-//            labelRight.textAlignment = .right;
-//
-//        }
-        
         //箭头不隐藏
         if imgViewRight.isHidden == false {
             imgViewRight.snp.makeConstraints { (make) in
@@ -151,37 +139,79 @@ class UITableViewCellOne: UITableViewCell {
             }
             
         } else {
-            
-            let labH = kSize_Arrow.height
-            let top = contentView.frame.midY - labH/2.0
-            if type == 0 {
-                //右边文字优先展示
-                labelRight.sizeToFit();
-                labelRight.snp.makeConstraints { (make) in
-                    make.top.equalToSuperview().offset(top);
-                    make.right.equalToSuperview().offset(-kX_GAP);
-                    make.width.equalTo(labelRight.size.width);
+            //头像不为空
+            if imgViewLeft.image != nil {
+                imgViewLeft.snp.makeConstraints { (make) in
+                    make.top.equalToSuperview().offset(kY_GAP)
+                    make.left.equalToSuperview().offset(kX_GAP)
+                    make.width.height.equalTo(contentView.frame.height - kY_GAP*2)
                 }
                 
-                labelLeft.snp.makeConstraints { (make) in
-                    make.top.height.equalTo(labelRight);
-                    make.left.equalToSuperview().offset(kX_GAP)
-                    make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                let labH = kSize_Arrow.height
+                let top = contentView.frame.midY - labH/2.0
+                if type == 0 {
+                    //右边文字优先展示
+                    labelRight.sizeToFit();
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.equalToSuperview().offset(top);
+                        make.right.equalToSuperview().offset(-kX_GAP);
+                        make.width.equalTo(labelRight.size.width);
+                    }
+                    
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(labelRight);
+                        make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
+                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                    }
+                    
+                } else {
+                    //左边文字优先展示
+                    labelLeft.sizeToFit();
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.equalTo(top);
+                        make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
+                        make.width.equalTo(labelLeft.size.width)
+                    }
+                    
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(labelLeft);
+                        make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                        make.right.equalToSuperview().offset(-kX_GAP)
+                    }
                 }
                 
             } else {
-                //左边文字优先展示
-                labelLeft.sizeToFit();
-                labelLeft.snp.makeConstraints { (make) in
-                    make.top.equalTo(top);
-                    make.left.equalToSuperview().offset(kX_GAP)
-                    make.width.equalTo(labelLeft.size.width);
-                }
-                
-                labelRight.snp.makeConstraints { (make) in
-                    make.top.height.equalTo(labelLeft);
-                    make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                    make.right.equalToSuperview().offset(-kX_GAP)
+                let labH = kSize_Arrow.height
+                let top = contentView.frame.midY - labH/2.0
+                if type == 0 {
+                    //右边文字优先展示
+                    labelRight.sizeToFit();
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.equalToSuperview().offset(top);
+                        make.right.equalToSuperview().offset(-kX_GAP);
+                        make.width.equalTo(labelRight.size.width);
+                    }
+                    
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(labelRight);
+                        make.left.equalToSuperview().offset(kX_GAP)
+                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                    }
+                    
+                } else {
+                    //左边文字优先展示
+                    labelLeft.sizeToFit();
+                    labelLeft.snp.makeConstraints { (make) in
+                        make.top.equalTo(top);
+                        make.left.equalToSuperview().offset(kX_GAP)
+                        make.width.equalTo(labelLeft.size.width);
+                    }
+                    
+                    labelRight.snp.makeConstraints { (make) in
+                        make.top.height.equalTo(labelLeft);
+                        make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                        make.right.equalToSuperview().offset(-kX_GAP)
+                    }
                 }
             }
         }
