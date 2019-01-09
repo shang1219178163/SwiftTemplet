@@ -12,7 +12,7 @@ import SwiftExpand
 class BNDatePicker: UIView {
     
     typealias ViewClick = (BNDatePicker,Int) -> Void;
-    var ViewClosure: ViewClick?;
+    var viewBlock: ViewClick?;
 
     private let btnSize = CGSize(width: 60, height: kH_NaviagtionBar);
     
@@ -61,7 +61,7 @@ class BNDatePicker: UIView {
    
    
     func block(_ action:@escaping ViewClick) -> Void {
-        self.ViewClosure = action;
+        self.viewBlock = action;
         
     }
     
@@ -139,7 +139,7 @@ class BNDatePicker: UIView {
         else if let control = sender as? UIButton {
             DDLog(control.titleLabel?.text as Any);
             if control.titleLabel?.text == kActionTitle_Sure {
-                self.ViewClosure!(self,sender.tag);
+                self.viewBlock!(self,sender.tag);
                 
             }
             self.dismiss();

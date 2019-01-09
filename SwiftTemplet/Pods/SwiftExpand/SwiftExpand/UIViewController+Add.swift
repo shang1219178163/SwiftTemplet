@@ -92,5 +92,23 @@ public extension UIViewController{
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
+    
+    public var obj: AnyObject?{
+        get {
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as AnyObject;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    public var objOne: AnyObject?{
+        get {
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as AnyObject;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
 
 }
