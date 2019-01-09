@@ -36,14 +36,7 @@ public extension String{
     }
     
     public func dictValue() -> Dictionary<String, Any>!{
-        
-        let jsonData:Data = self.data(using:.utf8)!;
-        
-        let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers);
-        if dict != nil {
-            return (dict as! Dictionary);
-        }
-        return Dictionary();
+        return ((self as NSString).objcValue() as! Dictionary<String, Any>)
     }
     
     public func arrayValue() -> Array<Any>!{
@@ -125,7 +118,15 @@ public extension String{
   
 }
 
-extension CFString{
+extension NSString{
     
-    
+    /// 字符串转AnyObject
+     @objc public func objcValue() -> AnyObject?{
+        let jsonData = self.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: true)
+        let obj:Any? = try? JSONSerialization.jsonObject(with: jsonData!, options: .allowFragments)
+        if obj != nil {
+            return obj! as AnyObject;
+        }
+        return self;
+    }
 }

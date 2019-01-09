@@ -17,15 +17,13 @@ class CenterViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .cyan;
 
-//                    DispatchQueue.main.after(time: .now() + 2, block: {
-//                        IOPProgressHUD.dismiss();
-//                        self!.navigationController?.popViewController(animated: true)
-//                    })
-        
+//        DispatchQueue.main.after(time: .now() + 2, block: {
+//            IOPProgressHUD.dismiss();
+//            self!.navigationController?.popViewController(animated: true)
+//        })
         
         DDLog("_%@_",UIApplication.mainWindow);
         DDLog("__%@_",UIApplication.shared.keyWindow);
-        
         DDLog(view.hashValue,UIApplication.mainWindow.hashValue)
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
@@ -45,13 +43,10 @@ class CenterViewController: UIViewController {
                 DDLog("4444");
                 
             }
-            
             DDLog(btnItem.tag)
          
         }
 
-       
-        
         
         imgView.frame = .init(x: 10, y: 80, width: 220, height: 100);
         imgView.tag = 111;
@@ -76,10 +71,9 @@ class CenterViewController: UIViewController {
             }
             DDLog(String.timeNow().toTimeStamp());
             
-            //            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
-            //
-            //            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
-            //            DDLog(size);
+//            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
+//            let size = self.sizeWithText(text: string as AnyObject, font: 15 as AnyObject, width:50);
+//            DDLog(size);
             
             DDLog(NSStringFromClass(self.classForCoder));
         })
@@ -92,7 +86,22 @@ class CenterViewController: UIViewController {
 //            DDLog("33333",sender,sender.tag);
 //
 //        };
+        
+        let rectOne = CGRect(x: imgView.frame.minX, y: imgView.frame.maxY + 20, width: 100, height: 100)
+        
+        let btnOne = UIButton.createBtn(rect: rectOne, title: "666+", font: 15, image: nil, tag: 100, type: 0)
+        view.addSubview(btnOne)
+        
+        btnOne.addActionHandler({ (sender: UIControl) in
+            DDLog(btnOne.titleLabel?.text as Any)
+            
+        }, for: .touchUpInside)
+        
 
+        btnOne.addActionHandler({ (sender: UIControl) in
+            DDLog(11111111111)
+
+        }, for: .touchUpOutside)
         view.getViewLayer();
         
     }

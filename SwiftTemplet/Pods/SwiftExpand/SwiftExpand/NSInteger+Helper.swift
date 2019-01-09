@@ -47,7 +47,6 @@ public extension Int{
 
 public extension Double{
     
-    
     /// 保留n为小数
     public func roundedTo(_ n: Int) -> Double {
         let format = NumberFormatter()
