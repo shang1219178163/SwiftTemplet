@@ -10,17 +10,106 @@ import UIKit
 
 public extension UIView{
     
-    public var cornerRadius: CGFloat {
+    public var x: CGFloat {
         get {
-            return self.layer.cornerRadius
+            return frame.origin.x
         }
         set {
-            self.layer.masksToBounds = true
-            self.layer.cornerRadius = newValue
+            frame.origin = CGPoint(x:newValue, y:frame.origin.y)
         }
     }
     
+    public var y: CGFloat {
+        get {
+            return frame.origin.y
+        }
+        set {
+            frame.origin = CGPoint(x:frame.origin.x, y:newValue)
+        }
+    }
     
+    public var width: CGFloat {
+        get {
+            return frame.width
+        }
+        set {
+            frame.size.width = newValue
+        }
+    }
+    
+    public var height: CGFloat {
+        get {
+            return frame.size.height
+        }
+        set {
+            frame.size.height = newValue
+        }
+    }
+    
+    public var size: CGSize  {
+        get {
+            return frame.size
+        }
+        set{
+            frame.size = newValue
+        }
+    }
+    
+    public var origin: CGPoint {
+        get {
+            return frame.origin
+        }
+        set {
+            frame.origin = newValue
+        }
+    }
+    
+    @objc public var minX: CGFloat {
+        get {
+            return frame.minX
+        }
+    }
+    
+    @objc public var minY: CGFloat {
+        get {
+            return frame.minY
+        }
+    }
+    
+    @objc public var midX: CGFloat {
+        get {
+            return frame.midX
+        }
+    }
+    
+    @objc public var midY: CGFloat {
+        get {
+            return frame.midY
+        }
+    }
+    
+    @objc public var maxX: CGFloat {
+        get {
+            return frame.maxX
+        }
+    }
+    
+    @objc public var maxY: CGFloat {
+        get {
+            return frame.maxY
+        }
+    }
+    
+    @objc public var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.masksToBounds = true
+            layer.cornerRadius = newValue
+        }
+    }
+   
     public func getViewLayer() -> () {
         let subviews = self.subviews;
         if subviews.count == 0 {
