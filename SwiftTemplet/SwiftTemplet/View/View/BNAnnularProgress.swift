@@ -30,7 +30,7 @@ struct ProgressModel{
     init() {
         width = 10;
         bgColor = UIColor.lightGray;
-        color = UIColor.orange;
+        color = UIColor.theme;
         start = 0.0;
         end = 0.25;
     }

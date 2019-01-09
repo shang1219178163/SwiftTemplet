@@ -59,7 +59,7 @@ class BNCircleView: UIView {
         let context = UIGraphicsGetCurrentContext();
         
         //画笔颜色
-        context!.setStrokeColor(UIColor.orange.cgColor);
+        context!.setStrokeColor(UIColor.theme.cgColor);
         
         //画笔宽度
         context!.setLineWidth(lineWidth);
