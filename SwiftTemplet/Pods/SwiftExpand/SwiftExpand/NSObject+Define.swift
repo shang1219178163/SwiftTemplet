@@ -10,7 +10,7 @@ import UIKit
 
 public typealias SwiftClosure = (AnyObject,AnyObject,Int);
 
-public typealias ObjClosure = ((AnyObject?) ->()) // 定义数据类型(其实就是设置别名)
+public typealias ObjClosure = ((AnyObject) ->()) // 定义数据类型(其实就是设置别名)
 public typealias ViewClosure = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
 public typealias ControlClosure = (UIControl) ->() // 定义数据类型(其实就是设置别名)
 public typealias RecognizerClosure = (UIGestureRecognizer) ->()

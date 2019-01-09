@@ -83,7 +83,7 @@ public extension UIViewController{
 
     };
     
-     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClosure)) -> UIButton {
+    public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClosure)) -> UIButton {
 
         var size = CGSize(width: 32, height: 32)
         if image != nil {
@@ -100,10 +100,10 @@ public extension UIViewController{
             btn.setTitleColor(tintColor, for: .normal);
 
         }
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44));
-//        view.isHidden = isHidden;
-//        btn.center = view.center;
-//        view.addSubview(btn);
+    //        let view = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44));
+    //        view.isHidden = isHidden;
+    //        btn.center = view.center;
+    //        view.addSubview(btn);
         
         let item:UIBarButtonItem = UIBarButtonItem(customView: btn);
         if isLeft == true {
@@ -115,6 +115,13 @@ public extension UIViewController{
         return btn;
     }
 
+    public func goController(_ name: String!, obj: AnyObject?, objOne: AnyObject?) -> Void {
+        assert(UICtrFromString(name).isKind(of: UIViewController.classForCoder()))
+        let controller = UICtrFromString(name)
+        controller.obj = obj
+        controller.objOne = objOne
+        navigationController?.pushViewController(controller, animated: true);
+    }
     
 //    public func createBarItem(titile:String, imgName:AnyObject?, isLeft:Bool, isHidden:Bool, handler:void(^)(id obj, id item, NSInteger idx)handler) -> UIButton {
 //

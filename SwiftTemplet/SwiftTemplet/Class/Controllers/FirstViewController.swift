@@ -21,7 +21,10 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
      
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
-        
+        createBarItem(systemItem: .done, isLeft: false) {[weak self] (obj:AnyObject?) in
+            self!.goController("ListViewController", obj: "1234" as AnyObject, objOne: nil)
+            
+        }
         view.addSubview(tableView);
         
         DDLog(self);
@@ -78,10 +81,13 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         case 0:
             let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker;
             cell.labelLeft.text = "日期选择:";
-            cell.block { (view0, view1, idx) in
-                DDLog(view0,view1,idx);
+            cell.textfield.asoryView(true, unitName: "小时")
+            cell.block { ( sender: UITableViewCellDatePicker, view: BNDatePicker, idx: Int) in
+                let dateStr = DateFormatter.format(view.datePicker.date, fmt: kDateFormat)
+                DDLog(dateStr);
                 
             }
+        
             cell.getViewLayer();
             return cell;
         case 1:
@@ -161,12 +167,13 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             cell.imgViewLeft.image = UIImage(named: "dragon");
 //            cell.imgViewRight.isHidden = true;
 
+            
             //随机元素
-            imgList = imgList.sorted(by: {$0 < $1});
-            imgList = imgList.sorted(by:<);
-            let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-            cell.type = 1;
+//            imgList = imgList.sorted(by: {$0 < $1});
+//            imgList = imgList.sorted(by:<);
+//            let imgUrl = imgList.randomElement()!;
+//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//            cell.type = 1;
             
             cell.getViewLayer();
             return cell;
