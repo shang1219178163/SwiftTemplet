@@ -23,6 +23,19 @@ public let kSetAlpha        =   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
 public let kSetAlpha_Num    =   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 public let kSetAlpha_Float  =   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.";
 
+// MARK: -kArr
+public let kArr_avg_float = "@avg.floatValue";
+public let kArr_sum_inter = "@sum.intValue";
+public let kArr_max_inter = "@max.intValue";
+public let kArr_min_inter = "@min.intValue";
+public let kArr_sum_float = "@sum.floatValue";
+public let kArr_max_float = "@max.floatValue";
+public let kArr_min_float = "@min.floatValue";
+public let kArr_upper_list = "uppercaseString";//大小写转换
+public let kArr_lower_list = "lowercaseString";//大小写转换
+public let kArrs_unionDist_list = "@distinctUnionOfArrays.self";//数组内部去重
+public let kArrs_union_list = "@unionOfArrays.self";
+
 // MARK: -tag
 
 public let kTAG_LABEL = 100;

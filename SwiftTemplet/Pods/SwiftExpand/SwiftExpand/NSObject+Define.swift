@@ -19,14 +19,7 @@ public typealias RecognizerClosure = (UIGestureRecognizer) ->()
 public struct RuntimeKey {
     public static let tap = UnsafeRawPointer(bitPattern: "tap".hashValue)!;
     public static let item = UnsafeRawPointer(bitPattern: "item".hashValue)!;
-    public static let control = UnsafeRawPointer(bitPattern: "control".hashValue)!;
-    public static let recognizerTap = UnsafeRawPointer(bitPattern: "recognizerTap".hashValue)!;
-    public static let recognizerSwip = UnsafeRawPointer(bitPattern: "recognizerSwip".hashValue)!;
-    public static let recognizerLongPress = UnsafeRawPointer(bitPattern: "recognizerLongPress".hashValue)!;
-    public static let recognizerPan = UnsafeRawPointer(bitPattern: "recognizerPan".hashValue)!;
-    public static let recognizerPinch = UnsafeRawPointer(bitPattern: "recognizerPinch".hashValue)!;
-    public static let recognizerRotation = UnsafeRawPointer(bitPattern: "recognizerRotation".hashValue)!;
-    public static let recognizerEdgPan = UnsafeRawPointer(bitPattern: "recognizerEdgPan".hashValue)!;
+//    public static let control = UnsafeRawPointer(bitPattern: "control".hashValue)!;
 
 }
 

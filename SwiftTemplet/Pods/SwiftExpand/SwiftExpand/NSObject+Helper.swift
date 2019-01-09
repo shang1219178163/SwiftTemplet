@@ -262,19 +262,18 @@ public extension NSObject{
         return size;
     }
     
-    //MARK: 转json
-    public func jsonValue() -> String! {
+    ///MARK: NSObject转json字符串
+    @objc public func jsonValue() -> String! {
         
         if JSONSerialization.isValidJSONObject(self) == false {
             return "";
         }
         let data: Data! = try? JSONSerialization.data(withJSONObject: self, options: []);
-        let JSONString:String! = String(data: data, encoding: .utf8);
-        let string:String! = JSONString.removingPercentEncoding!;
-        
+        let jsonString:String! = String(data: data, encoding: .utf8);
+        let string:String! = jsonString.removingPercentEncoding!;
         return string;
-        
     }
+    
 //    //MARK: 转json(备用)
 //    public static func jsonValue(_ obj:AnyObject!) -> String! {
 //        if JSONSerialization.isValidJSONObject(obj) == false {
