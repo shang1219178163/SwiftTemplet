@@ -77,7 +77,6 @@ public extension Array{
         for _ in self.enumerated() {
             append(item)
         }
-        
     }
     
     ///模型(继承于NSObject)query对应属性为@objc声明的字符串

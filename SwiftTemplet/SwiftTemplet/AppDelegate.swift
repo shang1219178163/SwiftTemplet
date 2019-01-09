@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //方式二
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
-        controller = UICtrFromString("UIRecognizerController");
+//        controller = UICtrFromString("UIRecognizerController");
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;

@@ -10,114 +10,6 @@ import UIKit
 
 public extension UIView{
     
-    public var width: CGFloat {
-        get {
-            return self.frame.width
-        }
-        set {
-            self.frame.size.width = newValue
-        }
-    }
-    
-    public var height: CGFloat {
-        get {
-            return self.frame.size.height
-        }
-        set {
-            self.frame.size.height = newValue
-        }
-    }
-    
-    public var size: CGSize  {
-        get {
-            return self.frame.size
-        }
-        set{
-            self.frame.size = newValue
-        }
-    }
-    
-    public var origin: CGPoint {
-        get {
-            return self.frame.origin
-        }
-        set {
-            self.frame.origin = newValue
-        }
-    }
-    
-    public var x: CGFloat {
-        get {
-            return self.frame.origin.x
-        }
-        set {
-            self.frame.origin = CGPoint(x:newValue, y:self.frame.origin.y)
-        }
-    }
-    
-    public var y: CGFloat {
-        get {
-            return self.frame.origin.y
-        }
-        set {
-            self.frame.origin = CGPoint(x:self.frame.origin.x, y:newValue)
-        }
-    }
-    
-    public var centerX: CGFloat {
-        get {
-            return self.center.x
-        }
-        set {
-            self.center = CGPoint(x:newValue, y:self.center.y)
-        }
-    }
-    
-    public var centerY: CGFloat {
-        get {
-            return self.center.y
-        }
-        set {
-            self.center = CGPoint(x:self.center.x, y:newValue)
-        }
-    }
-    
-    public var left: CGFloat {
-        get {
-            return self.frame.origin.x
-        }
-        set {
-            self.frame.origin.x = newValue
-        }
-    }
-    
-    public var right: CGFloat {
-        get {
-            return self.frame.origin.x + self.frame.size.width
-        }
-        set {
-            self.frame.origin.x = newValue - self.frame.size.width
-        }
-    }
-    
-    public var top: CGFloat {
-        get {
-            return self.frame.origin.y
-        }
-        set {
-            self.frame.origin.y = newValue
-        }
-    }
-    
-    public var bottom: CGFloat {
-        get {
-            return self.frame.origin.y + self.frame.size.height
-        }
-        set {
-            self.frame.origin.y = newValue - self.frame.size.height
-        }
-    }
-    
     public var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
@@ -423,7 +315,27 @@ public extension UIView{
             print("无法识别手势类型")
         }
     }
-
+    
+    public func getCell() -> UITableViewCell{
+        var supView = self.superview
+        while let view = supView as? UITableViewCell {
+            supView = view.superview
+        }
+        return supView as! UITableViewCell;
+    }
+    
+    public func getCellIndexPath(_ tableView:UITableView) -> IndexPath{
+        let cell = self.getCell();
+        return tableView.indexPathForRow(at: cell.center)!
+    }
+    
+    public func removeAllSubViews(){
+        self.subviews.forEach { (view: UIView) in
+            view.removeFromSuperview()
+        }
+    }
+    
+    ///MARK: -view
     public static func createView(rect:CGRect, list:Array<String>!, numberOfRow:Int, viewHeight:CGFloat, padding:CGFloat, type:Int, action:@escaping (UITapGestureRecognizer?,UIView,NSInteger)->()) -> UIView! {
         
         let rowCount: Int = list.count % numberOfRow == 0 ? list.count/numberOfRow : list.count/numberOfRow + 1;
@@ -452,7 +364,7 @@ public extension UIView{
                 let label = UILabel(frame: rect);
                 label.text = value;
                 label.textAlignment = .center;
-
+                
                 label.numberOfLines = 0;
                 label.lineBreakMode = .byCharWrapping;
                 
@@ -483,23 +395,100 @@ public extension UIView{
         return backView;
     }
     
-    
-    public func getCell() -> UITableViewCell{
-        var supView = self.superview
-        while let view = supView as? UITableViewCell {
-            supView = view.superview
+    func createSegmentRect(_ rect: CGRect, items: Array<Any>!, selectedIdx: Int, type: Int) -> UISegmentedControl {
+        
+        let view = UISegmentedControl(items: items)
+        view.frame = rect
+        view.selectedSegmentIndex = selectedIdx
+        
+        switch type {
+        case 1:
+            view.tintColor = UIColor.theme
+            view.backgroundColor = UIColor.white
+            view.layer.borderWidth = 1.0
+            view.layer.borderColor = UIColor.white.cgColor
+            let dic_N = [NSAttributedStringKey.foregroundColor: UIColor.black,
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 15),
+            
+                        ]
+            view.setTitleTextAttributes(dic_N, for: .normal)
+            view.setDividerImage(UIImageColor(UIColor.white), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default);
+            
+            
+        case 2:
+            view.tintColor = UIColor.white
+            view.backgroundColor = UIColor.white
+      
+            let dic_N = [NSAttributedStringKey.foregroundColor: UIColor.theme,
+                         NSAttributedStringKey.foregroundColor: UIColor.white,
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 15),
+                         
+                         ]
+            
+            let dic_H = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                         NSAttributedStringKey.foregroundColor: UIColor.theme,
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 18),
+                         
+                         ]
+            
+            view.setTitleTextAttributes(dic_N, for: .normal)
+            view.setTitleTextAttributes(dic_H, for: .selected)
+            
+        case 3:
+            view.tintColor = UIColor.clear
+            view.backgroundColor = UIColor.line
+            
+            let dic_N = [NSAttributedStringKey.foregroundColor: UIColor.black,
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 15),
+                         
+                         ]
+            
+            let dic_H = [NSAttributedStringKey.foregroundColor: UIColor.theme,
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 18),
+                         
+                         ]
+            
+            view.setTitleTextAttributes(dic_N, for: .normal)
+            view.setTitleTextAttributes(dic_H, for: .selected)
+            
+        default:
+            view.tintColor = UIColor.theme
+            view.backgroundColor = UIColor.white
+            
+            let dic_N = [
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 15),
+                         
+                         ]
+            
+            let dic_H = [
+                         NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 18),
+                         
+                         ]
+            
+            view.setTitleTextAttributes(dic_N, for: .normal)
+            view.setTitleTextAttributes(dic_H, for: .selected)
         }
-        return supView as! UITableViewCell;
+        return view;
     }
     
-    public func getCellIndexPath(_ tableView:UITableView) -> IndexPath{
-        let cell = self.getCell();
-        return tableView.indexPathForRow(at: cell.center)!
+    func createSliderRect(_ rect: CGRect, value: Float, minValue: Float, maxValue: Float) -> UISlider {
+        let view = UISlider(frame: rect)
+        view.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        view.minimumValue = minValue
+        view.maximumValue = maxValue
+        view.value = value;
+        
+        view.minimumTrackTintColor = UIColor.theme
+        view.maximumTrackTintColor = UIColor.white
+        view.thumbTintColor = UIColor.white
+        return view;
     }
     
-    public func removeAllSubViews(){
-        self.subviews.forEach { (view: UIView) in
-            view.removeFromSuperview()
-        }
+    func createSwitchRect(_ rect: CGRect, isOn: Bool) -> UISwitch {
+        let view = UISwitch(frame: rect)
+        view.isOn = isOn
+        view.onTintColor = UIColor.theme
+        view.tintColor = UIColor.white
+        return view
     }
 }

@@ -24,6 +24,29 @@ public extension UIScreen {
         }
     }
     
+    public static var statusBarHeight : CGFloat {
+        get {
+            return 20.0
+        }
+    }
+    
+    public static var navBarHeight : CGFloat {
+        get {
+            return 44.0
+        }
+    }
+    
+    public static var barHeight : CGFloat {
+        get {
+            return (UIScreen.statusBarHeight + UIScreen.navBarHeight)
+        }
+    }
+    
+    public static var tabBarHeight : CGFloat {
+        get {
+            return 49.0
+        }
+    }
     
   
     
