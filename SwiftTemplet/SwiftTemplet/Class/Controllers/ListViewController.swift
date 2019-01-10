@@ -15,6 +15,11 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        dataList = [["卡类型", "1", "", "cardName", false],
+                     ["结束日期", "2", "", "validEndTime", false],
+                     ["充值时长", "6", "", "balance", false],
+                     ["缴费金额", "6", "", "recharge", false],
+                     ]
         view.addSubview(tableView);
 
         if title == nil {
@@ -66,8 +71,14 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
 //        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
         let cell = UITableViewCellTextField.cellWithTableView(tableView) as! UITableViewCellTextField;
-
-       
+        cell.labelLeft.text = "日期选择:";
+        cell.textfield.asoryView(true, unitName: "小时")
+        cell.textfield.rightView = nil;
+        cell.block { (sender:AnyObject) in
+            if let textField = sender as? UITextField {
+                DDLog(textField.text as Any)
+            }
+        }
 
         cell.getViewLayer();
         return cell;
@@ -75,27 +86,35 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! UITableViewCellZero;
         
-        DDLog("------",cell.isSelected);
-
 //        cell.isSelected = !cell.isSelected
-
 //        tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()
 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45;
+        return 120;
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero);
-        label.backgroundColor = .green;
-        label.text = "header\(section)";
-        return label;
         
+        switch <#value#> {
+        case <#pattern#>:
+            <#code#>
+        default:
+            <#code#>
+        }
+        
+        let view = UITableHeaderFooterViewTwo.viewWithTableView(tableView) as! UITableHeaderFooterViewTwo
+        
+        let text = "200小时"
+        view.labelLeftSub.attributedText = self.attString(text, offsetStart: 0, offsetEnd: 2)
+
+        view.backgroundView = UIView()
+        view.backgroundView?.backgroundColor = UIColor.yellow
+        view.getViewLayer()
+        return view;
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -103,10 +122,10 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+     
         let label = UILabel(frame: .zero);
-        label.backgroundColor = .yellow;
-        
-        label.text = "footer\(section)";
+        label.backgroundColor = .green;
+        label.text = "header\(section)";
         return label;
     }
 
@@ -115,4 +134,14 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    lazy var list: Array<Any> = {
+        var array = [["卡类型", "1", "", "cardName", false],
+                     ["结束日期", "2", "", "validEndTime", false],
+                     ["充值时长", "6", "", "balance", false],
+                     ["缴费金额", "6", "", "recharge", false],
+                     ]
+        
+        return array;
+    }()
 }

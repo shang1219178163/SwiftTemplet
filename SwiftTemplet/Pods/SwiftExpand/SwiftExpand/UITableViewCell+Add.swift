@@ -174,7 +174,7 @@ public extension UITableViewCell{
                 tf!.autocorrectionType = .no;
                 tf!.clearButtonMode = .whileEditing;
                 tf!.backgroundColor = .white;
-                
+                tf!.returnKeyType = .done
                 objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), tf, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
             }

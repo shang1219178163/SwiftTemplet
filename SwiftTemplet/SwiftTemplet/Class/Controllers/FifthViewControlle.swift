@@ -16,6 +16,7 @@ class FifthViewControlle: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
+        imgView.frame = CGRect(x: 20, y: 20, width: 100, height: 100)
         view.addSubview(imgView)
         
         imgView.addGestureTap { [weak self] (obj:UIGestureRecognizer) in
@@ -25,7 +26,15 @@ class FifthViewControlle: UIViewController {
                 
             }
         }
-                
+        
+        textField.frame = CGRect(x: imgView.frame.minX, y: imgView.frame.maxY+20, width: imgView.frame.width, height: 35)
+        view.addSubview(textField)
+        
+        
+        view.addActionHandler { (sender:UITapGestureRecognizer?, view:UIView, idx:Int) in
+            self.textField.endEditing(true)
+        }
+        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,4 +60,15 @@ class FifthViewControlle: UIViewController {
         return view;
     }();
 
+    
+    lazy var textField: UITextField = {
+        var view = UITextField(frame: .zero);
+        view.textAlignment = .left;
+        view.contentVerticalAlignment = .center;
+        view.autocapitalizationType = .none;
+        view.autocorrectionType = .no;
+        view.clearButtonMode = .whileEditing;
+        view.backgroundColor = .white;
+        return view
+    }()
 }
