@@ -15,30 +15,15 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        dataList = [["卡类型", "1", "", "cardName", false],
-                     ["结束日期", "2", "", "validEndTime", false],
-                     ["充值时长", "6", "", "balance", false],
-                     ["缴费金额", "6", "", "recharge", false],
-                     ]
         view.addSubview(tableView);
 
         if title == nil {
             title = self.controllerName;
         }
-        
-        for _ in 0...0 {
-            let marr : NSMutableArray = [];
-            for j in 0...3{
-                marr.add(j);
-                
-            }
-            dataList.add(marr);
-        }
-        
+     
         //        DDLog(dataList);
         tableView.reloadData();
     }
-    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
@@ -53,36 +38,59 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataList.count;
-        
+        return 1;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arraySection : NSArray = dataList[section] as! NSArray;
-        return arraySection.count;
+        return list.count;
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 60;
+        let itemList = list[indexPath.row]
+        return CGFloat(itemList[2].floatValue())
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let itemList = list[indexPath.row]
         
-//        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-        let cell = UITableViewCellTextField.cellWithTableView(tableView) as! UITableViewCellTextField;
-        cell.labelLeft.text = "日期选择:";
-        cell.textfield.asoryView(true, unitName: "小时")
-        cell.textfield.rightView = nil;
-        cell.block { (sender:AnyObject) in
-            if let textField = sender as? UITextField {
-                DDLog(textField.text as Any)
-            }
-        }
+        switch itemList[1].intValue() {
+        case 1:
+            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
+            cell.labelLeft.text = itemList[0]
+            cell.labelRight.text = itemList[4]
+            cell.labelRight.textAlignment = .right
 
-        cell.getViewLayer();
-        return cell;
-      
+            return cell
+
+        case 2:
+            let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker
+            cell.labelLeft.text = itemList[0]
+            cell.textfield.text = itemList[4]
+            cell.textfield.textAlignment = .right
+
+            return cell
+            
+        case 6:
+            let cell = UITableViewCellTextField.cellWithTableView(tableView) as! UITableViewCellTextField
+            cell.labelLeft.text = itemList[0]
+            cell.textfield.asoryView(true, unitName: itemList.last)
+//            cell.textfield.rightView = nil;
+            
+            cell.textfield.textAlignment = .right
+            
+            cell.block { (sender:AnyObject) in
+                if let textField = sender as? UITextField {
+                    DDLog(textField.text as Any)
+                }
+            }
+            return cell
+
+        default:
+            break
+            
+        }
+        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -98,13 +106,6 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        switch <#value#> {
-        case <#pattern#>:
-            <#code#>
-        default:
-            <#code#>
-        }
         
         let view = UITableHeaderFooterViewTwo.viewWithTableView(tableView) as! UITableHeaderFooterViewTwo
         
@@ -135,13 +136,12 @@ class ListViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
-    lazy var list: Array<Any> = {
-        var array = [["卡类型", "1", "", "cardName", false],
-                     ["结束日期", "2", "", "validEndTime", false],
-                     ["充值时长", "6", "", "balance", false],
-                     ["缴费金额", "6", "", "recharge", false],
-                     ]
-        
-        return array;
+    lazy var list: [[String]] = {
+        var array: [[String]] = [["卡类型  ", "1", "60.0", "", "cardName", "0",],
+                                 ["结束日期", "2", "60.0", "", "validEndTime", "0",],
+                                 ["充值时长", "6", "60.0", "", "balance", "0", "  小时"],
+                                 ["缴费金额", "6", "60.0", "", "recharge", "0", "  元    "],
+                                 ]
+        return array
     }()
 }

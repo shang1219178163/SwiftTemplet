@@ -107,6 +107,8 @@ public extension UIView{
         set {
             layer.masksToBounds = true
             layer.cornerRadius = newValue
+            layer.borderWidth = kH_LINE_VIEW
+            layer.borderColor = UIColor.theme.cgColor
         }
     }
    
