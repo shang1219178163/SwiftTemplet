@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
 //        controller = UICtrFromString("UIRecognizerController");
+        controller = UICtrFromString("ListViewController");
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;

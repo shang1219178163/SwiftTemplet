@@ -13,7 +13,6 @@ import SwiftExpand
 
 class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     
-    typealias ViewClick = (UITableViewCellDatePicker,BNDatePicker,Int) -> Void;
     var viewBlock: ObjClosure?
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -23,19 +22,16 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         
-        textfield.text = DateFormatter.format(Date(), fmt: kDateFormat_one)
-        textfield.textColor = UIColor.theme
         textfield.placeholder = "99.0";
         textfield.textAlignment = .center;
         textfield.asoryView(true, unitName: kIMG_arrowDown);
-        //        textfield.asoryView(true, unitName: "公斤(万元)");
+//        textfield.asoryView(true, unitName: "公斤(万元)");
         textfield.delegate = self;
         
-        //拦截响应事件,不用再走tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-        contentView.insertSubview(backView, at: 0)
-        let _ = backView.addGestureTap { (sender: UIGestureRecognizer) in
-//            self.textfield.becomeFirstResponder()
-        }
+    }
+    
+    func block(_ action:@escaping ObjClosure) {
+        viewBlock = action
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,13 +41,13 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews();
-        backView.frame = contentView.frame;
         
         labelLeft.sizeToFit()
+        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(contentView.frame.midY - labelLeft.frame.height/2.0)
             make.left.equalToSuperview().offset(kX_GAP)
-            make.width.equalTo(labelLeft.size.width);
+            make.size.equalTo(labelLeft.size);
         }
         
         textfield.snp.makeConstraints { (make) in
@@ -69,31 +65,28 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     
     //    MARK: -textfield
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-
-        
         return true
     }
     
-    //    func textFieldDidEndEditing(_ textField: UITextField) {
-    //
-    //    }
-    //
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //
-    //    }
-    
-    //MARK: -funtions
-    func block(_ action:@escaping ObjClosure) -> Void {
-        viewBlock = action;
-        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        //        UIApplication.shared.keyWindow?.endEditing(true);
+        return true
     }
     
-    //MARK: -lazy
-    lazy var backView: UIView = {
-        var view = UIView(frame: .zero)
-        view.backgroundColor = contentView.backgroundColor;
-        return view
-    }()
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if viewBlock != nil {
+            viewBlock!(textField)
+        }
+        
+    }
+
+   
+    
+    //MARK: -funtions
+ 
+    
+   
 }
 
 

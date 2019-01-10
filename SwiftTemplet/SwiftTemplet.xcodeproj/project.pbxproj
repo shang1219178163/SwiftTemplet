@@ -30,6 +30,13 @@
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* ListViewController.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
+		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
+		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
+		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
+		14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */; };
+		14F7AAAD21E709BE00FB7570 /* UITableViewCellStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAAC21E709BE00FB7570 /* UITableViewCellStep.swift */; };
+		14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAAE21E709DA00FB7570 /* UITableViewCellPickerView.swift */; };
+		14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAB021E70A0000FB7570 /* UITableViewCellDateRange.swift */; };
 		515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA756214206BC00C8D0AA /* BNDatePicker.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
 		51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A00208EA75700CE8099 /* AppDelegate.swift */; };
@@ -82,6 +89,13 @@
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
+		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
+		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
+		14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSwitch.swift; sourceTree = "<group>"; };
+		14F7AAAC21E709BE00FB7570 /* UITableViewCellStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellStep.swift; sourceTree = "<group>"; };
+		14F7AAAE21E709DA00FB7570 /* UITableViewCellPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellPickerView.swift; sourceTree = "<group>"; };
+		14F7AAB021E70A0000FB7570 /* UITableViewCellDateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDateRange.swift; sourceTree = "<group>"; };
 		515AA756214206BC00C8D0AA /* BNDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDatePicker.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
 		516859FD208EA75700CE8099 /* SwiftTemplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTemplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,8 +269,15 @@
 				519E87BB21364AF4002CCD86 /* UITableViewCellOne.swift */,
 				515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */,
 				149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */,
+				14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */,
+				14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */,
+				14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */,
+				14F7AAAC21E709BE00FB7570 /* UITableViewCellStep.swift */,
+				14F7AAAE21E709DA00FB7570 /* UITableViewCellPickerView.swift */,
+				14F7AAB021E70A0000FB7570 /* UITableViewCellDateRange.swift */,
 				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewFour.swift */,
 				147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */,
+				14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -430,9 +451,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */,
 				147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */,
 				1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */,
 				147FF4AC21D06A6900351E94 /* FleetDetailController.swift in Sources */,
+				14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				517D143B2141248000F08FE5 /* BNAnnularProgress.swift in Sources */,
@@ -446,9 +469,12 @@
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
+				14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BNCircleView.swift in Sources */,
+				14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
+				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				149B66F621E607B7007B84A8 /* ListViewController.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
@@ -457,6 +483,7 @@
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
+				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
@@ -471,6 +498,7 @@
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
 				147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */,
 				147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */,
+				14F7AAAD21E709BE00FB7570 /* UITableViewCellStep.swift in Sources */,
 				147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
