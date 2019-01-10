@@ -61,6 +61,19 @@ public extension UIColor{
         }
     }
     
+    //MARK:  -项目定制
+    public static var textColorTitle : UIColor {
+        get{
+            return UIColor.hex("#333333");
+        }
+    }
+    
+    public static var textColorSub : UIColor {
+        get{
+            return UIColor.hex("#999999");
+        }
+    }
+    
     //MARK: - -方法
     public static func hex(_ hex:String) -> UIColor {
         var cString = hex.trimmingCharacters(in: CharacterSet.whitespaces).uppercased();

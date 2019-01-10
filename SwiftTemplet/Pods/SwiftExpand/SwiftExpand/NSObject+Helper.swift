@@ -217,6 +217,34 @@ public extension NSObject{
         let cls : AnyClass = NSClassFromString(appName + "." + className)!;
         return cls;
     }
+    
+    /// nsRange范围子字符串差异华显示
+    public func attString(_ text: String!, nsRange: NSRange) -> NSAttributedString! {
+        assert(text.count > (nsRange.location + nsRange.length))
+        
+        let attrString = NSMutableAttributedString(string: text)
+        
+        let attDict = [NSAttributedStringKey.foregroundColor: UIColor.theme,
+                       NSAttributedStringKey.font:UIFont.systemFont(ofSize: 30),
+                       ]
+        attrString.addAttributes(attDict, range: nsRange)
+        return attrString
+    }
+    
+    /// 特定范围子字符串差异华显示
+    public func attString(_ text: String!, offsetStart: Int, offsetEnd: Int) -> NSAttributedString! {
+        let nsRange = NSRange(location: offsetStart, length: (text.count - offsetStart - offsetEnd))
+        let attrString = attString(text, nsRange: nsRange)
+        return attrString
+    }
+    
+    /// 字符串差异华显示
+    public func attString(_ text: String!, textSub: String) -> NSAttributedString! {
+        let range = text.range(of: textSub)
+        let nsRange = text.nsRange(from: range!)
+        let attrString = attString(text, nsRange: nsRange)
+        return attrString
+    }
         
     public func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedString.Key, Any> {
         let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));

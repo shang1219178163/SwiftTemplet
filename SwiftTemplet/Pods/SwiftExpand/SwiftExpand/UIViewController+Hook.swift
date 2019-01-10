@@ -53,7 +53,6 @@ public extension UIViewController{
         //需要注入的代码写在此处
 //        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
         edgesForExtendedLayout = [];
-        view.backgroundColor = .white;
         if #available(iOS 11.0, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         } else {
@@ -83,7 +82,7 @@ public extension UIViewController{
     @objc public func eventGather(isBegin: Bool) -> Void {
         let className = NSStringFromClass(classForCoder);
         //设置不允许发送数据的Controller
-        let filters = ["UINavigationController","UITabBarController",];
+        let filters = ["UINavigationController","UITabBarController","UICompatibilityInputViewController","UIInputWindowController"];
         if filters.contains(className) {
             return ;
         }
