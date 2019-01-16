@@ -8,17 +8,162 @@
 
 import UIKit
 
-class UITableViewCellTextView: UITableViewCell {
+import SwiftExpand
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
+
+    var wordCount: Int = 140{
+        willSet {
+            labelLeftSub.text = "\(textView.text.count)" + "/" + "\(wordCount)字"
+        }
     }
+    
+    var type: Int = 0 {
+        willSet {
+            setNeedsLayout()
+        }
+    }
+    private var viewBlock: ((UITableViewCellTextView, String) -> Void)?
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier);
+        
+        contentView.addSubview(labelLeft);
+        contentView.addSubview(textView);
+        contentView.addSubview(labelLeftSub);
 
+        labelLeftSub.text = "0" + "/" + "\(wordCount)字"
+        labelLeftSub.textAlignment = .right
+        labelLeftSub.font = UIFont.systemFont(ofSize: 13)
+        textView.delegate = self;
+        textView.returnKeyType = .done
+        
+        labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews();
+        
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
+        labelLeft.sizeToFit()
+        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        
+        switch type {
+        case 1:
+            labelLeft.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(kY_GAP)
+                make.left.equalToSuperview().offset(kX_GAP)
+                make.size.equalTo(labelLeft.frame.size);
+            }
+            
+            labelLeftSub.snp.makeConstraints { (make) in
+                make.top.equalTo(labelLeft)
+                make.right.equalToSuperview().offset(-kX_GAP)
+                make.size.equalTo(labelLeft.frame.size);
+            }
+            
+            textView.snp.makeConstraints { (make) in
+                make.top.equalTo(labelLeft.snp.bottom).offset(kPadding);
+                make.left.equalTo(labelLeft)
+                make.right.equalTo(labelLeftSub.snp.right)
+                make.bottom.equalToSuperview().offset(-kY_GAP);
+            }
+            
+        default:
+            labelLeft.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(kY_GAP)
+                make.left.equalToSuperview().offset(kX_GAP)
+                make.size.equalTo(labelLeft.size);
+            }
+            
+            labelLeftSub.snp.makeConstraints { (make) in
+                make.left.equalTo(labelLeft)
+                make.size.equalTo(labelLeft.frame.size);
+                make.bottom.equalToSuperview().offset(-kY_GAP);
+            }
+            
+            textView.snp.makeConstraints { (make) in
+                make.top.equalTo(labelLeft);
+                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                make.right.equalToSuperview().offset(-kX_GAP)
+                make.bottom.equalToSuperview().offset(-kY_GAP);
+            }
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
 
+    //MARK: -UITextView
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        labelLeftSub.text = "\(textView.text.count)" + "/" + "\(wordCount)字"
+        
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //如果是删除减少字数，都返回允许修改
+        if text == "" {
+            return true
+        }
+        
+        if text == "\n" {
+            UIApplication.shared.keyWindow?.endEditing(true)
+            return false
+        }
+        
+        if range.location > wordCount {
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if self.viewBlock != nil {
+            self.viewBlock!(self, textView.text)
+        }
+    }
+    
+    //MARK: -observe
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            //标题星号处理
+            labelLeft.attributedText = labelLeft.text?.toAsterisk()
+        }
+    }
+    
+    //MARK: -funtions
+    func block(_ action: @escaping ((UITableViewCellTextView, String) -> Void)) -> Void {
+        self.viewBlock = action;
+    }
+    
+//    lazy var placeHolderTextView: UITextView = {
+//        var view = UITextView(frame: .zero);
+//        view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+//        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+//
+//        view.textAlignment = .left;
+//        view.autocapitalizationType = .none;
+//        view.autocorrectionType = .no;
+////        view.backgroundColor = .clear;
+//        view.backgroundColor = .red;
+//        view.textColor = .gray
+//
+//        return view
+//    }()
+    
 }

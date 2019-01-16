@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public let kDate_minute : Double = 60 ;
 public let kDate_hour : Double  = 3600 ;
 public let kDate_day : Double   = 86400 ;

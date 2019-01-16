@@ -21,7 +21,8 @@ class UITableViewCellFour: UITableViewCell {
          */
         contentView.addSubview(btn);
         contentView.addSubview(labelLeft);
-      
+        setupConstraint();
+        
         btn.setBackgroundImage(UIImage(named: kIMG_selected_NO), for: .normal)
         btn.setBackgroundImage(UIImage(named: kIMG_selected_YES), for: .selected)
 //btn.isSelected
@@ -36,12 +37,14 @@ class UITableViewCellFour: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews();
-        
+    }
+    
+    func setupConstraint() -> Void {
         btn.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(contentView.frame.midY - kSize_BtnSelected.height/2.0)
             make.size.equalTo(kSize_BtnSelected)
         }
-    
+        
         labelLeft.snp.makeConstraints { (make) in
             make.top.height.equalTo(btn);
             make.left.equalTo(btn.snp.right).offset(kPadding)
@@ -54,7 +57,7 @@ class UITableViewCellFour: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
+
 //    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 //        DDLog(keyPath,change);
 //        if keyPath == "selected" {

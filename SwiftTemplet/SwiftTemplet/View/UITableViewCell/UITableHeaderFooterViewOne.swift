@@ -50,6 +50,10 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
         //箭头不隐藏
         if imgViewRight.isHidden == false {
             imgViewRight.snp.makeConstraints { (make) in

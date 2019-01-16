@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.1)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
   - AlamofireObjectMapper (5.2.0):
@@ -7,7 +7,8 @@ PODS:
     - ObjectMapper (~> 3.4)
   - CryptoSwift (0.13.1)
   - HandyJSON (4.2.1)
-  - Kingfisher (5.0.1)
+  - IQKeyboardManagerSwift (6.2.0)
+  - Kingfisher (4.10.1)
   - ObjectMapper (3.4.2)
   - RxAlamofire (4.3.0):
     - RxAlamofire/Core (= 4.3.0)
@@ -25,7 +26,7 @@ PODS:
   - SDWebImage/Core (4.4.3)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
-  - SwiftExpand (1.1.9.2)
+  - SwiftExpand (1.2.2)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - CryptoSwift
   - HandyJSON
+  - IQKeyboardManagerSwift
   - Kingfisher
   - RxAlamofire
   - RxBlocking
@@ -51,6 +53,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - CryptoSwift
     - HandyJSON
+    - IQKeyboardManagerSwift
     - Kingfisher
     - ObjectMapper
     - RxAlamofire
@@ -64,12 +67,13 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
-  Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   RxAlamofire: 09624d0f2d48ed8b686e4eb4cf68e28cbd2df556
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
@@ -78,9 +82,9 @@ SPEC CHECKSUMS:
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 4494112706fab98178ef557daaf01d0050742ef9
+  SwiftExpand: ec8f285639ccc79d4fad443ea579415cc25253d3
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 3ca3985555aa3bba3635191adaed355d85fbbc46
+PODFILE CHECKSUM: d4ff9341077dc6cebf653a429588c4b1986aca80
 
 COCOAPODS: 1.5.3

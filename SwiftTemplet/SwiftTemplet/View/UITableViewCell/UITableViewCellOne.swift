@@ -44,6 +44,14 @@ class UITableViewCellOne: UITableViewCell {
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
         
+        labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            //标题星号处理
+            labelLeft.attributedText = labelLeft.text?.toAsterisk()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,6 +62,10 @@ class UITableViewCellOne: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
         //箭头不隐藏
         if imgViewRight.isHidden == false {
             imgViewRight.snp.makeConstraints { (make) in

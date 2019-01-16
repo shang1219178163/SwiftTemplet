@@ -62,7 +62,6 @@ class BNDatePicker: UIView {
    
     func block(_ action:@escaping ViewClick) -> Void {
         self.viewBlock = action;
-        
     }
     
     

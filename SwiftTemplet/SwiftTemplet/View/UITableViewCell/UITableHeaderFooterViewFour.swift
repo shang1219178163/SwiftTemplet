@@ -33,6 +33,10 @@ class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
         btn.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(contentView.frame.midY - kSize_BtnSelected.height/2.0)
             make.size.equalTo(kSize_BtnSelected)

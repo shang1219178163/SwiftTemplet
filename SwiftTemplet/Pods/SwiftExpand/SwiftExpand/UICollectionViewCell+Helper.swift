@@ -21,6 +21,8 @@ public extension UICollectionViewCell{
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if view == nil {
                 view = UIImageView(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+
                 view!.contentMode = .scaleAspectFit;
                 view!.isUserInteractionEnabled = true;
                 view!.image = UIImage(named: kIMG_arrowRight);
@@ -40,6 +42,8 @@ public extension UICollectionViewCell{
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if view == nil {
                 view = UILabel(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+
                 view!.numberOfLines = 0;
                 view!.lineBreakMode = .byCharWrapping;
                 view!.textAlignment = .center;

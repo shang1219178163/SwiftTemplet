@@ -62,7 +62,7 @@ public extension UIViewController{
     }
     
     @objc private func handleActionItem(sender:UIBarButtonItem) -> Void {
-        let block = objc_getAssociatedObject(self, RuntimeKey.tap) as? ObjClosure;
+        let block = objc_getAssociatedObject(self, sender.keyOfUnsafeRawPointer) as? ObjClosure;
         if block != nil {
             block!(sender);
 
@@ -70,7 +70,9 @@ public extension UIViewController{
     }
     
     public func createBarItem(systemItem:UIBarButtonItem.SystemItem, isLeft:Bool, action:@escaping (ObjClosure)) -> Void {
-
+        let funcAbount = NSStringFromSelector(#function) + ",\(systemItem)" + ",\(isLeft)"
+        let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
+        
         let item:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: systemItem, target: self, action: #selector(handleActionItem(sender:)));
         item.systemType = systemItem;
         if isLeft == true {
@@ -79,9 +81,10 @@ public extension UIViewController{
         else{
             navigationItem.rightBarButtonItem = item;
         }
-        objc_setAssociatedObject(self, RuntimeKey.tap, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        item.keyOfUnsafeRawPointer = runtimeKey
+        objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC);
 
-    };
+    }
     
     public func createBtnBarItem(title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClosure)) -> UIButton {
 
@@ -105,6 +108,7 @@ public extension UIViewController{
     //        btn.center = view.center;
     //        view.addSubview(btn);
         
+        btn.addActionHandler(action, for: .touchUpInside)
         let item:UIBarButtonItem = UIBarButtonItem(customView: btn);
         if isLeft == true {
             navigationItem.leftBarButtonItem = item;
@@ -115,49 +119,13 @@ public extension UIViewController{
         return btn;
     }
 
-    public func goController(_ name: String!, obj: AnyObject?, objOne: AnyObject?) -> Void {
+    @objc public func goController(_ name: String!, obj: AnyObject?, objOne: AnyObject?) -> Void {
         assert(UICtrFromString(name).isKind(of: UIViewController.classForCoder()))
         let controller = UICtrFromString(name)
         controller.obj = obj
         controller.objOne = objOne
         navigationController?.pushViewController(controller, animated: true);
     }
-    
-//    public func createBarItem(titile:String, imgName:AnyObject?, isLeft:Bool, isHidden:Bool, handler:void(^)(id obj, id item, NSInteger idx)handler) -> UIButton {
-//
-//        //        public var imageName : String = (imgName as? String)!;
-//
-//        //        assert(imgName?.isEmpty == true, "无效的图片名称");
-//        let image = UIImage(named: imgName as! String)?.withRenderingMode(.alwaysOriginal);
-//
-//        let btn = UIButton();
-//        if image != nil  {
-//            btn.setImage(image, for: .normal);
-//
-//        } else {
-//            if titile.isEmpty == false{
-//                btn.setTitle(titile, for: .normal);
-//                if titile.count == 4{
-//                    btn.titleLabel?.adjustsFontSizeToFitWidth = true;
-//                    btn.titleLabel?.minimumScaleFactor = 1;
-//
-//                }
-//            }
-//        }
-////        btn.addTarget(self, action:self, for: .touchUpInside);
-//        btn.sizeToFit();
-//        btn.isHidden = isHidden;
-//
-//        if isLeft == true {
-//            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn);
-//        } else {
-//            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn);
-//
-//        }
-//
-//        return btn;
-//    }
-
     
 }
 
