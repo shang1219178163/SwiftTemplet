@@ -31,14 +31,13 @@ class UICTReusableViewZero: UICollectionReusableView {
         
         imageView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalToSuperview()
-            
         }
         
         textLabel.snp.makeConstraints { (make) in
-            make.top.left.equalToSuperview().offset(kX_GAP)
+            make.top.equalToSuperview().offset(kY_GAP)
+            make.left.equalToSuperview().offset(kX_GAP)
+            make.bottom.equalToSuperview().offset(-kY_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
-            make.height.equalTo(frame.height - kX_GAP*2)
-            
         }
     }
 }

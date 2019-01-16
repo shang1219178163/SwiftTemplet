@@ -18,6 +18,16 @@ class UITableViewCellThree: UITableViewCell {
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelRight);
         
+        labelLeft.numberOfLines = 1;
+        
+        labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            //标题星号处理
+            labelLeft.attributedText = labelLeft.text?.toAsterisk()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,11 +38,14 @@ class UITableViewCellThree: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint();
+    }
+    
+    func setupConstraint() -> Void {
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(contentView.frame.midY - kH_LABEL/2.0)
             make.left.equalToSuperview().offset(kX_GAP)
-            make.width.equalTo(labelLeft.size.width);
         }
         
         labelRight.snp.makeConstraints { (make) in

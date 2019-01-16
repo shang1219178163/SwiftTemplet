@@ -14,8 +14,8 @@ class BNClockView: UIImageView {
     
     //1 声明变量
     var itemList: Array<String>? {
-        didSet {
-            itemList?.forEach { (obj:String) in
+        willSet {
+            newValue?.forEach { (obj:String) in
                 
                 let btn = UIButton();
                 btn.backgroundColor = .theme;
@@ -29,11 +29,15 @@ class BNClockView: UIImageView {
         }
     }
     
-    @objc func handleActionSender(_ sender:UIButton){
-        print("tag_",sender.tag);
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func layoutSubviews() {
         let frame = self.bounds;
         // 圆心
@@ -61,6 +65,12 @@ class BNClockView: UIImageView {
             view.layer.masksToBounds = true;
         }
     }
+    
+    @objc func handleActionSender(_ sender:UIButton){
+        print("tag_",sender.tag);
+        
+    }
+    
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
 //    override func draw(_ rect: CGRect) {
@@ -87,14 +97,7 @@ class BNClockView: UIImageView {
 //        }
 //    }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     
 }

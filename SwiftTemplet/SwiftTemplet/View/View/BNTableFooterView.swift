@@ -10,8 +10,6 @@ import UIKit
 
 import SwiftExpand
 
-public typealias BtnClick = (UIButton) ->()
-
 class BNTableFooterView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,11 +37,11 @@ class BNTableFooterView: UIView {
             
         }
         
-        label.sizeToFit()
+//        label.sizeToFit()
         label.snp.makeConstraints { (make) in
             make.top.equalTo(btn.snp.bottom).offset(15)
             make.left.right.equalTo(btn)
-            make.height.equalTo(label.size.height)
+            make.height.equalTo(70)
             
         }
     }

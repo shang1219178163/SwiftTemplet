@@ -42,6 +42,10 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
         let h_labSub: CGFloat = 60.0
         
         //左边文字优先展示

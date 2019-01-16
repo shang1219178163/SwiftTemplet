@@ -8,12 +8,16 @@
 
 import UIKit
 
-public typealias SwiftClosure = (AnyObject,AnyObject,Int);
+// 定义数据类型(其实就是设置别名)
+public typealias SwiftClosure = (AnyObject, AnyObject, Int) -> Void
 
-public typealias ObjClosure = ((AnyObject) ->()) // 定义数据类型(其实就是设置别名)
-public typealias ViewClosure = ((UITapGestureRecognizer?,UIView,NSInteger)->()) // 定义数据类型(其实就是设置别名)
-public typealias ControlClosure = (UIControl) ->() // 定义数据类型(其实就是设置别名)
-public typealias RecognizerClosure = (UIGestureRecognizer) ->()
+public typealias ObjClosure = ((AnyObject) -> Void)
+public typealias ViewClosure = ((UITapGestureRecognizer?, UIView, NSInteger) -> Void)
+public typealias ControlClosure = (UIControl) -> Void
+public typealias RecognizerClosure = (UIGestureRecognizer) -> Void
+
+public typealias CellForRowClosure = ((UITableView, IndexPath) -> UITableViewCell)
+public typealias DidSelectRowClosure = ((UITableView, IndexPath) -> Void)
 
 // MARK: - 关联属性的key
 public struct RuntimeKey {
