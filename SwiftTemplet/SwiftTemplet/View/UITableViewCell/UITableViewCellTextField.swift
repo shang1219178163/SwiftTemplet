@@ -11,6 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
+/// 文字+UITextField(输入框)
 class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     
     var viewBlock: ObjClosure?
@@ -18,7 +19,6 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
-        //文字+时间选择器
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         
@@ -28,12 +28,16 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
 //        textfield.asoryView(true, unitName: "公斤(万元)");
         textfield.delegate = self;
         
+        labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
-    func block(_ action:@escaping ObjClosure) {
-        viewBlock = action
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            //标题星号处理
+            labelLeft.attributedText = labelLeft.text?.toAsterisk()
+        }
     }
-    
+ 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
@@ -42,6 +46,10 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
@@ -81,10 +89,10 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         
     }
 
-   
-    
     //MARK: -funtions
- 
+    func block(_ action:@escaping ObjClosure) {
+        viewBlock = action
+    }
     
    
 }

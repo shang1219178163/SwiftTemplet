@@ -44,11 +44,15 @@ class UITableViewCellTwo: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        setupConstraint()
+    }
+    
+    func setupConstraint() -> Void {
         btn.sizeToFit();
         btn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(contentView.frame.midY - 35/2.0)
             make.right.equalToSuperview().offset(-10)
-//            make.width.equalTo((btn.titleLabel?.text?.count)! * 17)
+            //            make.width.equalTo((btn.titleLabel?.text?.count)! * 17)
             make.width.equalTo(btn.size.width)
             make.height.equalTo(35)
         }
@@ -135,5 +139,8 @@ class UITableViewCellTwo: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    
+    
     
 }

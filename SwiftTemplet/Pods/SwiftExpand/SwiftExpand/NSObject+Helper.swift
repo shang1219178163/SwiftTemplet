@@ -132,8 +132,8 @@ public func UIImageNamed(_ name: String, renderingMode: UIImageRenderingMode) ->
 }
 
 // 把颜色转成UIImage
-public func UIImageColor(_ color: UIColor) -> UIImage{
-    let rect: CGRect = CGRect(x: 0, y: 0, width: 1.0, height: 1.0)
+public func UIImageColor(_ color: UIColor, size: CGSize) -> UIImage{
+    let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
     UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
     
     let context: CGContext = UIGraphicsGetCurrentContext()!
@@ -144,6 +144,12 @@ public func UIImageColor(_ color: UIColor) -> UIImage{
     UIGraphicsGetCurrentContext()
     return image!
 }
+
+// 把颜色转成UIImage
+public func UIImageColor(_ color: UIColor) -> UIImage{
+    return UIImageColor(color, size: CGSize(width: 1.0, height: 1.0))
+}
+
 
 public func UIImageEquelToImage(_ image0: UIImage, image1: UIImage) -> Bool{
     let data0 = UIImagePNGRepresentation(image0)
@@ -202,15 +208,15 @@ public extension NSObject{
         }
     }
 
-    public var block:SwiftClosure {
-        set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-        
-        get {
-            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! SwiftClosure;
-        }
-    }
+//    public var block:SwiftClosure {
+//        set {
+//            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        }
+//        
+//        get {
+//            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! SwiftClosure;
+//        }
+//    }
     
     public func BNClassName(_ className:String) -> AnyClass {
         let appName = Bundle.main.infoDictionary!["CFBundleName"] as! String;
@@ -219,7 +225,7 @@ public extension NSObject{
     }
     
     /// nsRange范围子字符串差异华显示
-    public func attString(_ text: String!, nsRange: NSRange) -> NSAttributedString! {
+    @objc public func attString(_ text: String!, nsRange: NSRange) -> NSAttributedString! {
         assert(text.count > (nsRange.location + nsRange.length))
         
         let attrString = NSMutableAttributedString(string: text)
@@ -232,62 +238,92 @@ public extension NSObject{
     }
     
     /// 特定范围子字符串差异华显示
-    public func attString(_ text: String!, offsetStart: Int, offsetEnd: Int) -> NSAttributedString! {
+    @objc public func attString(_ text: String!, offsetStart: Int, offsetEnd: Int) -> NSAttributedString! {
         let nsRange = NSRange(location: offsetStart, length: (text.count - offsetStart - offsetEnd))
         let attrString = attString(text, nsRange: nsRange)
         return attrString
     }
     
     /// 字符串差异华显示
-    public func attString(_ text: String!, textSub: String) -> NSAttributedString! {
+    @objc public func attString(_ text: String!, textSub: String) -> NSAttributedString! {
         let range = text.range(of: textSub)
         let nsRange = text.nsRange(from: range!)
         let attrString = attString(text, nsRange: nsRange)
         return attrString
     }
-        
-    public func attrDict(font:AnyObject, textColor:UIColor) -> Dictionary<NSAttributedString.Key, Any> {
-        let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
-        let dic = [NSAttributedString.Key.font:font,
+    
+    /// 富文本特殊部分设置
+    @objc public func attrDict(_ font:CGFloat, textColor:UIColor) -> Dictionary<NSAttributedString.Key, Any> {
+        let dic = [NSAttributedString.Key.font:UIFont.systemFont(ofSize:font),
                    NSAttributedString.Key.foregroundColor: textColor];
         return dic;
     }
     
-    public func attrParaDict(font:AnyObject, textColor:UIColor, alignment:NSTextAlignment) -> Dictionary<NSAttributedString.Key, Any> {
-        
+    /// 富文本整体设置
+    @objc public func attrParaDict(_ font:CGFloat, textColor:UIColor, alignment:NSTextAlignment) -> Dictionary<NSAttributedString.Key, Any> {
         let paraStyle = NSMutableParagraphStyle();
         paraStyle.lineBreakMode = .byCharWrapping;
         paraStyle.alignment = alignment;
         
-        let font = font is NSInteger == false ? font as! UIFont : UIFont.systemFont(ofSize:CGFloat(font.floatValue));
-        
-        let mdic = NSMutableDictionary(dictionary: self.attrDict(font: font, textColor: textColor));
+        let mdic = NSMutableDictionary(dictionary: self.attrDict(font, textColor: textColor));
         mdic.setObject(paraStyle, forKey:kCTParagraphStyleAttributeName as! NSCopying);
         return mdic.copy() as! Dictionary<NSAttributedString.Key, Any>;
     }
     
-    public func sizeWithText(text:AnyObject!, font:AnyObject, width:CGFloat) -> CGSize {
-
+    ///  富文本只有和一般文字同字体大小才能计算高度
+    @objc public func sizeWithText(_ text:AnyObject!, font:CGFloat, width:CGFloat) -> CGSize {
         assert(text is String || text is NSAttributedString, "请检查text格式!");
-        assert(font is UIFont || font is Int, "请检查font格式!");
-
-        let attDic = self.attrParaDict(font: font, textColor: .black, alignment: .left);
+        let attDic = self.attrParaDict(font, textColor: .black, alignment: .left);
 
         let options : NSStringDrawingOptions = NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue)))
         
         var size = CGSize.zero;
         if text is String  {
             size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options , attributes: attDic, context: nil).size;
-
         }
         else{
             size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options, context: nil).size;
-            
         }
         size.width = ceil(size.width);
         size.height = ceil(size.height);
-        
         return size;
+    }
+    
+    /// 密集小视图的尺寸布局
+    public func itemSize(_ items: [String], numberOfRow: Int, width: CGFloat, itemHeight: inout CGFloat, padding: CGFloat) -> CGSize {
+        let rowCount = items.count % numberOfRow == 0 ? items.count/numberOfRow : items.count/numberOfRow + 1
+        let tmp = CGFloat(numberOfRow) - 1.0
+        let itemWith = (width - tmp*padding)/CGFloat(numberOfRow)
+        itemHeight = itemHeight <= 0.0 ? itemWith : itemHeight
+        let height = CGFloat(rowCount) * itemHeight + CGFloat(rowCount) - 1.0 * padding
+        let size = CGSize(width: width, height: height)
+        return size
+    }
+    
+    
+    /// (源方法)富文本
+    @objc public func getAttString(_ text: String!, textTaps: [String]!, font: CGFloat, tapFont: CGFloat, color: UIColor, tapColor: UIColor, alignment: NSTextAlignment) -> NSAttributedString {
+        let paraDic = attrParaDict(font, textColor: color, alignment: alignment)
+        let attString = NSMutableAttributedString(string: text, attributes: paraDic)
+        textTaps.forEach { ( textTap: String) in
+            let nsRange = (text as NSString).range(of: textTap)
+            let attDic = self.attrDict(font, textColor: tapColor)
+            attString.addAttributes(attDic, range: nsRange)
+        }
+        return attString
+    }
+    
+    /// 富文本
+    @objc public func getAttString(_ text: String!, textTaps: [String]!, tapColor: UIColor) -> NSAttributedString {
+        return getAttString(text, textTaps: textTaps, font: 16.0, tapFont: 16.0, color: .black, tapColor: tapColor, alignment: .left)
+    }
+    
+    /// 标题前缀差异化显示
+    public func  getAttringByPrefix(_ prefix: String!, content: String!, isMust: Bool) -> NSAttributedString {
+        let string = content.hasPrefix(prefix) == true ? content : prefix + content
+        let colorMust = isMust == true ? UIColor.red : UIColor.clear
+        let attString = getAttString(string, textTaps: [prefix], font: 15, tapFont: 15, color: .black, tapColor: colorMust, alignment: .left)
+        return attString
     }
     
     ///MARK: NSObject转json字符串

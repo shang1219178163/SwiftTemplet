@@ -107,8 +107,6 @@ public extension UIView{
         set {
             layer.cornerRadius = newValue
             layer.masksToBounds = true
-            layer.borderWidth = kH_LINE_VIEW
-            layer.borderColor = UIColor.theme.cgColor
         }
     }
    
@@ -486,10 +484,11 @@ public extension UIView{
         return backView;
     }
     
-    func createSegmentRect(_ rect: CGRect, items: Array<Any>!, selectedIdx: Int, type: Int) -> UISegmentedControl {
+    public static func createSegmentRect(_ rect: CGRect, items: Array<Any>!, selectedIdx: Int, type: Int) -> UISegmentedControl {
         
         let view = UISegmentedControl(items: items)
         view.frame = rect
+        view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.selectedSegmentIndex = selectedIdx
         
         switch type {
@@ -505,21 +504,16 @@ public extension UIView{
             view.setTitleTextAttributes(dic_N, for: .normal)
             view.setDividerImage(UIImageColor(UIColor.white), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default);
             
-            
         case 2:
             view.tintColor = UIColor.white
             view.backgroundColor = UIColor.white
       
-            let dic_N = [NSAttributedStringKey.foregroundColor: UIColor.theme,
-                         NSAttributedStringKey.foregroundColor: UIColor.white,
+            let dic_N = [NSAttributedStringKey.foregroundColor: UIColor.black,
                          NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 15),
-                         
                          ]
             
-            let dic_H = [NSAttributedStringKey.foregroundColor: UIColor.white,
-                         NSAttributedStringKey.foregroundColor: UIColor.theme,
+            let dic_H = [NSAttributedStringKey.foregroundColor: UIColor.theme,
                          NSAttributedStringKey.font :   UIFont.systemFont(ofSize: 18),
-                         
                          ]
             
             view.setTitleTextAttributes(dic_N, for: .normal)
@@ -562,7 +556,7 @@ public extension UIView{
         return view;
     }
     
-    func createSliderRect(_ rect: CGRect, value: Float, minValue: Float, maxValue: Float) -> UISlider {
+    public static func createSliderRect(_ rect: CGRect, value: Float, minValue: Float, maxValue: Float) -> UISlider {
         let view = UISlider(frame: rect)
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.minimumValue = minValue
@@ -570,16 +564,14 @@ public extension UIView{
         view.value = value;
         
         view.minimumTrackTintColor = UIColor.theme
-        view.maximumTrackTintColor = UIColor.white
-        view.thumbTintColor = UIColor.white
         return view;
     }
     
-    func createSwitchRect(_ rect: CGRect, isOn: Bool) -> UISwitch {
+    public static func createSwitchRect(_ rect: CGRect, isOn: Bool) -> UISwitch {
         let view = UISwitch(frame: rect)
+        view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.isOn = isOn
         view.onTintColor = UIColor.theme
-        view.tintColor = UIColor.white
         return view
     }
 }

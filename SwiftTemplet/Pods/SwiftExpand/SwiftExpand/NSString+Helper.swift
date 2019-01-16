@@ -24,7 +24,10 @@ public extension String{
 
     public func floatValue() -> Float {
         return (self as NSString).floatValue
-
+    }
+    
+    public func cgFloatValue() -> CGFloat {
+        return CGFloat(self.floatValue())
     }
 
     public func doubleValue() -> Double {
@@ -130,6 +133,10 @@ public extension String{
         return self.compare(string, options: .numeric, range: nil, locale: nil) == .orderedDescending
     }
   
+    public func toAsterisk() -> NSAttributedString{
+        let isMust = self.contains(kAsterisk)
+        return (self as NSString).getAttringByPrefix(kAsterisk, content: self, isMust: isMust)
+    }
 }
 
 extension NSString{

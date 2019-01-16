@@ -14,6 +14,7 @@ import SwiftExpand
 import Kingfisher
 
 import Alamofire
+import IQKeyboardManagerSwift
 
 
 @UIApplicationMain
@@ -24,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIViewController.initializeMethod();
         UINavigationController.initializeMethod();
-        UIImageView.initializeMethod()
+        UIImageView.initializeMethod();
+
+        IQKeyboardManager.shared.enable = true;
 
         // Override point for customization after application launch.
         
@@ -39,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
 //        controller = UICtrFromString("UIRecognizerController");
-        controller = UICtrFromString("ListViewController");
+//        controller = UICtrFromString("IOPAuthRechargeController");
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;
@@ -59,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let tabBarController = UITarBarCtrFromList(list);
 //        UIApplication.setupRootController(tabBarController!);
         
-        UIApplication.tabBarController?.selectedIndex = 1;
+        UIApplication.tabBarController?.selectedIndex = 2;
        
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);

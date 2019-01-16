@@ -14,6 +14,28 @@ public let UICollectionElementKindSectionItem = "UICollectionElementKindSectionI
 
 public extension UICollectionView{
     
+    public static var layoutDefault: UICollectionViewLayout {
+        get {
+            var layout = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UICollectionViewFlowLayout;
+            if layout == nil {
+                // 初始化
+                let width = UIScreen.main.bounds.width;
+                let spacing: CGFloat = 5.0
+                let itemSize = CGSize(width: (width - 5*spacing)/4.0,height: (width - 5*spacing)/4.0);
+                let headerSize = CGSize(width: width, height: 40);
+                let footerSize = CGSize(width: width, height: 20);
+                layout = UICollectionViewFlowLayout.create(itemSize, spacing: spacing, headerSize: headerSize, footerSize: footerSize)
+
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), layout, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                
+            }
+            return layout!
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
     public var listClass: Array<String> {
         get {
             return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! Array<String>;
@@ -30,10 +52,8 @@ public extension UICollectionView{
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        DDLog(newValue)
 
         }
-        
     }
     
     ///headerView/FooterView注册
@@ -76,7 +96,15 @@ public extension UICollectionView{
         }
     }
     
-    
+    ///  默认布局配置(自上而下,自左而右)
+    public func create(_ itemHeight: CGFloat, spacing: CGFloat, headerHeight: CGFloat, footerHeight: CGFloat) -> UICollectionViewFlowLayout {
+        let width = self.bounds.width;
+        let itemSize = CGSize(width: (width - 5*spacing)/4.0,height: itemHeight);
+        let headerSize = CGSize(width: width, height: headerHeight);
+        let footerSize = CGSize(width: width, height: footerHeight);
+        let layout = UICollectionViewFlowLayout.create(itemSize, spacing: spacing, headerSize: headerSize, footerSize: footerSize);
+        return layout;
+    }
 
     
     

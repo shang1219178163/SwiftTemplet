@@ -20,8 +20,15 @@ public extension UIColor{
     
     public static var theme : UIColor {
         get{
+            var color = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIColor;
+            color = color ?? UIColor.orange
 //            return UIColor.hex("#0082e0");
-            return UIColor.orange;
+//            return UIColor.orange;
+            return color!;
+        }
+        set{
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
         }
     }
         

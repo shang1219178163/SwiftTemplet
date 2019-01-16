@@ -82,7 +82,7 @@ public extension UIViewController{
     @objc public func eventGather(isBegin: Bool) -> Void {
         let className = NSStringFromClass(classForCoder);
         //设置不允许发送数据的Controller
-        let filters = ["UINavigationController","UITabBarController","UICompatibilityInputViewController","UIInputWindowController"];
+        let filters = ["UINavigationController","UITabBarController","UICompatibilityInputViewController","UIInputWindowController","UIAlertController"];
         if filters.contains(className) {
             return ;
         }

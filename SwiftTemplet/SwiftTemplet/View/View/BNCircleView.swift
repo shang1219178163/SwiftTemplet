@@ -24,7 +24,6 @@ class BNCircleView: UIView {
         didSet {
             self.setNeedsDisplay();
             
-            
         }
     }
     

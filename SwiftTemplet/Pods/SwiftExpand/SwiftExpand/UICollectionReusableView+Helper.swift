@@ -46,6 +46,8 @@ public extension UICollectionReusableView{
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if view == nil {
                 view = UIImageView(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+
                 view!.isUserInteractionEnabled = true;
                 view!.contentMode = .scaleAspectFit;
                 view!.backgroundColor = UIColor.random
@@ -65,6 +67,8 @@ public extension UICollectionReusableView{
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
             if view == nil {
                 view = UIImageView(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+
                 view!.isUserInteractionEnabled = true;
                 view!.contentMode = .scaleAspectFit;
                 view!.image = UIImage(named: kIMG_arrowRight);
@@ -85,6 +89,8 @@ public extension UICollectionReusableView{
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if view == nil {
                 view = UILabel(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+
                 view!.numberOfLines = 2;
                 view!.lineBreakMode = .byCharWrapping;
                 view!.textAlignment = .left;
@@ -105,6 +111,8 @@ public extension UICollectionReusableView{
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
             if view == nil {
                 view = UILabel(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+
                 view!.numberOfLines = 1;
                 view!.adjustsFontSizeToFitWidth = true
                 view!.textAlignment = .center;
