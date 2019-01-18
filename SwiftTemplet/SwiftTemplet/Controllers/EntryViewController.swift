@@ -19,7 +19,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
         
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-//        tableView.tableFooterView = footerView
+        tableView.tableFooterView = footerView
         view.addSubview(tableView);
 
         
@@ -188,7 +188,15 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             
             cell.getViewLayer()
             return cell
-      
+            
+        case 150:
+            let cell = UITableViewCellDefault.cellWithTableView(tableView) as! UITableViewCellDefault
+            cell.defaultView.labelLeft.text = value0
+            cell.defaultView.labelRight.text = value4
+            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
+            cell.getViewLayer()
+            return cell
+            
         default:
             break
             
@@ -264,7 +272,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, cancelTitle: "取消", cancellStyle: .destructive, completion: { (action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, completion: { (action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -308,6 +316,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             ["品牌列表:", "111", "60.0", "", "recharge", ],
             ["生产厂家:", "112", "60.0", "", "recharge", ],
             ["*备注信息:", "107", "160.0", "", "recharge", ],
+            ["*default:", "150", "60.0", "", "recharge", ],
 
              ]
         return array

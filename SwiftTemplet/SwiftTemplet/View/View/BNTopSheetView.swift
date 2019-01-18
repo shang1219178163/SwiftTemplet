@@ -192,7 +192,7 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, cancelTitle: "取消", cancellStyle: .destructive, completion: { (action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, completion: { (action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {

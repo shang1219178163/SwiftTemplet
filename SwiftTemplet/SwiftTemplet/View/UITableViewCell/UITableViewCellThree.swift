@@ -9,6 +9,8 @@
 import UIKit
 import SwiftExpand
 
+
+/// 文字+副标题(默认对齐方式)
 class UITableViewCellThree: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

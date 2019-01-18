@@ -21,6 +21,7 @@ class UITableViewCellSegment: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(labelLeft);
         contentView.addSubview(segmentCtl);
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

@@ -19,7 +19,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
 
         // Do any additional setup after loading the view.
 //        setupTitleView()
-  
+        
         topView.block { (tableView, indexPath) -> UITableViewCell in
             let itemList = self.list[indexPath.row]
             let value0 = itemList[0] as! String
@@ -204,7 +204,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, cancelTitle: "取消", cancellStyle: .destructive, completion: { (action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, completion: { (action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -279,8 +279,22 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
         view.type = 2
         view.block({ (segmentView: BNSegmentView, control: UISegmentedControl) in
             DDLog(control.selectedSegmentIndex)
-            self.goController("EntryViewController", obj: nil, objOne: nil)
 
+            switch control.selectedSegmentIndex {
+            case 0:
+                "self.title".copyToPasteboard(true)
+                
+            case 1:
+                let _ = UIAlertController.createAlert("alert", placeholderList: ["111","222"], msg: "msg", actionTitleList: ["one",kActionTitle_Cancell,"three"], handler: { (alertAction) in
+                    DDLog(alertAction.title)
+                })
+                
+            default:
+                break
+            }
+            
+           
+            
         })
         return view
     }()

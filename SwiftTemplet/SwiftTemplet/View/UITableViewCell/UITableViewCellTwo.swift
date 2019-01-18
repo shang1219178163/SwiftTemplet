@@ -11,6 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
+/// 右侧单选框
 class UITableViewCellTwo: UITableViewCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

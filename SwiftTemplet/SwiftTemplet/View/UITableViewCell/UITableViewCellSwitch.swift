@@ -23,6 +23,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
         
         contentView.addSubview(labelLeft);
         contentView.addSubview(switchCtl);
+        
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     

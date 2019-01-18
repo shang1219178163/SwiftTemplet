@@ -11,7 +11,7 @@ import UIKit
 class BNClockView: UIImageView {
     
     var aniDuration: Double?;
-    
+       
     //1 声明变量
     var itemList: Array<String>? {
         willSet {
@@ -90,7 +90,7 @@ class BNClockView: UIImageView {
 //            let angle = 2 * CGFloat(Double.pi) * CGFloat(i) / CGFloat(self.subviews.count);
 //            view.frame = rect;
 //            view.center =  CGPoint(x: center.x + radius*cos(angle), y: center.y + radius*sin(angle));
-//            view.aniRotation(isClockwise: false, kDurationRotation, MAXFLOAT, nil);
+//            view.aniRotation(isClockwise: false, kAnimDuration_Rotation, MAXFLOAT, nil);
 //
 //            view.layer.cornerRadius = view.frame.width/2.0;
 //            view.layer.masksToBounds = true;

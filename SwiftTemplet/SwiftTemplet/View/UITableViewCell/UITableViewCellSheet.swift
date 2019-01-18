@@ -14,12 +14,9 @@ import SwiftExpand
 class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     
     var viewBlock:((String, [Any]) -> Void)?
-//    weak var parController: UIViewController?
     var itemList: [String:[Any]]? {
         willSet{
-//            DDLog(newValue as Any)
-            alertCtrl = UIAlertController.createSheet("请选择", itemDic: newValue, cancelTitle: kActionTitle_Cancell, cancellStyle: .destructive, completion: { (action:UIAlertAction) in
-//                DDLog(action.title)
+            alertCtrl = UIAlertController.createSheet("请选择", itemDic: newValue, completion: { (action:UIAlertAction) in
                 if action.title != kActionTitle_Cancell {
                     self.textfield.text = action.title
                     if self.viewBlock != nil {
@@ -27,7 +24,6 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
                     }
                 }
             })
-//            alertCtrl.view.getViewLayer()
         }
     }
 
@@ -104,8 +100,8 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, cancelTitle: "取消", cancellStyle: .destructive, completion: { (action:UIAlertAction) in
-            DDLog("完成取消")
+        var alertController = UIAlertController.createSheet("请选择", itemDic:nil, completion: { (action:UIAlertAction) in
+            DDLog(action.title)
         })
         return alertController
     }()
