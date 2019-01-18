@@ -10,7 +10,7 @@
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
 		1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404FAF621E084FD00122E22 /* UIRecognizerController.swift */; };
 		1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1404FAFA21E0A70D00122E22 /* Skull.jpg */; };
-		140B6D4521D4D57900050C8F /* bug1.png in Resources */ = {isa = PBXBuildFile; fileRef = 140B6D4421D4D57900050C8F /* bug1.png */; };
+		140B6D4521D4D57900050C8F /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 140B6D4421D4D57900050C8F /* bug.png */; };
 		14129C9A21E9D7B1009BFA74 /* UITableViewCellSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */; };
 		14129C9C21E9F379009BFA74 /* UITableViewCellSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */; };
 		14129CA021EA0FD0009BFA74 /* BNDateRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9F21EA0FD0009BFA74 /* BNDateRangeView.swift */; };
@@ -21,6 +21,9 @@
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
+		1460727C21F0286C003AE810 /* BNCellDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727B21F0286C003AE810 /* BNCellDefaultView.swift */; };
+		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
+		1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */; };
 		147B970921ED7C2B000F5294 /* BNSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147B970821ED7C2B000F5294 /* BNSegmentView.swift */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
@@ -33,7 +36,6 @@
 		147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */; };
 		147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47221CF49B000351E94 /* UICTViewCellOne.swift */; };
 		147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47421CF511800351E94 /* UICTReusableViewOne.swift */; };
-		147FF4AC21D06A6900351E94 /* FleetDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4AB21D06A6900351E94 /* FleetDetailController.swift */; };
 		147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */; };
 		147FF4C721D0AB9800351E94 /* BNTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */; };
 		147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */; };
@@ -80,7 +82,7 @@
 /* Begin PBXFileReference section */
 		1404FAF621E084FD00122E22 /* UIRecognizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerController.swift; sourceTree = "<group>"; };
 		1404FAFA21E0A70D00122E22 /* Skull.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Skull.jpg; sourceTree = "<group>"; };
-		140B6D4421D4D57900050C8F /* bug1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug1.png; sourceTree = "<group>"; };
+		140B6D4421D4D57900050C8F /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug.png; sourceTree = "<group>"; };
 		14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSlider.swift; sourceTree = "<group>"; };
 		14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSheet.swift; sourceTree = "<group>"; };
 		14129C9F21EA0FD0009BFA74 /* BNDateRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNDateRangeView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,9 @@
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
+		1460727B21F0286C003AE810 /* BNCellDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNCellDefaultView.swift; sourceTree = "<group>"; };
+		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
+		1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewZero.swift; sourceTree = "<group>"; };
 		147B970821ED7C2B000F5294 /* BNSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSegmentView.swift; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
@@ -103,7 +108,6 @@
 		147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICTViewCellZero.swift; sourceTree = "<group>"; };
 		147FF47221CF49B000351E94 /* UICTViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellOne.swift; sourceTree = "<group>"; };
 		147FF47421CF511800351E94 /* UICTReusableViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTReusableViewOne.swift; sourceTree = "<group>"; };
-		147FF4AB21D06A6900351E94 /* FleetDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailController.swift; sourceTree = "<group>"; };
 		147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailControllerNew.swift; sourceTree = "<group>"; };
 		147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTableFooterView.swift; sourceTree = "<group>"; };
 		147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
@@ -215,7 +219,7 @@
 				5182442C213E75BA00071A9D /* dataList.geojson */,
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
 				51824435213E82E000071A9D /* news.geojson */,
-				140B6D4421D4D57900050C8F /* bug1.png */,
+				140B6D4421D4D57900050C8F /* bug.png */,
 				1404FAFA21E0A70D00122E22 /* Skull.jpg */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				144920A621C73BE900C3C2F6 /* Media.xcassets */,
@@ -244,7 +248,6 @@
 				147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */,
 				149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */,
 				14F7AAB621E722B300FB7570 /* IOPAuthDetailController.swift */,
-				147FF4AB21D06A6900351E94 /* FleetDetailController.swift */,
 				147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */,
 				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
 				14129CA321EC72C5009BFA74 /* TitleViewController.swift */,
@@ -278,6 +281,7 @@
 		519E87C421367593002CCD86 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */,
 				147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */,
 				147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */,
 				147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */,
@@ -298,6 +302,7 @@
 				147FF3C321CE26BE00351E94 /* UITableHeaderFooterViewFour.swift */,
 				147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */,
 				14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */,
+				1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				14129CA521EC88B4009BFA74 /* BNTopSheetView.swift */,
 				14129CA721EC983B009BFA74 /* BNGeometryView.swift */,
 				147B970821ED7C2B000F5294 /* BNSegmentView.swift */,
+				1460727B21F0286C003AE810 /* BNCellDefaultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,7 +399,7 @@
 				1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */,
 				144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
-				140B6D4521D4D57900050C8F /* bug1.png in Resources */,
+				140B6D4521D4D57900050C8F /* bug.png in Resources */,
 				5182442D213E75BA00071A9D /* dataList.geojson in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
 				51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */,
@@ -481,7 +487,6 @@
 				14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */,
 				147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */,
 				1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */,
-				147FF4AC21D06A6900351E94 /* FleetDetailController.swift in Sources */,
 				147B970921ED7C2B000F5294 /* BNSegmentView.swift in Sources */,
 				14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */,
 				145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */,
@@ -512,6 +517,7 @@
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
 				145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
+				1460727C21F0286C003AE810 /* BNCellDefaultView.swift in Sources */,
 				14129CA221EA0FF9009BFA74 /* BNPickListView.swift in Sources */,
 				149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
@@ -521,9 +527,11 @@
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
+				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				14F7AABD21E7496200FB7570 /* PPNumberButton.swift in Sources */,
 				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */,
+				1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
 				14129C9A21E9D7B1009BFA74 /* UITableViewCellSlider.swift in Sources */,
 				149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */,

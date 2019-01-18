@@ -30,6 +30,26 @@ public extension UITableViewHeaderFooterView{
         
     }
     
+    public var indicatorView: UIImageView {
+        get {
+            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
+            if view == nil {
+                view = UIImageView(frame: .zero);
+                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+                
+                view!.isUserInteractionEnabled = true;
+                view!.contentMode = .scaleAspectFit;
+                
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                
+            }
+            return view!;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
     public var imgViewLeft: UIImageView {
         get {
             var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
@@ -171,6 +191,31 @@ public extension UITableViewHeaderFooterView{
         }
     }
     
+    public var isOpen: Bool {
+        get {
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? Bool {
+                return obj
+            } else {
+                return false
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    public var isCanOpen: Bool {
+        get {
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? Bool {
+                return obj
+            } else {
+                return false
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
 }
 
 public class BNFoldSectionModel: NSObject{
