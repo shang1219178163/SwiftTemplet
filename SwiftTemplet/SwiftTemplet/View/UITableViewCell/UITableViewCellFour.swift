@@ -9,25 +9,29 @@
 import UIKit
 import SwiftExpand
 
+/// 勾选按钮+文字
 class UITableViewCellFour: UITableViewCell {
 
+    var type: Int = 0{
+        didSet {
+            setNeedsLayout()
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
-        
-        /*
-         --------------------
-         勾选按钮+文字
-         --------------------
-         */
         contentView.addSubview(btn);
         contentView.addSubview(labelLeft);
-        setupConstraint();
+//        setupConstraint();
         
         btn.setBackgroundImage(UIImage(named: kIMG_selected_NO), for: .normal)
         btn.setBackgroundImage(UIImage(named: kIMG_selected_YES), for: .selected)
-//btn.isSelected
+        btn.imageView?.contentMode = .scaleAspectFit;
 //        btn.addObserver(self, forKeyPath: "selected", options: .new, context: nil)
-
+    }
+    
+    deinit {
+        btn.removeObserver(self, forKeyPath: "selected", context: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,18 +41,38 @@ class UITableViewCellFour: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews();
+        
+        setupConstraint();
     }
     
     func setupConstraint() -> Void {
-        btn.snp.makeConstraints { (make) in
-            make.top.left.equalToSuperview().offset(contentView.frame.midY - kSize_BtnSelected.height/2.0)
-            make.size.equalTo(kSize_BtnSelected)
-        }
-        
-        labelLeft.snp.makeConstraints { (make) in
-            make.top.height.equalTo(btn);
-            make.left.equalTo(btn.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-kX_GAP)
+        if type == 0 {
+            btn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.left.equalToSuperview().offset(kX_GAP)
+                make.width.height.equalTo(kSize_Arrow.height)
+            }
+            
+            labelLeft.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.left.equalTo(btn.snp.right).offset(kPadding)
+                make.right.equalToSuperview().offset(-kX_GAP)
+                make.height.equalTo(btn)
+            }
+            
+        } else {
+            btn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(-kX_GAP)
+                make.width.height.equalTo(kSize_Arrow.height)
+            }
+            
+            labelLeft.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.left.equalToSuperview().offset(kX_GAP)
+                make.right.equalTo(btn.snp.left).offset(-kPadding)
+                make.height.equalTo(btn)
+            }
         }
     }
     
@@ -58,11 +82,11 @@ class UITableViewCellFour: UITableViewCell {
         // Configure the view for the selected state
     }
 
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 //        DDLog(keyPath,change);
-//        if keyPath == "selected" {
-//
-//        }
-//    }
+        if keyPath == "selected" {
+            
+        }
+    }
     
 }
