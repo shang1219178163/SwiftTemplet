@@ -65,7 +65,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
             imgViewLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(indicatorView.snp.right).offset(kPadding)
-//                make.width.height.equalTo(contentView.frame.height - kY_GAP*2)
+//                make.width.height.equalTo(contentView.bounds.height - kY_GAP*2)
                 make.width.height.equalTo(40)
             }
             
