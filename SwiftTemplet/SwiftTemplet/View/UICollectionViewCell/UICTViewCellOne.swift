@@ -36,14 +36,12 @@ class UICTViewCellOne: UICollectionViewCell {
         imgView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview().offset(0)
             make.bottom.equalToSuperview().offset(-kH_LABEL)
-            
         }
         
         label.snp.makeConstraints { (make) in
             make.top.equalTo(imgView.snp.bottom).offset(0)
             make.left.right.equalTo(imgView)
             make.height.equalTo(kH_LABEL)
-            
         }
     }
     

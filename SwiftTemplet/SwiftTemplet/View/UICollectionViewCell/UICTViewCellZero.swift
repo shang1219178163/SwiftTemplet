@@ -39,7 +39,6 @@ class UICTViewCellZero: UICollectionViewCell {
         label.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(kPadding)
             make.bottom.right.equalToSuperview().offset(-kPadding)
-
         }
     }
     

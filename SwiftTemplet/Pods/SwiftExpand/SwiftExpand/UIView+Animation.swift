@@ -8,8 +8,6 @@
 
 import UIKit
 
-public let kDurationRotation = 5.0;
-
 public extension UIView{
     
     public func animRotation(fromValue:Double,toValue:Double,duration:Double, repeatCount:Float,key:String?) {
@@ -36,7 +34,7 @@ public extension UIView{
     }
     
     public func addRotationAnim() {
-        self.animRotation(fromValue: 0, toValue: Double.pi * 2, duration: kDurationRotation, repeatCount: MAXFLOAT, key: nil);
+        self.animRotation(fromValue: 0, toValue: Double.pi * 2, duration: Double(kAnimDuration_Rotation), repeatCount: MAXFLOAT, key: nil);
         
     }
     

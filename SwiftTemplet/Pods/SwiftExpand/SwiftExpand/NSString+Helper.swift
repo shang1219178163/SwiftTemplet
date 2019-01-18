@@ -132,11 +132,33 @@ public extension String{
     public func isCompareMore(_ string:String) -> Bool {
         return self.compare(string, options: .numeric, range: nil, locale: nil) == .orderedDescending
     }
+    
+    /// 字符串本身大于string
+    public func isCompare(_ string:String) -> Bool {
+        if self == "" {
+            return false
+        }
+        
+        var strSelf = self
+        if strSelf.contains(".") {
+            strSelf = strSelf.replacingOccurrences(of: ".", with: "")
+        }
+        return strSelf.intValue() > string.intValue()
+    }
+    
   
     public func toAsterisk() -> NSAttributedString{
         let isMust = self.contains(kAsterisk)
         return (self as NSString).getAttringByPrefix(kAsterisk, content: self, isMust: isMust)
     }
+    
+    func copyToPasteboard(_ showTips: Bool) -> Void {
+        UIPasteboard.general.string = self
+        if showTips == true {
+            let _ = UIAlertController.createAlert("提示", placeholderList: nil, msg: "已复制'\(self)'到剪切板!", actionTitleList: nil, handler: nil)
+        }
+    }
+
 }
 
 extension NSString{
@@ -149,5 +171,18 @@ extension NSString{
             return obj! as AnyObject;
         }
         return self;
+    }
+    
+    /// 字符串本身大于string
+    public func isCompare(_ string:NSString) -> Bool {
+        if self.isEqual(to: "") {
+            return false
+        }
+        
+        var strSelf = self
+        if strSelf.contains(".") {
+            strSelf = strSelf.replacingOccurrences(of: ".", with: "") as NSString
+        }
+        return strSelf.integerValue > string.integerValue;
     }
 }

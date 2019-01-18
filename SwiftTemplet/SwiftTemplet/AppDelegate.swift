@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let tabBarController = UITarBarCtrFromList(list);
 //        UIApplication.setupRootController(tabBarController!);
         
-        UIApplication.tabBarController?.selectedIndex = 2;
+        UIApplication.tabBarController?.selectedIndex = 1;
        
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);

@@ -57,7 +57,7 @@ class FifthViewControlle: UIViewController {
     lazy var imgView: UIImageView = {
         var view = UIImageView(frame: .zero);
         view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
-        view.image = UIImage(named: "bug1.png")
+        view.image = UIImage(named: "bug.png")
 
         return view;
     }();

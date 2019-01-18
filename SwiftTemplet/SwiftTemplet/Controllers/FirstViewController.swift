@@ -177,6 +177,23 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             
             cell.getViewLayer();
             return cell;
+        case 6:
+            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne4") as! UITableViewCellOne
+            
+            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
+            cell.labelRight.text = "990" + "\(indexPath.row)";
+            cell.imgViewLeft.image = UIImage(named: "dragon");
+            cell.imgViewRight.isHidden = true;
+            
+//随机元素
+//            imgList = imgList.sorted(by: {$0 < $1});
+//            imgList = imgList.sorted(by:<);
+//            let imgUrl = imgList.randomElement()!;
+//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//            cell.type = 1;
+            
+            cell.getViewLayer();
+            return cell;
         default:
             let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
             return cell;

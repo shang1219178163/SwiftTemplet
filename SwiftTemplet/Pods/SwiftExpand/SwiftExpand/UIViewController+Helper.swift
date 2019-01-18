@@ -127,6 +127,14 @@ public extension UIViewController{
         navigationController?.pushViewController(controller, animated: true);
     }
     
+    public func addControllerName(_ controllerName: String) -> Void {
+        let controller = UICtrFromString(controllerName)
+        assert(controller.isKind(of: UIViewController.classForCoder()))
+
+        self.addChildViewController(controller)
+        self.view.addSubview(controller.view)
+        controller.didMove(toParentViewController: self)
+    }
 }
 
 
