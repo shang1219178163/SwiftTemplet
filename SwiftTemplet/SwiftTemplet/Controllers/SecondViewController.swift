@@ -53,21 +53,15 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let foldModel = dataList[indexPath.section] as! BNFoldSectionModel
         let obj = foldModel.dataList[indexPath.row]
         
-        let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
+        let cell = UITableViewCellFour.cellWithTableView(tableView) as! UITableViewCellFour;
         
         cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-        cell.labelRight.text = "990" + "\(indexPath.row)";
-        //            let imgUrl = imgList.randomElement()!;
-        //            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-        cell.imgViewRight.isHidden = true;
+        cell.type = 1
+        cell.btn.addActionHandler({ (sender) in
+            cell.btn.isSelected = !cell.btn.isSelected
+        }, for: .touchUpInside)
         
-        //界面配置
-        cell.type = 1;
-        cell.labelRight.textAlignment = .center
-        if [1,2].contains(indexPath.section) {
-            cell.separatorInset = UIEdgeInsetsMake(0, 100, 0, 0)
-        }
-        //        cell.getViewLayer();
+        cell.getViewLayer()
         return cell;
         
     }
@@ -89,7 +83,6 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let view = UITableHeaderFooterViewZero.viewWithTableView(tableView) as! UITableHeaderFooterViewZero
         view.isCanOpen = foldModel.isCanOpen
         view.isOpen = foldModel.isOpen
-        DDLog(view.isOpen, foldModel.isOpen)
         view.labelLeft.text = foldModel.title
         view.labelRight.text = "\(foldModel.dataList.count)"
         view.imgViewLeft.image = UIImageNamed(foldModel.image)
