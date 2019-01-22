@@ -78,6 +78,19 @@ public extension Array{
             append(item)
         }
     }
+    ///模型(继承于NSObject)query对应属性为@objc声明的字符串
+    public func filterModelList(_ list:[AnyObject]!, querys:[String]) -> [[String]] {
+        var listArr: [[String]]?
+        for e in list.enumerated() {
+            var itemList:[String]?
+            querys.forEach({ (query) in
+                let value = e.element.value(forKeyPath: query) ?? ""
+                itemList?.append(value as! String)
+            })
+            listArr?.append(itemList!)
+        }
+        return listArr!
+    }
     
     ///模型(继承于NSObject)query对应属性为@objc声明的字符串
     public func filterModelList(_ list:[AnyObject], query:String) -> [String] {

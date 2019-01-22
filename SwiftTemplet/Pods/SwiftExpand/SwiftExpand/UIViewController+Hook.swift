@@ -69,14 +69,14 @@ public extension UIViewController{
         //需要注入的代码写在此处
         self.swz_viewWillAppear(animated: animated)
         
-        self.eventGather(isBegin: true);
+//        self.eventGather(isBegin: true);
     }
     
     @objc public func swz_viewWillDisappear(animated: Bool) {
         //需要注入的代码写在此处
         self.swz_viewWillDisappear(animated: animated)
         
-        self.eventGather(isBegin: false);
+//        self.eventGather(isBegin: false);
     }
     
     @objc public func eventGather(isBegin: Bool) -> Void {
