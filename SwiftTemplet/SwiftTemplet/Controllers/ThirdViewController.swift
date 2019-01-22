@@ -16,7 +16,9 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
         
 //        tableView.tableFooterView = footerView
-        view.addSubview(tableView);
+//        view.addSubview(tableView)
+        view.addSubview(plainView)
+        
         
         if title == nil {
             title = self.controllerName;
@@ -56,8 +58,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        list = allList.randomElement()!;
-        tableView.reloadData()
+//        list = allList.randomElement()!;
+//        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -122,7 +124,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             [["通用录入界面", "EntryViewController"],
              ["导航栏下拉菜单", "TitleViewController"],
              ["UICollectionView展示", "UICollectionDispalyController"],
-             
+             ["自定义View", "CustomViewController"],             
              ],
         ]
         return array
@@ -143,6 +145,26 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             DDLog(obj.tag)
             
             }, for: .touchUpInside)
+        return view
+    }()
+    
+    
+    lazy var plainView: UIView = {
+        var view = BNTablePlainView(frame: self.view.bounds)
+        view.list = allList.first
+        view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
+            let itemList = view.list![indexPath.row] as! [String]
+            
+            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+            cell.textLabel!.text = itemList[0]
+            return cell
+        })
+        
+        view.blockDidSelectRow({ (tableView, indexPath) in
+            let itemList = view.list![indexPath.row] as! [String]
+            self.goController(itemList.last, obj: nil, objOne: nil)
+        })
+        
         return view
     }()
 }
