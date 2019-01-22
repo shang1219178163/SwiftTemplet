@@ -114,7 +114,7 @@ class BNCellDefaultView: UIView {
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.lessThanOrEqualTo(kSize_Arrow.height)
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
