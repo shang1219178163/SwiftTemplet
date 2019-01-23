@@ -57,7 +57,7 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(contentView.frame.midY - labelLeft.frame.height/2.0)
+            make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(kX_GAP)
             make.size.equalTo(labelLeft.size);
         }
