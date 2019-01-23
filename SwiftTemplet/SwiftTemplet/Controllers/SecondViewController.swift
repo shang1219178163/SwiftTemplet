@@ -86,7 +86,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
         view.labelLeft.text = foldModel.title
         view.labelRight.text = "\(foldModel.dataList.count)"
         view.imgViewLeft.image = UIImageNamed(foldModel.image)
-        UIView.animate(withDuration: kAnimDuration_Drop, animations: {
+        UIView.animate(withDuration: kDurationDrop, animations: {
             view.indicatorView.transform = view.isOpen == true ? (view.indicatorView.transform.rotated(by: CGFloat(Double.pi/2))) : .identity;
         })
         view.block { (headerView: UITableHeaderFooterViewZero) in

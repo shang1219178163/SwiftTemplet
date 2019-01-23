@@ -67,5 +67,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftTemplet/View/View/BNCellDefaultView.swift"
+            timestampString = "569901281.966923"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "setupConstraint()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftTemplet.BNCellDefaultView.setupConstraint() -&gt; ()"
+                  moduleName = "SwiftTemplet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shang/Documents/GitHub/SwiftTemplet/SwiftTemplet/SwiftTemplet/View/View/BNCellDefaultView.swift"
+                  timestampString = "569901282.2788711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "1726">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #8 (SnapKit.ConstraintMaker) -&gt; () in SwiftTemplet.BNCellDefaultView.setupConstraint() -&gt; ()"
+                  moduleName = "SwiftTemplet"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shang/Documents/GitHub/SwiftTemplet/SwiftTemplet/SwiftTemplet/View/View/BNCellDefaultView.swift"
+                  timestampString = "569901282.281314"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

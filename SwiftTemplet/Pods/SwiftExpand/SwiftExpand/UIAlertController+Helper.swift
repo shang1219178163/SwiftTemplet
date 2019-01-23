@@ -46,7 +46,7 @@ public extension UIAlertController{
     
         if actionTitleList == nil {
             UIApplication.mainWindow.rootViewController?.present(alertController, animated: true, completion: {
-                DispatchQueue.main.after(TimeInterval(kAnimDuration_Toast), execute: {
+                DispatchQueue.main.after(TimeInterval(kDurationToast), execute: {
                     alertController.dismiss(animated: true, completion: nil)
                 })
             })

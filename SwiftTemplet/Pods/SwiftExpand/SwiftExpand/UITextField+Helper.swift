@@ -38,12 +38,12 @@ public extension UITextField{
     
     public func asoryView(_ isRight: Bool, unitName: String!) -> Void {
         if isRight == true {
-            self.rightView = self.asoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
+            self.rightView = self.asoryView(isRight, unitName: unitName, viewSize: kSizeArrow);
             self.rightViewMode = .always;
 
         }
         else{
-            self.leftView = self.asoryView(isRight, unitName: unitName, viewSize: kSize_Arrow);
+            self.leftView = self.asoryView(isRight, unitName: unitName, viewSize: kSizeArrow);
             self.leftViewMode = .always;
 
         }

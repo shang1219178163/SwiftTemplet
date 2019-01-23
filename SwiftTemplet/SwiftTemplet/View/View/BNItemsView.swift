@@ -10,7 +10,7 @@ import UIKit
 
 class BNItemsView: UIView {
 
-    var numberOfRow: Int = 3
+    var numberOfRow: Int = 4
     var padding: CGFloat = 5.0
     var items:[String]?
     {
