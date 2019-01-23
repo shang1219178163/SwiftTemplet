@@ -34,7 +34,7 @@ public extension UIView{
     }
     
     public func addRotationAnim() {
-        self.animRotation(fromValue: 0, toValue: Double.pi * 2, duration: Double(kAnimDuration_Rotation), repeatCount: MAXFLOAT, key: nil);
+        self.animRotation(fromValue: 0, toValue: Double.pi * 2, duration: Double(kDurationRotation), repeatCount: MAXFLOAT, key: nil);
         
     }
     

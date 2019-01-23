@@ -58,7 +58,7 @@ class BNCellDefaultView: UIView {
             imgViewRight.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-kX_GAP)
-                make.size.equalTo(kSize_Arrow)
+                make.size.equalTo(kSizeArrow)
             }
             //头像不为空
             if imgViewLeft.image != nil {
@@ -74,14 +74,14 @@ class BNCellDefaultView: UIView {
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
                         make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                 } else {
@@ -90,14 +90,14 @@ class BNCellDefaultView: UIView {
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                         make.right.greaterThanOrEqualTo(imgViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
                 
@@ -114,14 +114,14 @@ class BNCellDefaultView: UIView {
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
-                        make.height.lessThanOrEqualTo(kSize_Arrow.height)
+                        make.height.lessThanOrEqualTo(kSizeArrow.height)
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                 } else {
@@ -129,14 +129,14 @@ class BNCellDefaultView: UIView {
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
             }
@@ -156,14 +156,14 @@ class BNCellDefaultView: UIView {
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
                         make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                 } else {
@@ -172,14 +172,14 @@ class BNCellDefaultView: UIView {
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                         make.right.equalToSuperview().offset(-kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
                 
@@ -195,14 +195,14 @@ class BNCellDefaultView: UIView {
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 } else {
                     //左边文字优先展示
@@ -210,14 +210,14 @@ class BNCellDefaultView: UIView {
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                         make.right.equalToSuperview().offset(-kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
             }

@@ -9,12 +9,10 @@
 
 import UIKit
 
-public typealias ButtonClick = ((_ sender:UIButton)->()) // 定义数据类型(其实就是设置别名)
-
 public extension UIButton{
 
 //    /// 快速创建
-//    convenience init(action:@escaping ButtonClick){
+//    convenience init(action:@escaping ControlClosure){
 //        self.init()
 //        self.addTarget(self, action:#selector(tapped(btn:)), for:.touchUpInside)
 //        self.actionBlock = action
@@ -22,7 +20,7 @@ public extension UIButton{
 //    }
 //
 //    /// 快速创建按钮 setImage: 图片名 frame:frame action:点击事件的回调
-//    convenience init(setImage:String, frame:CGRect, action: @escaping ButtonClick){
+//    convenience init(setImage:String, frame:CGRect, action: @escaping ControlClosure){
 ////        self.init()
 //        self.init(action: action);
 //
@@ -52,6 +50,8 @@ public extension UIButton{
     
     public static func createBtnTitle(rect:CGRect, title:String!, font:CGFloat, type:NSInteger) -> UIButton {
         let btn = UIButton(type:.custom);
+        btn.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        btn.imageView?.contentMode = .scaleAspectFit
         btn.frame = rect;
         btn.titleLabel?.font = UIFont.systemFont(ofSize:font);
         btn.setTitle(title, for: .normal);

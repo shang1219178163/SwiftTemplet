@@ -63,7 +63,7 @@ class UICTReusableViewOne: UICollectionReusableView {
             imageViewRight.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-kX_GAP)
-                make.size.equalTo(kSize_Arrow)
+                make.size.equalTo(kSizeArrow)
             }
             //头像不为空
             if imageView.image != nil {
@@ -79,14 +79,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imageViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imageView.snp.right).offset(kPadding)
                         make.right.equalTo(textLabelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                 } else {
@@ -95,14 +95,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imageView.snp.right).offset(kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(textLabel.snp.right).offset(kPadding)
                         make.right.greaterThanOrEqualTo(imageViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
                 
@@ -119,14 +119,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imageViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.right.equalTo(textLabelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                 } else {
@@ -134,14 +134,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(textLabel.snp.right).offset(kPadding)
                         make.right.equalTo(imageViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
             }
@@ -161,14 +161,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imageView.snp.right).offset(kPadding)
                         make.right.equalTo(textLabelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                 } else {
@@ -177,14 +177,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imageView.snp.right).offset(kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(textLabel.snp.right).offset(kPadding)
                         make.right.equalToSuperview().offset(-kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
                 
@@ -200,14 +200,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.right.equalTo(textLabelRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 } else {
                     //左边文字优先展示
@@ -215,14 +215,14 @@ class UICTReusableViewOne: UICollectionReusableView {
                     textLabel.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                     
                     textLabelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(textLabel.snp.right).offset(kPadding)
                         make.right.equalToSuperview().offset(-kX_GAP)
-                        make.height.equalTo(kSize_Arrow.height)
+                        make.height.equalTo(kSizeArrow.height)
                     }
                 }
             }

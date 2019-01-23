@@ -50,7 +50,7 @@ class UITableViewCellFour: UITableViewCell {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(kX_GAP)
-                make.width.height.equalTo(kSize_Arrow.height)
+                make.width.height.equalTo(kSizeArrow.height)
             }
             
             labelLeft.snp.makeConstraints { (make) in
@@ -64,7 +64,7 @@ class UITableViewCellFour: UITableViewCell {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-kX_GAP)
-                make.width.height.equalTo(kSize_Arrow.height)
+                make.width.height.equalTo(kSizeArrow.height)
             }
             
             labelLeft.snp.makeConstraints { (make) in

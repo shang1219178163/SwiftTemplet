@@ -18,12 +18,15 @@
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
 		14129CA621EC88B4009BFA74 /* BNTopSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA521EC88B4009BFA74 /* BNTopSheetView.swift */; };
 		14129CA821EC983B009BFA74 /* BNGeometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA721EC983B009BFA74 /* BNGeometryView.swift */; };
+		1421D5C521F1F26100635582 /* BNItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421D5C421F1F26100635582 /* BNItemsView.swift */; };
+		1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421D5C621F2FD1000635582 /* CustomViewController.swift */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
 		1460727C21F0286C003AE810 /* BNCellDefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727B21F0286C003AE810 /* BNCellDefaultView.swift */; };
 		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
 		1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */; };
+		1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */; };
 		147B970921ED7C2B000F5294 /* BNSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147B970821ED7C2B000F5294 /* BNSegmentView.swift */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
@@ -42,6 +45,7 @@
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
+		14E8F75A21F6EC84004317B5 /* BNTablePlainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
 		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
 		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
@@ -90,12 +94,15 @@
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		14129CA521EC88B4009BFA74 /* BNTopSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTopSheetView.swift; sourceTree = "<group>"; };
 		14129CA721EC983B009BFA74 /* BNGeometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNGeometryView.swift; sourceTree = "<group>"; };
+		1421D5C421F1F26100635582 /* BNItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNItemsView.swift; sourceTree = "<group>"; };
+		1421D5C621F2FD1000635582 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
 		1460727B21F0286C003AE810 /* BNCellDefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNCellDefaultView.swift; sourceTree = "<group>"; };
 		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
 		1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewZero.swift; sourceTree = "<group>"; };
+		1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransitionAnimator.swift; sourceTree = "<group>"; };
 		147B970821ED7C2B000F5294 /* BNSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSegmentView.swift; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTablePlainView.swift; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
 		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
 		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
@@ -251,6 +259,8 @@
 				147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */,
 				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
 				14129CA321EC72C5009BFA74 /* TitleViewController.swift */,
+				1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */,
+				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -322,6 +332,8 @@
 				14129CA721EC983B009BFA74 /* BNGeometryView.swift */,
 				147B970821ED7C2B000F5294 /* BNSegmentView.swift */,
 				1460727B21F0286C003AE810 /* BNCellDefaultView.swift */,
+				1421D5C421F1F26100635582 /* BNItemsView.swift */,
+				14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -515,11 +527,15 @@
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
+				14E8F75A21F6EC84004317B5 /* BNTablePlainView.swift in Sources */,
 				145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */,
+				1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */,
+				1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				1460727C21F0286C003AE810 /* BNCellDefaultView.swift in Sources */,
 				14129CA221EA0FF9009BFA74 /* BNPickListView.swift in Sources */,
 				149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */,
+				1421D5C521F1F26100635582 /* BNItemsView.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				5182444D213E8CB600071A9D /* BNData.swift in Sources */,
 				147FF4C721D0AB9800351E94 /* BNTableFooterView.swift in Sources */,
