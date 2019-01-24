@@ -20,8 +20,9 @@ class FourthViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-//        self.createGroupView();
-//        return;
+        self.createGroupView();
+        view.getViewLayer()
+        return;
   
         view.addSubview(clockView);
         
@@ -58,10 +59,10 @@ class FourthViewController: UIViewController {
     func createGroupView() -> Void {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
-        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: 0);
-        let groupView = UIView.createView(rect: rect, list: (list as! Array<String>), numberOfRow: 4, viewHeight: 30, padding: 5, type: 2) { (tap, itemView, idx) in
+        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
+        let groupView = UIView.createGroupView(rect, list: (list as! Array<String>), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
             
-//            DDLog(tap as Any,itemView,idx);
+            DDLog(idx);
             
             let data = Data(bytes: [0x2,0x33,0x54,0x78,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b])
             let color = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
@@ -90,7 +91,7 @@ class FourthViewController: UIViewController {
             
         };
         
-        view.addSubview(groupView!);
+        view.addSubview(groupView);
     }
     
     lazy var clockView: BNClockView = {

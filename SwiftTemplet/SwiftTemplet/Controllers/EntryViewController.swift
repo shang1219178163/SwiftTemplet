@@ -22,7 +22,6 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         tableView.tableFooterView = footerView
         view.addSubview(tableView);
 
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +31,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tableView.frame = view.bounds
+//        tableView.frame = view.bounds
     }
     
     //    MARK: - tableView
@@ -150,7 +149,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 }
             }, for: .valueChanged)
 
-//            cell.getViewLayer()
+            cell.getViewLayer()
             
             return cell
             

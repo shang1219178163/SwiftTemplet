@@ -47,20 +47,21 @@ public extension UIViewController{
         get {
             var table = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UITableView;
             if table == nil {
-                table = UITableView(frame:view.bounds, style:.grouped);
-                table!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
-
-                table!.separatorStyle = .singleLine;
-                table!.separatorInset = .zero;
-                table!.rowHeight = 60;
+                table = UIView.createTableView(view.bounds, style: .grouped, rowHeight: 60);
+//                table?.frame = view.bounds
+//                table = UITableView(frame:view.bounds, style:.grouped);
+//                table!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+//
+//                table!.separatorStyle = .singleLine;
+//                table!.separatorInset = .zero;
+//                table!.rowHeight = 60;
 //                table!.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self));
-                table!.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier);
-                table!.keyboardDismissMode = .onDrag
-                table!.backgroundColor = UIColor.background;
+//                table!.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier);
+//                table!.keyboardDismissMode = .onDrag
+//                table!.backgroundColor = UIColor.background;
                 if self.conforms(to: UITableViewDataSource.self) {
                     table!.dataSource = self as? UITableViewDataSource;
                 }
-                
                 if self.conforms(to: UITableViewDelegate.self) {
                     table!.delegate = self as? UITableViewDelegate;
                 }
