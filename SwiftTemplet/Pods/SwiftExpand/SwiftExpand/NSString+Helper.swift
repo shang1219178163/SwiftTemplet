@@ -155,7 +155,7 @@ public extension String{
     func copyToPasteboard(_ showTips: Bool) -> Void {
         UIPasteboard.general.string = self
         if showTips == true {
-            let _ = UIAlertController.createAlert("提示", placeholderList: nil, msg: "已复制'\(self)'到剪切板!", actionTitleList: nil, handler: nil)
+            let _ = UIAlertController.createAlert("提示", placeholders: nil, msg: "已复制'\(self)'到剪切板!", actionTitles: nil, handler: nil)
         }
     }
 

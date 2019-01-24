@@ -143,6 +143,23 @@ public extension UIView{
 //        return NSStringFromClass(self.classForCoder());
 //
 //    }
+    
+    
+    public func addCorners(_ corners: UIRectCorner, cornerRadii: CGSize, width: CGFloat, color: UIColor) -> CAShapeLayer {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = bounds
+        maskLayer.path = path.cgPath
+        maskLayer.borderWidth = width
+        maskLayer.borderColor = color.cgColor
+        layer.mask = maskLayer;
+        return maskLayer
+    }
+    
+    public func addCornerAll() -> CAShapeLayer {
+        let cornerRadii = CGSize(width: bounds.width*0.5, height: bounds.height*0.5)
+        return addCorners( .allCorners, cornerRadii: cornerRadii, width: 1.0, color: .white)
+    }
    
     public func addActionHandler(action:@escaping (ViewClosure)) -> Void {
         if let sender = self as? UIButton {
@@ -424,20 +441,158 @@ public extension UIView{
         }
     }
     
-    ///MARK: -view
-    public static func createView(rect:CGRect, list:Array<String>!, numberOfRow:Int, viewHeight:CGFloat, padding:CGFloat, type:Int, action:@escaping (UITapGestureRecognizer?,UIView,NSInteger)->()) -> UIView! {
+    /// (源方法)表视图创建
+    public static func createTableView(_ rect: CGRect, style: UITableView.Style, rowHeight: CGFloat) -> UITableView{
+        let table = UITableView(frame: rect, style: style);
+        table.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        
+        table.separatorStyle = .singleLine;
+        table.separatorInset = .zero;
+        table.rowHeight = rowHeight;
+//        table.register(UITableViewCell.self, forCellReuseIdentifier: NSStringFromClass(UITableViewCell.self));
+        table.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier);
+        table.keyboardDismissMode = .onDrag
+        table.backgroundColor = UIColor.background;
+       
+        return table
+    }
+    
+    public static func createLabel(_ rect: CGRect, textAlignment: NSTextAlignment, tag: Int, type: Int) -> UILabel {
+        let view = UILabel(frame: rect);
+        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.isUserInteractionEnabled = true;
+        view.textAlignment = textAlignment;
+        view.tag = tag;
+        
+        switch type {
+        case 1:
+            view.numberOfLines = 1;
+            view.lineBreakMode = .byTruncatingTail;
+            
+        case 2:
+            view.numberOfLines = 1;
+            view.lineBreakMode = .byTruncatingTail;
+            view.adjustsFontSizeToFitWidth = true;
+            
+        case 3:
+            view.numberOfLines = 1;
+            view.lineBreakMode = .byTruncatingTail;
+            
+            view.layer.borderColor = view.textColor.cgColor;
+            view.layer.borderWidth = 1.0;
+            view.layer.masksToBounds = true;
+            view.layer.cornerRadius = rect.width*0.5;
+
+        case 4:
+            view.numberOfLines = 1;
+            view.lineBreakMode = .byTruncatingTail;
+            
+            view.layer.borderColor = view.textColor.cgColor;
+            view.layer.borderWidth = 1.0;
+            view.layer.masksToBounds = true;
+            view.layer.cornerRadius = 3;
+            
+        default:
+            view.numberOfLines = 0;
+            view.lineBreakMode = .byCharWrapping;
+        }
+        return view;
+    }
+    
+    public static func createImgView(_ rect: CGRect, imgName: String, tag: Int) -> UIImageView {
+        let view = UIImageView(frame: rect);
+        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.isUserInteractionEnabled = true;
+        view.contentMode = .scaleAspectFit;
+        view.image = UIImage(named: imgName);
+        view.tag = tag;
+    
+        return view
+    }
+    
+    public static func createBtn(_ rect: CGRect, title: String?, imgName: String?, tag: Int, type: Int) -> UIButton {
+        assert(title == nil && imgName == nil);
+        
+        let view = UIButton(type: .custom);
+        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.titleLabel?.adjustsFontSizeToFitWidth = true;
+        view.titleLabel?.minimumScaleFactor = 1.0;
+        view.isExclusiveTouch = true;
+        view.tag = tag;
+        switch type {
+        case 1://白色字体,主题色背景
+            view.setTitleColor( .white, for: .normal)
+            view.setBackgroundImage(UIImageColor( .theme), for: .normal)
+            
+        case 2://地图定位按钮一类
+            view.setBackgroundImage(UIImageNamed(imgName!), for: .normal)
+            view.setBackgroundImage(UIImageColor( .lightGray), for: .disabled)
+
+        default://黑色字体,白色背景
+            view.setTitleColor( .textColorTitle, for: .normal)
+            
+        }
+        return view
+    }
+    
+    public static func createTextField(_ rect: CGRect, textAlignment: NSTextAlignment, tag: Int) -> UITextField {
+        let view = UITextField(frame: rect);
+        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.contentVerticalAlignment = .center;
+        view.autocapitalizationType = .none;
+        view.autocorrectionType = .no;
+        view.clearButtonMode = .whileEditing;
+        view.backgroundColor = .white;
+        view.returnKeyType = .done
+        view.textAlignment = textAlignment;
+        view.tag = tag
+        return view
+    }
+    
+    public static func createTextView(_ rect: CGRect, textAlignment: NSTextAlignment, tag: Int) -> UITextView {
+        let view = UITextView(frame: rect);
+        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autocapitalizationType = .none;
+        view.autocorrectionType = .no;
+        view.backgroundColor = .white;
+        
+        view.layer.borderWidth = 0.5;
+        view.layer.borderColor = UIColor.line.cgColor;
+        
+        view.textAlignment = textAlignment;
+        view.tag = tag
+        return view
+    }
+    
+    /// UITableView的HeaderView,footerView
+    public static func createSectionView(_ tableView: UITableView, text: String?, textAlignment: NSTextAlignment, height: CGFloat) -> UIView{
+        let sectionView = UIView()
+        if text == nil {
+            return sectionView
+        }
+        let view = UILabel(frame: CGRect(x: kX_GAP, y: 0, width: tableView.width - kX_GAP*2, height: height));
+        view.isUserInteractionEnabled = true;
+        view.lineBreakMode = .byTruncatingTail;
+        view.adjustsFontSizeToFitWidth = true;
+        view.text = text;
+        view.textAlignment = textAlignment
+        
+        sectionView.addSubview(view)
+        return sectionView
+    }
+    
+    ///MARK: -
+    public static func createGroupView(_ rect:CGRect, list:Array<String>!, numberOfRow:Int, padding:CGFloat, type:Int, action:@escaping (UITapGestureRecognizer?,UIView,NSInteger)->()) -> UIView {
         
         let rowCount: Int = list.count % numberOfRow == 0 ? list.count/numberOfRow : list.count/numberOfRow + 1;
+        let itemWidth = (rect.width - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow)
+        let itemHeight = (rect.height - CGFloat(rowCount - 1)*padding)/CGFloat(rowCount)
         
-        let backView = UIView(frame: CGRect(x: rect.minX, y: rect.minY, width: rect.width, height: CGFloat(rowCount)*viewHeight + CGFloat(rowCount - 1)*padding));
-        backView.backgroundColor = UIColor.green;
-        
-        let viewSize = CGSize(width: (backView.frame.width - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow), height: viewHeight);
+        let backView = UIView(frame: rect);
         for (i,value) in list.enumerated() {
-            
-            let x = (viewSize.width + padding) * CGFloat(i % numberOfRow);
-            let y = (viewSize.height + padding) * CGFloat(i / numberOfRow);
-            let rect = CGRect(x: x, y: y, width: viewSize.width, height: viewSize.height);
+            let x = CGFloat(i % numberOfRow) * (itemWidth + padding);
+            let y = CGFloat(i / numberOfRow) * (itemHeight + padding);
+            let rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight);
             
             var view: UIView;
             switch type {
@@ -473,19 +628,16 @@ public extension UIView{
                 view = button;
             }
             view.tag = i;
-            
-            backView.addSubview(view);
-            
             view.addActionHandler { (tap, itemView, idx) in
                 action(tap,itemView,idx);
-                
             }
+            
+            backView.addSubview(view);
         }
         return backView;
     }
     
-    public static func createSegmentRect(_ rect: CGRect, items: Array<Any>!, selectedIdx: Int, type: Int) -> UISegmentedControl {
-        
+    public static func createSegment(_ rect: CGRect, items: Array<Any>!, selectedIdx: Int, type: Int) -> UISegmentedControl {
         let view = UISegmentedControl(items: items)
         view.frame = rect
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
@@ -556,7 +708,7 @@ public extension UIView{
         return view;
     }
     
-    public static func createSliderRect(_ rect: CGRect, value: Float, minValue: Float, maxValue: Float) -> UISlider {
+    public static func createSlider(_ rect: CGRect, value: Float, minValue: Float, maxValue: Float) -> UISlider {
         let view = UISlider(frame: rect)
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.minimumValue = minValue
@@ -567,7 +719,7 @@ public extension UIView{
         return view;
     }
     
-    public static func createSwitchRect(_ rect: CGRect, isOn: Bool) -> UISwitch {
+    public static func createSwitch(_ rect: CGRect, isOn: Bool) -> UISwitch {
         let view = UISwitch(frame: rect)
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.isOn = isOn

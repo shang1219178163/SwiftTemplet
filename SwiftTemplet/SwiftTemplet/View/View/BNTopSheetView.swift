@@ -227,17 +227,9 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     }()
     
     lazy var tableView: UITableView = {
-        var table = UITableView(frame:self.bounds, style: .plain);
-        table.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
-        table.separatorStyle = .singleLine;
-        table.separatorInset = .zero;
-        table.rowHeight = 60;
-        table.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier);
-        
-        table.backgroundColor = UIColor.background;
+        var table = UIView.createTableView(bounds, style: .plain, rowHeight: kH_CellHeight)
         table.dataSource = self
         table.delegate = self
-        
         return table
     }()
 }

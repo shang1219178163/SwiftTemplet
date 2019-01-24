@@ -27,9 +27,7 @@ class BNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
             }
             tableView.reloadData()
             
-            var rows = list.count + (title != nil ? 1 : 0) + (tips != nil ? 1 : 0)
-            rows = rows < 6 ? rows : 6
-            self.containView.height = tableView.rowHeight * CGFloat(rows)
+            setupContainViewSize(list);
         }
     }
     
@@ -68,7 +66,7 @@ class BNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return tableView.rowHeight
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,31 +94,35 @@ class BNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let height = title == nil ? 0.01 : tableView.rowHeight
+        let height = title != nil ? tableView.rowHeight : 0.01;
         return height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return sectionView(tableView, viewForSection: section, isHeader: true)
+        let height = title != nil ? tableView.rowHeight : 0.01;
+        return UIView.createSectionView(tableView, text: title, textAlignment: .center, height:height)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let height = tips == nil ? 0.01 : tableView.rowHeight
+        let height = tips != nil ? tableView.rowHeight : 0.01;
         return height
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return sectionView(tableView, viewForSection: section, isHeader: false)
+        let height = tips != nil ? tableView.rowHeight : 0.01;
+        return UIView.createSectionView(tableView, text: tips, textAlignment: .left, height: height)
     }
     
     // MARK: - funtions
     func show() -> Void {
         assert(itemList != nil)
-        backView.height = UIScreen.height - containView.height
+        
+        setupContainViewSize(list)
         
         UIApplication.shared.keyWindow?.addSubview(self);
-
-        self.containView.y = UIScreen.height
+        backView.height = UIScreen.height - containView.height
+        containView.y = UIScreen.height
+        
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
             self.containView.y -= self.containView.frame.height;
@@ -144,22 +146,10 @@ class BNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
         self.viewBlock = action;
     }
     
-    /// sectionView 返回UIView
-    private func sectionView(_ tableView: UITableView, viewForSection section: Int, isHeader: Bool) -> UIView?{
-        let sectionView = UIView()
-        if title == nil && isHeader == true || tips == nil && isHeader == false {
-            return sectionView
-        }
-        let label = UILabel(frame: CGRect(x: kX_GAP, y: 0, width: tableView.width - kX_GAP*2, height: tableView.rowHeight));
-//        label.backgroundColor = .green;
-
-        label.text = isHeader ? title : tips;
-        label.textAlignment = isHeader ? .center : .left
-        label.numberOfLines = isHeader ? 1 : 0
-        label.textColor = isHeader ? UIColor.black : UIColor.red
-
-        sectionView.addSubview(label)
-        return sectionView
+    func setupContainViewSize(_ list:[String]) -> Void {
+        var rows = list.count + (title != nil ? 1 : 0) + (tips != nil ? 1 : 0)
+        rows = rows < 6 ? rows : 6
+        self.containView.height = tableView.rowHeight * CGFloat(rows)
     }
     
     //MARK: - layz
@@ -178,14 +168,7 @@ class BNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     }();
 
     lazy var tableView: UITableView = {
-        var table = UITableView(frame:self.bounds, style:.grouped);
-        table.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
-            table.separatorStyle = .singleLine;
-            table.separatorInset = .zero;
-            table.rowHeight = 60;
-            table.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier);
-            
-            table.backgroundColor = UIColor.background;
+        var table = UIView.createTableView(bounds, style: .grouped, rowHeight: kH_CellHeight);
             table.dataSource = self
             table.delegate = self
         

@@ -21,6 +21,7 @@ public extension UIImageView{
         //        self.image = self.image!.withRenderingMode( .alwaysTemplate)
         
     }
+    
 }
 
 

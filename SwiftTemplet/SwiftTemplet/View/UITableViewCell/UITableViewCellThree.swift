@@ -50,7 +50,7 @@ class UITableViewCellThree: UITableViewCell {
     func setupConstraint() -> Void {
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(contentView.frame.midY - kH_LABEL/2.0)
+            make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(kX_GAP)
         }
         
