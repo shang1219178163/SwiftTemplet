@@ -57,7 +57,6 @@ class UITableViewCellTwo: UITableViewCell {
         btn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(contentView.frame.midY - 35/2.0)
             make.right.equalToSuperview().offset(-10)
-            //            make.width.equalTo((btn.titleLabel?.text?.count)! * 17)
             make.width.equalTo(btn.size.width)
             make.height.equalTo(35)
         }

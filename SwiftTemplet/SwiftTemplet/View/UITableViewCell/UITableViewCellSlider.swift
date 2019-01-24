@@ -19,14 +19,24 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(labelLeft);
+        contentView.addSubview(labelRight);
         contentView.addSubview(sliderCtl);
+        
+        labelRight.numberOfLines = 1;
+        labelRight.adjustsFontSizeToFitWidth = true;
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        sliderCtl.addObserver(self, forKeyPath: "value", options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             //标题星号处理
             labelLeft.attributedText = labelLeft.text?.toAsterisk()
+        } else if keyPath == "value" {
+            if let slider = object as? UISlider {
+                labelRight.text = String(format: "%.2f", slider.value)
+
+            }
         }
     }
     
@@ -37,6 +47,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     
     deinit {
         labelLeft.removeObserver(self, forKeyPath: "text")
+        sliderCtl.removeObserver(self, forKeyPath: "value")
     }
     
     override func layoutSubviews() {
@@ -46,6 +57,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     }
     
     func setupConstraint() -> Void {
+        
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
@@ -90,6 +102,13 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
                 make.height.equalTo(labelLeft);
             }
         }
+        
+        labelRight.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(sliderCtl.snp.right).offset(kPadding)
+            make.right.equalToSuperview().offset(-kPadding)
+            make.height.equalTo(25);
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -99,7 +118,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var sliderCtl: UISlider = {
-        var view = UIView.createSliderRect( .zero, value: 0, minValue: 0, maxValue: 100)
+        var view = UIView.createSlider( .zero, value: 0, minValue: 0, maxValue: 100)
         return view
     }()
     

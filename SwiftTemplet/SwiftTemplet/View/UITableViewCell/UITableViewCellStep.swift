@@ -54,9 +54,9 @@ class UITableViewCellStep: UITableViewCell {
         }
         
         ppBtn.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
             make.top.equalTo(labelLeft);
             make.right.equalToSuperview().offset(-kX_GAP)
-            make.centerY.equalToSuperview()
             make.width.equalTo(120)
 
         }

@@ -248,7 +248,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: -lazy
     lazy var segmentCtl: UISegmentedControl = {
-        var view = UIView.createSegmentRect( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
+        var view = UIView.createSegment( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
         view.addActionHandler({ (sender:UIControl) in
             
             if let control = sender as? UISegmentedControl {
@@ -285,7 +285,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 "self.title".copyToPasteboard(true)
                 
             case 1:
-                let _ = UIAlertController.createAlert("alert", placeholderList: ["111","222"], msg: "msg", actionTitleList: ["one",kActionTitle_Cancell,"three"], handler: { (alertAction) in
+                let _ = UIAlertController.createAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (alertAction) in
                     DDLog(alertAction.title)
                 })
                 

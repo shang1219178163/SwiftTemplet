@@ -98,7 +98,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var switchCtl: UISwitch = {
-        var view = UIView.createSwitchRect( .zero, isOn: true)
+        var view = UIView.createSwitch( .zero, isOn: true)
         return view
     }()
     

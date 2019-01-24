@@ -44,8 +44,10 @@
 		147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */; };
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
+		149E827321F9C3B60092E202 /* BNSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E827221F9C3B60092E202 /* BNSearchView.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14E8F75A21F6EC84004317B5 /* BNTablePlainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */; };
+		14E8FA4221F966ED004317B5 /* BNSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8FA4121F966EC004317B5 /* BNSectionView.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
 		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
 		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
@@ -120,8 +122,10 @@
 		147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
+		149E827221F9C3B60092E202 /* BNSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSearchView.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTablePlainView.swift; sourceTree = "<group>"; };
+		14E8FA4121F966EC004317B5 /* BNSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSectionView.swift; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
 		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
 		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
@@ -325,6 +329,7 @@
 				517D143A2141248000F08FE5 /* BNAnnularProgress.swift */,
 				515AA756214206BC00C8D0AA /* BNDatePicker.swift */,
 				147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */,
+				14E8FA4121F966EC004317B5 /* BNSectionView.swift */,
 				14F7AABC21E7496100FB7570 /* PPNumberButton.swift */,
 				14129C9F21EA0FD0009BFA74 /* BNDateRangeView.swift */,
 				14129CA121EA0FF9009BFA74 /* BNPickListView.swift */,
@@ -334,6 +339,7 @@
 				1460727B21F0286C003AE810 /* BNCellDefaultView.swift */,
 				1421D5C421F1F26100635582 /* BNItemsView.swift */,
 				14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */,
+				149E827221F9C3B60092E202 /* BNSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				51824429213E74D400071A9D /* Header.swift in Sources */,
+				14E8FA4221F966ED004317B5 /* BNSectionView.swift in Sources */,
 				14129CA621EC88B4009BFA74 /* BNTopSheetView.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
@@ -517,6 +524,7 @@
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
+				149E827321F9C3B60092E202 /* BNSearchView.swift in Sources */,
 				14129CA021EA0FD0009BFA74 /* BNDateRangeView.swift in Sources */,
 				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
