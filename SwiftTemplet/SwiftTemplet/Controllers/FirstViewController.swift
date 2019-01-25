@@ -21,7 +21,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
      
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
-        createBarItem(systemItem: .done, isLeft: false) {[weak self] (obj:AnyObject?) in
+        createBarItem( .done, isLeft: false) {[weak self] (obj:AnyObject?) in
             self!.goController("IOPAuthRechargeController", obj: "1234" as AnyObject, objOne: nil)
             
         }

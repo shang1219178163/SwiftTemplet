@@ -24,11 +24,11 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             title = self.controllerName;
         }
         
-        createBarItem(systemItem: .action, isLeft: true) { (sender: AnyObject) in
+        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
             self.goController("FleetDetailControllerNew", obj: nil, objOne: nil)
         }
         
-        createBarItem(systemItem: .done, isLeft: false) { (sender: AnyObject) in
+        createBarItem( .done, isLeft: false) { (sender: AnyObject) in
             self.goController("IOPAuthDetailController", obj: nil, objOne: nil)
             
         }
