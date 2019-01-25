@@ -261,9 +261,9 @@
 				149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */,
 				14F7AAB621E722B300FB7570 /* IOPAuthDetailController.swift */,
 				147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */,
-				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
 				14129CA321EC72C5009BFA74 /* TitleViewController.swift */,
 				1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */,
+				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
 				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
 			);
 			path = Controllers;

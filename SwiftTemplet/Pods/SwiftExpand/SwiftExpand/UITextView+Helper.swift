@@ -46,7 +46,6 @@ public extension UITextView{
                 view!.font = self.font
                 self.addSubview(view!)
                 
-                
                 NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(_:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(textViewDidEndEditing(_:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
 
