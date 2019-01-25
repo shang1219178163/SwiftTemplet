@@ -60,11 +60,14 @@ public extension UIView {
         return table
     }
     /// [源]UILabel创建
-    public static func createLabel(_ rect: CGRect, tag: Int, type: Int) -> UILabel {
+    public static func createLabel(_ rect: CGRect, text: String?, font: CGFloat, tag: Int, type: Int) -> UILabel {
         let view = UILabel(frame: rect);
         view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
         view.textAlignment = .left;
+        
+        view.text = text;
+        view.font = UIFont.systemFont(ofSize: font);
         view.tag = tag;
         
         switch type {
@@ -113,11 +116,12 @@ public extension UIView {
         return view
     }
     /// [源]UIButton创建
-    public static func createBtn(_ rect: CGRect, title: String?, imgName: String?, tag: Int, type: Int) -> UIButton {
+    public static func createBtn(_ rect: CGRect, title: String?, font: CGFloat, imgName: String?, tag: Int, type: Int) -> UIButton {
         let view = UIButton(type: .custom);
         view.titleLabel?.font = UIFont.systemFont(ofSize:16);
         view.titleLabel?.adjustsFontSizeToFitWidth = true;
         view.titleLabel?.minimumScaleFactor = 1.0;
+        view.titleLabel?.font = UIFont.systemFont(ofSize: font);
         view.imageView?.contentMode = .scaleAspectFit
         view.isExclusiveTouch = true;
         view.adjustsImageWhenHighlighted = false;

@@ -72,7 +72,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
         switch ctlAlignment {
         case .left:
             sliderCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
+                make.centerY.equalToSuperview()
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                 make.width.equalTo(ctlWidth)
                 make.height.equalTo(labelLeft);
@@ -80,7 +80,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
             
         case .right:
             sliderCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
+                make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-kX_GAP)
                 make.width.equalTo(ctlWidth)
                 make.height.equalTo(labelLeft);
@@ -88,7 +88,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
             
         case .justified:
             sliderCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
+                make.centerY.equalToSuperview()
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                 make.right.equalToSuperview().offset(-kX_GAP)
                 make.height.equalTo(labelLeft);
@@ -96,9 +96,9 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
             
         default:
             sliderCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
-                make.width.equalTo(ctlWidth)
+                make.centerY.equalToSuperview()
+                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
+                make.width.lessThanOrEqualTo(ctlWidth)
                 make.height.equalTo(labelLeft);
             }
         }

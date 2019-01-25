@@ -27,6 +27,7 @@
 		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
 		1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */; };
 		1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */; };
+		1476F78A21FB0F1F0088C137 /* BNSuspendBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1476F78921FB0F1F0088C137 /* BNSuspendBtn.swift */; };
 		147B970921ED7C2B000F5294 /* BNSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147B970821ED7C2B000F5294 /* BNSegmentView.swift */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
@@ -105,6 +106,7 @@
 		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
 		1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewZero.swift; sourceTree = "<group>"; };
 		1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransitionAnimator.swift; sourceTree = "<group>"; };
+		1476F78921FB0F1F0088C137 /* BNSuspendBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSuspendBtn.swift; sourceTree = "<group>"; };
 		147B970821ED7C2B000F5294 /* BNSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSegmentView.swift; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				1421D5C421F1F26100635582 /* BNItemsView.swift */,
 				14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */,
 				149E827221F9C3B60092E202 /* BNSearchView.swift */,
+				1476F78921FB0F1F0088C137 /* BNSuspendBtn.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
+				1476F78A21FB0F1F0088C137 /* BNSuspendBtn.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				149E827321F9C3B60092E202 /* BNSearchView.swift in Sources */,
 				14129CA021EA0FD0009BFA74 /* BNDateRangeView.swift in Sources */,

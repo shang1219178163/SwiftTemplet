@@ -80,7 +80,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
         case .right:
             switchCtl.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft);
-                make.right.equalToSuperview().offset(-(width - ctlWidth)*0.5)
+                make.right.greaterThanOrEqualToSuperview().offset(-(width - ctlWidth)*0.5)
             }
             
         default:
