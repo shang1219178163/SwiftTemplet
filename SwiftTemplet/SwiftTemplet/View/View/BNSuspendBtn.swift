@@ -21,6 +21,7 @@ class BNSuspendBtn: UIButton {
         layer.zPosition = 1;
         backgroundColor = UIColor.clear;
         imageView?.contentMode = .scaleAspectFit;
+        setBackgroundImage(UIImage(named: "btn_add"), for: .normal)
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handleActionPan(_:)))
         pan.minimumNumberOfTouches = 1
@@ -42,8 +43,8 @@ class BNSuspendBtn: UIButton {
         switch recognizer.state {
 //        case .began:
             
-        case .possible:
-            let translate: CGPoint = recognizer.translation(in: self.superview)
+        case .changed:
+            let translate: CGPoint = recognizer.translation(in: recognizer.view!.superview)
             recognizer.view!.center = CGPoint(x: recognizer.view!.center.x + translate.x, y: recognizer.view!.center.y + translate.y)
             
         case .ended:
