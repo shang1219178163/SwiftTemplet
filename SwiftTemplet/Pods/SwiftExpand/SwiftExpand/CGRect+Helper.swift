@@ -11,22 +11,16 @@ import UIKit
 
 public extension CGRect{
     
-//    public var orignX: CGFloat {
-//        get {
-//            return self.origin.x;
-//        }
-//        set {
-//            self = CGRect(x: newValue, y: self.origin.y, width: self.size.width, height: self.size.height);
-//        }
-//    }
-//
-//    public var orignY: CGFloat {
-//        get {
-//            return self.origin.y;
-//        }
-//        set {
-//            self = CGRect(x: self.origin.x, y: newValue, width: self.size.width, height: self.size.height);
-//        }
-//    }
-    
+    /// 仿OC方法
+    public static func make(_ x: CGFloat,_ y: CGFloat,_ w: CGFloat,_ h: CGFloat) -> CGRect{
+        return self.init(x: x, y: y, width: w, height: h)
+    }
+    /// 仿OC方法
+    public static func make(_ x: Double,_ y: Double,_ w: Double,_ h: Double) -> CGRect{
+        return self.init(x: x, y: y, width: w, height: h)
+    }
+    /// 仿OC方法
+    public static func make(_ x: Int,_ y: Int,_ w: Int,_ h: Int) -> CGRect{
+        return self.init(x: x, y: y, width: w, height: h)
+    }
 }

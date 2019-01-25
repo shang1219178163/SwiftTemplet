@@ -47,12 +47,14 @@ class BNTableFooterView: UIView {
     }
 
     lazy var btn:UIButton = {
-        var view:UIButton = UIButton.createBtn(rect: .zero, title: "+ 新建", font: 17.0, image: nil, tag: kTAG_BTN, type: 3) { (sender:UIControl) in
-            if let obj = sender as? UIButton {
-                DDLog(obj.currentTitle as Any)
-                
-            }
-        }
+        var view: UIButton = UIView.createBtn( .zero, title: "+ 新建", imgName: nil, tag: kTAG_BTN, type: 3);
+            view.addActionHandler({ (sender) in
+                if let obj = sender as? UIButton {
+                    DDLog(obj.currentTitle as Any)
+                    
+                }
+            }, for: .touchUpInside)
+        
         return view;
     }();
     

@@ -182,7 +182,6 @@ public extension UIApplication{
 //        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: 0, vertical: -60), for: UIBarMetrics.default)//去掉返回图片后面的文
         
         let dicNomal = [NSAttributedStringKey.foregroundColor: UIColor.white,
-                        NSAttributedStringKey.backgroundColor: UIColor.theme,
                         ]
         UIBarButtonItem.appearance().setTitleTextAttributes(dicNomal, for: .normal)
     }

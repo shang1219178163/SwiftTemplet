@@ -197,6 +197,18 @@ public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
     
 }
 
+public func CGRectMake(_ x: CGFloat,_ y: CGFloat,_ w: CGFloat,_ h: CGFloat) -> CGRect{
+    return CGRect(x: x, y: y, width: w, height: h)
+}
+
+public func CGRectMake(_ x: Double,_ y: Double,_ w: Double,_ h: Double) -> CGRect{
+    return CGRect(x: x, y: y, width: w, height: h)
+}
+
+public func CGRectMake(_ x: Int,_ y: Int,_ w: Int,_ h: Int) -> CGRect{
+    return CGRect(x: x, y: y, width: w, height: h)
+}
+
 public extension NSObject{
     
     public var keyOfUnsafeRawPointer: UnsafeRawPointer {
@@ -270,20 +282,12 @@ public extension NSObject{
         return mdic.copy() as! Dictionary<NSAttributedString.Key, Any>;
     }
     
-    ///  富文本只有和一般文字同字体大小才能计算高度
-    @objc public func sizeWithText(_ text:AnyObject!, font:CGFloat, width:CGFloat) -> CGSize {
-        assert(text is String || text is NSAttributedString, "请检查text格式!");
+    ///  富文本只有同字体大小才能计算高度
+    @objc public func sizeWithText(_ text:String!, font:CGFloat, width:CGFloat) -> CGSize {
         let attDic = self.attrParaDict(font, textColor: .black, alignment: .left);
-
         let options : NSStringDrawingOptions = NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue)))
         
-        var size = CGSize.zero;
-        if text is String  {
-            size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options , attributes: attDic, context: nil).size;
-        }
-        else{
-            size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options, context: nil).size;
-        }
+        var size = text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: options , attributes: attDic, context: nil).size;
         size.width = ceil(size.width);
         size.height = ceil(size.height);
         return size;
@@ -301,7 +305,7 @@ public extension NSObject{
     }
     
     
-    /// (源方法)富文本
+    /// [源]富文本
     @objc public func getAttString(_ text: String!, textTaps: [String]!, font: CGFloat, tapFont: CGFloat, color: UIColor, tapColor: UIColor, alignment: NSTextAlignment) -> NSAttributedString {
         let paraDic = attrParaDict(font, textColor: color, alignment: alignment)
         let attString = NSMutableAttributedString(string: text, attributes: paraDic)

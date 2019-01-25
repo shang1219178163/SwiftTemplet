@@ -28,7 +28,7 @@ class CenterViewController: UIViewController {
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
-        let itemLeft = createBarItem(systemItem: UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
+        let itemLeft = createBarItem( UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
 //            DDLog(sender);
             self.dismiss(animated: true, completion: nil)
 
@@ -63,33 +63,24 @@ class CenterViewController: UIViewController {
             
         }
         
-        let btn = UIButton.createBtn(rect: CGRect(x:260, y: 260, width: 50, height: 50),title: "title", font: 15.0, image: nil, tag: 101, type: 1, action: { (sender:UIControl) in
-            
+        let rect = CGRect(x:260, y: 260, width: 50, height: 50)
+        let btn = UIView.createBtn(rect, title: "title", imgName: nil, tag: 101, type: 1)
+        btn.addActionHandler({ (sender) in
             if "asdfsdgf".contains("as") {
                 DDLog(1111);
                 
             }
             DDLog(String.timeNow().toTimeStamp());
-            
-//            let string = "按时发生发生的发生发达的发送到发斯蒂芬";
-//            let size = self.sizeWithText(string, font: 15 as AnyObject, width:50);
-//            DDLog(size);
-            
             DDLog(NSStringFromClass(self.classForCoder));
-        })
-        
+        }, for: .touchUpInside)
+     
       
         view.addSubview(btn);
         btn.setTitle("99+", for: .normal);
         btn.backgroundColor = .red;
-//        btnNew.addActionBlock { (sender) in
-//            DDLog("33333",sender,sender.tag);
-//
-//        };
         
         let rectOne = CGRect(x: imgView.frame.minX, y: imgView.frame.maxY + 20, width: 100, height: 100)
-        
-        let btnOne = UIButton.createBtn(rect: rectOne, title: "666+", font: 15, image: nil, tag: 100, type: 0)
+        let btnOne = UIView.createBtn( rectOne, title: "666+", imgName: nil, tag: 100, type: 0)
         view.addSubview(btnOne)
         
         btnOne.addActionHandler({ (sender: UIControl) in
@@ -109,7 +100,7 @@ class CenterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let itemRight = createBtnBarItem(title: "done", image: nil, tag: 17, isLeft: false, isHidden: false) { (sender:UIControl) in
+        let itemRight = createBtnBarItem("done", image: nil, tag: 17, isLeft: false, isHidden: false) { (sender:UIControl) in
             DDLog(sender);
         };
         DDLog(itemRight);

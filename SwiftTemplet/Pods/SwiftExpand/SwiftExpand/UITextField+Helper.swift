@@ -19,12 +19,12 @@ public extension UITextField{
         if unitName.contains("img") {
             let view = UIImageView(frame: CGRect(x: 0, y: 0, width: viewSize.width, height: viewSize.height));
             view.image = UIImage(named: unitName);
-            view.contentMode = UIViewContentMode.scaleAspectFit;
+            view.contentMode = .scaleAspectFit;
             view.tag = kTAG_IMGVIEW;
             return view;
         }
        
-        let size = self.sizeWithText(unitName as AnyObject, font: UIFont.labelFontSize, width: kScreenWidth);
+        let size = sizeWithText(unitName, font: UIFont.labelFontSize, width: kScreenWidth);
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: size.width, height: viewSize.height));
         label.tag = kTAG_LABEL;
         label.text = unitName;
@@ -38,12 +38,12 @@ public extension UITextField{
     
     public func asoryView(_ isRight: Bool, unitName: String!) -> Void {
         if isRight == true {
-            self.rightView = self.asoryView(isRight, unitName: unitName, viewSize: kSizeArrow);
+            self.rightView = asoryView(isRight, unitName: unitName, viewSize: kSizeArrow);
             self.rightViewMode = .always;
 
         }
         else{
-            self.leftView = self.asoryView(isRight, unitName: unitName, viewSize: kSizeArrow);
+            self.leftView = asoryView(isRight, unitName: unitName, viewSize: kSizeArrow);
             self.leftViewMode = .always;
 
         }

@@ -21,7 +21,7 @@ public extension UIBarButtonItem{
     //待优化
 //    public static func create(title:String?, image:AnyObject?, tag:NSInteger, action:@escaping (ControlClick)) -> UIBarButtonItem? {
 //        let font = UIFont.systemFont(ofSize: UIFont.buttonFontSize - 1.0)
-//        let btn = UIButton.createBtn(rect:.zero, title: title, font: font, image: image, tag: tag, type: 0,  action:action)
+//        let btn = UIView.createBtn(.zero, title: title, imgeName: image, tag: tag, type: 0,  action:action)
 //        let barItem = UIBarButtonItem(customView: btn!)
 //        barItem.tag = tag
 //        return barItem

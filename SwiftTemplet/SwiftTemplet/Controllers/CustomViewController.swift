@@ -32,10 +32,21 @@ class CustomViewController: UIViewController {
         }
         itemView.items = listNew
         
+        var rect = CGRect.make(20, itemView.maxY+20, 80, 60)
+//        rect = CGRect(x: 20, y: itemView.maxY+20, width: 60, height: 40)
+        rect = CGRectMake(120, itemView.maxY+20, 80, 60)
+        let btn = UIView.createBtn(rect, title: "自定义", imgName: nil, tag: kTAG_BTN, type: 0);
+        btn.addActionHandler({ (sender) in
+            if let button = sender as? UIButton {
+                DDLog(button.titleLabel?.text)
+            }
+        }, for: .touchUpInside)
+        view.addSubview(btn)
+        
+//        btn.setBackgroundImage(UIImageColor( .theme), for: .normal)
+
         view.getViewLayer()
     }
-    
-
     
     lazy var itemView: BNItemsView = {
         var view = BNItemsView(frame: .zero)

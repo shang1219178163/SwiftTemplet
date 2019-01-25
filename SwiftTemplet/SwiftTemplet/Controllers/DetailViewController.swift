@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
         let stringType = String(format: "type id: %d", CFGetTypeID(str))
         print(stringType)
         
-        createBarItem(systemItem: .done, isLeft: false) {[weak self] (item:AnyObject?) in
+        createBarItem( .done, isLeft: false) {[weak self] (item:AnyObject?) in
             
             UIView.transition(with: (self!.navigationController?.view)!, duration: 0.1, options: .transitionCrossDissolve, animations: {
                 self!.navigationController?.popViewController(animated: false)
