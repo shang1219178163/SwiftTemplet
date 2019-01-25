@@ -29,6 +29,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             }
         }
     
+        view.addSubview(suspendBtn)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -339,6 +340,16 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             DDLog(obj.tag)
             
             }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var suspendBtn: BNSuspendBtn = {
+        var view = BNSuspendBtn(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+        view.insets = UIEdgeInsets(top: 40, left: 60, bottom: 80, right: 100)
+        view.parController = self
+        view.addActionHandler({ (sender) in
+            DDLog(sender.center)
+        }, for: .touchUpInside)
         return view
     }()
 }

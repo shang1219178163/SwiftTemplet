@@ -61,15 +61,15 @@ class UITableViewCellSegment: UITableViewCell,UITextFieldDelegate {
         switch ctlAlignment {
         case .left:
             segmentCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                make.centerY.equalToSuperview()
+                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset(kPadding)
                 make.width.equalTo(ctlWidth)
                 make.height.equalTo(labelLeft);
             }
             
         case .right:
             segmentCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
+                make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-kX_GAP)
                 make.width.equalTo(ctlWidth)
                 make.height.equalTo(labelLeft);
@@ -77,17 +77,17 @@ class UITableViewCellSegment: UITableViewCell,UITextFieldDelegate {
             
         case .justified:
             segmentCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                make.centerY.equalToSuperview()
+                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset(kPadding)
                 make.right.equalToSuperview().offset(-kX_GAP)
                 make.height.equalTo(labelLeft);
             }
             
         default:
             segmentCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
-                make.width.equalTo(ctlWidth)
+                make.centerY.equalToSuperview()
+                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
+                make.width.greaterThanOrEqualTo(ctlWidth)
                 make.height.equalTo(labelLeft);
             }
         }
