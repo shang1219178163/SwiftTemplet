@@ -64,7 +64,7 @@ class CenterViewController: UIViewController {
         }
         
         let rect = CGRect(x:260, y: 260, width: 50, height: 50)
-        let btn = UIView.createBtn(rect, title: "title", imgName: nil, tag: 101, type: 1)
+        let btn = UIView.createBtn(rect, title: "title", font: 16, imgName: nil, tag: 101, type: 1)
         btn.addActionHandler({ (sender) in
             if "asdfsdgf".contains("as") {
                 DDLog(1111);
@@ -80,7 +80,7 @@ class CenterViewController: UIViewController {
         btn.backgroundColor = .red;
         
         let rectOne = CGRect(x: imgView.frame.minX, y: imgView.frame.maxY + 20, width: 100, height: 100)
-        let btnOne = UIView.createBtn( rectOne, title: "666+", imgName: nil, tag: 100, type: 0)
+        let btnOne = UIView.createBtn( rectOne, title: "666+", font: 16, imgName: nil, tag: 100, type: 0)
         view.addSubview(btnOne)
         
         btnOne.addActionHandler({ (sender: UIControl) in

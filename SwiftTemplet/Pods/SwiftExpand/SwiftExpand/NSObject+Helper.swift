@@ -197,18 +197,6 @@ public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
     
 }
 
-public func CGRectMake(_ x: CGFloat,_ y: CGFloat,_ w: CGFloat,_ h: CGFloat) -> CGRect{
-    return CGRect(x: x, y: y, width: w, height: h)
-}
-
-public func CGRectMake(_ x: Double,_ y: Double,_ w: Double,_ h: Double) -> CGRect{
-    return CGRect(x: x, y: y, width: w, height: h)
-}
-
-public func CGRectMake(_ x: Int,_ y: Int,_ w: Int,_ h: Int) -> CGRect{
-    return CGRect(x: x, y: y, width: w, height: h)
-}
-
 public extension NSObject{
     
     public var keyOfUnsafeRawPointer: UnsafeRawPointer {

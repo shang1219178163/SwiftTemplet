@@ -58,7 +58,7 @@ public extension UIViewController{
         }
         
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
-        let btn = UIView.createBtn(rect, title: title, imgName: image, tag: tag, type: 3)
+        let btn = UIView.createBtn(rect, title: title, font: 16, imgName: image, tag: tag, type: 3)
         btn.tag = isLeft == true ? kTAG_BackItem : kTAG_RightItem;
         btn.isHidden = isHidden;
         btn.sizeToFit();
