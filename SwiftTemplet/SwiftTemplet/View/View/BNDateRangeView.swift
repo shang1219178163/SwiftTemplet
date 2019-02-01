@@ -29,7 +29,8 @@ class BNDateRangeView: UIView {
         let _ = labStart.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: BNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.format(picker.datePicker.date, fmt: kDateFormat)
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat)
+
 //                DDLog("起始时间:",dateStr)
                 self.labStart.text = (dateStr as NSString).substring(to: 10)
                 self.dateStart = dateStr;
@@ -42,7 +43,7 @@ class BNDateRangeView: UIView {
         let _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: BNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.format(picker.datePicker.date, fmt: kDateFormat)
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat)
 //                DDLog("截止日期:",dateStr)
                 self.labEnd.text = (dateStr as NSString).substring(to: 10)
                 self.dateEnd = dateStr;

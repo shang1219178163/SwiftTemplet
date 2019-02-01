@@ -22,7 +22,6 @@ class BNItemsView: UIView {
             
             for e in newValue!.enumerated() {
                 let view = createBtn(rect: .zero, title: e.element, tag: e.offset);
-                view.backgroundColor = UIColor.theme;
                 view.addActionHandler({ (sender) in
                     if self.viewBlock != nil {
                         self.viewBlock!(self, sender)
@@ -37,7 +36,7 @@ class BNItemsView: UIView {
 //    var type :Int = 0
     
     var viewBlock: ((BNItemsView, UIControl) -> Void)?
-    private var itemList: [UIButton] = []
+    var itemList: [UIButton] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -103,6 +102,9 @@ class BNItemsView: UIView {
         view.imageView?.contentMode = .scaleAspectFit
         view.frame = rect;
         view.setTitle(title, for: .normal);
+        view.setTitleColor(.black, for: .normal);
+//        view.backgroundColor = UIColor.theme;
+
         view.isExclusiveTouch = true;
         view.adjustsImageWhenHighlighted = false;
         view.tag = tag;

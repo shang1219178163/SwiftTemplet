@@ -124,7 +124,9 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             [["通用录入界面", "EntryViewController"],
              ["导航栏下拉菜单", "TitleViewController"],
              ["UICollectionView展示", "UICollectionDispalyController"],
-             ["自定义View", "CustomViewController"],             
+             ["自定义View", "CustomViewController"],
+             ["CalenderView", "CalendarViewController"],
+
              ],
         ]
         return array

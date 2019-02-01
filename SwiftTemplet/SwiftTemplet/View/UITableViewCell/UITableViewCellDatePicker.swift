@@ -26,7 +26,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         
         textfield.placeholder = "请选择";
-        textfield.text = DateFormatter.format(Date(), fmt: kDateFormat_one)
+        textfield.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_one)
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
         textfield.asoryView(true, unitName: kIMG_arrowDown);
@@ -115,7 +115,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
                 self.viewBlock!(self,sender,idx);
             
             }
-            var dateStr = DateFormatter.format(view.datePicker.date, fmt: kDateFormat_one)
+            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormat_one)
             self.textfield.text = idx == 1 ? dateStr : "";
         });
         return view;
