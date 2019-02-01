@@ -19,23 +19,22 @@ class BNCalendarView: UIView {
     var currentDate: Date = Date()
     {
         didSet{
-            self.reloadData()
+            let comp = Date.dateComponents(oldValue)
+            year = comp.year!
+            month = comp.month!
         }
     }
+    
     var year: Int = Date.dateComponents(Date()).year!
     {
         willSet{
-            let dateStr = "\(newValue)年\(month)月"
-            self.titleBtn.setTitle(dateStr, for: .normal)
-            self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_Six)
+            handleTitleBtnChange(newValue, month: month)
         }
     }
     var month: Int = Date.dateComponents(Date()).month!
     {
         willSet{
-            let dateStr = "\(year)年\(newValue)月"
-            self.titleBtn.setTitle(dateStr, for: .normal)
-            self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_Six)
+            handleTitleBtnChange(year, month: newValue)
         }
     }
     
@@ -55,12 +54,15 @@ class BNCalendarView: UIView {
         reloadData()
         
         self.titleBtn.titleLabel?.addObserver(self, forKeyPath: "text", options: .new, context: nil)
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             if let text = change![NSKeyValueChangeKey.newKey] as? String {
+//                self.currentDate = DateFormatter.dateFromString(text, fmt: kDateFormat_Six)
+                reloadData()
+                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormat_Six))
+
                 let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_Six)
                 self.todayBtn.isHidden = (text == dateStr)
             }
@@ -219,7 +221,7 @@ class BNCalendarView: UIView {
         return view
     }()
     
-    fileprivate func reloadData() {
+    func reloadData() {
         let count = currentDate.countOfDaysInMonth()
         let startIdx = currentDate.firstWeekDay() - 1 //布局从0开始,日期从1开始
         
@@ -261,10 +263,27 @@ class BNCalendarView: UIView {
         }
     }
     
+    func handleTitleBtnChange(_ year: Int, month: Int) -> Void {
+        let dateStr = "\(year)年\(month)月"
+        self.titleBtn.setTitle(dateStr, for: .normal)
+//        self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_Six)
+    }
+    
+//    func handleTitleFrom(_ aDate: Date) -> Void {
+//        let comp = Date.dateComponents(aDate)
+//        year = comp.year!
+//        month = comp.month!
+//        handleTitleBtnChange(year, month: month)
+//    }
+    
     func dateStrFmtFrom(_ btn: UIButton) -> String {
         let dateStr = (self.titleBtn.titleLabel!.text ?? "空") + (btn.titleLabel!.text ?? "空") + "日"
         let date = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_seven)
         let dateStrFmt = DateFormatter.stringFromDate(date)
         return dateStrFmt
     }
+    
+  
+    
+
 }
