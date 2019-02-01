@@ -55,10 +55,8 @@ public extension Array{
     }
 
     public static func itemPrefix(prefix:String, count:Int, type:Int) -> Array! {
-        
         var marr:[Any] = [];
         for i in 0...count {
-            
             let item = String(format: "%@%d", prefix,i);
             
             switch type {
@@ -78,6 +76,16 @@ public extension Array{
             append(item)
         }
     }
+    
+    ///添加多个相同元素到数组
+    public static func appendSame(_ item:AnyObject, count: Int) -> [AnyObject] {
+        var list: [AnyObject] = []
+        for _ in 0..<count {
+            list.append(item)
+        }
+        return list
+    }
+    
     ///模型(继承于NSObject)query对应属性为@objc声明的字符串
     public func filterModelList(_ list:[AnyObject]!, querys:[String]) -> [[String]] {
         var listArr: [[String]]?

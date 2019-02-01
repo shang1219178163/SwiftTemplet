@@ -46,6 +46,8 @@
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		149E827321F9C3B60092E202 /* BNSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E827221F9C3B60092E202 /* BNSearchView.swift */; };
+		14E42D522201438F00606AD0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E42D512201438E00606AD0 /* CalendarViewController.swift */; };
+		14E42D542201450800606AD0 /* BNCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E42D532201450800606AD0 /* BNCalendarView.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14E8F75A21F6EC84004317B5 /* BNTablePlainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */; };
 		14E8FA4221F966ED004317B5 /* BNSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8FA4121F966EC004317B5 /* BNSectionView.swift */; };
@@ -125,6 +127,8 @@
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		149E827221F9C3B60092E202 /* BNSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSearchView.swift; sourceTree = "<group>"; };
+		14E42D512201438E00606AD0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = /Users/shang/Documents/GitHub/SwiftTemplet/SwiftTemplet/SwiftTemplet/Controllers/CalendarViewController.swift; sourceTree = "<absolute>"; };
+		14E42D532201450800606AD0 /* BNCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNCalendarView.swift; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTablePlainView.swift; sourceTree = "<group>"; };
 		14E8FA4121F966EC004317B5 /* BNSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSectionView.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */,
 				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
 				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
+				14E42D512201438E00606AD0 /* CalendarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 				14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */,
 				149E827221F9C3B60092E202 /* BNSearchView.swift */,
 				1476F78921FB0F1F0088C137 /* BNSuspendBtn.swift */,
+				14E42D532201450800606AD0 /* BNCalendarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -521,6 +527,7 @@
 				51824429213E74D400071A9D /* Header.swift in Sources */,
 				14E8FA4221F966ED004317B5 /* BNSectionView.swift in Sources */,
 				14129CA621EC88B4009BFA74 /* BNTopSheetView.swift in Sources */,
+				14E42D542201450800606AD0 /* BNCalendarView.swift in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
@@ -565,6 +572,7 @@
 				149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */,
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
+				14E42D522201438F00606AD0 /* CalendarViewController.swift in Sources */,
 				5182444C213E8CB600071A9D /* BNResult.swift in Sources */,
 				147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */,
 				515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */,
