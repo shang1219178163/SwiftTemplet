@@ -112,6 +112,9 @@ public extension UIView{
    
     //MARK: -funtions
 
+    public func autoresizeMask() -> Void {
+        self.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+    }
     /// 图层调试
     public func getViewLayer() -> () {
         let subviews = self.subviews;
