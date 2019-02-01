@@ -26,11 +26,11 @@ public let kDateFormat_three = "yyyy-MM";
 /// yyyy-MM-dd HH:mm:ss eee
 public let kDateFormat_four  = "yyyy-MM-dd HH:mm:ss eee";
 /// yyyy年MM月
-public let kDateFormat_five  = "yyyy年MM月";
+public let kDateFormat_five  = "";
 /// yyyy年M月
-public let kDateFormat_Six   = "yyyy年M月";
+public let kDateFormat_Six   = "yyyy年MM月";
 /// yyyy年MM月dd日
-public let kDateFormat_seven = "yyyy年M月d日";
+public let kDateFormat_seven = "yyyy年MM月dd日";
 
 /*
 G: 公元时代，例如AD公元
@@ -57,7 +57,6 @@ public extension DateFormatter{
     
     /// 获取DateFormatter
     public static func format(_ formatStr:String) -> DateFormatter {
-        
         let dic = Thread.current.threadDictionary;
         if dic.object(forKey: formatStr) != nil {
             return dic.object(forKey: formatStr) as! DateFormatter;
@@ -86,8 +85,8 @@ public extension DateFormatter{
     
     /// String -> Date
     public static func dateFromString(_ dateStr:String, fmt:String) -> Date {
-        let fmt = DateFormatter.format(fmt);
-        return fmt.date(from: dateStr)!;
+        let formatter = DateFormatter.format(fmt);
+        return formatter.date(from: dateStr)!;
     }
     
     /// String -> Date(默认格式)
