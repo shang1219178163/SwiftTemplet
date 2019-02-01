@@ -1,2 +1,2 @@
 # SwiftExpand
-ERROR | xcodebuild:   error: use of undeclared type 'AppDelegate'
+swif的SDK功能拓展
