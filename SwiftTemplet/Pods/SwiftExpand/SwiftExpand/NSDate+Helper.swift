@@ -30,7 +30,7 @@ public let kDateFormat_five  = "yyyy年MM月";
 /// yyyy年M月
 public let kDateFormat_Six   = "yyyy年M月";
 /// yyyy年MM月dd日
-public let kDateFormat_seven = "yyyy年MM月dd日";
+public let kDateFormat_seven = "yyyy年M月d日";
 
 /*
 G: 公元时代，例如AD公元
