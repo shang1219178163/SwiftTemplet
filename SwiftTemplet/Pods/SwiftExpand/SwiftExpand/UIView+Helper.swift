@@ -112,11 +112,11 @@ public extension UIView{
    
     //MARK: -funtions
 
-    public func autoresizeMask() -> Void {
+    @objc public func autoresizeMask() -> Void {
         self.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
     }
     /// 图层调试
-    public func getViewLayer() -> () {
+    @objc public func getViewLayer() -> () {
         let subviews = self.subviews;
         if subviews.count == 0 {
             return;
@@ -131,13 +131,13 @@ public extension UIView{
     }
     
     /// 移除所有子视图
-    public func removeAllSubViews(){
+    @objc public func removeAllSubViews(){
         self.subviews.forEach { (view: UIView) in
             view.removeFromSuperview()
         }
     }
     
-    public func addCorners(_ corners: UIRectCorner, cornerRadii: CGSize, width: CGFloat, color: UIColor) -> CAShapeLayer {
+    @objc public func addCorners(_ corners: UIRectCorner, cornerRadii: CGSize, width: CGFloat, color: UIColor) -> CAShapeLayer {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
         let maskLayer = CAShapeLayer()
         maskLayer.frame = bounds
@@ -148,13 +148,13 @@ public extension UIView{
         return maskLayer
     }
     
-    public func addCornerAll() -> CAShapeLayer {
+    @objc public func addCornerAll() -> CAShapeLayer {
         let cornerRadii = CGSize(width: bounds.width*0.5, height: bounds.height*0.5)
         return addCorners( .allCorners, cornerRadii: cornerRadii, width: 1.0, color: .white)
     }
    
     //MARK: -通用响应添加方法
-    public func addActionHandler(action:@escaping (ViewClosure)) -> Void {
+    @objc public func addActionHandler(action:@escaping (ViewClosure)) -> Void {
         if let sender = self as? UIButton {
             sender.addTarget(self, action:#selector(handleActionSender(sender:)), for:.touchUpInside);
             
@@ -205,7 +205,7 @@ public extension UIView{
     
     //MARK: -手势
     ///手势 - 轻点
-    public func addGestureTap(_ action:@escaping (RecognizerClosure)) -> UITapGestureRecognizer {
+    @objc public func addGestureTap(_ action:@escaping (RecognizerClosure)) -> UITapGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -219,14 +219,14 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
 
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
     }
   
     ///手势 - 长按
-    public func addGestureLongPress(_ action:@escaping (RecognizerClosure), for minimumPressDuration:TimeInterval) -> UILongPressGestureRecognizer {
+    @objc public func addGestureLongPress(_ action:@escaping (RecognizerClosure), for minimumPressDuration:TimeInterval) -> UILongPressGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function) + ",\(minimumPressDuration)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -239,14 +239,14 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
             
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
     }
     
     ///手势 - 拖拽
-    public func addGesturePan(_ action:@escaping (RecognizerClosure)) -> UIPanGestureRecognizer {
+    @objc public func addGesturePan(_ action:@escaping (RecognizerClosure)) -> UIPanGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -260,14 +260,14 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
             
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
     }
     
     ///手势 - 屏幕边缘
-    public func addGestureEdgPan(_ action:@escaping (RecognizerClosure), for edgs: UIRectEdge) -> UIScreenEdgePanGestureRecognizer {
+    @objc public func addGestureEdgPan(_ action:@escaping (RecognizerClosure), for edgs: UIRectEdge) -> UIScreenEdgePanGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function) + ",\(edgs)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -279,14 +279,14 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
             
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
     }
     
     ///手势 - 清扫
-    public func addGestureSwip(_ action:@escaping (RecognizerClosure), for direction: UISwipeGestureRecognizerDirection) -> UISwipeGestureRecognizer {
+    @objc public func addGestureSwip(_ action:@escaping (RecognizerClosure), for direction: UISwipeGestureRecognizerDirection) -> UISwipeGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function) + ",\(direction)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -299,14 +299,14 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
             
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
     }
     
     ///手势 - 捏合
-    public func addGesturePinch(_ action:@escaping (RecognizerClosure)) -> UIPinchGestureRecognizer {
+    @objc public func addGesturePinch(_ action:@escaping (RecognizerClosure)) -> UIPinchGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -318,14 +318,14 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
         
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
     }
     
     ///手势 - 旋转
-    public func addGestureRotation(_ action:@escaping (RecognizerClosure)) -> UIRotationGestureRecognizer {
+    @objc public func addGestureRotation(_ action:@escaping (RecognizerClosure)) -> UIRotationGestureRecognizer {
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
@@ -337,7 +337,7 @@ public extension UIView{
             self.isMultipleTouchEnabled = true
             self.addGestureRecognizer(recognizer!)
             
-            recognizer!.keyOfUnsafeRawPointer = runtimeKey
+            recognizer!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         return recognizer!
@@ -345,7 +345,7 @@ public extension UIView{
     
     @objc private func handleActionGesture(_ recognizer: UIGestureRecognizer) -> Void{
     
-        let block = objc_getAssociatedObject(self, recognizer.keyOfUnsafeRawPointer) as? RecognizerClosure;
+        let block = objc_getAssociatedObject(self, recognizer.runtimeKey) as? RecognizerClosure;
 //        DDLog(recognizer.funcName,block)
         switch recognizer {
         case is UISwipeGestureRecognizer:
@@ -414,7 +414,7 @@ public extension UIView{
     }
     
     //MARK: -Cell
-    public func getCell() -> UITableViewCell{
+    @objc public func getCell() -> UITableViewCell{
         var supView = self.superview
         while let view = supView as? UITableViewCell {
             supView = view.superview
@@ -422,9 +422,39 @@ public extension UIView{
         return supView as! UITableViewCell;
     }
     
-    public func getCellIndexPath(_ tableView:UITableView) -> IndexPath{
+    @objc public func getCellIndexPath(_ tableView:UITableView) -> IndexPath{
         let cell = self.getCell();
         return tableView.indexPathForRow(at: cell.center)!
+    }
+    
+    /// 保存图像到相册
+    @objc public func imageToSavedPhotosAlbum(_ action: @escaping((NSError?) -> Void)) -> Void{
+        let funcAbount = NSStringFromSelector(#function)
+        let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
+    
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        let ctx = UIGraphicsGetCurrentContext()
+        self.layer.render(in: ctx!)
+    
+        var image = UIGraphicsGetImageFromCurrentImageContext()
+        if let imgView = self as? UIImageView {
+            image = imgView.image
+        }
+    
+        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        image!.runtimeKey = runtimeKey;
+    
+        let obj = objc_getAssociatedObject(self, image!.runtimeKey)
+        if obj == nil {
+            objc_setAssociatedObject(self, image!.runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) -> Void {
+        let obj = objc_getAssociatedObject(self, image.runtimeKey) as? ((NSError?) -> Void)
+        if obj != nil {
+            obj!(error)
+        }
     }
     
     

@@ -27,7 +27,7 @@ public extension UIViewController{
     }
     
     @objc private func handleActionItem(_ sender:UIBarButtonItem) -> Void {
-        let block = objc_getAssociatedObject(self, sender.keyOfUnsafeRawPointer) as? ObjClosure;
+        let block = objc_getAssociatedObject(self, sender.runtimeKey) as? ObjClosure;
         if block != nil {
             block!(sender);
 
@@ -46,7 +46,7 @@ public extension UIViewController{
         else{
             navigationItem.rightBarButtonItem = item;
         }
-        item.keyOfUnsafeRawPointer = runtimeKey
+        item.runtimeKey = runtimeKey
         objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC);
 
     }

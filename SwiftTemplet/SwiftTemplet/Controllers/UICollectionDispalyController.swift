@@ -42,7 +42,7 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         
         view.addGestureTap { (sender:UIGestureRecognizer) in
             let tap = sender as! UITapGestureRecognizer
-            DDLog(tap.keyOfUnsafeRawPointer)
+            DDLog(tap.runtimeKey)
         }
         
         //        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
