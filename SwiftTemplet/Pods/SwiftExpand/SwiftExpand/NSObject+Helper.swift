@@ -199,7 +199,7 @@ public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
 
 public extension NSObject{
     
-    public var keyOfUnsafeRawPointer: UnsafeRawPointer {
+    public var runtimeKey: UnsafeRawPointer {
         get {
             return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! UnsafeRawPointer
         }

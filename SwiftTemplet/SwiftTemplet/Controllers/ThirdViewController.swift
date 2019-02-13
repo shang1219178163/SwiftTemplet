@@ -44,6 +44,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         
         view.getViewLayer()
+        
     }
     
     //MARK: -lazy
