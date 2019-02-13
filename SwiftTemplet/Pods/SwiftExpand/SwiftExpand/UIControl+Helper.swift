@@ -14,14 +14,14 @@ extension UIControl {
         let funcAbount = NSStringFromSelector(#function) + ",\(controlEvents)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        self.keyOfUnsafeRawPointer = runtimeKey
+        self.runtimeKey = runtimeKey
         addTarget(self, action:#selector(handleActionSender(_:)), for:controlEvents);
         objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
     /// 点击回调
     @objc private func handleActionSender(_ sender:UIControl) -> Void {
-        let block = objc_getAssociatedObject(self, self.keyOfUnsafeRawPointer) as? ControlClosure;
+        let block = objc_getAssociatedObject(self, self.runtimeKey) as? ControlClosure;
         if block != nil {
             block!(sender);
         }

@@ -61,7 +61,7 @@ class FourthViewController: UIViewController {
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
         let groupView = UIView.createGroupView(rect, list: (list as! Array<String>), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
-            
+       
             DDLog(idx);
             
             let data = Data(bytes: [0x2,0x33,0x54,0x78,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b])
