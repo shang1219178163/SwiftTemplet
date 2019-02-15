@@ -51,6 +51,8 @@
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14E8F75A21F6EC84004317B5 /* BNTablePlainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */; };
 		14E8FA4221F966ED004317B5 /* BNSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8FA4121F966EC004317B5 /* BNSectionView.swift */; };
+		14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F04221695A000B396A0 /* TimerViewController.swift */; };
+		14ED8F0722169BB900B396A0 /* NSTimer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F0622169BB900B396A0 /* NSTimer+Helper.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
 		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
 		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
@@ -132,6 +134,8 @@
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTablePlainView.swift; sourceTree = "<group>"; };
 		14E8FA4121F966EC004317B5 /* BNSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSectionView.swift; sourceTree = "<group>"; };
+		14ED8F04221695A000B396A0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		14ED8F0622169BB900B396A0 /* NSTimer+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTimer+Helper.swift"; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
 		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
 		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				51824425213E74C300071A9D /* DataModel */,
 				519E87C321367582002CCD86 /* View */,
 				51685A00208EA75700CE8099 /* AppDelegate.swift */,
+				14ED8F0622169BB900B396A0 /* NSTimer+Helper.swift */,
 				5182442C213E75BA00071A9D /* dataList.geojson */,
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
 				51824435213E82E000071A9D /* news.geojson */,
@@ -272,6 +277,7 @@
 				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
 				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
 				14E42D512201438E00606AD0 /* CalendarViewController.swift */,
+				14ED8F04221695A000B396A0 /* TimerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				14129CA021EA0FD0009BFA74 /* BNDateRangeView.swift in Sources */,
 				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
+				14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */,
 				14129CA821EC983B009BFA74 /* BNGeometryView.swift in Sources */,
 				14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */,
 				517D143721411B3C00F08FE5 /* BNCircleView.swift in Sources */,
@@ -565,6 +572,7 @@
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				14F7AABD21E7496200FB7570 /* PPNumberButton.swift in Sources */,
+				14ED8F0722169BB900B396A0 /* NSTimer+Helper.swift in Sources */,
 				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */,
 				1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,

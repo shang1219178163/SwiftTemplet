@@ -127,7 +127,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
              ["UICollectionView展示", "UICollectionDispalyController"],
              ["自定义View", "CustomViewController"],
              ["CalenderView", "CalendarViewController"],
-
+             ["Timer", "TimerViewController"],
+             
              ],
         ]
         return array
