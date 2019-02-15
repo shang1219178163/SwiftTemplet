@@ -8,16 +8,24 @@
 
 import UIKit
 
+import SwiftExpand
+
 class TimerViewController: UIViewController {
 
     var timer = Timer()
     var clickNums: Int = 5;
     var isPause: Bool = false;
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeTimer()
+//        makeTimer()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //写一个按钮
+        btn.frame.size = CGSize(width: 100, height: 50)
+        btn.center = view.center
+        view.addSubview(btn)
     }
     
     func makeTimer() {
@@ -55,6 +63,13 @@ class TimerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    lazy var btn: UIButton = {
+        var view = UIView.createBtn(.zero, title: "发送验证码", font: 16, imgName: nil, tag: 200, type: 1)
+        view.addActionHandler({ [weak self] (obj) in
+            UIButton.timeValueChange(obj as! UIButton, timeOut: 12)
+
+            }, for: .touchUpInside)
+        return view
+    }()
 }
 
