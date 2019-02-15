@@ -41,4 +41,27 @@ public extension UIButton{
         return attString
     }
     
+    /// 验证码倒计时显示
+    @objc public static func timeValueChange(_ btn:UIButton, timeOut:Int) {
+        
+        var time = timeOut
+        let codeTimer = DispatchSource.makeTimerSource(flags: .init(rawValue: 0), queue: DispatchQueue.global())
+        codeTimer.schedule(deadline: .now(), repeating: .milliseconds(1000))  //此处方法与Swift 3.0 不同
+        codeTimer.setEventHandler {
+            
+            time -= 1
+            DispatchQueue.main.async {
+                if time > 0 {
+                    btn.setTitle("剩余\(time)s", for: .normal)
+                    return;
+                }
+                codeTimer.cancel()
+                btn.isEnabled = true
+                btn.setTitle("重新发送", for: .normal)
+            }
+        }
+        
+        codeTimer.resume()
+//        codeTimer.activate()
+    }
 }
