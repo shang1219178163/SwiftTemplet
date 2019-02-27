@@ -18,8 +18,17 @@
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
 		14129CA621EC88B4009BFA74 /* BNTopSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA521EC88B4009BFA74 /* BNTopSheetView.swift */; };
 		14129CA821EC983B009BFA74 /* BNGeometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA721EC983B009BFA74 /* BNGeometryView.swift */; };
+		141AB8442224C185006E1841 /* BNCellSubtitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AB8432224C185006E1841 /* BNCellSubtitleView.swift */; };
+		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
+		141AB8482224D450006E1841 /* CAGradientLayer+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AB8472224D450006E1841 /* CAGradientLayer+Helper.swift */; };
+		141AB84A2224E571006E1841 /* BNOperationStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AB8492224E571006E1841 /* BNOperationStateView.swift */; };
+		141AB84C22250DE5006E1841 /* Media11.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141AB84B22250DE5006E1841 /* Media11.xcassets */; };
+		141AB84E22252731006E1841 /* BNThreeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141AB84D22252731006E1841 /* BNThreeLabelView.swift */; };
+		141FF16E2223D38B00140E4E /* icon_notice@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141FF16D2223D38A00140E4E /* icon_notice@2x.png */; };
+		141FF1702223D96A00140E4E /* BNExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141FF16F2223D96A00140E4E /* BNExpandView.swift */; };
 		1421D5C521F1F26100635582 /* BNItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421D5C421F1F26100635582 /* BNItemsView.swift */; };
 		1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421D5C621F2FD1000635582 /* CustomViewController.swift */; };
+		142A76D92226712F0016D3DA /* BNSliderControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76D82226712F0016D3DA /* BNSliderControlView.swift */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
@@ -43,6 +52,7 @@
 		147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */; };
 		147FF4C721D0AB9800351E94 /* BNTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */; };
 		147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */; };
+		149886CD22239F9600FB0661 /* BNTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149886CC22239F9600FB0661 /* BNTipsView.swift */; };
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		149E827321F9C3B60092E202 /* BNSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E827221F9C3B60092E202 /* BNSearchView.swift */; };
@@ -100,8 +110,17 @@
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		14129CA521EC88B4009BFA74 /* BNTopSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTopSheetView.swift; sourceTree = "<group>"; };
 		14129CA721EC983B009BFA74 /* BNGeometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNGeometryView.swift; sourceTree = "<group>"; };
+		141AB8432224C185006E1841 /* BNCellSubtitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNCellSubtitleView.swift; sourceTree = "<group>"; };
+		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
+		141AB8472224D450006E1841 /* CAGradientLayer+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Helper.swift"; sourceTree = "<group>"; };
+		141AB8492224E571006E1841 /* BNOperationStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNOperationStateView.swift; sourceTree = "<group>"; };
+		141AB84B22250DE5006E1841 /* Media11.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media11.xcassets; sourceTree = "<group>"; };
+		141AB84D22252731006E1841 /* BNThreeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNThreeLabelView.swift; sourceTree = "<group>"; };
+		141FF16D2223D38A00140E4E /* icon_notice@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_notice@2x.png"; sourceTree = "<group>"; };
+		141FF16F2223D96A00140E4E /* BNExpandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNExpandView.swift; sourceTree = "<group>"; };
 		1421D5C421F1F26100635582 /* BNItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNItemsView.swift; sourceTree = "<group>"; };
 		1421D5C621F2FD1000635582 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		142A76D82226712F0016D3DA /* BNSliderControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSliderControlView.swift; sourceTree = "<group>"; };
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +144,7 @@
 		147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailControllerNew.swift; sourceTree = "<group>"; };
 		147FF4C621D0AB9700351E94 /* BNTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTableFooterView.swift; sourceTree = "<group>"; };
 		147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
+		149886CC22239F9600FB0661 /* BNTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNTipsView.swift; sourceTree = "<group>"; };
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		149E827221F9C3B60092E202 /* BNSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNSearchView.swift; sourceTree = "<group>"; };
@@ -241,8 +261,11 @@
 				51824435213E82E000071A9D /* news.geojson */,
 				140B6D4421D4D57900050C8F /* bug.png */,
 				1404FAFA21E0A70D00122E22 /* Skull.jpg */,
+				141FF16D2223D38A00140E4E /* icon_notice@2x.png */,
+				141AB8452224C54D006E1841 /* img_meetStandard@2x.png */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				144920A621C73BE900C3C2F6 /* Media.xcassets */,
+				141AB84B22250DE5006E1841 /* Media11.xcassets */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
 				51685A14208EA7C500CE8099 /* PrefixHeader.pch */,
 				51B3DA2E2126511700710A76 /* SwiftTemplet-Bridging-Header.h */,
@@ -272,9 +295,10 @@
 				14129CA321EC72C5009BFA74 /* TitleViewController.swift */,
 				1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */,
 				145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */,
-				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
 				14E42D512201438E00606AD0 /* CalendarViewController.swift */,
 				14ED8F04221695A000B396A0 /* TimerViewController.swift */,
+				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
+				141AB8472224D450006E1841 /* CAGradientLayer+Helper.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -347,11 +371,17 @@
 				14129CA721EC983B009BFA74 /* BNGeometryView.swift */,
 				147B970821ED7C2B000F5294 /* BNSegmentView.swift */,
 				1460727B21F0286C003AE810 /* BNCellDefaultView.swift */,
+				141AB8432224C185006E1841 /* BNCellSubtitleView.swift */,
 				1421D5C421F1F26100635582 /* BNItemsView.swift */,
 				14E8F75921F6EC84004317B5 /* BNTablePlainView.swift */,
 				149E827221F9C3B60092E202 /* BNSearchView.swift */,
 				1476F78921FB0F1F0088C137 /* BNSuspendBtn.swift */,
 				14E42D532201450800606AD0 /* BNCalendarView.swift */,
+				149886CC22239F9600FB0661 /* BNTipsView.swift */,
+				141FF16F2223D96A00140E4E /* BNExpandView.swift */,
+				141AB8492224E571006E1841 /* BNOperationStateView.swift */,
+				141AB84D22252731006E1841 /* BNThreeLabelView.swift */,
+				142A76D82226712F0016D3DA /* BNSliderControlView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,6 +461,9 @@
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
 				140B6D4521D4D57900050C8F /* bug.png in Resources */,
 				5182442D213E75BA00071A9D /* dataList.geojson in Resources */,
+				141FF16E2223D38B00140E4E /* icon_notice@2x.png in Resources */,
+				141AB84C22250DE5006E1841 /* Media11.xcassets in Resources */,
+				141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
 				51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */,
 			);
@@ -539,6 +572,7 @@
 				1476F78A21FB0F1F0088C137 /* BNSuspendBtn.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				149E827321F9C3B60092E202 /* BNSearchView.swift in Sources */,
+				141AB84E22252731006E1841 /* BNThreeLabelView.swift in Sources */,
 				14129CA021EA0FD0009BFA74 /* BNDateRangeView.swift in Sources */,
 				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
@@ -556,6 +590,7 @@
 				1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				1460727C21F0286C003AE810 /* BNCellDefaultView.swift in Sources */,
+				149886CD22239F9600FB0661 /* BNTipsView.swift in Sources */,
 				14129CA221EA0FF9009BFA74 /* BNPickListView.swift in Sources */,
 				149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */,
 				1421D5C521F1F26100635582 /* BNItemsView.swift in Sources */,
@@ -565,6 +600,7 @@
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
+				141AB8442224C185006E1841 /* BNCellSubtitleView.swift in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
@@ -577,6 +613,7 @@
 				517D14312140F93600F08FE5 /* BNClockView.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
 				14E42D522201438F00606AD0 /* CalendarViewController.swift in Sources */,
+				142A76D92226712F0016D3DA /* BNSliderControlView.swift in Sources */,
 				5182444C213E8CB600071A9D /* BNResult.swift in Sources */,
 				147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */,
 				515AA757214206BC00C8D0AA /* BNDatePicker.swift in Sources */,
@@ -585,6 +622,9 @@
 				147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */,
 				147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */,
 				14F7AAAD21E709BE00FB7570 /* UITableViewCellStep.swift in Sources */,
+				141AB8482224D450006E1841 /* CAGradientLayer+Helper.swift in Sources */,
+				141FF1702223D96A00140E4E /* BNExpandView.swift in Sources */,
+				141AB84A2224E571006E1841 /* BNOperationStateView.swift in Sources */,
 				147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

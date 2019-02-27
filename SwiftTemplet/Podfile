@@ -71,4 +71,12 @@ target 'SwiftTemplet' do
 
     pod 'IQKeyboardManagerSwift'
 
+#    pod 'TextFieldEffects'
+#    pod 'KeychainAccess'
+#    pod 'SwiftOCR'
+#    pod "Koloda" #探探主页效果
+#    pod 'FoldingCell' #折叠cell
+
+
+    
 end

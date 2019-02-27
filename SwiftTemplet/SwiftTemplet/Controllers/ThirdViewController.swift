@@ -44,7 +44,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         
         view.getViewLayer()
-        
+                
     }
     
     //MARK: -lazy
@@ -61,6 +61,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
 //        list = allList.randomElement()!;
 //        tableView.reloadData()
+        
+        self.goController("CustomViewController", obj: nil, objOne: nil)
     }
     
     override func viewDidLayoutSubviews() {

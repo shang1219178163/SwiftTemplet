@@ -19,7 +19,6 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
 
         // Do any additional setup after loading the view.
 //        setupTitleView()
-        
         topView.block { (tableView, indexPath) -> UITableViewCell in
             let itemList = self.list[indexPath.row]
             let value0 = itemList[0] as! String
@@ -42,7 +41,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
         topView.blockSelected { (tableview, indexPath) in
             DDLog(NSStringFromIndexPath(indexPath))
         }
-        
+                
         self.navigationItem.titleView?.getViewLayer()
 
         

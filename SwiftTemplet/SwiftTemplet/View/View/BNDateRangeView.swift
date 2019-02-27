@@ -143,9 +143,9 @@ class BNDateRangeView: UIView {
     
     //MARK: -lazy
     lazy var datePicker:BNDatePicker = {
-        let view = BNDatePicker(.date);
+        var view = BNDatePicker(.date);
 //        view.block({ (sender, idx) in
-//            //                DDLog(view,sender.datePicker.date,idx);
+//            DDLog(view,sender.datePicker.date,idx);
 //            if self.viewBlock != nil {
 //                self.viewBlock!(self);
 //

@@ -148,6 +148,42 @@ public extension UIView{
         return maskLayer
     }
     
+    /// 高性能圆角
+    @objc public func drawCorners(_ radius: CGFloat, width: CGFloat, color: UIColor, bgColor: UIColor) -> Void {
+        let image = drawCorners( .allCorners, radius: radius, width: width, color: color, bgColor: bgColor)
+        let imgView = UIImageView(image: image)
+        self.insertSubview(imgView, at: 0)
+    }
+    
+    /// [源]高性能圆角
+    @objc public func drawCorners(_ corners: UIRectCorner, radius: CGFloat, width: CGFloat, color: UIColor, bgColor: UIColor) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        let ctx = UIGraphicsGetCurrentContext()
+        
+        ctx?.setLineWidth(width)
+        ctx?.setStrokeColor(color.cgColor)
+        ctx?.setFillColor(bgColor.cgColor)
+        
+        let halfBorderWidth = width/2.0
+        let point0 = CGPointMake(bounds.width - halfBorderWidth, radius + halfBorderWidth)
+        let point1 = CGPointMake(bounds.width - halfBorderWidth, bounds.height - halfBorderWidth)
+        let point2 = CGPointMake(bounds.width - radius - halfBorderWidth, bounds.height - halfBorderWidth)
+        let point3 = CGPointMake(halfBorderWidth, halfBorderWidth)
+        let point4 = CGPointMake(bounds.width - halfBorderWidth, halfBorderWidth)
+        let point5 = CGPointMake(bounds.width - halfBorderWidth, halfBorderWidth)
+        let point6 = CGPointMake(bounds.width - halfBorderWidth, radius + halfBorderWidth)
+        
+        ctx?.move(to: point0)
+        ctx?.addArc(tangent1End: point1, tangent2End: point2, radius: radius)
+        ctx?.addArc(tangent1End: point3, tangent2End: point4, radius: radius)
+        ctx?.addArc(tangent1End: point5, tangent2End: point6, radius: radius)
+    
+        ctx?.drawPath(using: .fillStroke)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     @objc public func addCornerAll() -> CAShapeLayer {
         let cornerRadii = CGSize(width: bounds.width*0.5, height: bounds.height*0.5)
         return addCorners( .allCorners, cornerRadii: cornerRadii, width: 1.0, color: .white)
