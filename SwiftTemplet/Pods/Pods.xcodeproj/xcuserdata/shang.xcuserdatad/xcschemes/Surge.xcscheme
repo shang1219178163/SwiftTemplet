@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "36377439DB8EAA83749F8B0840043EED"
+               BuildableName = "Surge.framework"
                BlueprintName = "Surge"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Surge.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
