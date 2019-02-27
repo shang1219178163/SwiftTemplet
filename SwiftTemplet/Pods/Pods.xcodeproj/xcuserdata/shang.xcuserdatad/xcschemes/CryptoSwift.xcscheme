@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5A6207CE7CDF2B3D0D0B75FC5DC9D16C"
+               BuildableName = "CryptoSwift.framework"
                BlueprintName = "CryptoSwift"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "CryptoSwift.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CFBB3925E3800829E4C14DBAC49902CF"
+               BuildableName = "SwiftExpand.framework"
                BlueprintName = "SwiftExpand"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SwiftExpand.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

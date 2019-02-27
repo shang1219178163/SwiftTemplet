@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EFF87187B46551C36797F2B899C54212"
+               BuildableName = "IQKeyboardManagerSwift.framework"
                BlueprintName = "IQKeyboardManagerSwift"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "IQKeyboardManagerSwift.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
