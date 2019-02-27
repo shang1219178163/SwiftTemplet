@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
+/// 图片+文字+文字+图片
 class BNCellDefaultView: UIView {
 
     var type: Int = 0{
@@ -31,7 +32,6 @@ class BNCellDefaultView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //图片+文字+文字+图片
         addSubview(imgViewLeft);
         addSubview(imgViewRight);
         addSubview(labelLeft);

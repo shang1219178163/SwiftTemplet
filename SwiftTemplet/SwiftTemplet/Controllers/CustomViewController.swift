@@ -25,7 +25,6 @@ class CustomViewController: UIViewController {
         itemView.items = list
         view.addSubview(itemView)
         
-        
         var listNew:[String] = []
         for i in 0...12 {
             listNew.append("\(i)")
@@ -38,24 +37,155 @@ class CustomViewController: UIViewController {
         let btn = UIView.createBtn(rect, title: "自定义", font: 16, imgName: nil, tag: kTAG_BTN, type: 0);
         btn.addActionHandler({ (sender) in
             if let button = sender as? UIButton {
-                DDLog(button.titleLabel?.text)
+                DDLog(button.titleLabel?.text as Any)
+                
+                if self.operationView.type < 6 {
+                    self.operationView.type += 1;
+
+                } else {
+                    self.operationView.type = 0
+                    
+                }
             }
         }, for: .touchUpInside)
         view.addSubview(btn)
         
 //        btn.setBackgroundImage(UIImageColor( .theme), for: .normal)
 
+        view.addSubview(self.tipsView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.tipsView.label.text = ""
+        }
+        
+        view.addSubview(self.defaultView)
+        view.addSubview(self.defaultViewFail)
+
+
+        self.expandView.frame = CGRectMake(kX_GAP, defaultView.frame.maxY+20, UIScreen.width - kX_GAP*2, 35)
+        view.addSubview(self.expandView)
+        
+//        self.operationView.frame = CGRectMake(kX_GAP, view.bounds.maxY - 180 - kY_GAP, UIScreen.width - kX_GAP*2, 180)
+        view.addSubview(operationView)
+
         view.getViewLayer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        operationView.type = Int(arc4random() % 6)
+
+        DDLog(operationView.type)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        operationView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(kX_GAP)
+            make.right.bottom.equalToSuperview().offset(-kX_GAP)
+            make.height.equalTo(180)
+        }
+        
     }
     
     lazy var itemView: BNItemsView = {
         var view = BNItemsView(frame: .zero)
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text)
+                print(btn.titleLabel?.text as Any)
 
             }
         })
         return view;
     }()
+    
+    lazy var tipsView: BNTipsView = {
+        var view = BNTipsView(frame: .zero)
+        view.label.text = "无网络连接"
+        return view
+    }()
+    
+//    lazy var expandBtn: UIButton = {
+//        var view = UIButton(type: .custom)
+////        view.setTitle("闭包的回调方法", for: .normal);
+////        view.setTitleColor(.white, for: .normal);
+//        view.setImage(UIImageNamed("icon_notice"), for: .normal)
+//        view.setBackgroundImage(UIImage(color: .red), for: .normal)
+//        view.adjustsImageWhenHighlighted = false
+//        view.addActionHandler({ (control) in
+//            if let sender = control as? UIButton {
+//
+//
+//            }
+//
+//        }, for: .touchUpInside)
+//        view.layer.zPosition = 1;
+//
+//        return view
+//    }()
+    
+
+    lazy var expandView: BNExpandView = {
+        var view = BNExpandView(frame: .zero)
+        return view
+    }()
+    
+    lazy var defaultView: BNCellSubtitleView = {
+        let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.width - kX_GAP*2, 70)
+        var view = BNCellSubtitleView(frame: rect)
+        //        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.labelLeft.font = UIFont.systemFont(ofSize: 15)
+        view.labelSub.font = UIFont.systemFont(ofSize: 13)
+        view.labelLeft.textColor = .white
+        view.labelSub.textColor = .white
+        
+        view.imgViewLeft.image = UIImageNamed("img_meetStandard")
+//        view.imgViewRight.isHidden = true
+        view.labelLeft.text = "已达到补贴标注"
+        view.labelSub.text = "请直接前往: T2地上车场/1号入口"
+        //        view.backgroundColor = UIColor.green.withAlphaComponent(0.8)
+        
+        view.layer.cornerRadius = kPadding
+        view.layer.masksToBounds = true
+        
+        //渐变色
+        let colors = [UIColorHex("#6cda53").withAlphaComponent(0.9).cgColor, UIColorHex("#1a965a").withAlphaComponent(0.9).cgColor]
+        let gradientLayer = CAGradientLayer.layerRect(self.view.bounds, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+        //        gradientLayer.locations = [0.5,1.0]
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        return view
+    }()
+    
+    lazy var defaultViewFail: BNCellSubtitleView = {
+        let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.width - kX_GAP*2, 70)
+        var view = BNCellSubtitleView(frame: rect)
+        //        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.labelLeft.font = UIFont.systemFont(ofSize: 15)
+        view.labelSub.font = UIFont.systemFont(ofSize: 13)
+        view.labelLeft.textColor = .white
+        view.labelSub.textColor = .white
+        
+        view.imgViewLeft.image = UIImageNamed("icon_fail")
+        view.imgViewRight.isHidden = true
+        view.labelLeft.text = "未达到补贴标注"
+        view.labelSub.text = "里程/用时不符合补贴标准"
+        //        view.backgroundColor = UIColor.green.withAlphaComponent(0.8)
+        
+        view.layer.cornerRadius = kPadding
+        view.layer.masksToBounds = true
+        
+        view.backgroundColor = UIColorHex("#999999")
+        
+        return view
+    }()
+    
+    lazy var operationView: BNOperationStateView = {
+        var view = BNOperationStateView(frame: .zero)
+        view.type = 0;
+        
+        return view
+    }()
+    
+    
 }

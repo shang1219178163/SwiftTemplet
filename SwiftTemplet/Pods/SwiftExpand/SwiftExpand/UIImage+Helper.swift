@@ -89,7 +89,7 @@ public extension UIImage {
     public func roundImage(byRoundingCorners: UIRectCorner = UIRectCorner.allCorners, cornerRadii: CGSize) -> UIImage? {
         
         let imageRect = CGRect(origin: CGPoint.zero, size: size)
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         defer {
             UIGraphicsEndImageContext()
         }
@@ -106,5 +106,6 @@ public extension UIImage {
         self.draw(in: imageRect)
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
 
 }
