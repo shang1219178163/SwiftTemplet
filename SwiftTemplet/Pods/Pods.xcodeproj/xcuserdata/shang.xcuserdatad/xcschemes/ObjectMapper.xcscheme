@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0882708950626A3ECBCB6A065347330B"
+               BuildableName = "ObjectMapper.framework"
                BlueprintName = "ObjectMapper"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "ObjectMapper.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
