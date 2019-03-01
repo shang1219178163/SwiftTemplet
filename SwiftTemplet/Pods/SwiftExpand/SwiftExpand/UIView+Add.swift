@@ -44,6 +44,21 @@ public extension UIView {
         }
     }
     
+    @objc public var gradientLayer: CAGradientLayer {
+        get {
+            var layer = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CAGradientLayer;
+            if layer == nil {
+                let colors = [UIColor.theme.withAlphaComponent(0.5).cgColor, UIColor.theme.withAlphaComponent(0.9).cgColor]
+                layer = CAGradientLayer.layerRect(.zero, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), layer, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            }
+            return layer!;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
     /// [源]UITableView创建
     @objc public static func createTableView(_ rect: CGRect, style: UITableView.Style, rowHeight: CGFloat) -> UITableView{
         let table = UITableView(frame: rect, style: style);

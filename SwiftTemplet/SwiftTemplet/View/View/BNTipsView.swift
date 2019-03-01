@@ -21,11 +21,11 @@ class BNTipsView: UIView {
         backgroundColor = .red
         backgroundColor = UIColor.red.withAlphaComponent(0.8);
 
+        addSubview(label)
+        label.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        
         label.backgroundColor = .clear
         label.textColor = .white
-        addSubview(label)
-        
-        label.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
     convenience init(frame: CGRect, parController: UIViewController!) {
@@ -76,5 +76,6 @@ class BNTipsView: UIView {
         view.tag = 10;
         return view;
     }();
+    
     
 }

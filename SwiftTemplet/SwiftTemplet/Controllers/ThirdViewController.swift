@@ -62,7 +62,11 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //        list = allList.randomElement()!;
 //        tableView.reloadData()
         
-        self.goController("CustomViewController", obj: nil, objOne: nil)
+        var controller = "CustomViewController"
+        controller = "PickerViewController"
+        
+//        goController(controller, obj: nil, objOne: nil)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -130,6 +134,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
              ["自定义View", "CustomViewController"],
              ["CalenderView", "CalendarViewController"],
              ["Timer", "TimerViewController"],
+             ["PickerView", "PickerViewController"],
+             ["PictureView", "PictureViewController"],
              
              ],
         ]

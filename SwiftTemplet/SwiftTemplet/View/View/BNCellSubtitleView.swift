@@ -17,6 +17,20 @@ import SwiftExpand
  */
 class BNCellSubtitleView: UIView {
     
+    /// 类型:0,失败;1,成功
+    var type: Int = 1 {
+        willSet {
+            switch newValue {
+            case 1:
+                gradientLayer.colors = [UIColorHex("#6cda53").withAlphaComponent(0.9).cgColor, UIColorHex("#1a965a").withAlphaComponent(0.9).cgColor]
+
+            default:
+                gradientLayer.colors = [UIColorHex("#999999").withAlphaComponent(0.8).cgColor, UIColorHex("#999999").cgColor]
+
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -24,12 +38,12 @@ class BNCellSubtitleView: UIView {
         addSubview(imgViewRight);
         addSubview(labelLeft);
         addSubview(labelSub);
-        
-        labelSub.numberOfLines = 1;
+        layer.insertSublayer(gradientLayer, at: 0)
+
         labelLeft.numberOfLines = 1;
-        
+        labelSub.numberOfLines = 1;
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -37,6 +51,8 @@ class BNCellSubtitleView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        gradientLayer.frame = bounds
+
         setupConstraint()
     }
     
@@ -83,8 +99,6 @@ class BNCellSubtitleView: UIView {
         } else {
             //头像不为空
             if imgViewLeft.image != nil {
-                let imgViewH = frame.height - kY_GAP*2
-                
                 imgViewLeft.snp.makeConstraints { (make) in
                     make.centerY.equalToSuperview()
                     make.left.equalToSuperview().offset(kX_GAP)
@@ -172,4 +186,10 @@ class BNCellSubtitleView: UIView {
         return view;
     }()
 
+//    lazy var gradientLayer: CAGradientLayer = {
+//        //渐变色
+//        let colors = [UIColorHex("#6cda53").withAlphaComponent(0.9).cgColor, UIColorHex("#1a965a").withAlphaComponent(0.9).cgColor]
+//        var layer = CAGradientLayer.layerRect(.zero, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+//        return layer
+//    }()
 }

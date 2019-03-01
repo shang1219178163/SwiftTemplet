@@ -107,8 +107,24 @@ public func UIColorRGBA(_ r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat) -> UICo
     return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
 }
 
-public func UIColorHex(_ hex:String) -> UIColor {
+/// 16进制字符串
+public func UIColorHex(_ hex: String, _ a:CGFloat) -> UIColor {
+    return UIColor.hex(hex, a: a);
+}
+
+/// 16进制字符串
+public func UIColorHex(_ hex: String) -> UIColor {
     return UIColor.hex(hex);
+}
+
+/// 0x开头的16进制Int数字(无#前缀十六进制数表示，开头就是0x)
+public func UIColorHexValue(_ hex:Int) -> UIColor {
+    return UIColorHexValue(hex, 1.0)
+}
+
+/// [源]0x开头的16进制Int数字(无#前缀十六进制数表示，开头就是0x)
+public func UIColorHexValue(_ hex:Int, _ a:CGFloat) -> UIColor {
+    return UIColor(red: CGFloat((hex & 0xFF0000) >> 16)/255.0, green: CGFloat((hex & 0xFF00) >> 8)/255.0, blue: CGFloat(hex & 0xFF)/255.0, alpha: a)
 }
 
 public func UIColorRandom() -> UIColor {

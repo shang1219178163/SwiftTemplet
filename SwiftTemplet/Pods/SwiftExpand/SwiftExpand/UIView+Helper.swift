@@ -463,26 +463,32 @@ public extension UIView{
         return tableView.indexPathForRow(at: cell.center)!
     }
     
+    @objc public func convertToImage() -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        let ctx = UIGraphicsGetCurrentContext()
+        self.layer.render(in: ctx!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        return image!;
+    }
+        
     /// 保存图像到相册
     @objc public func imageToSavedPhotosAlbum(_ action: @escaping((NSError?) -> Void)) -> Void{
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
     
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
-        let ctx = UIGraphicsGetCurrentContext()
-        self.layer.render(in: ctx!)
-    
-        var image = UIGraphicsGetImageFromCurrentImageContext()
+        var image: UIImage = self.convertToImage();
         if let imgView = self as? UIImageView {
-            image = imgView.image
+            if imgView.image != nil {
+                image = imgView.image!
+            }
         }
     
-        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        image!.runtimeKey = runtimeKey;
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        image.runtimeKey = runtimeKey;
     
-        let obj = objc_getAssociatedObject(self, image!.runtimeKey)
+        let obj = objc_getAssociatedObject(self, image.runtimeKey)
         if obj == nil {
-            objc_setAssociatedObject(self, image!.runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, image.runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
     }
     
