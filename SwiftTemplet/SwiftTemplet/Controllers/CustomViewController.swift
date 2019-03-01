@@ -9,6 +9,9 @@
 import UIKit
 
 import SwiftExpand
+import BSImageView
+import BSImagePicker
+import Photos
 
 class CustomViewController: UIViewController {
 
@@ -86,8 +89,8 @@ class CustomViewController: UIViewController {
             make.right.bottom.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(180)
         }
-        
     }
+    
     
     lazy var itemView: BNItemsView = {
         var view = BNItemsView(frame: .zero)
@@ -106,26 +109,6 @@ class CustomViewController: UIViewController {
         return view
     }()
     
-//    lazy var expandBtn: UIButton = {
-//        var view = UIButton(type: .custom)
-////        view.setTitle("闭包的回调方法", for: .normal);
-////        view.setTitleColor(.white, for: .normal);
-//        view.setImage(UIImageNamed("icon_notice"), for: .normal)
-//        view.setBackgroundImage(UIImage(color: .red), for: .normal)
-//        view.adjustsImageWhenHighlighted = false
-//        view.addActionHandler({ (control) in
-//            if let sender = control as? UIButton {
-//
-//
-//            }
-//
-//        }, for: .touchUpInside)
-//        view.layer.zPosition = 1;
-//
-//        return view
-//    }()
-    
-
     lazy var expandView: BNExpandView = {
         var view = BNExpandView(frame: .zero)
         return view
@@ -149,11 +132,9 @@ class CustomViewController: UIViewController {
         view.layer.cornerRadius = kPadding
         view.layer.masksToBounds = true
         
-        //渐变色
-        let colors = [UIColorHex("#6cda53").withAlphaComponent(0.9).cgColor, UIColorHex("#1a965a").withAlphaComponent(0.9).cgColor]
-        let gradientLayer = CAGradientLayer.layerRect(self.view.bounds, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
-        //        gradientLayer.locations = [0.5,1.0]
-        view.layer.insertSublayer(gradientLayer, at: 0)
+//        view.gradientLayer.colors = [UIColor.red.cgColor, UIColor.green.cgColor]
+//        view.gradientLayer.colors = [UIColorHex("#999999").withAlphaComponent(0.8).cgColor, UIColorHex("#999999").cgColor]
+
         return view
     }()
     
@@ -175,8 +156,7 @@ class CustomViewController: UIViewController {
         view.layer.cornerRadius = kPadding
         view.layer.masksToBounds = true
         
-        view.backgroundColor = UIColorHex("#999999")
-        
+        view.type = 0        
         return view
     }()
     

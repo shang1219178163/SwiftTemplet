@@ -38,27 +38,24 @@ class BNDatePicker: UIView {
     func show() -> Void {
         UIApplication.shared.keyWindow?.addSubview(self);
         
+        containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-//            self.containView.frame.orignY -= self.containView.frame.height;
-            self.containView.y -= self.containView.frame.height;
+            self.containView.transform = CGAffineTransform.identity
+
         }, completion: nil);
     }
 
     func dismiss() -> Void {
-
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-//            self.containView.frame.orignY += self.containView.frame.height;
-            self.containView.y += self.containView.frame.height;
+            self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containView.frame.height)
 
         }) { (isFinished) in
             self.removeFromSuperview();
-            self.containView.frame = CGRect(x: 0, y: UIScreen.height, width: UIScreen.width, height: (kH_StatusBar + kH_PickerView));
 
         }
     }
-   
    
     func block(_ action:@escaping ViewClick) -> Void {
         self.viewBlock = action;
@@ -67,7 +64,7 @@ class BNDatePicker: UIView {
     
     //MARK: - layz
     lazy var containView:UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: UIScreen.height, width: UIScreen.width, height: (kH_NaviagtionBar + kH_PickerView)));
+        let view = UIView(frame: CGRect(x: 0, y: UIScreen.height - (kH_NaviagtionBar + kH_PickerView), width: UIScreen.width, height: (kH_NaviagtionBar + kH_PickerView)));
        
         view.backgroundColor = UIColorRGBA(230, 230, 230, 1);
         
@@ -124,7 +121,7 @@ class BNDatePicker: UIView {
         let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.width - btnSize.width*2, height: kH_NaviagtionBar));
         lab.tag = 10;
         lab.text = "请选择";
-        lab.textColor = UIColor.lightGray;
+        lab.textColor = UIColor.gray;
         lab.textAlignment = .center;
         return lab;
     }();
@@ -145,33 +142,4 @@ class BNDatePicker: UIView {
         }
     }
     
-    /*
-     func show() -> Void {
-     UIApplication.shared.keyWindow?.addSubview(self);
-     
-     var tmpFrame = self.containView.frame;
-     tmpFrame.origin.y = tmpFrame.minY - tmpFrame.height;
-     
-     UIView.animate(withDuration: 0.5, animations: {
-         self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-         self.containView.frame = tmpFrame;
-         }, completion: nil);
-     }
-     
-     func dismiss() -> Void {
-     
-     var tmpFrame = self.containView.frame;
-     tmpFrame.origin.y = tmpFrame.minY + tmpFrame.height;
-     
-     UIView.animate(withDuration: 0.5, animations: {
-         self.backgroundColor = UIColor.black.withAlphaComponent(0);
-         self.containView.frame = tmpFrame;
-     
-         }) { (isFinished) in
-             self.removeFromSuperview();
-             self.containView.frame = CGRect(x: 0, y: UIScreen.height, width: UIScreen.width, height: (kH_StatusBar + kH_PickerView));
-     
-         }
-     }
-     */
 }

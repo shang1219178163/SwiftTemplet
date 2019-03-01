@@ -141,27 +141,26 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     func show(_ inController: UIViewController) -> Void {
         self.parController!.view.addSubview(self.containView)
-        self.tableView.y = -self.tableView.height
-        
+        self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.height)
+
         self.containView.alpha = 0.0
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 1.0
             
             self.btn.imageView?.transform = (self.btn.imageView?.transform.rotated(by:  CGFloat(Double.pi)))!
-            self.tableView.y += self.tableView.height
-            
+            self.tableView.transform = CGAffineTransform.identity
+
         }, completion: nil)
         
     }
     
     func dismiss() -> Void {
-        
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
             
             self.btn.imageView?.transform = .identity
-            self.tableView.y -= self.tableView.height
-            
+            self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.height)
+
         }, completion:{ (isFinish:Bool) in
             self.containView.removeFromSuperview()
             

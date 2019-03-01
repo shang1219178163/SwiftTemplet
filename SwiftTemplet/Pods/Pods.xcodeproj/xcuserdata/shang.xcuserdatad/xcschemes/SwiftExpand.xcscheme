@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFBB3925E3800829E4C14DBAC49902CF"
+               BlueprintIdentifier = "C0F7CFA525D44E55EC41EEA8DA25A5C0"
                BuildableName = "SwiftExpand.framework"
                BlueprintName = "SwiftExpand"
                ReferencedContainer = "container:Pods.xcodeproj">
