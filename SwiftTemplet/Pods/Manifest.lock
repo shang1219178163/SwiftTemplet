@@ -5,6 +5,11 @@ PODS:
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - BSGridCollectionViewLayout (1.2.2)
+  - BSImagePicker (2.9.0):
+    - BSGridCollectionViewLayout (= 1.2.2)
+    - BSImageView (= 1.0.2)
+  - BSImageView (1.0.2)
   - CryptoSwift (0.14.0)
   - HandyJSON (4.2.1)
   - IQKeyboardManagerSwift (6.2.0)
@@ -26,13 +31,14 @@ PODS:
   - SDWebImage/Core (4.4.6)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
-  - SwiftExpand (1.2.6.4)
+  - SwiftExpand (1.2.6.6)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - AlamofireObjectMapper
+  - BSImagePicker
   - CryptoSwift
   - HandyJSON
   - IQKeyboardManagerSwift
@@ -51,6 +57,9 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - AlamofireObjectMapper
+    - BSGridCollectionViewLayout
+    - BSImagePicker
+    - BSImageView
     - CryptoSwift
     - HandyJSON
     - IQKeyboardManagerSwift
@@ -70,6 +79,9 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  BSGridCollectionViewLayout: 3e6f23b3a2b4f0ca9afae09ca01389d1057f7b32
+  BSImagePicker: 553707de1adaad42eac252e0b84d20dbdba83fe9
+  BSImageView: ab22ff8cae61f1ae17a3c9efeeb216af3cf84a09
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
@@ -82,9 +94,9 @@ SPEC CHECKSUMS:
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 228afa00a363fdf891d2691429d8cd5ca844f19f
+  SwiftExpand: b913cde049366d7393c87c360925e2741c35cdde
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 7d788a42fc4beb0e8710d1143d1742d6843fc419
+PODFILE CHECKSUM: a78e9fd2fa811199b9a0cde21cd6d1309af365d9
 
 COCOAPODS: 1.5.3

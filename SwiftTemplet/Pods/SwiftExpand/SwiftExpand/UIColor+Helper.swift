@@ -22,8 +22,7 @@ public extension UIColor{
         get{
             var color = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIColor;
             color = color ?? UIColor.orange
-//            return UIColor.hex("#0082e0");
-//            return UIColor.orange;
+            color = color ?? UIColorHex("#0082e0")
             return color!;
         }
         set{
@@ -83,6 +82,11 @@ public extension UIColor{
     
     //MARK: - -方法
     public static func hex(_ hex:String) -> UIColor {
+        return UIColor.hex(hex, a: 1.0);
+    }
+    
+    /// [源]十六进制颜色字符串
+    public static func hex(_ hex: String, a: CGFloat) -> UIColor {
         var cString = hex.trimmingCharacters(in: CharacterSet.whitespaces).uppercased();
         if cString.hasPrefix("#") {
             let index = cString.index(cString.startIndex, offsetBy:1);
@@ -109,7 +113,7 @@ public extension UIColor{
         Scanner(string: bString).scanHexInt32(&b);
         
         //        print(hex,rString,gString,bString,otherString)
-        return UIColor(red:CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(1.0));
+        return UIColor(red:CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: a);
     }
     
     public static func randomColor() -> UIColor {

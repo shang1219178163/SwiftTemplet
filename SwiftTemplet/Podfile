@@ -13,7 +13,8 @@ target 'SwiftTemplet' do
 
 #    pod 'Aspects'
 #   pod 'Argo'
-#
+
+    pod 'BSImagePicker'
 #   pod 'BluetoothKit'
 
     pod 'CryptoSwift'
@@ -70,6 +71,7 @@ target 'SwiftTemplet' do
     pod 'SwiftExpand'
 
     pod 'IQKeyboardManagerSwift'
+
 
 #    pod 'TextFieldEffects'
 #    pod 'KeychainAccess'
