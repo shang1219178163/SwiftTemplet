@@ -19,7 +19,8 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = 200;
+        tableView.estimatedRowHeight = 70;
+
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
         tableView.tableFooterView = footerView
         view.addSubview(tableView);
@@ -53,11 +54,14 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         return list.count;
     };
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let itemList = list[indexPath.row]
-//        let height = (itemList[2] as! String).cgFloatValue()
-//        return height
-//    };
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let itemList = list[indexPath.row]
+        if (itemList[2] as! String) == "" {
+            return  UITableViewAutomaticDimension;
+        }
+        let height = (itemList[2] as! String).cgFloatValue()
+        return height
+    };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemList = list[indexPath.row]
@@ -334,7 +338,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             ["生产厂家:", "112", "60.0", "", "recharge", ],
             ["*备注信息:", "107", "160.0", "", "recharge", ],
             ["*default:", "150", "60.0", "", "recharge", ],
-            ["*图片选择:", "115", "60.0", "", "recharge", ],
+//            ["*图片选择:", "115", "", "", "recharge", ],
 
              ]
         return array
