@@ -63,37 +63,70 @@ class BNDateRangeView: UIView {
     }
     
     func setupConstraint() -> Void {
-        labTitle.sizeToFit()
-        labTitle.frame.size = CGSize(width: labTitle.width, height: 35)
+        
+        let labTitleSize = labTitle.sizeThatFits(.zero)
         labTitle.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(kY_GAP)
             make.left.equalToSuperview().offset(kX_GAP)
-            make.size.equalTo(labTitle.frame.size);
+            make.width.equalTo(labTitleSize.width)
+            make.bottom.equalToSuperview().offset(-kY_GAP)
         }
         
-        let width = frame.width - labTitle.frame.maxX - kX_GAP
+        let width = bounds.width - labTitleSize.width - kX_GAP*2
         let ctlWidth = width*0.7
         
-        labStart.frame.size = CGSize(width: 100, height: labTitle.frame.height)
         labStart.snp.makeConstraints { (make) in
-            make.top.equalTo(labTitle)
+            make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labTitle.snp.right).offset((width - ctlWidth)*0.5)
-            make.size.equalTo(labStart.frame.size);
+            make.width.equalTo(100);
         }
         
-        labLine.frame.size = CGSize(width: 20, height: labTitle.frame.height)
         labLine.snp.makeConstraints { (make) in
-            make.top.equalTo(labTitle)
+            make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labStart.snp.right).offset(20)
-            make.size.equalTo(labLine.frame.size);
+            make.width.equalTo(20);
         }
         
         labEnd.snp.makeConstraints { (make) in
-            make.top.equalTo(labTitle)
+            make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labLine.snp.right).offset(20)
-            make.size.equalTo(labStart.frame.size)
+            make.width.equalTo(100);
         }
+    
     }
+    
+//    func setupConstraint() -> Void {
+//        labTitle.sizeToFit()
+//        labTitle.frame.size = CGSize(width: labTitle.width, height: 35)
+//        labTitle.snp.makeConstraints { (make) in
+//            make.centerY.equalToSuperview()
+//            make.left.equalToSuperview().offset(kX_GAP)
+//            make.size.equalTo(labTitle.frame.size);
+//        }
+//
+//        let width = frame.width - labTitle.frame.maxX - kX_GAP
+//        let ctlWidth = width*0.7
+//
+//        labStart.frame.size = CGSize(width: 100, height: labTitle.frame.height)
+//        labStart.snp.makeConstraints { (make) in
+//            make.top.equalTo(labTitle)
+//            make.left.equalTo(labTitle.snp.right).offset((width - ctlWidth)*0.5)
+//            make.size.equalTo(labStart.frame.size);
+//        }
+//
+//        labLine.frame.size = CGSize(width: 20, height: labTitle.frame.height)
+//        labLine.snp.makeConstraints { (make) in
+//            make.top.equalTo(labTitle)
+//            make.left.equalTo(labStart.snp.right).offset(20)
+//            make.size.equalTo(labLine.frame.size);
+//        }
+//
+//        labEnd.snp.makeConstraints { (make) in
+//            make.top.equalTo(labTitle)
+//            make.left.equalTo(labLine.snp.right).offset(20)
+//            make.size.equalTo(labStart.frame.size)
+//        }
+//    }
     
     //MARK: -funtions
     func block(_ action:((BNDateRangeView) -> Void)?) -> Void {
