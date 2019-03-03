@@ -15,12 +15,12 @@ class UITableViewCellPhotoPicker: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(defaultView);
-//        defaultView.snp.makeConstraints { (make) in
-//            make.edges.equalToSuperview()
-//        }
         defaultView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
+            make.edges.equalToSuperview()
         }
+//        defaultView.snp.makeConstraints { (make) in
+//            make.top.left.right.equalToSuperview()
+//        }
     }
     
     required init?(coder aDecoder: NSCoder) {
