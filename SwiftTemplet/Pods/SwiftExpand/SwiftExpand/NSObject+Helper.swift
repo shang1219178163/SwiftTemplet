@@ -213,6 +213,10 @@ public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
     
 }
 
+public func UIFontSystem(_ size: CGFloat) -> UIFont {
+    return UIFont.systemFont(ofSize: size);
+}
+
 public extension NSObject{
     
     public var runtimeKey: UnsafeRawPointer {
