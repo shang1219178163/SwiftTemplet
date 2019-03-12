@@ -8,8 +8,8 @@
 
 import UIKit
 import SnapKit
-import SwiftExpand
 
+import SwiftExpand
 /// 图片+文字+文字+图片
 class BNCellDefaultView: UIView {
 
@@ -70,11 +70,10 @@ class BNCellDefaultView: UIView {
                 
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.sizeToFit();
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
-                        make.height.equalTo(kSizeArrow.height)
+                        make.size.equalTo(labelRight.sizeThatFits(.zero))
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
@@ -125,11 +124,10 @@ class BNCellDefaultView: UIView {
                     }
                     
                 } else {
-                    labelLeft.sizeToFit();
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.height.equalTo(kSizeArrow.height)
+                        make.size.equalTo(labelLeft.sizeThatFits(.zero))
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
@@ -152,11 +150,10 @@ class BNCellDefaultView: UIView {
                 
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.sizeToFit();
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
-                        make.height.equalTo(kSizeArrow.height)
+                        make.size.equalTo(labelRight.sizeThatFits(.zero))
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
@@ -168,11 +165,11 @@ class BNCellDefaultView: UIView {
                     
                 } else {
                     //左边文字优先展示
-                    labelLeft.sizeToFit();
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
                         make.height.equalTo(kSizeArrow.height)
+                        make.size.equalTo(labelLeft.sizeThatFits(.zero))
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
@@ -191,11 +188,10 @@ class BNCellDefaultView: UIView {
                 }
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.sizeToFit();
                     labelRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
-                        make.height.equalTo(kSizeArrow.height)
+                        make.size.equalTo(labelRight.sizeThatFits(.zero))
                     }
                     
                     labelLeft.snp.makeConstraints { (make) in
@@ -206,11 +202,11 @@ class BNCellDefaultView: UIView {
                     }
                 } else {
                     //左边文字优先展示
-                    labelLeft.sizeToFit();
                     labelLeft.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.height.equalTo(kSizeArrow.height)
+                        make.size.equalTo(labelLeft.sizeThatFits(.zero))
                     }
                     
                     labelRight.snp.makeConstraints { (make) in
@@ -223,7 +219,6 @@ class BNCellDefaultView: UIView {
             }
         }
     }
-    
     //MARK: -funtions
   
     
