@@ -103,6 +103,11 @@ public func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
     return tabBarController;
 }
 
+/// 获取某种颜色Alpha下的色彩
+public func UIColorAlpha(_ color: UIColor,_ a:CGFloat) -> UIColor{
+    return color.withAlphaComponent(a)
+}
+
 public func UIColorRGBA(_ r:CGFloat,_ g:CGFloat,_ b:CGFloat,_ a:CGFloat) -> UIColor{
     return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
 }
