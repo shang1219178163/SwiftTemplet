@@ -21,43 +21,41 @@ public extension UIColor{
     public static var theme : UIColor {
         get{
             var color = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIColor;
-            color = color ?? UIColor.orange
-            color = color ?? UIColorHex("#0082e0")
+            color = color ?? UIColorHexValue(0x0082e0)
             return color!;
         }
         set{
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-
         }
     }
         
     public static var background : UIColor {
         get{
-            return UIColor.hex("#E9E9E9");
+            return UIColorHexValue(0xe9e9e9);
         }
     }
     
     public static var line : UIColor {
         get{
-            return UIColor.hex("#e0e0e0");
+            return UIColorHexValue(0xe0e0e0);
         }
     }
     
     public static var btnN : UIColor {
         get{
-            return UIColor.hex("#fea914");
+            return UIColorHexValue(0xfea914);
         }
     }
     
     public static var btnH : UIColor {
         get{
-            return UIColor.hex("#f1a013");
+            return UIColorHexValue(0xf1a013);
         }
     }
     
     public static var btnD : UIColor {
         get{
-            return UIColor.hex("#999999");
+            return UIColorHexValue(0x999999);
         }
     }
     
@@ -70,13 +68,13 @@ public extension UIColor{
     //MARK:  -项目定制
     public static var textColorTitle : UIColor {
         get{
-            return UIColor.hex("#333333");
+            return UIColorHexValue(0x333333);
         }
     }
     
     public static var textColorSub : UIColor {
         get{
-            return UIColor.hex("#999999");
+            return UIColorHexValue(0x999999);
         }
     }
     

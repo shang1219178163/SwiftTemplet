@@ -51,14 +51,14 @@ public extension UIViewController{
 
     }
     
-    public func createBtnBarItem(_ title:String?, image:String?, tag:NSInteger, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClosure)) -> UIButton {
+    public func createBtnBarItem(_ title:String?, image:String?, isLeft:Bool, isHidden:Bool, action:@escaping (ControlClosure)) -> UIButton {
         var size = CGSize(width: 32, height: 32)
         if image != nil && UIImage(named:image!) != nil {
             size = CGSize(width: 40, height: 40)
         }
         
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
-        let btn = UIView.createBtn(rect, title: title, font: 16, imgName: image, tag: tag, type: 3)
+        let btn = UIView.createBtn(rect, title: title, font: 16, imgName: image, tag: kTAG_BTN, type: 3)
         btn.tag = isLeft == true ? kTAG_BackItem : kTAG_RightItem;
         btn.isHidden = isHidden;
         btn.sizeToFit();
@@ -105,8 +105,8 @@ public extension UIViewController{
         let controller = UICtrFromString(controllerName)
         assert(controller.isKind(of: UIViewController.classForCoder()))
 
-        self.addChildViewController(controller)
-        self.view.addSubview(controller.view)
+        addChildViewController(controller)
+        view.addSubview(controller.view)
         controller.didMove(toParentViewController: self)
     }
 }

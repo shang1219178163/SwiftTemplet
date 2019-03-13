@@ -103,6 +103,7 @@ public func UITarBarCtrFromList(_ list:Array<Any>) -> UITabBarController!{
     return tabBarController;
 }
 
+
 /// 获取某种颜色Alpha下的色彩
 public func UIColorAlpha(_ color: UIColor,_ a:CGFloat) -> UIColor{
     return color.withAlphaComponent(a)
@@ -216,10 +217,6 @@ public func AttributeDict(_ type:Int) -> [NSAttributedStringKey: Any]{
     }
     return dic;
     
-}
-
-public func UIFontSystem(_ size: CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: size);
 }
 
 public extension NSObject{
