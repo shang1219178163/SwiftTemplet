@@ -17,7 +17,7 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = createBtnBarItem("picker", image: nil, tag: kTAG_RightItem, isLeft: false, isHidden: false) { (control) in
+        _ = createBtnBarItem("picker", image: nil, isLeft: false, isHidden: false) { (control) in
             self.customPickerView.show();
             self.btn.transform = CGAffineTransform.identity
 
