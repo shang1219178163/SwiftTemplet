@@ -60,18 +60,20 @@ public extension UIApplication{
         }
     }
     
-    public static var mainWindow: UIWindow {
+    @objc public static var mainWindow: UIWindow {
         get {
-            if let window = UIApplication.shared.keyWindow {
-                window.backgroundColor = UIColor.white
-                window.makeKeyAndVisible()
-                return window
-            } else {
-                let window = UIWindow(frame: UIScreen.main.bounds)
-                window.backgroundColor = UIColor.white
-                window.makeKeyAndVisible()
-                return window
+            var window = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIWindow;
+            if window == nil {
+                window = UIWindow(frame: UIScreen.main.bounds)
+                
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), window, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
+            window!.backgroundColor = UIColor.white
+            window!.makeKeyAndVisible()
+            return window!;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
