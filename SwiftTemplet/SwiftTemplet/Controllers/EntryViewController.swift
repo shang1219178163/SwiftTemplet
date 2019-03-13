@@ -25,7 +25,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         tableView.tableFooterView = footerView
         view.addSubview(tableView);
 
-        let btn = createBtnBarItem("custom", image: nil, tag: kTAG_BTN, isLeft: false, isHidden: false) { (sender) in
+        let btn = createBtnBarItem("custom", image: nil, isLeft: false, isHidden: false) { (sender) in
             if let btn = sender as? UIButton {
                 DDLog(btn.titleLabel?.text)
                 self.goController("CustomViewController", obj: nil, objOne: nil)

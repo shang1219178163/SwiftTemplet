@@ -100,7 +100,7 @@ class CenterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let itemRight = createBtnBarItem("done", image: nil, tag: 17, isLeft: false, isHidden: false) { (sender:UIControl) in
+        let itemRight = createBtnBarItem("done", image: nil, isLeft: false, isHidden: false) { (sender:UIControl) in
             DDLog(sender);
         };
         DDLog(itemRight);

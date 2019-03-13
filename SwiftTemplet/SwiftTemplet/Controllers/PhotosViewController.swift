@@ -18,7 +18,7 @@ class PhotosViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = createBtnBarItem("相册", image: nil, tag: kTAG_RightItem, isLeft: false, isHidden: false) { (control) in
+        _ = createBtnBarItem("相册", image: nil, isLeft: false, isHidden: false) { (control) in
             let items: [String] = ["image Picker", "custom ImagePicker","imagePicker With selected assets",]
             UIAlertController.showSheet("请选择", items: items, completion: { (action) in
                 let x = items.firstIndex(of: action.title!)
