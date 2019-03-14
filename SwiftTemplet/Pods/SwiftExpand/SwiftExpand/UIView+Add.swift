@@ -59,6 +59,56 @@ public extension UIView {
         }
     }
     
+    
+    /// (与holderView配置方法)配套使用
+    @objc public var holderView: UIView {
+        get {
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
+            if obj == nil {
+                obj = UIView(frame: bounds);
+                obj!.backgroundColor = UIColor.white
+
+                obj!.isHidden = true;
+
+                let height = bounds.height - 25*2
+                let YGap = height*0.2
+                let imgView = UIImageView(frame: CGRectMake(0, YGap, bounds.width, height*0.3))
+                imgView.contentMode = .scaleAspectFit
+                imgView.tag = kTAG_IMGVIEW
+                obj!.addSubview(imgView)
+
+                let label = UILabel(frame: CGRectMake(0, imgView.frame.maxY + 25, bounds.width, 25))
+                label.textAlignment = .center
+                label.text = "暂无数据"
+                label.textColor = UIColorHexValue(0x999999)
+                label.tag = kTAG_LABEL
+                obj!.addSubview(label)
+                
+                addSubview(obj!)
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            }
+            return obj!;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    
+    /// 配置HolderView
+    @objc public func holderView(_ title: String, image: String?) -> Void {
+        let imgView: UIImageView = holderView.viewWithTag(kTAG_IMGVIEW) as! UIImageView
+        let label: UILabel = holderView.viewWithTag(kTAG_LABEL) as! UILabel
+        label.text = title
+        if image == nil {
+            label.center = CGPointMake(holderView.center.x, holderView.height*0.35)
+
+        } else {
+            imgView.image = UIImageNamed(image!)
+
+        }
+    }
+    
     /// [源]UITableView创建
     @objc public static func createTableView(_ rect: CGRect, style: UITableView.Style, rowHeight: CGFloat) -> UITableView{
         let table = UITableView(frame: rect, style: style);
@@ -357,4 +407,5 @@ public extension UIView {
         view.onTintColor = UIColor.theme
         return view
     }
+ 
 }

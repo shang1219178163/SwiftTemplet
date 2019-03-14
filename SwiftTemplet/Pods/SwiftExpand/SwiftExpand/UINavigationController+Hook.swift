@@ -28,12 +28,14 @@ public extension UINavigationController{
     @objc public func swz_pushViewController(_ viewController: UIViewController, animated: Bool) {
         //需要注入的代码写在此处
         //判断是否是根控制器
-        if self.childViewControllers.count > 0 {
+        if viewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
         }
 
-        //设置每一个子控制器的左边为我们自定义的放回按钮
-        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil);
+        //系统默认返回按钮
+//        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: nil, action: nil);
+        _ = viewController.createBackItem(UIImageNamed("icon_arowLeft_black")!)
+        
         viewController.view.backgroundColor = .white;
         //push进入下一个控制器
         self.swz_pushViewController(viewController, animated: animated);
