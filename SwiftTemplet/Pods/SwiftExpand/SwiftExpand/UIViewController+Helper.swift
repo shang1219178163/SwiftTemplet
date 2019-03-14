@@ -109,6 +109,24 @@ public extension UIViewController{
         view.addSubview(controller.view)
         controller.didMove(toParentViewController: self)
     }
+    
+    
+    /// 导航栏返回按钮图片定制
+    public func createBackItem(_ image: UIImage) -> UIButton {
+        let btn = UIButton(type: .custom)
+        btn.frame = CGRectMake(0, 0, 30, 40)
+        btn.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0)
+        
+        btn.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        btn.imageView?.tintColor = UINavigationBar.appearance().tintColor ?? .red
+        
+        btn.addActionHandler({ (control) in
+            self.navigationController!.popViewController(animated: true);
+        }, for: .touchUpInside)
+        let backItem = UIBarButtonItem(customView: btn)
+        navigationItem.leftBarButtonItem = backItem
+        return btn
+    }
 }
 
 

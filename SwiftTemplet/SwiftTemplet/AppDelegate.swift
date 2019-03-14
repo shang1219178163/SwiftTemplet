@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIViewController.initializeMethod();
         UINavigationController.initializeMethod();
         UIImageView.initializeMethod();
+        UIApplication.setupAppearance();
 
         IQKeyboardManager.shared.enable = true;
 
@@ -48,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIApplication.mainWindow;
         
 //        UIApplication.setupRootController(&(window!), controller, true);
-        UIApplication.setupAppearance();
         //方式三
 //        let list:Array = [
 //            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],

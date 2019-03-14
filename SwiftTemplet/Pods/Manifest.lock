@@ -31,7 +31,7 @@ PODS:
   - SDWebImage/Core (4.4.6)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
-  - SwiftExpand (1.2.7.1)
+  - SwiftExpand (1.2.8.1)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -94,7 +94,7 @@ SPEC CHECKSUMS:
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 95d66f0039b025f2ab15a3772f048f168ec42cf0
+  SwiftExpand: e1d0f1fc9056ae1f176f95bb8f3e43f4ac3d1b66
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
 PODFILE CHECKSUM: a78e9fd2fa811199b9a0cde21cd6d1309af365d9
