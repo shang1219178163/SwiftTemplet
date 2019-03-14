@@ -150,8 +150,8 @@ public extension UIApplication{
     }
     
     public static func setupAppearance() -> Void {
-        self.setupAppearanceTabBar();
-        self.setupAppearanceNavigationBar();
+        setupAppearanceTabBar();
+        setupAppearanceNavigationBar();
         
         if iOSVer(version: 11) {
             UITableView.appearance().estimatedRowHeight = 0.0;
