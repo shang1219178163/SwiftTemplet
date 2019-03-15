@@ -76,6 +76,22 @@
 		14E42D522201438F00606AD0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E42D512201438E00606AD0 /* CalendarViewController.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F04221695A000B396A0 /* TimerViewController.swift */; };
+		14F030C2223B8B1200C3DE5B /* KeyBoardTipImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030AE223B8B1200C3DE5B /* KeyBoardTipImageView.swift */; };
+		14F030C3223B8B1200C3DE5B /* ZMKeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030AF223B8B1200C3DE5B /* ZMKeyBoardView.swift */; };
+		14F030C4223B8B1200C3DE5B /* ZMKeyBoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030B0223B8B1200C3DE5B /* ZMKeyBoardButtonView.swift */; };
+		14F030C5223B8B1200C3DE5B /* ZMKeyBoardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030B2223B8B1200C3DE5B /* ZMKeyBoardUtil.swift */; };
+		14F030C6223B8B1200C3DE5B /* ZMCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030B4223B8B1200C3DE5B /* ZMCollectionLayout.swift */; };
+		14F030C7223B8B1200C3DE5B /* capitalSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030B6223B8B1200C3DE5B /* capitalSelect@2x.png */; };
+		14F030C8223B8B1200C3DE5B /* capitalSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030B7223B8B1200C3DE5B /* capitalSelect@3x.png */; };
+		14F030C9223B8B1200C3DE5B /* capitalNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030B8223B8B1200C3DE5B /* capitalNormal@2x.png */; };
+		14F030CA223B8B1200C3DE5B /* capitalNormal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030B9223B8B1200C3DE5B /* capitalNormal@3x.png */; };
+		14F030CB223B8B1200C3DE5B /* keyboard_magnifier@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030BA223B8B1200C3DE5B /* keyboard_magnifier@2x.png */; };
+		14F030CC223B8B1200C3DE5B /* keyNewDelete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030BB223B8B1200C3DE5B /* keyNewDelete@3x.png */; };
+		14F030CD223B8B1200C3DE5B /* keyboard_magnifier@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030BC223B8B1200C3DE5B /* keyboard_magnifier@3x.png */; };
+		14F030CE223B8B1200C3DE5B /* keyNewDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F030BD223B8B1200C3DE5B /* keyNewDelete@2x.png */; };
+		14F030CF223B8B1200C3DE5B /* ZMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030BF223B8B1200C3DE5B /* ZMCollectionViewCell.swift */; };
+		14F030D0223B8B1200C3DE5B /* ZMKeyBoadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030C1223B8B1200C3DE5B /* ZMKeyBoadModel.swift */; };
+		14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
 		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
 		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
@@ -177,6 +193,22 @@
 		14E42D512201438E00606AD0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = /Users/shang/Documents/GitHub/SwiftTemplet/SwiftTemplet/SwiftTemplet/Controllers/CalendarViewController.swift; sourceTree = "<absolute>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14ED8F04221695A000B396A0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		14F030AE223B8B1200C3DE5B /* KeyBoardTipImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBoardTipImageView.swift; sourceTree = "<group>"; };
+		14F030AF223B8B1200C3DE5B /* ZMKeyBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoardView.swift; sourceTree = "<group>"; };
+		14F030B0223B8B1200C3DE5B /* ZMKeyBoardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoardButtonView.swift; sourceTree = "<group>"; };
+		14F030B2223B8B1200C3DE5B /* ZMKeyBoardUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoardUtil.swift; sourceTree = "<group>"; };
+		14F030B4223B8B1200C3DE5B /* ZMCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMCollectionLayout.swift; sourceTree = "<group>"; };
+		14F030B6223B8B1200C3DE5B /* capitalSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capitalSelect@2x.png"; sourceTree = "<group>"; };
+		14F030B7223B8B1200C3DE5B /* capitalSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capitalSelect@3x.png"; sourceTree = "<group>"; };
+		14F030B8223B8B1200C3DE5B /* capitalNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capitalNormal@2x.png"; sourceTree = "<group>"; };
+		14F030B9223B8B1200C3DE5B /* capitalNormal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capitalNormal@3x.png"; sourceTree = "<group>"; };
+		14F030BA223B8B1200C3DE5B /* keyboard_magnifier@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard_magnifier@2x.png"; sourceTree = "<group>"; };
+		14F030BB223B8B1200C3DE5B /* keyNewDelete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyNewDelete@3x.png"; sourceTree = "<group>"; };
+		14F030BC223B8B1200C3DE5B /* keyboard_magnifier@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyboard_magnifier@3x.png"; sourceTree = "<group>"; };
+		14F030BD223B8B1200C3DE5B /* keyNewDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyNewDelete@2x.png"; sourceTree = "<group>"; };
+		14F030BF223B8B1200C3DE5B /* ZMCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMCollectionViewCell.swift; sourceTree = "<group>"; };
+		14F030C1223B8B1200C3DE5B /* ZMKeyBoadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoadModel.swift; sourceTree = "<group>"; };
+		14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardViewController.swift; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
 		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
 		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
@@ -240,6 +272,85 @@
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
+		14F030AB223B8AFE00C3DE5B /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				14F030AC223B8B1200C3DE5B /* KeyBoad */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		14F030AC223B8B1200C3DE5B /* KeyBoad */ = {
+			isa = PBXGroup;
+			children = (
+				14F030AD223B8B1200C3DE5B /* KeyBoadView */,
+				14F030B1223B8B1200C3DE5B /* util */,
+				14F030B3223B8B1200C3DE5B /* Layout */,
+				14F030B5223B8B1200C3DE5B /* Image */,
+				14F030BE223B8B1200C3DE5B /* Cell */,
+				14F030C0223B8B1200C3DE5B /* Model */,
+			);
+			name = KeyBoad;
+			path = "../../../../../../Downloads/swiftlyProject-master 2/SwiftProject/Controller/Public/KeyBoad";
+			sourceTree = "<group>";
+		};
+		14F030AD223B8B1200C3DE5B /* KeyBoadView */ = {
+			isa = PBXGroup;
+			children = (
+				14F030AE223B8B1200C3DE5B /* KeyBoardTipImageView.swift */,
+				14F030AF223B8B1200C3DE5B /* ZMKeyBoardView.swift */,
+				14F030B0223B8B1200C3DE5B /* ZMKeyBoardButtonView.swift */,
+			);
+			path = KeyBoadView;
+			sourceTree = "<group>";
+		};
+		14F030B1223B8B1200C3DE5B /* util */ = {
+			isa = PBXGroup;
+			children = (
+				14F030B2223B8B1200C3DE5B /* ZMKeyBoardUtil.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		14F030B3223B8B1200C3DE5B /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				14F030B4223B8B1200C3DE5B /* ZMCollectionLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		14F030B5223B8B1200C3DE5B /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				14F030B6223B8B1200C3DE5B /* capitalSelect@2x.png */,
+				14F030B7223B8B1200C3DE5B /* capitalSelect@3x.png */,
+				14F030B8223B8B1200C3DE5B /* capitalNormal@2x.png */,
+				14F030B9223B8B1200C3DE5B /* capitalNormal@3x.png */,
+				14F030BA223B8B1200C3DE5B /* keyboard_magnifier@2x.png */,
+				14F030BB223B8B1200C3DE5B /* keyNewDelete@3x.png */,
+				14F030BC223B8B1200C3DE5B /* keyboard_magnifier@3x.png */,
+				14F030BD223B8B1200C3DE5B /* keyNewDelete@2x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		14F030BE223B8B1200C3DE5B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				14F030BF223B8B1200C3DE5B /* ZMCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		14F030C0223B8B1200C3DE5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14F030C1223B8B1200C3DE5B /* ZMKeyBoadModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		41635A095EF8862B4E8D6F46 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +383,10 @@
 			children = (
 				51824424213E74B200071A9D /* Controllers */,
 				51824425213E74C300071A9D /* DataModel */,
-				519E87C321367582002CCD86 /* View */,
+				147FF46921CE48E800351E94 /* UICollectionViewCell */,
+				519E87C421367593002CCD86 /* UITableViewCell */,
+				519E87C5213675A5002CCD86 /* UIView */,
+				14F030AB223B8AFE00C3DE5B /* Vendor */,
 				51685A00208EA75700CE8099 /* AppDelegate.swift */,
 				5182442C213E75BA00071A9D /* dataList.geojson */,
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
@@ -320,6 +434,7 @@
 				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
 				142A770A222761050016D3DA /* PickerViewController.swift */,
 				14244765222929990087372F /* PhotosViewController.swift */,
+				14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */,
 				142A770C222764080016D3DA /* BNPickerView.swift */,
 				146F09812228AF4700E13F53 /* BNVehicleInfoCardView.swift */,
 				146F09832228CD7000E13F53 /* BNRecordCardView.swift */,
@@ -341,16 +456,6 @@
 				51824427213E74D400071A9D /* RootClass.swift */,
 			);
 			path = DataModel;
-			sourceTree = "<group>";
-		};
-		519E87C321367582002CCD86 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				519E87C5213675A5002CCD86 /* View */,
-				147FF46921CE48E800351E94 /* UICollectionViewCell */,
-				519E87C421367593002CCD86 /* UITableViewCell */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		519E87C421367593002CCD86 /* UITableViewCell */ = {
@@ -382,7 +487,7 @@
 			path = UITableViewCell;
 			sourceTree = "<group>";
 		};
-		519E87C5213675A5002CCD86 /* View */ = {
+		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
 				142A76F122275EE00016D3DA /* BNAnnularProgress.swift */,
@@ -410,7 +515,7 @@
 				142A76E922275EE00016D3DA /* BNTipsView.swift */,
 				142A76E122275EDF0016D3DA /* BNTopSheetView.swift */,
 			);
-			path = View;
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		D00BFF54645FD929E4AB5244 /* Frameworks */ = {
@@ -485,14 +590,22 @@
 			files = (
 				1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */,
 				144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */,
+				14F030C9223B8B1200C3DE5B /* capitalNormal@2x.png in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
 				140B6D4521D4D57900050C8F /* bug.png in Resources */,
+				14F030CB223B8B1200C3DE5B /* keyboard_magnifier@2x.png in Resources */,
+				14F030CD223B8B1200C3DE5B /* keyboard_magnifier@3x.png in Resources */,
 				5182442D213E75BA00071A9D /* dataList.geojson in Resources */,
 				141FF16E2223D38B00140E4E /* icon_notice@2x.png in Resources */,
+				14F030C8223B8B1200C3DE5B /* capitalSelect@3x.png in Resources */,
 				141AB84C22250DE5006E1841 /* Media11.xcassets in Resources */,
+				14F030CA223B8B1200C3DE5B /* capitalNormal@3x.png in Resources */,
+				14F030CC223B8B1200C3DE5B /* keyNewDelete@3x.png in Resources */,
 				141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */,
+				14F030CE223B8B1200C3DE5B /* keyNewDelete@2x.png in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
 				1424476C222B8CA20087372F /* icon_select_YES@2x的副本.png in Resources */,
+				14F030C7223B8B1200C3DE5B /* capitalSelect@2x.png in Resources */,
 				1424476A222B898D0087372F /* icon_select_YES@2x.png in Resources */,
 				51B3DA2921264E3900710A76 /* Default-568h@2x.png in Resources */,
 			);
@@ -591,6 +704,7 @@
 				142A76F222275EE10016D3DA /* BNClockView.swift in Sources */,
 				142A770922275EE10016D3DA /* BNAnnularProgress.swift in Sources */,
 				142A770622275EE10016D3DA /* BNOperationStateView.swift in Sources */,
+				14F030C4223B8B1200C3DE5B /* ZMKeyBoardButtonView.swift in Sources */,
 				14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */,
 				142A76FC22275EE10016D3DA /* BNCalendarView.swift in Sources */,
 				145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */,
@@ -600,6 +714,7 @@
 				14129C9C21E9F379009BFA74 /* UITableViewCellSheet.swift in Sources */,
 				142A76FD22275EE10016D3DA /* BNDateRangeView.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
+				14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				142A770B222761050016D3DA /* PickerViewController.swift in Sources */,
@@ -612,9 +727,11 @@
 				142A76F722275EE10016D3DA /* BNSliderControlView.swift in Sources */,
 				142A76FF22275EE10016D3DA /* BNSuspendBtn.swift in Sources */,
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
+				14F030C5223B8B1200C3DE5B /* ZMKeyBoardUtil.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
+				14F030C2223B8B1200C3DE5B /* KeyBoardTipImageView.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,
 				14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */,
 				14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */,
@@ -627,8 +744,10 @@
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
 				145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */,
+				14F030C6223B8B1200C3DE5B /* ZMCollectionLayout.swift in Sources */,
 				1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */,
 				142A770422275EE10016D3DA /* PPNumberButton.swift in Sources */,
+				14F030CF223B8B1200C3DE5B /* ZMCollectionViewCell.swift in Sources */,
 				1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				142A770022275EE10016D3DA /* BNTableFooterView.swift in Sources */,
@@ -663,11 +782,13 @@
 				5182444E213E8CB600071A9D /* BNRootClass.swift in Sources */,
 				142A76F322275EE10016D3DA /* BNItemsView.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
+				14F030C3223B8B1200C3DE5B /* ZMKeyBoardView.swift in Sources */,
 				147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */,
 				147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */,
 				14F7AAAD21E709BE00FB7570 /* UITableViewCellStep.swift in Sources */,
 				142A76F822275EE10016D3DA /* BNThreeLabelView.swift in Sources */,
 				147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */,
+				14F030D0223B8B1200C3DE5B /* ZMKeyBoadModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
