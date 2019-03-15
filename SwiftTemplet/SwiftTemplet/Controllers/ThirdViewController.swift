@@ -136,7 +136,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
              ["Timer", "TimerViewController"],
              ["PickerView", "PickerViewController"],
              ["PictureView", "PhotosViewController"],
-             
+             ["KeyBoardView", "KeyBoardViewController"],
+
              ],
         ]
         return array
