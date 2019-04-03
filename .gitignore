@@ -19,7 +19,7 @@ DerivedData
 *.xcworkspace
 !default.xcworkspace
 
-ProductTemplet/Pods
+*/Pods
 
 #CocoaPods
 Pods
