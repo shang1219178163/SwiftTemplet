@@ -52,15 +52,22 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //导航栏变色
+//        navigationController?.navigationBar.setBackgroundImage(UIImageColor(UIColor.orange), for: UIBarMetrics.default)
+//        navigationController?.navigationBar.shadowImage = UIImageColor(UIColor.orange)
+
+        //导航栏透明
+        navigationController?.navigationBar.setBackgroundImage(UIImageColor(UIColor.clear), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImageColor(UIColor.clear)
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImageColor(UIColor.orange), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImageColor(UIColor.orange)
+        //顶部布局从导航栏开始
+        edgesForExtendedLayout = UIRectEdge.all;
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
     }
 
     override func viewDidLayoutSubviews() {
