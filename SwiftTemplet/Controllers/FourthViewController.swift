@@ -3,7 +3,7 @@
 //  FourthViewController.swift
 //  SwiftTemplet
 //
-//  Created by hsf on 2018/8/10.
+//  Created by Bin Shang on 2018/8/10.
 //  Copyright © 2018年 BN. All rights reserved.
 //
 
@@ -50,12 +50,6 @@ class FourthViewController: UIViewController {
      
     }
     
-    func AbountColor() -> () {
-        let data = Data(bytes: [0x2,0x33,0x54,0x78,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b])
-        print(data.type.toHex());
-        
-    }
-    
     func createGroupView() -> Void {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
@@ -63,32 +57,7 @@ class FourthViewController: UIViewController {
         let groupView = UIView.createGroupView(rect, list: (list as! Array<String>), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
        
             DDLog(idx);
-            
-            let data = Data(bytes: [0x2,0x33,0x54,0x78,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b,0x1,0x2d,0x3a,0x5b])
-            let color = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-
-            if idx == 0 {
-                print(data.type.toHex());
-                
-            }
-            else if idx == 1 {
-                print(data.type.toUInt8())
-
-            }
-            else if idx == 2 {
-                print(color.type.red())
-
-            }
-            else if idx == 3 {
-                print(color.type.green())
-
-            }
-            else if idx == 4 {
-                print(color.type.blue())
-
-            }
-            
-            
+           
         };
         
         view.addSubview(groupView);

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  SwiftTemplet
 //
-//  Created by hsf on 2018/4/24.
+//  Created by Bin Shang on 2018/4/24.
 //  Copyright © 2018年 BN. All rights reserved.
 //
 
@@ -26,10 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIViewController.initializeMethod();
         UINavigationController.initializeMethod();
         UIImageView.initializeMethod();
-        UIApplication.setupAppearance();
+        UIColor.theme = UIColor.orange
+        UIApplication.setupAppearanceDefault(false);
 
         IQKeyboardManager.shared.enable = true;
-
+        
         // Override point for customization after application launch.
         
         //方式一
@@ -64,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.tabBarController?.selectedIndex = 2;
        
+        
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);

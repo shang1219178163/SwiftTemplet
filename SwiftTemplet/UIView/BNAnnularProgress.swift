@@ -2,7 +2,7 @@
 //  BNAnnularProgress.swift
 //  Test
 //
-//  Created by hsf on 2018/9/6.
+//  Created by Bin Shang on 2018/9/6.
 //  Copyright © 2018年 fly. All rights reserved.
 //
 
