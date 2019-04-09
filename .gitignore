@@ -19,8 +19,6 @@ DerivedData
 *.xcworkspace
 !default.xcworkspace
 
-*/Pods
-
 #CocoaPods
 Pods
 !Podfile
