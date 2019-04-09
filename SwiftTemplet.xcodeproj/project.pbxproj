@@ -49,11 +49,6 @@
 		142A770B222761050016D3DA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770A222761050016D3DA /* PickerViewController.swift */; };
 		142A770D222764080016D3DA /* BNPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770C222764080016D3DA /* BNPickerView.swift */; };
 		14488646224DC24E00B550AF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488645224DC24E00B550AF /* CalendarViewController.swift */; };
-		144886FC224E1C4400B550AF /* CAAnimationGroup+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144886F6224E1C3900B550AF /* CAAnimationGroup+Helper.swift */; };
-		144886FD224E1C4400B550AF /* CATransition+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144886F7224E1C3A00B550AF /* CATransition+Helper.swift */; };
-		144886FE224E1C4400B550AF /* CAKeyframeAnimation+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144886F8224E1C3C00B550AF /* CAKeyframeAnimation+Helper.swift */; };
-		14488700224E1C4400B550AF /* CABasicAnimation+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144886FA224E1C4100B550AF /* CABasicAnimation+Helper.swift */; };
-		14488701224E1C4400B550AF /* CATransaction+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144886FB224E1C4300B550AF /* CATransaction+Helper.swift */; };
 		14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488704224E1D2300B550AF /* KeyBoardTipImageView.swift */; };
 		14488719224E1D2300B550AF /* ZMKeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488705224E1D2300B550AF /* ZMKeyBoardView.swift */; };
 		1448871A224E1D2300B550AF /* ZMKeyBoardButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488706224E1D2300B550AF /* ZMKeyBoardButtonView.swift */; };
@@ -174,11 +169,6 @@
 		142A770A222761050016D3DA /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		142A770C222764080016D3DA /* BNPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNPickerView.swift; sourceTree = "<group>"; };
 		14488645224DC24E00B550AF /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		144886F6224E1C3900B550AF /* CAAnimationGroup+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAAnimationGroup+Helper.swift"; sourceTree = "<group>"; };
-		144886F7224E1C3A00B550AF /* CATransition+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+Helper.swift"; sourceTree = "<group>"; };
-		144886F8224E1C3C00B550AF /* CAKeyframeAnimation+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAKeyframeAnimation+Helper.swift"; sourceTree = "<group>"; };
-		144886FA224E1C4100B550AF /* CABasicAnimation+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CABasicAnimation+Helper.swift"; sourceTree = "<group>"; };
-		144886FB224E1C4300B550AF /* CATransaction+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+Helper.swift"; sourceTree = "<group>"; };
 		14488704224E1D2300B550AF /* KeyBoardTipImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBoardTipImageView.swift; sourceTree = "<group>"; };
 		14488705224E1D2300B550AF /* ZMKeyBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoardView.swift; sourceTree = "<group>"; };
 		14488706224E1D2300B550AF /* ZMKeyBoardButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoardButtonView.swift; sourceTree = "<group>"; };
@@ -405,11 +395,6 @@
 				519E87C5213675A5002CCD86 /* UIView */,
 				14F030AB223B8AFE00C3DE5B /* Vendor */,
 				51685A00208EA75700CE8099 /* AppDelegate.swift */,
-				144886F6224E1C3900B550AF /* CAAnimationGroup+Helper.swift */,
-				144886FA224E1C4100B550AF /* CABasicAnimation+Helper.swift */,
-				144886F8224E1C3C00B550AF /* CAKeyframeAnimation+Helper.swift */,
-				144886F7224E1C3A00B550AF /* CATransition+Helper.swift */,
-				144886FB224E1C4300B550AF /* CATransaction+Helper.swift */,
 				5182442C213E75BA00071A9D /* dataList.geojson */,
 				14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */,
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
@@ -645,7 +630,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -657,10 +642,6 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Surge/Surge.framework",
@@ -680,10 +661,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Surge.framework",
@@ -692,7 +669,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A57AF5E1B764880F6349ABDD /* [CP] Check Pods Manifest.lock */ = {
@@ -726,7 +703,6 @@
 				142A76FE22275EE10016D3DA /* BNSectionView.swift in Sources */,
 				1448871A224E1D2300B550AF /* ZMKeyBoardButtonView.swift in Sources */,
 				142A76F922275EE10016D3DA /* BNTopSheetView.swift in Sources */,
-				14488700224E1C4400B550AF /* CABasicAnimation+Helper.swift in Sources */,
 				1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */,
 				142A76F222275EE10016D3DA /* BNClockView.swift in Sources */,
 				142A770922275EE10016D3DA /* BNAnnularProgress.swift in Sources */,
@@ -765,7 +741,6 @@
 				142A76FA22275EE10016D3DA /* BNDatePicker.swift in Sources */,
 				142A770522275EE10016D3DA /* BNSearchView.swift in Sources */,
 				14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */,
-				144886FD224E1C4400B550AF /* CATransition+Helper.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				142A770D222764080016D3DA /* BNPickerView.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
@@ -794,7 +769,6 @@
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */,
-				14488701224E1C4400B550AF /* CATransaction+Helper.swift in Sources */,
 				1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */,
 				14488719224E1D2300B550AF /* ZMKeyBoardView.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
@@ -808,9 +782,7 @@
 				5182444C213E8CB600071A9D /* BNResult.swift in Sources */,
 				147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */,
 				142A770722275EE10016D3DA /* BNPickListView.swift in Sources */,
-				144886FC224E1C4400B550AF /* CAAnimationGroup+Helper.swift in Sources */,
 				1448871B224E1D2300B550AF /* ZMKeyBoardUtil.swift in Sources */,
-				144886FE224E1C4400B550AF /* CAKeyframeAnimation+Helper.swift in Sources */,
 				14244770222B92070087372F /* UITableViewCellPhotoPicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* BNRootClass.swift in Sources */,
 				142A76F322275EE10016D3DA /* BNItemsView.swift in Sources */,
