@@ -66,8 +66,8 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue() > 0.0 ? false : true
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
-        if self.viewBlock != nil {
-            return self.viewBlock!(tableView, indexPath);
+        if self.viewBlock != nil && self.viewBlock!(tableView, indexPath) != nil {
+            return self.viewBlock!(tableView, indexPath)!;
         }
         return cell
     }

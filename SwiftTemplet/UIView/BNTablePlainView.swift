@@ -45,10 +45,10 @@ class BNTablePlainView: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-        if self.viewBlockCellForRow != nil {
-            return self.viewBlockCellForRow!(tableView, indexPath);
+        if self.viewBlockCellForRow != nil && self.viewBlockCellForRow!(tableView, indexPath) != nil {
+            return self.viewBlockCellForRow!(tableView, indexPath)!;
         }
+        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
         return cell
     }
     
