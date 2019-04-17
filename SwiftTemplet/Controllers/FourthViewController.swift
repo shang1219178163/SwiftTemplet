@@ -20,8 +20,13 @@ class FourthViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
        
-        self.createGroupView();
+        createGroupView();
         view.getViewLayer()
+        
+        createBtnBarItem("测试按钮", isLeft: false) { (reco, view, tag) in
+            DDLog(view)
+        }
+        
         return;
   
         view.addSubview(clockView);

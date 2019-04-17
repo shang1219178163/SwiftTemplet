@@ -91,9 +91,15 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemList = list[indexPath.row]
         
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-        cell.textLabel!.text = itemList[0]
-        return cell
+//        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as? UITableViewCell;
+        cell!.accessoryType = .disclosureIndicator;
+
+        cell!.textLabel!.text = itemList[0]
+        cell!.textLabel?.textColor = UIColor.theme;
+        cell!.detailTextLabel?.text = itemList[1];
+        cell!.detailTextLabel?.textColor = UIColor.gray;
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -168,8 +174,16 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//            cell.textLabel!.text = itemList[0]
+            
+            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as! UITableViewCell;
+            cell.accessoryType = .disclosureIndicator;
+            
             cell.textLabel!.text = itemList[0]
+            cell.textLabel!.textColor = UIColor.theme;
+            cell.detailTextLabel?.text = itemList[1];
+            cell.detailTextLabel?.textColor = UIColor.gray;
             return cell
         })
         

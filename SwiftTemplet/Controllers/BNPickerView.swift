@@ -13,7 +13,7 @@ import SwiftExpand
 
 class BNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    let containViewH: CGFloat = kH_PickerView+kH_NaviagtionBar
+    let containViewH: CGFloat = kPickerViewHeight+kNaviBarHeight
 
     typealias ViewClick = (BNPickerView, Int) -> Void;
     var viewBlock: ViewClick?;
@@ -34,7 +34,7 @@ class BNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        let containViewH = kH_PickerView+kH_NaviagtionBar
+//        let containViewH = kPickerViewHeight+kNaviBarHeight
         containView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(containViewH)
@@ -42,7 +42,7 @@ class BNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         toobarView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(kH_NaviagtionBar)
+            make.height.equalTo(kNaviBarHeight)
         }
         
         btnCancell.snp.makeConstraints { (make) in
