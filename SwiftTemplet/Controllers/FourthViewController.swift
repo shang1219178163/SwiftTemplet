@@ -75,7 +75,7 @@ class FourthViewController: UIViewController {
         view.image = UIImage(named: "beach");
         
         view.aniDuration = 12;
-        view.animRotation(isClockwise: true, view.aniDuration!, MAXFLOAT, nil);
+        view.animRotation(isClockwise: true, duration: view.aniDuration!, repeatCount: MAXFLOAT, key: nil);
         view.layoutIfNeeded();//激活子视图动画
         
         view.layer.cornerRadius = view.frame.width/2.0;
@@ -97,7 +97,7 @@ class FourthViewController: UIViewController {
     
     
     lazy var datePicker:BNDatePicker = {
-        let view = BNDatePicker(.date);
+        let view = BNDatePicker();
         view.block({ (sender, idx) in
             if idx == 1 {
                 DDLog(view,sender.datePicker.date,idx);

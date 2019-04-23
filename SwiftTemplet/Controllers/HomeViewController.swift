@@ -45,10 +45,10 @@ class HomeViewController: UITabBarController {
         let navController = UINavigationController(rootViewController: CenterViewController());
         navController.navigationBar.tintColor = UIColor.white;
         navController.navigationBar.barTintColor = UIColor.theme;
-        let dic:NSDictionary = [NSAttributedStringKey.foregroundColor:UIColor.white,
-                                NSAttributedStringKey.font:UIFont.systemFont(ofSize: 18),
+        let dic:NSDictionary = [NSAttributedString.Key.foregroundColor:UIColor.white,
+                                NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),
                                 ];
-        navController.navigationBar.titleTextAttributes = dic as? [NSAttributedStringKey : Any];
+        navController.navigationBar.titleTextAttributes = dic as? [NSAttributedString.Key : Any];
         self.present(navController, animated: true, completion: nil);
         
     }

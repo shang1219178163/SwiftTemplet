@@ -13,7 +13,7 @@ import SwiftExpand
 /// 文字+副标题(默认对齐方式)
 class UITableViewCellThree: UITableViewCell {
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         //文字+副标题(默认对齐方式)
