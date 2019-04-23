@@ -17,7 +17,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     typealias ViewClick = (UITableViewCellDatePicker,BNDatePicker,Int) -> Void;
     var viewBlock: ViewClick?;
  
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(labelLeft);
@@ -108,7 +108,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var datePicker:BNDatePicker = {
-        let view = BNDatePicker(.date);
+        let view = BNDatePicker();
         view.block({ (sender, idx) in
 //                DDLog(view,sender.datePicker.date,idx);
             if self.viewBlock != nil {

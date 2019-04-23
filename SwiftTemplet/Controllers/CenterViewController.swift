@@ -28,18 +28,18 @@ class CenterViewController: UIViewController {
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         
-        let itemLeft = createBarItem( UIBarButtonSystemItem.reply, isLeft: true) { (sender) in
+        let itemLeft = createBarItem( UIBarButtonItem.SystemItem.reply, isLeft: true) { (sender) in
 //            DDLog(sender);
             self.dismiss(animated: true, completion: nil)
 
             let btnItem = sender as! UIBarButtonItem
             let style = btnItem.value(forKey: "systemItem");
-            if UIBarButtonSystemItem(rawValue: style as! Int) == UIBarButtonSystemItem.redo {
+            if UIBarButtonItem.SystemItem(rawValue: style as! Int) == UIBarButtonItem.SystemItem.redo {
                 DDLog("111111");
                 
             }
             
-            if (sender as! UIBarButtonItem).systemType == UIBarButtonSystemItem.reply {
+            if (sender as! UIBarButtonItem).systemType == UIBarButtonItem.SystemItem.reply {
                 DDLog("4444");
                 
             }

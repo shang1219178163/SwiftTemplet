@@ -67,7 +67,7 @@ class FifthViewControlle: UIViewController {
     //MARK: - layz
     lazy var imgView: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.image = UIImage(named: "bug.png")
 
         return view;
@@ -75,7 +75,7 @@ class FifthViewControlle: UIViewController {
 
     lazy var imgViewOne: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.image = UIImageNamed("icon_select_YES")
 
         return view;
@@ -83,7 +83,7 @@ class FifthViewControlle: UIViewController {
     
     lazy var textField: UITextField = {
         var view = UITextField(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.contentVerticalAlignment = .center;
         view.autocapitalizationType = .none;

@@ -17,7 +17,7 @@ class SortedViewController: UIViewController {
         // Do any additional setup after loading the view.
         let controller = UICtrFromString("UICollectionDispalyController")
         
-        self.addChildViewController(controller)
+        self.addChild(controller)
         self.view.addSubview(controller.view)
         
         DDLog(UICTReusableViewZero.identifier)

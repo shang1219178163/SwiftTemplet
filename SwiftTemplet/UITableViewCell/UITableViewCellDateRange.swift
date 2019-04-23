@@ -12,7 +12,7 @@ import UIKit
 class UITableViewCellDateRange: UITableViewCell {
 
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(dateRangeView);
@@ -53,7 +53,7 @@ class UITableViewCellDateRange: UITableViewCell {
     
     lazy var dateRangeView: BNDateRangeView = {
         var view = BNDateRangeView(frame: contentView.bounds)
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
 
         return view
     }()
