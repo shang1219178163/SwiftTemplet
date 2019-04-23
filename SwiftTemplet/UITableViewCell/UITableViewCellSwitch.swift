@@ -18,7 +18,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     /// layoutType 不等于0时的才起作用
     var ctlAlignment = NSTextAlignment.right
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(labelLeft);

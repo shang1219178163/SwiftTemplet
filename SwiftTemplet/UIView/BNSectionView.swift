@@ -18,7 +18,7 @@ class BNSectionView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
 
         addSubview(label)
     }
@@ -33,7 +33,7 @@ class BNSectionView: UIView {
     
     lazy var label: UILabel = {
         let view = UILabel()
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.numberOfLines = 0
         view.lineBreakMode = .byWordWrapping
         view.isUserInteractionEnabled = true

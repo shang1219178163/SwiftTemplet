@@ -236,9 +236,9 @@ class BNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
         rootVC?.present(controller, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //获得照片
-        let image:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        let image:UIImage = info[UIImagePickerController.InfoKey.editedImage.rawValue] as! UIImage
         // 拍照
         if picker.sourceType == .camera {
             //保存相册
@@ -261,7 +261,7 @@ class BNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     
     func createImgView(_ rect: CGRect, tag: Int) -> UIImageView {
         let view = UIImageView(frame: rect);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.tag = tag;
