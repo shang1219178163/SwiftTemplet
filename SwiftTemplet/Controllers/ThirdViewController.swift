@@ -51,7 +51,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     lazy var dateRangeView: BNDateRangeView = {
         let frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: 60)
         var view = BNDateRangeView(frame: .zero)
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.backgroundColor = .green
         return view
     }()

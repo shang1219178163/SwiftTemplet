@@ -150,7 +150,7 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     //MARK: -lazy
     lazy var datePicker: BNDatePicker = {
-        var view = BNDatePicker(.date);
+        var view = BNDatePicker();
         view.block({ (sender, idx) in
             DDLog(view,sender.datePicker.date,idx);
           

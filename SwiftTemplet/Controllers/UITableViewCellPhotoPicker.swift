@@ -11,7 +11,7 @@ import UIKit
 // 图片封装视图
 class UITableViewCellPhotoPicker: UITableViewCell {
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(defaultView);
@@ -41,7 +41,7 @@ class UITableViewCellPhotoPicker: UITableViewCell {
     
     lazy var defaultView: BNPhotosView = {
         var view = BNPhotosView(frame: .zero)
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         
         return view
     }()

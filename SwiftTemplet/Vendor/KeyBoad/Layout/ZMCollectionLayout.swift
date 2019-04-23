@@ -33,7 +33,7 @@ class ZMCollectionLayout: UICollectionViewFlowLayout {
     }
     
     override func prepare() {
-        sectionInset = UIEdgeInsetsMake(10, 3, 0, 3)
+        sectionInset = UIEdgeInsets(top: 10, left: 3, bottom: 0, right: 3)
         scrollDirection = .vertical
         itemSize = CGSize.init(width: BTN_WIDTH, height: BTN_HEIGHT)
         minimumLineSpacing = 0

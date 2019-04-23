@@ -148,7 +148,7 @@ class BNCellSubtitleView: UIView {
     
     lazy var imgViewLeft: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         
@@ -157,7 +157,7 @@ class BNCellSubtitleView: UIView {
     
     lazy var imgViewRight: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.image = UIImage(named: kIMG_arrowRight);
@@ -166,7 +166,7 @@ class BNCellSubtitleView: UIView {
     
     lazy var labelLeft: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -177,7 +177,7 @@ class BNCellSubtitleView: UIView {
     
     lazy var labelSub: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;

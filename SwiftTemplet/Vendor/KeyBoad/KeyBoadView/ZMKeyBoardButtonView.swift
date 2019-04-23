@@ -34,15 +34,15 @@ class ZMKeyBoardButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open func setTitle(_ title: String, state: UIControlState) {
+    open func setTitle(_ title: String, state: UIControl.State) {
         button.setTitle(title, for: state)
     }
     
-    func setTitleColor(colorName: String, state: UIControlState) {
+    func setTitleColor(colorName: String, state: UIControl.State) {
         button.setTitleColor(UIColor.hex(colorName), for: state)
     }
     
-    open func setImage(imageNamed: String, state: UIControlState) {
+    open func setImage(imageNamed: String, state: UIControl.State) {
         guard !imageNamed.isEmpty else {
             button.setImage(nil, for: state)
             return
@@ -50,7 +50,7 @@ class ZMKeyBoardButtonView: UIView {
         button.setImage(UIImage.init(named: imageNamed), for: state)
     }
     
-    open func setBackgroundImage(image: UIImage, state: UIControlState) {
+    open func setBackgroundImage(image: UIImage, state: UIControl.State) {
         button.setBackgroundImage(image, for: state)
     }
     

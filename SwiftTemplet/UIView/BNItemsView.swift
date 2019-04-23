@@ -98,7 +98,7 @@ class BNItemsView: UIView {
     
     func createBtn(rect:CGRect, title:String!, tag:NSInteger) -> UIButton {
         let view = UIButton(type:.custom);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.imageView?.contentMode = .scaleAspectFit
         view.frame = rect;
         view.setTitle(title, for: .normal);
