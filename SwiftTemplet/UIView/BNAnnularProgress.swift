@@ -83,7 +83,7 @@ class BNAnnularProgress: UIView {
         CATransaction.begin();
         CATransaction.setDisableActions(!animate);
         CATransaction.setAnimationDuration(time);
-        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut));
+        CATransaction.setAnimationTimingFunction(CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut));
         progressLayer.strokeEnd = progress;
         CATransaction.commit();
         

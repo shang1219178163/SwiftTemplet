@@ -205,7 +205,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        NSCoder.string(for: tableView.frame)
+        NSStringFromCGRect(tableView.frame)
         DDLog(NSStringFromIndexPath(indexPath));
         
         let controller = UICtrFromString("DetailViewController");

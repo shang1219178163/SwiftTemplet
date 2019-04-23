@@ -18,7 +18,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 70;
 
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
@@ -57,7 +57,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemList = list[indexPath.row]
         if (itemList[2] as! String) == "" {
-            return  UITableView.automaticDimension;
+            return  UITableViewAutomaticDimension;
         }
         let height = (itemList[2] as! String).cgFloatValue()
         return height
