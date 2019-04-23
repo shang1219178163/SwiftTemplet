@@ -137,7 +137,7 @@ extension UIView{
         }
     }
     
-    @objc public func addCorners(_ corners: UIRectCorner, cornerRadii: CGSize, width: CGFloat, color: UIColor) -> CAShapeLayer {
+    @objc public func addCorners(_ corners: UIRectCorner, cornerRadii: CGSize = CGSize(width: 8.0, height: 8.0), width: CGFloat, color: UIColor) -> CAShapeLayer {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
         let maskLayer = CAShapeLayer()
         maskLayer.frame = bounds
@@ -201,11 +201,11 @@ extension UIView{
         }
         else {
 //            let recoginzer = objc_getAssociatedObject(self, RuntimeKey.tap);
-            let recoginzer = objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!);
-            if recoginzer == nil {
-                let recoginzer = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(tap:)));
-                self.isUserInteractionEnabled = true;
-                self.addGestureRecognizer(recoginzer);
+            var obj = objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!);
+            if obj == nil {
+                obj = UITapGestureRecognizer(target: self, action: #selector(handleActionTap(tap:)));
+                isUserInteractionEnabled = true;
+                addGestureRecognizer(obj! as! UIGestureRecognizer);
                 
             }
         }
@@ -245,20 +245,20 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UITapGestureRecognizer
-        if recognizer == nil {
-            recognizer = UITapGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-            recognizer!.numberOfTapsRequired = 1  //轻点次数
-            recognizer!.numberOfTouchesRequired = 1  //手指个数
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UITapGestureRecognizer
+        if obj == nil {
+            obj = UITapGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            obj!.numberOfTapsRequired = 1  //轻点次数
+            obj!.numberOfTouchesRequired = 1  //手指个数
             
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
 
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
   
     ///手势 - 长按
@@ -266,19 +266,19 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function) + ",\(minimumPressDuration)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UILongPressGestureRecognizer
-        if recognizer == nil {
-            recognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-            recognizer!.minimumPressDuration = minimumPressDuration;
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UILongPressGestureRecognizer
+        if obj == nil {
+            obj = UILongPressGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            obj!.minimumPressDuration = minimumPressDuration;
             
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
             
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
     
     ///手势 - 拖拽
@@ -286,20 +286,20 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UIPanGestureRecognizer
-        if recognizer == nil {
-            recognizer = UIPanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UIPanGestureRecognizer
+        if obj == nil {
+            obj = UIPanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
             //最大最小的手势触摸次数
-            recognizer!.minimumNumberOfTouches = 1
-            recognizer!.maximumNumberOfTouches = 3
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+            obj!.minimumNumberOfTouches = 1
+            obj!.maximumNumberOfTouches = 3
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
             
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
     
     ///手势 - 屏幕边缘
@@ -307,18 +307,18 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function) + ",\(edgs)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UIScreenEdgePanGestureRecognizer
-        if recognizer == nil {
-            recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-            recognizer!.edges = edgs
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UIScreenEdgePanGestureRecognizer
+        if obj == nil {
+            obj = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            obj!.edges = edgs
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
             
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
     
     ///手势 - 清扫
@@ -326,19 +326,19 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function) + ",\(direction)"
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UISwipeGestureRecognizer
-        if recognizer == nil {
-            recognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
-            recognizer!.direction = direction
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UISwipeGestureRecognizer
+        if obj == nil {
+            obj = UISwipeGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+            obj!.direction = direction
             
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
             
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
     
     ///手势 - 捏合
@@ -346,18 +346,18 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UIPinchGestureRecognizer
-        if recognizer == nil {
-            recognizer = UIPinchGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UIPinchGestureRecognizer
+        if obj == nil {
+            obj = UIPinchGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
             
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
         
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
     
     ///手势 - 旋转
@@ -365,18 +365,18 @@ extension UIView{
         let funcAbount = NSStringFromSelector(#function)
         let runtimeKey = RuntimeKeyFromParams(self, funcAbount: funcAbount)!
         
-        var recognizer = objc_getAssociatedObject(self, runtimeKey) as? UIRotationGestureRecognizer
-        if recognizer == nil {
-            recognizer = UIRotationGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
+        var obj = objc_getAssociatedObject(self, runtimeKey) as? UIRotationGestureRecognizer
+        if obj == nil {
+            obj = UIRotationGestureRecognizer(target: self, action: #selector(handleActionGesture(_:)))
             
-            self.isUserInteractionEnabled = true
-            self.isMultipleTouchEnabled = true
-            self.addGestureRecognizer(recognizer!)
+            isUserInteractionEnabled = true
+            isMultipleTouchEnabled = true
+            addGestureRecognizer(obj!)
             
-            recognizer!.runtimeKey = runtimeKey
+            obj!.runtimeKey = runtimeKey
             objc_setAssociatedObject(self, runtimeKey, action, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
-        return recognizer!
+        return obj!
     }
     
     @objc private func handleActionGesture(_ recognizer: UIGestureRecognizer) -> Void{

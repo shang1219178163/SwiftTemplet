@@ -12,8 +12,8 @@ extension UICollectionViewLayout{
     
     @objc public var minimumLineSpacing: CGFloat {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGFloat {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGFloat {
+                return obj
             } else {
                 return 5.0
             }
@@ -25,8 +25,8 @@ extension UICollectionViewLayout{
     
     @objc public var minimumInteritemSpacing: CGFloat {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGFloat {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGFloat {
+                return obj
             } else {
                 return 5.0
             }
@@ -39,8 +39,8 @@ extension UICollectionViewLayout{
     
     @objc public var itemSize: CGSize {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGSize {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGSize {
+                return obj
             } else {
                 return CGSize.zero
             }
@@ -52,8 +52,8 @@ extension UICollectionViewLayout{
     
     @objc public var headerReferenceSize: CGSize {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGSize {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGSize {
+                return obj
             } else {
                 return CGSize.zero
             }
@@ -65,8 +65,8 @@ extension UICollectionViewLayout{
     
     @objc public var footerReferenceSize: CGSize {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGSize {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CGSize {
+                return obj
             } else {
                 return CGSize.zero
             }
@@ -78,8 +78,8 @@ extension UICollectionViewLayout{
     
     @objc public var sectionInset: UIEdgeInsets {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIEdgeInsets {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIEdgeInsets {
+                return obj
             } else {
                 return UIEdgeInsets.zero
             }
@@ -90,7 +90,7 @@ extension UICollectionViewLayout{
     }
    
     /// 默认布局配置(自上而下,自左而右)
-    @objc public static func create(_ itemSize: CGSize, spacing: CGFloat, headerSize: CGSize, footerSize: CGSize) -> UICollectionViewFlowLayout {
+    @objc public static func create(_ itemSize: CGSize, spacing: CGFloat = kPadding, headerSize: CGSize, footerSize: CGSize) -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout();
         //item水平间距
         layout.minimumLineSpacing = spacing;

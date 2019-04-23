@@ -31,7 +31,7 @@ public let kSubTypeFuntionNames = [kCATransitionFromTop,
 extension CATransition{
    
     /// [源]CATransition
-    @objc public static func animDuration(_ duration: CFTimeInterval, functionName:String!, type: String, subType: String?) -> CATransition {
+    @objc public static func animDuration(_ duration: CFTimeInterval, functionName:String!, type: String, subType: String? = nil) -> CATransition {
         
         let anim = CATransition()
         anim.duration = duration;

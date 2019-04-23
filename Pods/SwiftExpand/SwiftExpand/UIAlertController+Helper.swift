@@ -10,7 +10,7 @@ import UIKit
 
 extension UIAlertController{
     /// 创建系统提示框
-    @objc public static func createAlert(_ title: String, placeholders: [String]?, msg: String, actionTitles: [String]?, handler: ((UIAlertAction) -> Void)?) -> UIAlertController {
+    @objc public static func createAlert(_ title: String, placeholders: [String]? = nil, msg: String, actionTitles: [String]?, handler: ((UIAlertAction) -> Void)?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
        
         placeholders?.forEach { (placeholder: String) in
@@ -32,7 +32,7 @@ extension UIAlertController{
     }
     
     /// 展示提示框
-    @objc public static func showAlert(_ title: String, placeholders: [String]?, msg: String, actionTitles: [String]?, handler: ((UIAlertAction) -> Void)?) -> Void {
+    @objc public static func showAlert(_ title: String, placeholders: [String]? = nil, msg: String, actionTitles: [String]?, handler: ((UIAlertAction) -> Void)?) -> Void {
         
         let alertController = UIAlertController.createAlert(title, placeholders: placeholders, msg: msg, actionTitles: actionTitles, handler: handler)
         if actionTitles == nil {
@@ -47,7 +47,7 @@ extension UIAlertController{
     }
     
     /// 创建系统sheetView
-    @objc public static func createSheet(_ title: String?, items: [String]?, completion: ((UIAlertAction) -> Void)?) -> UIAlertController {
+    @objc public static func createSheet(_ title: String?, items: [String]? = nil, completion: ((UIAlertAction) -> Void)?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
         
         items?.forEach({ (title:String) in
@@ -72,7 +72,7 @@ extension UIAlertController{
     }
     
     /// 展示提示框
-    @objc public static func showSheet(_ title: String?, items: [String]?, completion: ((UIAlertAction) -> Void)?) -> Void {
+    @objc public static func showSheet(_ title: String?, items: [String]? = nil, completion: ((UIAlertAction) -> Void)?) -> Void {
         let alertController = UIAlertController.createSheet(title, items: items, completion: completion)
         UIApplication.mainWindow.rootViewController?.present(alertController, animated: true, completion: nil)
         

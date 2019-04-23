@@ -5,7 +5,7 @@
 //  Created by Bin Shang on 2018/12/22.
 //
 
-import Foundation
+import UIKit
 
 extension UICollectionViewCell{
     
@@ -18,19 +18,19 @@ extension UICollectionViewCell{
     
     @objc public var imgView: UIImageView {
         get {
-            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
-            if view == nil {
-                view = UIImageView(frame: .zero);
-                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIImageView;
+            if obj == nil {
+                obj = UIImageView(frame: .zero);
+                obj!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
 
-                view!.contentMode = .scaleAspectFit;
-                view!.isUserInteractionEnabled = true;
-                view!.image = UIImage(named: kIMG_arrowRight);
+                obj!.contentMode = .scaleAspectFit;
+                obj!.isUserInteractionEnabled = true;
+                obj!.image = UIImage(named: kIMG_arrowRight);
 
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
-            return view!;
+            return obj!;
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -39,20 +39,20 @@ extension UICollectionViewCell{
 
     @objc public var label: UILabel {
         get {
-            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
-            if view == nil {
-                view = UILabel(frame: .zero);
-                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UILabel;
+            if obj == nil {
+                obj = UILabel(frame: .zero);
+                obj!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
 
-                view!.numberOfLines = 0;
-                view!.lineBreakMode = .byCharWrapping;
-                view!.textAlignment = .center;
-                view!.backgroundColor = UIColor.random
+                obj!.numberOfLines = 0;
+                obj!.lineBreakMode = .byCharWrapping;
+                obj!.textAlignment = .center;
+                obj!.backgroundColor = UIColor.random
 
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
-            return view!;
+            return obj!;
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);

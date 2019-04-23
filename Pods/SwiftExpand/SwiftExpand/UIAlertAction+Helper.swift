@@ -11,8 +11,8 @@ extension UIAlertAction{
     
     @objc public var tag: Int {
         get {
-            if let aValue = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? Int {
-                return aValue
+            if let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? Int {
+                return obj
             } else {
                 return 1
             }

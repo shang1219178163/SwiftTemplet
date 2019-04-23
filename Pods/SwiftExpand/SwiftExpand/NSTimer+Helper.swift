@@ -12,7 +12,7 @@ extension Timer{
     
     
     /// 分类方法
-    public static func scheduled(_ Interval:TimeInterval, repeats: Bool, action: @escaping((Timer) -> Void)) -> Timer {
+    public static func scheduled(_ Interval:TimeInterval, repeats: Bool = true, action: @escaping((Timer) -> Void)) -> Timer {
         return scheduledTimer(timeInterval: Interval, target: self, selector: #selector(handleInvoke(_:)), userInfo: action, repeats: repeats)
     }
     
