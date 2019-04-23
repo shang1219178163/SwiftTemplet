@@ -20,7 +20,7 @@ class BNDatePicker: UIView {
         super.init(frame: frame)
     }
 
-    convenience init(_ model:UIDatePickerMode) {
+    convenience init(_ model: UIDatePicker.Mode = UIDatePicker.Mode.date) {
         self.init(frame:UIScreen.main.bounds);
 
         self.datePicker.datePickerMode = model;
@@ -83,7 +83,7 @@ class BNDatePicker: UIView {
     
     lazy var datePicker : UIDatePicker = {
         let datePicker: UIDatePicker = UIDatePicker();
-        datePicker.datePickerMode = UIDatePickerMode.date;
+        datePicker.datePickerMode = UIDatePicker.Mode.date;
         datePicker.locale = Locale(identifier: "zh_CN");
         datePicker.backgroundColor = UIColor.white;
 
@@ -92,7 +92,7 @@ class BNDatePicker: UIView {
     }();
     
     lazy var btnCancel:UIButton = {
-        let btn = UIButton(type: UIButtonType.system);
+        let btn = UIButton(type: UIButton.ButtonType.system);
 //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 0;
 
@@ -105,7 +105,7 @@ class BNDatePicker: UIView {
     }();
     
     lazy var btnSure:UIButton = {
-        let btn = UIButton(type: UIButtonType.system);
+        let btn = UIButton(type: UIButton.ButtonType.system);
 //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 1;
 

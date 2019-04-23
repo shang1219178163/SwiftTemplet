@@ -117,7 +117,7 @@ class CustomViewController: UIViewController {
     lazy var defaultView: BNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.width - kX_GAP*2, 70)
         var view = BNCellSubtitleView(frame: rect)
-        //        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
         view.labelLeft.textColor = .white
@@ -141,7 +141,7 @@ class CustomViewController: UIViewController {
     lazy var defaultViewFail: BNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.width - kX_GAP*2, 70)
         var view = BNCellSubtitleView(frame: rect)
-        //        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
         view.labelLeft.textColor = .white

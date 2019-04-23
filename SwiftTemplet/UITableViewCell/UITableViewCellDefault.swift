@@ -10,7 +10,7 @@ import UIKit
 
 class UITableViewCellDefault: UITableViewCell {
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(defaultView);
@@ -37,7 +37,7 @@ class UITableViewCellDefault: UITableViewCell {
     
     lazy var defaultView: BNCellDefaultView = {
         var view = BNCellDefaultView(frame: .zero)
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
 
         return view
     }()

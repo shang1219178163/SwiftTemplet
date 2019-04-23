@@ -158,7 +158,7 @@ class BNUpdateVersionView: UIView {
     
     lazy var imgView: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
 //        view.contentMode = .scaleAspectFit;
         view.image = UIImageNamed("img_verionUpdate")
@@ -167,7 +167,7 @@ class BNUpdateVersionView: UIView {
     
     lazy var label: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -178,7 +178,7 @@ class BNUpdateVersionView: UIView {
     
     lazy var labelOne: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -189,7 +189,7 @@ class BNUpdateVersionView: UIView {
     
     lazy var labelTwo: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -200,7 +200,7 @@ class BNUpdateVersionView: UIView {
 
     lazy var labelThree: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -211,7 +211,7 @@ class BNUpdateVersionView: UIView {
 
     lazy var labelFour: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;

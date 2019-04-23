@@ -95,8 +95,8 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     //设置加减按钮的公共方法
     fileprivate func setupButton(title:String) -> UIButton {
         let button = UIButton();
-        button.setTitle(title, for: UIControlState())
-        button.setTitleColor(UIColor.gray, for: UIControlState())
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.gray, for: .normal)
         button.addTarget(self, action:#selector(self.touchDown(_:)) , for: .touchDown)
         button.addTarget(self, action:#selector(self.touchUp) , for:.touchUpOutside)
         button.addTarget(self, action:#selector(self.touchUp) , for:.touchUpInside)
@@ -298,11 +298,11 @@ public extension PPNumberButton {
      - parameter increaseTitle: 加按钮标题
      */
     func setTitle(decreaseTitle: String, increaseTitle: String) {
-        decreaseBtn.setBackgroundImage(nil, for: UIControlState())
-        increaseBtn.setBackgroundImage(nil, for: UIControlState())
+        decreaseBtn.setBackgroundImage(nil, for: .normal)
+        increaseBtn.setBackgroundImage(nil, for: .normal)
         
-        decreaseBtn.setTitle(decreaseTitle, for: UIControlState())
-        increaseBtn.setTitle(increaseTitle, for: UIControlState())
+        decreaseBtn.setTitle(decreaseTitle, for: .normal)
+        increaseBtn.setTitle(increaseTitle, for: .normal)
     }
     
     /**
@@ -312,11 +312,11 @@ public extension PPNumberButton {
      - parameter increaseImage: 加按钮背景图片
      */
     func setImage(decreaseImage: UIImage, increaseImage: UIImage) {
-        decreaseBtn.setTitle(nil, for: UIControlState())
-        increaseBtn.setTitle(nil, for: UIControlState())
+        decreaseBtn.setTitle(nil, for: .normal)
+        increaseBtn.setTitle(nil, for: .normal)
         
-        decreaseBtn.setBackgroundImage(decreaseImage, for: UIControlState())
-        increaseBtn.setBackgroundImage(increaseImage, for: UIControlState())
+        decreaseBtn.setBackgroundImage(decreaseImage, for: .normal)
+        increaseBtn.setBackgroundImage(increaseImage, for: .normal)
     }
     
 }

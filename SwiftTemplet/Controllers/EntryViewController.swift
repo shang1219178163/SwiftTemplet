@@ -18,7 +18,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.rowHeight = UITableView.automaticDimension;
         tableView.estimatedRowHeight = 70;
 
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
@@ -57,7 +57,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemList = list[indexPath.row]
         if (itemList[2] as! String) == "" {
-            return  UITableViewAutomaticDimension;
+            return  UITableView.automaticDimension;
         }
         let height = (itemList[2] as! String).cgFloatValue()
         return height
@@ -276,7 +276,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     lazy var textField: UITextField = {
         var view = UITextField(frame: .zero);
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.textAlignment = .left;
         view.contentVerticalAlignment = .center;
         view.autocapitalizationType = .none;
