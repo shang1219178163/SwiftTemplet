@@ -44,7 +44,7 @@ target 'SwiftTemplet' do
 #   pod 'SwiftString'
     pod 'SwiftyJSON'
 #   pod 'SwiftyUserDefaults'
-    pod 'SwiftExpand', '1.5.2'
+    pod 'SwiftExpand', '1.4.1'
 
 #   pod 'TZStackView'
 #   pod 'Whisper'
