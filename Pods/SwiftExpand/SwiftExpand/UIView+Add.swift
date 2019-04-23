@@ -14,14 +14,14 @@ extension UIView {
     
     @objc public var lineTop: UIView {
         get {
-            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
-            if view == nil {
-                view = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: kH_LINE_VIEW));
-                view!.backgroundColor = .line
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
+            if obj == nil {
+                obj = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: kH_LINE_VIEW));
+                obj!.backgroundColor = .line
 
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
-            return view!;
+            return obj!;
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -30,14 +30,14 @@ extension UIView {
     
     @objc public var lineBottom: UIView {
         get {
-            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
-            if view == nil {
-                view = UIView(frame: CGRect(x: 0, y: frame.maxY - kH_LINE_VIEW, width: frame.width, height: frame.height));
-                view!.backgroundColor = .line
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIView;
+            if obj == nil {
+                obj = UIView(frame: CGRect(x: 0, y: frame.maxY - kH_LINE_VIEW, width: frame.width, height: frame.height));
+                obj!.backgroundColor = .line
                 
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
-            return view!;
+            return obj!;
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -47,13 +47,13 @@ extension UIView {
     /// 渐变色层
     @objc public var gradientLayer: CAGradientLayer {
         get {
-            var layer = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CAGradientLayer;
-            if layer == nil {
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? CAGradientLayer;
+            if obj == nil {
                 let colors = [UIColor.theme.withAlphaComponent(0.5).cgColor, UIColor.theme.withAlphaComponent(0.9).cgColor]
-                layer = CAGradientLayer.layerRect(.zero, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), layer, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                obj = CAGradientLayer.layerRect(.zero, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
-            return layer!;
+            return obj!;
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -109,7 +109,7 @@ extension UIView {
     }
     
     /// [源]UITableView创建
-    @objc public static func createTableView(_ rect: CGRect, style: UITableView.Style, rowHeight: CGFloat) -> UITableView{
+    @objc public static func createTableView(_ rect: CGRect = .zero, style: UITableView.Style = .plain, rowHeight: CGFloat = 70.0) -> UITableView{
         let table = UITableView(frame: rect, style: style);
         table.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
         
@@ -124,7 +124,7 @@ extension UIView {
         return table
     }
     /// [源]UILabel创建
-    @objc public static func createLabel(_ rect: CGRect, text: String?, font: CGFloat, tag: Int, type: Int) -> UILabel {
+    @objc public static func createLabel(_ rect: CGRect = .zero, text: String? = nil, font: CGFloat = 16, tag: Int, type: Int = 0) -> UILabel {
         let view = UILabel(frame: rect);
         view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
@@ -169,7 +169,7 @@ extension UIView {
         return view;
     }
     /// [源]UIImageView创建
-    @objc public static func createImgView(_ rect: CGRect, imgName: String, tag: Int) -> UIImageView {
+    @objc public static func createImgView(_ rect: CGRect = .zero, imgName: String, tag: Int) -> UIImageView {
         let view = UIImageView(frame: rect);
         view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
         view.isUserInteractionEnabled = true;
@@ -180,7 +180,7 @@ extension UIView {
         return view
     }
     /// [源]UIButton创建
-    @objc public static func createBtn(_ rect: CGRect, title: String?, font: CGFloat, imgName: String?, tag: Int, type: Int) -> UIButton {
+    @objc public static func createBtn(_ rect: CGRect = .zero, title: String?, font: CGFloat = 16, imgName: String?, tag: Int, type: Int = 0) -> UIButton {
         let view = UIButton(type: .custom);
         view.titleLabel?.font = UIFont.systemFont(ofSize:16);
         view.titleLabel?.adjustsFontSizeToFitWidth = true;
@@ -215,7 +215,7 @@ extension UIView {
         return view
     }
     /// [源]UITextField创建
-    @objc public static func createTextField(_ rect: CGRect, tag: Int) -> UITextField {
+    @objc public static func createTextField(_ rect: CGRect = .zero, tag: Int) -> UITextField {
         let view = UITextField(frame: rect);
         view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
         view.contentVerticalAlignment = .center;
@@ -229,7 +229,7 @@ extension UIView {
         return view
     }
     /// [源]UITextView创建
-    @objc public static func createTextView(_ rect: CGRect, tag: Int) -> UITextView {
+    @objc public static func createTextView(_ rect: CGRect = .zero, tag: Int) -> UITextView {
         let view = UITextView(frame: rect);
         view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
         view.autocapitalizationType = .none;
@@ -245,7 +245,7 @@ extension UIView {
     }
     
     /// [源]HeaderView,footerView
-    @objc public static func createSectionView(_ tableView: UITableView, text: String?, textAlignment: NSTextAlignment, height: CGFloat) -> UIView{
+    @objc public static func createSectionView(_ tableView: UITableView, text: String?, textAlignment: NSTextAlignment = .left, height: CGFloat) -> UIView{
         let sectionView = UIView()
         if text == nil {
             return sectionView
@@ -262,7 +262,7 @@ extension UIView {
     }
     
     /// [源]GroupView创建
-    @objc public static func createGroupView(_ rect:CGRect, list:Array<String>!, numberOfRow:Int, padding:CGFloat, type:Int, action:@escaping (UITapGestureRecognizer?,UIView,NSInteger)->()) -> UIView {
+    @objc public static func createGroupView(_ rect: CGRect = .zero, list:Array<String>!, numberOfRow:Int, padding:CGFloat, type:Int, action:@escaping (UITapGestureRecognizer?,UIView,NSInteger)->()) -> UIView {
         
         let rowCount: Int = list.count % numberOfRow == 0 ? list.count/numberOfRow : list.count/numberOfRow + 1;
         let itemWidth = (rect.width - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow)
@@ -317,7 +317,7 @@ extension UIView {
         return backView;
     }
     /// [源]UISegmentControl创建
-    @objc public static func createSegment(_ rect: CGRect, items: Array<Any>!, selectedIdx: Int, type: Int) -> UISegmentedControl {
+    @objc public static func createSegment(_ rect: CGRect = .zero, items: Array<Any>!, selectedIdx: Int, type: Int = 0) -> UISegmentedControl {
         let view = UISegmentedControl(items: items)
         view.frame = rect
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
@@ -388,7 +388,7 @@ extension UIView {
         return view;
     }
     /// [源]UISlider创建
-    @objc public static func createSlider(_ rect: CGRect, value: Float, minValue: Float, maxValue: Float) -> UISlider {
+    @objc public static func createSlider(_ rect: CGRect = .zero, value: Float, minValue: Float, maxValue: Float) -> UISlider {
         let view = UISlider(frame: rect)
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.minimumValue = minValue
@@ -399,7 +399,7 @@ extension UIView {
         return view;
     }
     /// [源]UISwitch创建
-    @objc public static func createSwitch(_ rect: CGRect, isOn: Bool) -> UISwitch {
+    @objc public static func createSwitch(_ rect: CGRect = .zero, isOn: Bool) -> UISwitch {
         let view = UISwitch(frame: rect)
         view.autoresizingMask = UIViewAutoresizing.flexibleWidth
         view.isOn = isOn

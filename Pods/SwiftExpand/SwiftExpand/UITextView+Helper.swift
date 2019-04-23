@@ -35,25 +35,25 @@ extension UITextView{
     
     @objc public var placeHolderTextView: UITextView {
         get {
-            var view = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UITextView;
-            if view == nil {
-                view = UITextView(frame: bounds);
-                view!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
-                view!.autocapitalizationType = .none;
-                view!.autocorrectionType = .no;
-                view!.backgroundColor = .clear;
-                view!.textColor = .gray
-                view!.textAlignment = .left;
-                view!.font = self.font
-                self.addSubview(view!)
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UITextView;
+            if obj == nil {
+                obj = UITextView(frame: bounds);
+                obj!.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.flexibleWidth.rawValue | UIViewAutoresizing.flexibleHeight.rawValue)
+                obj!.autocapitalizationType = .none;
+                obj!.autocorrectionType = .no;
+                obj!.backgroundColor = .clear;
+                obj!.textColor = .gray
+                obj!.textAlignment = .left;
+                obj!.font = self.font
+                self.addSubview(obj!)
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(_:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: nil)
                 NotificationCenter.default.addObserver(self, selector: #selector(textViewDidEndEditing(_:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
 
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), view, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
             }
-            return view!;
+            return obj!;
         }
         set {
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);

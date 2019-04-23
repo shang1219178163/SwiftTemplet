@@ -139,7 +139,7 @@ extension Date{
         return info;
     }
     
-    public func hourInfoBetween(_ date: Date,_ type: Int) -> Double {
+    public func hourInfoBetween(_ date: Date,_ type: Int = 0) -> Double {
         var diff = self.timeIntervalSinceNow - date.timeIntervalSinceNow
         switch type {
             case 1://分钟

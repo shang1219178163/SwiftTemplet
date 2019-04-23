@@ -20,9 +20,9 @@ extension UIColor{
     
     @objc public static var theme : UIColor {
         get{
-            var color = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIColor;
-            color = color ?? UIColorHexValue(0x0082e0)
-            return color!;
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? UIColor;
+            obj = obj ?? UIColorHexValue(0x0082e0)
+            return obj!;
         }
         set{
             objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -84,7 +84,7 @@ extension UIColor{
     }
     
     /// [源]十六进制颜色字符串
-    @objc public static func hex(_ hex: String, a: CGFloat) -> UIColor {
+    @objc public static func hex(_ hex: String, a: CGFloat = 1.0) -> UIColor {
         var cString = hex.trimmingCharacters(in: CharacterSet.whitespaces).uppercased();
         if cString.hasPrefix("#") {
             let index = cString.index(cString.startIndex, offsetBy:1);

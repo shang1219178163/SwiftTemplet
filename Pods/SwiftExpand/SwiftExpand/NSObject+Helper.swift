@@ -74,7 +74,7 @@ extension NSObject{
     }
     
     ///  富文本只有同字体大小才能计算高度
-    @objc public func sizeWithText(_ text:String!, font:CGFloat = 16.0, width:CGFloat) -> CGSize {
+    @objc public func sizeWithText(_ text:String!, font:CGFloat, width:CGFloat) -> CGSize {
         let attDic = self.attrParaDict(font, textColor: .black, alignment: .left);
         let options : NSStringDrawingOptions = NSStringDrawingOptions(rawValue: NSStringDrawingOptions.RawValue(UInt8(NSStringDrawingOptions.usesLineFragmentOrigin.rawValue) | UInt8(NSStringDrawingOptions.usesFontLeading.rawValue)))
         

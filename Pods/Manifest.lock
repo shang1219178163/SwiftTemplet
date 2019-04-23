@@ -20,8 +20,8 @@ PODS:
   - SDWebImage/Core (5.0.1)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
-  - SwiftExpand (1.4.1)
-  - SwiftyJSON (4.3.0)
+  - SwiftExpand (1.5.7)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -35,7 +35,7 @@ DEPENDENCIES:
   - SDWebImage
   - SnapKit
   - Surge
-  - SwiftExpand (= 1.4.1)
+  - SwiftExpand
   - SwiftyJSON
 
 SPEC REPOS:
@@ -81,9 +81,9 @@ SPEC CHECKSUMS:
   SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 4807dbda2cb67ca2bc5c2ee84ff30ad0c7f64be1
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwiftExpand: e21fb02b4a92cfe18d327669b5af37ee8b82c015
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 4ad81009fbb7a70bef5f3b260f265c118510d1e2
+PODFILE CHECKSUM: baa42c4e4b0339380ff1deab7996714480694fbf
 
 COCOAPODS: 1.7.0.beta.3

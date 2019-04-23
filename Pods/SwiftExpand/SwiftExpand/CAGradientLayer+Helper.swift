@@ -25,12 +25,12 @@ extension CAGradientLayer{
     }
     
     /// 十六进制字符串
-    @objc public static func gradientColorHex(_ from: String, fromAlpha: CGFloat, to: String, toAlpha: CGFloat) -> [Any] {
+    @objc public static func gradientColorHex(_ from: String, fromAlpha: CGFloat, to: String, toAlpha: CGFloat = 1.0) -> [Any] {
         return [UIColorHex(from, fromAlpha).cgColor, UIColorHex(to, toAlpha).cgColor]
     }
     
     /// 0x开头的十六进制数字
-    @objc public static func gradientColorHexValue(_ from: Int, fromAlpha: CGFloat, to: Int, toAlpha: CGFloat) -> [Any] {
+    @objc public static func gradientColorHexValue(_ from: Int, fromAlpha: CGFloat, to: Int, toAlpha: CGFloat = 1.0) -> [Any] {
         return [UIColorHexValue(from, fromAlpha).cgColor, UIColorHexValue(to, toAlpha).cgColor]
     }
     
