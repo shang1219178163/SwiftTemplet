@@ -59,11 +59,11 @@ class BNCalendarView: UIView {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             if let text = change![NSKeyValueChangeKey.newKey] as? String {
-//                self.currentDate = DateFormatter.dateFromString(text, fmt: kDateFormat_Six)
+//                self.currentDate = DateFormatter.dateFromString(text, fmt: kDateFormat_six)
                 reloadData()
-                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormat_Six))
+                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormat_six))
 
-                let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_Six)
+                let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_six)
                 self.todayBtn.isHidden = (text == dateStr)
             }
         }
@@ -179,7 +179,7 @@ class BNCalendarView: UIView {
     }()
     
     lazy var titleBtn: UIButton = {
-        var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormat_Six)
+        var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormat_six)
         dateStr = "\(year)年\(month)月"
         var view = UIView.createBtn(.zero, title: dateStr, font: 16, imgName: nil, tag: 104, type: 2)
         view.addActionHandler({[weak self] (control) in
@@ -266,7 +266,7 @@ class BNCalendarView: UIView {
     func handleTitleBtnChange(_ year: Int, month: Int) -> Void {
         let dateStr = "\(year)年\(month)月"
         self.titleBtn.setTitle(dateStr, for: .normal)
-//        self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_Six)
+//        self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_six)
     }
     
 //    func handleTitleFrom(_ aDate: Date) -> Void {
