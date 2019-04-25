@@ -14,7 +14,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        calendarView.currentDate = DateFormatter.dateFromString("2022-04-09", fmt: kDateFormat_one)
+        calendarView.currentDate = DateFormatter.dateFromString("2022-04-09", fmt: kDateFormat_day)
 
         view.addSubview(calendarView)   
         view.getViewLayer()
