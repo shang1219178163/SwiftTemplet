@@ -9,6 +9,7 @@
 
 import UIKit
 import SwiftExpand
+import Moya
 
 class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
@@ -42,7 +43,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         layout.sectionInset = UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4)
         DDLog(layout.minimumInteritemSpacing,layout.minimumLineSpacing,layout.headerReferenceSize,layout.sectionInset)
         
-        
+        UIApplication.checkVersion(kAppStoreID);
         view.getViewLayer()
                 
     }

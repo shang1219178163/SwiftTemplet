@@ -27,7 +27,7 @@ target 'SwiftTemplet' do
     pod 'Kingfisher'
     pod 'SDWebImage'
 #   pod 'MonkeyKing'
-#   pod 'Moya'
+    pod 'Moya'
 #   pod 'Nimble'
 #   pod 'NumberMorphView'
 #   pod 'ObjectMapper'

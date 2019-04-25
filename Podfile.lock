@@ -14,13 +14,19 @@ PODS:
   - HandyJSON (5.0.0-beta.1)
   - IQKeyboardManagerSwift (6.2.1)
   - Kingfisher (4.10.1)
+  - Moya (13.0.0):
+    - Moya/Core (= 13.0.0)
+  - Moya/Core (13.0.0):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
   - ObjectMapper (3.4.2)
+  - Result (4.1.0)
   - SDWebImage (5.0.1):
     - SDWebImage/Core (= 5.0.1)
   - SDWebImage/Core (5.0.1)
   - SnapKit (4.2.0)
   - Surge (2.2.0)
-  - SwiftExpand (1.6.0.1)
+  - SwiftExpand (1.6.0.2)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -32,6 +38,7 @@ DEPENDENCIES:
   - HandyJSON (from `https://github.com/alibaba/HandyJSON.git`, branch `dev_for_swift5.0`)
   - IQKeyboardManagerSwift
   - Kingfisher
+  - Moya
   - SDWebImage
   - SnapKit
   - Surge
@@ -49,7 +56,9 @@ SPEC REPOS:
     - CryptoSwift
     - IQKeyboardManagerSwift
     - Kingfisher
+    - Moya
     - ObjectMapper
+    - Result
     - SDWebImage
     - SnapKit
     - Surge
@@ -77,13 +86,15 @@ SPEC CHECKSUMS:
   HandyJSON: 582477127ab3ab65bd2e471815f1a7b846856978
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Moya: 161263550064ff8a4948e8ff63137fd72a876292
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 1476034317499a701f3241758de13c76cdd11093
+  SwiftExpand: a1e45b2a03e239c64b26e16bb9d0f46d39b6c957
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: baa42c4e4b0339380ff1deab7996714480694fbf
+PODFILE CHECKSUM: b5309fdd510d0fbe22a930850cdd75e07be29cbd
 
 COCOAPODS: 1.7.0.beta.3
