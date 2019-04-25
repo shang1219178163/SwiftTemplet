@@ -61,9 +61,9 @@ class BNCalendarView: UIView {
             if let text = change![NSKeyValueChangeKey.newKey] as? String {
 //                self.currentDate = DateFormatter.dateFromString(text, fmt: kDateFormat_six)
                 reloadData()
-                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormat_six))
+                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormat_month_ch))
 
-                let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_six)
+                let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_month_ch)
                 self.todayBtn.isHidden = (text == dateStr)
             }
         }
@@ -179,7 +179,7 @@ class BNCalendarView: UIView {
     }()
     
     lazy var titleBtn: UIButton = {
-        var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormat_six)
+        var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormat_month_ch)
         dateStr = "\(year)年\(month)月"
         var view = UIView.createBtn(.zero, title: dateStr, font: 16, imgName: nil, tag: 104, type: 2)
         view.addActionHandler({[weak self] (control) in
@@ -278,7 +278,7 @@ class BNCalendarView: UIView {
     
     func dateStrFmtFrom(_ btn: UIButton) -> String {
         let dateStr = (self.titleBtn.titleLabel!.text ?? "空") + (btn.titleLabel!.text ?? "空") + "日"
-        let date = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_seven)
+        let date = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_day_ch)
         let dateStrFmt = DateFormatter.stringFromDate(date)
         return dateStrFmt
     }
