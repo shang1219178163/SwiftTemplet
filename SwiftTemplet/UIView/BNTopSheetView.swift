@@ -184,8 +184,8 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
         
-//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
+//        view.titleEdgeInsets = UIEdgeInsetMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
+//        view.imageEdgeInsets = UIEdgeInsetMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
         view.layoutButton(style: 0, imageTitleSpace: 0)
         return view
     }()
