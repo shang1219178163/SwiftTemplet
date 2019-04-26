@@ -45,7 +45,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         UIApplication.checkVersion(kAppStoreID);
         view.getViewLayer()
-                
+     
     }
     
     //MARK: -lazy
