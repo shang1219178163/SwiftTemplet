@@ -56,7 +56,9 @@ target 'SwiftTemplet' do
 #    pod 'HandyJSON'
     pod 'HandyJSON', :git => 'https://github.com/alibaba/HandyJSON.git', :branch => 'dev_for_swift5.0'
 
-
+    pod ‘YYCache’
+    pod 'YYCategories'
+    pod ‘YYModel’
 #    pod 'TextFieldEffects'
 #    pod 'KeychainAccess'
 #    pod 'SwiftOCR'
