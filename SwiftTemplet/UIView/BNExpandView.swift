@@ -102,7 +102,7 @@ class BNExpandView: UIView {
         var view = UIButton(type: .custom)
         //        view.setTitle("闭包的回调方法", for: .normal);
         //        view.setTitleColor(.white, for: .normal);
-        view.setImage(UIImageNamed("icon_notice"), for: .normal)
+        view.setImage(UIImageNamed("icon_notice_black"), for: .normal)
         view.setBackgroundImage(UIImage(color: .white), for: .normal)
         view.adjustsImageWhenHighlighted = false
         view.addActionHandler({ (control) in
