@@ -112,6 +112,9 @@
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
 		14F3966B227ED0F2000CD7B4 /* BNCheckVersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3966A227ED0F2000CD7B4 /* BNCheckVersApi.swift */; };
 		14F3966D227ED405000CD7B4 /* BNBaseRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3966C227ED405000CD7B4 /* BNBaseRequestApi.swift */; };
+		14F3967622804160000CD7B4 /* ESCheckVersRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */; };
+		14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3967522804160000CD7B4 /* ESCheckVersResult.swift */; };
+		14F39679228041AA000CD7B4 /* BNCheckVersRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F39678228041AA000CD7B4 /* BNCheckVersRootClass.swift */; };
 		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
 		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
 		14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */; };
@@ -248,6 +251,9 @@
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
 		14F3966A227ED0F2000CD7B4 /* BNCheckVersApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNCheckVersApi.swift; sourceTree = "<group>"; };
 		14F3966C227ED405000CD7B4 /* BNBaseRequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNBaseRequestApi.swift; sourceTree = "<group>"; };
+		14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESCheckVersRootClass.swift; sourceTree = "<group>"; };
+		14F3967522804160000CD7B4 /* ESCheckVersResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESCheckVersResult.swift; sourceTree = "<group>"; };
+		14F39678228041AA000CD7B4 /* BNCheckVersRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNCheckVersRootClass.swift; sourceTree = "<group>"; };
 		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
 		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
 		14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSwitch.swift; sourceTree = "<group>"; };
@@ -478,6 +484,9 @@
 				149111A022719F300078A7BB /* AppGlobleConfig.swift */,
 				14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */,
 				14F3966A227ED0F2000CD7B4 /* BNCheckVersApi.swift */,
+				14F39678228041AA000CD7B4 /* BNCheckVersRootClass.swift */,
+				14F3967522804160000CD7B4 /* ESCheckVersResult.swift */,
+				14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -815,10 +824,12 @@
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
 				149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */,
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
+				14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */,
 				142A770122275EE10016D3DA /* BNTipsView.swift in Sources */,
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
 				142A76F722275EE10016D3DA /* BNSliderControlView.swift in Sources */,
 				142A76FF22275EE10016D3DA /* BNSuspendBtn.swift in Sources */,
+				14F3967622804160000CD7B4 /* ESCheckVersRootClass.swift in Sources */,
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
@@ -853,6 +864,7 @@
 				146F09822228AF4700E13F53 /* BNVehicleInfoCardView.swift in Sources */,
 				142A76F522275EE10016D3DA /* BNGeometryView.swift in Sources */,
 				146F09842228CD7000E13F53 /* BNRecordCardView.swift in Sources */,
+				14F39679228041AA000CD7B4 /* BNCheckVersRootClass.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				142A76FB22275EE10016D3DA /* BNCellDefaultView.swift in Sources */,
 				5182444D213E8CB600071A9D /* BNData.swift in Sources */,

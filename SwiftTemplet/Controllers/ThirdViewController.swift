@@ -9,6 +9,7 @@
 
 import UIKit
 import SwiftExpand
+import HandyJSON
 import Moya
 
 class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
@@ -43,19 +44,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         layout.sectionInset = UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4)
         DDLog(layout.minimumInteritemSpacing,layout.minimumLineSpacing,layout.headerReferenceSize,layout.sectionInset)
         
-        UIApplication.checkVersion(kAppStoreID);
+//        UIApplication.checkVersion(kAppStoreID);
         view.getViewLayer()
      
     }
-    
-    //MARK: -lazy
-    lazy var dateRangeView: BNDateRangeView = {
-        let frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: 60)
-        var view = BNDateRangeView(frame: .zero)
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
-        view.backgroundColor = .green
-        return view
-    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
@@ -67,7 +59,29 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         controller = "PickerViewController"
         
 //        goController(controller, obj: nil, objOne: nil)
-        
+        let updateAPi = BNCheckVersApi()
+        updateAPi.startRequest(success: { (manager, dic, error) in
+            
+            let data: Data! = try? JSONSerialization.data(withJSONObject: dic as Any, options: []);
+            let jsonString: String! = String(data: data, encoding: .utf8);
+            let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
+            
+            DDLog(string)
+//            if let response = BNCheckVersRootClass.deserialize(from: dic) {
+//                DDLog(response)
+//
+//            }
+            if let response = ESCheckVersRootClass.deserialize(from: dic) {
+                DDLog(response)
+                
+            }
+
+            
+
+        }) { (manager, dic, error) in
+            DDLog(error! as Any)
+            
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,6 +146,15 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: -lazy
+    lazy var dateRangeView: BNDateRangeView = {
+        let frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: 60)
+        var view = BNDateRangeView(frame: .zero)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.backgroundColor = .green
+        return view
+    }()
     
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
