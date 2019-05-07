@@ -54,7 +54,8 @@ target 'SwiftTemplet' do
 #    pod 'RxSwift'
 #    pod 'ObjectMapper+Realm'
 #    pod 'HandyJSON'
-    pod 'HandyJSON', :git => 'https://github.com/alibaba/HandyJSON.git', :branch => 'dev_for_swift5.0'
+#    pod 'HandyJSON', :git => 'https://github.com/alibaba/HandyJSON.git', :branch => 'dev_for_swift5.0'
+    pod 'HandyJSON', '~> 5.0.0-beta.1'
 
     pod ‘YYCache’
     pod 'YYCategories'
