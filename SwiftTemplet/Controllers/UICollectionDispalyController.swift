@@ -26,13 +26,13 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         // 注册cell
         //        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
         //        // 注册headerView
-        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
+        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
         //        // 注册footView
-        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
+        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
         
 //        collectionView.collectionViewLayout = UICollectionView.layoutDefault
-        collectionView.dictClass = [UICollectionElementKindSectionHeader : ["UICTReusableViewOne",],
-                                    UICollectionElementKindSectionFooter : ["UICTReusableViewZero",],
+        collectionView.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
+                                    UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
                                     UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
         ]
         collectionView.registerAll();
@@ -107,7 +107,7 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
     
     //设定header和footer的方法，根据kind不同进行不同的判断即可
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             let view = UICTReusableViewOne.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewOne
             view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
             view.textLabelRight.text = "999+"
@@ -156,12 +156,12 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
 //        // 注册cell
 //        //        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
 //        //        // 注册headerView
-//        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
+//        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
 //        //        // 注册footView
-//        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footIdentifier)
+//        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
 //        
-//        view.dictClass = [UICollectionElementKindSectionHeader : ["UICTReusableViewOne",],
-//                                     UICollectionElementKindSectionFooter : ["UICTReusableViewZero",],
+//        view.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
+//                                     UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
 //                                     UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
 //        ]
 //        view.registerAll();

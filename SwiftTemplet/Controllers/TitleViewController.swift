@@ -145,8 +145,8 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
     func setupTitleView() -> Void {        
         btn.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
 //        btn.setImage(UIImageColor( .red, size: CGSize(width: 20, height: 20)), for: .normal);
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
-        btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5, 0, -btn.titleLabel!.bounds.width)
+        btn.titleEdgeInsets = UIEdgeInsetMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
+        btn.imageEdgeInsets = UIEdgeInsetMake(0, btn.titleLabel!.bounds.width+5, 0, -btn.titleLabel!.bounds.width)
 
         DDLog(btn.titleEdgeInsets, btn.imageEdgeInsets)
         btn.contentHorizontalAlignment = .left
