@@ -284,7 +284,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 "self.title".copyToPasteboard(true)
                 
             case 1:
-                let _ = UIAlertController.createAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (alertAction) in
+                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (alertAction) in
                     DDLog(alertAction.title)
                 })
                 
