@@ -238,7 +238,7 @@ class BNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //获得照片
-        let image:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        let image:UIImage = info[UIImagePickerController.InfoKey.editedImage.rawValue] as! UIImage
         // 拍照
         if picker.sourceType == .camera {
             //保存相册

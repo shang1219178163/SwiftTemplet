@@ -86,7 +86,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
         cell.type = 1;
         cell.labelRight.textAlignment = .center
         if [1,2].contains(indexPath.section) {
-            cell.separatorInset = UIEdgeInsetsMake(0, 100, 0, 0)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
         }
         //        cell.getViewLayer();
         return cell;
