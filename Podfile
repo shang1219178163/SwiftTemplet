@@ -48,9 +48,9 @@ target 'SwiftTemplet' do
 
 #   pod 'TZStackView'
 #   pod 'Whisper'
-#    pod 'RxAlamofire'
+    pod 'RxAlamofire'
 #    pod 'RxBlocking'
-#    pod 'RxCocoa'
+    pod 'RxCocoa'
     pod 'RxSwift'
 #    pod 'ObjectMapper+Realm'
 #    pod 'HandyJSON'

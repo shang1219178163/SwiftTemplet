@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller = UICtrFromString("HomeViewController");
 //        controller = UICtrFromString("UIRecognizerController");
 //        controller = UICtrFromString("IOPAuthRechargeController");
+        controller = UICtrFromString("BNUserLogInController");
+
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;

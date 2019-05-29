@@ -27,6 +27,12 @@ class FourthViewController: UIViewController {
             DDLog(view)
         }
         
+        
+        let list: [String] = ["1", "2", "3", "4", "5", "6",]
+        let listOne = list.map { $0 + "_item" }
+        
+        DDLog(listOne)
+        
         return;
   
         view.addSubview(clockView);
@@ -38,8 +44,8 @@ class FourthViewController: UIViewController {
         view.getViewLayer();
 
         //元组
-        var score = (java:12.01, Swift:34, c:"abcde", oc:98)
-        DDLog(score.java,score.Swift);
+        let score = (java: 12.01, Swift: 34, c:"abcde", oc: 98)
+        DDLog(score.java, score.Swift);
     }
     
     override func viewWillAppear(_ animated: Bool) {
