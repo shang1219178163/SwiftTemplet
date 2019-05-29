@@ -80,6 +80,7 @@
 		14488728224E1D9F00B550AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14488727224E1D9F00B550AF /* QuartzCore.framework */; };
 		1448872A224E203D00B550AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14488729224E203D00B550AF /* CoreGraphics.framework */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
+		14579B9B2293F28C001FEB0C /* BNUserLogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14579B9A2293F28C001FEB0C /* BNUserLogInController.swift */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
 		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
@@ -219,6 +220,7 @@
 		14488727224E1D9F00B550AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14488729224E203D00B550AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		14579B9A2293F28C001FEB0C /* BNUserLogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNUserLogInController.swift; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
 		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
@@ -524,12 +526,7 @@
 				142A770A222761050016D3DA /* PickerViewController.swift */,
 				14244765222929990087372F /* PhotosViewController.swift */,
 				14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */,
-				142A770C222764080016D3DA /* BNPickerView.swift */,
-				146F09812228AF4700E13F53 /* BNVehicleInfoCardView.swift */,
-				146F09832228CD7000E13F53 /* BNRecordCardView.swift */,
-				146F09872229033E00E13F53 /* BNUpdateVersionView.swift */,
-				146F098922291A1200E13F53 /* BNPhotosView.swift */,
-				1424476F222B92070087372F /* UITableViewCellPhotoPicker.swift */,
+				14579B9A2293F28C001FEB0C /* BNUserLogInController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -579,6 +576,12 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				142A770C222764080016D3DA /* BNPickerView.swift */,
+				146F09812228AF4700E13F53 /* BNVehicleInfoCardView.swift */,
+				146F09832228CD7000E13F53 /* BNRecordCardView.swift */,
+				146F09872229033E00E13F53 /* BNUpdateVersionView.swift */,
+				146F098922291A1200E13F53 /* BNPhotosView.swift */,
+				1424476F222B92070087372F /* UITableViewCellPhotoPicker.swift */,
 				142A76F122275EE00016D3DA /* BNAnnularProgress.swift */,
 				142A76E422275EDF0016D3DA /* BNCalendarView.swift */,
 				142A76E322275EDF0016D3DA /* BNCellDefaultView.swift */,
@@ -724,6 +727,9 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -749,6 +755,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -859,6 +868,7 @@
 				1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */,
 				142A770422275EE10016D3DA /* PPNumberButton.swift in Sources */,
 				1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */,
+				14579B9B2293F28C001FEB0C /* BNUserLogInController.swift in Sources */,
 				147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */,
 				142A770022275EE10016D3DA /* BNTableFooterView.swift in Sources */,
 				1448871C224E1D2300B550AF /* ZMCollectionLayout.swift in Sources */,
