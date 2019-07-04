@@ -159,7 +159,7 @@ class BNUserLogInController: UIViewController {
     
     lazy var loginBtn: UIButton = {
 //        var btn = UIButton(type: .custom);
-        var btn = UIView.createBtn(title: "登录", imgName: nil, tag: kTAG_BTN);
+        var btn = UIView.createBtn(title: "登录", imgName: nil);
         btn.setTitleColor( .white, for: .normal)
         btn.setTitleColor( .black, for: .disabled)
         btn.setTitle("用户名/密码错误", for: .disabled)

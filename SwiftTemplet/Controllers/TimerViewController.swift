@@ -64,7 +64,7 @@ class TimerViewController: UIViewController {
     }
     
     lazy var btn: UIButton = {
-        var view = UIView.createBtn(.zero, title: "发送验证码", font: 16, imgName: nil, tag: 200, type: 1)
+        var view = UIView.createBtn(.zero, title: "发送验证码", imgName: nil, type: 1)
         view.addActionHandler({ [weak self] (obj) in
             UIButton.timeValueChange(obj as! UIButton, timeOut: 12)
 

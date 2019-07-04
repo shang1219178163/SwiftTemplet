@@ -203,7 +203,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", items:nil, completion: { (action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -284,7 +284,7 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 "self.title".copyToPasteboard(true)
                 
             case 1:
-                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (alertAction) in
+                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (controller, alertAction) in
                     DDLog(alertAction.title)
                 })
                 

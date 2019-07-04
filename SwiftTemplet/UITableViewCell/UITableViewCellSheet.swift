@@ -16,7 +16,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     var viewBlock:((String) -> Void)?
     var itemList: [String]? {
         willSet{
-            alertCtrl = UIAlertController.createSheet("请选择", items: newValue, completion: { (action:UIAlertAction) in
+            alertCtrl = UIAlertController.createSheet("请选择", items: newValue, handler: { (controller: UIAlertController, action:UIAlertAction) in
                 if action.title != kActionTitle_Cancell {
                     self.textfield.text = action.title
                     if self.viewBlock != nil {
@@ -100,7 +100,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", items:nil, completion: { (action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
             DDLog(action.title)
         })
         return alertController
