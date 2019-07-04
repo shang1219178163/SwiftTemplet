@@ -175,7 +175,7 @@ class BNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     //MARK: -funtions
     func showAlertController() -> Void {
         let items = ["从相册选择", "拍照"]
-        UIAlertController.showSheet(nil, items: items) { (action) in
+        UIAlertController.showSheet(nil, items: items) { (controller: UIAlertController, action: UIAlertAction) in
             let idx = items.firstIndex(of: action.title!)
             switch idx {
             case 1:

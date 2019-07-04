@@ -20,7 +20,7 @@ class PhotosViewController: UIViewController{
         
         _ = createBtnBarItem("相册", image: nil, isLeft: false, isHidden: false) { (control) in
             let items: [String] = ["image Picker", "custom ImagePicker","imagePicker With selected assets",]
-            UIAlertController.showSheet("请选择", items: items, completion: { (action) in
+            UIAlertController.showSheet("请选择", items: items, handler: { (controller, action) in
                 let x = items.firstIndex(of: action.title!)
                 switch x {
                 case 0:

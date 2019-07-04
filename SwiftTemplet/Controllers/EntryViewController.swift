@@ -293,7 +293,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", items:nil, completion: { (action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {

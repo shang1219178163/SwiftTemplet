@@ -129,7 +129,7 @@ class BNCalendarView: UIView {
     }
     
     lazy var yearPreBtn: UIButton = {
-        var view = UIView.createBtn(.zero, title: nil, font: 16, imgName: "left", tag: 100, type: 4)
+        var view = UIView.createBtn(.zero, title: nil, imgName: "left", type: 4)
         view.addActionHandler({[weak self] (control) in
             self!.year -= 1
 //            DDLog("\(self!.year)年\(self!.month)月");
@@ -139,7 +139,7 @@ class BNCalendarView: UIView {
     }()
 
     lazy var yearNextBtn: UIButton = {
-        var view = UIView.createBtn(.zero, title: nil, font: 16, imgName: "right", tag: 101, type: 4)
+        var view = UIView.createBtn(.zero, title: nil, imgName: "right", type: 4)
         view.addActionHandler({[weak self] (control) in
             self!.year += 1
 //            DDLog("\(self!.year)年\(self!.month)月");
@@ -149,7 +149,7 @@ class BNCalendarView: UIView {
     }()
     
     lazy var monthPreBtn: UIButton = {
-        var view = UIView.createBtn(.zero, title: nil, font: 16, imgName: "left", tag: 102, type: 4)
+        var view = UIView.createBtn(.zero, title: nil, imgName: "left", type: 4)
         view.addActionHandler({[weak self] (control) in
             if self!.month == 1 {
                 self!.year -= 1;
@@ -164,7 +164,7 @@ class BNCalendarView: UIView {
     }()
     
     lazy var monthNextBtn: UIButton = {
-        var view = UIView.createBtn(.zero, title: nil, font: 16, imgName: "right", tag: 103, type: 4)
+        var view = UIView.createBtn(.zero, title: nil, imgName: "right", type: 4)
         view.addActionHandler({[weak self] (control) in
             if self!.month == 12 {
                 self!.year += 1;
@@ -181,7 +181,7 @@ class BNCalendarView: UIView {
     lazy var titleBtn: UIButton = {
         var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormat_month_ch)
         dateStr = "\(year)年\(month)月"
-        var view = UIView.createBtn(.zero, title: dateStr, font: 16, imgName: nil, tag: 104, type: 2)
+        var view = UIView.createBtn(.zero, title: dateStr, imgName: nil, type: 2)
         view.addActionHandler({[weak self] (control) in
             DDLog(dateStr)
             }, for: .touchUpInside)
@@ -189,7 +189,7 @@ class BNCalendarView: UIView {
     }()
     
     lazy var todayBtn: UIButton = {
-        var view = UIView.createBtn(.zero, title: "今天", font: 16, imgName: nil, tag: 105, type: 2)
+        var view = UIView.createBtn(.zero, title: "今天", imgName: nil, type: 2)
         view.addActionHandler({[weak self] (control) in
             let comp = Date.dateComponents(Date())
             self!.year = comp.year!
