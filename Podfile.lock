@@ -14,6 +14,10 @@ PODS:
   - HandyJSON (5.0.0)
   - IQKeyboardManagerSwift (6.4.0)
   - Kingfisher (4.10.1)
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.1.0)
+  - MMPopupView (1.7.2):
+    - Masonry
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -36,6 +40,8 @@ PODS:
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
   - SnapKit (4.2.0)
+  - SnapKitExtend (1.0.7):
+    - SnapKit
   - Surge (2.2.0)
   - SwiftExpand (1.6.2)
   - SwiftyJSON (5.0.0)
@@ -54,12 +60,15 @@ DEPENDENCIES:
   - HandyJSON (~> 5.0.0-beta.1)
   - IQKeyboardManagerSwift
   - Kingfisher
+  - MBProgressHUD
+  - MMPopupView
   - Moya
   - RxAlamofire
   - RxCocoa
   - RxSwift
   - SDWebImage
   - SnapKit
+  - SnapKitExtend
   - Surge
   - SwiftExpand
   - SwiftyJSON
@@ -79,6 +88,9 @@ SPEC REPOS:
     - HandyJSON
     - IQKeyboardManagerSwift
     - Kingfisher
+    - Masonry
+    - MBProgressHUD
+    - MMPopupView
     - Moya
     - ObjectMapper
     - Result
@@ -88,6 +100,7 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SnapKit
+    - SnapKitExtend
     - Surge
     - SwiftExpand
     - SwiftyJSON
@@ -106,6 +119,9 @@ SPEC CHECKSUMS:
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
@@ -115,6 +131,7 @@ SPEC CHECKSUMS:
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
   SwiftExpand: 7deec364418ce933a2fbf2c6e91a99434c19f58f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
@@ -122,6 +139,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 116e3a4ea30eb84ae7cf6909b955c388ce1ca21e
+PODFILE CHECKSUM: 9b6a83d6f810222085c50daa9c89f9771797b409
 
 COCOAPODS: 1.7.0.beta.3

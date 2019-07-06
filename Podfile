@@ -26,6 +26,10 @@ target 'SwiftTemplet' do
 #   pod 'KeychainAccess'
     pod 'Kingfisher'
     pod 'SDWebImage'
+    
+    pod 'MBProgressHUD'
+    pod 'MMPopupView'
+
 #   pod 'MonkeyKing'
     pod 'Moya'
 #   pod 'Nimble'
@@ -37,6 +41,8 @@ target 'SwiftTemplet' do
 #   pod 'ReachabilitySwift'
 #   pod 'SQLite.swift'
     pod 'SnapKit'
+    pod 'SnapKitExtend'
+
 #   pod 'Spring'
 #   pod 'StarWars'
     pod 'Surge'
