@@ -25,6 +25,7 @@ class FourthViewController: UIViewController {
         
         createBtnBarItem("测试按钮", isLeft: false) { (reco, view, tag) in
             DDLog(view)
+
         }
         
         
@@ -58,7 +59,11 @@ class FourthViewController: UIViewController {
             break
         }
 //        lastNameEndingInA;// Optional("Elena")”
-     
+//        NNProgressHUD.showText("111");
+        NNProgressHUD.showLoadingText(kMsg_NetWorkRequesting);
+//        NNProgressHUD.showSuccessText("success");
+//        NNProgressHUD.showErrorText("fail");
+
     }
     
     func createGroupView() -> Void {
