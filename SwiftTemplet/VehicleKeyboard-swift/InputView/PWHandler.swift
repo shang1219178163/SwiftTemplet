@@ -8,6 +8,8 @@
 
 import UIKit
 
+import SnapKit
+
 @objc public protocol PWHandlerDelegate{
     @objc  func plateInputComplete(plate: String)
     @objc  optional func palteDidChnage(plate:String,complete:Bool)
@@ -39,72 +41,181 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     @objc public weak var  delegate : PWHandlerDelegate?
     
     let identifier = "PWInputCollectionViewCell"
-    var inputCollectionView :UICollectionView!
+    
     var maxCount = 7
     var selectIndex = 0
     @objc public var inputTextfield :UITextField!
-//    let keyboardView = PWKeyBoardView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+
     var selectView = UIView()
     var isSetKeyboard = false//预设值时不设置为第一响应对象
     var view = UIView()
-//    @objc public var collectionView :UICollectionView!
-    
     
     public override init() {
         super.init()
         
-        collectionView.addObserver(self, forKeyPath: "hidden", options: .new, context: nil);
+        inputCollectionView.addObserver(self, forKeyPath: "hidden", options: .new, context: nil);
     }
   
     public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 //        DDLog("change_%@", change);
         selectView.isHidden = (change![NSKeyValueChangeKey.newKey] != nil);
     }
+    
+    /*
+     将车牌输入框绑定到UITextField
+     **/
+    @objc public func bindTextField(_ textField: UITextField) -> Void {
+        
+        inputTextfield = textField
+        inputTextfield.inputView = keyboardView
+        inputTextfield.inputAccessoryView = {
+            let switchWidth: CGFloat = 70.0
+            
+            let view: UIView = {
+                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+                
+                view.layer.borderWidth = 1;
+                view.layer.borderColor = cellBorderColor.cgColor;
+                return view;
+            }()
+            
+            inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
+            view.addSubview(inputCollectionView)
+            
+            let btn: UIButton = {
+                let view: UIButton = UIButton(type: .custom)
+                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
+                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
+                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
+                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+                view.imageView?.contentMode = .scaleAspectFit
+                
+                view.layer.borderWidth = 1;
+                view.layer.borderColor = cellBorderColor.cgColor;
+                view.addActionHandler({ (control) in
+                    control.isSelected = !control.isSelected;
+                    //                    DDLog(control.isSelected)
+                    self.changeInputType(isNewEnergy: control.isSelected)
+                    
+                }, for: .touchUpInside)
+                return view;
+            }()
+            
+            view.addSubview(btn)
+            return view;
+        }()
+        
+        setBackgroundView()
+    }
     /*
      将车牌输入框绑定到一个你自己创建的UIview
      **/
     @objc public func setKeyBoardView(view: UIView){
         self.view = view
-//        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.register(UINib(nibName: identifier, bundle: Bundle(for: PWHandler.self)), forCellWithReuseIdentifier: identifier)
-        collectionView.frame = view.bounds;
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(tap:)))
-        view.addGestureRecognizer(tap)
-        view.addSubview(collectionView)
-        setNSLayoutConstraint(subView: collectionView, superView: view)
-        
-        inputCollectionView = collectionView
+        //        inputCollectionView.frame = view.bounds;
         
         if view.isKind(of: UITextField.classForCoder()) {
             inputTextfield = (view as! UITextField);
         } else {
-            inputTextfield = UITextField(frame: CGRect(x: 0, y: 0, width: 0, height: view.frame.height))
+            inputTextfield = UITextField(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+            if view.isKind(of: UIButton.classForCoder()) == true {
+                if let title = (view as! UIButton).titleLabel!.text {
+                    inputTextfield.placeholder = "  " + title;
+                    (view as! UIButton).setTitle("", for: .normal)
+                }
+            }
             view.addSubview(inputTextfield)
+            
+            if CGRect.zero.equalTo(view.frame) == true {
+                inputTextfield.snp.makeConstraints { (make) in
+                    make.edges.equalToSuperview()
+                }
+            }
         }
-        
-//        collectionView.backgroundColor = UIColor.white
-//        collectionView.isScrollEnabled = false
-//        keyboardView.delegate = self
-//        keyboardView.mainColor = mainColor
+                
         inputTextfield.inputView = keyboardView
-    
-        //因为直接切给collectionView加边框 会盖住蓝色的选中边框   所以加一个和collectionView一样大的view再切边框
+        inputTextfield.inputAccessoryView = {
+            let switchWidth: CGFloat = 70.0
+            
+            let view: UIView = {
+                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+                
+                view.layer.borderWidth = 1;
+                view.layer.borderColor = cellBorderColor.cgColor;
+                return view;
+            }()
+            
+            inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
+            view.addSubview(inputCollectionView)
+            
+            let btn: UIButton = {
+                let view: UIButton = UIButton(type: .custom)
+                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
+                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
+                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
+                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+                view.imageView?.contentMode = .scaleAspectFit
+                
+                view.layer.borderWidth = 1;
+                view.layer.borderColor = cellBorderColor.cgColor;
+                view.addActionHandler({ (control) in
+                    control.isSelected = !control.isSelected;
+                    //                    DDLog(control.isSelected)
+                    self.changeInputType(isNewEnergy: control.isSelected)
+                    
+                }, for: .touchUpInside)
+                return view;
+            }()
+            
+            view.addSubview(btn)
+            return view;
+        }()
+        
         setBackgroundView()
         
-        //监听键盘
-        NotificationCenter.default.addObserver(self, selector: #selector(plateKeyBoardShow), name:UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(plateKeyBoardHidden), name:UIResponder.keyboardWillHideNotification, object: nil)
+//        view.translatesAutoresizingMaskIntoConstraints = false
+        if view.isKind(of: UITextField.classForCoder()) == false {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(tap:)))
+            view.addGestureRecognizer(tap)
+            
+            //监听键盘
+            NotificationCenter.default.addObserver(self, selector: #selector(plateKeyBoardShow), name:UIResponder.keyboardDidShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(plateKeyBoardHidden), name:UIResponder.keyboardWillHideNotification, object: nil)
+        }
         
     }
+//    @objc public func setKeyBoardView(view: UIView){
+//        self.view = view
+////        inputCollectionView.frame = view.bounds;
+//
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(tap:)))
+//        view.addGestureRecognizer(tap)
+//        view.addSubview(inputCollectionView)
+//        setNSLayoutConstraint(subView: inputCollectionView, superView: view)
+//
+//        if view.isKind(of: UITextField.classForCoder()) {
+//            inputTextfield = (view as! UITextField);
+//        } else {
+//            inputTextfield = UITextField(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+//            view.addSubview(inputTextfield)
+//        }
+//
+//        inputTextfield.inputView = keyboardView
+//
+//        //因为直接切给collectionView加边框 会盖住蓝色的选中边框   所以加一个和collectionView一样大的view再切边框
+//        setBackgroundView()
+//
+//        //监听键盘
+//        NotificationCenter.default.addObserver(self, selector: #selector(plateKeyBoardShow), name:UIResponder.keyboardDidShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(plateKeyBoardHidden), name:UIResponder.keyboardWillHideNotification, object: nil)
+//    }
     
-    @objc public lazy var collectionView: UICollectionView = {
+    @objc lazy var inputCollectionView: UICollectionView = {
         let view: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.register(UINib(nibName: identifier, bundle: Bundle(for: PWHandler.self)), forCellWithReuseIdentifier: identifier)
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue);
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
         view.isScrollEnabled = false
@@ -114,7 +225,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
         return view
     }()
     
-    lazy var keyboardView: PWKeyBoardView = {
+    @objc lazy var keyboardView: PWKeyBoardView = {
         let view: PWKeyBoardView = PWKeyBoardView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         view.mainColor = mainColor
         view.delegate = self
@@ -122,11 +233,11 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
         return view
     }()
     
+    
     /*
      手动弹出键盘
      **/
     @objc public func vehicleKeyBoardBecomeFirstResponder(){
-        DDLog("%@", inputTextfield.inputView as Any)
         inputTextfield.becomeFirstResponder()
     }
     
@@ -182,7 +293,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
         changeInputType(isNewEnergy: isNewEnergy)
     }
     
-    @objc  public func changeInputType(isNewEnergy:Bool){
+    @objc public func changeInputType(isNewEnergy:Bool){
         let keyboardView = inputTextfield.inputView as! PWKeyBoardView
         keyboardView.numType = isNewEnergy ? .newEnergy : .auto
         var numType = keyboardView.numType
@@ -199,23 +310,27 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
             selectIndex = maxCount - 1
         }
         keyboardView.updateText(text: paletNumber, isMoreType: false, inputIndex: selectIndex)
+        inputTextfield.text = paletNumber;
+
         updateCollection()
     }
     
     private func setBackgroundView(){
         if itemSpacing <= 0 {
             let backgroundView = UIView(frame: inputCollectionView.bounds)
+            backgroundView.isUserInteractionEnabled = false
             backgroundView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(backgroundView)
-            setNSLayoutConstraint(subView: backgroundView, superView: view)
             backgroundView.layer.borderWidth = 1
             backgroundView.layer.borderColor = cellBorderColor.cgColor
-            backgroundView.isUserInteractionEnabled = false
             backgroundView.layer.masksToBounds = true
             backgroundView.layer.cornerRadius = cornerRadius
+            
+            view.addSubview(backgroundView)
+            setNSLayoutConstraint(subView: backgroundView, superView: view)
             selectView.isUserInteractionEnabled = false
         }
-        view.addSubview(selectView)
+//        view.addSubview(selectView)
+        inputCollectionView.addSubview(selectView)
     }
     
     private func setNSLayoutConstraint(subView:UIView,superView:UIView){
@@ -242,9 +357,9 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     
     @objc func tapAction(tap:UILongPressGestureRecognizer){
         let tapPoint = tap.location(in: view)
-        let indexPath = collectionView.indexPathForItem(at: tapPoint)
+        let indexPath = inputCollectionView.indexPathForItem(at: tapPoint)
         if indexPath != nil {
-            collectionView(collectionView, didSelectItemAt: indexPath!)
+            collectionView(inputCollectionView, didSelectItemAt: indexPath!)
         }
     }
     
@@ -287,6 +402,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
             }
         }
         keyboardView.updateText(text: paletNumber, isMoreType: isMoreType, inputIndex: selectIndex)
+        inputTextfield.text = paletNumber
         updateCollection()
         if (!isMoreType){
             delegate?.palteDidChnage?(plate:paletNumber,complete:paletNumber.count == maxCount)
@@ -322,7 +438,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-        collectionView.removeObserver(self, forKeyPath: "hidden")
+        inputCollectionView.removeObserver(self, forKeyPath: "hidden")
 
     }
     
