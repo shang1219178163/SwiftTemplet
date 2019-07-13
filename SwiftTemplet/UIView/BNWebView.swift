@@ -13,8 +13,7 @@ class BNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHand
    
     var urlString: String = ""
     var jsString: String = ""
-    var loadingProgressColor: UIColor = UIColor.blue
-    {
+    var loadingProgressColor: UIColor = UIColor.blue {
         didSet{
             progress.progressTintColor = oldValue
             

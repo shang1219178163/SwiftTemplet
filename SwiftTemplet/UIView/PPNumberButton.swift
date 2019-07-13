@@ -93,7 +93,7 @@ public protocol PPNumberButtonDelegate: NSObjectProtocol {
     }
     
     //设置加减按钮的公共方法
-    fileprivate func setupButton(title:String) -> UIButton {
+    fileprivate func setupButton(title: String) -> UIButton {
         let button = UIButton();
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor.gray, for: .normal)

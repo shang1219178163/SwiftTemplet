@@ -186,7 +186,7 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         
 //        view.titleEdgeInsets = UIEdgeInsetMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
-        view.layoutButton(style: 0, imageTitleSpace: 0)
+        view.layoutButton(style: 3, imageTitleSpace: 0)
         return view
     }()
     

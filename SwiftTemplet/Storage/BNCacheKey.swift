@@ -9,10 +9,10 @@
 import UIKit
 
 let kCacheKeyToken: String     = "kCacheKeyToken";
-let kCacheKeyUserModel :String = "kCacheKeyUserModel";
-let kCacheKeyAccount :String   = "kCacheKeyAccount";
-let kCacheKeyPwd :String       = "kCacheKeyPwd";
-let kCacheAppInfo :String      = "kStoreAppInfo";
+let kCacheKeyUserModel: String = "kCacheKeyUserModel";
+let kCacheKeyAccount: String   = "kCacheKeyAccount";
+let kCacheKeyPwd: String       = "kCacheKeyPwd";
+let kCacheAppInfo: String      = "kStoreAppInfo";
 
 class BNCacheKey: NSObject {
 

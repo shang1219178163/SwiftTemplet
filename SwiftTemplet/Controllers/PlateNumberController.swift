@@ -13,7 +13,6 @@ import SwiftExpand
 class PlateNumberController: UIViewController, PWHandlerDelegate {
   
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -101,11 +100,28 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        textField.becomeFirstResponder()
+//        textField.becomeFirstResponder()
+        
+//        let format = "yyyy-MM-dd HH:mm:ss";
+//        let time = "2019-05-08 18:32:12"
+        let format = "yyyy-MM";
+        let time = "2019-05"
+        
+        let isSame = DateFormatter.isSameFormat(time, fmt: format)
+        DDLog("isSame", isSame);
     }
     
+//    @objc func isDateString(_ format: String = "yyyy-MM-dd HH:mm:ss") -> Bool {
+//        if time.count == dateFormat.count {
+//            if time[4] == "-" && time[7] == "-" && time[13] == ":" && time[16] == ":" {
+//                return true
+//            }
+//        }
+//        return false
+//    }
+    
     //MARK: -plate
-    func palteDidChnage(plate: String, complete: Bool) {
+    func plateDidChange(plate: String, complete: Bool) {
         DDLog(plate, complete)
         textField.text = plate
     }
@@ -191,4 +207,5 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
         return keyboradHandler;
     }()
 
+  
 }

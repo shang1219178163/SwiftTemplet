@@ -57,7 +57,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         var controller = "CustomViewController"
         controller = "PickerViewController"
-        
+//        return
 //        goController(controller, obj: nil, objOne: nil)
         let updateAPi = BNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in

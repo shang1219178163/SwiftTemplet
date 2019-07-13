@@ -31,7 +31,6 @@ class FourthViewController: UIViewController {
         
         let list: [String] = ["1", "2", "3", "4", "5", "6",]
         let listOne = list.map { $0 + "_item" }
-        
         DDLog(listOne)
         
         return;

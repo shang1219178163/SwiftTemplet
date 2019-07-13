@@ -31,7 +31,7 @@ extension UITextField :PWKeyBoardViewDeleagte{
         changePlateInputType(isNewEnergy: isNewEnergy)
     }
     
-    func selectComplete(char:String,inputIndex:Int) {
+    func selectComplete(char: String, inputIndex:Int) {
         if !hasText {
             text = ""
         }
