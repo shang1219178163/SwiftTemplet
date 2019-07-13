@@ -177,7 +177,6 @@ class BNDateRangeView: UIView {
     lazy var labLine: UILabel = {
         var view = UILabel()
         view.text = "-"
-//        view.text = "至"
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
         return view
