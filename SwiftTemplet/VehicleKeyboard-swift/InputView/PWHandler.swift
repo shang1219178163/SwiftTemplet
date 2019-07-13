@@ -64,9 +64,10 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     /*
      将车牌输入框绑定到UITextField
      **/
-    @objc public func bindTextField(_ textField: UITextField) -> Void {
+    @objc public func bindTextField(_ textField: UITextField, showSearch: Bool = false) -> Void {
+        textField.font = UIFont.systemFont(ofSize: 13)
         
-        if textField.leftView == nil {
+        if textField.leftView == nil && showSearch == true {
             textField.leftView = {
                 let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
                 
@@ -80,7 +81,6 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
             }()
             textField.leftViewMode = UITextField.ViewMode.always; //此处用来设置leftview现实时机
             textField.placeholder = " 请输入车牌号码";
-            textField.font = UIFont.systemFont(ofSize: 16)
         }
         
         inputTextfield = textField
@@ -104,7 +104,8 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
                 view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
                 view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
                 view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
-            
+                view.setBackgroundImage(UIImage(color: UIColor.white), for: .normal)
+                
                 view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
                 view.imageView?.contentMode = .scaleAspectFit
                 
@@ -128,30 +129,72 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     /*
      将车牌输入框绑定到一个你自己创建的UIview
      **/
-    @objc public func setKeyBoardView(view: UIView){
+    @objc public func setKeyBoardView(view: UIView, showSearch: Bool = true){
         self.view = view
         //        inputCollectionView.frame = view.bounds;
         
         if view.isKind(of: UITextField.classForCoder()) {
             inputTextfield = (view as! UITextField);
+            
         } else {
             inputTextfield = UITextField(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
             if view.isKind(of: UIButton.classForCoder()) == true {
                 if let title = (view as! UIButton).titleLabel!.text {
                     inputTextfield.placeholder = "  " + title;
                     (view as! UIButton).setTitle("", for: .normal)
+
                 }
             }
             view.addSubview(inputTextfield)
             
-            if CGRect.zero.equalTo(view.frame) == true {
-                inputTextfield.snp.makeConstraints { (make) in
-                    make.edges.equalToSuperview()
-                }
-            }
+//            if CGRect.zero.equalTo(view.frame) == true {
+//                inputTextfield.snp.makeConstraints { (make) in
+//                    make.edges.equalToSuperview()
+//                }
+//            }
         }
         
-        bindTextField(inputTextfield)
+        bindTextField(inputTextfield, showSearch: showSearch);
+                
+//        inputTextfield.inputView = keyboardView
+//        inputTextfield.inputAccessoryView = {
+//            let switchWidth: CGFloat = 70.0
+//
+//            let view: UIView = {
+//                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+//
+//                view.layer.borderWidth = 1;
+//                view.layer.borderColor = cellBorderColor.cgColor;
+//                return view;
+//            }()
+//
+//            inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
+//            view.addSubview(inputCollectionView)
+//
+//            let btn: UIButton = {
+//                let view: UIButton = UIButton(type: .custom)
+//                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
+//                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
+//                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
+//                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+//                view.imageView?.contentMode = .scaleAspectFit
+//
+//                view.layer.borderWidth = 1;
+//                view.layer.borderColor = cellBorderColor.cgColor;
+//                view.addActionHandler({ (control) in
+//                    control.isSelected = !control.isSelected;
+//                    //                    DDLog(control.isSelected)
+//                    self.changeInputType(isNewEnergy: control.isSelected)
+//
+//                }, for: .touchUpInside)
+//                return view;
+//            }()
+//
+//            view.addSubview(btn)
+//            return view;
+//        }()
+//
+//        setBackgroundView()
         
 //        view.translatesAutoresizingMaskIntoConstraints = false
         if view.isKind(of: UITextField.classForCoder()) == false {
@@ -305,7 +348,8 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
             backgroundView.layer.masksToBounds = true
             backgroundView.layer.cornerRadius = cornerRadius
             
-            view.addSubview(backgroundView)
+//            view.addSubview(backgroundView)
+//            inputCollectionView.addSubview(backgroundView)
             setNSLayoutConstraint(subView: backgroundView, superView: view)
             selectView.isUserInteractionEnabled = false
         }
@@ -314,6 +358,9 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     }
     
     private func setNSLayoutConstraint(subView:UIView,superView:UIView){
+        if !superView.subviews.contains(subView) {
+            return;
+        }
         if (superView.constraints.count > 0) {
             let topCos = NSLayoutConstraint(item: subView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: superView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
             let leftCos = NSLayoutConstraint(item: subView, attribute: NSLayoutConstraint.Attribute.left, relatedBy: NSLayoutConstraint.Relation.equal, toItem: superView, attribute: NSLayoutConstraint.Attribute.left, multiplier: 1, constant: 0)
