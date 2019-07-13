@@ -8,9 +8,10 @@
 
 import UIKit
 
+import SnapKit
 import SwiftExpand
 
-class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class TitleViewController: UIViewController{
 
     var indexP: IndexPath = IndexPath(row: 0, section: 0)
 
@@ -52,94 +53,124 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
 
         }
         
-        segmentCtl.frame = CGRect(x: 20, y: gemetryView.frame.maxY+20, width: kScreenWidth - 40, height: 40)
-        view.addSubview(segmentCtl)
+        createBtnBarItem("other") { (tap, supView, idx) in
+            let ctrl = OthersViewController()
+            self.navigationController?.pushViewController(ctrl, animated: true)
+        }
 
-        
-        indicator.frame = CGRect(x: segmentCtl.frame.minX, y: segmentCtl.frame.minY - 1, width: segmentCtl.bounds.width/CGFloat(segmentCtl.numberOfSegments), height: 1)
-//        view.layer.addSublayer(indicator)
-        segmentCtl.superview?.layer.addSublayer(indicator)
-
-
-        segmentView.frame = CGRect(x: 20, y: segmentCtl.frame.maxY+20, width: kScreenWidth - 40, height: 40)
         view.addSubview(segmentView)
+        view.addSubview(segmentCtlOne)
+        view.addSubview(checkBox)
+        view.addSubview(checkBoxNew)
 
-        //        view.getViewLayer()
-    }
-
-    //    MARK: - tableView
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        view.getViewLayer()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count;
-    };
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let itemList = list[indexPath.row]
-        let itemHeight = (itemList[2] as! String).cgFloatValue()
-        return itemHeight
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemList = list[indexPath.row]
-        let value0 = itemList[0] as! String
-        let value1 = itemList[1] as! String
-        let value2 = itemList[2] as! String
-        let value3 = itemList[3] as! String
-        let value4 = itemList[4] as! String
-        let value5 = itemList[5] as! String
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        switch (itemList[1] as! String).intValue() {
-        case 1:
-            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
-            cell.labelLeft.text = value0
-            cell.labelRight.text = value4
-            cell.labelRight.text = NSStringFromIndexPath(indexPath)
+        segmentView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(100);
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
+        }
+        
+        segmentCtlOne.snp.makeConstraints { (make) in
+            make.top.equalTo(segmentView.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(40)
+        }
+        
+        checkBox.snp.makeConstraints { (make) in
+            make.top.equalTo(segmentCtlOne.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(200)
+            make.height.equalTo(40)
+        }
+        
+        checkBoxNew.snp.makeConstraints { (make) in
+            make.top.equalTo(checkBox.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+    }
 
-            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
-            cell.getViewLayer()
-            return cell
-            
-        default:
-            break
-            
-        }
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexP != indexPath  {
-            let newCell = tableView.cellForRow(at: indexPath)
-            newCell?.accessoryType = .checkmark
-            
-            let oldCell = tableView.cellForRow(at: indexP)
-            oldCell?.accessoryType = .none
-            indexP = indexPath
-        }
-        dismiss()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10;
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView();
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01;
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero);
-        //        label.backgroundColor = .green;
-        //        label.text = "header\(section)";
-        return label;
-    }
+//    //    MARK: - tableView
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1;
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return list.count;
+//    };
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let itemList = list[indexPath.row]
+//        let itemHeight = (itemList[2] as! String).cgFloatValue()
+//        return itemHeight
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let itemList = list[indexPath.row]
+//        let value0 = itemList[0] as! String
+//        let value1 = itemList[1] as! String
+//        let value2 = itemList[2] as! String
+//        let value3 = itemList[3] as! String
+//        let value4 = itemList[4] as! String
+//        let value5 = itemList[5] as! String
+//
+//        switch (itemList[1] as! String).intValue() {
+//        case 1:
+//            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
+//            cell.labelLeft.text = value0
+//            cell.labelRight.text = value4
+//            cell.labelRight.text = NSStringFromIndexPath(indexPath)
+//
+//            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
+//            cell.getViewLayer()
+//            return cell
+//
+//        default:
+//            break
+//
+//        }
+//        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexP != indexPath  {
+//            let newCell = tableView.cellForRow(at: indexPath)
+//            newCell?.accessoryType = .checkmark
+//
+//            let oldCell = tableView.cellForRow(at: indexP)
+//            oldCell?.accessoryType = .none
+//            indexP = indexPath
+//        }
+//        dismiss()
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 10;
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return UIView();
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0.01;
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let label = UILabel(frame: .zero);
+//        //        label.backgroundColor = .green;
+//        //        label.text = "header\(section)";
+//        return label;
+//    }
     
     //MARK: -func
     func setupTitleView() -> Void {        
@@ -246,36 +277,36 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }()
     
     //MARK: -lazy
-    lazy var segmentCtl: UISegmentedControl = {
-        var view = UIView.createSegment( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
-        view.addActionHandler({ (sender:UIControl) in
-            
-            if let control = sender as? UISegmentedControl {
-                DDLog(control.selectedSegmentIndex)
-                
-                var rect = self.indicator.frame
-                rect.origin.x = control.frame.minX + CGFloat(control.selectedSegmentIndex) * self.indicator.frame.width
-                self.indicator.frame = rect
-                
-            }
-            
-        }, for: .valueChanged)
-        return view
-    }()
-    
-    lazy var indicator: CALayer = {
-        var layer = CALayer()
-//        layer.frame = CGRect(x: 0, y: -1, width: segmentCtl.bounds.width/CGFloat(segmentCtl.numberOfSegments), height: 1)
-        layer.backgroundColor = UIColor.theme.cgColor
-        return layer
-    }()
+//    lazy var segmentCtl: UISegmentedControl = {
+//        var view = UIView.createSegment( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
+//        view.addActionHandler({ (sender:UIControl) in
+//
+//            if let control = sender as? UISegmentedControl {
+//                DDLog(control.selectedSegmentIndex)
+//
+//                var rect = self.indicator.frame
+//                rect.origin.x = control.frame.minX + CGFloat(control.selectedSegmentIndex) * self.indicator.frame.width
+//                self.indicator.frame = rect
+//
+//            }
+//
+//        }, for: .valueChanged)
+//        return view
+//    }()
+//
+//    lazy var indicator: CALayer = {
+//        var layer = CALayer()
+////        layer.frame = CGRect(x: 0, y: -1, width: segmentCtl.bounds.width/CGFloat(segmentCtl.numberOfSegments), height: 1)
+//        layer.backgroundColor = UIColor.theme.cgColor
+//        return layer
+//    }()
     
     
     lazy var segmentView: BNSegmentView = {
         var view = BNSegmentView(frame: .zero)
         view.segmentCtl.itemList = ["one","two","three","four"]
         view.indicatorHeight = 1
-        view.type = 2
+        view.type = 1
         view.block({ (segmentView: BNSegmentView, control: UISegmentedControl) in
             DDLog(control.selectedSegmentIndex)
 
@@ -291,9 +322,6 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
             default:
                 break
             }
-            
-           
-            
         })
         return view
     }()
@@ -307,4 +335,58 @@ class TitleViewController: UIViewController,UITableViewDataSource,UITableViewDel
         return view
     }()
 
+
+    lazy var segmentCtlOne: UISegmentedControl = {
+        let view = NNSegmentedControl(frame: .zero)
+        view.type = 2;
+        view.selectedColor = .red
+        view.itemList = ["是", "否", "其他"]
+        view.addActionHandler({ (control) in
+            guard let sender = control as? UISegmentedControl else { return }
+            DDLog(sender)
+        }, for: .valueChanged)
+        return view;
+    }()
+    
+    lazy var checkBox: UIButton = {
+        var view = UIButton(type: .custom)
+        view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
+        view.setTitle("绿肥红瘦", for: .normal);
+        view.setTitleColor(.theme, for: .normal);
+        view.setImage(UIImageNamed("photo_cancell"), for: .normal)
+        //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
+        view.adjustsImageWhenHighlighted = false
+        
+        //        view.titleEdgeInsets = UIEdgeInsetMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
+        //        view.imageEdgeInsets = UIEdgeInsetMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
+        view.layoutButton(style: 1, imageTitleSpace: 2)
+        view.addActionHandler({ (control) in
+            control.isSelected = !control.isSelected
+            
+            let name = control.isSelected == true ? "photo_select" : "photo_cancell";
+            view.setImage(UIImageNamed(name), for: .normal)
+            
+            guard let sender = control as? UIButton else { return }
+            if let sender = control as? UIButton {
+            }
+            DDLog(sender)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var checkBoxNew: NNCheckBoxButton = {
+        var view = NNCheckBoxButton(frame: .zero)
+//        view.setTitleColor(.theme, for: .normal);
+//        view.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal);
+        view.setTitle("蓝瘦香菇", for: .normal);
+
+        view.addActionHandler({ (control) in
+            control.isSelected = !control.isSelected
+            guard let sender = control as? UIButton else { return }
+            if let sender = control as? UIButton {
+            }
+            DDLog(sender)
+        }, for: .touchUpInside)
+        return view
+    }()
 }

@@ -29,7 +29,7 @@ class BNDateRangeView: UIView {
         let _ = labStart.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: BNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat)
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat_minute)
 
 //                DDLog("起始时间:",dateStr)
                 self.labStart.text = (dateStr as NSString).substring(to: 10)
@@ -43,7 +43,7 @@ class BNDateRangeView: UIView {
         let _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: BNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat)
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat_minute)
 //                DDLog("截止日期:",dateStr)
                 self.labEnd.text = (dateStr as NSString).substring(to: 10)
                 self.dateEnd = dateStr;
@@ -52,6 +52,13 @@ class BNDateRangeView: UIView {
                 }
             })
         })
+        
+        labStart.textColor = UIColor.theme;
+        labEnd.textColor = UIColor.theme;
+
+        labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_minute)
+        let date = Date().dateAfter(-30)
+        labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormat_minute)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,24 +80,24 @@ class BNDateRangeView: UIView {
         }
         
         let width = bounds.width - labTitleSize.width - kX_GAP*2
-        let ctlWidth = width*0.7
+        let ctlWidth = width*0.8
         
         labStart.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labTitle.snp.right).offset((width - ctlWidth)*0.5)
-            make.width.equalTo(100);
+            make.width.equalTo(120);
         }
         
         labLine.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
-            make.left.equalTo(labStart.snp.right).offset(20)
+            make.left.equalTo(labStart.snp.right).offset(5)
             make.width.equalTo(20);
         }
         
         labEnd.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
-            make.left.equalTo(labLine.snp.right).offset(20)
-            make.width.equalTo(100);
+            make.left.equalTo(labLine.snp.right).offset(5)
+            make.width.equalTo(120);
         }
     
     }
@@ -150,6 +157,7 @@ class BNDateRangeView: UIView {
         view.font = UIFont.systemFont(ofSize: 16)
         view.tag = kTAG_LABEL
         view.isUserInteractionEnabled = true
+        view.adjustsFontSizeToFitWidth = true
         return view
     }()
     
@@ -162,6 +170,7 @@ class BNDateRangeView: UIView {
         view.font = UIFont.systemFont(ofSize: 16)
         view.tag = kTAG_LABEL+1
         view.isUserInteractionEnabled = true
+        view.adjustsFontSizeToFitWidth = true
         return view
     }()
     
@@ -175,7 +184,7 @@ class BNDateRangeView: UIView {
     }()
     
     //MARK: -lazy
-    lazy var datePicker:BNDatePicker = {
+    lazy var datePicker: BNDatePicker = {
         var view = BNDatePicker();
 //        view.block({ (sender, idx) in
 //            DDLog(view,sender.datePicker.date,idx);

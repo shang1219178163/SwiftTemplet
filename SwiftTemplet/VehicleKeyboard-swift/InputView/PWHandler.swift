@@ -11,10 +11,10 @@ import UIKit
 import SnapKit
 
 @objc public protocol PWHandlerDelegate{
-    @objc  func plateInputComplete(plate: String)
-    @objc  optional func palteDidChnage(plate:String,complete:Bool)
-    @objc  optional func plateKeyBoardShow()
-    @objc  optional func plateKeyBoardHidden()
+    @objc func plateDidChange(plate: String, complete: Bool)
+    @objc func plateInputComplete(plate: String)
+    @objc optional func plateKeyBoardShow()
+    @objc optional func plateKeyBoardHidden()
 }
 
 public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,PWKeyBoardViewDeleagte, UITextFieldDelegate {
@@ -66,6 +66,23 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
      **/
     @objc public func bindTextField(_ textField: UITextField) -> Void {
         
+        if textField.leftView == nil {
+            textField.leftView = {
+                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 40))
+                
+                let imgView = UIImageView(frame:CGRect(x: 0, y: 0, width: 15, height: 15));
+                imgView.image = UIImage(named:"search");
+                imgView.contentMode = UIView.ContentMode.scaleAspectFit;
+                imgView.center = view.center;
+                view.addSubview(imgView);
+              
+                return view;
+            }()
+            textField.leftViewMode = UITextField.ViewMode.always; //此处用来设置leftview现实时机
+            textField.placeholder = " 请输入车牌号码";
+            textField.font = UIFont.systemFont(ofSize: 16)
+        }
+        
         inputTextfield = textField
         inputTextfield.inputView = keyboardView
         inputTextfield.inputAccessoryView = {
@@ -87,6 +104,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
                 view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
                 view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
                 view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
+            
                 view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
                 view.imageView?.contentMode = .scaleAspectFit
                 
@@ -132,46 +150,8 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
                 }
             }
         }
-                
-        inputTextfield.inputView = keyboardView
-        inputTextfield.inputAccessoryView = {
-            let switchWidth: CGFloat = 70.0
-            
-            let view: UIView = {
-                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-                
-                view.layer.borderWidth = 1;
-                view.layer.borderColor = cellBorderColor.cgColor;
-                return view;
-            }()
-            
-            inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
-            view.addSubview(inputCollectionView)
-            
-            let btn: UIButton = {
-                let view: UIButton = UIButton(type: .custom)
-                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
-                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
-                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
-                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-                view.imageView?.contentMode = .scaleAspectFit
-                
-                view.layer.borderWidth = 1;
-                view.layer.borderColor = cellBorderColor.cgColor;
-                view.addActionHandler({ (control) in
-                    control.isSelected = !control.isSelected;
-                    //                    DDLog(control.isSelected)
-                    self.changeInputType(isNewEnergy: control.isSelected)
-                    
-                }, for: .touchUpInside)
-                return view;
-            }()
-            
-            view.addSubview(btn)
-            return view;
-        }()
         
-        setBackgroundView()
+        bindTextField(inputTextfield)
         
 //        view.translatesAutoresizingMaskIntoConstraints = false
         if view.isKind(of: UITextField.classForCoder()) == false {
@@ -405,7 +385,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
         inputTextfield.text = paletNumber
         updateCollection()
         if (!isMoreType){
-            delegate?.palteDidChnage?(plate:paletNumber,complete:paletNumber.count == maxCount)
+            delegate?.plateDidChange(plate:paletNumber,complete:paletNumber.count == maxCount)
         }
     }
     

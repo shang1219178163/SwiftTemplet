@@ -15,7 +15,7 @@ class BNClockView: UIImageView {
     //1 声明变量
     var itemList: Array<String>? {
         willSet {
-            newValue?.forEach { (obj:String) in
+            newValue?.forEach { (obj: String) in
                 
                 let btn = UIButton();
                 btn.backgroundColor = .theme;

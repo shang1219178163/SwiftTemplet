@@ -45,7 +45,7 @@ class BNSearchView: UIView {
         viewBlock = action;
     }
     
-    func createBtn(rect:CGRect, title:String!, tag:NSInteger) -> UIButton {
+    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> UIButton {
         let view = UIButton(type:.custom);
         view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.imageView?.contentMode = .scaleAspectFit

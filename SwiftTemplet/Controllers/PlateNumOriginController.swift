@@ -53,7 +53,7 @@ class PlateNumOriginController: UIViewController, PWHandlerDelegate {
     }
     
     //MARK: -plate
-    func palteDidChnage(plate: String, complete: Bool) {
+    func plateDidChange(plate: String, complete: Bool) {
         DDLog(plate, complete)
 //        btn.setTitle(plate, for: .normal)
     }
