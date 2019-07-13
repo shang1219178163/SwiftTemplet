@@ -128,7 +128,6 @@
 		14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */; };
 		14C1196222D99BA9009D18A3 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196122D99BA8009D18A3 /* OthersViewController.swift */; };
 		14C1196622D9C6ED009D18A3 /* NNCheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */; };
-		14C1196A22D9C8AE009D18A3 /* UIFont+Hook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196922D9C8AE009D18A3 /* UIFont+Hook.swift */; };
 		14D9E2F622D47F0D00FD38DC /* VehicleKeyboard.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14D9E2F522D47F0D00FD38DC /* VehicleKeyboard.xcassets */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F04221695A000B396A0 /* TimerViewController.swift */; };
@@ -292,7 +291,6 @@
 		14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSegmentedControl.swift; sourceTree = "<group>"; };
 		14C1196122D99BA8009D18A3 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 		14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCheckBoxButton.swift; sourceTree = "<group>"; };
-		14C1196922D9C8AE009D18A3 /* UIFont+Hook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Hook.swift"; sourceTree = "<group>"; };
 		14D9E2F522D47F0D00FD38DC /* VehicleKeyboard.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = VehicleKeyboard.xcassets; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14ED8F04221695A000B396A0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -602,7 +600,6 @@
 				14F3967522804160000CD7B4 /* ESCheckVersResult.swift */,
 				14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */,
 				14107FD722D097400011344E /* NNProgressHUD.swift */,
-				14C1196922D9C8AE009D18A3 /* UIFont+Hook.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -776,6 +773,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1007,7 +1009,6 @@
 				14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */,
 				1401BEAE2277EA780078A722 /* NSError+Helper.swift in Sources */,
 				14BD733322D417C9008788B1 /* UIView+PWCorners.swift in Sources */,
-				14C1196A22D9C8AE009D18A3 /* UIFont+Hook.swift in Sources */,
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
 				145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */,
 				14488725224E1D2300B550AF /* ZMCollectionViewCell.swift in Sources */,
@@ -1190,6 +1191,7 @@
 				DEVELOPMENT_TEAM = UB99NJ7K8G;
 				GCC_PREFIX_HEADER = SwiftTemplet/PrefixHeader.pch;
 				INFOPLIST_FILE = SwiftTemplet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1211,6 +1213,7 @@
 				DEVELOPMENT_TEAM = UB99NJ7K8G;
 				GCC_PREFIX_HEADER = SwiftTemplet/PrefixHeader.pch;
 				INFOPLIST_FILE = SwiftTemplet/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet;
 				PRODUCT_NAME = "$(TARGET_NAME)";

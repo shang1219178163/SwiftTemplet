@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        controller = UICtrFromString("IOPAuthRechargeController");
 //        controller = UICtrFromString("BNUserLogInController");
         controller = UICtrFromString("PlateNumberController");
-        controller = UICtrFromString("TitleViewController");
-        controller = UICtrFromString("EntryViewController");        
+//        controller = UICtrFromString("TitleViewController");
+//        controller = UICtrFromString("EntryViewController");        
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;
