@@ -64,7 +64,7 @@ self.handler.delegate = self;
 ```objective-c
 
 //车牌输入发生变化时的回调
-- (void)palteDidChnageWithPlate:(NSString *)plate complete:(BOOL)complete{
+- (void)plateDidChangeWithPlate:(NSString *)plate complete:(BOOL)complete{
 NSLog(@"输入车牌号为:%@ \n 是否完整：%@",plate,complete ? @"完整" : @"不完整");
 }
 
@@ -128,7 +128,7 @@ func plateInputComplete(plate: String) {
 print("输入完成车牌号为:" + plate)
 }
 //车牌输入发生变化时的回调
-func palteDidChnage(plate:String,complete:Bool) {
+func plateDidChnage(plate:String,complete:Bool) {
 print("输入车牌号为:" + plate + "\n输入是否完整？:" + (complete ? "完整" : "不完整"))
 }
 //车牌键盘出现的回调
