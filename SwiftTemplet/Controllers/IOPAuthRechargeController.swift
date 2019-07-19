@@ -129,7 +129,7 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
         let view = UITableHeaderFooterViewTwo.viewWithTableView(tableView) as! UITableHeaderFooterViewTwo
         
         let text = "¥200小时"
-        view.labelLeftSub.attributedText = self.attString(text, offsetStart: 0, offsetEnd: 2)
+        view.labelLeftSub.attributedText = NSAttributedString.attString(text, offsetStart: 0, offsetEnd: 2)
 
         view.backgroundView = UIView()
         view.backgroundView?.backgroundColor = UIColor.yellow
