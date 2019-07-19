@@ -125,8 +125,13 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
+            if let imgView = (sender as! UIButton).imageView{
+                UIView.animate(withDuration: 0.35, animations: {
+                    imgView.transform = imgView.transform.isIdentity == true ? imgView.transform.rotated(by: CGFloat(Double.pi)) : CGAffineTransform.identity;
+                })
+            }
             
-            if self.btn.imageView?.transform == .identity {
+            if self.btn.imageView?.transform.isIdentity == false {
                 self.show(self.parController!)
 
             } else {
@@ -147,7 +152,6 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 1.0
             
-            self.btn.imageView?.transform = (self.btn.imageView?.transform.rotated(by:  CGFloat(Double.pi)))!
             self.tableView.transform = CGAffineTransform.identity
 
         }, completion: nil)
@@ -158,7 +162,6 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
             
-            self.btn.imageView?.transform = .identity
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.height)
 
         }, completion:{ (isFinish:Bool) in
@@ -186,7 +189,7 @@ class BNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         
 //        view.titleEdgeInsets = UIEdgeInsetMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
-        view.layoutButton(style: 3, imageTitleSpace: 0)
+        view.layoutButton(style: 3, imageTitleSpace: 5)
         return view
     }()
     

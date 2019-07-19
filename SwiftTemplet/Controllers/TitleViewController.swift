@@ -28,7 +28,7 @@ class TitleViewController: UIViewController{
             let value3 = itemList[3] as! String
             let value4 = itemList[4] as! String
             let value5 = itemList[5] as! String
-            
+
             let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
             cell.labelLeft.text = "标题"
             cell.labelRight.text = NSStringFromIndexPath(indexPath)
@@ -38,11 +38,11 @@ class TitleViewController: UIViewController{
             cell.getViewLayer()
             return cell
         }
-        
+
         topView.blockSelected { (tableview, indexPath) in
             DDLog(NSStringFromIndexPath(indexPath))
         }
-                
+        
         self.navigationItem.titleView?.getViewLayer()
 
         
@@ -182,6 +182,12 @@ class TitleViewController: UIViewController{
         DDLog(btn.titleEdgeInsets, btn.imageEdgeInsets)
         btn.contentHorizontalAlignment = .left
         btn.addActionHandler({ (sender) in
+            if let imgView = (sender as! UIButton).imageView{
+                UIView.animate(withDuration: 0.35, animations: {
+                    imgView.transform = imgView.transform.isIdentity == true ? imgView.transform.rotated(by: CGFloat(Double.pi)) : CGAffineTransform.identity;
+                })
+            }
+
             UIApplication.shared.keyWindow?.endEditing(true)
             self.show(self)
             
@@ -200,7 +206,6 @@ class TitleViewController: UIViewController{
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 1.0
 
-            self.btn.imageView?.transform = (self.btn.imageView?.transform.rotated(by:  CGFloat(Double.pi)))!
             self.tableView.y += self.tableView.height
             
         }, completion: nil)
@@ -212,7 +217,6 @@ class TitleViewController: UIViewController{
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 0.0
             
-            self.btn.imageView?.transform = (self.btn.imageView?.transform.rotated(by:  CGFloat(Double.pi)))!
             self.tableView.y -= self.tableView.height
             
         }, completion:{ (isFinish:Bool) in
