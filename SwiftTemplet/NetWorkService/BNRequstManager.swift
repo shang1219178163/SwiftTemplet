@@ -48,33 +48,39 @@ enum BNRequestCode: Int {
 }
 
 /// 网络请求代理
-@objc protocol BNRequestManagerResultDelegate: NSObjectProtocol {
+@objc protocol BNRequestManagerDelegate: NSObjectProtocol {
     func manager(_ manager: BNRequstManager, dic: Dictionary<String, Any>?, error: Error?) -> Void
     
 }
 
 /// 网络请求结果闭包
-typealias BNRequestResultBlock = (BNRequstManager, Dictionary<String, Any>?, Error?) -> Void
+typealias BNRequestBlock = (BNRequstManager, Dictionary<String, Any>?, Error?) -> Void
 
 class BNRequstManager: NSObject {
 
     var isLoading: Bool = false
     
 //    weak var child: BNRequestManagerProtocol?
-//    weak var delegate: BNRequestManagerResultDelegate?
+//    weak var delegate: BNRequestManagerDelegate?
     weak var child: BNRequestManagerProtocol?
-    weak var delegate: BNRequestManagerResultDelegate?
+    weak var delegate: BNRequestManagerDelegate?
 
-    var successBlock: BNRequestResultBlock?
-    var failureBlock: BNRequestResultBlock?
+    var successBlock: BNRequestBlock?
+    var failureBlock: BNRequestBlock?
+    var resultBlock: BNRequestBlock?
 
     override init() {
         super.init()
     }
     
-    func startRequest(success: @escaping BNRequestResultBlock, fail: @escaping BNRequestResultBlock) -> Void {
+    func startRequest(success: @escaping BNRequestBlock, fail: @escaping BNRequestBlock) -> Void {
         successBlock = success;
         failureBlock = fail;
+        startRequest()
+    }
+    
+    func startRequest(closure: @escaping BNRequestBlock) -> Void {
+        resultBlock = closure;
         startRequest()
     }
     
@@ -82,21 +88,18 @@ class BNRequstManager: NSObject {
         if child?.validateParams() == false {
             let error: NSError = NSError.error("validateParams参数校验失败", code: BNRequestCode.ParamsError.rawValue);
             
-//            if (delegate != nil) && delegate!.conforms(to: BNRequestManagerResultDelegate.self) {
-                delegate?.manager(self, dic: nil, error: error);
-//            }
-            if failureBlock != nil {
-                failureBlock!(self, nil, error)
-            }
+            delegate?.manager(self, dic: nil, error: error);
+            failureBlock?(self, nil, error)
+            resultBlock?(self, nil, error)
             return
         }
         
         if (child != nil) && child?.jsonFromCache!() != nil {
             let cacheDic = child?.jsonFromCache!()
+            
             delegate?.manager(self, dic: cacheDic, error: nil);
-            if successBlock != nil {
-                successBlock!(self, cacheDic, nil)
-            }
+            successBlock?(self, cacheDic, nil)
+            resultBlock?(self, cacheDic, nil)
             return
         }
         startRequestFromNetwork();
@@ -143,12 +146,10 @@ class BNRequstManager: NSObject {
         
         BNLog.logResponseInfoWithURI((child?.requestURI())!, json: jsonDic)
         
-//        if (delegate != nil) && delegate!.conforms(to: BNRequestManagerResultDelegate.self) {
-            delegate?.manager(self, dic: jsonDic, error: nil);
-//        }
-        if successBlock != nil {
-            successBlock!(self, jsonDic, nil)
-        }
+        delegate?.manager(self, dic: jsonDic, error: nil);
+        successBlock?(self, jsonDic, nil)
+        resultBlock?(self, jsonDic, nil)
+        
         //缓存数据
         let _ = child?.saveJsonOfCache!(jsonDic)
     }
@@ -197,6 +198,7 @@ class BNRequstManager: NSObject {
         _ = UIAlertController.showAlert("", msg: tip!)
         delegate?.manager(self, dic: nil, error: response.error)
         failureBlock?(self, nil, response.error)
+        resultBlock?(self, nil, response.error)
     }
     
 }

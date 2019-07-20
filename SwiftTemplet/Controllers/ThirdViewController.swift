@@ -76,11 +76,25 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
                 
             }
 
-            
-
         }) { (manager, dic, error) in
             DDLog(error! as Any)
             
+        }
+        
+        updateAPi.startRequest { (manager, dic, error) in
+            let data: Data! = try? JSONSerialization.data(withJSONObject: dic as Any, options: []);
+            let jsonString: String! = String(data: data, encoding: .utf8);
+            let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
+            
+            DDLog(string)
+            //            if let response = BNCheckVersRootClass.deserialize(from: dic) {
+            //                DDLog(response)
+            //
+            //            }
+            if let response = ESCheckVersRootClass.deserialize(from: dic) {
+                DDLog(response)
+                
+            }         
         }
     }
     
