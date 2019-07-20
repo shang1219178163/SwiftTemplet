@@ -57,7 +57,7 @@ class BNDateRangeView: UIView {
         labEnd.textColor = UIColor.theme;
 
         labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_minute)
-        let date = Date().dateAfter(-30)
+        let date = Date().addingDays(-30)
         labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormat_minute)
     }
     
