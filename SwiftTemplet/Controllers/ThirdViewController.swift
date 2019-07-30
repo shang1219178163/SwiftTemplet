@@ -181,7 +181,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
              ["PickerView", "PickerViewController"],
              ["PictureView", "PhotosViewController"],
              ["KeyBoardView", "KeyBoardViewController"],
-
+             ["函数响应型编程", "BNUserLogInController"],
+             
              ],
         ]
         return array
