@@ -12,7 +12,7 @@ PODS:
   - BSImageView (1.0.3)
   - CryptoSwift (1.0.0)
   - HandyJSON (5.0.0)
-  - IQKeyboardManagerSwift (6.4.0)
+  - IQKeyboardManagerSwift (6.4.1)
   - Kingfisher (4.10.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -43,7 +43,7 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Surge (2.2.0)
-  - SwiftExpand (1.6.4.5)
+  - SwiftExpand (1.6.5)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -117,7 +117,7 @@ SPEC CHECKSUMS:
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
-  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
+  IQKeyboardManagerSwift: d2df660d0b8d64a15cb2537c9ff303213fa515b2
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -133,7 +133,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: e5d48746059af2e6e7e5e95b87c0dad821024d2d
+  SwiftExpand: 4d25d3db78dc0a0eb5695d428ff53526de969699
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd

@@ -46,7 +46,7 @@ class BNTableFooterView: UIView {
         }
     }
 
-    lazy var btn:UIButton = {
+    @objc lazy var btn:UIButton = {
         var view: UIButton = UIView.createBtn( .zero, title: "+ 新建", imgName: nil, type: 3);
             view.addActionHandler({ (sender) in
                 if let obj = sender as? UIButton {
@@ -58,7 +58,7 @@ class BNTableFooterView: UIView {
         return view;
     }();
     
-    lazy var label: UILabel = {
+    @objc lazy var label: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.hex("#999999")
         view.font = UIFont.systemFont(ofSize: 14)

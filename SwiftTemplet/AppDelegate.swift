@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        controller = UICtrFromString("UIRecognizerController");
 //        controller = UICtrFromString("IOPAuthRechargeController");
 //        controller = UICtrFromString("BNUserLogInController");
-        controller = UICtrFromString("PlateNumberController");
+//        controller = UICtrFromString("PlateNumberController");
 //        controller = UICtrFromString("TitleViewController");
 //        controller = UICtrFromString("EntryViewController");        
         
@@ -68,7 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.setupRootController(tabBarController!);
         
         UIApplication.tabBarController?.selectedIndex = 2;
-       
+        
+        let result = resultByOpt(5, 3) { (num1, num2) -> Int in
+            num1 + num2
+        }
         
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);

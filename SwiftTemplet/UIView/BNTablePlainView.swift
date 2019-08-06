@@ -86,7 +86,7 @@ class BNTablePlainView: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     //MARK: -lazy
-    lazy var tableView: UITableView = {
+    @objc lazy var tableView: UITableView = {
         var table = UIView.createTableView(bounds, style: .plain, rowHeight: kH_CellHeight)
         table.dataSource = self
         table.delegate = self

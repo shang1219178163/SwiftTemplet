@@ -9,8 +9,8 @@
 import UIKit
 import SnapKit
 import SwiftExpand
-import RxCocoa
 import RxSwift
+import RxCocoa
 
 let minUsernameLength = 8;
 let minPasswordLength = 6;
@@ -21,6 +21,7 @@ class BNUserLogInController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        title = "RxSwift函数响应型编程"
         
         view.addSubview(userNameTextField)
         view.addSubview(userNameValidLab)
@@ -134,36 +135,37 @@ class BNUserLogInController: UIViewController {
 
     // MARK: -lazy
     lazy var userNameTextField: UITextField = {
-        var textField = UITextField();
-        textField.placeholder = "用户名:8~20字符"
-        return textField;
+        var view = UITextField();
+        view.placeholder = "用户名:8~20字符"
+        return view;
     }()
     
     lazy var userPwdTextField: UITextField = {
-        var textField = UITextField();
-        textField.placeholder = "用户密码:6~20字符(不能纯数字)"
-        return textField;
+        var view = UITextField();
+        view.placeholder = "用户密码:6~20字符(不能纯数字)"
+        return view;
     }()
     
     lazy var userNameValidLab: UILabel = {
-        var lab = UILabel();
-        
-        return lab;
+        var view = UILabel();
+        view.textColor = .red
+        return view;
     }()
     
     lazy var userPwdValidLab: UILabel = {
-        var lab = UILabel();
-        
-        return lab;
+        var view = UILabel();
+        view.textColor = .red
+
+        return view;
     }()
     
     lazy var loginBtn: UIButton = {
 //        var btn = UIButton(type: .custom);
-        var btn = UIView.createBtn(title: "登录", imgName: nil);
-        btn.setTitleColor( .white, for: .normal)
-        btn.setTitleColor( .black, for: .disabled)
-        btn.setTitle("用户名/密码错误", for: .disabled)
-        btn.backgroundColor = .theme
-        return btn;
+        var view = UIView.createBtn(title: "登录", imgName: nil);
+        view.setTitleColor( .white, for: .normal)
+        view.setTitleColor( .black, for: .disabled)
+        view.setTitle("用户名/密码错误", for: .disabled)
+        view.backgroundColor = .theme
+        return view;
     }()
 }
