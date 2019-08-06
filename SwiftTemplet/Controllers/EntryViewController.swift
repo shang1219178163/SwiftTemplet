@@ -210,6 +210,18 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             cell.getViewLayer()
             return cell
             
+        case 116:
+            let cell = UITableViewCellCode.cellWithTableView(tableView) as! UITableViewCellCode
+            cell.btnCode.addActionHandler({ (control) in
+                DDLog(self.list.count)
+                if let sender: UIButton = control as? UIButton {
+                    sender.GCDTimerStart();
+                }
+            }, for: .touchUpInside)
+          
+            cell.getViewLayer()
+            return cell
+            
         case 150:
             let cell = UITableViewCellDefault.cellWithTableView(tableView) as! UITableViewCellDefault
             cell.defaultView.labelLeft.text = value0
@@ -336,6 +348,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             ["继续生产:", "110", "60.0", "", "recharge",  ["生产","不生产",],],
             ["品牌列表:", "111", "60.0", "", "recharge", ],
             ["生产厂家:", "112", "60.0", "", "recharge", ],
+            ["验 证 码:", "116", "60.0", "", "recharge", ],
             ["*备注信息:", "107", "160.0", "", "recharge", ],
             ["*default:", "150", "60.0", "", "recharge", ],
 //            ["*图片选择:", "115", "", "", "recharge", ],

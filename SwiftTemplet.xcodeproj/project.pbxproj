@@ -128,6 +128,7 @@
 		14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */; };
 		14C1196222D99BA9009D18A3 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196122D99BA8009D18A3 /* OthersViewController.swift */; };
 		14C1196622D9C6ED009D18A3 /* NNCheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */; };
+		14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */; };
 		14D9E2F622D47F0D00FD38DC /* VehicleKeyboard.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14D9E2F522D47F0D00FD38DC /* VehicleKeyboard.xcassets */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F04221695A000B396A0 /* TimerViewController.swift */; };
@@ -291,6 +292,7 @@
 		14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSegmentedControl.swift; sourceTree = "<group>"; };
 		14C1196122D99BA8009D18A3 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 		14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCheckBoxButton.swift; sourceTree = "<group>"; };
+		14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellCode.swift; sourceTree = "<group>"; };
 		14D9E2F522D47F0D00FD38DC /* VehicleKeyboard.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = VehicleKeyboard.xcassets; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14ED8F04221695A000B396A0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 		519E87C421367593002CCD86 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */,
 				1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */,
 				147FF3C421CE26BE00351E94 /* UITableViewCellFive.swift */,
 				147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */,
@@ -1006,6 +1009,7 @@
 				14BD733222D417C9008788B1 /* UITextField+Extension.swift in Sources */,
 				1401BEA52277D7860078A722 /* BNMemoryCache.swift in Sources */,
 				1401BE952277D6F30078A722 /* BNRequstManager.swift in Sources */,
+				14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */,
 				14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */,
 				1401BEAE2277EA780078A722 /* NSError+Helper.swift in Sources */,
 				14BD733322D417C9008788B1 /* UIView+PWCorners.swift in Sources */,
