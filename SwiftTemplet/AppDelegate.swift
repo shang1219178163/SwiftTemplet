@@ -72,7 +72,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let result = resultByOpt(5, 3) { (num1, num2) -> Int in
             num1 + num2
         }
+        DDLog(result);
         
+//        let r = RoundFloat(23.6250)
+//        DDLog(r);
+        
+        let a = NumberFormatter.fractionDigits(obj: 1.4988)
+        let b = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .down)
+        let c = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .up)
+        let d = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 2, roundingMode: .up)
+
+        let e = NSNumber(1.4988).to_string();
+        let f = NSNumber(1.4988).to_string(3);
+
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);
