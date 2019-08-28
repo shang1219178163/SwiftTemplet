@@ -21,7 +21,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(tableView);
+        view.addSubview(tbView);
         
         setupData();
 
@@ -30,7 +30,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        tableView.reloadData()
+        tbView.reloadData()
         
     }
     
@@ -174,7 +174,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
             dataList.add(foldModel)
             
         }
-        tableView.reloadData()
+        tbView.reloadData()
     }
     
     

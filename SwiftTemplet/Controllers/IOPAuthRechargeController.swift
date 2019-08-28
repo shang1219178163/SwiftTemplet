@@ -15,8 +15,8 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.tableFooterView = footerView
-        view.addSubview(tableView);
+        tbView.tableFooterView = footerView
+        view.addSubview(tbView);
 
         if title == nil {
             title = self.controllerName;
@@ -37,13 +37,13 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
         super.viewWillAppear(animated);
         
         list = allList.randomElement()!;
-        tableView.reloadData()
+        tbView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tableView.frame = view.bounds
+        tbView.frame = view.bounds
     }
     
     //    MARK: - tableView

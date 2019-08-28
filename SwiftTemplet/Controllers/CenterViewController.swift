@@ -70,7 +70,7 @@ class CenterViewController: UIViewController {
                 DDLog(1111);
                 
             }
-            DDLog(String.timeNow().toTimeStamp());
+//            DDLog(String.timeNow().toTimeStamp());
             DDLog(NSStringFromClass(self.classForCoder));
         }, for: .touchUpInside)
      

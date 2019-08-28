@@ -10,9 +10,9 @@ import UIKit
 
 import SwiftExpand
 
-extension NSError{
+public extension NSError{
     
-    @objc public var message: String {
+    @objc var message: String {
         get {
             let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! String;
             return obj;
@@ -22,7 +22,7 @@ extension NSError{
         }
     }
     
-    @objc public var requstCode: Int {
+    @objc var requstCode: Int {
         get {
             let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! Int;
             return obj;
@@ -32,7 +32,7 @@ extension NSError{
         }
     }
     
-    @objc public var obj: Any {
+    @objc var obj: Any {
         get {
             let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as Any;
             return obj;
