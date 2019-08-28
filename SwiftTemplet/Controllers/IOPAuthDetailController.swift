@@ -15,15 +15,15 @@ class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = footerView
-        view.addSubview(tableView);
+        tbView.tableFooterView = footerView
+        view.addSubview(tbView);
         
         if title == nil {
             title = self.controllerName;
         }
         
         //        DDLog(dataList);
-//        tableView.reloadData();
+//        tbView.reloadData();
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +34,7 @@ class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableVie
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tableView.frame = view.bounds
+        tbView.frame = view.bounds
     }
     
     //    MARK: - tableView

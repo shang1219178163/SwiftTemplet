@@ -8,10 +8,9 @@
 
 import UIKit
 
-
 public extension NSRegularExpression{
     
-//    @objc public static func regex(_ pattern: String) -> NSRegularExpression? {
+//    @objc static func regex(_ pattern: String) -> NSRegularExpression? {
 //        let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive);
 //        return regex
 //    }

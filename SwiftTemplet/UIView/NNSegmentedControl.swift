@@ -90,7 +90,7 @@ class NNSegmentedControl: UISegmentedControl {
     }
     
     func setupIndicator() -> Void {
-        if CGRect.zero.equalTo(frame) {
+        if CGRect.zero.equalTo(frame) || numberOfSegments <= 0 {
             return
         }
         

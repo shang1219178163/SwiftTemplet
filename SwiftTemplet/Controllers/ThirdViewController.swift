@@ -66,13 +66,13 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let jsonString: String! = String(data: data, encoding: .utf8);
             let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
             
-            DDLog(string)
+//            DDLog(string)
 //            if let response = BNCheckVersRootClass.deserialize(from: dic) {
 //                DDLog(response)
 //
 //            }
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
-                DDLog(response)
+//                DDLog(response)
                 
             }
 
@@ -86,13 +86,13 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let jsonString: String! = String(data: data, encoding: .utf8);
             let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
             
-            DDLog(string)
+//            DDLog(string)
             //            if let response = BNCheckVersRootClass.deserialize(from: dic) {
             //                DDLog(response)
             //
             //            }
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
-                DDLog(response)
+//                DDLog(response)
                 
             }         
         }
@@ -101,7 +101,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tableView.frame = view.bounds
+        tbView.frame = view.bounds
     }
     
     //    MARK: - tableView
@@ -182,7 +182,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
              ["PictureView", "PhotosViewController"],
              ["KeyBoardView", "KeyBoardViewController"],
              ["函数响应型编程", "BNUserLogInController"],
-             
+             ["新想法测试", "TestViewController"],
              ],
         ]
         return array

@@ -31,12 +31,12 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
         
 //        collectionView.collectionViewLayout = UICollectionView.layoutDefault
-        collectionView.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
+        ctView.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
                                     UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
                                     UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
         ]
-        collectionView.registerAll();
-        view.addSubview(collectionView)
+        ctView.registerAll();
+        view.addSubview(ctView)
 
         
         view.addGestureTap { (sender:UIGestureRecognizer) in

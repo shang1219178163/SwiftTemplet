@@ -63,6 +63,7 @@
 		142A770922275EE10016D3DA /* BNAnnularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76F122275EE00016D3DA /* BNAnnularProgress.swift */; };
 		142A770B222761050016D3DA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770A222761050016D3DA /* PickerViewController.swift */; };
 		142A770D222764080016D3DA /* BNPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770C222764080016D3DA /* BNPickerView.swift */; };
+		1443F84B230BF2A70023C777 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443F84A230BF2A70023C777 /* TestViewController.swift */; };
 		14488646224DC24E00B550AF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488645224DC24E00B550AF /* CalendarViewController.swift */; };
 		14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488704224E1D2300B550AF /* KeyBoardTipImageView.swift */; };
 		14488719224E1D2300B550AF /* ZMKeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14488705224E1D2300B550AF /* ZMKeyBoardView.swift */; };
@@ -92,6 +93,7 @@
 		146F09842228CD7000E13F53 /* BNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* BNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* BNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* BNUpdateVersionView.swift */; };
 		146F098A22291A1200E13F53 /* BNPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F098922291A1200E13F53 /* BNPhotosView.swift */; };
+		1479003E230A824A00FC4825 /* UITabBarItem+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479003D230A824A00FC4825 /* UITabBarItem+Helper.swift */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
 		147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */; };
@@ -128,6 +130,8 @@
 		14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */; };
 		14C1196222D99BA9009D18A3 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196122D99BA8009D18A3 /* OthersViewController.swift */; };
 		14C1196622D9C6ED009D18A3 /* NNCheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */; };
+		14C9019F231543490084A946 /* ScrollHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9019E231543490084A946 /* ScrollHorizontalController.swift */; };
+		14C901A12315435B0084A946 /* NNScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C901A02315435B0084A946 /* NNScrollView.swift */; };
 		14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */; };
 		14D9E2F622D47F0D00FD38DC /* VehicleKeyboard.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14D9E2F522D47F0D00FD38DC /* VehicleKeyboard.xcassets */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
@@ -227,6 +231,7 @@
 		142A76F122275EE00016D3DA /* BNAnnularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNAnnularProgress.swift; sourceTree = "<group>"; };
 		142A770A222761050016D3DA /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		142A770C222764080016D3DA /* BNPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNPickerView.swift; sourceTree = "<group>"; };
+		1443F84A230BF2A70023C777 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		14488645224DC24E00B550AF /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		14488704224E1D2300B550AF /* KeyBoardTipImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyBoardTipImageView.swift; sourceTree = "<group>"; };
 		14488705224E1D2300B550AF /* ZMKeyBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZMKeyBoardView.swift; sourceTree = "<group>"; };
@@ -256,6 +261,7 @@
 		146F09832228CD7000E13F53 /* BNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* BNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNUpdateVersionView.swift; sourceTree = "<group>"; };
 		146F098922291A1200E13F53 /* BNPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNPhotosView.swift; sourceTree = "<group>"; };
+		1479003D230A824A00FC4825 /* UITabBarItem+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+Helper.swift"; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
 		147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFour.swift; sourceTree = "<group>"; };
@@ -292,6 +298,8 @@
 		14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSegmentedControl.swift; sourceTree = "<group>"; };
 		14C1196122D99BA8009D18A3 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 		14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCheckBoxButton.swift; sourceTree = "<group>"; };
+		14C9019E231543490084A946 /* ScrollHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollHorizontalController.swift; sourceTree = "<group>"; };
+		14C901A02315435B0084A946 /* NNScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNScrollView.swift; sourceTree = "<group>"; };
 		14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellCode.swift; sourceTree = "<group>"; };
 		14D9E2F522D47F0D00FD38DC /* VehicleKeyboard.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = VehicleKeyboard.xcassets; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -602,6 +610,7 @@
 				14F3967522804160000CD7B4 /* ESCheckVersResult.swift */,
 				14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */,
 				14107FD722D097400011344E /* NNProgressHUD.swift */,
+				1479003D230A824A00FC4825 /* UITabBarItem+Helper.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -643,6 +652,9 @@
 				14579B9A2293F28C001FEB0C /* BNUserLogInController.swift */,
 				14BD733E22D418F7008788B1 /* PlateNumberController.swift */,
 				14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */,
+				1443F84A230BF2A70023C777 /* TestViewController.swift */,
+				14C9019E231543490084A946 /* ScrollHorizontalController.swift */,
+				14C901A02315435B0084A946 /* NNScrollView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -938,7 +950,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */,
+				14C901A12315435B0084A946 /* NNScrollView.swift in Sources */,
 				146F098A22291A1200E13F53 /* BNPhotosView.swift in Sources */,
+				1443F84B230BF2A70023C777 /* TestViewController.swift in Sources */,
+				1479003E230A824A00FC4825 /* UITabBarItem+Helper.swift in Sources */,
 				1401BE992277D70E0078A722 /* BNURLResponse.swift in Sources */,
 				147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */,
 				142A76FE22275EE10016D3DA /* BNSectionView.swift in Sources */,
@@ -1000,6 +1015,7 @@
 				142A770322275EE10016D3DA /* BNTablePlainView.swift in Sources */,
 				142A76FA22275EE10016D3DA /* BNDatePicker.swift in Sources */,
 				1401BE932277D6E20078A722 /* BNPageModel.swift in Sources */,
+				14C9019F231543490084A946 /* ScrollHorizontalController.swift in Sources */,
 				142A770522275EE10016D3DA /* BNSearchView.swift in Sources */,
 				14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,

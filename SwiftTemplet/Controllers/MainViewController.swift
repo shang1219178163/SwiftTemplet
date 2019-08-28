@@ -30,7 +30,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
         print(view.frame,view.bounds)
 
-        view.addSubview(tableView);
+        view.addSubview(tbView);
         
         for _ in 0...3{
             let marr : NSMutableArray = [];
@@ -54,7 +54,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
         
-        tableView.height = view.bounds.height;
+        tbView.height = view.bounds.height;
         print(view.frame,view.bounds)
     }
     

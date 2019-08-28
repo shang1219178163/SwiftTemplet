@@ -18,12 +18,12 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableView.automaticDimension;
-        tableView.estimatedRowHeight = 70;
+        tbView.rowHeight = UITableView.automaticDimension;
+        tbView.estimatedRowHeight = 70;
 
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-        tableView.tableFooterView = footerView
-        view.addSubview(tableView);
+        tbView.tableFooterView = footerView
+        view.addSubview(tbView);
 
         let btn = createBtnBarItem("custom", image: nil, isLeft: false, isHidden: false) { (sender) in
             if let btn = sender as? UIButton {
@@ -42,7 +42,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        tableView.frame = view.bounds
+//        tbView.frame = view.bounds
     }
     
     //    MARK: - tableView
@@ -305,7 +305,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {

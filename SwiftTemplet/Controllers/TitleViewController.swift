@@ -200,13 +200,13 @@ class TitleViewController: UIViewController{
     
     func show(_ inController: UIViewController) -> Void {
         self.view.addSubview(self.containView)
-        self.tableView.y = -self.tableView.height
+        self.tbView.y = -self.tbView.height
         
         self.containView.alpha = 0.0
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 1.0
 
-            self.tableView.y += self.tableView.height
+            self.tbView.y += self.tbView.height
             
         }, completion: nil)
         
@@ -217,7 +217,7 @@ class TitleViewController: UIViewController{
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 0.0
             
-            self.tableView.y -= self.tableView.height
+            self.tbView.y -= self.tbView.height
             
         }, completion:{ (isFinish:Bool) in
             self.containView.removeFromSuperview()
@@ -238,7 +238,7 @@ class TitleViewController: UIViewController{
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -267,8 +267,8 @@ class TitleViewController: UIViewController{
         var view = UIView(frame: self.view.bounds)
         view.backgroundColor = .green
         
-        tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.4)
-        view.addSubview(tableView)
+        tbView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.4)
+        view.addSubview(tbView)
         
         return view
     }()

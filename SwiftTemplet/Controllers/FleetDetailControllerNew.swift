@@ -23,7 +23,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
         if title == nil {
             title = self.controllerName;
         }
-        view.addSubview(tableView);
+        view.addSubview(tbView);
         
         setupData();
         
@@ -38,7 +38,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        tableView.reloadData()
+        tbView.reloadData()
 
     }
     
@@ -204,7 +204,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
             dataList.add(foldModel)
             
         }
-        tableView.reloadData()
+        tbView.reloadData()
     }
     
     

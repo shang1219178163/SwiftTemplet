@@ -25,7 +25,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             self!.goController("IOPAuthRechargeController", obj: "1234" as AnyObject, objOne: nil)
             
         }
-        view.addSubview(tableView);
+        view.addSubview(tbView);
         
         DDLog(self);
         DDLog(NSStringFromClass(self.classForCoder));
@@ -44,7 +44,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         }
         
         //        DDLog(dataList);
-        tableView.reloadData();
+        tbView.reloadData();
         
     }
 
@@ -56,7 +56,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tableView.frame = view.bounds
+        tbView.frame = view.bounds
     }
     
     //    MARK: - tableView
