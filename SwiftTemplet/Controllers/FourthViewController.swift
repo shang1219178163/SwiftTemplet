@@ -78,8 +78,8 @@ class FourthViewController: UIViewController {
         view.addSubview(groupView);
     }
     
-    lazy var clockView: BNClockView = {
-        var view = BNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
+    lazy var clockView: NNClockView = {
+        var view = NNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
         view.itemList = ["111","222","333","444","555","666","777","888",];
         view.backgroundColor = .random;
         view.image = UIImage(named: "beach");
@@ -99,15 +99,15 @@ class FourthViewController: UIViewController {
     }()
     
     
-    lazy var progressView: BNAnnularProgress = {
-        let progressView = BNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
+    lazy var progressView: NNAnnularProgress = {
+        let progressView = NNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
         progressView.backgroundColor = .cyan;
         return progressView;
     }();
     
     
-    lazy var datePicker:BNDatePicker = {
-        let view = BNDatePicker();
+    lazy var datePicker:NNDatePicker = {
+        let view = NNDatePicker();
         view.block({ (sender, idx) in
             if idx == 1 {
                 DDLog(view,sender.datePicker.date,idx);

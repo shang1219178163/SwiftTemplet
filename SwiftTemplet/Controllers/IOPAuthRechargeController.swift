@@ -177,8 +177,8 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
     }()
     
     //MARK: -Lazy Property
-    lazy var footerView: BNTableFooterView = {
-        var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
         view.label.text = ""
         view.label.textAlignment = .center
         view.btn.setTitle("提交", for: .normal)

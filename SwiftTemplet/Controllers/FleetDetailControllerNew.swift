@@ -217,8 +217,8 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     }
     
     //MARK: -lazy
-    lazy var footerView: BNTableFooterView = {
-        var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
         view.label.text = kTips_Fleet;
         view.label.textAlignment = .center
         view.btn.addActionHandler({ (sender:UIControl) in

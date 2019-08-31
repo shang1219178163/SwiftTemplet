@@ -273,8 +273,8 @@ class TitleViewController: UIViewController{
         return view
     }()
     
-    lazy var gemetryView: BNGeometryView = {
-        var view = BNGeometryView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
+    lazy var gemetryView: NNGeometryView = {
+        var view = NNGeometryView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
         view.type = 0
         view.subType = 3
         return view
@@ -306,12 +306,12 @@ class TitleViewController: UIViewController{
 //    }()
     
     
-    lazy var segmentView: BNSegmentView = {
-        var view = BNSegmentView(frame: .zero)
+    lazy var segmentView: NNSegmentView = {
+        var view = NNSegmentView(frame: .zero)
         view.segmentCtl.itemList = ["one","two","three","four"]
         view.indicatorHeight = 1
         view.type = 1
-        view.block({ (segmentView: BNSegmentView, control: UISegmentedControl) in
+        view.block({ (segmentView: NNSegmentView, control: UISegmentedControl) in
             DDLog(control.selectedSegmentIndex)
 
             switch control.selectedSegmentIndex {
@@ -330,8 +330,8 @@ class TitleViewController: UIViewController{
         return view
     }()
     
-    lazy var topView: BNTopSheetView = {
-        var view = BNTopSheetView()
+    lazy var topView: NNTopSheetView = {
+        var view = NNTopSheetView()
         view.parController = self
         view.indexP = IndexPath(row: 0, section: 0)
         view.setupTitleView()

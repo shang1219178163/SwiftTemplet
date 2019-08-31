@@ -14,7 +14,7 @@ import SwiftExpand
 /// 文字+时间选择器
 class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
 
-    typealias ViewClick = (UITableViewCellDatePicker,BNDatePicker,Int) -> Void;
+    typealias ViewClick = (UITableViewCellDatePicker,NNDatePicker,Int) -> Void;
     var viewBlock: ViewClick?;
  
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -107,8 +107,8 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     }
     
     //MARK: -lazy
-    lazy var datePicker:BNDatePicker = {
-        let view = BNDatePicker();
+    lazy var datePicker:NNDatePicker = {
+        let view = NNDatePicker();
         view.block({ (sender, idx) in
 //                DDLog(view,sender.datePicker.date,idx);
             if self.viewBlock != nil {

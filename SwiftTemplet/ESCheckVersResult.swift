@@ -6,6 +6,7 @@ import Foundation
 import HandyJSON
 
 
+@objcMembers
 class ESCheckVersResult: NSObject,HandyJSON{
 
 	@objc var advisories : [AnyObject]?

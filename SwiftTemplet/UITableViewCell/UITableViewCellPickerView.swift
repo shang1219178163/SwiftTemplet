@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 
-/// 单选+BNPickListView(UITableView)
+/// 单选+NNPickListView(UITableView)
 class UITableViewCellPickerView: UITableViewCell {
 
     var viewBlock:((UITableViewCellPickerView, String, [Any]) -> Void)?
@@ -87,15 +87,15 @@ class UITableViewCellPickerView: UITableViewCell {
     }
     
     //MARK: -lazy
-    lazy var pickView: BNPickListView = {
-        var view = BNPickListView(frame: .zero)
+    lazy var pickView: NNPickListView = {
+        var view = NNPickListView(frame: .zero)
 //        view.title = "请选择"
         view.tips = "新年快乐!"
         view.itemList = [["11111", "123"],
                         ["22222", "234"],
                         ["33333", "456"],
                     ]
-        view.block({ (view:BNPickListView, indexP:IndexPath) in
+        view.block({ (view:NNPickListView, indexP:IndexPath) in
             DDLog(NSStringFromIndexPath(indexP))
             let cellItem = view.itemList![indexP.row] 
             self.textfield.text = cellItem.first

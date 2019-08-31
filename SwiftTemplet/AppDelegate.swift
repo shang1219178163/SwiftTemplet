@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        controller = UICtrFromString("BNUserLogInController");
 //        controller = UICtrFromString("PlateNumberController");
 //        controller = UICtrFromString("TitleViewController");
-//        controller = UICtrFromString("EntryViewController");        
+//        controller = UICtrFromString("ScrollHorizontalController");        
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;
@@ -89,6 +89,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);
 //        DDLog(self.window);
+        
+        let dateStr = "2019-08-27 23:55:34";
+        let end = NSString.dateTime(dateStr as NSString, isEnd: true)
+        let start = NSString.dateTime(dateStr as NSString, isEnd: false)
+        DDLog(end)
+        DDLog(start)
+        
         return true
     }
 

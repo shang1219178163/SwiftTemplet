@@ -92,8 +92,8 @@ class CustomViewController: UIViewController {
     }
     
     
-    lazy var itemView: BNItemsView = {
-        var view = BNItemsView(frame: .zero)
+    lazy var itemView: NNItemsView = {
+        var view = NNItemsView(frame: .zero)
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
                 print(btn.titleLabel?.text as Any)
@@ -103,20 +103,20 @@ class CustomViewController: UIViewController {
         return view;
     }()
     
-    lazy var tipsView: BNTipsView = {
-        var view = BNTipsView(frame: .zero)
+    lazy var tipsView: NNTipsView = {
+        var view = NNTipsView(frame: .zero)
         view.label.text = "无网络连接"
         return view
     }()
     
-    lazy var expandView: BNExpandView = {
-        var view = BNExpandView(frame: .zero)
+    lazy var expandView: NNExpandView = {
+        var view = NNExpandView(frame: .zero)
         return view
     }()
     
-    lazy var defaultView: BNCellSubtitleView = {
+    lazy var defaultView: NNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.width - kX_GAP*2, 70)
-        var view = BNCellSubtitleView(frame: rect)
+        var view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
@@ -138,9 +138,9 @@ class CustomViewController: UIViewController {
         return view
     }()
     
-    lazy var defaultViewFail: BNCellSubtitleView = {
+    lazy var defaultViewFail: NNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.width - kX_GAP*2, 70)
-        var view = BNCellSubtitleView(frame: rect)
+        var view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
@@ -160,8 +160,8 @@ class CustomViewController: UIViewController {
         return view
     }()
     
-    lazy var operationView: BNOperationStateView = {
-        var view = BNOperationStateView(frame: .zero)
+    lazy var operationView: NNOperationStateView = {
+        var view = NNOperationStateView(frame: .zero)
         view.type = 0;
         
         return view

@@ -144,7 +144,14 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             cell.getViewLayer()
             return cell
         case 108:
-            let cell = UITableViewCellDateRange.cellWithTableView(tableView) as! UITableViewCellDateRange
+            
+//            let cell = UITableViewCellDateRange.cellWithTableView(tableView) as! UITableViewCellDateRange
+//            let cell = UITableViewCellDateRange.cellWithTableView(tableView) as! UITableViewCellDateRange
+//            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange())
+//            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange.self)
+//            let cell = tableView.dequeueReusableCell(for: UITableViewCellDateRange())
+            let cell:UITableViewCellDateRange = tableView.dequeueReusableCell(for: UITableViewCellDateRange())
+            
             cell.dateRangeView.labTitle.text = value0
             cell.dateRangeView.block { (dateRangeView) in
                 DDLog(dateRangeView.dateStart,dateRangeView.dateEnd)
@@ -358,8 +365,8 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }()
     
  
-    lazy var footerView: BNTableFooterView = {
-        var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
         view.label.text = ""
         view.label.textAlignment = .center
         view.btn.setTitle("提交", for: .normal)
@@ -371,8 +378,8 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         return view
     }()
     
-    lazy var suspendBtn: BNSuspendBtn = {
-        var view = BNSuspendBtn(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+    lazy var suspendBtn: NNSuspendBtn = {
+        var view = NNSuspendBtn(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
         view.insets = UIEdgeInsets(top: 40, left: 60, bottom: 80, right: 100)
         view.parController = self
         view.addActionHandler({ (sender) in
@@ -380,4 +387,42 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         }, for: .touchUpInside)
         return view
     }()
+}
+
+public extension UITableView{
+
+    /// 泛型复用cell - aClass: "类名()"
+//    final func dequeueReusableCell<T: UITableViewCell>(for aClass: T, identifier: String = String(describing: T.self), style: UITableViewCell.CellStyle = .default) -> T{
+//        return dequeueReusableCell(for: T.self, identifier: identifier, style: style)
+//    }
+//
+//    /// 泛型复用cell - cellType: "类名.self" (备用默认值 T.self)
+//    final func dequeueReusableCell<T: UITableViewCell>(for cellType: T.Type, identifier: String = String(describing: T.self), style: UITableViewCell.CellStyle = .default) -> T{
+////        let identifier = String(describing: T.self)
+//        var cell = self.dequeueReusableCell(withIdentifier: identifier);
+//        if cell == nil {
+//            cell = T.init(style: style, reuseIdentifier: identifier);
+//        }
+//
+//        cell!.selectionStyle = .none;
+//        cell!.separatorInset = .zero;
+//        cell!.layoutMargins = .zero;
+//        return cell! as! T;
+//    }
+//
+//    /// 泛型复用cell - aClass: "类名()"
+//    final func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(for aClass: T, identifier: String = String(describing: T.self)) -> T{
+//        return dequeueReusableHeaderFooterView(for: T.self, identifier: identifier)
+//    }
+//
+//    /// 泛型复用cell - cellType: "类名.self" (备用默认值 T.self)
+//    final func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(for cellType: T.Type, identifier: String = String(describing: T.self)) -> T{
+//        var cell = self.dequeueReusableHeaderFooterView(withIdentifier: identifier);
+//        if cell == nil {
+//            cell = T.init(reuseIdentifier: identifier);
+//        }
+//        cell!.layoutMargins = .zero;
+//        return cell! as! T;
+//    }
+
 }

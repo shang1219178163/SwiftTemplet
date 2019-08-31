@@ -80,7 +80,9 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         let foldModel = dataList[section] as! BNFoldSectionModel
         
-        let view = UITableHeaderFooterViewZero.viewWithTableView(tableView) as! UITableHeaderFooterViewZero
+//        let view = UITableHeaderFooterViewZero.viewWithTableView(tableView) as! UITableHeaderFooterViewZero
+        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
+        
         view.isCanOpen = foldModel.isCanOpen
         view.isOpen = foldModel.isOpen
         view.labelLeft.text = foldModel.title
@@ -187,8 +189,8 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     //MARK: -lazy
-    lazy var footerView: BNTableFooterView = {
-        var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
         view.label.text = kTips_Fleet;
         view.label.textAlignment = .center
         view.btn.addActionHandler({ (sender:UIControl) in

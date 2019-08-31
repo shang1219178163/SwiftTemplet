@@ -25,16 +25,34 @@ class UICTViewCellOne: UICollectionViewCell {
         
         label.textAlignment = .center
         imgView.image = UIImage(named: kIMG_defaultFailed_S);
-        label.backgroundColor = UIColor.random
-        imgView.backgroundColor = UIColor.random
-        
+//        label.backgroundColor = UIColor.random
+//        imgView.backgroundColor = UIColor.random
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        if label.text == nil || label.isHidden == true {
+            imgView.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(0);
+                make.left.right.equalToSuperview();
+                make.bottom.equalToSuperview().offset(0)
+            }
+            return;
+        }
+        
+        if imgView.image == nil || imgView.isHidden == true {
+            label.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(0);
+                make.left.right.equalToSuperview();
+                make.bottom.equalToSuperview().offset(0)
+            }
+            return;
+        }
+        
         imgView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview().offset(0)
+            make.top.equalToSuperview().offset(0)
+            make.left.right.equalToSuperview();
             make.bottom.equalToSuperview().offset(-kH_LABEL)
         }
         

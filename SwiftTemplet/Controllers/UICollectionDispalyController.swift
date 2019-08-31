@@ -32,10 +32,9 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         
 //        collectionView.collectionViewLayout = UICollectionView.layoutDefault
         ctView.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
-                                    UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
-                                    UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
+                            UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
+                            UICollectionView.elementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
         ]
-        ctView.registerAll();
         view.addSubview(ctView)
 
         
