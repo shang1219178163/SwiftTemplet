@@ -110,8 +110,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }
     
     /// itemsView
-    lazy var itemView: BNItemsView = {
-        var view = BNItemsView(frame: .zero)
+    lazy var itemView: NNItemsView = {
+        var view = NNItemsView(frame: .zero)
         
         var list:[String] = []
         for i in 0...4 {
@@ -138,8 +138,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }()
     
     ///
-    lazy var customPickerView: BNPickerView = {
-        var view = BNPickerView(frame: .zero)
+    lazy var customPickerView: NNPickerView = {
+        var view = NNPickerView(frame: .zero)
         view.pickerView.delegate = self;
         view.pickerView.dataSource = self
         view.block({ (pickerView, tag) in
@@ -149,8 +149,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }()
     
     //MARK: -lazy
-    lazy var datePicker: BNDatePicker = {
-        var view = BNDatePicker();
+    lazy var datePicker: NNDatePicker = {
+        var view = NNDatePicker();
         view.block({ (sender, idx) in
             DDLog(view,sender.datePicker.date,idx);
           
@@ -158,8 +158,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         return view;
     }()
     
-    lazy var cardView: BNVehicleInfoCardView = {
-        var view = BNVehicleInfoCardView(frame: .zero)
+    lazy var cardView: NNVehicleInfoCardView = {
+        var view = NNVehicleInfoCardView(frame: .zero)
         view.imgViewRight.isHidden = true
         
         view.imgView.image = UIImageNamed("bug")
@@ -173,8 +173,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         return view
     }()
     
-    lazy var cardViewOne: BNVehicleInfoCardView = {
-        var view = BNVehicleInfoCardView(frame: .zero)
+    lazy var cardViewOne: NNVehicleInfoCardView = {
+        var view = NNVehicleInfoCardView(frame: .zero)
         view.imgViewRight.isHidden = true
         
         view.imgView.image = UIImageNamed("bug")
@@ -186,8 +186,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         return view
     }()
     
-    lazy var payCardView: BNRecordCardView = {
-        var view = BNRecordCardView(frame: .zero)
+    lazy var payCardView: NNRecordCardView = {
+        var view = NNRecordCardView(frame: .zero)
 
         view.labelLeft.text = "总支付金额(元)"
         view.labelLeftSub.text = "1000"
@@ -199,8 +199,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         return view
     }()
     
-    lazy var  mileageCardView: BNRecordCardView = {
-        var view = BNRecordCardView(frame: .zero)
+    lazy var  mileageCardView: NNRecordCardView = {
+        var view = NNRecordCardView(frame: .zero)
         
         view.labelLeft.text = "总次数"
         view.labelLeftSub.text = "200"
@@ -212,8 +212,8 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         return view
     }()
     
-    lazy var versionView: BNUpdateVersionView = {
-        var view = BNUpdateVersionView(frame: .zero)
+    lazy var versionView: NNUpdateVersionView = {
+        var view = NNUpdateVersionView(frame: .zero)
 //        view.label.text = "发现新版本"
 //        view.labelOne.text = "V1.2.0"
 //        view.labelTwo.text = "更新内容:"

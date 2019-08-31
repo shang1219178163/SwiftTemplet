@@ -135,8 +135,8 @@ class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableVie
     }()
     
     //MARK: -Lazy Property
-    lazy var footerView: BNTableFooterView = {
-        var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
         view.label.text = "更多详细信息,请登录网页端"
         view.label.textAlignment = .center
         view.btn.setTitle("充值", for: .normal)

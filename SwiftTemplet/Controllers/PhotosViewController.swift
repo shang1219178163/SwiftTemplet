@@ -141,8 +141,8 @@ class PhotosViewController: UIViewController{
     }
     
     //MARK: -lazy
-    lazy var itemView: BNPhotosView = {
-        var view = BNPhotosView(frame: .zero)
+    lazy var itemView: NNPhotosView = {
+        var view = NNPhotosView(frame: .zero)
 //        view.parController = self
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {

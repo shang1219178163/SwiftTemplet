@@ -59,21 +59,15 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         controller = "PickerViewController"
 //        return
 //        goController(controller, obj: nil, objOne: nil)
-        let updateAPi = BNCheckVersApi()
+        let updateAPi = NNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in
             
             let data: Data! = try? JSONSerialization.data(withJSONObject: dic as Any, options: []);
             let jsonString: String! = String(data: data, encoding: .utf8);
             let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
-            
 //            DDLog(string)
-//            if let response = BNCheckVersRootClass.deserialize(from: dic) {
-//                DDLog(response)
-//
-//            }
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
 //                DDLog(response)
-                
             }
 
         }) { (manager, dic, error) in
@@ -87,10 +81,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
             
 //            DDLog(string)
-            //            if let response = BNCheckVersRootClass.deserialize(from: dic) {
-            //                DDLog(response)
-            //
-            //            }
+//            if let response = NNCheckVersRootClass.deserialize(from: dic) {
+//                DDLog(response)
+//
+//            }
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
 //                DDLog(response)
                 
@@ -133,6 +127,7 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemList = list[indexPath.row]
+        DDLog(itemList);
         goController(itemList.last, obj: nil, objOne: nil)
     }
     
@@ -162,9 +157,9 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     //MARK: -lazy
-    lazy var dateRangeView: BNDateRangeView = {
+    lazy var dateRangeView: NNDateRangeView = {
         let frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: 60)
-        var view = BNDateRangeView(frame: .zero)
+        var view = NNDateRangeView(frame: .zero)
         view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.backgroundColor = .green
         return view
@@ -182,6 +177,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
              ["PictureView", "PhotosViewController"],
              ["KeyBoardView", "KeyBoardViewController"],
              ["函数响应型编程", "BNUserLogInController"],
+             ["滚动分段组件", "ScrollHorizontalController"],
+             ["分段组件", "ScrollViewController"],             
              ["新想法测试", "TestViewController"],
              ],
         ]
@@ -193,8 +190,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }()
     
     //MARK: -Lazy Property
-    lazy var footerView: BNTableFooterView = {
-        var view = BNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
         view.label.text = ""
         view.label.textAlignment = .center
         view.btn.setTitle("提交", for: .normal)
@@ -206,9 +203,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         return view
     }()
     
-    
     lazy var plainView: UIView = {
-        var view = BNTablePlainView(frame: self.view.bounds)
+        var view = NNTablePlainView(frame: self.view.bounds)
         view.list = allList.first
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
@@ -216,7 +212,9 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
 //            cell.textLabel!.text = itemList[0]
             
-            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as! UITableViewCell;
+//            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+
             cell.accessoryType = .disclosureIndicator;
             
             cell.textLabel!.text = itemList[0]
@@ -228,7 +226,8 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         view.blockDidSelectRow({ (tableView, indexPath) in
             let itemList = view.list![indexPath.row] as! [String]
-            self.goController(itemList.last, obj: nil, objOne: nil)
+            DDLog(itemList);
+            self.goController(itemList.last, obj: itemList.first as AnyObject?, objOne: nil)
         })
         
         return view

@@ -51,8 +51,8 @@ class UITableViewCellDateRange: UITableViewCell {
     }
     
     
-    lazy var dateRangeView: BNDateRangeView = {
-        var view = BNDateRangeView(frame: contentView.bounds)
+    lazy var dateRangeView: NNDateRangeView = {
+        var view = NNDateRangeView(frame: contentView.bounds)
         view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
 
         return view

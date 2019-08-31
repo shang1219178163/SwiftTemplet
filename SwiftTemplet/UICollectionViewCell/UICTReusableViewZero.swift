@@ -34,10 +34,10 @@ class UICTReusableViewZero: UICollectionReusableView {
         }
         
         textLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(kY_GAP)
+            make.top.equalToSuperview().offset(5)
             make.left.equalToSuperview().offset(kX_GAP)
-            make.bottom.equalToSuperview().offset(-kY_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
+            make.bottom.equalToSuperview().offset(-5)
         }
     }
 }

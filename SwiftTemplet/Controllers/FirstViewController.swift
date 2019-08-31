@@ -82,7 +82,7 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker;
             cell.labelLeft.text = "日期选择:";
             cell.textfield.asoryView(true, unitName: "小时")
-            cell.block { ( sender: UITableViewCellDatePicker, view: BNDatePicker, idx: Int) in
+            cell.block { ( sender: UITableViewCellDatePicker, view: NNDatePicker, idx: Int) in
                 let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormat)
 
                 DDLog(dateStr);
