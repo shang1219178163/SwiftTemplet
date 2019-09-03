@@ -115,8 +115,8 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             btn.sizeToFit()
-            btn.titleEdgeInsets = UIEdgeInsetMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
-            btn.imageEdgeInsets = UIEdgeInsetMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
+            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
         }
     }
     
@@ -187,8 +187,8 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
         
-//        view.titleEdgeInsets = UIEdgeInsetMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-//        view.imageEdgeInsets = UIEdgeInsetMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
+//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
+//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
         view.layoutButton(style: 3, imageTitleSpace: 5)
         return view
     }()

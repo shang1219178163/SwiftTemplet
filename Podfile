@@ -29,6 +29,7 @@ target 'SwiftTemplet' do
     
     pod 'MBProgressHUD'
     pod 'MMPopupView'
+    pod 'MJRefresh'
 
 #   pod 'MonkeyKing'
     pod 'Moya'

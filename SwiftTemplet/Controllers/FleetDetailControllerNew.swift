@@ -49,7 +49,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         let count = foldModel.isOpen == true ? foldModel.dataList.count : 0;
         return count;
     };
@@ -59,7 +59,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let foldModel = dataList[indexPath.section] as! BNFoldSectionModel
+        let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
 
         let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
         
@@ -110,13 +110,13 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         return foldModel.headerHeight;
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
 
         let containView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
         containView.backgroundColor = UIColor.background
@@ -146,12 +146,12 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         return foldModel.footerHeight;
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let foldModel = dataList[section] as! BNFoldSectionModel
+//        let foldModel = dataList[section] as! NNFoldSectionModel
         if section == dataList.count - 1 {
             footerView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 300)
             return footerView;
@@ -168,7 +168,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
     func setupData() {
         for sectionIdx in 0...3{
             
-            let foldModel = BNFoldSectionModel()
+            let foldModel = NNFoldSectionModel()
             foldModel.isOpen = true
             foldModel.title = "sectionTtitle_\(sectionIdx)"
             switch sectionIdx {

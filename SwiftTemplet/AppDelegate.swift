@@ -96,6 +96,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DDLog(end)
         DDLog(start)
         
+        let obj1 = NNStringFromClass(UITableViewCellOne.classForCoder());
+        let obj2 = String(describing: UITableViewCellOne.self);
+        let obj3 = String(describing: NNCheckVersApi.self);
+        let obj4 = String(describing: NSObject.self);
+
+        DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
         return true
     }
 

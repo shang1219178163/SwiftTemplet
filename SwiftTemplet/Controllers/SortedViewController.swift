@@ -35,12 +35,12 @@ class SortedViewController: UIViewController {
         
         let number = NSNumber(floatLiteral: 0.55);
         let str = number.stringValue
-        let one = num.string
-        let two = num.number
+        let one = num.toString
+        let two = num.toNumber
         
-        let three = num1.string
+        let three = num1.toString
         //        let four = num1.string
-        print(number,str,0.66.string)
+        print(number,str,0.66.toString)
         
     }
     
