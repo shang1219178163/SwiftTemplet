@@ -11,16 +11,15 @@ import UIKit
 import SwiftExpand
 import HandyJSON
 import Moya
+import MJRefresh
 
-class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    
+//class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ThirdViewController: UIViewController{
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.tableFooterView = footerView
-//        view.addSubview(tableView)
         view.addSubview(plainView)
-        
         
         if title == nil {
             title = self.controllerName;
@@ -35,15 +34,12 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             
         }
         
-//        view.addSubview(dateRangeView)
-        
-        let layout = UICollectionViewLayout()
-        layout.minimumInteritemSpacing = 0.3
-        layout.minimumLineSpacing = 0.5
-        layout.headerReferenceSize = CGSize(width: 33, height: 54)
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4)
-        DDLog(layout.minimumInteritemSpacing,layout.minimumLineSpacing,layout.headerReferenceSize,layout.sectionInset)
-        
+//        let layout = UICollectionViewLayout()
+//        layout.minimumInteritemSpacing = 0.3
+//        layout.minimumLineSpacing = 0.5
+//        layout.headerReferenceSize = CGSize(width: 33, height: 54)
+//        layout.sectionInset = UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4)
+//        DDLog(layout.minimumInteritemSpacing,layout.minimumLineSpacing,layout.headerReferenceSize,layout.sectionInset)
 //        UIApplication.updateVersion(appStoreID: kAppStoreID, isForce: false);
         view.getViewLayer()
      
@@ -52,108 +48,43 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-//        list = allList.randomElement()!;
-//        tableView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        var controller = "CustomViewController"
-        controller = "PickerViewController"
-//        return
-//        goController(controller, obj: nil, objOne: nil)
+        plainView.frame = view.bounds
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: -funtions
+    
+    func requestInfo() -> Void {
+        NNProgressHUD.showLoadingText("努力加载中")
         let updateAPi = NNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in
             
             let data: Data! = try? JSONSerialization.data(withJSONObject: dic as Any, options: []);
             let jsonString: String! = String(data: data, encoding: .utf8);
             let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
-//            DDLog(string)
+            //            DDLog(string)
+//            if let response = NNCheckVersRootClass.deserialize(from: dic) {
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
-//                DDLog(response)
+                //                DDLog(response)
             }
-
+            NNProgressHUD.showSuccessText("请求成功");
+            self.plainView.tableView.mj_header.endRefreshing()
+            self.plainView.tableView.mj_footer.endRefreshing()
         }) { (manager, dic, error) in
             DDLog(error! as Any)
             
         }
-        
-        updateAPi.startRequest { (manager, dic, error) in
-            let data: Data! = try? JSONSerialization.data(withJSONObject: dic as Any, options: []);
-            let jsonString: String! = String(data: data, encoding: .utf8);
-            let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
-            
-//            DDLog(string)
-//            if let response = NNCheckVersRootClass.deserialize(from: dic) {
-//                DDLog(response)
-//
-//            }
-            if let response = ESCheckVersRootClass.deserialize(from: dic) {
-//                DDLog(response)
-                
-            }         
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        tbView.frame = view.bounds
-    }
-    
-    //    MARK: - tableView
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count;
-    };
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    };
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemList = list[indexPath.row]
-        
-//        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-        let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as? UITableViewCell;
-        cell!.accessoryType = .disclosureIndicator;
 
-        cell!.textLabel!.text = itemList[0]
-        cell!.textLabel?.textColor = UIColor.theme;
-        cell!.detailTextLabel?.text = itemList[1];
-        cell!.detailTextLabel?.textColor = UIColor.gray;
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let itemList = list[indexPath.row]
-        DDLog(itemList);
-        goController(itemList.last, obj: nil, objOne: nil)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10;
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView();
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01;
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        let label = UILabel(frame: .zero);
-        //        label.backgroundColor = .green;
-        //        label.text = "header\(section)";
-        return label;
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: -lazy
@@ -203,9 +134,10 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
         return view
     }()
     
-    lazy var plainView: UIView = {
+    lazy var plainView: NNTablePlainView = {
         var view = NNTablePlainView(frame: self.view.bounds)
         view.list = allList.first
+//        view.tableView.tableFooterView = footerView
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
@@ -229,6 +161,15 @@ class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDel
             DDLog(itemList);
             self.goController(itemList.last, obj: itemList.first as AnyObject?, objOne: nil)
         })
+        
+        view.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestInfo()
+
+        })
+        view.tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            self.requestInfo()
+
+        });
         
         return view
     }()

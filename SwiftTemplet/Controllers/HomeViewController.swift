@@ -43,14 +43,7 @@ class HomeViewController: UITabBarController {
     
     @objc func handleActionSender(_ sender:UIButton){
         let navController = UINavigationController(rootViewController: CenterViewController());
-        navController.navigationBar.tintColor = UIColor.white;
-        navController.navigationBar.barTintColor = UIColor.theme;
-        let dic:NSDictionary = [NSAttributedString.Key.foregroundColor:UIColor.white,
-                                NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),
-                                ];
-        navController.navigationBar.titleTextAttributes = dic as? [NSAttributedString.Key : Any];
         self.present(navController, animated: true, completion: nil);
-        
     }
     
     override func didReceiveMemoryWarning() {

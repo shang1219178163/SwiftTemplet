@@ -32,20 +32,16 @@ class UICTViewCellOne: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if label.text == nil || label.isHidden == true {
+        if label.isHidden == true {
             imgView.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(0);
-                make.left.right.equalToSuperview();
-                make.bottom.equalToSuperview().offset(0)
+                make.edges.equalToSuperview()
             }
             return;
         }
         
-        if imgView.image == nil || imgView.isHidden == true {
+        if imgView.isHidden == true {
             label.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(0);
-                make.left.right.equalToSuperview();
-                make.bottom.equalToSuperview().offset(0)
+                make.edges.equalToSuperview()
             }
             return;
         }

@@ -40,7 +40,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         let count = foldModel.isOpen == true ? foldModel.dataList.count : 0;
         return count;
     };
@@ -50,7 +50,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let foldModel = dataList[indexPath.section] as! BNFoldSectionModel
+        let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
         let obj = foldModel.dataList[indexPath.row]
         
         let cell = UITableViewCellFour.cellWithTableView(tableView) as! UITableViewCellFour;
@@ -72,16 +72,16 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         return foldModel.headerHeight;
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         
-//        let view = UITableHeaderFooterViewZero.viewWithTableView(tableView) as! UITableHeaderFooterViewZero
-        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
+        let view = UITableHeaderFooterViewZero.viewWithTableView(tableView) as! UITableHeaderFooterViewZero
+//        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
         
         view.isCanOpen = foldModel.isCanOpen
         view.isOpen = foldModel.isOpen
@@ -124,12 +124,12 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         return foldModel.footerHeight;
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let foldModel = dataList[section] as! BNFoldSectionModel
+        let foldModel = dataList[section] as! NNFoldSectionModel
         return sectionView(tableView, viewForSection: section, title: nil, isHeader: false);
     }
     
@@ -159,7 +159,7 @@ class SecondViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
         for i in 0..<array.count{
             
-            let foldModel = BNFoldSectionModel()
+            let foldModel = NNFoldSectionModel()
             foldModel.isOpen = true
             foldModel.isCanOpen = true
             foldModel.title = array[i]

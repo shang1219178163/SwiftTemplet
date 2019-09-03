@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 通用列表视图
-class NNTablePlainView: UIView,UITableViewDataSource,UITableViewDelegate {
+class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     var list:[Any]?
     var viewBlockCellForRow: CellForRowClosure?
