@@ -30,12 +30,13 @@
 		14129C9A21E9D7B1009BFA74 /* UITableViewCellSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */; };
 		14129C9C21E9F379009BFA74 /* UITableViewCellSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */; };
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
+		14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */; };
+		14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14198D54231FC2E00094D61F /* NNRadioButton.swift */; };
 		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
 		141AB84C22250DE5006E1841 /* Media11.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 141AB84B22250DE5006E1841 /* Media11.xcassets */; };
 		1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1421D5C621F2FD1000635582 /* CustomViewController.swift */; };
 		14244766222929990087372F /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14244765222929990087372F /* PhotosViewController.swift */; };
 		1424476A222B898D0087372F /* icon_select_YES@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14244769222B898D0087372F /* icon_select_YES@2x.png */; };
-		1424476C222B8CA20087372F /* icon_select_YES@2x的副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 1424476B222B8CA10087372F /* icon_select_YES@2x的副本.png */; };
 		14244770222B92070087372F /* UITableViewCellPhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1424476F222B92070087372F /* UITableViewCellPhotoPicker.swift */; };
 		142A76F222275EE10016D3DA /* NNClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DA22275EDF0016D3DA /* NNClockView.swift */; };
 		142A76F322275EE10016D3DA /* NNItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DB22275EDF0016D3DA /* NNItemsView.swift */; };
@@ -199,12 +200,13 @@
 		14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSlider.swift; sourceTree = "<group>"; };
 		14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSheet.swift; sourceTree = "<group>"; };
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_NO@2x.png"; sourceTree = "<group>"; };
+		14198D54231FC2E00094D61F /* NNRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRadioButton.swift; sourceTree = "<group>"; };
 		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
 		141AB84B22250DE5006E1841 /* Media11.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media11.xcassets; sourceTree = "<group>"; };
 		1421D5C621F2FD1000635582 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		14244765222929990087372F /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		14244769222B898D0087372F /* icon_select_YES@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_YES@2x.png"; sourceTree = "<group>"; };
-		1424476B222B8CA10087372F /* icon_select_YES@2x的副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_YES@2x的副本.png"; sourceTree = "<group>"; };
 		1424476F222B92070087372F /* UITableViewCellPhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellPhotoPicker.swift; sourceTree = "<group>"; };
 		142A76DA22275EDF0016D3DA /* NNClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNClockView.swift; sourceTree = "<group>"; };
 		142A76DB22275EDF0016D3DA /* NNItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNItemsView.swift; sourceTree = "<group>"; };
@@ -377,7 +379,7 @@
 				140B6D4421D4D57900050C8F /* bug.png */,
 				1404FAFA21E0A70D00122E22 /* Skull.jpg */,
 				14244769222B898D0087372F /* icon_select_YES@2x.png */,
-				1424476B222B8CA10087372F /* icon_select_YES@2x的副本.png */,
+				14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */,
 				141AB8452224C54D006E1841 /* img_meetStandard@2x.png */,
 				51685A07208EA75800CE8099 /* Assets.xcassets */,
 				144920A621C73BE900C3C2F6 /* Media.xcassets */,
@@ -709,6 +711,7 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				14198D54231FC2E00094D61F /* NNRadioButton.swift */,
 				142A770C222764080016D3DA /* NNPickerView.swift */,
 				146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */,
 				146F09832228CD7000E13F53 /* NNRecordCardView.swift */,
@@ -835,13 +838,13 @@
 				14D9E2F622D47F0D00FD38DC /* VehicleKeyboard.xcassets in Resources */,
 				5182442D213E75BA00071A9D /* dataList.geojson in Resources */,
 				141AB84C22250DE5006E1841 /* Media11.xcassets in Resources */,
+				14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */,
 				14488724224E1D2300B550AF /* keyNewDelete@2x.png in Resources */,
 				141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */,
 				1448871D224E1D2300B550AF /* capitalSelect@2x.png in Resources */,
 				14488720224E1D2300B550AF /* capitalNormal@3x.png in Resources */,
 				14488722224E1D2300B550AF /* keyNewDelete@3x.png in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
-				1424476C222B8CA20087372F /* icon_select_YES@2x的副本.png in Resources */,
 				1448871E224E1D2300B550AF /* capitalSelect@3x.png in Resources */,
 				1424476A222B898D0087372F /* icon_select_YES@2x.png in Resources */,
 				14BD733B22D417C9008788B1 /* PWPromptView.xib in Resources */,
@@ -998,6 +1001,7 @@
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
 				149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */,
+				14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */,
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
 				14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */,
 				142A770122275EE10016D3DA /* NNTipsView.swift in Sources */,
