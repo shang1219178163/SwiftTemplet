@@ -1,5 +1,5 @@
 //
-//  BNCacheProtocol.swift
+//  NNCacheProtocol.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/4/30.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BNCacheProtocol {
+protocol NNCacheProtocol {
     
     ///object 必须遵守NSCoding协议
     func setObject(_ object: Any, for key: String) -> Void;

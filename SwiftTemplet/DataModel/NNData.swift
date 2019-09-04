@@ -1,12 +1,12 @@
 //
-//	BNData.swift
+//	NNData.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation 
 import ObjectMapper
 
 
-class BNData : NSObject, Mappable{
+class NNData : NSObject, Mappable{
 
 	var createdAt : String?
 	var newsCreateTime : String?
@@ -23,7 +23,7 @@ class BNData : NSObject, Mappable{
 
 
 //    class func newInstance(map: Map) -> Mappable?{
-//        return BNData()
+//        return NNData()
 //    }
 	required init?(map: Map){}
 

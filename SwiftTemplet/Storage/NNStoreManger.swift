@@ -1,5 +1,5 @@
 //
-//  BNStoreManger.swift
+//  NNStoreManger.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/4/30.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class BNStoreManger: NSObject {
+class NNStoreManger: NSObject {
 
 }

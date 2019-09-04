@@ -1,19 +1,19 @@
 //
-//	BNResult.swift
+//	NNResult.swift
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation 
 import ObjectMapper
 
 
-class BNResult : NSObject, Mappable{
+class NNResult : NSObject, Mappable{
 
 	var count : Int?
-	var data : [BNData]?
+	var data : [NNData]?
 
 
 //    class func newInstance(map: Map) -> Mappable?{
-//        return BNResult()
+//        return NNResult()
 //    }
 	required init?(map: Map){}
 
@@ -31,7 +31,7 @@ class BNResult : NSObject, Mappable{
     @objc required init(coder aDecoder: NSCoder)
 	{
          count = aDecoder.decodeObject(forKey: "count") as? Int
-         data = aDecoder.decodeObject(forKey: "data") as? [BNData]
+         data = aDecoder.decodeObject(forKey: "data") as? [NNData]
 
 	}
 

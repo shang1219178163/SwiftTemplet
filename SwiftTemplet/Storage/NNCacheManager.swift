@@ -1,5 +1,5 @@
 //
-//  BNCacheManager.swift
+//  NNCacheManager.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/4/30.
@@ -9,21 +9,21 @@
 import UIKit
 import YYCache
 
-class BNCacheManager: NSObject, BNCacheProtocol {
+class NNCacheManager: NSObject, NNCacheProtocol {
   
     var _cache: YYCache?
-    var _diskCache: BNDiskCache?
-    var _memoryCache: BNMemoryCache?
+    var _diskCache: NNDiskCache?
+    var _memoryCache: NNMemoryCache?
 
-    static let shared = BNCacheManager()
+    static let shared = NNCacheManager()
     private override init() {
         super.init()
         _cache = YYCache(name: "DataCache")
-        _diskCache = BNDiskCache(cache: _cache!.diskCache)
-        _memoryCache = BNMemoryCache(cache: _cache!.memoryCache)
+        _diskCache = NNDiskCache(cache: _cache!.diskCache)
+        _memoryCache = NNMemoryCache(cache: _cache!.memoryCache)
     }
     
-    //MARK: -BNCacheProtocol
+    //MARK: -NNCacheProtocol
     func setObject(_ object: Any, for key: String) {
         _cache?.setObject((object as! NSCoding), forKey: key)
     }

@@ -1,5 +1,5 @@
 //
-//  BNMemoryCache.swift
+//  NNMemoryCache.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/4/30.
@@ -9,7 +9,7 @@
 import UIKit
 import YYCache
 
-class BNMemoryCache: NSObject, BNCacheProtocol {
+class NNMemoryCache: NSObject, NNCacheProtocol {
    
 
     var _memoryCache: YYMemoryCache?
@@ -19,7 +19,7 @@ class BNMemoryCache: NSObject, BNCacheProtocol {
         _memoryCache = cache;
     }
     
-    //MARK: -BNCacheProtocol
+    //MARK: -NNCacheProtocol
     func setObject(_ object: Any, for key: String) {
         _memoryCache?.setObject((object as! NSCoding), forKey: key)
     }

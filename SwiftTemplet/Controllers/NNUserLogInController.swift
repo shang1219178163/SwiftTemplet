@@ -1,5 +1,5 @@
 //
-//  BNUserLogInController.swift
+//  NNUserLogInController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/5/21.
@@ -15,7 +15,7 @@ import RxCocoa
 let minUsernameLength = 8;
 let minPasswordLength = 6;
 
-class BNUserLogInController: UIViewController {
+class NNUserLogInController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

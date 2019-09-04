@@ -1,5 +1,5 @@
 //
-//  BNDiskCache.swift
+//  NNDiskCache.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/4/30.
@@ -9,7 +9,7 @@
 import UIKit
 import YYCache
 
-class BNDiskCache: NSObject, BNCacheProtocol {
+class NNDiskCache: NSObject, NNCacheProtocol {
   
     var _diskCache: YYDiskCache?
     
@@ -18,7 +18,7 @@ class BNDiskCache: NSObject, BNCacheProtocol {
         _diskCache = cache;
     }
     
-    //MARK: -BNCacheProtocol
+    //MARK: -NNCacheProtocol
     func setObject(_ object: Any, for key: String) {
         _diskCache?.setObject((object as! NSCoding), forKey: key)
     }

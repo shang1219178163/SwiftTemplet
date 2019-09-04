@@ -13,7 +13,7 @@ import SwiftExpand
 let kRequestGET: String = "GET"
 let kRequestPOST: String = "POST"
 
-//enum BNRequestType: String {
+//enum NNRequestType: String {
 //    case GET = "GET"
 //    case POST = "POST"
 //}
@@ -36,7 +36,7 @@ enum NNRequestCode: Int {
 /// 必须遵守的基础协议
 @objc protocol NNRequestManagerProtocol: NSObjectProtocol {
     @objc func requestURI() -> String
-//    func requestType() -> BNRequestType
+//    func requestType() -> NNRequestType
     @objc func requestType() -> String
 
     @objc func requestParams() -> Dictionary<String, Any>
