@@ -1,5 +1,5 @@
 //
-//  BNCacheKey.swift
+//  NNCacheKey.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/4/30.
@@ -14,6 +14,6 @@ let kCacheKeyAccount: String   = "kCacheKeyAccount";
 let kCacheKeyPwd: String       = "kCacheKeyPwd";
 let kCacheAppInfo: String      = "kStoreAppInfo";
 
-class BNCacheKey: NSObject {
+class NNCacheKey: NSObject {
 
 }

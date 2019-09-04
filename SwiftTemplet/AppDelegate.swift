@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         controller = UICtrFromString("HomeViewController");
 //        controller = UICtrFromString("UIRecognizerController");
 //        controller = UICtrFromString("IOPAuthRechargeController");
-//        controller = UICtrFromString("BNUserLogInController");
+//        controller = UICtrFromString("NNUserLogInController");
 //        controller = UICtrFromString("PlateNumberController");
 //        controller = UICtrFromString("TitleViewController");
 //        controller = UICtrFromString("ScrollHorizontalController");        

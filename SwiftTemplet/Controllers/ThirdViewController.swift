@@ -107,7 +107,7 @@ class ThirdViewController: UIViewController{
              ["PickerView", "PickerViewController"],
              ["PictureView", "PhotosViewController"],
              ["KeyBoardView", "KeyBoardViewController"],
-             ["函数响应型编程", "BNUserLogInController"],
+             ["函数响应型编程", "NNUserLogInController"],
              ["滚动分段组件", "ScrollHorizontalController"],
              ["分段组件", "ScrollViewController"],             
              ["新想法测试", "TestViewController"],

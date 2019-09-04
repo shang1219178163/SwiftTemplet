@@ -31,13 +31,13 @@ class NNCheckVersApi: NNBaseRequestApi {
         guard let json = json else {
             return false;
         }
-        BNCacheManager.shared.setObject(json, for: kCacheAppInfo);
+        NNCacheManager.shared.setObject(json, for: kCacheAppInfo);
         return false
     }
     
     func jsonFromCache() -> Dictionary<String, Any>? {
-//        guard let dic = BNCacheManager.shared.object(forKey: kCacheAppInfo) else { return [String: Any] }
-        if let dic = BNCacheManager.shared.object(forKey: kCacheAppInfo) as? Dictionary<String, Any> {
+//        guard let dic = NNCacheManager.shared.object(forKey: kCacheAppInfo) else { return [String: Any] }
+        if let dic = NNCacheManager.shared.object(forKey: kCacheAppInfo) as? Dictionary<String, Any> {
             return dic;
         }
         return nil
