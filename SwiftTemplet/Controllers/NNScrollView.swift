@@ -10,6 +10,7 @@
 import UIKit
 import SwiftExpand
 
+@objcMembers
 class NNScrollView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var showItemNum: Int = 4;
@@ -34,7 +35,7 @@ class NNScrollView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     var normalColor = UIColor.gray;
-    var selectedColor = UIColor.theme {
+    dynamic var selectedColor = UIColor.theme {
         didSet{
             indicatorView.layer.backgroundColor = oldValue.withAlphaComponent(0.3).cgColor;
             indicatorView.layer.borderColor = oldValue.cgColor;

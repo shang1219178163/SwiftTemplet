@@ -16,6 +16,8 @@ class ScrollViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
+        NNScrollView.appearance().selectedColor = UIColor.red
+        
         view.addSubview(scrollView)
         view.addSubview(scrollViewOne)
 
