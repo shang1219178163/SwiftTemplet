@@ -24,12 +24,6 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
        
         
         // 注册cell
-        //        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
-        //        // 注册headerView
-        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
-        //        // 注册footView
-        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
-        
 //        collectionView.collectionViewLayout = UICollectionView.layoutDefault
         ctView.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
                             UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
@@ -56,26 +50,23 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
 //        navigationController?.navigationBar.shadowImage = UIImageColor(UIColor.orange)
 
         //导航栏透明
-        navigationController?.navigationBar.setBackgroundImage(UIImageColor(UIColor.clear), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImageColor(UIColor.clear)
-        
-        //顶部布局从导航栏开始
-        edgesForExtendedLayout = UIRectEdge.all;
+//        navigationController?.navigationBar.setBackgroundImage(UIImageColor(UIColor.clear), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImageColor(UIColor.clear)
+//
+//        //顶部布局从导航栏开始
+//        edgesForExtendedLayout = UIRectEdge.all;
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
+//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+//        navigationController?.navigationBar.shadowImage = nil
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        collectionView.frame = CGRect(x: 0, y: 64, width: kScreenWidth, height:collectionView.collectionViewLayout.collectionViewContentSize.height);
-
     }
-    
     
     //MARK: --UICollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {

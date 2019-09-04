@@ -16,7 +16,7 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        list = ["1", "2", "3", "4", "5", "6",];
+        list = ["1", "2", "3", "4", "5", ];
 
         view.addSubview(collectionView)
 //        view.addSubview(scrollView)
@@ -54,7 +54,6 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind,indexPath: indexPath);
         
         return view;
@@ -64,21 +63,39 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
 
     // MARK: -lazy
     lazy var layout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout();
-//        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 70, height: 90)
-        layout.minimumLineSpacing = 5;
-        layout.minimumInteritemSpacing = 5;
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        // 设置分区头视图和尾视图宽高
-        layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 30)
-        layout.footerReferenceSize = CGSize(width: kScreenWidth, height: 30)
+//        let layout = UICollectionViewFlowLayout();
+////        layout.scrollDirection = .horizontal
+//        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//
+//        let rowNum: Int = 4
+//        let spacing: CGFloat = 10
+//        let width = UIScreen.main.bounds.width;
+//
+//        let itemWidth = (width - (rowNum.toCGFloat + 1)*spacing - layout.sectionInset.left - layout.sectionInset.right)/rowNum.toCGFloat;
+//        let itemHeight = itemWidth/0.75;
+//
+//        let itemSize = CGSize(width: round(itemWidth), height: itemHeight);
+//        let headerSize = CGSize(width: width, height: 40);
+//        let footerSize = CGSize(width: width, height: 30);
+//
+//        layout.itemSize = itemSize
+//        layout.minimumLineSpacing = spacing;
+//        layout.minimumInteritemSpacing = spacing;
+//        // 设置分区头视图和尾视图宽高
+//        layout.headerReferenceSize = headerSize
+//        layout.footerReferenceSize = footerSize
+//
+//        return layout;
         
-        return layout;
+        return UICollectionViewLayout.createFlowLayout()
+//        return UICollectionView.layoutDefault()
+
     }()
     
     lazy var collectionView: UICollectionView = {
-        let ctView = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.layout)
+//        let ctView = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.layout)
+        let ctView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault)
+
         ctView.backgroundColor = UIColor.white;
         ctView.showsVerticalScrollIndicator = false;
         ctView.showsHorizontalScrollIndicator = false;

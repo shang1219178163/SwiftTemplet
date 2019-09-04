@@ -35,11 +35,13 @@ class FifthViewControlle: UIViewController {
             self.textField.endEditing(true)
         }
         
-        imgViewOne.image = UIImageNamed("icon_select_YES@2x的副本")
+        imgViewOne.image = UIImageNamed("icon_select_YES")
         view.addSubview(imgViewOne)
         imgViewOne.tintColor = UIColor.theme
 
-        
+        view.addSubview(radioBtn)
+        view.addSubview(radioBtnOne)
+
         view.getViewLayer()
     }
     
@@ -55,6 +57,18 @@ class FifthViewControlle: UIViewController {
             make.top.equalToSuperview().offset(20)
             make.left.equalTo(imgView.snp.right).offset(20)
             make.width.height.equalTo(100*0.3)
+        }
+        
+        radioBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(imgView.snp.bottom).offset(20);
+            make.left.equalTo(imgView);
+            make.size.equalTo(CGSize(width: 100, height: 35));
+        }
+        
+        radioBtnOne.snp.makeConstraints { (make) in
+            make.top.equalTo(radioBtn).offset(0);
+            make.left.equalTo(radioBtn.snp.right).offset(20);
+            make.size.equalTo(CGSize(width: 100, height: 35));
         }
     }
 
@@ -91,5 +105,33 @@ class FifthViewControlle: UIViewController {
         view.clearButtonMode = .whileEditing;
         view.backgroundColor = .white;
         return view
+    }()
+    
+    lazy var radioBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "icon_select_NO"), for: .normal)
+        btn.setImage(UIImage(named: "icon_select_YES"), for: .selected)
+        btn.setTitle("未选择", for: .normal)
+        btn.setTitle("已选择", for: .selected)
+        btn.setTitleColor(UIColor.gray, for: .normal)
+        
+        btn.imageView?.tintColor = UIColor.theme;
+        btn.setTitleColor(btn.imageView?.tintColor, for: .selected)
+        
+        btn.imageView?.contentMode = .scaleAspectFit;
+        btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside)
+     
+        return btn
+    }()
+    
+    @objc func handleActionSender(_ sender: UIButton) -> Void {
+        sender.isSelected = !sender.isSelected
+
+    }
+    
+    lazy var radioBtnOne: NNRadioButton = {
+        let btn = NNRadioButton(frame: .zero)
+
+        return btn
     }()
 }

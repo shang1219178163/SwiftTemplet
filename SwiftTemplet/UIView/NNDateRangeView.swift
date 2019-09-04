@@ -56,9 +56,9 @@ class NNDateRangeView: UIView {
         labStart.textColor = UIColor.theme;
         labEnd.textColor = UIColor.theme;
 
-        labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_minute)
+        labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_day)
         let date = Date().adding(-30)
-        labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormat_minute)
+        labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormat_day)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -184,7 +184,7 @@ class NNDateRangeView: UIView {
     
     //MARK: -lazy
     lazy var datePicker: NNDatePicker = {
-        var view = NNDatePicker();
+        var view = NNDatePicker(model: .date);
 //        view.block({ (sender, idx) in
 //            DDLog(view,sender.datePicker.date,idx);
 //            if self.viewBlock != nil {

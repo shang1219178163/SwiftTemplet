@@ -20,7 +20,7 @@ class NNDatePicker: UIView {
         super.init(frame: frame)
     }
 
-    convenience init(_ model: UIDatePicker.Mode = UIDatePicker.Mode.date) {
+    convenience init(model: UIDatePicker.Mode = UIDatePicker.Mode.date) {
         self.init(frame:UIScreen.main.bounds);
 
         self.datePicker.datePickerMode = model;
@@ -41,7 +41,7 @@ class NNDatePicker: UIView {
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-            self.containView.transform = CGAffineTransform.identity
+            self.containView.transform = CGAffineTransform.identity;
 
         }, completion: nil);
     }
