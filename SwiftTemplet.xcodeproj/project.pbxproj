@@ -659,7 +659,6 @@
 				1443F84A230BF2A70023C777 /* TestViewController.swift */,
 				1461A24423191850006A758F /* ScrollViewController.swift */,
 				14C9019E231543490084A946 /* ScrollHorizontalController.swift */,
-				14C901A02315435B0084A946 /* NNScrollView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -711,6 +710,7 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				14C901A02315435B0084A946 /* NNScrollView.swift */,
 				14198D54231FC2E00094D61F /* NNRadioButton.swift */,
 				142A770C222764080016D3DA /* NNPickerView.swift */,
 				146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */,
