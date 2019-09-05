@@ -126,9 +126,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
             if let imgView = (sender as! UIButton).imageView{
-                UIView.animate(withDuration: 0.35, animations: {
-                    imgView.transform = imgView.transform.isIdentity == true ? imgView.transform.rotated(by: CGFloat(Double.pi)) : CGAffineTransform.identity;
-                })
+                imgView.transformRotationCycle()
             }
             
             if self.btn.imageView?.transform.isIdentity == false {
@@ -163,6 +161,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
             self.containView.alpha = 0.0
             
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.height)
+            self.btn.imageView?.transform = CGAffineTransform.identity;
 
         }, completion:{ (isFinish:Bool) in
             self.containView.removeFromSuperview()
