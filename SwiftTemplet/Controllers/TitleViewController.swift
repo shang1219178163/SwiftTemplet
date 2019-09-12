@@ -200,13 +200,13 @@ class TitleViewController: UIViewController{
     
     func show(_ inController: UIViewController) -> Void {
         self.view.addSubview(self.containView)
-        self.tbView.y = -self.tbView.height
+        self.tbView.originY = -self.tbView.sizeHeight
         
         self.containView.alpha = 0.0
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 1.0
 
-            self.tbView.y += self.tbView.height
+            self.tbView.originY += self.tbView.sizeHeight
             
         }, completion: nil)
         
@@ -217,7 +217,7 @@ class TitleViewController: UIViewController{
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 0.0
             
-            self.tbView.y -= self.tbView.height
+            self.tbView.originY -= self.tbView.sizeHeight
             
         }, completion:{ (isFinish:Bool) in
             self.containView.removeFromSuperview()

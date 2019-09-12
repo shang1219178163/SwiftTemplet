@@ -13,7 +13,7 @@ import SwiftExpand
 @objcMembers
 class NNScrollView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var showItemNum: Int = 4;
+    var showItemNum: CGFloat = 4;
     var indicatorHeight: CGFloat = 2;
     var indicatorType: Int = 0;
 
@@ -22,8 +22,8 @@ class NNScrollView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     
     var list: NSMutableArray = []{
         didSet{
-            if oldValue.count > 0 && oldValue.count < showItemNum {
-                showItemNum = oldValue.count;
+            if oldValue.count > 0 && oldValue.count < Int(showItemNum) {
+                showItemNum = CGFloat(oldValue.count);
             }
         }
     }

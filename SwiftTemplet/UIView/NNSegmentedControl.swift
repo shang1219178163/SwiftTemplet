@@ -95,7 +95,7 @@ class NNSegmentedControl: UISegmentedControl {
         }
         
         let duration = CGRect.zero.equalTo(indicator.frame) ? 0.0 : kDurationShow;
-        let segmentWidth = width/CGFloat(numberOfSegments)
+        let segmentWidth = sizeWidth/CGFloat(numberOfSegments)
         let originX = segmentWidth * CGFloat(selectedSegmentIndex);
         
         switch type {
@@ -106,12 +106,12 @@ class NNSegmentedControl: UISegmentedControl {
             
         case 2:
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, self.height - self.indicatorHeight, segmentWidth, self.indicatorHeight)
+                self.indicator.frame = CGRectMake(originX, self.sizeHeight - self.indicatorHeight, segmentWidth, self.indicatorHeight)
             }
             
         default:
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.height)
+                self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.sizeHeight)
             }
             
         }

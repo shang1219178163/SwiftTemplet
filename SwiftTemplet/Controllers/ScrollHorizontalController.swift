@@ -28,11 +28,15 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        collectionView.frame = CGRectMake(0, 20, 400, 40);
-        collectionView.frame = CGRectMake(0, 20, 400, 400);
+//        collectionView.frame = CGRectMake(0, 20, 400, 40);
+        collectionView.frame = view.bounds;
     }
     
     // MARK: -UICollectionView
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return list.count;
     }
@@ -42,7 +46,8 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
         let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         cell.contentView.backgroundColor = UIColor.random
         cell.imgView.isHidden = true;
-        cell.label.text = "111"
+        cell.label.text = "标题_\(NSStringFromIndexPath(indexPath))"
+
         return cell;
     }
     
@@ -101,10 +106,12 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
         ctView.showsHorizontalScrollIndicator = false;
         ctView.scrollsToTop = false;
         ctView.isPagingEnabled = true;
-        ctView.bounces = false;
+//        ctView.bounces = false;
         ctView.dataSource = self;
         ctView.delegate = self;
 //        ctView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCell")
+        
+        
         ctView.register(cellType: UICTViewCellOne.self)
         ctView.register(supplementaryViewType: UICTReusableViewZero.self, ofKind: UICollectionView.elementKindSectionHeader)
         ctView.register(supplementaryViewType: UICTReusableViewZero.self, ofKind: UICollectionView.elementKindSectionFooter)

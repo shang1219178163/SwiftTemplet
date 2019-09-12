@@ -144,7 +144,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     func show(_ inController: UIViewController) -> Void {
         self.parController!.view.addSubview(self.containView)
-        self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.height)
+        self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 
         self.containView.alpha = 0.0
         UIView.animate(withDuration: kDurationShow, animations: {
@@ -160,7 +160,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
             
-            self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.height)
+            self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
             self.btn.imageView?.transform = CGAffineTransform.identity;
 
         }, completion:{ (isFinish:Bool) in

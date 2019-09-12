@@ -64,10 +64,10 @@ class CustomViewController: UIViewController {
         view.addSubview(self.defaultViewFail)
 
 
-        self.expandView.frame = CGRectMake(kX_GAP, defaultView.frame.maxY+20, UIScreen.width - kX_GAP*2, 35)
+        self.expandView.frame = CGRectMake(kX_GAP, defaultView.frame.maxY+20, UIScreen.sizeWidth - kX_GAP*2, 35)
         view.addSubview(self.expandView)
         
-//        self.operationView.frame = CGRectMake(kX_GAP, view.bounds.maxY - 180 - kY_GAP, UIScreen.width - kX_GAP*2, 180)
+//        self.operationView.frame = CGRectMake(kX_GAP, view.bounds.maxY - 180 - kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 180)
         view.addSubview(operationView)
 
         view.getViewLayer()
@@ -115,7 +115,7 @@ class CustomViewController: UIViewController {
     }()
     
     lazy var defaultView: NNCellSubtitleView = {
-        let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.width - kX_GAP*2, 70)
+        let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 70)
         var view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
@@ -139,7 +139,7 @@ class CustomViewController: UIViewController {
     }()
     
     lazy var defaultViewFail: NNCellSubtitleView = {
-        let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.width - kX_GAP*2, 70)
+        let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.sizeWidth - kX_GAP*2, 70)
         var view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)

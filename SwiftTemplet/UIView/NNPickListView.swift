@@ -35,7 +35,7 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
         super.init(frame: frame)
         
         self.frame = UIScreen.main.bounds
-        self.containView.y = UIScreen.height
+        self.containView.originY = UIScreen.sizeHeight
 
         self.addSubview(containView)
         self.addSubview(backView)
@@ -120,12 +120,12 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
         setupContainViewSize(list)
         
         UIApplication.shared.keyWindow?.addSubview(self);
-        backView.height = UIScreen.height - containView.height
-        containView.y = UIScreen.height
+        backView.sizeHeight = UIScreen.sizeHeight - containView.sizeHeight
+        containView.originY = UIScreen.sizeHeight
         
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-            self.containView.y -= self.containView.frame.height;
+            self.containView.originY -= self.containView.frame.height;
 
         }, completion: { (isFinished: Bool) in
             
@@ -135,7 +135,7 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     func dismiss() -> Void {
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.y = UIScreen.height
+            self.containView.originY = UIScreen.sizeHeight
             
         }) { (isFinished) in
             self.removeFromSuperview();
@@ -149,7 +149,7 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     func setupContainViewSize(_ list:[String]) -> Void {
         var rows = list.count + (title != nil ? 1 : 0) + (tips != nil ? 1 : 0)
         rows = rows < 6 ? rows : 6
-        self.containView.height = tableView.rowHeight * CGFloat(rows)
+        self.containView.sizeHeight = tableView.rowHeight * CGFloat(rows)
     }
     
     //MARK: - layz

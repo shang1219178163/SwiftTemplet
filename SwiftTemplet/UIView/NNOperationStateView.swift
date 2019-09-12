@@ -185,7 +185,7 @@ class NNOperationStateView: UIView {
             make.edges.equalTo(label)
         }
 
-        let width = (UIScreen.width - kX_GAP*2*2 - kPadding*2)/2.0
+        let width = (UIScreen.sizeWidth - kX_GAP*2*2 - kPadding*2)/2.0
         threeLabView.snp.makeConstraints { (make) in
             make.top.left.bottom.equalToSuperview()
             make.width.equalTo(width)

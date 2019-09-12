@@ -48,7 +48,7 @@ class NNTipsView: UIView {
             if isHidden == false {
                 label.sizeToFit()
                 
-                frame.size.width = UIScreen.width
+                frame.size.width = UIScreen.sizeWidth
                 frame.size.height = (label.size.height + kPadding*2);
             }
         }
