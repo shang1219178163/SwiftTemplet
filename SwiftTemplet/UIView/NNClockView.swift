@@ -99,5 +99,5 @@ class NNClockView: UIImageView {
     
     
     
-    
+
 }

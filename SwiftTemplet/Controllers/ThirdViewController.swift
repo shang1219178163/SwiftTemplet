@@ -108,7 +108,7 @@ class ThirdViewController: UIViewController{
              ["PictureView", "PhotosViewController"],
              ["KeyBoardView", "KeyBoardViewController"],
              ["函数响应型编程", "NNUserLogInController"],
-             ["滚动分段组件", "ScrollHorizontalController"],
+             ["重构", "ScrollHorizontalController"],
              ["分段组件", "ScrollViewController"],             
              ["新想法测试", "TestViewController"],
              ],

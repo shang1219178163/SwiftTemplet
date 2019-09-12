@@ -178,7 +178,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let cell = UITableViewCellSwitch.cellWithTableView(tableView) as! UITableViewCellSwitch
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
-            cell.layoutType = 1
+//            cell.layoutType = 1
             cell.switchCtl.addActionHandler({ (sender:UIControl) in
                 if let control = sender as? UISwitch {
                     DDLog(control.isOn)

@@ -129,11 +129,11 @@ class NNSliderControlView: UIView {
 
             var stopPoint = recognizer.view!.center
             DDLog(stopPoint)
-            if stopPoint.x - imgView.width*0.5 - insets.left <= frame.width {
+            if stopPoint.x - imgView.sizeWidth*0.5 - insets.left <= frame.width {
                 stopPoint = CGPoint(x: imgView.frame.width*0.5, y: stopPoint.y)
             }
             
-            if recognizer.view!.center.x + imgView.width*0.5 + insets.right >= frame.width {
+            if recognizer.view!.center.x + imgView.sizeWidth*0.5 + insets.right >= frame.width {
                 stopPoint = CGPoint(x: frame.width - imgView.frame.width*0.5 - insets.right, y: stopPoint.y)
                 
                 labFront.text = textFinish;

@@ -54,7 +54,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
         
-        tbView.height = view.bounds.height;
+        tbView.sizeHeight = view.bounds.height;
         print(view.frame,view.bounds)
     }
     

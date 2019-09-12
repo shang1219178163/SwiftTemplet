@@ -43,6 +43,7 @@ class ScrollViewController: UIViewController {
         let view = NNScrollView(frame: .zero)
         view.list = ["1", "2", "3", "4", "5", "6",];
         view.indicatorType = 2;
+        view.showItemNum = 4.5;
 
         view.collectionView.register(cellType: UICTViewCellOne.self)
 //        view.collectionView.register(UICTViewCellOne.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellOne")
