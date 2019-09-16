@@ -31,6 +31,8 @@ class NNScrollView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
     var selectIndexPath = IndexPath(row: 0, section: 0) {
         didSet{
             setupIndicator();
+            collectionView.selectItem(at: oldValue, animated: true, scrollPosition: .centeredHorizontally)
+            collectionView.reloadData();
         }
     }
     
@@ -204,7 +206,7 @@ class NNScrollView: UIView, UICollectionViewDataSource, UICollectionViewDelegate
 //        view.layer.backgroundColor = UIColor.theme.withAlphaComponent(0.3).cgColor;
 //        view.layer.backgroundColor = UIColorHexValue(0x0082e0, 0.3).cgColor;
 //        view.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.3).cgColor;
-//        view.layer.borderColor = self.selectedColor.cgColor;
+        view.layer.borderColor = self.selectedColor.cgColor;
         view.layer.borderWidth = self.indicatorHeight;
         return view;
     }()

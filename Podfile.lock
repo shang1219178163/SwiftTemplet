@@ -6,7 +6,7 @@ PODS:
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
   - BSGridCollectionViewLayout (1.2.5)
-  - BSImagePicker (2.10.1):
+  - BSImagePicker (2.10.2):
     - BSGridCollectionViewLayout (= 1.2.5)
     - BSImageView (= 1.0.3)
   - BSImageView (1.0.3)
@@ -44,7 +44,7 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Surge (2.2.0)
-  - SwiftExpand (1.7.4)
+  - SwiftExpand (1.7.5.2)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -116,7 +116,7 @@ SPEC CHECKSUMS:
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
-  BSImagePicker: faa0a2d95edaaddd2da649e6ebcc9b040d1c76eb
+  BSImagePicker: f7228c1e1abc1fa850248fd0e8018e0ccc19148a
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
@@ -137,7 +137,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 5acb7b696e231e3a27604c8a3bca58313fe621d7
+  SwiftExpand: b5caa8b343da427b0431a7f54e7ad23de8159328
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
