@@ -101,6 +101,7 @@ class ThirdViewController: UIViewController{
             [["通用录入界面", "EntryViewController"],
              ["导航栏下拉菜单", "TitleViewController"],
              ["UICollectionView展示", "UICollectionDispalyController"],
+             ["tabViewController展示", "NNTabController"],
              ["自定义View", "CustomViewController"],
              ["CalenderView", "CalendarViewController"],
              ["Timer", "TimerViewController"],

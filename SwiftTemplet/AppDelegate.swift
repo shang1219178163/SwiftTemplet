@@ -102,6 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let obj4 = String(describing: NSObject.self);
 
         DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
+        
+        DDLog(Bundle.main.infoDictionary)
+
         return true
     }
 
