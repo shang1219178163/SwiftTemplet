@@ -28,7 +28,7 @@ class NNDatePickerRangeView: UIView {
         self.datePicker.datePickerMode = model;
         self.addSubview(containView);
         
-        self.addActionHandler { (tap , view, idx) in
+        self.addActionClosure { (tap , view, idx) in
             self.dismiss();
         };
     }
