@@ -222,7 +222,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             cell.btnCode.addActionHandler({ (control) in
                 DDLog(self.list.count)
                 if let sender: UIButton = control as? UIButton {
-                    sender.GCDTimerStart();
+                    UIView.GCDTimerStart(sender.titleLabel, 60)
                 }
             }, for: .touchUpInside)
           
