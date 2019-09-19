@@ -91,7 +91,7 @@ class FourthViewController: UIViewController {
         view.layer.cornerRadius = view.frame.width/2.0;
         view.layer.masksToBounds = true;
         
-        view.addActionHandler { (tap, sender, idx) in
+        view.addActionClosure { (tap, sender, idx) in
             DDLog(sender);
             
         }

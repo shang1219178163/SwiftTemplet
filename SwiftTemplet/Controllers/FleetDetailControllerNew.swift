@@ -134,7 +134,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
 //
 //        }
         if [1,2].contains(section) {
-            containView.addActionHandler { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
+            containView.addActionClosure { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
                 if foldModel.isCanOpen == true {
                     foldModel.isOpen = !foldModel.isOpen
                     tableView.reloadSections([section], with: .fade)
