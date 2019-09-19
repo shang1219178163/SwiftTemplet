@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let tabBarController = UITarBarCtrFromList(list);
 //        UIApplication.setupRootController(tabBarController!);
         
-        UIApplication.tabBarController?.selectedIndex = 2;
+//        UIApplication.tabBarController?.selectedIndex = 4;
         
         let result = resultByOpt(5, 3) { (num1, num2) -> Int in
             num1 + num2
@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
         
-        DDLog(Bundle.main.infoDictionary)
+//        DDLog(Bundle.main.infoDictionary)
 
         return true
     }
@@ -114,8 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        UIApplication.didEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -133,3 +132,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension UIApplication{
+    /// block内任务后台执行(block为空可填入AppDelegate.m方法 applicationDidEnterBackground中)
+//    static func didEnterBackground(_ block: (()->Void)? = nil) -> Void{
+//        let application: UIApplication = UIApplication.shared;
+//        var bgTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier(rawValue: 0);
+//        //如果要后台运行
+//        bgTask = application.beginBackgroundTask(expirationHandler: {
+//            if bgTask != UIBackgroundTaskIdentifier.invalid {
+//                application.endBackgroundTask(bgTask)
+//                bgTask = UIBackgroundTaskIdentifier.invalid
+//            }
+//        });
+//        
+//        if block != nil {
+//            block!();
+//            application.endBackgroundTask(bgTask)
+//        }
+//        bgTask = UIBackgroundTaskIdentifier.invalid
+//    }
+}

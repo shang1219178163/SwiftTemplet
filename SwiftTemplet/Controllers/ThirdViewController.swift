@@ -112,6 +112,8 @@ class ThirdViewController: UIViewController{
              ["重构", "ScrollHorizontalController"],
              ["分段组件", "ScrollViewController"],             
              ["新想法测试", "TestViewController"],
+             ["优惠券列表", "CCSCouponRecordController"],
+
              ],
         ]
         return array
