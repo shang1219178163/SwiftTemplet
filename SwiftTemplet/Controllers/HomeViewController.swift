@@ -21,8 +21,7 @@ class HomeViewController: UITabBarController {
         tabBar.isTranslucent = false;
         viewControllers = UINavListFromList(itemList);
 
-//        selectedIndex = 1;
-
+        selectedViewController = viewControllers?.last
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,8 +65,9 @@ class HomeViewController: UITabBarController {
 //            ["CenterViewController", "总览",  "Item_center_N",  "Item_center_H"],
             ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
             ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
-            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
-
+//            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
+            ["TmpViewController", "我的",  "Item_center_N",  "Item_center_H"],
+            
             ];
         return list;
     }();

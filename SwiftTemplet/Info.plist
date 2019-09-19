@@ -36,9 +36,6 @@
 	<string>App需要在上传头像图片服务中访问您的相册权限</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
-		<string>fetch</string>
-		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
