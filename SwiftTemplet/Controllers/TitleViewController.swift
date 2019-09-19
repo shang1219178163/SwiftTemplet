@@ -306,12 +306,12 @@ class TitleViewController: UIViewController{
 //    }()
     
     
-    lazy var segmentView: NNSegmentView = {
-        var view = NNSegmentView(frame: .zero)
+    lazy var segmentView: NNSegmentViewZero = {
+        var view = NNSegmentViewZero(frame: .zero)
         view.segmentCtl.itemList = ["one","two","three","four"]
         view.indicatorHeight = 1
         view.type = 1
-        view.block({ (segmentView: NNSegmentView, control: UISegmentedControl) in
+        view.block({ (segmentView: NNSegmentViewZero, control: UISegmentedControl) in
             DDLog(control.selectedSegmentIndex)
 
             switch control.selectedSegmentIndex {
