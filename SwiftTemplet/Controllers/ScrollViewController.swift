@@ -16,7 +16,7 @@ class ScrollViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        NNScrollView.appearance().selectedColor = UIColor.red
+        NNSegmentView.appearance().selectedColor = UIColor.red
         
         view.addSubview(scrollView)
         view.addSubview(scrollViewOne)
@@ -39,8 +39,8 @@ class ScrollViewController: UIViewController {
     }
     
     // MARK: -lazy
-    lazy var scrollView: NNScrollView = {
-        let view = NNScrollView(frame: .zero)
+    lazy var scrollView: NNSegmentView = {
+        let view = NNSegmentView(frame: .zero)
         view.list = ["1", "2", "3", "4", "5", "6",];
         view.indicatorType = 2;
         view.showItemNum = 4.5;
@@ -69,8 +69,8 @@ class ScrollViewController: UIViewController {
     
     
     // MARK: -lazy
-    lazy var scrollViewOne: NNScrollView = {
-        let view = NNScrollView(frame: .zero)
+    lazy var scrollViewOne: NNSegmentView = {
+        let view = NNSegmentView(frame: .zero)
         view.list = ["1", "2", "3", "4", "5", "6",];
         view.layout.scrollDirection = .vertical
         view.indicatorType = 3;

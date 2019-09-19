@@ -63,8 +63,8 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
     }
 
     // MARK: -lazy
-    lazy var scrollViewTop: NNScrollView = {
-        let view = NNScrollView(frame: .zero)
+    lazy var scrollViewTop: NNSegmentView = {
+        let view = NNSegmentView(frame: .zero)
         view.list = ["进出信息", "支付信息", "授权信息", "优惠券", "修改车牌", ];
         view.indicatorType = 2;
         view.showItemNum = 4.5;
