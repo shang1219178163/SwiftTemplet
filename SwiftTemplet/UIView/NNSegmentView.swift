@@ -1,108 +1,214 @@
+
 //
 //  NNSegmentView.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/1/15.
+//  Created by Bin Shang on 2019/8/27.
 //  Copyright © 2019 BN. All rights reserved.
 //
 
 import UIKit
+import SwiftExpand
 
-class NNSegmentView: UIView {
-
-    /// 必须在设置type之前,type触发布局效果
-    var indicatorHeight: CGFloat = 0.5
+@objcMembers
+class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    private var viewBlock: ((NNSegmentView,UISegmentedControl) -> Void)?
+    var showItemNum: CGFloat = 4;
+    var indicatorHeight: CGFloat = 2;
+    var indicatorType: Int = 0;
 
-    var type: Int = 0 {
-        willSet {
-            setNeedsLayout()
+    var cellForItemClosure: CellForItemClosure?
+    var didSelectItemClosure: DidSelectItemClosure?
+    
+    var list: NSMutableArray = []{
+        didSet{
+            if oldValue.count > 0 && oldValue.count < Int(showItemNum) {
+                showItemNum = CGFloat(oldValue.count);
+            }
         }
     }
     
+    var selectIndexPath = IndexPath(row: 0, section: 0) {
+        didSet{
+            setupIndicator();
+            collectionView.selectItem(at: oldValue, animated: true, scrollPosition: .centeredHorizontally)
+            collectionView.reloadData();
+        }
+    }
+    
+    var normalColor = UIColor.gray;
+    dynamic var selectedColor = UIColor.theme {
+        didSet{
+            indicatorView.layer.backgroundColor = oldValue.withAlphaComponent(0.3).cgColor;
+            indicatorView.layer.borderColor = oldValue.cgColor;
+        }
+    }
+    
+
+    // MARK: -life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(segmentCtl)
-        addSubview(indicator)
-        
-        indicator.addObserver(self, forKeyPath: "frame", options: .new, context: nil)
-
-    }
-    
-    deinit {
-        indicator.removeObserver(self, forKeyPath: "frame", context: nil)
+        addSubview(collectionView)
+        collectionView.addSubview(indicatorView)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
+        super.layoutSubviews();
         
-        let segmentWidth = segmentCtl.bounds.width/CGFloat(segmentCtl.numberOfSegments)
-        switch type {
-        case 1://top
-            segmentCtl.frame = CGRect(x: 0, y: indicatorHeight, width: bounds.width, height: bounds.height - indicatorHeight)
-            indicator.frame = CGRect(x: segmentCtl.frame.minX, y: segmentCtl.frame.minY - indicatorHeight, width: segmentWidth, height: indicatorHeight)
+        collectionView.frame = self.bounds;
+        if layout.scrollDirection == .horizontal {
+            layout.itemSize = CGSize(width: collectionView.bounds.width/CGFloat(showItemNum),
+                                     height: collectionView.bounds.height)
             
-        case 2://box
-            segmentCtl.frame = bounds
-            indicator.frame = CGRect(x: segmentCtl.frame.minX, y: segmentCtl.frame.minY, width: segmentWidth, height: segmentCtl.frame.height)
-            
-        default://bottom
-            segmentCtl.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - indicatorHeight)
-            indicator.frame = CGRect(x: segmentCtl.frame.minX, y: segmentCtl.frame.maxY + indicatorHeight, width: segmentWidth, height: indicatorHeight)
-            
-        }
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "frame" {
-            if let rect = change![NSKeyValueChangeKey.newKey] as? CGRect {
-                if rect.height == indicatorHeight {
-                    indicator.backgroundColor = UIColor.theme
+        } else {
+            layout.itemSize = CGSize(width: collectionView.bounds.width,
+                                     height: collectionView.bounds.height/CGFloat(showItemNum))
 
-                } else {
-                    indicator.backgroundColor = UIColor.clear
-                    indicator.layer.borderColor = UIColor.theme.cgColor
-                    indicator.layer.borderWidth = indicatorHeight
-                }
-            }
+        }
+        
+        setupIndicator()
+    }
+    
+    // MARK: -UICollectionView
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return list.count;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if (self.cellForItemClosure != nil && (self.cellForItemClosure!(collectionView, indexPath) != nil)) {
+            return self.cellForItemClosure!(collectionView, indexPath)!;
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+//        cell.contentView.backgroundColor = UIColor.random
+        return cell;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let isScrollHorizontal = layout.scrollDirection == .horizontal;
+        let scrollPosition = isScrollHorizontal ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
+        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
+        selectIndexPath = indexPath;
+        if didSelectItemClosure != nil {
+            didSelectItemClosure!(collectionView, indexPath)
         }
     }
-        
-    func block(_ action: @escaping ((NNSegmentView,UISegmentedControl) -> Void)) -> Void {
-        self.viewBlock = action;
+    
+    // MARK: -funtions
+    func blockCellForItem(_ action:@escaping CellForItemClosure) -> Void {
+        self.cellForItemClosure = action;
     }
     
-    //MARK: -lazy
-    lazy var segmentCtl: UISegmentedControl = {
-        var view = UIView.createSegment( .zero, items: ["item0","item1","item2"], selectedIdx: 0, type: 2);
-        view.addActionHandler({ (sender:UIControl) in
-            
-            if let control = sender as? UISegmentedControl {
-//                print(control.selectedSegmentIndex)
-                if self.viewBlock != nil {
-                    self.viewBlock!(self,control)
+    func blockDidSelectItem(_ action:@escaping DidSelectItemClosure) -> Void {
+        self.didSelectItemClosure = action;
+    }
+    
+    func setupIndicator() -> Void {
+        if CGRect.zero.equalTo(self.bounds) || list.count == 0 {
+            return;
+        }
+        
+        switch indicatorType {
+        case 1:
+            self.indicatorView.layer.backgroundColor = self.selectedColor.cgColor;
+            UIView.animate(withDuration: 0.15) {
+                if self.layout.scrollDirection == .horizontal {
+                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
+                                                          0,
+                                                          self.layout.itemSize.width,
+                                                          self.indicatorHeight);
+                    
+                } else {
+                    self.indicatorView.frame = CGRectMake(0,
+                                                          self.layout.itemSize.height * CGFloat(self.selectIndexPath.row),
+                                                          self.indicatorHeight,
+                                                          self.layout.itemSize.height);
                 }
-                
-                let segmentWidth = self.segmentCtl.bounds.width/CGFloat(self.segmentCtl.numberOfSegments)
-                UIView.animate(withDuration: 0.35, animations: {
-                    var rect = self.indicator.frame
-                    rect.origin.x = control.frame.minX + CGFloat(control.selectedSegmentIndex) * segmentWidth
-                    self.indicator.frame = rect
-                })
-            }
-        }, for: .valueChanged)
-        return view
+            };
+            
+        case 2:
+            self.indicatorView.layer.backgroundColor = self.selectedColor.cgColor;
+            UIView.animate(withDuration: 0.15) {
+                if (self.layout.scrollDirection == .horizontal) {
+                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
+                                                          self.layout.itemSize.height - self.indicatorHeight,
+                                                          self.layout.itemSize.width,
+                                                          self.indicatorHeight);
+                    
+                } else {
+                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width - self.indicatorHeight,
+                                                          self.layout.itemSize.height * CGFloat(self.selectIndexPath.row),
+                                                          self.indicatorHeight,
+                                                          self.layout.itemSize.height);
+                }
+            };
+            
+        case 3:
+            self.indicatorView.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.3).cgColor;
+            UIView.animate(withDuration: 0.15) {
+                if (self.layout.scrollDirection == .horizontal) {
+                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
+                                                          0,
+                                                          self.layout.itemSize.width,
+                                                          self.layout.itemSize.height);
+                    
+                } else {
+                    self.indicatorView.frame = CGRectMake(0,
+                                                          self.layout.itemSize.height * CGFloat(self.selectIndexPath.row),
+                                                          self.layout.itemSize.width,
+                                                          self.layout.itemSize.height);
+                    
+                }
+            };
+            
+        default:
+            self.indicatorView.isHidden = true;
+        }
+    }
+    
+    // MARK: -lazy
+    /// 载体布局视图
+    lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout();
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: self.bounds.width, height: self.bounds.height)
+        layout.minimumLineSpacing = 0;
+        layout.minimumInteritemSpacing = 0;
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // 设置分区头视图和尾视图宽高
+//        layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 60)
+//        layout.footerReferenceSize = CGSize(width: kScreenWidth, height: 60)
+        
+        return layout;
+    }()
+    /// 内容载体视图
+    lazy var collectionView: UICollectionView = {
+        let ctView = UICollectionView(frame: self.bounds, collectionViewLayout: self.layout)
+        ctView.backgroundColor = UIColor.white;
+        ctView.showsVerticalScrollIndicator = false;
+        ctView.showsHorizontalScrollIndicator = false;
+        ctView.scrollsToTop = false;
+        ctView.isPagingEnabled = true;
+        ctView.bounces = false;
+        ctView.dataSource = self;
+        ctView.delegate = self;
+        ctView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCell")
+        return ctView;
+    }()
+    /// 指示器视图
+    lazy var indicatorView: UIView = {
+        let view = UIView()
+//        view.layer.backgroundColor = UIColor.clear.cgColor;
+//        view.layer.backgroundColor = UIColor.theme.withAlphaComponent(0.3).cgColor;
+//        view.layer.backgroundColor = UIColorHexValue(0x0082e0, 0.3).cgColor;
+//        view.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.3).cgColor;
+        view.layer.borderColor = self.selectedColor.cgColor;
+        view.layer.borderWidth = self.indicatorHeight;
+        return view;
     }()
     
-    lazy var indicator: UIView = {
-        var view = UIView()
-        
-        return view
-    }()
 }
