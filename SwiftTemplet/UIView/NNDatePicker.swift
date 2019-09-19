@@ -26,7 +26,7 @@ class NNDatePicker: UIView {
         self.datePicker.datePickerMode = model;
         self.addSubview(containView);
 
-        self.addActionHandler { (tap , view, idx) in
+        self.addActionClosure { (tap , view, idx) in
             self.dismiss();
         };
     }
@@ -105,7 +105,7 @@ class NNDatePicker: UIView {
     }();
     
     lazy var btnSure:UIButton = {
-        let btn = UIButton(type: UIButton.ButtonType.system);
+        let btn = UIButton(type: .custom);
 //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 1;
 
