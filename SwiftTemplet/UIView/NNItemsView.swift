@@ -25,6 +25,15 @@ class NNItemsView: UIView {
             if isMutiChoose == false && newValue.count > 1 {
                 fatalError("单选只能默认选择索引应该为单选");
             }
+            for e in itemList.enumerated() {
+                if newValue.contains(e.offset) == true {
+                    selectedList.append(e.element)
+                    
+                    e.element.isSelected = true;
+                    e.element.setTitleColor(UIColor.theme, for: .normal)
+                    e.element.layer.borderColor = UIColor.theme.cgColor;
+                }
+            }
         }
     }
 
