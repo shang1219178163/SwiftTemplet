@@ -109,6 +109,13 @@
 		145C910E23338EF900849E9D /* icon_phone_green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C910C23338EF800849E9D /* icon_phone_green@3x.png */; };
 		145C910F23338EF900849E9D /* icon_phone_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C910D23338EF800849E9D /* icon_phone_green@2x.png */; };
 		145C911A233399D800849E9D /* NNScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C9119233399D700849E9D /* NNScrollView.swift */; };
+		145C9146233484B900849E9D /* parkingWang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9140233484B900849E9D /* parkingWang@2x.png */; };
+		145C9147233484B900849E9D /* parkingWang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9141233484B900849E9D /* parkingWang@3x.png */; };
+		145C9148233484B900849E9D /* 天天特价@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9142233484B900849E9D /* 天天特价@3x.png */; };
+		145C9149233484B900849E9D /* 天天特价@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9143233484B900849E9D /* 天天特价@2x.png */; };
+		145C914A233484B900849E9D /* parkingOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9144233484B900849E9D /* parkingOne@2x.png */; };
+		145C914B233484B900849E9D /* parkingOne@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9145233484B900849E9D /* parkingOne@3x.png */; };
+		145C914D233484F800849E9D /* AppIconChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C914C233484F800849E9D /* AppIconChangeController.swift */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
 		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
@@ -305,6 +312,13 @@
 		145C910C23338EF800849E9D /* icon_phone_green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_phone_green@3x.png"; sourceTree = "<group>"; };
 		145C910D23338EF800849E9D /* icon_phone_green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_phone_green@2x.png"; sourceTree = "<group>"; };
 		145C9119233399D700849E9D /* NNScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNScrollView.swift; sourceTree = "<group>"; };
+		145C9140233484B900849E9D /* parkingWang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parkingWang@2x.png"; sourceTree = "<group>"; };
+		145C9141233484B900849E9D /* parkingWang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parkingWang@3x.png"; sourceTree = "<group>"; };
+		145C9142233484B900849E9D /* 天天特价@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "天天特价@3x.png"; sourceTree = "<group>"; };
+		145C9143233484B900849E9D /* 天天特价@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "天天特价@2x.png"; sourceTree = "<group>"; };
+		145C9144233484B900849E9D /* parkingOne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parkingOne@2x.png"; sourceTree = "<group>"; };
+		145C9145233484B900849E9D /* parkingOne@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parkingOne@3x.png"; sourceTree = "<group>"; };
+		145C914C233484F800849E9D /* AppIconChangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconChangeController.swift; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
 		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
@@ -424,10 +438,8 @@
 		1401BE8D2277D3200078A722 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				145C90E32333111400849E9D /* icon_coupon_fail@2x.png */,
-				145C90E22333111400849E9D /* icon_coupon_fail@3x.png */,
-				145C90E12333111400849E9D /* icon_coupon_used@2x.png */,
-				145C90E42333111500849E9D /* icon_coupon_used@3x.png */,
+				145C913F233484B900849E9D /* AppIconChange */,
+				145C913E2334849300849E9D /* couponStatus */,
 				145C910B23338EA000849E9D /* talkback */,
 				51B3DA2821264E3800710A76 /* Default-568h@2x.png */,
 				5182442C213E75BA00071A9D /* dataList.geojson */,
@@ -561,6 +573,30 @@
 				145C90F823332D5C00849E9D /* icon_toSmall@3x.png */,
 			);
 			path = talkback;
+			sourceTree = "<group>";
+		};
+		145C913E2334849300849E9D /* couponStatus */ = {
+			isa = PBXGroup;
+			children = (
+				145C90E32333111400849E9D /* icon_coupon_fail@2x.png */,
+				145C90E22333111400849E9D /* icon_coupon_fail@3x.png */,
+				145C90E12333111400849E9D /* icon_coupon_used@2x.png */,
+				145C90E42333111500849E9D /* icon_coupon_used@3x.png */,
+			);
+			path = couponStatus;
+			sourceTree = "<group>";
+		};
+		145C913F233484B900849E9D /* AppIconChange */ = {
+			isa = PBXGroup;
+			children = (
+				145C9140233484B900849E9D /* parkingWang@2x.png */,
+				145C9141233484B900849E9D /* parkingWang@3x.png */,
+				145C9142233484B900849E9D /* 天天特价@3x.png */,
+				145C9143233484B900849E9D /* 天天特价@2x.png */,
+				145C9144233484B900849E9D /* parkingOne@2x.png */,
+				145C9145233484B900849E9D /* parkingOne@3x.png */,
+			);
+			path = AppIconChange;
 			sourceTree = "<group>";
 		};
 		147FF46921CE48E800351E94 /* UICollectionViewCell */ = {
@@ -752,6 +788,7 @@
 				145C90DF23323C1600849E9D /* NNLineDashView.swift */,
 				145C90E9233324ED00849E9D /* UICallPhoneView.swift */,
 				145C9119233399D700849E9D /* NNScrollView.swift */,
+				145C914C233484F800849E9D /* AppIconChangeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -920,6 +957,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				145C90F22333270C00849E9D /* icon_phone_refuse@2x.png in Resources */,
+				145C9147233484B900849E9D /* parkingWang@3x.png in Resources */,
+				145C9148233484B900849E9D /* 天天特价@3x.png in Resources */,
 				14BD732F22D417C9008788B1 /* PWInputCollectionViewCell.xib in Resources */,
 				145C90F62333270C00849E9D /* icon_phone_answer@2x.png in Resources */,
 				1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */,
@@ -930,6 +969,7 @@
 				145C90E62333111500849E9D /* icon_coupon_fail@3x.png in Resources */,
 				145C910723338DF300849E9D /* icon_phone_soundon@2x.png in Resources */,
 				14E8561B232A4D860006E4C2 /* SwiftTemplet-Info.plist in Resources */,
+				145C914B233484B900849E9D /* parkingOne@3x.png in Resources */,
 				51685A08208EA75800CE8099 /* Assets.xcassets in Resources */,
 				14BD733A22D417C9008788B1 /* PWKeyBoardCollectionViewCell.xib in Resources */,
 				14488723224E1D2300B550AF /* keyboard_magnifier@3x.png in Resources */,
@@ -947,11 +987,14 @@
 				14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */,
 				145C910E23338EF900849E9D /* icon_phone_green@3x.png in Resources */,
 				14488724224E1D2300B550AF /* keyNewDelete@2x.png in Resources */,
+				145C9146233484B900849E9D /* parkingWang@2x.png in Resources */,
 				145C910923338DF300849E9D /* icon_phone_soundon@3x.png in Resources */,
 				141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */,
 				1448871D224E1D2300B550AF /* capitalSelect@2x.png in Resources */,
 				14488720224E1D2300B550AF /* capitalNormal@3x.png in Resources */,
 				145C90F52333270C00849E9D /* icon_phone_answer@3x.png in Resources */,
+				145C9149233484B900849E9D /* 天天特价@2x.png in Resources */,
+				145C914A233484B900849E9D /* parkingOne@2x.png in Resources */,
 				14488722224E1D2300B550AF /* keyNewDelete@3x.png in Resources */,
 				51824436213E82E000071A9D /* news.geojson in Resources */,
 				1448871E224E1D2300B550AF /* capitalSelect@3x.png in Resources */,
@@ -1087,6 +1130,7 @@
 				14488726224E1D2300B550AF /* ZMKeyBoadModel.swift in Sources */,
 				14F3966D227ED405000CD7B4 /* NNBaseRequestApi.swift in Sources */,
 				145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */,
+				145C914D233484F800849E9D /* AppIconChangeController.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
 				146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */,
 				1401BE912277D6D20078A722 /* NNAPIConfig.swift in Sources */,

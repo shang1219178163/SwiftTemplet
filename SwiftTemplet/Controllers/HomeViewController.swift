@@ -27,7 +27,7 @@ class HomeViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        self.configureCenterBtn();
+//        configureCenterBtn();
 
     }
     
