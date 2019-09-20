@@ -113,6 +113,7 @@ class ThirdViewController: UIViewController{
              ["分段组件", "ScrollViewController"],             
              ["新想法测试", "TestViewController"],
              ["优惠券列表", "CCSCouponRecordController"],
+             ["App图标更换", "AppIconChangeController"],
 
              ],
         ]
