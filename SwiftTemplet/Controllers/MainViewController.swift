@@ -41,9 +41,7 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             dataList.add(marr);
         }
         DDLog(dataList);
-    
-        
-        
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {

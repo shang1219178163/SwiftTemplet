@@ -30,7 +30,6 @@
 		14129C9A21E9D7B1009BFA74 /* UITableViewCellSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */; };
 		14129C9C21E9F379009BFA74 /* UITableViewCellSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */; };
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
-		1412CF10232F857600AC6376 /* NNTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412CF0F232F857600AC6376 /* NNTabController.swift */; };
 		14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */; };
 		14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14198D54231FC2E00094D61F /* NNRadioButton.swift */; };
 		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
@@ -116,6 +115,8 @@
 		145C914A233484B900849E9D /* parkingOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9144233484B900849E9D /* parkingOne@2x.png */; };
 		145C914B233484B900849E9D /* parkingOne@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C9145233484B900849E9D /* parkingOne@3x.png */; };
 		145C914D233484F800849E9D /* AppIconChangeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C914C233484F800849E9D /* AppIconChangeController.swift */; };
+		145C914F2334C4C100849E9D /* PlateNumMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C914E2334C4C100849E9D /* PlateNumMainController.swift */; };
+		145C91512334CD0E00849E9D /* NNTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C91502334CD0E00849E9D /* NNTabController.swift */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
 		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
@@ -233,7 +234,6 @@
 		14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSlider.swift; sourceTree = "<group>"; };
 		14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSheet.swift; sourceTree = "<group>"; };
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
-		1412CF0F232F857600AC6376 /* NNTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNTabController.swift; sourceTree = "<group>"; };
 		14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_NO@2x.png"; sourceTree = "<group>"; };
 		14198D54231FC2E00094D61F /* NNRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRadioButton.swift; sourceTree = "<group>"; };
 		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
@@ -319,6 +319,8 @@
 		145C9144233484B900849E9D /* parkingOne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parkingOne@2x.png"; sourceTree = "<group>"; };
 		145C9145233484B900849E9D /* parkingOne@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "parkingOne@3x.png"; sourceTree = "<group>"; };
 		145C914C233484F800849E9D /* AppIconChangeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconChangeController.swift; sourceTree = "<group>"; };
+		145C914E2334C4C100849E9D /* PlateNumMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateNumMainController.swift; sourceTree = "<group>"; };
+		145C91502334CD0E00849E9D /* NNTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNTabController.swift; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
 		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
@@ -773,15 +775,15 @@
 				1421D5C621F2FD1000635582 /* CustomViewController.swift */,
 				142A770A222761050016D3DA /* PickerViewController.swift */,
 				14244765222929990087372F /* PhotosViewController.swift */,
-				14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */,
 				14579B9A2293F28C001FEB0C /* NNUserLogInController.swift */,
+				14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */,
 				14BD733E22D418F7008788B1 /* PlateNumberController.swift */,
 				14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */,
+				145C914E2334C4C100849E9D /* PlateNumMainController.swift */,
 				1443F84A230BF2A70023C777 /* TestViewController.swift */,
 				14403E5F2331C1B8005DB45B /* TmpViewController.swift */,
 				1461A24423191850006A758F /* ScrollViewController.swift */,
 				14C9019E231543490084A946 /* ScrollHorizontalController.swift */,
-				1412CF0F232F857600AC6376 /* NNTabController.swift */,
 				14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */,
 				14403E6323322027005DB45B /* CCSCouponRecordController.swift */,
 				14403E65233221BE005DB45B /* UITableViewCellCoupon.swift */,
@@ -840,6 +842,7 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				145C91502334CD0E00849E9D /* NNTabController.swift */,
 				14198D54231FC2E00094D61F /* NNRadioButton.swift */,
 				142A770C222764080016D3DA /* NNPickerView.swift */,
 				146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */,
@@ -1147,6 +1150,7 @@
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				14BD733722D417C9008788B1 /* Key.swift in Sources */,
 				1461A24523191850006A758F /* ScrollViewController.swift in Sources */,
+				145C91512334CD0E00849E9D /* NNTabController.swift in Sources */,
 				14BD733D22D417C9008788B1 /* KeyboardLayout.swift in Sources */,
 				14BD734522D43B1C008788B1 /* PlateNumOriginController.swift in Sources */,
 				147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
@@ -1163,7 +1167,6 @@
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
 				14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */,
 				142A770122275EE10016D3DA /* NNTipsView.swift in Sources */,
-				1412CF10232F857600AC6376 /* NNTabController.swift in Sources */,
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
 				142A76F722275EE10016D3DA /* NNSliderControlView.swift in Sources */,
 				142A76FF22275EE10016D3DA /* NNSuspendBtn.swift in Sources */,
@@ -1248,6 +1251,7 @@
 				14BD733022D417C9008788B1 /* PWHandler.swift in Sources */,
 				142A770722275EE10016D3DA /* NNPickListView.swift in Sources */,
 				1448871B224E1D2300B550AF /* ZMKeyBoardUtil.swift in Sources */,
+				145C914F2334C4C100849E9D /* PlateNumMainController.swift in Sources */,
 				14244770222B92070087372F /* UITableViewCellPhotoPicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* NNRootClass.swift in Sources */,
 				1401BE9D2277D7260078A722 /* NNLog.swift in Sources */,
