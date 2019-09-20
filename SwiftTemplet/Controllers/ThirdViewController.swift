@@ -101,7 +101,7 @@ class ThirdViewController: UIViewController{
             [["通用录入界面", "EntryViewController"],
              ["导航栏下拉菜单", "TitleViewController"],
              ["UICollectionView展示", "UICollectionDispalyController"],
-             ["tabViewController展示", "NNTabController"],
+             ["NNTabController组件", "PlateNumMainController"],
              ["自定义View", "CustomViewController"],
              ["CalenderView", "CalendarViewController"],
              ["Timer", "TimerViewController"],
@@ -114,7 +114,7 @@ class ThirdViewController: UIViewController{
              ["新想法测试", "TestViewController"],
              ["优惠券列表", "CCSCouponRecordController"],
              ["App图标更换", "AppIconChangeController"],
-
+             
              ],
         ]
         return array
