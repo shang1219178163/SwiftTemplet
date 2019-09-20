@@ -17,6 +17,7 @@ class PlateNumMainController: NNTabController, NNTabControllerDelegate {
         super.viewDidLoad()
         
         title = "车场信息"
+//        scrollViewTop.showItemNum = 4;
         // Do any additional setup after loading the view.
         delegate = self;
         viewControllers = [oneVC,
