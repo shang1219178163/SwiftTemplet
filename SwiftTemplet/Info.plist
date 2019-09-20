@@ -2,6 +2,46 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>天天特价</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>天天特价</string>
+				</array>
+			</dict>
+			<key>parkingWang</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>parkingWang</string>
+				</array>
+			</dict>
+			<key>parkingOne</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>parkingOne</string>
+				</array>
+			</dict>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+		</dict>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
