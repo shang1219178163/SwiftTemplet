@@ -37,8 +37,19 @@ class UICallPhoneView: UIView {
         self.addSubview(btnCancel)
         self.addSubview(btnSure)
         
+        labTwo.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+
         setupConstraints()
         getViewLayer()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            let value = change![NSKeyValueChangeKey.newKey] as! String;
+            let title = value.count == 5 ? value : "00:00";
+            talkbackBtn.setTitle(title, for: .normal)
+
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -136,19 +147,31 @@ class UICallPhoneView: UIView {
             self.isHidden = false;
         }
         
-        transform = transform.scaledBy(x: 0.01, y: 0.01)
+//        transform = transform.scaledBy(x: 0.01, y: 0.01)
         UIView.animate(withDuration: 0.15, animations: {
 //            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-            self.transform = CGAffineTransform.identity;
+//            self.transform = CGAffineTransform.identity;
+            self.frame = UIScreen.main.bounds;
+            self.talkbackBtn.isHidden = true;
+
+        }) { (isFinished) in
             
-        }, completion: nil);
+        }
     }
     
     func dismiss(_ needRemove: Bool = true) -> Void {
+        self.superview?.addSubview(self.talkbackBtn)
+        self.talkbackBtn.isHidden = false;
+        self.superview?.bringSubviewToFront(self.talkbackBtn);
+
         UIView.animate(withDuration: 0.15, animations: {
 //            self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.transform = self.transform.scaledBy(x: 0.01, y: 0.01)
+//            self.transform = self.transform.scaledBy(x: 0.01, y: 0.01)
             
+//            let transform = CGAffineTransform(translationX: 90, y: 90)
+//            self.transform = transform.scaledBy(x: 0.01, y: 0.01)
+            self.frame = self.talkbackBtn.frame;
+
         }) { (isFinished) in
             if needRemove == true {
                 self.removeFromSuperview();
@@ -157,6 +180,24 @@ class UICallPhoneView: UIView {
             }
         }
     }
+    
+    lazy var talkbackBtn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.frame = CGRectMake(20, 110, 70, 70)
+        view.setTitleColor(UIColorHexValue(0x39C179), for: .normal)
+        view.setTitle("00:00", for: .normal)
+        view.setImage(UIImage(named: "icon_phone_green"), for: .normal)
+        view.backgroundColor = UIColorHexValue(0xdddddd)
+        view.adjustsImageWhenHighlighted = false;
+        view.layer.cornerRadius = 3.5;
+        view.layer.masksToBounds = true;
+        view.layoutButton(style: 0)
+        view.addActionHandler({ (control) in
+            self.show();
+            
+        })
+        return view
+    }()
     
     @objc func handleActionControl(_ sender: UIButton) {
         if self.viewBlock != nil {
