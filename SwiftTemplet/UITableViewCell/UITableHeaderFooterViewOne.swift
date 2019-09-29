@@ -12,6 +12,8 @@ import SwiftExpand
 /// 图片+文字+文字+图片
 class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
 
+    private var viewBlock: ((UITableHeaderFooterViewOne) -> Void)?
+
     var type: Int = 0{
         didSet {
             if oldValue == 0 {
@@ -37,7 +39,15 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
-        
+        imgViewRight.image = UIImageNamed(kIMG_arrowRight)
+
+        let _ = contentView.addGestureTap {[weak self] (sender:UIGestureRecognizer) in
+            if self!.isCanOpen == true {
+                if self!.viewBlock != nil {
+                    self!.viewBlock!(self!)
+                }
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,8 +55,8 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        labelLeft.removeObserver(self, forKeyPath: "text")
+    func block(_ action: @escaping ((UITableHeaderFooterViewOne) -> Void)) -> Void {
+        self.viewBlock = action;
     }
     
     override func layoutSubviews() {

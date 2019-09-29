@@ -17,7 +17,8 @@ class ScrollViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         NNSegmentView.appearance().selectedColor = UIColor.red
-        
+        NNSegmentView.appearance().selectedColor = UIColorHexValue(0x29B5FE)
+
         view.addSubview(scrollView)
         view.addSubview(scrollViewOne)
 

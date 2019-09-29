@@ -45,10 +45,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        labelLeft.removeObserver(self, forKeyPath: "text")
-    }
+
     
     override func layoutSubviews() {
         super.layoutSubviews();

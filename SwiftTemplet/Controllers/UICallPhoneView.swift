@@ -132,6 +132,8 @@ class UICallPhoneView: UIView {
         let keyWindow = UIApplication.shared.keyWindow;
         if keyWindow?.subviews.contains(self) == false {
             keyWindow?.addSubview(self);
+        } else {
+            self.isHidden = false;
         }
         
         transform = transform.scaledBy(x: 0.01, y: 0.01)
@@ -150,6 +152,8 @@ class UICallPhoneView: UIView {
         }) { (isFinished) in
             if needRemove == true {
                 self.removeFromSuperview();
+            } else {
+                self.isHidden = true;
             }
         }
     }
