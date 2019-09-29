@@ -152,7 +152,7 @@ class NNDateRangeView: UIView {
     lazy var labStart: UILabel = {
         var view = UILabel()
         view.text = "起始日期"
-        view.textColor = UIColor.textColorSub
+        view.textColor = UIColor.textColor3
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
         view.tag = kTAG_LABEL
@@ -165,7 +165,7 @@ class NNDateRangeView: UIView {
     lazy var labEnd: UILabel = {
         var view = UILabel()
         view.text = "截止日期"
-        view.textColor = UIColor.textColorSub
+        view.textColor = UIColor.textColor6
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
         view.tag = kTAG_LABEL+1

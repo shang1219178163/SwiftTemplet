@@ -39,10 +39,7 @@ class UITableViewCellPickerView: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    deinit {
-        labelLeft.removeObserver(self, forKeyPath: "text")
-    }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()

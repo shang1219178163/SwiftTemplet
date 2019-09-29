@@ -25,15 +25,19 @@ PODS:
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
   - ObjectMapper (3.5.1)
-  - PromiseKit (6.11.0):
-    - PromiseKit/CorePromise (= 6.11.0)
-    - PromiseKit/Foundation (= 6.11.0)
-    - PromiseKit/UIKit (= 6.11.0)
-  - PromiseKit/CorePromise (6.11.0)
-  - PromiseKit/Foundation (6.11.0):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.11.0):
-    - PromiseKit/CorePromise
+  - OHHTTPStubs (8.0.0):
+    - OHHTTPStubs/Default (= 8.0.0)
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
   - Result (4.1.0)
   - RxAlamofire (5.0.0):
     - RxAlamofire/Core (= 5.0.0)
@@ -74,7 +78,7 @@ DEPENDENCIES:
   - MJRefresh
   - MMPopupView
   - Moya
-  - PromiseKit
+  - OHHTTPStubs
   - RxAlamofire
   - RxCocoa
   - RxSwift
@@ -106,7 +110,7 @@ SPEC REPOS:
     - MMPopupView
     - Moya
     - ObjectMapper
-    - PromiseKit
+    - OHHTTPStubs
     - Result
     - RxAlamofire
     - RxCocoa
@@ -139,7 +143,7 @@ SPEC CHECKSUMS:
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  PromiseKit: e4863d06976e7dee5e41c04fc7371c16b3600292
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAlamofire: e7875a012aff55345672d0f70a2a9cd6aeb0f211
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
@@ -155,6 +159,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 1b8fedae8a137225cf31dba559398515e40ddb16
+PODFILE CHECKSUM: 1cc28065bd899c64f0c900ba8940871dc7c52a24
 
 COCOAPODS: 1.7.0.beta.3

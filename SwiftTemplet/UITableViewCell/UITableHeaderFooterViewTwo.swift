@@ -25,11 +25,11 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
         
         labelLeft.text = "当前余额"
         labelLeft.font = UIFont.systemFont(ofSize: 14)
-        labelLeft.textColor = UIColor.textColorSub
+        labelLeft.textColor = UIColor.textColor6
         labelLeft.numberOfLines = 1;
         labelLeft.textAlignment = .center;
 
-        labelLeftSub.textColor = UIColor.textColorTitle
+        labelLeftSub.textColor = UIColor.textColor6
         labelLeftSub.numberOfLines = 1;
         labelLeftSub.textAlignment = .center;
     }
@@ -38,10 +38,7 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        labelLeft.removeObserver(self, forKeyPath: "text")
-    }
+
     
     override func layoutSubviews() {
         super.layoutSubviews();
