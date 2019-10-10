@@ -222,8 +222,8 @@ class NNCalendarView: UIView {
     }()
     
     func reloadData() {
-        let count = currentDate.countOfDaysInMonth()
-        let startIdx = currentDate.firstWeekDay() - 1 //布局从0开始,日期从1开始
+        let count = currentDate.countOfDaysInMonth
+        let startIdx = currentDate.firstWeekDay - 1 //布局从0开始,日期从1开始
         
         DDLog("=========",DateFormatter.stringFromDate(currentDate),count,startIdx)
         

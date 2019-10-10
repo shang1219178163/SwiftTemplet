@@ -30,7 +30,7 @@ class FleetDetailControllerNew: UIViewController,UITableViewDataSource,UITableVi
         let version = "3.3.5.0"
         let ver  = version.replacingOccurrences(of: ".", with: "")
         
-        DDLog(version, ver.intValue())
+        DDLog(version, ver.intValue)
         
         swizzleMethodInstance(#selector(handleActionOne), replSel: #selector(handleActionTwo))
     }
