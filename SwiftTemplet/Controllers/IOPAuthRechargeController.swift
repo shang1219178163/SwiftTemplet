@@ -57,14 +57,14 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemList = list[indexPath.row]
-        let height = itemList[5] == "0" ? CGFloat(itemList[2].floatValue()) : 0.0
+        let height = itemList[5] == "0" ? CGFloat(itemList[2].floatValue) : 0.0
         return height
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemList = list[indexPath.row]
         
-        switch itemList[1].intValue() {
+        switch itemList[1].intValue {
         case 1:
             let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
             cell.labelLeft.text = itemList[0]

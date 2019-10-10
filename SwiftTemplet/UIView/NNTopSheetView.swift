@@ -52,7 +52,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemList = list[indexPath.row]
-        let itemHeight = (itemList[1] as! String).cgFloatValue()
+        let itemHeight = (itemList[1] as! String).cgFloatValue
         return itemHeight
     }
     
@@ -64,7 +64,8 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
         cell.textLabel?.text = value0 + NSStringFromIndexPath(indexPath)
         cell.textLabel?.textAlignment = .center
-        cell.isHidden = value1.cgFloatValue() > 0.0 ? false : true
+        cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
+        cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
         if self.viewBlock != nil && self.viewBlock!(tableView, indexPath) != nil {
             return self.viewBlock!(tableView, indexPath)!;

@@ -50,14 +50,14 @@ class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionList = list[indexPath.section]
         let itemList = sectionList[indexPath.row]
-        return CGFloat(itemList[2].floatValue())
+        return CGFloat(itemList[2].floatValue)
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionList = list[indexPath.section]
         let itemList = sectionList[indexPath.row]
         
-        switch itemList[1].intValue() {
+        switch itemList[1].intValue {
         case 3:
             let cell = UITableViewCellThree.cellWithTableView(tableView) as! UITableViewCellThree
             cell.labelLeft.text = itemList[0]

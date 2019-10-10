@@ -32,7 +32,7 @@ class TitleViewController: UIViewController{
             let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
             cell.labelLeft.text = "标题"
             cell.labelRight.text = NSStringFromIndexPath(indexPath)
-            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
+            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
             cell.accessoryType = self.topView.indexP == indexPath ? .checkmark : .none
 
             cell.getViewLayer()
@@ -109,7 +109,7 @@ class TitleViewController: UIViewController{
 //
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        let itemList = list[indexPath.row]
-//        let itemHeight = (itemList[2] as! String).cgFloatValue()
+//        let itemHeight = (itemList[2] as! String).cgFloatValue
 //        return itemHeight
 //    }
 //
@@ -122,14 +122,14 @@ class TitleViewController: UIViewController{
 //        let value4 = itemList[4] as! String
 //        let value5 = itemList[5] as! String
 //
-//        switch (itemList[1] as! String).intValue() {
+//        switch (itemList[1] as! String).intValue {
 //        case 1:
 //            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
 //            cell.labelLeft.text = value0
 //            cell.labelRight.text = value4
 //            cell.labelRight.text = NSStringFromIndexPath(indexPath)
 //
-//            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
+//            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
 //            cell.getViewLayer()
 //            return cell
 //

@@ -19,7 +19,7 @@ class HomeViewController: UITabBarController {
         tabBar.isTranslucent = false;
         viewControllers = UINavListFromList(itemList);
 
-        selectedViewController = viewControllers?.last
+        selectedIndex = 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +65,8 @@ class HomeViewController: UITabBarController {
             ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
 //            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["TmpViewController", "我的",  "Item_center_N",  "Item_center_H"],
-            ["CCSCouponRecordController", "我的",  "Item_center_N",  "Item_center_H"],
+//            ["CCSCouponRecordController", "我的",  "Item_center_N",  "Item_center_H"],
+            ["CellListController", "测试",  "Item_center_N",  "Item_center_H"],            
             
             ];
         return list;

@@ -59,7 +59,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         if (itemList[2] as! String) == "" {
             return  UITableView.automaticDimension;
         }
-        let height = (itemList[2] as! String).cgFloatValue()
+        let height = (itemList[2] as! String).cgFloatValue
         return height
     };
     
@@ -71,13 +71,13 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         let value3 = itemList[3] as! String
         let value4 = itemList[4] as! String
         
-        switch (itemList[1] as! String).intValue() {
+        switch (itemList[1] as! String).intValue {
         case 1:
             let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
             cell.labelLeft.text = value0
             cell.labelRight.text = value4
             
-            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
+            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
             cell.getViewLayer()
             return cell
             
@@ -233,7 +233,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
             let cell = UITableViewCellDefault.cellWithTableView(tableView) as! UITableViewCellDefault
             cell.defaultView.labelLeft.text = value0
             cell.defaultView.labelRight.text = value4
-            cell.isHidden = value2.cgFloatValue() > 0.0 ? false : true
+            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
             cell.getViewLayer()
             return cell
             

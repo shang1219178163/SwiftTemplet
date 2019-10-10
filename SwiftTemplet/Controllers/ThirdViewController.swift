@@ -98,22 +98,23 @@ class ThirdViewController: UIViewController{
     
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
-            [["通用录入界面", "EntryViewController"],
-             ["导航栏下拉菜单", "TitleViewController"],
-             ["UICollectionView展示", "UICollectionDispalyController"],
-             ["NNTabController组件", "PlateNumMainController"],
-             ["自定义View", "CustomViewController"],
-             ["CalenderView", "CalendarViewController"],
-             ["Timer", "TimerViewController"],
-             ["PickerView", "PickerViewController"],
-             ["PictureView", "PhotosViewController"],
-             ["KeyBoardView", "KeyBoardViewController"],
-             ["函数响应型编程", "NNUserLogInController"],
-             ["重构", "ScrollHorizontalController"],
-             ["分段组件", "ScrollViewController"],             
-             ["新想法测试", "TestViewController"],
-             ["优惠券列表", "CCSCouponRecordController"],
-             ["App图标更换", "AppIconChangeController"],
+            [["PopViewController", "PopView", ],
+             ["EntryViewController", "通用录入界面", ],
+             ["TitleViewController", "导航栏下拉菜单", ],
+             ["UICollectionDispalyController", "UICollectionView展示", ],
+             ["PlateNumMainController", "NNTabController组件", ],
+             ["CustomViewController", "自定义View", ],
+             ["CalendarViewController", "CalenderView", ],
+             ["TimerViewController", "Timer", ],
+             ["PickerViewController", "PickerView", ],
+             ["PhotosViewController", "PictureView", ],
+             ["KeyBoardViewController", "KeyBoardView", ],
+             ["NNUserLogInController", "函数响应型编程", ],
+             ["ScrollHorizontalController", "重构", ],
+             ["ScrollViewController", "分段组件", ],
+             ["TestViewController", "新想法测试", ],
+             ["CCSCouponRecordController", "优惠券列表", ],
+             ["AppIconChangeController", "App图标更换", ],
              
              ],
         ]
@@ -153,9 +154,9 @@ class ThirdViewController: UIViewController{
 
             cell.accessoryType = .disclosureIndicator;
             
-            cell.textLabel!.text = itemList[0]
+            cell.textLabel!.text = itemList[1]
             cell.textLabel!.textColor = UIColor.theme;
-            cell.detailTextLabel?.text = itemList[1];
+            cell.detailTextLabel?.text = itemList[0];
             cell.detailTextLabel?.textColor = UIColor.gray;
             return cell
         })
@@ -163,7 +164,10 @@ class ThirdViewController: UIViewController{
         view.blockDidSelectRow({ (tableView, indexPath) in
             let itemList = view.list![indexPath.row] as! [String]
             DDLog(itemList);
-            self.goController(itemList.last, obj: itemList.first as AnyObject?, objOne: nil)
+            
+            let controller = UICtrFromString(itemList.first!)
+            controller.title = itemList.last!
+            self.navigationController?.pushViewController(controller, animated: true);
         })
         
         view.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
