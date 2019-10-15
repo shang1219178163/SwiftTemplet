@@ -19,7 +19,8 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
 
         view.addSubview(tbView)
         tbView.tableHeaderView = self.searchVC.searchBar;
-        
+        tbView.tableFooterView = UIView();
+
         //键盘
         IQKeyboardManager.shared.enable = false
     }
@@ -96,8 +97,9 @@ extension UIViewController{
 //        definesPresentationContext = YES;
         
         searchVC.searchBar.barStyle = .default;
+//        searchVC.searchBar.barTintColor = UIColor.theme;
+
         searchVC.searchBar.isTranslucent = false;
-//        searchVC.searchBar.barTintColor = [UIColor brownColor];
         searchVC.searchBar.setValue("取消", forKey: "_cancelButtonText")
         searchVC.searchBar.placeholder = "搜索";
         

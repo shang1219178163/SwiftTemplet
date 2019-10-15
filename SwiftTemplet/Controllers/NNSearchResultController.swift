@@ -14,7 +14,11 @@ class NNSearchResultController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "搜索结果列表"
+        
         view.addSubview(tbView)
+        tbView.tableFooterView = UIView();
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
