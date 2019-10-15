@@ -99,6 +99,7 @@ class ThirdViewController: UIViewController{
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
             [["PopViewController", "PopView", ],
+             ["NNSearchController", "多层搜索界面", ],             
              ["EntryViewController", "通用录入界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              ["UICollectionDispalyController", "UICollectionView展示", ],
