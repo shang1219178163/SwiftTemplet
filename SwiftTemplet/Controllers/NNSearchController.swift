@@ -20,8 +20,7 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
         tbView.tableHeaderView = self.searchVC.searchBar;
         tbView.tableFooterView = UIView();
 
-        //(避免searchbar下移)
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enable = false;
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -70,8 +69,7 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
     }()
   
     lazy var searchVC: UISearchController = {
-        let controller = UIViewController.createSearchVC(self.searchResultVC)
-        definesPresentationContext = true;
+        let controller = self.createSearchVC(self.searchResultVC)
         
 //        controller.searchBar.delegate = self;
         controller.delegate = self;
@@ -82,7 +80,10 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
 
 extension UIViewController{
     
-    static func createSearchVC(_ resultsController: UIViewController) -> UISearchController {
+    /// [源]创建UISearchController(设置IQKeyboardManager.shared.enable = false;//避免searchbar下移)
+    func createSearchVC(_ resultsController: UIViewController) -> UISearchController {
+        definesPresentationContext = true;
+
         let searchVC = UISearchController(searchResultsController: resultsController)
         if resultsController.conforms(to: UISearchResultsUpdating.self) {
             searchVC.searchResultsUpdater = resultsController as? UISearchResultsUpdating;
@@ -90,7 +91,6 @@ extension UIViewController{
         
         searchVC.dimsBackgroundDuringPresentation = true;
 //        searchVC.hidesNavigationBarDuringPresentation = true;
-//        definesPresentationContext = YES;
         if #available(iOS 9.1, *) {
             searchVC.obscuresBackgroundDuringPresentation = true;
         }
