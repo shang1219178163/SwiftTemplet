@@ -22,7 +22,8 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
          */
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelLeftSub);
-        
+        contentView.addSubview(lineBottom)
+
         labelLeft.text = "当前余额"
         labelLeft.font = UIFont.systemFont(ofSize: 14)
         labelLeft.textColor = UIColor.textColor6
@@ -57,6 +58,13 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
             make.top.equalToSuperview().offset(padding)
             make.centerX.equalToSuperview()
             make.size.equalTo(labelLeft.size.width)
+        }
+        
+        lineBottom.snp.makeConstraints { (make) in
+            make.left.equalToSuperview();
+            make.right.equalToSuperview();
+            make.bottom.equalToSuperview().offset(0);
+            make.height.equalTo(0.33);
         }
         
         //富文本无法计算具体size

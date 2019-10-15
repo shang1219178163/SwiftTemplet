@@ -36,7 +36,8 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         contentView.addSubview(imgViewRight);
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelRight);
-        
+        contentView.addSubview(lineBottom)
+
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
         imgViewRight.image = UIImageNamed(kIMG_arrowRight)
@@ -237,6 +238,13 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
                     }
                 }
             }
+        }
+        
+        lineBottom.snp.makeConstraints { (make) in
+            make.left.equalToSuperview();
+            make.right.equalToSuperview();
+            make.bottom.equalToSuperview().offset(0);
+            make.height.equalTo(0.33);
         }
     }
 }
