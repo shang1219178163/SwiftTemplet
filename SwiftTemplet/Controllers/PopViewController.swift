@@ -147,7 +147,7 @@ class PopViewController: UIViewController, UISearchBarDelegate {
     
     lazy var searchBar: UISearchBar = {
         let view = UIView.createSearchBarRect(CGRectMake(0, 0, kScreenWidth - 100, 30))
-        view.placeholderStr = "请输入流水号、商品信息或会员信息";
+        view.textfield?.placeholder = "请输入流水号、商品信息或会员信息";
         view.delegate = self;
         return view
     }()

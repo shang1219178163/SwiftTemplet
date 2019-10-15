@@ -20,7 +20,8 @@ class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
          */
         contentView.addSubview(btn);
         contentView.addSubview(labelLeft);
-        
+        contentView.addSubview(lineBottom)
+
         btn.setBackgroundImage(UIImage(named: kIMG_selected_NO), for: .normal)
         btn.setBackgroundImage(UIImage(named: kIMG_selected_YES), for: .selected)        
     }
@@ -47,6 +48,13 @@ class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
             make.top.height.equalTo(btn);
             make.left.equalTo(btn.snp.right).offset(kPadding)
             make.right.equalToSuperview().offset(-kX_GAP)
+        }
+        
+        lineBottom.snp.makeConstraints { (make) in
+            make.left.equalToSuperview();
+            make.right.equalToSuperview();
+            make.bottom.equalToSuperview().offset(0);
+            make.height.equalTo(0.33);
         }
     }
     

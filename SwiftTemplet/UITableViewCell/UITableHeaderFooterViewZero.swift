@@ -21,7 +21,8 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         contentView.addSubview(imgViewLeft);
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelRight);
-        
+        contentView.addSubview(lineBottom)
+
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
         
@@ -89,6 +90,13 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(kSizeArrow.height)
+        }
+        
+        lineBottom.snp.makeConstraints { (make) in
+            make.left.equalToSuperview();
+            make.right.equalToSuperview();
+            make.bottom.equalToSuperview().offset(0);
+            make.height.equalTo(0.33);
         }
     }
 
