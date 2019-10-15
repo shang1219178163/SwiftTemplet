@@ -11,7 +11,6 @@ import UIKit
 import SwiftExpand
 import IQKeyboardManagerSwift
 
-@available(iOS 9.1, *)
 class NNSearchController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate {
    
     override func viewDidLoad() {
@@ -21,7 +20,7 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
         tbView.tableHeaderView = self.searchVC.searchBar;
         tbView.tableFooterView = UIView();
 
-        //键盘
+        //(避免searchbar下移)
         IQKeyboardManager.shared.enable = false
     }
     
@@ -67,8 +66,6 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: -lazy
     lazy var searchResultVC: NNSearchResultController = {
         let controller = NNSearchResultController()
-//        controller.extendedLayoutIncludesOpaqueBars = true;
-//        controller.edgesForExtendedLayout = []
         return controller;
     }()
   
@@ -90,11 +87,13 @@ extension UIViewController{
         if resultsController.conforms(to: UISearchResultsUpdating.self) {
             searchVC.searchResultsUpdater = resultsController as? UISearchResultsUpdating;
         }
-
+        
         searchVC.dimsBackgroundDuringPresentation = true;
-//        searchVC.obscuresBackgroundDuringPresentation = true;
 //        searchVC.hidesNavigationBarDuringPresentation = true;
 //        definesPresentationContext = YES;
+        if #available(iOS 9.1, *) {
+            searchVC.obscuresBackgroundDuringPresentation = true;
+        }
         
         searchVC.searchBar.barStyle = .default;
 //        searchVC.searchBar.barTintColor = UIColor.theme;
