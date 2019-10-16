@@ -79,6 +79,8 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
               
                 return view;
             }()
+            
+            textField.clearButtonMode = .never;
             textField.leftViewMode = UITextField.ViewMode.always; //此处用来设置leftview现实时机
             textField.placeholder = " 请输入车牌号码";
         }
