@@ -146,6 +146,8 @@
 		14A3209D2322366C00B5EE5A /* NNDatePickerRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */; };
 		14A86A7323557AAC00AD9BC1 /* NNSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A7223557AAC00AD9BC1 /* NNSearchController.swift */; };
 		14A86A7523557ABD00AD9BC1 /* NNSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A7423557ABD00AD9BC1 /* NNSearchResultController.swift */; };
+		14A86A932357256500AD9BC1 /* CCSDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A922357256300AD9BC1 /* CCSDeskViewController.swift */; };
+		14A86A952357268300AD9BC1 /* UISearchStylesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A942357268300AD9BC1 /* UISearchStylesController.swift */; };
 		14BD732F22D417C9008788B1 /* PWInputCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14BD731C22D417C9008788B1 /* PWInputCollectionViewCell.xib */; };
 		14BD733022D417C9008788B1 /* PWHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD731D22D417C9008788B1 /* PWHandler.swift */; };
 		14BD733122D417C9008788B1 /* PWInputCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD731E22D417C9008788B1 /* PWInputCollectionViewCell.swift */; };
@@ -360,6 +362,8 @@
 		14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNDatePickerRangeView.swift; sourceTree = "<group>"; };
 		14A86A7223557AAC00AD9BC1 /* NNSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSearchController.swift; sourceTree = "<group>"; };
 		14A86A7423557ABD00AD9BC1 /* NNSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSearchResultController.swift; sourceTree = "<group>"; };
+		14A86A922357256300AD9BC1 /* CCSDeskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCSDeskViewController.swift; sourceTree = "<group>"; };
+		14A86A942357268300AD9BC1 /* UISearchStylesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchStylesController.swift; sourceTree = "<group>"; };
 		14BD731C22D417C9008788B1 /* PWInputCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWInputCollectionViewCell.xib; sourceTree = "<group>"; };
 		14BD731D22D417C9008788B1 /* PWHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWHandler.swift; sourceTree = "<group>"; };
 		14BD731E22D417C9008788B1 /* PWInputCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWInputCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -807,6 +811,7 @@
 				14C9019E231543490084A946 /* ScrollHorizontalController.swift */,
 				14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */,
 				14403E6323322027005DB45B /* CCSCouponRecordController.swift */,
+				14A86A942357268300AD9BC1 /* UISearchStylesController.swift */,
 				14A86A7223557AAC00AD9BC1 /* NNSearchController.swift */,
 				14A86A7423557ABD00AD9BC1 /* NNSearchResultController.swift */,
 				14403E65233221BE005DB45B /* UITableViewCellCoupon.swift */,
@@ -816,6 +821,7 @@
 				145C90E9233324ED00849E9D /* UICallPhoneView.swift */,
 				145C9119233399D700849E9D /* NNScrollView.swift */,
 				145C914C233484F800849E9D /* AppIconChangeController.swift */,
+				14A86A922357256300AD9BC1 /* CCSDeskViewController.swift */,
 				14E11A77233C914200FBB9F6 /* CCSAffordDownRecordController.swift */,
 				14E11A79233C916000FBB9F6 /* CCSAuthRecordController.swift */,
 				14E11A7B233C918200FBB9F6 /* CCSParksRecordController.swift */,
@@ -1240,6 +1246,7 @@
 				1401BEAE2277EA780078A722 /* NSError+Helper.swift in Sources */,
 				14BD733322D417C9008788B1 /* UIView+PWCorners.swift in Sources */,
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
+				14A86A952357268300AD9BC1 /* UISearchStylesController.swift in Sources */,
 				145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */,
 				14488725224E1D2300B550AF /* ZMCollectionViewCell.swift in Sources */,
 				1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */,
@@ -1297,6 +1304,7 @@
 				1401BE9D2277D7260078A722 /* NNLog.swift in Sources */,
 				14BD733122D417C9008788B1 /* PWInputCollectionViewCell.swift in Sources */,
 				5182442B213E74D400071A9D /* Arg.swift in Sources */,
+				14A86A932357256500AD9BC1 /* CCSDeskViewController.swift in Sources */,
 				145C911A233399D800849E9D /* NNScrollView.swift in Sources */,
 				147FF3C821CE26BE00351E94 /* UITableViewCellThree.swift in Sources */,
 				14D91B17234DB51D00554994 /* PopViewController.swift in Sources */,
