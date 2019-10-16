@@ -38,7 +38,7 @@ class AppIconChangeController: UIViewController {
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
             
             cell.accessoryType = .disclosureIndicator;
             cell.imageView!.image = UIImageNamed(itemList[0])

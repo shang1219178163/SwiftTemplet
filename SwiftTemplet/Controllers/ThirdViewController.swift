@@ -98,8 +98,7 @@ class ThirdViewController: UIViewController{
     
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
-            [["PopViewController", "PopView", ],
-             ["NNSearchController", "多层搜索界面", ],             
+            [["UISearchStylesController", "搜索🔍样式", ],             
              ["EntryViewController", "通用录入界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              ["UICollectionDispalyController", "UICollectionView展示", ],
@@ -151,7 +150,7 @@ class ThirdViewController: UIViewController{
 //            cell.textLabel!.text = itemList[0]
             
 //            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
-            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
 
             cell.accessoryType = .disclosureIndicator;
             

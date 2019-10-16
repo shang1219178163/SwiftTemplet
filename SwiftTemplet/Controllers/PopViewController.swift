@@ -17,7 +17,7 @@ class PopViewController: UIViewController, UISearchBarDelegate {
         view.addSubview(btn)
         view.addSubview(btnOne)
         
-        UIApplication.setupAppearanceSearchbarCancellButton()
+        UIApplication.setupAppearanceSearchbarCancellButton(UIColor.white)
         navigationItem.titleView = {
             let titleView = UIView(frame: self.searchBar.bounds)
             titleView.addSubview(self.searchBar)
@@ -74,10 +74,11 @@ class PopViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        DDLog(searchText);
     }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        searchBar.showsCancelButton = !(searchBar.text!.count == 1 && text == "")
         return true;
     }
     
@@ -90,7 +91,8 @@ class PopViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        searchBar.text = "";
+        searchBar.showsCancelButton = (searchBar.text != "")
     }
     
     func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
@@ -147,7 +149,7 @@ class PopViewController: UIViewController, UISearchBarDelegate {
     
     lazy var searchBar: UISearchBar = {
         let view = UIView.createSearchBarRect(CGRectMake(0, 0, kScreenWidth - 100, 30))
-        view.textfield?.placeholder = "请输入流水号、商品信息或会员信息";
+        view.textField?.placeholder = "请输入流水号、商品信息或会员信息";
         view.delegate = self;
         return view
     }()

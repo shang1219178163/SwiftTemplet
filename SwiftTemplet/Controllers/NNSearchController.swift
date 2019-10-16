@@ -21,11 +21,7 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
         tbView.tableFooterView = UIView();
 
         IQKeyboardManager.shared.enable = false;
-        
-        self.searchVC.searchBar.showsCancelButton = true;
-        DDLog(self.searchVC.searchBar.textfield);
-//        let btn = self.searchVC.searchBar.findSubview(type: (NSClassFromString("UINavigationButton") as! UIResponder.Type).self, resursion: true) as? UIButton
-        
+                
         let btn = self.searchVC.searchBar.cancellBtn
         btn?.setTitle("11111", for: .normal)
     }
