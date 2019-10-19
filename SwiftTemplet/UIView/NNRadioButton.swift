@@ -25,7 +25,7 @@ class NNRadioButton: UIButton {
         setTitleColor(imageView?.tintColor, for: .selected)
         
         imageView?.contentMode = .scaleAspectFit;
-        addTarget(self, action: #selector(p_handleActionSender(_:)), for: .touchUpInside)
+        addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside)
 
     }
     
@@ -47,7 +47,7 @@ class NNRadioButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func p_handleActionSender(_ sender: UIButton) -> Void {
+    @objc func handleActionSender(_ sender: UIButton) -> Void {
         sender.isSelected = !sender.isSelected
         
     }

@@ -22,7 +22,7 @@ class NNClockView: UIImageView {
 //                btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
                 btn.setTitle(obj, for: .normal);
                 btn.titleLabel?.adjustsFontSizeToFitWidth = true;
-                btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
+                btn.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside);
                 
                 self.addSubview(btn);
             }
@@ -66,7 +66,7 @@ class NNClockView: UIImageView {
         }
     }
     
-    @objc func handleActionSender(_ sender:UIButton){
+    @objc func handleAction(_ sender:UIButton){
         print("tag_",sender.tag);
         
     }

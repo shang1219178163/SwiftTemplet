@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class PopViewController: UIViewController, UISearchBarDelegate {
+class PopViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,48 +56,11 @@ class PopViewController: UIViewController, UISearchBarDelegate {
         
     }
     
-    // MARK: -UISearchBar
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool{
-        return true;
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        return true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        DDLog(searchText);
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        searchBar.showsCancelButton = !(searchBar.text!.count == 1 && text == "")
-        return true;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = "";
-        searchBar.showsCancelButton = (searchBar.text != "")
-    }
-    
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
+
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+           DDLog(textField)
+           return true;
+       }
     
     // MARK: -lazy
     
@@ -151,6 +114,63 @@ class PopViewController: UIViewController, UISearchBarDelegate {
         let view = UIView.createSearchBarRect(CGRectMake(0, 0, kScreenWidth - 100, 30))
         view.textField?.placeholder = "请输入流水号、商品信息或会员信息";
         view.delegate = self;
+        view.textField?.delegate = self;
         return view
     }()
 }
+
+extension PopViewController: UISearchBarDelegate {
+    // MARK: -UISearchBar
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool{
+        return true;
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        DDLog(searchText);
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        searchBar.showsCancelButton = !(searchBar.text!.count == 1 && text == "")
+        searchBar.cancellBtn?.setTitle("取消", for: .normal)
+        return true;
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = "";
+        searchBar.showsCancelButton = (searchBar.text != "")
+        searchBar.cancellBtn?.setTitle("取消", for: .normal)
+    }
+    
+    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+    
+}
+//extension PopViewController: UITextFieldDelegate {
+//
+//    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+//        DDLog(textField)
+//        return true;
+//    }
+//
+//}
