@@ -263,13 +263,13 @@ class NNCalendarView: UIView {
         }
     }
     
-    func handleTitleBtnChange(_ year: Int, month: Int) -> Void {
+    func handleTitleBtnChange(_ year: Int, month: Int) {
         let dateStr = "\(year)年\(month)月"
         self.titleBtn.setTitle(dateStr, for: .normal)
 //        self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_six)
     }
     
-//    func handleTitleFrom(_ aDate: Date) -> Void {
+//    func handleTitleFrom(_ aDate: Date) {
 //        let comp = Date.dateComponents(aDate)
 //        year = comp.year!
 //        month = comp.month!

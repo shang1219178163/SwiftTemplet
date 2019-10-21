@@ -88,7 +88,7 @@ class CCSCouponRecordController: UIViewController, UITableViewDataSource, UITabl
     }
     
     // MARK: -functions
-    @objc func handleActionSender(_ sender: UIButton) -> Void {
+    @objc func handleActionSender(_ sender: UIButton) {
 
     }
 

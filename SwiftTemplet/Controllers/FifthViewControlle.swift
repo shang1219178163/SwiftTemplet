@@ -124,7 +124,7 @@ class FifthViewControlle: UIViewController {
         return btn
     }()
     
-    @objc func handleActionSender(_ sender: UIButton) -> Void {
+    @objc func handleActionSender(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
 
     }

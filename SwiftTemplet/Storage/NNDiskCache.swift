@@ -27,11 +27,11 @@ class NNDiskCache: NSObject, NNCacheProtocol {
         return _diskCache?.object(forKey: forKey) as Any
     }
     
-    func removeObject(forKey: String) -> Void {
+    func removeObject(forKey: String) {
         _diskCache?.removeObject(forKey: forKey);
     }
     
-    func clearCache() -> Void {
+    func clearCache() {
         _diskCache?.removeAllObjects()
     }
     

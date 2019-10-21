@@ -54,7 +54,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         
@@ -148,7 +148,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     }
     
     //MARK: -funtions
-    func block(_ action: @escaping ((UITableViewCellTextView, String) -> Void)) -> Void {
+    func block(_ action: @escaping ((UITableViewCellTextView, String) -> Void)) {
         self.viewBlock = action;
     }
     

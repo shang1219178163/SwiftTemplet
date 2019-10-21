@@ -99,7 +99,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return String(component) + "-" + String(row)
     }
     
-    func show() -> Void {
+    func show() {
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
@@ -111,7 +111,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }, completion: nil);
     }
     
-    func dismiss() -> Void {
+    func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
             self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containViewH)
@@ -122,7 +122,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func block(_ action:@escaping ViewClick) -> Void {
+    func block(_ action:@escaping ViewClick) {
         self.viewBlock = action;
     }
     

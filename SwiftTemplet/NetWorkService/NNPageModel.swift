@@ -25,15 +25,15 @@ class NNPageModel: NSObject {
         return currPage > firstPage;
     }
     
-    func turnToFirstPage(_ page: NSInteger) -> Void {
+    func turnToFirstPage(_ page: NSInteger) {
         currPage = firstPage;
     }
     
-    func turnToPrePage(_ page: NSInteger) -> Void {
+    func turnToPrePage(_ page: NSInteger) {
         currPage -= 1;
     }
     
-    func turnToNextPage(_ page: NSInteger) -> Void {
+    func turnToNextPage(_ page: NSInteger) {
         currPage += 1;
     }
     

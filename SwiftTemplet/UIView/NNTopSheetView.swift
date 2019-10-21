@@ -122,7 +122,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     //MARK: -func
-    func setupTitleView() -> Void {
+    func setupTitleView() {
         
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
@@ -143,7 +143,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         self.parController!.navigationItem.titleView = btn
     }
     
-    func show(_ inController: UIViewController) -> Void {
+    func show(_ inController: UIViewController) {
         self.parController!.view.addSubview(self.containView)
         self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 
@@ -157,7 +157,7 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         
     }
     
-    func dismiss() -> Void {
+    func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
             
@@ -170,11 +170,11 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
         })
     }
     
-    func block(_ action: @escaping CellForRowClosure) -> Void {
+    func block(_ action: @escaping CellForRowClosure) {
         self.viewBlock = action;
     }
     
-    func blockSelected(_ action: @escaping DidSelectRowClosure) -> Void {
+    func blockSelected(_ action: @escaping DidSelectRowClosure) {
         self.viewBlockOne = action;
     }
     

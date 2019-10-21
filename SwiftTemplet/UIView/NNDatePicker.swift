@@ -35,7 +35,7 @@ class NNDatePicker: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func show() -> Void {
+    func show() {
         UIApplication.shared.keyWindow?.addSubview(self);
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
@@ -46,7 +46,7 @@ class NNDatePicker: UIView {
         }, completion: nil);
     }
 
-    func dismiss() -> Void {
+    func dismiss() {
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
             self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containView.frame.height)
@@ -57,7 +57,7 @@ class NNDatePicker: UIView {
         }
     }
    
-    func block(_ action:@escaping ViewClick) -> Void {
+    func block(_ action:@escaping ViewClick) {
         self.viewBlock = action;
     }
     

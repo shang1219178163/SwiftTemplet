@@ -118,7 +118,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
         }
     }
     // MARK: -funtions
-    func handleSelectedViewController(_ chooseVC: UIViewController) -> Void {
+    func handleSelectedViewController(_ chooseVC: UIViewController) {
         if (self.delegate != nil) && self.delegate!.conforms(to: NNTabControllerDelegate.self) {
             self.delegate!.tabController(self, didSelect: chooseVC);
         }

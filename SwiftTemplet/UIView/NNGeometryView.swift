@@ -52,7 +52,7 @@ class NNGeometryView: UIView {
     }
     
     /// 三角形
-    func drawTriangle() -> Void {
+    func drawTriangle() {
         let ctx = UIGraphicsGetCurrentContext()
         ctx?.beginPath()
         ctx?.move(to: onePoint!)
@@ -66,7 +66,7 @@ class NNGeometryView: UIView {
         ctx?.strokePath()
     }
     
-    func changeTriangleDirection(_ subType: Int) -> Void {
+    func changeTriangleDirection(_ subType: Int) {
         switch subType {
         case 0:
             onePoint = CGPoint(x: 0, y: frame.height)
@@ -95,7 +95,7 @@ class NNGeometryView: UIView {
     }
     
     /// 椭圆
-    func drawCircle(_ rect: CGRect) -> Void {
+    func drawCircle(_ rect: CGRect) {
         let ctx = UIGraphicsGetCurrentContext()
         ctx?.addEllipse(in: rect)
 

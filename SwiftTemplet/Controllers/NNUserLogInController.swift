@@ -34,7 +34,7 @@ class NNUserLogInController: UIViewController {
         view.getViewLayer()
     }
     
-    func setupConfigure() -> Void {
+    func setupConfigure() {
         let disposeBag: DisposeBag = DisposeBag()
         
         userNameValidLab.text = "Username has to be at least \(minUsernameLength) characters"

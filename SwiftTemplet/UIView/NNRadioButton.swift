@@ -47,7 +47,7 @@ class NNRadioButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func handleActionSender(_ sender: UIButton) -> Void {
+    @objc func handleActionSender(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
     }

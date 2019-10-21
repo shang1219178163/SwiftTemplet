@@ -77,11 +77,11 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
         return label;
     }
     
-    func blockCellForRow(_ action: @escaping CellForRowClosure) -> Void {
+    func blockCellForRow(_ action: @escaping CellForRowClosure) {
         self.viewBlockCellForRow = action;
     }
     
-    func blockDidSelectRow(_ action: @escaping DidSelectRowClosure) -> Void {
+    func blockDidSelectRow(_ action: @escaping DidSelectRowClosure) {
         self.viewBlockDidSelectRow = action;
     }
     

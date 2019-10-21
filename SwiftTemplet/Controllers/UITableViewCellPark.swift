@@ -89,7 +89,7 @@ class UITableViewCellPark: UITableViewCell {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         if CGRect.zero.equalTo(bounds) == true {
             return;
         }

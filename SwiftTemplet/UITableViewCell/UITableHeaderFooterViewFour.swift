@@ -38,7 +38,7 @@ class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         btn.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(contentView.frame.midY - kSizeSelected.height/2.0)
             make.size.equalTo(kSizeSelected)

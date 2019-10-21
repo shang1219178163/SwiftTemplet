@@ -31,7 +31,7 @@ class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
 //        view.getViewLayer()
     }
     
-    @objc func poperViewHide(_ noti: NSNotification) -> Void {
+    @objc func poperViewHide(_ noti: NSNotification) {
         searchView.btn.imageView?.transformRotationCycle();
     }
     
@@ -84,7 +84,7 @@ class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
         return view;
     }()
     
-    @objc func showMenu(_ sender: UIButton) -> Void {
+    @objc func showMenu(_ sender: UIButton) {
         DDLog(sender.currentTitle as Any)
 //        sender.imageView!.transformRotationCycle()
 //        PopoverView.show(sender, list: self.searchList, handler: { (action, dic) in

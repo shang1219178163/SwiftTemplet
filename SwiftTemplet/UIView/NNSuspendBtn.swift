@@ -35,7 +35,7 @@ class NNSuspendBtn: UIButton {
     }
     
     
-    @objc func handleActionPan(_ recognizer: UIPanGestureRecognizer) -> Void {
+    @objc func handleActionPan(_ recognizer: UIPanGestureRecognizer) {
         if isLock == true {
             return
         }

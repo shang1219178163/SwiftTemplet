@@ -106,7 +106,7 @@ class CenterViewController: UIViewController {
         DDLog(itemRight);
     }
 
-    @objc func handleActionSender() -> Void {
+    @objc func handleActionSender() {
         self.dismiss(animated: true, completion: nil)
         
     }

@@ -70,7 +70,7 @@ class NNUpdateVersionView: UIView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         let imgViewH: CGFloat = (bounds.width - containX*2)/(570/228)
         let labelX: CGFloat = kX_GAP*1.5
         let labelY: CGFloat = (imgViewH - kH_LABEL*2 - kPadding)/2.0
@@ -127,7 +127,7 @@ class NNUpdateVersionView: UIView {
     }
     
     //MARK: -funtions
-    func show() -> Void {
+    func show() {
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
@@ -139,7 +139,7 @@ class NNUpdateVersionView: UIView {
         }, completion: nil);
     }
     
-    func dismiss() -> Void {
+    func dismiss() {
         UIView.animate(withDuration: 0.15, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
             self.transform = self.transform.scaledBy(x: 0.5, y: 0.5)
@@ -150,7 +150,7 @@ class NNUpdateVersionView: UIView {
         }
     }
     
-    func block(_ action:@escaping ViewClick) -> Void {
+    func block(_ action:@escaping ViewClick) {
         self.viewBlock = action;
     }
     

@@ -12,7 +12,7 @@ import SwiftExpand
 
 class NNProgressHUD: NSObject {
     
-    @objc static func showText(_ text: String?, model: MBProgressHUDMode, imgName: String?, isHidden: Bool, inView: UIView = UIApplication.shared.keyWindow!) -> Void {
+    @objc static func showText(_ text: String?, model: MBProgressHUDMode, imgName: String?, isHidden: Bool, inView: UIView = UIApplication.shared.keyWindow!) {
         
         MBProgressHUD.hide(for: inView, animated: false);
         let hud: MBProgressHUD = MBProgressHUD.showAdded(to: inView, animated: true)
@@ -62,7 +62,7 @@ class NNProgressHUD: NSObject {
         }
     }
     
-    @objc static func showText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) -> Void {
+    @objc static func showText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         
         MBProgressHUD.hide(for: inView, animated: false);
         let hud: MBProgressHUD = MBProgressHUD.showAdded(to: inView, animated: true)
@@ -72,19 +72,19 @@ class NNProgressHUD: NSObject {
     }
     
     
-    @objc static func showLoadingText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) -> Void {
+    @objc static func showLoadingText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         NNProgressHUD.showText(text, model: .annularDeterminate, imgName: "toast_loading", isHidden: false, inView: inView)
     }
     
-    @objc static func showSuccessText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) -> Void {
+    @objc static func showSuccessText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         NNProgressHUD.showText(text, model: .customView, imgName: "toast_success", isHidden: true, inView: inView)
     }
     
-    @objc static func showErrorText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) -> Void {
+    @objc static func showErrorText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         NNProgressHUD.showText(text, model: .customView, imgName: "toast_error", isHidden: true, inView: inView)
     }
     
-    @objc static func dismiss(_ inView: UIView = UIApplication.shared.keyWindow!) -> Void {
+    @objc static func dismiss(_ inView: UIView = UIApplication.shared.keyWindow!) {
         MBProgressHUD.hide(for: inView, animated: true)
     }
 }

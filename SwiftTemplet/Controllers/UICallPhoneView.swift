@@ -92,7 +92,7 @@ class UICallPhoneView: UIView {
         viewChange(type: 0)
     }
     
-    func viewChange(type: Int) -> Void {
+    func viewChange(type: Int) {
         switch type {
         case 1://通话中
             
@@ -139,7 +139,7 @@ class UICallPhoneView: UIView {
     
     //MRAK: - funtion
     
-    func show() -> Void {
+    func show() {
         let keyWindow = UIApplication.shared.keyWindow;
         if keyWindow?.subviews.contains(self) == false {
             keyWindow?.addSubview(self);
@@ -159,7 +159,7 @@ class UICallPhoneView: UIView {
         }
     }
     
-    func dismiss(_ needRemove: Bool = true) -> Void {
+    func dismiss(_ needRemove: Bool = true) {
         self.superview?.addSubview(self.talkbackBtn)
         self.talkbackBtn.isHidden = false;
         self.superview?.bringSubviewToFront(self.talkbackBtn);
@@ -236,7 +236,7 @@ class UICallPhoneView: UIView {
     }
     
     
-    func block(_ action:@escaping ViewClick) -> Void {
+    func block(_ action:@escaping ViewClick) {
         self.viewBlock = action;
     }
     
@@ -308,7 +308,7 @@ class UICallPhoneView: UIView {
         return timer;
     }()
     
-    @objc func handActionTimer(_ timer: Timer) -> Void {
+    @objc func handActionTimer(_ timer: Timer) {
         labTwo.text = "\((startDate as NSDate).agoInfo(1, length: 5))"
 
     }

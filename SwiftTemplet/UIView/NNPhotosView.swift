@@ -94,12 +94,12 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     
     //MARK: -图片添加,移除
 
-    func addPhotos(_ items: [Any]) -> Void {
+    func addPhotos(_ items: [Any]) {
         itemList.addObjects(from: items)
         itemListValueChange()
     }
     
-    func deletPhoto(_ item: Any) -> Void {
+    func deletPhoto(_ item: Any) {
         guard let item = item as? PHAsset else { return }
         itemList.forEach { (obj) in
             guard let obj = obj as? PHAsset else { return }
@@ -112,7 +112,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     }
     
     /// 界面元素重置
-    func itemListValueChange() -> Void {
+    func itemListValueChange() {
 //        DDLog(itemList)
         
         itemList.remove(imageDefault as Any)
@@ -157,7 +157,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     }
     
     /// UIIImageView赋image
-    func handleView(_ view: UIImageView, element: Any) -> Void {
+    func handleView(_ view: UIImageView, element: Any) {
         if let image = element as? UIImage {
             view.image = image
             
@@ -168,12 +168,12 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
         }
     }
     
-    func block(_ action: @escaping ((NNPhotosView, [UIImage]) -> Void)) -> Void {
+    func block(_ action: @escaping ((NNPhotosView, [UIImage]) -> Void)) {
         viewBlock = action;
     }
     
     //MARK: -funtions
-    func showAlertController() -> Void {
+    func showAlertController() {
         let items = ["从相册选择", "拍照"]
         UIAlertController.showSheet(nil, msg: nil, items: items) { (controller: UIAlertController, action: UIAlertAction) in
             let idx = items.firstIndex(of: action.title!)
@@ -188,7 +188,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     }
     
     /// 去相册
-    func showPhotoAlbumPickerVC() -> Void {
+    func showPhotoAlbumPickerVC() {
         let count = itemList.contains(imageDefault as Any) == true ? maxCount - (itemList.count - 1) : maxCount - itemList.count
         
         let controller = BSImagePickerViewController()
@@ -225,7 +225,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     }
     
     /// 拍照
-    func showCameraPickerVC() -> Void {
+    func showCameraPickerVC() {
         let rootVC = UIApplication.shared.delegate?.window??.rootViewController
 
         let controller = UIImagePickerController()

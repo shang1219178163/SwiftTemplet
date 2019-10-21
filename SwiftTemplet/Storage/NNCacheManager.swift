@@ -32,11 +32,11 @@ class NNCacheManager: NSObject, NNCacheProtocol {
         return _cache?.object(forKey: forKey) as Any
     }
     
-    func removeObject(forKey: String) -> Void {
+    func removeObject(forKey: String) {
         _cache?.removeObject(forKey: forKey);
     }
     
-    func clearCache() -> Void {
+    func clearCache() {
         _cache?.removeAllObjects()
     }
 }

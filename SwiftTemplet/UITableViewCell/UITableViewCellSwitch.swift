@@ -46,7 +46,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in

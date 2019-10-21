@@ -129,23 +129,8 @@ class TestViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let foldModel = dataList[section] as! NNFoldSectionModel
-        return sectionView(tableView, viewForSection: section, title: nil, isHeader: false);
-    }
-    
-    private func sectionView(_ tableView: UITableView, viewForSection section: Int, title: String?, isHeader: Bool) -> UIView?{
-        let sectionView = UIView()
-        if title == nil {
-            return sectionView
-        }
-        let label = UILabel(frame: CGRect(x: kX_GAP, y: 0, width: tableView.frame.width - kX_GAP*2, height: tableView.rowHeight));
-        label.backgroundColor = isHeader ? .green : .yellow;
-        
-        label.text = title
-        label.numberOfLines = isHeader ? 1 : 0
-        label.textColor = isHeader ? UIColor.black : UIColor.red
-        sectionView.addSubview(label)
-        return sectionView
+//        let foldModel = dataList[section] as! NNFoldSectionModel
+        return tableView.sectionView(viewForSection: section, title: nil, isHeader: false);
     }
     
     override func didReceiveMemoryWarning() {

@@ -136,7 +136,7 @@ class CCSEmergencyOpenView: UIView {
 
     //MRAK: - funtion
 
-    func show() -> Void {
+    func show() {
         UIApplication.shared.keyWindow?.addSubview(self);
         
         containView.transform = containView.transform.scaledBy(x: 0.1, y: 0.1)
@@ -147,7 +147,7 @@ class CCSEmergencyOpenView: UIView {
         }, completion: nil);
     }
     
-    func dismiss() -> Void {
+    func dismiss() {
         UIView.animate(withDuration: 0.15, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
             self.containView.transform = self.containView.transform.scaledBy(x: 0.1, y: 0.1)
@@ -170,7 +170,7 @@ class CCSEmergencyOpenView: UIView {
     }
     
     
-    func block(_ action:@escaping ViewClick) -> Void {
+    func block(_ action:@escaping ViewClick) {
         self.viewBlock = action;
     }
     

@@ -44,7 +44,7 @@ class SortedViewController: UIViewController {
         
     }
     
-    func sortArray() -> Void {
+    func sortArray() {
         let list = [1,2,4,3,9,8];
         
         let b = list[2...5];// ArraySlice
@@ -59,7 +59,7 @@ class SortedViewController: UIViewController {
         
     }
     //MARK:字典排序
-    func sortDictiony() -> Void {
+    func sortDictiony() {
         //字典排序
         /*
          字典中$0 来表示闭包的第一个参数，$1 来表示第二个，以此类推，in 也可以省略

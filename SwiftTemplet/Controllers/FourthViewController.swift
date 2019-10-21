@@ -65,7 +65,7 @@ class FourthViewController: UIViewController {
 
     }
     
-    func createGroupView() -> Void {
+    func createGroupView() {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);

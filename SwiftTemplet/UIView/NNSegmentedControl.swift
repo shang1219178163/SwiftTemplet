@@ -69,7 +69,7 @@ class NNSegmentedControl: UISegmentedControl {
         }
     }
     
-    func setupControl() -> Void {
+    func setupControl() {
 //        tintColor = UIColor.white
 //        backgroundColor = UIColor.white
         tintColor = UIColor.clear
@@ -89,7 +89,7 @@ class NNSegmentedControl: UISegmentedControl {
 
     }
     
-    func setupIndicator() -> Void {
+    func setupIndicator() {
         if CGRect.zero.equalTo(frame) || numberOfSegments <= 0 {
             return
         }

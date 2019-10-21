@@ -47,7 +47,7 @@ class UITableViewCellPickerView: UITableViewCell {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
@@ -79,7 +79,7 @@ class UITableViewCellPickerView: UITableViewCell {
     }
     
     //MARK: -funtions
-    func block(_ action: @escaping ((UITableViewCellPickerView, String, [Any]) -> Void)) -> Void {
+    func block(_ action: @escaping ((UITableViewCellPickerView, String, [Any]) -> Void)) {
         self.viewBlock = action
     }
     
