@@ -70,7 +70,7 @@ class NNRecordCardView: UIView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         let labelW: CGFloat = (bounds.width - kX_GAP*2 - kPadding*2 - 0.5)*0.5;
         let labelH: CGFloat = 30
         let labelY: CGFloat = (bounds.height - labelH*2 - kPadding)/2.0

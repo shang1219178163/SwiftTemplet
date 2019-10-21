@@ -53,7 +53,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         
         if labelLeft.isHidden == false {
             labelLeft.sizeToFit()

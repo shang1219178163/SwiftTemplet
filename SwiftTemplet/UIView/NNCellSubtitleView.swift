@@ -56,7 +56,7 @@ class NNCellSubtitleView: UIView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         
         let imgViewH: CGFloat = frame.height - kY_GAP*2
         let labelH: CGFloat = imgViewH/2.0

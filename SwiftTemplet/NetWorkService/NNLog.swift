@@ -11,27 +11,27 @@ import SwiftExpand
 
 class NNLog: NSObject {
     
-    @objc static func logRequestURI(_ uri: String) -> Void {
+    @objc static func logRequestURI(_ uri: String) {
         DDLog("URI: >> %@",uri);
 
     }
-    @objc static func logParams(_ params: [String: Any]) -> Void {
+    @objc static func logParams(_ params: [String: Any]) {
         let queryStr = (params as NSDictionary).jsonValue();
         DDLog("%@",queryStr as Any);
     }
     
-    @objc static func logResponseJSON(_ json: [String: Any]) -> Void {
+    @objc static func logResponseJSON(_ json: [String: Any]) {
         let queryStr = (json as NSDictionary).jsonValue();
         DDLog("%@",queryStr as Any);
     }
     
-    @objc static func logRequestInfoWithURI(_ uri: String, params: [String: Any]) -> Void {
+    @objc static func logRequestInfoWithURI(_ uri: String, params: [String: Any]) {
         DDLog("------------ Request Info --------------");
         logRequestURI(uri)
         logParams(params)
     }
     
-    @objc static func logResponseInfoWithURI(_ uri: String, json: [String: Any]) -> Void {
+    @objc static func logResponseInfoWithURI(_ uri: String, json: [String: Any]) {
         DDLog("------------ Request Info --------------");
         logRequestURI(uri)
         logResponseJSON(json)

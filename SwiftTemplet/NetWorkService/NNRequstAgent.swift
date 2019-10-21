@@ -28,7 +28,7 @@ class NNRequstAgent: NSObject {
     }()
   
     /// 常规请求
-    func request(_ url: String = NNAPIConfig.serviceURLString, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) -> Void {
+    func request(_ url: String = NNAPIConfig.serviceURLString, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) {
         Alamofire
             .request(URL(string: url)!,
                           method: method,
@@ -40,7 +40,7 @@ class NNRequstAgent: NSObject {
     
     /// 多图上传
     func upload(_ url: String = NNAPIConfig.serviceURLString, parameters: Any, images: [UIImage],
-        fileNames: [String]?, result: @escaping (DefaultDataResponse) -> Void) -> Void {
+        fileNames: [String]?, result: @escaping (DefaultDataResponse) -> Void) {
         
         Alamofire
             .upload(multipartFormData: { (MultipartFormData) in
@@ -85,7 +85,7 @@ class NNRequstAgent: NSObject {
     }
     
     /// 文件下载
-    func download(_ url: String = NNAPIConfig.serviceURLString, parameters: Parameters) -> Void {
+    func download(_ url: String = NNAPIConfig.serviceURLString, parameters: Parameters) {
     
         Alamofire.download(URL(string: url)!, method: .get, parameters: parameters, headers: headers, to: nil)
             .responseData { (response) in

@@ -57,7 +57,7 @@ class UICTReusableViewOne: UICollectionReusableView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         let height = min(kSizeArrow.height, bounds.height)
         //箭头不隐藏
         if imageViewRight.isHidden == false {
@@ -231,7 +231,7 @@ class UICTReusableViewOne: UICollectionReusableView {
         }
     }
     
-//    func setupConstraint() -> Void {
+//    func setupConstraint() {
 //        //箭头不隐藏
 //        if imageViewRight.isHidden == false {
 //            imageViewRight.snp.makeConstraints { (make) in

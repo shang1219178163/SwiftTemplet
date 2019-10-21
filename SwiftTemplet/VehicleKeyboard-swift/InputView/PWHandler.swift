@@ -64,7 +64,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     /*
      将车牌输入框绑定到UITextField
      **/
-    @objc public func bindTextField(_ textField: UITextField, showSearch: Bool = false) -> Void {
+    @objc public func bindTextField(_ textField: UITextField, showSearch: Bool = false) {
         textField.font = UIFont.systemFont(ofSize: 13)
         
         if textField.leftView == nil && showSearch == true {

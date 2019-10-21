@@ -73,7 +73,7 @@ class NNVehicleInfoCardView: UIView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         
         let imgViewH: CGFloat = 80+10
         let labelH: CGFloat = 25

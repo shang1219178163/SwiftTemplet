@@ -128,7 +128,7 @@ class NNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHand
         }
     }
     
-    @objc func loadRequest() -> Void {
+    @objc func loadRequest() {
         assert(urlString != "")
         if !urlString.hasPrefix("http") {
             urlString = "http://" + urlString;
@@ -138,11 +138,11 @@ class NNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHand
         
     }
     
-    @objc func webViewReload() -> Void {
+    @objc func webViewReload() {
         wkWebView.reload()
     }
     
-    @objc func back(_ item: UIBarButtonItem) -> Void {
+    @objc func back(_ item: UIBarButtonItem) {
         if wkWebView.canGoBack {
             wkWebView.goBack()
         }

@@ -73,18 +73,18 @@ class NNRequstManager: NSObject {
         super.init()
     }
     
-    func startRequest(success: @escaping NNRequestBlock, fail: @escaping NNRequestBlock) -> Void {
+    func startRequest(success: @escaping NNRequestBlock, fail: @escaping NNRequestBlock) {
         successBlock = success;
         failureBlock = fail;
         startRequest()
     }
     
-    func startRequest(closure: @escaping NNRequestBlock) -> Void {
+    func startRequest(closure: @escaping NNRequestBlock) {
         resultBlock = closure;
         startRequest()
     }
     
-    func startRequest() -> Void {
+    func startRequest() {
         if child?.validateParams() == false {
             let error: NSError = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
             
@@ -105,7 +105,7 @@ class NNRequstManager: NSObject {
         startRequestFromNetwork();
     }
     
-    func startRequestFromNetwork() -> Void {
+    func startRequestFromNetwork() {
         isLoading = true
         //请求日志
         NNLog.logRequestInfoWithURI((child?.requestURI())!, params: (child?.requestParams())!)
@@ -125,7 +125,7 @@ class NNRequstManager: NSObject {
     }
     
     
-    func didSuccess(_ response: DefaultDataResponse) -> Void {
+    func didSuccess(_ response: DefaultDataResponse) {
         guard response.response?.statusCode == 200 else {
             self.didFailure(response, errorType: .ServerError)
             return;
@@ -154,7 +154,7 @@ class NNRequstManager: NSObject {
         let _ = child?.saveJsonOfCache!(jsonDic)
     }
     
-    func didFailure(_ response: DefaultDataResponse, errorType: NNRequestCode) -> Void {
+    func didFailure(_ response: DefaultDataResponse, errorType: NNRequestCode) {
         
         var tip: String?
         switch errorType {

@@ -55,7 +55,7 @@ class NNItemsView: UIView {
         }
     }
     
-    @objc func handleAction(_ sender: UIButton) -> Void {
+    @objc func handleAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected;
         
         if sender.isSelected == true {
@@ -121,7 +121,7 @@ class NNItemsView: UIView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         if itemList.count == 0 || bounds.width <= 0 {
             return;
         }
@@ -160,7 +160,7 @@ class NNItemsView: UIView {
         return rowCount.toCGFloat * itemHeight + (rowCount - 1).toCGFloat * padding;
     }
     
-    func block(_ action: @escaping ((NNItemsView, UIControl) -> Void)) -> Void {
+    func block(_ action: @escaping ((NNItemsView, UIControl) -> Void)) {
         viewBlock = action;
     }
     

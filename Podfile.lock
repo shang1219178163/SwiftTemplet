@@ -39,9 +39,9 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (8.0.0)
   - Result (4.1.0)
-  - RxAlamofire (5.0.0):
-    - RxAlamofire/Core (= 5.0.0)
-  - RxAlamofire/Core (5.0.0):
+  - RxAlamofire (5.1.0):
+    - RxAlamofire/Core (= 5.1.0)
+  - RxAlamofire/Core (5.1.0):
     - Alamofire (~> 4.8)
     - RxSwift (~> 5.0)
   - RxCocoa (5.0.0):
@@ -57,7 +57,7 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Surge (2.2.0)
-  - SwiftExpand (1.8.3.3)
+  - SwiftExpand (1.8.4.1)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -93,7 +93,7 @@ DEPENDENCIES:
   - YYModel
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AlamofireImage
     - AlamofireObjectMapper
@@ -145,7 +145,7 @@ SPEC CHECKSUMS:
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RxAlamofire: e7875a012aff55345672d0f70a2a9cd6aeb0f211
+  RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
@@ -153,7 +153,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 4571172e6f3b7abe93e821d71f952eb7497e991d
+  SwiftExpand: 0ce341ec1aee7fe219ff65f8f8d5e84023285595
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
@@ -161,4 +161,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1cc28065bd899c64f0c900ba8940871dc7c52a24
 
-COCOAPODS: 1.7.0.beta.3
+COCOAPODS: 1.8.4

@@ -112,7 +112,7 @@ class NNSliderControlView: UIView {
         }
     }
     
-    @objc func handleActionPan(_ recognizer: UIPanGestureRecognizer) -> Void {
+    @objc func handleActionPan(_ recognizer: UIPanGestureRecognizer) {
         if isLock == true {
             return
         }

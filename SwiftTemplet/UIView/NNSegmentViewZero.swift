@@ -74,7 +74,7 @@ class NNSegmentViewZero: UIView {
         }
     }
         
-    func block(_ action: @escaping ((NNSegmentViewZero,UISegmentedControl) -> Void)) -> Void {
+    func block(_ action: @escaping ((NNSegmentViewZero,UISegmentedControl) -> Void)) {
         self.viewBlock = action;
     }
     

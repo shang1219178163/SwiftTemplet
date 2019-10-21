@@ -64,7 +64,7 @@ class ThirdViewController: UIViewController{
     
     // MARK: -funtions
     
-    func requestInfo() -> Void {
+    func requestInfo() {
         NNProgressHUD.showLoadingText("努力加载中")
         let updateAPi = NNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in

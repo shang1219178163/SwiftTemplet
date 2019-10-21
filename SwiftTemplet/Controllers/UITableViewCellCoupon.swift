@@ -117,7 +117,7 @@ class UITableViewCellCoupon: UITableViewCell {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         if CGRect.zero.equalTo(bounds) == true {
             return;
         }
@@ -183,7 +183,7 @@ class UITableViewCellCoupon: UITableViewCell {
                                 width: CGFloat = 1,
                                 dashPattern: [NSNumber] = [NSNumber(floatLiteral: 4), NSNumber(floatLiteral: 5)],
                                 cornerRadius: CGFloat = 0, view: UIView,
-                                size: CGSize = CGSize.zero) -> Void {
+                                size: CGSize = CGSize.zero) {
         assert(CGRect.zero.equalTo(view.bounds) == false || CGSize.zero.equalTo(size) == false);
 
         view.layer.borderColor = UIColor.clear.cgColor;

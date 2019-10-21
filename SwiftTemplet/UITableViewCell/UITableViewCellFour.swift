@@ -45,7 +45,7 @@ class UITableViewCellFour: UITableViewCell {
         setupConstraint();
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         if type == 0 {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()

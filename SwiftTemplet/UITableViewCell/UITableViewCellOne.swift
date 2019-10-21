@@ -63,7 +63,7 @@ class UITableViewCellOne: UITableViewCell {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         //箭头不隐藏
         if imgViewRight.isHidden == false {
             imgViewRight.snp.makeConstraints { (make) in

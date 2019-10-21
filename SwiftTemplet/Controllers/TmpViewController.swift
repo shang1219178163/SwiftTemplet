@@ -74,7 +74,7 @@ class TmpViewController: UIViewController {
 //        ctx?.closePath();
         return mutablePath;
     }
-//    @objc func addLineDashLayer(color: UIColor = UIColor.red, width: CGFloat = 1, dashPattern: [NSNumber] = [NSNumber(4), NSNumber(2)], cornerRadius: CGFloat = 0, view: UIView) -> Void {
+//    @objc func addLineDashLayer(color: UIColor = UIColor.red, width: CGFloat = 1, dashPattern: [NSNumber] = [NSNumber(4), NSNumber(2)], cornerRadius: CGFloat = 0, view: UIView) {
 //        assert(CGRect.zero.equalTo(view.bounds) == false);
 //
 //        view.layer.borderColor = UIColor.clear.cgColor;

@@ -69,7 +69,7 @@ class NNDateRangeView: UIView {
         super.layoutSubviews()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         
         let labTitleSize = labTitle.sizeThatFits(.zero)
         labTitle.snp.makeConstraints { (make) in
@@ -102,7 +102,7 @@ class NNDateRangeView: UIView {
     
     }
     
-//    func setupConstraint() -> Void {
+//    func setupConstraint() {
 //        labTitle.sizeToFit()
 //        labTitle.frame.size = CGSize(width: labTitle.width, height: 35)
 //        labTitle.snp.makeConstraints { (make) in
@@ -136,7 +136,7 @@ class NNDateRangeView: UIView {
 //    }
     
     //MARK: -funtions
-    func block(_ action:((NNDateRangeView) -> Void)?) -> Void {
+    func block(_ action:((NNDateRangeView) -> Void)?) {
         viewBlock = action;
     }
     

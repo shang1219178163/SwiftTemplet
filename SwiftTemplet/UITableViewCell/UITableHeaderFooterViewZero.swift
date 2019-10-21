@@ -39,7 +39,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         
     }
     
-    func block(_ action: @escaping ((UITableHeaderFooterViewZero) -> Void)) -> Void {
+    func block(_ action: @escaping ((UITableHeaderFooterViewZero) -> Void)) {
         self.viewBlock = action;
     }
     
@@ -54,7 +54,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         
         indicatorView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()

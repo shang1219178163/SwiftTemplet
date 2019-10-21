@@ -276,7 +276,7 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
         //MARK: -func
-    func titleViewTap() -> Void {
+    func titleViewTap() {
         textField.text = "闭包的回调方法"
         
         let _ = textField.addGestureTap { (recognizer) in

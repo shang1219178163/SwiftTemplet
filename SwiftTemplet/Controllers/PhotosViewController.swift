@@ -59,7 +59,7 @@ class PhotosViewController: UIViewController{
     }
     
     //MARK: -funtions
-    func showImagePicker() -> Void {
+    func showImagePicker() {
         let vc = BSImagePickerViewController()
         vc.maxNumberOfSelections = 6
         
@@ -75,7 +75,7 @@ class PhotosViewController: UIViewController{
         }, completion: nil)
     }
     
-    func showCustomImagePicker() -> Void {
+    func showCustomImagePicker() {
         let vc = BSImagePickerViewController()
         vc.maxNumberOfSelections = 6
         vc.takePhotoIcon = UIImage(named: "chat")
@@ -113,7 +113,7 @@ class PhotosViewController: UIViewController{
         }, completion: nil)
     }
     
-    func showImagePickerWithSelectedAssets() -> Void {
+    func showImagePickerWithSelectedAssets() {
         let allAssets = PHAsset.fetchAssets(with: PHAssetMediaType.image, options: nil)
         var evenAssetIds = [String]()
         

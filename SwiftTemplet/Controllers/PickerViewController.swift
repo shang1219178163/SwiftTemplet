@@ -48,7 +48,7 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
 //        view.getViewLayer()
     }
     
-    func setupPickerView() -> Void {
+    func setupPickerView() {
         // 创建UIPickerView控件
         pickerView = UIPickerView()
         

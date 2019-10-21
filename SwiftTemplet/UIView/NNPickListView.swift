@@ -114,7 +114,7 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     }
     
     // MARK: - funtions
-    func show() -> Void {
+    func show() {
         assert(itemList != nil)
         
         setupContainViewSize(list)
@@ -132,7 +132,7 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
         });
     }
     
-    func dismiss() -> Void {
+    func dismiss() {
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
             self.containView.originY = UIScreen.sizeHeight
@@ -142,11 +142,11 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
         }
     }
     
-    func block(_ action:@escaping ((NNPickListView, IndexPath) -> Void)) -> Void {
+    func block(_ action:@escaping ((NNPickListView, IndexPath) -> Void)) {
         self.viewBlock = action;
     }
     
-    func setupContainViewSize(_ list:[String]) -> Void {
+    func setupContainViewSize(_ list:[String]) {
         var rows = list.count + (title != nil ? 1 : 0) + (tips != nil ? 1 : 0)
         rows = rows < 6 ? rows : 6
         self.containView.sizeHeight = tableView.rowHeight * CGFloat(rows)

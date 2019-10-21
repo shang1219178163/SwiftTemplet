@@ -99,15 +99,15 @@ class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     // MARK: -funtions
-    func blockCellForItem(_ action:@escaping CellForItemClosure) -> Void {
+    func blockCellForItem(_ action:@escaping CellForItemClosure) {
         self.cellForItemClosure = action;
     }
     
-    func blockDidSelectItem(_ action:@escaping DidSelectItemClosure) -> Void {
+    func blockDidSelectItem(_ action:@escaping DidSelectItemClosure) {
         self.didSelectItemClosure = action;
     }
     
-    func setupIndicator() -> Void {
+    func setupIndicator() {
         if CGRect.zero.equalTo(self.bounds) || list.count == 0 {
             return;
         }

@@ -50,7 +50,7 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         labelLeft.sizeToFit()
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()

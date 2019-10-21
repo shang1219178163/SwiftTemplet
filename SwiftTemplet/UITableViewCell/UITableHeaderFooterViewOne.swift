@@ -56,7 +56,7 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func block(_ action: @escaping ((UITableHeaderFooterViewOne) -> Void)) -> Void {
+    func block(_ action: @escaping ((UITableHeaderFooterViewOne) -> Void)) {
         self.viewBlock = action;
     }
     
@@ -66,7 +66,7 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         setupConstraint()
     }
     
-    func setupConstraint() -> Void {
+    func setupConstraint() {
         if contentView.sizeHeight <= 0 {
             return;
         }

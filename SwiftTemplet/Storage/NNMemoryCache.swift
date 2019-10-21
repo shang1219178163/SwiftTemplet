@@ -28,11 +28,11 @@ class NNMemoryCache: NSObject, NNCacheProtocol {
         return _memoryCache?.object(forKey: forKey) as Any
     }
     
-    func removeObject(forKey: String) -> Void {
+    func removeObject(forKey: String) {
         _memoryCache?.removeObject(forKey: forKey);
     }
     
-    func clearCache() -> Void {
+    func clearCache() {
         _memoryCache?.removeAllObjects()
     }
     

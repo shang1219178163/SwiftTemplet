@@ -29,7 +29,7 @@ class HomeViewController: UITabBarController {
 
     }
     
-    func configureCenterBtn() -> Void {
+    func configureCenterBtn() {
         tabBar.addSubview(btnCenter);
         
         let width = tabBar.bounds.width / CGFloat(viewControllers!.count);

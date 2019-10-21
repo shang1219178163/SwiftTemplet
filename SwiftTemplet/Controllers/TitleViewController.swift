@@ -173,7 +173,7 @@ class TitleViewController: UIViewController{
 //    }
     
     //MARK: -func
-    func setupTitleView() -> Void {        
+    func setupTitleView() {        
         btn.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
 //        btn.setImage(UIImageColor( .red, size: CGSize(width: 20, height: 20)), for: .normal);
         btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
@@ -198,7 +198,7 @@ class TitleViewController: UIViewController{
         navigationItem.titleView?.getViewLayer()
     }
     
-    func show(_ inController: UIViewController) -> Void {
+    func show(_ inController: UIViewController) {
         self.view.addSubview(self.containView)
         self.tbView.originY = -self.tbView.sizeHeight
         
@@ -212,7 +212,7 @@ class TitleViewController: UIViewController{
         
     }
     
-    func dismiss() -> Void {
+    func dismiss() {
 
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 0.0

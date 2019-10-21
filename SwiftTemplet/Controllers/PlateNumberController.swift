@@ -130,7 +130,7 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
     }
     
     //MARK: -funtions
-    func setupInputView() -> Void {
+    func setupInputView() {
         textField.inputView = {
             let view: UIView = UIView(frame: CGRectMake(0, 0, kScreenWidth, 216))
             view.backgroundColor = UIColor.green
@@ -146,7 +146,7 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
         }()
     }
 
-//    func setupKeyboradView(_ textField: UITextField, handler: PWHandler) -> Void {
+//    func setupKeyboradView(_ textField: UITextField, handler: PWHandler) {
 //
 //        handler.inputTextfield = textField
 //        handler.inputTextfield.inputView = handler.keyboardView
