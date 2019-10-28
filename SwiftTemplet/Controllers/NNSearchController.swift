@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 import IQKeyboardManagerSwift
 
-class NNSearchController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, UISearchBarDelegate {
+class NNSearchController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,23 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
+    // MARK: -lazy
+    lazy var searchResultVC: NNSearchResultController = {
+        let controller = NNSearchResultController()
+        return controller;
+    }()
+  
+    lazy var searchVC: UISearchController = {
+        let controller = self.createSearchVC(self.searchResultVC)
+        
+//        controller.searchBar.delegate = self;
+        controller.delegate = self;
+        return controller
+    }()
+}
+
+extension NNSearchController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3;
     }
@@ -44,7 +61,9 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DDLog(indexPath.row)
     }
-    
+}
+
+extension NNSearchController: UISearchControllerDelegate {
     // MARK: -UISearchController
     func willPresentSearchController(_ searchController: UISearchController){
 
@@ -64,22 +83,7 @@ class NNSearchController: UIViewController, UITableViewDelegate, UITableViewData
     func presentSearchController(_ searchController: UISearchController){
         
     }
-    
-    // MARK: -lazy
-    lazy var searchResultVC: NNSearchResultController = {
-        let controller = NNSearchResultController()
-        return controller;
-    }()
-  
-    lazy var searchVC: UISearchController = {
-        let controller = self.createSearchVC(self.searchResultVC)
-        
-//        controller.searchBar.delegate = self;
-        controller.delegate = self;
-        return controller
-    }()
 }
-
 
 extension UIViewController{
     

@@ -10,7 +10,7 @@ import UIKit
 
 import SwiftExpand
 
-class UICollectionDispalyController: UIViewController ,UICollectionViewDataSource, UICollectionViewDelegate{
+class UICollectionDispalyController: UIViewController{
 //    var collectionView : UICollectionView?
     let Identifier       = "UICTViewCellZero"
     let headerIdentifier = "UICTReusableViewZeroHeader"
@@ -67,58 +67,7 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
         super.viewDidLayoutSubviews()
         
     }
-    
-    //MARK: --UICollectionView
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.row % 2 == 0 {
-            let cell = UICTViewCellOne.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
-            cell.imgView.backgroundColor = armColor()
-            cell.label.text = String(format:"%ditem",indexPath.row)
-            return cell
-        }
-        let cell = UICTViewCellZero.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellZero        
-        cell.imgView.backgroundColor = armColor()
-        cell.label.text = String(format:"%ditem",indexPath.row)
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      print(indexPath.row)
-    }
-    
-    //设定header和footer的方法，根据kind不同进行不同的判断即可
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let view = UICTReusableViewOne.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewOne
-            view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
-            view.textLabelRight.text = "999+"
-            return view;
-        }
-        
-        let view = UICTReusableViewZero.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewZero
-        view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
-        return view;
-        
-    }
-    
-    //MARK: -other
-    func armColor()->UIColor{
-        let red = CGFloat(arc4random()%256)/255.0
-        let green = CGFloat(arc4random()%256)/255.0
-        let blue = CGFloat(arc4random()%256)/255.0
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -159,3 +108,46 @@ class UICollectionDispalyController: UIViewController ,UICollectionViewDataSourc
 //    }()
 }
 
+extension UICollectionDispalyController: UICollectionViewDataSource, UICollectionViewDelegate{
+    //MARK: --UICollectionView
+   func numberOfSections(in collectionView: UICollectionView) -> Int {
+       return 1
+   }
+
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return 12
+   }
+
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       
+       if indexPath.row % 2 == 0 {
+           let cell = UICTViewCellOne.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
+        cell.imgView.backgroundColor = .random
+           cell.label.text = String(format:"%ditem",indexPath.row)
+           return cell
+       }
+       let cell = UICTViewCellZero.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellZero
+       cell.imgView.backgroundColor = .random
+       cell.label.text = String(format:"%ditem",indexPath.row)
+       return cell
+   }
+
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     print(indexPath.row)
+   }
+   
+   //设定header和footer的方法，根据kind不同进行不同的判断即可
+   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+       if kind == UICollectionView.elementKindSectionHeader {
+           let view = UICTReusableViewOne.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewOne
+           view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
+           view.textLabelRight.text = "999+"
+           return view;
+       }
+       
+       let view = UICTReusableViewZero.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewZero
+       view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
+       return view;
+       
+   }
+}

@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 
-class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class MainViewController: UIViewController {
     
 //    var dataList : NSMutableArray = [];
     
@@ -63,25 +63,35 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         navigationController?.pushViewController(controller, animated: true);
     }
     
-//   @objc func handActionBtn(sender:UIButton) -> Void{
-//        DDLog("__%@",sender.titleLabel?.text as Any);
-//
-//
-//    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-//    MARK: - tableView
+    //MARK: - layz
+//    lazy var tableView: UITableView = {
+//        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+//        table.dataSource = self;
+//        table.delegate = self;
+//
+//        return table;
+//    }();
+    
+}
+
+extension MainViewController: UITableViewDataSource, UITableViewDelegate{
+
+    //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count;
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arraySection : NSArray = dataList[section] as! NSArray;
+        let arraySection: NSArray = dataList[section] as! NSArray;
         return arraySection.count;
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 60;
     };
     
@@ -122,7 +132,6 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         label.backgroundColor = .green;
         label.text = "header\(section)";
         return label;
-        
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -136,19 +145,5 @@ class MainViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         label.text = "footer\(section)";
         return label;
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - layz
-//    lazy var tableView: UITableView = {
-//        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-//        table.dataSource = self;
-//        table.delegate = self;
-//
-//        return table;
-//    }();
     
 }

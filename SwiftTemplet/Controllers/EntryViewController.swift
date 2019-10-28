@@ -214,7 +214,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellSegment.cellWithTableView(tableView) as! UITableViewCellSegment
             cell.labelLeft.text = value0
             cell.segmentCtl.itemList = (itemList.last as! [String])
-            cell.segmentCtl.addActionHandler({ (sender:UIControl) in
+            cell.segmentCtl.addActionHandler({ (sender: UIControl) in
                 if let control = sender as? UISegmentedControl {
                     DDLog(control.selectedSegmentIndex)
                 }
@@ -284,7 +284,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellSlider.cellWithTableView(tableView) as! UITableViewCellSlider
             cell.labelLeft.text = value0
             cell.sliderCtl.value = 50
-            cell.sliderCtl.addActionHandler({ (sender:UIControl) in
+            cell.sliderCtl.addActionHandler({ (sender: UIControl) in
                 if let control = sender as? UISlider {
                     DDLog(control.value)
                 }
@@ -299,7 +299,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
 //            cell.layoutType = 1
-            cell.switchCtl.addActionHandler({ (sender:UIControl) in
+            cell.switchCtl.addActionHandler({ (sender: UIControl) in
                 if let control = sender as? UISwitch {
                     DDLog(control.isOn)
                 }

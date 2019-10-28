@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 import SDWebImage
 
-class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class FirstViewController: UIViewController {
 
     var imgList = ["https://www.huizhubang.com/attachment/rotation/9.jpg",
         "https://www.huizhubang.com/attachment/rotation/8.jpg",
@@ -23,7 +23,6 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //        title = NSStringFromSelector(#function);
         createBarItem( .done, isLeft: false) {[weak self] (obj:AnyObject?) in
             self!.goController("IOPAuthRechargeController", obj: "1234" as AnyObject, objOne: nil)
-            
         }
         view.addSubview(tbView);
         
@@ -58,8 +57,25 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         tbView.frame = view.bounds
     }
+        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    //    MARK: - tableView
+    //MARK: - layz
+    //    lazy var tableView: UITableView = {
+    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+    //        table.dataSource = self;
+    //        table.delegate = self;
+    //
+    //        return table;
+    //    }();
+    
+}
+
+extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
+     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count;
         
@@ -234,21 +250,5 @@ class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDel
         label.text = "footer\(section)";
         return label;
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - layz
-    //    lazy var tableView: UITableView = {
-    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-    //        table.dataSource = self;
-    //        table.delegate = self;
-    //
-    //        return table;
-    //    }();
-    
+        
 }
-

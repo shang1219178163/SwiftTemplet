@@ -81,7 +81,7 @@ class NNSegmentViewZero: UIView {
     //MARK: -lazy
     lazy var segmentCtl: UISegmentedControl = {
         var view = UIView.createSegment( .zero, items: ["item0","item1","item2"], selectedIdx: 0, type: 2);
-        view.addActionHandler({ (sender:UIControl) in
+        view.addActionHandler({ (sender: UIControl) in
             
             if let control = sender as? UISegmentedControl {
 //                print(control.selectedSegmentIndex)
