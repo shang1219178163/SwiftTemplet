@@ -57,7 +57,7 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Surge (2.2.0)
-  - SwiftExpand (1.8.4.1)
+  - SwiftExpand (1.8.4.4)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -153,12 +153,12 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 51fbaf8020dc2bc6416c07ed540f21536ba5a98b
-  SwiftExpand: 0ce341ec1aee7fe219ff65f8f8d5e84023285595
+  SwiftExpand: 9c29e893c21f47f5d9831d8f03f7811c113eeaab
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 1cc28065bd899c64f0c900ba8940871dc7c52a24
+PODFILE CHECKSUM: b8161c529e2918afbcd78be6e2daef20e3744b90
 
 COCOAPODS: 1.8.4

@@ -8,12 +8,8 @@
 
 import UIKit
 import Foundation
-
 import SwiftExpand
-
 import Kingfisher
-
-import Alamofire
 import IQKeyboardManagerSwift
 
 
@@ -105,7 +101,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
         
 //        DDLog(Bundle.main.infoDictionary)
-
+        
+        
+        let now = NSDate()
+        let isValid = NSDate().hour > 7 || NSDate().hour > 23
+        DDLog(now.year, now.month, now.day, now.hour, now.minute, now.second, isValid)
         return true
     }
 

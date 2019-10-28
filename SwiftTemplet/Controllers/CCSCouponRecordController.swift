@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class CCSCouponRecordController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,13 +17,57 @@ class CCSCouponRecordController: UIViewController, UITableViewDataSource, UITabl
         // Do any additional setup after loading the view.
         view.addSubview(tableView)
         
-        createBtnBarItem("Next") { (reco, view, idx) in
+        _ = createBtnBarItem("Next") { (reco, view, idx) in
             self.phoneView.show();
         }
-        
     }
+       
+    // MARK: -callPhoneViewDelegate
+    func callPhoneView(_ view: UICallPhoneView, idx: Int) {
+        DDLog(idx)
+    }
+ 
+    //MARK: -lazy
+    @objc lazy var tableView: UITableView = {
+        var table = UIView.createTableView(self.view.bounds, style: .grouped, rowHeight: 80)
+        table.dataSource = self
+        table.delegate = self
+        return table
+    }()
     
+    lazy var list: NSMutableArray = {
+        let list = NSMutableArray()
+        list.addObjects(from: ["1", "2", "3", "4", "5", "6", "7"])
+        return list;
+    }()
     
+    lazy var phoneView: UICallPhoneView = {
+        let view = UICallPhoneView(frame: .zero)
+        view.delegate = self;
+        return view;
+    }()
+    
+//    lazy var talkbackBtn: UIButton = {
+//        let view = UIButton(type: .custom)
+//        view.frame = CGRectMake(0, 0, 70, 70)
+//        view.setTitleColor(UIColorHexValue(0x39C179), for: .normal)
+//        view.setTitle("00:00", for: .normal)
+//        view.setImage(UIImage(named: "icon_phone_green"), for: .normal)
+//        view.backgroundColor = UIColorHexValue(0xdddddd)
+//        view.adjustsImageWhenHighlighted = false;
+//        view.layer.cornerRadius = 3.5;
+//        view.layer.masksToBounds = true;
+//        view.layoutButton(style: 0)
+//        view.addActionHandler({ (control) in
+//            //            UIView.GCDTimerAdd((control as! UIButton).titleLabel, date: NSDate())
+//            self.phoneView.show();
+//
+//        })
+//        return view
+//    }()
+}
+
+extension CCSCouponRecordController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
@@ -91,46 +135,4 @@ class CCSCouponRecordController: UIViewController, UITableViewDataSource, UITabl
     @objc func handleActionSender(_ sender: UIButton) {
 
     }
-
-    //MARK: -lazy
-    @objc lazy var tableView: UITableView = {
-        var table = UIView.createTableView(self.view.bounds, style: .grouped, rowHeight: 80)
-        table.dataSource = self
-        table.delegate = self
-        return table
-    }()
-    
-    lazy var list: NSMutableArray = {
-        let list = NSMutableArray()
-        list.addObjects(from: ["1", "2", "3", "4", "5", "6", "7"])
-        return list;
-    }()
-    
-    lazy var talkbackBtn: UIButton = {
-        let view = UIButton(type: .custom)
-        view.frame = CGRectMake(0, 0, 70, 70)
-        view.setTitleColor(UIColorHexValue(0x39C179), for: .normal)
-        view.setTitle("00:00", for: .normal)
-        view.setImage(UIImage(named: "icon_phone_green"), for: .normal)
-        view.backgroundColor = UIColorHexValue(0xdddddd)
-        view.adjustsImageWhenHighlighted = false;
-        view.layer.cornerRadius = 3.5;
-        view.layer.masksToBounds = true;
-        view.layoutButton(style: 0)
-        view.addActionHandler({ (control) in
-            //            UIView.GCDTimerAdd((control as! UIButton).titleLabel, date: NSDate())
-            self.phoneView.show();
-            
-        })
-        return view
-    }()
-    
-    lazy var phoneView: UICallPhoneView = {
-        let view = UICallPhoneView(frame: .zero)
-        view.block({ (phoneView, idx) in
-            DDLog(idx);
-        })
-        return view;
-    }()
 }
-

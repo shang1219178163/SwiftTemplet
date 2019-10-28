@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 import SDWebImage
 
-class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class EntryViewController: UIViewController {
     deinit {
         DDLog(1111)
     }
@@ -45,6 +45,126 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
 //        tbView.frame = view.bounds
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+        //MARK: -func
+    func titleViewTap() {
+        textField.text = "闭包的回调方法"
+        
+        let _ = textField.addGestureTap { (recognizer) in
+            UIApplication.shared.keyWindow?.endEditing(true)
+            UIApplication.shared.keyWindow?.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
+            
+            if let view = recognizer.view as? UITextField {
+                UIView.animate(withDuration: 0.5, animations: {
+                    view.rightView?.transform = (view.rightView?.transform.rotated(by:  CGFloat(Double.pi)))!
+                    
+                }, completion: nil)
+            }
+        }
+        navigationItem.titleView = textField
+    }
+    
+    lazy var textField: UITextField = {
+        var view = UITextField(frame: .zero);
+        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.textAlignment = .left;
+        view.contentVerticalAlignment = .center;
+        view.autocapitalizationType = .none;
+        view.autocorrectionType = .no;
+        view.clearButtonMode = .whileEditing;
+        view.backgroundColor = .clear;
+        view.returnKeyType = .done
+        
+        view.textColor = .white
+        view.textAlignment = .center;
+        view.asoryView(true, unitName: kIMG_arrowDown);
+        return view
+    }()
+    
+    //MARK: -lazy
+    lazy var alertCtrl: UIAlertController = {
+        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
+            DDLog("完成取消")
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.textField.rightView?.transform = .identity
+                
+            }, completion: nil)
+            
+        })
+        return alertController
+    }()
+    
+    //MARK: -Lazy Property
+    lazy var allList: [[[String]]] = {
+        var array: [[[String]]] = [
+            [["卡数量  ", "1", "60.0", "", "cardName", ],
+             ["充值数量", "105", "60.0", "", "validEndTime", ],
+             ["结束时间", "102", "60.0", "", "balance", ],
+             ["应付金额", "106", "60.0", "", "recharge",  "  元    "],
+             ],
+            [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
+             ["卡类型  ", "1", "60.0", "", "cardName", ],
+             ["结束日期", "102", "60.0", "", "validEndTime",],
+             ["充值时长", "106", "60.0", "", "balance", "  小时"],
+             ["缴费金额", "106", "60.0", "", "recharge", "  元    "],
+             ]
+        ]
+        return array
+    }()
+    
+    lazy var list:[[Any]] = {
+//        return self.allList.first!;
+        var array: [[Any]] = [
+            ["起止时间:", "108", "60.0", "", "recharge", ],
+            ["商品名称:", "1", "60.0", "", "cardName", ],
+            ["*商品数量:", "105", "60.0", "", "validEndTime", ],
+            ["*上架时间:", "102", "60.0", "", "balance", ],
+            ["商品价格:", "106", "60.0", "", "recharge",  "  元    "],
+            ["商品种类:", "104", "60.0", "", "recharge",  ["一代","二代","三代",],],
+            ["库存周期:", "109", "60.0", "", "recharge", ],
+            ["继续生产:", "110", "60.0", "", "recharge",  ["生产","不生产",],],
+            ["品牌列表:", "111", "60.0", "", "recharge", ],
+            ["生产厂家:", "112", "60.0", "", "recharge", ],
+            ["验 证 码:", "116", "60.0", "", "recharge", ],
+            ["*备注信息:", "107", "160.0", "", "recharge", ],
+            ["*default:", "150", "60.0", "", "recharge", ],
+//            ["*图片选择:", "115", "", "", "recharge", ],
+
+             ]
+        return array
+    }()
+    
+ 
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+        view.label.text = ""
+        view.label.textAlignment = .center
+        view.btn.setTitle("提交", for: .normal)
+        view.btn.addActionHandler({[weak self] (sender:UIControl) in
+            let obj = sender as! UIButton
+            DDLog(obj.tag)
+            
+            }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var suspendBtn: NNSuspendButton = {
+          var view = NNSuspendButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+          view.insets = UIEdgeInsets(top: 40, left: 0, bottom: 80, right: 0)
+//          view.parController = self
+          view.addActionHandler({ (sender) in
+              DDLog(sender.center)
+          }, for: .touchUpInside)
+          return view
+      }()
+}
+
+extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -268,126 +388,9 @@ class EntryViewController: UIViewController,UITableViewDataSource,UITableViewDel
         //        label.text = "header\(section)";
         return label;
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-        //MARK: -func
-    func titleViewTap() {
-        textField.text = "闭包的回调方法"
         
-        let _ = textField.addGestureTap { (recognizer) in
-            UIApplication.shared.keyWindow?.endEditing(true)
-            UIApplication.shared.keyWindow?.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
-            
-            if let view = recognizer.view as? UITextField {
-                UIView.animate(withDuration: 0.5, animations: {
-                    view.rightView?.transform = (view.rightView?.transform.rotated(by:  CGFloat(Double.pi)))!
-                    
-                }, completion: nil)
-            }
-        }
-        navigationItem.titleView = textField
-    }
-    
-    lazy var textField: UITextField = {
-        var view = UITextField(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
-        view.textAlignment = .left;
-        view.contentVerticalAlignment = .center;
-        view.autocapitalizationType = .none;
-        view.autocorrectionType = .no;
-        view.clearButtonMode = .whileEditing;
-        view.backgroundColor = .clear;
-        view.returnKeyType = .done
-        
-        view.textColor = .white
-        view.textAlignment = .center;
-        view.asoryView(true, unitName: kIMG_arrowDown);
-        return view
-    }()
-    
-    //MARK: -lazy
-    lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
-            DDLog("完成取消")
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                self.textField.rightView?.transform = .identity
-                
-            }, completion: nil)
-            
-        })
-        return alertController
-    }()
-    
-    //MARK: -Lazy Property
-    lazy var allList: [[[String]]] = {
-        var array: [[[String]]] = [
-            [["卡数量  ", "1", "60.0", "", "cardName", ],
-             ["充值数量", "105", "60.0", "", "validEndTime", ],
-             ["结束时间", "102", "60.0", "", "balance", ],
-             ["应付金额", "106", "60.0", "", "recharge",  "  元    "],
-             ],
-            [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
-             ["卡类型  ", "1", "60.0", "", "cardName", ],
-             ["结束日期", "102", "60.0", "", "validEndTime",],
-             ["充值时长", "106", "60.0", "", "balance", "  小时"],
-             ["缴费金额", "106", "60.0", "", "recharge", "  元    "],
-             ]
-        ]
-        return array
-    }()
-    
-    lazy var list:[[Any]] = {
-//        return self.allList.first!;
-        var array: [[Any]] = [
-            ["起止时间:", "108", "60.0", "", "recharge", ],
-            ["商品名称:", "1", "60.0", "", "cardName", ],
-            ["*商品数量:", "105", "60.0", "", "validEndTime", ],
-            ["*上架时间:", "102", "60.0", "", "balance", ],
-            ["商品价格:", "106", "60.0", "", "recharge",  "  元    "],
-            ["商品种类:", "104", "60.0", "", "recharge",  ["一代","二代","三代",],],
-            ["库存周期:", "109", "60.0", "", "recharge", ],
-            ["继续生产:", "110", "60.0", "", "recharge",  ["生产","不生产",],],
-            ["品牌列表:", "111", "60.0", "", "recharge", ],
-            ["生产厂家:", "112", "60.0", "", "recharge", ],
-            ["验 证 码:", "116", "60.0", "", "recharge", ],
-            ["*备注信息:", "107", "160.0", "", "recharge", ],
-            ["*default:", "150", "60.0", "", "recharge", ],
-//            ["*图片选择:", "115", "", "", "recharge", ],
-
-             ]
-        return array
-    }()
-    
- 
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
-        view.label.text = ""
-        view.label.textAlignment = .center
-        view.btn.setTitle("提交", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
-            
-            }, for: .touchUpInside)
-        return view
-    }()
-    
-    lazy var suspendBtn: NNSuspendBtn = {
-        var view = NNSuspendBtn(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
-        view.insets = UIEdgeInsets(top: 40, left: 60, bottom: 80, right: 100)
-        view.parController = self
-        view.addActionHandler({ (sender) in
-            DDLog(sender.center)
-        }, for: .touchUpInside)
-        return view
-    }()
 }
+
 
 public extension UITableView{
 

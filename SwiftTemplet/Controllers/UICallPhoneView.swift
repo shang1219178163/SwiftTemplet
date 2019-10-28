@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import AVFoundation
 import SwiftExpand
 import SnapKitExtend
 
+@objc protocol UICallPhoneViewDelegate{
+    func callPhoneView(_ view: UICallPhoneView, idx: Int);
+    
+}
+
 class UICallPhoneView: UIView {
-    
-    typealias ViewClick = (UICallPhoneView, Int) -> Void;
-    var viewBlock: ViewClick?;
-    
+    weak var delegate: UICallPhoneViewDelegate?
+
     var startDate: Date = Date();
     
-    var talkStatus: Int = 0{
+    var talkStatus: Int = 0 {
         willSet{
             viewChange(type: newValue)
            
@@ -69,11 +73,10 @@ class UICallPhoneView: UIView {
         }
         
         labOne.sizeToFit()
-        DDLog(labOne.frame)
+//        DDLog(labOne.frame)
         labOne.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(182);
             make.centerX.equalToSuperview();
-            make.height.equalTo(labOne.frame.size.height);
         }
         
         labTwo.snp.makeConstraints { (make) in
@@ -101,7 +104,7 @@ class UICallPhoneView: UIView {
 
             btnSure.isHidden = true;
             self.btnCancel.snp.remakeConstraints { (make) in
-                make.left.equalToSuperview().offset((self.sizeWidth-self.btnCancel.sizeWidth)*0.5);
+                make.centerX.equalToSuperview();
                 make.bottom.equalToSuperview().offset(-135);
             }
             // 更新动画
@@ -116,6 +119,7 @@ class UICallPhoneView: UIView {
             btnSure.isHidden = false;
             
             let list = [btnCancel, btnSure]
+            list.snp.removeConstraints()
             list.snp.distributeViewsAlong(axisType: .horizontal, fixedItemLength: 60, leadSpacing: 80, tailSpacing: 80);
             list.snp.makeConstraints { (make) in
                 make.bottom.equalToSuperview().offset(-135);
@@ -124,15 +128,8 @@ class UICallPhoneView: UIView {
         }
     }
     
-    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        talkStatus = 0;
-
-    }
-    
-    override func removeFromSuperview() {
-        super.removeFromSuperview()
         talkStatus = 0;
 
     }
@@ -140,17 +137,17 @@ class UICallPhoneView: UIView {
     //MRAK: - funtion
     
     func show() {
-        let keyWindow = UIApplication.shared.keyWindow;
-        if keyWindow?.subviews.contains(self) == false {
-            keyWindow?.addSubview(self);
+        guard let app = UIApplication.shared.delegate as? AppDelegate, let keyWindow = app.window else { return }
+        if keyWindow.subviews.contains(self) == false {
+            keyWindow.addSubview(self);
         } else {
-            self.isHidden = false;
+          self.isHidden = false;
         }
         
 //        transform = transform.scaledBy(x: 0.01, y: 0.01)
         UIView.animate(withDuration: 0.15, animations: {
 //            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
-//            self.transform = CGAffineTransform.identity;
+            self.transform = .identity;
             self.frame = UIScreen.main.bounds;
             self.talkbackBtn.isHidden = true;
 
@@ -159,10 +156,21 @@ class UICallPhoneView: UIView {
         }
     }
     
-    func dismiss(_ needRemove: Bool = true) {
-        self.superview?.addSubview(self.talkbackBtn)
-        self.talkbackBtn.isHidden = false;
-        self.superview?.bringSubviewToFront(self.talkbackBtn);
+    func dismiss() {
+        UIView.animate(withDuration: 0.15, animations: {
+            self.transform = self.transform.scaledBy(x: 0.01, y: 0.01)
+
+        }) { (isFinished) in
+            if isFinished == true {
+                self.removeFromSuperview()
+            }
+        }
+    }
+    
+    func smallToButton() {
+        superview?.addSubview(talkbackBtn)
+        talkbackBtn.isHidden = false;
+        superview?.bringSubviewToFront(talkbackBtn);
 
         UIView.animate(withDuration: 0.15, animations: {
 //            self.backgroundColor = UIColor.black.withAlphaComponent(0);
@@ -173,20 +181,22 @@ class UICallPhoneView: UIView {
             self.frame = self.talkbackBtn.frame;
 
         }) { (isFinished) in
-            if needRemove == true {
-                self.removeFromSuperview();
-            } else {
-                self.isHidden = true;
-            }
+            if isFinished == true {
+               self.isHidden = true;
+           }
         }
     }
     
-    lazy var talkbackBtn: UIButton = {
-        let view = UIButton(type: .custom)
-        view.frame = CGRectMake(20, 110, 70, 70)
+    lazy var talkbackBtn: NNSuspendButton = {
+//        let view = UIButton(type: .custom)
+//        view.frame = CGRectMake(20, 110, 70, 70)
+        
+        let view = NNSuspendButton(frame: CGRectMake(20, 110, 70, 70))
+        
         view.setTitleColor(UIColorHexValue(0x39C179), for: .normal)
         view.setTitle("00:00", for: .normal)
         view.setImage(UIImage(named: "icon_phone_green"), for: .normal)
+        view.setBackgroundImage(UIImage(), for: .normal)
         view.backgroundColor = UIColorHexValue(0xdddddd)
         view.adjustsImageWhenHighlighted = false;
         view.layer.cornerRadius = 3.5;
@@ -200,10 +210,8 @@ class UICallPhoneView: UIView {
     }()
     
     @objc func handleActionControl(_ sender: UIButton) {
-        if self.viewBlock != nil {
-            self.viewBlock!(self, sender.tag)
-        }
-        
+        delegate?.callPhoneView(self, idx: sender.tag);
+
         switch sender.tag {
         case 0:
             DDLog("取消")
@@ -218,28 +226,17 @@ class UICallPhoneView: UIView {
             let image = sender.isSelected == true ? UIImage(named: "icon_phone_soundoff") : UIImage(named: "icon_phone_soundon")
             sender.setImage(image, for: .normal)
             
-            if sender.isSelected == true {
-                DDLog("静音")
+            AVAudioSession.appAVAudioVolume(sender.isSelected)
 
-            } else {
-                DDLog("不静音")
-
-            }
-            
         case 3:
             DDLog("缩小")
-            self.dismiss(false);
+            self.smallToButton();
 
         default:
             break;
         }
     }
-    
-    
-    func block(_ action:@escaping ViewClick) {
-        self.viewBlock = action;
-    }
-    
+        
     // MARK: -lazy
     lazy var labOne: UILabel = {
         let lab = UILabel()

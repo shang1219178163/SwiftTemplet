@@ -1,11 +1,9 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '9.0'
+platform :ios, '9.0'
+use_frameworks!
 
-target 'SwiftTemplet' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+def common_pods
 
-  # Pods for SwiftTemplet
 #  pod 'AImage'
     pod 'Alamofire'
     pod 'AlamofireImage'
@@ -76,4 +74,9 @@ target 'SwiftTemplet' do
 #    pod "Koloda" #探探主页效果
 
     
+end
+
+
+target 'SwiftTemplet' do
+    common_pods
 end
