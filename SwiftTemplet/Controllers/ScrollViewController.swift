@@ -36,7 +36,9 @@ class ScrollViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.title = (self.obj as! String);
+        if let obj = self.obj as? String {
+            self.title = obj;
+        }
     }
     
     // MARK: -lazy

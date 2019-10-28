@@ -10,10 +10,8 @@ import UIKit
 
 import SwiftExpand
 
-class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
-        
-    var pickerView:UIPickerView!
-    
+class PickerViewController: UIViewController {
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,23 +48,15 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     
     func setupPickerView() {
         // 创建UIPickerView控件
-        pickerView = UIPickerView()
-        
         DDLog(pickerView.frame)
-        
-        let ration: CGFloat = kScreenWidth/320.0*216
-        pickerView.frame = CGRectMake(0, kY_GAP, kScreenWidth, ration)
         //        view.addSubview(pickerView)
-        
-        // 设置代理和数据源
-        pickerView.delegate = self;
-        pickerView.dataSource = self
-        
         // 设置选择框的默认值
         pickerView.selectRow(1, inComponent: 0, animated: true)
         pickerView.selectRow(2, inComponent: 1, animated: true)
         pickerView.selectRow(3, inComponent: 2, animated: true)
     }
+    
+    // MARK: - lazy
     
     lazy var btn: UIButton = {
         let view = UIButton(frame: CGRectMake(0,0,100,30))
@@ -75,9 +65,6 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         view.setTitle("获取信息", for: .normal)
         
         view.addActionHandler({ (control) in
-            if self.pickerView != nil {
-                return
-            }
             print("被选中的索引为：\(self.pickerView.selectedRow(inComponent: 0))、\(self.pickerView.selectedRow(inComponent: 1))、\(self.pickerView.selectedRow(inComponent: 2))")
             view.transform = view.transform.translatedBy(x: 0, y: -20)
 
@@ -86,28 +73,15 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
         return view
     }()
     
-    // MARK: UIPickerViewDataSource
-    /**
-     设置选择框的列数
-     */
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
-    }
-    
-    /**
-     设置选择框的行数
-     */
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 9
-    }
-    
-    // MARK:UIPickerViewDelegate
-    /**
-     设置选择框各选项的内容
-     */
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(component) + "-" + String(row)
-    }
+   
+    lazy var pickerView: UIPickerView = {
+         let view = UIPickerView();
+         view.frame = CGRectMake(0, kY_GAP, kScreenWidth, kScreenWidth*kRatioIDCard)
+         
+        view.delegate = self;
+         view.dataSource = self
+         return view;
+     }()
     
     /// itemsView
     lazy var itemView: NNItemsView = {
@@ -118,7 +92,6 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
             list.append("\(i)")
         }
         view.items = list
-        
         
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
@@ -140,7 +113,7 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     ///
     lazy var customPickerView: NNPickerView = {
         var view = NNPickerView(frame: .zero)
-        view.pickerView.delegate = self;
+        view.pickerView.delegate = self
         view.pickerView.dataSource = self
         view.block({ (pickerView, tag) in
             DDLog(tag)
@@ -228,3 +201,19 @@ class PickerViewController: UIViewController , UIPickerViewDelegate, UIPickerVie
     }()
 }
 
+extension PickerViewController: UIPickerViewDataSource, UIPickerViewDelegate{
+    
+    // MARK: UIPickerViewDataSource
+   func numberOfComponents(in pickerView: UIPickerView) -> Int {
+       return 3
+   }
+ 
+   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return 9
+   }
+   
+   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       return String(component) + "-" + String(row)
+   }
+       
+}

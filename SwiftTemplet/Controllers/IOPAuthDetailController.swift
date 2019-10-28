@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 import SDWebImage
 
-class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class IOPAuthDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,56 @@ class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableVie
         
         tbView.frame = view.bounds
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    lazy var list: [[[String]]] = {
+        var array: [[[String]]] = [[["车牌号码:", "3", "60.0", "", "cardName", "0",],
+                                    
+                                     ],
+                                   [["授权类型:", "3", "60.0", "", "cardName", "0",],
+                                    ["当前剩余:", "3", "60.0", "", "validEndTime", "0",],
+                                    ["生效时间:", "3", "60.0", "", "balance", "0",],
+                                    ["过期时间:", "3", "60.0", "", "recharge", "0", ],
+                                    ["标        签:", "3", "60.0", "", "recharge", "0",],
+
+                                    ],
+                                   [["车主姓名:", "3", "60.0", "", "cardName", "0",],
+                                    ["联系电话:", "3", "60.0", "", "validEndTime", "0",],
+                                    ["车主地址:", "3", "60.0", "", "balance", "0", ],
+                                    ["车位编码:", "3", "60.0", "", "recharge", "0", ],
+                                    ["备        注:", "3", "60.0", "", "recharge", "0",],
+
+                                    ],
+                                   [["创建时间:", "3", "60.0", "", "cardName", "0",],
+                                    ["更新时间:", "3", "60.0", "", "validEndTime", "0",],
+                                    ["操作员:", "3", "60.0", "", "balance", "0",],
+                                    
+                                    ],
+                                    ]
+        return array
+    }()
+    
+    //MARK: -Lazy Property
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+        view.label.text = "更多详细信息,请登录网页端"
+        view.label.textAlignment = .center
+        view.btn.setTitle("充值", for: .normal)
+        view.btn.addActionHandler({[weak self] (sender:UIControl) in
+            let obj = sender as! UIButton
+            DDLog(obj.tag)
+            
+            }, for: .touchUpInside)
+        return view
+    }()
+    
+}
+
+extension IOPAuthDetailController: UITableViewDataSource, UITableViewDelegate {
     
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -100,52 +150,5 @@ class IOPAuthDetailController: UIViewController,UITableViewDataSource,UITableVie
 //        label.text = "header\(section)";
         return label;
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [[["车牌号码:", "3", "60.0", "", "cardName", "0",],
-                                    
-                                     ],
-                                   [["授权类型:", "3", "60.0", "", "cardName", "0",],
-                                    ["当前剩余:", "3", "60.0", "", "validEndTime", "0",],
-                                    ["生效时间:", "3", "60.0", "", "balance", "0",],
-                                    ["过期时间:", "3", "60.0", "", "recharge", "0", ],
-                                    ["标        签:", "3", "60.0", "", "recharge", "0",],
-
-                                    ],
-                                   [["车主姓名:", "3", "60.0", "", "cardName", "0",],
-                                    ["联系电话:", "3", "60.0", "", "validEndTime", "0",],
-                                    ["车主地址:", "3", "60.0", "", "balance", "0", ],
-                                    ["车位编码:", "3", "60.0", "", "recharge", "0", ],
-                                    ["备        注:", "3", "60.0", "", "recharge", "0",],
-
-                                    ],
-                                   [["创建时间:", "3", "60.0", "", "cardName", "0",],
-                                    ["更新时间:", "3", "60.0", "", "validEndTime", "0",],
-                                    ["操作员:", "3", "60.0", "", "balance", "0",],
-                                    
-                                    ],
-                                    ]
-        return array
-    }()
-    
-    //MARK: -Lazy Property
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
-        view.label.text = "更多详细信息,请登录网页端"
-        view.label.textAlignment = .center
-        view.btn.setTitle("充值", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
-            
-            }, for: .touchUpInside)
-        return view
-    }()
     
 }

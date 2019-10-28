@@ -59,9 +59,7 @@ class AppIconChangeController: UIViewController {
 
             }
         })
-        
-    
-        
+                
         return view
     }()
 }

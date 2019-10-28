@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class NNSearchResultController: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchControllerDelegate, UISearchBarDelegate {
+class NNSearchResultController: UIViewController, UITableViewDataSource, UITableViewDelegate,  UISearchControllerDelegate, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()

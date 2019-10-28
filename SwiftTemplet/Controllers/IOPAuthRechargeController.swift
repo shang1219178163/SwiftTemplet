@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 import SDWebImage
 
-class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class IOPAuthRechargeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +45,50 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
         
         tbView.frame = view.bounds
     }
+        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    //    MARK: - tableView
+    lazy var allList: [[[String]]] = {
+        var array: [[[String]]] = [
+                                    [["卡数量  ", "1", "60.0", "", "cardName", "0",],
+                                    ["充值数量", "105", "60.0", "", "validEndTime", "0",],
+                                    ["结束时间", "102", "60.0", "", "balance", "0",],
+                                    ["应付金额", "106", "60.0", "", "recharge", "0", "  元    "],
+                                    ],
+                                    [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
+                                     ["卡类型  ", "1", "60.0", "", "cardName", "0",],
+                                     ["结束日期", "102", "60.0", "", "validEndTime", "0",],
+                                     ["充值时长", "106", "60.0", "", "balance", "0", "  小时"],
+                                     ["缴费金额", "106", "60.0", "", "recharge", "0", "  元    "],
+                                     ]
+                                    ]
+        return array
+    }()
+    
+    lazy var list:[[String]] = {
+        return self.allList.first!;
+    }()
+    
+    //MARK: -Lazy Property
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+        view.label.text = ""
+        view.label.textAlignment = .center
+        view.btn.setTitle("提交", for: .normal)
+        view.btn.addActionHandler({[weak self] (sender:UIControl) in
+            let obj = sender as! UIButton
+            DDLog(obj.tag)
+            
+            }, for: .touchUpInside)
+        return view
+    }()
+}
+
+extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate {
+     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -148,45 +190,4 @@ class IOPAuthRechargeController: UIViewController,UITableViewDataSource,UITableV
 //        label.text = "header\(section)";
         return label;
     }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    lazy var allList: [[[String]]] = {
-        var array: [[[String]]] = [
-                                    [["卡数量  ", "1", "60.0", "", "cardName", "0",],
-                                    ["充值数量", "105", "60.0", "", "validEndTime", "0",],
-                                    ["结束时间", "102", "60.0", "", "balance", "0",],
-                                    ["应付金额", "106", "60.0", "", "recharge", "0", "  元    "],
-                                    ],
-                                    [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
-                                     ["卡类型  ", "1", "60.0", "", "cardName", "0",],
-                                     ["结束日期", "102", "60.0", "", "validEndTime", "0",],
-                                     ["充值时长", "106", "60.0", "", "balance", "0", "  小时"],
-                                     ["缴费金额", "106", "60.0", "", "recharge", "0", "  元    "],
-                                     ]
-                                    ]
-        return array
-    }()
-    
-    lazy var list:[[String]] = {
-        return self.allList.first!;
-    }()
-    
-    //MARK: -Lazy Property
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
-        view.label.text = ""
-        view.label.textAlignment = .center
-        view.btn.setTitle("提交", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
-            
-            }, for: .touchUpInside)
-        return view
-    }()
 }

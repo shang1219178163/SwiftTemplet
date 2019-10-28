@@ -14,7 +14,7 @@ import SwiftExpand
 import SDWebImage
 import SnapKit
 
-class TestViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
+class TestViewController: UIViewController{
     let url = "https://httpbin.org/get";
     let kTips_Fleet = "·请选择车场及出\\入口后,开启车队模式\n·该功能需要arm3.5.4.0以上版本支持\n·如有需要请联系运维人员升级"
     
@@ -33,8 +33,64 @@ class TestViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tbView.reloadData()
         
     }
+   
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    //    MARK: - tableView
+    //MARK: -funtions
+    func setupData() {
+        let array = ["分组0","分组1","分组2","分组3","分组4","分组5","分组6","分组7","分组8","分组9"];
+        
+        for i in 0..<array.count{
+            
+            let foldModel = NNFoldSectionModel()
+            foldModel.isOpen = true
+            foldModel.isCanOpen = true
+            foldModel.title = array[i]
+            foldModel.image = "bug.png"
+            foldModel.headerHeight = 60
+            foldModel.footerHeight = 10
+            foldModel.headerColor = .green
+            foldModel.footerColor = .yellow
+            
+            for j in 0...i {
+                let string = foldModel.title + "\(j)"
+                foldModel.dataList.append(string)
+            }
+            dataList.add(foldModel)
+            
+        }
+        tbView.reloadData()
+    }
+    
+    @objc dynamic func handleActionOne() {
+        DDLog(111)
+    }
+    
+    @objc dynamic func handleActionTwo() {
+        DDLog(222)
+    }
+    
+    //MARK: -lazy
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
+        view.label.text = kTips_Fleet;
+        view.label.textAlignment = .center
+        view.btn.addActionHandler({ (sender: UIControl) in
+            let obj = sender as! UIButton
+            
+            DDLog(obj.tag)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+}
+
+extension TestViewController: UITableViewDataSource, UITableViewDelegate{
+
+     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count;
     }
@@ -99,28 +155,6 @@ class TestViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         view.getViewLayer()
         return view
-        
-        //        let containView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
-        //        containView.backgroundColor = UIColor.background
-        //        containView.backgroundColor = foldModel.headerColor
-        //
-        //        let label = UILabel(frame: .zero);
-        //        label.frame = CGRect(x: 10, y: containView.frame.midY - 25/2.0, width: containView.frame.maxX - 20, height: 25)
-        //        label.backgroundColor = foldModel.headerColor;
-        //        label.text = foldModel.title;
-        //
-        //        containView.addSubview(label)
-        
-        //        if [1,2].contains(section) {
-        //            containView.addActionHandler { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
-        //                if foldModel.isCanOpen == true {
-        //                    foldModel.isOpen = !foldModel.isOpen
-        //                    tableView.reloadSections([section], with: .fade)
-        //                }
-        //            }
-        //            return containView;
-        //        }
-        //        return UIView();
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -132,58 +166,5 @@ class TestViewController: UIViewController,UITableViewDataSource,UITableViewDele
 //        let foldModel = dataList[section] as! NNFoldSectionModel
         return tableView.sectionView(viewForSection: section, title: nil, isHeader: false);
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: -funtions
-    func setupData() {
-        let array = ["分组0","分组1","分组2","分组3","分组4","分组5","分组6","分组7","分组8","分组9"];
         
-        for i in 0..<array.count{
-            
-            let foldModel = NNFoldSectionModel()
-            foldModel.isOpen = true
-            foldModel.isCanOpen = true
-            foldModel.title = array[i]
-            foldModel.image = "bug.png"
-            foldModel.headerHeight = 60
-            foldModel.footerHeight = 10
-            foldModel.headerColor = .green
-            foldModel.footerColor = .yellow
-            
-            for j in 0...i {
-                let string = foldModel.title + "\(j)"
-                foldModel.dataList.append(string)
-            }
-            dataList.add(foldModel)
-            
-        }
-        tbView.reloadData()
-    }
-    
-    
-    @objc dynamic func handleActionOne() {
-        DDLog(111)
-    }
-    
-    @objc dynamic func handleActionTwo() {
-        DDLog(222)
-    }
-    
-    //MARK: -lazy
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
-        view.label.text = kTips_Fleet;
-        view.label.textAlignment = .center
-        view.btn.addActionHandler({ (sender:UIControl) in
-            let obj = sender as! UIButton
-            
-            DDLog(obj.tag)
-        }, for: .touchUpInside)
-        return view
-    }()
-    
 }
