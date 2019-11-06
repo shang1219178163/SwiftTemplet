@@ -115,7 +115,7 @@ class ThirdViewController: UIViewController{
              ["TestViewController", "新想法测试", ],
              ["CCSCouponRecordController", "优惠券列表", ],
              ["AppIconChangeController", "App图标更换", ],
-             
+             ["NNFormViewController", "表单视图", ],
              ],
         ]
         return array
