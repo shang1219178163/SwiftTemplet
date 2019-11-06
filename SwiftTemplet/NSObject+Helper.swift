@@ -122,7 +122,6 @@ import SwiftExpand
 import AVFoundation
 extension AVAudioSession{
     
-    
     static func appAVAudioVolume(_ soundoff: Bool) {
         if #available(iOS 10.0, *) {
             let category: AVAudioSession.Category = soundoff == true ? AVAudioSession.Category.record : AVAudioSession.Category.ambient;
@@ -135,5 +134,5 @@ extension AVAudioSession{
         }
     }
     
-    
 }
+

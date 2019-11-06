@@ -24,6 +24,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
             return titleView;
         }();
 
+        
         view.getViewLayer()
     }
     

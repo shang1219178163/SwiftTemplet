@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */; };
+		1401AB202372B2C9003F1114 /* NNFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401AB1F2372B2C9003F1114 /* NNFormView.swift */; };
+		1401AB222372B5CC003F1114 /* NNFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401AB212372B5CC003F1114 /* NNFormViewController.swift */; };
 		1401BE912277D6D20078A722 /* NNAPIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401BE902277D6D20078A722 /* NNAPIConfig.swift */; };
 		1401BE932277D6E20078A722 /* NNPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401BE922277D6E20078A722 /* NNPageModel.swift */; };
 		1401BE952277D6F30078A722 /* NNRequstManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401BE942277D6F30078A722 /* NNRequstManager.swift */; };
@@ -221,6 +223,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1401AB1F2372B2C9003F1114 /* NNFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNFormView.swift; sourceTree = "<group>"; };
+		1401AB212372B5CC003F1114 /* NNFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNFormViewController.swift; sourceTree = "<group>"; };
 		1401BE902277D6D20078A722 /* NNAPIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAPIConfig.swift; sourceTree = "<group>"; };
 		1401BE922277D6E20078A722 /* NNPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPageModel.swift; sourceTree = "<group>"; };
 		1401BE942277D6F30078A722 /* NNRequstManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRequstManager.swift; sourceTree = "<group>"; };
@@ -817,6 +821,7 @@
 				145C914C233484F800849E9D /* AppIconChangeController.swift */,
 				14A86A922357256300AD9BC1 /* CCSDeskViewController.swift */,
 				14D91B16234DB51D00554994 /* PopViewController.swift */,
+				1401AB212372B5CC003F1114 /* NNFormViewController.swift */,
 				14D91B18234DB96600554994 /* NNPopView.swift */,
 			);
 			path = Controllers;
@@ -905,6 +910,7 @@
 				14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */,
 				14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */,
 				14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */,
+				1401AB1F2372B2C9003F1114 /* NNFormView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1239,6 +1245,7 @@
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
 				14A86A952357268300AD9BC1 /* UISearchStylesController.swift in Sources */,
 				145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */,
+				1401AB202372B2C9003F1114 /* NNFormView.swift in Sources */,
 				14488725224E1D2300B550AF /* ZMCollectionViewCell.swift in Sources */,
 				1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */,
 				142A770422275EE10016D3DA /* PPNumberButton.swift in Sources */,
@@ -1300,6 +1307,7 @@
 				147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */,
 				14F7AAAD21E709BE00FB7570 /* UITableViewCellStep.swift in Sources */,
 				14403E6423322028005DB45B /* CCSCouponRecordController.swift in Sources */,
+				1401AB222372B5CC003F1114 /* NNFormViewController.swift in Sources */,
 				142A76F822275EE10016D3DA /* NNThreeLabelView.swift in Sources */,
 				1401BE9B2277D71B0078A722 /* NNUploadModel.swift in Sources */,
 				147FF46621CE48BA00351E94 /* UICollectionDispalyController.swift in Sources */,
