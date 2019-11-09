@@ -282,7 +282,7 @@ class TitleViewController: UIViewController{
     
     //MARK: -lazy
 //    lazy var segmentCtl: UISegmentedControl = {
-//        var view = UIView.createSegment( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
+//        var view = UISegmentedControl.create( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
 //        view.addActionHandler({ (sender: UIControl) in
 //
 //            if let control = sender as? UISegmentedControl {

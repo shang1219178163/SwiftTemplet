@@ -47,7 +47,7 @@ class NNTableFooterView: UIView {
     }
 
     @objc lazy var btn:UIButton = {
-        var view: UIButton = UIView.createBtn( .zero, title: "+ 新建", imgName: nil, type: 3);
+        var view: UIButton = UIButton.create( .zero, title: "+ 新建", imgName: nil, type: 3);
             view.addActionHandler({ (sender) in
                 if let obj = sender as? UIButton {
                     DDLog(obj.currentTitle as Any)

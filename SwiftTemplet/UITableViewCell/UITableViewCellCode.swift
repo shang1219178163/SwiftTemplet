@@ -123,7 +123,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
     }
     
     lazy var btnCode: UIButton = {
-        let view = UIButton.createBtn(.zero, title: "发送验证码", imgName: nil, type: 1)
+        let view = UIButton.create(.zero, title: "发送验证码", imgName: nil, type: 1)
         return view
     }()
 

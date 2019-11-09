@@ -97,7 +97,7 @@ class UITableViewCellSegment: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var segmentCtl: UISegmentedControl = {
-        var view = UIView.createSegment( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
+        var view = UISegmentedControl.create( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
         return view
     }()
     

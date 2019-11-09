@@ -161,7 +161,7 @@ class NNPopView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: -lazy
     @objc lazy var tableView: UITableView = {
-        var table = UIView.createTableView(bounds, style: .plain, rowHeight: 60)
+        var table = UITableView.create(bounds, style: .plain, rowHeight: 60)
         table.dataSource = self
         table.delegate = self
         return table

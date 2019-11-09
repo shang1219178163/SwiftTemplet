@@ -136,3 +136,57 @@ extension AVAudioSession{
     
 }
 
+@objc public extension UIGestureRecognizer{
+    
+    /// 动态属性
+    var funcName: String {
+        get {
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? String;
+            if obj == nil {
+                obj = String(describing: self.classForCoder);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            }
+            return obj!
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    func addAction(_ closure: @escaping (UIGestureRecognizer) -> Void) {
+        objc_setAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!, closure, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        addTarget(self, action: #selector(p_invoke))
+    }
+    
+    @objc private func p_invoke() {
+        let closure = objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!) as! ((UIGestureRecognizer) -> Void)
+        closure(self);
+    }
+    
+    
+}
+
+@objc public extension UIBarButtonItem{
+    
+//    /// 创建 UIBarButtonItem
+//    static func create(_ obj: String, style: UIBarButtonItem.Style = .plain, target: Any? = nil, action: Selector? = nil) -> UIBarButtonItem{
+//        if let image = UIImage(named: obj) {
+//            return UIBarButtonItem(image: image, style: style, target: target, action: action)
+//        }
+//        return UIBarButtonItem(title: obj, style: style, target: target, action: action);
+//    }
+//    
+//    /// UIBarButtonItem 回调
+//    func addAction(_ closure: @escaping (UIBarButtonItem) -> Void) {
+//        objc_setAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!, closure, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        target = self;
+//        action = #selector(p_invoke);
+//    }
+//    
+//    private func p_invoke() {
+//        let closure = objc_getAssociatedObject(self, UnsafeRawPointer(bitPattern: self.hashValue)!) as! ((UIBarButtonItem) -> Void)
+//        closure(self);
+//    }
+    
+    
+}

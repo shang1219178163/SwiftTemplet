@@ -149,7 +149,7 @@ class NNSearchView: UIView, UISearchBarDelegate {
     // MARK: -lazy
     
     @objc lazy var btn: UIButton = {
-        var view: UIButton = UIView.createBtn( .zero, title: "车场名称", imgName: nil, type: 0);
+        var view: UIButton = UIButton.create( .zero, title: "车场名称", imgName: nil, type: 0);
         view.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         view.setImage(UIImageNamed(kIMG_arrowDown), for: .normal)
         view.sizeToFit()
@@ -166,7 +166,7 @@ class NNSearchView: UIView, UISearchBarDelegate {
     }();
     
     @objc lazy var searchBar: UISearchBar = {
-        let view = UIView.createSearchBarRect(CGRectMake(0, 0, kScreenWidth - 70, 30))
+        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 30))
         view.layer.cornerRadius = 0;
         view.showsCancelButton = false;
         view.textField?.placeholder = "请输入车场名称搜索";
