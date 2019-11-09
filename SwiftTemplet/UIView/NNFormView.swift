@@ -30,7 +30,7 @@ class NNFormView: UIView, UITableViewDataSource, UITableViewDelegate {
         layer.borderWidth = 0.8;
         layer.borderColor = UIColorHexValue(0xe4e4e4).cgColor;
            
-//        tableView.isScrollEnabled = true;
+        tableView.isScrollEnabled = false;
         addSubview(tableView)
     }
     
@@ -93,7 +93,7 @@ class NNFormView: UIView, UITableViewDataSource, UITableViewDelegate {
         
     //MARK: -lazy
     @objc lazy var tableView: UITableView = {
-        var table = UIView.createTableView(bounds, style: .plain, rowHeight: kH_CellHeight)
+        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
         table.dataSource = self
         table.delegate = self
         return table

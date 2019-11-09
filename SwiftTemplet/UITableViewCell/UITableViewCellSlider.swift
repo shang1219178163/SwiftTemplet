@@ -118,7 +118,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var sliderCtl: UISlider = {
-        var view = UIView.createSlider( .zero, value: 0, minValue: 0, maxValue: 100)
+        var view = UISlider.create( .zero, value: 0, minValue: 0, maxValue: 100)
         return view
     }()
     

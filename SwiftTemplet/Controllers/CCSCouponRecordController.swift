@@ -29,7 +29,7 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
  
     //MARK: -lazy
     @objc lazy var tableView: UITableView = {
-        var table = UIView.createTableView(self.view.bounds, style: .grouped, rowHeight: 80)
+        var table = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 80)
         table.dataSource = self
         table.delegate = self
         return table
