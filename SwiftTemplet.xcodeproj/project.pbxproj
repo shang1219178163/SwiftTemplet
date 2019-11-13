@@ -65,6 +65,7 @@
 		142A770922275EE10016D3DA /* NNAnnularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76F122275EE00016D3DA /* NNAnnularProgress.swift */; };
 		142A770B222761050016D3DA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770A222761050016D3DA /* PickerViewController.swift */; };
 		142A770D222764080016D3DA /* NNPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770C222764080016D3DA /* NNPickerView.swift */; };
+		143010AF237AB989009E8AAC /* NNLabelsVerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143010AE237AB989009E8AAC /* NNLabelsVerView.swift */; };
 		14403E5E2331C091005DB45B /* NNItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14403E5D2331C091005DB45B /* NNItemsView.swift */; };
 		14403E602331C1B8005DB45B /* TmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14403E5F2331C1B8005DB45B /* TmpViewController.swift */; };
 		14403E6223320689005DB45B /* CCSEmergencyOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */; };
@@ -280,6 +281,7 @@
 		142A76F122275EE00016D3DA /* NNAnnularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNAnnularProgress.swift; sourceTree = "<group>"; };
 		142A770A222761050016D3DA /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		142A770C222764080016D3DA /* NNPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPickerView.swift; sourceTree = "<group>"; };
+		143010AE237AB989009E8AAC /* NNLabelsVerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNLabelsVerView.swift; sourceTree = "<group>"; };
 		14403E5D2331C091005DB45B /* NNItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNItemsView.swift; sourceTree = "<group>"; };
 		14403E5F2331C1B8005DB45B /* TmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmpViewController.swift; sourceTree = "<group>"; };
 		14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSEmergencyOpenView.swift; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 				14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */,
 				14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */,
 				1401AB1F2372B2C9003F1114 /* NNFormView.swift */,
+				143010AE237AB989009E8AAC /* NNLabelsVerView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				1401BEAC2277D7D60078A722 /* NNStoreManger.swift in Sources */,
 				142A770822275EE10016D3DA /* NNCellSubtitleView.swift in Sources */,
 				14129C9A21E9D7B1009BFA74 /* UITableViewCellSlider.swift in Sources */,
+				143010AF237AB989009E8AAC /* NNLabelsVerView.swift in Sources */,
 				142A76F422275EE10016D3DA /* NNExpandView.swift in Sources */,
 				149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
