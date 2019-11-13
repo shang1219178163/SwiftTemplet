@@ -117,14 +117,11 @@ class FourthViewController: UIViewController {
         return view;
     }();
     
-  
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     // MARK: - touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 

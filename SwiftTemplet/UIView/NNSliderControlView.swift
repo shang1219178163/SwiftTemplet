@@ -181,7 +181,7 @@ class NNSliderControlView: UIView {
     
     lazy var imgView: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.image = UIImageColor(.red);

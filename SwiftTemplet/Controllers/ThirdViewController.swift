@@ -13,7 +13,6 @@ import HandyJSON
 import Moya
 import MJRefresh
 
-//class ThirdViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 class ThirdViewController: UIViewController{
 
     override func viewDidLoad() {
@@ -91,7 +90,7 @@ class ThirdViewController: UIViewController{
     lazy var dateRangeView: NNDateRangeView = {
         let frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: 60)
         var view = NNDateRangeView(frame: .zero)
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .green
         return view
     }()

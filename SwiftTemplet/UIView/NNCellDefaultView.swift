@@ -226,7 +226,7 @@ class NNCellDefaultView: UIView {
     
     lazy var imgViewLeft: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         
@@ -235,7 +235,7 @@ class NNCellDefaultView: UIView {
     
     lazy var imgViewRight: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.image = UIImage(named: kIMG_arrowRight);
@@ -244,7 +244,7 @@ class NNCellDefaultView: UIView {
     
     lazy var labelLeft: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -255,7 +255,7 @@ class NNCellDefaultView: UIView {
     
     lazy var labelRight: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;

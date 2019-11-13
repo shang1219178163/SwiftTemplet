@@ -14,6 +14,7 @@ class NNItemsView: UIView {
     var numberOfRow: Int = 4
     var padding: CGFloat = 5.0
     var lineColor: UIColor = UIColor.line
+    var titleColor: UIColor = UIColor.gray;
 
     var isMutiChoose: Bool = false;
     var selectedList: [UIButton] = []
@@ -25,6 +26,7 @@ class NNItemsView: UIView {
             if isMutiChoose == false && newValue.count > 1 {
                 fatalError("单选只能默认选择索引应该为单选");
             }
+            
             for e in itemList.enumerated() {
                 if newValue.contains(e.offset) == true {
                     selectedList.append(e.element)
@@ -64,7 +66,7 @@ class NNItemsView: UIView {
             if self.isMutiChoose == false {
                 for e in self.selectedList.enumerated() {
                     e.element.isSelected = false;
-                    e.element.setTitleColor(UIColor.gray, for: .normal)
+                    e.element.setTitleColor(titleColor, for: .normal)
                     e.element.layer.borderColor = lineColor.cgColor;
                 }
                 self.selectedList.removeAll()
@@ -73,13 +75,13 @@ class NNItemsView: UIView {
                 self.selectedList.append(sender)
             }
         } else {
-            sender.setTitleColor(UIColor.gray, for: .normal)
+            sender.setTitleColor(titleColor, for: .normal)
             sender.layer.borderColor = lineColor.cgColor;
             if self.selectedList.contains(sender) == true {
                 self.selectedList.remove(at: self.selectedList.firstIndex(of: sender)!)
             }
         }
-        print(sender.isSelected, self.selectedList)
+//        print(sender.isSelected, self.selectedList)
         
         if self.viewBlock != nil {
             self.viewBlock!(self, sender)
@@ -147,7 +149,7 @@ class NNItemsView: UIView {
                 view.setTitleColor(UIColor.theme, for: .normal)
                 view.layer.borderColor = UIColor.theme.cgColor;
             } else {
-                view.setTitleColor(UIColor.gray, for: .normal)
+                view.setTitleColor(titleColor, for: .normal)
                 view.layer.borderColor = lineColor.cgColor;
             }
          
@@ -166,7 +168,7 @@ class NNItemsView: UIView {
     
     func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> UIButton {
         let view = UIButton(type:.custom);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.imageView?.contentMode = .scaleAspectFit
         view.frame = rect;
         view.setTitle(title, for: .normal);

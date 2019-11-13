@@ -261,7 +261,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     
     func createImgView(_ rect: CGRect, tag: Int) -> UIImageView {
         let view = UIImageView(frame: rect);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.tag = tag;

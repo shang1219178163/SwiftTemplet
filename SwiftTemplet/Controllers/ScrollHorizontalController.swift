@@ -10,7 +10,7 @@
 import UIKit
 import SwiftExpand
 
-class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ScrollHorizontalController: UIViewController{
   
     var list: NSMutableArray = [];
     override func viewDidLoad() {
@@ -31,39 +31,7 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
 //        collectionView.frame = CGRectMake(0, 20, 400, 40);
         collectionView.frame = view.bounds;
     }
-    
-    // MARK: -UICollectionView
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      
-        let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
-        cell.contentView.backgroundColor = UIColor.random
-        cell.imgView.isHidden = true;
-        cell.label.text = "标题_\(NSStringFromIndexPath(indexPath))"
-
-        return cell;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let isScrollHorizontal = layout.scrollDirection == .horizontal;
-        let scrollPosition = isScrollHorizontal ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
-        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
-      
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind,indexPath: indexPath);
         
-        return view;
-    }
-    
     // MARK: -funtions
 
     // MARK: -lazy
@@ -124,4 +92,38 @@ class ScrollHorizontalController: UIViewController, UICollectionViewDataSource, 
         view.layer.backgroundColor = UIColor.clear.cgColor;
         return view;
     }()
+}
+
+extension ScrollHorizontalController: UICollectionViewDataSource, UICollectionViewDelegate {
+    // MARK: -UICollectionView
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return list.count;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      
+        let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
+        cell.contentView.backgroundColor = UIColor.random
+        cell.imgView.isHidden = true;
+        cell.label.text = "标题_\(NSStringFromIndexPath(indexPath))"
+
+        return cell;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let isScrollHorizontal = layout.scrollDirection == .horizontal;
+        let scrollPosition = isScrollHorizontal ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
+        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
+      
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind,indexPath: indexPath);
+        
+        return view;
+    }
 }

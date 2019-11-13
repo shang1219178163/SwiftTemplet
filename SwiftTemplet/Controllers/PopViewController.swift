@@ -67,7 +67,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.titleLabel?.font = UIFont.systemFont(ofSize: 13);
         view.titleLabel?.adjustsFontSizeToFitWidth = true;
         view.titleLabel?.minimumScaleFactor = 1.0;
@@ -81,7 +81,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
     
     lazy var btnOne: UIButton = {
         let view = UIButton(type: .custom);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.titleLabel?.font = UIFont.systemFont(ofSize: 13);
         view.titleLabel?.adjustsFontSizeToFitWidth = true;
         view.titleLabel?.minimumScaleFactor = 1.0;

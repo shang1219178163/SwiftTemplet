@@ -41,7 +41,7 @@ class UITableViewCellPhotoPicker: UITableViewCell {
     
     lazy var defaultView: NNPhotosView = {
         var view = NNPhotosView(frame: .zero)
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         return view
     }()

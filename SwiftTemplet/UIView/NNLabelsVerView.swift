@@ -1,8 +1,8 @@
 //
-//  NNFormView.swift
+//  NNLabelsVerView.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/11/6.
+//  Created by Bin Shang on 2019/11/12.
 //  Copyright © 2019 BN. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 通用列表视图
-class NNFormView: UIView {
+class NNLabelsVerView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     var list: [UITextField] = []
     var placeholders: [String] = [] {
@@ -52,17 +52,6 @@ class NNFormView: UIView {
         tableView.reloadData();
     }
     
-    //MARK: -lazy
-    @objc lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
-        table.dataSource = self
-        table.delegate = self
-        return table
-    }()
-}
-
-extension NNFormView: UITableViewDataSource, UITableViewDelegate {
-
     //    MARK: - tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count;
@@ -101,4 +90,12 @@ extension NNFormView: UITableViewDataSource, UITableViewDelegate {
         //        label.text = "header\(section)";
         return label;
     }
+        
+    //MARK: -lazy
+    @objc lazy var tableView: UITableView = {
+        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
+        table.dataSource = self
+        table.delegate = self
+        return table
+    }()
 }

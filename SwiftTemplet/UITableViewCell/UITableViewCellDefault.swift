@@ -37,7 +37,7 @@ class UITableViewCellDefault: UITableViewCell {
     
     lazy var defaultView: NNCellDefaultView = {
         var view = NNCellDefaultView(frame: .zero)
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         return view
     }()

@@ -119,7 +119,7 @@ class CustomViewController: UIViewController {
     lazy var defaultView: NNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 70)
         var view = NNCellSubtitleView(frame: rect)
-        //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
         view.labelLeft.textColor = .white
@@ -143,7 +143,7 @@ class CustomViewController: UIViewController {
     lazy var defaultViewFail: NNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.sizeWidth - kX_GAP*2, 70)
         var view = NNCellSubtitleView(frame: rect)
-        //        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
         view.labelLeft.textColor = .white
