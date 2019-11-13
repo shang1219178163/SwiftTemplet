@@ -240,7 +240,7 @@ public class PWHandler: NSObject,UICollectionViewDelegate,UICollectionViewDelega
     @objc lazy var inputCollectionView: UICollectionView = {
         let view: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         view.register(UINib(nibName: identifier, bundle: Bundle(for: PWHandler.self)), forCellWithReuseIdentifier: identifier)
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue);
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight];
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.white
         view.isScrollEnabled = false

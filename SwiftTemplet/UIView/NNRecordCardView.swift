@@ -121,7 +121,7 @@ class NNRecordCardView: UIView {
     
     lazy var labelLeft: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -132,7 +132,7 @@ class NNRecordCardView: UIView {
     
     lazy var labelLeftSub: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -143,7 +143,7 @@ class NNRecordCardView: UIView {
     
     lazy var labelRight: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -154,7 +154,7 @@ class NNRecordCardView: UIView {
     
     lazy var labelRightSub: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;

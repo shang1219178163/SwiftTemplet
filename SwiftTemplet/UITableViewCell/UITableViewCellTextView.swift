@@ -154,8 +154,8 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     
 //    lazy var placeHolderTextView: UITextView = {
 //        var view = UITextView(frame: .zero);
-//        view!.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
-//        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+//        view!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //
 //        view.textAlignment = .left;
 //        view.autocapitalizationType = .none;

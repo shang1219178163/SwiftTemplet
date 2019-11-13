@@ -169,7 +169,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var imgView: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.backgroundColor = UIColor.white
@@ -179,7 +179,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var imgViewRight: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         view.image = UIImage(named: kIMG_arrowRight);
@@ -188,7 +188,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var labelLeft: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -199,7 +199,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var labelSub: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -210,7 +210,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var labelSubOne: UILabel = {
         var view = UILabel(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
         view.lineBreakMode = .byCharWrapping;
@@ -221,7 +221,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var iconLabSub: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         
@@ -230,7 +230,7 @@ class NNVehicleInfoCardView: UIView {
     
     lazy var iconLabSubOne: UIImageView = {
         var view = UIImageView(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
         

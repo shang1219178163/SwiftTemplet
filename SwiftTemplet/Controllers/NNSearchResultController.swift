@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class NNSearchResultController: UIViewController, UITableViewDataSource, UITableViewDelegate,  UISearchControllerDelegate, UISearchBarDelegate {
+class NNSearchResultController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,9 @@ class NNSearchResultController: UIViewController, UITableViewDataSource, UITable
         tbView.tableFooterView = UIView();
 
     }
+
+}
+extension NNSearchResultController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3;
@@ -34,4 +37,8 @@ class NNSearchResultController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DDLog(indexPath.row)
     }
+}
+
+extension NNSearchResultController: UISearchControllerDelegate, UISearchBarDelegate {
+
 }

@@ -142,7 +142,7 @@ class UITableViewCellPark: UITableViewCell {
 
     lazy var btnLeft: UIButton = {
         let view = UIButton(type: .custom);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.titleLabel?.font = UIFont.systemFont(ofSize: 13);
         view.titleLabel?.adjustsFontSizeToFitWidth = true;
         view.titleLabel?.minimumScaleFactor = 1.0;
@@ -152,7 +152,7 @@ class UITableViewCellPark: UITableViewCell {
     
     lazy var btnLeftMark: UIButton = {
         let view = UIButton(type: .custom);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.titleLabel?.font = UIFont.systemFont(ofSize: 13);
         view.titleLabel?.adjustsFontSizeToFitWidth = true;
         view.titleLabel?.minimumScaleFactor = 1.0;

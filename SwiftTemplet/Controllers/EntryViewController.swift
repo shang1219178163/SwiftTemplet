@@ -70,7 +70,7 @@ class EntryViewController: UIViewController {
     
     lazy var textField: UITextField = {
         var view = UITextField(frame: .zero);
-        view.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.flexibleWidth.rawValue | UIView.AutoresizingMask.flexibleHeight.rawValue)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.contentVerticalAlignment = .center;
         view.autocapitalizationType = .none;
