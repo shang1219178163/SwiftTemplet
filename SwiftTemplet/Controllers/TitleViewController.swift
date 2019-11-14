@@ -63,7 +63,7 @@ class TitleViewController: UIViewController{
         view.addSubview(checkBox)
         view.addSubview(checkBoxNew)
 
-        view.getViewLayer()
+//        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -314,18 +314,18 @@ class TitleViewController: UIViewController{
         view.block({ (segmentView: NNSegmentViewZero, control: UISegmentedControl) in
             DDLog(control.selectedSegmentIndex)
 
-            switch control.selectedSegmentIndex {
-            case 0:
-                "self.title".copyToPasteboard(true)
+//            switch control.selectedSegmentIndex {
+//            case 0:
+//                "self.title".copyToPasteboard(true)
                 
-            case 1:
-                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (controller, alertAction) in
-                    DDLog(alertAction.title)
-                })
+//            case 1:
+//                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (controller, alertAction) in
+//                    DDLog(alertAction.title)
+//                })
                 
-            default:
-                break
-            }
+//            default:
+//                break
+//            }
         })
         return view
     }()
@@ -340,7 +340,7 @@ class TitleViewController: UIViewController{
     }()
 
 
-    lazy var segmentCtlOne: UISegmentedControl = {
+    lazy var segmentCtlOne: NNSegmentedControl = {
         let view = NNSegmentedControl(frame: .zero)
         view.type = 2;
         view.selectedColor = .red

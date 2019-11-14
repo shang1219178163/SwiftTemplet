@@ -1479,7 +1479,7 @@
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/includes/pjsip\"",
 				);
 				INFOPLIST_FILE = SwiftTemplet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/pjlib\"",
@@ -1548,7 +1548,7 @@
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/includes/pjsip\"",
 				);
 				INFOPLIST_FILE = SwiftTemplet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/pjlib\"",
