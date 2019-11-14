@@ -26,7 +26,7 @@ class NNSegmentedControl: UISegmentedControl {
         }
     }
     
-    /// 0: box, 1, topLine, 2,bottomLine
+    /// 0: default, 1, topLine, 2,bottomLine, 3,box
     var type: Int = 0 {
         didSet{
             setupIndicator()
@@ -54,7 +54,8 @@ class NNSegmentedControl: UISegmentedControl {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        layer.cornerRadius = 0;
+
         setupIndicator()
     }
     
@@ -70,17 +71,22 @@ class NNSegmentedControl: UISegmentedControl {
     }
     
     func setupControl() {
+        if #available(iOS 13, *) {
+            backgroundColor = UIColor.white
+            self.ensureiOS12Style()
+            return;
+        }
 //        tintColor = UIColor.white
 //        backgroundColor = UIColor.white
         tintColor = UIColor.clear
         backgroundColor = UIColor.clear
         let dic_N = [NSAttributedString.Key.foregroundColor: normalColor,
                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
-        ]
+                    ]
         
         let dic_H = [NSAttributedString.Key.foregroundColor: selectedColor,
                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
-        ]
+                    ]
         
         setTitleTextAttributes(dic_N, for: .normal)
         setTitleTextAttributes(dic_H, for: .selected)
@@ -109,11 +115,13 @@ class NNSegmentedControl: UISegmentedControl {
                 self.indicator.frame = CGRectMake(originX, self.sizeHeight - self.indicatorHeight, segmentWidth, self.indicatorHeight)
             }
             
-        default:
+        case 3:
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.sizeHeight)
+                self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.frame.height)
             }
             
+        default:
+            break;
         }
         bringSubviewToFront(indicator)
 
