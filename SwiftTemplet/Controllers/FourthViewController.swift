@@ -69,7 +69,7 @@ class FourthViewController: UIViewController {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
-        let groupView = UIView.createGroupView(rect, list: (list as! Array<String>), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
+        let groupView = UIView.createGroupView(rect, list: (list as! [String]), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
        
             DDLog(idx);
            

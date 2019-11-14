@@ -184,7 +184,7 @@ class TitleViewController: UIViewController{
         btn.addActionHandler({ (sender) in
             if let imgView = (sender as! UIButton).imageView{
                 UIView.animate(withDuration: 0.35, animations: {
-                    imgView.transform = imgView.transform.isIdentity == true ? imgView.transform.rotated(by: CGFloat(Double.pi)) : CGAffineTransform.identity;
+                    imgView.transform = imgView.transform.isIdentity == true ? imgView.transform.rotated(by: CGFloat(Double.pi)) : .identity;
                 })
             }
 

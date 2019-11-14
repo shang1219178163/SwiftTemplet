@@ -21,7 +21,7 @@ class PickerViewController: UIViewController {
 
         }
         
-        itemView.frame = CGRect(x: kX_GAP, y: kY_GAP - 100, width: kScreenWidth - kX_GAP*2, height: 100.0)
+        itemView.frame = CGRect(x: kX_GAP, y: 10, width: kScreenWidth - kX_GAP*2, height: 100.0)
         view.addSubview(itemView)
         
         // 创建一个按钮，点击按钮获得选择框被选中的索引
