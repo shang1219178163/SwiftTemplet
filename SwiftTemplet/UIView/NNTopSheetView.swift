@@ -10,7 +10,7 @@ import UIKit
 
 import SwiftExpand
 
-class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
+class NNTopSheetView: UIView {
     
     var indexP: IndexPath = IndexPath(row: 0, section: 0)
     weak var parController: UIViewController?
@@ -39,77 +39,6 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-    }
-    
-    //    MARK: - tableView
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count;
-    };
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let itemList = list[indexPath.row]
-        let itemHeight = (itemList[1] as! String).cgFloatValue
-        return itemHeight
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemList = list[indexPath.row]
-        let value0 = itemList[0] as! String
-        let value1 = itemList[1] as! String
-
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-        cell.textLabel?.text = value0 + NSStringFromIndexPath(indexPath)
-        cell.textLabel?.textAlignment = .center
-        cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
-        cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
-        cell.accessoryType = indexP == indexPath ? .checkmark : .none
-        if self.viewBlock != nil && self.viewBlock!(tableView, indexPath) != nil {
-            return self.viewBlock!(tableView, indexPath)!;
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexP != indexPath  {
-            let newCell = tableView.cellForRow(at: indexPath)
-            newCell?.accessoryType = .checkmark
-            
-            let oldCell = tableView.cellForRow(at: indexP)
-            oldCell?.accessoryType = .none
-            indexP = indexPath
-        }
-        
-        let itemList = list[indexPath.row]
-        let value0 = itemList[0] as! String
-        btn.setTitle(value0 + NSStringFromIndexPath(indexPath), for: .normal)
-        if self.viewBlockOne != nil {
-            self.viewBlockOne!(tableView,indexPath)
-        }
-        dismiss()
-        
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.01;
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView();
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01;
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero);
-        //        label.backgroundColor = .green;
-        //        label.text = "header\(section)";
-        return label;
     }
     
     // observeValue
@@ -221,6 +150,8 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     
     lazy var containView: UIView = {
         var view = UIView(frame: parController!.view.bounds)
+//        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
+
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
 
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.4)
@@ -237,3 +168,76 @@ class NNTopSheetView: UIView,UITableViewDataSource,UITableViewDelegate {
     }()
 }
 
+extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
+
+    //    MARK: - tableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count;
+    };
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let itemList = list[indexPath.row]
+        let itemHeight = (itemList[1] as! String).cgFloatValue
+        return itemHeight
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let itemList = list[indexPath.row]
+        let value0 = itemList[0] as! String
+        let value1 = itemList[1] as! String
+
+        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        cell.textLabel?.text = value0 + NSStringFromIndexPath(indexPath)
+        cell.textLabel?.textAlignment = .center
+        cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
+        cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
+        cell.accessoryType = indexP == indexPath ? .checkmark : .none
+        if self.viewBlock != nil && self.viewBlock!(tableView, indexPath) != nil {
+            return self.viewBlock!(tableView, indexPath)!;
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexP != indexPath  {
+            let newCell = tableView.cellForRow(at: indexPath)
+            newCell?.accessoryType = .checkmark
+            
+            let oldCell = tableView.cellForRow(at: indexP)
+            oldCell?.accessoryType = .none
+            indexP = indexPath
+        }
+        
+        let itemList = list[indexPath.row]
+        let value0 = itemList[0] as! String
+        btn.setTitle(value0 + NSStringFromIndexPath(indexPath), for: .normal)
+        if self.viewBlockOne != nil {
+            self.viewBlockOne!(tableView,indexPath)
+        }
+        dismiss()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView();
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel(frame: .zero);
+        //        label.backgroundColor = .green;
+        //        label.text = "header\(section)";
+        return label;
+    }
+}

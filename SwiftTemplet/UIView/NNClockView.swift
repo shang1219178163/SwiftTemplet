@@ -13,7 +13,7 @@ class NNClockView: UIImageView {
     var aniDuration: Double?;
        
     //1 声明变量
-    var itemList: Array<String>? {
+    var itemList: [String]? {
         willSet {
             newValue?.forEach { (obj: String) in
                 
