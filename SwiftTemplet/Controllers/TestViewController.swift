@@ -21,16 +21,28 @@ class TestViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(tbView);
+//        view.addSubview(tbView);
+//        setupData();
+        var list:[String] = []
+        for i in 0...8 {
+            list.append("\(i)")
+        }
         
-        setupData();
+        itemView.frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40.0, height: 120)
+        itemView.items = list
+        view.addSubview(itemView)
         
+        parkGroupView.frame = CGRect(x: 20, y: itemView.maxY + 20, width: kScreenWidth - 40.0, height: 35)
+        parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
+        view.addSubview(parkGroupView)
+        
+//        view.getViewLayer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        tbView.reloadData()
+//        tbView.reloadData()
         
     }
    
@@ -85,6 +97,37 @@ class TestViewController: UIViewController{
         }, for: .touchUpInside)
         return view
     }()
+    
+    lazy var itemView: NNGroupView = {
+        var view = NNGroupView(frame: .zero)
+        view.padding = 10;
+        view.numberOfRow = 3;
+        view.isMutiChoose = true;
+        view.showType = .line
+        view.showType = .backgroud
+        view.block({ (itemsView, sender) in
+            if let btn = sender as? UIButton {
+                print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
+
+            }
+        })
+        return view;
+    }()
+    
+    lazy var parkGroupView: IOPParkGroupView = {
+        var view = IOPParkGroupView(frame: .zero)
+        view.padding = 15;
+        view.numberOfRow = 3;
+        view.isMutiChoose = false;
+        view.block({ (itemsView, sender) in
+            if let btn = sender as? UIButton {
+                print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
+
+            }
+        })
+        return view;
+    }()
+    
     
 }
 

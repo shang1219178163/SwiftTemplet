@@ -18,8 +18,11 @@ class NNItemsView: UIView {
 
     var isMutiChoose: Bool = false;
     var selectedList: [UIButton] = []
-    var selectedIdxList: [Int] = []{
-        willSet{
+    var selectedIdxList: [Int] {
+        get {
+            return selectedList.map{ $0.tag };
+        }
+        set {
             if newValue.count <= 0 {
                 return;
             }
@@ -63,28 +66,28 @@ class NNItemsView: UIView {
         if sender.isSelected == true {
             sender.setTitleColor(UIColor.theme, for: .normal)
             sender.layer.borderColor = UIColor.theme.cgColor;
-            if self.isMutiChoose == false {
-                for e in self.selectedList.enumerated() {
+            if isMutiChoose == false {
+                for e in selectedList.enumerated() {
                     e.element.isSelected = false;
                     e.element.setTitleColor(titleColor, for: .normal)
                     e.element.layer.borderColor = lineColor.cgColor;
                 }
-                self.selectedList.removeAll()
-                self.selectedList.append(sender)
+                selectedList.removeAll()
+                selectedList.append(sender)
             } else {
-                self.selectedList.append(sender)
+                selectedList.append(sender)
             }
         } else {
             sender.setTitleColor(titleColor, for: .normal)
             sender.layer.borderColor = lineColor.cgColor;
-            if self.selectedList.contains(sender) == true {
-                self.selectedList.remove(at: self.selectedList.firstIndex(of: sender)!)
+            if selectedList.contains(sender) == true {
+                selectedList.remove(at: selectedList.firstIndex(of: sender)!)
             }
         }
-//        print(sender.isSelected, self.selectedList)
+//        print(sender.isSelected, selectedList)
         
-        if self.viewBlock != nil {
-            self.viewBlock!(self, sender)
+        if viewBlock != nil {
+            viewBlock!(self, sender)
         }
     }
     
@@ -139,8 +142,8 @@ class NNItemsView: UIView {
             
             let view = e.element;
             view.frame = rect;
-            if self.cornerRadius > 0 {
-                view.layer.cornerRadius = self.cornerRadius;
+            if cornerRadius > 0 {
+                view.layer.cornerRadius = cornerRadius;
                 view.layer.masksToBounds = true;
             }
             

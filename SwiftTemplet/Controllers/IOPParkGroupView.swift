@@ -1,5 +1,5 @@
 //
-//  NNGroupView.swift
+//  IOPParkGroupView.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/11/15.
@@ -7,23 +7,14 @@
 //
 
 import UIKit
-
 import SwiftExpand
 
-enum NNGroupViewShowType : Int {
-    case backgroud
-    case line
-}
 
-class NNGroupView: UIView {
+class IOPParkGroupView: UIView {
 
-    var showType: NNGroupViewShowType = .line
-
-    var cornerRadius: CGFloat = 5.0
+    var cornerRadius: CGFloat = 0
     var numberOfRow: Int = 4
     var padding: CGFloat = 5.0
-    var lineColor: UIColor = UIColor.line
-    var titleColor: UIColor = UIColor.gray;
 
     var isMutiChoose: Bool = false;
     var selectedList: [UIButton] = []
@@ -41,8 +32,8 @@ class NNGroupView: UIView {
             
             for e in itemList.enumerated() {
                 if newValue.contains(e.offset) == true {
-                    selectedList.append(e.element)
                     e.element.isSelected = true;
+                    selectedList.append(e.element)
                 }
             }
         }
@@ -66,37 +57,25 @@ class NNGroupView: UIView {
         }
     }
     
-    func changeStatue(_ btn: UIButton, showType: NNGroupViewShowType) {
-        switch self.showType {
-        case .backgroud:
-            btn.setTitleColor(titleColor, for: .normal)
-            btn.setBackgroundImage(UIImageColor(.white), for: .normal)
-            
-            btn.setTitleColor(.white, for: .selected)
-            btn.setBackgroundImage(UIImageColor(.theme), for: .selected)
-
-        default:
-            break;
-        }
+    func changeStatue(_ btn: UIButton) {
+        btn.setTitleColor(.black, for: .normal)
+        btn.setBackgroundImage(UIImageColor(UIColorHexValue(0xF3F3F3)), for: .normal)
         
-        btn.layer.borderWidth = 1;
-       if btn.isSelected == true {
-           btn.setTitleColor(UIColor.theme, for: .normal)
-           btn.layer.borderColor = UIColor.theme.cgColor;
-       } else {
-           btn.setTitleColor(titleColor, for: .normal)
-           btn.layer.borderColor = lineColor.cgColor;
-       }
+        btn.setTitleColor(.theme, for: .selected)
+        btn.setBackgroundImage(UIImageColor(UIColorHexValue(0xDEF0FF)), for: .selected)
+        
+        btn.setImage(UIImageColor(UIColorHexValue(0xF3F3F3)), for: .normal)
+        btn.setImage(UIImageNamed("icon_choose_blue"), for: .selected)
     }
     
     @objc func handleAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected;
-        changeStatue(sender, showType: showType)
+        changeStatue(sender)
         if sender.isSelected == true {
             if self.isMutiChoose == false {
                 for e in selectedList.enumerated() {
                     e.element.isSelected = false;
-                    changeStatue(e.element, showType: showType)
+                    changeStatue(e.element)
                 }
                 selectedList.removeAll()
             }
@@ -113,7 +92,7 @@ class NNGroupView: UIView {
         }
     }
     
-    var viewBlock: ((NNGroupView, UIControl) -> Void)?
+    var viewBlock: ((IOPParkGroupView, UIControl) -> Void)?
     var itemList: [UIButton] = []{
         willSet{
             if newValue.count <= 0 {
@@ -164,13 +143,13 @@ class NNGroupView: UIView {
             
             let view = e.element;
             view.frame = rect;
-            if self.cornerRadius > 0 {
-                view.layer.cornerRadius = self.cornerRadius;
+            if cornerRadius > 0 {
+                view.layer.cornerRadius = cornerRadius;
                 view.layer.masksToBounds = true;
             }
-            changeStatue(view, showType: showType)
+            changeStatue(view)
             view.isSelected = selectedList.contains(view);
-         
+            
         }
     }
     
@@ -180,22 +159,24 @@ class NNGroupView: UIView {
         return rowCount.toCGFloat * itemHeight + (rowCount - 1).toCGFloat * padding;
     }
     
-    func block(_ action: @escaping ((NNGroupView, UIControl) -> Void)) {
+    func block(_ action: @escaping ((IOPParkGroupView, UIControl) -> Void)) {
         viewBlock = action;
     }
     
     func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> UIButton {
-        let view = UIButton(type:.custom);
+        let view = IOPParkGroupButton(type:.custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.imageView?.contentMode = .scaleAspectFit
         view.frame = rect;
         view.setTitle(title, for: .normal);
         view.setTitleColor(.black, for: .normal);
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 13)
 //        view.backgroundColor = UIColor.theme;
 
         view.isExclusiveTouch = true;
         view.adjustsImageWhenHighlighted = false;
         view.tag = tag;
+        
         return view;
     
     }
