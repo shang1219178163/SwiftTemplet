@@ -39,10 +39,11 @@ class NNGroupView: UIView {
                 fatalError("单选只能默认选择索引应该为单选");
             }
             
+            selectedList.removeAll();
             for e in itemList.enumerated() {
+                e.element.isSelected = newValue.contains(e.offset)
                 if newValue.contains(e.offset) == true {
                     selectedList.append(e.element)
-                    e.element.isSelected = true;
                 }
             }
         }

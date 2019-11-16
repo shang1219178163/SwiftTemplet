@@ -156,6 +156,7 @@
 		14B940B6237E3E0F00A49D1F /* icon_choose_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */; };
 		14B940B7237E3E0F00A49D1F /* icon_choose_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B940B5237E3E0F00A49D1F /* icon_choose_blue@2x.png */; };
 		14B940B9237E3FBE00A49D1F /* IOPParkGroupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B8237E3FBE00A49D1F /* IOPParkGroupButton.swift */; };
+		14B940BB237E53A300A49D1F /* IOPTableViewCellGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */; };
 		14BD732F22D417C9008788B1 /* PWInputCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14BD731C22D417C9008788B1 /* PWInputCollectionViewCell.xib */; };
 		14BD733022D417C9008788B1 /* PWHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD731D22D417C9008788B1 /* PWHandler.swift */; };
 		14BD733122D417C9008788B1 /* PWInputCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD731E22D417C9008788B1 /* PWInputCollectionViewCell.swift */; };
@@ -377,6 +378,7 @@
 		14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_choose_blue@3x.png"; sourceTree = "<group>"; };
 		14B940B5237E3E0F00A49D1F /* icon_choose_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_choose_blue@2x.png"; sourceTree = "<group>"; };
 		14B940B8237E3FBE00A49D1F /* IOPParkGroupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPParkGroupButton.swift; sourceTree = "<group>"; };
+		14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPTableViewCellGroupView.swift; sourceTree = "<group>"; };
 		14BD731C22D417C9008788B1 /* PWInputCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PWInputCollectionViewCell.xib; sourceTree = "<group>"; };
 		14BD731D22D417C9008788B1 /* PWHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWHandler.swift; sourceTree = "<group>"; };
 		14BD731E22D417C9008788B1 /* PWInputCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWInputCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -817,7 +819,6 @@
 				14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */,
 				145C914E2334C4C100849E9D /* PlateNumMainController.swift */,
 				14403E5F2331C1B8005DB45B /* TmpViewController.swift */,
-				14D91B14234C88B400554994 /* CellListController.swift */,
 				1461A24423191850006A758F /* ScrollViewController.swift */,
 				14C9019E231543490084A946 /* ScrollHorizontalController.swift */,
 				14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */,
@@ -835,11 +836,13 @@
 				14A86A922357256300AD9BC1 /* CCSDeskViewController.swift */,
 				14D91B16234DB51D00554994 /* PopViewController.swift */,
 				1401AB212372B5CC003F1114 /* NNFormViewController.swift */,
+				14D91B14234C88B400554994 /* CellListController.swift */,
 				1443F84A230BF2A70023C777 /* TestViewController.swift */,
 				14D91B18234DB96600554994 /* NNPopView.swift */,
 				14B940B0237E2FBC00A49D1F /* NNGroupView.swift */,
 				14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */,
 				14B940B8237E3FBE00A49D1F /* IOPParkGroupButton.swift */,
+				14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */,
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
 				14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */,
+				14B940BB237E53A300A49D1F /* IOPTableViewCellGroupView.swift in Sources */,
 				142A770122275EE10016D3DA /* NNTipsView.swift in Sources */,
 				147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */,
 				142A76F722275EE10016D3DA /* NNSliderControlView.swift in Sources */,

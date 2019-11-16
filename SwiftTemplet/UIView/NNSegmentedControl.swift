@@ -109,22 +109,23 @@ class NNSegmentedControl: UISegmentedControl {
             UIView.animate(withDuration: duration) {
                 self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.indicatorHeight)
             }
-            
+            bringSubviewToFront(indicator)
+
         case 2:
             UIView.animate(withDuration: duration) {
                 self.indicator.frame = CGRectMake(originX, self.sizeHeight - self.indicatorHeight, segmentWidth, self.indicatorHeight)
             }
-            
+            bringSubviewToFront(indicator)
+
         case 3:
             UIView.animate(withDuration: duration) {
                 self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.frame.height)
             }
-            
+            bringSubviewToFront(indicator)
+
         default:
             break;
         }
-        bringSubviewToFront(indicator)
-
     }
     
     //MARK: -lazy

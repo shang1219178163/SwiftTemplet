@@ -17,8 +17,10 @@ class IOPParkGroupView: UIView {
     var padding: CGFloat = 5.0
 
     var isMutiChoose: Bool = false;
+    var isLeaveOne: Bool = true;
+
     var selectedList: [UIButton] = []
-    var selectedIdxList: [Int] {
+    var selectedIdxList: [Int]{
         get {
             return selectedList.map{ $0.tag };
         }
@@ -30,9 +32,10 @@ class IOPParkGroupView: UIView {
                 fatalError("单选只能默认选择索引应该为单选");
             }
             
+            selectedList.removeAll();
             for e in itemList.enumerated() {
+                e.element.isSelected = newValue.contains(e.offset)
                 if newValue.contains(e.offset) == true {
-                    e.element.isSelected = true;
                     selectedList.append(e.element)
                 }
             }
@@ -69,10 +72,12 @@ class IOPParkGroupView: UIView {
     }
     
     @objc func handleAction(_ sender: UIButton) {
+        if selectedList.count == 1 && isLeaveOne == true && selectedList.first == sender {
+            return;
+        }
         sender.isSelected = !sender.isSelected;
-        changeStatue(sender)
         if sender.isSelected == true {
-            if self.isMutiChoose == false {
+            if isMutiChoose == false {
                 for e in selectedList.enumerated() {
                     e.element.isSelected = false;
                     changeStatue(e.element)
