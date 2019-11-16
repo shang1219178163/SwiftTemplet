@@ -32,6 +32,12 @@ class CellListController: UIViewController {
 
             cell.getViewLayer();
             return cell;
+        } else if indexPath.row == 1 {
+            let cell = IOPTableViewCellGroupView.cellWithTableView(tableView) as! IOPTableViewCellGroupView;
+            cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
+            cell.parkGroupView.selectedIdxList = [0]
+            return cell;
+
         } else {
             let cell = UITableViewCellPark.cellWithTableView(tableView) as! UITableViewCellPark;
             cell.getViewLayer();
