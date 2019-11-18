@@ -27,10 +27,10 @@ class IOPTableViewCellGroupView: UITableViewCell {
         super.layoutSubviews()
         
         parkGroupView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(5);
+            make.top.equalToSuperview().offset(10);
             make.left.equalToSuperview().offset(kX_GAP);
             make.right.equalToSuperview().offset(-kX_GAP);
-            make.bottom.equalToSuperview().offset(-5);
+            make.bottom.equalToSuperview().offset(-10);
         }
     }
 

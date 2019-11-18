@@ -25,9 +25,9 @@ class UICollectionDispalyController: UIViewController{
         
         // 注册cell
 //        collectionView.collectionViewLayout = UICollectionView.layoutDefault
-        ctView.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
-                            UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
-                            UICollectionView.elementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
+        ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne",],
+                            UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero",],
+                            UICollectionView.elementKindSectionItem: ["UICTViewCellZero","UICTViewCellOne"],
         ]
         view.addSubview(ctView)
 
@@ -39,7 +39,6 @@ class UICollectionDispalyController: UIViewController{
         
         //        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         //        let one : AnyClass = NSClassFromString(namespace + "." + "UICTViewCellZero")!;
-        //
         //        let two = UICTViewCellZero.self
     }
     
@@ -121,12 +120,13 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
        if indexPath.row % 2 == 0 {
-           let cell = UICTViewCellOne.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
+        let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         cell.imgView.backgroundColor = .random
            cell.label.text = String(format:"%ditem",indexPath.row)
            return cell
        }
-       let cell = UICTViewCellZero.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellZero
+        let cell = collectionView.dequeueReusableCell(for: UICTViewCellZero.self, indexPath: indexPath)
+
        cell.imgView.backgroundColor = .random
        cell.label.text = String(format:"%ditem",indexPath.row)
        return cell
@@ -138,14 +138,16 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
    
    //设定header和footer的方法，根据kind不同进行不同的判断即可
    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        DDLog(kind);
        if kind == UICollectionView.elementKindSectionHeader {
-           let view = UICTReusableViewOne.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewOne
+           let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
+        
            view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
            view.textLabelRight.text = "999+"
            return view;
        }
        
-       let view = UICTReusableViewZero.dequeueCTVReusable(collectionView, kind: kind, indexPath: indexPath) as! UICTReusableViewZero
+        let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind, indexPath: indexPath)
        view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
        return view;
        

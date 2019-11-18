@@ -65,11 +65,11 @@ class UISearchStylesController: UIViewController{
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-//            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//            let cell = UITableViewCellZero.dequeueReusableCell(tableView) as! UITableViewCellZero;
 //            cell.textLabel!.text = itemList[0]
 
-//            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
-            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+//            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
             
             cell.accessoryType = .disclosureIndicator;
             

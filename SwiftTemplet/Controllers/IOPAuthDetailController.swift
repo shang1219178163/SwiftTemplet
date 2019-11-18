@@ -109,7 +109,7 @@ extension IOPAuthDetailController: UITableViewDataSource, UITableViewDelegate {
         
         switch itemList[1].intValue {
         case 3:
-            let cell = UITableViewCellThree.cellWithTableView(tableView) as! UITableViewCellThree
+            let cell = UITableViewCellThree.dequeueReusableCell(tableView)
             cell.labelLeft.text = itemList[0]
             cell.labelRight.text = kBlankTwo + itemList[4]
             cell.labelRight.textAlignment = .left
@@ -120,7 +120,7 @@ extension IOPAuthDetailController: UITableViewDataSource, UITableViewDelegate {
             break
             
         }
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         return cell
     }
     

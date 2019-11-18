@@ -40,12 +40,14 @@ class NNSegmentedControl: UISegmentedControl {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-       
         addSubview(indicator);
         setupControl()
         
         addObserver(self, forKeyPath: "selectedSegmentIndex", options: .new, context: nil)
+    }
+    
+    override init(items: [Any]?) {
+        super.init(items: items)
     }
     
     required init?(coder aDecoder: NSCoder) {

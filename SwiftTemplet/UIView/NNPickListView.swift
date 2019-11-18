@@ -70,7 +70,7 @@ class NNPickListView: UIView,UITableViewDataSource,UITableViewDelegate {
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         cell.textLabel!.text = list[indexPath.row]
         cell.textLabel!.textAlignment = .center
         cell.accessoryType = indexP == indexPath ? .checkmark : .none

@@ -190,7 +190,7 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         let value0 = itemList[0] as! String
         let value1 = itemList[1] as! String
 
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         cell.textLabel?.text = value0 + NSStringFromIndexPath(indexPath)
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true

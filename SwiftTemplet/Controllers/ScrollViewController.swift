@@ -51,7 +51,7 @@ class ScrollViewController: UIViewController {
         view.collectionView.register(cellType: UICTViewCellOne.self)
 //        view.collectionView.register(UICTViewCellOne.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellOne")
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
-//            let cell: UICTViewCellOne = UICTViewCellOne.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
+//            let cell: UICTViewCellOne = UICTViewCellOne.dequeueReusableCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
             let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
             cell.label.text = "标题\(indexPath.row)"
             
@@ -80,7 +80,8 @@ class ScrollViewController: UIViewController {
         view.collectionView.register(UICTViewCellOne.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellOne")
         
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
-            let cell: UICTViewCellOne = UICTViewCellOne.dequeueCTVCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
+            let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
+
             cell.label.text = "标题\(indexPath.row)"
             
             cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;

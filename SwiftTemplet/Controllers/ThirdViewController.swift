@@ -77,8 +77,8 @@ class ThirdViewController: UIViewController{
                 //                DDLog(response)
             }
             NNProgressHUD.showSuccessText("请求成功");
-            self.plainView.tableView.mj_header.endRefreshing()
-            self.plainView.tableView.mj_footer.endRefreshing()
+            self.plainView.tableView.mj_header!.endRefreshing()
+            self.plainView.tableView.mj_footer!.endRefreshing()
         }) { (manager, dic, error) in
             DDLog(error! as Any)
             
@@ -99,9 +99,11 @@ class ThirdViewController: UIViewController{
         var array: [[[String]]] = [
             [["UISearchStylesController", "搜索🔍样式", ],             
              ["EntryViewController", "通用录入界面", ],
+             ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              ["UICollectionDispalyController", "UICollectionView展示", ],
              ["PlateNumMainController", "NNTabController组件", ],
+             ["NNTabViewController", "NNTabView组件", ],             
              ["CustomViewController", "自定义View", ],
              ["CalendarViewController", "CalenderView", ],
              ["TimerViewController", "Timer", ],
@@ -145,11 +147,11 @@ class ThirdViewController: UIViewController{
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-//            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//            let cell = UITableViewCellZero.dequeueReusableCell(tableView)
 //            cell.textLabel!.text = itemList[0]
             
-//            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
-            let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+//            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle)
+            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
 
             cell.accessoryType = .disclosureIndicator;
             

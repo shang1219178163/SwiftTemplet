@@ -56,8 +56,7 @@ class UITableViewCellAfford: UITableViewCell {
         labelRight.text = "$0.00"
         labelRightSub.text = DateFormatter.stringFromDate(Date());
         
-        DDLog(DateFormatter.stringFromDate(Date()));
-
+//        DDLog(DateFormatter.stringFromDate(Date()));
     }
     
     required init?(coder aDecoder: NSCoder) {

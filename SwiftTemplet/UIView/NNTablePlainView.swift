@@ -15,7 +15,8 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
     var list:[Any]?
     var viewBlockCellForRow: CellForRowClosure?
     var viewBlockDidSelectRow: DidSelectRowClosure?
-    
+    var viewBlockHeightForRow: CellHeightForRowClosure?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     
@@ -41,6 +42,10 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.viewBlockHeightForRow != nil && self.viewBlockHeightForRow!(tableView, indexPath) > 10 {
+            let height = self.viewBlockHeightForRow!(tableView, indexPath);
+            return height
+        }
         return tableView.rowHeight
     }
     
@@ -48,7 +53,7 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
         if self.viewBlockCellForRow != nil && self.viewBlockCellForRow!(tableView, indexPath) != nil {
             return self.viewBlockCellForRow!(tableView, indexPath)!;
         }
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         return cell
     }
     
@@ -75,6 +80,10 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
         //        label.backgroundColor = .green;
         //        label.text = "header\(section)";
         return label;
+    }
+    // MARK: - funtions
+    func blockCellHeightForRow(_ action: @escaping CellHeightForRowClosure) {
+        self.viewBlockHeightForRow = action;
     }
     
     func blockCellForRow(_ action: @escaping CellForRowClosure) {

@@ -193,8 +193,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch (itemList[1] as! String).intValue {
         case 1:
-            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
-            cell.labelLeft.text = value0
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
             cell.labelRight.text = value4
             
             cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
@@ -202,7 +201,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 102:
-            let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker
+            let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.textfield.text = value4
             cell.textfield.textAlignment = .right
@@ -211,7 +210,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 104:
-            let cell = UITableViewCellSegment.cellWithTableView(tableView) as! UITableViewCellSegment
+            let cell = UITableViewCellSegment.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.segmentCtl.itemList = (itemList.last as! [String])
             cell.segmentCtl.addActionHandler({ (sender: UIControl) in
@@ -225,7 +224,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 105:
-            let cell = UITableViewCellStep.cellWithTableView(tableView) as! UITableViewCellStep
+            let cell = UITableViewCellStep.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.ppBtn.minValue = 0
             cell.ppBtn.maxValue = 10
@@ -237,7 +236,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 106:
-            let cell = UITableViewCellTextField.cellWithTableView(tableView) as! UITableViewCellTextField
+            let cell = UITableViewCellTextField.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.textfield.asoryView(true, unitName: (itemList.last as! String))
             //            cell.textfield.rightView = nil;
@@ -253,8 +252,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 107:
-            let cell = UITableViewCellTextView.cellWithTableView(tableView) as! UITableViewCellTextView
-            cell.labelLeft.text = value0
+            let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
             cell.type = 1;
             cell.textView.placeHolderTextView.text = "最多140字"
             cell.block { ( view:UITableViewCellTextView, text:String) in
@@ -265,12 +263,12 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case 108:
             
-//            let cell = UITableViewCellDateRange.cellWithTableView(tableView) as! UITableViewCellDateRange
-//            let cell = UITableViewCellDateRange.cellWithTableView(tableView) as! UITableViewCellDateRange
+//            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView) as! UITableViewCellDateRange
+//            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView) as! UITableViewCellDateRange
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange())
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange.self)
 //            let cell = tableView.dequeueReusableCell(for: UITableViewCellDateRange())
-            let cell:UITableViewCellDateRange = tableView.dequeueReusableCell(for: UITableViewCellDateRange())
+            let cell:UITableViewCellDateRange = UITableViewCellDateRange.dequeueReusableCell(tableView)
             
             cell.dateRangeView.labTitle.text = value0
             cell.dateRangeView.block { (dateRangeView) in
@@ -281,7 +279,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 109:
-            let cell = UITableViewCellSlider.cellWithTableView(tableView) as! UITableViewCellSlider
+            let cell = UITableViewCellSlider.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.sliderCtl.value = 50
             cell.sliderCtl.addActionHandler({ (sender: UIControl) in
@@ -295,7 +293,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 110:
-            let cell = UITableViewCellSwitch.cellWithTableView(tableView) as! UITableViewCellSwitch
+            let cell = UITableViewCellSwitch.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
 //            cell.layoutType = 1
@@ -310,7 +308,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 111:
-            let cell = UITableViewCellSheet.cellWithTableView(tableView) as! UITableViewCellSheet
+            let cell = UITableViewCellSheet.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.itemList = ["阿里","腾讯","百度","谷歌",]
             cell.block { (title) in
@@ -320,7 +318,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 112:
-            let cell = UITableViewCellPickerView.cellWithTableView(tableView) as! UITableViewCellPickerView
+            let cell = UITableViewCellPickerView.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.block { (view, title, obj) in
                 DDLog(title,obj)
@@ -329,7 +327,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
         case 115:
-            let cell = UITableViewCellPhotoPicker.cellWithTableView(tableView) as! UITableViewCellPhotoPicker
+            let cell = UITableViewCellPhotoPicker.dequeueReusableCell(tableView)
             cell.defaultView.block { (view, list) in
                 DDLog(list.count)
             }
@@ -338,7 +336,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 116:
-            let cell = UITableViewCellCode.cellWithTableView(tableView) as! UITableViewCellCode
+            let cell = UITableViewCellCode.dequeueReusableCell(tableView)
             cell.btnCode.addActionHandler({ (control) in
                 DDLog(self.list.count)
                 if let sender: UIButton = control as? UIButton {
@@ -350,7 +348,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case 150:
-            let cell = UITableViewCellDefault.cellWithTableView(tableView) as! UITableViewCellDefault
+            let cell = UITableViewCellDefault.dequeueReusableCell(tableView)
             cell.defaultView.labelLeft.text = value0
             cell.defaultView.labelRight.text = value4
             cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
@@ -361,7 +359,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             break
             
         }
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     
