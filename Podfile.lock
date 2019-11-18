@@ -12,11 +12,11 @@ PODS:
   - BSImageView (1.0.3)
   - CryptoSwift (1.1.3)
   - HandyJSON (5.0.1)
-  - IQKeyboardManagerSwift (6.5.2)
+  - IQKeyboardManagerSwift (6.5.4)
   - Kingfisher (4.10.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
-  - MJRefresh (3.2.0)
+  - MJRefresh (3.2.2)
   - MMPopupView (1.7.2):
     - Masonry
   - Moya (13.0.1):
@@ -57,7 +57,7 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Surge (2.3.0)
-  - SwiftExpand (1.8.6.1)
+  - SwiftExpand (1.8.8.2)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
@@ -135,11 +135,11 @@ SPEC CHECKSUMS:
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   CryptoSwift: 6b6e488df0598b3e9fa49254ed1a65e8c1b1e10b
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
-  IQKeyboardManagerSwift: c75366f1f19590e8caeae45fcd5815c9289d6099
+  IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
-  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  MJRefresh: 72a46ecaa2a0feaf48fc5198dff95f25f8bb27c6
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
@@ -153,7 +153,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 13979cd9593e943f9ce1202439da2999ea57e46d
-  SwiftExpand: c358f8dc2fff23e00cbafbfbcc0f4d1ac4f04606
+  SwiftExpand: c406a3bd733a5f8988b26bf4bae79b4ab59cb741
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd

@@ -108,7 +108,7 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate{
         let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
         let itemList = foldModel.dataList[indexPath.row]
         
-        let cell = UITableViewCellFour.cellWithTableView(tableView) as! UITableViewCellFour;
+        let cell = UITableViewCellFour.dequeueReusableCell(tableView)
         
         cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
         cell.type = 1
@@ -135,7 +135,7 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate{
         
         let foldModel = dataList[section] as! NNFoldSectionModel
         
-        let view = UITableHeaderFooterViewZero.viewWithTableView(tableView) as! UITableHeaderFooterViewZero
+        let view = UITableHeaderFooterViewZero.dequeueReusableHeaderFooterView(tableView)
 //        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
         
         view.isCanOpen = foldModel.isCanOpen

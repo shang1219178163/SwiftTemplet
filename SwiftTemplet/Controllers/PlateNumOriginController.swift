@@ -44,6 +44,9 @@ class PlateNumOriginController: UIViewController, PWHandlerDelegate {
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(35)
         }
+        DDLog(self.view.frame);
+        DDLog(btn.frame);
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

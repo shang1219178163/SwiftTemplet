@@ -95,7 +95,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         
         switch indexPath.row {
         case 0:
-            let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker;
+            let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView);
             cell.labelLeft.text = "日期选择:";
             cell.textfield.asoryView(true, unitName: "小时")
             cell.block { ( sender: UITableViewCellDatePicker, view: NNDatePicker, idx: Int) in
@@ -108,7 +108,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.getViewLayer();
             return cell;
         case 1:
-            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
@@ -124,7 +124,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.getViewLayer();
             return cell;
         case 2:
-            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne1") as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne1")
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
@@ -141,8 +141,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             return cell;
             
         case 3:
-            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne2") as! UITableViewCellOne
-            
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne2")
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
@@ -159,7 +158,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.getViewLayer();
             return cell;
         case 4:
-            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne3") as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne3")
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
@@ -177,7 +176,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             return cell;
             
         case 5:
-            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne4") as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne4")
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
@@ -195,7 +194,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.getViewLayer();
             return cell;
         case 6:
-            let cell = UITableViewCellOne.cellWithTableView(tableView, identifier: "UITableViewCellOne4") as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne4")
             
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
@@ -212,12 +211,10 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.getViewLayer();
             return cell;
         default:
-            let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
-            return cell;
-            
+            break
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell");
-        return cell!;
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
+        return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

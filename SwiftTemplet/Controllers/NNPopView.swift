@@ -75,7 +75,7 @@ class NNPopView: UIView, UITableViewDataSource, UITableViewDelegate {
         let value0 = itemList[0]
         let value1 = itemList[1]
         
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         cell.textLabel!.text = value0
         cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
         cell.accessoryType = indexP == indexPath ? .checkmark : .none

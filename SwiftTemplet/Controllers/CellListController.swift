@@ -12,9 +12,7 @@ import MJRefresh
 
 class CellListController: UIViewController {
 
-    var list = [["0,0",],
-                [ "1,1"],
-                ["2,2"],]
+    var list = [["0,70",], [ "1,55"], ["2,90"], ["3,90"], ["4,90"],]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +21,69 @@ class CellListController: UIViewController {
         view.addSubview(plainView);
     }
     
+    
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//
+//        DDLog("__\(view.frame)")
+//        var rect = view.frame
+//        rect.size = view.superview!.bounds.size;
+//        rect.size = CGSize(width: view.superview!.bounds.width, height: 100);
+//
+//        view.frame = rect;
+//        DDLog("==\(view.frame)")
+//        view.backgroundColor = .red
+//    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
+    
     // MARK: -functions
     func cellForRow(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
 
         if indexPath.row == 0 {
-            let cell = UITableViewCellAfford.cellWithTableView(tableView) as! UITableViewCellAfford;
+            let cell = UITableViewCellAfford.dequeueReusableCell(tableView);
             cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
 
             cell.getViewLayer();
             return cell;
         } else if indexPath.row == 1 {
-            let cell = IOPTableViewCellGroupView.cellWithTableView(tableView) as! IOPTableViewCellGroupView;
+            let cell = IOPTableViewCellGroupView.dequeueReusableCell(tableView);
             cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
             cell.parkGroupView.selectedIdxList = [0]
             return cell;
 
-        } else {
-            let cell = UITableViewCellPark.cellWithTableView(tableView) as! UITableViewCellPark;
+        } else if indexPath.row == 2 {
+//            let cell = UITableViewCellFee.dequeueReusableCell(tableView)
+            let cell = UITableViewCellFee.dequeueReusableCell(tableView)
+            
+            cell.isPositive = true;
+
+            cell.labelTop.text = "临时车"
+            cell.labelRight.text = "计费: ¥ 23.00"
+            cell.labelMid.text = "异常出车异常出车异常出车异常出车异常出车异常出车"
+            cell.labelBom.text = DateFormatter.stringFromDate(Date()) + DateFormatter.stringFromDate(Date())
+            
+            cell.getViewLayer();
+            return cell;
+               
+        } else if indexPath.row == 3 {
+          let cell = UITableViewCellFee.dequeueReusableCell(tableView);
+            cell.isPositive = false;
+
+           cell.labelTop.text = "临时车"
+           cell.labelRight.text = "计费: ¥ 1.00"
+           cell.labelMid.text = "异常出车异常出车异常出车异常出车异常出车异常出车"
+           cell.labelBom.text = DateFormatter.stringFromDate(Date()) + "~" + DateFormatter.stringFromDate(Date())
+           
+            cell.getViewLayer();
+
+           return cell;
+               
+        }  else {
+            let cell = UITableViewCellPark.dequeueReusableCell(tableView);
             cell.getViewLayer();
             return cell;
         }
@@ -55,11 +99,11 @@ class CellListController: UIViewController {
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-//        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//        let cell = UITableViewCellZero.dequeueReusableCell(tableView) as! UITableViewCellZero;
 //        cell.textLabel!.text = itemList[0]
 //
-//        let cell = UITableViewCell.cellWithTableView(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
-//            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
+//        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+//            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle);
 //
 //            cell.accessoryType = .disclosureIndicator;
 //
@@ -75,6 +119,11 @@ class CellListController: UIViewController {
             DDLog(itemList);
             self.goController(itemList.last, obj: itemList.first as AnyObject?, objOne: nil)
         })
+        view.blockCellHeightForRow { (tableView, indexPath) -> CGFloat in
+            let itemList = view.list![indexPath.row] as! [String]
+            let cellList: String = itemList[0].components(separatedBy: ",") .last!
+            return cellList.cgFloatValue;
+        }
         
 //        view.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
 //

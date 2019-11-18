@@ -174,6 +174,8 @@
 		14BD733D22D417C9008788B1 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD732E22D417C9008788B1 /* KeyboardLayout.swift */; };
 		14BD733F22D418F7008788B1 /* PlateNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD733E22D418F7008788B1 /* PlateNumberController.swift */; };
 		14BD734522D43B1C008788B1 /* PlateNumOriginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */; };
+		14BE1769237FB9450007B148 /* NNTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1768237FB9450007B148 /* NNTabView.swift */; };
+		14BE176B237FC5070007B148 /* NNTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE176A237FC5070007B148 /* NNTabViewController.swift */; };
 		14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */; };
 		14C1196222D99BA9009D18A3 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196122D99BA8009D18A3 /* OthersViewController.swift */; };
 		14C1196622D9C6ED009D18A3 /* NNCheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */; };
@@ -193,6 +195,7 @@
 		14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */; };
 		14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
+		14F18E852382346D0018626C /* UITableViewCellFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F18E842382346D0018626C /* UITableViewCellFee.swift */; };
 		14F3966B227ED0F2000CD7B4 /* NNCheckVersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3966A227ED0F2000CD7B4 /* NNCheckVersApi.swift */; };
 		14F3966D227ED405000CD7B4 /* NNBaseRequestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3966C227ED405000CD7B4 /* NNBaseRequestApi.swift */; };
 		14F3967622804160000CD7B4 /* ESCheckVersRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */; };
@@ -396,6 +399,8 @@
 		14BD732E22D417C9008788B1 /* KeyboardLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
 		14BD733E22D418F7008788B1 /* PlateNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateNumberController.swift; sourceTree = "<group>"; };
 		14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateNumOriginController.swift; sourceTree = "<group>"; };
+		14BE1768237FB9450007B148 /* NNTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabView.swift; sourceTree = "<group>"; };
+		14BE176A237FC5070007B148 /* NNTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabViewController.swift; sourceTree = "<group>"; };
 		14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSegmentedControl.swift; sourceTree = "<group>"; };
 		14C1196122D99BA8009D18A3 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
 		14C1196522D9C6ED009D18A3 /* NNCheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCheckBoxButton.swift; sourceTree = "<group>"; };
@@ -415,6 +420,7 @@
 		14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardViewController.swift; sourceTree = "<group>"; };
 		14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Helper.swift"; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
+		14F18E842382346D0018626C /* UITableViewCellFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellFee.swift; sourceTree = "<group>"; };
 		14F3966A227ED0F2000CD7B4 /* NNCheckVersApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCheckVersApi.swift; sourceTree = "<group>"; };
 		14F3966C227ED405000CD7B4 /* NNBaseRequestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNBaseRequestApi.swift; sourceTree = "<group>"; };
 		14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESCheckVersRootClass.swift; sourceTree = "<group>"; };
@@ -818,6 +824,7 @@
 				14BD733E22D418F7008788B1 /* PlateNumberController.swift */,
 				14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */,
 				145C914E2334C4C100849E9D /* PlateNumMainController.swift */,
+				14BE176A237FC5070007B148 /* NNTabViewController.swift */,
 				14403E5F2331C1B8005DB45B /* TmpViewController.swift */,
 				1461A24423191850006A758F /* ScrollViewController.swift */,
 				14C9019E231543490084A946 /* ScrollHorizontalController.swift */,
@@ -843,6 +850,7 @@
 				14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */,
 				14B940B8237E3FBE00A49D1F /* IOPParkGroupButton.swift */,
 				14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */,
+				14F18E842382346D0018626C /* UITableViewCellFee.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -895,6 +903,7 @@
 			isa = PBXGroup;
 			children = (
 				145C91502334CD0E00849E9D /* NNTabController.swift */,
+				14BE1768237FB9450007B148 /* NNTabView.swift */,
 				14198D54231FC2E00094D61F /* NNRadioButton.swift */,
 				142A76E722275EE00016D3DA /* NNSuspendButton.swift */,
 				142A770C222764080016D3DA /* NNPickerView.swift */,
@@ -1249,6 +1258,7 @@
 				14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */,
 				14A86A7323557AAC00AD9BC1 /* NNSearchController.swift in Sources */,
 				1401BEAA2277D7BA0078A722 /* NNCacheProtocol.swift in Sources */,
+				14BE176B237FC5070007B148 /* NNTabViewController.swift in Sources */,
 				142A770322275EE10016D3DA /* NNTablePlainView.swift in Sources */,
 				142A76FA22275EE10016D3DA /* NNDatePicker.swift in Sources */,
 				1401BE932277D6E20078A722 /* NNPageModel.swift in Sources */,
@@ -1292,12 +1302,14 @@
 				142A76FB22275EE10016D3DA /* NNCellDefaultView.swift in Sources */,
 				5182444D213E8CB600071A9D /* NNData.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
+				14BE1769237FB9450007B148 /* NNTabView.swift in Sources */,
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				14BD733C22D417C9008788B1 /* PWKeyBoardView.swift in Sources */,
 				14B940B1237E2FBC00A49D1F /* NNGroupView.swift in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
+				14F18E852382346D0018626C /* UITableViewCellFee.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				147FF3C921CE26BE00351E94 /* UITableHeaderFooterViewFour.swift in Sources */,
 				14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */,

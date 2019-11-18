@@ -98,7 +98,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
                                                0,
                                                scrollViewContent.sizeWidth,
                                                scrollViewContent.sizeHeight)
-            controller.view.backgroundColor = UIColor.random
+//            controller.view.backgroundColor = UIColor.random
         }
         
     }
@@ -145,7 +145,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
             }
             
             cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
-            //            cell.contentView.backgroundColor = UIColor.random;
+//            cell.contentView.backgroundColor = UIColor.random;
             cell.imgView.isHidden = true;
             return cell;
         });

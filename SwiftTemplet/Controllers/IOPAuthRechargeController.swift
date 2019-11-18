@@ -108,7 +108,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
         
         switch itemList[1].intValue {
         case 1:
-            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
             cell.labelLeft.text = itemList[0]
             cell.labelRight.text = itemList[4]
 
@@ -116,7 +116,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
             return cell
 
         case 102:
-            let cell = UITableViewCellDatePicker.cellWithTableView(tableView) as! UITableViewCellDatePicker
+            let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView)
             cell.labelLeft.text = itemList[0]
             cell.textfield.text = itemList[4]
             cell.textfield.textAlignment = .right
@@ -124,7 +124,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
             return cell
             
         case 106:
-            let cell = UITableViewCellTextField.cellWithTableView(tableView) as! UITableViewCellTextField
+            let cell = UITableViewCellTextField.dequeueReusableCell(tableView)
             cell.labelLeft.text = itemList[0]
             cell.textfield.asoryView(true, unitName: itemList.last)
 //            cell.textfield.rightView = nil;
@@ -138,7 +138,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
             }
             return cell
         case 105:
-            let cell = UITableViewCellStep.cellWithTableView(tableView) as! UITableViewCellStep
+            let cell = UITableViewCellStep.dequeueReusableCell(tableView)
             cell.labelLeft.text = itemList[0]
             cell.ppBtn.minValue = 0
             cell.ppBtn.maxValue = 10
@@ -153,7 +153,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
             break
             
         }
-        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         return cell
     }
     
@@ -168,7 +168,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let view = UITableHeaderFooterViewTwo.viewWithTableView(tableView) as! UITableHeaderFooterViewTwo
+        let view = UITableHeaderFooterViewTwo.dequeueReusableHeaderFooterView(tableView)
         
         let text = "¥200小时"
         view.labelLeftSub.attributedText = NSAttributedString.attString(text, offsetStart: 0, offsetEnd: 2)

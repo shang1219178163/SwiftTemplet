@@ -134,7 +134,7 @@ extension FleetDetailControllerNew: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
 
-        let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne;
+        let cell = UITableViewCellOne.dequeueReusableCell(tableView)
         cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
         cell.labelRight.text = "990" + "\(indexPath.row)";
 //        let imgUrl = imgList.randomElement()!;

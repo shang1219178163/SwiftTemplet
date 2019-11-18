@@ -29,7 +29,7 @@ class TitleViewController: UIViewController{
             let value4 = itemList[4] as! String
             let value5 = itemList[5] as! String
 
-            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView) as! UITableViewCellOne
             cell.labelLeft.text = "标题"
             cell.labelRight.text = NSStringFromIndexPath(indexPath)
             cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
@@ -124,7 +124,7 @@ class TitleViewController: UIViewController{
 //
 //        switch (itemList[1] as! String).intValue {
 //        case 1:
-//            let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
+//            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
 //            cell.labelLeft.text = value0
 //            cell.labelRight.text = value4
 //            cell.labelRight.text = NSStringFromIndexPath(indexPath)
@@ -137,7 +137,7 @@ class TitleViewController: UIViewController{
 //            break
 //
 //        }
-//        let cell = UITableViewCellZero.cellWithTableView(tableView) as! UITableViewCellZero;
+//        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
 //        return cell
 //    }
 //

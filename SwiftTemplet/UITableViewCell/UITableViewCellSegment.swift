@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISegment分段按钮
-class UITableViewCellSegment: UITableViewCell,UITextFieldDelegate {
+class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
     
     var ctlAlignment = NSTextAlignment.center
     
@@ -96,8 +96,8 @@ class UITableViewCellSegment: UITableViewCell,UITextFieldDelegate {
     }
     
     //MARK: -lazy
-    lazy var segmentCtl: UISegmentedControl = {
-        var view = UISegmentedControl.create( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
+    lazy var segmentCtl: NNSegmentedControl = {
+        var view = NNSegmentedControl.create( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
         return view
     }()
     

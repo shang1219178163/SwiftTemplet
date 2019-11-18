@@ -8,11 +8,10 @@
 
 import UIKit
 import SwiftExpand
+import SnapKit
 
 import Alamofire
-import SwiftExpand
 import SDWebImage
-import SnapKit
 
 class TestViewController: UIViewController{
     let url = "https://httpbin.org/get";
@@ -154,7 +153,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate{
         let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
         let obj = foldModel.dataList[indexPath.row]
         
-        let cell = UITableViewCellFour.cellWithTableView(tableView) as! UITableViewCellFour;
+        let cell = UITableViewCellFour.dequeueReusableCell(tableView)
         
         cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
         cell.type = 1
@@ -181,7 +180,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate{
         
         let foldModel = dataList[section] as! NNFoldSectionModel
         
-        let view = UITableHeaderFooterViewOne.viewWithTableView(tableView) as! UITableHeaderFooterViewOne
+        let view = UITableHeaderFooterViewOne.dequeueReusableHeaderFooterView(tableView)
         //        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
         
         view.isCanOpen = foldModel.isCanOpen

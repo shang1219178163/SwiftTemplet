@@ -29,7 +29,7 @@ extension NNSearchResultController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellOne.cellWithTableView(tableView) as! UITableViewCellOne
+        let cell = UITableViewCellOne.dequeueReusableCell(tableView)
         cell.labelLeft.text = "\(indexPath.section),\(indexPath.row)"
         return cell;
     }
