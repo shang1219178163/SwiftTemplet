@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let e = NSNumber(1.4988).to_string();
         let f = NSNumber(1.4988).to_string(3);
-
+        DDLog(a, b, c, d, e, f)
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);

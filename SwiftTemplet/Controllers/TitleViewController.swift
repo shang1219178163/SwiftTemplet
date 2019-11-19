@@ -97,80 +97,6 @@ class TitleViewController: UIViewController{
             make.height.equalTo(40)
         }
     }
-
-//    //    MARK: - tableView
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1;
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return list.count;
-//    };
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let itemList = list[indexPath.row]
-//        let itemHeight = (itemList[2] as! String).cgFloatValue
-//        return itemHeight
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let itemList = list[indexPath.row]
-//        let value0 = itemList[0] as! String
-//        let value1 = itemList[1] as! String
-//        let value2 = itemList[2] as! String
-//        let value3 = itemList[3] as! String
-//        let value4 = itemList[4] as! String
-//        let value5 = itemList[5] as! String
-//
-//        switch (itemList[1] as! String).intValue {
-//        case 1:
-//            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-//            cell.labelLeft.text = value0
-//            cell.labelRight.text = value4
-//            cell.labelRight.text = NSStringFromIndexPath(indexPath)
-//
-//            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
-//            cell.getViewLayer()
-//            return cell
-//
-//        default:
-//            break
-//
-//        }
-//        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexP != indexPath  {
-//            let newCell = tableView.cellForRow(at: indexPath)
-//            newCell?.accessoryType = .checkmark
-//
-//            let oldCell = tableView.cellForRow(at: indexP)
-//            oldCell?.accessoryType = .none
-//            indexP = indexPath
-//        }
-//        dismiss()
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 10;
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView();
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0.01;
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let label = UILabel(frame: .zero);
-//        //        label.backgroundColor = .green;
-//        //        label.text = "header\(section)";
-//        return label;
-//    }
     
     //MARK: -func
     func setupTitleView() {        
@@ -305,7 +231,6 @@ class TitleViewController: UIViewController{
 //        return layer
 //    }()
     
-    
     lazy var segmentView: NNSegmentViewZero = {
         var view = NNSegmentViewZero(frame: .zero)
         view.segmentCtl.itemList = ["one","two","three","four"]
@@ -394,3 +319,80 @@ class TitleViewController: UIViewController{
         return view
     }()
 }
+
+
+//extension TitleViewController: UITableViewDataSource, UITableViewDelegate{
+//    //    MARK: - tableView
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1;
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return list.count;
+//    };
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let itemList = list[indexPath.row]
+//        let itemHeight = (itemList[2] as! String).cgFloatValue
+//        return itemHeight
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let itemList = list[indexPath.row]
+//        let value0 = itemList[0] as! String
+//        let value1 = itemList[1] as! String
+//        let value2 = itemList[2] as! String
+//        let value3 = itemList[3] as! String
+//        let value4 = itemList[4] as! String
+//        let value5 = itemList[5] as! String
+//
+//        switch (itemList[1] as! String).intValue {
+//        case 1:
+//            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
+//            cell.labelLeft.text = value0
+//            cell.labelRight.text = value4
+//            cell.labelRight.text = NSStringFromIndexPath(indexPath)
+//
+//            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
+//            cell.getViewLayer()
+//            return cell
+//
+//        default:
+//            break
+//
+//        }
+//        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if indexP != indexPath  {
+//            let newCell = tableView.cellForRow(at: indexPath)
+//            newCell?.accessoryType = .checkmark
+//
+//            let oldCell = tableView.cellForRow(at: indexP)
+//            oldCell?.accessoryType = .none
+//            indexP = indexPath
+//        }
+//        dismiss()
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 10;
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return UIView();
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0.01;
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let label = UILabel(frame: .zero);
+//        //        label.backgroundColor = .green;
+//        //        label.text = "header\(section)";
+//        return label;
+//    }
+//}

@@ -144,6 +144,8 @@
 		147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */; };
 		147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */; };
 		149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149111A022719F300078A7BB /* AppGlobleConfig.swift */; };
+		149946852383F743005E43CC /* NNPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946842383F743005E43CC /* NNPictureView.swift */; };
+		149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946862383F93B005E43CC /* UICTViewCellTwo.swift */; };
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		14A3209D2322366C00B5EE5A /* NNDatePickerRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */; };
@@ -369,6 +371,8 @@
 		147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailControllerNew.swift; sourceTree = "<group>"; };
 		147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
 		149111A022719F300078A7BB /* AppGlobleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobleConfig.swift; sourceTree = "<group>"; };
+		149946842383F743005E43CC /* NNPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPictureView.swift; sourceTree = "<group>"; };
+		149946862383F93B005E43CC /* UICTViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellTwo.swift; sourceTree = "<group>"; };
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNDatePickerRangeView.swift; sourceTree = "<group>"; };
@@ -652,6 +656,7 @@
 				147FF47421CF511800351E94 /* UICTReusableViewOne.swift */,
 				147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */,
 				147FF47221CF49B000351E94 /* UICTViewCellOne.swift */,
+				149946862383F93B005E43CC /* UICTViewCellTwo.swift */,
 			);
 			path = UICollectionViewCell;
 			sourceTree = "<group>";
@@ -929,6 +934,7 @@
 				142A76E622275EE00016D3DA /* NNSectionView.swift */,
 				142A76DE22275EDF0016D3DA /* NNSegmentViewZero.swift */,
 				14C901A02315435B0084A946 /* NNSegmentView.swift */,
+				149946842383F743005E43CC /* NNPictureView.swift */,
 				142A76DF22275EDF0016D3DA /* NNSliderControlView.swift */,
 				142A76E822275EE00016D3DA /* NNTableFooterView.swift */,
 				142A76EB22275EE00016D3DA /* NNTablePlainView.swift */,
@@ -1234,6 +1240,7 @@
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
 				149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */,
 				14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */,
+				149946852383F743005E43CC /* NNPictureView.swift in Sources */,
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
 				14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */,
 				14B940BB237E53A300A49D1F /* IOPTableViewCellGroupView.swift in Sources */,
@@ -1334,6 +1341,7 @@
 				142A770722275EE10016D3DA /* NNPickListView.swift in Sources */,
 				1448871B224E1D2300B550AF /* ZMKeyBoardUtil.swift in Sources */,
 				145C914F2334C4C100849E9D /* PlateNumMainController.swift in Sources */,
+				149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */,
 				14244770222B92070087372F /* UITableViewCellPhotoPicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* NNRootClass.swift in Sources */,
 				1401BE9D2277D7260078A722 /* NNLog.swift in Sources */,
