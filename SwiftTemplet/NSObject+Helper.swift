@@ -18,6 +18,98 @@ import UIKit
   
 }
 
+@objc extension UIImageView{
+    
+    var urls: [String] {
+        get {
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! [String];
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+
+    public func showImageEnlarge(urls: [String]) {
+        self.urls = urls;
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(enlargeImageView(_:)))
+        tap.numberOfTapsRequired = 1  //轻点次数
+        tap.numberOfTouchesRequired = 1  //手指个数
+        isUserInteractionEnabled = true
+        isMultipleTouchEnabled = true
+        addGestureRecognizer(tap)
+             
+        enlargeImageView(tap)
+    }
+
+    
+    private func enlargeImageView(_ tap: UITapGestureRecognizer) {
+        let window = UIApplication.shared.keyWindow;
+        
+        let avatarImageView = tap.view as! UIImageView;
+        let oldFrame = avatarImageView.convert(avatarImageView.frame, to: window)
+        
+        let imageView: UIImageView = {
+          let view = UIImageView(frame: oldFrame)
+            view.contentMode = .scaleAspectFit
+            view.tag = 1001;
+                        
+            let pinch = UIPinchGestureRecognizer(target: self, action: #selector(p_handlePinchGesture(_:)))
+            pinch.scale = 1
+            view.isUserInteractionEnabled = true
+            view.isMultipleTouchEnabled = true
+            view.addGestureRecognizer(pinch)
+            return view;
+        }()
+        imageView.sd_setImage(with: URL(string: self.urls.first!), placeholderImage: UIImageNamed("img_failedDefault_S"))
+
+        let backgroundView: UIView = {
+            let view = UIView(frame: window!.bounds)
+            view.backgroundColor = .black
+            view.tag = 1000;
+            view.alpha = 0;
+            return view;
+        }()
+        backgroundView.addSubview(imageView)
+        window?.insertSubview(backgroundView, at: 1)
+                
+        UIView.animate(withDuration: 0.15) {
+            imageView.frame = window!.bounds;
+            backgroundView.alpha = 1;
+        }
+        
+        _ = backgroundView.addGestureTap { (reco) in
+            UIView.animate(withDuration: 0.15, animations: {
+                backgroundView.alpha = 0;
+
+            }) { (finished) in
+                if finished == true {
+                    reco.view?.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    
+    private func p_handlePinchGesture(_ sender: UIPinchGestureRecognizer) {
+        let location = sender.location(in: sender.view!.superview)
+        sender.view!.center = location;
+        sender.view!.transform = sender.view!.transform.scaledBy(x: sender.scale, y: sender.scale)
+        
+//        if sender.state == .began || sender.state == .changed{
+//            if sender.view?.bounds.width <= oldFrame.width {
+//                sender.view?.frame = oldFrame;
+//            } else if ( sender.view?.bounds.width >= oldFrame.width*3) {
+//                sender.view?.frame = oldFrame.width*3;
+//            } else {
+//
+//            }
+//        }
+        sender.scale = 1.0
+//        print(recognizer)
+    }
+
+}
 
 @objc public extension Bundle{
     static func infoDictionary(plist: String) -> [String: AnyObject]? {

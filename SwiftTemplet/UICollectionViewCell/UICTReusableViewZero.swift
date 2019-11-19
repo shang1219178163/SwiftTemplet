@@ -19,21 +19,21 @@ class UICTReusableViewZero: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(imageView)
-        addSubview(textLabel)
+        addSubview(imgView)
+        addSubview(label)
         
-        textLabel.backgroundColor = UIColor.random
-        imageView.backgroundColor = UIColor.random
+        label.backgroundColor = UIColor.random
+        imgView.backgroundColor = UIColor.random
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imageView.snp.makeConstraints { (make) in
+        imgView.snp.makeConstraints { (make) in
             make.top.left.bottom.right.equalToSuperview()
         }
         
-        textLabel.snp.makeConstraints { (make) in
+        label.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
