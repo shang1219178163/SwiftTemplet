@@ -34,10 +34,27 @@ class TestViewController: UIViewController{
         parkGroupView.frame = CGRect(x: 20, y: itemView.maxY + 20, width: kScreenWidth - 40.0, height: 35)
         parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
         parkGroupView.selectedIdxList = [0]
-
         view.addSubview(parkGroupView)
         
-//        view.getViewLayer()
+        let urlArray = ["http://upload-images.jianshu.io/upload_images/1714291-6c664d526b380115.jpg",                        "http://img.parkingwang.com/6100000074/629906_1.jpg",                            "http://upload-images.jianshu.io/upload_images/3580598-482508548410c111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
+        
+        let rect = CGRect(x: 20, y: parkGroupView.maxY + 20, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.toCGFloat)
+        let photosView = createGroupView(rect, list: urlArray, numberOfRow: 3, padding: 10, type: 1) { (tap, itemView, idx) in
+            DDLog(idx)
+            let value = urlArray[idx];
+//            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+            (itemView as! UIImageView).showImageEnlarge(urls: urlArray)
+
+        }
+        view.addSubview(photosView)
+                
+        pictureView.frame = CGRect(x: 20, y: photosView.maxY + 20, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0))
+        pictureView.list = urlArray
+        view.addSubview(pictureView)
+
+        DDLog(pictureView.backgroundColor)
+
+        view.getViewLayer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +103,34 @@ class TestViewController: UIViewController{
         DDLog(222)
     }
     
+    /// [源]GroupView创建
+    func createGroupView(_ rect: CGRect = CGRect.zero, list: [String], numberOfRow: Int = 4, padding: CGFloat = kPadding, type: Int = 0, action: ((UITapGestureRecognizer?, UIView, NSInteger)->Void)? = nil) -> UIView {
+        
+        let rowCount: Int = list.count % numberOfRow == 0 ? list.count/numberOfRow : list.count/numberOfRow + 1;
+        let itemWidth = (rect.width - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow)
+        let itemHeight = (rect.height - CGFloat(rowCount - 1)*padding)/CGFloat(rowCount)
+        
+        let backView = UIView(frame: rect);
+        for (i,value) in list.enumerated() {
+            let x = CGFloat(i % numberOfRow) * (itemWidth + padding);
+            let y = CGFloat(i / numberOfRow) * (itemHeight + padding);
+            let rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight);
+            
+            let imgView = UIImageView(frame: rect);
+            imgView.isUserInteractionEnabled = true;
+            imgView.contentMode = .scaleAspectFit;
+            imgView.image = UIImage(named: value);
+            imgView.tag = i;
+            DDLog(value)
+            imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+
+            if action != nil {
+                imgView.addActionClosure(action!)
+            }
+            backView.addSubview(imgView);
+        }
+        return backView;
+    }
     //MARK: -lazy
     lazy var footerView: NNTableFooterView = {
         var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
@@ -126,6 +171,12 @@ class TestViewController: UIViewController{
 
             }
         })
+        return view;
+    }()
+    
+    lazy var pictureView: NNPictureView = {
+        var view = NNPictureView(frame: .zero)
+        view.backgroundColor = .black
         return view;
     }()
     
