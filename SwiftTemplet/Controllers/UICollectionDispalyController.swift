@@ -142,13 +142,13 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
        if kind == UICollectionView.elementKindSectionHeader {
            let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
         
-           view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
-           view.textLabelRight.text = "999+"
+           view.label.text = kind.components(separatedBy: "ElementKind").last;
+           view.labelRight.text = "999+"
            return view;
        }
        
         let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind, indexPath: indexPath)
-       view.textLabel.text = kind.components(separatedBy: "ElementKind").last;
+       view.label.text = kind.components(separatedBy: "ElementKind").last;
        return view;
        
    }
