@@ -14,16 +14,17 @@ class NNPictureView: UIView {
         
     var list: [String] = []{
         willSet{
-            DDLog(newValue)
+//            DDLog(newValue)
             labelTop.text = "1/\(newValue.count)"
             collectionView.reloadData();
         }
     }
     
-    var selectIndex = 0 {
-        didSet{
-            collectionView.selectItem(at: IndexPath(row: oldValue, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-            collectionView.reloadData();
+    var selectIndex = 0{
+        willSet{
+            labelTop.text = "1/\(newValue)"
+            collectionView.scrollToItem(at: IndexPath(row: newValue, section: 0), at: .centeredHorizontally, animated: false)
+
         }
     }
 
@@ -33,7 +34,8 @@ class NNPictureView: UIView {
         backgroundColor = .black;
         collectionView.backgroundColor = backgroundColor;
         labelTop.textColor = .white;
-
+//        labelTop.backgroundColor = .red;
+        
         collectionView.register(UICTViewCellTwo.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellTwo")
         addSubview(collectionView)
         addSubview(labelTop)
@@ -53,11 +55,31 @@ class NNPictureView: UIView {
             return;
         }
         
-        labelTop.frame = CGRectMake(0, 0, bounds.width, kH_LABEL)
-        collectionView.frame = CGRectMake(0, labelTop.maxY, bounds.width, bounds.height - kH_LABEL)
+        labelTop.frame = CGRectMake(10, 44, bounds.width - 10*2, kH_LABEL)
+        collectionView.frame = CGRectMake(0, labelTop.maxY, bounds.width, bounds.height - labelTop.maxY)
         layout.itemSize = collectionView.frame.size;
+        
+        collectionView.scrollToItem(at: IndexPath(row: selectIndex, section: 0), at: .centeredHorizontally, animated: false)
     }
 
+    // MARK: - funtions
+    @objc private func p_handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
+        guard let senderView = recognizer.view else { return }
+        let location = recognizer.location(in: senderView.superview)
+        senderView.center = location;
+        senderView.transform = senderView.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
+
+        recognizer.scale = 1.0
+//        print(recognizer)
+    }
+    
+    @objc private func p_handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        guard let senderView = recognizer.view else { return }
+        let translate:CGPoint = recognizer.translation(in: recognizer.view?.superview)
+        recognizer.view!.center = CGPoint(x: recognizer.view!.center.x + translate.x, y: recognizer.view!.center.y + translate.y)
+        recognizer.setTranslation( .zero, in: recognizer.view!.superview)
+//        print(recognizer)
+    }
         
     // MARK: -lazy
     /// 载体布局视图
@@ -92,7 +114,8 @@ class NNPictureView: UIView {
     // MARK: - lazy
     lazy var labelTop: UILabel = {
         let view = UILabel.create()
-        view.textAlignment = .center
+        view.textAlignment = .right
+        view.font = UIFont.systemFont(ofSize: 18)
         return view;
     }()
 }
@@ -116,14 +139,28 @@ extension NNPictureView: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
         cell.labelBom.text = value
         
+        if cell.imgView.gestureRecognizers == nil {
+            let pinch = UIPinchGestureRecognizer(target: self, action: #selector(p_handlePinchGesture(_:)))
+            pinch.scale = 1
+            cell.imgView.isUserInteractionEnabled = true
+            cell.imgView.isMultipleTouchEnabled = true
+            cell.imgView.addGestureRecognizer(pinch)
+            
+            let pan = UIPanGestureRecognizer(target: self, action: #selector(p_handlePanGesture(_:)))
+            //最大最小的手势触摸次数
+            pan.minimumNumberOfTouches = 1
+            pan.maximumNumberOfTouches = 3
+            cell.imgView.addGestureRecognizer(pan)
+        }
+        
 //        cell.contentView.backgroundColor = UIColor.random
         return cell;
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let isScrollHorizontal = layout.scrollDirection == .horizontal;
-        let scrollPosition = isScrollHorizontal ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
-        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
+//        let isScrollHorizontal = (layout.scrollDirection == .horizontal);
+//        let scrollPosition = isScrollHorizontal == true ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
+//        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
         selectIndex = indexPath.row;
         
     }
@@ -134,7 +171,65 @@ extension NNPictureView: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.size.width);
-        labelTop.text = "\(currentPage+1)/\(list.count)"
+        labelTop.text = "\(currentPage+1)/\(list.count)         "
+    }
+
+}
+
+
+@objc extension UIImageView{
+    
+    public var urls: [String] {
+        get {
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! [String];
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    var pictureView: NNPictureView {
+        get {
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? NNPictureView;
+            if obj == nil {
+                obj = NNPictureView(frame: CGRect.zero);
+                obj!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                obj!.isUserInteractionEnabled = true;
+                
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            }
+            return obj!;
+        }
+        set {
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        }
+    }
+    
+    public func showPictureView(_  urls: [String], index: Int = 0) {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        pictureView.list = urls
+        pictureView.selectIndex = index
+
+        pictureView.frame = window.bounds;
+//        pictureView.frame = CGRectMake(44, 44, window.bounds.width - 44*2, window.bounds.height)
+        window.insertSubview(pictureView, at: 1)
+        
+        pictureView.alpha = 0;
+        UIView.animate(withDuration: 0.15) {
+            self.pictureView.alpha = 1;
+        }
+        
+        _ = pictureView.addGestureTap { (reco) in
+            UIView.animate(withDuration: 0.15, animations: {
+                self.pictureView.alpha = 0;
+
+            }) { (finished) in
+                if finished == true {
+                    reco.view?.removeFromSuperview()
+                }
+            }
+        }
+        
     }
 
 }
