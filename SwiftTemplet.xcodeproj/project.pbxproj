@@ -146,6 +146,7 @@
 		149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149111A022719F300078A7BB /* AppGlobleConfig.swift */; };
 		149946852383F743005E43CC /* NNPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946842383F743005E43CC /* NNPictureView.swift */; };
 		149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946862383F93B005E43CC /* UICTViewCellTwo.swift */; };
+		149946892384E5E5005E43CC /* UIRecognizerUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */; };
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		14A3209D2322366C00B5EE5A /* NNDatePickerRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */; };
@@ -373,6 +374,7 @@
 		149111A022719F300078A7BB /* AppGlobleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobleConfig.swift; sourceTree = "<group>"; };
 		149946842383F743005E43CC /* NNPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPictureView.swift; sourceTree = "<group>"; };
 		149946862383F93B005E43CC /* UICTViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellTwo.swift; sourceTree = "<group>"; };
+		149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerUpdateController.swift; sourceTree = "<group>"; };
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNDatePickerRangeView.swift; sourceTree = "<group>"; };
@@ -806,6 +808,7 @@
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
 				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
+				149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */,
 				145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
@@ -1275,6 +1278,7 @@
 				14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */,
 				515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */,
 				142A770D222764080016D3DA /* NNPickerView.swift in Sources */,
+				149946892384E5E5005E43CC /* UIRecognizerUpdateController.swift in Sources */,
 				519E87BC21364AF4002CCD86 /* UITableViewCellOne.swift in Sources */,
 				14488646224DC24E00B550AF /* CalendarViewController.swift in Sources */,
 				14BD733222D417C9008788B1 /* UITextField+Extension.swift in Sources */,

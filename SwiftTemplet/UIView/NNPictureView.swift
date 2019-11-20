@@ -9,8 +9,8 @@
 import UIKit
 import SwiftExpand
 
-@objcMembers
-class NNPictureView: UIView {
+/// 图片浏览器
+@objcMembers class NNPictureView: UIView {
         
     var list: [String] = []{
         willSet{
@@ -76,8 +76,8 @@ class NNPictureView: UIView {
     @objc private func p_handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         guard let senderView = recognizer.view else { return }
         let translate:CGPoint = recognizer.translation(in: recognizer.view?.superview)
-        recognizer.view!.center = CGPoint(x: recognizer.view!.center.x + translate.x, y: recognizer.view!.center.y + translate.y)
-        recognizer.setTranslation( .zero, in: recognizer.view!.superview)
+        senderView.center = CGPoint(x: senderView.center.x + translate.x, y: senderView.center.y + translate.y)
+        recognizer.setTranslation( .zero, in: senderView.superview)
 //        print(recognizer)
     }
         
@@ -176,7 +176,7 @@ extension NNPictureView: UIScrollViewDelegate {
 
 }
 
-
+/// 添加分类支持
 @objc extension UIImageView{
     
     public var urls: [String] {
@@ -229,7 +229,6 @@ extension NNPictureView: UIScrollViewDelegate {
                 }
             }
         }
-        
     }
 
 }

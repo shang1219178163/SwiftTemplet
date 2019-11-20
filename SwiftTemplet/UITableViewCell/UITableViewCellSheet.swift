@@ -17,7 +17,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     var itemList: [String]? {
         willSet{
             alertCtrl = UIAlertController.createSheet("请选择", msg: nil, items: newValue, handler: { (controller: UIAlertController, action:UIAlertAction) in
-                if action.title != kActionTitle_Cancell {
+                if action.title != kTitleCancell {
                     self.textfield.text = action.title
                     if self.viewBlock != nil {
                         self.viewBlock!(action.title!)

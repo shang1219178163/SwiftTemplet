@@ -140,7 +140,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         view.tag = 0;
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle(kActionTitle_Cancell, for: .normal);
+        view.setTitle(kTitleCancell, for: .normal);
         view.setTitleColor(UIColor.red, for: .normal);
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {
@@ -165,7 +165,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         view.tag = 1;
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle(kActionTitle_Sure, for: .normal);
+        view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {

@@ -29,7 +29,7 @@ class NNDateRangeView: UIView {
         let _ = labStart.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat_minute)
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormatMinute)
 
 //                DDLog("起始时间:",dateStr)
                 self.labStart.text = (dateStr as NSString).substring(to: 10)
@@ -43,7 +43,7 @@ class NNDateRangeView: UIView {
         let _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormat_minute)
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormatMinute)
 //                DDLog("截止日期:",dateStr)
                 self.labEnd.text = (dateStr as NSString).substring(to: 10)
                 self.dateEnd = dateStr;
@@ -56,9 +56,9 @@ class NNDateRangeView: UIView {
         labStart.textColor = UIColor.theme;
         labEnd.textColor = UIColor.theme;
 
-        labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_day)
+        labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
         let date = Date().adding(-30)
-        labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormat_day)
+        labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormatDay)
     }
     
     required init?(coder aDecoder: NSCoder) {

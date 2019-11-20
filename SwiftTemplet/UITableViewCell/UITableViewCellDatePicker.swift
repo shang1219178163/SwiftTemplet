@@ -12,9 +12,9 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+时间选择器
-class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
+class UITableViewCellDatePicker: UITableViewCell {
 
-    typealias ViewClick = (UITableViewCellDatePicker,NNDatePicker,Int) -> Void;
+    typealias ViewClick = (UITableViewCellDatePicker, NNDatePicker, Int) -> Void;
     var viewBlock: ViewClick?;
  
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,7 +26,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         
         textfield.placeholder = "请选择";
-        textfield.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormat_day)
+        textfield.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
         textfield.asoryView(true, unitName: kIMG_arrowDown);
@@ -74,22 +74,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
         super.setSelected(selected, animated: animated)
         
     }
-    
-//    MARK: -textfield
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        superview?.superview?.endEditing(true);
-//        datePicker.show();
-//        return false;
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//
-//    }
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//    }
-    
+        
     //MARK: -observe
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
@@ -99,12 +84,12 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
     }
     
     //MARK: -funtions
-    func block(_ action:@escaping ViewClick) {
+    func block(_ action: @escaping ViewClick) {
         viewBlock = action;
     }
     
     //MARK: -lazy
-    lazy var datePicker:NNDatePicker = {
+    lazy var datePicker: NNDatePicker = {
         let view = NNDatePicker();
         view.block({ (sender, idx) in
 //                DDLog(view,sender.datePicker.date,idx);
@@ -112,7 +97,7 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
                 self.viewBlock!(self,sender,idx);
             
             }
-            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormat_day)
+            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormatDay)
             self.textfield.text = idx == 1 ? dateStr : "";
         });
         return view;
@@ -123,4 +108,21 @@ class UITableViewCellDatePicker: UITableViewCell,UITextFieldDelegate {
 //        view.backgroundColor = contentView.backgroundColor;
 //        return view
 //    }()
+}
+
+extension UITableViewCellDatePicker: UITextFieldDelegate {
+    //MARK: -textfield
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+////        superview?.superview?.endEditing(true);
+////        datePicker.show();
+//        return false;
+//    }
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//
+//    }
+//
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        return true;
+//    }
 }
