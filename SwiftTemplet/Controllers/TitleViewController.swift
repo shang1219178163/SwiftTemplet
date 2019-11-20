@@ -244,7 +244,7 @@ class TitleViewController: UIViewController{
 //                "self.title".copyToPasteboard(true)
                 
 //            case 1:
-//                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kActionTitle_Cancell,"three"], handler: { (controller, alertAction) in
+//                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kTitleCancell,"three"], handler: { (controller, alertAction) in
 //                    DDLog(alertAction.title)
 //                })
                 

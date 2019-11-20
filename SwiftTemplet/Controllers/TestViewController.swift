@@ -43,7 +43,9 @@ class TestViewController: UIViewController{
             DDLog(idx)
             let value = urlArray[idx];
 //            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
-            (itemView as! UIImageView).showImageEnlarge(urls: urlArray)
+
+            (itemView as! UIImageView).showImageEnlarge()
+            (itemView as! UIImageView).showPictureView(urlArray, index: itemView.tag)
 
         }
         view.addSubview(photosView)
@@ -53,6 +55,8 @@ class TestViewController: UIViewController{
         view.addSubview(pictureView)
 
         DDLog(pictureView.backgroundColor)
+
+        DDLog(DateFormatter.queryDate())
 
         view.getViewLayer()
     }

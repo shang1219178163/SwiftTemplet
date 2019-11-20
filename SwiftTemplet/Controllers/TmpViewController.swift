@@ -176,7 +176,7 @@ class TmpViewController: UIViewController {
     //MRAK: - funtion
     @objc func handleActionControl(_ sender: UIButton) {
         DDLog(sender.titleLabel?.text as Any);
-        if sender.titleLabel?.text == kActionTitle_Sure {
+        if sender.titleLabel?.text == kTitleSure {
             
         }
     }
@@ -225,7 +225,7 @@ class TmpViewController: UIViewController {
     lazy var btnCancel: UIButton = {
         let btn = UIButton(type: .custom);
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kActionTitle_Cancell, for: .normal);
+        btn.setTitle(kTitleCancell, for: .normal);
         btn.setTitleColor(UIColor.gray, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(_:)), for:.touchUpInside);
         btn.tag = 1;
@@ -236,7 +236,7 @@ class TmpViewController: UIViewController {
     lazy var btnSure: UIButton = {
         let btn = UIButton(type: .custom);
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kActionTitle_Sure, for: .normal);
+        btn.setTitle(kTitleSure, for: .normal);
         btn.setTitleColor(UIColor.theme, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(_:)), for:.touchUpInside);
         btn.tag = 1;

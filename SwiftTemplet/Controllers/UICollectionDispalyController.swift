@@ -133,7 +133,7 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
    }
 
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     print(indexPath.row)
+        print(indexPath.row)
    }
    
    //设定header和footer的方法，根据kind不同进行不同的判断即可

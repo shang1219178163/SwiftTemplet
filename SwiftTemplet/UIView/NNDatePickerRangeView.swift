@@ -99,7 +99,7 @@ class NNDatePickerRangeView: UIView {
         btn.tag = 0;
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kActionTitle_Cancell, for: .normal);
+        btn.setTitle(kTitleCancell, for: .normal);
         btn.setTitleColor(UIColor.black, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
         
@@ -112,7 +112,7 @@ class NNDatePickerRangeView: UIView {
         btn.tag = 1;
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kActionTitle_Sure, for: .normal);
+        btn.setTitle(kTitleSure, for: .normal);
         btn.setTitleColor(UIColor.theme, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
         
@@ -136,7 +136,7 @@ class NNDatePickerRangeView: UIView {
         }
         else if let control = sender as? UIButton {
             DDLog(control.titleLabel?.text as Any);
-            if control.titleLabel?.text == kActionTitle_Sure {
+            if control.titleLabel?.text == kTitleSure {
                 self.viewBlock!(self,sender.tag);
                 
             }

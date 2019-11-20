@@ -21,7 +21,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         imgView.center = view.center
         view.addSubview(imgView)
         
-        let tap = view.addGestureTap { (sender:UIGestureRecognizer) in
+        let tap = view.addGestureTap { (sender) in
             if let recognizer = sender as? UITapGestureRecognizer {
                 DDLog(recognizer);
 
@@ -29,7 +29,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }
         tap.delegate = self;
 
-        let swipeLeft = view.addGestureSwip({ (sender:UIGestureRecognizer) in
+        let swipeLeft = view.addGestureSwip({ (sender) in
             if let recognizer = sender as? UISwipeGestureRecognizer {
                 DDLog(recognizer);
 
@@ -38,7 +38,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         swipeLeft.delegate = self;
 
 
-        let swipeRight = view.addGestureSwip({ (sender:UIGestureRecognizer) in
+        let swipeRight = view.addGestureSwip({ (sender) in
             if let recognizer = sender as? UISwipeGestureRecognizer {
                 DDLog(recognizer);
 
@@ -46,7 +46,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }, for: .right)
         swipeRight.delegate = self;
 
-        let long = view.addGestureLongPress({ (sender:UIGestureRecognizer) in
+        let long = view.addGestureLongPress({ (sender) in
             if let recognizer = sender as? UILongPressGestureRecognizer {
                 DDLog(recognizer);
 
@@ -54,7 +54,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }, for: 0.5)
         long.delegate = self;
 
-        let rotation = view.addGestureRotation { (sender:UIGestureRecognizer) in
+        let rotation = view.addGestureRotation { (sender) in
             if let recognizer = sender as? UIRotationGestureRecognizer {
                 DDLog(recognizer);
 
@@ -62,7 +62,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }
         rotation.delegate = self;
 
-        let pan = view.addGesturePan { (sender:UIGestureRecognizer) in
+        let pan = view.addGesturePan { (sender) in
             if let recognizer = sender as? UIPanGestureRecognizer {
                 DDLog(recognizer);
 
@@ -71,7 +71,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         pan.delegate = self;
 
 
-        let edgPanLeft = view.addGestureEdgPan({ (sender:UIGestureRecognizer) in
+        let edgPanLeft = view.addGestureEdgPan ({ (sender) in
             if let recognizer = sender as? UIScreenEdgePanGestureRecognizer {
                 DDLog(recognizer);
 
@@ -79,7 +79,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }, for: .left);
         edgPanLeft.delegate = self;
 
-        let edgPanRight = view.addGestureEdgPan({ (sender:UIGestureRecognizer) in
+        let edgPanRight = view.addGestureEdgPan ({ (sender) in
             if let recognizer = sender as? UIScreenEdgePanGestureRecognizer {
                 DDLog(recognizer);
                 
@@ -88,7 +88,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         edgPanRight.delegate = self;
 
         
-        let pinchView = view.addGesturePinch { (sender:UIGestureRecognizer) in
+        let pinchView = view.addGesturePinch { (sender) in
             if let recognizer = sender as? UIPinchGestureRecognizer {
                 DDLog(recognizer);
                 
@@ -96,7 +96,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }
         pinchView.delegate = self;
         
-        let panOne = imgView.addGesturePan { (sender:UIGestureRecognizer) in
+        let panOne = imgView.addGesturePan { (sender) in
             if let recognizer = sender as? UIPanGestureRecognizer {
                 DDLog(recognizer);
 //
@@ -113,7 +113,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }
         panOne.delegate = self;
         
-        let pinchOne = imgView.addGesturePinch { (sender:UIGestureRecognizer) in
+        let pinchOne = imgView.addGesturePinch { (sender) in
             if let recognizer = sender as? UIPinchGestureRecognizer {
                 DDLog(recognizer);
                 
@@ -121,7 +121,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
         }
         pinchOne.delegate = self;
 
-        let rotationOne = imgView.addGestureRotation { (sender:UIGestureRecognizer) in
+        let rotationOne = imgView.addGestureRotation { (sender) in
             if let recognizer = sender as? UIRotationGestureRecognizer {
                 DDLog(recognizer);
                 

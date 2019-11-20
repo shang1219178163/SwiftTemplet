@@ -59,7 +59,7 @@ class FourthViewController: UIViewController {
         }
 //        lastNameEndingInA;// Optional("Elena")”
 //        NNProgressHUD.showText("111");
-//        NNProgressHUD.showLoadingText(kMsg_NetWorkRequesting);
+//        NNProgressHUD.showLoadingText(kMsgNetWorkRequesting);
 //        NNProgressHUD.showSuccessText("success");
 //        NNProgressHUD.showErrorText("fail");
 

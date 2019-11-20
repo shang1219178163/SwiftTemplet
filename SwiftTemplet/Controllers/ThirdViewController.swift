@@ -97,7 +97,9 @@ class ThirdViewController: UIViewController{
     
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
-            [["UISearchStylesController", "搜索🔍样式", ],             
+            [["UISearchStylesController", "搜索🔍样式", ],
+             ["UIRecognizerController", "手势集合", ],
+             ["UIRecognizerUpdateController", "手势集合升级", ],             
              ["EntryViewController", "通用录入界面", ],
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
