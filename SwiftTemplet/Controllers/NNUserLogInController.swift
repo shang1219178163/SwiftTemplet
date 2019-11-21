@@ -16,7 +16,8 @@ let minUsernameLength = 8;
 let minPasswordLength = 6;
 
 class NNUserLogInController: UIViewController {
-    
+    let disposeBag: DisposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +36,6 @@ class NNUserLogInController: UIViewController {
     }
     
     func setupConfigure() {
-        let disposeBag: DisposeBag = DisposeBag()
         
         userNameValidLab.text = "Username has to be at least \(minUsernameLength) characters"
         userPwdValidLab.text = "Password has to be at least \(minPasswordLength) characters"
@@ -163,7 +163,7 @@ class NNUserLogInController: UIViewController {
 //        var btn = UIButton(type: .custom);
         var view = UIButton.create(title: "登录", imgName: nil);
         view.setTitleColor( .white, for: .normal)
-        view.setTitleColor( .black, for: .disabled)
+        view.setTitleColor( .gray, for: .disabled)
         view.setTitle("用户名/密码错误", for: .disabled)
         view.backgroundColor = .theme
         return view;
