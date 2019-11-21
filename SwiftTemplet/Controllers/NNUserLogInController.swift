@@ -100,28 +100,28 @@ class NNUserLogInController: UIViewController {
         }
         
         userNameValidLab.snp.makeConstraints { (make) in
-            make.top.equalTo(userNameTextField.snp.bottom).offset(kPadding)
+            make.top.equalTo(userNameTextField.snp.bottom).offset(0)
             make.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(20)
         }
         
         userPwdTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(userNameValidLab.snp.bottom).offset(20)
+            make.top.equalTo(userNameValidLab.snp.bottom).offset(5)
             make.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(35)
         }
         
         userPwdValidLab.snp.makeConstraints { (make) in
-            make.top.equalTo(userPwdTextField.snp.bottom).offset(kPadding)
+            make.top.equalTo(userPwdTextField.snp.bottom).offset(0)
             make.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(20)
         }
         
         loginBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(userPwdValidLab.snp.bottom).offset(40)
+            make.top.equalTo(userPwdValidLab.snp.bottom).offset(25)
             make.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)
             make.height.equalTo(45)
@@ -136,26 +136,29 @@ class NNUserLogInController: UIViewController {
     // MARK: -lazy
     lazy var userNameTextField: UITextField = {
         var view = UITextField();
+        view.font = UIFont.systemFont(ofSize: 14)
         view.placeholder = "用户名:8~20字符"
         return view;
     }()
     
     lazy var userPwdTextField: UITextField = {
         var view = UITextField();
+        view.font = UIFont.systemFont(ofSize: 14)
         view.placeholder = "用户密码:6~20字符(不能纯数字)"
         return view;
     }()
     
     lazy var userNameValidLab: UILabel = {
         var view = UILabel();
+        view.font = UIFont.systemFont(ofSize: 11)
         view.textColor = .red
         return view;
     }()
     
     lazy var userPwdValidLab: UILabel = {
         var view = UILabel();
+        view.font = UIFont.systemFont(ofSize: 11)
         view.textColor = .red
-
         return view;
     }()
     
@@ -163,7 +166,7 @@ class NNUserLogInController: UIViewController {
 //        var btn = UIButton(type: .custom);
         var view = UIButton.create(title: "登录", imgName: nil);
         view.setTitleColor( .white, for: .normal)
-        view.setTitleColor( .gray, for: .disabled)
+        view.setTitleColor( .white, for: .disabled)
         view.setTitle("用户名/密码错误", for: .disabled)
         view.backgroundColor = .theme
         return view;
