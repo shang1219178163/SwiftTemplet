@@ -32,6 +32,7 @@
 		14129C9A21E9D7B1009BFA74 /* UITableViewCellSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */; };
 		14129C9C21E9F379009BFA74 /* UITableViewCellSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */; };
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
+		1413297A2386183C00E7AFCA /* UIApplication+Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141329792386183C00E7AFCA /* UIApplication+Permission.swift */; };
 		14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */; };
 		14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14198D54231FC2E00094D61F /* NNRadioButton.swift */; };
 		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
@@ -260,6 +261,7 @@
 		14129C9921E9D7B1009BFA74 /* UITableViewCellSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSlider.swift; sourceTree = "<group>"; };
 		14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSheet.swift; sourceTree = "<group>"; };
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		141329792386183C00E7AFCA /* UIApplication+Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Permission.swift"; sourceTree = "<group>"; };
 		14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_NO@2x.png"; sourceTree = "<group>"; };
 		14198D54231FC2E00094D61F /* NNRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRadioButton.swift; sourceTree = "<group>"; };
 		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
@@ -789,6 +791,7 @@
 				14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */,
 				14107FD722D097400011344E /* NNProgressHUD.swift */,
 				14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */,
+				141329792386183C00E7AFCA /* UIApplication+Permission.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -1214,6 +1217,7 @@
 				146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */,
 				1401BE912277D6D20078A722 /* NNAPIConfig.swift in Sources */,
 				14107FD822D097400011344E /* NNProgressHUD.swift in Sources */,
+				1413297A2386183C00E7AFCA /* UIApplication+Permission.swift in Sources */,
 				1401BEA32277D7780078A722 /* NNCacheKey.swift in Sources */,
 				1401BE972277D6FF0078A722 /* NNRequstAgent.swift in Sources */,
 				14403E5E2331C091005DB45B /* NNItemsView.swift in Sources */,

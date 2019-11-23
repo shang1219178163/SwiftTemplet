@@ -66,7 +66,7 @@ class HomeViewController: UITabBarController {
 //            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["TmpViewController", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["CCSCouponRecordController", "我的",  "Item_center_N",  "Item_center_H"],
-            ["TestViewController", "测试",  "Item_center_N",  "Item_center_H"],            
+            ["TestViewController", "测试",  "Item_center_N",  "Item_center_H"],
             
             ];
         return list;
