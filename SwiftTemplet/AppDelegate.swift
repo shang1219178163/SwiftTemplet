@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        controller = UICtrFromString("TitleViewController");
 //        controller = UICtrFromString("ScrollHorizontalController");        
         
+        
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;
         
@@ -97,11 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let obj2 = String(describing: UITableViewCellOne.self);
         let obj3 = String(describing: NNCheckVersApi.self);
         let obj4 = String(describing: NSObject.self);
-
         DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
-        
 //        DDLog(Bundle.main.infoDictionary)
-        
         
         let now = NSDate()
         let isValid = NSDate().hour > 7 || NSDate().hour > 23
