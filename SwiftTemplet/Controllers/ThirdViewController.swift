@@ -55,7 +55,6 @@ class ThirdViewController: UIViewController{
     }
     
     // MARK: -funtions
-    
     func requestInfo() {
         NNProgressHUD.showLoadingText("努力加载中")
         let updateAPi = NNCheckVersApi()
@@ -107,7 +106,6 @@ class ThirdViewController: UIViewController{
              ["TimerViewController", "Timer", ],
              ["TestViewController", "新想法测试", ],
             ],
- 
         ]
         return array
     }()
