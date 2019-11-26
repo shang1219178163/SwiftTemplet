@@ -18,41 +18,34 @@ class ThirdViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(plainView)
-        
-        if title == nil {
-            title = self.controllerName;
-        }
-        
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
             self.goController("FleetDetailControllerNew", obj: nil, objOne: nil)
         }
         
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in
             self.goController("IOPAuthDetailController", obj: nil, objOne: nil)
-            
         }
         
-//        let layout = UICollectionViewLayout()
-//        layout.minimumInteritemSpacing = 0.3
-//        layout.minimumLineSpacing = 0.5
-//        layout.headerReferenceSize = CGSize(width: 33, height: 54)
-//        layout.sectionInset = UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4)
-//        DDLog(layout.minimumInteritemSpacing,layout.minimumLineSpacing,layout.headerReferenceSize,layout.sectionInset)
-//        UIApplication.updateVersion(appStoreID: kAppStoreID, isForce: false);
+        tbViewGrouped.rowHeight = 50;
+        view.addSubview(tbViewGrouped)
+        tbViewGrouped.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestInfo()
+
+        })
+        tbViewGrouped.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
+            self.requestInfo()
+
+        });
         view.getViewLayer()
-     
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        plainView.frame = view.bounds
+                
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
         
     }
     
@@ -77,8 +70,8 @@ class ThirdViewController: UIViewController{
                 //                DDLog(response)
             }
             NNProgressHUD.showSuccessText("请求成功");
-            self.plainView.tableView.mj_header!.endRefreshing()
-            self.plainView.tableView.mj_footer!.endRefreshing()
+            self.tbViewGrouped.mj_header!.endRefreshing()
+            self.tbViewGrouped.mj_footer!.endRefreshing()
         }) { (manager, dic, error) in
             DDLog(error! as Any)
             
@@ -87,19 +80,10 @@ class ThirdViewController: UIViewController{
     }
     
     //MARK: -lazy
-    lazy var dateRangeView: NNDateRangeView = {
-        let frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: 60)
-        var view = NNDateRangeView(frame: .zero)
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.backgroundColor = .green
-        return view
-    }()
-    
-    lazy var allList: [[[String]]] = {
+    lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["UISearchStylesController", "搜索🔍样式", ],
-             ["UIRecognizerController", "手势集合", ],
-             ["UIRecognizerUpdateController", "手势集合升级", ],             
+             ["UIStackViewController", "UIStackView", ],             
              ["EntryViewController", "通用录入界面", ],
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
@@ -108,80 +92,88 @@ class ThirdViewController: UIViewController{
              ["NNTabViewController", "NNTabView组件", ],             
              ["CustomViewController", "自定义View", ],
              ["CalendarViewController", "CalenderView", ],
-             ["TimerViewController", "Timer", ],
              ["PickerViewController", "PickerView", ],
              ["PhotosViewController", "PictureView", ],
-             ["KeyBoardViewController", "KeyBoardView", ],
-             ["NNUserLogInController", "函数响应型编程", ],
              ["ScrollHorizontalController", "重构", ],
              ["ScrollViewController", "分段组件", ],
-             ["TestViewController", "新想法测试", ],
              ["CCSCouponRecordController", "优惠券列表", ],
-             ["AppIconChangeController", "App图标更换", ],
              ["NNFormViewController", "表单视图", ],
              ],
+            [["AppIconChangeController", "App图标更换", ],
+             ["NNUserLogInController", "函数响应型编程", ],
+             ["UIRecognizerUpdateController", "手势集合升级", ],
+             ["UIRecognizerController", "手势集合", ],
+             ["KeyBoardViewController", "KeyBoardView", ],
+             ["TimerViewController", "Timer", ],
+             ["TestViewController", "新想法测试", ],
+            ],
+ 
         ]
         return array
     }()
     
-    lazy var list:[[String]] = {
-        return self.allList.first!;
-    }()
+    var sectionTitles = ["视图相关", "其他"]
     
-    //MARK: -Lazy Property
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
-        view.label.text = ""
-        view.label.textAlignment = .center
-        view.btn.setTitle("提交", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
-            
-            }, for: .touchUpInside)
-        return view
-    }()
+}
+
+extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
+    //    MARK: - tableView
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return list.count;
+    }
     
-    lazy var plainView: NNTablePlainView = {
-        var view = NNTablePlainView(frame: self.view.bounds)
-        view.list = allList.first
-//        view.tableView.tableFooterView = footerView
-        view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
-            let itemList = view.list![indexPath.row] as! [String]
-            
-//            let cell = UITableViewCellZero.dequeueReusableCell(tableView)
-//            cell.textLabel!.text = itemList[0]
-            
-//            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle)
-            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
-
-            cell.accessoryType = .disclosureIndicator;
-            
-            cell.textLabel!.text = itemList[1]
-            cell.textLabel!.textColor = UIColor.theme;
-            cell.detailTextLabel?.text = itemList[0];
-            cell.detailTextLabel?.textColor = UIColor.gray;
-            return cell
-        })
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list[section].count;
+    };
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+        cell.accessoryType = .disclosureIndicator;
         
-        view.blockDidSelectRow({ (tableView, indexPath) in
-            let itemList = view.list![indexPath.row] as! [String]
-            DDLog(itemList);
-            
-            let controller = UICtrFromString(itemList.first!)
-            controller.title = itemList.last!
-            self.navigationController?.pushViewController(controller, animated: true);
-        })
+        let itemList = list[indexPath.section][indexPath.row]
+        cell.textLabel!.text = itemList[1]
+        cell.textLabel!.textColor = UIColor.theme;
+        cell.detailTextLabel?.text = itemList[0];
+        cell.detailTextLabel?.textColor = UIColor.gray;
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemList = list[indexPath.section][indexPath.row]
+        DDLog(itemList);
         
-        view.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            self.requestInfo()
-
-        })
-        view.tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
-            self.requestInfo()
-
-        });
-        
-        return view
-    }()
+        let controller = UICtrFromString(itemList.first!)
+        controller.title = itemList.last!
+        self.navigationController?.pushViewController(controller, animated: true);
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25;
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if sectionTitles.count > section {
+            return kBlankOne + sectionTitles[section]
+        }
+        return ""
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return UIView();
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01;
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let label = UILabel(frame: .zero);
+        //        label.backgroundColor = .green;
+        //        label.text = "header\(section)";
+        return label;
+    }
 }

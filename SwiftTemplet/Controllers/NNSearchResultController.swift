@@ -22,6 +22,7 @@ class NNSearchResultController: UIViewController {
     }
 
 }
+
 extension NNSearchResultController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

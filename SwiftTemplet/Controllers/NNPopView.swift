@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class NNPopView: UIView, UITableViewDataSource, UITableViewDelegate {
+class NNPopView: UIView {
 
     weak var parController: UIViewController?
     var indexP: IndexPath = IndexPath(row: 0, section: 0)
@@ -54,7 +54,52 @@ class NNPopView: UIView, UITableViewDataSource, UITableViewDelegate {
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
     }
-  
+      
+    // observeValue
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            sender!.sizeToFit()
+            sender!.titleEdgeInsets = UIEdgeInsetsMake(0, -sender!.imageView!.bounds.width, 0, sender!.imageView!.bounds.width)
+            sender!.imageEdgeInsets = UIEdgeInsetsMake(0, sender!.titleLabel!.bounds.width+5.0, 0, -sender!.titleLabel!.bounds.width-5.0)
+        }
+    }
+    
+    // MARK: -funtions
+    func show() {
+        parController!.view.addSubview(self)
+        
+        self.alpha = 0.0
+        UIView.animate(withDuration: kDurationShow, animations: {
+            self.alpha = 1.0
+            self.sender?.imageView?.transformRotationCycle()
+            
+        }, completion: nil)
+        
+    }
+    
+    func dismiss() {
+        UIView.animate(withDuration: kDurationShow, animations: {
+            self.alpha = 0.0
+            self.sender?.imageView?.transformRotationCycle()
+
+        }, completion:{ (isFinish:Bool) in
+            self.removeFromSuperview()
+            
+        })
+    }
+    
+    //MARK: -lazy
+    @objc lazy var tableView: UITableView = {
+        var table = UITableView.create(bounds, style: .plain, rowHeight: 60)
+        table.dataSource = self
+        table.delegate = self
+        return table
+    }()
+
+}
+
+extension NNPopView: UITableViewDataSource, UITableViewDelegate {
+
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -124,47 +169,4 @@ class NNPopView: UIView, UITableViewDataSource, UITableViewDelegate {
         //        label.text = "header\(section)";
         return label;
     }
-    
-    // observeValue
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "text" {
-            sender!.sizeToFit()
-            sender!.titleEdgeInsets = UIEdgeInsetsMake(0, -sender!.imageView!.bounds.width, 0, sender!.imageView!.bounds.width)
-            sender!.imageEdgeInsets = UIEdgeInsetsMake(0, sender!.titleLabel!.bounds.width+5.0, 0, -sender!.titleLabel!.bounds.width-5.0)
-        }
-    }
-    
-    // MARK: -funtions
-    func show() {
-        parController!.view.addSubview(self)
-        
-        self.alpha = 0.0
-        UIView.animate(withDuration: kDurationShow, animations: {
-            self.alpha = 1.0
-            self.sender?.imageView?.transformRotationCycle()
-            
-        }, completion: nil)
-        
-    }
-    
-    func dismiss() {
-        UIView.animate(withDuration: kDurationShow, animations: {
-            self.alpha = 0.0
-            self.sender?.imageView?.transformRotationCycle()
-
-        }, completion:{ (isFinish:Bool) in
-            self.removeFromSuperview()
-            
-        })
-    }
-
-    
-    //MARK: -lazy
-    @objc lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: 60)
-        table.dataSource = self
-        table.delegate = self
-        return table
-    }()
-
 }
