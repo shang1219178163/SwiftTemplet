@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 通用列表视图
-class NNLabelsVerView: UIView, UITableViewDataSource, UITableViewDelegate {
+class NNLabelsVerView: UIView{
     
     var list: [UITextField] = []
     var placeholders: [String] = [] {
@@ -51,7 +51,17 @@ class NNLabelsVerView: UIView, UITableViewDataSource, UITableViewDelegate {
         }
         tableView.reloadData();
     }
-    
+            
+    //MARK: -lazy
+    @objc lazy var tableView: UITableView = {
+        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
+        table.dataSource = self
+        table.delegate = self
+        return table
+    }()
+}
+
+extension NNLabelsVerView: UITableViewDataSource, UITableViewDelegate {
     //    MARK: - tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count;
@@ -90,12 +100,5 @@ class NNLabelsVerView: UIView, UITableViewDataSource, UITableViewDelegate {
         //        label.text = "header\(section)";
         return label;
     }
-        
-    //MARK: -lazy
-    @objc lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
-        table.dataSource = self
-        table.delegate = self
-        return table
-    }()
+
 }

@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 通用列表视图
-class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
+class NNTablePlainView: UIView {
     
     var list:[Any]?
     var viewBlockCellForRow: CellForRowClosure?
@@ -31,7 +31,30 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
         super.layoutSubviews()
         
     }
+
+    // MARK: - funtions
+    func blockCellHeightForRow(_ action: @escaping CellHeightForRowClosure) {
+        self.viewBlockHeightForRow = action;
+    }
     
+    func blockCellForRow(_ action: @escaping CellForRowClosure) {
+        self.viewBlockCellForRow = action;
+    }
+    
+    func blockDidSelectRow(_ action: @escaping DidSelectRowClosure) {
+        self.viewBlockDidSelectRow = action;
+    }
+    
+    //MARK: -lazy
+    @objc lazy var tableView: UITableView = {
+        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
+        table.dataSource = self
+        table.delegate = self
+        return table
+    }()
+}
+
+extension NNTablePlainView: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -81,24 +104,4 @@ class NNTablePlainView: UIView, UITableViewDataSource, UITableViewDelegate {
         //        label.text = "header\(section)";
         return label;
     }
-    // MARK: - funtions
-    func blockCellHeightForRow(_ action: @escaping CellHeightForRowClosure) {
-        self.viewBlockHeightForRow = action;
-    }
-    
-    func blockCellForRow(_ action: @escaping CellForRowClosure) {
-        self.viewBlockCellForRow = action;
-    }
-    
-    func blockDidSelectRow(_ action: @escaping DidSelectRowClosure) {
-        self.viewBlockDidSelectRow = action;
-    }
-    
-    //MARK: -lazy
-    @objc lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
-        table.dataSource = self
-        table.delegate = self
-        return table
-    }()
 }

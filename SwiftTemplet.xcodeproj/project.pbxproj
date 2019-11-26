@@ -144,6 +144,7 @@
 		147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF47421CF511800351E94 /* UICTReusableViewOne.swift */; };
 		147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */; };
 		147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */; };
+		1480B0D1238CA7B000E24BDB /* UIStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */; };
 		149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149111A022719F300078A7BB /* AppGlobleConfig.swift */; };
 		149946852383F743005E43CC /* NNPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946842383F743005E43CC /* NNPictureView.swift */; };
 		149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946862383F93B005E43CC /* UICTViewCellTwo.swift */; };
@@ -373,6 +374,7 @@
 		147FF47421CF511800351E94 /* UICTReusableViewOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTReusableViewOne.swift; sourceTree = "<group>"; };
 		147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetDetailControllerNew.swift; sourceTree = "<group>"; };
 		147FF4D021D0CB4700351E94 /* UITableHeaderFooterViewOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewOne.swift; sourceTree = "<group>"; };
+		1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewController.swift; sourceTree = "<group>"; };
 		149111A022719F300078A7BB /* AppGlobleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobleConfig.swift; sourceTree = "<group>"; };
 		149946842383F743005E43CC /* NNPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPictureView.swift; sourceTree = "<group>"; };
 		149946862383F93B005E43CC /* UICTViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellTwo.swift; sourceTree = "<group>"; };
@@ -856,6 +858,7 @@
 				1401AB212372B5CC003F1114 /* NNFormViewController.swift */,
 				14D91B14234C88B400554994 /* CellListController.swift */,
 				1443F84A230BF2A70023C777 /* TestViewController.swift */,
+				1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */,
 				14D91B18234DB96600554994 /* NNPopView.swift */,
 				14B940B0237E2FBC00A49D1F /* NNGroupView.swift */,
 				14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */,
@@ -1211,6 +1214,7 @@
 				142A76FC22275EE10016D3DA /* NNCalendarView.swift in Sources */,
 				14488726224E1D2300B550AF /* ZMKeyBoadModel.swift in Sources */,
 				14F3966D227ED405000CD7B4 /* NNBaseRequestApi.swift in Sources */,
+				1480B0D1238CA7B000E24BDB /* UIStackViewController.swift in Sources */,
 				145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */,
 				145C914D233484F800849E9D /* AppIconChangeController.swift in Sources */,
 				519E87B821362FB1002CCD86 /* UITableViewCellZero.swift in Sources */,
