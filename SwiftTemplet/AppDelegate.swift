@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationController.initializeMethod();
         UIImageView.initializeMethod();
 //        UIColor.theme = UIColor.orange
-        UIColor.theme = UIColorHexValue(0x29B5FE)
+        UIColor.theme = UIColor.hexValue(0x29B5FE)
         UIApplication.setupAppearanceDefault(false);
 
         IQKeyboardManager.shared.enable = true;

@@ -204,7 +204,7 @@ class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         let view = UIView()
 //        view.layer.backgroundColor = UIColor.clear.cgColor;
 //        view.layer.backgroundColor = UIColor.theme.withAlphaComponent(0.3).cgColor;
-//        view.layer.backgroundColor = UIColorHexValue(0x0082e0, 0.3).cgColor;
+//        view.layer.backgroundColor = UIColor.hexValue(0x0082e0, 0.3).cgColor;
 //        view.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.3).cgColor;
         view.layer.borderColor = self.selectedColor.cgColor;
         view.layer.borderWidth = self.indicatorHeight;

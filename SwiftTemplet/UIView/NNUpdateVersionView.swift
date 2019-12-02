@@ -48,7 +48,7 @@ class NNUpdateVersionView: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.white
         labelOne.textColor = UIColor.white
-        labelThree.textColor = UIColorHexValue(0x666666)
+        labelThree.textColor = UIColor.hexValue(0x666666)
         
         label.text = "发现新版本"
         labelOne.text = "V1.0.0"
@@ -227,8 +227,8 @@ class NNUpdateVersionView: UIView {
         view.setTitleColor(.white, for: .normal);
 //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
-//        view.backgroundColor = UIColorHexValue(0x2dae70)
-//        view.backgroundColor = UIColorHex("#2dae70")
+//        view.backgroundColor = UIColor.hexValue(0x2dae70)
+//        view.backgroundColor = UIColor.hex("#2dae70")
         view.layer.addSublayer(gradientLayer)
         view.addActionHandler({ (control) in
             self.dismiss()

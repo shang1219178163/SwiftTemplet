@@ -191,7 +191,7 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         let value1 = itemList[1] as! String
 
         let cell = UITableViewCellZero.dequeueReusableCell(tableView)
-        cell.textLabel?.text = value0 + NSStringFromIndexPath(indexPath)
+        cell.textLabel?.text = value0 + indexPath.string
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
         cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
@@ -214,7 +214,7 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         
         let itemList = list[indexPath.row]
         let value0 = itemList[0] as! String
-        btn.setTitle(value0 + NSStringFromIndexPath(indexPath), for: .normal)
+        btn.setTitle(value0 + indexPath.string, for: .normal)
         if self.viewBlockOne != nil {
             self.viewBlockOne!(tableView,indexPath)
         }

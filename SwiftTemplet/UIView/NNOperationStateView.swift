@@ -55,7 +55,7 @@ class NNOperationStateView: UIView {
                 topBgViewColor = "#fff6d3"
                 
 //                let tipInfo = getAttString("请于12:32前到达T2地上停车场", textTaps: ["12:32","T2地上停车场"], tapColor: UIColor.red)
-                let tipInfo = NSAttributedString.attString("请于12:32前到达T2地上停车场", textTaps: ["12:32","T2地上停车场"], font: 18, tapFont: 18, color: .black, tapColor: UIColorHex(topTitleColor), alignment: .center)
+                let tipInfo = NSAttributedString.attString("请于12:32前到达T2地上停车场", textTaps: ["12:32","T2地上停车场"], font: 18, tapFont: 18, color: .black, tapColor: UIColor.hex(topTitleColor), alignment: .center)
                 label.attributedText = tipInfo;
                 
             case 5://接客中
@@ -78,9 +78,9 @@ class NNOperationStateView: UIView {
             }
 
             topIcon.image = UIImageNamed(topImage)
-            topLabel.textColor = UIColorHex(topTitleColor)
+            topLabel.textColor = UIColor.hex(topTitleColor)
             topLabel.text = topTitle + "- \(newValue)"
-            topBgView.backgroundColor = UIColorHex(topBgViewColor)
+            topBgView.backgroundColor = UIColor.hex(topBgViewColor)
             if [4,].contains(newValue) == false {
                 label.text = tipInfo
             }
@@ -289,7 +289,7 @@ class NNOperationStateView: UIView {
     
     lazy var lineView: UIView = {
         var view = UIView(frame: .zero)
-        view.backgroundColor = UIColorHex("#e5e5e5")
+        view.backgroundColor = UIColor.hex("#e5e5e5")
         return view
     }()
     
@@ -306,7 +306,7 @@ class NNOperationStateView: UIView {
     lazy var operationView3LabelOne: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "已等待";
-        view.textColor = UIColorHex("#444444");
+        view.textColor = UIColor.hex("#444444");
         view.textAlignment = .center;
         view.font = UIFont.systemFont(ofSize: 15)
         return view;
@@ -345,7 +345,7 @@ class NNOperationStateView: UIView {
     lazy var operationView5LabelOne: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "已到达...";
-        view.textColor = UIColorHex("#444444");
+        view.textColor = UIColor.hex("#444444");
         view.textAlignment = .center;
         view.font = UIFont.systemFont(ofSize: 13)
         

@@ -20,8 +20,8 @@ class NNExpandView: UIView {
         label.backgroundColor = .clear
         label.textColor = .orange
         
-        backgroundColor = UIColorHex("#fff6d3").withAlphaComponent(0.8)
-        label.textColor = UIColorHex("#67722")
+        backgroundColor = UIColor.hex("#fff6d3").withAlphaComponent(0.8)
+        label.textColor = UIColor.hex("#67722")
 
 //        addSubview(btn)
         addSubview(containView)

@@ -22,10 +22,10 @@ class NNCellSubtitleView: UIView {
         willSet {
             switch newValue {
             case 1:
-                gradientLayer.colors = [UIColorHex("#6cda53").withAlphaComponent(0.9).cgColor, UIColorHex("#1a965a").withAlphaComponent(0.9).cgColor]
+                gradientLayer.colors = [UIColor.hex("#6cda53").withAlphaComponent(0.9).cgColor, UIColor.hex("#1a965a").withAlphaComponent(0.9).cgColor]
 
             default:
-                gradientLayer.colors = [UIColorHex("#999999").withAlphaComponent(0.8).cgColor, UIColorHex("#999999").cgColor]
+                gradientLayer.colors = [UIColor.hex("#999999").withAlphaComponent(0.8).cgColor, UIColor.hex("#999999").cgColor]
 
             }
         }
@@ -188,7 +188,7 @@ class NNCellSubtitleView: UIView {
 
 //    lazy var gradientLayer: CAGradientLayer = {
 //        //渐变色
-//        let colors = [UIColorHex("#6cda53").withAlphaComponent(0.9).cgColor, UIColorHex("#1a965a").withAlphaComponent(0.9).cgColor]
+//        let colors = [UIColor.hex("#6cda53").withAlphaComponent(0.9).cgColor, UIColor.hex("#1a965a").withAlphaComponent(0.9).cgColor]
 //        var layer = CAGradientLayer.layerRect(.zero, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
 //        return layer
 //    }()

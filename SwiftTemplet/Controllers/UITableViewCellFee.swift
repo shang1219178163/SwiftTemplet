@@ -129,7 +129,7 @@ class UITableViewCellFee: UITableViewCell {
     lazy var labelMid: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "midem";
-        view.textColor = UIColorHex("#666666")
+        view.textColor = UIColor.hex("#666666")
         view.font = UIFont.systemFont(ofSize: 11)
         
         return view;
@@ -138,7 +138,7 @@ class UITableViewCellFee: UITableViewCell {
     lazy var labelBom: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "bottom";
-        view.textColor = UIColorHex("#666666")
+        view.textColor = UIColor.hex("#666666")
         view.font = UIFont.systemFont(ofSize: 11)
         
         return view;
@@ -146,11 +146,11 @@ class UITableViewCellFee: UITableViewCell {
     
     
     private lazy var couponTypeDic: [Int : [String : Any]] = {
-        let dic = [0: ["title": "时长券", "color": UIColorHexValue(0xF78F57),],
+        let dic = [0: ["title": "时长券", "color": UIColor.hexValue(0xF78F57),],
                    1: ["title": "金额券", "color": UIColor.theme,],
-                   2: ["title": "次数券", "color": UIColorHexValue(0x39C179),],
-                   3: ["title": "时段券", "color": UIColorHexValue(0xFF6A62),],
-                   4: ["title": "折扣券", "color": UIColorHexValue(0x04BCC9),],
+                   2: ["title": "次数券", "color": UIColor.hexValue(0x39C179),],
+                   3: ["title": "时段券", "color": UIColor.hexValue(0xFF6A62),],
+                   4: ["title": "折扣券", "color": UIColor.hexValue(0x04BCC9),],
         ]
         return dic;
     }()

@@ -62,8 +62,8 @@ class NNSliderControlView: UIView {
         
 //        labFront.backgroundColor = UIColor.green
 //        labBack.backgroundColor = UIColor.orange
-        labFront.backgroundColor = UIColorHex("#2dae70")
-        labBack.backgroundColor = UIColorHex("#ff6b22")
+        labFront.backgroundColor = UIColor.hex("#2dae70")
+        labBack.backgroundColor = UIColor.hex("#ff6b22")
         
         imgView.frame = CGRectMake(0, 0, frame.height+15, frame.height);
         labFront.frame = CGRectMake(0, 0, frame.width, frame.height);
@@ -172,7 +172,7 @@ class NNSliderControlView: UIView {
         view.isUserInteractionEnabled = true;
         
         //渐变色
-//        let colors = [UIColorHex("#ffda6a").withAlphaComponent(0.9).cgColor, UIColorHex("#ff6b22").withAlphaComponent(0.9).cgColor]
+//        let colors = [UIColor.hex("#ffda6a").withAlphaComponent(0.9).cgColor, UIColor.hex("#ff6b22").withAlphaComponent(0.9).cgColor]
 //        let gradientLayer = CAGradientLayer.layerRect(self.bounds, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
 //        //        gradientLayer.locations = [0.5,1.0]
 //        view.layer.insertSublayer(gradientLayer, at: 0)

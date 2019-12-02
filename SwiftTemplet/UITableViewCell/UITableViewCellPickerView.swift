@@ -93,7 +93,7 @@ class UITableViewCellPickerView: UITableViewCell {
                         ["33333", "456"],
                     ]
         view.block({ (view:NNPickListView, indexP:IndexPath) in
-            DDLog(NSStringFromIndexPath(indexP))
+            DDLog(indexP.string)
             let cellItem = view.itemList![indexP.row] 
             self.textfield.text = cellItem.first
             if self.viewBlock != nil {
