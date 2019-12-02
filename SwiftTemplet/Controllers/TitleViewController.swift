@@ -31,7 +31,7 @@ class TitleViewController: UIViewController{
 
             let cell = UITableViewCellOne.dequeueReusableCell(tableView) as! UITableViewCellOne
             cell.labelLeft.text = "标题"
-            cell.labelRight.text = NSStringFromIndexPath(indexPath)
+            cell.labelRight.text = indexPath.string
             cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
             cell.accessoryType = self.topView.indexP == indexPath ? .checkmark : .none
 
@@ -40,7 +40,7 @@ class TitleViewController: UIViewController{
         }
 
         topView.blockSelected { (tableview, indexPath) in
-            DDLog(NSStringFromIndexPath(indexPath))
+            DDLog(indexPath.string)
         }
         
         self.navigationItem.titleView?.getViewLayer()
@@ -351,7 +351,7 @@ class TitleViewController: UIViewController{
 //            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
 //            cell.labelLeft.text = value0
 //            cell.labelRight.text = value4
-//            cell.labelRight.text = NSStringFromIndexPath(indexPath)
+//            cell.labelRight.text = indexPath.string
 //
 //            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
 //            cell.getViewLayer()

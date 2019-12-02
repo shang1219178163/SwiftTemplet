@@ -117,7 +117,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DDLog(NSStringFromIndexPath(indexPath))
         
         let controller = UICtrFromString("DetailViewController");
         navigationController?.pushViewController(controller, animated: true);

@@ -64,7 +64,7 @@ class UITableViewCellPark: UITableViewCell {
 //            let value: String = change![NSKeyValueChangeKey.newKey] as! String;
 //            if value.contains(" ") == true {
 //                let list = value.components(separatedBy: " ");
-//                self.labelTop.attributedText = NSAttributedString.attString(self.labelTop.text, textTaps: [list.last!], font: 22, tapFont: 11, color: UIColor.white, tapColor: UIColorHexValue(0xCADFFF), alignment: .center)
+//                self.labelTop.attributedText = NSAttributedString.attString(self.labelTop.text, textTaps: [list.last!], font: 22, tapFont: 11, color: UIColor.white, tapColor: UIColor.hexValue(0xCADFFF), alignment: .center)
 //            }
 //        } else if keyPath == "backgroundColor" {
 //            let value: UIColor = change![NSKeyValueChangeKey.newKey] as! UIColor;

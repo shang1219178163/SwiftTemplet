@@ -135,7 +135,7 @@ class CustomViewController: UIViewController {
         view.layer.masksToBounds = true
         
 //        view.gradientLayer.colors = [UIColor.red.cgColor, UIColor.green.cgColor]
-//        view.gradientLayer.colors = [UIColorHex("#999999").withAlphaComponent(0.8).cgColor, UIColorHex("#999999").cgColor]
+//        view.gradientLayer.colors = [UIColor.hex("#999999").withAlphaComponent(0.8).cgColor, UIColor.hex("#999999").cgColor]
 
         return view
     }()

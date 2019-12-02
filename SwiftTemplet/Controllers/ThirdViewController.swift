@@ -47,6 +47,9 @@ class ThirdViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
+        let string = "[[\"\\u9655A91D6P\"]]";
+        let obj = JSONSerialization.jsonObjectFromString(string);
+        DDLog(obj)
     }
     
     override func didReceiveMemoryWarning() {

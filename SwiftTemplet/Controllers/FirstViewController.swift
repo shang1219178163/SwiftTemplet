@@ -217,9 +217,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         return cell;
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DDLog(NSStringFromIndexPath(indexPath));
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         let controller = UICtrFromString("DetailViewController");
         navigationController?.pushViewController(controller, animated: true);
     }

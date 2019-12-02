@@ -142,7 +142,7 @@ class PickerViewController: UIViewController {
         view.labelSubOne.text = "333333"
         
 //        view.gradientLayer.colors = [UIColor.red.cgColor, UIColor.green.cgColor]
-//        view.gradientLayer.colors = [UIColorHex("#999999").withAlphaComponent(0.8).cgColor, UIColorHex("#999999").cgColor]
+//        view.gradientLayer.colors = [UIColor.hex("#999999").withAlphaComponent(0.8).cgColor, UIColor.hex("#999999").cgColor]
 
         return view
     }()
@@ -168,7 +168,7 @@ class PickerViewController: UIViewController {
         view.labelRight.text = "总支付次数"
         view.labelRightSub.text = "200"
 
-        view.gradientLayer.colors = [UIColorHex("#1a965a").withAlphaComponent(1.0).cgColor, UIColorHex("#1a965a").withAlphaComponent(1.0).cgColor]
+        view.gradientLayer.colors = [UIColor.hex("#1a965a").withAlphaComponent(1.0).cgColor, UIColor.hex("#1a965a").withAlphaComponent(1.0).cgColor]
 
         return view
     }()

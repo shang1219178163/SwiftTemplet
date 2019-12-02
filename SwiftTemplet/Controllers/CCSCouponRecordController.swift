@@ -50,10 +50,10 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
 //    lazy var talkbackBtn: UIButton = {
 //        let view = UIButton(type: .custom)
 //        view.frame = CGRectMake(0, 0, 70, 70)
-//        view.setTitleColor(UIColorHexValue(0x39C179), for: .normal)
+//        view.setTitleColor(UIColor.hexValue(0x39C179), for: .normal)
 //        view.setTitle("00:00", for: .normal)
 //        view.setImage(UIImage(named: "icon_phone_green"), for: .normal)
-//        view.backgroundColor = UIColorHexValue(0xdddddd)
+//        view.backgroundColor = UIColor.hexValue(0xdddddd)
 //        view.adjustsImageWhenHighlighted = false;
 //        view.layer.cornerRadius = 3.5;
 //        view.layer.masksToBounds = true;

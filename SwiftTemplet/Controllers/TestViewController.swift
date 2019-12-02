@@ -222,7 +222,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        DDLog(NSStringFromIndexPath(indexPath));
+        //        DDLog(indexPath.string);
         
     }
     

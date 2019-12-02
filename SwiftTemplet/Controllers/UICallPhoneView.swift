@@ -32,7 +32,7 @@ class UICallPhoneView: UIView {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds;
         
-        self.backgroundColor = UIColorHexValue(0x5D5B5E);
+        self.backgroundColor = UIColor.hexValue(0x5D5B5E);
         
         self.addSubview(btnSoundSmall)
         self.addSubview(labOne)
@@ -193,11 +193,11 @@ class UICallPhoneView: UIView {
         
         let view = NNSuspendButton(frame: CGRectMake(20, 110, 70, 70))
         
-        view.setTitleColor(UIColorHexValue(0x39C179), for: .normal)
+        view.setTitleColor(UIColor.hexValue(0x39C179), for: .normal)
         view.setTitle("00:00", for: .normal)
         view.setImage(UIImage(named: "icon_phone_green"), for: .normal)
         view.setBackgroundImage(UIImage(), for: .normal)
-        view.backgroundColor = UIColorHexValue(0xdddddd)
+        view.backgroundColor = UIColor.hexValue(0xdddddd)
         view.adjustsImageWhenHighlighted = false;
         view.layer.cornerRadius = 3.5;
         view.layer.masksToBounds = true;
@@ -252,7 +252,7 @@ class UICallPhoneView: UIView {
     lazy var labTwo: UILabel = {
         let lab = UILabel()
         lab.text = "对方邀请你语音聊天"
-        lab.textColor = UIColorHexValue(0xD4D6D9)
+        lab.textColor = UIColor.hexValue(0xD4D6D9)
         lab.textAlignment = .center
         lab.font = UIFont.systemFont(ofSize: 16)
         

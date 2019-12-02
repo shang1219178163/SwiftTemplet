@@ -31,19 +31,19 @@ class UITableViewCellCoupon: UITableViewCell {
         willSet{
             switch newValue {
             case 1:
-                labelLeft.backgroundColor = UIColorHexValue(0xCCCCCC);
-                labelTop.textColor = UIColorHexValue(0xCCCCCC)
-                labelMid.textColor = UIColorHexValue(0xCCCCCC)
-                labelBom.textColor = UIColorHexValue(0xCCCCCC)
+                labelLeft.backgroundColor = UIColor.hexValue(0xCCCCCC);
+                labelTop.textColor = UIColor.hexValue(0xCCCCCC)
+                labelMid.textColor = UIColor.hexValue(0xCCCCCC)
+                labelBom.textColor = UIColor.hexValue(0xCCCCCC)
                 btn.isHidden = true;
                 imgViewRight.isHidden = false;
                 imgViewRight.image = UIImage(named: "icon_coupon_used")
 
             case 2:
-                labelLeft.backgroundColor = UIColorHexValue(0xCCCCCC);
-                labelTop.textColor = UIColorHexValue(0xCCCCCC)
-                labelMid.textColor = UIColorHexValue(0xCCCCCC)
-                labelBom.textColor = UIColorHexValue(0xCCCCCC)
+                labelLeft.backgroundColor = UIColor.hexValue(0xCCCCCC);
+                labelTop.textColor = UIColor.hexValue(0xCCCCCC)
+                labelMid.textColor = UIColor.hexValue(0xCCCCCC)
+                labelBom.textColor = UIColor.hexValue(0xCCCCCC)
                 btn.isHidden = true;
                 imgViewRight.isHidden = false;
                 imgViewRight.image = UIImage(named: "icon_coupon_fail")
@@ -92,7 +92,7 @@ class UITableViewCellCoupon: UITableViewCell {
             let value: String = change![NSKeyValueChangeKey.newKey] as! String;
             if value.contains(" ") == true {
                 let list = value.components(separatedBy: " ");
-                self.labelTop.attributedText = NSAttributedString.attString(self.labelTop.text, textTaps: [list.last!], font: 22, tapFont: 11, color: UIColor.white, tapColor: UIColorHexValue(0xCADFFF), alignment: .center)
+                self.labelTop.attributedText = NSAttributedString.attString(self.labelTop.text, textTaps: [list.last!], font: 22, tapFont: 11, color: UIColor.white, tapColor: UIColor.hexValue(0xCADFFF), alignment: .center)
             }
         } else if keyPath == "backgroundColor" {
             let value: UIColor = change![NSKeyValueChangeKey.newKey] as! UIColor;
@@ -219,7 +219,7 @@ class UITableViewCellCoupon: UITableViewCell {
     lazy var labelMid: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "midem";
-        view.textColor = UIColorHex("#666666")
+        view.textColor = UIColor.hex("#666666")
         view.font = UIFont.systemFont(ofSize: 11)
         
         return view;
@@ -228,7 +228,7 @@ class UITableViewCellCoupon: UITableViewCell {
     lazy var labelBom: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "bottom";
-        view.textColor = UIColorHex("#666666")
+        view.textColor = UIColor.hex("#666666")
         view.font = UIFont.systemFont(ofSize: 11)
         
         return view;
@@ -236,11 +236,11 @@ class UITableViewCellCoupon: UITableViewCell {
     
     
     private lazy var couponTypeDic: [Int : [String : Any]] = {
-        let dic = [0: ["title": "时长券", "color": UIColorHexValue(0xF78F57),],
+        let dic = [0: ["title": "时长券", "color": UIColor.hexValue(0xF78F57),],
                    1: ["title": "金额券", "color": UIColor.theme,],
-                   2: ["title": "次数券", "color": UIColorHexValue(0x39C179),],
-                   3: ["title": "时段券", "color": UIColorHexValue(0xFF6A62),],
-                   4: ["title": "折扣券", "color": UIColorHexValue(0x04BCC9),],
+                   2: ["title": "次数券", "color": UIColor.hexValue(0x39C179),],
+                   3: ["title": "时段券", "color": UIColor.hexValue(0xFF6A62),],
+                   4: ["title": "折扣券", "color": UIColor.hexValue(0x04BCC9),],
         ]
         return dic;
     }()

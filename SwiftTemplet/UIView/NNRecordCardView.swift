@@ -165,7 +165,7 @@ class NNRecordCardView: UIView {
     
     lazy var lineView: UIView = {
         var view = UIView(frame: .zero)
-        view.backgroundColor = UIColorHex("#e5e5e5")
+        view.backgroundColor = UIColor.hex("#e5e5e5")
         return view
     }()
     

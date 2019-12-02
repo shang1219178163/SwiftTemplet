@@ -28,7 +28,7 @@ class NNFormView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         layer.borderWidth = 0.8;
-        layer.borderColor = UIColorHexValue(0xe4e4e4).cgColor;
+        layer.borderColor = UIColor.hexValue(0xe4e4e4).cgColor;
            
         tableView.isScrollEnabled = false;
         addSubview(tableView)

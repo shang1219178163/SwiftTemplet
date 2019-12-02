@@ -73,7 +73,7 @@ class NNThreeLabelView: UIView {
     lazy var labelBom: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "bottom";
-        view.textColor = UIColorHex("#999999")
+        view.textColor = UIColor.hex("#999999")
         view.textAlignment = .center;
         view.font = UIFont.systemFont(ofSize: 13)
 

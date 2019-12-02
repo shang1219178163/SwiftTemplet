@@ -21,7 +21,7 @@ class NNProgressHUD: NSObject {
         hud.contentColor = UIColor.white;
         hud.minSize = model == MBProgressHUDMode.annularDeterminate ? CGSize(width: 90, height: 90) : CGSize(width: 130, height: 130)
         hud.bezelView.style = .solidColor
-        hud.bezelView.color = UIColorHexValue(0x000000, 0.5)
+        hud.bezelView.color = UIColor.hexValue(0x000000, 0.5)
         hud.bezelView.layer.cornerRadius = 5;
         hud.backgroundView.backgroundColor = UIColor.clear
         
@@ -31,7 +31,7 @@ class NNProgressHUD: NSObject {
             
             if model == MBProgressHUDMode.annularDeterminate {
                 let anni: CABasicAnimation = {
-                    let anni: CABasicAnimation = CABasicAnimation(keyPath: kTransformRotationZ)
+                    let anni: CABasicAnimation = CABasicAnimation(keyPath: CAAnimation.TransformRotationZ)
                     anni.fromValue = 0
                     anni.toValue = Double.pi*2
                     anni.duration = 1

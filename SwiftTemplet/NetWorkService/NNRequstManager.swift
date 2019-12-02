@@ -131,7 +131,7 @@ class NNRequstManager: NSObject {
             return;
         }
         
-        guard let jsonDic: Dictionary<String, Any> = ObjFromData(response.data!) as? Dictionary<String, Any> else {
+        guard let jsonDic: [String : Any] = JSONSerialization.jsonObjectFromData(response.data!) as? [String : Any] else {
             self.didFailure(response, errorType: .JSONError)
             return;
         }
