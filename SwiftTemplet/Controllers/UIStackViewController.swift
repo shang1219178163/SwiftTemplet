@@ -16,7 +16,6 @@ class UIStackViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let images = [UIImage(named: "Skull.jpg"), UIImage(named: "Skull.jpg"), UIImage(named: "Skull.jpg")]
-        
         for image in images {
             //创建并添加内部视图
             let imageView = UIImageView(image: image)
@@ -58,6 +57,8 @@ class UIStackViewController: UIViewController {
         }
         //内部视图水平排列
         stackView.axis = .vertical
+        stackView.setSubViewMultiplier(0.1, at: 0)
+        stackView.setSubViewMultiplier(0.1, at: 1)
 
     }
     
@@ -67,8 +68,9 @@ class UIStackViewController: UIViewController {
         //设置子视图间隔
         stackView.spacing = 10
         //子视图的高度或宽度保持一致
-        stackView.distribution = .fillEqually
-  
+        stackView.distribution = .fillProportionally
+        stackView.backgroundColor = UIColor.lightBlue
+
         return stackView;
     }()
 
