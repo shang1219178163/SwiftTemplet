@@ -31,7 +31,7 @@ class NNProgressHUD: NSObject {
             
             if model == MBProgressHUDMode.annularDeterminate {
                 let anni: CABasicAnimation = {
-                    let anni: CABasicAnimation = CABasicAnimation(keyPath: CAAnimation.TransformRotationZ)
+                    let anni: CABasicAnimation = CABasicAnimation(keyPath: CAAnimation.kTransformRotationZ)
                     anni.fromValue = 0
                     anni.toValue = Double.pi*2
                     anni.duration = 1
