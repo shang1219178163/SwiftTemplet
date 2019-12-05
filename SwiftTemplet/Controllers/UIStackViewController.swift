@@ -26,6 +26,10 @@ class UIStackViewController: UIViewController {
          
         //将StackView添加到主视图中
         view.addSubview(stackView)
+        
+        view.addGestureTap { (reco) in
+            self.dismiss(animated: true, completion: nil)
+        }
 
         view.getViewLayer()
     }

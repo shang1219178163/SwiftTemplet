@@ -104,6 +104,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let now = NSDate()
         let isValid = NSDate().hour > 7 || NSDate().hour > 23
         DDLog(now.year, now.month, now.day, now.hour, now.minute, now.second, isValid)
+        
+        UIApplication.token = "123456789";
+        DDLog( UIApplication.token)
+        
+        DDLog("".count)
         return true
     }
 
