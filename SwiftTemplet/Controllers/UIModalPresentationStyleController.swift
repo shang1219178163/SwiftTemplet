@@ -90,6 +90,8 @@ extension UIModalPresentationStyleController: UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)//不加此行,视图展示会很慢
+        
         let itemList = list[indexPath.row]
         DDLog(itemList);
         
