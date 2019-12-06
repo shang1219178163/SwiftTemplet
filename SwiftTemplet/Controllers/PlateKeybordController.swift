@@ -52,6 +52,8 @@ class PlateKeybordController: UIViewController {
             self.searchView.btn.setTitle(title, for: .normal);
 
         }
+        
+        searchView.searchBar.textField?.becomeFirstResponder()
     }
     
     lazy var searchView: NNSearchView = {
