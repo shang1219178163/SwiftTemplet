@@ -88,9 +88,17 @@ class NNPopView: UIView {
         })
     }
     
+    func viewBlockCellForRow(_ action: @escaping CellForRowClosure) {
+        self.blockCellForRow = action;
+    }
+    
+    func viewBlockDidSelectRow(_ action: @escaping DidSelectRowClosure) {
+        self.blockDidSelectRow = action;
+    }
+    
     //MARK: -lazy
     @objc lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: 60)
+        var table = UITableView.create(bounds, style: .plain, rowHeight: 50)
         table.dataSource = self
         table.delegate = self
         return table
@@ -121,6 +129,7 @@ extension NNPopView: UITableViewDataSource, UITableViewDelegate {
         let value1 = itemList[1]
         
         let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
         cell.textLabel!.text = value0
         cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
         cell.accessoryType = indexP == indexPath ? .checkmark : .none

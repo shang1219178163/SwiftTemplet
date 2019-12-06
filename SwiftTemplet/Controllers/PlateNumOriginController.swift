@@ -9,6 +9,7 @@
 
 import UIKit
 import SwiftExpand
+import PlateKeyboard_iOS
 
 class PlateNumOriginController: UIViewController, PWHandlerDelegate {
     
@@ -122,7 +123,7 @@ class PlateNumOriginController: UIViewController, PWHandlerDelegate {
     lazy var handler: PWHandler = {
         let keyboradHandler = PWHandler();
         
-        keyboradHandler.setKeyBoardView(view: btn);
+        keyboradHandler.setupKeyBoardView(btn);
         keyboradHandler.textFontSize = 18;
         keyboradHandler.delegate = self;
         

@@ -9,6 +9,7 @@
 import UIKit
 
 import SwiftExpand
+import PlateKeyboard_iOS
 
 class PlateNumberController: UIViewController, PWHandlerDelegate {
   
@@ -34,52 +35,9 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
             UIApplication.shared.keyWindow?.endEditing(true)
 
         }
-     
         
         view.addSubview(textField)
         
-//        handler.inputCollectionView = handler.collectionView
-//
-//        handler.inputTextfield = textField
-//        handler.inputTextfield.inputView = handler.keyboardView
-//        handler.inputTextfield.inputAccessoryView = {
-//            let switchWidth: CGFloat = 70.0
-//
-//            let view: UIView = {
-//                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-//
-//                view.layer.borderWidth = 1;
-//                view.layer.borderColor = handler.cellBorderColor.cgColor;
-//                return view;
-//            }()
-//
-//            handler.inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
-//            view.addSubview(handler.inputCollectionView)
-//
-//            let btn: UIButton = {
-//                let view: UIButton = UIButton(type: .custom)
-//                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
-//                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
-//                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
-//                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-//                view.imageView?.contentMode = .scaleAspectFit
-//
-//                view.layer.borderWidth = 1;
-//                view.layer.borderColor = handler.cellBorderColor.cgColor;
-//                view.addActionHandler({ (control) in
-//                    control.isSelected = !control.isSelected;
-//                    DDLog(control.isSelected)
-//                    self.handler.changeInputType(isNewEnergy: control.isSelected)
-//
-//                }, for: .touchUpInside)
-//                return view;
-//            }()
-//
-//            view.addSubview(btn)
-//            return view;
-//        }()
-        
-//        setupKeyboradView(textField, handler: handler)
         handler.setPlate(plate: "京H123456", type: PWKeyboardNumType.wuJing)
 
 

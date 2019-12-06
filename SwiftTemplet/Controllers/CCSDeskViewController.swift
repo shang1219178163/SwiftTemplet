@@ -50,13 +50,13 @@ class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
     }
     
     // MARK: -NNSearchView
-    func searchViewTextDidChange(_ view: NNSearchView, text: String, isFinished: Bool) {
+    func searchViewTextDidChange(_ view: NNSearchView, text: String, complete: Bool) {
         if text == "" {
             view.searchBar.textField?.resignFirstResponder();
             return;
         }
         
-        if isFinished == true {
+        if complete == true {
 
         } else {
            

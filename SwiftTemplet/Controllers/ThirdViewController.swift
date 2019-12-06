@@ -87,6 +87,7 @@ class ThirdViewController: UIViewController{
             [["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
+             ["PlateKeybordController", "车牌键盘", ],             
              ["EntryViewController", "通用录入界面", ],
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
