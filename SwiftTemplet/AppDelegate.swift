@@ -109,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DDLog( UIApplication.token)
         
         DDLog("".count)
+        
         return true
     }
 

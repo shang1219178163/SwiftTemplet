@@ -66,13 +66,16 @@ def common_pods
 #    pod 'HandyJSON', :git => 'https://github.com/alibaba/HandyJSON.git', :branch => 'dev_for_swift5.0'
     pod 'HandyJSON', '~> 5.0.0-beta.1'
 
-    pod ‘YYCache’
+    pod ‘YYCache'
     pod 'YYCategories'
-    pod ‘YYModel’
+    pod 'YYModel'
 #    pod 'TextFieldEffects'
 #    pod 'KeychainAccess'
 #    pod 'SwiftOCR'
 #    pod "Koloda" #探探主页效果
+
+    pod 'PlateKeyboard_iOS'
+
 
     
 end
