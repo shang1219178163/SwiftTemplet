@@ -38,7 +38,8 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
         
         view.addSubview(textField)
         
-        handler.setPlate(plate: "京H123456", type: PWKeyboardNumType.wuJing)
+        handler.setPlate(plate: "京H123456", type: .auto)
+        textField.becomeFirstResponder()
 
 
         view.getViewLayer()
