@@ -123,6 +123,9 @@
 		145C91512334CD0E00849E9D /* NNTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C91502334CD0E00849E9D /* NNTabController.swift */; };
 		145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */; };
 		145CDC9F21E8AB61001B1AC9 /* SortedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */; };
+		1460507E23A0EE2F00C10F34 /* NNPlateKeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460507D23A0EE2F00C10F34 /* NNPlateKeyboardController.swift */; };
+		146050AB23A2303900C10F34 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 146050AD23A2303900C10F34 /* InfoPlist.strings */; };
+		146050B123A23A0100C10F34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 146050B323A23A0100C10F34 /* Localizable.strings */; };
 		1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */; };
 		1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */; };
 		1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */; };
@@ -339,6 +342,11 @@
 		145C91502334CD0E00849E9D /* NNTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNTabController.swift; sourceTree = "<group>"; };
 		145CDC9C21E8A9F0001B1AC9 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
 		145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedViewController.swift; sourceTree = "<group>"; };
+		1460507D23A0EE2F00C10F34 /* NNPlateKeyboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPlateKeyboardController.swift; sourceTree = "<group>"; };
+		146050AC23A2303900C10F34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		146050AE23A2304600C10F34 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		146050B223A23A0100C10F34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		146050B423A23A0600C10F34 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1460727D21F02BB5003AE810 /* UITableViewCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDefault.swift; sourceTree = "<group>"; };
 		1460727F21F09529003AE810 /* UITableHeaderFooterViewZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewZero.swift; sourceTree = "<group>"; };
 		1460728121F16C1D003AE810 /* CircleTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -705,7 +713,9 @@
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
+				146050AD23A2303900C10F34 /* InfoPlist.strings */,
 				51685A14208EA7C500CE8099 /* PrefixHeader.pch */,
+				146050B323A23A0100C10F34 /* Localizable.strings */,
 				51B3DA2E2126511700710A76 /* SwiftTemplet-Bridging-Header.h */,
 				1401BE8D2277D3200078A722 /* Resource */,
 			);
@@ -775,6 +785,7 @@
 				14B940B8237E3FBE00A49D1F /* IOPParkGroupButton.swift */,
 				14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */,
 				14F18E842382346D0018626C /* UITableViewCellFee.swift */,
+				1460507D23A0EE2F00C10F34 /* NNPlateKeyboardController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -932,6 +943,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 516859F4208EA75600CE8099;
 			productRefGroup = 516859FE208EA75700CE8099 /* Products */;
@@ -949,6 +961,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				145C90F22333270C00849E9D /* icon_phone_refuse@2x.png in Resources */,
+				146050B123A23A0100C10F34 /* Localizable.strings in Resources */,
 				145C9147233484B900849E9D /* parkingWang@3x.png in Resources */,
 				145C9148233484B900849E9D /* 天天特价@3x.png in Resources */,
 				145C90F62333270C00849E9D /* icon_phone_answer@2x.png in Resources */,
@@ -957,6 +970,7 @@
 				14488721224E1D2300B550AF /* keyboard_magnifier@2x.png in Resources */,
 				145C910823338DF300849E9D /* icon_phone_soundoff@2x.png in Resources */,
 				144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */,
+				146050AB23A2303900C10F34 /* InfoPlist.strings in Resources */,
 				145C90E62333111500849E9D /* icon_coupon_fail@3x.png in Resources */,
 				145C910723338DF300849E9D /* icon_phone_soundon@2x.png in Resources */,
 				14E8561B232A4D860006E4C2 /* SwiftTemplet-Info.plist in Resources */,
@@ -1037,6 +1051,7 @@
 				"${BUILT_PRODUCTS_DIR}/MMPopupView/MMPopupView.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/NNPlateKeyboard/NNPlateKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PlateKeyboard_iOS/PlateKeyboard_iOS.framework",
@@ -1072,6 +1087,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopupView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NNPlateKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PlateKeyboard_iOS.framework",
@@ -1202,6 +1218,7 @@
 				142A76FA22275EE10016D3DA /* NNDatePicker.swift in Sources */,
 				1401BE932277D6E20078A722 /* NNPageModel.swift in Sources */,
 				14C9019F231543490084A946 /* ScrollHorizontalController.swift in Sources */,
+				1460507E23A0EE2F00C10F34 /* NNPlateKeyboardController.swift in Sources */,
 				14B940B9237E3FBE00A49D1F /* IOPParkGroupButton.swift in Sources */,
 				142A770522275EE10016D3DA /* NNSearchView.swift in Sources */,
 				14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */,
@@ -1292,11 +1309,33 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		146050AD23A2303900C10F34 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				146050AC23A2303900C10F34 /* en */,
+				146050AE23A2304600C10F34 /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		146050B323A23A0100C10F34 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				146050B223A23A0100C10F34 /* en */,
+				146050B423A23A0600C10F34 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		51685A0D208EA75900CE8099 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1343,7 +1382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1356,6 +1395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1396,7 +1436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

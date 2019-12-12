@@ -6,7 +6,7 @@ import Foundation
 import HandyJSON
 
 
-class ESCheckVersRootClass: NSObject,HandyJSON{
+class ESCheckVersRootClass: NSObject, HandyJSON{
 
 	@objc var resultCount : Int = 0
 	@objc var results : [ESCheckVersResult]?

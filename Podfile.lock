@@ -24,6 +24,10 @@ PODS:
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
+  - NNPlateKeyboard (1.0.3):
+    - SnapKit
+    - SnapKitExtend
+    - SwiftExpand
   - ObjectMapper (3.5.1)
   - OHHTTPStubs (8.0.0):
     - OHHTTPStubs/Default (= 8.0.0)
@@ -79,6 +83,7 @@ DEPENDENCIES:
   - MJRefresh
   - MMPopupView
   - Moya
+  - NNPlateKeyboard
   - OHHTTPStubs
   - PlateKeyboard_iOS
   - RxAlamofire
@@ -111,6 +116,7 @@ SPEC REPOS:
     - MJRefresh
     - MMPopupView
     - Moya
+    - NNPlateKeyboard
     - ObjectMapper
     - OHHTTPStubs
     - PlateKeyboard_iOS
@@ -145,6 +151,7 @@ SPEC CHECKSUMS:
   MJRefresh: 2b1214a2dc8f4df4c5dcb028ea2ad4e245425fb7
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  NNPlateKeyboard: 4add7f4bcb3cb4d48d457003266758b40c5b40b2
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   PlateKeyboard_iOS: ee3b6e46034dd82e36e7b1e3520d1fed585000aa
@@ -163,6 +170,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: b9058324b8e854b18d9aa0de76bd17ea1d141728
+PODFILE CHECKSUM: 784b2b693d61fba5d2eadf6a3943b9bb73e5f9ca
 
 COCOAPODS: 1.8.4

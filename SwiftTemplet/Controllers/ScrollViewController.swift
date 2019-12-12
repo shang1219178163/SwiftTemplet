@@ -58,6 +58,7 @@ class ScrollViewController: UIViewController {
             cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
 //            cell.contentView.backgroundColor = UIColor.random;
             cell.imgView.isHidden = true;
+            cell.getViewLayer()
             return cell;
         });
         
