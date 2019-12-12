@@ -87,7 +87,8 @@ class ThirdViewController: UIViewController{
             [["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
-             ["PlateKeybordController", "车牌键盘", ],             
+             ["NNPlateKeyboardController", "车牌键盘重构", ],
+             ["PlateKeybordController", "车牌键盘", ],
              ["EntryViewController", "通用录入界面", ],
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
@@ -104,7 +105,7 @@ class ThirdViewController: UIViewController{
              ["NNFormViewController", "表单视图", ],
              ],
             [["AppIconChangeController", "App图标更换", ],
-             ["NNUserLogInController", "函数响应型编程", ],
+             ["NNUserLogInController", "RxSwift函数响应型编程", ],
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
              ["KeyBoardViewController", "KeyBoardView", ],
@@ -139,6 +140,10 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
         
         let itemList = list[indexPath.section][indexPath.row]
         cell.textLabel!.text = itemList[1]
+        
+//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
+        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+
         cell.textLabel!.textColor = UIColor.theme;
         cell.detailTextLabel?.text = itemList[0];
         cell.detailTextLabel?.textColor = UIColor.gray;

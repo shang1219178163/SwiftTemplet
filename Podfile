@@ -75,7 +75,7 @@ def common_pods
 #    pod "Koloda" #探探主页效果
 
     pod 'PlateKeyboard_iOS'
-
+    pod 'NNPlateKeyboard'
 
     
 end
