@@ -32,33 +32,55 @@ import UIKit
 //            else { return nil; }
 //        return dic as? [String : AnyObject]
 //    }
-//    
-//    func infoFrom(plist: String, key: String) -> AnyObject? {
-//        guard let dic = Bundle.infoDictionary(plist: plist) else {
-//            return nil
-//        }
-//        return dic[key]
+    /// 国际化语言适配
+    static func localizedString(forKey key: String, comment: String = "", userDefaultsKey: String = "AppLanguage") -> String {
+        let defaultValue = NSLocalizedString(key, comment: comment)
+        guard let name = UserDefaults.standard.object(forKey: userDefaultsKey) as? String else { return defaultValue }
+        guard let lprojBundlePath = Bundle.main.path(forResource: name, ofType: "lproj") else { return defaultValue }
+        guard let lprojBundle = Bundle(path: lprojBundlePath) else { return defaultValue }
+        let value = NSLocalizedString(key, bundle: lprojBundle, comment: comment)
+//        let value = bundle!.localizedString(forKey: key, value: "", table: nil)
+        return value;
+    }
+//    /// 国际化语言适配
+//    static func localizedString(forKey key: String, comment: String = "") -> String {
+//        let defaultValue = NSLocalizedString(key, comment: comment)
+//        guard let name = UserDefaults.standard.object(forKey: "AppLanguage") as? String else { return defaultValue }
+//        guard let lprojBundlePath = Bundle.main.path(forResource: name, ofType: "lproj") else { return defaultValue }
+//        guard let lprojBundle = Bundle(path: lprojBundlePath) else { return defaultValue }
+//        let value = NSLocalizedString(key, bundle: lprojBundle, comment: comment)
+////        let value = bundle!.localizedString(forKey: key, value: "", table: nil)
+//        return value;
 //    }
     
 }
 
 @objc public extension UIApplication{
-//    static func setupAppearanceSearchbarCancellButton() {
-//        let shandow: NSShadow = {
-//            let shadow = NSShadow();
-//            shadow.shadowColor = UIColor.darkGray;
-//            shadow.shadowOffset = CGSize(width: 0, height: -1);
-//            return shadow;
-//        }();
-//
-//        let dic: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor:  UIColor.white,
-//                                                  NSAttributedString.Key.font:  UIFont.systemFont(ofSize: 13),
-//                                                  NSAttributedString.Key.shadow:  shandow,
-//                                                  ]
-//        UIBarButtonItem.appearance().setTitleTextAttributes(dic, for: .normal)
-//        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-//    }
+
     
+    static func appDidEnterBackground(application : UIApplication) {
+        var backgroundTask: UIBackgroundTaskIdentifier! = nil
+
+        //注册一个后台任务，并提供一个在时间耗尽时执行的代码块
+        backgroundTask = application.beginBackgroundTask() {
+            //当时间耗尽时调用这个代码块
+            //如果在这个代码块返回之前没有调用endBackgroundTask
+            //应用程序将被终止
+            application.endBackgroundTask(backgroundTask)
+            backgroundTask = UIBackgroundTaskIdentifier.invalid
+        }
+
+        let backgroundQueue = OperationQueue()
+        backgroundQueue.addOperation() {
+
+            //完成一些工作。我们有几分钟的时间来完成它
+            //在结束时，必须调用endBackgroundTask
+            NSLog("Doing some background work!")
+
+            application.endBackgroundTask(backgroundTask)
+            backgroundTask = UIBackgroundTaskIdentifier.invalid
+        }
+    }
 }
 
 @objc extension UIView{

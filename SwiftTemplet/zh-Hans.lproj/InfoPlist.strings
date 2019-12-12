@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  SwiftTemplet
+
+  Created by Bin Shang on 2019/12/12.
+  Copyright © 2019 BN. All rights reserved.
+*/
+CFBundleDisplayName = "Swift应用模板";
+NSCameraUsageDescription ="App需要您的相机";
