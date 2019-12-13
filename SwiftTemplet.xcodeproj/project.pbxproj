@@ -903,7 +903,7 @@
 				516859FA208EA75700CE8099 /* Frameworks */,
 				516859FB208EA75700CE8099 /* Resources */,
 				300E587879584EE68001D352 /* [CP] Embed Pods Frameworks */,
-				14B617F2239790CD00A9336D /* ShellScript */,
+				14B617F2239790CD00A9336D /* BundleVersion */,
 			);
 			buildRules = (
 			);
@@ -1012,7 +1012,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		14B617F2239790CD00A9336D /* ShellScript */ = {
+		14B617F2239790CD00A9336D /* BundleVersion */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1021,6 +1021,7 @@
 			);
 			inputPaths = (
 			);
+			name = BundleVersion;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1453,7 +1454,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UB99NJ7K8G;
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = SwiftTemplet/PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
