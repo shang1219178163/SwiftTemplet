@@ -136,10 +136,10 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
         cell.textLabel!.textColor = UIColor.theme;
 
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 11)
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         

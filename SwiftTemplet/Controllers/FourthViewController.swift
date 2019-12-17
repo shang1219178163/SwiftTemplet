@@ -15,11 +15,12 @@ class FourthViewController: UIViewController {
 //    var progressView:UIAnnularProgress?
     
     var progress: CGFloat = 0.0;
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-       
+               
         createGroupView();
         view.getViewLayer()
         
@@ -28,6 +29,8 @@ class FourthViewController: UIViewController {
 
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "present", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+
         
         let list: [String] = ["1", "2", "3", "4", "5", "6",]
         let listOne = list.map { $0 + "_item" }
@@ -64,15 +67,18 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showErrorText("fail");
 
     }
+
+    @objc func handleActionItem(_ sender: UIBarButtonItem) {
+    
+
+    }
     
     func createGroupView() {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
         let groupView = UIView.createGroupView(rect, list: (list as! [String]), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
-       
             DDLog(idx);
-           
         };
         
         view.addSubview(groupView);
@@ -131,5 +137,27 @@ class FourthViewController: UIViewController {
         }
         progressView.setProgress(progress: progress, time:0.6, animate: true)
         
+    }
+}
+
+
+class HalfSizePresentationController : UIPresentationController {
+    
+    override var frameOfPresentedViewInContainerView: CGRect{
+        guard let containerView = containerView else { return .zero}
+        let rect = CGRect(x: 0,
+                          y: containerView.bounds.height/2,
+                          width: containerView.bounds.width,
+                          height: containerView.bounds.height/2)
+        return rect;
+    }
+}
+
+extension FourthViewController: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presentingViewController)
     }
 }
