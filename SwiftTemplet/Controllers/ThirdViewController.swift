@@ -49,7 +49,7 @@ class ThirdViewController: UIViewController{
         
         let string = "[[\"\\u9655A91D6P\"]]";
         let obj = JSONSerialization.jsonObjectFromString(string);
-        DDLog(obj)
+//        DDLog(obj)
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,6 +110,7 @@ class ThirdViewController: UIViewController{
              ["UIRecognizerController", "手势集合", ],
              ["KeyBoardViewController", "KeyBoardView", ],
              ["TimerViewController", "Timer", ],
+             ["ObserveViewController", "Observe", ],             
              ["TestViewController", "新想法测试", ],
             ],
         ]
@@ -155,7 +156,7 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemList = list[indexPath.section][indexPath.row]
-        DDLog(itemList);
+//        DDLog(itemList);
         
         let controller = UICtrFromString(itemList.first!)
         controller.title = itemList.last!

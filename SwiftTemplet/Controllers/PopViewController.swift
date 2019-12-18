@@ -16,7 +16,8 @@ class PopViewController: UIViewController, UITextFieldDelegate {
 
         view.addSubview(btn)
         view.addSubview(btnOne)
-        
+        view.addSubview(label)
+
         UIApplication.setupAppearanceSearchbarCancellButton(UIColor.white)
         navigationItem.titleView = {
             let titleView = UIView(frame: self.searchBar.bounds)
@@ -24,7 +25,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
             return titleView;
         }();
 
-        
+
         view.getViewLayer()
     }
     
@@ -35,6 +36,13 @@ class PopViewController: UIViewController, UITextFieldDelegate {
             make.top.equalToSuperview().offset(20);
             make.left.equalToSuperview().offset(20);
             make.width.equalTo(90);
+            make.height.equalTo(30);
+        }
+        
+        label.snp.makeConstraints { (make) in
+            make.top.equalTo(btn.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(20);
+            make.right.equalToSuperview().offset(-20);
             make.height.equalTo(30);
         }
         
@@ -54,7 +62,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
         popView.list = [["1", "70.0", "one"], ["2", "70.0", "two"], ["3", "70.0", "three"],
                         ["3", "70.0", "three"], ["3", "70.0", "three"],  ["3", "70.0", "three"],
                         ["3", "70.0", "three"],  ["3", "70.0", "three"], ["3", "70.0", "three"],]
-        
+
     }
     
 
@@ -64,6 +72,13 @@ class PopViewController: UIViewController, UITextFieldDelegate {
        }
     
     // MARK: -lazy
+    
+    lazy var label: UILabel = {
+        let view = UILabel();
+        view.font = UIFont.systemFont(ofSize: 13);
+        view.text = "--"
+        return view
+    }()
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom);

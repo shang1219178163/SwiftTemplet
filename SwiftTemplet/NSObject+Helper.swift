@@ -8,6 +8,22 @@
 //
 
 import UIKit
+import SwiftExpand
+
+extension NSObjectProtocol where Self: NSObject {
+    func observe<Value>(_ keyPath: KeyPath<Self, Value>, onChange: @escaping (Value) -> ()) -> NSKeyValueObservation {
+        return observe(keyPath, options: [.initial, .new]) { _, change in
+            // TODO: change.newValue should never be `nil`, but when observing an optional property that's set to `nil`, then change.newValue is `nil` instead of `Optional(nil)`. This is the bug report for this: https://bugs.swift.org/browse/SR-6066
+//            DDLog(change)
+            guard let newValue = change.newValue else { return }
+            onChange(newValue)
+        }
+    }
+
+    func bind<Value, Target>(_ sourceKeyPath: KeyPath<Self, Value>, to target: Target, at targetKeyPath: ReferenceWritableKeyPath<Target, Value>) -> NSKeyValueObservation {
+        return observe(sourceKeyPath) { target[keyPath: targetKeyPath] = $0 }
+    }
+}
 
 
 @objc public extension NSObject{
@@ -20,19 +36,10 @@ import UIKit
 
 @objc extension UIImageView{
     
-  
 
 }
 
 @objc public extension Bundle{
-//    static func infoDictionary(plist: String) -> [String: AnyObject]? {
-//        guard
-//            let pList = Bundle.main.path(forResource: plist, ofType: "plist"),
-//            let dic = NSDictionary(contentsOfFile: pList)
-//            else { return nil; }
-//        return dic as? [String : AnyObject]
-//    }
-    
 
     
 }
@@ -70,126 +77,7 @@ public extension Bundle{
 }
 
 @objc extension UIView{
-//    ///手势 - 轻点 UITapGestureRecognizer
-//    public func addGestureTapNew(_ action: @escaping RecognizerClosure) -> UITapGestureRecognizer {
-//        let obj = UITapGestureRecognizer(target: nil, action: nil)
-//        obj.numberOfTapsRequired = 1  //轻点次数
-//        obj.numberOfTouchesRequired = 1  //手指个数
-//
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            action(recognizer)
-//        }
-//        return obj
-//    }
-//
-//    ///手势 - 长按 UILongPressGestureRecognizer
-//    public func addGestureLongPressNew(_ action: @escaping RecognizerClosure, for minimumPressDuration: TimeInterval) -> UILongPressGestureRecognizer {
-//        let obj = UILongPressGestureRecognizer(target: nil, action: nil)
-//        obj.minimumPressDuration = minimumPressDuration;
-//
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            action(recognizer)
-//        }
-//        return obj
-//    }
-//
-//    ///手势 - 拖拽 UIPanGestureRecognizer
-//    public func addGesturePanNew(_ action: @escaping RecognizerClosure) -> UIPanGestureRecognizer {
-//        let obj = UIPanGestureRecognizer(target: nil, action: nil)
-//        //最大最小的手势触摸次数
-//        obj.minimumNumberOfTouches = 1
-//        obj.maximumNumberOfTouches = 3
-//
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            if let sender = recognizer as? UIPanGestureRecognizer {
-//                let translate:CGPoint = sender.translation(in: sender.view?.superview)
-//                sender.view!.center = CGPoint(x: sender.view!.center.x + translate.x, y: sender.view!.center.y + translate.y)
-//                sender.setTranslation( .zero, in: sender.view!.superview)
-//
-//                action(recognizer)
-//             }
-//        }
-//        return obj
-//    }
-//
-//    ///手势 - 屏幕边缘 UIScreenEdgePanGestureRecognizer
-//    public func addGestureEdgPanNew(_ action: @escaping RecognizerClosure, for edgs: UIRectEdge) -> UIScreenEdgePanGestureRecognizer {
-//        let obj = UIScreenEdgePanGestureRecognizer(target: nil, action: nil)
-//        obj.edges = edgs
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            action(recognizer)
-//        }
-//        return obj
-//    }
-//
-//    ///手势 - 清扫 UISwipeGestureRecognizer
-//    public func addGestureSwipNew(_ action: @escaping RecognizerClosure, for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
-//        let obj = UISwipeGestureRecognizer(target: nil, action: nil)
-//        obj.direction = direction
-//
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            action(recognizer)
-//        }
-//        return obj
-//    }
-//
-//    ///手势 - 捏合 UIPinchGestureRecognizer
-//    public func addGesturePinchNew(_ action: @escaping RecognizerClosure) -> UIPinchGestureRecognizer {
-//        let obj = UIPinchGestureRecognizer(target: nil, action: nil)
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            if let sender = recognizer as? UIPinchGestureRecognizer {
-//                let location = recognizer.location(in: sender.view!.superview)
-//                sender.view!.center = location;
-//                sender.view!.transform = sender.view!.transform.scaledBy(x: sender.scale, y: sender.scale)
-//                sender.scale = 1.0
-//                //            print(recognizer)
-//                action(recognizer)
-//            }
-//        }
-//        return obj
-//    }
-//
-//    ///手势 - 旋转 UIRotationGestureRecognizer
-//    public func addGestureRotationNew(_ action: @escaping RecognizerClosure) -> UIRotationGestureRecognizer {
-//        let obj = UIRotationGestureRecognizer(target: nil, action: nil)
-//        isUserInteractionEnabled = true
-//        isMultipleTouchEnabled = true
-//        addGestureRecognizer(obj)
-//
-//        obj.addAction { (recognizer) in
-//            if let sender = recognizer as? UIRotationGestureRecognizer {
-//                sender.view!.transform = sender.view!.transform.rotated(by: sender.rotation)
-//                sender.rotation = 0.0;
-//
-//                action(recognizer)
-//            }
-//        }
-//        return obj
-//    }
+
 }
 
 import SwiftExpand
