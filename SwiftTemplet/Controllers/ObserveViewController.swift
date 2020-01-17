@@ -29,8 +29,6 @@ class ObserveViewController: UIViewController {
         
         foo.string = "not hotdog"
         foo.string = "red hotdog"
-
-        
     }
 
 }

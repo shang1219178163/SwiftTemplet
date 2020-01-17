@@ -14,7 +14,7 @@ import SwiftExpand
 /// 文字+UITextField(输入框)
 class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     
-    var viewBlock: ObjClosure?
+    var viewBlock: TextFieldClosure?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -90,7 +90,7 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     }
 
     //MARK: -funtions
-    func block(_ action:@escaping ObjClosure) {
+    func block(_ action:@escaping TextFieldClosure) {
         viewBlock = action
     }
     
