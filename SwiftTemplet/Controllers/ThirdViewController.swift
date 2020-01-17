@@ -50,6 +50,9 @@ class ThirdViewController: UIViewController{
         let string = "[[\"\\u9655A91D6P\"]]";
         let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
+        
+        NSObject.printChengfaBiao()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -160,7 +163,7 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
         
         let controller = UICtrFromString(itemList.first!)
         controller.title = itemList.last!
-        self.navigationController?.pushViewController(controller, animated: true);
+        navigationController?.pushViewController(controller, animated: true);
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

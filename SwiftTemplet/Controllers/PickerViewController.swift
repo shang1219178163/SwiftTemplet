@@ -76,12 +76,12 @@ class PickerViewController: UIViewController {
     
    
     lazy var pickerView: UIPickerView = {
-         let view = UIPickerView();
-         view.frame = CGRectMake(0, kY_GAP, kScreenWidth, kScreenWidth*kRatioIDCard)
+        let view = UIPickerView();
+        view.frame = CGRectMake(0, kY_GAP, kScreenWidth, kScreenWidth*kRatioIDCard)
          
         view.delegate = self;
-         view.dataSource = self
-         return view;
+        view.dataSource = self
+        return view;
      }()
     
     /// itemsView

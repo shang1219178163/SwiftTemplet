@@ -68,25 +68,28 @@ class NNUserLogInController: UIViewController {
             .disposed(by: disposeBag)
         
         loginBtn.rx.tap
-            .subscribe(onNext: { [weak self] _ in DDLog(self!.loginBtn) })
+            .subscribe(onNext: { [weak self] _ in
+                DDLog(self!.loginBtn)
+                
+            })
             .disposed(by: disposeBag)
-        
-        //        loginBtn.rx.tap
-        //            .subscribe(onNext: { [weak self] _ in
-        //            DDLog("__登录__")
-        //
-        //            }, onError: { (error)->Void in
-        //                DDLog("onError:\(error)")
-        //
-        //        }, onCompleted: { ()->Void in
-        //            DDLog("onCompleted")
-        //
-        //        }, onDisposed: { ()->Void in
-        //            DDLog("onDisposed")
-        //
-        //        })
-        //        .disposed(by: disposeBag);
-        //
+                
+//        loginBtn.rx.tap
+//            .subscribe(onNext: { [weak self] _ in
+//            DDLog("__登录__")
+//
+//            }, onError: { (error)->Void in
+//                DDLog("onError:\(error)")
+//
+//        }, onCompleted: { ()->Void in
+//            DDLog("onCompleted")
+//
+//        }, onDisposed: { ()->Void in
+//            DDLog("onDisposed")
+//
+//        })
+//        .disposed(by: disposeBag);
+//
     }
     
     override func viewDidLayoutSubviews() {

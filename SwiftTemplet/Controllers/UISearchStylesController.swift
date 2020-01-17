@@ -17,7 +17,7 @@ class UISearchStylesController: UIViewController{
         view.addSubview(plainView)
         
         if title == nil {
-            title = self.controllerName;
+            title = controllerName;
         }
         
         view.getViewLayer()

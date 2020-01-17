@@ -12,7 +12,7 @@ import MJRefresh
 
 class CellListController: UIViewController {
 
-    var list = [["0,70",], [ "1,55"], ["2,90"], ["3,90"], ["4,90"],]
+    var list = [["0,70",], [ "1,55"], ["2,90"], ["3,90"], ["4,90"], ["4,70"], ["4,40"],]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,12 +82,27 @@ class CellListController: UIViewController {
 
            return cell;
                
-        }  else {
+        } else if indexPath.row == 4 {
             let cell = UITableViewCellPark.dequeueReusableCell(tableView);
             cell.getViewLayer();
             return cell;
-        }
- 
+        } else if indexPath.row == 5 {
+            let cell = UITableViewCellSubtitle.dequeueReusableCell(tableView);
+            cell.imgViewLeft.isHidden = true
+            cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
+
+            cell.getViewLayer();
+            return cell;
+        } else if indexPath.row == 6 {
+           let cell = UITableViewCellPayBill.dequeueReusableCell(tableView);
+            cell.labelLeft.text = "¥5000.00"
+            cell.pay_status = "2"
+
+            cell.getViewLayer();
+            return cell;
+       }
+                
+        return UITableViewCell.dequeueReusableCell(tableView);
     }
 
     // MARK: -lazy

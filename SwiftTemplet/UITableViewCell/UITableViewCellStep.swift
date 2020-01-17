@@ -43,19 +43,16 @@ class UITableViewCellStep: UITableViewCell {
     
     func setupConstraint() {
         labelLeft.sizeToFit();
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(kX_GAP)
-            make.size.equalTo(labelLeft.size)
         }
         
         ppBtn.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.top.equalTo(labelLeft);
             make.right.equalToSuperview().offset(-kX_GAP)
             make.width.equalTo(120)
-
+            make.height.equalTo(30)
         }
     }
     

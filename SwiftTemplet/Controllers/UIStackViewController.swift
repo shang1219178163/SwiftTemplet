@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// textView.isScrollEnabled = false
 class UIStackViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -34,7 +35,7 @@ class UIStackViewController: UIViewController {
         view.getViewLayer()
     }
     
-   override func viewWillLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
          
         let padding: CGFloat = 10
@@ -65,6 +66,38 @@ class UIStackViewController: UIViewController {
         stackView.setSubViewMultiplier(0.1, at: 1)
 
     }
+    
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//
+//        let padding: CGFloat = 10
+//
+//        //横竖屏判断
+//        let orientation = UIApplication.shared.statusBarOrientation
+//        //如果是竖屏
+//        if orientation.isPortrait {
+//            stackView.frame = CGRect(x: padding,
+//                                     y: 64 + padding,
+//                                     width: view.frame.width - padding * 2,
+//                                     height: view.frame.height - 64 - padding * 2)
+////            //内部视图垂直排列
+////            stackView.axis = .vertical
+//        }
+//        //如果是横屏
+//        else {
+//            stackView.frame = CGRect(x: padding,
+//                                     y: 32 + padding,
+//                                     width: view.frame.width - padding * 2,
+//                                     height: view.frame.height - 32 - padding * 2)
+////            //内部视图水平排列
+////            stackView.axis = .horizontal
+//        }
+//        //内部视图水平排列
+//        stackView.axis = .vertical
+//        stackView.setSubViewMultiplier(0.1, at: 0)
+//        stackView.setSubViewMultiplier(0.1, at: 1)
+//
+//    }
     
     lazy var stackView: UIStackView = {
         //创建StackView

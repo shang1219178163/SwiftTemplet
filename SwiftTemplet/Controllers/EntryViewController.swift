@@ -102,16 +102,16 @@ class EntryViewController: UIViewController {
     //MARK: -Lazy Property
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
-            [["卡数量  ", "1", "60.0", "", "cardName", ],
-             ["充值数量", "105", "60.0", "", "validEndTime", ],
-             ["结束时间", "102", "60.0", "", "balance", ],
-             ["应付金额", "106", "60.0", "", "recharge",  "  元    "],
+            [["卡数量  ", "UITableViewCellOne", "60.0", "", "cardName", ],
+             ["充值数量", "UITableViewCellStep", "60.0", "", "validEndTime", ],
+             ["结束时间", "UITableViewCellDatePicker", "60.0", "", "balance", ],
+             ["应付金额", "UITableViewCellTextField", "60.0", "", "recharge",  "  元    "],
              ],
-            [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
-             ["卡类型  ", "1", "60.0", "", "cardName", ],
-             ["结束日期", "102", "60.0", "", "validEndTime",],
-             ["充值时长", "106", "60.0", "", "balance", "  小时"],
-             ["缴费金额", "106", "60.0", "", "recharge", "  元    "],
+            [["内嵌车场  ", "UITableViewCellOne", "60.0", "", "cardName", "1",],
+             ["卡类型  ", "UITableViewCellOne", "60.0", "", "cardName", ],
+             ["结束日期", "UITableViewCellDatePicker", "60.0", "", "validEndTime",],
+             ["充值时长", "UITableViewCellTextField", "60.0", "", "balance", "  小时"],
+             ["缴费金额", "UITableViewCellTextField", "60.0", "", "recharge", "  元    "],
              ]
         ]
         return array
@@ -120,20 +120,20 @@ class EntryViewController: UIViewController {
     lazy var list:[[Any]] = {
 //        return self.allList.first!;
         var array: [[Any]] = [
-            ["起止时间:", "108", "60.0", "", "recharge", ],
-            ["商品名称:", "1", "60.0", "", "cardName", ],
-            ["*商品数量:", "105", "60.0", "", "validEndTime", ],
-            ["*上架时间:", "102", "60.0", "", "balance", ],
-            ["商品价格:", "106", "60.0", "", "recharge",  "  元    "],
-            ["商品种类:", "104", "60.0", "", "recharge",  ["一代","二代","三代",],],
-            ["库存周期:", "109", "60.0", "", "recharge", ],
-            ["继续生产:", "110", "60.0", "", "recharge",  ["生产","不生产",],],
-            ["品牌列表:", "111", "60.0", "", "recharge", ],
-            ["生产厂家:", "112", "60.0", "", "recharge", ],
-            ["验 证 码:", "116", "60.0", "", "recharge", ],
-            ["*备注信息:", "107", "160.0", "", "recharge", ],
-            ["*default:", "150", "60.0", "", "recharge", ],
-//            ["*图片选择:", "115", "", "", "recharge", ],
+            ["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
+            ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
+            ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
+            ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
+            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "  元    "],
+            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  ["一代","二代","三代",],],
+            ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
+            ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  ["生产","不生产",],],
+            ["品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
+            ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
+            ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
+            ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
+            ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
+//            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
 
              ]
         return array
@@ -191,16 +191,17 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         let value3 = itemList[3] as! String
         let value4 = itemList[4] as! String
         
-        switch (itemList[1] as! String).intValue {
-        case 1:
+        switch value1 {
+        case "UITableViewCellOne":
             let cell = UITableViewCellOne.dequeueReusableCell(tableView)
+            cell.isHidden = value2.cgFloatValue <= 0.0
+
             cell.labelRight.text = value4
             
-            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
             cell.getViewLayer()
             return cell
             
-        case 102:
+        case "UITableViewCellDatePicker":
             let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.textfield.text = value4
@@ -209,7 +210,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
             return cell
             
-        case 104:
+        case "UITableViewCellSegment":
             let cell = UITableViewCellSegment.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.segmentCtl.itemList = (itemList.last as! [String])
@@ -223,7 +224,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
             
-        case 105:
+        case "UITableViewCellStep":
             let cell = UITableViewCellStep.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.ppBtn.minValue = 0
@@ -235,7 +236,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case 106:
+        case "UITableViewCellTextField":
             let cell = UITableViewCellTextField.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.textfield.asoryView(true, unitName: (itemList.last as! String))
@@ -251,7 +252,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case 107:
+        case "UITableViewCellTextView":
             let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
             cell.type = 1;
             cell.textView.placeHolderTextView.text = "最多140字"
@@ -261,7 +262,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.getViewLayer()
             return cell
-        case 108:
+        case "UITableViewCellDateRange":
             
 //            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView) as! UITableViewCellDateRange
 //            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView) as! UITableViewCellDateRange
@@ -278,7 +279,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case 109:
+        case "UITableViewCellSlider":
             let cell = UITableViewCellSlider.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.sliderCtl.value = 50
@@ -292,7 +293,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
             
-        case 110:
+        case "UITableViewCellSwitch":
             let cell = UITableViewCellSwitch.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
@@ -307,7 +308,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
             
-        case 111:
+        case "UITableViewCellSheet":
             let cell = UITableViewCellSheet.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.itemList = ["阿里","腾讯","百度","谷歌",]
@@ -317,7 +318,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case 112:
+        case "UITableViewCellPickerView":
             let cell = UITableViewCellPickerView.dequeueReusableCell(tableView)
             cell.labelLeft.text = value0
             cell.block { (view, title, obj) in
@@ -326,7 +327,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.getViewLayer()
             return cell
-        case 115:
+            
+        case "UITableViewCellPhotoPicker":
             let cell = UITableViewCellPhotoPicker.dequeueReusableCell(tableView)
             cell.defaultView.block { (view, list) in
                 DDLog(list.count)
@@ -335,7 +337,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case 116:
+        case "UITableViewCellCode":
             let cell = UITableViewCellCode.dequeueReusableCell(tableView)
             cell.btnCode.addActionHandler({ (control) in
                 DDLog(self.list.count)
@@ -347,17 +349,16 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case 150:
+        case "UITableViewCellDefault":
             let cell = UITableViewCellDefault.dequeueReusableCell(tableView)
+            cell.isHidden = value2.cgFloatValue <= 0.0
             cell.defaultView.labelLeft.text = value0
             cell.defaultView.labelRight.text = value4
-            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
             cell.getViewLayer()
             return cell
             
         default:
             break
-            
         }
         let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell

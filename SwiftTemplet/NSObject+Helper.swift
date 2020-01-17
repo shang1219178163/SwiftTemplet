@@ -28,10 +28,7 @@ extension NSObjectProtocol where Self: NSObject {
 
 @objc public extension NSObject{
 
-   
-    
-    
-  
+
 }
 
 @objc extension UIImageView{
@@ -42,10 +39,6 @@ extension NSObjectProtocol where Self: NSObject {
 @objc public extension Bundle{
 
     
-}
-
-public extension Bundle{
-
 }
 
 @objc public extension UIApplication{

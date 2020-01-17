@@ -32,7 +32,7 @@ class TitleViewController: UIViewController{
             let cell = UITableViewCellOne.dequeueReusableCell(tableView) as! UITableViewCellOne
             cell.labelLeft.text = "标题"
             cell.labelRight.text = indexPath.string
-            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
+            cell.isHidden = value2.cgFloatValue <= 0.0
             cell.accessoryType = self.topView.indexP == indexPath ? .checkmark : .none
 
             cell.getViewLayer()
@@ -349,11 +349,11 @@ class TitleViewController: UIViewController{
 //        switch (itemList[1] as! String).intValue {
 //        case 1:
 //            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
+//                cell.isHidden = value2.cgFloatValue <= 0.0
 //            cell.labelLeft.text = value0
 //            cell.labelRight.text = value4
 //            cell.labelRight.text = indexPath.string
 //
-//            cell.isHidden = value2.cgFloatValue > 0.0 ? false : true
 //            cell.getViewLayer()
 //            return cell
 //

@@ -39,6 +39,7 @@ class ScrollViewController: UIViewController {
         if let obj = self.obj as? String {
             self.title = obj;
         }
+        
     }
     
     // MARK: -lazy
