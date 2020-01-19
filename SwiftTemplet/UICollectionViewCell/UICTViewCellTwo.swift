@@ -19,9 +19,9 @@ class UICTViewCellTwo: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imgView)
-        addSubview(labelTop)
-        addSubview(labelBom)
+        contentView.addSubview(imgView)
+        contentView.addSubview(labelTop)
+        contentView.addSubview(labelBom)
 
         labelTop.text = kNilText;
         labelTop.textAlignment = .center

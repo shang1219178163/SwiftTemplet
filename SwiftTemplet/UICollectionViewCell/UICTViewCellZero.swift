@@ -20,8 +20,8 @@ class UICTViewCellZero: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(imgView)
-        addSubview(label)
+        contentView.addSubview(imgView)
+        contentView.addSubview(label)
         
         label.textAlignment = .center
         label.backgroundColor = UIColor.random
