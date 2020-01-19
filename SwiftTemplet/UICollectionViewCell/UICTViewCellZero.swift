@@ -23,10 +23,15 @@ class UICTViewCellZero: UICollectionViewCell {
         contentView.addSubview(imgView)
         contentView.addSubview(label)
         
+        contentView.addSubview(lineBottom)
+        contentView.addSubview(lineRight)
+        
         label.textAlignment = .center
-        label.backgroundColor = UIColor.random
-        imgView.backgroundColor = UIColor.random
+//        label.backgroundColor = UIColor.random
+//        imgView.backgroundColor = UIColor.random
 
+        lineBottom.isHidden = true
+        lineRight.isHidden = true
     }
     
     override func layoutSubviews() {
@@ -40,6 +45,17 @@ class UICTViewCellZero: UICollectionViewCell {
             make.top.left.equalToSuperview().offset(kPadding)
             make.bottom.right.equalToSuperview().offset(-kPadding)
         }
+        
+        
+        lineBottom.snp.makeConstraints { (make) in
+             make.left.right.bottom.equalToSuperview()
+             make.height.equalTo(kH_LINE_VIEW)
+         }
+         
+         lineRight.snp.makeConstraints { (make) in
+             make.top.right.bottom.equalToSuperview()
+             make.width.equalTo(kH_LINE_VIEW)
+         }
     }
     
 }
