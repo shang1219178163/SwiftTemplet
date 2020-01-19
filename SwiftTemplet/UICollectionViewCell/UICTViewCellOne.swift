@@ -23,10 +23,14 @@ class UICTViewCellOne: UICollectionViewCell {
         contentView.addSubview(imgView)
         contentView.addSubview(label)
         
+        contentView.addSubview(lineBottom)
+        contentView.addSubview(lineRight)
+        
+        contentView.backgroundColor = UIColor.white
         label.textAlignment = .center
-        imgView.image = UIImage(named: kIMG_defaultFailed_S);
-//        label.backgroundColor = UIColor.random
-//        imgView.backgroundColor = UIColor.random
+        imgView.image = UIImage(named: kIMG_defaultFailed_S)
+        lineBottom.isHidden = true
+        lineRight.isHidden = true
     }
     
     override func layoutSubviews() {
@@ -43,6 +47,17 @@ class UICTViewCellOne: UICollectionViewCell {
             label.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview()
             }
+            
+            lineBottom.snp.makeConstraints { (make) in
+                 make.left.right.bottom.equalToSuperview()
+                 make.height.equalTo(kH_LINE_VIEW)
+             }
+             
+             lineRight.snp.makeConstraints { (make) in
+                 make.top.right.bottom.equalToSuperview()
+                 make.width.equalTo(kH_LINE_VIEW)
+             }
+            
             return;
         }
         
@@ -57,6 +72,17 @@ class UICTViewCellOne: UICollectionViewCell {
             make.left.right.equalTo(imgView)
             make.height.equalTo(kH_LABEL)
         }
+        
+        lineBottom.snp.makeConstraints { (make) in
+             make.left.right.bottom.equalToSuperview()
+             make.height.equalTo(kH_LINE_VIEW)
+         }
+         
+         lineRight.snp.makeConstraints { (make) in
+             make.top.right.bottom.equalToSuperview()
+             make.width.equalTo(kH_LINE_VIEW)
+         }
+ 
     }
     
 }

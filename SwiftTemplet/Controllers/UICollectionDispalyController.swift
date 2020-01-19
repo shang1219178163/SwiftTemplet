@@ -24,7 +24,7 @@ class UICollectionDispalyController: UIViewController{
        
         
         // 注册cell
-//        collectionView.collectionViewLayout = UICollectionView.layoutDefault
+        ctView.backgroundColor = UIColor.white
         ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne",],
                             UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero",],
                             UICollectionView.elementKindSectionItem: ["UICTViewCellZero","UICTViewCellOne"],
@@ -121,13 +121,17 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
        
        if indexPath.row % 2 == 0 {
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
-        cell.imgView.backgroundColor = .random
+        cell.lineBottom.isHidden = false
+        cell.lineRight.isHidden = false
+//        cell.imgView.backgroundColor = .random
            cell.label.text = String(format:"%ditem",indexPath.row)
            return cell
        }
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellZero.self, indexPath: indexPath)
-
-       cell.imgView.backgroundColor = .random
+        cell.lineBottom.isHidden = false
+        cell.lineRight.isHidden = false
+    
+//       cell.imgView.backgroundColor = .random
        cell.label.text = String(format:"%ditem",indexPath.row)
        return cell
    }
