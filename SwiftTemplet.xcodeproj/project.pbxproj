@@ -33,6 +33,7 @@
 		14129C9C21E9F379009BFA74 /* UITableViewCellSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */; };
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
 		1413297A2386183C00E7AFCA /* UIApplication+Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141329792386183C00E7AFCA /* UIApplication+Permission.swift */; };
+		1418FEE623D4576000921E2E /* UITableViewCellFourBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */; };
 		14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */; };
 		14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14198D54231FC2E00094D61F /* NNRadioButton.swift */; };
 		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
@@ -256,6 +257,7 @@
 		14129C9B21E9F379009BFA74 /* UITableViewCellSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSheet.swift; sourceTree = "<group>"; };
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		141329792386183C00E7AFCA /* UIApplication+Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Permission.swift"; sourceTree = "<group>"; };
+		1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellFourBtn.swift; sourceTree = "<group>"; };
 		14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_NO@2x.png"; sourceTree = "<group>"; };
 		14198D54231FC2E00094D61F /* NNRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRadioButton.swift; sourceTree = "<group>"; };
 		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
@@ -796,6 +798,7 @@
 				1460507D23A0EE2F00C10F34 /* NNPlateKeyboardController.swift */,
 				149E401B23AA0811006C05BC /* ObserveViewController.swift */,
 				14ADE22023CD543100037B0B /* IOPUserCenterController.swift */,
+				1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				14488646224DC24E00B550AF /* CalendarViewController.swift in Sources */,
 				1401BEA52277D7860078A722 /* NNMemoryCache.swift in Sources */,
 				1461E10C239910490078EB79 /* UIModalPresentationStyleController.swift in Sources */,
+				1418FEE623D4576000921E2E /* UITableViewCellFourBtn.swift in Sources */,
 				1401BE952277D6F30078A722 /* NNRequstManager.swift in Sources */,
 				14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */,
 				14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */,
