@@ -96,6 +96,7 @@ class ThirdViewController: UIViewController{
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              ["UICollectionDispalyController", "UICollectionView展示", ],
+             ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],             
              ["PlateNumMainController", "NNTabController组件", ],
              ["NNTabViewController", "NNTabView组件", ],             
              ["CustomViewController", "自定义View", ],
