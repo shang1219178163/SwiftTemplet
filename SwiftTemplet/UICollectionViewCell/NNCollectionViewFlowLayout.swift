@@ -1,18 +1,16 @@
 //
-//  SectionFlowLayout.swift
-//  SuperView
+//  NNCollectionViewFlowLayout.swift
+//  SwiftTemplet
 //
-//  Created by L on 16/8/16.
-//  Copyright © 2016年 c0ming. All rights reserved.
+//  Created by Bin Shang on 2020/1/19.
+//  Copyright © 2020 BN. All rights reserved.
 //
 
 import UIKit
 
-// SB = Section Background
+import SwiftExpand
 
-//private let SectionBackground = "NNCollectionReusableView"
-
-protocol NNCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
+@objc protocol NNCollectionViewDelegateFlowLayout: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, backgroundColorForSectionAt section: Int) -> UIColor
 }
 
@@ -124,7 +122,7 @@ class NNCollectionViewFlowLayout: UICollectionViewFlowLayout {
             // 2、定义
             let attr = NNCollectionViewLayoutAttributes(forDecorationViewOfKind: UICollectionView.sectionKindBackgroud, with: IndexPath(item: 0, section: section))
             attr.frame = sectionFrame
-            attr.zIndex = -1
+            attr.zIndex = -10
             attr.backgroundColor = delegate.collectionView(collectionView!, layout: self, backgroundColorForSectionAt: section)
             
             decorationViewAttrs.append(attr)
@@ -141,15 +139,18 @@ class NNCollectionViewFlowLayout: UICollectionViewFlowLayout {
 
     override func layoutAttributesForDecorationView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         if elementKind == UICollectionView.sectionKindBackgroud {
-            return decorationViewAttrs[indexPath.section]
+//            DDLog("\(decorationViewAttrs.count)_\(indexPath.description)")
+            if decorationViewAttrs.count > indexPath.section {
+                return decorationViewAttrs[indexPath.section]
+            }
+//            return decorationViewAttrs[indexPath.section]
         }
         return super.layoutAttributesForDecorationView(ofKind: elementKind, at: indexPath)
     }
 }
 
 
-
 extension UICollectionView{
-    static let sectionKindBackgroud: String = "UICollectionView.sectiinKindBackgroud";
+    static let sectionKindBackgroud: String = "UICollectionView.sectionKindBackgroud";
 
 }
