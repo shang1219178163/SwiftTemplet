@@ -121,10 +121,10 @@ extension UICollectionBatchUpdateController: NNCollectionViewDelegateFlowLayout 
         if section == 0 {
             return UIColor.red
         } else if section == 1 {
-            return UIColor.green
+            return UIColor.lightGreen
         } else if section == 2 {
-            return UIColor.cyan
+            return UIColor.lightOrange
         }
-        return UIColor.blue
+        return UIColor.theme
     }
 }
