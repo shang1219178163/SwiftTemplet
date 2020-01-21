@@ -34,6 +34,9 @@
 		14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14129CA321EC72C5009BFA74 /* TitleViewController.swift */; };
 		1413297A2386183C00E7AFCA /* UIApplication+Permission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141329792386183C00E7AFCA /* UIApplication+Permission.swift */; };
 		1418FEE623D4576000921E2E /* UITableViewCellFourBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */; };
+		1418FEFF23D589D500921E2E /* IOPGoodsToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */; };
+		1418FF2323D6882300921E2E /* NNCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FF2223D6882300921E2E /* NNCollectionViewFlowLayout.swift */; };
+		1418FF2723D6891000921E2E /* UICollectionBatchUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FF2623D6891000921E2E /* UICollectionBatchUpdateController.swift */; };
 		14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */; };
 		14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14198D54231FC2E00094D61F /* NNRadioButton.swift */; };
 		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
@@ -258,6 +261,9 @@
 		14129CA321EC72C5009BFA74 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		141329792386183C00E7AFCA /* UIApplication+Permission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Permission.swift"; sourceTree = "<group>"; };
 		1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellFourBtn.swift; sourceTree = "<group>"; };
+		1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPGoodsToolView.swift; sourceTree = "<group>"; };
+		1418FF2223D6882300921E2E /* NNCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		1418FF2623D6891000921E2E /* UICollectionBatchUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionBatchUpdateController.swift; sourceTree = "<group>"; };
 		14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_NO@2x.png"; sourceTree = "<group>"; };
 		14198D54231FC2E00094D61F /* NNRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRadioButton.swift; sourceTree = "<group>"; };
 		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
@@ -648,6 +654,7 @@
 		147FF46921CE48E800351E94 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				1418FF2223D6882300921E2E /* NNCollectionViewFlowLayout.swift */,
 				147FF46421CE48BA00351E94 /* UICTReusableViewZero.swift */,
 				147FF47421CF511800351E94 /* UICTReusableViewOne.swift */,
 				147FF46521CE48BA00351E94 /* UICTViewCellZero.swift */,
@@ -740,14 +747,15 @@
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
+				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
 				149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */,
 				145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */,
-				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
 				14E8692521C20A2E009CE33E /* DetailViewController.swift */,
 				147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */,
+				1418FF2623D6891000921E2E /* UICollectionBatchUpdateController.swift */,
 				149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */,
 				14F7AAB621E722B300FB7570 /* IOPAuthDetailController.swift */,
 				147FF4C221D0815B00351E94 /* FleetDetailControllerNew.swift */,
@@ -799,6 +807,7 @@
 				149E401B23AA0811006C05BC /* ObserveViewController.swift */,
 				14ADE22023CD543100037B0B /* IOPUserCenterController.swift */,
 				1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */,
+				1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1162,7 +1171,9 @@
 				1448871A224E1D2300B550AF /* ZMKeyBoardButtonView.swift in Sources */,
 				142A76F922275EE10016D3DA /* NNTopSheetView.swift in Sources */,
 				14F3966B227ED0F2000CD7B4 /* NNCheckVersApi.swift in Sources */,
+				1418FEFF23D589D500921E2E /* IOPGoodsToolView.swift in Sources */,
 				1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */,
+				1418FF2323D6882300921E2E /* NNCollectionViewFlowLayout.swift in Sources */,
 				142A76F222275EE10016D3DA /* NNClockView.swift in Sources */,
 				142A770922275EE10016D3DA /* NNAnnularProgress.swift in Sources */,
 				142A770622275EE10016D3DA /* NNOperationStateView.swift in Sources */,
@@ -1187,6 +1198,7 @@
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */,
 				145C90EA233324ED00849E9D /* UICallPhoneView.swift in Sources */,
+				1418FF2723D6891000921E2E /* UICollectionBatchUpdateController.swift in Sources */,
 				149E401C23AA0811006C05BC /* ObserveViewController.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				14D91B15234C88B400554994 /* CellListController.swift in Sources */,

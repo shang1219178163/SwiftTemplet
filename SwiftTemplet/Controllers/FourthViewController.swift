@@ -22,7 +22,6 @@ class FourthViewController: UIViewController {
         // Do any additional setup after loading the view.
                
         createGroupView();
-        view.getViewLayer()
         
         createBtnBarItem("测试按钮", isLeft: false) { (reco, view, tag) in
             DDLog(view)
@@ -36,6 +35,11 @@ class FourthViewController: UIViewController {
         let listOne = list.map { $0 + "_item" }
         DDLog(listOne)
         
+        
+        goodsToolView.titles = ["扩容", "减配", "续费"]
+        view.addSubview(goodsToolView)
+        
+//        view.getViewLayer()
         return;
   
         view.addSubview(clockView);
@@ -72,6 +76,15 @@ class FourthViewController: UIViewController {
     
 
     }
+    
+    lazy var goodsToolView: IOPGoodsToolView = {
+        var view = IOPGoodsToolView(frame: .zero)
+        view.padding = 10;
+        view.numberOfRow = 5;
+
+        return view;
+    }()
+    
     
     func createGroupView() {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);

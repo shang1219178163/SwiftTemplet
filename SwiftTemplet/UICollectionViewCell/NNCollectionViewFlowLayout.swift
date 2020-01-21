@@ -122,7 +122,7 @@ class NNCollectionViewFlowLayout: UICollectionViewFlowLayout {
             // 2、定义
             let attr = NNCollectionViewLayoutAttributes(forDecorationViewOfKind: UICollectionView.sectionKindBackgroud, with: IndexPath(item: 0, section: section))
             attr.frame = sectionFrame
-            attr.zIndex = -10
+            attr.zIndex = -1
             attr.backgroundColor = delegate.collectionView(collectionView!, layout: self, backgroundColorForSectionAt: section)
             
             decorationViewAttrs.append(attr)
