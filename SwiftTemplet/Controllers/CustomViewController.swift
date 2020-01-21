@@ -95,7 +95,7 @@ class CustomViewController: UIViewController {
     lazy var itemView: NNItemsView = {
         var view = NNItemsView(frame: .zero)
         view.padding = 10;
-        view.numberOfRow = 2;
+        view.numberOfRow = 4;
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
                 print(btn.titleLabel?.text as Any)
