@@ -37,6 +37,7 @@
 		1418FEFF23D589D500921E2E /* IOPGoodsToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */; };
 		1418FF2323D6882300921E2E /* NNCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FF2223D6882300921E2E /* NNCollectionViewFlowLayout.swift */; };
 		1418FF2723D6891000921E2E /* UICollectionBatchUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FF2623D6891000921E2E /* UICollectionBatchUpdateController.swift */; };
+		1418FF4523D7E34500921E2E /* IOPOrderPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1418FF4423D7E34500921E2E /* IOPOrderPayView.swift */; };
 		14198D51231FBCAD0094D61F /* icon_select_NO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */; };
 		14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14198D54231FC2E00094D61F /* NNRadioButton.swift */; };
 		141AB8462224C54E006E1841 /* img_meetStandard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 141AB8452224C54D006E1841 /* img_meetStandard@2x.png */; };
@@ -264,6 +265,7 @@
 		1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPGoodsToolView.swift; sourceTree = "<group>"; };
 		1418FF2223D6882300921E2E /* NNCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		1418FF2623D6891000921E2E /* UICollectionBatchUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionBatchUpdateController.swift; sourceTree = "<group>"; };
+		1418FF4423D7E34500921E2E /* IOPOrderPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPOrderPayView.swift; sourceTree = "<group>"; };
 		14198D50231FBCAD0094D61F /* icon_select_NO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_select_NO@2x.png"; sourceTree = "<group>"; };
 		14198D54231FC2E00094D61F /* NNRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRadioButton.swift; sourceTree = "<group>"; };
 		141AB8452224C54D006E1841 /* img_meetStandard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_meetStandard@2x.png"; sourceTree = "<group>"; };
@@ -808,6 +810,7 @@
 				14ADE22023CD543100037B0B /* IOPUserCenterController.swift */,
 				1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */,
 				1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */,
+				1418FF4423D7E34500921E2E /* IOPOrderPayView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				14A86A7323557AAC00AD9BC1 /* NNSearchController.swift in Sources */,
 				1401BEAA2277D7BA0078A722 /* NNCacheProtocol.swift in Sources */,
 				14BE176B237FC5070007B148 /* NNTabViewController.swift in Sources */,
+				1418FF4523D7E34500921E2E /* IOPOrderPayView.swift in Sources */,
 				142A770322275EE10016D3DA /* NNTablePlainView.swift in Sources */,
 				142A76FA22275EE10016D3DA /* NNDatePicker.swift in Sources */,
 				1401BE932277D6E20078A722 /* NNPageModel.swift in Sources */,
