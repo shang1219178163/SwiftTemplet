@@ -60,7 +60,7 @@ class ScrollHorizontalController: UIViewController{
 //
 //        return layout;
         
-        return UICollectionViewLayout.createFlowLayout()
+        return UICollectionViewFlowLayout.createFlowLayout()
 //        return UICollectionView.layoutDefault()
 
     }()
