@@ -39,7 +39,16 @@ class FourthViewController: UIViewController {
         goodsToolView.titles = ["扩容", "减配", "续费"]
         view.addSubview(goodsToolView)
         
-//        view.getViewLayer()
+        view.addSubview(orderPayView)
+
+        let amount = "¥\(227.00)"
+        let string = "支付金额: \(amount)"
+        
+        let nsrange = (string as NSString).range(of: "¥227.00")
+//        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
+        orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
+
+        view.getViewLayer()
         return;
   
         view.addSubview(clockView);
@@ -53,6 +62,18 @@ class FourthViewController: UIViewController {
         //元组
         let score = (java: 12.01, Swift: 34, c:"abcde", oc: 98)
         DDLog(score.java, score.Swift);
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        orderPayView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(0);
+            make.right.equalToSuperview().offset(0);
+            make.bottom.equalToSuperview().offset(0);
+            make.height.equalTo(50);
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +106,12 @@ class FourthViewController: UIViewController {
         return view;
     }()
     
+    
+    lazy var orderPayView: IOPOrderPayView = {
+        var view = IOPOrderPayView(frame: .zero)
+
+        return view;
+    }()
     
     func createGroupView() {
         let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
