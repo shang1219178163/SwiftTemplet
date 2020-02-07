@@ -12,7 +12,8 @@ import MJRefresh
 
 class CellListController: UIViewController {
 
-    var list = [["0,70",], [ "1,55"], ["2,90"], ["3,90"], ["4,90"], ["4,70"], ["4,40"],]
+    var list = [["0,70",], [ "1,55"], ["2,90"], ["3,90"],
+                ["4,90"], ["4,70"], ["4,40"], ["4,240"],]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,8 +101,13 @@ class CellListController: UIViewController {
 
             cell.getViewLayer();
             return cell;
+        } else if indexPath.row == 7 {
+          let cell = UITableViewCellWebView.dequeueReusableCell(tableView);
+           cell.loadContent = "asdfasdfasdf"
+
+           cell.getViewLayer();
+           return cell;
        }
-                
         return UITableViewCell.dequeueReusableCell(tableView);
     }
 
