@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class NNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler {
+class NNWebView: UIView {
    
     var urlString: String = ""
     var jsString: String = ""
@@ -19,6 +19,13 @@ class NNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHand
             
         }
     }
+    
+    var loadContent: String = ""{
+        willSet{
+            wkWebView.loadHTMLString(newValue, baseURL: nil)
+        }
+    }
+
     
     deinit {
         wkWebView.removeObserver(self, forKeyPath: "estimatedProgress")
@@ -50,64 +57,6 @@ class NNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHand
         
     }
     
-    //MARK: -webView
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        webView.isHidden = false
-        if webView.url?.scheme == "about" {
-            webView.isHidden = true;
-        }
-    }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        webView.evaluateJavaScript("document.title") { (title, error) in
-            print(title)
-
-        }
-        let script = WKWebView.javaScriptFromTextSizeRatio(300)
-        webView.evaluateJavaScript(script) { (obj, error) in
-            //            print(obj, error);
-        }
-        refreshControl.endRefreshing()
-    }
-    
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        decisionHandler(.allow)
-    }
-    
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        webView.isHidden = true
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        webView.isHidden = true
-        
-    }
-    
-    //MARK: -UIDelegate
-    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        print(message)
-    }
-    
-    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
-        print(message)
-    }
-    
-    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-//        print(message)
-    }
-    
-    //MARK: -WKScriptMessageHandler js 拦截 调用OC方法
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print(message)
-//        let methodStr = message.name + ":"
-//        let selector = NSSelectorFromString(methodStr)
-//        if self.responds(to: selector) {
-//            self.perform(selector)
-//        } else {
-//            print("未实行方法-", methodStr)
-//        }
-    }
-
     //MARK: -observe
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -187,4 +136,55 @@ class NNWebView: UIView, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHand
         view.addObserver(wkWebView, forKeyPath: "hidden", options: .new, context: nil)
         return view
     }()
+}
+
+extension NNWebView: WKUIDelegate{
+    //MARK: -webView
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        webView.isHidden = false
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.evaluateJavaScript("document.title") { (obj, error) in
+//            print(obj)
+
+        }
+        let script = WKWebView.javaScriptFromTextSizeRatio(300)
+        webView.evaluateJavaScript(script) { (obj, error) in
+//            print(obj, error);
+        }
+        refreshControl.endRefreshing()
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        decisionHandler(.allow)
+    }
+}
+
+extension NNWebView: WKNavigationDelegate{
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        webView.isHidden = true
+//        UIAlertController.showAlert("提示", msg: error.localizedDescription, actionTitles: nil, handler: nil);
+//        IOPProgressHUD.showError(withStatus: error.localizedDescription)
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        webView.isHidden = true
+//        UIAlertController.showAlert("提示", msg: error.localizedDescription, actionTitles: nil, handler: nil);
+//        IOPProgressHUD.showError(withStatus: error.localizedDescription)
+    }
+}
+
+extension NNWebView: WKScriptMessageHandler{
+    //MARK: -WKScriptMessageHandler js 拦截 调用OC方法
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print(message)
+//        let methodStr = message.name + ":"
+//        let selector = NSSelectorFromString(methodStr)
+//        if self.responds(to: selector) {
+//            self.perform(selector)
+//        } else {
+//            print("未实行方法-", methodStr)
+//        }
+    }
 }
