@@ -10,8 +10,7 @@
 import UIKit
 import SwiftExpand
 
-@objcMembers
-class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+@objcMembers class NNSegmentView: UIView {
     
     var showItemNum: CGFloat = 4;
     var indicatorHeight: CGFloat = 2;
@@ -21,10 +20,11 @@ class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
     var didSelectItemClosure: DidSelectItemClosure?
     
     var list: NSMutableArray = []{
-        didSet{
-            if oldValue.count > 0 && oldValue.count < Int(showItemNum) {
-                showItemNum = CGFloat(oldValue.count);
+        willSet{
+            if newValue.count < Int(showItemNum) {
+                showItemNum = CGFloat(newValue.count);
             }
+            collectionView.reloadData();
         }
     }
     
@@ -74,29 +74,6 @@ class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         setupIndicator()
     }
     
-    // MARK: -UICollectionView
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if (self.cellForItemClosure != nil && (self.cellForItemClosure!(collectionView, indexPath) != nil)) {
-            return self.cellForItemClosure!(collectionView, indexPath)!;
-        }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
-//        cell.contentView.backgroundColor = UIColor.random
-        return cell;
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let isScrollHorizontal = layout.scrollDirection == .horizontal;
-        let scrollPosition = isScrollHorizontal ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
-        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
-        selectIndexPath = indexPath;
-        if didSelectItemClosure != nil {
-            didSelectItemClosure!(collectionView, indexPath)
-        }
-    }
     
     // MARK: -funtions
     func blockCellForItem(_ action:@escaping CellForItemClosure) {
@@ -211,4 +188,30 @@ class NNSegmentView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         return view;
     }()
     
+}
+
+extension NNSegmentView: UICollectionViewDataSource, UICollectionViewDelegate {
+    // MARK: -UICollectionView
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return list.count;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if (self.cellForItemClosure != nil && (self.cellForItemClosure!(collectionView, indexPath) != nil)) {
+            return self.cellForItemClosure!(collectionView, indexPath)!;
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+//        cell.contentView.backgroundColor = UIColor.random
+        return cell;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let isScrollHorizontal = layout.scrollDirection == .horizontal;
+        let scrollPosition = isScrollHorizontal ? UICollectionView.ScrollPosition.centeredHorizontally : UICollectionView.ScrollPosition.centeredVertically;
+        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: true)
+        selectIndexPath = indexPath;
+        if didSelectItemClosure != nil {
+            didSelectItemClosure!(collectionView, indexPath)
+        }
+    }
 }
