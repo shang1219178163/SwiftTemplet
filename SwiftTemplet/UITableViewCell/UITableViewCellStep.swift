@@ -42,6 +42,10 @@ class UITableViewCellStep: UITableViewCell {
     }
     
     func setupConstraint() {
+        if contentView.bounds.height < 20 {
+            return;
+        }
+        
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
