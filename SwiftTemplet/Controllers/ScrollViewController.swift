@@ -39,7 +39,9 @@ class ScrollViewController: UIViewController {
         if let obj = self.obj as? String {
             self.title = obj;
         }
-        
+//        self.scrollView.list = ["11", "22", "33", "44", "55", "66",];
+//        self.scrollView.showItemNum = 2.5;
+
     }
     
     // MARK: -lazy
@@ -55,7 +57,8 @@ class ScrollViewController: UIViewController {
 //            let cell: UICTViewCellOne = UICTViewCellOne.dequeueReusableCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
             let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
             cell.label.text = "标题\(indexPath.row)"
-            
+            cell.label.text = "\(view.list[indexPath.row])"
+
             cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
 //            cell.contentView.backgroundColor = UIColor.random;
             cell.imgView.isHidden = true;
