@@ -35,6 +35,7 @@ class UITableViewCellWebView: UITableViewCell {
     }
     
     deinit {
+        reloadBtn.removeObserver(wkWebView, forKeyPath: "hidden")
         wkWebView.removeObserver(self, forKeyPath: "estimatedProgress")
         wkWebView.stopLoading()
         wkWebView.uiDelegate = nil
