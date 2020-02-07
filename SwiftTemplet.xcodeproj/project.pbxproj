@@ -195,6 +195,7 @@
 		14E8561D232A4E2F0006E4C2 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
 		14ED8F05221695A000B396A0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ED8F04221695A000B396A0 /* TimerViewController.swift */; };
+		14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EEBF8C23EBFD4A0056ABC9 /* UITableViewCellWebView.swift */; };
 		14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */; };
 		14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
@@ -425,6 +426,7 @@
 		14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		14ED8F04221695A000B396A0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		14EEBF8C23EBFD4A0056ABC9 /* UITableViewCellWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellWebView.swift; sourceTree = "<group>"; };
 		14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardViewController.swift; sourceTree = "<group>"; };
 		14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Helper.swift"; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
@@ -811,6 +813,7 @@
 				1418FEE523D4576000921E2E /* UITableViewCellFourBtn.swift */,
 				1418FEFE23D589D500921E2E /* IOPGoodsToolView.swift */,
 				1418FF4423D7E34500921E2E /* IOPOrderPayView.swift */,
+				14EEBF8C23EBFD4A0056ABC9 /* UITableViewCellWebView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				14403E6223320689005DB45B /* CCSEmergencyOpenView.swift in Sources */,
 				14D91B19234DB96600554994 /* NNPopView.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
+				14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */,
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
 				149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */,
 				14198D55231FC2E00094D61F /* NNRadioButton.swift in Sources */,
