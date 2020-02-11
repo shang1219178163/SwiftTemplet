@@ -22,18 +22,17 @@ class NNWebView: UIView {
     
     var loadContent: String = ""{
         willSet{
-            wkWebView.loadHTMLString(newValue, baseURL: nil)
+            webView.loadHTMLString(newValue, baseURL: nil)
         }
     }
 
     
     deinit {
-        reloadBtn.removeObserver(wkWebView, forKeyPath: "hidden")
-        wkWebView.removeObserver(self, forKeyPath: "estimatedProgress")
-        wkWebView.stopLoading()
-        wkWebView.uiDelegate = nil
-        wkWebView.navigationDelegate = nil
-        
+        reloadBtn.removeObserver(webView, forKeyPath: "hidden")
+        webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        webView.stopLoading()
+        webView.uiDelegate = nil
+        webView.navigationDelegate = nil
     }
     
     override init(frame: CGRect) {
@@ -41,7 +40,7 @@ class NNWebView: UIView {
         
         backgroundColor = UIColor.white;
         self.addSubview(reloadBtn)
-        self.addSubview(wkWebView)
+        self.addSubview(webView)
         self.addSubview(progress)
     }
     
@@ -53,8 +52,8 @@ class NNWebView: UIView {
         super.layoutSubviews()
         
         progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
-        wkWebView.frame = CGRect(x: 0, y: 8, width: frame.size.width, height: frame.size.height - 10)
-        reloadBtn.center = wkWebView.center;
+        webView.frame = CGRect(x: 0, y: 8, width: frame.size.width, height: frame.size.height - 10)
+        reloadBtn.center = webView.center;
         
     }
     
@@ -84,23 +83,23 @@ class NNWebView: UIView {
             urlString = "http://" + urlString;
         }
         let request: URLRequest = URLRequest(url: URL(string: urlString)!)
-        wkWebView.load(request)
+        webView.load(request)
         
     }
     
     @objc func webViewReload() {
-        wkWebView.reload()
+        webView.reload()
     }
     
     @objc func back(_ item: UIBarButtonItem) {
-        if wkWebView.canGoBack {
-            wkWebView.goBack()
+        if webView.canGoBack {
+            webView.goBack()
         }
     }
     
    
     //MARK: -lazy
-    lazy var wkWebView: WKWebView = {
+    lazy var webView: WKWebView = {
         let view = WKWebView(frame: bounds, configuration: WKWebView.confiDefault)
         view.uiDelegate = self
         view.navigationDelegate = self
@@ -134,7 +133,7 @@ class NNWebView: UIView {
         view.setTitleColor(UIColor.red, for: .normal)
         view.addTarget(self, action: #selector(loadRequest), for: .touchUpInside)
         
-        view.addObserver(wkWebView, forKeyPath: "hidden", options: .new, context: nil)
+        view.addObserver(webView, forKeyPath: "hidden", options: .new, context: nil)
         return view
     }()
 }
