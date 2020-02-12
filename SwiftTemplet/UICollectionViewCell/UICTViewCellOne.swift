@@ -13,6 +13,9 @@ import SwiftExpand
 
 class UICTViewCellOne: UICollectionViewCell {
     
+    /// 仅在只有图片或者文字时才起作用
+    @objc var inset: UIEdgeInsets = .zero
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -38,14 +41,16 @@ class UICTViewCellOne: UICollectionViewCell {
         
         if label.isHidden == true {
             imgView.snp.makeConstraints { (make) in
-                make.edges.equalToSuperview()
+//                make.edges.equalToSuperview()
+                make.edges.equalTo(inset)
             }
             return;
         }
         
         if imgView.isHidden == true {
             label.snp.makeConstraints { (make) in
-                make.edges.equalToSuperview()
+//                make.edges.equalToSuperview()
+                make.edges.equalTo(inset)
             }
             
             lineBottom.snp.makeConstraints { (make) in
