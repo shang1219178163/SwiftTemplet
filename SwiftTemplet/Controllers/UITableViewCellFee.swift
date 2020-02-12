@@ -63,6 +63,11 @@ class UITableViewCellFee: UITableViewCell {
         }
     }
     
+    
+    deinit {
+        labelRight.removeObserver(self, forKeyPath: "text")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
