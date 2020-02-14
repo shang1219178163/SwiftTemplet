@@ -37,7 +37,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             //标题星号处理
-            labelLeft.attributedText = labelLeft.text?.toAsterisk()
+            labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
         }
     }
     
