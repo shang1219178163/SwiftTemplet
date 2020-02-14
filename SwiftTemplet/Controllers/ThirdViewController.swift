@@ -50,9 +50,14 @@ class ThirdViewController: UIViewController{
         let string = "[[\"\\u9655A91D6P\"]]";
         let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
-        
-        NSObject.printChengfaBiao()
-        
+//        NSObject.printChengfaBiao()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+                
+//        let controller = CellListController()
+//        navigationController?.pushViewController(controller, animated: true);
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,7 +119,7 @@ class ThirdViewController: UIViewController{
              ["UIRecognizerController", "手势集合", ],
              ["KeyBoardViewController", "KeyBoardView", ],
              ["TimerViewController", "Timer", ],
-             ["ObserveViewController", "Observe", ],             
+             ["ObserveViewController", "Observe", ],
              ["TestViewController", "新想法测试", ],
             ],
         ]
