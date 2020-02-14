@@ -68,6 +68,8 @@ class NNProgressHUD: NSObject {
         let hud: MBProgressHUD = MBProgressHUD.showAdded(to: inView, animated: true)
         hud.mode = MBProgressHUDMode.text
         hud.label.text = text
+        hud.label.numberOfLines = 0;
+
         hud.hide(animated: true, afterDelay: 1.5)
     }
     

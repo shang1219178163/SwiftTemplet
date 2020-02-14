@@ -25,13 +25,13 @@ class NNLog: NSObject {
         DDLog("%@",queryStr as Any);
     }
     
-    @objc static func logRequestInfoWithURI(_ uri: String, params: [String: Any]) {
+    @objc static func logRequestInfo(_ uri: String, params: [String: Any]) {
         DDLog("------------ Request Info --------------");
         logRequestURI(uri)
         logParams(params)
     }
     
-    @objc static func logResponseInfoWithURI(_ uri: String, json: [String: Any]) {
+    @objc static func logResponseInfo(_ uri: String, json: [String: Any]) {
         DDLog("------------ Request Info --------------");
         logRequestURI(uri)
         logResponseJSON(json)

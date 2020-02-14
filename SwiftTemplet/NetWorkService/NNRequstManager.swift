@@ -97,6 +97,8 @@ class NNRequstManager: NSObject {
         if (child != nil) && child?.jsonFromCache!() != nil {
             let cacheDic = child?.jsonFromCache!()
             
+            NNLog.logResponseInfo((child?.requestURI())!, json: cacheDic!)
+
             delegate?.manager(self, dic: cacheDic, error: nil);
             successBlock?(self, cacheDic, nil)
             resultBlock?(self, cacheDic, nil)
@@ -108,7 +110,7 @@ class NNRequstManager: NSObject {
     func startRequestFromNetwork() {
         isLoading = true
         //请求日志
-        NNLog.logRequestInfoWithURI((child?.requestURI())!, params: (child?.requestParams())!)
+        NNLog.logRequestInfo((child?.requestURI())!, params: (child?.requestParams())!)
         
         NNRequstAgent.shared.request((child?.requestURI())!, method: HTTPMethod(rawValue: (child?.requestType())!)!, parameters: child?.requestParams() as Any) { (response) in
 //            guard let self = self else { fatalError("请检查参数");}
@@ -144,7 +146,7 @@ class NNRequstManager: NSObject {
             return;
         }
         
-        NNLog.logResponseInfoWithURI((child?.requestURI())!, json: jsonDic)
+        NNLog.logResponseInfo((child?.requestURI())!, json: jsonDic)
         
         delegate?.manager(self, dic: jsonDic, error: nil);
         successBlock?(self, jsonDic, nil)
