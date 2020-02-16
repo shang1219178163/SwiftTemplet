@@ -14,6 +14,8 @@ import SwiftExpand
 class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
     
     var ctlAlignment = NSTextAlignment.center
+    /// 是否有星标
+    var hasAsterisk = false
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -27,7 +29,9 @@ class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             //标题星号处理
-            labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+            if hasAsterisk {
+                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+            }
         }
     }
     
@@ -45,7 +49,7 @@ class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
     
     func setupConstraint() {
         labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 30)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(kX_GAP)

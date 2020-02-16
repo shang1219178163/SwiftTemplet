@@ -11,6 +11,8 @@ import UIKit
 import SwiftExpand
 
 class NNTableFooterView: UIView {
+    /// 图像距离顶端间距
+    var topPadding: CGFloat = 20;
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,7 +23,10 @@ class NNTableFooterView: UIView {
         
         addSubview(btn)
         addSubview(label)
-        
+        addSubview(labelTop)
+
+        backgroundColor = UIColor.background;
+
 //        label.backgroundColor = UIColor.random
         
     }
@@ -29,12 +34,18 @@ class NNTableFooterView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        labelTop.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(5)
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalTo(topPadding - 10)
+        }
+        
         btn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(15)
+            make.top.equalToSuperview().offset(topPadding)
             make.left.equalToSuperview().offset(10)
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(45)
-            
         }
         
 //        label.sizeToFit()
@@ -42,7 +53,6 @@ class NNTableFooterView: UIView {
             make.top.equalTo(btn.snp.bottom).offset(15)
             make.left.right.equalTo(btn)
             make.height.equalTo(70)
-            
         }
     }
 
@@ -67,4 +77,35 @@ class NNTableFooterView: UIView {
         view.isUserInteractionEnabled = true
         return view
     }()
+    
+    @objc lazy var labelTop: UILabel = {
+        let view = UILabel()
+        view.textColor = UIColor.hex("#999999")
+        view.font = UIFont.systemFont(ofSize: 14)
+        view.numberOfLines = 0
+        view.lineBreakMode = .byWordWrapping
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+}
+
+extension NNTableFooterView{
+    
+    /// 创建默认的确定按钮
+    static func create(_ title: String = "确定", topPadding: CGFloat = 30, height: CGFloat = 120) -> NNTableFooterView {
+        let view = NNTableFooterView(frame: CGRectMake(0, 0, UIScreen.sizeWidth, height))
+        view.topPadding = topPadding;
+        view.labelTop.font = UIFont.systemFont(ofSize: 12)
+        view.labelTop.text = ""
+        
+        view.btn.setTitle(title, for: .normal)
+        view.btn.setBackgroundImage(UIImageColor(UIColor.theme), for: .normal);
+        view.btn.setTitleColor(UIColor.white, for: .normal)
+        view.btn.addActionHandler({ (control) in
+            DDLog(control)
+            
+        }, for: .touchUpInside)
+        return view;
+    }
 }
