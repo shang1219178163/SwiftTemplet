@@ -24,6 +24,8 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         }
     }
     private var viewBlock: ((UITableViewCellTextView, String) -> Void)?
+    /// 是否有星标
+    var hasAsterisk = false;
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -143,7 +145,9 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             //标题星号处理
-            labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+            if hasAsterisk == true {
+                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+            }
         }
     }
     
