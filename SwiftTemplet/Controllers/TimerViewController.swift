@@ -65,8 +65,9 @@ class TimerViewController: UIViewController {
     
     lazy var btn: UIButton = {
         var view = UIButton.create(.zero, title: "发送验证码", imgName: nil, type: 1)
-        view.addActionHandler({ [weak self] (obj) in
-            UIView.GCDTimerStart((obj as! UIButton).titleLabel, 12)
+        view.addActionHandler({ [weak self] (control) in
+            guard let sender = control as? UIButton else { return }
+            sender.timerStart(12)
 
             }, for: .touchUpInside)
         return view

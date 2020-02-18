@@ -51,6 +51,7 @@ class ThirdViewController: UIViewController{
         let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
 //        NSObject.printChengfaBiao()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
