@@ -342,7 +342,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.btnCode.addActionHandler({ (control) in
                 DDLog(self.list.count)
                 if let sender: UIButton = control as? UIButton {
-                    UIView.GCDTimerStart(sender.titleLabel, 60)
+                    sender.timerStart(60)
                 }
             }, for: .touchUpInside)
           

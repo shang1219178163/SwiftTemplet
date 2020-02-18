@@ -137,6 +137,29 @@ class TestViewController: UIViewController{
         }
         return backView;
     }
+    
+    func showTip() {
+        let alertVC = UIAlertController(title: "Add your photo", message: "Add your photoAdd your photoAdd your photo", preferredStyle: .alert)
+
+        let imageAction = UIAlertAction(title: "", style: .default) { (action) in
+            print(action.title)
+        }
+
+        let image = UIImage(named: "bug.png")
+        let left = alertVC.view.frame.size.width/5
+        let edge = UIEdgeInsets(top: 0, left: -left, bottom: 0, right: 0)
+        let centeredTopoImage = image?.withAlignmentRectInsets(edge).withRenderingMode(.alwaysOriginal)
+        imageAction.setValue(centeredTopoImage, forKey: "image")
+
+        let uploadAction = UIAlertAction(title: "Upload", style: .default, handler: nil)
+        let laterAction = UIAlertAction(title: "Add Later", style: .cancel, handler: nil)
+
+        alertVC.addAction(imageAction)
+        alertVC.addAction(uploadAction)
+        alertVC.addAction(laterAction)
+        alertVC.view.getViewLayer()
+        self.present(alertVC, animated: true, completion: nil)
+    }
     //MARK: -lazy
     lazy var footerView: NNTableFooterView = {
         var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
