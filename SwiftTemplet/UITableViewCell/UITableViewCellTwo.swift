@@ -50,6 +50,9 @@ class UITableViewCellTwo: UITableViewCell {
     }
     
     func setupConstraint() {
+        if CGRect.zero == self.bounds {
+            return
+        }
         btn.sizeToFit();
         btn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(contentView.frame.midY - 35/2.0)

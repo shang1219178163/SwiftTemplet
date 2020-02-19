@@ -45,8 +45,11 @@ class UITableViewCellFive: UITableViewCell {
     }
     
     func setupConstraint() {
-        if CGRect.zero.equalTo(bounds) == true {
-            return;
+//        if CGRect.zero.equalTo(bounds) == true {
+//            return;
+//        }
+        if CGRect.zero == self.bounds {
+            return
         }
                 
         imgViewLeft.snp.makeConstraints { (make) in

@@ -48,6 +48,9 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
     }
     
     func setupConstraint() {
+        if CGRect.zero == self.bounds {
+            return
+        }
         let h_labSub: CGFloat = 60.0
         
         //左边文字优先展示

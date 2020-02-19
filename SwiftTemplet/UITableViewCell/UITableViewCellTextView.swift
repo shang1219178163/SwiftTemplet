@@ -57,6 +57,9 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     }
     
     func setupConstraint() {
+        if CGRect.zero == self.bounds {
+            return
+        }
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         

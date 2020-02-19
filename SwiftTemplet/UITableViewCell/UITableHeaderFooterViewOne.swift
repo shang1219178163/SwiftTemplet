@@ -67,8 +67,8 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
     }
     
     func setupConstraint() {
-        if contentView.sizeHeight <= 0 {
-            return;
+        if CGRect.zero == self.bounds {
+            return
         }
         //箭头不隐藏
         if imgViewRight.isHidden == false {
