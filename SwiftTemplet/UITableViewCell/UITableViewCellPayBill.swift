@@ -55,7 +55,9 @@ class UITableViewCellPayBill: UITableViewCell {
     }
     
     func setupConstraint() {
-        
+        if CGRect.zero == self.bounds {
+            return
+        }
         btnDelete.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview().offset(0);
             make.right.equalToSuperview().offset(-10);

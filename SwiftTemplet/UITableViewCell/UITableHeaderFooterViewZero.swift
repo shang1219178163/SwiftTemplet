@@ -55,7 +55,9 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
     }
     
     func setupConstraint() {
-        
+        if CGRect.zero == self.bounds {
+            return
+        }
         indicatorView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(kX_GAP)

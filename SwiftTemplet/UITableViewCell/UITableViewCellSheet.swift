@@ -62,6 +62,9 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     }
     
     func setupConstraint() {
+        if CGRect.zero == self.bounds {
+            return
+        }
         labelLeft.sizeToFit()
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
