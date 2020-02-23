@@ -11,18 +11,20 @@ import SwiftExpand
 
 /// 图片浏览器
 @objcMembers class NNPictureView: UIView {
+    
+    var usePanGesture: Bool = false
         
     var list: [String] = []{
         willSet{
 //            DDLog(newValue)
-            labelTop.text = "1/\(newValue.count)"
+            labelTop.text = "\(selectIndex+1)/\(newValue.count)"
             collectionView.reloadData();
         }
     }
     
     var selectIndex = 0{
         willSet{
-            labelTop.text = "1/\(newValue)"
+            labelTop.text = "\(newValue+1)/\(list.count)"
             collectionView.scrollToItem(at: IndexPath(row: newValue, section: 0), at: .centeredHorizontally, animated: false)
 
         }
@@ -138,6 +140,10 @@ extension NNPictureView: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.labelTop.text = "\(indexPath.row+1)/\(list.count)"
         cell.imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
         cell.labelBom.text = value
+        
+        if usePanGesture == false {
+            return cell;
+        }
         
         if cell.imgView.gestureRecognizers == nil {
             let pinch = UIPinchGestureRecognizer(target: self, action: #selector(p_handlePinchGesture(_:)))
