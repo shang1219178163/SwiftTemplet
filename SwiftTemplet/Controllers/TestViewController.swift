@@ -23,7 +23,7 @@ class TestViewController: UIViewController{
 //        view.addSubview(tbView);
 //        setupData();
         var list:[String] = []
-        for i in 0...8 {
+        for i in 0...6 {
             list.append("\(i)")
         }
         
