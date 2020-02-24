@@ -212,6 +212,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellSegment":
             let cell = UITableViewCellSegment.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = (itemList[2] as! String).cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
             cell.segmentCtl.itemList = (itemList.last as! [String])
             cell.segmentCtl.addActionHandler({ (sender: UIControl) in
@@ -238,6 +243,14 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellTextField":
             let cell = UITableViewCellTextField.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
+            cell.textfield.rightViewMode = .never;
+            cell.textfield.textAlignment = .left
+            
             cell.labelLeft.text = value0
             cell.textfield.asoryView(true, unitName: (itemList.last as! String))
             //            cell.textfield.rightView = nil;
