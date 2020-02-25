@@ -52,49 +52,56 @@ class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
             return
         }
         labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 30)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(kX_GAP)
-            make.size.equalTo(labelLeft.size);
+//            make.width.equalTo(labelLeft.frame.width)
+            make.height.equalTo(30)
         }
         
         let width = contentView.frame.width - labelLeft.frame.maxX - kX_GAP
         let ctlWidth = width*0.7
         
-        switch ctlAlignment {
-        case .left:
-            segmentCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset(kPadding)
-                make.width.equalTo(ctlWidth)
-                make.height.equalTo(labelLeft);
-            }
-            
-        case .right:
-            segmentCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-kX_GAP)
-                make.width.equalTo(ctlWidth)
-                make.height.equalTo(labelLeft);
-            }
-            
-        case .justified:
-            segmentCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-kX_GAP)
-                make.height.equalTo(labelLeft);
-            }
-            
-        default:
-            segmentCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
-                make.width.greaterThanOrEqualTo(ctlWidth)
-                make.height.equalTo(labelLeft);
-            }
+        segmentCtl.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-15)
+            make.width.greaterThanOrEqualTo(ctlWidth)
+            make.height.equalTo(labelLeft);
         }
+        
+//        switch ctlAlignment {
+//        case .left:
+//            segmentCtl.snp.makeConstraints { (make) in
+//                make.centerY.equalToSuperview()
+//                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset(kPadding)
+//                make.width.equalTo(ctlWidth)
+//                make.height.equalTo(labelLeft);
+//            }
+//
+//        case .right:
+//            segmentCtl.snp.makeConstraints { (make) in
+//                make.centerY.equalToSuperview()
+//                make.right.equalToSuperview().offset(-kX_GAP)
+//                make.width.equalTo(ctlWidth)
+//                make.height.equalTo(labelLeft);
+//            }
+//
+//        case .justified:
+//            segmentCtl.snp.makeConstraints { (make) in
+//                make.centerY.equalToSuperview()
+//                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset(kPadding)
+//                make.right.equalToSuperview().offset(-kX_GAP)
+//                make.height.equalTo(labelLeft);
+//            }
+//
+//        default:
+//            segmentCtl.snp.makeConstraints { (make) in
+//                make.centerY.equalToSuperview()
+//                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
+//                make.width.greaterThanOrEqualTo(ctlWidth)
+//                make.height.equalTo(labelLeft);
+//            }
+//        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
