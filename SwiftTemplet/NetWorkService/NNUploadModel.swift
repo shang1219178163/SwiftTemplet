@@ -17,21 +17,19 @@ class NNUploadModel: NSObject {
     
     static func upload(images: [UIImage], fileNames: [String]?, idx: Int) -> NNUploadModel {
         
-        var imageData: Data?  //图片压缩算法
-        imageData = UIImage.compressData(images[idx]) as Data
-        let imageType: String = UIImage.contentType(imageData! as NSData);
+        let imageData = UIImage.compressData(images[idx]) as Data
+        let imageType: String = UIImage.contentType(imageData as NSData);
         
         let timeStamp = DateFormatter.stringFromDate(Date(), fmt: "yyyyMMddHHmmss")
-        let imageFileName = timeStamp + "\(idx)" + imageType;
         
         let name = "image\(idx+1)"
-        let fileName = fileNames != nil ? fileNames![idx] + ".\(imageType)" : imageFileName
+        let fileName = timeStamp + ".\(imageType)"
 
         let model = NNUploadModel()
         model.data = imageData;
         model.name = name;
         model.fileName = fileName;
-        model.mimeType = "imaghe\(imageType)"
+        model.mimeType = "image/\(imageType)"
         return model;
     }
 
