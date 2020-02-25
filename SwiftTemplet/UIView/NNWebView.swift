@@ -11,7 +11,13 @@ import WebKit
 
 class NNWebView: UIView {
    
-    var urlString: String = ""
+    var urlString: String = ""{
+        willSet{
+            DispatchQueue.main.async{
+                self.loadRequest()
+            }
+        }
+    }
     var jsString: String = ""
     var loadingProgressColor: UIColor = UIColor.blue {
         didSet{
@@ -149,10 +155,10 @@ extension NNWebView: WKUIDelegate{
 //            print(obj)
 
         }
-        let script = WKWebView.javaScriptFromTextSizeRatio(300)
-        webView.evaluateJavaScript(script) { (obj, error) in
-//            print(obj, error);
-        }
+//        let script = WKWebView.javaScriptFromTextSizeRatio(300)
+//        webView.evaluateJavaScript(script) { (obj, error) in
+////            print(obj, error);
+//        }
         refreshControl.endRefreshing()
     }
     
