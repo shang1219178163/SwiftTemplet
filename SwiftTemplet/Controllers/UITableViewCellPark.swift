@@ -90,7 +90,7 @@ class UITableViewCellPark: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds == CGRect.zero {
+        if bounds.height <= 0.0 {
             return;
         }
         

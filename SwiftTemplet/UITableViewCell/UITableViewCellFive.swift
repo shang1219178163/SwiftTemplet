@@ -48,7 +48,7 @@ class UITableViewCellFive: UITableViewCell {
 //        if CGRect.zero.equalTo(bounds) == true {
 //            return;
 //        }
-        if CGRect.zero == self.bounds {
+        if bounds.height <= 0.0 {
             return
         }
                 

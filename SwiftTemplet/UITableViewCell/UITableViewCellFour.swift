@@ -46,7 +46,7 @@ class UITableViewCellFour: UITableViewCell {
     }
     
     func setupConstraint() {
-        if CGRect.zero == self.bounds {
+        if bounds.height <= 0.0 {
             return
         }
         if type == 0 {

@@ -51,7 +51,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     }
     
     func setupConstraint() {
-        if CGRect.zero == self.bounds {
+        if bounds.height <= 0.0 {
             return
         }
         labelLeft.sizeToFit()
