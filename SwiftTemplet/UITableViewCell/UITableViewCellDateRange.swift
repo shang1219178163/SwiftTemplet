@@ -33,7 +33,7 @@ class UITableViewCellDateRange: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if CGRect.zero == self.bounds {
+        if bounds.height <= 0.0 {
             return
         }
         dateRangeView.frame = contentView.bounds
