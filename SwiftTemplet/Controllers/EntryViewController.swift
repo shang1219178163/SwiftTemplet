@@ -117,17 +117,17 @@ class EntryViewController: UIViewController {
         return array
     }()
     
-    lazy var list:[[Any]] = {
+    lazy var list:[[String]] = {
 //        return self.allList.first!;
-        var array: [[Any]] = [
+        var array: [[String]] = [
             ["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
             ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "  元    "],
-            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  ["一代","二代","三代",],],
+            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
-            ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  ["生产","不生产",],],
+            ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  "生产,不生产",],
             ["品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
             ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
@@ -176,26 +176,29 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let itemList = list[indexPath.row]
-        if (itemList[2] as! String) == "" {
+        if itemList[2] == "" {
             return  UITableView.automaticDimension;
         }
-        let height = (itemList[2] as! String).cgFloatValue
+        let height = itemList[2].cgFloatValue
         return height
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemList = list[indexPath.row]
-        let value0 = itemList[0] as! String
-        let value1 = itemList[1] as! String
-        let value2 = itemList[2] as! String
-        let value3 = itemList[3] as! String
-        let value4 = itemList[4] as! String
+        let value0 = itemList[0]
+        let value1 = itemList[1]
+        let value2 = itemList[2]
+        let value3 = itemList[3]
+        let value4 = itemList[4]
         
         switch value1 {
         case "UITableViewCellOne":
             let cell = UITableViewCellOne.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelRight.text = value4
             
             cell.getViewLayer()
@@ -203,6 +206,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellDatePicker":
             let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
             cell.textfield.text = value4
             cell.textfield.textAlignment = .right
@@ -214,11 +222,12 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellSegment.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
-            cell.isHidden = (itemList[2] as! String).cgFloatValue <= 0.0
+            cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
             
             cell.labelLeft.text = value0
-            cell.segmentCtl.itemList = (itemList.last as! [String])
+            let titles = (itemList.last as! NSString).components(separatedBy: ",")
+            cell.segmentCtl.itemList = titles
             cell.segmentCtl.addActionHandler({ (sender: UIControl) in
                 if let control = sender as? UISegmentedControl {
                     DDLog(control.selectedSegmentIndex)
@@ -231,6 +240,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellStep":
             let cell = UITableViewCellStep.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
             cell.ppBtn.minValue = 0
             cell.ppBtn.maxValue = 10
@@ -283,6 +297,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange.self)
 //            let cell = tableView.dequeueReusableCell(for: UITableViewCellDateRange())
             let cell:UITableViewCellDateRange = UITableViewCellDateRange.dequeueReusableCell(tableView)
+                cell.dateRangeView.labTitle.font = UIFont.systemFont(ofSize: 14)
+                cell.dateRangeView.labTitle.textColor = UIColor.textColor3
+                cell.isHidden = value2.cgFloatValue <= 0.0
+                cell.hasAsterisk = value0.contains("*")
             
             cell.dateRangeView.labTitle.text = value0
             cell.dateRangeView.block { (dateRangeView) in
@@ -294,6 +312,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellSlider":
             let cell = UITableViewCellSlider.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+//            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
             cell.sliderCtl.value = 50
             cell.sliderCtl.addActionHandler({ (sender: UIControl) in
@@ -308,6 +331,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellSwitch":
             let cell = UITableViewCellSwitch.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
 //            cell.layoutType = 1
@@ -323,6 +351,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellSheet":
             let cell = UITableViewCellSheet.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
             cell.itemList = ["阿里","腾讯","百度","谷歌",]
             cell.block { (title) in
@@ -333,6 +366,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellPickerView":
             let cell = UITableViewCellPickerView.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
             cell.labelLeft.text = value0
             cell.block { (view, title, obj) in
                 DDLog(title,obj)
@@ -343,6 +381,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellPhotoPicker":
             let cell = UITableViewCellPhotoPicker.dequeueReusableCell(tableView)
+            
             cell.defaultView.block { (view, list) in
                 DDLog(list.count)
             }

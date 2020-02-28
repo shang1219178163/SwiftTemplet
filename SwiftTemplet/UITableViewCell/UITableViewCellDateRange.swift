@@ -11,6 +11,8 @@ import UIKit
 /// 起止时间选择
 class UITableViewCellDateRange: UITableViewCell {
 
+    /// 是否有星标
+    var hasAsterisk = false;
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -49,7 +51,9 @@ class UITableViewCellDateRange: UITableViewCell {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             //标题星号处理
-            dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.toAsterisk()
+            if hasAsterisk == true {
+                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+            }
         }
     }
     
