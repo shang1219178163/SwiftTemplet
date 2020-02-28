@@ -40,6 +40,8 @@ class UITableViewCellOne: UITableViewCell {
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelRight);
         
+        imgViewRight.image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
         
