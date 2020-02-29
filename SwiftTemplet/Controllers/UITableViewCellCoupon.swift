@@ -75,7 +75,7 @@ class UITableViewCellCoupon: UITableViewCell {
         
         btn.setTitle("立即使用", for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-        btn.setTitleColor(UIColor.theme, for: .normal)
+//        btn.setTitleColor(UIColor.theme, for: .normal)
         
         imgViewRight.isHidden = true;
 
