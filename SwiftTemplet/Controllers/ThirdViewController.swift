@@ -95,9 +95,10 @@ class ThirdViewController: UIViewController{
         var array: [[[String]]] = [
             [["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
+             ["NNPictureViewController", "全屏图册", ],             
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
-             ["NNPlateKeyboardController", "车牌键盘重构", ],
-             ["PlateKeybordController", "车牌键盘", ],
+             ["NNPlateKeyboardController", "自定义车牌键盘重构", ],
+             ["PlateKeybordController", "自定义车牌键盘", ],
              ["EntryViewController", "通用录入界面", ],
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
