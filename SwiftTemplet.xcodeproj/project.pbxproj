@@ -99,6 +99,7 @@
 		14488728224E1D9F00B550AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14488727224E1D9F00B550AF /* QuartzCore.framework */; };
 		1448872A224E203D00B550AF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14488729224E203D00B550AF /* CoreGraphics.framework */; };
 		144920A721C73BE900C3C2F6 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144920A621C73BE900C3C2F6 /* Media.xcassets */; };
+		1454AAB0240A996900170BBD /* NNPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1454AAAF240A996900170BBD /* NNPictureViewController.swift */; };
 		14579B9B2293F28C001FEB0C /* NNUserLogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14579B9A2293F28C001FEB0C /* NNUserLogInController.swift */; };
 		145C90E023323C1600849E9D /* NNLineDashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C90DF23323C1600849E9D /* NNLineDashView.swift */; };
 		145C90E52333111500849E9D /* icon_coupon_used@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 145C90E12333111400849E9D /* icon_coupon_used@2x.png */; };
@@ -329,6 +330,7 @@
 		14488727224E1D9F00B550AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14488729224E203D00B550AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		144920A621C73BE900C3C2F6 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		1454AAAF240A996900170BBD /* NNPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPictureViewController.swift; sourceTree = "<group>"; };
 		14579B9A2293F28C001FEB0C /* NNUserLogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUserLogInController.swift; sourceTree = "<group>"; };
 		145C90DF23323C1600849E9D /* NNLineDashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNLineDashView.swift; sourceTree = "<group>"; };
 		145C90E12333111400849E9D /* icon_coupon_used@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_coupon_used@2x.png"; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 				14A86A942357268300AD9BC1 /* UISearchStylesController.swift */,
 				14A86A7223557AAC00AD9BC1 /* NNSearchController.swift */,
 				14A86A7423557ABD00AD9BC1 /* NNSearchResultController.swift */,
+				1454AAAF240A996900170BBD /* NNPictureViewController.swift */,
 				14403E65233221BE005DB45B /* UITableViewCellCoupon.swift */,
 				14D91B11234C874500554994 /* UITableViewCellAfford.swift */,
 				14D91B10234C874400554994 /* UITableViewCellPark.swift */,
@@ -1305,6 +1308,7 @@
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				14B940B1237E2FBC00A49D1F /* NNGroupView.swift in Sources */,
+				1454AAB0240A996900170BBD /* NNPictureViewController.swift in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				14F18E852382346D0018626C /* UITableViewCellFee.swift in Sources */,
