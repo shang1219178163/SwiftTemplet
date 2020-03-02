@@ -31,7 +31,9 @@ class UITableViewCellDatePicker: UITableViewCell {
         textfield.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
-        textfield.asoryView(true, unitName: kIMG_arrowDown);
+        
+        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+        textfield.asoryView(true, image: image)
 //        textfield.asoryView(true, unitName: "公斤(万元)");
 //        textfield.delegate = self;
         textfield.isEnabled = false

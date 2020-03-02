@@ -29,7 +29,8 @@ class UITableViewCellPickerView: UITableViewCell {
         textfield.placeholder = "请选择";
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
-        textfield.asoryView(true, unitName: kIMG_arrowDown);
+        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+        textfield.asoryView(true, image: image)
         textfield.isEnabled = false
 
         let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in
