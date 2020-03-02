@@ -11,7 +11,7 @@ import SwiftExpand
 
 class NNDatePicker: UIView {
     
-    typealias ViewClick = (NNDatePicker,Int) -> Void;
+    typealias ViewClick = (NNDatePicker, Int) -> Void;
     var viewBlock: ViewClick?;
 
     private let btnSize = CGSize(width: 60, height: kNaviBarHeight);
@@ -63,7 +63,7 @@ class NNDatePicker: UIView {
     
     
     //MARK: - layz
-    lazy var containView:UIView = {
+    lazy var containView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: UIScreen.sizeHeight - (kNaviBarHeight + kPickerViewHeight), width: UIScreen.sizeWidth, height: (kNaviBarHeight + kPickerViewHeight)));
        
         view.backgroundColor = UIColor.RGBA(230, 230, 230, 1);
@@ -81,7 +81,7 @@ class NNDatePicker: UIView {
         return view;
     }();
     
-    lazy var datePicker : UIDatePicker = {
+    lazy var datePicker: UIDatePicker = {
         let datePicker: UIDatePicker = UIDatePicker();
         datePicker.datePickerMode = UIDatePicker.Mode.date;
         datePicker.locale = Locale(identifier: "zh_CN");
@@ -91,7 +91,7 @@ class NNDatePicker: UIView {
         return datePicker;
     }();
     
-    lazy var btnCancel:UIButton = {
+    lazy var btnCancel: UIButton = {
         let btn = UIButton(type: .custom);
 //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 0;
@@ -104,7 +104,7 @@ class NNDatePicker: UIView {
         return btn;
     }();
     
-    lazy var btnSure:UIButton = {
+    lazy var btnSure: UIButton = {
         let btn = UIButton(type: .custom);
 //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 1;
@@ -117,7 +117,7 @@ class NNDatePicker: UIView {
         return btn;
     }();
     
-    lazy var label:UILabel = {
+    lazy var label: UILabel = {
         let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: kNaviBarHeight));
         lab.tag = 10;
         lab.text = "请选择";
@@ -130,8 +130,8 @@ class NNDatePicker: UIView {
     @objc func handleActionControl(sender: UIControl) {
         if let control = sender as? UIDatePicker {
             DDLog(control.date);
-            
         }
+            
         else if let control = sender as? UIButton {
             DDLog(control.titleLabel?.text as Any);
             if control.titleLabel?.text == kTitleSure {
