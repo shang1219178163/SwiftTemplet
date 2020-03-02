@@ -81,7 +81,8 @@ class EntryViewController: UIViewController {
         
         view.textColor = .white
         view.textAlignment = .center;
-        view.asoryView(true, unitName: kIMG_arrowDown);
+        let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
+        view.asoryView(true, image: image)
         return view
     }()
     
@@ -117,10 +118,20 @@ class EntryViewController: UIViewController {
         return array
     }()
     
-    lazy var list:[[String]] = {
+    lazy var list: [[[String]]] = {
 //        return self.allList.first!;
-        var array: [[String]] = [
-            ["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
+        var array: [[[String]]] = [
+            [
+            ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
+            ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
+            ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
+            ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
+            ["停车费用", "UITableViewCellFee", "90.0", "", "recharge", ],
+            ["停车记录", "UITableViewCellPark", "90.0", "", "recharge", ],
+            ["订单记录", "UITableViewCellPayBill", "40.0", "", "recharge", ],
+            ],
+            
+            [["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
             ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
@@ -133,9 +144,13 @@ class EntryViewController: UIViewController {
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
             ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
+            ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
+            ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
 //            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
 
-             ]
+             ],
+
+        ]
         return array
     }()
     
@@ -167,15 +182,17 @@ class EntryViewController: UIViewController {
 extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+        return list.count;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count;
+        let sectionList = list[section]
+        return sectionList.count;
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let itemList = list[indexPath.row]
+        let sectionList = list[indexPath.section]
+        let itemList = sectionList[indexPath.row]
         if itemList[2] == "" {
             return  UITableView.automaticDimension;
         }
@@ -184,11 +201,12 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let itemList = list[indexPath.row]
+        let sectionList = list[indexPath.section]
+        let itemList = sectionList[indexPath.row]
         let value0 = itemList[0]
         let value1 = itemList[1]
         let value2 = itemList[2]
-        let value3 = itemList[3]
+//        let value3 = itemList[3]
         let value4 = itemList[4]
         
         switch value1 {
@@ -266,8 +284,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textfield.textAlignment = .left
             
             cell.labelLeft.text = value0
-            cell.textfield.asoryView(true, unitName: (itemList.last as! String))
-            //            cell.textfield.rightView = nil;
+            cell.textfield.asoryView(true, text: itemList.last!)
+
+//            cell.textfield.rightView = nil;
             
             cell.textfield.textAlignment = .right
             
@@ -409,6 +428,79 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
+        case "UITableViewCellSubtitle":
+            let cell = UITableViewCellSubtitle.dequeueReusableCell(tableView);
+            cell.imgViewLeft.isHidden = true
+            cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
+
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellWebView":
+            let cell = UITableViewCellWebView.dequeueReusableCell(tableView);
+             cell.loadContent = "asdfasdfasdf"
+
+             cell.getViewLayer();
+             return cell;
+            
+        case "UITableViewCellAfford":
+            let cell = UITableViewCellAfford.dequeueReusableCell(tableView);
+            cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
+
+            cell.getViewLayer();
+            return cell;
+            
+        case "IOPTableViewCellGroupView":
+            let cell = IOPTableViewCellGroupView.dequeueReusableCell(tableView);
+            cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
+            cell.parkGroupView.selectedIdxList = [0]
+            return cell;
+                        
+        case "UITableViewCellThreeLable":
+            let cell = UITableViewCellThreeLable.dequeueReusableCell(tableView);
+            cell.labelTop.text = "标准服务套餐包"
+            cell.labelMid.text = "\("¥106.00")／通道／年"
+            cell.labelBom.text = "优惠价：\("¥599")   原价：\("¥799")"
+            
+//            cell.accessoryType = .disclosureIndicator
+//            cell.imgViewLeft.isHidden = true
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellGoodsDuration":
+            let cell = UITableViewCellGoodsDuration.dequeueReusableCell(tableView);
+            cell.groupView.items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
+            cell.groupView.selectedIdxList = [0]
+            
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellFee":
+            let cell = UITableViewCellFee.dequeueReusableCell(tableView)
+            
+            cell.isPositive = true;
+
+            cell.labelTop.text = "临时车"
+            cell.labelRight.text = "计费: ¥ 23.00"
+            cell.labelMid.text = "异常出车异常出车异常出车异常出车异常出车异常出车"
+            cell.labelBom.text = DateFormatter.stringFromDate(Date()) + DateFormatter.stringFromDate(Date())
+            
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellPark":
+            let cell = UITableViewCellPark.dequeueReusableCell(tableView);
+            cell.getViewLayer();
+            return cell;
+                        
+        case "UITableViewCellPayBill":
+            let cell = UITableViewCellPayBill.dequeueReusableCell(tableView);
+             cell.labelLeft.text = "¥5000.00"
+             cell.pay_status = "2"
+
+             cell.getViewLayer();
+             return cell;
+                        
         default:
             break
         }
@@ -422,11 +514,23 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10;
+        return 30;
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView();
+        let label = UILabel(frame: .zero);
+//        label.backgroundColor = .green;
+        label.textColor = UIColor.orange
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.text = "header\(section)";
+        
+        switch section {
+        case 1:
+            label.text = kBlankOne + "通用Cell视图"
+        default:
+            label.text = kBlankOne + "定制Cell视图"
+        }
+        return label;
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -434,10 +538,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero);
-        //        label.backgroundColor = .green;
-        //        label.text = "header\(section)";
-        return label;
+        return UIView();
     }
         
 }
