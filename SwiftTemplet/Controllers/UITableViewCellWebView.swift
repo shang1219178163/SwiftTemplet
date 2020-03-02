@@ -62,7 +62,7 @@ class UITableViewCellWebView: UITableViewCell {
     }
     
     func setupConstraint() {
-        if CGRect.zero.equalTo(bounds) == true {
+        if bounds.height <= 0.0 {
             return;
         }
         progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
