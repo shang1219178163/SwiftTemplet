@@ -80,7 +80,7 @@ class UITableViewCellFee: UITableViewCell {
     }
     
     func setupConstraint() {
-        if CGRect.zero.equalTo(bounds) == true {
+        if bounds.height <= 0.0 {
             return;
         }
         
