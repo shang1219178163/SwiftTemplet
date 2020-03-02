@@ -12,9 +12,7 @@ import SwiftExpand
 
 /// 文字+UISlider
 class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
-    
-    var ctlAlignment = NSTextAlignment.center
-    
+        
     /// 是否有星标
     var hasAsterisk = false;
     
@@ -76,45 +74,18 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
         let width = contentView.frame.width - labelLeft.frame.maxX - kX_GAP
         let ctlWidth = width*0.7
         
-        switch ctlAlignment {
-        case .left:
-            sliderCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                make.width.equalTo(ctlWidth)
-                make.height.equalTo(labelLeft);
-            }
-            
-        case .right:
-            sliderCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-kX_GAP)
-                make.width.equalTo(ctlWidth)
-                make.height.equalTo(labelLeft);
-            }
-            
-        case .justified:
-            sliderCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-kX_GAP)
-                make.height.equalTo(labelLeft);
-            }
-            
-        default:
-            sliderCtl.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.lessThanOrEqualTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
-                make.width.lessThanOrEqualTo(ctlWidth)
-                make.height.equalTo(labelLeft);
-            }
-        }
-        
         labelRight.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalTo(sliderCtl.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-kPadding)
-            make.height.equalTo(25);
+            make.right.equalToSuperview().offset(-kX_GAP)
+            make.width.equalTo(45)
+            make.height.equalTo(labelLeft);
+        }
+        
+        sliderCtl.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+            make.width.equalTo(ctlWidth)
+            make.height.equalTo(labelLeft);
         }
     }
     

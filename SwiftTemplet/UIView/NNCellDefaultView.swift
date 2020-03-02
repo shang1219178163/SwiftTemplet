@@ -37,6 +37,8 @@ class NNCellDefaultView: UIView {
         addSubview(labelLeft);
         addSubview(labelRight);
         
+        imgViewRight.image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
         
