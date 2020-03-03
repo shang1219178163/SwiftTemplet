@@ -48,11 +48,10 @@ class NNTableFooterView: UIView {
             make.height.equalTo(45)
         }
         
-//        label.sizeToFit()
         label.snp.makeConstraints { (make) in
             make.top.equalTo(btn.snp.bottom).offset(15)
             make.left.right.equalTo(btn)
-            make.height.equalTo(70)
+            make.bottom.equalToSuperview()
         }
     }
 
