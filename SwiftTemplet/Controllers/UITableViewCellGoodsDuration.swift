@@ -1,0 +1,74 @@
+//
+//  UITableViewCellGoodsDuration.swift
+//  SwiftTemplet
+//
+//  Created by Bin Shang on 2020/3/2.
+//  Copyright © 2020 BN. All rights reserved.
+//
+
+import UIKit
+import SnapKit
+import SwiftExpand
+
+/// 商品购买时长
+class UITableViewCellGoodsDuration: UITableViewCell {
+     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+         super.init(style: style, reuseIdentifier: reuseIdentifier);
+        
+        contentView.addSubview(labelLeft);
+        contentView.addSubview(groupView);
+        
+        labelLeft.text = "购买时长"
+        labelLeft.font = UIFont.systemFont(ofSize: 12)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder);
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        labelLeft.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(0);
+            make.left.equalToSuperview().offset(15);
+            make.width.equalTo(100);
+            make.height.equalTo(25);
+        }
+        
+        groupView.snp.makeConstraints { (make) in
+            make.top.equalTo(labelLeft.snp.bottom).offset(0);
+            make.left.equalToSuperview().offset(15);
+            make.right.equalToSuperview().offset(-15);
+            make.bottom.equalToSuperview().offset(-10);
+        }
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    
+    lazy var groupView: NNButtonGroupView = {
+        var view = NNButtonGroupView(frame: .zero)
+        view.padding = 10;
+        view.numberOfRow = 3;
+        
+        view.cornerRadius = 3.0
+        view.fontSize = 12
+        view.isMutiChoose = false;
+        
+        view.block({ (itemsView, sender) in
+            if let btn = sender as? UIButton {
+                print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
+
+            }
+        })
+        return view;
+    }()
+
+}
