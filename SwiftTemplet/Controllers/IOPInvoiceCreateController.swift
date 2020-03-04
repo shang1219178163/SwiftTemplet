@@ -80,28 +80,14 @@ class IOPInvoiceCreateController: UIViewController {
         
     }
     
-    @objc lazy var imgViewMore: UIImageView = {
-        let view: UIImageView = UIImageView.create(CGRectMake(0, 0, 8, 13), imgName: "img_arrowRight_gray")
-        let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
-        view.image = image;
-        
-        return view;
-    }();
-    
-//    @objc lazy var btnMore: UIButton = {
-//        let view: UIButton = UIButton.create(CGRectMake(0, 0, 8, 13), title: nil, imgName: "img_arrowRight_gray", type: 4)
+//    @objc lazy var imgViewMore: UIImageView = {
+//        let view: UIImageView = UIImageView.create(CGRectMake(0, 0, 8, 13), imgName: "img_arrowRight_gray")
 //        let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
-//        view.setImage(image, for: .normal)
-//        view.addActionHandler({ (sender) in
-//            if let obj = sender as? UIButton {
-//                DDLog(obj.currentTitle as Any)
-//
-//            }
-//        }, for: .touchUpInside)
-//
+//        view.image = image;
+//        
 //        return view;
 //    }();
-
+    
     // MARK: -life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +105,26 @@ class IOPInvoiceCreateController: UIViewController {
         
     }
     
+    func setupCellFold(_ cell: UITableViewCell, indexPath: IndexPath) {
+        let isMoreRow = indexPath.section == 1 && indexPath.row == 6
+        cell.textfield.isEnabled = !isMoreRow
+        if isMoreRow {
+
+            let imgView: UIImageView = {
+                let rect = CGRectMake(0, 0, 14, 14)
+                let view: UIImageView = UIImageView.create(rect, imgName: "icon_arrow_right_lightGray")
+                let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
+                view.image = image;
+                view.contentMode = .center
+                return view
+            }()
+            cell.accessoryView = imgView
+            imgView.transform = isMore == false ? CGAffineTransform.identity : imgView.transform.rotated(by: CGFloat(Double.pi/2))
+
+        } else {
+            cell.accessoryType = .none
+        }
+    }
 }
 
 
@@ -182,12 +188,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
 
             let isMoreRow = indexPath.section == 1 && indexPath.row == 6
             cell.textfield.isEnabled = !isMoreRow
-//            cell.accessoryView = isMoreRow ? btnMore : nil;
-//            if let imgView = btnMore.imageView {
-//                imgView.transform = self.isMore ? imgView.transform.rotated(by: CGFloat(Double.pi/2)) : CGAffineTransform.identity;
-//            }
-            cell.accessoryView = isMoreRow ? imgViewMore : nil;
-            imgViewMore.transform = isMore == false ? CGAffineTransform.identity : imgViewMore.transform.rotated(by: CGFloat(Double.pi/4))
+            setupCellFold(cell, indexPath: indexPath)
             
 //            cell.getViewLayer()
             return cell
