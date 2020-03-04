@@ -26,9 +26,6 @@ class NNTableFooterView: UIView {
         addSubview(labelTop)
 
         backgroundColor = UIColor.background;
-
-//        label.backgroundColor = UIColor.random
-        
     }
     
     override func layoutSubviews() {
@@ -36,8 +33,8 @@ class NNTableFooterView: UIView {
         
         labelTop.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
-            make.left.equalToSuperview().offset(15)
-            make.right.equalToSuperview().offset(-15)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
             make.height.equalTo(topPadding - 10)
         }
         
@@ -55,8 +52,8 @@ class NNTableFooterView: UIView {
         }
     }
 
-    @objc lazy var btn:UIButton = {
-        var view: UIButton = UIButton.create( .zero, title: "+ 新建", imgName: nil, type: 1);
+    @objc lazy var btn: UIButton = {
+        var view: UIButton = UIButton.create( .zero, title: "确定", imgName: nil, type: 1);
             view.addActionHandler({ (sender) in
                 if let obj = sender as? UIButton {
                     DDLog(obj.currentTitle as Any)
