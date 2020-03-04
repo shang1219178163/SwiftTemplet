@@ -63,18 +63,20 @@ class UITableViewCellSubtitle: UITableViewCell {
             return;
         }
                 
+        let height: CGFloat = bounds.height - 20
+
         imgViewLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview();
             make.left.equalToSuperview().offset(10);
-            make.width.equalTo(36);
             make.bottom.equalToSuperview().offset(-10);
+            make.width.equalTo(height);
         }
         
         labelRight.sizeToFit();
         labelRight.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
-            make.height.equalTo(20);
+            make.height.equalTo(height*0.5);
         }
         
         labelRightSub.sizeToFit();
@@ -99,21 +101,21 @@ class UITableViewCellSubtitle: UITableViewCell {
                 make.right.equalTo(labelRightSub.snp.left).offset(-8);
                 make.height.equalTo(labelRightSub);
             }
-            return;
-        }
-        
-        labelLeft.snp.makeConstraints { (make) in
-            make.centerY.equalTo(labelRight);
-            make.left.equalTo(imgViewLeft.snp.right).offset(8);
-            make.right.equalTo(labelRight.snp.left).offset(-8);
-            make.height.equalTo(labelRight);
-        }
-        
-        labelLeftSub.snp.makeConstraints { (make) in
-            make.centerY.equalTo(labelRightSub);
-            make.left.equalTo(labelLeft);
-            make.right.equalTo(labelRightSub.snp.left).offset(-8);
-            make.height.equalTo(labelRightSub);
+
+        } else {
+            labelLeft.snp.makeConstraints { (make) in
+                make.centerY.equalTo(labelRight);
+                make.left.equalTo(imgViewLeft.snp.right).offset(8);
+                make.right.equalTo(labelRight.snp.left).offset(-8);
+                make.height.equalTo(labelRight);
+            }
+            
+            labelLeftSub.snp.makeConstraints { (make) in
+                make.centerY.equalTo(labelRightSub);
+                make.left.equalTo(labelLeft);
+                make.right.equalTo(labelRightSub.snp.left).offset(-8);
+                make.height.equalTo(labelRightSub);
+            }
         }
         
     }
