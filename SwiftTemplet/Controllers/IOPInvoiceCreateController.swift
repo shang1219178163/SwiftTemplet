@@ -6,6 +6,10 @@
 //  Copyright © 2020 Xi'an iRain IoT. Technology Service CO., Ltd. . All rights reserved.
 //
 
+/*
+ 因为UIButton的imageView不是正方形,旋转会变形,所以用UIImageView
+ */
+
 import UIKit
 import SwiftExpand
 
