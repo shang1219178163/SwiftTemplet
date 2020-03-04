@@ -84,19 +84,19 @@ class IOPInvoiceCreateController: UIViewController {
         return view;
     }();
     
-    @objc lazy var btnMore: UIButton = {
-        let view: UIButton = UIButton.create(CGRectMake(0, 0, 8, 13), title: nil, imgName: "img_arrowRight_gray", type: 4)
-        let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
-        view.setImage(image, for: .normal)
-        view.addActionHandler({ (sender) in
-            if let obj = sender as? UIButton {
-                DDLog(obj.currentTitle as Any)
-
-            }
-        }, for: .touchUpInside)
-
-        return view;
-    }();
+//    @objc lazy var btnMore: UIButton = {
+//        let view: UIButton = UIButton.create(CGRectMake(0, 0, 8, 13), title: nil, imgName: "img_arrowRight_gray", type: 4)
+//        let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
+//        view.setImage(image, for: .normal)
+//        view.addActionHandler({ (sender) in
+//            if let obj = sender as? UIButton {
+//                DDLog(obj.currentTitle as Any)
+//
+//            }
+//        }, for: .touchUpInside)
+//
+//        return view;
+//    }();
 
     // MARK: -life cycle
     override func viewDidLoad() {
