@@ -36,6 +36,7 @@ class NNDatePicker: UIView {
     }
     
     func show() {
+        UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
