@@ -11,6 +11,8 @@ import SwiftExpand
 
 class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
 
+    var Xgap: CGFloat = 15;
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         /*
@@ -50,7 +52,7 @@ class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
         labelLeft.snp.makeConstraints { (make) in
             make.top.height.equalTo(btn);
             make.left.equalTo(btn.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-kX_GAP)
+            make.right.equalToSuperview().offset(-Xgap)
         }
         
         lineBottom.snp.makeConstraints { (make) in

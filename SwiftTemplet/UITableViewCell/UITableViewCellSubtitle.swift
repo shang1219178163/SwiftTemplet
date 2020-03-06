@@ -17,6 +17,8 @@ import SwiftExpand
  */
 class UITableViewCellSubtitle: UITableViewCell {
 
+    var Xgap: CGFloat = 15;
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
@@ -67,7 +69,7 @@ class UITableViewCellSubtitle: UITableViewCell {
 
         imgViewLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview();
-            make.left.equalToSuperview().offset(10);
+            make.left.equalToSuperview().offset(Xgap);
             make.bottom.equalToSuperview().offset(-10);
             make.width.equalTo(height);
         }
@@ -75,14 +77,14 @@ class UITableViewCellSubtitle: UITableViewCell {
         labelRight.sizeToFit();
         labelRight.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-10);
+            make.right.equalToSuperview().offset(-Xgap);
             make.height.equalTo(height*0.5);
         }
         
         labelRightSub.sizeToFit();
         labelRightSub.snp.makeConstraints { (make) in
             make.right.equalTo(labelRight);
-            make.bottom.equalToSuperview().offset(-10);
+            make.bottom.equalToSuperview().offset(-Xgap);
             make.width.equalTo(150)
             make.height.equalTo(labelRight);
         }
@@ -90,7 +92,7 @@ class UITableViewCellSubtitle: UITableViewCell {
         if imgViewLeft.isHidden {
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalTo(labelRight);
-                make.left.equalToSuperview().offset(10);
+                make.left.equalToSuperview().offset(Xgap);
                 make.right.equalTo(labelRight.snp.left).offset(-8);
                 make.height.equalTo(labelRight);
             }

@@ -24,6 +24,8 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         }
     }
     private var viewBlock: ((UITableViewCellTextView, String) -> Void)?
+    
+    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     
@@ -67,13 +69,13 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         case 1:
             labelLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(kY_GAP)
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
 //                make.size.equalTo(labelLeft.frame.size);
             }
             
             labelLeftSub.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft)
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.size.equalTo(labelLeft.frame.size);
             }
             
@@ -87,7 +89,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         default:
             labelLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(kY_GAP)
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
                 make.size.equalTo(labelLeft.size);
             }
             
@@ -100,7 +102,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
             textView.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft);
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.bottom.equalToSuperview().offset(-kY_GAP);
             }
         }

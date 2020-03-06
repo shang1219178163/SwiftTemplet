@@ -14,6 +14,8 @@ import UIKit
  */
 class UITableViewCellFive: UITableViewCell {
 
+    var Xgap: CGFloat = 15;
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
@@ -61,15 +63,15 @@ class UITableViewCellFive: UITableViewCell {
         
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalTo(imgViewLeft.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-10);
+            make.left.equalToSuperview().offset(Xgap);
+            make.right.equalToSuperview().offset(-Xgap);
             make.height.equalTo(20);
         }
         
         labelLeftSub.snp.makeConstraints { (make) in
             make.top.equalTo(labelLeft.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-10);
+            make.left.equalToSuperview().offset(Xgap);
+            make.right.equalToSuperview().offset(-Xgap);
             make.height.equalTo(labelLeft);
         }
         

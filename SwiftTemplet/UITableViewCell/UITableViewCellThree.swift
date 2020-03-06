@@ -12,6 +12,8 @@ import SwiftExpand
 
 /// 文字+副标题(默认对齐方式)
 class UITableViewCellThree: UITableViewCell {
+    
+    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     
@@ -55,13 +57,13 @@ class UITableViewCellThree: UITableViewCell {
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(kX_GAP)
+            make.left.equalToSuperview().offset(Xgap)
         }
         
         labelRight.snp.makeConstraints { (make) in
             make.top.height.equalTo(labelLeft);
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-kX_GAP)
+            make.right.equalToSuperview().offset(-Xgap)
         }
     }
 
