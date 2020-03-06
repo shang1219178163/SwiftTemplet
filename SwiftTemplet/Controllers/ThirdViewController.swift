@@ -68,7 +68,7 @@ class ThirdViewController: UIViewController{
     
     // MARK: -funtions
     func requestInfo() {
-        NNProgressHUD.showLoadingText("努力加载中")
+        NNProgressHUD.showLoading("努力加载中")
         let updateAPi = NNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in
             
@@ -80,7 +80,7 @@ class ThirdViewController: UIViewController{
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
                 //                DDLog(response)
             }
-            NNProgressHUD.showSuccessText("请求成功");
+            NNProgressHUD.showSuccess("请求成功");
             self.tbViewGrouped.mj_header!.endRefreshing()
             self.tbViewGrouped.mj_footer!.endRefreshing()
         }) { (manager, dic, error) in
@@ -123,6 +123,8 @@ class ThirdViewController: UIViewController{
              ["TimerViewController", "Timer", ],
              ["ObserveViewController", "Observe", ],
              ["TestViewController", "新想法测试", ],
+             ["IOPInvoiceCreateController", "折叠", ],
+             
             ],
         ]
         return array
