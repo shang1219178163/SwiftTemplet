@@ -17,6 +17,8 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     var layoutType = 0
     /// layoutType 不等于0时的才起作用
     var ctlAlignment = NSTextAlignment.right
+    
+    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     
@@ -58,20 +60,20 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
         labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(kX_GAP)
+            make.left.equalToSuperview().offset(Xgap)
             make.size.equalTo(labelLeft.size);
         }
         
         if layoutType == 0 {
             switchCtl.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft);
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
             }
             return;
         }
         
         //segment,slider的相对对齐方式
-        let width = contentView.frame.width - labelLeft.frame.maxX - kX_GAP
+        let width = contentView.frame.width - labelLeft.frame.maxX - Xgap
         let ctlWidth = width*0.7
         
         switch ctlAlignment {

@@ -12,6 +12,8 @@ import SwiftExpand
 /// 勾选按钮+文字
 class UITableViewCellFour: UITableViewCell {
 
+    var Xgap: CGFloat = 15;
+
     var type: Int = 0{
         didSet {
             setNeedsLayout()
@@ -52,27 +54,27 @@ class UITableViewCellFour: UITableViewCell {
         if type == 0 {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
                 make.width.height.equalTo(kSizeArrow.height)
             }
             
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(btn.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.height.equalTo(btn)
             }
             
         } else {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.width.height.equalTo(kSizeArrow.height)
             }
             
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
                 make.right.equalTo(btn.snp.left).offset(-kPadding)
                 make.height.equalTo(btn)
             }

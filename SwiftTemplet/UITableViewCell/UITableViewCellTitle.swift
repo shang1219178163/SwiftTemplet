@@ -11,6 +11,7 @@ import UIKit
 /// 标题+按钮
 class UITableViewCellTitle: UITableViewCell {
     
+    var Xgap: CGFloat = 15;
     /// 按钮位置
     var alignment: NSTextAlignment = .left
     
@@ -39,9 +40,9 @@ class UITableViewCellTitle: UITableViewCell {
         if labelLeft.isHidden == true {
             btn.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(8)
-                make.left.equalToSuperview().offset(10)
+                make.left.equalToSuperview().offset(Xgap)
                 make.bottom.equalToSuperview().offset(-8)
-                make.right.equalToSuperview().offset(-10)
+                make.right.equalToSuperview().offset(-Xgap)
             }
             return;
         }
@@ -49,7 +50,7 @@ class UITableViewCellTitle: UITableViewCell {
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(Xgap)
         }
         
         if alignment == .left {
@@ -63,7 +64,7 @@ class UITableViewCellTitle: UITableViewCell {
         } else {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-10)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.width.equalTo(17)
                 make.height.equalTo(17)
             }

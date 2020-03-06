@@ -12,6 +12,8 @@ import SwiftExpand
 /// 文字+UITextField(输入框)
 class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
     
+    var Xgap: CGFloat = 15;
+
     var viewBlock: TextFieldClosure?
     /// 是否有星标
     var hasAsterisk = false;
@@ -65,13 +67,13 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
             labelLeft.sizeToFit()
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
                 make.size.equalTo(CGSize(width: labelLeft.frame.width, height: 35));
             }
             
             btnCode.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft);
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.width.equalTo(100);
                 make.bottom.equalTo(labelLeft);
             }
@@ -85,14 +87,14 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
         } else {
             btnCode.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-kX_GAP)
+                make.right.equalToSuperview().offset(-Xgap)
                 make.width.equalTo(100);
                 make.height.equalTo(35);
             }
             
             textfield.snp.makeConstraints { (make) in
                 make.top.equalTo(btnCode);
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
                 make.right.equalTo(btnCode.snp_left).offset(-kPadding)
                 make.height.equalTo(btnCode);
             }

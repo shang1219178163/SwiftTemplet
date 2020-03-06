@@ -14,6 +14,8 @@ import SwiftExpand
 /// 右侧单选框
 class UITableViewCellTwo: UITableViewCell {
 
+    var Xgap: CGFloat = 15;
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
@@ -61,11 +63,11 @@ class UITableViewCellTwo: UITableViewCell {
             make.height.equalTo(35)
         }
         
-        let labH = (contentView.frame.height - kPadding*3)/2.0;
-        if imgViewLeft.image == nil {
+        let labH = (bounds.height - kPadding*3)/2.0;
+        if imgViewLeft.isHidden == true {
             imgViewLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(kY_GAP)
-                make.left.equalToSuperview().offset(kX_GAP)
+                make.left.equalToSuperview().offset(Xgap)
                 make.width.height.equalTo(0.0)
             }
             
@@ -86,8 +88,8 @@ class UITableViewCellTwo: UITableViewCell {
         
         imgViewLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(kY_GAP)
-            make.left.equalToSuperview().offset(kX_GAP)
-            make.width.height.equalTo(contentView.frame.height - kY_GAP*2)
+            make.left.equalToSuperview().offset(Xgap)
+            make.width.height.equalTo(bounds.height - kY_GAP*2)
         }
         
         labelLeft.snp.makeConstraints { (make) in
@@ -104,39 +106,6 @@ class UITableViewCellTwo: UITableViewCell {
         }
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews();
-//
-//        btn.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(contentView.frame.midY - 35/2.0)
-//            make.right.equalToSuperview().offset(-10)
-//            make.width.equalTo((btn.titleLabel?.text?.count)! * 17)
-//            make.height.equalTo(35)
-//        }
-//
-//        let labH = (contentView.frame.height - kPadding*3)/2.0;
-//        let imgViewW = imgViewLeft.image == nil ? 0.0 : contentView.frame.height - kY_GAP*2;
-//        let padding = imgViewLeft.image == nil ? 0.0 : kPadding;
-//        imgViewLeft.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(kY_GAP)
-//            make.left.equalToSuperview().offset(kX_GAP)
-//            make.width.height.equalTo(imgViewW)
-//        }
-//
-//        labelLeft.snp.makeConstraints { (make) in
-//            make.top.equalTo(imgViewLeft);
-//            make.left.equalTo(imgViewLeft.snp.right).offset(padding)
-//            make.right.equalTo(btn.snp.left).offset(-kPadding)
-//            make.height.equalTo(labH);
-//        }
-//
-//        labelLeftSub.snp.makeConstraints { (make) in
-//            make.top.equalTo(labelLeft.snp.bottom).offset(kPadding)
-//            make.left.equalTo(labelLeft.snp.left)
-//            make.width.height.equalTo(labelLeft)
-//        }
-//
-//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

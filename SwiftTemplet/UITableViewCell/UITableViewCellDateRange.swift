@@ -11,6 +11,7 @@ import UIKit
 /// 起止时间选择
 class UITableViewCellDateRange: UITableViewCell {
 
+    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     

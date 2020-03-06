@@ -11,6 +11,8 @@ import SwiftExpand
 
 /// 文字+ppnumber(商品j加减控件)
 class UITableViewCellStep: UITableViewCell {
+    
+    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     
@@ -46,19 +48,19 @@ class UITableViewCellStep: UITableViewCell {
     }
     
     func setupConstraint() {
-        if contentView.bounds.height < 20 {
+        if bounds.height < 20 {
             return;
         }
         
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(kX_GAP)
+            make.left.equalToSuperview().offset(Xgap)
         }
         
         ppBtn.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-kX_GAP)
+            make.right.equalToSuperview().offset(-Xgap)
             make.width.equalTo(120)
             make.height.equalTo(30)
         }
