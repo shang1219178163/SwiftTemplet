@@ -12,7 +12,7 @@ import QuickLook
 import AFNetworking
 import SwiftExpand
 
-@objc protocol IOPUploadFileControllerDelegate{
+@objc protocol IOPFileUploadControllerDelegate{
     @objc optional func fileUpload(_ url: String, forKey key: String)
     @objc optional func fileShare(_ url: String, forKey key: String)
 }
@@ -20,7 +20,7 @@ import SwiftExpand
 /// 文件上传,下载,分享
 class IOPFileUploadController: UIViewController {
     
-    weak var delegate: IOPUploadFileControllerDelegate?
+    weak var delegate: IOPFileUploadControllerDelegate?
 
     var fileUrl: NSURL?
     

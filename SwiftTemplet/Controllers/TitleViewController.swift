@@ -62,8 +62,9 @@ class TitleViewController: UIViewController{
         view.addSubview(segmentCtlOne)
         view.addSubview(checkBox)
         view.addSubview(checkBoxNew)
+        view.addSubview(chooseView)
 
-//        view.getViewLayer()
+        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -83,11 +84,12 @@ class TitleViewController: UIViewController{
             make.height.equalTo(40)
         }
         
+        checkBox.sizeToFit()
         checkBox.snp.makeConstraints { (make) in
             make.top.equalTo(segmentCtlOne.snp.bottom).offset(20);
             make.left.equalToSuperview().offset(20)
-            make.width.equalTo(200)
-            make.height.equalTo(40)
+            make.width.equalTo(checkBox.frame.size.width + 15)
+//            make.height.equalTo(40)
         }
         
         checkBoxNew.snp.makeConstraints { (make) in
@@ -95,6 +97,13 @@ class TitleViewController: UIViewController{
             make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
             make.height.equalTo(40)
+        }
+        
+        chooseView.snp.makeConstraints { (make) in
+            make.top.equalTo(checkBoxNew.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.height.equalTo(50)
         }
     }
     
@@ -139,10 +148,8 @@ class TitleViewController: UIViewController{
     }
     
     func dismiss() {
-
         UIView.animate(withDuration: 0.5, animations: {
             self.containView.alpha = 0.0
-            
             self.tbView.originY -= self.tbView.sizeHeight
             
         }, completion:{ (isFinish:Bool) in
@@ -206,30 +213,6 @@ class TitleViewController: UIViewController{
         return view
     }()
     
-    //MARK: -lazy
-//    lazy var segmentCtl: UISegmentedControl = {
-//        var view = UISegmentedControl.create( .zero, items: ["是","否","其他"], selectedIdx: 0, type: 2);
-//        view.addActionHandler({ (sender: UIControl) in
-//
-//            if let control = sender as? UISegmentedControl {
-//                DDLog(control.selectedSegmentIndex)
-//
-//                var rect = self.indicator.frame
-//                rect.origin.x = control.frame.minX + CGFloat(control.selectedSegmentIndex) * self.indicator.frame.width
-//                self.indicator.frame = rect
-//
-//            }
-//
-//        }, for: .valueChanged)
-//        return view
-//    }()
-//
-//    lazy var indicator: CALayer = {
-//        var layer = CALayer()
-////        layer.frame = CGRect(x: 0, y: -1, width: segmentCtl.bounds.width/CGFloat(segmentCtl.numberOfSegments), height: 1)
-//        layer.backgroundColor = UIColor.theme.cgColor
-//        return layer
-//    }()
     
     lazy var segmentView: NNSegmentViewZero = {
         var view = NNSegmentViewZero(frame: .zero)
@@ -239,18 +222,7 @@ class TitleViewController: UIViewController{
         view.block({ (segmentView: NNSegmentViewZero, control: UISegmentedControl) in
             DDLog(control.selectedSegmentIndex)
 
-//            switch control.selectedSegmentIndex {
-//            case 0:
-//                "self.title".copyToPasteboard(true)
-                
-//            case 1:
-//                let _ = UIAlertController.showAlert("alert", placeholders: ["111","222"], msg: "msg", actionTitles: ["one",kTitleCancell,"three"], handler: { (controller, alertAction) in
-//                    DDLog(alertAction.title)
-//                })
-                
-//            default:
-//                break
-//            }
+
         })
         return view
     }()
@@ -286,14 +258,15 @@ class TitleViewController: UIViewController{
         //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
         
-        //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-        //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
+        view.sizeToFit()
+//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
+//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
         view.layoutButton(style: 1, imageTitleSpace: 2)
         view.addActionHandler({ (control) in
             control.isSelected = !control.isSelected
             
-            let name = control.isSelected == true ? "photo_select" : "photo_cancell";
-            view.setImage(UIImageNamed(name), for: .normal)
+//            let name = control.isSelected == true ? "photo_select" : "photo_cancell";
+//            view.setImage(UIImageNamed(name), for: .normal)
             
             guard let sender = control as? UIButton else { return }
             if let sender = control as? UIButton {
@@ -305,8 +278,7 @@ class TitleViewController: UIViewController{
     
     lazy var checkBoxNew: NNCheckBoxButton = {
         var view = NNCheckBoxButton(frame: .zero)
-//        view.setTitleColor(.theme, for: .normal);
-//        view.setTitleColor(UIColor.black.withAlphaComponent(0.5), for: .normal);
+        view.isImageRight = true
         view.setTitle("蓝瘦香菇", for: .normal);
 
         view.addActionHandler({ (control) in
@@ -318,6 +290,15 @@ class TitleViewController: UIViewController{
         }, for: .touchUpInside)
         return view
     }()
+    
+    lazy var chooseView: IOPOrdersChooseView = {
+        var view = IOPOrdersChooseView(frame: .zero)
+        view.count = 0
+        view.amount = 0.00
+        return view
+    }()
+    
+    
 }
 
 

@@ -11,18 +11,18 @@ import UIKit
 class NNItemsView: UIView {
 
     var cornerRadius: CGFloat = 5.0
+    var borderWidth: CGFloat = 0.5
+    var fontSize: CGFloat = 15
+
     var numberOfRow: Int = 4
     var padding: CGFloat = 5.0
     var lineColor: UIColor = UIColor.line
-    var titleColor: UIColor = UIColor.gray;
+    var titleColor: UIColor = UIColor.gray
 
-    var isMutiChoose: Bool = false;
+    var isMutiChoose: Bool = false
     var selectedList: [UIButton] = []
-    var selectedIdxList: [Int] {
-        get {
-            return selectedList.map{ $0.tag };
-        }
-        set {
+    var selectedIdxList: [Int] = []{
+        willSet{
             if newValue.count <= 0 {
                 return;
             }
@@ -51,7 +51,8 @@ class NNItemsView: UIView {
             }
             
             for e in newValue!.enumerated() {
-                let view = createBtn(rect: .zero, title: e.element, tag: e.offset);
+                let view: UIButton = createBtn(rect: .zero, title: e.element, tag: e.offset);
+                view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
                 view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
                 addSubview(view)
                 
@@ -147,7 +148,7 @@ class NNItemsView: UIView {
                 view.layer.masksToBounds = true;
             }
             
-            view.layer.borderWidth = 1;
+            view.layer.borderWidth = borderWidth;
             if selectedList.contains(view) == true {
                 view.setTitleColor(UIColor.theme, for: .normal)
                 view.layer.borderColor = UIColor.theme.cgColor;
@@ -182,6 +183,5 @@ class NNItemsView: UIView {
         view.adjustsImageWhenHighlighted = false;
         view.tag = tag;
         return view;
-    
     }
 }
