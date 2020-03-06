@@ -214,7 +214,11 @@ class IOPFileUploadController: UIViewController {
         let manager = AFHTTPSessionManager(sessionConfiguration: config)
         
         let request = URLRequest(url: URL)
-        let task = manager.downloadTask(with: request, progress: nil, destination: { (url, response) -> URL in
+        let task = manager.downloadTask(with: request, progress: { (progress) in
+            let current = progress.completedUnitCount/progress.totalUnitCount
+            DDLog("current:\(current)")
+            
+        }, destination: { (url, response) -> URL in
             let documentsDirectoryURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let docURL: URL = (documentsDirectoryURL?.appendingPathComponent(response.suggestedFilename!))!
             return docURL
