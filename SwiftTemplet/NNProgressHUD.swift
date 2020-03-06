@@ -73,16 +73,15 @@ class NNProgressHUD: NSObject {
         hud.hide(animated: true, afterDelay: 1.5)
     }
     
-    
-    @objc static func showLoadingText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
+    @objc static func showLoading(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         NNProgressHUD.showText(text, model: .annularDeterminate, imgName: "toast_loading", isHidden: false, inView: inView)
     }
     
-    @objc static func showSuccessText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
+    @objc static func showSuccess(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         NNProgressHUD.showText(text, model: .customView, imgName: "toast_success", isHidden: true, inView: inView)
     }
     
-    @objc static func showErrorText(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
+    @objc static func showError(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
         NNProgressHUD.showText(text, model: .customView, imgName: "toast_error", isHidden: true, inView: inView)
     }
     

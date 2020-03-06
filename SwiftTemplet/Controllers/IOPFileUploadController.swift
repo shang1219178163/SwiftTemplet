@@ -13,8 +13,8 @@ import AFNetworking
 import SwiftExpand
 
 @objc protocol IOPUploadFileControllerDelegate{
-    @objc optional func uploadFile(_ url: String, forKey key: String)
-    @objc optional func shareFile(_ url: String, forKey key: String)
+    @objc optional func fileUpload(_ url: String, forKey key: String)
+    @objc optional func fileShare(_ url: String, forKey key: String)
 }
 
 /// 文件上传,下载,分享
@@ -130,7 +130,7 @@ class IOPFileUploadController: UIViewController {
             NNProgressHUD.showText("文件链接不能为空")
             return
         }
-        delegate?.shareFile?(url.path, forKey: key)
+        delegate?.fileShare?(url.path, forKey: key)
 
         docController.url = url
         let result = docController.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
@@ -198,7 +198,7 @@ class IOPFileUploadController: UIViewController {
         }, success: { (task, responseObject) in
             NNProgressHUD.showSuccess("请求成功")
             let dic = (responseObject as! [String: Any])["data"] as! [String: Any]
-            self.delegate?.uploadFile?(dic["url"] as! String, forKey: self.key)
+            self.delegate?.fileUpload?(dic["url"] as! String, forKey: self.key)
             
         }) { (task, error) in
             NNProgressHUD.showError(error.localizedDescription)
