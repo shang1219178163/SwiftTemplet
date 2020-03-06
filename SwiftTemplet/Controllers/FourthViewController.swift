@@ -87,8 +87,8 @@ class FourthViewController: UIViewController {
         }
 //        lastNameEndingInA;// Optional("Elena")”
 //        NNProgressHUD.showText("111");
-//        NNProgressHUD.showLoadingText(kNetWorkRequesting);
-//        NNProgressHUD.showSuccessText("success");
+//        NNProgressHUD.showLoading(kNetWorkRequesting);
+//        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
 
     }
