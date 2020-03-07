@@ -22,20 +22,21 @@ class TitleViewController: UIViewController{
 //        setupTitleView()
         topView.block { (tableView, indexPath) -> UITableViewCell in
             let itemList = self.list[indexPath.row]
-            let value0 = itemList[0] as! String
-            let value1 = itemList[1] as! String
-            let value2 = itemList[2] as! String
-            let value3 = itemList[3] as! String
-            let value4 = itemList[4] as! String
-            let value5 = itemList[5] as! String
+            let value0 = itemList[0]
+            let value1 = itemList[1]
+            let value2 = itemList[2]
+            let value3 = itemList[3]
+            let value4 = itemList[4]
+            let value5 = itemList[5]
 
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView) as! UITableViewCellOne
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
+            cell.imgViewLeft.image = UIImage(named: "img_meetStandard")
             cell.labelLeft.text = "标题"
             cell.labelRight.text = indexPath.string
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.accessoryType = self.topView.indexP == indexPath ? .checkmark : .none
-
-            cell.getViewLayer()
+            
+//            cell.getViewLayer()
             return cell
         }
 
@@ -43,7 +44,7 @@ class TitleViewController: UIViewController{
             DDLog(indexPath.string)
         }
         
-        self.navigationItem.titleView?.getViewLayer()
+//        self.navigationItem.titleView?.getViewLayer()
 
         
         view.addSubview(gemetryView)
@@ -183,9 +184,8 @@ class TitleViewController: UIViewController{
         return alertController
     }()
 
-    lazy var list:[[Any]] = {
-        //        return self.allList.first!;
-        var array: [[Any]] = [
+    lazy var list:[[String]] = {
+        var array: [[String]] = [
             ["商品名称:", "1", "60.0", "", "cardName","0"],
             ["商品名称:", "1", "60.0", "", "cardName","0"],
             ["商品名称:", "1", "60.0", "", "cardName","0"],
@@ -314,20 +314,20 @@ class TitleViewController: UIViewController{
 //
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        let itemList = list[indexPath.row]
-//        let itemHeight = (itemList[2] as! String).cgFloatValue
+//        let itemHeight = (itemList[2]).cgFloatValue
 //        return itemHeight
 //    }
 //
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let itemList = list[indexPath.row]
-//        let value0 = itemList[0] as! String
-//        let value1 = itemList[1] as! String
-//        let value2 = itemList[2] as! String
-//        let value3 = itemList[3] as! String
-//        let value4 = itemList[4] as! String
-//        let value5 = itemList[5] as! String
+//        let value0 = itemList[0]
+//        let value1 = itemList[1]
+//        let value2 = itemList[2]
+//        let value3 = itemList[3]
+//        let value4 = itemList[4]
+//        let value5 = itemList[5]
 //
-//        switch (itemList[1] as! String).intValue {
+//        switch (itemList[1]).intValue {
 //        case 1:
 //            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
 //                cell.isHidden = value2.cgFloatValue <= 0.0

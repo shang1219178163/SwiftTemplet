@@ -16,6 +16,11 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
+    // MARK: -life cycle
+    deinit {
+        labelLeft.removeObserver(self, forKeyPath: "text")
+        sliderCtl.removeObserver(self, forKeyPath: "value")
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -47,11 +52,6 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        labelLeft.removeObserver(self, forKeyPath: "text")
-        sliderCtl.removeObserver(self, forKeyPath: "value")
     }
     
     override func layoutSubviews() {
