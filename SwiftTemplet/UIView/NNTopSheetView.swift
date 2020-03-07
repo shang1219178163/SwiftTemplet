@@ -112,7 +112,8 @@ class NNTopSheetView: UIView {
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("请选择", for: .normal);
         view.setTitleColor(.white, for: .normal);
-        view.setImage(UIImageNamed(kIMG_arrowDown), for: .normal)
+        let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
+        view.setImage(image, for: .normal)
         //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
         
@@ -190,7 +191,7 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         let value0 = itemList[0] as! String
         let value1 = itemList[1] as! String
 
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         cell.textLabel?.text = value0 + indexPath.string
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true

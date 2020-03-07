@@ -19,7 +19,11 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
     var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false
-
+    // MARK: -life cycle
+    deinit {
+        labelLeft.removeObserver(self, forKeyPath: "text")
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
