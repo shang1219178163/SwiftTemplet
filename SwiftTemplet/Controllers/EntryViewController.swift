@@ -11,6 +11,21 @@ import SwiftExpand
 import SDWebImage
 
 class EntryViewController: UIViewController {
+    //MARK: -lazy
+    lazy var datePicker: NNDatePicker = {
+        let view = NNDatePicker();
+        view.block({ (sender, idx) in
+//                DDLog(view,sender.datePicker.date,idx);
+//            if self.viewBlock != nil {
+//                self.viewBlock!(self,sender,idx);
+//            }
+            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormatDay)
+            DDLog(dateStr);
+        });
+        return view;
+    }();
+    
+    // MARK: -life cycle
     deinit {
         DDLog(1111)
     }
@@ -25,11 +40,12 @@ class EntryViewController: UIViewController {
         tbView.tableFooterView = footerView
         view.addSubview(tbView);
 
-        let btn = createBtnBarItem("custom", image: nil, isLeft: false, isHidden: false) { (sender) in
-            if let btn = sender as? UIButton {
-                DDLog(btn.titleLabel?.text)
-                self.goController("CustomViewController", obj: nil, objOne: nil)
-            }
+        let btn = createBtnBarItem("Done", image: nil, isLeft: false, isHidden: false) { (sender) in
+//            if let btn = sender as? UIButton {
+//                DDLog(btn.titleLabel?.text)
+//                self.goController("CustomViewController", obj: nil, objOne: nil)
+//            }
+            self.datePicker.show()
         }
     
         view.addSubview(suspendBtn)
@@ -121,8 +137,7 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
 //        return self.allList.first!;
         var array: [[[String]]] = [
-            [
-            ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
+            [["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
@@ -217,7 +232,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
             
+            cell.imgViewLeft.isHidden = true
+            cell.labelLeft.text = value0
             cell.labelRight.text = value4
+            cell.accessoryType = .disclosureIndicator
             
             cell.getViewLayer()
             return cell
@@ -430,9 +448,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellSubtitle":
             let cell = UITableViewCellSubtitle.dequeueReusableCell(tableView);
-            cell.imgViewLeft.isHidden = true
+//            cell.imgViewLeft.isHidden = true
             cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
-
+            cell.accessoryType = .disclosureIndicator
+            
             cell.getViewLayer();
             return cell;
             
@@ -470,6 +489,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellGoodsDuration":
             let cell = UITableViewCellGoodsDuration.dequeueReusableCell(tableView);
             cell.groupView.items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
+            cell.groupView.itemList.last?.iconImageView.image = UIImage(named: "icon_discout_orange")
             cell.groupView.selectedIdxList = [0]
             
             cell.getViewLayer();

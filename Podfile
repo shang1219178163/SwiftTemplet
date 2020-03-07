@@ -5,6 +5,8 @@ use_frameworks!
 
 def common_pods
 
+    pod 'AFNetworking'
+  
 #  pod 'AImage'
     pod 'Alamofire'
     pod 'AlamofireImage'
