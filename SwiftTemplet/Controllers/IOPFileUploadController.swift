@@ -30,7 +30,7 @@ class IOPFileUploadController: UIViewController {
                 return
             }
             DispatchQueue.main.async {
-                self.preController.reloadData()
+                self.previewVC.reloadData()
             }
         }
     }
@@ -52,7 +52,7 @@ class IOPFileUploadController: UIViewController {
     lazy var uploadItem = UIBarButtonItem.create("上传", style: .plain, target: self, action: #selector(handleActionFile(_:)))
     lazy var shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleActionFile(_:)))
     /// 预览视图
-    lazy var preController: QLPreviewController = {
+    lazy var previewVC: QLPreviewController = {
         let controller = QLPreviewController()
         controller.edgesForExtendedLayout = []
         controller.dataSource = self
@@ -71,7 +71,7 @@ class IOPFileUploadController: UIViewController {
     }()
     
     /// 文件分享弹窗
-    lazy var docController: UIDocumentInteractionController = {
+    lazy var docShareVC: UIDocumentInteractionController = {
         let controller = UIDocumentInteractionController()
         controller.delegate = self;
         controller.presentPreview(animated: true)
@@ -88,10 +88,10 @@ class IOPFileUploadController: UIViewController {
         view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
 
-        preController.view.frame = self.view.bounds
-        self.addChild(preController)
-        preController.didMove(toParent: self)
-        self.view.addSubview(preController.view)
+        previewVC.view.frame = self.view.bounds
+        self.addChild(previewVC)
+        previewVC.didMove(toParent: self)
+        self.view.addSubview(previewVC.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +104,7 @@ class IOPFileUploadController: UIViewController {
     @objc func handleActionFile(_ item: UIBarButtonItem) {
         switch item {
         case chooseItem:
-            showDocmentPicker()
+            presentDocPicker()
             
         case uploadItem:
             requestUpload()
@@ -117,7 +117,7 @@ class IOPFileUploadController: UIViewController {
         }
     }
     
-    func showDocmentPicker() {
+    func presentDocPicker() {
         docPickVC.setupContentInsetAdjustmentBehavior(true)
         present(docPickVC, animated: true, completion: nil)
 //        let documentPickVC = UIDocumentPickerViewController(documentTypes: IOPFileUploadController.docTypes, in: .import)
@@ -133,8 +133,8 @@ class IOPFileUploadController: UIViewController {
         }
         delegate?.fileShare?(url.path, forKey: key)
 
-        docController.url = url
-        let result = docController.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
+        docShareVC.url = url
+        let result = docShareVC.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
         if result == false {
             DDLog("没有程序可以打开要分享的文件")
         }
@@ -226,7 +226,7 @@ class IOPFileUploadController: UIViewController {
         }) { (response, url, error) in
             DDLog("File downloaded to:\(url?.path ?? "地址错误")")
             self.localFileUrl = url as NSURL?
-//            self.preController.reloadData()
+//            self.previewVC.reloadData()
             
             if error != nil {
                 NNProgressHUD.showError(error?.localizedDescription)
