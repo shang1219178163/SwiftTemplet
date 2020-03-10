@@ -118,6 +118,7 @@ class IOPFileUploadController: UIViewController {
     }
     
     func showDocmentPicker() {
+        docPickVC.setupContentInsetAdjustmentBehavior(true)
         present(docPickVC, animated: true, completion: nil)
 //        let documentPickVC = UIDocumentPickerViewController(documentTypes: IOPFileUploadController.docTypes, in: .import)
 //        documentPickVC.modalPresentationStyle = .fullScreen
@@ -242,7 +243,9 @@ extension IOPFileUploadController: UIDocumentPickerDelegate{
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         localFileUrl = url as NSURL
     }
-        
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        setupContentInsetAdjustmentBehavior(false)
+    }
 }
 
 extension IOPFileUploadController: QLPreviewControllerDataSource, QLPreviewControllerDelegate{
