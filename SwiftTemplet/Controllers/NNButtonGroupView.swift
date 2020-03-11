@@ -20,6 +20,7 @@ class NNButtonGroupView: UIView {
     var lineColor: UIColor = UIColor.line
     var titleColor: UIColor = UIColor.gray
 
+    var hasLessOne: Bool = false
     var isMutiChoose: Bool = false
     var selectedList: [NNIconButton] = []
     var selectedIdxList: [Int] = []{
@@ -30,7 +31,7 @@ class NNButtonGroupView: UIView {
             if isMutiChoose == false && newValue.count > 1 {
                 fatalError("单选只能默认选择索引应该为单选");
             }
-            
+            selectedList.removeAll()
             for e in itemList.enumerated() {
                 if newValue.contains(e.offset) == true {
                     selectedList.append(e.element)
@@ -63,6 +64,11 @@ class NNButtonGroupView: UIView {
     }
     
     @objc func handleAction(_ sender: NNIconButton) {
+//        print("NNButtonGroupView_\(hasLessOne)_\(selectedList.count)_\(sender.isSelected)")
+        if hasLessOne == true && selectedList.count == 1 && sender.isSelected == true {
+            print("最少选择一个")
+            return
+        }
         sender.isSelected = !sender.isSelected;
         
         if sender.isSelected == true {

@@ -34,12 +34,12 @@ class UITableViewCellGoodsDuration: UITableViewCell {
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(0);
             make.left.equalToSuperview().offset(15);
-            make.width.equalTo(100);
-            make.height.equalTo(25);
+            make.right.equalToSuperview().offset(-10);
+            make.height.lessThanOrEqualTo(25);
         }
         
         groupView.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft.snp.bottom).offset(0);
+            make.top.equalTo(labelLeft.snp.bottom).offset(5);
             make.left.equalToSuperview().offset(15);
             make.right.equalToSuperview().offset(-15);
             make.bottom.equalToSuperview().offset(-10);
