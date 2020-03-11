@@ -262,7 +262,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.hasAsterisk = value0.contains("*")
             
             cell.labelLeft.text = value0
-            let titles = (itemList.last as! NSString).components(separatedBy: ",")
+            let titles = (itemList.last as! String).components(separatedBy: ",")
             cell.segmentCtl.itemList = titles
             cell.segmentCtl.addActionHandler({ (sender: UIControl) in
                 if let control = sender as? UISegmentedControl {
@@ -341,7 +341,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.dateRangeView.labTitle.text = value0
             cell.dateRangeView.block { (dateRangeView) in
-                DDLog(dateRangeView.dateStart,dateRangeView.dateEnd)
+                DDLog(dateRangeView.dateStart, dateRangeView.dateEnd)
                 
             }
             cell.getViewLayer()
