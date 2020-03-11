@@ -61,9 +61,9 @@ class UITableViewCellGoodsDuration: UITableViewCell {
         view.cornerRadius = 3.0
         view.fontSize = 12
         view.isMutiChoose = false;
-        
+        view.hasLessOne = true
         view.block({ (itemsView, sender) in
-            if let btn = sender as? UIButton {
+            if let btn = sender as UIButton? {
                 print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
 
             }
