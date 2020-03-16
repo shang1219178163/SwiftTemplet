@@ -294,7 +294,7 @@ class TitleViewController: UIViewController{
     lazy var chooseView: IOPOrdersChooseView = {
         var view = IOPOrdersChooseView(frame: .zero)
         view.count = 0
-        view.amount = 0.00
+        view.amount = "0.00"
         return view
     }()
     
