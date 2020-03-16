@@ -24,19 +24,16 @@ class IOPOrdersChooseView: UIView {
             labelTitle.attributedText = getAttString(text, textTaps: [specialStr])
         }
     }
-    var amount: CGFloat = 0.00{
+    
+    var amount: String = "0.00"{
         willSet{
-            let specialStr = "\(newValue)"
+            let specialStr = newValue
             let text = "合计 ¥\(specialStr)"
             labelTitleSub.attributedText = getAttString(text, textTaps: [specialStr])
         }
     }
-    var chooseAll: Bool = false{
-        willSet{
-            checkBox.isSelected = newValue
-            delegate?.ordersChooseViewAll(checkBox, isAll: newValue)
-        }
-    }
+    
+    var chooseAll: Bool = false
 
     lazy var checkBox: UIButton = {
         var view = UIButton(type: .custom)
@@ -61,11 +58,11 @@ class IOPOrdersChooseView: UIView {
         view.layoutButton(style: 1, imageTitleSpace: 2)
         view.addActionHandler({ (control) in
             control.isSelected = !control.isSelected
-            
+            self.chooseAll = control.isSelected
+            self.delegate?.ordersChooseViewAll(control as! UIButton, isAll: self.chooseAll)
+
             guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
+//            DDLog(sender.currentTitle as Any)
         }, for: .touchUpInside)
         return view
     }()
@@ -117,8 +114,8 @@ class IOPOrdersChooseView: UIView {
         addSubview(labelTitle)
         addSubview(labelTitleSub)
         
-        count = 1
-        amount = 0.01
+        count = 0
+        amount = "0.00"
     }
     
     override func layoutSubviews() {
@@ -155,7 +152,10 @@ class IOPOrdersChooseView: UIView {
             make.left.right.height.equalTo(labelTitle);
         }
         
-        DDLog(checkBox.frame, labelTitle.frame)
+//        DDLog(checkBox.frame, labelTitle.frame)
+        if subviews.contains(lineTop) == false {
+            addSubview(lineTop)
+        }
     }
     
     // MARK: -funtions
