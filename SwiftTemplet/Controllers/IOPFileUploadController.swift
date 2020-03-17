@@ -22,6 +22,9 @@ class IOPFileUploadController: UIViewController {
     
     weak var delegate: IOPFileUploadControllerDelegate?
 
+    /// 文件最大尺寸(M)
+    var fileMaxSize: Double = 10
+    
     var fileUrl: NSURL?
     
     var localFileUrl: NSURL?{
@@ -156,6 +159,23 @@ class IOPFileUploadController: UIViewController {
     
     /// AFN上传文件
     func requestUpload() {
+        if let path = fileUrl?.path {
+//            let data = FileManager.default.contents(atPath: path)
+//            uploadApi.file = data
+            
+            if path.hasSuffix(".pdf") == false {
+                NNProgressHUD.showError("移动端仅支持 pdf 类型")
+                return
+            }
+            if let data = NSData(contentsOfFile: path) {
+                let fileSize = Double(data.length / 1024*1024)
+                if fileSize > fileMaxSize {
+                    NNProgressHUD.showError("文档不能超过\(fileMaxSize)M")
+                    return
+                }
+            }
+        }
+        
         NNProgressHUD.showLoading("上传中...")
         
         let urlString = "http://116.62.132.145:8008/iop/ipk/img_upload"
