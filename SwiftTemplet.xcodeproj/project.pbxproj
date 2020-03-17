@@ -201,6 +201,8 @@
 		14D91B15234C88B400554994 /* CellListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B14234C88B400554994 /* CellListController.swift */; };
 		14D91B17234DB51D00554994 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B16234DB51D00554994 /* PopViewController.swift */; };
 		14D91B19234DB96600554994 /* NNPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B18234DB96600554994 /* NNPopView.swift */; };
+		14E02F6E2420D81F00E1EA2C /* IOPUploadImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E02F6D2420D81E00E1EA2C /* IOPUploadImageController.swift */; };
+		14E02F702420D88200E1EA2C /* UITableViewCellPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E02F6F2420D88100E1EA2C /* UITableViewCellPhoto.swift */; };
 		14E8561B232A4D860006E4C2 /* SwiftTemplet-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14E8561A232A4D860006E4C2 /* SwiftTemplet-Info.plist */; };
 		14E8561D232A4E2F0006E4C2 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */; };
 		14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8692521C20A2E009CE33E /* DetailViewController.swift */; };
@@ -443,6 +445,8 @@
 		14D91B14234C88B400554994 /* CellListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellListController.swift; sourceTree = "<group>"; };
 		14D91B16234DB51D00554994 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		14D91B18234DB96600554994 /* NNPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPopView.swift; sourceTree = "<group>"; };
+		14E02F6D2420D81E00E1EA2C /* IOPUploadImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPUploadImageController.swift; sourceTree = "<group>"; };
+		14E02F6F2420D88100E1EA2C /* UITableViewCellPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellPhoto.swift; sourceTree = "<group>"; };
 		14E8561A232A4D860006E4C2 /* SwiftTemplet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SwiftTemplet-Info.plist"; sourceTree = "<group>"; };
 		14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		14E8692521C20A2E009CE33E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -770,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				14C38A872411253600816A8E /* IOPFileUploadController.swift */,
+				14E02F6D2420D81E00E1EA2C /* IOPUploadImageController.swift */,
 				51685A12208EA79C00CE8099 /* MainViewController.swift */,
 				51C9B592211D17F8003E9AA7 /* HomeViewController.swift */,
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
@@ -863,6 +868,7 @@
 		519E87C421367593002CCD86 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				14E02F6F2420D88100E1EA2C /* UITableViewCellPhoto.swift */,
 				14A81D9A23F81979003E6EB4 /* UITableViewCellTitle.swift */,
 				143D1E4323C472FB00A5850D /* UITableViewCellSubtitle.swift */,
 				14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */,
@@ -1224,6 +1230,7 @@
 				142A76FC22275EE10016D3DA /* NNCalendarView.swift in Sources */,
 				14488726224E1D2300B550AF /* ZMKeyBoadModel.swift in Sources */,
 				14F3966D227ED405000CD7B4 /* NNBaseRequestApi.swift in Sources */,
+				14E02F702420D88200E1EA2C /* UITableViewCellPhoto.swift in Sources */,
 				1480B0D1238CA7B000E24BDB /* UIStackViewController.swift in Sources */,
 				145CDC9D21E8A9F0001B1AC9 /* EntryViewController.swift in Sources */,
 				145C914D233484F800849E9D /* AppIconChangeController.swift in Sources */,
@@ -1339,6 +1346,7 @@
 				142A76FB22275EE10016D3DA /* NNCellDefaultView.swift in Sources */,
 				5182444D213E8CB600071A9D /* NNData.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
+				14E02F6E2420D81F00E1EA2C /* IOPUploadImageController.swift in Sources */,
 				14BE1769237FB9450007B148 /* NNTabView.swift in Sources */,
 				143D1E4423C472FB00A5850D /* UITableViewCellSubtitle.swift in Sources */,
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
