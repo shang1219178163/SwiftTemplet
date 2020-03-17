@@ -51,7 +51,7 @@ class NNTableHeaderView: UIView {
         
         btn.snp.makeConstraints { (make) in
             make.top.equalTo(imgView.snp.bottom).offset(15)
-            make.left.right.equalToSuperview();
+            make.centerX.equalToSuperview();
             make.height.equalTo(25);
         }
         labelOne.snp.makeConstraints { (make) in
