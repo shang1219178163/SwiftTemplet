@@ -82,7 +82,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>202003111433</string>
+	<string>202003172041</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
@@ -92,6 +92,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>App需要在上传头像图片服务中访问您的相机权限</string>
 	<key>NSCameraUsageDescription</key>
 	<string>App需要在上传头像图片服务中访问您的相机权限</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
