@@ -47,6 +47,16 @@ class UITableViewCellTitle: UITableViewCell {
             return;
         }
         
+        if btn.isHidden == true {
+            labelLeft.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(8)
+                make.left.equalToSuperview().offset(10)
+                make.bottom.equalToSuperview().offset(-10)
+                make.right.equalToSuperview().offset(-8)
+            }
+            return;
+        }
+        
         labelLeft.sizeToFit();
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
