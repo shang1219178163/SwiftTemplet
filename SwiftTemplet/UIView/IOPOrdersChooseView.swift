@@ -142,7 +142,7 @@ class IOPOrdersChooseView: UIView {
         
         labelTitle.snp.makeConstraints { (make) in
             make.top.equalTo(btn).offset(0);
-            make.left.equalToSuperview().offset(checkBox.maxX + 15);
+            make.left.greaterThanOrEqualTo(checkBox.maxX + 15);
             make.right.equalTo(btn.snp.left).offset(-8);
             make.height.equalTo(heigth/2);
         }
