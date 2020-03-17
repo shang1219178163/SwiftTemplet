@@ -11,20 +11,18 @@ import SwiftExpand
 import SDWebImage
 
 class EntryViewController: UIViewController {
-    //MARK: -lazy
-    lazy var datePicker: NNDatePicker = {
-        let view = NNDatePicker();
-        view.block({ (sender, idx) in
-//                DDLog(view,sender.datePicker.date,idx);
-//            if self.viewBlock != nil {
-//                self.viewBlock!(self,sender,idx);
-//            }
-            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormatDay)
-            DDLog(dateStr);
-        });
-        return view;
-    }();
     
+    var dataModel = NSObject()
+
+    //MARK: -lazy
+    lazy var tableView: UITableView = {
+        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        view.dataSource = self
+        view.delegate = self
+
+        return view
+    }()
+        
     // MARK: -life cycle
     deinit {
         DDLog(1111)
@@ -33,20 +31,13 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tbView.rowHeight = UITableView.automaticDimension;
-        tbView.estimatedRowHeight = 70;
+        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.estimatedRowHeight = 70;
 
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
-        tbView.tableFooterView = footerView
-        view.addSubview(tbView);
+        tableView.tableFooterView = footerView
+        view.addSubview(tableView);
 
-        let btn = createBtnBarItem("Done", image: nil, isLeft: false, isHidden: false) { (sender) in
-//            if let btn = sender as? UIButton {
-//                DDLog(btn.titleLabel?.text)
-//                self.goController("CustomViewController", obj: nil, objOne: nil)
-//            }
-            self.datePicker.show()
-        }
     
         view.addSubview(suspendBtn)
     }
@@ -58,7 +49,7 @@ class EntryViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        tbView.frame = view.bounds
+//        tableView.frame = view.bounds
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,25 +108,8 @@ class EntryViewController: UIViewController {
     }()
     
     //MARK: -Lazy Property
-    lazy var allList: [[[String]]] = {
-        var array: [[[String]]] = [
-            [["卡数量  ", "UITableViewCellOne", "60.0", "", "cardName", ],
-             ["充值数量", "UITableViewCellStep", "60.0", "", "validEndTime", ],
-             ["结束时间", "UITableViewCellDatePicker", "60.0", "", "balance", ],
-             ["应付金额", "UITableViewCellTextField", "60.0", "", "recharge",  "  元    "],
-             ],
-            [["内嵌车场  ", "UITableViewCellOne", "60.0", "", "cardName", "1",],
-             ["卡类型  ", "UITableViewCellOne", "60.0", "", "cardName", ],
-             ["结束日期", "UITableViewCellDatePicker", "60.0", "", "validEndTime",],
-             ["充值时长", "UITableViewCellTextField", "60.0", "", "balance", "  小时"],
-             ["缴费金额", "UITableViewCellTextField", "60.0", "", "recharge", "  元    "],
-             ]
-        ]
-        return array
-    }()
     
     lazy var list: [[[String]]] = {
-//        return self.allList.first!;
         var array: [[[String]]] = [
             [["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
@@ -145,8 +119,9 @@ class EntryViewController: UIViewController {
             ["停车记录", "UITableViewCellPark", "90.0", "", "recharge", ],
             ["订单记录", "UITableViewCellPayBill", "40.0", "", "recharge", ],
             ],
-            
-            [["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
+            [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
+            ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
+            ["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
             ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
@@ -192,6 +167,50 @@ class EntryViewController: UIViewController {
           }, for: .touchUpInside)
           return view
       }()
+    
+    // MARK: -funtions
+    /// 跳转相册类
+    func jumpXiangce(_ itemList:[String]) {
+//        let controller = UIStoryboard.storyboard(with: "ParkRecord", identifier: "IOPParkRecordImageViewController") as! UIViewController
+//        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
+//        if let url = URL(string: dataModel.value(forKeyPath: itemList[4]) as! String) {
+//            controller.inImageUrlArray = [url]
+//        }
+//        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func jumpUploadPicture(_ itemList: [String]) {
+//        DDLog(itemList)
+        
+        let controller = IOPUploadImageController()
+        controller.delegate = self
+
+        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
+        controller.key = itemList[4]
+        
+        let imgUrl = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
+        controller.imgUrl = imgUrl
+        controller.isFromPickerVC = false
+        controller.showImageDefault = true
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
+    func jumpUploadFile(_ itemList: [String]) {
+//        DDLog(itemList)
+
+        let urlString = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
+        
+        let controller = IOPFileUploadController()
+        controller.delegate = self
+        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
+        controller.key = itemList[4]
+        
+        controller.isUpload = urlString == ""
+        controller.fileUrl = urlString == "" ? nil : NSURL(string: urlString)
+        DDLog("isUpload:\(controller.isUpload)_fileUrl:\(controller.fileUrl)")
+        navigationController?.pushViewController(controller, animated: true);
+    }
 }
 
 extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
@@ -221,7 +240,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         let value0 = itemList[0]
         let value1 = itemList[1]
         let value2 = itemList[2]
-//        let value3 = itemList[3]
+        let value3 = itemList[3]
         let value4 = itemList[4]
         
         switch value1 {
@@ -524,12 +543,36 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         default:
             break
         }
-        let cell = UITableViewCell.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellValue1", style: .value1)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = UIColor.textColor3;
+
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.detailTextLabel?.textColor = UIColor.theme
+        cell.accessoryType = .disclosureIndicator;
+        
+        cell.textLabel?.text = value0
+        
+        let fileTitles: [String] = value3.components(separatedBy: ",")
+        cell.detailTextLabel?.text = fileTitles.first!
+        
+        if value0.contains("上传") {
+            let result: String = dataModel.valueText(forKeyPath: value4, defalut: "")
+            let validUrl = result.hasPrefix("http")
+            cell.detailTextLabel?.text = validUrl ? fileTitles.first : fileTitles.last
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let sections = list[indexPath.section]
+        let itemList = sections[indexPath.row]
+        if itemList[0].contains("上传文件") {
+            jumpUploadFile(itemList)
+
+        } else if itemList[0].contains("上传照片") {
+            jumpUploadPicture(itemList)
+        }
         
     }
     
@@ -563,41 +606,18 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         
 }
 
+extension EntryViewController: IOPUploadImageControllerDelegate{
+    func uploadImage(_ url: String, forKey key: String) {
+        DDLog("\(key)_\(url)")
+        dataModel.setValue(url, forKeyPath: key)
+        tableView.reloadData()
+    }
+}
 
-public extension UITableView{
-
-    /// 泛型复用cell - aClass: "类名()"
-//    final func dequeueReusableCell<T: UITableViewCell>(for aClass: T, identifier: String = String(describing: T.self), style: UITableViewCell.CellStyle = .default) -> T{
-//        return dequeueReusableCell(for: T.self, identifier: identifier, style: style)
-//    }
-//
-//    /// 泛型复用cell - cellType: "类名.self" (备用默认值 T.self)
-//    final func dequeueReusableCell<T: UITableViewCell>(for cellType: T.Type, identifier: String = String(describing: T.self), style: UITableViewCell.CellStyle = .default) -> T{
-////        let identifier = String(describing: T.self)
-//        var cell = self.dequeueReusableCell(withIdentifier: identifier);
-//        if cell == nil {
-//            cell = T.init(style: style, reuseIdentifier: identifier);
-//        }
-//
-//        cell!.selectionStyle = .none;
-//        cell!.separatorInset = .zero;
-//        cell!.layoutMargins = .zero;
-//        return cell! as! T;
-//    }
-//
-//    /// 泛型复用cell - aClass: "类名()"
-//    final func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(for aClass: T, identifier: String = String(describing: T.self)) -> T{
-//        return dequeueReusableHeaderFooterView(for: T.self, identifier: identifier)
-//    }
-//
-//    /// 泛型复用cell - cellType: "类名.self" (备用默认值 T.self)
-//    final func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView>(for cellType: T.Type, identifier: String = String(describing: T.self)) -> T{
-//        var cell = self.dequeueReusableHeaderFooterView(withIdentifier: identifier);
-//        if cell == nil {
-//            cell = T.init(reuseIdentifier: identifier);
-//        }
-//        cell!.layoutMargins = .zero;
-//        return cell! as! T;
-//    }
-
+extension EntryViewController: IOPFileUploadControllerDelegate{
+    func fileUpload(_ url: String, forKey key: String) {
+        DDLog(key, url)
+        dataModel.setValue(url, forKeyPath: key)
+        tableView.reloadData()
+    }
 }
