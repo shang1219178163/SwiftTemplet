@@ -832,7 +832,6 @@
 				14B940B0237E2FBC00A49D1F /* NNGroupView.swift */,
 				14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */,
 				14B940B8237E3FBE00A49D1F /* IOPParkGroupButton.swift */,
-				14A4B4E32421E906007FC3A1 /* NNButton.swift */,
 				14F18E842382346D0018626C /* UITableViewCellFee.swift */,
 				1460507D23A0EE2F00C10F34 /* NNPlateKeyboardController.swift */,
 				149E401B23AA0811006C05BC /* ObserveViewController.swift */,
@@ -904,6 +903,7 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				14A4B4E32421E906007FC3A1 /* NNButton.swift */,
 				145C91502334CD0E00849E9D /* NNTabController.swift */,
 				14BE1768237FB9450007B148 /* NNTabView.swift */,
 				142A76E722275EE00016D3DA /* NNSuspendButton.swift */,
