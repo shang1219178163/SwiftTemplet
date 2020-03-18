@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// 单选框
+/// 单选框(弃用,NNButton代替)
 class NNBoxButton: UIButton {
 
     var normlImage: UIImage = UIImage(named: "photo_cancell")!
@@ -40,9 +40,9 @@ class NNBoxButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        sizeToFit()
-//        let type = isImageRight ? 3 : 1
-//        layoutButton(style: type, imageTitleSpace: 2)
+        sizeToFit()
+        let direction = isImageRight ? 3 : 1
+        layoutButton(direction: direction, imageTitleSpace: 2)
     }
     
     //MARK: -funtions
