@@ -335,8 +335,8 @@ class TitleViewController: UIViewController{
         return view
     }()
     
-    lazy var radioButton: NNRadioButton = {
-        var view = NNRadioButton(frame: .zero)
+    lazy var radioButton: NNButton = {
+        var view = NNButton(type:.custom);
         view.setTitle("荷塘夜色", for: .normal);
 
 //        view.addActionHandler({ (control) in
