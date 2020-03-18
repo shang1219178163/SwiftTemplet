@@ -55,7 +55,7 @@ class IOPOrdersChooseView: UIView {
         view.sizeToFit()
 //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
-        view.layoutButton(style: 1, imageTitleSpace: 2)
+        view.layoutButton(direction: 1, imageTitleSpace: 2)
         view.addActionHandler({ (control) in
             control.isSelected = !control.isSelected
             self.chooseAll = control.isSelected

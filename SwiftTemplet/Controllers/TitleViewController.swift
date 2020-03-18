@@ -45,8 +45,6 @@ class TitleViewController: UIViewController{
         }
         
 //        self.navigationItem.titleView?.getViewLayer()
-
-        
         view.addSubview(gemetryView)
         
         let _ = gemetryView.addGestureTap { (recognizer) in
@@ -62,7 +60,13 @@ class TitleViewController: UIViewController{
         view.addSubview(segmentView)
         view.addSubview(segmentCtlOne)
         view.addSubview(checkBox)
-        view.addSubview(checkBoxNew)
+        view.addSubview(boxButton)
+        view.addSubview(radioButton)
+        view.addSubview(button)
+        view.addSubview(buttonTop)
+        view.addSubview(buttonBottom)
+        view.addSubview(buttonRight)
+        
         view.addSubview(chooseView)
 
         view.getViewLayer()
@@ -79,31 +83,66 @@ class TitleViewController: UIViewController{
         }
         
         segmentCtlOne.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentView.snp.bottom).offset(20);
+            make.top.equalTo(segmentView.snp.bottom).offset(15);
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(40)
         }
         
-        checkBox.sizeToFit()
+//        checkBox.sizeToFit()
         checkBox.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentCtlOne.snp.bottom).offset(20);
-            make.left.equalToSuperview().offset(20)
-            make.width.equalTo(checkBox.frame.size.width + 15)
-//            make.height.equalTo(40)
-        }
-        
-        checkBoxNew.snp.makeConstraints { (make) in
-            make.top.equalTo(checkBox.snp.bottom).offset(20);
+            make.top.equalTo(segmentCtlOne.snp.bottom).offset(15);
             make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }
         
+        boxButton.snp.makeConstraints { (make) in
+            make.top.equalTo(checkBox.snp.bottom).offset(15);
+            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+                
+        radioButton.snp.makeConstraints { (make) in
+            make.top.equalTo(boxButton).offset(0);
+            make.left.equalTo(boxButton.snp.right).offset(15)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+            
+        button.snp.makeConstraints { (make) in
+            make.top.equalTo(radioButton).offset(0);
+            make.left.equalTo(radioButton.snp.right).offset(15)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
+        buttonTop.snp.makeConstraints { (make) in
+            make.top.equalTo(radioButton.snp.bottom).offset(15);
+            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(60)
+            make.height.equalTo(60)
+        }
+        
+        buttonBottom.snp.makeConstraints { (make) in
+            make.top.equalTo(button.snp.bottom).offset(15);
+            make.left.equalTo(buttonTop.snp.right).offset(15)
+            make.width.equalTo(60)
+            make.height.equalTo(60)
+        }
+        
+        buttonRight.snp.makeConstraints { (make) in
+            make.top.equalTo(buttonBottom.snp.bottom).offset(15);
+            make.left.equalTo(buttonBottom.snp.right).offset(20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
         chooseView.snp.makeConstraints { (make) in
-            make.top.equalTo(checkBoxNew.snp.bottom).offset(20);
             make.left.equalToSuperview().offset(0)
             make.right.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview().offset(0)
             make.height.equalTo(50)
         }
     }
@@ -253,20 +292,26 @@ class TitleViewController: UIViewController{
         var view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("绿肥红瘦", for: .normal);
-        view.setTitleColor(.theme, for: .normal);
-        view.setImage(UIImageNamed("photo_cancell"), for: .normal)
-        //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
+
+        var normlImage: UIImage = UIImage(named: "photo_cancell")!
+        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        view.setImage(normlImage, for: .normal)
+        view.setImage(seletedImage, for: .selected)
+        
+        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+        var seletedTextColor: UIColor = UIColor.theme
+        view.setTitleColor(normlTextColor, for: .normal)
+        view.setTitleColor(seletedTextColor, for: .selected)
+        
         view.adjustsImageWhenHighlighted = false
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
         
         view.sizeToFit()
 //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
-        view.layoutButton(style: 1, imageTitleSpace: 2)
+        view.layoutButton(direction: 3, imageTitleSpace: 2)
         view.addActionHandler({ (control) in
             control.isSelected = !control.isSelected
-            
-//            let name = control.isSelected == true ? "photo_select" : "photo_cancell";
-//            view.setImage(UIImageNamed(name), for: .normal)
             
             guard let sender = control as? UIButton else { return }
             if let sender = control as? UIButton {
@@ -276,10 +321,105 @@ class TitleViewController: UIViewController{
         return view
     }()
     
-    lazy var checkBoxNew: NNCheckBoxButton = {
-        var view = NNCheckBoxButton(frame: .zero)
+    lazy var boxButton: NNBoxButton = {
+        var view = NNBoxButton(frame: .zero)
         view.isImageRight = true
         view.setTitle("蓝瘦香菇", for: .normal);
+        view.addActionHandler({ (control) in
+            control.isSelected = !control.isSelected
+            guard let sender = control as? UIButton else { return }
+            if let sender = control as? UIButton {
+            }
+            DDLog(sender)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var radioButton: NNRadioButton = {
+        var view = NNRadioButton(frame: .zero)
+        view.setTitle("荷塘夜色", for: .normal);
+
+//        view.addActionHandler({ (control) in
+//            control.isSelected = !control.isSelected
+//            guard let sender = control as? UIButton else { return }
+//            if let sender = control as? UIButton {
+//            }
+//            DDLog(sender)
+//        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var button: NNButton = {
+        var view = NNButton(type:.custom);
+        view.setTitle("浪迹天涯", for: .normal);
+        
+//        var normlImage: UIImage = UIImage(named: "photo_cancell")!
+//        var seletedImage: UIImage = UIImage(named: "photo_select")!
+//        view.setImage(normlImage, for: .normal)
+//        view.setImage(seletedImage, for: .selected)
+        
+        view.addActionHandler({ (control) in
+            control.isSelected = !control.isSelected
+            guard let sender = control as? UIButton else { return }
+            if let sender = control as? UIButton {
+            }
+            DDLog(sender)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var buttonTop: NNButton = {
+        var view = NNButton(type:.custom);
+        view.setTitle("浪迹天涯", for: .normal);
+        view.direction = .top
+        view.iconLocation = .leftTop
+
+        var normlImage: UIImage = UIImage(named: "photo_cancell")!
+        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        view.setImage(normlImage, for: .normal)
+        view.setImage(seletedImage, for: .selected)
+        
+        view.addActionHandler({ (control) in
+            control.isSelected = !control.isSelected
+            guard let sender = control as? UIButton else { return }
+            if let sender = control as? UIButton {
+            }
+            DDLog(sender)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var buttonBottom: NNButton = {
+        var view = NNButton(type:.custom);
+//        view.setTitle("浪迹天涯", for: .normal);
+        view.direction = .bottom
+        view.iconLocation = .leftBottom
+
+        var normlImage: UIImage = UIImage(named: "photo_cancell")!
+        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        view.setImage(normlImage, for: .normal)
+        view.setImage(seletedImage, for: .selected)
+
+        view.addActionHandler({ (control) in
+            control.isSelected = !control.isSelected
+            guard let sender = control as? UIButton else { return }
+            if let sender = control as? UIButton {
+            }
+            DDLog(sender)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var buttonRight: NNButton = {
+        var view = NNButton(type:.custom);
+        view.setTitle("浪迹天涯", for: .normal);
+        view.direction = .right
+        view.iconLocation = .rightBottom
+
+        var normlImage: UIImage = UIImage(named: "photo_cancell")!
+        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        view.setImage(normlImage, for: .normal)
+        view.setImage(seletedImage, for: .selected)
 
         view.addActionHandler({ (control) in
             control.isSelected = !control.isSelected

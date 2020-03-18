@@ -129,8 +129,8 @@ class FifthViewControlle: UIViewController {
 
     }
     
-    lazy var radioBtnOne: NNRadioButton = {
-        let btn = NNRadioButton(frame: .zero)
+    lazy var radioBtnOne: NNButton = {
+        let btn = NNButton(type: .custom)
 
         return btn
     }()

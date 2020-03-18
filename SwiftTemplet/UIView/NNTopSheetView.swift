@@ -119,7 +119,7 @@ class NNTopSheetView: UIView {
         
 //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
-        view.layoutButton(style: 3, imageTitleSpace: 5)
+        view.layoutButton(direction: 3, imageTitleSpace: 5)
         return view
     }()
     
