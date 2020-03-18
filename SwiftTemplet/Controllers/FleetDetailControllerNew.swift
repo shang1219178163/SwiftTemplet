@@ -160,11 +160,7 @@ extension FleetDetailControllerNew: UITableViewDataSource, UITableViewDelegate{
         if [1,2].contains(indexPath.section) {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
         } else {
-//            cell.separatorInset = .zero
-            if indexPath.row == 0 {
-                cell.contentView.lineTop.sizeWidth = kScreenWidth;
-                cell.contentView.addSubview(cell.contentView.lineTop)
-            }
+            cell.separatorInset = .zero
         }
         //        cell.getViewLayer();
         return cell;

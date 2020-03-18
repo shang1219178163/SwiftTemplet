@@ -85,7 +85,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
         sliderCtl.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-            make.width.equalTo(ctlWidth)
+            make.width.greaterThanOrEqualTo(ctlWidth)
             make.height.equalTo(labelLeft);
         }
     }
