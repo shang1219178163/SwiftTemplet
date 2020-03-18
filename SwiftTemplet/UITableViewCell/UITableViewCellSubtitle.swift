@@ -83,9 +83,9 @@ class UITableViewCellSubtitle: UITableViewCell {
         
         labelRightSub.sizeToFit();
         labelRightSub.snp.makeConstraints { (make) in
+            make.top.equalTo(labelRight.snp.bottom).offset(0);
             make.right.equalTo(labelRight);
-            make.bottom.equalToSuperview().offset(-Xgap);
-            make.width.equalTo(150)
+//            make.width.equalTo(150)
             make.height.equalTo(labelRight);
         }
 
