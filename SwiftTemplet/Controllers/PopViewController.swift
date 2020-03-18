@@ -53,7 +53,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
             make.height.equalTo(30);
         }
         
-        btn.layoutButton(style: 3, imageTitleSpace: 3)
+        btn.layoutButton(direction: 3, imageTitleSpace: 3)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -76,7 +76,7 @@ class NNTableHeaderView: UIView {
 //            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
 //            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+3.0, 0, -btn.titleLabel!.bounds.width-3.0)
 //            btn.size = CGSize(width: btn.frame.width + 10, height: self.sizeHeight)
-            btn.layoutButton(style: 3, imageTitleSpace: 3)
+            btn.layoutButton(direction: 3, imageTitleSpace: 3)
 
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -132,7 +132,7 @@ extension NNTableHeaderView{
         view.btn.setTitle(title, for: .normal)
         view.btn.setTitleColor(UIColor.textColor3, for: .normal)
 //        view.btn.sizeToFit()
-        view.btn.layoutButton(style: 3, imageTitleSpace: 3)
+        view.btn.layoutButton(direction: 3, imageTitleSpace: 3)
 //        view.labelOne.text = "恭喜您,支付成功!";
 
 //        view.getViewLayer()

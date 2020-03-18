@@ -13,6 +13,8 @@ import SwiftExpand
 class NNSegmentedControl: UISegmentedControl {
 
     var indicatorHeight: CGFloat = 1.5
+    var cornerRadius: CGFloat = 3
+
     var normalColor: UIColor = UIColor.black {
         didSet{
             setupControl()
@@ -56,7 +58,7 @@ class NNSegmentedControl: UISegmentedControl {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = 0;
+        layer.cornerRadius = cornerRadius;
 
         setupIndicator()
     }
@@ -98,7 +100,7 @@ class NNSegmentedControl: UISegmentedControl {
     }
     
     func setupIndicator() {
-        if CGRect.zero.equalTo(frame) || numberOfSegments <= 0 {
+        if self.bounds.height <= 0 || numberOfSegments <= 0 {
             return
         }
         
