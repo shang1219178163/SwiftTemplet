@@ -1,5 +1,5 @@
 //
-//  NNCheckBoxButton.swift
+//  NNBoxButton.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/7/13.
@@ -9,7 +9,7 @@
 import UIKit
 
 /// 单选框
-class NNCheckBoxButton: UIButton {
+class NNBoxButton: UIButton {
 
     var normlImage: UIImage = UIImage(named: "photo_cancell")!
     var seletedImage: UIImage = UIImage(named: "photo_select")!
@@ -32,16 +32,17 @@ class NNCheckBoxButton: UIButton {
         setTitleColor(normlTextColor, for: .normal)
         setTitleColor(seletedTextColor, for: .selected)
 
+        imageView?.contentMode = .scaleAspectFit;
         adjustsImageWhenHighlighted = false
+        titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        sizeToFit()
-        
-        let type = isImageRight ? 3 : 1
-        layoutButton(style: type, imageTitleSpace: 2)
+//        sizeToFit()
+//        let type = isImageRight ? 3 : 1
+//        layoutButton(style: type, imageTitleSpace: 2)
     }
     
     //MARK: -funtions

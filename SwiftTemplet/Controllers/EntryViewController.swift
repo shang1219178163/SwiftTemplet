@@ -200,6 +200,10 @@ class EntryViewController: UIViewController {
 //        DDLog(itemList)
 
         let urlString = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
+        if urlString.hasPrefix("http") == false {
+            NNProgressHUD.showText("文件链接无效")
+            return
+        }
         
         let controller = IOPFileUploadController()
         controller.delegate = self
@@ -281,7 +285,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.hasAsterisk = value0.contains("*")
             
             cell.labelLeft.text = value0
-            let titles = (itemList.last as! String).components(separatedBy: ",")
+            let titles = itemList.last!.components(separatedBy: ",")
             cell.segmentCtl.itemList = titles
             cell.segmentCtl.addActionHandler({ (sender: UIControl) in
                 if let control = sender as? UISegmentedControl {
@@ -289,7 +293,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }, for: .valueChanged)
      
-            cell.getViewLayer()
+//            cell.getViewLayer()
             
             return cell
             
