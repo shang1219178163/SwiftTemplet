@@ -59,14 +59,8 @@ class NNButtonStudyController: UIViewController{
 //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
         view.layoutButton(direction: 3, imageTitleSpace: 2)
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -74,13 +68,8 @@ class NNButtonStudyController: UIViewController{
         var view = NNBoxButton(frame: .zero)
         view.isImageRight = true
         view.setTitle("蓝瘦香菇", for: .normal);
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -88,13 +77,8 @@ class NNButtonStudyController: UIViewController{
         var view = NNButton(type:.custom);
         view.setTitle("荷塘夜色", for: .normal);
 
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -107,13 +91,8 @@ class NNButtonStudyController: UIViewController{
 //        view.setImage(normlImage, for: .normal)
 //        view.setImage(seletedImage, for: .selected)
         
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -128,13 +107,8 @@ class NNButtonStudyController: UIViewController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -149,13 +123,8 @@ class NNButtonStudyController: UIViewController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
 
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -170,15 +139,14 @@ class NNButtonStudyController: UIViewController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
 
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            guard let sender = control as? UIButton else { return }
-            if let sender = control as? UIButton {
-            }
-            DDLog(sender)
-        }, for: .touchUpInside)
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
         return view
     }()
+    
+    @objc func handActionBtn(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        DDLog(sender)
+    }
 
     // MARK: -life cycle
     override func viewDidLoad() {
