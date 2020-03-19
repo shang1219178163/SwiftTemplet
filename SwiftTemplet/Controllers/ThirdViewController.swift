@@ -102,6 +102,7 @@ class ThirdViewController: UIViewController{
              ["EntryViewController", "通用录入界面", ],
              ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
+             ["NNButtonStudyController", "按钮研究", ],             
              ["UICollectionDispalyController", "UICollectionView展示", ],
              ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],             
              ["PlateNumMainController", "NNTabController组件", ],
