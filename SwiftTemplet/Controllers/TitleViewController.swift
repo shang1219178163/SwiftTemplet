@@ -98,42 +98,42 @@ class TitleViewController: UIViewController{
         }
         
         boxButton.snp.makeConstraints { (make) in
-            make.top.equalTo(checkBox.snp.bottom).offset(15);
-            make.left.equalToSuperview().offset(20)
+            make.top.equalTo(checkBox).offset(0);
+            make.left.equalTo(checkBox.snp.right).offset(15)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }
                 
         radioButton.snp.makeConstraints { (make) in
-            make.top.equalTo(boxButton).offset(0);
+            make.top.equalTo(checkBox).offset(0);
             make.left.equalTo(boxButton.snp.right).offset(15)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }
             
         button.snp.makeConstraints { (make) in
-            make.top.equalTo(radioButton).offset(0);
-            make.left.equalTo(radioButton.snp.right).offset(15)
+            make.top.equalTo(radioButton.snp.bottom).offset(15);
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }
         
         buttonTop.snp.makeConstraints { (make) in
-            make.top.equalTo(radioButton.snp.bottom).offset(15);
-            make.left.equalToSuperview().offset(20)
+            make.top.equalTo(button).offset(0);
+            make.left.equalTo(button.snp.right).offset(15)
             make.width.equalTo(60)
             make.height.equalTo(60)
         }
         
         buttonBottom.snp.makeConstraints { (make) in
-            make.top.equalTo(button.snp.bottom).offset(15);
+            make.top.equalTo(button).offset(0);
             make.left.equalTo(buttonTop.snp.right).offset(15)
             make.width.equalTo(60)
             make.height.equalTo(60)
         }
         
         buttonRight.snp.makeConstraints { (make) in
-            make.top.equalTo(buttonBottom.snp.bottom).offset(15);
+            make.top.equalTo(button).offset(0);
             make.left.equalTo(buttonBottom.snp.right).offset(20)
             make.width.equalTo(100)
             make.height.equalTo(40)
@@ -370,7 +370,7 @@ class TitleViewController: UIViewController{
     
     lazy var buttonTop: NNButton = {
         var view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
+        view.setTitle("浪迹天涯Top", for: .normal);
         view.direction = .top
         view.iconLocation = .leftTop
 
@@ -412,7 +412,7 @@ class TitleViewController: UIViewController{
     
     lazy var buttonRight: NNButton = {
         var view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
+        view.setTitle("浪迹天涯Right", for: .normal);
         view.direction = .right
         view.iconLocation = .rightBottom
 

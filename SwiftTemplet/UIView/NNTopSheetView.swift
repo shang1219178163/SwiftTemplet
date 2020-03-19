@@ -44,9 +44,10 @@ class NNTopSheetView: UIView {
     // observeValue
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
-            btn.sizeToFit()
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
-            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
+            btn.layoutButton(direction: 3, imageTitleSpace: 5)
+//            btn.sizeToFit()
+//            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
+//            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
         }
     }
     
@@ -114,12 +115,12 @@ class NNTopSheetView: UIView {
         view.setTitleColor(.white, for: .normal);
         let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
         view.setImage(image, for: .normal)
-        //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
         
+        view.layoutButton(direction: 3, imageTitleSpace: 5)
+//        view.sizeToFit()
 //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
-        view.layoutButton(direction: 3, imageTitleSpace: 5)
         return view
     }()
     
