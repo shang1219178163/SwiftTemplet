@@ -9,28 +9,15 @@
 import UIKit
 import SwiftExpand
 
-enum NNButtonImageDirection {
-    case top
-    case left
-    case bottom
-    case right
-}
-
-enum NNButtonIconLocation {
-    case leftTop
-    case leftBottom
-    case rightTop
-    case rightBottom
-}
-
 /// 自定义图像方向按钮
-class NNButton: UIButton {
+@objcMembers class NNButton: UIButton {
     ///图像位置上左下右
-    var direction: NNButtonImageDirection = .left
-    var iconLocation: NNButtonIconLocation = .rightTop
+    var direction: UIView.Direction = .left
+    var iconLocation: UIView.Location = .rightTop
 
     var iconSize: CGSize = CGSize(width: 25, height: 14)
-    
+    var labelHeight: CGFloat = 25
+
     lazy var iconImageView: UIImageView = {
         let view = UIImageView(frame: CGRect.zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -71,25 +58,27 @@ class NNButton: UIButton {
         if bounds.height <= 0 {
             return
         }
-                
+        
         switch direction {
         case .top:
-            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height*0.5)
-            titleLabel!.frame = CGRect(x: 0, y: imageView!.frame.maxY, width: bounds.width, height: bounds.height*0.5)
+            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - labelHeight)
+            titleLabel!.frame = CGRect(x: 0, y: imageView!.frame.maxY, width: bounds.width, height: labelHeight)
             
-        case .left:
-            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
-            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
+//        case .left:
+//            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
+//            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
                 
         case .bottom:
-            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height*0.5)
-            imageView!.frame = CGRect(x: 0, y: titleLabel!.frame.maxY, width: bounds.width, height: bounds.height*0.5)
+            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: labelHeight)
+            imageView!.frame = CGRect(x: 0, y: titleLabel!.frame.maxY, width: bounds.width, height: bounds.height - labelHeight)
                     
         case .right:
             imageView!.frame = CGRect(x: bounds.width - bounds.height, y: 0, width: bounds.height, height: bounds.height)
             titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width - bounds.height, height: bounds.height)
             
         default:
+            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
+            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
             break
         }
         
@@ -100,13 +89,25 @@ class NNButton: UIButton {
         case .leftBottom:
             iconImageView.frame = CGRect(x: 0, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
 
-        case .rightTop:
-            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
+//        case .rightTop:
+//            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
 
         case .rightBottom:
             iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
         default:
+            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
             break
+        }
+        
+        //
+        if currentImage == nil {
+            titleLabel!.frame = bounds
+        } else if currentTitle == nil {
+            imageView!.frame = bounds
+        }
+        
+        if iconImageView.image == nil {
+            iconImageView.isHidden = true
         }
     }
 }
