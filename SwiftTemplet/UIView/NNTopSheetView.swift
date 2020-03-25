@@ -44,16 +44,15 @@ class NNTopSheetView: UIView {
     // observeValue
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
-            btn.layoutButton(direction: 3, imageTitleSpace: 5)
-//            btn.sizeToFit()
-//            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
-//            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
+//            btn.layoutButton(direction: 3, imageTitleSpace: 5)
+            btn.sizeToFit()
+            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
+            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
         }
     }
     
     //MARK: -func
     func setupTitleView() {
-        
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
             if let imgView = (sender as! UIButton).imageView{

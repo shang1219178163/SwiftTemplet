@@ -13,6 +13,8 @@ import SnapKit
 
 class NNTipsView: UIView {
 
+    var padding: CGFloat = 10
+
     weak var parController: UIViewController?
 
     override init(frame: CGRect) {
@@ -49,7 +51,7 @@ class NNTipsView: UIView {
                 label.sizeToFit()
                 
                 frame.size.width = UIScreen.sizeWidth
-                frame.size.height = (label.size.height + kPadding*2);
+                frame.size.height = (label.size.height + padding*2);
             }
         }
     }
@@ -58,8 +60,8 @@ class NNTipsView: UIView {
         super.layoutSubviews()
         
         label.snp.makeConstraints { (make) in
-            make.top.left.equalToSuperview().offset(kPadding)
-            make.bottom.right.equalToSuperview().offset(-kPadding)
+            make.top.left.equalToSuperview().offset(padding)
+            make.bottom.right.equalToSuperview().offset(-padding)
         }
     }
     
