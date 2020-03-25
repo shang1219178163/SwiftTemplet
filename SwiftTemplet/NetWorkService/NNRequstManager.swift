@@ -39,11 +39,12 @@ enum NNRequestCode: Int {
 //    func requestType() -> NNRequestType
     @objc func requestType() -> String
 
-    @objc func requestParams() -> Dictionary<String, Any>
+    @objc func requestParams() -> [String: Any]
     @objc func validateParams() -> Bool
-    
-    @objc optional func saveJsonOfCache(_ json: Dictionary<String, Any>?) -> Bool
-    @objc optional func jsonFromCache() -> Dictionary<String, Any>?
+    @objc func printLog() -> Bool
+
+    @objc optional func saveJsonOfCache(_ json: [String: Any]?) -> Bool
+    @objc optional func jsonFromCache() -> [String: Any]?
 
 }
 
