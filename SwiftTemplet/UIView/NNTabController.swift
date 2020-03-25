@@ -24,7 +24,8 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
             if newValue == nil {
                 return;
             }
-            
+            scrollViewContent.removeAllSubViews()
+
             let listName: NSMutableArray = [];
             for e in (newValue?.enumerated())! {
                 listName.add(e.element.title ?? "\(e.offset)")
