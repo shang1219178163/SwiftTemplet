@@ -9,6 +9,8 @@
 import UIKit
 
 class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
+
+    
   
     override init() {
         super.init()
@@ -23,15 +25,18 @@ class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
         return kRequestGET;
     }
     
-    func requestParams() -> Dictionary<String, Any> {
-        let dic: Dictionary<String, Any> = [:]
+    func requestParams() -> [String : Any] {
+        let dic:[String : Any] = [:]
         return dic;
     }
-    
+
     func validateParams() -> Bool {
         return true;
     }
     
-    
+    func printLog() -> Bool {
+        return true;
+    }
+
 
 }
