@@ -31,9 +31,23 @@ class NNButtonStudyController: UIViewController{
     lazy var topView: NNTopSheetView = {
         var view = NNTopSheetView()
         view.parController = self
-        view.indexP = IndexPath(row: 0, section: 0)
+//        view.indexP = IndexPath(row: 0, section: 0)
         view.setupTitleView()
         
+        return view
+    }()
+    
+    lazy var btn: UIButton = {
+        var view = UIButton(type: .custom)
+        view.frame = CGRect(x: 0, y: 0, width: 80, height: 35)
+        view.setTitle("默认样式", for: .normal);
+
+        view.setTitleColor(UIColor.red, for: .normal)
+//        view.adjustsImageWhenHighlighted = false
+//        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
         return view
     }()
     
@@ -153,7 +167,8 @@ class NNButtonStudyController: UIViewController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        setupTitleView()
+        topView.btn.getViewLayer()
+        
         topView.block { (tableView, indexPath) -> UITableViewCell in
             let itemList = self.list[indexPath.row]
             let value0 = itemList[0]
@@ -187,14 +202,14 @@ class NNButtonStudyController: UIViewController{
         view.addSubview(buttonTop)
         view.addSubview(buttonBottom)
         view.addSubview(buttonRight)
-        
+        view.addSubview(btn)
+
         view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
                 
-//        checkBox.sizeToFit()
         checkBox.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(20);
             make.left.equalToSuperview().offset(20)
@@ -240,6 +255,13 @@ class NNButtonStudyController: UIViewController{
         buttonRight.snp.makeConstraints { (make) in
             make.top.equalTo(button).offset(0);
             make.left.equalTo(buttonBottom.snp.right).offset(20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
+        btn.snp.makeConstraints { (make) in
+            make.bottom.equalTo(buttonRight.snp.bottom).offset(60);
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }

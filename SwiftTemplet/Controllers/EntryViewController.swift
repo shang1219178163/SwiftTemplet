@@ -504,6 +504,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelMid.text = "\("¥106.00")／通道／年"
             cell.labelBom.text = "优惠价：\("¥599")   原价：\("¥799")"
             
+//            if let imageURL = URL(string: "http://api.3rd.parkingwang.com/goods/img/get?img=goods/2020-02-18/1582006542_产品标志.png") {
+//                cell.imgViewLeft.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "bug.png"))
+//            }
+            
 //            cell.accessoryType = .disclosureIndicator
 //            cell.imgViewLeft.isHidden = true
             cell.getViewLayer();
@@ -556,6 +560,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         cell.accessoryType = .disclosureIndicator;
         
         cell.textLabel?.text = value0
+        
+        cell.textLabel?.highlightedTextColor = UIColor.red
+        cell.textLabel?.isHighlighted = false
         
         let fileTitles: [String] = value3.components(separatedBy: ",")
         cell.detailTextLabel?.text = fileTitles.first!
