@@ -27,6 +27,7 @@ PODS:
   - BSImageView (1.0.3)
   - CryptoSwift (1.3.0)
   - HandyJSON (5.0.1)
+  - HFNavigationController (1.0.5.3)
   - IQKeyboardManagerSwift (6.5.4)
   - Kingfisher (4.10.1)
   - Masonry (1.1.0)
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - BSImagePicker
   - CryptoSwift
   - HandyJSON (~> 5.0.0-beta.1)
+  - HFNavigationController
   - IQKeyboardManagerSwift
   - Kingfisher
   - MBProgressHUD
@@ -126,6 +128,7 @@ SPEC REPOS:
     - BSImageView
     - CryptoSwift
     - HandyJSON
+    - HFNavigationController
     - IQKeyboardManagerSwift
     - Kingfisher
     - Masonry
@@ -162,6 +165,7 @@ SPEC CHECKSUMS:
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   CryptoSwift: 1283821600233bdbeb96d7b389c3288c3bf77211
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  HFNavigationController: d2b6e9cdfce441a373d0393557a3da0d3df407c5
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -188,6 +192,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ef84e9f3773a2692738eae4806995a272eb106a0
+PODFILE CHECKSUM: b518b1677f7b9be253acefad59989bd43fa1d195
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

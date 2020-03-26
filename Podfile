@@ -78,6 +78,7 @@ def common_pods
 
     pod 'PlateKeyboard_iOS'
     pod 'NNPlateKeyboard'
+    pod 'HFNavigationController'
 
     
 end
