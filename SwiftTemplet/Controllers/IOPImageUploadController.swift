@@ -1,5 +1,5 @@
 //
-//  IOPUploadImageController.swift
+//  IOPImageUploadController.swift
 //  IntelligentOfParking
 //
 //  Created by Bin Shang on 2020/2/14.
@@ -13,7 +13,7 @@ import UIKit
 }
 
 
-class IOPUploadImageController: UIViewController {
+class IOPImageUploadController: UIViewController {
     
     weak var delegate: IOPUploadImageControllerDelegate?
 
@@ -131,7 +131,7 @@ class IOPUploadImageController: UIViewController {
 }
 
 //3.分别对确定和取消事件做处理
-extension IOPUploadImageController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension IOPImageUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         print(info)
@@ -164,7 +164,7 @@ extension IOPUploadImageController: UIImagePickerControllerDelegate, UINavigatio
     }
 }
 
-extension IOPUploadImageController: UITableViewDataSource, UITableViewDelegate{
+extension IOPImageUploadController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;

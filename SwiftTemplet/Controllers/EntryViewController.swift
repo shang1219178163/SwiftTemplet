@@ -182,7 +182,7 @@ class EntryViewController: UIViewController {
     func jumpUploadPicture(_ itemList: [String]) {
 //        DDLog(itemList)
         
-        let controller = IOPUploadImageController()
+        let controller = IOPImageUploadController()
         controller.delegate = self
 
         controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
@@ -200,7 +200,7 @@ class EntryViewController: UIViewController {
 //        DDLog(itemList)
 
         let urlString = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
-        if urlString.hasPrefix("http") == false {
+        if itemList[0].contains("上传") == false && urlString.hasPrefix("http") == false {
             NNProgressHUD.showText("文件链接无效")
             return
         }
@@ -218,7 +218,6 @@ class EntryViewController: UIViewController {
 }
 
 extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
-    //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
     }
@@ -226,7 +225,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionList = list[section]
         return sectionList.count;
-    };
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionList = list[indexPath.section]
@@ -236,7 +235,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let height = itemList[2].cgFloatValue
         return height
-    };
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionList = list[indexPath.section]

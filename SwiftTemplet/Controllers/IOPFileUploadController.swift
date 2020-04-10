@@ -218,7 +218,8 @@ class IOPFileUploadController: UIViewController {
             
         }, success: { (task, responseObject) in
             NNProgressHUD.showSuccess("请求成功")
-            let dic = (responseObject as! [String: Any])["data"] as! [String: Any]
+            guard let dict = responseObject as? [String: Any], let dic = dict["data"] as? [String: Any] else { return }
+//            let dic = (responseObject as! [String: Any])["data"] as! [String: Any]
             self.delegate?.fileUpload?(dic["url"] as! String, forKey: self.key)
             
         }) { (task, error) in
