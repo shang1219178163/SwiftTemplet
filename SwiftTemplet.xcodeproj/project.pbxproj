@@ -210,7 +210,7 @@
 		14D91B15234C88B400554994 /* CellListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B14234C88B400554994 /* CellListController.swift */; };
 		14D91B17234DB51D00554994 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B16234DB51D00554994 /* PopViewController.swift */; };
 		14D91B19234DB96600554994 /* NNPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B18234DB96600554994 /* NNPopView.swift */; };
-		14E02F6E2420D81F00E1EA2C /* IOPUploadImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E02F6D2420D81E00E1EA2C /* IOPUploadImageController.swift */; };
+		14E02F6E2420D81F00E1EA2C /* IOPImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E02F6D2420D81E00E1EA2C /* IOPImageUploadController.swift */; };
 		14E02F702420D88200E1EA2C /* UITableViewCellPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E02F6F2420D88100E1EA2C /* UITableViewCellPhoto.swift */; };
 		14E8561B232A4D860006E4C2 /* SwiftTemplet-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14E8561A232A4D860006E4C2 /* SwiftTemplet-Info.plist */; };
 		14E8561D232A4E2F0006E4C2 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */; };
@@ -465,7 +465,7 @@
 		14D91B14234C88B400554994 /* CellListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellListController.swift; sourceTree = "<group>"; };
 		14D91B16234DB51D00554994 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		14D91B18234DB96600554994 /* NNPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPopView.swift; sourceTree = "<group>"; };
-		14E02F6D2420D81E00E1EA2C /* IOPUploadImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPUploadImageController.swift; sourceTree = "<group>"; };
+		14E02F6D2420D81E00E1EA2C /* IOPImageUploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPImageUploadController.swift; sourceTree = "<group>"; };
 		14E02F6F2420D88100E1EA2C /* UITableViewCellPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellPhoto.swift; sourceTree = "<group>"; };
 		14E8561A232A4D860006E4C2 /* SwiftTemplet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SwiftTemplet-Info.plist"; sourceTree = "<group>"; };
 		14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
@@ -811,7 +811,7 @@
 			children = (
 				141495B4242B4F4700141A9F /* AddressPicker */,
 				14C38A872411253600816A8E /* IOPFileUploadController.swift */,
-				14E02F6D2420D81E00E1EA2C /* IOPUploadImageController.swift */,
+				14E02F6D2420D81E00E1EA2C /* IOPImageUploadController.swift */,
 				51685A12208EA79C00CE8099 /* MainViewController.swift */,
 				51C9B592211D17F8003E9AA7 /* HomeViewController.swift */,
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
@@ -1393,7 +1393,7 @@
 				5182444D213E8CB600071A9D /* NNData.swift in Sources */,
 				141495BF242B4F6E00141A9F /* NNChooseProvinceController.swift in Sources */,
 				5182442A213E74D400071A9D /* RootClass.swift in Sources */,
-				14E02F6E2420D81F00E1EA2C /* IOPUploadImageController.swift in Sources */,
+				14E02F6E2420D81F00E1EA2C /* IOPImageUploadController.swift in Sources */,
 				14BE1769237FB9450007B148 /* NNTabView.swift in Sources */,
 				143D1E4423C472FB00A5850D /* UITableViewCellSubtitle.swift in Sources */,
 				147FF46821CE48BA00351E94 /* UICTViewCellZero.swift in Sources */,
