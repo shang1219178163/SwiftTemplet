@@ -80,6 +80,10 @@ def common_pods
     pod 'NNPlateKeyboard'
     pod 'HFNavigationController'
 
+#iOS自带悬浮窗调试工具,摇晃手机即可显示系统的UI调试界面。
+    pod 'UIDebuggingTool'
+
+
     
 end
 
