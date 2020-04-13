@@ -154,6 +154,7 @@
 		146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* NNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* NNUpdateVersionView.swift */; };
 		146F098A22291A1200E13F53 /* NNPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F098922291A1200E13F53 /* NNPhotosView.swift */; };
+		1479D5CA244407A5007F7CC4 /* TableViewPrefetchRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479D5C9244407A5007F7CC4 /* TableViewPrefetchRowController.swift */; };
 		147FF3C521CE26BE00351E94 /* UITableViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */; };
 		147FF3C621CE26BE00351E94 /* UITableViewCellSix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */; };
 		147FF3C721CE26BE00351E94 /* UITableViewCellFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */; };
@@ -408,6 +409,7 @@
 		146F09832228CD7000E13F53 /* NNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
 		146F098922291A1200E13F53 /* NNPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPhotosView.swift; sourceTree = "<group>"; };
+		1479D5C9244407A5007F7CC4 /* TableViewPrefetchRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPrefetchRowController.swift; sourceTree = "<group>"; };
 		147FF3BF21CE26BE00351E94 /* UITableViewCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTwo.swift; sourceTree = "<group>"; };
 		147FF3C021CE26BE00351E94 /* UITableViewCellSix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellSix.swift; sourceTree = "<group>"; };
 		147FF3C121CE26BE00351E94 /* UITableViewCellFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellFour.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
+				1479D5C9244407A5007F7CC4 /* TableViewPrefetchRowController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
 				149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */,
@@ -1177,6 +1180,7 @@
 				"${BUILT_PRODUCTS_DIR}/Surge/Surge.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftExpand/SwiftExpand.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UIDebuggingTool/UIDebuggingTool.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
@@ -1215,6 +1219,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Surge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftExpand.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIDebuggingTool.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
@@ -1332,6 +1337,7 @@
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
+				1479D5CA244407A5007F7CC4 /* TableViewPrefetchRowController.swift in Sources */,
 				147FF4C321D0815B00351E94 /* FleetDetailControllerNew.swift in Sources */,
 				14C1196222D99BA9009D18A3 /* OthersViewController.swift in Sources */,
 				51C9B58D211D179E003E9AA7 /* SecondViewController.swift in Sources */,

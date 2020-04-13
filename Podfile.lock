@@ -80,6 +80,7 @@ PODS:
   - Surge (2.3.0)
   - SwiftExpand (1.9.8.1)
   - SwiftyJSON (5.0.0)
+  - UIDebuggingTool (0.2.1)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -113,6 +114,7 @@ DEPENDENCIES:
   - Surge
   - SwiftExpand
   - SwiftyJSON
+  - UIDebuggingTool
   - YYCache
   - YYCategories
   - YYModel
@@ -151,6 +153,7 @@ SPEC REPOS:
     - Surge
     - SwiftExpand
     - SwiftyJSON
+    - UIDebuggingTool
     - YYCache
     - YYCategories
     - YYModel
@@ -188,10 +191,11 @@ SPEC CHECKSUMS:
   Surge: 13979cd9593e943f9ce1202439da2999ea57e46d
   SwiftExpand: 0d3f874e489e41d62aca1069dce976a287dcc241
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  UIDebuggingTool: 34adf07876469d7bae9de81f20ebf90a3f0d8924
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: b518b1677f7b9be253acefad59989bd43fa1d195
+PODFILE CHECKSUM: b9d4e8894523a09f5e7f6ee29dd052795be6731a
 
 COCOAPODS: 1.9.1
