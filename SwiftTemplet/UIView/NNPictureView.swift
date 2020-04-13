@@ -187,27 +187,27 @@ extension NNPictureView: UIScrollViewDelegate {
     
     public var urls: [String] {
         get {
-            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! [String];
+            return objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as! [String];
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     var pictureView: NNPictureView {
         get {
-            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as? NNPictureView;
+            var obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as? NNPictureView;
             if obj == nil {
                 obj = NNPictureView(frame: CGRect.zero);
                 obj!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                 obj!.isUserInteractionEnabled = true;
                 
-                objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), obj, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             }
             return obj!;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     

@@ -12,6 +12,15 @@ import SDWebImage
 
 class FirstViewController: UIViewController {
 
+    //MARK: - layz
+    //    lazy var tableView: UITableView = {
+    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+    //        table.dataSource = self;
+    //        table.delegate = self;
+    //
+    //        return table;
+    //    }();
+    
     var imgList = ["https://www.huizhubang.com/attachment/rotation/9.jpg",
         "https://www.huizhubang.com/attachment/rotation/8.jpg",
         "https://www.huizhubang.com/attachment/rotation/7.jpg",]
@@ -47,30 +56,31 @@ class FirstViewController: UIViewController {
         
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-        
-    }
-
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         tbView.frame = view.bounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        for (key, value) in AssociationKey.keysDic {
+            print("\(key):\(value)")
+        }
+        
+//        DDLog(AssociationKey.keysDic)
     }
         
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //MARK: - layz
-    //    lazy var tableView: UITableView = {
-    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-    //        table.dataSource = self;
-    //        table.delegate = self;
-    //
-    //        return table;
-    //    }();
     
 }
 
