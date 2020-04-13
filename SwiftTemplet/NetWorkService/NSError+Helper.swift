@@ -14,31 +14,31 @@ public extension NSError{
     
     @objc var message: String {
         get {
-            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! String;
+            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as! String;
             return obj;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     @objc var requstCode: Int {
         get {
-            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as! Int;
+            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as! Int;
             return obj;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
     @objc var obj: Any {
         get {
-            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(#function)) as Any;
+            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as Any;
             return obj;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(#function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
