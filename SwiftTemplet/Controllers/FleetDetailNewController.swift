@@ -1,5 +1,5 @@
 //
-//  FleetDetailControllerNew.swift
+//  FleetDetailNewController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2018/12/24.
@@ -12,7 +12,7 @@ import SwiftExpand
 import SDWebImage
 import SnapKit
 
-class FleetDetailControllerNew: UIViewController{
+class FleetDetailNewController: UIViewController{
     
     let kTips_Fleet = "·请选择车场及出\\入口后,开启车队模式\n·该功能需要arm3.5.4.0以上版本支持\n·如有需要请联系运维人员升级"
     
@@ -115,7 +115,7 @@ class FleetDetailControllerNew: UIViewController{
     
 }
 
-extension FleetDetailControllerNew: UITableViewDataSource, UITableViewDelegate{
+extension FleetDetailNewController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count;
