@@ -188,8 +188,9 @@ class IOPFileUploadController: UIViewController {
         manager.requestSerializer.setValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
         manager.requestSerializer.setValue("IOP/iOS", forHTTPHeaderField: "User-Agent")
         manager.requestSerializer.setValue("3.3.1", forHTTPHeaderField: "Accept-Version")
+    
         
-        manager.post(urlString, parameters: parameters, constructingBodyWith: { (formData) in
+        manager.post(urlString, parameters: parameters, headers: nil,constructingBodyWith: { (formData) in
             for (key, value) in parameters {
                 switch value {
                 case is String:
