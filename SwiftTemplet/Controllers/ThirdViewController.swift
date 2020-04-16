@@ -12,13 +12,16 @@ import SwiftExpand
 import HandyJSON
 import Moya
 import MJRefresh
+import HFNavigationController
 
 class ThirdViewController: UIViewController{
 
     //MARK: -lazy
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["UISearchStylesController", "搜索🔍样式", ],
+            [["UITextViewMultipleTapController", "下划线多点点击", ],
+             ["UILabelMultipleTapController", "下划线多点点击", ],
+            ["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
              ["NNPictureViewController", "全屏图册", ],
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
@@ -41,7 +44,7 @@ class ThirdViewController: UIViewController{
              ["CCSCouponRecordController", "优惠券列表", ],
              ["NNFormViewController", "表单视图", ],
              ],
-            [["TableViewPrefetchRowController", "image预先载入", ],
+            [["TableViewPrefetchRowController", "image预加载", ],
             ["AppIconChangeController", "App图标更换", ],
              ["NNUserLogInController", "RxSwift函数响应型编程", ],
              ["UIRecognizerUpdateController", "手势集合升级", ],
@@ -61,16 +64,46 @@ class ThirdViewController: UIViewController{
     
     let serialQueue = DispatchQueue(label: "Decode queue")
     
+    let frameCenter = CGRect(x: UIScreen.main.bounds.width*0.05,
+                             y: UIScreen.main.bounds.height*0.25,
+                             width: UIScreen.main.bounds.width*0.9,
+                             height: 300)
+    
+    lazy var textController: NNAlertViewController = {
+        let controller = NNAlertViewController()
+//        controller.actionTitles = ["one", "two", "three"]
+//        controller.actionTitles = ["one", ]
+
+        return controller
+    }()
+    
+    lazy var navController: HFNavigationController = {
+        let controller = HFNavigationController(rootViewController: textController)
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        controller.transitioningDelegate = controller as UIViewControllerTransitioningDelegate
+        
+        controller.view.layer.cornerRadius = 18
+        controller.view.layer.masksToBounds = true
+        
+        controller.setupDefaultFrame(self.frameCenter)
+        controller.navigationBar.barTintColor = UIColor.red
+
+        return controller;
+    }()
+    
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-            self.goController("FleetDetailControllerNew", obj: nil, objOne: nil)
+            self.goController("FleetDetailNewController", obj: nil, objOne: nil)
         }
         
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in
-            self.goController("IOPAuthDetailController", obj: nil, objOne: nil)
+//            self.goController("IOPAuthDetailController", obj: nil, objOne: nil)
+            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+            rootViewController.present(self.navController, animated: true, completion: nil)
         }
         
         tbViewGrouped.rowHeight = 50;
@@ -83,6 +116,9 @@ class ThirdViewController: UIViewController{
             self.requestInfo()
 
         });
+        
+        
+        setupAlertController()
         
         view.getViewLayer()
     }
@@ -135,10 +171,30 @@ class ThirdViewController: UIViewController{
             DDLog(error! as Any)
             
         }
-
     }
     
-
+    func setupAlertController() {
+        textController.title = "用户协议和隐私政策"
+        
+        let tapTexts = ["《用户协议》", "《隐私政策》",];
+        let string = "\t用户协议和隐私政策请您务必审值阅读、充分理解 “用户协议” 和 ”隐私政策” 各项条款，包括但不限于：为了向您提供即时通讯、内容分享等服务，我们需要收集您的设备信息、操作日志等个人信息。\n\t您可阅读\(tapTexts[0])和\(tapTexts[1])了解详细信息。如果您同意，请点击 “同意” 开始接受我们的服务;"
+        
+        let attDic = [NSAttributedString.Key.foregroundColor: UIColor.gray,
+                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)
+        ]
+        
+        let attString = NSMutableAttributedString(string: string, attributes: attDic)
+        for e in tapTexts.enumerated() {
+            let nsRange = (attString.string as NSString).range(of: e.element)
+            attString.addAttribute(NSAttributedString.Key.link, value: "\(e.offset)://", range: nsRange)
+        }
+        
+        let linkAttDic = [NSAttributedString.Key.foregroundColor : UIColor.theme,
+        ]
+        textController.textView.linkTextAttributes = linkAttDic
+        textController.textView.attributedText = attString
+        textController.textView.delegate = self
+    }
     
 }
 
@@ -239,4 +295,14 @@ extension ThirdViewController: UITableViewDataSourcePrefetching{
         }
     }
     
+}
+extension ThirdViewController: UITextViewDelegate{
+
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        DDLog(URL.absoluteString)
+        if URL.scheme == "" {
+            return false
+        }
+        return true
+    }
 }
