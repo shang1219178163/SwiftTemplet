@@ -24,7 +24,7 @@ class IOPAuthRechargeController: UIViewController {
      
         
         createBarItem( .edit, isLeft: true) { (sender: AnyObject) in
-            self.goController("FleetDetailControllerNew", obj: nil, objOne: nil)
+            self.goController("FleetDetailNewController", obj: nil, objOne: nil)
         }
         
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in

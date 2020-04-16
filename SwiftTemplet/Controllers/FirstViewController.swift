@@ -88,7 +88,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
      //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return dataList.count;
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,7 +96,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         return 60;
     };
     
