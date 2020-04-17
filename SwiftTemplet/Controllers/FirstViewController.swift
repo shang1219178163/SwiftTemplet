@@ -70,10 +70,9 @@ class FirstViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        for (key, value) in AssociationKey.keysDic {
-            print("\(key):\(value)")
-        }
-        
+//        for (key, value) in AssociationKey.keysDic {
+//            print("\(key):\(value)")
+//        }
 //        DDLog(AssociationKey.keysDic)
     }
         
