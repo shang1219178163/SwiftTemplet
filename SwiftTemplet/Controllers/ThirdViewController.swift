@@ -19,7 +19,8 @@ class ThirdViewController: UIViewController{
     //MARK: -lazy
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["UITextViewMultipleTapController", "下划线多点点击", ],
+            [["NNAlertShowController", "自定义 UIViewController 弹窗", ],
+            ["UITextViewMultipleTapController", "下划线多点点击", ],
              ["UILabelMultipleTapController", "下划线多点点击", ],
             ["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
@@ -69,11 +70,12 @@ class ThirdViewController: UIViewController{
                              width: UIScreen.main.bounds.width*0.9,
                              height: 300)
     
-    lazy var textController: NNAlertViewController = {
-        let controller = NNAlertViewController()
+    lazy var textController: NNUserAgreementController = {
+        let controller = NNUserAgreementController()
 //        controller.actionTitles = ["one", "two", "three"]
 //        controller.actionTitles = ["one", ]
-
+        controller.actionTitles = ["暂不使用", "同意"]
+        controller.delegate = self
         return controller
     }()
     
@@ -87,7 +89,6 @@ class ThirdViewController: UIViewController{
         controller.view.layer.masksToBounds = true
         
         controller.setupDefaultFrame(self.frameCenter)
-        controller.navigationBar.barTintColor = UIColor.red
 
         return controller;
     }()
@@ -117,10 +118,8 @@ class ThirdViewController: UIViewController{
 
         });
         
-        
-        setupAlertController()
-        
-        view.getViewLayer()
+
+//        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -171,29 +170,6 @@ class ThirdViewController: UIViewController{
             DDLog(error! as Any)
             
         }
-    }
-    
-    func setupAlertController() {
-        textController.title = "用户协议和隐私政策"
-        
-        let tapTexts = ["《用户协议》", "《隐私政策》",];
-        let string = "\t用户协议和隐私政策请您务必审值阅读、充分理解 “用户协议” 和 ”隐私政策” 各项条款，包括但不限于：为了向您提供即时通讯、内容分享等服务，我们需要收集您的设备信息、操作日志等个人信息。\n\t您可阅读\(tapTexts[0])和\(tapTexts[1])了解详细信息。如果您同意，请点击 “同意” 开始接受我们的服务;"
-        
-        let attDic = [NSAttributedString.Key.foregroundColor: UIColor.gray,
-                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)
-        ]
-        
-        let attString = NSMutableAttributedString(string: string, attributes: attDic)
-        for e in tapTexts.enumerated() {
-            let nsRange = (attString.string as NSString).range(of: e.element)
-            attString.addAttribute(NSAttributedString.Key.link, value: "\(e.offset)://", range: nsRange)
-        }
-        
-        let linkAttDic = [NSAttributedString.Key.foregroundColor : UIColor.theme,
-        ]
-        textController.textView.linkTextAttributes = linkAttDic
-        textController.textView.attributedText = attString
-        textController.textView.delegate = self
     }
     
 }
@@ -296,13 +272,25 @@ extension ThirdViewController: UITableViewDataSourcePrefetching{
     }
     
 }
-extension ThirdViewController: UITextViewDelegate{
 
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+extension ThirdViewController: NNUserAgreementControllerDelegate{
+    func userAgreementVC(_ controller: NNUserAgreementController, sender: UIButton) {
+        DDLog(sender.currentTitle, sender.tag)
+        switch sender.tag {
+        case 0:
+            exit(0)
+        default:
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func userAgreementTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         DDLog(URL.absoluteString)
         if URL.scheme == "" {
             return false
         }
         return true
     }
+    
+
 }
