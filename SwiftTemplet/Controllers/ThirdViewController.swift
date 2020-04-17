@@ -72,8 +72,8 @@ class ThirdViewController: UIViewController{
                              width: UIScreen.main.bounds.width*0.9,
                              height: 300)
     
-    lazy var textController: NNUserAgreementController = {
-        let controller = NNUserAgreementController()
+    lazy var textController: NNAgreementAlertController = {
+        let controller = NNAgreementAlertController()
 //        controller.actionTitles = ["one", "two", "three"]
 //        controller.actionTitles = ["one", ]
         controller.actionTitles = ["暂不使用", "同意"]
@@ -275,18 +275,17 @@ extension ThirdViewController: UITableViewDataSourcePrefetching{
     
 }
 
-extension ThirdViewController: NNUserAgreementControllerDelegate{
-    func userAgreementVC(_ controller: NNUserAgreementController, sender: UIButton) {
+extension ThirdViewController: NNAgreementAlertControllerDelegate{
+    func agreementAlertVC(_ controller: NNAgreementAlertController, sender: UIButton) {
         DDLog(sender.currentTitle, sender.tag)
         switch sender.tag {
         case 0:
             exit(0)
         default:
             controller.dismiss(animated: true, completion: nil)
-        }
-    }
+        }    }
     
-    func userAgreementTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+    func agreementAlertTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         DDLog(URL.absoluteString)
         if URL.scheme == "" {
             return false
