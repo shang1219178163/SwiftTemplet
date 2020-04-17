@@ -11,6 +11,54 @@ import SwiftExpand
 
 class HomeViewController: UITabBarController {
     
+    
+    private lazy var animator: NNTransitionAnimator = {
+        let animator = NNTransitionAnimator(duration: 0.25, animateType: .fade)
+        return animator
+    }()
+    
+//    private lazy var animator: TabbarAnimator = {
+//        let animator = TabbarAnimator(edge: .left)
+//        return animator
+//    }()
+//
+//    private lazy var panGesture: UIPanGestureRecognizer = {
+//        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
+//        return pan
+//    }()
+//
+//    @objc func panGesture(_ sender: UIPanGestureRecognizer) {
+//        // Do not attempt to begin an interactive transition if one is already ongoing
+//        guard self.transitionCoordinator == nil else {
+//            return
+//        }
+//
+//        if sender.state == .began || sender.state == .changed {
+//            beginInteractiveTransitionIfPossible(sender: sender)
+//        }
+//    }
+    
+//    private func beginInteractiveTransitionIfPossible(sender: UIPanGestureRecognizer) {
+//        let translation = sender.translation(in: self.view)
+//
+//        if translation.x > 0 && self.selectedIndex > 0 {
+//            self.selectedIndex -= 1
+//        } else if translation.x < 0 && self.selectedIndex + 1 < self.viewControllers!.count {
+//            self.selectedIndex += 1
+//        } else {
+//            if !translation.equalTo(CGPoint.zero) {
+//                sender.isEnabled = false
+//                sender.isEnabled = true
+//            }
+//        }
+//
+//        self.transitionCoordinator?.animate(alongsideTransition: nil, completion: { (context) in
+//            if context.isCancelled && sender.state == .changed {
+//                self.beginInteractiveTransitionIfPossible(sender: sender)
+//            }
+//        })
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,6 +67,9 @@ class HomeViewController: UITabBarController {
         tabBar.isTranslucent = false;
         viewControllers = UINavListFromList(itemList);
 
+        self.delegate = self
+//        self.view.addGestureRecognizer(self.panGesture)
+        
         selectedIndex = 2
     }
     
@@ -80,4 +131,24 @@ class HomeViewController: UITabBarController {
         
         return btn;
     }();
+}
+
+extension HomeViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
+        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
+        DDLog("\(fromIndex) -> \(toIndex)")
+//        animator.targetEdge = fromIndex < toIndex ? .right : .left
+        animator.animateType = fromIndex < toIndex ? .right : .left
+        return animator
+    }
+
+//    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+//        if self.panGesture.state == .began || self.panGesture.state == .changed {
+//            return TabbarInteractionTransition(pan: self.panGesture)
+//        } else {
+//            return nil
+//        }
+//    }
 }
