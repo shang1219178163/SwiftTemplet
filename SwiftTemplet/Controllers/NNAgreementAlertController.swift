@@ -1,5 +1,5 @@
 //
-//  NNUserAgreementController.swift
+//  NNAgreementAlertController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/4/17.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-@objc protocol NNUserAgreementControllerDelegate: NSObjectProtocol {
-    @objc func userAgreementVC(_ controller: NNUserAgreementController, sender: UIButton);
-    @objc func userAgreementTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool;
+@objc protocol NNAgreementAlertControllerDelegate: NSObjectProtocol {
+    @objc func agreementAlertVC(_ controller: NNAgreementAlertController, sender: UIButton);
+    @objc func agreementAlertTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool;
 }
 
-@objcMembers class NNUserAgreementController: UIViewController {
+@objcMembers class NNAgreementAlertController: UIViewController {
         
-    weak var delegate: NNUserAgreementControllerDelegate?
+    weak var delegate: NNAgreementAlertControllerDelegate?
     
     let contentInset = UIEdgeInsets.zero
     
@@ -37,7 +37,7 @@ import UIKit
                     button.addActionHandler({ (control) in
                         guard let sender = control as? UIButton else { return }
 //                        DDLog(sender.currentTitle)
-                        self.delegate?.userAgreementVC(self, sender: sender)
+                        self.delegate?.agreementAlertVC(self, sender: sender)
                         
                     }, for: .touchUpInside)
                     
@@ -186,10 +186,10 @@ import UIKit
     }
 }
 
-extension NNUserAgreementController: UITextViewDelegate{
+extension NNAgreementAlertController: UITextViewDelegate{
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         if delegate != nil {
-            return delegate!.userAgreementTextView(textView, shouldInteractWith: URL, in: characterRange)
+            return delegate!.agreementAlertTextView(textView, shouldInteractWith: URL, in: characterRange)
         }
         return true
     }
