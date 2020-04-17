@@ -1,22 +1,21 @@
 //
-//  NNAlertViewController.swift
-//  HFNavigationController_Example
+//  NNUserAgreementController.swift
+//  SwiftTemplet
 //
-//  Created by Bin Shang on 2020/4/16.
-//  Copyright © 2020 CocoaPods. All rights reserved.
+//  Created by Bin Shang on 2020/4/17.
+//  Copyright © 2020 BN. All rights reserved.
 //
 
 import UIKit
-import SwiftExpand
 
-@objc protocol NNAlertViewControllerDelegate: NSObjectProtocol {
-    @objc func alertVC(_ controller: NNAlertViewController, sender: UIButton);
-    
+@objc protocol NNUserAgreementControllerDelegate: NSObjectProtocol {
+    @objc func userAgreementVC(_ controller: NNUserAgreementController, sender: UIButton);
+    @objc func userAgreementTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool;
 }
 
-class NNAlertViewController: UIViewController {
+@objcMembers class NNUserAgreementController: UIViewController {
         
-    weak var delegate: NNAlertViewControllerDelegate?
+    weak var delegate: NNUserAgreementControllerDelegate?
     
     let contentInset = UIEdgeInsets.zero
     
@@ -38,7 +37,7 @@ class NNAlertViewController: UIViewController {
                     button.addActionHandler({ (control) in
                         guard let sender = control as? UIButton else { return }
 //                        DDLog(sender.currentTitle)
-                        self.delegate?.alertVC(self, sender: sender)
+                        self.delegate?.userAgreementVC(self, sender: sender)
                         
                     }, for: .touchUpInside)
                     
@@ -50,7 +49,7 @@ class NNAlertViewController: UIViewController {
     }
     
     var btns: [UIButton] = []
-    var btnSeprateView: [UIView] = []
+//    var btnSeprateView: [UIView] = []
 
     lazy var textView: UITextView = {
         let textView = UITextView(frame: .zero)
@@ -59,36 +58,20 @@ class NNAlertViewController: UIViewController {
         return textView
     }()
     
-//    lazy var bottomView: UIView = {
-//        let view = UIView(frame: .zero)
-//
-//        return view
-//    }()
-    
     private lazy var horLineView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = UIColor.line
         return view
     }()
-
-//    private lazy var verLineView: UIView = {
-//        let view = UITextView(frame: .zero)
-//
-//        return view
-//    }()
-//
-//    private lazy var verLineView: UIView = {
-//        let view = UITextView(frame: .zero)
-//
-//        return view
-//    }()
     
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        actionTitles = ["取消", "确定"]
+        title = "用户协议和隐私政策"
+        actionTitles = ["暂不使用", "同意"]
+        setupContent()
 
         view.addSubview(textView)
         view.addSubview(horLineView)
@@ -115,6 +98,8 @@ class NNAlertViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(color: .white), for: .default)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black.withAlphaComponent(0.8)]
         setupConstraints()
+        
+        UIApplication.shared.keyWindow?.endEditing(true)
     }
     
     func setupConstraints() {
@@ -132,6 +117,10 @@ class NNAlertViewController: UIViewController {
             make.left.equalToSuperview().offset(0);
             make.right.equalToSuperview().offset(0);
             make.height.equalTo(0.33);
+        }
+        
+        if btns.count == 0 {
+            return
         }
         
         switch btns.count {
@@ -182,9 +171,26 @@ class NNAlertViewController: UIViewController {
                 make.height.equalTo(itemHeight);
             }
         }
-//        DDLog(self.btns)
 
     }
     
 
+    func setupContent() {
+        title = "用户协议和隐私政策"
+        
+        let tapTexts = ["《用户协议》", "《隐私政策》",];
+        let tapUrls = ["", "",];
+        let string = "\t用户协议和隐私政策请您务必审值阅读、充分理解 “用户协议” 和 ”隐私政策” 各项条款，包括但不限于：为了向您提供即时通讯、内容分享等服务，我们需要收集您的设备信息、操作日志等个人信息。\n\t您可阅读\(tapTexts[0])和\(tapTexts[1])了解详细信息。如果您同意，请点击 “同意” 开始接受我们的服务;"
+        textView.setupUserAgreements(string, tapTexts: tapTexts, tapUrls: tapUrls)
+        textView.delegate = self
+    }
+}
+
+extension NNUserAgreementController: UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        if delegate != nil {
+            return delegate!.userAgreementTextView(textView, shouldInteractWith: URL, in: characterRange)
+        }
+        return true
+    }
 }
