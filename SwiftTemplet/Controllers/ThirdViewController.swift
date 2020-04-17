@@ -67,10 +67,10 @@ class ThirdViewController: UIViewController{
     
     let serialQueue = DispatchQueue(label: "Decode queue")
     
-    let frameCenter = CGRect(x: UIScreen.main.bounds.width*0.05,
-                             y: UIScreen.main.bounds.height*0.25,
-                             width: UIScreen.main.bounds.width*0.9,
-                             height: 300)
+    let frameCenter = CGRect(x: 30,
+                             y: (UIScreen.main.bounds.height - 280)*0.5 - 30,
+                             width: UIScreen.main.bounds.width - 60,
+                             height: 280)
     
     lazy var textController: NNAgreementAlertController = {
         let controller = NNAgreementAlertController()
@@ -283,13 +283,20 @@ extension ThirdViewController: NNAgreementAlertControllerDelegate{
             exit(0)
         default:
             controller.dismiss(animated: true, completion: nil)
-        }    }
+        }
+    }
     
     func agreementAlertTextView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         DDLog(URL.absoluteString)
-        if URL.scheme == "" {
-            return false
+        if URL.scheme?.contains("_") == true {
+            guard let urlString = URL.absoluteString.components(separatedBy: "_").last else { return false}
+            UIApplication.openURLStr(urlString, prefix: "http://")
         }
+
+//        if URL.scheme == "" {
+//            return false
+//        }
+ 
         return true
     }
     
