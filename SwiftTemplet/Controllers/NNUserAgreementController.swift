@@ -107,8 +107,8 @@ import UIKit
 
         textView.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(0);
-            make.left.equalToSuperview().offset(15);
-            make.right.equalToSuperview().offset(-15);
+            make.left.equalToSuperview().offset(12);
+            make.right.equalToSuperview().offset(-12);
             make.bottom.equalToSuperview().offset(-itemHeight-5);
         }
         
