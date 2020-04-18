@@ -22,8 +22,8 @@ class ThirdViewController: UIViewController{
             [
             ["TransitionAnimatorShowController", "动画效果", ],
             ["NNAlertShowController", "自定义 UIViewController 弹窗", ],
-            ["UITextViewMultipleTapController", "下划线多点点击", ],
-             ["UILabelMultipleTapController", "下划线多点点击", ],
+            ["UITextViewMultipleTapController", "多点高亮点击", ],
+             ["UILabelMultipleTapController", "多点高亮点击", ],
             ["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
              ["NNPictureViewController", "全屏图册", ],
