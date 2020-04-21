@@ -12,15 +12,27 @@ import SwiftExpand
 
 class FourthViewController: UIViewController {
     
-//    var progressView:UIAnnularProgress?
-    
+    lazy var segmentTitleView: NNSegmentTitleView = {
+        let rect = CGRectMake(0, 0, 240, 44)
+        let view = NNSegmentTitleView(frame: rect)
+        view.lineColor = UIColor.red
+        view.titleColor = UIColor.gray
+        view.selectedTitleColor = UIColor.white
+        return view
+    }()
+        
     var progress: CGFloat = 0.0;
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-               
+        segmentTitleView.items = ["昨天", "今天", "明天"]
+        navigationItem.titleView = segmentTitleView
+        DDLog(segmentTitleView)
+        segmentTitleView.getViewLayer()
+        
+        
         createGroupView();
         
         createBtnBarItem("测试按钮", isLeft: false) { (reco, view, tag) in
@@ -181,23 +193,23 @@ class FourthViewController: UIViewController {
 }
 
 
-class HalfSizePresentationController : UIPresentationController {
-    
-    override var frameOfPresentedViewInContainerView: CGRect{
-        guard let containerView = containerView else { return .zero}
-        let rect = CGRect(x: 0,
-                          y: containerView.bounds.height/2,
-                          width: containerView.bounds.width,
-                          height: containerView.bounds.height/2)
-        return rect;
-    }
-}
-
-extension FourthViewController: UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presentingViewController)
-    }
-}
+//class HalfSizePresentationController : UIPresentationController {
+//
+//    override var frameOfPresentedViewInContainerView: CGRect{
+//        guard let containerView = containerView else { return .zero}
+//        let rect = CGRect(x: 0,
+//                          y: containerView.bounds.height/2,
+//                          width: containerView.bounds.width,
+//                          height: containerView.bounds.height/2)
+//        return rect;
+//    }
+//}
+//
+//extension FourthViewController: UIViewControllerTransitioningDelegate {
+//
+//    func presentationController(forPresented presented: UIViewController,
+//                                presenting: UIViewController?,
+//                                source: UIViewController) -> UIPresentationController? {
+//        return HalfSizePresentationController(presentedViewController: presented, presenting: presentingViewController)
+//    }
+//}
