@@ -242,18 +242,18 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
 
         cell.detailTextLabel?.text = itemList[0];
         
-        if #available(iOS 10.0, *) {
-            let circleSize = CGSize(width: tableView.rowHeight - 10, height: tableView.rowHeight - 10)
-            let renderer = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
-
-            let circleImage = renderer.image{ ctx in
-                UIColor.red.setFill()
-                ctx.cgContext.setFillColor(UIColor.random.cgColor)
-                ctx.cgContext.addEllipse(in: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
-                ctx.cgContext.drawPath(using: .fill)
-            }
-            cell.imageView?.image = circleImage
-        }
+//        if #available(iOS 10.0, *) {
+//            let circleSize = CGSize(width: tableView.rowHeight - 10, height: tableView.rowHeight - 10)
+//            let renderer = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
+//
+//            let circleImage = renderer.image{ ctx in
+//                UIColor.red.setFill()
+//                ctx.cgContext.setFillColor(UIColor.random.cgColor)
+//                ctx.cgContext.addEllipse(in: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
+//                ctx.cgContext.drawPath(using: .fill)
+//            }
+//            cell.imageView?.image = circleImage
+//        }
         return cell
     }
     

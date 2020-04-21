@@ -78,7 +78,7 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Surge (2.3.0)
-  - SwiftExpand (2.4.0)
+  - SwiftExpand (2.5.0)
   - SwiftyJSON (5.0.0)
   - UIDebuggingTool (0.2.1)
   - YYCache (1.0.4)
@@ -112,7 +112,6 @@ DEPENDENCIES:
   - SnapKit
   - SnapKitExtend
   - Surge
-  - SwiftExpand
   - SwiftyJSON
   - UIDebuggingTool
   - YYCache
@@ -189,7 +188,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Surge: 13979cd9593e943f9ce1202439da2999ea57e46d
-  SwiftExpand: f00380c5dec28d5c8e91d88e0b212b3a73fafb9b
+  SwiftExpand: 7d2fc479b616b444bb9df3b419fce284fef2965c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   UIDebuggingTool: 34adf07876469d7bae9de81f20ebf90a3f0d8924
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
