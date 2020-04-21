@@ -17,6 +17,14 @@ import HFNavigationController
 class ThirdViewController: UIViewController{
 
     //MARK: -lazy
+    lazy var tableView: UITableView = {
+        let view: UITableView = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        view.dataSource = self
+        view.delegate = self
+
+        return view
+    }()
+    
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
@@ -83,11 +91,9 @@ class ThirdViewController: UIViewController{
     
     lazy var navController: HFNavigationController = {
         let controller = HFNavigationController(rootViewController: textController)
-        controller.modalPresentationStyle = .custom
         controller.modalTransitionStyle = .crossDissolve
-        controller.transitioningDelegate = controller as UIViewControllerTransitioningDelegate
         
-        controller.view.layer.cornerRadius = 18
+        controller.view.layer.cornerRadius = 15
         controller.view.layer.masksToBounds = true
         
         controller.setupDefaultFrame(self.frameCenter)
@@ -109,18 +115,10 @@ class ThirdViewController: UIViewController{
             rootViewController.present(self.navController, animated: true, completion: nil)
         }
         
-        tbViewGrouped.rowHeight = 50;
-        view.addSubview(tbViewGrouped)
-        tbViewGrouped.mj_header = MJRefreshNormalHeader(refreshingBlock: {
-            self.requestInfo()
+        tableView.rowHeight = 50;
+        view.addSubview(tableView)
 
-        })
-        tbViewGrouped.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
-            self.requestInfo()
-
-        });
-        
-
+        setupRfresh()
 //        view.getViewLayer()
     }
     
@@ -152,6 +150,43 @@ class ThirdViewController: UIViewController{
     }
     
     // MARK: -funtions
+    func setupRfresh() {
+//        var header: MJRefreshNormalHeader {
+//            let header = MJRefreshNormalHeader {
+//                self.requestInfo()
+//            }
+//            header.lastUpdatedTimeLabel?.isHidden = true
+////            header.stateLabel?.isHidden = true
+//            header.stateLabel?.textColor = UIColor.white
+//            header.backgroundColor = UIColor.theme;
+//            return header;
+//        }
+        
+//        let backView = UIView(frame: CGRect(x: 0, y: -1000, width: UIScreen.main.bounds.width, height: 960))
+//        backView.backgroundColor = UIColor.theme
+//        tableView.addSubview(backView)
+//
+//        var header = MJRefreshNormalHeader.block({
+//            self.requestInfo()
+//        }, textColor: UIColor.white,
+//           backgroundColor: UIColor.theme)
+//        tableView.mj_header = header
+
+        tableView.refreshBlock({
+            self.requestInfo()
+        }, textColor: UIColor.white, backgroundColor: UIColor.theme)
+        
+        var footer: MJRefreshBackNormalFooter {
+            let footer = MJRefreshBackNormalFooter{
+                self.requestInfo()
+            }
+            
+            return footer;
+        }
+        tableView.mj_footer = footer
+        
+    }
+    
     func requestInfo() {
         NNProgressHUD.showLoading("努力加载中")
         let updateAPi = NNCheckVersApi()
@@ -166,8 +201,8 @@ class ThirdViewController: UIViewController{
                 DDLog(response)
             }
             NNProgressHUD.showSuccess("请求成功");
-            self.tbViewGrouped.mj_header!.endRefreshing()
-            self.tbViewGrouped.mj_footer!.endRefreshing()
+            self.tableView.mj_header!.endRefreshing()
+            self.tableView.mj_footer!.endRefreshing()
         }) { (manager, dic, error) in
             DDLog(error! as Any)
             
