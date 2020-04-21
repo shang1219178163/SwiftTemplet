@@ -111,7 +111,9 @@ class EntryViewController: UIViewController {
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
+            [
+                ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
+                ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
@@ -509,6 +511,21 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
 //            cell.accessoryType = .disclosureIndicator
 //            cell.imgViewLeft.isHidden = true
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellSixLable":
+            let cell = UITableViewCellSixLable.dequeueReusableCell(tableView);
+            cell.imgViewLeft.isHidden = true
+            cell.accessoryType = .disclosureIndicator
+
+            cell.labelTop.text = "标准服务套餐包"
+            cell.labelMid.text = "\("¥106.00")／通道／年"
+            cell.labelBom.text = "优惠价：\("¥599")   原价：\("¥799")"
+            
+//            if let imageURL = URL(string: "http://api.3rd.parkingwang.com/goods/img/get?img=goods/2020-02-18/1582006542_产品标志.png") {
+//                cell.imgViewLeft.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "bug.png"))
+//            }
             cell.getViewLayer();
             return cell;
             
