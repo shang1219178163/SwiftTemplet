@@ -219,7 +219,7 @@ class UITableViewCellCoupon: UITableViewCell {
     lazy var labelMid: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "midem";
-        view.textColor = UIColor.hex("#666666")
+        view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
         
         return view;
@@ -228,7 +228,7 @@ class UITableViewCellCoupon: UITableViewCell {
     lazy var labelBom: UILabel = {
         var view = UILabel(frame: .zero);
         view.text = "bottom";
-        view.textColor = UIColor.hex("#666666")
+        view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
         
         return view;
