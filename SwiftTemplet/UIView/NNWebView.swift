@@ -60,7 +60,6 @@ class NNWebView: UIView {
         progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
         webView.frame = CGRect(x: 0, y: 8, width: frame.size.width, height: frame.size.height - 10)
         reloadBtn.center = webView.center;
-        
     }
     
     //MARK: -observe
@@ -88,9 +87,11 @@ class NNWebView: UIView {
         if !urlString.hasPrefix("http") {
             urlString = "http://" + urlString;
         }
-        let request: URLRequest = URLRequest(url: URL(string: urlString)!)
-        webView.load(request)
-        
+        if urlString != "", let url = NSURL(string: urlString) as NSURL? {
+            webView.load(URLRequest(url: url as URL))
+        } else {
+            print("\(#function) 链接无效:\(urlString)")
+        }
     }
     
     @objc func webViewReload() {
