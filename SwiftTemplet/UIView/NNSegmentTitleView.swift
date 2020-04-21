@@ -50,7 +50,6 @@ import SwiftExpand
     var padding: CGFloat = 8.0
     var fontSize: CGFloat = 17
 
-    var lineHeight: CGFloat = 2.0
     var lineColor: UIColor = UIColor.line
     var titleColor: UIColor = UIColor.gray
     var selectedTitleColor: UIColor = UIColor.theme
@@ -166,7 +165,7 @@ import SwiftExpand
                     lineView.frame = rect
 
                 default:
-                    lineView.frame = CGRect(x: 0, y: bounds.height - lineHeight, width: itemWidth, height: lineHeight)
+                    lineView.frame = CGRect(x: 0, y: bounds.height - 2, width: itemWidth, height: 2)
                 }
 //                DDLog(lineView.frame)
             } else {
