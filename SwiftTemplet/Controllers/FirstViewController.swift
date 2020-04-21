@@ -63,17 +63,12 @@ class FirstViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-        
+        super.viewWillAppear(animated)
+
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        for (key, value) in AssociationKey.keysDic {
-//            print("\(key):\(value)")
-//        }
-//        DDLog(AssociationKey.keysDic)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
         
     override func didReceiveMemoryWarning() {
@@ -90,7 +85,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arraySection : NSArray = dataList[section] as! NSArray;
+        let arraySection: NSArray = dataList[section] as! NSArray;
         return arraySection.count;
     };
     
@@ -253,4 +248,18 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         return label;
     }
         
+}
+
+
+extension FirstViewController: UIScrollViewDelegate{
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetToShow: CGFloat = 60.0;
+        let alpha: CGFloat = (offsetToShow - scrollView.contentOffset.y) / offsetToShow;
+        
+//        DDLog("\(#function):\(alpha)")
+        let image = UIImage(color: UIColor.theme.alpha(alpha))
+        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
 }
