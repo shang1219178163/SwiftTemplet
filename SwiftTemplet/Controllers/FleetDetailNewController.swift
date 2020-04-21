@@ -33,7 +33,10 @@ class FleetDetailNewController: UIViewController{
         
         DDLog(version, ver.intValue)
         
-        swizzleMethodInstance(#selector(handleActionOne), replSel: #selector(handleActionTwo))
+        
+//        version.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
+        
+        NSObject.hookInstanceMethod(of: #selector(handleActionOne), with: #selector(handleActionTwo))
     }
     
     override func viewWillAppear(_ animated: Bool) {
