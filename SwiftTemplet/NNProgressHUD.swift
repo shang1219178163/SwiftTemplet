@@ -21,7 +21,7 @@ class NNProgressHUD: NSObject {
         hud.contentColor = UIColor.white;
         hud.minSize = model == MBProgressHUDMode.annularDeterminate ? CGSize(width: 90, height: 90) : CGSize(width: 130, height: 130)
         hud.bezelView.style = .solidColor
-        hud.bezelView.color = UIColor.hexValue(0x000000, 0.5)
+        hud.bezelView.color = UIColor.hexValue(0x000000, a: 0.5)
         hud.bezelView.layer.cornerRadius = 5;
         hud.backgroundView.backgroundColor = UIColor.clear
         
