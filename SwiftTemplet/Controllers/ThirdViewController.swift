@@ -172,7 +172,7 @@ class ThirdViewController: UIViewController{
 //           backgroundColor: UIColor.theme)
 //        tableView.mj_header = header
 
-        tableView.refreshBlock({
+        tableView.headerRefresh({
             self.requestInfo()
         }, textColor: UIColor.white, backgroundColor: UIColor.theme)
         
