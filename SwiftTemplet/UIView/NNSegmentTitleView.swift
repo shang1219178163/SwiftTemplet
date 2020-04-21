@@ -17,6 +17,10 @@ import SwiftExpand
     func segmentTitleViewChangeValue(_ view: NNSegmentTitleView, sender: UIButton)
 }
 
+@objc enum IndicatorType: Int {
+    case line, box
+}
+
 /// 导航栏分段按钮
 @objcMembers class NNSegmentTitleView: UIView {
     
@@ -28,10 +32,25 @@ import SwiftExpand
         return view
     }()
     
+    var indicatorType: IndicatorType = .line{
+        willSet{
+            switch newValue {
+            case .box:
+                lineView.layer.backgroundColor = UIColor.clear.cgColor
+                lineView.layer.borderColor = lineColor.cgColor;
+                lineView.layer.borderWidth = 1;
+            default:
+                lineView.layer.borderColor = UIColor.clear.cgColor;
+                lineView.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
+            }
+        }
+    }
+
     var numberOfRow: Int = 3
     var padding: CGFloat = 8.0
     var fontSize: CGFloat = 17
 
+    var lineHeight: CGFloat = 2.0
     var lineColor: UIColor = UIColor.line
     var titleColor: UIColor = UIColor.gray
     var selectedTitleColor: UIColor = UIColor.theme
@@ -70,7 +89,7 @@ import SwiftExpand
                     tmpRect.origin.x = sender.minX
                     self.lineView.frame = tmpRect;
                 }
-                DDLog("\(selectedIndex)_\(lineView.frame)_\(subviews)")
+//                DDLog("\(selectedIndex)_\(lineView.frame)_\(subviews)")
 
             } else {
                 e.element.setTitleColor(titleColor, for: .normal)
@@ -106,7 +125,6 @@ import SwiftExpand
         super.init(frame: frame)
         
         addSubview(lineView)
-        DDLog(subviews)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -143,9 +161,14 @@ import SwiftExpand
             
             if selectedIndex == e.offset {
                 view.setTitleColor(selectedTitleColor, for: .normal)
-                lineView.frame = CGRect(x: 0, y: bounds.height - 2, width: itemWidth, height: 2)
-                
-                DDLog(lineView.frame)
+                switch indicatorType {
+                case .box:
+                    lineView.frame = rect
+
+                default:
+                    lineView.frame = CGRect(x: 0, y: bounds.height - lineHeight, width: itemWidth, height: lineHeight)
+                }
+//                DDLog(lineView.frame)
             } else {
                 view.setTitleColor(titleColor, for: .normal)
             }
@@ -167,46 +190,5 @@ import SwiftExpand
         view.tag = tag;
         return view;
     }
-        
-    //MARK: - lazy
-    lazy var btnCancell: UIButton = {
-        let view = UIButton(type: .custom);
-        view.tag = 0;
-        
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle(kTitleCancell, for: .normal);
-        view.setTitleColor(UIColor.red, for: .normal);
-        view.addActionHandler({ (control) in
-//            if let sender = control as? UIButton {
-//                self.viewBlock!(self, sender.tag);
-//                self.dismiss();
-//            }
 
-        }, for: .touchUpInside)
-        return view;
-    }();
-    
-    lazy var label: UILabel = {
-        let view = UILabel(frame: .zero);
-        view.text = "请选择";
-        view.textColor = UIColor.gray;
-        view.textAlignment = .center;
-        return view;
-    }();
-    
-    lazy var btnSure: UIButton = {
-        let view = UIButton(type: .custom);
-        view.tag = 1;
-        
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle(kTitleSure, for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-//            if let sender = control as? UIButton {
-//                self.viewBlock!(self,sender.tag);
-//            }
-
-        }, for: .touchUpInside)
-        return view;
-    }();
 }

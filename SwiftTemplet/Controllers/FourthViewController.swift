@@ -18,35 +18,40 @@ class FourthViewController: UIViewController {
         view.lineColor = UIColor.red
         view.titleColor = UIColor.gray
         view.selectedTitleColor = UIColor.white
+        view.items = ["昨天", "今天", "明天"]
+
+        return view
+    }()
+    
+    lazy var segmentTitleViewOne: NNSegmentTitleView = {
+        let view = NNSegmentTitleView(frame: .zero)
+        view.lineColor = UIColor.theme
+        view.titleColor = UIColor.gray
+        view.selectedTitleColor = UIColor.theme
+        view.indicatorType = .box
+        view.items = ["过去", "现在", "未来"]
+
         return view
     }()
         
     var progress: CGFloat = 0.0;
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        segmentTitleView.items = ["昨天", "今天", "明天"]
         navigationItem.titleView = segmentTitleView
-        DDLog(segmentTitleView)
-        segmentTitleView.getViewLayer()
-        
-        
-        createGroupView();
-        
-        createBtnBarItem("测试按钮", isLeft: false) { (reco, view, tag) in
-            DDLog(view)
-
-        }
+//        DDLog(segmentTitleView)
+//        segmentTitleView.getViewLayer()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "present", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-
         
+        createGroupView();
+
+        view.addSubview(segmentTitleViewOne)
+
         let list: [String] = ["1", "2", "3", "4", "5", "6",]
         let listOne = list.map { $0 + "_item" }
         DDLog(listOne)
-        
         
         goodsToolView.titles = ["扩容", "减配", "续费"]
         view.addSubview(goodsToolView)
@@ -60,7 +65,7 @@ class FourthViewController: UIViewController {
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
         orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
 
-        view.getViewLayer()
+//        view.getViewLayer()
         return;
   
         view.addSubview(clockView);
@@ -86,6 +91,12 @@ class FourthViewController: UIViewController {
             make.height.equalTo(50);
         }
         
+        segmentTitleViewOne.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.bottom.equalTo(orderPayView.snp.top).offset(-10);
+            make.height.equalTo(40);
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,13 +137,13 @@ class FourthViewController: UIViewController {
     }()
     
     func createGroupView() {
-        let list = Array<Any>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
+        let list = Array<String>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
-        let groupView = UIView.createGroupView(rect, list: (list as! [String]), numberOfRow: 4, padding: 5, type: 2) { (tap, itemView, idx) in
-            DDLog(idx);
-        };
-        
+        let groupView = UIButton.createGroupView(rect, list: list!, numberOfRow: 4, padding: 5) { (control) in
+            DDLog(control.tag);
+        }
+
         view.addSubview(groupView);
     }
     
