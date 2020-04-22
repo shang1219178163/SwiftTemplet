@@ -121,6 +121,23 @@ class FourthViewController: UIViewController {
 
     }
     
+    @objc func showPopoverButtonAction(_ sender: UIButton) {
+
+        /* 2 */
+        //Configure the presentation controller
+        let popoverContentVC = PopoverViewController()
+        popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 20, height: 400)
+//        popoverContentVC.modalPresentationStyle = .popover
+//        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
+//        popoverPresentationVC.permittedArrowDirections = .up
+//        popoverPresentationVC.sourceView = self.view
+//        popoverPresentationVC.sourceRect = sender.frame
+//        popoverPresentationVC.delegate = self
+//        present(popoverContentVC, animated: true, completion: nil)        
+        
+        presentPopover(popoverContentVC, sender: sender, arrowDirection: .up, completion: nil)
+    }
+    
     lazy var goodsToolView: IOPGoodsToolView = {
         var view = IOPGoodsToolView(frame: .zero)
         view.padding = 10;
@@ -128,7 +145,6 @@ class FourthViewController: UIViewController {
 
         return view;
     }()
-    
     
     lazy var orderPayView: IOPOrderPayView = {
         var view = IOPOrderPayView(frame: .zero)
@@ -142,6 +158,7 @@ class FourthViewController: UIViewController {
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
         let groupView = UIButton.createGroupView(rect, list: list!, numberOfRow: 4, padding: 5) { (control) in
             DDLog(control.tag);
+            self.showPopoverButtonAction(control as! UIButton)
         }
 
         view.addSubview(groupView);
@@ -167,15 +184,13 @@ class FourthViewController: UIViewController {
         return view
     }()
     
-    
     lazy var progressView: NNAnnularProgress = {
         let progressView = NNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
         progressView.backgroundColor = .cyan;
         return progressView;
     }();
     
-    
-    lazy var datePicker:NNDatePicker = {
+    lazy var datePicker: NNDatePicker = {
         let view = NNDatePicker();
         view.block({ (sender, idx) in
             if idx == 1 {
@@ -203,24 +218,21 @@ class FourthViewController: UIViewController {
     }
 }
 
+extension FourthViewController: UIPopoverPresentationControllerDelegate {
 
-//class HalfSizePresentationController : UIPresentationController {
-//
-//    override var frameOfPresentedViewInContainerView: CGRect{
-//        guard let containerView = containerView else { return .zero}
-//        let rect = CGRect(x: 0,
-//                          y: containerView.bounds.height/2,
-//                          width: containerView.bounds.width,
-//                          height: containerView.bounds.height/2)
-//        return rect;
-//    }
-//}
-//
-//extension FourthViewController: UIViewControllerTransitioningDelegate {
-//
-//    func presentationController(forPresented presented: UIViewController,
-//                                presenting: UIViewController?,
-//                                source: UIViewController) -> UIPresentationController? {
-//        return HalfSizePresentationController(presentedViewController: presented, presenting: presentingViewController)
-//    }
-//}
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+     
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        setAlphaOfBackgroundViews(1)
+    }
+
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        setAlphaOfBackgroundViews(0.7)
+    }
+}
