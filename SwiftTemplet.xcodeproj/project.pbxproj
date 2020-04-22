@@ -157,6 +157,7 @@
 		146D2820244D3205004655B1 /* NNSegmentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D281F244D3205004655B1 /* NNSegmentTitleView.swift */; };
 		146D28CA244E86AE004655B1 /* UITableViewCellSixLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */; };
 		146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */; };
+		146D28D824505B02004655B1 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D724505B02004655B1 /* PopoverViewController.swift */; };
 		146F09822228AF4700E13F53 /* NNVehicleInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */; };
 		146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* NNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* NNUpdateVersionView.swift */; };
@@ -423,6 +424,7 @@
 		146D281F244D3205004655B1 /* NNSegmentTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSegmentTitleView.swift; sourceTree = "<group>"; };
 		146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSixLable.swift; sourceTree = "<group>"; };
 		146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MJRefresh.swift"; sourceTree = "<group>"; };
+		146D28D724505B02004655B1 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNVehicleInfoCardView.swift; sourceTree = "<group>"; };
 		146F09832228CD7000E13F53 /* NNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 				1479D5CE24455A4D007F7CC4 /* TabbarInteractionTransition.swift */,
 				1479D62D24484BDD007F7CC4 /* NNAlertViewController.swift */,
 				1422A9CB24495420002D6145 /* NNAgreementAlertController.swift */,
+				146D28D724505B02004655B1 /* PopoverViewController.swift */,
 				141495B4242B4F4700141A9F /* AddressPicker */,
 				14C38A872411253600816A8E /* IOPFileUploadController.swift */,
 				14E02F6D2420D81E00E1EA2C /* IOPImageUploadController.swift */,
@@ -1480,6 +1483,7 @@
 				1448871B224E1D2300B550AF /* ZMKeyBoardUtil.swift in Sources */,
 				145C914F2334C4C100849E9D /* PlateNumMainController.swift in Sources */,
 				149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */,
+				146D28D824505B02004655B1 /* PopoverViewController.swift in Sources */,
 				141495B0242AFA3900141A9F /* NNNoticeView.swift in Sources */,
 				14244770222B92070087372F /* UITableViewCellPhotoPicker.swift in Sources */,
 				5182444E213E8CB600071A9D /* NNRootClass.swift in Sources */,
