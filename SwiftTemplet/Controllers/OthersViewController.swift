@@ -24,7 +24,6 @@ class OthersViewController: UIViewController {
 
     }
     
-
 //    lazy var segmentCtlOne: UISegmentedControl = {
 //        let view: UISegmentedControl = UISegmentedControl.create(.bottomLine);
 //        view.itemList = ["是", "否", "其他"]
@@ -36,7 +35,7 @@ class OthersViewController: UIViewController {
 //    }()
     lazy var segmentCtlOne: UISegmentedControl = {
         let view = NNSegmentedControl(frame: .zero)
-        view.type = 2;
+        view.showStyle = .bottomLine
         view.normalColor = UIColor.white
         view.selectedColor = UIColor.green
         view.itemList = ["是", "否", "其他"]

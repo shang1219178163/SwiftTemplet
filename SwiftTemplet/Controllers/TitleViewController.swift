@@ -69,7 +69,7 @@ class TitleViewController: UIViewController{
         
         view.addSubview(chooseView)
 
-        view.getViewLayer()
+//        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -283,8 +283,8 @@ class TitleViewController: UIViewController{
 
     lazy var segmentCtlOne: NNSegmentedControl = {
         let view = NNSegmentedControl(frame: .zero)
-        view.type = 2;
-        view.selectedColor = .red
+        view.showStyle = .bottomLine
+        view.selectedColor = .systemBlue
         view.itemList = ["是", "否", "其他"]
         view.addActionHandler({ (control) in
             guard let sender = control as? UISegmentedControl else { return }
@@ -383,7 +383,7 @@ class TitleViewController: UIViewController{
     
     lazy var buttonRight: NNButton = {
         var view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯Right", for: .normal);
+        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .right
         view.iconLocation = .rightBottom
 
