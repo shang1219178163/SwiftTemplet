@@ -18,9 +18,38 @@ class SecondViewController: UIViewController{
     let url = "https://httpbin.org/get";
     let kTips_Fleet = "·请选择车场及出\\入口后,开启车队模式\n·该功能需要arm3.5.4.0以上版本支持\n·如有需要请联系运维人员升级"
     
+    //MARK: -lazy
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
+        view.label.text = kTips_Fleet;
+        view.label.textAlignment = .center
+        view.btn.addActionHandler({ (sender: UIControl) in
+            let obj = sender as! UIButton
+            
+            DDLog(obj.tag)
+        }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var segmentCtl: NNSegmentedControl = {
+        let rect = CGRectMake(0, 0, 240, 44)
+        let view = NNSegmentedControl(frame: rect)
+        view.showStyle = .bottomLine
+        view.normalColor = .gray
+        view.selectedColor = .white
+        view.itemList = ["过去", "现在", "将来"]
+        view.addActionHandler({ (control) in
+            guard let sender = control as? UISegmentedControl else { return }
+            DDLog(sender)
+        }, for: .valueChanged)
+        return view;
+    }()
+    
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.titleView = segmentCtl
         view.addSubview(tbView);
         
         setupData();
@@ -73,19 +102,7 @@ class SecondViewController: UIViewController{
         DDLog(222)
     }
     
-    //MARK: -lazy
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
-        view.label.text = kTips_Fleet;
-        view.label.textAlignment = .center
-        view.btn.addActionHandler({ (sender: UIControl) in
-            let obj = sender as! UIButton
-            
-            DDLog(obj.tag)
-        }, for: .touchUpInside)
-        return view
-    }()
-    
+
 }
 
 extension SecondViewController: UITableViewDataSource, UITableViewDelegate{

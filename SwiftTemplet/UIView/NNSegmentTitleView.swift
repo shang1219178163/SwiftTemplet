@@ -28,7 +28,7 @@ import SwiftExpand
 
     lazy var lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
+        view.backgroundColor = lineColor
         return view
     }()
     
@@ -41,7 +41,7 @@ import SwiftExpand
                 lineView.layer.borderWidth = 1;
             default:
                 lineView.layer.borderColor = UIColor.clear.cgColor;
-                lineView.backgroundColor = UIColor.blue.withAlphaComponent(0.7)
+                lineView.backgroundColor = UIColor.systemBlue
             }
         }
     }

@@ -25,7 +25,7 @@ class FourthViewController: UIViewController {
     lazy var segmentTitleView: NNSegmentTitleView = {
         let rect = CGRectMake(0, 0, 240, 44)
         let view = NNSegmentTitleView(frame: rect)
-        view.lineColor = UIColor.red
+        view.lineColor = UIColor.systemBlue
         view.titleColor = UIColor.gray
         view.selectedTitleColor = UIColor.white
         view.items = ["昨天", "今天", "明天"]
@@ -124,26 +124,6 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showErrorText("fail");
     }
 
-//    @objc func showPopoverAction(_ sender: UIButton) {
-//
-//        let popoverContentVC = SimpleListController()
-//        popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 200, height: 400)
-//        popoverContentVC.delegate = self
-//        popoverContentVC.modalPresentationStyle = .popover
-//
-//        guard let superview = sender.superview else { return }
-//        var rect = sender.frame
-//        if superview.isKind(of: UINavigationBar.classForCoder()) {
-//            rect = superview.convert(sender.frame, to: self.view)
-//        }
-//
-//        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
-//        popoverPresentationVC.permittedArrowDirections = .up
-//        popoverPresentationVC.sourceView = self.view
-//        popoverPresentationVC.sourceRect = rect
-//        popoverPresentationVC.delegate = self
-//        present(popoverContentVC, animated: true, completion: nil)
-//    }
     @objc func showPopoverAction(_ sender: UIButton) {
         let popoverContentVC = SimpleListController()
         popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 20, height: 400)

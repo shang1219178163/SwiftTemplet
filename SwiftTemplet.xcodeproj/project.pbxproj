@@ -159,6 +159,7 @@
 		146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */; };
 		146D28D824505B02004655B1 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D724505B02004655B1 /* PopoverViewController.swift */; };
 		146D28DA245118BA004655B1 /* SimpleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D9245118B9004655B1 /* SimpleListController.swift */; };
+		146D28E22451A2B5004655B1 /* SystemColorShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28E12451A2B5004655B1 /* SystemColorShowController.swift */; };
 		146F09822228AF4700E13F53 /* NNVehicleInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */; };
 		146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* NNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* NNUpdateVersionView.swift */; };
@@ -427,6 +428,7 @@
 		146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MJRefresh.swift"; sourceTree = "<group>"; };
 		146D28D724505B02004655B1 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		146D28D9245118B9004655B1 /* SimpleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleListController.swift; sourceTree = "<group>"; };
+		146D28E12451A2B5004655B1 /* SystemColorShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemColorShowController.swift; sourceTree = "<group>"; };
 		146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNVehicleInfoCardView.swift; sourceTree = "<group>"; };
 		146F09832228CD7000E13F53 /* NNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
@@ -857,6 +859,7 @@
 				1422A9D024495B21002D6145 /* NNAlertShowController.swift */,
 				1479D5C9244407A5007F7CC4 /* TableViewPrefetchRowController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
+				146D28E12451A2B5004655B1 /* SystemColorShowController.swift */,
 				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
 				149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */,
 				145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */,
@@ -1482,6 +1485,7 @@
 				142A76F622275EE10016D3DA /* NNSegmentViewZero.swift in Sources */,
 				14D91B13234C874500554994 /* UITableViewCellAfford.swift in Sources */,
 				5182444C213E8CB600071A9D /* NNResult.swift in Sources */,
+				146D28E22451A2B5004655B1 /* SystemColorShowController.swift in Sources */,
 				147FF46721CE48BA00351E94 /* UICTReusableViewZero.swift in Sources */,
 				142A770722275EE10016D3DA /* NNPickListView.swift in Sources */,
 				1448871B224E1D2300B550AF /* ZMKeyBoardUtil.swift in Sources */,

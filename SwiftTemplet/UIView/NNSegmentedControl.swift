@@ -12,7 +12,7 @@ import SwiftExpand
 /// UISegmentedControl 升级版,支持0: box, 1, topLine, 2,bottomLine 三种样式
 class NNSegmentedControl: UISegmentedControl {
 
-    var indicatorHeight: CGFloat = 1.5
+    var indicatorHeight: CGFloat = 2
     var cornerRadius: CGFloat = 3
 
     var normalColor: UIColor = UIColor.black {
@@ -24,7 +24,6 @@ class NNSegmentedControl: UISegmentedControl {
     var selectedColor: UIColor = UIColor.theme {
         didSet{
             setupControl()
-
         }
     }
     
@@ -41,8 +40,13 @@ class NNSegmentedControl: UISegmentedControl {
         }
     }
     
+    // MARK: -lifecycle
     deinit {
         removeObserver(self, forKeyPath: "selectedSegmentIndex")
+    }
+    
+    override var intrinsicContentSize: CGSize{
+        return UIView.layoutFittingExpandedSize
     }
     
     override init(frame: CGRect) {
@@ -118,7 +122,6 @@ class NNSegmentedControl: UISegmentedControl {
         setTitleTextAttributes(dic_H, for: .selected)
         
         indicator.layer.borderColor = selectedColor.cgColor;
-
     }
     
     func setupIndicator() {
@@ -140,7 +143,7 @@ class NNSegmentedControl: UISegmentedControl {
 
         case .bottomLine:
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, self.sizeHeight - self.indicatorHeight, segmentWidth, self.indicatorHeight)
+                self.indicator.frame = CGRectMake(originX, self.bounds.height - self.indicatorHeight, segmentWidth, self.indicatorHeight)
             }
             bringSubviewToFront(indicator)
 
