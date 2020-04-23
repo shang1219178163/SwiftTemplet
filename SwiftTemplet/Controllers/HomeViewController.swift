@@ -67,7 +67,7 @@ class HomeViewController: UITabBarController {
         tabBar.isTranslucent = false;
         viewControllers = UINavListFromList(itemList);
 
-        self.delegate = self
+//        self.delegate = self
 //        self.view.addGestureRecognizer(self.panGesture)
         
         selectedIndex = 2
@@ -77,7 +77,6 @@ class HomeViewController: UITabBarController {
         super.viewWillAppear(animated);
         
 //        configureCenterBtn();
-
     }
     
     func configureCenterBtn() {
@@ -133,22 +132,22 @@ class HomeViewController: UITabBarController {
     }();
 }
 
-extension HomeViewController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
-        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
-        DDLog("\(fromIndex) -> \(toIndex)")
-//        animator.targetEdge = fromIndex < toIndex ? .right : .left
-        animator.animateType = fromIndex < toIndex ? .right : .left
-        return animator
-    }
-
-//    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        if self.panGesture.state == .began || self.panGesture.state == .changed {
-//            return TabbarInteractionTransition(pan: self.panGesture)
-//        } else {
-//            return nil
-//        }
+//extension HomeViewController: UITabBarControllerDelegate {
+//    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//
+//        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
+//        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
+//        DDLog("\(fromIndex) -> \(toIndex)")
+////        animator.targetEdge = fromIndex < toIndex ? .right : .left
+//        animator.animateType = fromIndex < toIndex ? .right : .left
+//        return animator
 //    }
-}
+//
+////    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+////        if self.panGesture.state == .began || self.panGesture.state == .changed {
+////            return TabbarInteractionTransition(pan: self.panGesture)
+////        } else {
+////            return nil
+////        }
+////    }
+//}

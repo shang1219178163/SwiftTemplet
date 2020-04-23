@@ -12,6 +12,16 @@ import SwiftExpand
 
 class FourthViewController: UIViewController {
     
+    lazy var rightBtn: UIButton = {
+        let button = UIButton.create(.zero, title: "展示", imgName: nil, type: 1)
+        button.sizeToFit()
+        button.addActionHandler({ (control) in
+            self.showPopoverAction(control as! UIButton)
+            
+        }, for: .touchUpInside)
+        return button
+    }()
+    
     lazy var segmentTitleView: NNSegmentTitleView = {
         let rect = CGRectMake(0, 0, 240, 44)
         let view = NNSegmentTitleView(frame: rect)
@@ -39,12 +49,11 @@ class FourthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         navigationItem.titleView = segmentTitleView
 //        DDLog(segmentTitleView)
 //        segmentTitleView.getViewLayer()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "present", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        
+                
         createGroupView();
 
         view.addSubview(segmentTitleViewOne)
@@ -113,28 +122,40 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showLoading(kNetWorkRequesting);
 //        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
-
     }
 
-    @objc func handleActionItem(_ sender: UIBarButtonItem) {
-    
-
-    }
-    
-    @objc func showPopoverButtonAction(_ sender: UIButton) {
-
-        /* 2 */
-        //Configure the presentation controller
-        let popoverContentVC = PopoverViewController()
+//    @objc func showPopoverAction(_ sender: UIButton) {
+//
+//        let popoverContentVC = SimpleListController()
+//        popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 200, height: 400)
+//        popoverContentVC.delegate = self
+//        popoverContentVC.modalPresentationStyle = .popover
+//
+//        guard let superview = sender.superview else { return }
+//        var rect = sender.frame
+//        if superview.isKind(of: UINavigationBar.classForCoder()) {
+//            rect = superview.convert(sender.frame, to: self.view)
+//        }
+//
+//        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
+//        popoverPresentationVC.permittedArrowDirections = .up
+//        popoverPresentationVC.sourceView = self.view
+//        popoverPresentationVC.sourceRect = rect
+//        popoverPresentationVC.delegate = self
+//        present(popoverContentVC, animated: true, completion: nil)
+//    }
+    @objc func showPopoverAction(_ sender: UIButton) {
+        let popoverContentVC = SimpleListController()
         popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 20, height: 400)
+        popoverContentVC.delegate = self
 //        popoverContentVC.modalPresentationStyle = .popover
 //        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
 //        popoverPresentationVC.permittedArrowDirections = .up
 //        popoverPresentationVC.sourceView = self.view
 //        popoverPresentationVC.sourceRect = sender.frame
 //        popoverPresentationVC.delegate = self
-//        present(popoverContentVC, animated: true, completion: nil)        
-        
+//        present(popoverContentVC, animated: true, completion: nil)
+
         presentPopover(popoverContentVC, sender: sender, arrowDirection: .up, completion: nil)
     }
     
@@ -158,7 +179,7 @@ class FourthViewController: UIViewController {
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
         let groupView = UIButton.createGroupView(rect, list: list!, numberOfRow: 4, padding: 5) { (control) in
             DDLog(control.tag);
-            self.showPopoverButtonAction(control as! UIButton)
+            self.showPopoverAction(control as! UIButton)
         }
 
         view.addSubview(groupView);
@@ -229,10 +250,18 @@ extension FourthViewController: UIPopoverPresentationControllerDelegate {
     }
     
     func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-        setAlphaOfBackgroundViews(1)
+//        setAlphaOfBackgroundViews(1)
     }
 
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-        setAlphaOfBackgroundViews(0.7)
+//        setAlphaOfBackgroundViews(0.7)
     }
+}
+
+extension FourthViewController: TableViewSelectDelegate {
+    func tableViewSelect(_ tableView: UITableView, indexPath: IndexPath) {
+        DDLog(indexPath.string)
+    }
+    
+
 }

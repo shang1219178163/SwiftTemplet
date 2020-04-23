@@ -158,6 +158,7 @@
 		146D28CA244E86AE004655B1 /* UITableViewCellSixLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */; };
 		146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */; };
 		146D28D824505B02004655B1 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D724505B02004655B1 /* PopoverViewController.swift */; };
+		146D28DA245118BA004655B1 /* SimpleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D9245118B9004655B1 /* SimpleListController.swift */; };
 		146F09822228AF4700E13F53 /* NNVehicleInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */; };
 		146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* NNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* NNUpdateVersionView.swift */; };
@@ -425,6 +426,7 @@
 		146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSixLable.swift; sourceTree = "<group>"; };
 		146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MJRefresh.swift"; sourceTree = "<group>"; };
 		146D28D724505B02004655B1 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		146D28D9245118B9004655B1 /* SimpleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleListController.swift; sourceTree = "<group>"; };
 		146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNVehicleInfoCardView.swift; sourceTree = "<group>"; };
 		146F09832228CD7000E13F53 /* NNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
@@ -841,6 +843,7 @@
 				1479D5CE24455A4D007F7CC4 /* TabbarInteractionTransition.swift */,
 				1479D62D24484BDD007F7CC4 /* NNAlertViewController.swift */,
 				1422A9CB24495420002D6145 /* NNAgreementAlertController.swift */,
+				146D28D9245118B9004655B1 /* SimpleListController.swift */,
 				146D28D724505B02004655B1 /* PopoverViewController.swift */,
 				141495B4242B4F4700141A9F /* AddressPicker */,
 				14C38A872411253600816A8E /* IOPFileUploadController.swift */,
@@ -1313,6 +1316,7 @@
 				142A770622275EE10016D3DA /* NNOperationStateView.swift in Sources */,
 				14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */,
 				142A76FC22275EE10016D3DA /* NNCalendarView.swift in Sources */,
+				146D28DA245118BA004655B1 /* SimpleListController.swift in Sources */,
 				14488726224E1D2300B550AF /* ZMKeyBoadModel.swift in Sources */,
 				14F3966D227ED405000CD7B4 /* NNBaseRequestApi.swift in Sources */,
 				14E02F702420D88200E1EA2C /* UITableViewCellPhoto.swift in Sources */,

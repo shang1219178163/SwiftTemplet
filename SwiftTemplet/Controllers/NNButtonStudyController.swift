@@ -110,7 +110,7 @@ class NNButtonStudyController: UIViewController{
     
     lazy var buttonTop: NNButton = {
         var view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯Top", for: .normal);
+        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .top
         view.iconLocation = .leftTop
 
@@ -142,7 +142,7 @@ class NNButtonStudyController: UIViewController{
     
     lazy var buttonRight: NNButton = {
         var view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯Right", for: .normal);
+        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .right
         view.iconLocation = .rightBottom
 

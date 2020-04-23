@@ -9,9 +9,17 @@
 import UIKit
 import SwiftExpand
 
+/// 自定义协议
+@objc protocol NNTablePlainViewDelegate{
+    @objc optional func plainView(_ plainView: NNTablePlainView, tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    @objc optional func plainView(_ plainView: NNTablePlainView, tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    @objc func plainView(_ plainView: NNTablePlainView, tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+}
+
 /// 通用列表视图
 class NNTablePlainView: UIView {
-    
+    weak var delegate: NNTablePlainViewDelegate?
+
     var list:[Any]?
     var viewBlockCellForRow: CellForRowClosure?
     var viewBlockDidSelectRow: DidSelectRowClosure?
@@ -34,15 +42,15 @@ class NNTablePlainView: UIView {
 
     // MARK: - funtions
     func blockCellHeightForRow(_ action: @escaping CellHeightForRowClosure) {
-        self.viewBlockHeightForRow = action;
+        viewBlockHeightForRow = action;
     }
     
     func blockCellForRow(_ action: @escaping CellForRowClosure) {
-        self.viewBlockCellForRow = action;
+        viewBlockCellForRow = action;
     }
     
     func blockDidSelectRow(_ action: @escaping DidSelectRowClosure) {
-        self.viewBlockDidSelectRow = action;
+        viewBlockDidSelectRow = action;
     }
     
     //MARK: -lazy
@@ -62,28 +70,36 @@ extension NNTablePlainView: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list!.count;
-    };
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.viewBlockHeightForRow != nil && self.viewBlockHeightForRow!(tableView, indexPath) > 10 {
-            let height = self.viewBlockHeightForRow!(tableView, indexPath);
+        if viewBlockHeightForRow != nil && viewBlockHeightForRow!(tableView, indexPath) > 10 {
+            let height = viewBlockHeightForRow!(tableView, indexPath);
             return height
+        }
+        
+        if let rowHeight = delegate?.plainView?(self, tableView: tableView, heightForRowAt: indexPath) {
+            return rowHeight
         }
         return tableView.rowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if self.viewBlockCellForRow != nil && self.viewBlockCellForRow!(tableView, indexPath) != nil {
-            return self.viewBlockCellForRow!(tableView, indexPath)!;
+        if viewBlockCellForRow != nil && viewBlockCellForRow!(tableView, indexPath) != nil {
+            return viewBlockCellForRow!(tableView, indexPath)!;
+        }
+        if let cell = delegate?.plainView?(self, tableView: tableView, cellForRowAt: indexPath) {
+            return cell
         }
         let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.viewBlockDidSelectRow != nil {
-            return self.viewBlockDidSelectRow!(tableView, indexPath);
+        if viewBlockDidSelectRow != nil {
+            return viewBlockDidSelectRow!(tableView, indexPath);
         }
+        delegate?.plainView(self, tableView: tableView, didSelectRowAt: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
