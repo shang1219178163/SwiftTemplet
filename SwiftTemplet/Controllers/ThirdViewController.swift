@@ -65,7 +65,7 @@ class ThirdViewController: UIViewController{
              ["ObserveViewController", "Observe", ],
              ["TestViewController", "新想法测试", ],
              ["IOPInvoiceCreateController", "折叠", ],
-             
+             ["SystemColorShowController", "SystemColor", ],
             ],
         ]
         return array
