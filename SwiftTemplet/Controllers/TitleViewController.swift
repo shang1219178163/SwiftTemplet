@@ -57,7 +57,6 @@ class TitleViewController: UIViewController{
             self.navigationController?.pushViewController(ctrl, animated: true)
         }
 
-        view.addSubview(segmentView)
         view.addSubview(segmentCtlOne)
         view.addSubview(checkBox)
         view.addSubview(boxButton)
@@ -75,18 +74,11 @@ class TitleViewController: UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        segmentView.snp.makeConstraints { (make) in
+        segmentCtlOne.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(100);
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(50)
-        }
-        
-        segmentCtlOne.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentView.snp.bottom).offset(15);
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.height.equalTo(40)
         }
         
 //        checkBox.sizeToFit()
@@ -256,21 +248,7 @@ class TitleViewController: UIViewController{
         view.subType = 3
         return view
     }()
-    
-    
-    lazy var segmentView: NNSegmentViewZero = {
-        var view = NNSegmentViewZero(frame: .zero)
-        view.segmentCtl.itemList = ["one","two","three","four"]
-        view.indicatorHeight = 1
-        view.type = 1
-        view.block({ (segmentView: NNSegmentViewZero, control: UISegmentedControl) in
-            DDLog(control.selectedSegmentIndex)
-
-
-        })
-        return view
-    }()
-    
+        
     lazy var topView: NNTopSheetView = {
         var view = NNTopSheetView()
         view.parController = self
