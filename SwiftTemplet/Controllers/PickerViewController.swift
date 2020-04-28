@@ -92,8 +92,7 @@ class PickerViewController: UIViewController {
         for i in 0...4 {
             list.append("\(i)")
         }
-        view.items = list
-        
+        view.items = list        
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
                 print(btn.titleLabel?.text as Any)

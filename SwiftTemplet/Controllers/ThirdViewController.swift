@@ -261,6 +261,11 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
         let itemList = list[indexPath.section][indexPath.row]
 //        DDLog(itemList);
         
+        if ["SystemColorShowController"].contains(itemList.first!) {
+            UIAlertController.showAlert(message: "@available(iOS 13.0, *)")
+            return
+        }
+        
         let controller = UICtrFromString(itemList.first!)
         controller.title = itemList.last!
         navigationController?.pushViewController(controller, animated: true);

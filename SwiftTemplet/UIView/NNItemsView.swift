@@ -8,7 +8,21 @@
 
 import UIKit
 
-class NNItemsView: UIView {
+
+@objc protocol NNItemsViewDelegate{
+    @objc func itemsView(_ view: NNItemsView, sender: UIButton);
+}
+
+@objc enum ShowStyle: Int {
+    case topLeftToRight
+    case topRightToLeft
+    case bottomLeftToRight
+    case bottomRightToLeft
+}
+
+@objcMembers class NNItemsView: UIView {
+
+    weak var delegate: NNItemsViewDelegate?
 
     var cornerRadius: CGFloat = 5.0
     var borderWidth: CGFloat = 0.5
@@ -41,6 +55,10 @@ class NNItemsView: UIView {
             }
         }
     }
+
+    ///反方向(左<右)
+//    var isReversed: Bool = false
+    var showStyle: ShowStyle = .topLeftToRight
 
     var items:[String]?
     {
@@ -86,13 +104,13 @@ class NNItemsView: UIView {
             }
         }
 //        print(sender.isSelected, selectedList)
-        
+        delegate?.itemsView(self, sender: sender)
         if viewBlock != nil {
             viewBlock!(self, sender)
         }
     }
     
-    var viewBlock: ((NNItemsView, UIControl) -> Void)?
+    var viewBlock: ((NNItemsView, UIButton) -> Void)?
     var itemList: [UIButton] = []{
         willSet{
             if newValue.count <= 0 {
@@ -137,9 +155,32 @@ class NNItemsView: UIView {
         let itemHeight = (bounds.height - CGFloat(rowCount - 1)*padding)/CGFloat(rowCount)
         
         for e in itemList.enumerated() {
-            let x = CGFloat(e.offset % numberOfRow) * (itemWidth + padding)
-            let y = CGFloat(e.offset / numberOfRow) * (itemHeight + padding)
-            let rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+            let originX = CGFloat(e.offset % numberOfRow) * (itemWidth + padding)
+            let originY = CGFloat(e.offset / numberOfRow) * (itemHeight + padding)
+            var rect = CGRect(x: originX, y: originY, width: itemWidth, height: itemHeight)
+
+            switch showStyle {
+            case .topRightToLeft:
+                rect = CGRect(x: bounds.width - originX - itemWidth,
+                              y: originY,
+                              width: itemWidth,
+                              height: itemHeight)
+
+            case .bottomLeftToRight:
+                rect = CGRect(x: originX,
+                              y: bounds.height - originY - itemHeight,
+                              width: itemWidth,
+                              height: itemHeight)
+
+            case .bottomRightToLeft:
+                rect = CGRect(x: bounds.width - originX - itemWidth,
+                              y: bounds.height - originY - itemHeight,
+                              width: itemWidth,
+                              height: itemHeight)
+
+            default:
+                break
+            }
             
             let view = e.element;
             view.frame = rect;
