@@ -22,26 +22,35 @@ class FourthViewController: UIViewController {
         return button
     }()
     
-    lazy var segmentTitleView: NNSegmentTitleView = {
-        let rect = CGRectMake(0, 0, 240, 44)
-        let view = NNSegmentTitleView(frame: rect)
-        view.lineColor = UIColor.systemBlue
-        view.titleColor = UIColor.gray
-        view.selectedTitleColor = UIColor.white
-        view.items = ["昨天", "今天", "明天"]
-
-        return view
+    lazy var itemView: NNItemsView = {
+        var view = NNItemsView(frame: .zero)
+        
+        var list:[String] = []
+        for i in 0...4 {
+            list.append("\(i)")
+        }
+        view.items = list
+        view.showStyle = .bottomLeftToRight
+        
+        view.block({ (itemsView, sender) in
+            guard let btn = sender as? UIButton else { return }
+            print(btn.titleLabel?.text as Any)
+        })
+        return view;
     }()
     
-    lazy var segmentTitleViewOne: NNSegmentTitleView = {
-        let view = NNSegmentTitleView(frame: .zero)
-        view.lineColor = UIColor.theme
-        view.titleColor = UIColor.gray
-        view.selectedTitleColor = UIColor.theme
-        view.indicatorType = .box
-        view.items = ["过去", "现在", "未来"]
-
-        return view
+    lazy var segmentCtl: NNSegmentedControl = {
+        let rect = CGRectMake(0, 0, 240, 44)
+        let view = NNSegmentedControl(frame: rect)
+        view.showStyle = .bottomLine
+        view.normalColor = .gray
+        view.selectedColor = .white
+        view.itemList = ["昨天", "今天", "明天"]
+        view.addActionHandler({ (control) in
+            guard let sender = control as? UISegmentedControl else { return }
+            DDLog(sender)
+        }, for: .valueChanged)
+        return view;
     }()
         
     var progress: CGFloat = 0.0;
@@ -50,35 +59,26 @@ class FourthViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-        navigationItem.titleView = segmentTitleView
-//        DDLog(segmentTitleView)
+        navigationItem.titleView = segmentCtl
 //        segmentTitleView.getViewLayer()
                 
-        createGroupView();
+//        createGroupView();
 
-        view.addSubview(segmentTitleViewOne)
-
-        let list: [String] = ["1", "2", "3", "4", "5", "6",]
-        let listOne = list.map { $0 + "_item" }
-        DDLog(listOne)
-        
-        goodsToolView.titles = ["扩容", "减配", "续费"]
+        view.addSubview(itemView)
         view.addSubview(goodsToolView)
-        
         view.addSubview(orderPayView)
 
         let amount = "¥\(227.00)"
         let string = "支付金额: \(amount)"
         
-        let nsrange = (string as NSString).range(of: "¥227.00")
+//        let nsrange = (string as NSString).range(of: "¥227.00")
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
         orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
 
-//        view.getViewLayer()
+        view.getViewLayer()
         return;
   
         view.addSubview(clockView);
-        
         
         progressView.frame = CGRect(x: 20, y: clockView.frame.maxY + 20, width: 100, height: 100)
         view.addSubview(progressView)
@@ -93,6 +93,14 @@ class FourthViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        let height = 90
+        itemView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(10);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(height);
+        }
+        
         orderPayView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(0);
             make.right.equalToSuperview().offset(0);
@@ -100,7 +108,7 @@ class FourthViewController: UIViewController {
             make.height.equalTo(50);
         }
         
-        segmentTitleViewOne.snp.makeConstraints { (make) in
+        goodsToolView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
             make.bottom.equalTo(orderPayView.snp.top).offset(-10);
@@ -143,6 +151,7 @@ class FourthViewController: UIViewController {
         var view = IOPGoodsToolView(frame: .zero)
         view.padding = 10;
         view.numberOfRow = 5;
+        view.titles = ["扩容", "减配", "续费"]
 
         return view;
     }()
@@ -154,7 +163,7 @@ class FourthViewController: UIViewController {
     }()
     
     func createGroupView() {
-        let list = Array<String>.itemPrefix(prefix: "按钮_", count: 16, type: 0);
+        let list = Array<String>.itemPrefix(prefix: "按钮_", count: 12, type: 0);
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
         let groupView = UIButton.createGroupView(rect, list: list!, numberOfRow: 4, padding: 5) { (control) in
@@ -164,7 +173,7 @@ class FourthViewController: UIViewController {
 
         view.addSubview(groupView);
     }
-    
+        
     lazy var clockView: NNClockView = {
         var view = NNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
         view.itemList = ["111","222","333","444","555","666","777","888",];
