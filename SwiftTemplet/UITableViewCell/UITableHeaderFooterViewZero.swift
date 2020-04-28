@@ -29,7 +29,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         indicatorView.image = UIImageNamed(kIMG_arrowRight)
         labelRight.textAlignment = .center
 
-        let _ = contentView.addGestureTap {[weak self] (sender:UIGestureRecognizer) in
+        let _ = contentView.addGestureTap {[weak self] (sender: UIGestureRecognizer) in
             if self!.isCanOpen == true {
                 if self!.viewBlock != nil {
                     self!.viewBlock!(self!)

@@ -11,17 +11,25 @@ import SwiftExpand
 
 class UIModalPresentationStyleController: UIViewController{
     
+    lazy var tableView: UITableView = {
+        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 70)
+        view.dataSource = self
+        view.delegate = self
+
+        return view
+    }()
+    
     lazy var controller = UIStackViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 1.设置行高为自动撑开
-        tbView.rowHeight = UITableView.automaticDimension;
+        tableView.rowHeight = UITableView.automaticDimension;
        // 2.设置一个估计的行高，只要大于0就可以了，但是还是尽量要跟cell的高差不多
-        tbView.estimatedRowHeight = 100;
+        tableView.estimatedRowHeight = 100;
        // 3.走完了以上两步就不需要走 UITableViewDelegate 返回行高的那个代理了
-        view.addSubview(tbView)
+        view.addSubview(tableView)
         
         if title == nil {
             title = self.controllerName;
@@ -96,6 +104,7 @@ extension UIModalPresentationStyleController: UITableViewDataSource, UITableView
         DDLog(itemList);
         
         controller.modalPresentationStyle = UIModalPresentationStyle(rawValue: indexPath.row)!
+        DDLog(controller.presentedViewController, controller.presentationController)
         self.present(controller, animated: true, completion: nil)
     }
     
