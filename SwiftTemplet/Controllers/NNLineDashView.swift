@@ -11,7 +11,7 @@ import UIKit
 
 class NNLineDashView: UIView {
     
-    var strokeColor: UIColor = UIColor.theme;
+    var strokeColor: UIColor = UIColor.systemBlue;
 
     override init(frame: CGRect) {
         super.init(frame: frame)

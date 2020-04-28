@@ -15,7 +15,7 @@ class NNBoxButton: UIButton {
     var seletedImage: UIImage = UIImage(named: "photo_select")!
 
     var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
-    var seletedTextColor: UIColor = UIColor.theme
+    var seletedTextColor: UIColor = UIColor.systemBlue
     
     var isImageRight: Bool = false
     

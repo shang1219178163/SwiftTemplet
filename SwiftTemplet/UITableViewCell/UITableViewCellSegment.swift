@@ -71,9 +71,10 @@ class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
         segmentCtl.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-15)
-            make.width.greaterThanOrEqualTo(ctlWidth)
+            make.width.lessThanOrEqualTo(ctlWidth)
             make.height.equalTo(labelLeft);
         }
+        DDLog(segmentCtl.frame)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
