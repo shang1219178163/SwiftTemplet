@@ -25,12 +25,12 @@ class FourthViewController: UIViewController {
     lazy var itemView: NNItemsView = {
         var view = NNItemsView(frame: .zero)
         
-        var list:[String] = []
+        var list: [String] = []
         for i in 0...4 {
             list.append("\(i)")
         }
         view.items = list
-        view.showStyle = .bottomLeftToRight
+        view.showStyle = .topRightToLeft
         
         view.block({ (itemsView, sender) in
             guard let btn = sender as? UIButton else { return }
@@ -60,7 +60,6 @@ class FourthViewController: UIViewController {
         // Do any additional setup after loading the view.
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         navigationItem.titleView = segmentCtl
-//        segmentTitleView.getViewLayer()
                 
 //        createGroupView();
 
@@ -75,7 +74,7 @@ class FourthViewController: UIViewController {
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
         orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
 
-        view.getViewLayer()
+        view.getViewLayer();
         return;
   
         view.addSubview(clockView);
