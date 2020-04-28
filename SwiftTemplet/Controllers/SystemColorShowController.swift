@@ -56,6 +56,20 @@ import SwiftExpand
          UIColor.brown,
          UIColor.clear,
         ],
+        [UIColor.theme,
+        UIColor.background,
+        UIColor.dim,
+        UIColor.line,
+        UIColor.excel,
+        UIColor.lightBlue,
+        UIColor.lightOrange,
+        UIColor.lightGreen,
+        UIColor.lightRed,
+        UIColor.textColor3,
+        UIColor.textColor6,
+        UIColor.textColor9,
+        UIColor.textColorExpired,
+        ],
         [UIColor.systemRed,
         UIColor.systemGreen,
         UIColor.systemBlue,
@@ -150,10 +164,22 @@ extension SystemColorShowController: UITableViewDataSource, UITableViewDelegate{
             cell.textLabel?.text = infos[1]
             cell.detailTextLabel?.text = infos[1]
         } else {
-            cell.textLabel?.text = "\(color)".replacingOccurrences(of: "", with: "--")
-            cell.detailTextLabel?.text = "\(color)".replacingOccurrences(of: "", with: "--")
+            let infos = color.description.components(separatedBy: CharacterSet(charactersIn: " "))
+            var result = infos.first ?? ""
+            for e in infos.enumerated() {
+                if e.offset > 0 {
+                    result += "\(Int(e.element.floatValue * 255)) "
+                }
+            }
+
+            cell.textLabel?.text = result
+            cell.detailTextLabel?.text = result
         }
         cell.textLabel?.textColor = color
+        
+        if indexPath.section != 1 && list[1].contains(color) {
+            DDLog(indexPath.string, color)
+        }
 
         return cell;
     }
@@ -170,9 +196,11 @@ extension SystemColorShowController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
-            return kBlankOne + "通用颜色"
-        case 2:
+            return kBlankOne + "定制颜色"
+        case 3:
             return kBlankOne + "@available(iOS 13.0, *)"
+        case 2:
+            return kBlankOne + "通用颜色"
         default:
             break
         }
