@@ -208,7 +208,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     lazy var lineView: UIView = {
         var view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.line
         return view
     }()
 }

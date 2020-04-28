@@ -65,7 +65,7 @@ class NNDatePickerRangeView: UIView {
     
     
     //MARK: - layz
-    lazy var containView:UIView = {
+    lazy var containView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: UIScreen.sizeHeight - (kNaviBarHeight + kPickerViewHeight), width: UIScreen.sizeWidth, height: (kNaviBarHeight + kPickerViewHeight)));
         
         view.backgroundColor = UIColor(r: 230, g: 230, b: 230, a: 1);
@@ -83,17 +83,17 @@ class NNDatePickerRangeView: UIView {
         return view;
     }();
     
-    lazy var datePicker : UIDatePicker = {
+    lazy var datePicker: UIDatePicker = {
         let datePicker: UIDatePicker = UIDatePicker();
         datePicker.datePickerMode = UIDatePicker.Mode.date;
         datePicker.locale = Locale(identifier: "zh_CN");
         datePicker.backgroundColor = UIColor.white;
         
-        datePicker.addTarget(self, action: #selector(handleActionControl(sender:)), for: .valueChanged);
+        datePicker.addTarget(self, action: #selector(handleActionControl(_:)), for: .valueChanged);
         return datePicker;
     }();
     
-    lazy var btnCancel:UIButton = {
+    lazy var btnCancel: UIButton = {
         let btn = UIButton(type: .custom);
         //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 0;
@@ -101,12 +101,12 @@ class NNDatePickerRangeView: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleCancell, for: .normal);
         btn.setTitleColor(UIColor.black, for: .normal);
-        btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
+        btn.addTarget(self, action: #selector(handleActionControl(_:)), for:.touchUpInside);
         
         return btn;
     }();
     
-    lazy var btnSure:UIButton = {
+    lazy var btnSure: UIButton = {
         let btn = UIButton(type: UIButton.ButtonType.system);
         //        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
         btn.tag = 1;
@@ -114,12 +114,12 @@ class NNDatePickerRangeView: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleSure, for: .normal);
         btn.setTitleColor(UIColor.theme, for: .normal);
-        btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
+        btn.addTarget(self, action: #selector(handleActionControl(_:)), for:.touchUpInside);
         
         return btn;
     }();
     
-    lazy var label:UILabel = {
+    lazy var label: UILabel = {
         let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: kNaviBarHeight));
         lab.tag = 10;
         lab.text = "请选择";
@@ -129,7 +129,7 @@ class NNDatePickerRangeView: UIView {
     }();
     
     //MRAK: - funtion
-    @objc func handleActionControl(sender: UIControl) {
+    @objc func handleActionControl(_ sender: UIControl) {
         if let control = sender as? UIDatePicker {
             DDLog(control.date);
             
