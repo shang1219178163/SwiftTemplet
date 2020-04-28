@@ -60,7 +60,6 @@
 		142A76F222275EE10016D3DA /* NNClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DA22275EDF0016D3DA /* NNClockView.swift */; };
 		142A76F422275EE10016D3DA /* NNExpandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DC22275EDF0016D3DA /* NNExpandView.swift */; };
 		142A76F522275EE10016D3DA /* NNGeometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DD22275EDF0016D3DA /* NNGeometryView.swift */; };
-		142A76F622275EE10016D3DA /* NNSegmentViewZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DE22275EDF0016D3DA /* NNSegmentViewZero.swift */; };
 		142A76F722275EE10016D3DA /* NNSliderControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76DF22275EDF0016D3DA /* NNSliderControlView.swift */; };
 		142A76F822275EE10016D3DA /* NNThreeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76E022275EDF0016D3DA /* NNThreeLabelView.swift */; };
 		142A76F922275EE10016D3DA /* NNTopSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76E122275EDF0016D3DA /* NNTopSheetView.swift */; };
@@ -154,7 +153,6 @@
 		1461A24523191850006A758F /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1461A24423191850006A758F /* ScrollViewController.swift */; };
 		1461E10C239910490078EB79 /* UIModalPresentationStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1461E10B239910490078EB79 /* UIModalPresentationStyleController.swift */; };
 		1461E114239A06C20078EB79 /* PlateKeybordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1461E113239A06C20078EB79 /* PlateKeybordController.swift */; };
-		146D2820244D3205004655B1 /* NNSegmentTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D281F244D3205004655B1 /* NNSegmentTitleView.swift */; };
 		146D28CA244E86AE004655B1 /* UITableViewCellSixLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */; };
 		146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */; };
 		146D28D824505B02004655B1 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D724505B02004655B1 /* PopoverViewController.swift */; };
@@ -327,7 +325,6 @@
 		142A76DA22275EDF0016D3DA /* NNClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNClockView.swift; sourceTree = "<group>"; };
 		142A76DC22275EDF0016D3DA /* NNExpandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNExpandView.swift; sourceTree = "<group>"; };
 		142A76DD22275EDF0016D3DA /* NNGeometryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNGeometryView.swift; sourceTree = "<group>"; };
-		142A76DE22275EDF0016D3DA /* NNSegmentViewZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSegmentViewZero.swift; sourceTree = "<group>"; };
 		142A76DF22275EDF0016D3DA /* NNSliderControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSliderControlView.swift; sourceTree = "<group>"; };
 		142A76E022275EDF0016D3DA /* NNThreeLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNThreeLabelView.swift; sourceTree = "<group>"; };
 		142A76E122275EDF0016D3DA /* NNTopSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNTopSheetView.swift; sourceTree = "<group>"; };
@@ -423,7 +420,6 @@
 		1461A24423191850006A758F /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		1461E10B239910490078EB79 /* UIModalPresentationStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIModalPresentationStyleController.swift; sourceTree = "<group>"; };
 		1461E113239A06C20078EB79 /* PlateKeybordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateKeybordController.swift; sourceTree = "<group>"; };
-		146D281F244D3205004655B1 /* NNSegmentTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSegmentTitleView.swift; sourceTree = "<group>"; };
 		146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSixLable.swift; sourceTree = "<group>"; };
 		146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MJRefresh.swift"; sourceTree = "<group>"; };
 		146D28D724505B02004655B1 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -856,14 +852,14 @@
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
+				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
+				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				1422A9D024495B21002D6145 /* NNAlertShowController.swift */,
 				1479D5C9244407A5007F7CC4 /* TableViewPrefetchRowController.swift */,
-				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				146D28E12451A2B5004655B1 /* SystemColorShowController.swift */,
 				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
 				149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */,
 				145CDC9E21E8AB61001B1AC9 /* SortedViewController.swift */,
-				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				5186E922212103A0005B71AD /* CenterViewController.swift */,
 				14E8692521C20A2E009CE33E /* DetailViewController.swift */,
 				147FF46321CE48BA00351E94 /* UICollectionDispalyController.swift */,
@@ -985,7 +981,6 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				146D281F244D3205004655B1 /* NNSegmentTitleView.swift */,
 				141495AF242AFA3900141A9F /* NNNoticeView.swift */,
 				14A4B4E32421E906007FC3A1 /* NNButton.swift */,
 				145C91502334CD0E00849E9D /* NNTabController.swift */,
@@ -1012,8 +1007,8 @@
 				142A76EF22275EE00016D3DA /* NNPickListView.swift */,
 				142A76ED22275EE00016D3DA /* NNSearchView.swift */,
 				142A76E622275EE00016D3DA /* NNSectionView.swift */,
-				142A76DE22275EDF0016D3DA /* NNSegmentViewZero.swift */,
 				14C901A02315435B0084A946 /* NNSegmentView.swift */,
+				14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */,
 				149946842383F743005E43CC /* NNPictureView.swift */,
 				142A76DF22275EDF0016D3DA /* NNSliderControlView.swift */,
 				148040AD240F89A90032EB07 /* NNTableHeaderView.swift */,
@@ -1023,7 +1018,6 @@
 				142A76E922275EE00016D3DA /* NNTipsView.swift */,
 				142A76E122275EDF0016D3DA /* NNTopSheetView.swift */,
 				14107FCC22CF48EF0011344E /* NNWebView.swift */,
-				14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */,
 				14C1196522D9C6ED009D18A3 /* NNBoxButton.swift */,
 				14A3209C2322366C00B5EE5A /* NNDatePickerRangeView.swift */,
 				1401AB1F2372B2C9003F1114 /* NNFormView.swift */,
@@ -1442,7 +1436,6 @@
 				141495C2242B4F6E00141A9F /* NNAddressPickerController.swift in Sources */,
 				146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */,
 				14F39679228041AA000CD7B4 /* NNCheckVersRootClass.swift in Sources */,
-				146D2820244D3205004655B1 /* NNSegmentTitleView.swift in Sources */,
 				148040AE240F89A90032EB07 /* NNTableHeaderView.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				142A76FB22275EE10016D3DA /* NNCellDefaultView.swift in Sources */,
@@ -1482,7 +1475,6 @@
 				149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
 				142A770222275EE10016D3DA /* NNCircleView.swift in Sources */,
-				142A76F622275EE10016D3DA /* NNSegmentViewZero.swift in Sources */,
 				14D91B13234C874500554994 /* UITableViewCellAfford.swift in Sources */,
 				5182444C213E8CB600071A9D /* NNResult.swift in Sources */,
 				146D28E22451A2B5004655B1 /* SystemColorShowController.swift in Sources */,
