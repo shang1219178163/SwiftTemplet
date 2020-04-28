@@ -52,7 +52,7 @@ import SwiftExpand
 
     var lineColor: UIColor = UIColor.line
     var titleColor: UIColor = UIColor.gray
-    var selectedTitleColor: UIColor = UIColor.theme
+    var selectedTitleColor: UIColor = UIColor.systemBlue
     var selectedIndex: Int = 0
 
     var items:[String]?

@@ -21,18 +21,11 @@ class NNSegmentedControl: UISegmentedControl {
         }
     }
     
-    var selectedColor: UIColor = UIColor.theme {
+    var selectedColor: UIColor = UIColor.systemBlue {
         didSet{
             setupControl()
         }
     }
-    
-    /// 0: default, 1, topLine, 2,bottomLine, 3,box
-//    var type: Int = 0 {
-//        didSet{
-//            setupIndicator()
-//        }
-//    }
     
     var showStyle: ShowStyle = .system{
         didSet{
@@ -110,16 +103,16 @@ class NNSegmentedControl: UISegmentedControl {
 //        backgroundColor = UIColor.white
         tintColor = UIColor.clear
         backgroundColor = UIColor.clear
-        let dic_N = [NSAttributedString.Key.foregroundColor: normalColor,
-                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
+        let attDic = [NSAttributedString.Key.foregroundColor: normalColor,
+                      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
                     ]
         
-        let dic_H = [NSAttributedString.Key.foregroundColor: selectedColor,
-                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
+        let attDicH = [NSAttributedString.Key.foregroundColor: selectedColor,
+                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
                     ]
         
-        setTitleTextAttributes(dic_N, for: .normal)
-        setTitleTextAttributes(dic_H, for: .selected)
+        setTitleTextAttributes(attDic, for: .normal)
+        setTitleTextAttributes(attDicH, for: .selected)
         
         indicator.layer.borderColor = selectedColor.cgColor;
     }
@@ -182,7 +175,6 @@ extension NNSegmentedControl{
 
     static func create(_ style: ShowStyle) -> Self {
         let view = NNSegmentedControl(frame: .zero)
-//        view.type = style.rawValue;
         view.showStyle = style
         view.normalColor = UIColor.white
         view.selectedColor = .systemBlue
