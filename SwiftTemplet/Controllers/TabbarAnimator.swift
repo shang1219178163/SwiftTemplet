@@ -49,7 +49,6 @@ extension TabbarAnimator: UIViewControllerAnimatedTransitioning {
         containerView.addSubview(toView)
         
         let transitionDuration = self.transitionDuration(using: transitionContext)
-        
         UIView.animate(withDuration: transitionDuration, animations: {
             fromView.frame = fromFrame.offsetBy(dx: fromFrame.size.width * offset.dx * -1, dy: 0)
             toView.frame = toFrame

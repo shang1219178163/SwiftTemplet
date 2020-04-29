@@ -79,7 +79,7 @@ class NNAnnularProgress: UIView {
         
     }
     
-    func setProgress(progress:CGFloat,time:CFTimeInterval,animate:Bool) {
+    func setProgress(progress: CGFloat, time: CFTimeInterval, animate: Bool) {
         CATransaction.begin();
         CATransaction.setDisableActions(!animate);
         CATransaction.setAnimationDuration(time);
