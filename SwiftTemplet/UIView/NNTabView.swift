@@ -12,7 +12,7 @@ import SwiftExpand
 @objc protocol NNTabViewDelegate: NSObjectProtocol {
     @objc func tabView(_ tabView: NNTabView, didSelect view: UIView, selectedIndex: Int);
 }
-/// 轮转视图
+/// 轮转视图(弃用)
 @objcMembers class NNTabView: UIView, UIScrollViewDelegate {
 
     var selectedView: UIView?

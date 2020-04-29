@@ -54,7 +54,8 @@ extension NNTransitionAnimator {
         
         let fromViewFrame = transitionContext.initialFrame(for: fromVC)
         let toViewFrame = transitionContext.finalFrame(for: toVC)
-        
+//        print("\(#function)_fromViewFrame:\(fromViewFrame)_toViewFrame:\(toViewFrame)")
+
 //        let screenWidth = UIScreen.main.bounds.width
 //        let screenHeight = UIScreen.main.bounds.height
 //        print("\(#function)0_\(fromView.frame)_\(toView.frame)")
@@ -94,7 +95,7 @@ extension NNTransitionAnimator {
                 toView.alpha = 1.0
             }
             
-            print("\(#function)_\(fromView.frame)_\(toView.frame)")
+            print("\(#function)_fromVC:\(fromView.frame)_toVC:\(toView.frame)")
             
         }) { (finished) in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
