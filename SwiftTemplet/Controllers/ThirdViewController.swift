@@ -28,6 +28,7 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
+            ["ReuseChildsController", "控制器复用", ],
             ["TransitionAnimatorShowController", "动画效果", ],
             ["NNAlertShowController", "自定义 UIViewController 弹窗", ],
             ["UITextViewMultipleTapController", "多点高亮点击", ],
