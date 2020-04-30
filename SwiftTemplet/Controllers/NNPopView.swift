@@ -41,7 +41,7 @@ class NNPopView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.black.withAlphaComponent(0.3);
+        backgroundColor = UIColor.black.withAlphaComponent(0.2);
         addSubview(tableView);
         
         sender?.titleLabel!.addObserver(self, forKeyPath: "text", options: .new, context: nil)

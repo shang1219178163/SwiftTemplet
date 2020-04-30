@@ -11,40 +11,27 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class TitleViewController: UIViewController{
-
-    var indexP: IndexPath = IndexPath(row: 0, section: 0)
+class TitleViewController: NNTitleViewSelectController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        setupTitleView()
-        topView.block { (tableView, indexPath) -> UITableViewCell in
-            let itemList = self.list[indexPath.row]
-            let value0 = itemList[0]
-            let value1 = itemList[1]
-            let value2 = itemList[2]
-            let value3 = itemList[3]
-            let value4 = itemList[4]
-            let value5 = itemList[5]
-
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-            cell.imgViewLeft.image = UIImage(named: "img_meetStandard")
-            cell.labelLeft.text = "标题"
-            cell.labelRight.text = indexPath.string
-            cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.accessoryType = self.topView.indexP == indexPath ? .checkmark : .none
-            
-//            cell.getViewLayer()
-            return cell
-        }
-
-        topView.blockSelected { (tableview, indexPath) in
-            DDLog(indexPath.string)
-        }
         
-//        self.navigationItem.titleView?.getViewLayer()
+        let list: [[String]] = [
+                ["商品名称00:", "60.0", "", "cardName","0"],
+                ["商品名称11:", "60.0", "", "cardName","0"],
+                ["商品名称22:", "60.0", "", "cardName","0"],
+                ["商品名称33:", "60.0", "", "cardName","0"],
+                ["商品名称44:", "60.0", "", "cardName","0"],
+                ["商品名称55:", "60.0", "", "cardName","0"],
+                ["商品名称66:", "60.0", "", "cardName","0"],
+
+                ]
+        delegate = self
+        topView.list = list
+        topView.tableView.reloadData()
+        
         view.addSubview(gemetryView)
         
         let _ = gemetryView.addGestureTap { (recognizer) in
@@ -145,56 +132,6 @@ class TitleViewController: UIViewController{
         DDLog(sender)
     }
     
-    func setupTitleView() {        
-        btn.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
-//        btn.setImage(UIImageColor( .red, size: CGSize(width: 20, height: 20)), for: .normal);
-        btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
-        btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5, 0, -btn.titleLabel!.bounds.width)
-
-        DDLog(btn.titleEdgeInsets, btn.imageEdgeInsets)
-        btn.contentHorizontalAlignment = .left
-        btn.addActionHandler({ (sender) in
-            if let imgView = (sender as! UIButton).imageView{
-                UIView.animate(withDuration: 0.35, animations: {
-                    imgView.transform = imgView.transform.isIdentity == true ? imgView.transform.rotated(by: CGFloat(Double.pi)) : .identity;
-                })
-            }
-
-            UIApplication.shared.keyWindow?.endEditing(true)
-            self.show(self)
-            
-        }, for: .touchUpInside)
-     
-        navigationItem.titleView = btn
-        
-        navigationItem.titleView?.getViewLayer()
-    }
-    
-    func show(_ inController: UIViewController) {
-        self.view.addSubview(self.containView)
-        self.tbView.originY = -self.tbView.sizeHeight
-        
-        self.containView.alpha = 0.0
-        UIView.animate(withDuration: 0.5, animations: {
-            self.containView.alpha = 1.0
-
-            self.tbView.originY += self.tbView.sizeHeight
-            
-        }, completion: nil)
-        
-    }
-    
-    func dismiss() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.containView.alpha = 0.0
-            self.tbView.originY -= self.tbView.sizeHeight
-            
-        }, completion:{ (isFinish:Bool) in
-            self.containView.removeFromSuperview()
-
-        })
-    }
-    
     lazy var btn: UIButton = {
         var view = UIButton(type: .custom)
         view.setTitle("闭包的回调方法", for: .normal);
@@ -219,28 +156,7 @@ class TitleViewController: UIViewController{
         })
         return alertController
     }()
-
-    lazy var list:[[String]] = {
-        var array: [[String]] = [
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-
-            ]
-        return array
-    }()
     
-    lazy var containView: UIView = {
-        var view = UIView(frame: self.view.bounds)
-        view.backgroundColor = .green
-        
-        tbView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.4)
-        view.addSubview(tbView)
-        
-        return view
-    }()
     
     lazy var gemetryView: NNGeometryView = {
         var view = NNGeometryView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
@@ -248,16 +164,6 @@ class TitleViewController: UIViewController{
         view.subType = 3
         return view
     }()
-        
-    lazy var topView: NNTopSheetView = {
-        var view = NNTopSheetView()
-        view.parController = self
-        view.indexP = IndexPath(row: 0, section: 0)
-        view.setupTitleView()
-        
-        return view
-    }()
-
 
     lazy var segmentCtlOne: NNSegmentedControl = {
         let view = NNSegmentedControl(frame: .zero)
@@ -281,7 +187,7 @@ class TitleViewController: UIViewController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         
-        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.2)
         var seletedTextColor: UIColor = UIColor.theme
         view.setTitleColor(normlTextColor, for: .normal)
         view.setTitleColor(seletedTextColor, for: .selected)
@@ -384,79 +290,8 @@ class TitleViewController: UIViewController{
     
 }
 
-
-//extension TitleViewController: UITableViewDataSource, UITableViewDelegate{
-//    //    MARK: - tableView
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1;
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return list.count;
-//    };
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let itemList = list[indexPath.row]
-//        let itemHeight = (itemList[2]).cgFloatValue
-//        return itemHeight
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let itemList = list[indexPath.row]
-//        let value0 = itemList[0]
-//        let value1 = itemList[1]
-//        let value2 = itemList[2]
-//        let value3 = itemList[3]
-//        let value4 = itemList[4]
-//        let value5 = itemList[5]
-//
-//        switch (itemList[1]).intValue {
-//        case 1:
-//            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-//                cell.isHidden = value2.cgFloatValue <= 0.0
-//            cell.labelLeft.text = value0
-//            cell.labelRight.text = value4
-//            cell.labelRight.text = indexPath.string
-//
-//            cell.getViewLayer()
-//            return cell
-//
-//        default:
-//            break
-//
-//        }
-//        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexP != indexPath  {
-//            let newCell = tableView.cellForRow(at: indexPath)
-//            newCell?.accessoryType = .checkmark
-//
-//            let oldCell = tableView.cellForRow(at: indexP)
-//            oldCell?.accessoryType = .none
-//            indexP = indexPath
-//        }
-//        dismiss()
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 10;
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView();
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0.01;
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let label = UILabel(frame: .zero);
-//        //        label.backgroundColor = .green;
-//        //        label.text = "header\(section)";
-//        return label;
-//    }
-//}
+extension TitleViewController: NNTitleViewSelectControllerDelegate{
+    func titleViewSelect(_ controller: NNTitleViewSelectController, tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        DDLog(indexPath.string)
+    }
+}

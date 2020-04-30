@@ -16,7 +16,7 @@ def common_pods
 #   pod 'Argo'
     pod 'BSImagePicker'
 #   pod 'BluetoothKit'
-    pod 'CryptoSwift'
+#    pod 'CryptoSwift'
 #    pod 'EZSwiftExtensions'
 #   pod 'Dollar'
 #   pod 'FoldingCell'

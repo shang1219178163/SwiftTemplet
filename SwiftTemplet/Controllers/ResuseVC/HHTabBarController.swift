@@ -9,19 +9,19 @@
 import UIKit
 import SwiftExpand
 
-class HHTabBarController: UITabBarController {
+@objcMembers class HHTabBarController: UITabBarController {
     
     //MARK:属性
-    lazy var itemList: [[String]] = {
-        let list: [[String]] = [
-            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
-            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
-            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
-            
-            ];
-        return list;
-    }()
+//    lazy var itemList: [[String]] = {
+//        let list: [[String]] = [
+//            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
+//            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
+//            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
+//            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
+//
+//            ];
+//        return list;
+//    }()
     
     private lazy var animator: NNTransitionAnimator = {
         let animator = NNTransitionAnimator(duration: 0.25, animateType: .fade)
@@ -34,7 +34,7 @@ class HHTabBarController: UITabBarController {
         tabBar.tintColor = UIColor.theme;
         tabBar.barTintColor = UIColor.white;
         tabBar.isTranslucent = false;
-        viewControllers = UICtlrListFromList(itemList, isNavController: false)
+//        viewControllers = UICtlrListFromList(itemList, isNavController: false)
 
         delegate = self
         

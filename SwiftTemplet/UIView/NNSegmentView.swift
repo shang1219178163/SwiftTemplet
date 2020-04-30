@@ -39,7 +39,7 @@ import SwiftExpand
     var normalColor = UIColor.gray;
     dynamic var selectedColor = UIColor.theme {
         didSet{
-            indicatorView.layer.backgroundColor = oldValue.withAlphaComponent(0.3).cgColor;
+            indicatorView.layer.backgroundColor = oldValue.withAlphaComponent(0.2).cgColor;
             indicatorView.layer.borderColor = oldValue.cgColor;
         }
     }
@@ -125,7 +125,7 @@ import SwiftExpand
             };
             
         case 3:
-            self.indicatorView.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.3).cgColor;
+            self.indicatorView.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.2).cgColor;
             UIView.animate(withDuration: 0.15) {
                 if (self.layout.scrollDirection == .horizontal) {
                     self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
@@ -180,9 +180,9 @@ import SwiftExpand
     lazy var indicatorView: UIView = {
         let view = UIView()
 //        view.layer.backgroundColor = UIColor.clear.cgColor;
-//        view.layer.backgroundColor = UIColor.theme.withAlphaComponent(0.3).cgColor;
+//        view.layer.backgroundColor = UIColor.theme.withAlphaComponent(0.2).cgColor;
 //        view.layer.backgroundColor = UIColor.hexValue(0x0082e0, 0.3).cgColor;
-//        view.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.3).cgColor;
+//        view.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.2).cgColor;
         view.layer.borderColor = self.selectedColor.cgColor;
         view.layer.borderWidth = self.indicatorHeight;
         return view;
