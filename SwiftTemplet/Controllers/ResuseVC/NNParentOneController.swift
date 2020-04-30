@@ -27,10 +27,18 @@ class NNParentOneController: UUSementedController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        animateType = .slide
+        animateType = .fade
         segmentCtl.itemList = ["过去1", "现在1", "将来1"]
         viewControllers = UICtlrListFromList(list, isNavController: false)
+        
+        delegate = self
     }
-    
 
+}
+
+extension NNParentOneController: UUSementedControllerDelegate{
+    
+    @objc func sementedVC(_ controller: UUSementedController, didSelect viewController: UIViewController){
+        DDLog(controller.segmentCtl.selectedSegmentIndex)
+    }
 }

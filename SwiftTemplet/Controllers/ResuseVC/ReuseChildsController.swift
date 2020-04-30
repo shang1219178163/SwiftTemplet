@@ -23,12 +23,11 @@ class ReuseChildsController: UIViewController {
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [[
-            ["HHTabBarController", "添加切换动画", ],
-            ["NNParentTwoController", "HHTabBarController子类实现", ],
-             ["NNParentController", "UUTabBarController子类实现", ],
-             ["HHTabBarOneController", "HHTabBarController分段组件", ],
+//            ["HHTabBarController", "添加切换动画", ],
+            ["NNParentTwoController", "HHTabBarController子类极简实现", ],
+             ["NNParentController", "UUTabBarController子类极简实现", ],
 //             ["UUSementedController", "分段组件", ],
-             ["NNParentOneController", "UUSementedController子类实现", ],
+             ["NNParentOneController", "UUSementedController子类极简实现", ],
 //             ["UUTabBarController", "UUTabBarController", ],
             ],
         ]

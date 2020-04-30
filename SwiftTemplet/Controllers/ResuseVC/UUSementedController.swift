@@ -11,8 +11,7 @@ import SwiftExpand
 
 
 @objc protocol UUSementedControllerDelegate : NSObjectProtocol {
-    @objc optional func sementedVC(_ tabBarController: UUSementedController, shouldSelect viewController: UIViewController) -> Bool
-    @objc optional func sementedVC(_ tabBarController: UUSementedController, didSelect viewController: UIViewController)
+    @objc optional func sementedVC(_ controller: UUSementedController, didSelect viewController: UIViewController)
 }
 
 /// 自定义
@@ -45,6 +44,7 @@ import SwiftExpand
                 removeControllerVC(e.element)
             }
 
+            segmentCtl.itemList = controllers.map({ $0.title ?? "-" })
             for e in controllers.enumerated() {
 
                 addControllerVC(e.element)
@@ -69,6 +69,8 @@ import SwiftExpand
         }
     }
     
+    var isTitleFollow: Bool = true
+
     //MARK:属性
 //    lazy var itemList: [[String]] = {
 //        let list: [[String]] = [
@@ -115,11 +117,7 @@ import SwiftExpand
             DDLog("目前就是\(toVC)")
             return
         }
-        
-        if let value = delegate?.sementedVC?(self, shouldSelect: toVC), value == false {
-            return
-        }
-                
+                        
         view.bringSubviewToFront(toVC.view)
         
         transitionViewAnimate(fromVC, toVC: toVC, type: self.animateType, inAnimationBlock: false)
@@ -132,7 +130,9 @@ import SwiftExpand
             } else {
                 self.selectedViewController = fromVC
             }
-            self.title = self.selectedViewController?.title
+            if self.isTitleFollow {
+                self.title = self.selectedViewController?.title
+            }
         }
         delegate?.sementedVC?(self, didSelect: toVC)
     }

@@ -11,8 +11,8 @@ import SwiftExpand
 
 
 @objc protocol UUTabBarControllerDelegate : NSObjectProtocol {
-    @objc optional func tabBarVC(_ tabBarController: UUTabBarController, shouldSelect viewController: UIViewController) -> Bool
-    @objc optional func tabBarVC(_ tabBarController: UUTabBarController, didSelect viewController: UIViewController)
+    @objc optional func tabBarVC(_ controller: UUTabBarController, shouldSelect viewController: UIViewController) -> Bool
+    @objc optional func tabBarVC(_ controller: UUTabBarController, didSelect viewController: UIViewController)
 }
 
 /// 自定义
@@ -74,6 +74,8 @@ import SwiftExpand
         }
     }
     
+    var isTitleFollow: Bool = true
+
     //MARK:属性
     lazy var itemList: [[String]] = {
         let list: [[String]] = [
@@ -139,7 +141,9 @@ import SwiftExpand
             } else {
                 self.selectedViewController = fromVC
             }
-            self.title = self.selectedViewController?.title
+            if self.isTitleFollow {
+                self.title = self.selectedViewController?.title
+            }
         }
         delegate?.tabBarVC?(self, didSelect: toVC)
     }

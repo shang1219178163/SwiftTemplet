@@ -16,7 +16,7 @@ class NNExpandView: UIView {
         super.init(frame: frame)
         
         self.clipsToBounds = true
-        backgroundColor = UIColor.orange.withAlphaComponent(0.3);
+        backgroundColor = UIColor.orange.withAlphaComponent(0.2);
         label.backgroundColor = .clear
         label.textColor = .orange
         

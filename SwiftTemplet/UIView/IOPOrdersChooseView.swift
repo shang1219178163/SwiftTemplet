@@ -43,7 +43,7 @@ class IOPOrdersChooseView: UIView {
 
         let normlImage: UIImage = UIImage(named: "photo_cancell")!
         let seletedImage: UIImage = UIImage(named: "photo_select")!
-        let normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+        let normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.2)
         let seletedTextColor: UIColor = UIColor.systemBlue
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)

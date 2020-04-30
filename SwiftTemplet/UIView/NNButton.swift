@@ -32,7 +32,7 @@ import SwiftExpand
         
         addSubview(iconImageView)
                 
-        let normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+        let normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.2)
         let seletedTextColor: UIColor = UIColor.systemBlue
         setTitleColor(normlTextColor, for: .normal)
         setTitleColor(seletedTextColor, for: .selected)

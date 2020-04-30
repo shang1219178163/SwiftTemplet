@@ -12,29 +12,6 @@ import SwiftExpand
 
 class NNButtonStudyController: UIViewController{
 
-    var indexP: IndexPath = IndexPath(row: 0, section: 0)
-    
-    lazy var list:[[String]] = {
-        var array: [[String]] = [
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-            ["商品名称:", "1", "60.0", "", "cardName","0"],
-
-            ]
-        return array
-    }()
-    
-    lazy var topView: NNTopSheetView = {
-        var view = NNTopSheetView()
-        view.parController = self
-//        view.indexP = IndexPath(row: 0, section: 0)
-        view.setupTitleView()
-        
-        return view
-    }()
-    
     lazy var btn: UIButton = {
         var view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 80, height: 35)
@@ -59,7 +36,7 @@ class NNButtonStudyController: UIViewController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         
-        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
+        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.2)
         var seletedTextColor: UIColor = UIColor.theme
         view.setTitleColor(normlTextColor, for: .normal)
         view.setTitleColor(seletedTextColor, for: .selected)
@@ -165,34 +142,6 @@ class NNButtonStudyController: UIViewController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        topView.btn.getViewLayer()
-        
-        topView.block { (tableView, indexPath) -> UITableViewCell in
-            let itemList = self.list[indexPath.row]
-            let value0 = itemList[0]
-            let value1 = itemList[1]
-            let value2 = itemList[2]
-            let value3 = itemList[3]
-            let value4 = itemList[4]
-            let value5 = itemList[5]
-
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-            cell.imgViewLeft.image = UIImage(named: "img_meetStandard")
-            cell.labelLeft.text = "标题"
-            cell.labelRight.text = indexPath.string
-            cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.accessoryType = self.topView.indexP == indexPath ? .checkmark : .none
-            
-//            cell.getViewLayer()
-            return cell
-        }
-
-        topView.blockSelected { (tableview, indexPath) in
-            DDLog(indexPath.string)
-        }
-        
-//        self.navigationItem.titleView?.getViewLayer()
-        
         view.addSubview(checkBox)
         view.addSubview(boxButton)
         view.addSubview(radioButton)

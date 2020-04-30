@@ -7,16 +7,26 @@
 //
 
 import UIKit
-
 import SwiftExpand
 
-class NNTopSheetView: UIView {
+@objc protocol NNTopSheetViewDelegate{
+    @objc func topSheetView(_ sheetView: NNTopSheetView, tableView: UITableView, didSelectRowAt indexPath: IndexPath);
+
+    @objc optional func topSheetView(_ sheetView: NNTopSheetView, tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell;
+    @objc optional func topSheetView(_ sheetView: NNTopSheetView, tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat;
+}
+
+@objcMembers class NNTopSheetView: UIView {
     
     var indexP: IndexPath = IndexPath(row: 0, section: 0)
     weak var parController: UIViewController?
-    var viewBlock: CellForRowClosure?
-    var viewBlockOne: DidSelectRowClosure?
+    weak var delegate: NNTopSheetViewDelegate?
 
+    // MARK: -lifecycle
+    deinit {
+        btn.titleLabel!.removeObserver(self, forKeyPath: "text", context: nil)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -30,10 +40,6 @@ class NNTopSheetView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    deinit {
-        btn.titleLabel!.removeObserver(self, forKeyPath: "text", context: nil)
     }
     
     override func layoutSubviews() {
@@ -61,10 +67,8 @@ class NNTopSheetView: UIView {
             
             if self.btn.imageView?.transform.isIdentity == false {
                 self.show(self.parController!)
-
             } else {
                 self.dismiss()
-                
             }
             
         }, for: .touchUpInside)
@@ -79,17 +83,20 @@ class NNTopSheetView: UIView {
         self.containView.alpha = 0.0
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 1.0
-            
             self.tableView.transform = CGAffineTransform.identity
 
-        }, completion: nil)
+        }) { (finished) in
+            if finished {
+                self.tableView.reloadData()
+                DDLog(self.tableView.bounds)
+            }
+        }
         
     }
     
     func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
-            
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
             self.btn.imageView?.transform = CGAffineTransform.identity;
 
@@ -99,14 +106,8 @@ class NNTopSheetView: UIView {
         })
     }
     
-    func block(_ action: @escaping CellForRowClosure) {
-        self.viewBlock = action;
-    }
-    
-    func blockSelected(_ action: @escaping DidSelectRowClosure) {
-        self.viewBlockOne = action;
-    }
-    
+    //MARK: -lazy
+
     lazy var btn: UIButton = {
         var view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
@@ -122,27 +123,13 @@ class NNTopSheetView: UIView {
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
         return view
     }()
-    
-    //MARK: -lazy
-    lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
-            DDLog("完成取消")
-            
-            UIView.animate(withDuration: 0.5, animations: {
-                self.btn.imageView?.transform = .identity
-                
-            }, completion: nil)
-            
-        })
-        return alertController
-    }()
-    
-    lazy var list:[[Any]] = {
-        var array: [[Any]] = [
+        
+    lazy var list: [[String]] = {
+        var array: [[String]] = [
             ["标题名称:0", "50.0",],
             ["标题名称:1", "50.0",],
             ["标题名称:2", "50.0",],
-            ["标题名称:3", "50.0", ],
+            ["标题名称:3", "50.0",],
             ["标题名称:4", "50.0",],
             
             ]
@@ -153,7 +140,7 @@ class NNTopSheetView: UIView {
         var view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.2);
 
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.4)
         view.addSubview(tableView)
@@ -162,7 +149,7 @@ class NNTopSheetView: UIView {
     }()
     
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
+        var table = UITableView.create(bounds, style: .plain, rowHeight: 50)
         table.dataSource = self
         table.delegate = self
         return table
@@ -171,25 +158,30 @@ class NNTopSheetView: UIView {
 
 extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
 
-    //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count;
-    };
+        return list.count
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let itemList = list[indexPath.row]
-        let itemHeight = (itemList[1] as! String).cgFloatValue
-        return itemHeight
+        guard let height = delegate?.topSheetView?(self, tableView: tableView, heightForRowAt: indexPath) as CGFloat? else {
+            return tableView.rowHeight
+        }
+        return height
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let delegateCell = delegate?.topSheetView?(self, tableView: tableView, cellForRowAt: indexPath) {
+            delegateCell.accessoryType = indexP == indexPath ? .checkmark : .none
+            return delegateCell;
+        }
+        
         let itemList = list[indexPath.row]
-        let value0 = itemList[0] as! String
-        let value1 = itemList[1] as! String
+        let value0 = itemList[0]
+        let value1 = itemList[1]
 
         let cell = UITableViewCell.dequeueReusableCell(tableView)
         cell.textLabel?.text = value0 + indexPath.string
@@ -197,9 +189,6 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
         cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
-        if self.viewBlock != nil && self.viewBlock!(tableView, indexPath) != nil {
-            return self.viewBlock!(tableView, indexPath)!;
-        }
         return cell
     }
     
@@ -212,15 +201,18 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
             oldCell?.accessoryType = .none
             indexP = indexPath
         }
-        
-        let itemList = list[indexPath.row]
-        let value0 = itemList[0] as! String
-        btn.setTitle(value0 + indexPath.string, for: .normal)
-        if self.viewBlockOne != nil {
-            self.viewBlockOne!(tableView,indexPath)
-        }
         dismiss()
-        
+
+        if delegate != nil {
+            delegate?.topSheetView(self, tableView: tableView, didSelectRowAt: indexPath)
+            return
+        }
+                        
+        guard let cell = tableView.cellForRow(at: indexPath),
+            let value = cell.textLabel?.text as String? else {
+                return
+        }
+        btn.setTitle(value, for: .normal)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
