@@ -39,6 +39,20 @@ class FourthViewController: UIViewController {
         return view;
     }()
     
+    lazy var processingView: NNProcessingView = {
+        var view = NNProcessingView(frame: .zero)
+        
+        var list: [String] = []
+        for i in 0...2 {
+            list.append("\(i)")
+        }
+        view.items = ["昨天", "今天", "明天"]
+        view.contentInset = UIEdgeInsetsMake(0, 50, 0, 50)
+        view.padding = 60
+        view.index = 1
+        return view;
+    }()
+    
     lazy var segmentCtl: NNSegmentedControl = {
         let rect = CGRectMake(0, 0, 240, 44)
         let view = NNSegmentedControl(frame: rect)
@@ -64,6 +78,8 @@ class FourthViewController: UIViewController {
 //        createGroupView();
 
         view.addSubview(itemView)
+        view.addSubview(processingView)
+
         view.addSubview(goodsToolView)
         view.addSubview(orderPayView)
 
@@ -74,7 +90,7 @@ class FourthViewController: UIViewController {
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
         orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
 
-        view.getViewLayer();
+//        view.getViewLayer();
         return;
   
         view.addSubview(clockView);
@@ -91,8 +107,20 @@ class FourthViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let height: CGFloat = 90
         
-        let height = 90
+        if view.bounds.width < 400 {
+            return
+        }
+        
+        itemView.frame = CGRectMake(10, 10, view.bounds.width - 20, height)
+        processingView.frame = CGRectMake(10, 100, view.bounds.width - 20, 70)
+
+        orderPayView.frame = CGRectMake(0, view.bounds.height - 50, view.bounds.width, 50)
+        goodsToolView.frame = CGRectMake(0, view.bounds.height - 90, view.bounds.width, 40)
+        
+        
+        return;
         itemView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
             make.left.equalToSuperview().offset(10);
@@ -113,6 +141,9 @@ class FourthViewController: UIViewController {
             make.bottom.equalTo(orderPayView.snp.top).offset(-10);
             make.height.equalTo(40);
         }
+        
+        DDLog(view.bounds, view.subviews)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
