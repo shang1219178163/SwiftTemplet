@@ -19,6 +19,8 @@ class IOPParkGroupView: UIView {
     var isMutiChoose: Bool = false;
     var isLeaveOne: Bool = true;
 
+    var hideImage: Bool = false;
+
     var selectedList: [UIButton] = []
     var selectedIdxList: [Int]{
         get {
@@ -67,8 +69,10 @@ class IOPParkGroupView: UIView {
         btn.setTitleColor(.theme, for: .selected)
         btn.setBackgroundImage(UIImageColor(UIColor.hexValue(0xDEF0FF)), for: .selected)
         
-        btn.setImage(UIImageColor(UIColor.hexValue(0xF3F3F3)), for: .normal)
-        btn.setImage(UIImageNamed("icon_choose_blue"), for: .selected)
+        if hideImage == false {
+            btn.setImage(UIImageColor(UIColor.hexValue(0xF3F3F3)), for: .normal)
+            btn.setImage(UIImageNamed("icon_choose_blue"), for: .selected)
+        }
     }
     
     @objc func handleAction(_ sender: UIButton) {
@@ -168,7 +172,7 @@ class IOPParkGroupView: UIView {
         viewBlock = action;
     }
     
-    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> UIButton {
+    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> IOPParkGroupButton {
         let view = IOPParkGroupButton(type:.custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.imageView?.contentMode = .scaleAspectFit

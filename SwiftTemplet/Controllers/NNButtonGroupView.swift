@@ -8,8 +8,14 @@
 
 import UIKit
 
+@objc protocol NNButtonGroupViewDelegate{
+    @objc func buttonGroupView(_ view: NNButtonGroupView, sender: UIButton);
+}
+
 /// UIButton集合视图
 class NNButtonGroupView: UIView {
+
+    weak var delegate: NNButtonGroupViewDelegate?
 
     var cornerRadius: CGFloat = 5.0
     var borderWidth: CGFloat = 0.5
@@ -43,6 +49,8 @@ class NNButtonGroupView: UIView {
             }
         }
     }
+    
+    var showStyle: ShowStyle = .topLeftToRight
 
     var items:[String]?
     {
@@ -93,7 +101,7 @@ class NNButtonGroupView: UIView {
             }
         }
 //        print(sender.isSelected, selectedList)
-        
+        delegate?.buttonGroupView(self, sender: sender)
         if viewBlock != nil {
             viewBlock!(self, sender)
         }
@@ -146,7 +154,30 @@ class NNButtonGroupView: UIView {
         for e in itemList.enumerated() {
             let x = CGFloat(e.offset % numberOfRow) * (itemWidth + padding)
             let y = CGFloat(e.offset / numberOfRow) * (itemHeight + padding)
-            let rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+            var rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+            
+            switch showStyle {
+            case .topRightToLeft:
+                rect = CGRect(x: bounds.width - originX - itemWidth,
+                              y: originY,
+                              width: itemWidth,
+                              height: itemHeight)
+
+            case .bottomLeftToRight:
+                rect = CGRect(x: originX,
+                              y: bounds.height - originY - itemHeight,
+                              width: itemWidth,
+                              height: itemHeight)
+
+            case .bottomRightToLeft:
+                rect = CGRect(x: bounds.width - originX - itemWidth,
+                              y: bounds.height - originY - itemHeight,
+                              width: itemWidth,
+                              height: itemHeight)
+
+            default:
+                break
+            }
             
             let view = e.element;
             view.frame = rect;
@@ -182,13 +213,12 @@ class NNButtonGroupView: UIView {
 extension UIButton {
         
    static func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> Self {
-    let view = Self.init(type:.custom);
+        let view = Self.init(type:.custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.imageView?.contentMode = .scaleAspectFit
         view.frame = rect;
         view.setTitle(title, for: .normal);
         view.setTitleColor(.black, for: .normal);
-        //        view.backgroundColor = UIColor.theme;
 
         view.isExclusiveTouch = true;
         view.adjustsImageWhenHighlighted = false;
