@@ -53,7 +53,7 @@ extension HHTabBarController: UITabBarControllerDelegate {
 
         let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
         let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
-        DDLog("\(fromIndex) -> \(toIndex)")
+//        DDLog("\(fromIndex) -> \(toIndex)")
         animator.animateType = fromIndex < toIndex ? .right : .left
         return animator
     }

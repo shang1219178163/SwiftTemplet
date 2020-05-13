@@ -30,10 +30,11 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         
+        labelLeft.numberOfLines = 1
         textfield.placeholder = "99.0";
         textfield.textAlignment = .center;
         let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-        textfield.asoryView(true, image: image)
+        _ = textfield.asoryView(true, image: image)
 //        textfield.asoryView(true, unitName: "公斤(万元)");
         textfield.delegate = self;
         

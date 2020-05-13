@@ -59,9 +59,9 @@ class PopViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        popView.list = [["1", "70.0", "one"], ["2", "70.0", "two"], ["3", "70.0", "three"],
-                        ["3", "70.0", "three"], ["3", "70.0", "three"],  ["3", "70.0", "three"],
-                        ["3", "70.0", "three"],  ["3", "70.0", "three"], ["3", "70.0", "three"],]
+        popView.list = [["1", "50.0", "one"], ["2", "50.0", "two"], ["3", "50.0", "three"],
+                        ["3", "50.0", "three"], ["4", "50.0", "three"],  ["5", "50.0", "three"],
+                        ["6", "50.0", "three"],  ["7", "50.0", "three"], ["8", "50.0", "three"],]
 
     }
     

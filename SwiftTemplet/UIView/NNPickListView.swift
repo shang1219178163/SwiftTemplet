@@ -67,7 +67,7 @@ class NNPickListView: UIView {
         containView.originY = UIScreen.sizeHeight
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
             self.containView.originY -= self.containView.frame.height;
 
         }, completion: { (isFinished: Bool) in
@@ -111,7 +111,7 @@ class NNPickListView: UIView {
     }();
 
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .grouped, rowHeight: kH_CellHeight);
+        var table = UITableView.create(bounds, style: .grouped, rowHeight: 50);
             table.dataSource = self
             table.delegate = self
         
@@ -155,6 +155,8 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
         let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         cell.textLabel!.text = list[indexPath.row]
         cell.textLabel!.textAlignment = .center
+        
+        cell.textLabel!.textColor = indexP == indexPath ? .systemBlue : .black
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
         return cell
     }
@@ -163,9 +165,12 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
         if indexP != indexPath  {
             let newCell = tableView.cellForRow(at: indexPath)
             newCell?.accessoryType = .checkmark
-            
+            newCell?.textLabel?.textColor = .systemBlue
+
             let oldCell = tableView.cellForRow(at: indexP)
             oldCell?.accessoryType = .none
+            oldCell?.textLabel?.textColor = .black
+
             indexP = indexPath
         }
         
@@ -176,22 +181,22 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let height = title != nil ? tableView.rowHeight : 0.01;
+        let height: CGFloat = title != nil ? tableView.rowHeight : 0.01;
         return height
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let height = title != nil ? tableView.rowHeight : 0.01;
+        let height: CGFloat = title != nil ? tableView.rowHeight : 0.01;
         return UITableView.createSectionView(tableView, text: title, textAlignment: .center, height:height)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let height = tips != nil ? tableView.rowHeight : 0.01;
+        let height: CGFloat = tips != nil ? tableView.rowHeight : 0.01;
         return height
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let height = tips != nil ? tableView.rowHeight : 0.01;
+        let height: CGFloat = tips != nil ? tableView.rowHeight : 0.01;
         return UITableView.createSectionView(tableView, text: tips, textAlignment: .left, height: height)
     }
 

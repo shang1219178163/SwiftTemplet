@@ -56,8 +56,6 @@ import UIKit
         }
     }
 
-    ///反方向(左<右)
-//    var isReversed: Bool = false
     var showStyle: ShowStyle = .topLeftToRight
 
     var items:[String]?

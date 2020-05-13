@@ -105,7 +105,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containViewH)
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
             self.containView.transform = CGAffineTransform.identity
             
         }, completion: nil);

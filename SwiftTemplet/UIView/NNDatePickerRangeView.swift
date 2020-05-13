@@ -42,7 +42,7 @@ class NNDatePickerRangeView: UIView {
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
         UIView.animate(withDuration: 0.5, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
             self.containView.transform = CGAffineTransform.identity;
             
         }, completion: nil);
