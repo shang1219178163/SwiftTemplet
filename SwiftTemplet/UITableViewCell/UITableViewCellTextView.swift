@@ -167,7 +167,6 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     
 //    lazy var placeHolderTextView: UITextView = {
 //        var view = UITextView(frame: .zero);
-//        view!.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //
 //        view.textAlignment = .left;

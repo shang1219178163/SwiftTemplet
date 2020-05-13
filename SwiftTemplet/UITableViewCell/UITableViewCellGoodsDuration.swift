@@ -31,6 +31,16 @@ class UITableViewCellGoodsDuration: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        if labelLeft.isHidden {
+            groupView.snp.makeConstraints { (make) in
+                make.top.equalTo(labelLeft.snp.bottom).offset(10);
+                make.left.equalToSuperview().offset(15);
+                make.right.equalToSuperview().offset(-15);
+                make.bottom.equalToSuperview().offset(-10);
+            }
+            return
+        }
+        
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(0);
             make.left.equalToSuperview().offset(15);

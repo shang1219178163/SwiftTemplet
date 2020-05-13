@@ -141,7 +141,7 @@ class CCSEmergencyOpenView: UIView {
         
         containView.transform = containView.transform.scaledBy(x: 0.1, y: 0.1)
         UIView.animate(withDuration: 0.15, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.5);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
             self.containView.transform = CGAffineTransform.identity;
             
         }, completion: nil);
