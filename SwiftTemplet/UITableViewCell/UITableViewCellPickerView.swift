@@ -32,6 +32,7 @@ class UITableViewCellPickerView: UITableViewCell {
         
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         
+        labelLeft.numberOfLines = 1
         textfield.placeholder = "请选择";
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;

@@ -17,7 +17,7 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
         // Do any additional setup after loading the view.
         view.addSubview(tableView)
         
-        _ = createBtnBarItem("Next") { (reco, view, idx) in
+        _ = createBtnBarItem("语音通话") { (reco, view, idx) in
             self.phoneView.show();
         }
     }

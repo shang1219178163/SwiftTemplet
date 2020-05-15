@@ -74,7 +74,7 @@ class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
             make.width.lessThanOrEqualTo(ctlWidth)
             make.height.equalTo(labelLeft);
         }
-        DDLog(segmentCtl.frame)
+//        DDLog(segmentCtl.frame)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
