@@ -23,6 +23,17 @@ class EntryViewController: UIViewController {
         return view
     }()
         
+    lazy var rightBtn: UIButton = {
+        let button = UIButton.create(.zero, title: "优惠券", imgName: nil, type: 3)
+        button.sizeToFit()
+        button.addActionHandler({ (control) in
+            let controller = CCSCouponRecordController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        }, for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: -life cycle
     deinit {
         DDLog(1111)
@@ -31,6 +42,8 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+
         tableView.rowHeight = UITableView.automaticDimension;
         tableView.estimatedRowHeight = 70;
 
@@ -116,14 +129,15 @@ class EntryViewController: UIViewController {
         })
         return alertController
     }()
-    
-    //MARK: -Lazy Property
-    
+        
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
-                ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
-                ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
+            ["优惠券充值", "UITableViewCellCouponRecharge", "100.0", "", "recharge", ],
+            ["订单选择", "UITableViewCellChoose", "70.0", "", "recharge", ],
+            ["停车统计", "UITableViewCellStatistics", "110.0", "", "recharge", ],
+            ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
+            ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
@@ -133,7 +147,10 @@ class EntryViewController: UIViewController {
             ],
             [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
-            ["起止时间:", "UITableViewCellDateRange", "60.0", "", "recharge", ],
+            ["有效时间0:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
+            ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
+            ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
+            ["有效时段3:", "UITableViewCellDateRange", "60.0", "3", "btime,etime", ],
             ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
@@ -362,21 +379,36 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case "UITableViewCellDateRange":
             
-//            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView) as! UITableViewCellDateRange
-//            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView) as! UITableViewCellDateRange
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange())
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange.self)
 //            let cell = tableView.dequeueReusableCell(for: UITableViewCellDateRange())
-            let cell:UITableViewCellDateRange = UITableViewCellDateRange.dequeueReusableCell(tableView)
-                cell.dateRangeView.labTitle.font = UIFont.systemFont(ofSize: 14)
-                cell.dateRangeView.labTitle.textColor = UIColor.textColor3
-                cell.isHidden = value2.cgFloatValue <= 0.0
-                cell.hasAsterisk = value0.contains("*")
+            let cell = UITableViewCellDateRange.dequeueReusableCell(tableView)
+            cell.dateRangeView.labTitle.font = UIFont.systemFont(ofSize: 14)
+            cell.dateRangeView.labTitle.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
             
+            cell.dateRangeView.datePicker.datePicker.datePickerMode = UIDatePicker.Mode(rawValue: value3.intValue)!
+            cell.dateRangeView.rangeDay = 0
+            cell.dateRangeView.isFuture = true
             cell.dateRangeView.labTitle.text = value0
+            let dateTimeKeys = (itemList.last! as NSString).components(separatedBy: ",")
+           
+            let beginTime: String = dataModel.valueText(forKeyPath: dateTimeKeys.first!)
+            let endTime: String = dataModel.valueText(forKeyPath: dateTimeKeys.last!)
+            if beginTime.count == 19 && endTime.count == 19 {
+               cell.dateRangeView.beginDate = DateFormatter.dateFromString(beginTime)
+               cell.dateRangeView.endDate = DateFormatter.dateFromString(endTime)
+           
+            }
             cell.dateRangeView.block { (dateRangeView) in
-                DDLog(dateRangeView.dateStart, dateRangeView.dateEnd)
-                
+                DDLog(dateRangeView.beginTime, dateRangeView.endTime)
+                if dateRangeView.endTime.isNewer(version: dateRangeView.beginTime) == false {
+                    NNProgressHUD.showText("结束时间必须大于开始时间")
+                    return
+                }
+                self.dataModel.setValue(dateRangeView.beginTime, forKey: dateTimeKeys.first!)
+                self.dataModel.setValue(dateRangeView.endTime, forKey: dateTimeKeys.last!)
             }
             cell.getViewLayer()
             return cell
@@ -441,6 +473,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
+            cell.textfield.rightViewMode = .never
+            cell.accessoryType = .disclosureIndicator
             
             cell.labelLeft.text = value0
             cell.block { (view, title, obj) in
@@ -505,8 +539,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "IOPTableViewCellGroupView":
             let cell = IOPTableViewCellGroupView.dequeueReusableCell(tableView);
-            cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
+            cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出", ]
+//            cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出", "全部", "自定义", "预定义"]
             cell.parkGroupView.selectedIdxList = [0]
+//            cell.parkGroupView.hideImage = true
+            
             return cell;
                         
         case "UITableViewCellThreeLable":
@@ -545,7 +582,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.groupView.itemList.last?.iconImageView.image = UIImage(named: "icon_discout_orange")
             cell.groupView.selectedIdxList = [0]
             
-            cell.getViewLayer();
+//            cell.getViewLayer();
             return cell;
             
         case "UITableViewCellFee":
@@ -573,7 +610,56 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
              cell.getViewLayer();
              return cell;
-                        
+               
+        case "UITableViewCellStatistics":
+            let cell = UITableViewCellStatistics.dequeueReusableCell(tableView);
+            cell.labelLeft.text = "西安凯德停车场A区";
+            cell.labelRight.text = "临时车";
+            cell.labelLeftSub.text = "总次数";
+            cell.labelMidSub.text = "总时长(小时)";
+            cell.labelRightSub.text = "总费用";
+            cell.labelLeftSubValue.text = "35";
+            cell.labelMidSubValue.text = "60";
+            cell.labelRightSubValue.text = "¥180.00";
+             
+//            cell.getViewLayer();
+            return cell;
+            
+            
+        case "UITableViewCellChoose":
+            let cell = UITableViewCellChoose.dequeueReusableCell(tableView)
+            cell.labelLeft.text = "商品名称"
+            cell.labelLeft.textColor = UIColor.textColor3
+
+            cell.labelLeftSub.text = "用户名称"
+            cell.labelLeftSub.textColor = UIColor.textColor6
+            
+            cell.labelRight.text = "价格"
+            cell.labelRight.textColor = UIColor.textColor9
+            
+            cell.labelRightSub.text = "日期时间"
+            cell.labelRightSub.textColor = UIColor.theme
+//              cell.btn.isSelected = chooseList.contains(model)
+              cell.btn.addActionHandler({ (control) in
+                  guard let sender = control as? UIButton else { return }
+                  sender.isSelected = !sender.isSelected
+//                  self.handleChooseAction(sender, model: model)
+                  
+              }, for: .touchUpInside)
+            return cell;
+
+        case "UITableViewCellCouponRecharge":
+            let cell = UITableViewCellCouponRecharge.dequeueReusableCell(tableView);
+            cell.btnName.setTitle("重庆老火锅", for: .normal)
+            cell.btn.setTitle("详情", for: .normal)
+            cell.labelMidLeft.text = "缴费金额 100元";
+            cell.labelMidRight.text = "面额 100小时";
+
+            cell.labelBottomLeft.text = "张数 100张";
+            cell.labelBottomRight.text = "充值时间 2019-12-10 12:0";
+            cell.getViewLayer();
+            return cell;
+            
         default:
             break
         }
