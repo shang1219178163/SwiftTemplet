@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import SwiftExpand
+
 
 @objc protocol NNDateRangeViewDelegate{
     
@@ -22,13 +22,23 @@ import SwiftExpand
 
     var rangeDay: Int = 30
 
-    lazy var dateEnd: String = DateFormatter.stringFromDate(Date())
-
-    lazy var dateBegin: String = {
-        let date: Date = Date().adding(-self.rangeDay)
-        var dateStr: String = DateFormatter.stringFromDate(date)
-        return dateStr
+    lazy var endDate: Date = Date()
+    lazy var beginDate: Date = {
+        let date: Date = self.endDate.adding(-self.rangeDay)
+        return date
     }()
+    
+    ///时间区间是否在未来
+    var isFuture: Bool = false{
+        willSet{
+            let now: Date = Date()
+            beginDate = newValue == false ? now.adding(-self.rangeDay) : now
+            endDate = newValue == false ? now : now.adding(self.rangeDay)
+        }
+    }
+
+    lazy var endTime: String = DateFormatter.stringFromDate(endDate)
+    lazy var beginTime: String = DateFormatter.stringFromDate(beginDate)
     
     private var viewBlock: ((NNDateRangeView) -> Void)? = nil
 
@@ -43,12 +53,14 @@ import SwiftExpand
         
 //        setupConstraint()
         
-        let _ = labBegin.addGestureTap({ (sender:UIGestureRecognizer) in
+        let _ = labBegin.addGestureTap({ (sender: UIGestureRecognizer) in
+            self.datePicker.datePicker.minimumDate = self.isFuture == false ? Date.distantPast : self.beginDate
+            self.datePicker.datePicker.date = self.beginDate
             self.datePicker.show()
             self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
                 let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
                 self.labBegin.text = dateStr
-                self.dateBegin = DateFormatter.stringFromDate(picker.datePicker.date)
+                self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date)
                 
                 self.delegate?.dateRangeView(self)
                 if self.viewBlock != nil {
@@ -58,11 +70,13 @@ import SwiftExpand
         })
         
         let _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
+            self.datePicker.datePicker.minimumDate = self.beginDate
+            self.datePicker.datePicker.date = self.endDate
             self.datePicker.show()
             self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
                 let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
                 self.labEnd.text = dateStr
-                self.dateEnd = DateFormatter.stringFromDate(picker.datePicker.date)
+                self.endTime = DateFormatter.stringFromDate(picker.datePicker.date)
                 
                 self.delegate?.dateRangeView(self)
                 if self.viewBlock != nil {
@@ -99,13 +113,13 @@ import SwiftExpand
         
         let labTitleSize = labTitle.sizeThatFits(.zero)
         labTitle.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(kY_GAP)
-            make.left.equalToSuperview().offset(kX_GAP)
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10)
             make.width.equalTo(labTitleSize.width)
-            make.bottom.equalToSuperview().offset(-kY_GAP)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
-        let width = bounds.width - labTitleSize.width - kX_GAP*2
+        let width = bounds.width - labTitleSize.width - 10*2
         let labWidth = (width - 20 - 5*2 - 8)*0.5
 
         labBegin.snp.remakeConstraints { (make) in
@@ -133,12 +147,9 @@ import SwiftExpand
     }
     
     func setupDefault() {
-        labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: Date())
-        let date = Date().adding(-rangeDay)
-        labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: date)
-        
-        dateEnd = DateFormatter.stringFromDate(Date())
-        dateBegin = DateFormatter.stringFromDate(date)
+        assert(endTime.count == 19 && beginTime.count == 19 , "必须是完整的时间字符串,例'2020-05-15 01:06:29'")
+        labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: beginDate)
+        labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: endDate)
     }
     
     //MARK: -lazy
@@ -156,7 +167,6 @@ import SwiftExpand
         view.textColor = UIColor.textColor3
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
-        view.tag = kTAG_LABEL
         view.isUserInteractionEnabled = true
         view.adjustsFontSizeToFitWidth = true
         return view
@@ -169,7 +179,6 @@ import SwiftExpand
         view.textColor = UIColor.textColor6
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
-        view.tag = kTAG_LABEL+1
         view.isUserInteractionEnabled = true
         view.adjustsFontSizeToFitWidth = true
         return view
@@ -177,6 +186,7 @@ import SwiftExpand
     
     lazy var labLine: UILabel = {
         var view = UILabel()
+        view.textColor = .gray
         view.text = "~"
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)

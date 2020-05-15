@@ -48,7 +48,7 @@ class NNDatePicker: UIView {
         UIApplication.shared.keyWindow?.addSubview(self);
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.35, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
             self.containView.transform = CGAffineTransform.identity;
 
@@ -56,7 +56,7 @@ class NNDatePicker: UIView {
     }
 
     func dismiss() {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.35, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
             self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containView.frame.height)
 
@@ -96,7 +96,7 @@ class NNDatePicker: UIView {
         datePicker.locale = Locale(identifier: "zh_CN");
         datePicker.backgroundColor = .white;
 
-        datePicker.addTarget(self, action: #selector(handleActionControl(sender:)), for: .valueChanged);
+        datePicker.addTarget(self, action: #selector(handleAction(_:)), for: .valueChanged);
         return datePicker;
     }();
     
@@ -108,7 +108,7 @@ class NNDatePicker: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleCancell, for: .normal);
         btn.setTitleColor(.lightGray, for: .normal);
-        btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
+        btn.addTarget(self, action: #selector(handleAction(_:)), for:.touchUpInside);
         
         return btn;
     }();
@@ -121,7 +121,7 @@ class NNDatePicker: UIView {
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleSure, for: .normal);
         btn.setTitleColor(.systemBlue, for: .normal);
-        btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
+        btn.addTarget(self, action: #selector(handleAction(_:)), for:.touchUpInside);
 
         return btn;
     }();
@@ -136,11 +136,10 @@ class NNDatePicker: UIView {
     }();
     
     //MRAK: - funtion
-    @objc func handleActionControl(sender: UIControl) {
+    @objc func handleAction(_ sender: UIControl) {
         if let control = sender as? UIDatePicker {
             DDLog(control.date);
         }
-            
         else if let control = sender as? UIButton {
             DDLog(control.titleLabel?.text as Any);
             if control.titleLabel?.text == kTitleSure {
