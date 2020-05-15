@@ -9,8 +9,16 @@
 import UIKit
 import SwiftExpand
 
+@objc protocol NNDatePickerDelegate{
+    
+    @objc func datePicker(_ picker: NNDatePicker, index: Int)
+}
+
+
 class NNDatePicker: UIView {
     
+    weak var delegate: NNDatePickerDelegate?
+
     typealias ViewClick = (NNDatePicker, Int) -> Void;
     var viewBlock: ViewClick?;
 
@@ -83,10 +91,10 @@ class NNDatePicker: UIView {
     }();
     
     lazy var datePicker: UIDatePicker = {
-        let datePicker: UIDatePicker = UIDatePicker();
-        datePicker.datePickerMode = UIDatePicker.Mode.date;
+        let datePicker = UIDatePicker();
+        datePicker.datePickerMode = .date;
         datePicker.locale = Locale(identifier: "zh_CN");
-        datePicker.backgroundColor = UIColor.white;
+        datePicker.backgroundColor = .white;
 
         datePicker.addTarget(self, action: #selector(handleActionControl(sender:)), for: .valueChanged);
         return datePicker;
@@ -99,7 +107,7 @@ class NNDatePicker: UIView {
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleCancell, for: .normal);
-        btn.setTitleColor(UIColor.black, for: .normal);
+        btn.setTitleColor(.lightGray, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
         
         return btn;
@@ -112,7 +120,7 @@ class NNDatePicker: UIView {
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleSure, for: .normal);
-        btn.setTitleColor(UIColor.theme, for: .normal);
+        btn.setTitleColor(.systemBlue, for: .normal);
         btn.addTarget(self, action: #selector(handleActionControl(sender:)), for:.touchUpInside);
 
         return btn;
@@ -122,7 +130,7 @@ class NNDatePicker: UIView {
         let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: kNaviBarHeight));
         lab.tag = 10;
         lab.text = "请选择";
-//        lab.textColor = UIColor.gray;
+        lab.textColor = .lightGray;
         lab.textAlignment = .center;
         return lab;
     }();
@@ -136,7 +144,8 @@ class NNDatePicker: UIView {
         else if let control = sender as? UIButton {
             DDLog(control.titleLabel?.text as Any);
             if control.titleLabel?.text == kTitleSure {
-                self.viewBlock!(self,sender.tag);
+                delegate?.datePicker(self, index: sender.tag)
+                self.viewBlock!(self, sender.tag);
                 
             }
             self.dismiss();
