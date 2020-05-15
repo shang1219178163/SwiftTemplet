@@ -84,11 +84,11 @@ import SwiftExpand
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
-//            self.btn.imageView?.transform = .identity;
 
-        }, completion:{ (isFinish:Bool) in
-//            self.containView.removeFromSuperview()
-            
+        }, completion:{ ( finished: Bool) in
+            if finished {
+                self.removeFromSuperview()
+            }
         })
     }
     
