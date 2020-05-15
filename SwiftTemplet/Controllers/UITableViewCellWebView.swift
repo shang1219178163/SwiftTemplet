@@ -95,7 +95,7 @@ class UITableViewCellWebView: UITableViewCell {
         }
     }
     
-    @objc func loadRequest() -> Void {
+    @objc func loadRequest() {
         assert(urlString != "")
         if !urlString.hasPrefix("http") {
             urlString = "http://" + urlString;
@@ -104,7 +104,7 @@ class UITableViewCellWebView: UITableViewCell {
         wkWebView.load(request)
     }
     
-    @objc func webViewReload() -> Void {
+    @objc func webViewReload() {
         wkWebView.reload()
     }
     
