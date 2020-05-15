@@ -10,30 +10,47 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class NNDateRangeView: UIView {
+@objc protocol NNDateRangeViewDelegate{
+    
+    @objc func dateRangeView(_ rangeView: NNDateRangeView)
+}
 
-    var dateStart: String?
-    var dateEnd: String?
+///时间区段选择器
+@objcMembers class NNDateRangeView: UIView {
+    
+    weak var delegate: NNDateRangeViewDelegate?
+
+    var rangeDay: Int = 30
+
+    lazy var dateEnd: String = DateFormatter.stringFromDate(Date())
+
+    lazy var dateBegin: String = {
+        let date: Date = Date().adding(-self.rangeDay)
+        var dateStr: String = DateFormatter.stringFromDate(date)
+        return dateStr
+    }()
+    
     private var viewBlock: ((NNDateRangeView) -> Void)? = nil
 
+    // MARK: -lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(labTitle)
-        addSubview(labStart)
+        addSubview(labBegin)
         addSubview(labEnd)
         addSubview(labLine)
         
-        setupConstraint()
+//        setupConstraint()
         
-        let _ = labStart.addGestureTap({ (sender:UIGestureRecognizer) in
+        let _ = labBegin.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormatMinute)
-
-//                DDLog("起始时间:",dateStr)
-                self.labStart.text = (dateStr as NSString).substring(to: 10)
-                self.dateStart = dateStr;
+                let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
+                self.labBegin.text = dateStr
+                self.dateBegin = DateFormatter.stringFromDate(picker.datePicker.date)
+                
+                self.delegate?.dateRangeView(self)
                 if self.viewBlock != nil {
                     self.viewBlock!(self)
                 }
@@ -43,22 +60,25 @@ class NNDateRangeView: UIView {
         let _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.show()
             self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kDateFormatMinute)
-//                DDLog("截止日期:",dateStr)
-                self.labEnd.text = (dateStr as NSString).substring(to: 10)
-                self.dateEnd = dateStr;
+                let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
+                self.labEnd.text = dateStr
+                self.dateEnd = DateFormatter.stringFromDate(picker.datePicker.date)
+                
+                self.delegate?.dateRangeView(self)
                 if self.viewBlock != nil {
                     self.viewBlock!(self)
                 }
             })
         })
         
-        labStart.textColor = UIColor.theme;
+        labBegin.textColor = UIColor.theme;
         labEnd.textColor = UIColor.theme;
+        labBegin.adjustsFontSizeToFitWidth = true
+        labEnd.adjustsFontSizeToFitWidth = true
+        labBegin.minimumScaleFactor = 0.8
+        labEnd.minimumScaleFactor = 0.8
 
-        labEnd.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
-        let date = Date().adding(-30)
-        labStart.text = DateFormatter.stringFromDate(date, fmt: kDateFormatDay)
+        setupDefault()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,9 +87,15 @@ class NNDateRangeView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        setupConstraint()
     }
-    
+        
     func setupConstraint() {
+        if bounds.height <= 0 {
+            return
+        }
+        setupDefault()
         
         let labTitleSize = labTitle.sizeThatFits(.zero)
         labTitle.snp.makeConstraints { (make) in
@@ -80,64 +106,39 @@ class NNDateRangeView: UIView {
         }
         
         let width = bounds.width - labTitleSize.width - kX_GAP*2
-        let ctlWidth = width*0.8
-        
-        labStart.snp.makeConstraints { (make) in
+        let labWidth = (width - 20 - 5*2 - 8)*0.5
+
+        labBegin.snp.remakeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
-            make.left.equalTo(labTitle.snp.right).offset((width - ctlWidth)*0.5)
-            make.width.equalTo(120);
+            make.left.equalTo(labTitle.snp.right).offset(8)
+            make.width.equalTo(labWidth);
         }
         
         labLine.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
-            make.left.equalTo(labStart.snp.right).offset(5)
+            make.left.equalTo(labBegin.snp.right).offset(5)
             make.width.equalTo(20);
         }
         
-        labEnd.snp.makeConstraints { (make) in
+        labEnd.snp.remakeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labLine.snp.right).offset(5)
-            make.width.equalTo(120);
+            make.width.equalTo(labWidth);
         }
-    
     }
-    
-//    func setupConstraint() {
-//        labTitle.sizeToFit()
-//        labTitle.frame.size = CGSize(width: labTitle.width, height: 35)
-//        labTitle.snp.makeConstraints { (make) in
-//            make.centerY.equalToSuperview()
-//            make.left.equalToSuperview().offset(kX_GAP)
-//            make.size.equalTo(labTitle.frame.size);
-//        }
-//
-//        let width = frame.width - labTitle.frame.maxX - kX_GAP
-//        let ctlWidth = width*0.7
-//
-//        labStart.frame.size = CGSize(width: 100, height: labTitle.frame.height)
-//        labStart.snp.makeConstraints { (make) in
-//            make.top.equalTo(labTitle)
-//            make.left.equalTo(labTitle.snp.right).offset((width - ctlWidth)*0.5)
-//            make.size.equalTo(labStart.frame.size);
-//        }
-//
-//        labLine.frame.size = CGSize(width: 20, height: labTitle.frame.height)
-//        labLine.snp.makeConstraints { (make) in
-//            make.top.equalTo(labTitle)
-//            make.left.equalTo(labStart.snp.right).offset(20)
-//            make.size.equalTo(labLine.frame.size);
-//        }
-//
-//        labEnd.snp.makeConstraints { (make) in
-//            make.top.equalTo(labTitle)
-//            make.left.equalTo(labLine.snp.right).offset(20)
-//            make.size.equalTo(labStart.frame.size)
-//        }
-//    }
-    
+        
     //MARK: -funtions
     func block(_ action:((NNDateRangeView) -> Void)?) {
         viewBlock = action;
+    }
+    
+    func setupDefault() {
+        labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: Date())
+        let date = Date().adding(-rangeDay)
+        labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: date)
+        
+        dateEnd = DateFormatter.stringFromDate(Date())
+        dateBegin = DateFormatter.stringFromDate(date)
     }
     
     //MARK: -lazy
@@ -149,7 +150,7 @@ class NNDateRangeView: UIView {
         return view
     }()
     
-    lazy var labStart: UILabel = {
+    lazy var labBegin: UILabel = {
         var view = UILabel()
         view.text = "起始日期"
         view.textColor = UIColor.textColor3
@@ -176,7 +177,7 @@ class NNDateRangeView: UIView {
     
     lazy var labLine: UILabel = {
         var view = UILabel()
-        view.text = "-"
+        view.text = "~"
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
         return view

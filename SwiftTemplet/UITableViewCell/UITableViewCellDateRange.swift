@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// 起止时间选择
+/// 有效日期选择
 class UITableViewCellDateRange: UITableViewCell {
 
     var Xgap: CGFloat = 15;
@@ -22,6 +22,9 @@ class UITableViewCellDateRange: UITableViewCell {
         
         dateRangeView.labTitle.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         
+        dateRangeView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,10 +39,10 @@ class UITableViewCellDateRange: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if bounds.height <= 0.0 {
-            return
-        }
-        dateRangeView.frame = contentView.bounds
+//        if bounds.height <= 0.0 {
+//            return
+//        }
+//        dateRangeView.frame = contentView.bounds
 
     }
     
