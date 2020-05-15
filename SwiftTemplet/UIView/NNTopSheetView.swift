@@ -18,9 +18,18 @@ import SwiftExpand
 
 @objcMembers class NNTopSheetView: UIView {
     
-    var indexP: IndexPath = IndexPath(row: 0, section: 0)
-    weak var parController: UIViewController?
     weak var delegate: NNTopSheetViewDelegate?
+    
+    var indexP: IndexPath = IndexPath(row: 0, section: 0)
+    
+    weak var parController: UIViewController?
+    var sender: UIView?{
+        willSet{
+            guard let newValue = newValue else { return }
+            let rect = parController!.view.convert(newValue.frame, to: parController!.view)
+            self.containView.originY = rect.maxY;
+        }
+    }
 
     // MARK: -lifecycle
     deinit {
@@ -66,7 +75,7 @@ import SwiftExpand
             }
             
             if self.btn.imageView?.transform.isIdentity == false {
-                self.show(self.parController!)
+                self.show()
             } else {
                 self.dismiss()
             }
@@ -76,7 +85,7 @@ import SwiftExpand
         self.parController!.navigationItem.titleView = btn
     }
     
-    func show(_ inController: UIViewController) {
+    func show() {
         self.parController!.view.addSubview(self.containView)
         self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 
