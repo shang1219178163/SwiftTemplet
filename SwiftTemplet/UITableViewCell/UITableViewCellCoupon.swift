@@ -84,7 +84,8 @@ class UITableViewCellCoupon: UITableViewCell {
         labelLeft.font = UIFont.systemFont(ofSize: 16)
         labelLeft.addObserver(self, forKeyPath: "backgroundColor", options: .new, context: nil)
         labelTop.addObserver(self, forKeyPath: "text", options: .new, context: nil)
-
+        
+        btn.isHidden = true
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

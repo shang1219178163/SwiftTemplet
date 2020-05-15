@@ -156,7 +156,7 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
         cell.textLabel!.text = list[indexPath.row]
         cell.textLabel!.textAlignment = .center
         
-        cell.textLabel!.textColor = indexP == indexPath ? .systemBlue : .black
+        cell.textLabel!.textColor = indexP == indexPath ? .systemBlue : .gray
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
         return cell
     }
@@ -169,7 +169,7 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
 
             let oldCell = tableView.cellForRow(at: indexP)
             oldCell?.accessoryType = .none
-            oldCell?.textLabel?.textColor = .black
+            oldCell?.textLabel?.textColor = .gray
 
             indexP = indexPath
         }
