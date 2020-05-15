@@ -71,16 +71,18 @@ import SwiftExpand
         self.containView.alpha = 0.0
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 1.0
-            
             self.tableView.transform = .identity
+            self.parController!.view.bringSubviewToFront(self.containView)
 
-        }, completion: nil)
+        }) { (finished) in
+            if finished {
+            }
+        }
     }
     ///  释放视图
     func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.containView.alpha = 0.0
-            
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 //            self.btn.imageView?.transform = .identity;
 
