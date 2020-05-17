@@ -15,6 +15,20 @@ private let reuseIdentifier = "UICollectionViewCell"
 class UICollectionBatchUpdateController: UIViewController {
     
     var count = 0;
+    
+    lazy var collectionView: UICollectionView = {
+        let flowLayout = NNCollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 85, height: 85)
+        flowLayout.scrollDirection = .vertical
+        
+        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
+        view.register(cellType: UICollectionViewCell.self)
+        view.delegate   = self
+        view.dataSource = self
+        view.backgroundColor = UIColor.white
+        view.alwaysBounceVertical = true
+        return view
+    }()
 
     
     override func viewDidLoad() {
@@ -46,35 +60,26 @@ class UICollectionBatchUpdateController: UIViewController {
         let insertItem = UIBarButtonItem(title: "插入", style: .plain, target: self, action: #selector(actionInsert(_:)))
         navigationItem.rightBarButtonItems = [updateItem, insertItem]
         
-        let flowLayout = NNCollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 85, height: 85)
-        flowLayout.scrollDirection = .vertical
+
         
-        ctView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-        ctView.register(cellType: UICollectionViewCell.self)
-        ctView.delegate   = self
-        ctView.dataSource = self
-        ctView.backgroundColor = UIColor.white
-        ctView.alwaysBounceVertical = true
-        
-        view.addSubview(ctView)
+        view.addSubview(collectionView)
     }
 
     
     @objc func actionRefresh(_ sender: UIBarButtonItem) {
-        ctView.performBatchUpdates({
+        collectionView.performBatchUpdates({
 
             count = Int(arc4random()%13);
-            ctView.reloadSections(NSIndexSet(index: 1) as IndexSet)
+            collectionView.reloadSections(NSIndexSet(index: 1) as IndexSet)
         }, completion: nil)
     }
     
     @objc func actionInsert(_ sender: UIBarButtonItem) {
-        ctView.performBatchUpdates({
+        collectionView.performBatchUpdates({
             let indexs = [IndexPath(item: count, section: 1), IndexPath(item: count + 1, section: 1), ];
             count += 2
             
-            ctView.insertItems(at: indexs)
+            collectionView.insertItems(at: indexs)
         }, completion: nil)
     }
 
