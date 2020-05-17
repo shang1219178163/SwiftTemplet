@@ -34,8 +34,7 @@ class IOPImageUploadController: UIViewController {
     var imageDefault: UIImage = UIImage(named: "img_upload")!
     var image: UIImage = UIImage(named: "img_upload")!{
         willSet{
-//            self.tableView.reloadData()
-            self.view.reloadSubviewTableView()
+            self.tableView.reloadData()
         }
     }
     
@@ -48,11 +47,13 @@ class IOPImageUploadController: UIViewController {
     }
 
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 216)
-        view.dataSource = self
-        view.delegate = self
-
-        return view
+        guard let tableView = view.subView(UITableView.self) as? UITableView else {
+            let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 216)
+            view.dataSource = self
+            view.delegate = self
+            return view
+        }
+        return tableView
     }()
 
     lazy var footerView: NNTableFooterView = {
