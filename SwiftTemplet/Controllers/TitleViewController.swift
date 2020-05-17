@@ -39,8 +39,8 @@ class TitleViewController: NNTitleViewSelectController{
 
         }
         
-        createBtnBarItem("other") { (tap, supView, idx) in
-            let ctrl = OthersViewController()
+        createBtnBarItem("Next") { (tap, supView, idx) in
+            let ctrl = SheetViewController()
             self.navigationController?.pushViewController(ctrl, animated: true)
         }
 
@@ -55,6 +55,22 @@ class TitleViewController: NNTitleViewSelectController{
         
         view.addSubview(chooseView)
 
+        
+        topView.btn = radioButton
+        topView.btn.addActionHandler({[weak self] (sender) in
+            guard let self = self else { return }
+            UIApplication.shared.keyWindow?.endEditing(true)
+            if let imgView = (sender as! UIButton).imageView{
+                imgView.transformRotationCycle()
+            }
+            
+            if self.topView.btn.imageView?.transform.isIdentity == false {
+                self.topView.show()
+            } else {
+                self.topView.dismiss()
+            }
+            
+        }, for: .touchUpInside)
 //        view.getViewLayer()
     }
     
@@ -124,6 +140,9 @@ class TitleViewController: NNTitleViewSelectController{
             make.bottom.equalToSuperview().offset(0)
             make.height.equalTo(50)
         }
+        
+        topView.sender = radioButton
+
     }
     
     //MARK: -func
