@@ -31,6 +31,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
         
         labelRight.numberOfLines = 1;
         labelRight.adjustsFontSizeToFitWidth = true;
+
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         sliderCtl.addObserver(self, forKeyPath: "value", options: .new, context: nil)
     }

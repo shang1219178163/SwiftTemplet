@@ -30,15 +30,17 @@ class UITableViewCellPickerView: UITableViewCell {
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         
-        labelLeft.numberOfLines = 1
         textfield.placeholder = "请选择";
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
-        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-        textfield.asoryView(true, image: image)
         textfield.isEnabled = false
+
+//        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+//        textfield.asoryView(true, image: image)
+        accessoryType = .disclosureIndicator        
 
         let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in
             UIApplication.shared.keyWindow?.endEditing(true)

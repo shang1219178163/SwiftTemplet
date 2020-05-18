@@ -46,6 +46,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         textView.delegate = self;
         textView.returnKeyType = .done
         
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
 
     }

@@ -39,6 +39,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
         btnCode.layer.cornerRadius = 3;
         btnCode.layer.masksToBounds = true;
         
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     

@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UITextField(输入框)
-class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
+class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
     
     var viewBlock: TextFieldClosure?
     
@@ -33,11 +33,12 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         labelLeft.numberOfLines = 1
         textfield.placeholder = "99.0";
         textfield.textAlignment = .center;
-        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-        _ = textfield.asoryView(true, image: image)
-//        textfield.asoryView(true, unitName: "公斤(万元)");
         textfield.delegate = self;
-        
+//        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+//        _ = textfield.asoryView(true, image: image)
+//        textfield.asoryView(true, unitName: "公斤(万元)");
+
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
@@ -71,7 +72,8 @@ class UITableViewCellTextField: UITableViewCell,UITextFieldDelegate {
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(Xgap)
-            make.size.equalTo(CGSize(width: labelLeft.frame.width, height: 35));
+            make.width.equalTo(labelLeft.frame.width)
+            make.height.equalTo(35)
         }
         
         textfield.snp.makeConstraints { (make) in

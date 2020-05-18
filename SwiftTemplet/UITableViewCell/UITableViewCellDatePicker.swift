@@ -31,18 +31,19 @@ class UITableViewCellDatePicker: UITableViewCell {
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
 
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         
         textfield.placeholder = "请选择";
         textfield.text = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
-        
-        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-        textfield.asoryView(true, image: image)
-//        textfield.asoryView(true, unitName: "公斤(万元)");
 //        textfield.delegate = self;
         textfield.isEnabled = false
+        
+        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+        textfield.asoryView(true, image: image!)
+//        textfield.asoryView(true, unitName: "公斤(万元)");
         
 //        contentView.insertSubview(backView, at: 0)
         let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in

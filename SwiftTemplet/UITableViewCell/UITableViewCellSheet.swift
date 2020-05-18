@@ -41,15 +41,17 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
 
         textfield.placeholder = "请选择";
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
         
-        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-        textfield.asoryView(true, image: image)
+//        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+//        _ = textfield.asoryView(true, image: image!)
         textfield.isEnabled = false
+        accessoryType = .disclosureIndicator
 
         let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in
             UIApplication.shared.keyWindow?.endEditing(true)
