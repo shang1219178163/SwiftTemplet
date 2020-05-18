@@ -32,6 +32,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(labelLeft);
         contentView.addSubview(switchCtl);
         
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     

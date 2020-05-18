@@ -30,6 +30,7 @@ class UITableViewCellThree: UITableViewCell {
         
         labelLeft.numberOfLines = 1;
         
+        labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
