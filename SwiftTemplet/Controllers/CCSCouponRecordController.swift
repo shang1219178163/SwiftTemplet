@@ -20,6 +20,10 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
         _ = createBtnBarItem("语音通话") { (reco, view, idx) in
             self.phoneView.show();
         }
+        
+//        tableView.holderView.isHidden = (tableView.visibleCells.count != 0)
+//        tableView.setHolderView(for: .loading)
+//        tableView.holderView.getViewLayer()
     }
        
     // MARK: -callPhoneViewDelegate
