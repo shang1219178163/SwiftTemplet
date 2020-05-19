@@ -12,7 +12,7 @@ import SwiftExpand
 /// UISegmentedControl 升级版,支持0: box, 1, topLine, 2,bottomLine 三种样式
 class NNSegmentedControl: UISegmentedControl {
 
-    var indicatorHeight: CGFloat = 2
+    var indicatorHeight: CGFloat = 1.5
     var cornerRadius: CGFloat = 3
 
     var normalColor: UIColor = UIColor.black {
@@ -44,6 +44,7 @@ class NNSegmentedControl: UISegmentedControl {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(lineView)
         addSubview(indicator);
         setupControl()
         
@@ -118,7 +119,7 @@ class NNSegmentedControl: UISegmentedControl {
     }
     
     func setupIndicator() {
-        if self.bounds.height <= 0 || numberOfSegments <= 0 {
+        if bounds.height <= 0 || numberOfSegments <= 0 {
             return
         }
         
@@ -129,18 +130,25 @@ class NNSegmentedControl: UISegmentedControl {
         /// 0: default, 1, topLine, 2,bottomLine, 3,box
         switch showStyle {
         case .topLine:
+            self.lineView.frame = CGRectMake(0, 0, bounds.width, 0.35)
+            bringSubviewToFront(lineView)
+
             UIView.animate(withDuration: duration) {
                 self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.indicatorHeight)
             }
             bringSubviewToFront(indicator)
 
         case .bottomLine:
+            self.lineView.frame = CGRectMake(0, bounds.height - 1, bounds.width, 0.35)
+            bringSubviewToFront(lineView)
+
             UIView.animate(withDuration: duration) {
                 self.indicator.frame = CGRectMake(originX, self.bounds.height - self.indicatorHeight, segmentWidth, self.indicatorHeight)
             }
             bringSubviewToFront(indicator)
 
         case .box:
+            self.lineView.frame = .zero
             UIView.animate(withDuration: duration) {
                 self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.frame.height)
             }
@@ -155,10 +163,15 @@ class NNSegmentedControl: UISegmentedControl {
     lazy var indicator: UIView = {
         let view = UIView()
         view.layer.backgroundColor = UIColor.clear.cgColor
-        //        layer.opacity = 0;
         
         view.layer.borderColor = selectedColor.cgColor;
         view.layer.borderWidth = indicatorHeight;
+        return view;
+    }()
+    
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.line
         return view;
     }()
 
