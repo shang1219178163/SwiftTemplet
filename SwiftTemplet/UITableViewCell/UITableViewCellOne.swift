@@ -77,7 +77,7 @@ class UITableViewCellOne: UITableViewCell {
         if bounds.height <= 0.0 {
             return
         }
-        let height: CGFloat = bounds.height - kY_GAP*2
+        let height: CGFloat = bounds.height - kPadding*2
         //头像不为空
         if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in
@@ -88,71 +88,72 @@ class UITableViewCellOne: UITableViewCell {
             
             if type == 0 {
                 //右边文字优先展示
-                labelRight.sizeToFit();
+                let size: CGSize = labelRight.sizeThatFits(.zero)
                 labelRight.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
+                    make.top.equalToSuperview().offset(kPadding)
                     make.right.equalToSuperview().offset(-Xgap)
-                    make.height.equalTo(kSizeArrow.height)
+                    make.width.equalTo(ceil(size.width))
+                    make.bottom.equalToSuperview().offset(-kPadding)
                 }
                 
                 labelLeft.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
+                    make.top.bottom.equalTo(labelRight)
                     make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
                     make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-                    make.height.equalTo(kSizeArrow.height)
                 }
                 
             } else {
                 //左边文字优先展示
-                labelLeft.sizeToFit();
+                let size: CGSize = labelLeft.sizeThatFits(.zero)
                 labelLeft.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
+                    make.top.equalToSuperview().offset(kPadding)
                     make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
-//                    make.height.equalTo(kSizeArrow.height)
+                    make.width.equalTo(ceil(size.width))
+                    make.bottom.equalToSuperview().offset(-kPadding)
                 }
                 
                 labelRight.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
+                    make.top.bottom.equalTo(labelLeft)
                     make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                     make.right.equalToSuperview().offset(-Xgap)
-                    make.height.equalTo(kSizeArrow.height)
                 }
+            }
+          return
+        }
+        
+        //头像为空
+        if type == 0 {
+            //右边文字优先展示
+            let size: CGSize = labelRight.sizeThatFits(.zero)
+            labelRight.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(kPadding)
+                make.right.equalToSuperview().offset(-Xgap)
+                make.width.equalTo(ceil(size.width))
+                make.bottom.equalToSuperview().offset(-kPadding)
+            }
+            
+            labelLeft.snp.makeConstraints { (make) in
+                make.top.bottom.equalTo(labelRight)
+                make.left.equalToSuperview().offset(Xgap)
+                make.right.equalTo(labelRight.snp.left).offset(-kPadding)
             }
             
         } else {
-            //头像为空
-            if type == 0 {
-                labelRight.sizeToFit();
-                labelRight.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
-                    make.right.equalToSuperview().offset(-kPadding)
-                    make.height.equalTo(kSizeArrow.height)
-                }
-                
-                labelLeft.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
-                    make.left.equalToSuperview().offset(Xgap)
-                    make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-                    make.height.equalTo(kSizeArrow.height)
-                }
-                
-            } else {
-                labelLeft.sizeToFit();
-                labelLeft.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
-                    make.left.equalToSuperview().offset(Xgap)
-//                        make.height.equalTo(kSizeArrow.height)
-                }
-                
-                labelRight.snp.makeConstraints { (make) in
-                    make.centerY.equalToSuperview()
-                    make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                    make.right.equalToSuperview().offset(-Xgap)
-                    make.height.equalTo(kSizeArrow.height)
-                }
+            //左边文字优先展示
+            let size: CGSize = labelLeft.sizeThatFits(.zero)
+            labelLeft.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(kPadding)
+                make.left.equalToSuperview().offset(Xgap)
+                make.width.equalTo(ceil(size.width))
+                make.bottom.equalToSuperview().offset(-kPadding)
+            }
+            
+            labelRight.snp.makeConstraints { (make) in
+                make.top.bottom.equalTo(labelLeft)
+                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                make.right.equalToSuperview().offset(-Xgap)
             }
         }
-            
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
