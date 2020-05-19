@@ -99,14 +99,14 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         case 0:
             let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView);
             cell.labelLeft.text = "日期选择:";
-            cell.textfield.asoryView(true, text: "小时")
-            cell.block { ( sender: UITableViewCellDatePicker, view: NNDatePicker, idx: Int) in
-                let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormat)
-
+//            cell.textfield.asoryView(true, text: "小时")
+            cell.datePicker.block { (picker, idx) in
+                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date)
                 DDLog(dateStr);
                 
             }
         
+            cell.accessoryType = .disclosureIndicator
             cell.getViewLayer();
             return cell;
         case 1:
