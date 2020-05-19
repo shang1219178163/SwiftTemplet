@@ -17,8 +17,8 @@ class NNClockView: UIImageView {
         willSet {
             newValue?.forEach { (obj: String) in
                 
-                let btn = UIButton();
-                btn.backgroundColor = .theme;
+                let btn = UIButton(type: .custom);
+                btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
 //                btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
                 btn.setTitle(obj, for: .normal);
                 btn.titleLabel?.adjustsFontSizeToFitWidth = true;
