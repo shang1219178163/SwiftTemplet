@@ -37,13 +37,9 @@ class UITableViewCellPickerView: UITableViewCell {
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
         textfield.isEnabled = false
+        accessoryType = .disclosureIndicator
 
-//        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-//        textfield.asoryView(true, image: image)
-        accessoryType = .disclosureIndicator        
-
-        let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in
-            UIApplication.shared.keyWindow?.endEditing(true)
+        let _ = contentView.addGestureTap { (sender) in
             self.pickView.show();
         }
     }
@@ -113,9 +109,8 @@ class UITableViewCellPickerView: UITableViewCell {
             DDLog(indexP.string)
             let cellItem = view.itemList![indexP.row] 
             self.textfield.text = cellItem.first
-            if self.viewBlock != nil {
-                self.viewBlock!(self, cellItem.first!, cellItem)
-            }
+            self.viewBlock?(self,  cellItem.first!, cellItem)
+            
         })
         return view;
     }()

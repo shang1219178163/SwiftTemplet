@@ -97,10 +97,8 @@ import SwiftExpand
         }) { (finished) in
             if finished {
                 self.tableView.reloadData()
-                DDLog(self.tableView.bounds)
             }
         }
-        
     }
     
     func dismiss() {

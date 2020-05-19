@@ -146,9 +146,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if self.viewBlock != nil {
-            self.viewBlock!(self, textView.text)
-        }
+        self.viewBlock?(self,  textView.text)
     }
     
     //MARK: -observe

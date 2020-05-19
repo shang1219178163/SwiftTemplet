@@ -88,7 +88,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
                 imageList.add(imgView.image as Any)
             }
         }
-        self.viewBlock!(self, imageList as! [UIImage])
+        self.viewBlock?(self,  imageList as! [UIImage])
     }
     
     

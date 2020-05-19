@@ -28,8 +28,8 @@ class NNDatePicker: UIView {
         super.init(frame: frame)
     }
 
-    convenience init(model: UIDatePicker.Mode = UIDatePicker.Mode.date) {
-        self.init(frame:UIScreen.main.bounds);
+    convenience init(model: UIDatePicker.Mode = .date) {
+        self.init(frame: UIScreen.main.bounds);
 
         self.datePicker.datePickerMode = model;
         self.addSubview(containView);
@@ -44,13 +44,14 @@ class NNDatePicker: UIView {
     }
     
     func show() {
+//        guard let keyWindow = UIApplication.shared.keyWindow as? UIWindow else { return }
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
         UIView.animate(withDuration: 0.35, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
-            self.containView.transform = CGAffineTransform.identity;
+            self.containView.transform = .identity;
 
         }, completion: nil);
     }
@@ -61,8 +62,9 @@ class NNDatePicker: UIView {
             self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containView.frame.height)
 
         }) { (isFinished) in
-            self.removeFromSuperview();
-
+            if isFinished {
+                self.removeFromSuperview();
+            }
         }
     }
    
@@ -144,7 +146,7 @@ class NNDatePicker: UIView {
             DDLog(control.titleLabel?.text as Any);
             if control.titleLabel?.text == kTitleSure {
                 delegate?.datePicker(self, index: sender.tag)
-                self.viewBlock!(self, sender.tag);
+                self.viewBlock?(self, sender.tag);
                 
             }
             self.dismiss();
