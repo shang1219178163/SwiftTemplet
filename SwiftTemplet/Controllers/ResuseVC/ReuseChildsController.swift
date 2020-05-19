@@ -29,6 +29,9 @@ class ReuseChildsController: UIViewController {
 //             ["UUSementedController", "分段组件", ],
              ["NNParentOneController", "UUSementedController子类极简实现", ],
 //             ["UUTabBarController", "UUTabBarController", ],
+             ["OOTabBarController", "OOTabBar", ],
+             ["PlateNumMainController", "NNTabController组件", ],
+
             ],
         ]
         return array

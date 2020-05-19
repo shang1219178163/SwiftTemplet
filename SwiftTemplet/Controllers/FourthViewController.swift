@@ -63,9 +63,31 @@ class FourthViewController: UIViewController {
         view.addActionHandler({ (control) in
             guard let sender = control as? UISegmentedControl else { return }
             DDLog(sender)
+            self.fliterView.show()
+
         }, for: .valueChanged)
         return view;
     }()
+    
+    lazy var fliterView: IOPCouponFliterDropView = {
+        let view = IOPCouponFliterDropView(frame: self.view.bounds)
+        view.parController = self;
+//        view.delegate = self;
+        
+        let model0 = NNSectionDataModel()
+        model0.title = "券类别"
+        model0.items = ["全部", "自定义", "预定义"]
+        model0.cellHeight = 50
+        
+        let model1 = NNSectionDataModel()
+        model1.title = "券类型"
+        model1.items = ["全部", "时长", "金额", "次数", "时间段", "折扣"]
+        model1.cellHeight = 100
+
+        view.list = [model0, model1]
+        return view;
+    }()
+    
         
     var progress: CGFloat = 0.0;
 
@@ -82,6 +104,11 @@ class FourthViewController: UIViewController {
 
         view.addSubview(goodsToolView)
         view.addSubview(orderPayView)
+
+        view.addSubview(fliterView)
+        
+        processingView.isHidden = true
+
 
         let amount = "¥\(227.00)"
         let string = "支付金额: \(amount)"
@@ -160,6 +187,8 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showLoading(kNetWorkRequesting);
 //        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
+        
+
     }
 
     @objc func showPopoverAction(_ sender: UIButton) {
