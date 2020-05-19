@@ -112,7 +112,7 @@ class EntryViewController: UIViewController {
         view.textColor = .white
         view.textAlignment = .center;
         let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
-        view.asoryView(true, image: image)
+        _ = view.asoryView(true, image: image!)
         return view
     }()
     
@@ -154,7 +154,7 @@ class EntryViewController: UIViewController {
             ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
-            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "  元    "],
+            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
             ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
             ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  "生产,不生产",],
@@ -285,7 +285,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.imgViewLeft.isHidden = true
             cell.labelLeft.text = value0
-            cell.labelRight.text = value4
+            cell.labelRight.text = dataModel.valueText(forKeyPath: value4, defalut: "-")
             cell.accessoryType = .disclosureIndicator
             
             cell.getViewLayer()
@@ -297,12 +297,20 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
-            
-            cell.labelLeft.text = value0
-            cell.textfield.text = value4
-            cell.textfield.textAlignment = .right
-            cell.getViewLayer()
 
+            cell.labelLeft.text = value0
+            cell.textfield.text = dataModel.valueText(forKeyPath: value4, defalut: "请选择")
+            cell.textfield.textAlignment = .right
+
+            cell.datePicker.block { (datePicker, idx) in
+                let time = DateFormatter.stringFromDate(datePicker.datePicker.date)
+                DDLog(time, idx)
+                if idx == 1 {
+                    cell.textfield.text = time
+                }
+            }
+
+            cell.getViewLayer()
             return cell
             
         case "UITableViewCellSegment":
@@ -322,7 +330,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }, for: .valueChanged)
      
 //            cell.getViewLayer()
-            
             return cell
             
         case "UITableViewCellStep":
@@ -356,13 +363,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textfield.asoryView(true, text: itemList.last!)
 
 //            cell.textfield.rightView = nil;
-            
             cell.textfield.textAlignment = .right
             
-            cell.block { (sender:AnyObject) in
-                if let textField = sender as? UITextField {
-                    DDLog(textField.text as Any)
-                }
+            cell.block { (textField) in
+                DDLog(textField.text as Any)
             }
             cell.getViewLayer()
             return cell
