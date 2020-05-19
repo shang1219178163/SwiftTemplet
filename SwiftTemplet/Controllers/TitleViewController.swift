@@ -17,7 +17,6 @@ class TitleViewController: NNTitleViewSelectController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         let list: [[String]] = [
                 ["商品名称00:", "60.0", "", "cardName","0"],
                 ["商品名称11:", "60.0", "", "cardName","0"],
@@ -36,7 +35,6 @@ class TitleViewController: NNTitleViewSelectController{
         
         let _ = gemetryView.addGestureTap { (recognizer) in
             self.gemetryView.subType = Int(arc4random_uniform(3))
-
         }
         
         createBtnBarItem("Next") { (tap, supView, idx) in
@@ -84,7 +82,6 @@ class TitleViewController: NNTitleViewSelectController{
             make.height.equalTo(50)
         }
         
-//        checkBox.sizeToFit()
         checkBox.snp.makeConstraints { (make) in
             make.top.equalTo(segmentCtlOne.snp.bottom).offset(15);
             make.left.equalToSuperview().offset(20)

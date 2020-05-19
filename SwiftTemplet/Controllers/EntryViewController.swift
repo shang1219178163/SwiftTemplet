@@ -165,6 +165,8 @@ class EntryViewController: UIViewController {
             ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
+            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
+            
 //            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
 
              ],
@@ -374,6 +376,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellTextView":
             let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
             cell.type = 1;
+            cell.labelLeft.text = "备注信息"
             cell.textView.placeHolderTextView.text = "最多140字"
             cell.block { ( view:UITableViewCellTextView, text:String) in
                 DDLog(text)
@@ -500,6 +503,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellCode":
             let cell = UITableViewCellCode.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.btnCode.addActionHandler({ (control) in
                 DDLog(self.list.count)
                 if let sender: UIButton = control as? UIButton {
@@ -531,6 +535,12 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellWebView.dequeueReusableCell(tableView);
              cell.loadContent = "asdfasdfasdf"
 
+             cell.getViewLayer();
+             return cell;
+            
+        case "UITableViewCellButton":
+            let cell = UITableViewCellButton.dequeueReusableCell(tableView);
+            
              cell.getViewLayer();
              return cell;
             

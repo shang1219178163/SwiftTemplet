@@ -147,7 +147,8 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
-            cell.imgViewRight.isHidden = true;
+            
+            cell.imgViewLeft.isHidden = true;
 
             //随机元素
             imgList = imgList.sorted(by: {$0 < $1});
@@ -165,7 +166,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
-            cell.imgViewRight.isHidden = true;
+            cell.imgViewLeft.isHidden = true;
 
             //随机元素
             imgList = imgList.sorted(by: {$0 < $1});

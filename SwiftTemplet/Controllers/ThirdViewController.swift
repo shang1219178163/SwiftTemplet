@@ -27,19 +27,22 @@ class ThirdViewController: UIViewController{
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["ReuseChildsController", "控制器复用", ],
-            ["NNTitleViewSelectController", "导航栏下拉菜单封装", ],
-            ["TransitionAnimatorShowController", "动画效果", ],
-            ["NNAlertShowController", "自定义 UIViewController 弹窗", ],
+            [["EntryViewController", "通用录入界面", ],
+//             ["CellListController", "自定义Cell界面", ],
+             ["IOPPlateEntryController", "多车牌录入", ],
+             ["ReuseChildsController", "控制器复用", ],
+             ["OOTabBarController", "OOTabBar", ],
+             ["FlipImageViewController", "FlipImageView", ],
+             ["NNTitleViewSelectController", "导航栏下拉菜单封装", ],
+             ["TransitionAnimatorShowController", "动画效果", ],
+             ["NNAlertShowController", "自定义 UIViewController 弹窗", ],
              ["UILabelMultipleTapController", "多点高亮点击", ],
-            ["UISearchStylesController", "搜索🔍样式", ],
+             ["UISearchStylesController", "搜索🔍样式", ],
              ["UIStackViewController", "UIStackView", ],
              ["NNPictureViewController", "全屏图册", ],
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
              ["NNPlateKeyboardController", "自定义车牌键盘重构", ],
              ["PlateKeybordController", "自定义车牌键盘", ],
-             ["EntryViewController", "通用录入界面", ],
-             ["CellListController", "自定义Cell界面", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              ["NNButtonStudyController", "按钮研究", ],
              ["UICollectionDispalyController", "UICollectionView展示", ],
@@ -130,11 +133,10 @@ class ThirdViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        let string = "[[\"\\u9655A91D6P\"]]";
-        let obj = JSONSerialization.jsonObjectFromString(string);
-        DDLog(obj)
+//        let string = "[[\"\\u9655A91D6P\"]]";
+//        let obj = JSONSerialization.jsonObjectFromString(string);
+//        DDLog(obj)
 //        NSObject.printChengfaBiao()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -180,7 +182,8 @@ class ThirdViewController: UIViewController{
             let footer = MJRefreshBackNormalFooter{
                 self.requestInfo()
             }
-            
+            footer.stateLabel?.isHidden = true
+            footer.arrowView?.isHidden = true
             return footer;
         }
         tableView.mj_footer = footer
