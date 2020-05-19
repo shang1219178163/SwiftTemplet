@@ -102,9 +102,7 @@ class NNButtonGroupView: UIView {
         }
 //        print(sender.isSelected, selectedList)
         delegate?.buttonGroupView(self, sender: sender)
-        if viewBlock != nil {
-            viewBlock!(self, sender)
-        }
+        viewBlock?(self, sender)
     }
     
     var viewBlock: ((NNButtonGroupView, NNIconButton) -> Void)?

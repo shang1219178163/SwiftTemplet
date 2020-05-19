@@ -40,6 +40,12 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
 
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+//        textfield.addTarget(self, action: #selector(handleSend(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
+//        textfield.addActionHandler({ (control) in
+//            guard let sender = control as? UITextField else { return }
+//            DDLog(sender.text)
+//
+//        }, for: [.editingChanged, .editingDidEndOnExit])
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -102,10 +108,7 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if viewBlock != nil {
-            viewBlock!(textField)
-        }
-        
+        viewBlock?(textField)
     }
 
     //MARK: -funtions
@@ -113,6 +116,9 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
         viewBlock = action
     }
     
+    @objc func handleSend(_ sender: UITextField) {
+        DDLog(sender.text)
+    }
    
 }
 

@@ -174,10 +174,7 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
 
             indexP = indexPath
         }
-        
-        if viewBlock != nil {
-            viewBlock!(self, indexPath)
-        }
+        viewBlock?(self, indexPath)
         dismiss()
     }
     

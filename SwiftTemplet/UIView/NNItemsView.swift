@@ -103,9 +103,7 @@ import UIKit
         }
 //        print(sender.isSelected, selectedList)
         delegate?.itemsView(self, sender: sender)
-        if viewBlock != nil {
-            viewBlock!(self, sender)
-        }
+        viewBlock?(self, sender)
     }
     
     var viewBlock: ((NNItemsView, UIButton) -> Void)?

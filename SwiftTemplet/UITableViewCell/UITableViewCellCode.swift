@@ -122,10 +122,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if viewBlock != nil {
-            viewBlock!(textField)
-        }
-        
+        viewBlock?(textField)
     }
     
     //MARK: -funtions
