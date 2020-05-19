@@ -28,10 +28,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         contentView.addSubview(btnCode);
-        
-     
-        labelLeft.isHidden = true
-        
+                
         textfield.placeholder = "请输入验证码";
         textfield.delegate = self;
         
@@ -39,6 +36,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
         btnCode.layer.cornerRadius = 3;
         btnCode.layer.masksToBounds = true;
         
+        labelLeft.text = "验  证  码:"
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }

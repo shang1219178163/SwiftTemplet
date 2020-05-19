@@ -11,6 +11,8 @@ import UIKit
 /// 确认按钮
 class UITableViewCellButton: UITableViewCell {
     
+    var contentInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
@@ -18,7 +20,7 @@ class UITableViewCellButton: UITableViewCell {
         
         btn.setTitle("确定", for: .normal)
         btn.setTitleColor( .white, for: .normal)
-        btn.backgroundColor = .theme
+        btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
         btn.layer.cornerRadius = 3
     }
     
@@ -30,21 +32,31 @@ class UITableViewCellButton: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if self.bounds.height <= 0.0 {
+        if bounds.height <= 0.0 {
             return
         }
         
         btn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(8)
-            make.left.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-8)
-            make.right.equalToSuperview().offset(-10)
+            make.edges.equalTo(contentInset)
         }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+    }
+    
+    // observeValue
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            guard let imageView = btn.imageView, let titleLabel = btn.titleLabel else { return }
+            btn.sizeToFit()
+            btn.center = self.contentView.center
+            btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageView.bounds.width, bottom: 0, right: imageView.bounds.width)
+            if btn.imageView?.image != nil {
+                btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleLabel.bounds.width+3.0, bottom: 0, right: -titleLabel.bounds.width-3.0)
+            }
+        }
     }
 
 }
