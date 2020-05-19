@@ -25,7 +25,6 @@ PODS:
     - BSGridCollectionViewLayout (= 1.2.5)
     - BSImageView (= 1.0.3)
   - BSImageView (1.0.3)
-  - CryptoSwift (1.3.1)
   - HandyJSON (5.0.2-beta)
   - HFNavigationController (1.1.5)
   - IQKeyboardManagerSwift (6.5.5)
@@ -93,7 +92,6 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireObjectMapper
   - BSImagePicker
-  - CryptoSwift
   - HandyJSON (~> 5.0.0-beta.1)
   - HFNavigationController
   - IQKeyboardManagerSwift
@@ -112,6 +110,7 @@ DEPENDENCIES:
   - SnapKit
   - SnapKitExtend
   - Surge
+  - SwiftExpand
   - SwiftyJSON
   - UIDebuggingTool
   - YYCache
@@ -127,7 +126,6 @@ SPEC REPOS:
     - BSGridCollectionViewLayout
     - BSImagePicker
     - BSImageView
-    - CryptoSwift
     - HandyJSON
     - HFNavigationController
     - IQKeyboardManagerSwift
@@ -165,7 +163,6 @@ SPEC CHECKSUMS:
   BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
   BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
-  CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   HandyJSON: e18b035d60cb4847c609a59bb831c5db8c549663
   HFNavigationController: bd377c33ba3e84a32915be5206cb142ab8354b91
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
@@ -195,6 +192,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9e17a426c7657e12b028ebab48cd47859c2b21b8
+PODFILE CHECKSUM: 9367d5d3430da54215c958f6c71ad357b0cb2102
 
 COCOAPODS: 1.9.1
