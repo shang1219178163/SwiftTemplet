@@ -232,7 +232,7 @@ class NNUpdateVersionView: UIView {
         view.layer.addSublayer(gradientLayer)
         view.addActionHandler({ (control) in
             self.dismiss()
-            self.viewBlock!(self, 1)
+            self.viewBlock?(self,  1)
         }, for: .touchUpInside)
         return view
     }()
@@ -246,7 +246,7 @@ class NNUpdateVersionView: UIView {
         view.adjustsImageWhenHighlighted = false
         view.addActionHandler({ (control) in
             self.dismiss()
-            self.viewBlock!(self, 0)
+            self.viewBlock?(self,  0)
         }, for: .touchUpInside)
         return view
     }()

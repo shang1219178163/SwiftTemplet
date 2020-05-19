@@ -13,9 +13,6 @@ import SwiftExpand
 
 /// 文字+时间选择器
 class UITableViewCellDatePicker: UITableViewCell {
-
-    typealias ViewClick = (UITableViewCellDatePicker, NNDatePicker, Int) -> Void;
-    var viewBlock: ViewClick?;
     
     var Xgap: CGFloat = 15;
      /// 是否有星标
@@ -40,15 +37,10 @@ class UITableViewCellDatePicker: UITableViewCell {
         textfield.textAlignment = .center;
 //        textfield.delegate = self;
         textfield.isEnabled = false
+        accessoryType = .disclosureIndicator
         
-        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-        textfield.asoryView(true, image: image!)
-//        textfield.asoryView(true, unitName: "公斤(万元)");
-        
-//        contentView.insertSubview(backView, at: 0)
-        let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in
-            UIApplication.shared.keyWindow?.endEditing(true)
-            self.datePicker.show();
+        let _ = contentView.addGestureTap { (sender) in
+            self.datePicker.show()
         }
     }
     
@@ -56,11 +48,9 @@ class UITableViewCellDatePicker: UITableViewCell {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
     }
-
     
     override func layoutSubviews() {
-//        super.layoutSubviews();
-//        backView.frame = contentView.frame;
+        super.layoutSubviews();
         setupConstraint()
     }
     
@@ -100,30 +90,19 @@ class UITableViewCellDatePicker: UITableViewCell {
     }
     
     //MARK: -funtions
-    func block(_ action: @escaping ViewClick) {
-        viewBlock = action;
-    }
     
     //MARK: -lazy
     lazy var datePicker: NNDatePicker = {
-        let view = NNDatePicker();
-        view.block({ (sender, idx) in
-//                DDLog(view,sender.datePicker.date,idx);
-            if self.viewBlock != nil {
-                self.viewBlock!(self,sender,idx);
-            
-            }
-            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormatDay)
-            self.textfield.text = idx == 1 ? dateStr : "";
-        });
+        let view = NNDatePicker(model: .date);
+//        view.block({ (sender, idx) in
+////          DDLog(view,sender.datePicker.date,idx);
+//            self.viewBlock?(self, sender,idx);
+//            let dateStr = DateFormatter.stringFromDate(view.datePicker.date, fmt: kDateFormatDay)
+//            self.textfield.text = idx == 1 ? dateStr : "";
+//        });
         return view;
     }();
     
-//    lazy var backView: UIView = {
-//        var view = UIView(frame: .zero)
-//        view.backgroundColor = contentView.backgroundColor;
-//        return view
-//    }()
 }
 
 extension UITableViewCellDatePicker: UITextFieldDelegate {

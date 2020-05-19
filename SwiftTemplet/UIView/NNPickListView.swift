@@ -62,7 +62,8 @@ class NNPickListView: UIView {
         
         setupContainViewSize(list)
         
-        UIApplication.shared.keyWindow?.addSubview(self);
+        UIApplication.shared.keyWindow?.endEditing(true)
+        UIApplication.shared.keyWindow?.addSubview(self)
         backView.sizeHeight = UIScreen.sizeHeight - containView.sizeHeight
         containView.originY = UIScreen.sizeHeight
         

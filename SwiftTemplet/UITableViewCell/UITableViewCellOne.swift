@@ -68,7 +68,7 @@ class UITableViewCellOne: UITableViewCell {
 
     
     override func layoutSubviews() {
-//        super.layoutSubviews();
+        super.layoutSubviews();
         
         setupConstraint()
     }
@@ -92,7 +92,7 @@ class UITableViewCellOne: UITableViewCell {
                 labelRight.snp.makeConstraints { (make) in
                     make.centerY.equalToSuperview()
                     make.right.equalToSuperview().offset(-Xgap)
-//                    make.height.equalTo(kSizeArrow.height)
+                    make.height.equalTo(kSizeArrow.height)
                 }
                 
                 labelLeft.snp.makeConstraints { (make) in
@@ -126,7 +126,7 @@ class UITableViewCellOne: UITableViewCell {
                 labelRight.snp.makeConstraints { (make) in
                     make.centerY.equalToSuperview()
                     make.right.equalToSuperview().offset(-kPadding)
-//                        make.height.equalTo(kSizeArrow.height)
+                    make.height.equalTo(kSizeArrow.height)
                 }
                 
                 labelLeft.snp.makeConstraints { (make) in

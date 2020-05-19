@@ -19,9 +19,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
             alertCtrl = UIAlertController.createSheet("请选择", msg: nil, items: newValue, handler: { (controller: UIAlertController, action:UIAlertAction) in
                 if action.title != kTitleCancell {
                     self.textfield.text = action.title
-                    if self.viewBlock != nil {
-                        self.viewBlock!(action.title!)
-                    }
+                    self.viewBlock?(action.title!)
                 }
             })
         }
@@ -47,13 +45,10 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
         textfield.placeholder = "请选择";
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
-        
-//        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
-//        _ = textfield.asoryView(true, image: image!)
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
 
-        let _ = contentView.addGestureTap { (sender: UIGestureRecognizer) in
+        let _ = contentView.addGestureTap { (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
             UIApplication.shared.keyWindow?.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
         }
@@ -63,7 +58,6 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
     }
-
     
     override func layoutSubviews() {
         super.layoutSubviews();
@@ -114,7 +108,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller, action) in
             DDLog(action.title)
         })
         return alertController

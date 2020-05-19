@@ -144,7 +144,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         view.setTitleColor(UIColor.red, for: .normal);
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {
-                self.viewBlock!(self,sender.tag);
+                self.viewBlock?(self, sender.tag);
                 self.dismiss();
             }
 
@@ -170,7 +170,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {
                 print("被选中的索引为：\(self.pickerView.selectedRow(inComponent: 0)),\(self.pickerView.selectedRow(inComponent: 1)),\(self.pickerView.selectedRow(inComponent: 2))")
-                self.viewBlock!(self,sender.tag);
+                self.viewBlock?(self, sender.tag);
                 self.dismiss();
             }
 

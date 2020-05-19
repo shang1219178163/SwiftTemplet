@@ -137,7 +137,7 @@ class NNDatePickerRangeView: UIView {
         else if let control = sender as? UIButton {
             DDLog(control.titleLabel?.text as Any);
             if control.titleLabel?.text == kTitleSure {
-                self.viewBlock!(self,sender.tag);
+                self.viewBlock?(self, sender.tag);
                 
             }
             self.dismiss();

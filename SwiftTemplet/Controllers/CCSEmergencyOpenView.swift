@@ -161,9 +161,8 @@ class CCSEmergencyOpenView: UIView {
     @objc func handleActionControl(_ sender: UIButton) {
         DDLog(sender.titleLabel?.text as Any);
         self.dismiss();
-        if self.viewBlock != nil {
-            self.viewBlock!(self, sender.tag)
-        }
+        self.viewBlock?(self,  sender.tag)
+        
         if sender.titleLabel?.text == kTitleSure {
             
         }

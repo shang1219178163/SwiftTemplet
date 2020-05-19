@@ -63,9 +63,7 @@ import SnapKit
                 self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date)
                 
                 self.delegate?.dateRangeView(self)
-                if self.viewBlock != nil {
-                    self.viewBlock!(self)
-                }
+                self.viewBlock?(self)
             })
         })
         
@@ -79,9 +77,7 @@ import SnapKit
                 self.endTime = DateFormatter.stringFromDate(picker.datePicker.date)
                 
                 self.delegate?.dateRangeView(self)
-                if self.viewBlock != nil {
-                    self.viewBlock!(self)
-                }
+                self.viewBlock?(self)
             })
         })
         
@@ -198,10 +194,8 @@ import SnapKit
         var view = NNDatePicker(model: .date);
 //        view.block({ (sender, idx) in
 //            DDLog(view,sender.datePicker.date,idx);
-//            if self.viewBlock != nil {
-//                self.viewBlock!(self);
+//            self.viewBlock?(self);
 //
-//            }
 //        })
         return view;
     }()

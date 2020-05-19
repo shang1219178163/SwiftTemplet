@@ -108,10 +108,7 @@ class NNGroupView: UIView {
             }
         }
 //        print(sender.isSelected, self.selectedList)
-        
-        if self.viewBlock != nil {
-            self.viewBlock!(self, sender)
-        }
+        self.viewBlock?(self,  sender)
     }
     
     var viewBlock: ((NNGroupView, UIControl) -> Void)?
