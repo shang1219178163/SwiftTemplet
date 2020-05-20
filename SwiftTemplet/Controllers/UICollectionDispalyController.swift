@@ -32,9 +32,9 @@ class UICollectionDispalyController: UIViewController{
         view.addSubview(ctView)
 
         
-        view.addGestureTap { (sender:UIGestureRecognizer) in
-            let tap = sender as! UITapGestureRecognizer
-            DDLog(tap.runtimeKey)
+        view.addGestureTap { (sender) in
+            guard let tap = sender as? UITapGestureRecognizer else { return }
+            DDLog(tap)
         }
         
         //        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String

@@ -36,7 +36,7 @@ class NNButtonStudyController: UIViewController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         
-        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.2)
+        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
         var seletedTextColor: UIColor = UIColor.theme
         view.setTitleColor(normlTextColor, for: .normal)
         view.setTitleColor(seletedTextColor, for: .selected)
@@ -75,6 +75,9 @@ class NNButtonStudyController: UIViewController{
         var view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
         
+//        view.direction = .bottom
+//        view.iconLocation = .leftTop
+//
 //        var normlImage: UIImage = UIImage(named: "photo_cancell")!
 //        var seletedImage: UIImage = UIImage(named: "photo_select")!
 //        view.setImage(normlImage, for: .normal)

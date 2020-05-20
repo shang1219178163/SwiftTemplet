@@ -10,6 +10,7 @@ import UIKit
 
 import SnapKit
 import SwiftExpand
+import NNPopoverButton
 import PlateKeyboard_iOS
 
 @objc protocol NNSearchViewDelegate {
@@ -95,7 +96,7 @@ class NNSearchView: UIView{
                 make.top.equalToSuperview().offset(0);
                 make.left.equalToSuperview().offset(5);
                 make.bottom.equalToSuperview().offset(-1);
-                make.width.equalTo(90);
+                make.width.equalTo(75);
             }
             
             searchBar.snp.makeConstraints { (make) in
@@ -148,30 +149,26 @@ class NNSearchView: UIView{
     
     // MARK: -lazy
     
-    @objc lazy var btn: UIButton = {
-        var view: UIButton = UIButton.create( .zero, title: "按钮名称", imgName: nil, type: 0);
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        view.setImage(UIImageNamed(kIMG_arrowDown), for: .normal)
-        view.sizeToFit()
-        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+3.0, 0, -view.titleLabel!.bounds.width-3.0)
-        view.size = CGSize(width: view.frame.width + 10, height: self.sizeHeight)
-
-        view.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside)
-        return view;
-    }();
+    lazy var btn: NNPopoverButton = {
+        let button = NNPopoverButton(type: .custom)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.setTitle("Left", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.sizeToFit()
+        button.parentVC = self.parController
+        button.contentWidth = 150
+        button.list = ["0", "1", "2", "3", "4", "5", "6",]
+            
+        button.delegate = self
+        button.addTarget(self, action: #selector(showPopoverAction(_:)), for: .touchUpInside)
+        return button
+    }()
     
-    @objc func handleActionSender(_ sender: UIButton) {
-        //        DDLog(sender)
-        popView.sender = sender;
-        if sender.imageView?.transform.isIdentity == true {
-            popView.show();
-        } else {
-            popView.dismiss();
-
-        }
+    @objc func showPopoverAction(_ sender: NNPopoverButton) {
+        sender.presentPopover()
+        
     }
-    
+        
     lazy var searchBar: UISearchBar = {
         let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 30))
         view.layer.cornerRadius = 0;
@@ -182,12 +179,7 @@ class NNSearchView: UIView{
         return view
     }()
     
-    lazy var popView: NNPopView = {
-        let view = NNPopView(frame: .zero)
-        view.parController = self.parController
-        return view
-    }()
-    
+
     
     //MARK: -lazy
     lazy var handler: PWHandler = {
@@ -236,6 +228,16 @@ extension NNSearchView: UISearchBarDelegate{
         delegate?.searchViewTextDidChange(self, text: searchBar.text!, complete: true)
     }
 }
+
+extension NNSearchView: NNPopoverButtonDelegate {
+    public func popoverButton(_ popoverBtn: NNPopoverButton, tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(#function):\(indexPath.row)")
+        guard let cell = tableView.cellForRow(at: indexPath) as? UITableViewCell else { return }
+        popoverBtn.setTitle(cell.textLabel?.text ?? "--", for: .normal)
+
+    }
+}
+
 
 extension NNSearchView: PWHandlerDelegate{
     // MARK: -PWHandlerDelegate

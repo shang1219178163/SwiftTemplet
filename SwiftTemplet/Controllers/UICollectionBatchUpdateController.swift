@@ -45,7 +45,7 @@ class UICollectionBatchUpdateController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        ctView.snp.makeConstraints { (make) in
+        collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
@@ -60,7 +60,6 @@ class UICollectionBatchUpdateController: UIViewController {
         let insertItem = UIBarButtonItem(title: "插入", style: .plain, target: self, action: #selector(actionInsert(_:)))
         navigationItem.rightBarButtonItems = [updateItem, insertItem]
         
-
         
         view.addSubview(collectionView)
     }

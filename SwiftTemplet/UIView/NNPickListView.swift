@@ -68,7 +68,7 @@ class NNPickListView: UIView {
         containView.originY = UIScreen.sizeHeight
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
             self.containView.originY -= self.containView.frame.height;
 
         }, completion: { (isFinished: Bool) in
