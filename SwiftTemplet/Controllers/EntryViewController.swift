@@ -155,6 +155,7 @@ class EntryViewController: UIViewController {
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
+            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
             ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
             ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  "生产,不生产",],

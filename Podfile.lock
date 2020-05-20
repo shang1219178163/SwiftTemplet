@@ -25,7 +25,7 @@ PODS:
     - BSGridCollectionViewLayout (= 1.2.5)
     - BSImageView (= 1.0.3)
   - BSImageView (1.0.3)
-  - HandyJSON (5.0.2-beta)
+  - HandyJSON (5.0.1)
   - HFNavigationController (1.1.5)
   - IQKeyboardManagerSwift (6.5.5)
   - Kingfisher (4.10.1)
@@ -43,6 +43,7 @@ PODS:
     - SnapKit
     - SnapKitExtend
     - SwiftExpand
+  - NNPopoverButton (1.3.0)
   - ObjectMapper (3.5.2)
   - OHHTTPStubs (9.0.0):
     - OHHTTPStubs/Default (= 9.0.0)
@@ -79,7 +80,6 @@ PODS:
   - Surge (2.3.0)
   - SwiftExpand (2.5.0)
   - SwiftyJSON (5.0.0)
-  - UIDebuggingTool (0.2.1)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -92,7 +92,7 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireObjectMapper
   - BSImagePicker
-  - HandyJSON (~> 5.0.0-beta.1)
+  - HandyJSON
   - HFNavigationController
   - IQKeyboardManagerSwift
   - Kingfisher
@@ -101,6 +101,7 @@ DEPENDENCIES:
   - MMPopupView
   - Moya
   - NNPlateKeyboard
+  - NNPopoverButton
   - OHHTTPStubs
   - PlateKeyboard_iOS
   - RxAlamofire
@@ -112,7 +113,6 @@ DEPENDENCIES:
   - Surge
   - SwiftExpand
   - SwiftyJSON
-  - UIDebuggingTool
   - YYCache
   - YYCategories
   - YYModel
@@ -136,6 +136,7 @@ SPEC REPOS:
     - MMPopupView
     - Moya
     - NNPlateKeyboard
+    - NNPopoverButton
     - ObjectMapper
     - OHHTTPStubs
     - PlateKeyboard_iOS
@@ -150,7 +151,6 @@ SPEC REPOS:
     - Surge
     - SwiftExpand
     - SwiftyJSON
-    - UIDebuggingTool
     - YYCache
     - YYCategories
     - YYModel
@@ -163,7 +163,7 @@ SPEC CHECKSUMS:
   BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
   BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
-  HandyJSON: e18b035d60cb4847c609a59bb831c5db8c549663
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   HFNavigationController: bd377c33ba3e84a32915be5206cb142ab8354b91
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
@@ -173,6 +173,7 @@ SPEC CHECKSUMS:
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   NNPlateKeyboard: 9673f0db1a7f50077731dd73ec559f5be72ea49f
+  NNPopoverButton: f757b54db80b82909e54c8943e97524f0952a7a0
   ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   PlateKeyboard_iOS: ee3b6e46034dd82e36e7b1e3520d1fed585000aa
@@ -187,11 +188,10 @@ SPEC CHECKSUMS:
   Surge: 13979cd9593e943f9ce1202439da2999ea57e46d
   SwiftExpand: 7d2fc479b616b444bb9df3b419fce284fef2965c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
-  UIDebuggingTool: 34adf07876469d7bae9de81f20ebf90a3f0d8924
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9367d5d3430da54215c958f6c71ad357b0cb2102
+PODFILE CHECKSUM: ba96d15ca1ae4e628c3bbab1f860e4d014b96af4
 
 COCOAPODS: 1.9.1

@@ -29,6 +29,7 @@ class ThirdViewController: UIViewController{
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
 //             ["CellListController", "自定义Cell界面", ],
+             ["TextFieldStyleController", "TextField样式显示", ],                
              ["IOPPlateEntryController", "多车牌录入", ],
              ["ReuseChildsController", "控制器复用", ],
              ["FlipImageViewController", "FlipImageView", ],

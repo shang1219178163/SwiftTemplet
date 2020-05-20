@@ -64,9 +64,7 @@ def common_pods
     pod 'OHHTTPStubs'
 
 #    pod 'ObjectMapper+Realm'
-#    pod 'HandyJSON'
-#    pod 'HandyJSON', :git => 'https://github.com/alibaba/HandyJSON.git', :branch => 'dev_for_swift5.0'
-    pod 'HandyJSON', '~> 5.0.0-beta.1'
+    pod 'HandyJSON'
 
     pod ‘YYCache'
     pod 'YYCategories'
@@ -78,11 +76,12 @@ def common_pods
 
     pod 'PlateKeyboard_iOS'
     pod 'NNPlateKeyboard'
+    pod 'NNPopoverButton'
     pod 'HFNavigationController'
 #    pod 'YBAttributeTextTapAction'
 
 #iOS自带悬浮窗调试工具,摇晃手机即可显示系统的UI调试界面。
-    pod 'UIDebuggingTool'
+#    pod 'UIDebuggingTool'
 
 
     
