@@ -146,7 +146,7 @@ class UICallPhoneView: UIView {
         
 //        transform = transform.scaledBy(x: 0.01, y: 0.01)
         UIView.animate(withDuration: 0.15, animations: {
-//            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
+//            self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
             self.transform = .identity;
             self.frame = UIScreen.main.bounds;
             self.talkbackBtn.isHidden = true;

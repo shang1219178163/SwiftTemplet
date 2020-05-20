@@ -50,7 +50,7 @@ class NNDatePicker: UIView {
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
         UIView.animate(withDuration: 0.35, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
             self.containView.transform = .identity;
 
         }, completion: nil);

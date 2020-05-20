@@ -90,7 +90,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
         view.setTitle("测试按钮", for: .normal)
         view.setImage(UIImageNamed("img_arrowDown_gray"), for: .normal)
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside)
+        view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
         return view
     }()
     
@@ -103,11 +103,11 @@ class PopViewController: UIViewController, UITextFieldDelegate {
         view.isExclusiveTouch = true;
         view.setTitle("测试按钮1", for: .normal)
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside)
+        view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
         return view
     }()
     
-    @objc func handleActionSender(_ sender: UIButton) {
+    @objc func handleAction(_ sender: UIButton) {
 //        DDLog(sender)
         popView.sender = sender;
         if sender.superview?.subviews.contains(popView) == true {

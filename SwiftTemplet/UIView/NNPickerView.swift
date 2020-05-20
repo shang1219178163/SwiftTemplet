@@ -105,7 +105,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         containView.transform = containView.transform.translatedBy(x: 0, y: containViewH)
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.backgroundColor = UIColor.black.withAlphaComponent(0.2);
+            self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
             self.containView.transform = CGAffineTransform.identity
             
         }, completion: nil);
@@ -117,8 +117,9 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containViewH)
             
         }) { (isFinished) in
-            self.removeFromSuperview();
-            
+            if isFinished {
+                self.removeFromSuperview();
+            }
         }
     }
     
@@ -135,13 +136,13 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return view
     }()
     
-    lazy var btnCancell:UIButton = {
+    lazy var btnCancell: UIButton = {
         let view = UIButton(type: .custom);
         view.tag = 0;
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleCancell, for: .normal);
-        view.setTitleColor(UIColor.red, for: .normal);
+        view.setTitleColor(.lightGray, for: .normal);
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {
                 self.viewBlock?(self, sender.tag);
@@ -152,10 +153,10 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return view;
     }();
     
-    lazy var label:UILabel = {
+    lazy var label: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "请选择";
-        view.textColor = UIColor.gray;
+        view.textColor = .lightGray;
         view.textAlignment = .center;
         return view;
     }();
@@ -166,7 +167,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
+        view.setTitleColor(.systemBlue, for: .normal);
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {
                 print("被选中的索引为：\(self.pickerView.selectedRow(inComponent: 0)),\(self.pickerView.selectedRow(inComponent: 1)),\(self.pickerView.selectedRow(inComponent: 2))")
@@ -180,6 +181,8 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     lazy var pickerView: UIPickerView = {
         var view = UIPickerView()
+        view.backgroundColor = .white
+
         view.delegate = self;
         view.dataSource = self
         // 设置选择框的默认值

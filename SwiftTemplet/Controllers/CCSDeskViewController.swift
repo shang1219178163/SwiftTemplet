@@ -9,15 +9,30 @@
 import UIKit
 import SwiftExpand
 
-class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
+class CCSDeskViewController: UIViewController {
 
+    // MARK: -lazy
+    
+    lazy var searchView: NNSearchView = {
+        let view = NNSearchView(frame: .zero)
+        view.parController = self
+        view.delegate = self;
+        
+        view.btn.parentVC = self
+        view.btn.list = ["车场名称", "车牌号"]
+        view.btn.setTitle(view.btn.list.first ?? "请选择", for: .normal)
+
+        return view;
+    }()
+    
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.background;
         
         UIApplication.setupAppearanceSearchbarCancellButton()
         let titleView: UIView = {
-            let titleView = UIView(frame: CGRectMake(0, 0, kScreenWidth-25, 35))
+            let titleView = UIView(frame: CGRectMake(0, 0, kScreenWidth-80, 35))
             titleView.backgroundColor = navigationController?.navigationBar.tintColor;
             
             searchView.frame = titleView.frame;
@@ -26,8 +41,7 @@ class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
         }();
         navigationItem.titleView = titleView;
         
-        
-        titleView.getViewLayer()
+//        titleView.getViewLayer()
 //        view.getViewLayer()
     }
     
@@ -48,7 +62,12 @@ class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
         super.viewDidAppear(animated)
         
     }
-    
+        
+
+
+}
+
+extension CCSDeskViewController: NNSearchViewDelegate{
     // MARK: -NNSearchView
     func searchViewTextDidChange(_ view: NNSearchView, text: String, complete: Bool) {
         if text == "" {
@@ -62,40 +81,4 @@ class CCSDeskViewController: UIViewController, NNSearchViewDelegate {
            
         }
     }
-    
-    // MARK: -lazy
-    lazy var searchList: [[AnyHashable : Any]] = {
-        let list = [["index": "0",
-                     "title": "车场名称",
-                     "key": "park_name",
-                     ],
-                    ["index": "1",
-                     "title": "车牌号",
-                     "key": "vpl",
-                     ],
-                    ];
-        return list;
-    }()
-    
-    lazy var searchView: NNSearchView = {
-        let view = NNSearchView(frame: .zero)
-        view.btn.addTarget(self, action: #selector(showMenu(_:)), for: .touchUpInside)
-        view.delegate = self;
-        return view;
-    }()
-    
-    @objc func showMenu(_ sender: UIButton) {
-        DDLog(sender.currentTitle as Any)
-//        sender.imageView!.transformRotationCycle()
-//        PopoverView.show(sender, list: self.searchList, handler: { (action, dic) in
-//            sender.imageView!.transformRotationCycle()
-//            sender.setTitle(action.title, for: .normal)
-//            DDLog(dic)
-//            self.searchResultVC.key = dic["key"] as! String;
-//
-//        })
-    }
-
-    
-
 }

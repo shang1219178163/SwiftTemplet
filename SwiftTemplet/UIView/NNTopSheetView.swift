@@ -147,7 +147,7 @@ import SwiftExpand
         var view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.2);
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
 
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.4)
         view.addSubview(tableView)

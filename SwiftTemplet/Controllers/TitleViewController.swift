@@ -203,7 +203,7 @@ class TitleViewController: NNTitleViewSelectController{
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         
-        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.2)
+        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
         var seletedTextColor: UIColor = UIColor.theme
         view.setTitleColor(normlTextColor, for: .normal)
         view.setTitleColor(seletedTextColor, for: .selected)

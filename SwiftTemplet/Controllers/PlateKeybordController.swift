@@ -42,16 +42,16 @@ class PlateKeybordController: UIViewController {
         searchView.searchBar.textField?.leftViewMode = .always;
 //        searchView.btn.isHidden = true;
         searchView.btn.setTitle("操作类型", for: .normal)
-        searchView.popView.list = [["全部", "50.0", ""], ["修改车牌", "50.0", "2"], ["免费开闸", "50.0", "0"],
-                                   ["紧急开闸", "50.0", "1"], ["重新抓拍", "50.0", "3"], ]
-
-        searchView.popView.viewBlockDidSelectRow { (tableView, indexPath) in
-            DDLog(indexPath)
-            let popCellList = self.searchView.popView.list[indexPath.row];
-            let title = indexPath.row == 0 ? "操作类型" : popCellList.first;
-            self.searchView.btn.setTitle(title, for: .normal);
-
-        }
+//        searchView.popView.list = [["全部", "50.0", ""], ["修改车牌", "50.0", "2"], ["免费开闸", "50.0", "0"],
+//                                   ["紧急开闸", "50.0", "1"], ["重新抓拍", "50.0", "3"], ]
+//
+//        searchView.popView.viewBlockDidSelectRow { (tableView, indexPath) in
+//            DDLog(indexPath)
+//            let popCellList = self.searchView.popView.list[indexPath.row];
+//            let title = indexPath.row == 0 ? "操作类型" : popCellList.first;
+//            self.searchView.btn.setTitle(title, for: .normal);
+//
+//        }
         
         searchView.searchBar.textField?.becomeFirstResponder()
     }

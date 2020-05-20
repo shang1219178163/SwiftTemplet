@@ -15,12 +15,15 @@ class NNPopView: UIView {
     var indexP: IndexPath = IndexPath(row: 0, section: 0)
     var sender: UIButton? = nil {
         willSet{
-            self.originX = 0;
-            self.originY = newValue!.maxY;
-            self.sizeWidth = kScreenWidth;
-            self.sizeHeight = parController!.view.maxY - newValue!.maxY;
+            guard let newValue = newValue, let parController = parController else { return }
+            let rect = parController.view.convert(newValue.frame, to: parController.view)
             
-            let maxHeight = parController!.view.sizeHeight - minY - tableView.rowHeight*2;
+            self.originX = 0;
+            self.originY = rect.maxY;
+            self.sizeWidth = kScreenWidth;
+            self.sizeHeight = parController.view.maxY - newValue.maxY;
+            
+            let maxHeight = parController.view.sizeHeight - minY - tableView.rowHeight*2;
             
             tableView.sizeHeight = CGFloat(list.count)*tableView.rowHeight;
             if tableView.sizeHeight >= maxHeight {
@@ -41,7 +44,7 @@ class NNPopView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.black.withAlphaComponent(0.2);
+        backgroundColor = UIColor.black.withAlphaComponent(0.3);
         addSubview(tableView);
         
         sender?.titleLabel!.addObserver(self, forKeyPath: "text", options: .new, context: nil)
