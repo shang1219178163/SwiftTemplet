@@ -8,7 +8,8 @@
 
 import UIKit
 import SwiftExpand
-import PlateKeyboard_iOS
+import NNPlateKeyboard
+import IQKeyboardManagerSwift
 
 class PlateKeybordController: UIViewController {
 
@@ -18,16 +19,22 @@ class PlateKeybordController: UIViewController {
         // Do any additional setup after loading the view.
         
         setupUI()
-//        view.addSubview(searchView)
-//        handler.setPlate(plate: "", type: .auto)
+        IQKeyboardManager.shared.enable = false;
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        IQKeyboardManager.shared.enable = true;
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         searchView.snp.makeConstraints { (make) in
-            make.top.left.equalTo(0)
-            make.right.equalTo(0)
+            make.top.equalTo(80)
+            make.left.equalTo(10)
+            make.right.equalTo(-10)
             make.height.equalTo(45)
         }
     }
@@ -54,6 +61,9 @@ class PlateKeybordController: UIViewController {
 //        }
         
         searchView.searchBar.textField?.becomeFirstResponder()
+        searchView.plateKeyboard.plateNumber = "京123456"
+
+        view.getViewLayer()
     }
     
     lazy var searchView: NNSearchView = {
@@ -76,9 +86,7 @@ extension PlateKeybordController: NNSearchViewDelegate {
             return;
         }
         if isFinished == true {
-
-        } else {
-           
+            
         }
         DDLog(text)
     }

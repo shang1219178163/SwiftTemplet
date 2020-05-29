@@ -43,7 +43,8 @@ class TextFieldStyleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        title = "文本框样式"
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 
         tableView.rowHeight = UITableView.automaticDimension;
         tableView.estimatedRowHeight = 70;
