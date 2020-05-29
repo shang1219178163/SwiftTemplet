@@ -77,7 +77,7 @@ class ScrollHorizontalController: UIViewController{
 //        ctView.bounces = false;
         ctView.dataSource = self;
         ctView.delegate = self;
-//        ctView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCell")
+//        ctView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         
         
         ctView.register(cellType: UICTViewCellOne.self)

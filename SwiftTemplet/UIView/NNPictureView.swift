@@ -38,7 +38,7 @@ import SwiftExpand
         labelTop.textColor = .white;
 //        labelTop.backgroundColor = .red;
         
-        collectionView.register(UICTViewCellTwo.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellTwo")
+        collectionView.register(UICTViewCellTwo.self, forCellWithReuseIdentifier: "UICTViewCellTwo")
         addSubview(collectionView)
         addSubview(labelTop)
         
@@ -109,7 +109,7 @@ import SwiftExpand
 //        ctView.bounces = false;
         ctView.dataSource = self;
         ctView.delegate = self;
-        ctView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCell")
+        ctView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         return ctView;
     }()
     

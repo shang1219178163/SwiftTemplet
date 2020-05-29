@@ -52,7 +52,7 @@ class ScrollViewController: UIViewController {
         view.showItemNum = 4.5;
 
         view.collectionView.register(cellType: UICTViewCellOne.self)
-//        view.collectionView.register(UICTViewCellOne.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellOne")
+//        view.collectionView.register(UICTViewCellOne.self, forCellWithReuseIdentifier: "UICTViewCellOne")
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
 //            let cell: UICTViewCellOne = UICTViewCellOne.dequeueReusableCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
             let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
@@ -82,7 +82,7 @@ class ScrollViewController: UIViewController {
         view.list = ["1", "2", "3", "4", "5", "6",];
         view.layout.scrollDirection = .vertical
         view.indicatorType = 3;
-        view.collectionView.register(UICTViewCellOne.classForCoder(), forCellWithReuseIdentifier: "UICTViewCellOne")
+        view.collectionView.register(UICTViewCellOne.self, forCellWithReuseIdentifier: "UICTViewCellOne")
         
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)

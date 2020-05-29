@@ -66,7 +66,7 @@ extension NNPlateKeyboardController: UITextFieldDelegate {
 
 extension NNPlateKeyboardController: NNPlateKeyboardDeleagte {
 
-    func plateDidChange(plate: String, complete: Bool) {
+    func plateDidChange(_ plate: String, complete: Bool) {
         textField.text = plate
     }
 }

@@ -32,7 +32,7 @@ class NNAPIConfig: NSObject {
     #if DEBUG
         apiUrl = urlTest;
     #else
-        apiUrl = BNAPIConfiguration.apiServiceUrl;
+        apiUrl = NNAPIConfig.apiServiceUrl;
     #endif
         return apiUrl;
     }

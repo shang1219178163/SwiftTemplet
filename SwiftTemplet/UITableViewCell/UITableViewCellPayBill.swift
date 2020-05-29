@@ -86,36 +86,6 @@ class UITableViewCellPayBill: UITableViewCell {
             make.height.equalTo(25);
         }
     }
-//    func setupConstraint() {
-//        if bounds.height <= 0.0 {
-//            return
-//        }
-//        let btns = [btnCancell, btnDelete, btnPay].map { $0.isHidden = false }
-//
-//        btnDelete.snp.makeConstraints { (make) in
-//            make.centerY.equalToSuperview().offset(0);
-//            make.right.equalToSuperview().offset(-10);
-//            make.width.equalTo(65);
-//            make.height.equalTo(25);
-//        }
-//
-//        btnPay.snp.makeConstraints { (make) in
-//            make.edges.equalTo(btnDelete);
-//        }
-//
-//        btnCancell.snp.makeConstraints { (make) in
-//            make.centerY.equalToSuperview().offset(0);
-//            make.right.equalTo(btnDelete.snp.left).offset(-10);
-//            make.width.height.equalTo(btnDelete);
-//        }
-//
-//        labelLeft.snp.makeConstraints { (make) in
-//            make.centerY.equalToSuperview().offset(0);
-//            make.left.equalToSuperview().offset(10);
-//            make.right.equalTo(btnCancell.snp.left).offset(-10);
-//            make.height.equalTo(25);
-//        }
-//    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

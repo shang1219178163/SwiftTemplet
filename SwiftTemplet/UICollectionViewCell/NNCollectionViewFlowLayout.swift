@@ -79,7 +79,7 @@ class NNCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     func setup() {
         // 1、注册
-        register(NNCollectionReusableView.classForCoder(), forDecorationViewOfKind: UICollectionView.sectionKindBackgroud)
+        register(NNCollectionReusableView.self, forDecorationViewOfKind: UICollectionView.sectionKindBackgroud)
     }
     
     // MARK: -

@@ -173,7 +173,7 @@ import SwiftExpand
         ctView.bounces = false;
         ctView.dataSource = self;
         ctView.delegate = self;
-        ctView.register(UICollectionViewCell.classForCoder(), forCellWithReuseIdentifier: "UICollectionViewCell")
+        ctView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         return ctView;
     }()
     /// 指示器视图
