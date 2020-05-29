@@ -22,7 +22,6 @@ class UICollectionDispalyController: UIViewController{
         navigationItem.title = "UICollectionView小解"
         view.backgroundColor = UIColor.white
        
-        
         // 注册cell
         ctView.backgroundColor = UIColor.white
         ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne",],
@@ -31,15 +30,14 @@ class UICollectionDispalyController: UIViewController{
         ]
         view.addSubview(ctView)
 
+//        view.addGestureTap { (sender) in
+//            guard let tap = sender as? UITapGestureRecognizer else { return }
+//            DDLog(tap)
+//        }
         
-        view.addGestureTap { (sender) in
-            guard let tap = sender as? UITapGestureRecognizer else { return }
-            DDLog(tap)
-        }
-        
-        //        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
-        //        let one : AnyClass = NSClassFromString(namespace + "." + "UICTViewCellZero")!;
-        //        let two = UICTViewCellZero.self
+//        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
+//        let one : AnyClass = NSClassFromString(namespace + "." + "UICTViewCellZero")!;
+//        let two = UICTViewCellZero.self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +52,8 @@ class UICollectionDispalyController: UIViewController{
 //
 //        //顶部布局从导航栏开始
 //        edgesForExtendedLayout = UIRectEdge.all;
+        
+        DDLog(ctView == view.subviews[0])
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,7 +64,7 @@ class UICollectionDispalyController: UIViewController{
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
     }
         
     override func didReceiveMemoryWarning() {
@@ -136,24 +136,24 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
        return cell
    }
 
-   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-   }
+    }
    
    //设定header和footer的方法，根据kind不同进行不同的判断即可
-   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        DDLog(kind);
-       if kind == UICollectionView.elementKindSectionHeader {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        DDLog(kind);
+        if kind == UICollectionView.elementKindSectionHeader {
            let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
         
            view.label.text = kind.components(separatedBy: "ElementKind").last;
            view.labelRight.text = "999+"
            return view;
-       }
+        }
        
         let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind, indexPath: indexPath)
-       view.label.text = kind.components(separatedBy: "ElementKind").last;
-       return view;
-       
-   }
+        view.label.text = kind.components(separatedBy: "ElementKind").last;
+        return view;
+    }
+    
 }

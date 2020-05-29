@@ -70,6 +70,9 @@ class TitleViewController: NNTitleViewSelectController{
             
         }, for: .touchUpInside)
 //        view.getViewLayer()
+        
+        let obj = 3.repeatArray("334")
+        DDLog(obj)
     }
     
     override func viewDidLayoutSubviews() {
@@ -302,8 +305,6 @@ class TitleViewController: NNTitleViewSelectController{
         view.amount = "0.00"
         return view
     }()
-    
-    
 }
 
 extension TitleViewController: NNTitleViewSelectControllerDelegate{

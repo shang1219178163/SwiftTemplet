@@ -37,8 +37,8 @@ import SwiftExpand
     weak var parController: UIViewController?
     var sender: UIView?{
         willSet{
-            guard let newValue = newValue else { return }
-            let rect = parController!.view.convert(newValue.frame, to: parController!.view)
+            guard let newValue = newValue, let parController = parController else { return }
+            let rect = parController.view.convert(newValue.frame, to: parController.view)
             self.containView.originY = rect.maxY;
         }
     }
@@ -60,6 +60,12 @@ import SwiftExpand
     
     override func layoutSubviews() {
         super.layoutSubviews()
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        self.parController!.view.sendSubviewToBack(self)
     }
     
     // MARK: - show
