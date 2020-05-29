@@ -9,9 +9,9 @@
 
 import UIKit
 import SwiftExpand
-import PlateKeyboard_iOS
+import NNPlateKeyboard
 
-class PlateNumOriginController: UIViewController, PWHandlerDelegate {
+class PlateNumOriginController: UIViewController {
     
 
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class PlateNumOriginController: UIViewController, PWHandlerDelegate {
         title = "车牌号键盘(原始)"
         
         createBtnBarItem("Do", isLeft: false) { (tap, view, idx) in
-            self.handler.vehicleKeyBoardEndEditing()
+//            self.plateKeyboard.bindTextField(searchBar.textField!, showSearch: true)
         }
         
         view.addSubview(btn)
@@ -53,16 +53,7 @@ class PlateNumOriginController: UIViewController, PWHandlerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        handler.vehicleKeyBoardBecomeFirstResponder()
-    }
-    
-    //MARK: -plate
-    func plateDidChange(plate: String, complete: Bool) {
-        DDLog(plate, complete)
-//        btn.setTitle(plate, for: .normal)
-    }
-    func plateInputComplete(plate: String) {
-        
+//        plateKeyboard.textField.
     }
     
     //MARK: -funtions
@@ -114,20 +105,19 @@ class PlateNumOriginController: UIViewController, PWHandlerDelegate {
         view.setTitle("请输入车牌号码", for: .normal)
         view.setTitleColor(UIColor.gray, for: .normal)
         view.addActionHandler({ (control) in
-            self.handler.vehicleKeyBoardBecomeFirstResponder()
+            
             
         }, for: .touchUpInside)
         return view
     }()
     
-    lazy var handler: PWHandler = {
-        let keyboradHandler = PWHandler();
-        
-        keyboradHandler.setupKeyBoardView(btn);
-        keyboradHandler.textFontSize = 18;
-        keyboradHandler.delegate = self;
-        
-        return keyboradHandler;
+    ///车牌键盘
+    lazy var plateKeyboard: NNPlateKeyboard = {
+        let keyboard = NNPlateKeyboard()
+        keyboard.numType = .airport
+//        keyboard.delegate = self;
+
+        return keyboard;
     }()
     
 }

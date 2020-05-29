@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 import NNPopoverButton
-import PlateKeyboard_iOS
+import NNPlateKeyboard
 
 @objc protocol NNSearchViewDelegate {
     func searchViewTextDidChange(_ view: NNSearchView, text: String, complete: Bool)
@@ -19,7 +19,11 @@ import PlateKeyboard_iOS
 
 class NNSearchView: UIView{
     
-    weak var parController: UIViewController?
+    weak var parController: UIViewController?{
+        willSet{
+            btn.parentVC = newValue
+        }
+    }
     weak var delegate: NNSearchViewDelegate?
 
     var btnTitles: [String] = [] {
@@ -33,12 +37,12 @@ class NNSearchView: UIView{
             if newValue == true {
                 searchBar.delegate = nil;
                 
-                handler.setupKeyBoardView(self.searchBar.textField!);
-                handler.delegate = (self as PWHandlerDelegate);
+                plateKeyboard.bindTextField(self.searchBar.textField!);
+                plateKeyboard.delegate = self
             } else {
                 searchBar.delegate = self;
                 
-                handler.delegate = nil;
+                plateKeyboard.delegate = nil;
             }
         }
     }
@@ -59,6 +63,7 @@ class NNSearchView: UIView{
         addSubview(lineBottom)
 
         searchBar.textField?.placeholder = "请输入车场名称进行搜索"
+        plateKeyboard.bindTextField(searchBar.textField!, showSearch: true)
         
         btn.titleLabel!.addObserver(self, forKeyPath: "text", options: .new, context: &myContext0)
         btn.titleLabel!.addObserver(self, forKeyPath: "hidden", options: .new, context: &myContext0)
@@ -132,7 +137,7 @@ class NNSearchView: UIView{
             if let value: String = change![.newKey] as? String {
                 if value == "" {
                     delegate?.searchViewTextDidChange(self, text: value, complete: true)
-                    handler.plateNumber = value;
+//                    plateKeyboard.plateNumber = value;
                 }
             }
             
@@ -165,10 +170,11 @@ class NNSearchView: UIView{
     }()
     
     @objc func showPopoverAction(_ sender: NNPopoverButton) {
-        sender.presentPopover()
         
     }
         
+    //MARK: -lazy
+
     lazy var searchBar: UISearchBar = {
         let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 30))
         view.layer.cornerRadius = 0;
@@ -178,17 +184,14 @@ class NNSearchView: UIView{
         view.delegate = self;
         return view
     }()
-    
-
-    
-    //MARK: -lazy
-    lazy var handler: PWHandler = {
-        let handler = PWHandler();
-        handler.textFontSize = 18;
-//        handler.setupKeyBoardView( self.searchView.searchBar.textField!);
-//        handler.delegate = self;
         
-        return handler;
+    ///车牌键盘
+    lazy var plateKeyboard: NNPlateKeyboard = {
+        let keyboard = NNPlateKeyboard()
+        keyboard.numType = .airport
+        keyboard.delegate = self;
+
+        return keyboard;
     }()
 }
 
@@ -232,26 +235,17 @@ extension NNSearchView: UISearchBarDelegate{
 extension NNSearchView: NNPopoverButtonDelegate {
     public func popoverButton(_ popoverBtn: NNPopoverButton, tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(#function):\(indexPath.row)")
-        guard let cell = tableView.cellForRow(at: indexPath) as? UITableViewCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as UITableViewCell? else { return }
         popoverBtn.setTitle(cell.textLabel?.text ?? "--", for: .normal)
 
     }
 }
 
 
-extension NNSearchView: PWHandlerDelegate{
-    // MARK: -PWHandlerDelegate
-    func plateDidChange(plate: String, complete: Bool) {
-        if complete == true {
-            handler.vehicleKeyBoardEndEditing()
-        }
+extension NNSearchView: NNPlateKeyboardDeleagte{
+    
+    func plateDidChange(_ plate: String, complete: Bool) {
         delegate?.searchViewTextDidChange(self, text: plate, complete: complete)
     }
     
-    func plateInputComplete(plate: String) {
-        UIApplication.shared.keyWindow?.endEditing(true)
-        
-        delegate?.searchViewTextDidChange(self, text: plate, complete: true)
-    }
-
 }

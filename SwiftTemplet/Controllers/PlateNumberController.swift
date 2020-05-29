@@ -9,9 +9,9 @@
 import UIKit
 
 import SwiftExpand
-import PlateKeyboard_iOS
+import NNPlateKeyboard
 
-class PlateNumberController: UIViewController, PWHandlerDelegate {
+class PlateNumberController: UIViewController {
   
     
     override func viewDidLoad() {
@@ -38,7 +38,8 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
         
         view.addSubview(textField)
         
-        handler.setPlate(plate: "京H123456", type: .auto)
+        plateKeyboard.bindTextField(textField, showSearch: true)
+        plateKeyboard.plateNumber = "京H123456"
         textField.becomeFirstResponder()
 
 
@@ -69,25 +70,7 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
         let isSame = DateFormatter.isSameFormat(time, fmt: format)
         DDLog("isSame", isSame);
     }
-    
-//    @objc func isDateString(_ format: String = "yyyy-MM-dd HH:mm:ss") -> Bool {
-//        if time.count == dateFormat.count {
-//            if time[4] == "-" && time[7] == "-" && time[13] == ":" && time[16] == ":" {
-//                return true
-//            }
-//        }
-//        return false
-//    }
-    
-    //MARK: -plate
-    func plateDidChange(plate: String, complete: Bool) {
-        DDLog(plate, complete)
-        textField.text = plate
-    }
-    func plateInputComplete(plate: String) {
         
-    }
-    
     //MARK: -funtions
     func setupInputView() {
         textField.inputView = {
@@ -104,49 +87,6 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
             return view
         }()
     }
-
-//    func setupKeyboradView(_ textField: UITextField, handler: PWHandler) {
-//
-//        handler.inputTextfield = textField
-//        handler.inputTextfield.inputView = handler.keyboardView
-//        handler.inputTextfield.inputAccessoryView = {
-//            let switchWidth: CGFloat = 70.0
-//
-//            let view: UIView = {
-//                let view: UIView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-//
-//                view.layer.borderWidth = 1;
-//                view.layer.borderColor = handler.cellBorderColor.cgColor;
-//                return view;
-//            }()
-//
-//            handler.inputCollectionView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - switchWidth, height: 50)
-//            view.addSubview(handler.inputCollectionView)
-//
-//            let btn: UIButton = {
-//                let view: UIButton = UIButton(type: .custom)
-//                view.frame = CGRect(x: UIScreen.main.bounds.width - switchWidth, y: 0, width: switchWidth, height: 50)
-//                view.setImage(UIImage(named: "plateNumberSwitch_N"), for: .normal)
-//                view.setImage(UIImage(named: "plateNumberSwitch_H"), for: .selected)
-//                view.imageEdgeInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-//                view.imageView?.contentMode = .scaleAspectFit
-//
-//                view.layer.borderWidth = 1;
-//                view.layer.borderColor = handler.cellBorderColor.cgColor;
-//                view.addActionHandler({ (control) in
-//                    control.isSelected = !control.isSelected;
-////                    DDLog(control.isSelected)
-//                    self.handler.changeInputType(isNewEnergy: control.isSelected)
-//
-//                }, for: .touchUpInside)
-//                return view;
-//            }()
-//
-//            view.addSubview(btn)
-//            return view;
-//        }()
-//    }
-    
     
     //MARK: -lazy
     lazy var textField: UITextField = {
@@ -156,15 +96,21 @@ class PlateNumberController: UIViewController, PWHandlerDelegate {
         return view
     }()
     
-    lazy var handler: PWHandler = {
-        let keyboradHandler = PWHandler();
-//        keyboradHandler.setKeyBoardView(view: textField);
-        keyboradHandler.bindTextField(textField)
-        keyboradHandler.textFontSize = 18;
-        keyboradHandler.delegate = self;
-        
-        return keyboradHandler;
-    }()
+    ///车牌键盘
+    lazy var plateKeyboard: NNPlateKeyboard = {
+        let keyboard = NNPlateKeyboard()
+        keyboard.numType = .airport
+        keyboard.delegate = self;
 
+        return keyboard;
+    }()
   
+}
+
+extension PlateNumberController: NNPlateKeyboardDeleagte{
+    
+    func plateDidChange(_ plate: String, complete: Bool) {
+        textField.text = plate
+    }
+    
 }

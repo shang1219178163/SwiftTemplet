@@ -50,8 +50,8 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
         
         let itemWidth = (bounds.width - btnWH/2.0 - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow)
         let itemHeight = itemWidth
-        let imgViewList: [UIImageView] = containView.subviews.filter({$0.isKind(of: UIImageView.classForCoder()) }) as! [UIImageView]
-        let btnList: [UIButton] = self.subviews.filter({$0.isKind(of: UIButton.classForCoder()) }) as! [UIButton]
+        let imgViewList: [UIImageView] = containView.subviews.filter({$0.isKind(of: UIImageView.self) }) as! [UIImageView]
+        let btnList: [UIButton] = self.subviews.filter({$0.isKind(of: UIButton.self) }) as! [UIButton]
         
         for i in 0..<itemList.count {
             let x = CGFloat(i % numberOfRow) * (itemWidth + padding)
