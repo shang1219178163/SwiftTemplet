@@ -108,6 +108,21 @@ class ThirdViewController: UIViewController{
         return controller;
     }()
     
+    lazy var updateView: NNUpdateVersionView = {
+        var view = NNUpdateVersionView(frame: .zero)
+        view.label.text = "发现新版本"
+        view.labelOne.text = "V1.2.0"
+        view.labelTwo.text = "更新内容:"
+        view.labelThree.text = "1.界面改版,新增消息通知\n2.新增充值功能\n3.部分界面优化"
+
+        view.block({ (versionView, idx) in
+            DDLog(idx)
+        })
+        return view
+    }()
+    
+    let updateAPi = NNCheckVersApi()
+
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +164,12 @@ class ThirdViewController: UIViewController{
                 
 //        let controller = CellListController()
 //        navigationController?.pushViewController(controller, animated: true);
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        updateAPi.clearCache()
     }
     
     override func didReceiveMemoryWarning() {
@@ -197,7 +218,6 @@ class ThirdViewController: UIViewController{
     
     func requestInfo() {
         NNProgressHUD.showLoading("努力加载中")
-        let updateAPi = NNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in
             
             guard let data = try? JSONSerialization.data(withJSONObject: dic as Any, options: []) as Data,
@@ -208,12 +228,29 @@ class ThirdViewController: UIViewController{
 //            if let response = NNCheckVersRootClass.deserialize(from: dic) {
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
                 DDLog(response)
+                self.showUpdateInfo(response.results!.first!)
             }
-            NNProgressHUD.showSuccess("请求成功");
+//            NNProgressHUD.showSuccess("请求成功");
+            NNProgressHUD.dismiss()
             self.tableView.mj_header!.endRefreshing()
             self.tableView.mj_footer!.endRefreshing()
         }) { (manager, dic, error) in
             NNProgressHUD.showError(error.debugDescription)
+        }
+    }
+    ///显示新版本信息弹窗
+    func showUpdateInfo(_ model: ESCheckVersResult) {
+        updateView.appStoreID = "\(model.trackId)"
+//        updateView.label.text = "发现新版本"
+//        updateView.labelOne.text = "v\(model.version ?? "--")"
+//        updateView.labelTwo.text = "更新内容:"
+//        updateView.labelThree.text = "\(model.releaseNotes ?? "--")"
+//        if let releaseDate = model.currentVersionReleaseDate, releaseDate.count >= 10 {
+//            updateView.labelOne.text = "v\(model.version ?? "--") (\(releaseDate.substringTo(9)))"
+//        }
+        let isUpdate: Bool = model.version?.compare(UIApplication.appVer, options: .numeric, range: nil, locale: nil) == .orderedDescending
+        if isUpdate {
+            updateView.show()
         }
     }
     

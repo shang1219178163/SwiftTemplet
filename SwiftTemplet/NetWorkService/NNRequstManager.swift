@@ -46,6 +46,7 @@ enum NNRequestCode: Int {
     @objc optional func saveJsonOfCache(_ json: [String: Any]?) -> Bool
     @objc optional func jsonFromCache() -> [String: Any]?
 
+    @objc optional func clearCache()
 }
 
 /// 网络请求代理

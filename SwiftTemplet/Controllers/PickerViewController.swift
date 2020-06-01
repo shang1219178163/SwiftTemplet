@@ -192,8 +192,6 @@ class PickerViewController: UIViewController {
 //        view.labelTwo.text = "更新内容:"
 //        view.labelThree.text = "1.界面改版,新增消息通知\n2.新增充值功能\n3.部分界面优化"
         view.labelThree.text = "kkjsdaf;a;f;asdkpwfwaiefkdsafsdak'fad'fkldslfskl;adkf;lsdvmnvnb离开家金坷垃 几节课阿斯蒂芬就物品";
-
-        view.type = 1
         view.block({ (versionView, idx) in
             DDLog(idx)
         })
