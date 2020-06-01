@@ -29,7 +29,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(containView)
+        addSubview(contentView)
         addPhotos([imageDefault as Any])
     }
     
@@ -42,7 +42,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
 
         imageList.removeAllObjects();
         
-        containView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.left.equalToSuperview()
             make.right.equalToSuperview().offset(-btnWH/2.0)
@@ -50,7 +50,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
         
         let itemWidth = (bounds.width - btnWH/2.0 - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow)
         let itemHeight = itemWidth
-        let imgViewList: [UIImageView] = containView.subviews.filter({$0.isKind(of: UIImageView.self) }) as! [UIImageView]
+        let imgViewList: [UIImageView] = contentView.subviews.filter({$0.isKind(of: UIImageView.self) }) as! [UIImageView]
         let btnList: [UIButton] = self.subviews.filter({$0.isKind(of: UIButton.self) }) as! [UIButton]
         
         for i in 0..<itemList.count {
@@ -75,12 +75,12 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
             }
             
             if i == itemList.count - 1 {
-                containView.snp.makeConstraints { (make) in
+                contentView.snp.makeConstraints { (make) in
                     make.bottom.equalTo(imgView.snp.bottom).offset(btnWH/2.0)
                 }
                 
                 self.snp.makeConstraints { (make) in
-                    make.bottom.equalTo(containView.snp.bottom)
+                    make.bottom.equalTo(contentView.snp.bottom)
                 }
             }
             
@@ -126,11 +126,11 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
             }
         }
 
-        containView.removeAllSubViews()
+        contentView.removeAllSubViews()
         for e in itemList.enumerated() {
             let view = createImgView(.zero, tag: e.offset)
             handleView(view, element: e.element)
-            containView.addSubview(view)
+            contentView.addSubview(view)
             _ = view.addGestureTap { (recognizer) in
 //                DDLog(recognizer.view?.tag as Any)
                 if let tap = recognizer as? UITapGestureRecognizer {
@@ -143,7 +143,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
             }
             
             let btn = createBtn(.zero, tag: e.offset)
-            self.addSubview(btn)//删除按钮添加在containView上,最右边按钮有半边无法响应事件
+            self.addSubview(btn)//删除按钮添加在contentView上,最右边按钮有半边无法响应事件
             btn.addActionHandler({ (control) in
                 if let sender = control as? UIButton {
 //                    DDLog(sender.tag)
@@ -285,7 +285,7 @@ class NNPhotosView: UIView, UIImagePickerControllerDelegate, UINavigationControl
     
     //MARK: -lazy
 
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView()
         view.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.green

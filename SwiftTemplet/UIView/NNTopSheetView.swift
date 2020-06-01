@@ -27,7 +27,7 @@ import SwiftExpand
         willSet{
             guard let newValue = newValue else { return }
             let rect = parController!.view.convert(newValue.frame, to: parController!.view)
-            self.containView.originY = rect.maxY;
+            self.contentView.originY = rect.maxY;
         }
     }
 
@@ -86,12 +86,12 @@ import SwiftExpand
     }
     
     func show() {
-        self.parController!.view.addSubview(self.containView)
+        self.parController!.view.addSubview(self.contentView)
         self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 
-        self.containView.alpha = 0.0
+        self.contentView.alpha = 0.0
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.containView.alpha = 1.0
+            self.contentView.alpha = 1.0
             self.tableView.transform = CGAffineTransform.identity
 
         }) { (finished) in
@@ -103,12 +103,12 @@ import SwiftExpand
     
     func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.containView.alpha = 0.0
+            self.contentView.alpha = 0.0
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
             self.btn.imageView?.transform = CGAffineTransform.identity;
 
         }, completion:{ (isFinish:Bool) in
-            self.containView.removeFromSuperview()
+            self.contentView.removeFromSuperview()
             
         })
     }
@@ -143,7 +143,7 @@ import SwiftExpand
         return array
     }()
     
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 

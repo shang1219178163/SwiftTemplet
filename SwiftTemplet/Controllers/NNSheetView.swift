@@ -41,7 +41,7 @@ enum SheetDirection: Int {
         willSet{
             guard let newValue = newValue else { return }
             let rect = parController!.view.convert(newValue.frame, to: parController!.view)
-            self.containView.originY = rect.maxY;
+            self.contentView.originY = rect.maxY;
             self.tableView.sizeHeight = parController!.view.bounds.height - rect.maxY
         }
     }
@@ -104,11 +104,11 @@ enum SheetDirection: Int {
     func show() {
         changeTableViewLocation(true, inblock: false)
         
-        self.parController!.view.addSubview(self.containView)
+        self.parController!.view.addSubview(self.contentView)
 
-        self.containView.alpha = 0.0
+        self.contentView.alpha = 0.0
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.containView.alpha = 1.0
+            self.contentView.alpha = 1.0
             self.changeTableViewLocation(true, inblock: true)
 
         }) { (finished) in
@@ -122,13 +122,13 @@ enum SheetDirection: Int {
         changeTableViewLocation(false, inblock: false)
         
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.containView.alpha = 0.0
+            self.contentView.alpha = 0.0
             self.changeTableViewLocation(true, inblock: false)
 
             self.btn.imageView?.transform = .identity;
 
         }, completion:{ (isFinish:Bool) in
-            self.containView.removeFromSuperview()
+            self.contentView.removeFromSuperview()
             
         })
     }
@@ -143,7 +143,7 @@ enum SheetDirection: Int {
             }
             
         case .bottom:
-            containView.backgroundColor = .white
+            contentView.backgroundColor = .white
             if isShow {
                 tableView.transform = inblock == false ? tableView.transform.translatedBy(x: 0, y: tableView.sizeHeight) : .identity
             } else {
@@ -185,7 +185,7 @@ enum SheetDirection: Int {
         return array
     }()
     
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 

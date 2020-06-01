@@ -32,7 +32,7 @@ class NNDatePicker: UIView {
         self.init(frame: UIScreen.main.bounds);
 
         self.datePicker.datePickerMode = model;
-        self.addSubview(containView);
+        self.addSubview(contentView);
 
         self.addActionClosure { (tap, view, idx) in
             self.dismiss();
@@ -48,10 +48,10 @@ class NNDatePicker: UIView {
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
-        containView.transform = containView.transform.translatedBy(x: 0, y: containView.frame.height)
+        contentView.transform = contentView.transform.translatedBy(x: 0, y: contentView.frame.height)
         UIView.animate(withDuration: 0.35, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
-            self.containView.transform = .identity;
+            self.contentView.transform = .identity;
 
         }, completion: nil);
     }
@@ -59,7 +59,7 @@ class NNDatePicker: UIView {
     func dismiss() {
         UIView.animate(withDuration: 0.35, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containView.frame.height)
+            self.contentView.transform = self.contentView.transform.translatedBy(x: 0, y: self.contentView.frame.height)
 
         }) { (isFinished) in
             if isFinished {
@@ -74,7 +74,7 @@ class NNDatePicker: UIView {
     
     
     //MARK: - layz
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: UIScreen.sizeHeight - (kNaviBarHeight + kPickerViewHeight), width: UIScreen.sizeWidth, height: (kNaviBarHeight + kPickerViewHeight)));
        
         view.backgroundColor = UIColor(r: 230, g: 230, b: 230, a: 1);

@@ -24,7 +24,7 @@ class NNExpandView: UIView {
         label.textColor = UIColor.hex("#67722")
 
 //        addSubview(btn)
-        addSubview(containView)
+        addSubview(contentView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,7 +51,7 @@ class NNExpandView: UIView {
             make.width.height.equalTo(btnH)
         }
         
-        containView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(frame.minX + btnH - frame.midY)
             make.right.equalToSuperview().offset(-kX_GAP)
@@ -128,7 +128,7 @@ class NNExpandView: UIView {
     }();
 
     
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView(frame: bounds)
 
         view.addSubview(label)

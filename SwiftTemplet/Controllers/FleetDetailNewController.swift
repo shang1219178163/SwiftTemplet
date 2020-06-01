@@ -194,29 +194,29 @@ extension FleetDetailNewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let foldModel = dataList[section] as! NNFoldSectionModel
 
-        let containView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
+        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
         
-        containView.addSubview(containView.lineTop);
-        containView.addSubview(containView.lineBottom);
+        contentView.addSubview(contentView.lineTop);
+        contentView.addSubview(contentView.lineBottom);
 
-        containView.backgroundColor = UIColor.background
-        containView.backgroundColor = foldModel.headerColor
-//        containView.backgroundColor = UIColor.random
+        contentView.backgroundColor = UIColor.background
+        contentView.backgroundColor = foldModel.headerColor
+//        contentView.backgroundColor = UIColor.random
 
         let label = UILabel(frame: .zero);
-        label.frame = CGRect(x: 10, y: containView.frame.midY - 25/2.0, width: containView.frame.maxX - 20, height: 25)
+        label.frame = CGRect(x: 10, y: contentView.frame.midY - 25/2.0, width: contentView.frame.maxX - 20, height: 25)
         label.backgroundColor = foldModel.headerColor;
         label.text = foldModel.title;
 
-        containView.addSubview(label)
+        contentView.addSubview(label)
         if [1,2].contains(section) {
-            containView.addActionClosure { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
+            contentView.addActionClosure { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
                 if foldModel.isCanOpen == true {
                     foldModel.isOpen = !foldModel.isOpen
                     tableView.reloadSections([section], with: .fade)
                 }
             }
-            return containView;
+            return contentView;
         }
         return UIView();
     }

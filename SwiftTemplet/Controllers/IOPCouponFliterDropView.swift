@@ -39,7 +39,7 @@ import SwiftExpand
         willSet{
             guard let newValue = newValue, let parController = parController else { return }
             let rect = parController.view.convert(newValue.frame, to: parController.view)
-            self.containView.originY = rect.maxY;
+            self.contentView.originY = rect.maxY;
         }
     }
     // MARK: - lifeCycle
@@ -70,15 +70,15 @@ import SwiftExpand
     
     // MARK: - show
     func show() {
-        self.parController!.view.insertSubview(self.containView, at: 1)//必须保持在表视图之上
+        self.parController!.view.insertSubview(self.contentView, at: 1)//必须保持在表视图之上
 //        DDLog(self.parController!.view.subviews);
         self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 
-        self.containView.alpha = 0.0
+        self.contentView.alpha = 0.0
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.containView.alpha = 1.0
+            self.contentView.alpha = 1.0
             self.tableView.transform = .identity
-            self.parController!.view.bringSubviewToFront(self.containView)
+            self.parController!.view.bringSubviewToFront(self.contentView)
 
         }) { (finished) in
             if finished {
@@ -88,7 +88,7 @@ import SwiftExpand
     ///  释放视图
     func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
-            self.containView.alpha = 0.0
+            self.contentView.alpha = 0.0
             self.tableView.transform = self.tableView.transform.translatedBy(x: 0, y: -self.tableView.sizeHeight)
 
         }, completion:{ ( finished: Bool) in
@@ -109,7 +109,7 @@ import SwiftExpand
     }
     
     //MARK: -lazy
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
