@@ -87,14 +87,8 @@ class CenterViewController: UIViewController {
             DDLog(btnOne.titleLabel?.text as Any)
             
         }, for: .touchUpInside)
-        
-
-        btnOne.addActionHandler({ (sender: UIControl) in
-            DDLog(11111111111)
-
-        }, for: .touchUpOutside)
+    
         view.getViewLayer();
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
