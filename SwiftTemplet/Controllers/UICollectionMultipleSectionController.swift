@@ -80,40 +80,29 @@ extension UICollectionMultipleSectionController: UICollectionViewDelegate, UICol
     }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICTViewCellOne", for: indexPath) as! UICTViewCellOne
-        cell.label.text = "{\(indexPath.section), \(indexPath.row)}"
-        cell.imgView.isHidden = true
-        cell.label.backgroundColor = .lightGray
+        guard let view = collectionView.dequeueReusableCell(withReuseIdentifier: "UICTViewCellOne", for: indexPath) as? UICTViewCellOne else { return UICollectionViewCell() }
+        view.label.text = "{\(indexPath.section), \(indexPath.row)}"
+        view.imgView.isHidden = true
+        view.label.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
 
-        return cell
+        return view
     }
   
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTViewCellOne", for: indexPath) as! UICTViewCellOne
-            view.imgView.isHidden = true
-//            view.label.backgroundColor = .systemGreen
-            
-            view.label.text = "\(sectionName(indexPath)) header view"
-            view.contentView.backgroundColor = .systemBlue
-            return view
-
-        } else if kind == UICollectionView.elementKindSectionFooter {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "UICTViewCellOne", for: indexPath) as! UICTViewCellOne
-            view.imgView.isHidden = true
-//            view.label.backgroundColor = .systemGreen
-
-            view.label.text = "\(sectionName(indexPath)) footer view"
-            view.contentView.backgroundColor = .systemGreen
-            return view
-
-        }
-        return UICollectionReusableView()
+        guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICTViewCellOne", for: indexPath) as? UICTViewCellOne else { return UICollectionReusableView() }
+        view.imgView.isHidden = true
+        
+        view.label.text = "\(sectionName(indexPath))"
+        
+        let isHeader: Bool = (kind == UICollectionView.elementKindSectionHeader)
+        view.contentView.backgroundColor = isHeader ? .systemBlue : .systemGreen
+        return view
     }
       
 }
 
 extension UICollectionMultipleSectionController: NNMultipleSectionFlowLayoutDelegate {
+    
     func heightForItemAtIndexPath(_ collectionView: UICollectionView, layout: NNMultipleSectionFlowLayout, indexPath: IndexPath, itemWidth: CGFloat) -> CGFloat {
         switch indexPath.section {
         case 0:
