@@ -59,6 +59,15 @@ class NNCalendarView: UIView {
         reloadData()
         
         titleBtn.titleLabel!.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        
+        let list = [yearPreBtn, monthPreBtn, monthNextBtn, yearNextBtn]
+        for e in list {
+            e.layer.borderColor = UIColor.lightGray.cgColor
+            e.layer.borderWidth = 0.3
+            e.layer.cornerRadius = 3
+        }
+
+
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -222,6 +231,7 @@ class NNCalendarView: UIView {
         view.items = [String](repeating: "", count: 37)
         view.numberOfRow = weekInfo.count
         view.padding = 0.0
+        view.isMutiChoose = false
         view.block({ (itemsView, control) in
             if let sender = control as? UIButton {
                 DDLog(sender.tag)
