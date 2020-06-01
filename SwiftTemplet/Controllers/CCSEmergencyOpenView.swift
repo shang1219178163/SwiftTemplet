@@ -29,7 +29,7 @@ class CCSEmergencyOpenView: UIView {
             "\(index)"
         })
         
-        self.addSubview(containView);
+        self.addSubview(contentView);
         
         self.addActionClosure { (tap , view, idx) in
             if self.isDismissBlank == true {
@@ -46,14 +46,14 @@ class CCSEmergencyOpenView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        containView.snp.makeConstraints { (make) in
+//        contentView.snp.makeConstraints { (make) in
 //            make.top.equalToSuperview().offset(170);
 //            make.left.equalToSuperview().offset(36);
 //            make.right.equalToSuperview().offset(-36);
 //            make.bottom.equalToSuperview().offset(-160);
 //        }
         
-        containView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.center.equalToSuperview();
             make.left.equalToSuperview().offset(36);
             make.right.equalToSuperview().offset(-36);
@@ -130,8 +130,8 @@ class CCSEmergencyOpenView: UIView {
        
 //        DDLog(itemView.frame, scrollView.frame, scrollView.contentSize, itemViewOne.frame)
   
-        containView.layer.cornerRadius = 5;
-        containView.layer.masksToBounds = true;
+        contentView.layer.cornerRadius = 5;
+        contentView.layer.masksToBounds = true;
     }
 
     //MRAK: - funtion
@@ -139,10 +139,10 @@ class CCSEmergencyOpenView: UIView {
     func show() {
         UIApplication.shared.keyWindow?.addSubview(self);
         
-        containView.transform = containView.transform.scaledBy(x: 0.1, y: 0.1)
+        contentView.transform = contentView.transform.scaledBy(x: 0.1, y: 0.1)
         UIView.animate(withDuration: 0.15, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
-            self.containView.transform = CGAffineTransform.identity;
+            self.contentView.transform = CGAffineTransform.identity;
             
         }, completion: nil);
     }
@@ -150,7 +150,7 @@ class CCSEmergencyOpenView: UIView {
     func dismiss() {
         UIView.animate(withDuration: 0.15, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.transform = self.containView.transform.scaledBy(x: 0.1, y: 0.1)
+            self.contentView.transform = self.contentView.transform.scaledBy(x: 0.1, y: 0.1)
 
         }) { (isFinished) in
             self.removeFromSuperview();
@@ -174,7 +174,7 @@ class CCSEmergencyOpenView: UIView {
     }
     
     //MARK: - layz
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         let view = UIView(frame: .zero);
         //        let view = UIView(frame: CGRect(x: 36, y: 144, width: UIScreen.sizeWidth - 36*2, height: UIScreen.sizeHeight - 144*2));
         //        view.backgroundColor = UIColorRGBA(230, 230, 230, 1);

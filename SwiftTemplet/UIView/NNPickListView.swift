@@ -27,7 +27,7 @@ class NNPickListView: UIView {
             }
             tableView.reloadData()
             
-            setupContainViewSize(list);
+            setupContentViewSize(list);
         }
     }
     
@@ -35,9 +35,9 @@ class NNPickListView: UIView {
         super.init(frame: frame)
         
         self.frame = UIScreen.main.bounds
-        self.containView.originY = UIScreen.sizeHeight
+        self.contentView.originY = UIScreen.sizeHeight
 
-        self.addSubview(containView)
+        self.addSubview(contentView)
         self.addSubview(backView)
 
         let _ = backView.addGestureTap { (sender:UIGestureRecognizer) in
@@ -60,16 +60,16 @@ class NNPickListView: UIView {
     func show() {
         assert(itemList != nil)
         
-        setupContainViewSize(list)
+        setupContentViewSize(list)
         
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self)
-        backView.sizeHeight = UIScreen.sizeHeight - containView.sizeHeight
-        containView.originY = UIScreen.sizeHeight
+        backView.sizeHeight = UIScreen.sizeHeight - contentView.sizeHeight
+        contentView.originY = UIScreen.sizeHeight
         
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
-            self.containView.originY -= self.containView.frame.height;
+            self.contentView.originY -= self.contentView.frame.height;
 
         }, completion: { (isFinished: Bool) in
             
@@ -79,7 +79,7 @@ class NNPickListView: UIView {
     func dismiss() {
         UIView.animate(withDuration: 0.5, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.originY = UIScreen.sizeHeight
+            self.contentView.originY = UIScreen.sizeHeight
             
         }) { (isFinished) in
             self.removeFromSuperview();
@@ -90,14 +90,14 @@ class NNPickListView: UIView {
         self.viewBlock = action;
     }
     
-    func setupContainViewSize(_ list:[String]) {
+    func setupContentViewSize(_ list:[String]) {
         var rows = list.count + (title != nil ? 1 : 0) + (tips != nil ? 1 : 0)
         rows = rows < 6 ? rows : 6
-        self.containView.sizeHeight = tableView.rowHeight * CGFloat(rows)
+        self.contentView.sizeHeight = tableView.rowHeight * CGFloat(rows)
     }
     
     //MARK: - layz
-    lazy var containView:UIView = {
+    lazy var contentView:UIView = {
         let view = UIView(frame: self.bounds)
         
         tableView.frame = view.bounds
@@ -112,7 +112,7 @@ class NNPickListView: UIView {
     }();
 
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .grouped, rowHeight: 50);
+        let table = UITableView.create(bounds, style: .grouped, rowHeight: 50);
             table.dataSource = self
             table.delegate = self
         
@@ -130,7 +130,7 @@ class NNPickListView: UIView {
 //        let point = touch.location(in:self)     //获取当前点击位置
 //        let pointprevious = touch.previousLocation(in:self)     //和上面一样
 //
-//        if self.containView.frame.contains(point) {
+//        if self.contentView.frame.contains(point) {
 //            return
 //        }
 //        
