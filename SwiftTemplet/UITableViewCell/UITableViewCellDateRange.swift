@@ -65,7 +65,6 @@ class UITableViewCellDateRange: UITableViewCell {
     lazy var dateRangeView: NNDateRangeView = {
         var view = NNDateRangeView(frame: contentView.bounds)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
         return view
     }()
 

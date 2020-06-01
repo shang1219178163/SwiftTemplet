@@ -30,6 +30,8 @@ class UICTViewCellOne: UICollectionViewCell {
         contentView.addSubview(lineRight)
         
         contentView.backgroundColor = UIColor.white
+        label.backgroundColor = .clear
+
         label.textAlignment = .center
         imgView.image = UIImage(named: kIMG_defaultFailed_S)
         lineBottom.isHidden = true

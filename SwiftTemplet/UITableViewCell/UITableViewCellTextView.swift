@@ -40,7 +40,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         contentView.addSubview(textView);
         contentView.addSubview(labelLeftSub);
 
-        labelLeftSub.text = "0" + "/" + "\(wordCount)字"
+        labelLeftSub.text = "0" + "/" + "\(wordCount)"
         labelLeftSub.textAlignment = .right
         labelLeftSub.font = UIFont.systemFont(ofSize: 13)
         textView.delegate = self;
@@ -48,7 +48,6 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
-
     }
         
     required init?(coder aDecoder: NSCoder) {
@@ -179,3 +178,46 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
 //    }()
     
 }
+
+//extension UITableViewCellTextView{
+//
+//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        return true
+//    }
+//
+//    override var canBecomeFirstResponder: Bool{
+//        return true
+//    }
+//
+//    func enableCustomMenu() {
+//         let cut = UIMenuItem(title: "Cut", action: #selector(runCut))
+//         let copy = UIMenuItem(title: "Copy", action: #selector(runCopy))
+//         let paste = UIMenuItem(title: "Paste", action: #selector(runPaste))
+//         let pasteSearch = UIMenuItem(title: "Paste and Search", action: #selector(runPasteSearch))
+//         let look = UIMenuItem(title: "Look Up", action: #selector(runLook))
+//
+//    //  ----> here Arrange as you can
+//         UIMenuController.shared.menuItems = [cut, copy, paste, pasteSearch, look]
+//         UIMenuController.shared.update()
+//     }
+//
+//     func disableCustomMenu() {
+//         UIMenuController.shared.menuItems = nil
+//     }
+//
+//     @objc func runCut() {
+//     }
+//
+//     @objc func runCopy() {
+//        print(textView.text ?? "")
+//     }
+//     @objc func runPaste() {
+//
+//     }
+//     @objc func runPasteSearch() {
+//
+//     }
+//     @objc func runLook() {
+//
+//     }
+//}
