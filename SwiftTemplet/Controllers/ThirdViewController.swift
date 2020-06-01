@@ -10,7 +10,7 @@
 import UIKit
 import SwiftExpand
 import HandyJSON
-import Moya
+//import Moya
 import MJRefresh
 import HFNavigationController
 
@@ -28,6 +28,10 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["UICollectionMultipleSectionController", "多布局展示", ],
+             ["UICollectionExcelController", "Excel", ],
+             ["PlateKeybordController", "自定义车牌键盘", ],
+
 //             ["CellListController", "自定义Cell界面", ],
              ["TextFieldStyleController", "TextField样式显示", ],                
              ["IOPPlateEntryController", "多车牌录入", ],
@@ -42,9 +46,10 @@ class ThirdViewController: UIViewController{
              ["NNPictureViewController", "全屏图册", ],
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
              ["NNPlateKeyboardController", "自定义车牌键盘重构", ],
-             ["PlateKeybordController", "自定义车牌键盘", ],
+//             ["PlateKeybordController", "自定义车牌键盘", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              ["NNButtonStudyController", "按钮研究", ],
+             
              ["UICollectionDispalyController", "UICollectionView展示", ],
              ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],
 //             ["NNTabViewController", "NNTabView组件", ],
@@ -136,6 +141,7 @@ class ThirdViewController: UIViewController{
 //        let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
 //        NSObject.printChengfaBiao()
+//        tableView.nextResponder(UIWindow.self, isPrint: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -194,10 +200,11 @@ class ThirdViewController: UIViewController{
         let updateAPi = NNCheckVersApi()
         updateAPi.startRequest(success: { (manager, dic, error) in
             
-            let data: Data! = try? JSONSerialization.data(withJSONObject: dic as Any, options: []);
-            let jsonString: String! = String(data: data, encoding: .utf8);
-            let string: String! = jsonString.replacingOccurrences(of: "\\", with: "")
-            DDLog(string as Any)
+            guard let data = try? JSONSerialization.data(withJSONObject: dic as Any, options: []) as Data,
+            let jsonString: String = String(data: data, encoding: .utf8),
+            let string: String = jsonString.replacingOccurrences(of: "\\", with: "")
+            else { return }
+//            DDLog(string as Any)
 //            if let response = NNCheckVersRootClass.deserialize(from: dic) {
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
                 DDLog(response)
@@ -206,8 +213,7 @@ class ThirdViewController: UIViewController{
             self.tableView.mj_header!.endRefreshing()
             self.tableView.mj_footer!.endRefreshing()
         }) { (manager, dic, error) in
-            DDLog(error! as Any)
-            
+            NNProgressHUD.showError(error.debugDescription)
         }
     }
     
@@ -263,9 +269,13 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
         let itemList = list[indexPath.section][indexPath.row]
 //        DDLog(itemList);
         
-        if ["SystemColorShowController"].contains(itemList.first!) {
-            UIAlertController.showAlert(message: "@available(iOS 13.0, *)")
-            return
+        if #available(iOS 13.0, *) {
+
+        } else {
+            if ["SystemColorShowController"].contains(itemList.first!) {
+                UIAlertController.showAlert(message: "@available(iOS 13.0, *)")
+                return
+            }
         }
         
         let controller = UICtrFromString(itemList.first!)
