@@ -12,17 +12,17 @@ import SwiftExpand
 class NNLog: NSObject {
     
     @objc static func logRequestURI(_ uri: String) {
-        DDLog("URI: >> %@",uri);
+        DDLog("URI: >> \(uri)");
 
     }
     @objc static func logParams(_ params: [String: Any]) {
         let queryStr = (params as NSDictionary).jsonString;
-        DDLog("%@",queryStr as Any);
+        DDLog(queryStr as Any);
     }
     
     @objc static func logResponseJSON(_ json: [String: Any]) {
         let queryStr = (json as NSDictionary).jsonString;
-        DDLog("%@",queryStr as Any);
+        DDLog(queryStr as Any);
     }
     
     @objc static func logRequestInfo(_ uri: String, params: [String: Any]) {
