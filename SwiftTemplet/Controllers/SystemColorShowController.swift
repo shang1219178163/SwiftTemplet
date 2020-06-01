@@ -158,7 +158,8 @@ extension SystemColorShowController: UITableViewDataSource, UITableViewDelegate{
         
         let color = list[indexPath.section][indexPath.row]
 //        DDLog(indexPath.string, color.description)
-        
+        cell.backgroundColor = color
+
         if color.description.contains("=") {
             let infos = color.description.components(separatedBy: CharacterSet(charactersIn: "=>"))
             cell.textLabel?.text = infos[1]
