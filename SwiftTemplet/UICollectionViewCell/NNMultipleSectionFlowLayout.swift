@@ -94,7 +94,6 @@ import UIKit
         if let height = delegate?.heightForItemAtIndexPath?(collectionView!, layout: self, indexPath: indexPath, itemWidth: itemWidth) {
             itemHeight = height
         }
-        
         var tmpMinColumn = 0
         var minColumnHeight = columnHeights[0]
         for i in 0..<columnCount {
@@ -102,6 +101,7 @@ import UIKit
             if minColumnHeight > columnH {
                 minColumnHeight = columnH
                 tmpMinColumn = i
+//                print("\(#function)_\(indexPath.section)_\(i)_\(minColumnHeight)_\(columnH)_\(tmpMinColumn)")
             }
         }
         let cellX: CGFloat = sectionInset.left + CGFloat(tmpMinColumn) * (itemWidth + minimumInteritemSpacing)
