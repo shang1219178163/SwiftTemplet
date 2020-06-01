@@ -11,19 +11,20 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+class NNPickerView: UIView {
 
-    let containViewH: CGFloat = kPickerViewHeight+kNaviBarHeight
+    let contentViewH: CGFloat = kPickerViewHeight+kNaviBarHeight
 
     typealias ViewClick = (NNPickerView, Int) -> Void;
     var viewBlock: ViewClick?;
     
+    // MARK: -lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.frame = UIScreen.main.bounds
         addSubview(masView)
-        addSubview(containView)
+        addSubview(contentView)
         
     }
     
@@ -34,10 +35,9 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        let containViewH = kPickerViewHeight+kNaviBarHeight
-        containView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(containViewH)
+            make.height.equalTo(contentViewH)
         }
         
         toobarView.snp.makeConstraints { (make) in
@@ -78,35 +78,20 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         masView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(containView.snp.top)
+            make.bottom.equalTo(contentView.snp.top)
         }
         
     }
-    
-    // MARK: UIPickerViewDataSource
-    /// 设置选择框的列数
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
-    }
-    
-    /// 设置选择框的行数
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 9
-    }
 
-    /// 设置选择框各选项的内容
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(component) + "-" + String(row)
-    }
-    
+    // MARK: -funtions
     func show() {
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
-        containView.transform = containView.transform.translatedBy(x: 0, y: containViewH)
+        contentView.transform = contentView.transform.translatedBy(x: 0, y: contentViewH)
         UIView.animate(withDuration: kDurationShow, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.3);
-            self.containView.transform = CGAffineTransform.identity
+            self.contentView.transform = CGAffineTransform.identity
             
         }, completion: nil);
     }
@@ -114,7 +99,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     func dismiss() {
         UIView.animate(withDuration: kDurationShow, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.containView.transform = self.containView.transform.translatedBy(x: 0, y: self.containViewH)
+            self.contentView.transform = self.contentView.transform.translatedBy(x: 0, y: self.contentViewH)
             
         }) { (isFinished) in
             if isFinished {
@@ -127,6 +112,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         self.viewBlock = action;
     }
     
+    // MARK: -lazy
     lazy var toobarView: UIView = {
         var view = UIView(frame: .zero)
         view.addSubview(btnCancell)
@@ -192,7 +178,7 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return view
     }()
     
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView()
         view.backgroundColor = UIColor.white
         view.addSubview(toobarView)
@@ -214,4 +200,23 @@ class NNPickerView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         view.backgroundColor = UIColor.line
         return view
     }()
+}
+
+
+extension NNPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    /// 设置选择框的列数
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 3
+    }
+    
+    /// 设置选择框的行数
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 9
+    }
+
+    /// 设置选择框各选项的内容
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(component) + "-" + String(row)
+    }
 }

@@ -17,13 +17,14 @@ class NNCalendarView: UIView {
     var dateList: Set<String> = []
 
     var currentDate: Date = Date()
-    {
-        didSet{
-            let comp = Date.dateComponents(oldValue)
-            year = comp.year!
-            month = comp.month!
-        }
-    }
+//    var currentDate: Date = Date()
+//    {
+//        didSet{
+//            let comp = Date.dateComponents(oldValue)
+//            year = comp.year!
+//            month = comp.month!
+//        }
+//    }
     
     var year: Int = Date.dateComponents(Date()).year!
     {
@@ -51,9 +52,13 @@ class NNCalendarView: UIView {
         addSubview(weeksView)
         addSubview(daysView)
 
+        if let comp = Date.dateComponents(currentDate) as DateComponents? {
+            year = comp.year!
+            month = comp.month!
+        }
         reloadData()
         
-        self.titleBtn.titleLabel?.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        titleBtn.titleLabel!.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -61,10 +66,10 @@ class NNCalendarView: UIView {
             if let text = change![NSKeyValueChangeKey.newKey] as? String {
 //                self.currentDate = DateFormatter.dateFromString(text, fmt: kDateFormat_six)
                 reloadData()
-                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormatMonth_CH))
+//                DDLog(text,DateFormatter.stringFromDate(self.currentDate, fmt: kDateFormatMonth_CH))
 
                 let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormatMonth_CH)
-                self.todayBtn.isHidden = (text == dateStr)
+                todayBtn.isHidden = (text == dateStr)
             }
         }
     }
@@ -131,7 +136,8 @@ class NNCalendarView: UIView {
     lazy var yearPreBtn: UIButton = {
         var view = UIButton.create(.zero, title: nil, imgName: "left", type: 4)
         view.addActionHandler({[weak self] (control) in
-            self!.year -= 1
+            guard let self = self else { return }
+            self.year -= 1
 //            DDLog("\(self!.year)年\(self!.month)月");
             
         }, for: .touchUpInside)
@@ -141,7 +147,8 @@ class NNCalendarView: UIView {
     lazy var yearNextBtn: UIButton = {
         var view = UIButton.create(.zero, title: nil, imgName: "right", type: 4)
         view.addActionHandler({[weak self] (control) in
-            self!.year += 1
+            guard let self = self else { return }
+            self.year += 1
 //            DDLog("\(self!.year)年\(self!.month)月");
 
             }, for: .touchUpInside)
@@ -151,11 +158,12 @@ class NNCalendarView: UIView {
     lazy var monthPreBtn: UIButton = {
         var view = UIButton.create(.zero, title: nil, imgName: "left", type: 4)
         view.addActionHandler({[weak self] (control) in
-            if self!.month == 1 {
-                self!.year -= 1;
-                self!.month = 12;
+            guard let self = self else { return }
+            if self.month == 1 {
+                self.year -= 1;
+                self.month = 12;
             } else {
-                self!.month -= 1
+                self.month -= 1
             }
 //            DDLog("\(self!.year)年\(self!.month)月");
 
@@ -166,11 +174,12 @@ class NNCalendarView: UIView {
     lazy var monthNextBtn: UIButton = {
         var view = UIButton.create(.zero, title: nil, imgName: "right", type: 4)
         view.addActionHandler({[weak self] (control) in
-            if self!.month == 12 {
-                self!.year += 1;
-                self!.month = 1;
+            guard let self = self else { return }
+            if self.month == 12 {
+                self.year += 1;
+                self.month = 1;
             } else {
-                self!.month += 1
+                self.month += 1
             }
 //            DDLog("\(self!.year)年\(self!.month)月");
 
@@ -191,9 +200,10 @@ class NNCalendarView: UIView {
     lazy var todayBtn: UIButton = {
         var view = UIButton.create(.zero, title: "今天", imgName: nil, type: 2)
         view.addActionHandler({[weak self] (control) in
+            guard let self = self else { return }
             let comp = Date.dateComponents(Date())
-            self!.year = comp.year!
-            self!.month = comp.month!
+            self.year = comp.year!
+            self.month = comp.month!
             
             }, for: .touchUpInside)
         return view
@@ -209,7 +219,7 @@ class NNCalendarView: UIView {
     
     lazy var daysView: NNItemsView = {
         var view = NNItemsView(frame: .zero)
-        view.items = Array<Any>.appendSame("" as AnyObject, count: 37) as? [String]
+        view.items = [String](repeating: "", count: 37)
         view.numberOfRow = weekInfo.count
         view.padding = 0.0
         view.block({ (itemsView, control) in
@@ -225,7 +235,7 @@ class NNCalendarView: UIView {
         let count = currentDate.countOfDaysInMonth
         let startIdx = currentDate.firstWeekDay - 1 //布局从0开始,日期从1开始
         
-        DDLog("=========",DateFormatter.stringFromDate(currentDate),count,startIdx)
+        DDLog("=========",DateFormatter.stringFromDate(currentDate), count, startIdx)
         
         for e in daysView.itemList.enumerated() {
             e.element.isSelected = false
@@ -264,19 +274,14 @@ class NNCalendarView: UIView {
     }
     
     func handleTitleBtnChange(_ year: Int, month: Int) {
-        let dateStr = "\(year)年\(month)月"
-        self.titleBtn.setTitle(dateStr, for: .normal)
-//        self.currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormat_six)
+        let monthDes = (month >= 10 ? "\(month)" : "0\(month)")
+        let dateStr = "\(year)年\(monthDes)月"
+        titleBtn.setTitle(dateStr, for: .normal)
+        currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormatMonth_CH)
     }
     
-//    func handleTitleFrom(_ aDate: Date) {
-//        let comp = Date.dateComponents(aDate)
-//        year = comp.year!
-//        month = comp.month!
-//        handleTitleBtnChange(year, month: month)
-//    }
-    
     func dateStrFmtFrom(_ btn: UIButton) -> String {
+//        DDLog(self.titleBtn.titleLabel!.text ?? "空", btn.titleLabel!.text ?? "空")
         let dateStr = (self.titleBtn.titleLabel!.text ?? "空") + (btn.titleLabel!.text ?? "空") + "日"
         let date = DateFormatter.dateFromString(dateStr, fmt: kDateFormatDay_CH)
         let dateStrFmt = DateFormatter.stringFromDate(date)
