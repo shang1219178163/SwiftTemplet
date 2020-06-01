@@ -16,48 +16,36 @@ class NNUpdateVersionView: UIView {
     let containX: CGFloat = 40
     let containY: CGFloat = 140
     let btnH: CGFloat = 50
+    
+    var appStoreID = ""
 
     typealias ViewClick = (NNUpdateVersionView, Int) -> Void;
     var viewBlock: ViewClick?;
-    
-    var type: Int = 0 {
-        willSet {
-            switch newValue {
-            case 1:
-                containView.layer.borderWidth = kH_LINE_VIEW
-                containView.layer.cornerRadius = kPadding
-                
-                btn.layer.borderWidth = kH_LINE_VIEW
-                btn.layer.cornerRadius = btnH/2.0
-                gradientLayer.borderWidth = kH_LINE_VIEW
-                gradientLayer.cornerRadius = btnH/2.0
-                
-            default:
-                break;
-            }
-        }
-    }
-    
-    override init(frame: CGRect) {
+    // MARK: -lifecycle
+        override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.frame = UIScreen.main.bounds
         addSubview(containView);
         addSubview(btnCancell);
         
+        containView.layer.borderWidth = kH_LINE_VIEW
+        containView.layer.cornerRadius = kPadding
+        
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.white
         labelOne.textColor = UIColor.white
-        labelThree.textColor = UIColor.hexValue(0x666666)
+        
+        btn.layer.borderColor = UIColor.clear.cgColor
+        btn.layer.borderWidth = kH_LINE_VIEW
+        btn.layer.cornerRadius = kPadding
         
         label.text = "发现新版本"
         labelOne.text = "V1.0.0"
         labelTwo.text = "更新内容:"
         labelThree.text = "1.界面改版,新增消息通知\n2.新增充值功能\n3.部分界面优化"
-        
-        gradientLayer.colors = CAGradientLayer.defaultColors;
 
-        getViewLayer()
+//        getViewLayer()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,6 +59,10 @@ class NNUpdateVersionView: UIView {
     }
     
     func setupConstraint() {
+        if bounds.height <= 0.0 {
+            return
+        }
+        
         let imgViewH: CGFloat = (bounds.width - containX*2)/(570/228)
         let labelX: CGFloat = kX_GAP*1.5
         let labelY: CGFloat = (imgViewH - kH_LABEL*2 - kPadding)/2.0
@@ -107,7 +99,7 @@ class NNUpdateVersionView: UIView {
         
         btn.snp.makeConstraints { (make) in
             make.left.right.equalTo(label)
-            make.bottom.equalToSuperview().offset(-kY_GAP)
+            make.bottom.equalToSuperview().offset(-20)
             make.height.equalTo(btnH)
         }
     
@@ -123,7 +115,6 @@ class NNUpdateVersionView: UIView {
             make.width.height.equalTo(btnH)
         }
         
-        gradientLayer.frame = CGRectMake(0, 0, kScreenWidth - containX*2 - labelX*2, btnH);
     }
     
     //MARK: -funtions
@@ -146,7 +137,6 @@ class NNUpdateVersionView: UIView {
 
         }) { (isFinished) in
             self.removeFromSuperview();
-            
         }
     }
     
@@ -161,7 +151,7 @@ class NNUpdateVersionView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
 //        view.contentMode = .scaleAspectFit;
-        view.image = UIImageNamed("img_verionUpdate")
+        view.image = UIImage(named: "img_verionUpdate")
         return view;
     }()
     
@@ -195,6 +185,8 @@ class NNUpdateVersionView: UIView {
         view.lineBreakMode = .byCharWrapping;
         view.isUserInteractionEnabled = true;
         
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.textColor = .gray
         return view;
     }()
 
@@ -206,33 +198,47 @@ class NNUpdateVersionView: UIView {
         view.lineBreakMode = .byCharWrapping;
         view.isUserInteractionEnabled = true;
         
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.textColor = .gray
         return view;
     }()
 
-    lazy var labelFour: UILabel = {
-        var view = UILabel(frame: .zero);
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.textAlignment = .left;
-        view.numberOfLines = 0;
-        view.lineBreakMode = .byCharWrapping;
-        view.isUserInteractionEnabled = true;
-        
-        return view;
-    }()
+//    lazy var labelFour: UILabel = {
+//        var view = UILabel(frame: .zero);
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.textAlignment = .left;
+//        view.numberOfLines = 0;
+//        view.lineBreakMode = .byCharWrapping;
+//        view.isUserInteractionEnabled = true;
+//        
+//        view.font = UIFont.systemFont(ofSize: 15)
+//        view.textColor = .gray
+//        return view;
+//    }()
 
  
     lazy var btn: UIButton = {
         var view = UIButton(type: .custom)
         view.setTitle("立即升级", for: .normal);
         view.setTitleColor(.white, for: .normal);
-//        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
-//        view.backgroundColor = UIColor.hexValue(0x2dae70)
-//        view.backgroundColor = UIColor.hex("#2dae70")
-        view.layer.addSublayer(gradientLayer)
+        
+        view.backgroundColor = UIColor.hexValue(0x41cc88)
+//        let image = UIImage(color: .systemGreen)
+//        view.setBackgroundImage(image, for: .normal)
+        
         view.addActionHandler({ (control) in
             self.dismiss()
             self.viewBlock?(self,  1)
+            
+            let appStoreUrl = "itms-apps://itunes.apple.com/app/id\(self.appStoreID)?mt=8"
+            guard let url = URL(string: appStoreUrl) else { return }
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url);
+            }
+            
         }, for: .touchUpInside)
         return view
     }()

@@ -43,5 +43,8 @@ class NNCheckVersApi: NNBaseRequestApi {
         return nil
     }
     
+    func clearCache() {
+        NNCacheManager.shared.removeObject(forKey: kCacheAppInfo)
+    }
     
 }
