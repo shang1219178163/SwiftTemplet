@@ -18,29 +18,35 @@ class NNUpdateVersionView: UIView {
     let containY: CGFloat = 140
     let btnH: CGFloat = 50
     
+    var isForceUpdate: Bool = false{
+        willSet{
+            btnCancell.isHidden = newValue
+        }
+    }
     var appStoreID = ""
 
-    typealias ViewClick = (NNUpdateVersionView, Int) -> Void;
-    var viewBlock: ViewClick?;
+    typealias ViewClick = (NNUpdateVersionView, Int) -> Void
+    var viewBlock: ViewClick?
+    
+    
     // MARK: -lifecycle
         override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.frame = UIScreen.main.bounds
-        addSubview(containView);
+        addSubview(contentView);
         addSubview(btnCancell);
         
-        containView.layer.borderWidth = kH_LINE_VIEW
-        containView.layer.cornerRadius = kPadding
+        contentView.layer.borderWidth = kH_LINE_VIEW
+        contentView.layer.cornerRadius = kPadding
         
         label.font = UIFont.boldSystemFont(ofSize: 30)
         label.textColor = UIColor.white
         labelOne.textColor = UIColor.white
         
-        btn.layer.borderColor = UIColor.clear.cgColor
-        btn.layer.borderWidth = kH_LINE_VIEW
-        btn.layer.cornerRadius = kPadding
+        btn.layer.cornerRadius = 5
         
+        imgView.image = UIImage(named: "img_verionUpdate")
         label.text = "发现新版本"
         labelOne.text = "V1.0.0"
         labelTwo.text = "更新内容:"
@@ -68,7 +74,7 @@ class NNUpdateVersionView: UIView {
         let labelX: CGFloat = kX_GAP*1.5
         let labelY: CGFloat = (imgViewH - kH_LABEL*2 - kPadding)/2.0
 
-        containView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(containY)
             make.left.equalToSuperview().offset(containX)
             make.right.equalToSuperview().offset(-containX)
@@ -105,14 +111,14 @@ class NNUpdateVersionView: UIView {
         }
     
         labelThree.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTwo.snp.bottom).offset(kY_GAP)
+            make.top.equalTo(labelTwo.snp.bottom).offset(5)
             make.left.right.equalTo(label)
             make.bottom.equalTo(btn.snp.top).offset(-kY_GAP)
         }
       
         btnCancell.snp.makeConstraints { (make) in
-            make.top.equalTo(containView.snp.bottom).offset(kY_GAP*2)
-            make.centerX.equalTo(containView)
+            make.top.equalTo(contentView.snp.bottom).offset(kY_GAP)
+            make.centerX.equalTo(contentView)
             make.width.height.equalTo(btnH)
         }
         
@@ -152,7 +158,6 @@ class NNUpdateVersionView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
 //        view.contentMode = .scaleAspectFit;
-        view.image = UIImage(named: "img_verionUpdate")
         return view;
     }()
     
@@ -261,7 +266,7 @@ class NNUpdateVersionView: UIView {
         return view
     }()
     
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         var view = UIView()
         view.backgroundColor = UIColor.white
         view.addSubview(imgView)
