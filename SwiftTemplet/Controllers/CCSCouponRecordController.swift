@@ -113,7 +113,7 @@ extension CCSCouponRecordController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        guard let cell = tableView.cellForRow(at: indexPath) as? UITableViewCellCoupon else { return }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -140,3 +140,4 @@ extension CCSCouponRecordController: UITableViewDataSource, UITableViewDelegate{
 
     }
 }
+

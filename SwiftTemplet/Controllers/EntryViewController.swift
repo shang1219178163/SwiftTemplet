@@ -8,7 +8,9 @@
 
 import UIKit
 import SwiftExpand
+import NNPopoverButton
 import SDWebImage
+import IQKeyboardManagerSwift
 
 class EntryViewController: UIViewController {
     
@@ -23,16 +25,23 @@ class EntryViewController: UIViewController {
         return view
     }()
         
-    lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "优惠券", imgName: nil, type: 3)
+    lazy var btn: NNPopoverButton = {
+        let button = NNPopoverButton(type: .custom)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.setTitle("Left", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
         button.sizeToFit()
-        button.addActionHandler({ (control) in
-            let controller = CCSCouponRecordController()
-            self.navigationController?.pushViewController(controller, animated: true)
-            
-        }, for: .touchUpInside)
+        button.parentVC = self
+        button.contentWidth = 160
+        button.list = ["优惠券样式", "文本框样式", ]
+        button.setTitle(button.list.first, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.sizeToFit()
+
+        button.delegate = self
         return button
     }()
+    
     
     // MARK: -life cycle
     deinit {
@@ -42,7 +51,7 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
 
         tableView.rowHeight = UITableView.automaticDimension;
         tableView.estimatedRowHeight = 70;
@@ -51,8 +60,10 @@ class EntryViewController: UIViewController {
         tableView.tableFooterView = footerView
         view.addSubview(tableView);
 
-    
         view.addSubview(suspendBtn)
+        
+        DDLog(view.responderChain())
+        IQKeyboardManager.shared.enable = true;
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,7 +166,6 @@ class EntryViewController: UIViewController {
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
-            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
             ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
             ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  "生产,不生产",],
@@ -202,7 +212,7 @@ class EntryViewController: UIViewController {
     
     // MARK: -funtions
     /// 跳转相册类
-    func jumpXiangce(_ itemList:[String]) {
+    func jumpXiangce(_ itemList: [String]) {
 //        let controller = UIStoryboard.storyboard(with: "ParkRecord", identifier: "IOPParkRecordImageViewController") as! UIViewController
 //        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
 //        if let url = URL(string: dataModel.value(forKeyPath: itemList[4]) as! String) {
@@ -246,6 +256,10 @@ class EntryViewController: UIViewController {
         controller.fileUrl = urlString == "" ? nil : NSURL(string: urlString)
         DDLog("isUpload:\(controller.isUpload)_fileUrl:\(controller.fileUrl)")
         navigationController?.pushViewController(controller, animated: true);
+    }
+    
+    @objc func handleAction() {
+        DDLog("test")
     }
 }
 
@@ -397,6 +411,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.hasAsterisk = value0.contains("*")
             
             cell.dateRangeView.datePicker.datePicker.datePickerMode = UIDatePicker.Mode(rawValue: value3.intValue)!
+            cell.dateRangeView.isEmptyDate = true
             cell.dateRangeView.rangeDay = 0
             cell.dateRangeView.isFuture = true
             cell.dateRangeView.labTitle.text = value0
@@ -741,6 +756,17 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView();
     }
+    //编辑菜单
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        DDLog(action)
+    }
         
 }
 
@@ -757,5 +783,24 @@ extension EntryViewController: IOPFileUploadControllerDelegate{
         DDLog(key, url)
         dataModel.setValue(url, forKeyPath: key)
         tableView.reloadData()
+    }
+}
+
+extension EntryViewController: NNPopoverButtonDelegate {
+    public func popoverButton(_ popoverBtn: NNPopoverButton, tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as UITableViewCell? else { return }
+        popoverBtn.setTitle(cell.textLabel?.text ?? "--", for: .normal)
+        popoverBtn.sizeToFit()
+
+        switch indexPath.row {
+        case 1:
+            let controller = TextFieldStyleController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        default:
+            let controller = CCSCouponRecordController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+
     }
 }

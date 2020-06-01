@@ -35,6 +35,8 @@ class FourthViewController: UIViewController {
         view.block({ (itemsView, sender) in
             guard let btn = sender as? UIButton else { return }
             print(btn.titleLabel?.text as Any)
+            self.showPopoverAction(btn)
+
         })
         return view;
     }()
@@ -88,9 +90,41 @@ class FourthViewController: UIViewController {
         return view;
     }()
     
+    lazy var pickView: NNPopListView = {
+        var view = NNPopListView(frame: .zero)
+        view.title = "请选择"
+//        view.tips = "新年快乐!"
+        view.itemList = [["11111", "123"],
+                        ["22222", "234"],
+                        ["33333", "456"],
+                    ]
+        view.block({ (view, indexP) in
+            DDLog(indexP.string)
+            let cellItem = view.itemList![indexP.row]
+            
+        })
+        return view;
+    }()
+    
+    lazy var label: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.addLongPressMenuItems()
+//        UIMenuController.shared.menuItems = menuItems
+        view.text = "这是一调测试信息"
+        
+        view.backgroundColor = UIColor.background
+        return view
+    }()
+    
+    let menuItems: [UIMenuItem] = [
+        UIMenuItem(title: "One", action: Selector(("oneMethod:"))),
+        UIMenuItem(title: "Two", action: Selector(("twoMethod:"))),
+        UIMenuItem(title: "Three", action: Selector(("threeMethod:")))
+    ]
         
     var progress: CGFloat = 0.0;
 
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -107,8 +141,9 @@ class FourthViewController: UIViewController {
 
         view.addSubview(fliterView)
         
-        processingView.isHidden = true
+        view.addSubview(label)
 
+//        processingView.isHidden = true
 
         let amount = "¥\(227.00)"
         let string = "支付金额: \(amount)"
@@ -140,14 +175,14 @@ class FourthViewController: UIViewController {
             return
         }
         
-        itemView.frame = CGRectMake(10, 10, view.bounds.width - 20, height)
-        processingView.frame = CGRectMake(10, 100, view.bounds.width - 20, 70)
-
-        orderPayView.frame = CGRectMake(0, view.bounds.height - 50, view.bounds.width, 50)
-        goodsToolView.frame = CGRectMake(0, view.bounds.height - 90, view.bounds.width, 40)
-        
-        
-        return;
+//        itemView.frame = CGRectMake(10, 10, view.bounds.width - 20, height)
+//        processingView.frame = CGRectMake(10, 100, view.bounds.width - 20, 70)
+//
+//        orderPayView.frame = CGRectMake(0, view.bounds.height - 50, view.bounds.width, 50)
+//        goodsToolView.frame = CGRectMake(0, view.bounds.height - 90, view.bounds.width, 40)
+//
+//
+//        return;
         itemView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
             make.left.equalToSuperview().offset(10);
@@ -169,7 +204,14 @@ class FourthViewController: UIViewController {
             make.height.equalTo(40);
         }
         
-        DDLog(view.bounds, view.subviews)
+        label.snp.makeConstraints { (make) in
+            make.top.equalTo(itemView.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(40);
+        }
+        
+//        DDLog(view.bounds, view.subviews)
 
     }
     
@@ -187,8 +229,6 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showLoading(kNetWorkRequesting);
 //        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
-        
-
     }
 
     @objc func showPopoverAction(_ sender: UIButton) {
@@ -211,7 +251,8 @@ class FourthViewController: UIViewController {
         view.padding = 10;
         view.numberOfRow = 5;
         view.titles = ["扩容", "减配", "续费"]
-
+        view.delegate = self
+        
         return view;
     }()
     
@@ -269,7 +310,7 @@ class FourthViewController: UIViewController {
         })
         return view;
     }();
-    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -277,13 +318,11 @@ class FourthViewController: UIViewController {
     
     // MARK: - touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
         progress += 0.1
         if progress >= 1.0 {
             progress = 0
         }
         progressView.setProgress(progress: progress, time:0.6, animate: true)
-        
     }
 }
 
@@ -313,3 +352,49 @@ extension FourthViewController: TableViewSelectDelegate {
     
 
 }
+
+extension FourthViewController: IOPGoodsToolViewDelegate{
+    
+    func goodsToolView(_ sender: UIButton) {
+        self.pickView.show()
+    }
+}
+
+///编辑菜单谁响应谁实现响应的方法
+@objc public extension UILabel{
+
+    @objc func oneMethod(_ sender: UIMenuController) {
+        DDLog("Action One")
+    }
+
+    @objc func twoMethod(_ sender: UIMenuController) {
+      DDLog("Action Two")
+    }
+
+    @objc func threeMethod(_ sender: UIMenuController) {
+      DDLog("Action Three")
+    }
+}
+
+
+//@objc extension UIMenuItem {
+//    /// UIControl 添加回调方式
+//    public func create(title: String, action: @escaping ((UIMenuItem) -> Void)) -> UIMenuItem {
+//        let item = UIMenuItem(title: title, action: #selector(p_handleAction(_:)))
+//
+//        objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        return item
+//    }
+//
+//    /// 点击回调
+//    private func p_handleAction(_ sender: UIMenuItem) {
+//        guard let block = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #selector(create(title:action:)))) as? ((UIMenuItem) -> Void) else { return }
+//        block(sender)
+//    }
+//
+//    convenience init(title: String, block: @escaping ((UIMenuItem) -> Void)) {
+//        self.init()
+//        self.title = title
+//        self.action = #selector(p_handleAction(_:))
+//    }
+//}
