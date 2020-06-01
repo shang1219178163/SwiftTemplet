@@ -20,6 +20,16 @@ import SnapKit
     
     weak var delegate: NNDateRangeViewDelegate?
 
+    var isEmptyDate: Bool = false{
+        willSet{
+            labBegin.text = "开始时间"
+            labEnd.text = "结束时间"
+            
+            beginTime = ""
+            endTime = ""
+        }
+    }
+
     var rangeDay: Int = 30
 
     lazy var endDate: Date = Date()
@@ -83,10 +93,6 @@ import SnapKit
         
         labBegin.textColor = UIColor.theme;
         labEnd.textColor = UIColor.theme;
-        labBegin.adjustsFontSizeToFitWidth = true
-        labEnd.adjustsFontSizeToFitWidth = true
-        labBegin.minimumScaleFactor = 0.8
-        labEnd.minimumScaleFactor = 0.8
 
         setupDefault()
     }
@@ -143,6 +149,9 @@ import SnapKit
     }
     
     func setupDefault() {
+        if isEmptyDate == true {
+            return
+        }
         assert(endTime.count == 19 && beginTime.count == 19 , "必须是完整的时间字符串,例'2020-05-15 01:06:29'")
         labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: beginDate)
         labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: endDate)
@@ -159,24 +168,26 @@ import SnapKit
     
     lazy var labBegin: UILabel = {
         var view = UILabel()
-        view.text = "起始日期"
-        view.textColor = UIColor.textColor3
+        view.text = "开始时间"
+        view.textColor = .gray
         view.textAlignment = .center
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 14)
         view.isUserInteractionEnabled = true
         view.adjustsFontSizeToFitWidth = true
+        view.minimumScaleFactor = 0.8
         return view
     }()
     
     
     lazy var labEnd: UILabel = {
         var view = UILabel()
-        view.text = "截止日期"
-        view.textColor = UIColor.textColor6
+        view.text = "结束时间"
+        view.textColor = UIColor.gray
         view.textAlignment = .center
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 14)
         view.isUserInteractionEnabled = true
         view.adjustsFontSizeToFitWidth = true
+        view.minimumScaleFactor = 0.8
         return view
     }()
     
@@ -185,7 +196,7 @@ import SnapKit
         view.textColor = .gray
         view.text = "~"
         view.textAlignment = .center
-        view.font = UIFont.systemFont(ofSize: 16)
+        view.font = UIFont.systemFont(ofSize: 14)
         return view
     }()
     
