@@ -11,6 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
+///升级弹窗
 class NNUpdateVersionView: UIView {
     
     let containX: CGFloat = 40
@@ -210,7 +211,7 @@ class NNUpdateVersionView: UIView {
 //        view.numberOfLines = 0;
 //        view.lineBreakMode = .byCharWrapping;
 //        view.isUserInteractionEnabled = true;
-//        
+//
 //        view.font = UIFont.systemFont(ofSize: 15)
 //        view.textColor = .gray
 //        return view;
@@ -232,7 +233,10 @@ class NNUpdateVersionView: UIView {
             self.viewBlock?(self,  1)
             
             let appStoreUrl = "itms-apps://itunes.apple.com/app/id\(self.appStoreID)?mt=8"
-            guard let url = URL(string: appStoreUrl) else { return }
+            guard let url = URL(string: appStoreUrl) else {
+                print("\(#function):\(appStoreUrl) 出错")
+                return
+            }
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
