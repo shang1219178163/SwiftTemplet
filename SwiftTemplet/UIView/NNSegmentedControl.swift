@@ -11,7 +11,7 @@ import SwiftExpand
 
 /// UISegmentedControl 升级版,支持0: box, 1, topLine, 2,bottomLine 三种样式
 class NNSegmentedControl: UISegmentedControl {
-
+    
     var indicatorHeight: CGFloat = 1.5
     var cornerRadius: CGFloat = 3
 
@@ -83,9 +83,9 @@ class NNSegmentedControl: UISegmentedControl {
             setBackgroundImage(UIImage(color: .white), for: .selected, barMetrics: .default)
             setBackgroundImage(UIImage(color: .white), for: .highlighted, barMetrics: .default)
             
-            setDividerImage(UIImage(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-            setDividerImage(UIImage(color: UIColor.clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-            setDividerImage(UIImage(color: UIColor.clear), forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(UIImage(color: .clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(UIImage(color: .clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(UIImage(color: .clear), forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
             
 //            setTitleTextAttributes([.foregroundColor: normalColor as Any,
 //                                    .font: UIFont.systemFont(ofSize: 15)], for: .normal)
@@ -93,7 +93,7 @@ class NNSegmentedControl: UISegmentedControl {
 //                                    .font: UIFont.systemFont(ofSize: 15)], for: .selected)
             
 //            layer.borderWidth = 1.0;
-//            layer.borderColor = UIColor.clear.cgColor;
+            layer.borderColor = UIColor.clear.cgColor;
 //            layer.masksToBounds = true;
 //            layer.cornerRadius = 1.0;
             
