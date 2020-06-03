@@ -10,6 +10,18 @@ import UIKit
 import SwiftExpand
 
 class NNPictureViewController: UIViewController {
+    
+    lazy var cycleScrollView: NNCycleScrollView = {
+        let view = NNCycleScrollView(frame: .zero)
+        view.direction = .vertical
+        view.delegate = self
+        view.list =  ["我们对权限控制做了升级，现在可以精准控制app端的权限了","由管理员在网页端设置。如果您发现您原来“运营”菜单中有的功能不见了，请联系集团管理员添加，给您带来不便敬请谅解。", "1qqqqqqqqqqqqqqqq"]
+        view.list = ["http://upload-images.jianshu.io/upload_images/1714291-6c664d526b380115.jpg",                        "http://img.parkingwang.com/6100000074/629906_1.jpg",                            "http://upload-images.jianshu.io/upload_images/3580598-482508548410c111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
+
+//        view.pageControl.isHidden = true
+        view.timeInterval = 5
+        return view
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +41,11 @@ class NNPictureViewController: UIViewController {
 
         }
         view.addSubview(photosView)
+        
+        
+        cycleScrollView.frame = CGRect(x: 20, y: 200, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.toCGFloat)
+        view.addSubview(cycleScrollView)
+
         
         view.getViewLayer()
     }
@@ -65,4 +82,12 @@ class NNPictureViewController: UIViewController {
     }
 
 
+}
+
+
+extension NNPictureViewController: NNCycleScrollViewDelegate{
+    func didSelectedIndex(_ index: Int) {
+        DDLog(index)
+    }
+    
 }
