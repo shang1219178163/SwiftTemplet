@@ -41,16 +41,16 @@ import SDWebImage
             if newValue.count == 0 {
                 return
             }
-            pageControl.numberOfPages = newValue.count
+            pageControl.numberOfPages = list.count
             if !pageControl.isHidden {
-                pageControl.isHidden = (newValue.count <= 1)
+                pageControl.isHidden = (list.count <= 1)
             }
             
-            collectionView.isScrollEnabled = (newValue.count > 1)
+            collectionView.isScrollEnabled = (list.count > 1)
             isAutoScroll = collectionView.isScrollEnabled;
             collectionView.reloadData()
 
-            if isinFiniteLoop {
+            if isinFiniteLoop && list.count > 1 {
                 let indexPath = IndexPath(item: 1, section: 0)
                 collectionView.scrollToItem(at: indexPath, at: [], animated: false)
             }
