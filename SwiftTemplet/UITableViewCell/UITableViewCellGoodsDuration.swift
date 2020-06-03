@@ -20,6 +20,7 @@ class UITableViewCellGoodsDuration: UITableViewCell {
         contentView.addSubview(groupView);
         
         labelLeft.text = "购买时长"
+        labelLeft.textColor = .gray
         labelLeft.font = UIFont.systemFont(ofSize: 12)
     }
     
@@ -42,7 +43,7 @@ class UITableViewCellGoodsDuration: UITableViewCell {
         }
         
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(0);
+            make.top.equalToSuperview().offset(5);
             make.left.equalToSuperview().offset(15);
             make.right.equalToSuperview().offset(-10);
             make.height.lessThanOrEqualTo(25);
