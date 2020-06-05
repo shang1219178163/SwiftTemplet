@@ -76,33 +76,19 @@ import UIKit
     
     var showStyle: ShowStyle = .topLeftToRight
 
-    var items: [String]?
-    {
+    var items: [String]?{
         willSet{
-            guard let newValue = newValue else { return }
-            create(newValue, btnType: NNIconButton.self)
-//            itemList.removeAll()
-//            subviews.forEach { (subview) in
-//                subview.removeFromSuperview()
-//            }
-//
-//            for e in newValue!.enumerated() {
-//                let view = NNIconButton.createBtn(rect: .zero, title: e.element, tag: e.offset);
-//                view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
-//                view.setTitleColor(titleColor, for: .normal)
-//                view.setTitleColor(selectedTitleColor, for: .selected)
-//                view.setBackgroundImage(backgroudImage, for: .normal)
-//                view.setBackgroundImage(selectedBackgroudImage, for: .selected)
-//
-//                view.iconSize = iconSize
-//                view.iconLocation = iconLocation
-//                view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
-//                addSubview(view)
-//
-//                itemList.append(view)
-//            }
+            guard let newValue = newValue, items != newValue else { return }
+            createItems(newValue)
         }
     }
+    
+    var itemList: [UIButton] {
+        guard let list = self.subviews.filter({$0.isKind(of: UIButton.self) }) as? [UIButton] else { return []}
+        return list
+    }
+    
+    var viewBlock: ((NNButtonGroupView, UIButton) -> Void)?
     
     @objc func handleAction(_ sender: UIButton) {
 //        print("NNButtonGroupView_\(hasLessOne)_\(selectedList.count)_\(sender.isSelected)")
@@ -138,26 +124,8 @@ import UIKit
         viewBlock?(self, sender)
     }
     
-    var viewBlock: ((NNButtonGroupView, UIButton) -> Void)?
-    var itemList: [UIButton] = []{
-        willSet{
-            if newValue.count <= 0 {
-                return;
-            }
-            subviews.forEach { (subview) in
-                subview.removeFromSuperview()
-            }
-            
-            for e in newValue.enumerated() {
-                addSubview(e.element)
-                if selectedIdxList.contains(e.offset) == true {
-                    selectedList.append(e.element);
-                }
-            }
-            setupConstraint()
-        }
-    }
 
+    // MARK: -lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -232,6 +200,26 @@ import UIKit
     func block(_ action: @escaping ((NNButtonGroupView, UIButton) -> Void)) {
         viewBlock = action;
     }
+    
+    func createItems(_ titles: [String]) {
+        subviews.forEach { (subview) in
+            subview.removeFromSuperview()
+        }
+
+        for e in titles.enumerated() {
+            let view = NNIconButton.createBtn(rect: .zero, title: e.element, tag: e.offset);
+            view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+            view.setTitleColor(titleColor, for: .normal)
+            view.setTitleColor(selectedTitleColor, for: .selected)
+            view.setBackgroundImage(backgroudImage, for: .normal)
+            view.setBackgroundImage(selectedBackgroudImage, for: .selected)
+
+            view.iconSize = iconSize
+            view.iconLocation = iconLocation
+            view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
+            addSubview(view)
+        }
+    }
 
 }
 
@@ -255,8 +243,14 @@ extension UIButton {
 extension NNButtonGroupView{
     
     ///创建各种子类按钮
-    final func create<T: UIButton>(_ titles: [String], btnType: T.Type) {
-        itemList.removeAll()
+    final func create<T: UIButton>(_ titles: [String], type: T.Type) {
+        if let btns: [UIButton] = subviews.filter({ $0.isKind(of: UIButton.self) }) as? [UIButton],
+            let items = btns.map({ $0.currentTitle ?? "" }) as [String]?{
+            if titles == items {
+                return
+            }
+        }
+
         subviews.forEach { (subview) in
             subview.removeFromSuperview()
         }
@@ -271,8 +265,6 @@ extension NNButtonGroupView{
             
             view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
             addSubview(view)
-            
-            itemList.append(view)
         }
     }
 }
