@@ -103,11 +103,8 @@ class UITableViewCellChoice: UITableViewCell {
         view.selectedTitleColor = .systemBlue
         view.selectedBackgroudImage = UIImage(named: "btn_selected_multiple")!
         
-        view.block({ (itemsView, sender) in
-            if let btn = sender as UIButton? {
-                print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
-
-            }
+        view.block({ (groupView, sender) in
+            print(sender.currentTitle ?? "", groupView.selectedIdxList)
         })
         return view;
     }()
