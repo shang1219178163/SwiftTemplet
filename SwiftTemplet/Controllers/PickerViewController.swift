@@ -60,9 +60,9 @@ class PickerViewController: UIViewController {
     // MARK: - lazy
     
     lazy var btn: UIButton = {
-        let view = UIButton(frame: CGRectMake(0,0,100,30))
+        let view = UIButton(frame: CGRectMake(0, 0, 100, 30))
         view.center = self.view.center
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = UIColor.systemBlue
         view.setTitle("获取信息", for: .normal)
         
         view.addActionHandler({ (control) in

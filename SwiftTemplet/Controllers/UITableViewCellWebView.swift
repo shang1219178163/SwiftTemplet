@@ -28,9 +28,9 @@ class UITableViewCellWebView: UITableViewCell {
         }
     }
     
-    var loadingProgressColor: UIColor = UIColor.blue {
-        didSet{
-            progress.progressTintColor = oldValue
+    var loadingProgressColor: UIColor = UIColor.systemBlue {
+        willSet{
+            progress.progressTintColor = newValue
         }
     }
     

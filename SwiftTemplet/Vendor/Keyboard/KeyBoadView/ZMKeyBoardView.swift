@@ -79,8 +79,8 @@ class ZMKeyBoardView: UIView {
         let object = ZMKeyBoardButtonView.init(frame: CGRect.init(x: 3, y: BTN_HEIGHT * 2 + 10 * 3, width: 40, height: BTN_HEIGHT))
         object.setImage(imageNamed: "capitalNormal", state: .normal)
         object.setImage(imageNamed: "capitalSelect", state: .selected)
-        object.setBackgroundImage(image: UIImage(color: UIColor.white)!, state: .selected)
-        object.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor))!, state: .normal)
+        object.setBackgroundImage(image: UIImage(color: UIColor.white), state: .selected)
+        object.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor)), state: .normal)
         object.button.layer.masksToBounds = true
         object.delegate = self
         object.style = KeyBoardButtonStyle.keyBoardCapitalButtonStyle
@@ -91,8 +91,8 @@ class ZMKeyBoardView: UIView {
         let object = ZMKeyBoardButtonView.init(frame: CGRect.init(x: KSCREEN_WIDTH - 3 - 40, y: BTN_HEIGHT * 2 + 10 * 3, width: 40, height: BTN_HEIGHT))
         object.setImage(imageNamed: "keyNewDelete", state: .normal)
         object.setImage(imageNamed: "keyNewDelete", state: .highlighted)
-        object.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor))!, state: .normal)
-        object.setBackgroundImage(image: UIImage(color: UIColor.white)!, state: .highlighted)
+        object.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor)), state: .normal)
+        object.setBackgroundImage(image: UIImage(color: UIColor.white), state: .highlighted)
         object.button.layer.masksToBounds = true
         object.delegate = self
         object.style = KeyBoardButtonStyle.keyBoardDeleteButtonStyle
@@ -111,8 +111,8 @@ class ZMKeyBoardView: UIView {
 
     lazy var kongButton : ZMKeyBoardButtonView = {
         let object = ZMKeyBoardButtonView.init(frame: CGRect.init(x: itemWidth + 9, y: changedButton.frame.origin.y, width: KSCREEN_WIDTH - itemWidth * 2 - 18, height: BTN_HEIGHT))
-        object.setBackgroundImage(image: UIImage(color: UIColor.white)!, state: .normal)
-        object.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor))!, state: .highlighted)
+        object.setBackgroundImage(image: UIImage(color: UIColor.white), state: .normal)
+        object.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor)), state: .highlighted)
         object.setTitle("知米中学英语", state: .normal)
         object.button.layer.masksToBounds = true
         object.setTitleColor(colorName: "#000107", state: .normal)
@@ -126,8 +126,8 @@ class ZMKeyBoardView: UIView {
         object.setTitle("完成", state: .normal)
         object.setTitleColor(colorName: "#ffffff", state: .normal)
         object.setTitleColor(colorName: "#000000", state: .highlighted)
-        object.setBackgroundImage(image: UIImage(color: UIColor.hex( "#0960fe"))!, state: .normal)
-        object.setBackgroundImage(image: UIImage(color: UIColor.white)!, state: .highlighted)
+        object.setBackgroundImage(image: UIImage(color: UIColor.hex( "#0960fe")), state: .normal)
+        object.setBackgroundImage(image: UIImage(color: UIColor.white), state: .highlighted)
         object.button.layer.masksToBounds = true
         object.delegate = self
         object.style = KeyBoardButtonStyle.keyBoardConfirmButtonStyle
@@ -242,8 +242,8 @@ extension ZMKeyBoardView: ZMKeyBoardButtonViewDelegate {
             capitalButton.setImage(imageNamed: "", state: .normal)
             capitalButton.setImage(imageNamed: "", state: .selected)
             capitalButton.setBackgroundColor(color: UIColor.hex( highlightColor))
-            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.clear)!, state: .normal)
-            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.clear)!, state: .selected)
+            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.clear), state: .normal)
+            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.clear), state: .selected)
             capitalButton.setTitle("#+=", state: .normal)
             capitalButton.setTitle("123", state: .selected)
             capitalButton.setTitleColor(colorName: titleSelectColor, state: .normal)
@@ -252,8 +252,8 @@ extension ZMKeyBoardView: ZMKeyBoardButtonViewDelegate {
             capitalButton.setTitle("", state: .selected)
             capitalButton.setImage(imageNamed: "capitalNormal", state: .normal)
             capitalButton.setImage(imageNamed: "capitalSelect", state: .selected)
-            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.white)!, state: .normal)
-            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor))!, state: .selected)
+            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.white), state: .normal)
+            capitalButton.setBackgroundImage(image: UIImage(color: UIColor.hex( highlightColor)), state: .selected)
             
         }
     }
