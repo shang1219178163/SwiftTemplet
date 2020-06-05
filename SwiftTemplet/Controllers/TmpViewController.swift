@@ -31,7 +31,7 @@ class TmpViewController: UIViewController {
             "\(index)"
         })
 
-        view.addSubview(containView)
+        view.addSubview(contentView)
         createBtnBarItem("Next") { (reco, view, idx) in
             self.emergencyOpenView.show();
         }
@@ -108,7 +108,7 @@ class TmpViewController: UIViewController {
 //            make.height.equalTo(45);
 //        }
         
-        containView.snp.makeConstraints { (make) in
+        contentView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(144);
             make.left.equalToSuperview().offset(36);
             make.right.equalToSuperview().offset(-36);
@@ -182,7 +182,7 @@ class TmpViewController: UIViewController {
     }
     
     //MARK: - layz
-    lazy var containView: UIView = {
+    lazy var contentView: UIView = {
         let view = UIView(frame: .zero);
 //        let view = UIView(frame: CGRect(x: 36, y: 144, width: UIScreen.sizeWidth - 36*2, height: UIScreen.sizeHeight - 144*2));
 //        view.backgroundColor = UIColorRGBA(230, 230, 230, 1);

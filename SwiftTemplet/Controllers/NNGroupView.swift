@@ -14,7 +14,7 @@ enum NNGroupViewShowType : Int {
     case backgroud
     case line
 }
-
+///弃用
 class NNGroupView: UIView {
 
     var showType: NNGroupViewShowType = .line

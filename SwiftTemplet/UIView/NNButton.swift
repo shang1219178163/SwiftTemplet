@@ -26,6 +26,8 @@ import SwiftExpand
 //        view.image = UIImage(named: "icon_discount_orange");
         return view
     }()
+        
+    // MARK: -lifecycle
             
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,6 +84,7 @@ import SwiftExpand
             break
         }
         
+        iconImageView.isHidden = (iconLocation == .none)
         switch iconLocation {
         case .leftTop:
             iconImageView.frame = CGRect(x: 0, y: 0, width: iconSize.width, height: iconSize.height)
@@ -89,13 +92,12 @@ import SwiftExpand
         case .leftBottom:
             iconImageView.frame = CGRect(x: 0, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
 
-//        case .rightTop:
-//            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
+        case .rightTop:
+            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
 
         case .rightBottom:
             iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
         default:
-            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
             break
         }
         
@@ -111,3 +113,25 @@ import SwiftExpand
         }
     }
 }
+
+
+
+//extension NNButton{
+//        
+//    func setBorderColor(_ color: UIColor?, for state: UIControl.State){
+//        guard let color = color else { return }
+//    }
+//    
+//    func setBorderLineColor(_ color: UIColor?, for state: UIControl.State){
+//        guard let color = color else { return }
+//
+//    }
+//    
+//    func setBorderWidth(_ width: CGFloat, for state: UIControl.State){
+//        if width <= 0.0 {
+//            return
+//        }
+//
+//        
+//    }
+//}

@@ -9,7 +9,14 @@
 import UIKit
 import WebKit
 
-class NNWebView: UIView {
+@objc protocol NNWebViewDelegate: NSObjectProtocol {
+    @objc optional func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void);
+
+}
+
+@objc class NNWebView: UIView {
+    
+    weak var delegate: NNWebViewDelegate?
    
     var urlString: String = ""{
         willSet{
@@ -19,10 +26,9 @@ class NNWebView: UIView {
         }
     }
     var jsString: String = ""
-    var loadingProgressColor: UIColor = UIColor.blue {
-        didSet{
-            progress.progressTintColor = oldValue
-            
+    var loadingProgressColor: UIColor = UIColor.systemBlue {
+        willSet{
+            progress.progressTintColor = newValue
         }
     }
     
@@ -32,6 +38,8 @@ class NNWebView: UIView {
         }
     }
 
+    ///展示重载按钮
+    var showReloadBtn: Bool = false
     
     deinit {
         reloadBtn.removeObserver(webView, forKeyPath: "hidden")
@@ -88,7 +96,8 @@ class NNWebView: UIView {
             urlString = "http://" + urlString;
         }
         if urlString != "", let url = NSURL(string: urlString) as NSURL? {
-            webView.load(URLRequest(url: url as URL))
+            let request = URLRequest(url: url as URL)
+            webView.load(request)
         } else {
             print("\(#function) 链接无效:\(urlString)")
         }
@@ -148,7 +157,9 @@ class NNWebView: UIView {
 extension NNWebView: WKUIDelegate{
     //MARK: -webView
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        webView.isHidden = false
+        if showReloadBtn {
+            webView.isHidden = false
+        }
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
@@ -164,19 +175,23 @@ extension NNWebView: WKUIDelegate{
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        decisionHandler(.allow)
+        delegate?.webView?(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
     }
 }
 
 extension NNWebView: WKNavigationDelegate{
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        webView.isHidden = true
+        if showReloadBtn {
+            webView.isHidden = true
+        }
 //        UIAlertController.showAlert("提示", msg: error.localizedDescription, actionTitles: nil, handler: nil);
 //        IOPProgressHUD.showError(withStatus: error.localizedDescription)
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        webView.isHidden = true
+        if showReloadBtn {
+            webView.isHidden = true
+        }
 //        UIAlertController.showAlert("提示", msg: error.localizedDescription, actionTitles: nil, handler: nil);
 //        IOPProgressHUD.showError(withStatus: error.localizedDescription)
     }

@@ -43,7 +43,6 @@ class UITableViewCellDateRange: UITableViewCell {
 //            return
 //        }
 //        dateRangeView.frame = contentView.bounds
-
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -56,7 +55,7 @@ class UITableViewCellDateRange: UITableViewCell {
         if keyPath == "text" {
             //标题星号处理
             if hasAsterisk == true {
-                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+                dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
             }
         }
     }
