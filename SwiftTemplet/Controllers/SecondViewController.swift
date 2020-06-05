@@ -173,25 +173,25 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate{
 //        view.getViewLayer()
         return view
         
-//        let containView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
-//        containView.backgroundColor = UIColor.background
-//        containView.backgroundColor = foldModel.headerColor
+//        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
+//        contentView.backgroundColor = UIColor.background
+//        contentView.backgroundColor = foldModel.headerColor
 //
 //        let label = UILabel(frame: .zero);
-//        label.frame = CGRect(x: 10, y: containView.frame.midY - 25/2.0, width: containView.frame.maxX - 20, height: 25)
+//        label.frame = CGRect(x: 10, y: contentView.frame.midY - 25/2.0, width: contentView.frame.maxX - 20, height: 25)
 //        label.backgroundColor = foldModel.headerColor;
 //        label.text = foldModel.title;
 //
-//        containView.addSubview(label)
+//        contentView.addSubview(label)
 
 //        if [1,2].contains(section) {
-//            containView.addActionHandler { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
+//            contentView.addActionHandler { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
 //                if foldModel.isCanOpen == true {
 //                    foldModel.isOpen = !foldModel.isOpen
 //                    tableView.reloadSections([section], with: .fade)
 //                }
 //            }
-//            return containView;
+//            return contentView;
 //        }
 //        return UIView();
     }

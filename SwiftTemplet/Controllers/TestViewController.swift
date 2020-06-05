@@ -32,7 +32,10 @@ class TestViewController: UIViewController{
         view.addSubview(itemView)
         
         parkGroupView.frame = CGRect(x: 20, y: itemView.maxY + 20, width: kScreenWidth - 40.0, height: 35)
-        parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
+//        parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
+        let items = ["异常出车", "无入场记录", "长时为出"]
+        parkGroupView.createItems(items)
+        
         parkGroupView.selectedIdxList = [0]
         view.addSubview(parkGroupView)
         
@@ -189,16 +192,13 @@ class TestViewController: UIViewController{
         return view;
     }()
     
-    lazy var parkGroupView: IOPParkGroupView = {
-        var view = IOPParkGroupView(frame: .zero)
+    lazy var parkGroupView: NNButtonGroupView = {
+        var view = NNButtonGroupView(frame: .zero)
         view.padding = 15;
         view.numberOfRow = 3;
         view.isMutiChoose = false;
-        view.block({ (itemsView, sender) in
-            if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
-
-            }
+        view.block({ (groupView, sender) in
+            print(sender.currentTitle ?? "", groupView.selectedIdxList)
         })
         return view;
     }()

@@ -62,7 +62,7 @@ class EntryViewController: UIViewController {
 
         view.addSubview(suspendBtn)
         
-        DDLog(view.responderChain())
+//        DDLog(view.responderChain())
         IQKeyboardManager.shared.enable = true;
     }
     
@@ -144,13 +144,15 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
+            ["标签", "UITableViewCellTags", "70.0", "", "recharge", ],
             ["优惠券充值", "UITableViewCellCouponRecharge", "100.0", "", "recharge", ],
-            ["订单选择", "UITableViewCellChoose", "70.0", "", "recharge", ],
             ["停车统计", "UITableViewCellStatistics", "110.0", "", "recharge", ],
             ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
             ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
+            ["订单选择", "UITableViewCellChoose", "70.0", "", "recharge", ],
+            ["星期选择", "UITableViewCellChoice", "110.0", "", "recharge", ],
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
             ["停车费用", "UITableViewCellFee", "90.0", "", "recharge", ],
             ["停车记录", "UITableViewCellPark", "90.0", "", "recharge", ],
@@ -158,7 +160,7 @@ class EntryViewController: UIViewController {
             ],
             [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
-            ["有效时间0:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
+            ["*有效时间0:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
             ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
             ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
             ["有效时段3:", "UITableViewCellDateRange", "60.0", "3", "btime,etime", ],
@@ -177,7 +179,6 @@ class EntryViewController: UIViewController {
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
             ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
-            
 //            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
 
              ],
@@ -185,7 +186,6 @@ class EntryViewController: UIViewController {
         ]
         return array
     }()
-    
  
     lazy var footerView: NNTableFooterView = {
         var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
@@ -560,6 +560,13 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
              cell.getViewLayer();
              return cell;
             
+        case "UITableViewCellTags":
+            let cell = UITableViewCellTags.dequeueReusableCell(tableView);
+            cell.tagView.tags = ["默认标签", "默认标签1", "默认标签2", "默认标签3", "默认标签4", "默认标签5", ]
+
+             cell.getViewLayer();
+             return cell;
+            
         case "UITableViewCellAfford":
             let cell = UITableViewCellAfford.dequeueReusableCell(tableView);
             cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
@@ -573,6 +580,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //            cell.parkGroupView.items = ["异常出车", "无入场记录", "长时为出", "全部", "自定义", "预定义"]
             cell.parkGroupView.selectedIdxList = [0]
 //            cell.parkGroupView.hideImage = true
+            
+            cell.parkGroupView.block { (groupView, sender) in
+                DDLog(groupView.selectedIdxList)
+            }
             
             return cell;
                         
@@ -605,13 +616,40 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //            }
             cell.getViewLayer();
             return cell;
+                        
+        case "UITableViewCellChoice":
+            let cell = UITableViewCellChoice.dequeueReusableCell(tableView);
+            cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+
+//            let items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+//            cell.groupView.createItems(items)
+            cell.groupView.selectedIdxList = [0]
+            
+            if let btn = cell.groupView.itemList.last as? NNIconButton {
+                btn.iconImageView.image = UIImage(named: "icon_discout_orange")
+            }
+            
+            cell.groupView.block { (groupView, btn) in
+                DDLog(groupView.selectedIdxList)
+            }
+            
+//            cell.getViewLayer();
+            return cell;
             
         case "UITableViewCellGoodsDuration":
             let cell = UITableViewCellGoodsDuration.dequeueReusableCell(tableView);
             cell.groupView.items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
-            cell.groupView.itemList.last?.iconImageView.image = UIImage(named: "icon_discout_orange")
+
+//            let items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
+//            cell.groupView.createItems(items)
             cell.groupView.selectedIdxList = [0]
             
+            if let btn = cell.groupView.itemList.last as? NNIconButton {
+                btn.iconImageView.image = UIImage(named: "icon_discout_orange")
+            }
+            cell.groupView.block { (groupView, btn) in
+                DDLog(groupView.selectedIdxList)
+            }
 //            cell.getViewLayer();
             return cell;
             
@@ -669,13 +707,13 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.labelRightSub.text = "日期时间"
             cell.labelRightSub.textColor = UIColor.theme
-//              cell.btn.isSelected = chooseList.contains(model)
-              cell.btn.addActionHandler({ (control) in
-                  guard let sender = control as? UIButton else { return }
-                  sender.isSelected = !sender.isSelected
+//            cell.btn.isSelected = chooseList.contains(model)
+            cell.btn.addActionHandler({ (control) in
+              guard let sender = control as? UIButton else { return }
+              sender.isSelected = !sender.isSelected
 //                  self.handleChooseAction(sender, model: model)
-                  
-              }, for: .touchUpInside)
+              
+            }, for: .touchUpInside)
             return cell;
 
         case "UITableViewCellCouponRecharge":

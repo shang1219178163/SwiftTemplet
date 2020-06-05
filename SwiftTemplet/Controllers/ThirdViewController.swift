@@ -28,6 +28,8 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["CalendarViewController", "CalenderView", ],
+             ["NNTitleViewSelectController", "NNTitleViewSelect", ],             
              ["UICollectionMultipleSectionController", "多布局展示", ],
              ["UICollectionExcelController", "Excel", ],
              ["PlateKeybordController", "自定义车牌键盘", ],
@@ -128,7 +130,8 @@ class ThirdViewController: UIViewController{
         super.viewDidLoad()
         
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-            self.goController("FleetDetailNewController", obj: nil, objOne: nil)
+//            self.goController("FleetDetailNewController", obj: nil, objOne: nil)
+            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
         }
         
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in
@@ -164,6 +167,7 @@ class ThirdViewController: UIViewController{
                 
 //        let controller = CellListController()
 //        navigationController?.pushViewController(controller, animated: true);
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -241,13 +245,13 @@ class ThirdViewController: UIViewController{
     ///显示新版本信息弹窗
     func showUpdateInfo(_ model: ESCheckVersResult) {
         updateView.appStoreID = "\(model.trackId)"
-//        updateView.label.text = "发现新版本"
-//        updateView.labelOne.text = "v\(model.version ?? "--")"
-//        updateView.labelTwo.text = "更新内容:"
-//        updateView.labelThree.text = "\(model.releaseNotes ?? "--")"
-//        if let releaseDate = model.currentVersionReleaseDate, releaseDate.count >= 10 {
-//            updateView.labelOne.text = "v\(model.version ?? "--") (\(releaseDate.substringTo(9)))"
-//        }
+        updateView.label.text = "发现新版本"
+        updateView.labelOne.text = "v\(model.version ?? "--")"
+        updateView.labelTwo.text = "更新内容:"
+        updateView.labelThree.text = "\(model.releaseNotes ?? "--")"
+        if let releaseDate = model.currentVersionReleaseDate, releaseDate.count >= 10 {
+            updateView.labelOne.text = "v\(model.version ?? "--") (\(releaseDate.substringTo(9)))"
+        }
         let isUpdate: Bool = model.version?.compare(UIApplication.appVer, options: .numeric, range: nil, locale: nil) == .orderedDescending
         if isUpdate {
             updateView.show()
@@ -379,7 +383,7 @@ extension ThirdViewController: NNAgreementAlertControllerDelegate{
         DDLog(URL.absoluteString)
         if URL.scheme?.contains("_") == true {
             guard let urlString = URL.absoluteString.components(separatedBy: "_").last else { return false}
-            UIApplication.openURLStr(urlString, prefix: "http://")
+            UIApplication.openURLString(urlString)
         }
 
 //        if URL.scheme == "" {
@@ -389,5 +393,10 @@ extension ThirdViewController: NNAgreementAlertControllerDelegate{
         return true
     }
     
+
+}
+
+extension ThirdViewController{
+
 
 }
