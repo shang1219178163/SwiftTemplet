@@ -83,33 +83,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let e = NSNumber(1.4988).to_string();
         let f = NSNumber(1.4988).to_string(3);
-        DDLog(a, b, c, d, e, f)
+        
+        let num: CGFloat = 3.7999
+        let fmt = NumberFormatter()
+        fmt.numberStyle = .spellOut
+//        fmt.locale = NSLocale(localeIdentifier: "zh_Hans") as Locale
+        let g = fmt.string(from: NSNumber(floatLiteral: Double(num)))
+        let h = NumberFormatter.fractionDigits(obj: num, min: 1, max: 4, identify: kNumIdentify_spellOut)
+
+        DDLog(g)
+
+        
+//        DDLog(a, b, c, d, e, f)
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);
 //        DDLog(self.window);
         
-        let dateStr = "2019-08-27 23:55:34";
-        let end = NSString.dateTime(dateStr as NSString, isEnd: true)
-        let start = NSString.dateTime(dateStr as NSString, isEnd: false)
-        DDLog(end)
-        DDLog(start)
-        
-        let obj1 = NNStringFromClass(UITableViewCellOne.classForCoder());
-        let obj2 = String(describing: UITableViewCellOne.self);
-        let obj3 = String(describing: NNCheckVersApi.self);
-        let obj4 = String(describing: NSObject.self);
-        DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
+//        let dateStr = "2019-08-27 23:55:34";
+//        let end = NSString.dateTime(dateStr as NSString, isEnd: true)
+//        let start = NSString.dateTime(dateStr as NSString, isEnd: false)
+//        DDLog(end)
+//        DDLog(start)
+//
+//        let obj1 = NNStringFromClass(UITableViewCellOne.self);
+//        let obj2 = String(describing: UITableViewCellOne.self);
+//        let obj3 = String(describing: NNCheckVersApi.self);
+//        let obj4 = String(describing: NSObject.self);
+//        DDLog(obj1, obj2, obj3, obj4, UIApplication.identifier, NSObject.identifier, UIApplication.appName)
 //        DDLog(Bundle.main.infoDictionary)
-        
-        let now = NSDate()
-        let isValid = NSDate().hour > 7 || NSDate().hour > 23
-        DDLog(now.year, now.month, now.day, now.hour, now.minute, now.second, isValid)
-        
-        UIApplication.token = "123456789";
-        DDLog( UIApplication.token)
-        
-        DDLog("".count)
+//
+//        let now = NSDate()
+//        let isValid = NSDate().hour > 7 || NSDate().hour > 23
+//        DDLog(now.year, now.month, now.day, now.hour, now.minute, now.second, isValid)
+//
+//        UIApplication.token = "123456789";
+//        DDLog( UIApplication.token)
+//
+//        DDLog("".count)
         
         return true
     }

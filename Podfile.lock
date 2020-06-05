@@ -17,9 +17,6 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
-  - AlamofireObjectMapper (5.2.1):
-    - Alamofire (~> 4.7)
-    - ObjectMapper (~> 3.4)
   - BSGridCollectionViewLayout (1.2.5)
   - BSImagePicker (2.10.3):
     - BSGridCollectionViewLayout (= 1.2.5)
@@ -34,17 +31,13 @@ PODS:
   - MJRefresh (3.4.1)
   - MMPopupView (1.7.2):
     - Masonry
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
+  - NNExcelView (1.0.1):
+    - SnapKit
   - NNPlateKeyboard (1.0.7):
     - SnapKit
     - SnapKitExtend
     - SwiftExpand
   - NNPopoverButton (1.3.0)
-  - ObjectMapper (3.5.2)
   - OHHTTPStubs (9.0.0):
     - OHHTTPStubs/Default (= 9.0.0)
   - OHHTTPStubs/Core (9.0.0)
@@ -58,8 +51,6 @@ PODS:
   - OHHTTPStubs/NSURLSession (9.0.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (9.0.0)
-  - PlateKeyboard_iOS (0.9.35)
-  - Result (4.1.0)
   - RxAlamofire (5.1.0):
     - RxAlamofire/Core (= 5.1.0)
   - RxAlamofire/Core (5.1.0):
@@ -77,7 +68,6 @@ PODS:
   - SnapKit (4.2.0)
   - SnapKitExtend (1.0.7):
     - SnapKit
-  - Surge (2.3.0)
   - SwiftExpand (2.5.0)
   - SwiftyJSON (5.0.0)
   - YYCache (1.0.4)
@@ -90,7 +80,6 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - AlamofireImage
-  - AlamofireObjectMapper
   - BSImagePicker
   - HandyJSON
   - HFNavigationController
@@ -99,18 +88,16 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - MMPopupView
-  - Moya
+  - NNExcelView
   - NNPlateKeyboard
   - NNPopoverButton
   - OHHTTPStubs
-  - PlateKeyboard_iOS
   - RxAlamofire
   - RxCocoa
   - RxSwift
   - SDWebImage
   - SnapKit
   - SnapKitExtend
-  - Surge
   - SwiftExpand
   - SwiftyJSON
   - YYCache
@@ -122,7 +109,6 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - AlamofireImage
-    - AlamofireObjectMapper
     - BSGridCollectionViewLayout
     - BSImagePicker
     - BSImageView
@@ -134,13 +120,10 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - MMPopupView
-    - Moya
+    - NNExcelView
     - NNPlateKeyboard
     - NNPopoverButton
-    - ObjectMapper
     - OHHTTPStubs
-    - PlateKeyboard_iOS
-    - Result
     - RxAlamofire
     - RxCocoa
     - RxRelay
@@ -148,7 +131,6 @@ SPEC REPOS:
     - SDWebImage
     - SnapKit
     - SnapKitExtend
-    - Surge
     - SwiftExpand
     - SwiftyJSON
     - YYCache
@@ -159,7 +141,6 @@ SPEC CHECKSUMS:
   AFNetworking: d9fdf484a3c723ec3c558a41cc5754c7e845ee77
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
-  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
   BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
   BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
   BSImageView: a149459433a2687157d034c78e059d30ac7f2544
@@ -171,13 +152,10 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  NNExcelView: 1b6305b136bdda5ed1d06c4c2e6891e6f0cc57de
   NNPlateKeyboard: 9673f0db1a7f50077731dd73ec559f5be72ea49f
   NNPopoverButton: f757b54db80b82909e54c8943e97524f0952a7a0
-  ObjectMapper: b53ae947d370bf89423e86be7d4e2d2b2a8d3f40
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
-  PlateKeyboard_iOS: ee3b6e46034dd82e36e7b1e3520d1fed585000aa
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -185,13 +163,12 @@ SPEC CHECKSUMS:
   SDWebImage: d9ea4959d99c52276dfada481987018fcaea3d58
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
-  Surge: 13979cd9593e943f9ce1202439da2999ea57e46d
   SwiftExpand: 7d2fc479b616b444bb9df3b419fce284fef2965c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ba96d15ca1ae4e628c3bbab1f860e4d014b96af4
+PODFILE CHECKSUM: 2269efc3528eeb849bfae4b3d06d05cde4d1bf93
 
 COCOAPODS: 1.9.1
