@@ -13,7 +13,7 @@ import UIKit
 }
 
 /// UIButton集合视图
-class NNButtonGroupView: UIView {
+@objcMembers class NNButtonGroupView: UIView {
 
     weak var delegate: NNButtonGroupViewDelegate?
 
@@ -23,12 +23,37 @@ class NNButtonGroupView: UIView {
 
     var numberOfRow: Int = 4
     var padding: CGFloat = 5.0
-    var lineColor: UIColor = UIColor.line
-    var titleColor: UIColor = UIColor.gray
+    var lineColor: UIColor = .line
+    var titleColor: UIColor = .gray
+    var backgroudImage: UIImage = UIImage(color: .white)
+    var backgroudColor: UIColor = .white{
+        willSet{
+            backgroudImage = UIImage(color: newValue)
+        }
+    }
+    
+    var selectedLineColor: UIColor = .theme
+    var selectedTitleColor: UIColor = .theme
+    var selectedBackgroudImage: UIImage = UIImage(color: .white)
+    var selectedBackgroudColor: UIColor = .white{
+        willSet{
+            selectedBackgroudImage = UIImage(color: newValue)
+        }
+    }
+
+//    var selectedLineColor: UIColor = .theme
+//    var selectedTitleColor: UIColor = .white
+//    var selectedBackgroudColor: UIColor = .theme
+    
+    var iconSize: CGSize = CGSize(width: 35, height: 14)
+    
+    var iconLocation: UIView.Location = .rightTop
 
     var hasLessOne: Bool = false
     var isMutiChoose: Bool = false
-    var selectedList: [NNIconButton] = []
+    var hideImage: Bool = false;
+
+    var selectedList: [UIButton] = []
     var selectedIdxList: [Int] = []{
         willSet{
             if newValue.count <= 0 {
@@ -43,8 +68,7 @@ class NNButtonGroupView: UIView {
                     selectedList.append(e.element)
                     
                     e.element.isSelected = true;
-                    e.element.setTitleColor(UIColor.theme, for: .normal)
-                    e.element.layer.borderColor = UIColor.theme.cgColor;
+                    e.element.layer.borderColor = e.element.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
                 }
             }
         }
@@ -52,26 +76,35 @@ class NNButtonGroupView: UIView {
     
     var showStyle: ShowStyle = .topLeftToRight
 
-    var items:[String]?
+    var items: [String]?
     {
         willSet{
-            itemList.removeAll()
-            subviews.forEach { (subview) in
-                subview.removeFromSuperview()
-            }
-            
-            for e in newValue!.enumerated() {
-                let view: NNIconButton = NNIconButton.createBtn(rect: .zero, title: e.element, tag: e.offset);
-                view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
-                view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
-                addSubview(view)
-                
-                itemList.append(view)
-            }
+            guard let newValue = newValue else { return }
+            create(newValue, btnType: NNIconButton.self)
+//            itemList.removeAll()
+//            subviews.forEach { (subview) in
+//                subview.removeFromSuperview()
+//            }
+//
+//            for e in newValue!.enumerated() {
+//                let view = NNIconButton.createBtn(rect: .zero, title: e.element, tag: e.offset);
+//                view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+//                view.setTitleColor(titleColor, for: .normal)
+//                view.setTitleColor(selectedTitleColor, for: .selected)
+//                view.setBackgroundImage(backgroudImage, for: .normal)
+//                view.setBackgroundImage(selectedBackgroudImage, for: .selected)
+//
+//                view.iconSize = iconSize
+//                view.iconLocation = iconLocation
+//                view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
+//                addSubview(view)
+//
+//                itemList.append(view)
+//            }
         }
     }
     
-    @objc func handleAction(_ sender: NNIconButton) {
+    @objc func handleAction(_ sender: UIButton) {
 //        print("NNButtonGroupView_\(hasLessOne)_\(selectedList.count)_\(sender.isSelected)")
         if hasLessOne == true && selectedList.count == 1 && sender.isSelected == true {
             print("最少选择一个")
@@ -80,24 +113,24 @@ class NNButtonGroupView: UIView {
         sender.isSelected = !sender.isSelected;
         
         if sender.isSelected == true {
-            sender.setTitleColor(UIColor.theme, for: .normal)
-            sender.layer.borderColor = UIColor.theme.cgColor;
+            sender.layer.borderColor = sender.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
             if isMutiChoose == false {
                 for e in selectedList.enumerated() {
                     e.element.isSelected = false;
-                    e.element.setTitleColor(titleColor, for: .normal)
-                    e.element.layer.borderColor = lineColor.cgColor;
+                    e.element.layer.borderColor = e.element.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
                 }
                 selectedList.removeAll()
-                selectedList.append(sender)
-            } else {
-                selectedList.append(sender)
+                selectedIdxList.removeAll()
             }
+            selectedList.append(sender)
+            selectedIdxList.append(sender.tag)
         } else {
-            sender.setTitleColor(titleColor, for: .normal)
-            sender.layer.borderColor = lineColor.cgColor;
+            sender.layer.borderColor = sender.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
             if selectedList.contains(sender) == true {
                 selectedList.remove(at: selectedList.firstIndex(of: sender)!)
+            }
+            if selectedIdxList.contains(sender.tag) == true {
+                selectedIdxList.remove(at: selectedIdxList.firstIndex(of: sender.tag)!)
             }
         }
 //        print(sender.isSelected, selectedList)
@@ -105,8 +138,8 @@ class NNButtonGroupView: UIView {
         viewBlock?(self, sender)
     }
     
-    var viewBlock: ((NNButtonGroupView, NNIconButton) -> Void)?
-    var itemList: [NNIconButton] = []{
+    var viewBlock: ((NNButtonGroupView, UIButton) -> Void)?
+    var itemList: [UIButton] = []{
         willSet{
             if newValue.count <= 0 {
                 return;
@@ -184,15 +217,9 @@ class NNButtonGroupView: UIView {
                 view.layer.masksToBounds = true;
             }
             
+            view.isSelected = (selectedList.contains(view))
             view.layer.borderWidth = borderWidth;
-            if selectedList.contains(view) == true {
-                view.setTitleColor(UIColor.theme, for: .normal)
-                view.layer.borderColor = UIColor.theme.cgColor;
-            } else {
-                view.setTitleColor(titleColor, for: .normal)
-                view.layer.borderColor = lineColor.cgColor;
-            }
-         
+            view.layer.borderColor = view.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
         }
     }
     
@@ -202,7 +229,7 @@ class NNButtonGroupView: UIView {
         return rowCount.toCGFloat * itemHeight + (rowCount - 1).toCGFloat * padding;
     }
     
-    func block(_ action: @escaping ((NNButtonGroupView, NNIconButton) -> Void)) {
+    func block(_ action: @escaping ((NNButtonGroupView, UIButton) -> Void)) {
         viewBlock = action;
     }
 
@@ -225,79 +252,27 @@ extension UIButton {
     }
 }
 
-class NNIconButton: UIButton {
-        
-    lazy var iconImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect.zero);
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.isUserInteractionEnabled = true;
-        view.contentMode = .scaleAspectFit;
-//        view.image = UIImage(named: "icon_discount_orange");
-        return view
-    }()
+extension NNButtonGroupView{
     
-    var iconSize: CGSize = CGSize(width: 35, height: 14)
-    
-    var locationXY: String = "0,1"
-    
-    // MARK: -life cycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        addSubview(iconImageView)
-        
-        clipsToBounds = false
-        titleLabel!.textAlignment = .center
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-//    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
-//        return
-//    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-                
-        if bounds.height <= 0.0 {
-            return
+    ///创建各种子类按钮
+    final func create<T: UIButton>(_ titles: [String], btnType: T.Type) {
+        itemList.removeAll()
+        subviews.forEach { (subview) in
+            subview.removeFromSuperview()
         }
         
-        switch locationXY {
-        case "0,0"://左上
-            iconImageView.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(-2.0)
-                make.left.equalToSuperview().offset(-2.0)
-                make.size.equalTo(iconSize)
-            }
+        for e in titles.enumerated() {
+            let view: T = T.createBtn(rect: .zero, title: e.element, tag: e.offset);
+            view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+            view.setTitleColor(titleColor, for: .normal)
+            view.setTitleColor(selectedTitleColor, for: .selected)
+            view.setBackgroundImage(backgroudImage, for: .normal)
+            view.setBackgroundImage(selectedBackgroudImage, for: .selected)
             
-        case "0,1"://右上
-            iconImageView.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(-2.0)
-                make.right.equalToSuperview().offset(2.0)
-                make.size.equalTo(iconSize)
-            }
+            view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
+            addSubview(view)
             
-        case "1,0"://左下
-            iconImageView.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview().offset(2.0)
-                make.left.equalToSuperview().offset(-2.0)
-                make.size.equalTo(iconSize)
-            }
-            
-        case "1,1"://右下
-            iconImageView.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview().offset(2.0)
-                make.right.equalToSuperview().offset(2.0)
-                make.size.equalTo(iconSize)
-            }
-            
-        default:
-            break;
+            itemList.append(view)
         }
     }
-    
-
 }

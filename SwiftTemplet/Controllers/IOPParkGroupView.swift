@@ -169,8 +169,8 @@ class IOPParkGroupView: UIView {
         viewBlock = action;
     }
     
-    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> IOPParkGroupButton {
-        let view = IOPParkGroupButton(type:.custom);
+    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> IOPParkButton {
+        let view = IOPParkButton(type:.custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.imageView?.contentMode = .scaleAspectFit
         view.frame = rect;
