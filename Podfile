@@ -10,7 +10,6 @@ def common_pods
 #  pod 'AImage'
     pod 'Alamofire'
     pod 'AlamofireImage'
-    pod 'AlamofireObjectMapper'
 
 #    pod 'Aspects'
 #   pod 'Argo'
@@ -33,7 +32,7 @@ def common_pods
     pod 'MJRefresh'
 
 #   pod 'MonkeyKing'
-    pod 'Moya'
+#   pod 'Moya'
 #   pod 'Nimble'
 #   pod 'NumberMorphView'
 #   pod 'ObjectMapper'
@@ -47,7 +46,7 @@ def common_pods
 
 #   pod 'Spring'
 #   pod 'StarWars'
-    pod 'Surge'
+#   pod 'Surge'
 #   pod 'SwiftOCR'
 #   pod 'SwiftString'
     pod 'SwiftyJSON'
@@ -56,6 +55,8 @@ def common_pods
 
 #   pod 'TZStackView'
 #   pod 'Whisper'
+#    pod 'RealmSwift'
+
     pod 'RxAlamofire'
 #    pod 'RxBlocking'
     pod 'RxCocoa'
@@ -74,16 +75,17 @@ def common_pods
 #    pod 'SwiftOCR'
 #    pod "Koloda" #探探主页效果
 
-    pod 'PlateKeyboard_iOS'
+#    pod 'NNPlateKeyboard'
     pod 'NNPlateKeyboard'
     pod 'NNPopoverButton'
     pod 'HFNavigationController'
+    pod 'NNExcelView'
+
 #    pod 'YBAttributeTextTapAction'
+#    pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 
 #iOS自带悬浮窗调试工具,摇晃手机即可显示系统的UI调试界面。
 #    pod 'UIDebuggingTool'
-
-
     
 end
 
