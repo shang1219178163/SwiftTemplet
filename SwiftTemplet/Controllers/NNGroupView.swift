@@ -71,10 +71,10 @@ class NNGroupView: UIView {
         switch self.showType {
         case .backgroud:
             btn.setTitleColor(titleColor, for: .normal)
-            btn.setBackgroundImage(UIImageColor(.white), for: .normal)
+            btn.setBackgroundImage(UIImage(color: .white), for: .normal)
             
             btn.setTitleColor(.white, for: .selected)
-            btn.setBackgroundImage(UIImageColor(.theme), for: .selected)
+            btn.setBackgroundImage(UIImage(color: .theme), for: .selected)
 
         default:
             break;

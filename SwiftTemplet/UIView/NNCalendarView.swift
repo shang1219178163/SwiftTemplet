@@ -260,7 +260,7 @@ class NNCalendarView: UIView {
                 }
                 
                 e.element.setTitleColor(.white, for: .selected)
-                e.element.setBackgroundImage(UIImageColor(.theme), for: .selected)
+                e.element.setBackgroundImage(UIImage(color: .theme), for: .selected)
                 e.element.addActionHandler({ (control) in
                     e.element.isSelected = !e.element.isSelected
                     

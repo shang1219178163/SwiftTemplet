@@ -96,7 +96,7 @@ extension NNTableFooterView{
         view.labelTop.text = ""
         
         view.btn.setTitle(title, for: .normal)
-        view.btn.setBackgroundImage(UIImageColor(UIColor.theme), for: .normal);
+        view.btn.setBackgroundImage(UIImage(color: UIColor.theme), for: .normal);
         view.btn.setTitleColor(UIColor.white, for: .normal)
         view.btn.addActionHandler({ (control) in
             DDLog(control)
