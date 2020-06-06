@@ -53,7 +53,7 @@ class CustomViewController: UIViewController {
         }, for: .touchUpInside)
         view.addSubview(btn)
         
-//        btn.setBackgroundImage(UIImageColor( .theme), for: .normal)
+//        btn.setBackgroundImage(UIImage(color:  .theme), for: .normal)
 
         view.addSubview(self.tipsView)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

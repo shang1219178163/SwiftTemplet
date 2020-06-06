@@ -64,13 +64,13 @@ class IOPParkGroupView: UIView {
     
     func changeStatue(_ btn: UIButton) {
         btn.setTitleColor(.black, for: .normal)
-        btn.setBackgroundImage(UIImageColor(UIColor.hexValue(0xF3F3F3)), for: .normal)
+        btn.setBackgroundImage(UIImage(color: UIColor.hexValue(0xF3F3F3)), for: .normal)
         
         btn.setTitleColor(.theme, for: .selected)
-        btn.setBackgroundImage(UIImageColor(UIColor.hexValue(0xDEF0FF)), for: .selected)
+        btn.setBackgroundImage(UIImage(color: UIColor.hexValue(0xDEF0FF)), for: .selected)
         
         if hideImage == false {
-            btn.setImage(UIImageColor(UIColor.hexValue(0xF3F3F3)), for: .normal)
+            btn.setImage(UIImage(color: UIColor.hexValue(0xF3F3F3)), for: .normal)
             btn.setImage(UIImageNamed("icon_choose_blue"), for: .selected)
         }
     }

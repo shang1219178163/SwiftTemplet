@@ -26,7 +26,7 @@ class PlateNumOriginController: UIViewController {
         
         view.addSubview(btn)
         
-        btn.setBackgroundImage(UIImageColor(.green), for: .normal)
+        btn.setBackgroundImage(UIImage(color: .green), for: .normal)
         
 //        setupKeyboradView(textField, handler: handler)
 //        handler.setKeyBoardView(view: btn);

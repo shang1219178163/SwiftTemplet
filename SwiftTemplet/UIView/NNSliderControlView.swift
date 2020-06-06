@@ -184,7 +184,7 @@ class NNSliderControlView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
-        view.image = UIImageColor(.red);
+        view.image = UIImage(color: .red);
         view.backgroundColor = UIColor.white
         
         //创建移动手势事件
