@@ -15,6 +15,9 @@ import IQKeyboardManagerSwift
 class EntryViewController: UIViewController {
     
     var dataModel = NSObject()
+    
+    var weekIdxList: [Int] = [0]
+    var timeIdxList: [Int] = [0]
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
@@ -623,7 +626,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
 //            let items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
 //            cell.groupView.createItems(items)
-            cell.groupView.selectedIdxList = [0]
+            cell.groupView.selectedIdxList = weekIdxList
             
             if let btn = cell.groupView.itemList.last as? NNIconButton {
                 btn.iconImageView.image = UIImage(named: "icon_discout_orange")
@@ -631,6 +634,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.groupView.block { (groupView, btn) in
                 DDLog(groupView.selectedIdxList)
+                self.weekIdxList = groupView.selectedIdxList
             }
             
 //            cell.getViewLayer();
@@ -642,13 +646,16 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
 //            let items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
 //            cell.groupView.createItems(items)
-            cell.groupView.selectedIdxList = [0]
-            
+            cell.groupView.selectedIdxList = timeIdxList
+
+            DDLog(cell.groupView.selectedList.map({ $0.currentTitle ?? "-" }))
+
             if let btn = cell.groupView.itemList.last as? NNIconButton {
                 btn.iconImageView.image = UIImage(named: "icon_discout_orange")
             }
             cell.groupView.block { (groupView, btn) in
                 DDLog(groupView.selectedIdxList)
+                self.timeIdxList = groupView.selectedIdxList
             }
 //            cell.getViewLayer();
             return cell;
