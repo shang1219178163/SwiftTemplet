@@ -625,7 +625,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
 
 //            let items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
-//            cell.groupView.createItems(items)
+//            cell.groupView.updateItems(items)
             cell.groupView.selectedIdxList = weekIdxList
             
             if let btn = cell.groupView.itemList.last as? NNIconButton {
@@ -645,7 +645,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.groupView.items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
 
 //            let items = ["1个月", "2个月", "半年", "1年", "2年", "3年"]
-//            cell.groupView.createItems(items)
+//            cell.groupView.updateItems(items)
             cell.groupView.selectedIdxList = timeIdxList
 
             DDLog(cell.groupView.selectedList.map({ $0.currentTitle ?? "-" }))
