@@ -46,7 +46,6 @@ import UIKit
 //    var selectedBackgroudColor: UIColor = .theme
     
     var iconSize: CGSize = CGSize(width: 35, height: 14)
-    
     var iconLocation: UIView.Location = .rightTop
 
     var hasLessOne: Bool = false
@@ -56,21 +55,23 @@ import UIKit
     var selectedList: [UIButton] = []
     var selectedIdxList: [Int] = []{
         willSet{
-            if newValue.count <= 0 {
+            if newValue.count <= 0 || selectedIdxList == newValue {
+//                print("\(#function)_\(newValue)_\(selectedIdxList)")
                 return;
             }
             if isMutiChoose == false && newValue.count > 1 {
                 fatalError("单选只能默认选择索引应该为单选");
             }
+
             selectedList.removeAll()
             for e in itemList.enumerated() {
                 if newValue.contains(e.offset) == true {
                     selectedList.append(e.element)
-                    
-                    e.element.isSelected = true;
-                    e.element.layer.borderColor = e.element.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
                 }
+                e.element.isSelected = (newValue.contains(e.offset))
+                e.element.layer.borderColor = e.element.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
             }
+//            print("\(#function)___\(selectedIdxList)_\(selectedList.map({ $0.currentTitle ?? "-" }))")
         }
     }
     
@@ -104,6 +105,7 @@ import UIKit
                 for e in selectedList.enumerated() {
                     e.element.isSelected = false;
                     e.element.layer.borderColor = e.element.isSelected ? selectedLineColor.cgColor : lineColor.cgColor
+//                    print("\(#function)_\(e.element.currentTitle ?? "-")")
                 }
                 selectedList.removeAll()
                 selectedIdxList.removeAll()
@@ -119,7 +121,7 @@ import UIKit
                 selectedIdxList.remove(at: selectedIdxList.firstIndex(of: sender.tag)!)
             }
         }
-//        print(sender.isSelected, selectedList)
+//        print("\(#function)_\(selectedIdxList)_\(selectedList.map({ $0.currentTitle ?? "-" }))")
         delegate?.buttonGroupView(self, sender: sender)
         viewBlock?(self, sender)
     }
