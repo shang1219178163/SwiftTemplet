@@ -56,7 +56,7 @@ class UITableViewCellDateRange: UITableViewCell {
         if keyPath == "text" {
             //标题星号处理
             if hasAsterisk == true {
-                dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+                dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.toAsterisk(dateRangeView.labTitle.textColor, font: dateRangeView.labTitle.font.pointSize)
             }
         }
     }
