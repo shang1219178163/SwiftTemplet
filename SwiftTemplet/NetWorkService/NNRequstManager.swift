@@ -155,7 +155,7 @@ class NNRequstManager: NSObject {
         resultBlock?(self, jsonDic, nil)
         
         //缓存数据
-        let _ = child?.saveJsonOfCache!(jsonDic)
+        _ = child?.saveJsonOfCache!(jsonDic)
     }
     
     func didFailure(_ response: DefaultDataResponse, errorType: NNRequestCode) {

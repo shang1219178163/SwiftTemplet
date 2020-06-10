@@ -7,7 +7,7 @@ import HandyJSON
 
 
 @objcMembers
-class ESCheckVersResult: NSObject,HandyJSON{
+class ESCheckVersResult: NSObject, HandyJSON{
 
 	@objc var advisories : [AnyObject]?
 	@objc var appletvScreenshotUrls : [AnyObject]?

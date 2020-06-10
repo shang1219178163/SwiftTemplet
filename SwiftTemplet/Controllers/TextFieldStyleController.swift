@@ -56,7 +56,7 @@ class TextFieldStyleController: UIViewController {
     func titleViewTap() {
         textField.text = "闭包的回调方法"
         
-        let _ = textField.addGestureTap { (reco) in
+        _ = textField.addGestureTap { (reco) in
  
             DDLog(reco)
         }
