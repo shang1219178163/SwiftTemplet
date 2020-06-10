@@ -42,18 +42,18 @@ import UIKit
     //进度值0-1.0之间
     var value: CGFloat = 0.0{
         willSet{
-            changeValue(newValue, animated: true)
+            setValue(newValue, animated: true)
         }
     }
     
-    //进度label
     private lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = .center
         
-        label.text = "0.00";
-        label.textColor = .systemBlue;
+        label.text = "0.00"
+        label.textColor = .systemBlue
+        label.adjustsFontSizeToFitWidth = true
         label.backgroundColor = UIColor.clear
         return label
     }()
@@ -91,7 +91,7 @@ import UIKit
     }
     
     @objc func reloadValue() {
-        changeValue(value, animated: true)
+        setValue(value, animated: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -110,11 +110,11 @@ import UIKit
         let bottomPath = UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
         bottomLayer.path = bottomPath.cgPath
         
-        changeValue(value, animated: true)
+        setValue(value, animated: true)
     }
     
     // MARK: -funtions
-    @objc func changeValue(_ newValue: CGFloat, animated: Bool) {
+    @objc func setValue(_ newValue: CGFloat, animated: Bool) {
         delegate?.circleProgressView(self)
         block?(self)
         
@@ -134,7 +134,7 @@ import UIKit
             return
         }
         //添加动画
-        let pathAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
+        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
         pathAnimation.duration = 1//动画持续时间
         pathAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         pathAnimation.fromValue = 0
