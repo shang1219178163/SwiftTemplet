@@ -40,7 +40,7 @@ class NNPickListView: UIView {
         self.addSubview(contentView)
         self.addSubview(backView)
 
-        let _ = backView.addGestureTap { (sender:UIGestureRecognizer) in
+        _ = backView.addGestureTap { (sender:UIGestureRecognizer) in
             if sender is UITapGestureRecognizer {
                 self.dismiss()
             }

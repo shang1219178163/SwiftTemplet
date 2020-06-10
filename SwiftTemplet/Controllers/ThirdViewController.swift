@@ -233,6 +233,9 @@ class ThirdViewController: UIViewController{
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
                 DDLog(response)
                 self.showUpdateInfo(response.results!.first!)
+                
+//                let dic = response.results!.first!.toDictionary()
+//                DDLog(dic)
             }
 //            NNProgressHUD.showSuccess("请求成功");
             NNProgressHUD.dismiss()
