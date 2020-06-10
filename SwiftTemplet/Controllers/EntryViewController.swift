@@ -98,7 +98,7 @@ class EntryViewController: UIViewController {
     func titleViewTap() {
         textField.text = "闭包的回调方法"
         
-        let _ = textField.addGestureTap { (recognizer) in
+        _ = textField.addGestureTap { (recognizer) in
             UIApplication.shared.keyWindow?.endEditing(true)
             UIApplication.shared.keyWindow?.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
             
@@ -163,10 +163,11 @@ class EntryViewController: UIViewController {
             ],
             [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
-            ["*有效时间0:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
+            ["*有效时间:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
             ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
             ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
             ["有效时段3:", "UITableViewCellDateRange", "60.0", "3", "btime,etime", ],
+            ["圆形进度:", "UITableViewCellProgressView", "90.0", "", "cardName", ],
             ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
@@ -307,6 +308,22 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.text = value0
             cell.labelRight.text = dataModel.valueText(forKeyPath: value4, defalut: "-")
             cell.accessoryType = .disclosureIndicator
+            
+            cell.getViewLayer()
+            return cell
+        case "UITableViewCellProgressView":
+            let cell = UITableViewCellProgressView.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
+            cell.labelLeft.text = value0
+            cell.progressView.value = 0.88
+//            cell.accessoryType = .disclosureIndicator
+            cell.progressView.block = { progressView in
+                DDLog(progressView.value)
+            }
             
             cell.getViewLayer()
             return cell
@@ -780,7 +797,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel(frame: .zero);
-//        label.backgroundColor = .green;
+        label.backgroundColor = .background;
         label.textColor = UIColor.orange
         label.font = UIFont.systemFont(ofSize: 12)
         label.text = "header\(section)";
