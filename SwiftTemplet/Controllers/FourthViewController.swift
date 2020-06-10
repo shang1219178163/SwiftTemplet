@@ -152,19 +152,16 @@ class FourthViewController: UIViewController {
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
         orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
 
-//        view.getViewLayer();
-        return;
-  
-        view.addSubview(clockView);
+//        view.addSubview(clockView)
         
-        progressView.frame = CGRect(x: 20, y: clockView.frame.maxY + 20, width: 100, height: 100)
-        view.addSubview(progressView)
+//        progressView.frame = CGRect(x: 20, y: clockView.frame.maxY + 20, width: 100, height: 100)
+//        view.addSubview(progressView)
         
         view.getViewLayer();
 
         //元组
-        let score = (java: 12.01, Swift: 34, c:"abcde", oc: 98)
-        DDLog(score.java, score.Swift);
+//        let score = (java: 12.01, Swift: 34, c:"abcde", oc: 98)
+//        DDLog(score.java, score.Swift);
     }
     
     override func viewDidLayoutSubviews() {
@@ -175,14 +172,6 @@ class FourthViewController: UIViewController {
             return
         }
         
-//        itemView.frame = CGRectMake(10, 10, view.bounds.width - 20, height)
-//        processingView.frame = CGRectMake(10, 100, view.bounds.width - 20, 70)
-//
-//        orderPayView.frame = CGRectMake(0, view.bounds.height - 50, view.bounds.width, 50)
-//        goodsToolView.frame = CGRectMake(0, view.bounds.height - 90, view.bounds.width, 40)
-//
-//
-//        return;
         itemView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
             make.left.equalToSuperview().offset(10);
@@ -281,7 +270,7 @@ class FourthViewController: UIViewController {
         view.image = UIImage(named: "beach");
         
         view.aniDuration = 12;
-        view.animRotation(isClockwise: true, duration: view.aniDuration!, repeatCount: MAXFLOAT, key: nil);
+        view.animRotation(isClockwise: true, duration: view.aniDuration, repeatCount: MAXFLOAT, key: nil);
         view.layoutIfNeeded();//激活子视图动画
         
         view.layer.cornerRadius = view.frame.width/2.0;

@@ -10,7 +10,7 @@ import UIKit
 
 class NNClockView: UIImageView {
     
-    var aniDuration: Double?;
+    var aniDuration: Double = 12
        
     //1 声明变量
     var itemList: [String]? {
@@ -24,7 +24,7 @@ class NNClockView: UIImageView {
                 btn.titleLabel?.adjustsFontSizeToFitWidth = true;
                 btn.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside);
                 
-                self.addSubview(btn);
+                addSubview(btn);
             }
         }
     }
@@ -39,27 +39,22 @@ class NNClockView: UIImageView {
     }
     
     override func layoutSubviews() {
-        let frame = self.bounds;
         // 圆心
-        let center = CGPoint(x: Double(frame.width * 0.5), y: Double(frame.height * 0.5));
+        let center = CGPoint(x: bounds.width * 0.5, y: bounds.height * 0.5);
         // 圆半径
-        let radius: CGFloat = frame.height/2.3;
-        let rect = CGRect(x: 0, y: 0, width: frame.height*0.15, height: frame.height*0.15);
-        
+        let radius: CGFloat = bounds.height/2.3;
+        let rect = CGRect(x: 0, y: 0, width: bounds.height*0.15, height: bounds.height*0.15);
         
         //2 初始化视图
-        for i in 0..<self.subviews.count {
-            let view = self.subviews[i]
+        for i in 0..<subviews.count {
+            guard let view = subviews[i] as? UIButton else { return }
             view.tag = i;
             
             let angle = 2 * CGFloat(Double.pi) * CGFloat(i) / CGFloat(self.subviews.count);
             view.frame = rect;
-            view.center =  CGPoint(x: center.x + radius*cos(angle), y: center.y + radius*sin(angle));
+            view.center = CGPoint(x: center.x + radius*cos(angle), y: center.y + radius*sin(angle));
             //附属效果
-            if aniDuration != nil {
-                view.animRotation(isClockwise: false, duration: aniDuration!, repeatCount: MAXFLOAT, key: nil);
-                
-            }
+            view.animRotation(isClockwise: false, duration: aniDuration, repeatCount: MAXFLOAT, key: nil);
             
             view.layer.cornerRadius = view.frame.width/2.0;
             view.layer.masksToBounds = true;
