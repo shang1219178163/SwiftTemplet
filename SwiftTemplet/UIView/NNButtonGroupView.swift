@@ -121,6 +121,7 @@ import UIKit
                 selectedIdxList.remove(at: selectedIdxList.firstIndex(of: sender.tag)!)
             }
         }
+        selectedIdxList = selectedIdxList.sorted()
 //        print("\(#function)_\(selectedIdxList)_\(selectedList.map({ $0.currentTitle ?? "-" }))")
         delegate?.buttonGroupView(self, sender: sender)
         viewBlock?(self, sender)

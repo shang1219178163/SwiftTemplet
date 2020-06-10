@@ -8,10 +8,9 @@
 
 import UIKit
 import SnapKit
-
+import SwiftExpand
 
 @objc protocol NNDateRangeViewDelegate{
-    
     @objc func dateRangeView(_ rangeView: NNDateRangeView)
 }
 
@@ -63,7 +62,7 @@ import SnapKit
         
 //        setupConstraint()
         
-        let _ = labBegin.addGestureTap({ (sender: UIGestureRecognizer) in
+        _ = labBegin.addGestureTap({ (sender: UIGestureRecognizer) in
             self.datePicker.datePicker.minimumDate = self.isFuture == false ? Date.distantPast : self.beginDate
             self.datePicker.datePicker.date = self.beginDate
             self.datePicker.show()
@@ -71,13 +70,16 @@ import SnapKit
                 let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
                 self.labBegin.text = dateStr
                 self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date)
+                if picker.datePicker.datePickerMode == .time {
+                    self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kTimeFormatBegin)
+                }
                 
                 self.delegate?.dateRangeView(self)
                 self.viewBlock?(self)
             })
         })
         
-        let _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
+        _ = labEnd.addGestureTap({ (sender:UIGestureRecognizer) in
             self.datePicker.datePicker.minimumDate = self.beginDate
             self.datePicker.datePicker.date = self.endDate
             self.datePicker.show()
@@ -85,6 +87,9 @@ import SnapKit
                 let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
                 self.labEnd.text = dateStr
                 self.endTime = DateFormatter.stringFromDate(picker.datePicker.date)
+                if picker.datePicker.datePickerMode == .time {
+                    self.endTime = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kTimeFormatEnd)
+                }
                 
                 self.delegate?.dateRangeView(self)
                 self.viewBlock?(self)
