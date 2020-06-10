@@ -11,6 +11,9 @@ import SwiftExpand
 
 /// 上中下6 label
 class UITableViewCellSixLable: UITableViewCell {
+    
+    var Xgap: CGFloat = 15;
+
     // MARK: -lazy
     lazy var labelTop: UILabel = {
         var view = UILabel(frame: .zero);
@@ -135,7 +138,7 @@ class UITableViewCellSixLable: UITableViewCell {
             
             labelTop.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(10)
+                make.left.equalToSuperview().offset(Xgap)
                 make.right.equalTo(labelTopRight.snp.left).offset(-8)
                 make.height.equalTo(height/3);
             }
@@ -143,7 +146,7 @@ class UITableViewCellSixLable: UITableViewCell {
         } else {
             imgViewLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(10);
+                make.left.equalToSuperview().offset(Xgap);
                 make.bottom.equalToSuperview().offset(-10);
                 make.width.equalTo(height)
             }

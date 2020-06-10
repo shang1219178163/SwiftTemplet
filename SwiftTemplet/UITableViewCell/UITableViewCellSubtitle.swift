@@ -18,6 +18,7 @@ import SwiftExpand
 class UITableViewCellSubtitle: UITableViewCell {
 
     var Xgap: CGFloat = 15;
+    // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);

@@ -67,7 +67,6 @@ class UITableViewCellCouponRecharge: UITableViewCell {
     }
     
     func setupConstraint() {
-        
         if bounds.height <= 0 {
             return
         }

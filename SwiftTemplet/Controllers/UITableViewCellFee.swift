@@ -16,6 +16,9 @@ class UITableViewCellFee: UITableViewCell {
     /// 显示正数
     var isPositive = true;
     
+    var Xgap: CGFloat = 15;
+    // MARK: -life cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
   
@@ -92,7 +95,7 @@ class UITableViewCellFee: UITableViewCell {
         
         labelTop.snp.makeConstraints { (make) in
             make.centerY.equalTo(labelRight)
-            make.left.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(Xgap)
             make.right.equalTo(labelRight.snp.left).offset(-kPadding)
             make.height.equalTo(labelRight)
         }

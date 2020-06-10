@@ -12,6 +12,7 @@ import SwiftExpand
 class UITableHeaderFooterViewFour: UITableViewHeaderFooterView {
 
     var Xgap: CGFloat = 15;
+    // MARK: -life cycle
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

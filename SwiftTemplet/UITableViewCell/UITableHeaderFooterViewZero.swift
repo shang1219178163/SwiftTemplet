@@ -14,6 +14,7 @@ import SwiftExpand
 class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
 
     private var viewBlock: ((UITableHeaderFooterViewZero) -> Void)?
+    // MARK: -life cycle
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -29,7 +30,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         indicatorView.image = UIImageNamed(kIMG_arrowRight)
         labelRight.textAlignment = .center
 
-        let _ = contentView.addGestureTap {[weak self] (sender) in
+        _ = contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }
             if self.isCanOpen == true {
                 self.viewBlock?(self)

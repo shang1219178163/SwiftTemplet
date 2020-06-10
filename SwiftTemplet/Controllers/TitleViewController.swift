@@ -33,7 +33,7 @@ class TitleViewController: NNTitleViewSelectController{
         
         view.addSubview(gemetryView)
         
-        let _ = gemetryView.addGestureTap { (recognizer) in
+        _ = gemetryView.addGestureTap { (recognizer) in
             self.gemetryView.subType = Int(arc4random_uniform(3))
         }
         
