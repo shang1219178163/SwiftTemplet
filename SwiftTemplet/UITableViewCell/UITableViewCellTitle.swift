@@ -14,7 +14,8 @@ class UITableViewCellTitle: UITableViewCell {
     var Xgap: CGFloat = 15;
     /// 按钮位置
     var alignment: NSTextAlignment = .left
-    
+    // MARK: -life cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
@@ -50,7 +51,7 @@ class UITableViewCellTitle: UITableViewCell {
         if btn.isHidden == true {
             labelLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(8)
-                make.left.equalToSuperview().offset(10)
+                make.left.equalToSuperview().offset(Xgap)
                 make.bottom.equalToSuperview().offset(-10)
                 make.right.equalToSuperview().offset(-8)
             }

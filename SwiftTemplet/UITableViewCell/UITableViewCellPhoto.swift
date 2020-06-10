@@ -11,7 +11,10 @@ import UIKit
 import SnapKit
 
 class UITableViewCellPhoto: UITableViewCell {
-        
+    
+    var Xgap: CGFloat = 15;
+    // MARK: -life cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
       super.init(style: style, reuseIdentifier: reuseIdentifier);
 
@@ -33,14 +36,14 @@ class UITableViewCellPhoto: UITableViewCell {
     }
     
     func setupConstraint() {
-        if CGRect.zero.equalTo(bounds) == true {
+        if bounds.height <= 0.0 {
             return;
         }
         
         imgViewLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
-            make.left.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-10);
+            make.left.equalToSuperview().offset(Xgap);
+            make.right.equalToSuperview().offset(-Xgap);
             make.bottom.equalToSuperview().offset(-10);
         }
         

@@ -48,7 +48,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
 
-        let _ = contentView.addGestureTap { (sender) in
+        _ = contentView.addGestureTap { (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
             UIApplication.shared.keyWindow?.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
         }
@@ -109,7 +109,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
         var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller, action) in
-            DDLog(action.title)
+            DDLog(action.title as Any)
         })
         return alertController
     }()

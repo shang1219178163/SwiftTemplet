@@ -14,7 +14,8 @@ class UITableViewCellDateRange: UITableViewCell {
     var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
-    
+    // MARK: -life cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         

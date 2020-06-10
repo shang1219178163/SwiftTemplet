@@ -11,15 +11,15 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
+/*
+ 文字
+ 文字(富文本)
+*/
 class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        
-        /*
-                文字
-                文字(富文本)
-         */
+ 
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelLeftSub);
         contentView.addSubview(lineBottom)

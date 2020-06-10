@@ -33,7 +33,8 @@ class UITableViewCellWebView: UITableViewCell {
             progress.progressTintColor = newValue
         }
     }
-    
+    // MARK: -life cycle
+
     deinit {
         reloadBtn.removeObserver(wkWebView, forKeyPath: "hidden")
         wkWebView.removeObserver(self, forKeyPath: "estimatedProgress")

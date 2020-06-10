@@ -11,6 +11,9 @@ import SwiftExpand
 
 /// 上中下三label
 class UITableViewCellThreeLable: UITableViewCell {
+    
+    var Xgap: CGFloat = 15;
+    
     // MARK: -lazy
     lazy var labelTop: UILabel = {
         var view = UILabel(frame: .zero);
@@ -82,7 +85,7 @@ class UITableViewCellThreeLable: UITableViewCell {
         if imgViewLeft.isHidden == true {
             labelTop.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(10)
+                make.left.equalToSuperview().offset(Xgap)
                 make.right.equalToSuperview().offset(right)
                 make.height.equalTo(height/3);
             }
@@ -90,7 +93,7 @@ class UITableViewCellThreeLable: UITableViewCell {
         } else {
             imgViewLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(10);
+                make.left.equalToSuperview().offset(Xgap);
                 make.bottom.equalToSuperview().offset(-10);
                 make.width.equalTo(height)
             }

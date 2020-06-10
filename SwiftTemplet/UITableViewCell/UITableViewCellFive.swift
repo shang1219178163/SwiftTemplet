@@ -15,6 +15,7 @@ import UIKit
 class UITableViewCellFive: UITableViewCell {
 
     var Xgap: CGFloat = 15;
+    // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -47,9 +48,6 @@ class UITableViewCellFive: UITableViewCell {
     }
     
     func setupConstraint() {
-//        if bounds.height <= 0.0 {
-//            return;
-//        }
         if bounds.height <= 0.0 {
             return
         }

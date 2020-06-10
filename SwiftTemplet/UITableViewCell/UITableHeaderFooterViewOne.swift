@@ -29,7 +29,8 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
             }
         }
     }
-    
+    // MARK: -life cycle
+
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(imgViewLeft);
@@ -42,7 +43,7 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         labelLeft.numberOfLines = 1;
         imgViewRight.image = UIImageNamed(kIMG_arrowRight)
 
-        let _ = contentView.addGestureTap {[weak self] (sender) in
+        _ = contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }
             if self.isCanOpen == true {
                 self.viewBlock?(self)

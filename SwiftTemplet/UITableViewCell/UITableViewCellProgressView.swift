@@ -1,21 +1,20 @@
 //
-//  UITableViewCellChoice.swift
+//  UITableViewCellProgressView.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2020/6/2.
+//  Created by Bin Shang on 2020/6/10.
 //  Copyright © 2020 BN. All rights reserved.
 //
 
 import UIKit
-
 import SnapKit
 import SwiftExpand
 
 /// 一行多选/单选
-class UITableViewCellChoice: UITableViewCell {
+class UITableViewCellProgressView: UITableViewCell {
      
     var Xgap: CGFloat = 15;
-     /// 是否有星标
+    /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
     deinit {
@@ -26,9 +25,9 @@ class UITableViewCellChoice: UITableViewCell {
          super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(labelLeft);
-        contentView.addSubview(groupView);
+        contentView.addSubview(progressView);
         
-        labelLeft.text = "选择:"
+        labelLeft.text = "圆形进度条:"
         labelLeft.textColor = .gray
         labelLeft.font = UIFont.systemFont(ofSize: 12)
         
@@ -44,29 +43,20 @@ class UITableViewCellChoice: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if labelLeft.isHidden {
-            groupView.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft.snp.bottom).offset(10);
-                make.left.equalToSuperview().offset(Xgap);
-                make.right.equalToSuperview().offset(-Xgap);
-                make.bottom.equalToSuperview().offset(-10);
-            }
-            return
+        progressView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-15);
+            make.bottom.equalToSuperview().offset(-10);
+            make.width.equalTo(bounds.height - 16);
         }
         
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(5);
+            make.top.equalToSuperview().offset(10);
             make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
-            make.height.lessThanOrEqualTo(25);
-        }
-        
-        groupView.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
+            make.right.equalTo(progressView.snp.left).offset(-10);
             make.bottom.equalToSuperview().offset(-10);
         }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -86,27 +76,10 @@ class UITableViewCellChoice: UITableViewCell {
     }
     
     //MARK: -lazy
-    lazy var groupView: NNButtonGroupView = {
-        var view = NNButtonGroupView(frame: .zero)
-        view.padding = 10;
-        view.numberOfRow = 4;
+    lazy var progressView: NNCircleProgressView = {
+        var view = NNCircleProgressView(frame: .zero)
+//        view.strokeWidth = 5;
         
-        view.cornerRadius = 3.0
-        view.fontSize = 12
-        view.isMutiChoose = true;
-        view.hasLessOne = true
-        
-        view.iconLocation = .rightBottom
-        
-        view.titleColor = .hexValue(0x999999)
-        view.backgroudImage = UIImage(color: .hexValue(0xF3F3F3))
-
-        view.selectedTitleColor = .systemBlue
-        view.selectedBackgroudImage = UIImage(named: "btn_selected_multiple")!
-        
-        view.block({ (groupView, sender) in
-            print(sender.currentTitle ?? "", groupView.selectedIdxList)
-        })
         return view;
     }()
 

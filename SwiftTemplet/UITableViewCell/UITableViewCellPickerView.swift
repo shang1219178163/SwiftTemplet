@@ -23,7 +23,8 @@ class UITableViewCellPickerView: UITableViewCell {
     deinit {
         labelLeft.removeObserver(self, forKeyPath: "text")
     }
-    
+    // MARK: -life cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -39,7 +40,7 @@ class UITableViewCellPickerView: UITableViewCell {
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
 
-        let _ = contentView.addGestureTap { (sender) in
+        _ = contentView.addGestureTap { (sender) in
             self.pickView.show();
         }
     }

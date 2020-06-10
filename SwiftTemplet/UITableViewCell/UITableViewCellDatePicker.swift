@@ -39,7 +39,7 @@ class UITableViewCellDatePicker: UITableViewCell {
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
         
-        let _ = contentView.addGestureTap { (sender) in
+        _ = contentView.addGestureTap { (sender) in
             self.datePicker.show()
         }
     }

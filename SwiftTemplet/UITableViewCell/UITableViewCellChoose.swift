@@ -15,6 +15,9 @@ import SnapKit
  */
 class UITableViewCellChoose: UITableViewCell {
 
+    var Xgap: CGFloat = 15;
+
+    // MARK: -life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
@@ -62,7 +65,7 @@ class UITableViewCellChoose: UITableViewCell {
     }
     
     func setupConstraint() {
-        if CGRect.zero.equalTo(bounds) == true {
+        if bounds.height <= 0.0 {
             return;
         }
         
@@ -70,7 +73,7 @@ class UITableViewCellChoose: UITableViewCell {
                 
         btn.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview();
-            make.left.equalToSuperview().offset(10);
+            make.left.equalToSuperview().offset(Xgap);
             make.width.height.equalTo(20);
         }
         
@@ -91,7 +94,7 @@ class UITableViewCellChoose: UITableViewCell {
         if btn.isHidden {
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalTo(labelRight);
-                make.left.equalToSuperview().offset(10);
+                make.left.equalToSuperview().offset(Xgap);
                 make.right.equalTo(labelRight.snp.left).offset(-8);
                 make.height.equalTo(labelRight);
             }
@@ -106,7 +109,7 @@ class UITableViewCellChoose: UITableViewCell {
         } else {
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalTo(labelRight);
-                make.left.equalTo(btn.snp.right).offset(10);
+                make.left.equalTo(btn.snp.right).offset(Xgap);
                 make.right.equalTo(labelRight.snp.left).offset(-8);
                 make.height.equalTo(labelRight);
             }
