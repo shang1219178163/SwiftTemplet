@@ -25,14 +25,20 @@ class UITableViewCellProgressView: UITableViewCell {
          super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         contentView.addSubview(labelLeft);
+        contentView.addSubview(labelLeftSub);
         contentView.addSubview(progressView);
         
-        labelLeft.text = "圆形进度条:"
+        labelLeft.text = "文件名称"
         labelLeft.textColor = .gray
         labelLeft.font = UIFont.systemFont(ofSize: 12)
         
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        
+        labelLeftSub.textColor = .gray
+        labelLeftSub.font = UIFont.systemFont(ofSize: 12)
+        labelLeftSub.numberOfLines = 1
+        labelLeftSub.text = "这是一个简短的文件描述"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -47,16 +53,14 @@ class UITableViewCellProgressView: UITableViewCell {
             make.top.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-15);
             make.bottom.equalToSuperview().offset(-10);
-            make.width.equalTo(bounds.height - 16);
+            make.width.equalTo(bounds.height - 20);
         }
-        
-        labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
+        let list = [labelLeft, labelLeftSub]
+        list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 10, leadSpacing: 10, tailSpacing: 8)
+        list.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(Xgap);
-            make.right.equalTo(progressView.snp.left).offset(-10);
-            make.bottom.equalToSuperview().offset(-10);
+            make.right.equalTo(progressView.snp.left).offset(-8);
         }
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

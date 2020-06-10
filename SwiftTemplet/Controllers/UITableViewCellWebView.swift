@@ -18,13 +18,13 @@ class UITableViewCellWebView: UITableViewCell {
         willSet{
             guard let url = URL(string: newValue) else { return }
             let request: URLRequest = URLRequest(url: url)
-            wkWebView.load(request)
+            webView.load(request)
         }
     }
     
     var loadContent: String = ""{
         willSet{
-            wkWebView.loadHTMLString(newValue, baseURL: nil)
+            webView.loadHTMLString(newValue, baseURL: nil)
         }
     }
     
@@ -36,18 +36,18 @@ class UITableViewCellWebView: UITableViewCell {
     // MARK: -life cycle
 
     deinit {
-        reloadBtn.removeObserver(wkWebView, forKeyPath: "hidden")
-        wkWebView.removeObserver(self, forKeyPath: "estimatedProgress")
-        wkWebView.stopLoading()
-        wkWebView.uiDelegate = nil
-        wkWebView.navigationDelegate = nil
+        reloadBtn.removeObserver(webView, forKeyPath: "hidden")
+        webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        webView.stopLoading()
+        webView.uiDelegate = nil
+        webView.navigationDelegate = nil
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
       super.init(style: style, reuseIdentifier: reuseIdentifier);
 
         contentView.addSubview(reloadBtn);
-        contentView.addSubview(wkWebView);
+        contentView.addSubview(webView);
         contentView.addSubview(progress);
     }
     
@@ -67,8 +67,8 @@ class UITableViewCellWebView: UITableViewCell {
             return;
         }
         progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
-        wkWebView.frame = CGRect(x: 0, y: 8, width: frame.size.width, height: frame.size.height - 10)
-        reloadBtn.center = wkWebView.center;
+        webView.frame = CGRect(x: 0, y: 8, width: frame.size.width, height: frame.size.height - 10)
+        reloadBtn.center = webView.center;
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -102,20 +102,20 @@ class UITableViewCellWebView: UITableViewCell {
             urlString = "http://" + urlString;
         }
         let request: URLRequest = URLRequest(url: URL(string: urlString)!)
-        wkWebView.load(request)
+        webView.load(request)
     }
     
     @objc func webViewReload() {
-        wkWebView.reload()
+        webView.reload()
     }
     
     @objc func back(_ item: UIBarButtonItem) -> Void {
-        if wkWebView.canGoBack {
-            wkWebView.goBack()
+        if webView.canGoBack {
+            webView.goBack()
         }
     }
     //MARK: -lazy
-    lazy var wkWebView: WKWebView = {
+    lazy var webView: WKWebView = {
         let view = WKWebView(frame: bounds, configuration: WKWebView.confiDefault)
         view.uiDelegate = self
         view.navigationDelegate = self
@@ -145,11 +145,12 @@ class UITableViewCellWebView: UITableViewCell {
     lazy var reloadBtn: UIButton = {
         let view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         view.setTitle("重新加载", for: .normal)
         view.setTitleColor(UIColor.red, for: .normal)
         view.addTarget(self, action: #selector(loadRequest), for: .touchUpInside)
 
-        view.addObserver(wkWebView, forKeyPath: "hidden", options: .new, context: nil)
+        view.addObserver(webView, forKeyPath: "hidden", options: .new, context: nil)
         return view
     }()
 }

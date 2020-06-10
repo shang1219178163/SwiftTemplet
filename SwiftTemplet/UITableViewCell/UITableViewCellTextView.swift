@@ -40,6 +40,7 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         contentView.addSubview(textView);
         contentView.addSubview(labelLeftSub);
 
+        labelLeftSub.textColor = .gray
         labelLeftSub.text = "0" + "/" + "\(wordCount)"
         labelLeftSub.textAlignment = .right
         labelLeftSub.font = UIFont.systemFont(ofSize: 13)
@@ -66,21 +67,20 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         if bounds.height <= 0.0 {
             return
         }
-        labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        let size = labelLeft.sizeThatFits(.zero)
         
         switch type {
         case 1:
             labelLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(kY_GAP)
                 make.left.equalToSuperview().offset(Xgap)
-//                make.size.equalTo(labelLeft.frame.size);
+                make.size.equalTo(size)
             }
             
             labelLeftSub.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft)
                 make.right.equalToSuperview().offset(-Xgap)
-                make.size.equalTo(labelLeft.frame.size);
+                make.size.equalTo(labelLeft)
             }
             
             textView.snp.makeConstraints { (make) in
@@ -94,13 +94,14 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
             labelLeft.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(kY_GAP)
                 make.left.equalToSuperview().offset(Xgap)
-                make.size.equalTo(labelLeft.size);
+                make.size.equalTo(size);
             }
             
             labelLeftSub.snp.makeConstraints { (make) in
                 make.left.equalTo(labelLeft)
-                make.size.equalTo(labelLeft.frame.size);
+                make.right.equalTo(labelLeft)
                 make.bottom.equalToSuperview().offset(-kY_GAP);
+                make.height.equalTo(25)
             }
             
             textView.snp.makeConstraints { (make) in

@@ -43,7 +43,6 @@ class UITableViewCellStep: UITableViewCell {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
     }
-
     
     override func layoutSubviews() {
         super.layoutSubviews();
@@ -55,18 +54,19 @@ class UITableViewCellStep: UITableViewCell {
         if bounds.height < 20 {
             return;
         }
-        
-        labelLeft.sizeToFit();
+        let size = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(Xgap)
+            make.bottom.equalToSuperview().offset(-10)
+            make.width.equalTo(size.width)
         }
         
         ppBtn.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().offset(12)
             make.right.equalToSuperview().offset(-Xgap)
+            make.bottom.equalToSuperview().offset(-12)
             make.width.equalTo(120)
-            make.height.equalTo(30)
         }
     }
     

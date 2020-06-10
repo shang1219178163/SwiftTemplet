@@ -67,11 +67,12 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
             return
         }
         if labelLeft.isHidden == false {
-            labelLeft.sizeToFit()
+            let size = labelLeft.sizeThatFits(.zero)
             labelLeft.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
+                make.top.equalToSuperview().offset(10)
                 make.left.equalToSuperview().offset(Xgap)
-                make.size.equalTo(CGSize(width: labelLeft.frame.width, height: 35));
+                make.bottom.equalToSuperview().offset(-10)
+                make.width.equalTo(size.width)
             }
             
             btnCode.snp.makeConstraints { (make) in
