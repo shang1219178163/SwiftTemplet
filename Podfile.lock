@@ -70,6 +70,7 @@ PODS:
     - SnapKit
   - SwiftExpand (2.5.0)
   - SwiftyJSON (5.0.0)
+  - UICircularProgressRing (6.5.0)
   - YYCache (1.0.4)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - SnapKitExtend
   - SwiftExpand
   - SwiftyJSON
+  - UICircularProgressRing
   - YYCache
   - YYCategories
   - YYModel
@@ -133,6 +135,7 @@ SPEC REPOS:
     - SnapKitExtend
     - SwiftExpand
     - SwiftyJSON
+    - UICircularProgressRing
     - YYCache
     - YYCategories
     - YYModel
@@ -165,10 +168,11 @@ SPEC CHECKSUMS:
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   SwiftExpand: 7d2fc479b616b444bb9df3b419fce284fef2965c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  UICircularProgressRing: e6852e8f88e296cbbbe2720cccb55241acda6708
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 2269efc3528eeb849bfae4b3d06d05cde4d1bf93
+PODFILE CHECKSUM: ceeb49c3781b925d1ae991a7d16c23a7543a3475
 
 COCOAPODS: 1.9.1

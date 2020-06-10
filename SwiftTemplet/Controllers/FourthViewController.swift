@@ -9,6 +9,7 @@
 
 import UIKit
 import SwiftExpand
+import UICircularProgressRing
 
 class FourthViewController: UIViewController {
     
@@ -143,6 +144,7 @@ class FourthViewController: UIViewController {
         
         view.addSubview(label)
 
+        view.addSubview(progressRing)
 //        processingView.isHidden = true
 
         let amount = "¥\(227.00)"
@@ -157,7 +159,7 @@ class FourthViewController: UIViewController {
 //        progressView.frame = CGRect(x: 20, y: clockView.frame.maxY + 20, width: 100, height: 100)
 //        view.addSubview(progressView)
         
-        view.getViewLayer();
+//        view.getViewLayer();
 
         //元组
 //        let score = (java: 12.01, Swift: 34, c:"abcde", oc: 98)
@@ -200,6 +202,13 @@ class FourthViewController: UIViewController {
             make.height.equalTo(40);
         }
         
+        progressRing.snp.makeConstraints { (make) in
+            make.top.equalTo(label.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(140);
+        }
+        
 //        DDLog(view.bounds, view.subviews)
 
     }
@@ -218,6 +227,15 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showLoading(kNetWorkRequesting);
 //        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let num: CGFloat = CGFloat(arc4random() % (100 - 5) + 5)
+        progressRing.startProgress(to: num, duration: 1) {
+            DDLog("动画结束")
+        }
     }
 
     @objc func showPopoverAction(_ sender: UIButton) {
@@ -287,7 +305,20 @@ class FourthViewController: UIViewController {
         let progressView = NNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
         progressView.backgroundColor = .cyan;
         return progressView;
-    }();
+    }()
+    
+    lazy var progressRing: UICircularProgressRing = {
+        let progressRing = UICircularProgressRing(frame: .zero);
+        progressRing.maxValue = 100
+        progressRing.style = .ontop
+        progressRing.outerRingColor = .background
+        progressRing.outerRingWidth = 5
+        progressRing.innerRingColor = .systemBlue
+        progressRing.innerRingWidth = 5
+
+        progressRing.fontColor = progressRing.innerRingColor
+        return progressRing;
+    }()
     
     lazy var datePicker: NNDatePicker = {
         let view = NNDatePicker();
@@ -298,7 +329,7 @@ class FourthViewController: UIViewController {
             }
         })
         return view;
-    }();
+    }()
         
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
