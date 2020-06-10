@@ -30,6 +30,7 @@ def common_pods
     pod 'MBProgressHUD'
     pod 'MMPopupView'
     pod 'MJRefresh'
+    pod 'UICircularProgressRing'
 
 #   pod 'MonkeyKing'
 #   pod 'Moya'
