@@ -168,7 +168,7 @@ class EntryViewController: UIViewController {
             ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
             ["有效时段3:", "UITableViewCellDateRange", "60.0", "3", "btime,etime", ],
             ["圆形进度:", "UITableViewCellProgressView", "90.0", "", "cardName", ],
-            ["商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
+            ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
@@ -322,6 +322,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.progressView.value = 0.88
 //            cell.accessoryType = .disclosureIndicator
             cell.progressView.block = { progressView in
+                DDLog(progressView.value)
+            }
+            
+            cell.progressView.blockTap = { progressView in
                 DDLog(progressView.value)
             }
             

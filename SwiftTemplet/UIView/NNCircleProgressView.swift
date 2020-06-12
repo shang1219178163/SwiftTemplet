@@ -10,7 +10,8 @@ import UIKit
 
 @objc protocol NNCircleProgressViewDelegate: NSObjectProtocol {
     ///value等于1的时候的代理
-    func circleProgressView(_ view: NNCircleProgressView?)
+    func circleProgressView(_ view: NNCircleProgressView)
+    @objc optional func circleProgressViewTap(_ view: NNCircleProgressView)
 }
 
 ///圆形进度条
@@ -18,6 +19,7 @@ import UIKit
     
     weak var delegate: NNCircleProgressViewDelegate?
     var block: ((NNCircleProgressView)->Void)?
+    var blockTap: ((NNCircleProgressView)->Void)?
 
     ///线宽
     var strokeWidth: CGFloat = 5{
@@ -61,7 +63,7 @@ import UIKit
     private lazy var bottomLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.lightGray.cgColor
+        layer.strokeColor = UIColor.groupTableViewBackground.cgColor
         layer.lineWidth = 3
 
         return layer
@@ -91,6 +93,15 @@ import UIKit
     }
     
     @objc func reloadValue() {
+        if let delegate = delegate, delegate.responds(to: #selector(delegate.circleProgressViewTap(_:))) {
+            delegate.circleProgressViewTap!(self)
+            return
+        }
+        
+        if blockTap != nil {
+            blockTap!(self)
+            return
+        }
         setValue(value, animated: true)
     }
     
