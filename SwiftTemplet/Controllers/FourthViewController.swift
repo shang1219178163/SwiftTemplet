@@ -153,7 +153,7 @@ class FourthViewController: UIViewController {
 //        let nsrange = (string as NSString).range(of: "¥227.00")
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
         orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: 14, tapFont: 18, color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
-
+        
 //        view.addSubview(clockView)
         
 //        progressView.frame = CGRect(x: 20, y: clockView.frame.maxY + 20, width: 100, height: 100)
@@ -227,6 +227,8 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showLoading(kNetWorkRequesting);
 //        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
+        
+        DDLog("扩容", "减配", "续费")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -270,10 +272,10 @@ class FourthViewController: UIViewController {
     }()
     
     func createGroupView() {
-        let list = Array<String>.itemPrefix(prefix: "按钮_", count: 12, type: 0);
-        
+        let list = 12.repeatArray("按钮_")
+
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
-        let groupView = UIButton.createGroupView(rect, list: list!, numberOfRow: 4, padding: 5) { (control) in
+        let groupView = UIButton.createGroupView(rect, list: list, numberOfRow: 4, padding: 5) { (control) in
             DDLog(control.tag);
             self.showPopoverAction(control as! UIButton)
         }
