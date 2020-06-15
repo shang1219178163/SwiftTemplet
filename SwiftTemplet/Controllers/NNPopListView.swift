@@ -67,6 +67,10 @@ class NNPopListView: UIView {
         
     }
     
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//
+//    }
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         guard isUserInteractionEnabled, !isHidden, alpha >= 0.01, self.point(inside: point, with: event) else { return nil }
         
