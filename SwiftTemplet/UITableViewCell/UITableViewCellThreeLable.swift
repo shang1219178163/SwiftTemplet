@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-/// 上中下三label
+/// [弃用]UITableViewCellVertical取代
 class UITableViewCellThreeLable: UITableViewCell {
     
     var Xgap: CGFloat = 15;

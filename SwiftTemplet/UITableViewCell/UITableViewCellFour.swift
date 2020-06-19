@@ -25,7 +25,6 @@ class UITableViewCellFour: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         contentView.addSubview(btn);
         contentView.addSubview(labelLeft);
-//        setupConstraint();
         
         btn.setBackgroundImage(UIImage(named: kIMG_selected_NO), for: .normal)
         btn.setBackgroundImage(UIImage(named: kIMG_selected_YES), for: .selected)

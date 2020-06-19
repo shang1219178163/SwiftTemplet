@@ -81,7 +81,7 @@ class SubscribeListController: UIViewController {
         }
 
         // initial data
-        let itemsPerSection = 5
+        let itemsPerSection = 4
         let sections = Array(0..<5)
         currentSnapshot = NSDiffableDataSourceSnapshot<Int, Int>()
         var itemOffset = 0
