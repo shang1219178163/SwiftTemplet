@@ -13,7 +13,7 @@ import SwiftExpand
 /// 图片+文字+文字+图片
 class NNCellDefaultView: UIView {
 
-    var Xgap: CGFloat = 10;
+    var Xgap: CGFloat = 15;
 
     var type: Int = 0{
         didSet {

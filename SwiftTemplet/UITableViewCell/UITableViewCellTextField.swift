@@ -75,11 +75,10 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
         }
 
         let size: CGSize = labelLeft.sizeThatFits(.zero)
-//        labelLeft.sizeToFit()
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(Xgap)
-            make.width.equalTo(ceil(size.width))
+            make.width.lessThanOrEqualTo(ceil(size.width))
             make.height.equalTo(35)
         }
         

@@ -58,18 +58,19 @@ class UITableViewCellDatePicker: UITableViewCell {
         if bounds.height <= 0.0 {
             return
         }
-        labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        let size: CGSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(Xgap)
-            make.size.equalTo(labelLeft.size)
+            make.width.equalTo(ceil(size.width))
+            make.bottom.equalToSuperview().offset(-kPadding)
         }
         
+        let right = accessoryType == .none ? -Xgap : 0
         textfield.snp.makeConstraints { (make) in
             make.top.equalTo(labelLeft);
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-Xgap)
+            make.right.equalToSuperview().offset(right)
             make.height.equalTo(labelLeft);
         }
     }
