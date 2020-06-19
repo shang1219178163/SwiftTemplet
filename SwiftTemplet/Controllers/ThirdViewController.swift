@@ -25,9 +25,16 @@ class ThirdViewController: UIViewController{
         return view
     }()
     
+    lazy var listiOS13: [String] = {
+        return ["SystemColorShowController", "AppStoreGameController", "SubscribeListController"]
+    }()
+
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["AppStoreGameController", "AppStore游戏界面", ],
+             ["SubscribeListController", "微信公众号信息列表", ],
+             ["BookReaderController", "UIPageViewController", ],
              ["CalendarViewController", "CalenderView", ],
              ["NNTitleViewSelectController", "NNTitleViewSelect", ],             
              ["UICollectionMultipleSectionController", "多布局展示", ],
@@ -154,7 +161,8 @@ class ThirdViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-        
+//        DDLog("viewWillAppear")
+
 //        let string = "[[\"\\u9655A91D6P\"]]";
 //        let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
@@ -164,7 +172,7 @@ class ThirdViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                
+
 //        let controller = CellListController()
 //        navigationController?.pushViewController(controller, animated: true);
         
@@ -231,7 +239,7 @@ class ThirdViewController: UIViewController{
 //            DDLog(string as Any)
 //            if let response = NNCheckVersRootClass.deserialize(from: dic) {
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
-                DDLog(response)
+//                DDLog(response)
                 self.showUpdateInfo(response.results!.first!)
                 
 //                let dic = response.results!.first!.toDictionary()
@@ -316,7 +324,7 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
         if #available(iOS 13.0, *) {
 
         } else {
-            if ["SystemColorShowController"].contains(itemList.first!) {
+            if listiOS13.contains(itemList.first!) {
                 UIAlertController.showAlert(message: "@available(iOS 13.0, *)")
                 return
             }

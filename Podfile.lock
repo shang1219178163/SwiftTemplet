@@ -31,6 +31,7 @@ PODS:
   - MJRefresh (3.4.1)
   - MMPopupView (1.7.2):
     - Masonry
+  - MonkeyKing (1.16.0)
   - NNExcelView (1.0.1):
     - SnapKit
   - NNPlateKeyboard (1.0.7):
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - MMPopupView
+  - MonkeyKing
   - NNExcelView
   - NNPlateKeyboard
   - NNPopoverButton
@@ -122,6 +124,7 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - MMPopupView
+    - MonkeyKing
     - NNExcelView
     - NNPlateKeyboard
     - NNPopoverButton
@@ -155,6 +158,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
+  MonkeyKing: dc5076dc206bf9e6eb427d618317eff1b44b0666
   NNExcelView: 1b6305b136bdda5ed1d06c4c2e6891e6f0cc57de
   NNPlateKeyboard: 9673f0db1a7f50077731dd73ec559f5be72ea49f
   NNPopoverButton: f757b54db80b82909e54c8943e97524f0952a7a0
@@ -173,6 +177,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: ceeb49c3781b925d1ae991a7d16c23a7543a3475
+PODFILE CHECKSUM: ea8c51be0279b87a281d5db784e992c5fa6e4e62
 
 COCOAPODS: 1.9.1

@@ -151,6 +151,7 @@ class EntryViewController: UIViewController {
             ["优惠券充值", "UITableViewCellCouponRecharge", "100.0", "", "recharge", ],
             ["停车统计", "UITableViewCellStatistics", "110.0", "", "recharge", ],
             ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
+            ["操作日志2", "UITableViewCellLog", "120.0", "", "recharge", ],
             ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
@@ -182,7 +183,12 @@ class EntryViewController: UIViewController {
             ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
-            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
+            ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
+            ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
+            ["九宫格", "UITableViewCellSudokuLabel", " 80.0", "", "recharge", ],
+            ["九宫格2", "UITableViewCellSudokuButton", " 80.0", "", "recharge", ],
+//            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
+
 //            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
 
              ],
@@ -210,6 +216,9 @@ class EntryViewController: UIViewController {
 //          view.parController = self
           view.addActionHandler({ (sender) in
               DDLog(sender.center)
+                        
+//            let controller = CCSCouponRecordController()
+//            self.navigationController?.present(controller, animated: true, completion: nil)
           }, for: .touchUpInside)
           return view
       }()
@@ -583,7 +592,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
              cell.getViewLayer();
              return cell;
-            
+                    
         case "UITableViewCellTags":
             let cell = UITableViewCellTags.dequeueReusableCell(tableView);
             cell.tagView.tags = ["默认标签", "默认标签1", "默认标签2", "默认标签3", "默认标签4", "默认标签5", ]
@@ -640,7 +649,69 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //            }
             cell.getViewLayer();
             return cell;
-                        
+            
+        case "UITableViewCellLog":
+            let cell = UITableViewCellLog.dequeueReusableCell(tableView);
+            cell.imgViewLeft.isHidden = true
+            cell.accessoryType = .disclosureIndicator
+
+//            cell.labelTop.text = "标准服务套餐包"
+//            cell.labelMid.text = "\("¥106.00")／通道／年"
+//            cell.labelBom.text = "优惠价：\("¥599")   原价：\("¥799")"
+            
+//            if let imageURL = URL(string: "http://api.3rd.parkingwang.com/goods/img/get?img=goods/2020-02-18/1582006542_产品标志.png") {
+//                cell.imgViewLeft.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "bug.png"))
+//            }
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellHorizontal":
+            let cell = UITableViewCellHorizontal.dequeueReusableCell(tableView);
+//            cell.accessoryType = .disclosureIndicator
+            cell.labelFour.isHidden = true
+
+            cell.labelOne.text = "标准服务套餐包"
+            cell.labelTwo.text = "\("¥106.00")／通道／年"
+            cell.labelThree.text = "优惠价：\("¥599")"
+            cell.labelFour.text = "优惠价：\("¥599")   原价：\("¥799")"
+            
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellVertical":
+            let cell = UITableViewCellVertical.dequeueReusableCell(tableView);
+            cell.accessoryType = .disclosureIndicator
+            cell.imageSize = CGSize(width: 70, height: 70)
+            cell.labelFour.isHidden = true
+
+            cell.labelOne.text = "标准服务套餐包"
+            cell.labelTwo.text = "\("¥106.00")／通道／年"
+            cell.labelThree.text = "优惠价：\("¥599")"
+            cell.labelFour.text = "优惠价：\("¥599")   原价：\("¥799")"
+
+            cell.getViewLayer();
+            return cell
+            
+        case "UITableViewCellSudokuLabel":
+            let cell = UITableViewCellSudokuLabel.dequeueReusableCell(tableView);
+//            cell.accessoryType = .disclosureIndicator
+            cell.numOfRow = 3
+            cell.row = 3
+            cell.items.forEach { $0.textColor = .systemBlue }
+
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellSudokuButton":
+            let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
+    //            cell.accessoryType = .disclosureIndicator
+            cell.numOfRow = 3
+            cell.row = 2
+            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
+
+            cell.getViewLayer();
+            return cell;
+                                    
         case "UITableViewCellChoice":
             let cell = UITableViewCellChoice.dequeueReusableCell(tableView);
             cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
