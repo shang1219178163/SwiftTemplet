@@ -12,16 +12,13 @@ def common_pods
     pod 'AlamofireImage'
 
 #    pod 'Aspects'
-#   pod 'Argo'
     pod 'BSImagePicker'
 #   pod 'BluetoothKit'
 #    pod 'CryptoSwift'
 #    pod 'EZSwiftExtensions'
-#   pod 'Dollar'
 #   pod 'FoldingCell'
     pod 'IQKeyboardManagerSwift'
 
-#   pod 'Gifu'
 #   pod 'ImagePicker'
 #   pod 'KeychainAccess'
     pod 'Kingfisher'
@@ -32,21 +29,15 @@ def common_pods
     pod 'MJRefresh'
     pod 'UICircularProgressRing'
 
-#   pod 'MonkeyKing'
-#   pod 'Moya'
-#   pod 'Nimble'
-#   pod 'NumberMorphView'
-#   pod 'ObjectMapper'
+   pod 'MonkeyKing'
 #   pod 'Permission'
 #   pod 'PromiseKit'
-#   pod 'Quick'
 #   pod 'ReachabilitySwift'
 #   pod 'SQLite.swift'
     pod 'SnapKit'
     pod 'SnapKitExtend'
 
 #   pod 'Spring'
-#   pod 'StarWars'
 #   pod 'Surge'
 #   pod 'SwiftOCR'
 #   pod 'SwiftString'
@@ -56,19 +47,18 @@ def common_pods
 
 #   pod 'TZStackView'
 #   pod 'Whisper'
-#    pod 'RealmSwift'
+#   pod 'RealmSwift'
 
     pod 'RxAlamofire'
 #    pod 'RxBlocking'
     pod 'RxCocoa'
     pod 'RxSwift'
-#    pod 'PromiseKit'
     pod 'OHHTTPStubs'
 
-#    pod 'ObjectMapper+Realm'
     pod 'HandyJSON'
-
-    pod ‘YYCache'
+    
+    pod 'YYWebImage'
+    pod 'YYCache'
     pod 'YYCategories'
     pod 'YYModel'
 #    pod 'TextFieldEffects'
@@ -76,7 +66,6 @@ def common_pods
 #    pod 'SwiftOCR'
 #    pod "Koloda" #探探主页效果
 
-#    pod 'NNPlateKeyboard'
     pod 'NNPlateKeyboard'
     pod 'NNPopoverButton'
     pod 'HFNavigationController'

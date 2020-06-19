@@ -89,12 +89,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fmt.numberStyle = .spellOut
 //        fmt.locale = NSLocale(localeIdentifier: "zh_Hans") as Locale
         let g = fmt.string(from: NSNumber(floatLiteral: Double(num)))
-        let h = NumberFormatter.fractionDigits(obj: num, min: 1, max: 4, identify: kNumIdentify_spellOut)
-
-        DDLog(g)
-
+        let h = NumberFormatter.fractionDigits(obj: num, min: 1, max: 4, identify: kNumIdentifySpellOut)
         
-//        DDLog(a, b, c, d, e, f)
+        let m = NumberFormatter.positive(54312346.4567, format: "¥####.##元", defalut: "-")
+        let n = NumberFormatter.positive(54312346.4567, prefix: "人", suffix: "民", defalut: "-")
+
+        let formatter = NumberFormatter()
+        formatter.positiveFormat = "####.##元"
+        let o = formatter.string(for: 1.4988) ?? "0"
+
+//        formatter.numberStyle = .decimal
+////        fmt.positiveFormat = format
+//        formatter.positivePrefix = "人"
+//        formatter.positiveSuffix = "民"
+//        let n = formatter.string(for: 1.4988) ?? "0"
+        
+        DDLog(a, b, c, d, e, f, g , h, m, n, o)
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);

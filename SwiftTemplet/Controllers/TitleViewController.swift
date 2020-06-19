@@ -145,6 +145,14 @@ class TitleViewController: NNTitleViewSelectController{
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        DDLog("viewWillAppear")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     //MARK: -func
     @objc func handActionBtn(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected

@@ -23,14 +23,14 @@ class ReuseChildsController: UIViewController {
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [[
-//            ["HHTabBarController", "添加切换动画", ],
+            ["PageTmpController", "继承NNPageController", ],
             ["NNParentTwoController", "HHTabBarController子类极简实现", ],
-             ["NNParentController", "UUTabBarController子类极简实现", ],
+            ["NNParentController", "UUTabBarController子类极简实现", ],
 //             ["UUSementedController", "分段组件", ],
-             ["NNParentOneController", "UUSementedController子类极简实现", ],
+            ["NNParentOneController", "UUSementedController子类极简实现", ],
 //             ["UUTabBarController", "UUTabBarController", ],
-             ["OOTabBarController", "OOTabBar", ],
-             ["PlateNumMainController", "NNTabController组件", ],
+            ["OOTabBarController", "OOTabBar", ],
+            ["PlateNumMainController", "NNTabController组件", ],
 
             ],
         ]
@@ -42,7 +42,6 @@ class ReuseChildsController: UIViewController {
 
         // Do any additional setup after loading the view.
         view.addSubview(tableView)
-
     }
     
 }
