@@ -7,8 +7,9 @@
 //
 
 import UIKit
-
-class UITableViewCellSudokuLabel: UITableViewCell {
+import SwiftExpand
+///九宫格
+@objcMembers class UITableViewCellSudokuLabel: UITableViewCell {
 
     var numOfRow: Int = 3
     
@@ -16,26 +17,11 @@ class UITableViewCellSudokuLabel: UITableViewCell {
 
     var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
+    var itemType: UILabel.Type = UILabel.self
+
     // MARK: -lazy
     lazy var items: [UILabel] = {
-        if let list = self.contentView.subviews.filter({ $0.isKind(of: UILabel.self) }) as? [UILabel] {
-            if list.count == self.row*self.numOfRow {
-                return list
-            }
-        }
-        
-        self.contentView.subviews.forEach { $0.removeFromSuperview() }
-        
-        var arr: [UILabel] = [];
-        for i in 0..<self.row*self.numOfRow {
-            let subview = UILabel()
-            subview.text = "UILabel\(i)"
-            subview.textAlignment = .center
-            subview.font = UIFont.systemFont(ofSize: 15)
-            self.contentView.addSubview(subview)
-            arr.append(subview)
-        }
-        return arr;
+        return self.contentView.updateLabelItems(self.row*self.numOfRow, type: self.itemType)
     }()
 
     
@@ -72,7 +58,5 @@ class UITableViewCellSudokuLabel: UITableViewCell {
     // MARK: -funtions
     
 
-    
-    
 }
 
