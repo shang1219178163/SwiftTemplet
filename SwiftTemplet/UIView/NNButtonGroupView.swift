@@ -243,31 +243,31 @@ extension UIButton {
     }
 }
 
-extension NNButtonGroupView{
-    
-    ///创建各种子类按钮
-    final func updateItems<T: UIButton>(_ titles: [String], type: T.Type) {
-        if let btns: [UIButton] = subviews.filter({ $0.isKind(of: UIButton.self) }) as? [UIButton],
-            let items = btns.map({ $0.currentTitle ?? "" }) as [String]?{
-            if titles == items {
-                return
-            }
-        }
-
-        subviews.forEach { (subview) in
-            subview.removeFromSuperview()
-        }
-        
-        for e in titles.enumerated() {
-            let view: T = T.createBtn(rect: .zero, title: e.element, tag: e.offset);
-            view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
-            view.setTitleColor(titleColor, for: .normal)
-            view.setTitleColor(selectedTitleColor, for: .selected)
-            view.setBackgroundImage(backgroudImage, for: .normal)
-            view.setBackgroundImage(selectedBackgroudImage, for: .selected)
-            
-            view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
-            addSubview(view)
-        }
-    }
-}
+//extension NNButtonGroupView{
+//    
+//    ///创建各种子类按钮
+//    final func updateItems<T: UIButton>(_ titles: [String], type: T.Type) {
+//        if let list = subviews.filter({ $0.isKind(of: type) }) as? [T],
+//            let items = list.map({ $0.currentTitle ?? "" }) as [String]?{
+//            if titles == items {
+//                return
+//            }
+//        }
+//
+//        subviews.forEach { (subview) in
+//            subview.removeFromSuperview()
+//        }
+//        
+//        for e in titles.enumerated() {
+//            let view: T = T.createBtn(rect: .zero, title: e.element, tag: e.offset);
+//            view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+//            view.setTitleColor(titleColor, for: .normal)
+//            view.setTitleColor(selectedTitleColor, for: .selected)
+//            view.setBackgroundImage(backgroudImage, for: .normal)
+//            view.setBackgroundImage(selectedBackgroudImage, for: .selected)
+//            
+//            view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
+//            addSubview(view)
+//        }
+//    }
+//}
