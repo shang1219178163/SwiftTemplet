@@ -126,7 +126,6 @@ class CustomViewController: UIViewController {
         view.labelSub.textColor = .white
         
         view.imgViewLeft.image = UIImageNamed("img_meetStandard")
-//        view.imgViewRight.isHidden = true
         view.labelLeft.text = "已达到补贴标注"
         view.labelSub.text = "请直接前往: T2地上车场/1号入口"
         //        view.backgroundColor = UIColor.green.withAlphaComponent(0.8)
@@ -150,7 +149,6 @@ class CustomViewController: UIViewController {
         view.labelSub.textColor = .white
         
         view.imgViewLeft.image = UIImageNamed("icon_fail")
-        view.imgViewRight.isHidden = true
         view.labelLeft.text = "未达到补贴标注"
         view.labelSub.text = "里程/用时不符合补贴标准"
         //        view.backgroundColor = UIColor.green.withAlphaComponent(0.8)

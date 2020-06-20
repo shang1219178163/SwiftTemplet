@@ -27,7 +27,6 @@ class UITableViewCellFee: UITableViewCell {
         contentView.addSubview(labelMid);
         contentView.addSubview(labelBom);
         
-        imgViewRight.isHidden = true;
         labelTop.textColor = .textColor3;
         labelTop.textAlignment = .left;
         labelTop.text = kNilText;
