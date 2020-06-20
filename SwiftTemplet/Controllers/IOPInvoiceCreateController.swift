@@ -200,7 +200,6 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
 
-            cell.imgViewRight.isHidden = true
             if indexPath.row == 0 {
                 cell.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
             }

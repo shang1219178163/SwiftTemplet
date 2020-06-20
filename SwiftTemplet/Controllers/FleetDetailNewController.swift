@@ -142,7 +142,6 @@ extension FleetDetailNewController: UITableViewDataSource, UITableViewDelegate{
         cell.labelRight.text = "990" + "\(indexPath.row)";
 //        let imgUrl = imgList.randomElement()!;
 //        cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-        cell.imgViewRight.isHidden = true;
         
         let data = foldModel.dataList[indexPath.row]
         if let obj = data as? Dictionary<String, String>{
