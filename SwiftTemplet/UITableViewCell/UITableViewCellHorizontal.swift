@@ -12,6 +12,7 @@ import UIKit
 class UITableViewCellHorizontal: UITableViewCell {
     
     var Xgap: CGFloat = 15;
+    var spacing: CGFloat = 15;
 
     // MARK: -lazy
     lazy var labelOne: UILabel = {
@@ -86,10 +87,10 @@ class UITableViewCellHorizontal: UITableViewCell {
         if bounds.height <= 0.0 {
             return;
         }
-        let tailSpacing: CGFloat = accessoryType == .none ? 10.0 : 0.0
+        let tailSpacing: CGFloat = accessoryType == .none ? Xgap : 0.0
         
         let list = [labelOne, labelTwo, labelThree, labelFour].filter { $0.isHidden == false }
-        list.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: 20, leadSpacing: Xgap, tailSpacing: tailSpacing)
+        list.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: spacing, leadSpacing: Xgap, tailSpacing: tailSpacing)
         list.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10);
             make.bottom.equalToSuperview().offset(-10)

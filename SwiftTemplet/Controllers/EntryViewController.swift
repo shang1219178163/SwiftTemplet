@@ -724,14 +724,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellChoice":
             let cell = UITableViewCellChoice.dequeueReusableCell(tableView);
             cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
-
-//            let items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
             cell.groupView.selectedIdxList = weekIdxList
             
-            if let btn = cell.groupView.itemList.last as? NNIconButton {
-                btn.iconImageView.image = UIImage(named: "icon_discout_orange")
-            }
-            
+            cell.groupView.enableIdxList = [1,2,3,4,5]
+            cell.groupView.selectedIdxList = cell.groupView.enableIdxList
+
             cell.groupView.block { (groupView, btn) in
                 DDLog(groupView.selectedIdxList)
                 self.weekIdxList = groupView.selectedIdxList
@@ -748,10 +745,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.groupView.selectedIdxList = timeIdxList
 
             DDLog(cell.groupView.selectedList.map({ $0.currentTitle ?? "-" }))
-
-            if let btn = cell.groupView.itemList.last as? NNIconButton {
-                btn.iconImageView.image = UIImage(named: "icon_discout_orange")
-            }
             cell.groupView.block { (groupView, btn) in
                 DDLog(groupView.selectedIdxList)
                 self.timeIdxList = groupView.selectedIdxList

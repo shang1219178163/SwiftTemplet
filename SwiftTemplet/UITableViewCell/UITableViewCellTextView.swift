@@ -10,7 +10,7 @@ import UIKit
 
 import SwiftExpand
 
-class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
+class UITableViewCellTextView: UITableViewCell {
 
     var wordCount: Int = 140{
         willSet {
@@ -118,6 +118,24 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
         
     }
 
+    //MARK: -observe
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            //标题星号处理
+            if hasAsterisk == true {
+                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+            }
+        }
+    }
+    
+    //MARK: -funtions
+    func block(_ action: @escaping ((UITableViewCellTextView, String) -> Void)) {
+        self.viewBlock = action;
+    }
+}
+
+extension UITableViewCellTextView: UITextViewDelegate {
+
     //MARK: -UITextView
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         return true
@@ -125,7 +143,6 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         labelLeftSub.text = "\(textView.text.count)" + "/" + "\(wordCount)字"
-        
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -148,36 +165,6 @@ class UITableViewCellTextView: UITableViewCell,UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         self.viewBlock?(self,  textView.text)
     }
-    
-    //MARK: -observe
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "text" {
-            //标题星号处理
-            if hasAsterisk == true {
-                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
-            }
-        }
-    }
-    
-    //MARK: -funtions
-    func block(_ action: @escaping ((UITableViewCellTextView, String) -> Void)) {
-        self.viewBlock = action;
-    }
-    
-//    lazy var placeHolderTextView: UITextView = {
-//        var view = UITextView(frame: .zero);
-//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//
-//        view.textAlignment = .left;
-//        view.autocapitalizationType = .none;
-//        view.autocorrectionType = .no;
-////        view.backgroundColor = .clear;
-//        view.backgroundColor = .red;
-//        view.textColor = .gray
-//
-//        return view
-//    }()
-    
 }
 
 //extension UITableViewCellTextView{

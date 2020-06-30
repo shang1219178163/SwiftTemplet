@@ -75,19 +75,41 @@ import UIKit
         }
     }
     
+    ///可选择部分
+    var enableIdxList: [Int] = []{
+        willSet{
+            guard let count = items?.count, count > 0 else { return }
+            _ = updateButtonItems(count, type: NNIconButton.self) {
+                $0.isEnabled = newValue.contains($0.tag)
+//                DDLog($0.currentTitle!, $0.isEnabled)
+                $0.alpha = $0.isEnabled ? 1 : 0.5
+            }
+        }
+    }
+    
     var showStyle: ShowStyle = .topLeftToRight
 
     var items: [String]?{
         willSet{
             guard let newValue = newValue, items != newValue else { return }
-            createItems(newValue)
+            itemList = updateButtonItems(newValue.count, type: NNIconButton.self, hanler: { (view) in
+                view.titleLabel?.font = UIFont.systemFont(ofSize: self.fontSize)
+                view.setTitleColor(self.titleColor, for: .normal)
+                view.setTitleColor(self.selectedTitleColor, for: .selected)
+                view.setTitleColor(self.selectedTitleColor, for: .disabled)
+
+                view.setBackgroundImage(self.backgroudImage, for: .normal)
+                view.setBackgroundImage(self.selectedBackgroudImage, for: .selected)
+                view.setBackgroundImage(self.selectedBackgroudImage, for: .disabled)
+
+                let title = newValue[view.tag]
+                view.setTitle(title, for: .normal)
+                view.addTarget(self, action: #selector(self.handleAction(_:)), for: .touchUpInside)
+            })
         }
     }
     
-    var itemList: [UIButton] {
-        guard let list = self.subviews.filter({$0.isKind(of: UIButton.self) }) as? [UIButton] else { return []}
-        return list
-    }
+    private var itemList: [UIButton] = []
     
     var viewBlock: ((NNButtonGroupView, UIButton) -> Void)?
     
@@ -195,79 +217,8 @@ import UIKit
     }
     
     // MARK: -funtions
-    func itemViewHeight(_ itemHeight: CGFloat = 40) -> CGFloat {
-        let rowCount = itemList.count % numberOfRow == 0 ? itemList.count/numberOfRow : itemList.count/numberOfRow + 1;
-        return rowCount.toCGFloat * itemHeight + (rowCount - 1).toCGFloat * padding;
-    }
-    
+
     func block(_ action: @escaping ((NNButtonGroupView, UIButton) -> Void)) {
         viewBlock = action;
     }
-    
-    func createItems(_ titles: [String]) {
-        subviews.forEach { (subview) in
-            subview.removeFromSuperview()
-        }
-
-        for e in titles.enumerated() {
-            let view = NNIconButton.createBtn(rect: .zero, title: e.element, tag: e.offset);
-            view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
-            view.setTitleColor(titleColor, for: .normal)
-            view.setTitleColor(selectedTitleColor, for: .selected)
-            view.setBackgroundImage(backgroudImage, for: .normal)
-            view.setBackgroundImage(selectedBackgroudImage, for: .selected)
-
-            view.iconSize = iconSize
-            view.iconLocation = iconLocation
-            view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
-            addSubview(view)
-        }
-    }
-
 }
-
-extension UIButton {
-        
-   static func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> Self {
-        let view = Self.init(type:.custom);
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.imageView?.contentMode = .scaleAspectFit
-        view.frame = rect;
-        view.setTitle(title, for: .normal);
-        view.setTitleColor(.black, for: .normal);
-
-        view.isExclusiveTouch = true;
-        view.adjustsImageWhenHighlighted = false;
-        view.tag = tag;
-        return view as Self;
-    }
-}
-
-//extension NNButtonGroupView{
-//    
-//    ///创建各种子类按钮
-//    final func updateItems<T: UIButton>(_ titles: [String], type: T.Type) {
-//        if let list = subviews.filter({ $0.isKind(of: type) }) as? [T],
-//            let items = list.map({ $0.currentTitle ?? "" }) as [String]?{
-//            if titles == items {
-//                return
-//            }
-//        }
-//
-//        subviews.forEach { (subview) in
-//            subview.removeFromSuperview()
-//        }
-//        
-//        for e in titles.enumerated() {
-//            let view: T = T.createBtn(rect: .zero, title: e.element, tag: e.offset);
-//            view.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
-//            view.setTitleColor(titleColor, for: .normal)
-//            view.setTitleColor(selectedTitleColor, for: .selected)
-//            view.setBackgroundImage(backgroudImage, for: .normal)
-//            view.setBackgroundImage(selectedBackgroudImage, for: .selected)
-//            
-//            view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
-//            addSubview(view)
-//        }
-//    }
-//}
