@@ -16,12 +16,14 @@ import SwiftExpand
     var row: Int = 3
 
     var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-
+    
     var itemType: UILabel.Type = UILabel.self
 
     // MARK: -lazy
     lazy var items: [UILabel] = {
-        return self.contentView.updateLabelItems(self.row*self.numOfRow, type: self.itemType)
+        return self.contentView.updateLabelItems(self.row*self.numOfRow, type: self.itemType) { (sender) in
+            
+        }
     }()
 
     
