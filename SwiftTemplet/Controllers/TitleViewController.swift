@@ -142,13 +142,21 @@ class TitleViewController: NNTitleViewSelectController{
         }
         
         topView.sender = radioButton
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        DDLog("viewWillAppear")
+        
+        let model = Person()
+        
+        var dic = [String: Any]()
+        model.enumeratePropertys { (property_t, name, value) in
+            dic[name] = value ?? "=="
+        }
+        DDLog(dic)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
@@ -196,7 +204,7 @@ class TitleViewController: NNTitleViewSelectController{
         let view = NNSegmentedControl(frame: .zero)
         view.showStyle = .bottomLine
         view.selectedColor = .systemBlue
-        view.itemList = ["是", "否", "其他"]
+        view.items = ["是", "否", "其他"]
         view.addActionHandler({ (control) in
             guard let sender = control as? UISegmentedControl else { return }
             DDLog(sender)

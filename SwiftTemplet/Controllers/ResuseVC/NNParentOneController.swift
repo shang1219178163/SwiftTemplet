@@ -28,7 +28,7 @@ class NNParentOneController: UUSementedController {
 
         // Do any additional setup after loading the view.
         animateType = .fade
-        segmentCtl.itemList = ["过去1", "现在1", "将来1"]
+        segmentCtl.items = ["过去1", "现在1", "将来1"]
         viewControllers = UICtlrListFromList(list, isNavController: false)
         
         delegate = self

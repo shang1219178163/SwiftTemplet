@@ -56,6 +56,8 @@ import WebKit
         self.addSubview(reloadBtn)
         self.addSubview(webView)
         self.addSubview(progress)
+        
+        progress.progressTintColor = loadingProgressColor
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,7 +68,7 @@ import WebKit
         super.layoutSubviews()
         
         progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
-        webView.frame = CGRect(x: 0, y: 8, width: frame.size.width, height: frame.size.height - 10)
+        webView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         reloadBtn.center = webView.center;
     }
     
@@ -74,9 +76,10 @@ import WebKit
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            if let newValue = change![NSKeyValueChangeKey.newKey] as? NSNumber {
-                progress.progress = newValue.floatValue
-                progress.isHidden = (progress.progress >= 1.0)
+            progress.setProgress(Float(webView.estimatedProgress), animated: true)
+            if webView.estimatedProgress >= 1 {
+                progress.isHidden = true
+                refreshControl.endRefreshing()
             }
             
         } else if keyPath == "hidden" {
@@ -145,6 +148,7 @@ import WebKit
     lazy var reloadBtn: UIButton = {
         let view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         view.setTitle("重新加载", for: .normal)
         view.setTitleColor(UIColor.red, for: .normal)
         view.addTarget(self, action: #selector(loadRequest), for: .touchUpInside)
@@ -165,16 +169,15 @@ extension NNWebView: WKUIDelegate{
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         webView.evaluateJavaScript("document.title") { (obj, error) in
 //            print(obj)
-
         }
-//        let script = WKWebView.javaScriptFromTextSizeRatio(300)
-//        webView.evaluateJavaScript(script) { (obj, error) in
-////            print(obj, error);
-//        }
         refreshControl.endRefreshing()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if delegate == nil {
+            decisionHandler(.allow)
+            return
+        }
         delegate?.webView?(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
     }
 }
@@ -182,7 +185,7 @@ extension NNWebView: WKUIDelegate{
 extension NNWebView: WKNavigationDelegate{
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         if showReloadBtn {
-            webView.isHidden = true
+//            webView.isHidden = true
         }
 //        UIAlertController.showAlert("提示", msg: error.localizedDescription, actionTitles: nil, handler: nil);
 //        IOPProgressHUD.showError(withStatus: error.localizedDescription)
@@ -190,7 +193,7 @@ extension NNWebView: WKNavigationDelegate{
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         if showReloadBtn {
-            webView.isHidden = true
+//            webView.isHidden = true
         }
 //        UIAlertController.showAlert("提示", msg: error.localizedDescription, actionTitles: nil, handler: nil);
 //        IOPProgressHUD.showError(withStatus: error.localizedDescription)

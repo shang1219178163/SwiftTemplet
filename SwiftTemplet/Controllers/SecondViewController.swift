@@ -37,7 +37,7 @@ class SecondViewController: UIViewController{
         view.showStyle = .bottomLine
         view.normalColor = .gray
         view.selectedColor = .white
-        view.itemList = ["过去", "现在", "将来"]
+        view.items = ["过去", "现在", "将来"]
         view.addActionHandler({ (control) in
             guard let sender = control as? UISegmentedControl else { return }
             DDLog(sender)
