@@ -32,7 +32,7 @@ import SwiftExpand
         view.showStyle = .bottomLine
         view.normalColor = .gray
         view.selectedColor = .systemBlue
-        view.itemList = ["过去", "现在", "将来"]
+        view.items = ["过去", "现在", "将来"]
         view.addTarget(self, action: #selector(handleValueChange(_:)), for: .valueChanged)
         return view;
     }()
@@ -44,7 +44,7 @@ import SwiftExpand
                 removeControllerVC(e.element)
             }
 
-            segmentCtl.itemList = controllers.map({ $0.title ?? "-" })
+            segmentCtl.items = controllers.map({ $0.title ?? "-" })
             for e in controllers.enumerated() {
 
                 addControllerVC(e.element)

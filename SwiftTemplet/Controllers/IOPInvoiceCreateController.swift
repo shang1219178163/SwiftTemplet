@@ -217,7 +217,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
             cell.hasAsterisk = value0.contains("*")
 
             cell.labelLeft.text = value0
-            cell.segmentCtl.itemList = (itemList.last! as NSString).components(separatedBy: ",")
+            cell.segmentCtl.items = (itemList.last! as NSString).components(separatedBy: ",")
             let index = dataModel.valueText(forKeyPath: value4, defalut: "0") == "0" ? 0 : 1
             cell.segmentCtl.selectedSegmentIndex = index
 //            cell.segmentCtl.addTarget(self, action: #selector(handleActionSender(_:)), for: .valueChanged)

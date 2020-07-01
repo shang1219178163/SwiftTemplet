@@ -34,7 +34,7 @@ class TestViewController: UIViewController{
         parkGroupView.frame = CGRect(x: 20, y: itemView.maxY + 20, width: kScreenWidth - 40.0, height: 35)
 //        parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
         let items = ["异常出车", "无入场记录", "长时为出"]
-        parkGroupView.createItems(items)
+        parkGroupView.items = items
         
         parkGroupView.selectedIdxList = [0]
         view.addSubview(parkGroupView)

@@ -62,7 +62,7 @@ class FourthViewController: UIViewController {
         view.showStyle = .bottomLine
         view.normalColor = .gray
         view.selectedColor = .white
-        view.itemList = ["昨天", "今天", "明天"]
+        view.items = ["昨天", "今天", "明天"]
         view.addActionHandler({ (control) in
             guard let sender = control as? UISegmentedControl else { return }
             DDLog(sender)
