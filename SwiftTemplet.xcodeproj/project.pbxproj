@@ -253,6 +253,7 @@
 		14A86A952357268300AD9BC1 /* UISearchStylesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A942357268300AD9BC1 /* UISearchStylesController.swift */; };
 		14AB52C32468E0DF00D075D3 /* IOPPlateEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AB52C22468E0DF00D075D3 /* IOPPlateEntryController.swift */; };
 		14ADE22123CD543100037B0B /* IOPUserCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14ADE22023CD543100037B0B /* IOPUserCenterController.swift */; };
+		14B6F921249F3394000CCD55 /* BathRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6F920249F3394000CCD55 /* BathRequestController.swift */; };
 		14B940B1237E2FBC00A49D1F /* NNGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B0237E2FBC00A49D1F /* NNGroupView.swift */; };
 		14B940B3237E3B6300A49D1F /* IOPParkGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */; };
 		14B940B6237E3E0F00A49D1F /* icon_choose_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */; };
@@ -264,6 +265,9 @@
 		14BD734522D43B1C008788B1 /* PlateNumOriginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */; };
 		14BE1769237FB9450007B148 /* NNTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1768237FB9450007B148 /* NNTabView.swift */; };
 		14BE176B237FC5070007B148 /* NNTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE176A237FC5070007B148 /* NNTabViewController.swift */; };
+		14BEDC6124A85E330031852F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BEDC6024A85E330031852F /* Person.swift */; };
+		14BEDC6324A8954F0031852F /* NSDecimalNumber+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BEDC6224A8954F0031852F /* NSDecimalNumber+Helper.swift */; };
+		14BEDC6F24A976BF0031852F /* KVOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BEDC6E24A976BF0031852F /* KVOViewController.swift */; };
 		14BEED06240FBEF800289BA6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BEED05240FBEF800289BA6 /* CloudKit.framework */; };
 		14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */; };
 		14C1196222D99BA9009D18A3 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1196122D99BA8009D18A3 /* SheetViewController.swift */; };
@@ -585,6 +589,7 @@
 		14A86A942357268300AD9BC1 /* UISearchStylesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchStylesController.swift; sourceTree = "<group>"; };
 		14AB52C22468E0DF00D075D3 /* IOPPlateEntryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPPlateEntryController.swift; sourceTree = "<group>"; };
 		14ADE22023CD543100037B0B /* IOPUserCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPUserCenterController.swift; sourceTree = "<group>"; };
+		14B6F920249F3394000CCD55 /* BathRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BathRequestController.swift; sourceTree = "<group>"; };
 		14B940B0237E2FBC00A49D1F /* NNGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNGroupView.swift; sourceTree = "<group>"; };
 		14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPParkGroupView.swift; sourceTree = "<group>"; };
 		14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_choose_blue@3x.png"; sourceTree = "<group>"; };
@@ -596,6 +601,9 @@
 		14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateNumOriginController.swift; sourceTree = "<group>"; };
 		14BE1768237FB9450007B148 /* NNTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabView.swift; sourceTree = "<group>"; };
 		14BE176A237FC5070007B148 /* NNTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabViewController.swift; sourceTree = "<group>"; };
+		14BEDC6024A85E330031852F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		14BEDC6224A8954F0031852F /* NSDecimalNumber+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Helper.swift"; sourceTree = "<group>"; };
+		14BEDC6E24A976BF0031852F /* KVOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOViewController.swift; sourceTree = "<group>"; };
 		14BEED04240FBEF400289BA6 /* SwiftTemplet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftTemplet.entitlements; sourceTree = "<group>"; };
 		14BEED05240FBEF800289BA6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSegmentedControl.swift; sourceTree = "<group>"; };
@@ -998,6 +1006,7 @@
 				14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */,
 				141329792386183C00E7AFCA /* UIApplication+Permission.swift */,
 				146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */,
+				14BEDC6224A8954F0031852F /* NSDecimalNumber+Helper.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -1035,6 +1044,7 @@
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				14129CA321EC72C5009BFA74 /* TitleViewController.swift */,
+				14BEDC6E24A976BF0031852F /* KVOViewController.swift */,
 				1479D5C9244407A5007F7CC4 /* TableViewPrefetchRowController.swift */,
 				146D28E12451A2B5004655B1 /* SystemColorShowController.swift */,
 				1404FAF621E084FD00122E22 /* UIRecognizerController.swift */,
@@ -1107,6 +1117,7 @@
 				1451EBF72499B5A600059BDC /* SubscribeListController.swift */,
 				1451EBF92499B65F00059BDC /* NNCollectionViewCellList.swift */,
 				1451EBFB2499B7BE00059BDC /* NNCollectionSectionBackgroundView.swift */,
+				14B6F920249F3394000CCD55 /* BathRequestController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1114,6 +1125,7 @@
 		51824425213E74C300071A9D /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				14BEDC6024A85E330031852F /* Person.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -1516,6 +1528,7 @@
 				142A76FC22275EE10016D3DA /* NNCalendarView.swift in Sources */,
 				1472C23724596E36000F8441 /* NNParentController.swift in Sources */,
 				1451EBEA2498BF2400059BDC /* NNTableShowCell.swift in Sources */,
+				14B6F921249F3394000CCD55 /* BathRequestController.swift in Sources */,
 				146D28DA245118BA004655B1 /* SimpleListController.swift in Sources */,
 				14488726224E1D2300B550AF /* ZMKeyBoadModel.swift in Sources */,
 				14F3966D227ED405000CD7B4 /* NNBaseRequestApi.swift in Sources */,
@@ -1568,11 +1581,13 @@
 				1458F829249CE249007555EF /* UITableViewCellSudokuLabel.swift in Sources */,
 				14D91B19234DB96600554994 /* NNPopView.swift in Sources */,
 				148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */,
+				14BEDC6324A8954F0031852F /* NSDecimalNumber+Helper.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */,
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
 				149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */,
 				149946852383F743005E43CC /* NNPictureView.swift in Sources */,
+				14BEDC6124A85E330031852F /* Person.swift in Sources */,
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
 				14F3967722804160000CD7B4 /* ESCheckVersResult.swift in Sources */,
 				141495BE242B4F6E00141A9F /* NNChooseCityController.swift in Sources */,
@@ -1681,6 +1696,7 @@
 				1479D62E24484BDD007F7CC4 /* NNAlertViewController.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				14B940B1237E2FBC00A49D1F /* NNGroupView.swift in Sources */,
+				14BEDC6F24A976BF0031852F /* KVOViewController.swift in Sources */,
 				1454AAB0240A996900170BBD /* NNPictureViewController.swift in Sources */,
 				1451EBEF2498BF2400059BDC /* NNCardInfoCell.swift in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,

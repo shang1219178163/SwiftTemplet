@@ -168,6 +168,9 @@ class ThirdViewController: UIViewController{
 //        DDLog(obj)
 //        NSObject.printChengfaBiao()
 //        tableView.nextResponder(UIWindow.self, isPrint: true)
+        
+//        let image = UIImage(color: .white)
+//        DDLog(image.cgImage)
     }
     
     override func viewDidAppear(_ animated: Bool) {

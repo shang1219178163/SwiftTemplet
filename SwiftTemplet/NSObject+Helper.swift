@@ -28,29 +28,7 @@ import SwiftExpand
 @objc public extension UIApplication{
 
     
-    static func appDidEnterBackground(application : UIApplication) {
-        var backgroundTask: UIBackgroundTaskIdentifier! = nil
 
-        //注册一个后台任务，并提供一个在时间耗尽时执行的代码块
-        backgroundTask = application.beginBackgroundTask() {
-            //当时间耗尽时调用这个代码块
-            //如果在这个代码块返回之前没有调用endBackgroundTask
-            //应用程序将被终止
-            application.endBackgroundTask(backgroundTask)
-            backgroundTask = UIBackgroundTaskIdentifier.invalid
-        }
-
-        let backgroundQueue = OperationQueue()
-        backgroundQueue.addOperation() {
-
-            //完成一些工作。我们有几分钟的时间来完成它
-            //在结束时，必须调用endBackgroundTask
-            NSLog("Doing some background work!")
-
-            application.endBackgroundTask(backgroundTask)
-            backgroundTask = UIBackgroundTaskIdentifier.invalid
-        }
-    }
 }
 
 @objc extension UIView{

@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
 //        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(handActionBtn));
         
-        createBtnBarItem("next", image: nil, isLeft: false, isHidden: false) { (item) in
+        createBtnBarItem("next", imageName: nil, isLeft: false, isHidden: false) { (item) in
             let controller = UICtrFromString("DetailViewController");
             self.navigationController?.pushViewController(controller, animated: true);
         }

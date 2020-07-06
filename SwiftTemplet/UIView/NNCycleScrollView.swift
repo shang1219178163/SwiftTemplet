@@ -20,7 +20,7 @@ import SDWebImage
 
 @objc public protocol NNCycleScrollViewDelegate : class {
     @objc func didSelectedIndex(_ index: Int)
-    @objc optional func cellForItem(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell
+    @objc optional func cellForItem(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath, obj: String) -> UICollectionViewCell
 }
 
 ///轮播图
@@ -183,13 +183,13 @@ extension NNCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = delegate?.cellForItem?(collectionView, cellForItemAtIndexPath: indexPath) {
+        let currentIndex: Int = dataSourceIndex(forCurrentIndex: indexPath.item)
+        let obj: String = list[currentIndex]
+        if let cell = delegate?.cellForItem?(collectionView, cellForItemAtIndexPath: indexPath, obj: obj) {
             return cell
         }
         
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
-        let currentIndex: Int = dataSourceIndex(forCurrentIndex: indexPath.item)
-        let obj: String = list[currentIndex]
         
         if let imageURL = URL(string: obj), obj.hasPrefix("http") {
             cell.label.isHidden = true

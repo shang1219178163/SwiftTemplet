@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIViewController.initializeMethod();
         UINavigationController.initializeMethod();
         UIImageView.initializeMethod();
-//        UIColor.theme = UIColor.orange
+//        UIColor.theme = UIColor.systemBlue
         UIColor.theme = UIColor.hexValue(0x29B5FE)
         UIApplication.setupAppearanceDefault(false);
 
@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let g = fmt.string(from: NSNumber(floatLiteral: Double(num)))
         let h = NumberFormatter.fractionDigits(obj: num, min: 1, max: 4, identify: kNumIdentifySpellOut)
         
-        let m = NumberFormatter.positive(54312346.4567, format: "¥####.##元", defalut: "-")
+        let m = NumberFormatter.positiveFormat(54312346.4567, format: "¥####.##元", defalut: "-")
         let n = NumberFormatter.positive(54312346.4567, prefix: "人", suffix: "民", defalut: "-")
 
         let formatter = NumberFormatter()
@@ -103,8 +103,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        formatter.positivePrefix = "人"
 //        formatter.positiveSuffix = "民"
 //        let n = formatter.string(for: 1.4988) ?? "0"
+//        DDLog(a, b, c, d, e, f, g , h, m, n, o)
+
+        let xx = ["1", "2", "3", "4", "5", "6"]
+        let num1 = xx.map { ($0 != "3" ? $0 : nil) }
+        DDLog(num1)
         
-        DDLog(a, b, c, d, e, f, g , h, m, n, o)
+        let number = [[1, 2, 3, nil], [4, 5, 6]]
+        let flat = number.flatMap { $0 }
+        let compact = flat.compactMap { $0 }
+        DDLog(flat, compact)
+        
+        let items = [1, 2, 3, 4, 5, ]
+        let flat2 = items.compactMap { $0 }
+        DDLog(flat2)
+                
+        let dic = ["1" : 11,
+        "2" : 22,
+        "3" : 33,
+        ]
+        
+        let compact2 = dic.compactMapValues { $0 + 100 }
+        let compact3 = dic.compactMapValues { $0 > 20 }
+        DDLog(compact2, compact3)
+        
+         let array = [1, 3, 5, 7, 9];
+        DDLog(array.reduce(0, +))
+        DDLog(array.reduce(0){ $0 * 10 + $1 })
+
+
+//        let dic = ["1" : 3, "2" : 4, "3" : nil, ]
+//        let dicNew = dic.compactMapValues { $0 }
+//        DDLog(dicNew)
+        
+//        let one = "abcdefghmno".prefix(3)
+//        let one1 = "abcdefghmno".suffix(3)
+//        DDLog(one, one1)
+                
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
 //        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
 //        DDLog(UIApplication.shared.keyWindow);
