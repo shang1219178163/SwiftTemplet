@@ -113,25 +113,3 @@ import SwiftExpand
         }
     }
 }
-
-
-
-//extension NNButton{
-//        
-//    func setBorderColor(_ color: UIColor?, for state: UIControl.State){
-//        guard let color = color else { return }
-//    }
-//    
-//    func setBorderLineColor(_ color: UIColor?, for state: UIControl.State){
-//        guard let color = color else { return }
-//
-//    }
-//    
-//    func setBorderWidth(_ width: CGFloat, for state: UIControl.State){
-//        if width <= 0.0 {
-//            return
-//        }
-//
-//        
-//    }
-//}

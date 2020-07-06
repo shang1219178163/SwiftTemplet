@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SwiftExpand
 
 @objc protocol NNWebViewDelegate: NSObjectProtocol {
     @objc optional func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void);
@@ -180,6 +181,47 @@ extension NNWebView: WKUIDelegate{
         }
         delegate?.webView?(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
     }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        DDLog(message)
+        UIAlertController.showAlert("温馨提示", msg: message, actionTitles: [kTitleSure]) { (alertVC, action) in
+            completionHandler();
+        }
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        DDLog(message)
+        UIAlertController.showAlert("温馨提示", msg: message, actionTitles: [kTitleSure]) { (alertVC, action) in
+            if action.title == kTitleCancell{
+                completionHandler(false)
+                return
+            }
+            completionHandler(true)
+        }
+    }
+    
+//    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+//        let alertVC = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
+//        alertVC.addTextField { (textField) in
+//            textField.text = defaultText
+//        }
+//
+//        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+//            if let text = alertVC.textFields?.first?.text {
+//                completionHandler(text)
+//            } else {
+//                completionHandler(defaultText)
+//            }
+//        }))
+//
+//        alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+//            completionHandler(nil)
+//        }))
+//
+//        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
+//            rootVC.present(alertVC, animated: true, completion: nil)
+//        }
+//    }
 }
 
 extension NNWebView: WKNavigationDelegate{
