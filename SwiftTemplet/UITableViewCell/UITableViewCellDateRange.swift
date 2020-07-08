@@ -40,7 +40,7 @@ class UITableViewCellDateRange: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-//        if bounds.height <= 0.0 {
+//        if bounds.height <= 10.0 {
 //            return
 //        }
 //        dateRangeView.frame = contentView.bounds
@@ -58,6 +58,9 @@ class UITableViewCellDateRange: UITableViewCell {
             if hasAsterisk == true {
                 dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.toAsterisk(dateRangeView.labTitle.textColor, font: dateRangeView.labTitle.font.pointSize)
             }
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

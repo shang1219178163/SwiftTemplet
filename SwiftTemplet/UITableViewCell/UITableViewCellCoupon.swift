@@ -99,6 +99,9 @@ class UITableViewCellCoupon: UITableViewCell {
             addLineDashLayer(color: value, width: 2, cornerRadius: 0, view: labelLeft, size: CGSize(width: 80, height: 80))
 
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -118,7 +121,7 @@ class UITableViewCellCoupon: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return;
         }
         

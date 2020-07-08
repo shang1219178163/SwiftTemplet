@@ -48,7 +48,7 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         let h_labSub: CGFloat = 60.0

@@ -57,7 +57,7 @@ class UITableViewCellPickerView: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         labelLeft.sizeToFit()
@@ -89,6 +89,9 @@ class UITableViewCellPickerView: UITableViewCell {
             if hasAsterisk == true {
                 labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
             }
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

@@ -110,6 +110,9 @@ class NNSliderControlView: UIView {
 //            imgView.layer.cornerRadius = frame.height*0.5;
 //            imgView.layer.masksToBounds = true;
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     @objc func handleActionPan(_ recognizer: UIPanGestureRecognizer) {

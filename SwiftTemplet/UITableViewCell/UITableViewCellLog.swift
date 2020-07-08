@@ -134,7 +134,7 @@ class UITableViewCellLog: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return;
         }
         

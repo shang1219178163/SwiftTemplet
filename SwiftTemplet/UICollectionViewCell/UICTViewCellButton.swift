@@ -53,6 +53,9 @@ class UICTViewCellButton: UICollectionViewCell {
                 btn.imageEdgeInsets = UIEdgeInsetsMake(0, titleLabel.bounds.width+3.0, 0, -titleLabel.bounds.width-3.0)
             }
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     

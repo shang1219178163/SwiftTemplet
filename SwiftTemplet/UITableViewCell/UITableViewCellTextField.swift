@@ -55,6 +55,9 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
                 labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
             }
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
  
     required init?(coder aDecoder: NSCoder) {
@@ -70,7 +73,7 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
 

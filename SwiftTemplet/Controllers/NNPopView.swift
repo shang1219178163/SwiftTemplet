@@ -65,6 +65,9 @@ class NNPopView: UIView {
             sender!.titleEdgeInsets = UIEdgeInsetsMake(0, -sender!.imageView!.bounds.width, 0, sender!.imageView!.bounds.width)
             sender!.imageEdgeInsets = UIEdgeInsetsMake(0, sender!.titleLabel!.bounds.width+5.0, 0, -sender!.titleLabel!.bounds.width-5.0)
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     // MARK: -funtions

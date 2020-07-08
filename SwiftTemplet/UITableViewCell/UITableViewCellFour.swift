@@ -48,7 +48,7 @@ class UITableViewCellFour: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         if type == 0 {
@@ -91,6 +91,9 @@ class UITableViewCellFour: UITableViewCell {
 //        DDLog(keyPath,change);
         if keyPath == "selected" {
             
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

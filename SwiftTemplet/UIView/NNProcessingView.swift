@@ -75,7 +75,7 @@ class NNProcessingView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         let numberOfRow: Int = itemList.count

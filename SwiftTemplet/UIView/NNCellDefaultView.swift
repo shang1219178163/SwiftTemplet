@@ -53,7 +53,7 @@ class NNCellDefaultView: UIView {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         let height: CGFloat = bounds.height - kPadding*2
@@ -136,7 +136,7 @@ class NNCellDefaultView: UIView {
     }
     
 //    func setupConstraint() {
-//        if bounds.height <= 0.0 {
+//        if bounds.height <= 10.0 {
 //            return
 //        }
 //        let height: CGFloat = bounds.height - kY_GAP*2

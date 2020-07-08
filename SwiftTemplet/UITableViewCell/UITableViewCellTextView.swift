@@ -64,7 +64,7 @@ class UITableViewCellTextView: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         let size = labelLeft.sizeThatFits(.zero)
@@ -125,6 +125,9 @@ class UITableViewCellTextView: UITableViewCell {
             if hasAsterisk == true {
                 labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
             }
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

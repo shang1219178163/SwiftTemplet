@@ -34,7 +34,7 @@ class UITableViewCellButton: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         
@@ -58,6 +58,9 @@ class UITableViewCellButton: UITableViewCell {
             if btn.imageView?.image != nil {
                 btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleLabel.bounds.width+3.0, bottom: 0, right: -titleLabel.bounds.width-3.0)
             }
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
 
