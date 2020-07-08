@@ -31,11 +31,18 @@ import SwiftExpand
 
     var rangeDay: Int = 30
 
-    lazy var endDate: Date = Date()
-    lazy var beginDate: Date = {
-        let date: Date = self.endDate.adding(-self.rangeDay)
-        return date
-    }()
+    var endDate: Date = Date(){
+        willSet{
+            endTime = DateFormatter.stringFromDate(newValue)
+            labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: newValue)
+        }
+    }
+    var beginDate: Date = Date(){
+        willSet{
+            beginTime = DateFormatter.stringFromDate(newValue)
+            labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: newValue)
+        }
+    }
     
     ///时间区间是否在未来
     var isFuture: Bool = false{
@@ -43,11 +50,13 @@ import SwiftExpand
             let now: Date = Date()
             beginDate = newValue == false ? now.adding(-self.rangeDay) : now
             endDate = newValue == false ? now : now.adding(self.rangeDay)
+            
+//            datePicker.datePicker.minimumDate = newValue == false ? Date.distantPast : now
         }
     }
 
-    lazy var endTime: String = DateFormatter.stringFromDate(endDate)
-    lazy var beginTime: String = DateFormatter.stringFromDate(beginDate)
+    private(set) lazy var endTime: String = DateFormatter.stringFromDate(endDate)
+    private(set) lazy var beginTime: String = DateFormatter.stringFromDate(beginDate)
     
     private var viewBlock: ((NNDateRangeView) -> Void)? = nil
 
@@ -113,7 +122,7 @@ import SwiftExpand
     }
         
     func setupConstraint() {
-        if bounds.height <= 0 {
+        if bounds.height <= 10 {
             return
         }
         setupDefault()
