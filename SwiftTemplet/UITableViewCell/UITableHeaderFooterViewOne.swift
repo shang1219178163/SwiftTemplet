@@ -67,7 +67,7 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         //箭头不隐藏

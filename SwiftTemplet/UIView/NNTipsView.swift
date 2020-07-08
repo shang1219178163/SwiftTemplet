@@ -54,6 +54,9 @@ class NNTipsView: UIView {
                 frame.size.height = (label.size.height + padding*2);
             }
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     override func layoutSubviews() {

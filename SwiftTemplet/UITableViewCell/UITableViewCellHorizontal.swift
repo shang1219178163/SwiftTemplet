@@ -84,7 +84,7 @@ class UITableViewCellHorizontal: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return;
         }
         let tailSpacing: CGFloat = accessoryType == .none ? Xgap : 0.0

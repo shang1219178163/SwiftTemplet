@@ -144,7 +144,6 @@ class NNSearchView: UIView{
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
-        
     }
  
     //选择完后回调

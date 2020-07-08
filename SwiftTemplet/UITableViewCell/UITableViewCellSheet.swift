@@ -66,7 +66,7 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         labelLeft.sizeToFit()
@@ -97,6 +97,9 @@ class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
             if hasAsterisk == true {
                 labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
             }
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

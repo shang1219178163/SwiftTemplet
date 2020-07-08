@@ -92,6 +92,9 @@ import SwiftExpand
                 }
             }
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     @objc func loadRequest() {

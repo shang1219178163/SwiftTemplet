@@ -77,6 +77,9 @@ class UITableViewCellProgressView: UITableViewCell {
                 labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
             }
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     //MARK: -lazy

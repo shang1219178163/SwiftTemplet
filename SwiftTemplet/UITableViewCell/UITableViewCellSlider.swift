@@ -48,6 +48,9 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
 
             }
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,7 +65,7 @@ class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         labelLeft.sizeToFit()

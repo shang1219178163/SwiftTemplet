@@ -54,6 +54,9 @@ class UICallPhoneView: UIView {
             talkbackBtn.setTitle(title, for: .normal)
 
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

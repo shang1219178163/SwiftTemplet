@@ -63,6 +63,9 @@ class UITableViewCellFee: UITableViewCell {
             labelRight.attributedText = NSAttributedString.attString(labelRight.text!, textTaps: [tapText], tapColor: tapColor, alignment: labelRight.textAlignment)
 
         }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
     
     
@@ -82,7 +85,7 @@ class UITableViewCellFee: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return;
         }
         

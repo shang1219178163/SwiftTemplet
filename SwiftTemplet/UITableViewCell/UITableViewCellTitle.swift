@@ -34,7 +34,7 @@ class UITableViewCellTitle: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return
         }
         

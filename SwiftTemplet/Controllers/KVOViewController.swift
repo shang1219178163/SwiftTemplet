@@ -38,7 +38,9 @@ class KVOViewController: UIViewController {
         if keyPath == "now" {
             //标题星号处理
             DDLog("3")
-            
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

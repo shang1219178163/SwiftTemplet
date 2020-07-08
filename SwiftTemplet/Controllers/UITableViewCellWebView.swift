@@ -63,7 +63,7 @@ class UITableViewCellWebView: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 0.0 {
+        if bounds.height <= 10.0 {
             return;
         }
         progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
@@ -93,6 +93,9 @@ class UITableViewCellWebView: UITableViewCell {
                     sendSubviewToBack(reloadBtn)
                 }
             }
+        }
+        else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     

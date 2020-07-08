@@ -63,7 +63,7 @@ import SwiftExpand
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 0.0  || items == nil || items?.count == 0 {
+        if bounds.height <= 10.0  || items == nil || items?.count == 0 {
             return;
         }
         guard let items = items else { return }
