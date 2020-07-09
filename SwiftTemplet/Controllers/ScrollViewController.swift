@@ -30,18 +30,13 @@ class ScrollViewController: UIViewController {
         super.viewDidLayoutSubviews()
         scrollView.frame = CGRectMake(0, 20, kScreenWidth, 40);
         scrollViewOne.frame = CGRectMake(20, 80, 100, kScreenWidth);
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let obj = self.obj as? String {
-            self.title = obj;
-        }
 //        self.scrollView.list = ["11", "22", "33", "44", "55", "66",];
 //        self.scrollView.showItemNum = 2.5;
-
     }
     
     // MARK: -lazy

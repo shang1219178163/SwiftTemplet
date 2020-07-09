@@ -207,7 +207,7 @@ import UIKit
         viewBlock = action;
     }
     
-    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> UIButton {
+    func createBtn(rect:CGRect, title: String, tag: NSInteger) -> UIButton {
         let view = UIButton(type:.custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.imageView?.contentMode = .scaleAspectFit

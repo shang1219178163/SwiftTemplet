@@ -98,7 +98,7 @@ class NNProcessingView: UIView {
         print("\(#function)\(sender)")
     }
 
-    func createBtn(rect:CGRect, title: String!, tag: NSInteger) -> UIButton {
+    func createBtn(rect:CGRect, title: String, tag: NSInteger) -> UIButton {
         let view = NNButton(type:.custom);
         view.direction = .top
         view.iconLocation = .leftTop

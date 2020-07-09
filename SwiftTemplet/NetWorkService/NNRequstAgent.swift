@@ -62,7 +62,7 @@ class NNRequstAgent: NSObject {
                 }
                 
                 if let obj = parameters as? Dictionary<String, Any> {
-                    let string: String = (obj as NSDictionary).jsonString!
+                    let string: String = (obj as NSDictionary).jsonString
                     let data: Data = string.data(using: .utf8)!
                     MultipartFormData.append(data, withName: "data")
 

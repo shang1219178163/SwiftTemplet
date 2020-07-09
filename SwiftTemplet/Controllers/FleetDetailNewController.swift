@@ -33,10 +33,7 @@ class FleetDetailNewController: UIViewController{
         
         DDLog(version, ver.intValue)
         
-        
-//        version.replacingOccurrences(of: <#T##StringProtocol#>, with: <#T##StringProtocol#>)
-        
-        NSObject.hookInstanceMethod(of: #selector(handleActionOne), with: #selector(handleActionTwo))
+        FleetDetailNewController.hookInstanceMethod(of: #selector(handleActionOne), with: #selector(handleActionTwo))
     }
     
     override func viewWillAppear(_ animated: Bool) {
