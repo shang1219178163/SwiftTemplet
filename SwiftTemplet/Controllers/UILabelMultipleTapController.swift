@@ -31,7 +31,7 @@ class UILabelMultipleTapController: UIViewController {
         
         let tapTexts = ["智慧停车场平台协议", "用户隐私协议"]
         label.text = "已阅读并接受《\(tapTexts[0])》和《\(tapTexts[1])》"
-        label.attributedText = NSAttributedString.attString(label.text, textTaps: tapTexts)
+        label.attributedText = NSAttributedString.attString(label.text!, textTaps: tapTexts)
                 
         _ = label.addGestureTap { (reco) in
             guard let sender = reco as? UITapGestureRecognizer, let label = reco.view as? UILabel else { return }
