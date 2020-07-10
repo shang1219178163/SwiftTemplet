@@ -51,12 +51,14 @@ enum NNRequestCode: Int {
 
 /// 网络请求代理
 @objc protocol NNRequestManagerDelegate: NSObjectProtocol {
-    func manager(_ manager: NNRequstManager, dic: Dictionary<String, Any>?, error: Error?) -> Void
-    
+    func manager(_ manager: NNRequstManager, dic: Dictionary<String, Any>)
+    func manager(_ manager: NNRequstManager, error: NSError)
+
 }
 
 /// 网络请求结果闭包
-typealias NNRequestBlock = (NNRequstManager, Dictionary<String, Any>?, Error?) -> Void
+typealias NNRequestSuccessBlock = ((NNRequstManager, Dictionary<String, Any>) -> Void)
+typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
 
 class NNRequstManager: NSObject {
 
@@ -67,63 +69,52 @@ class NNRequstManager: NSObject {
     weak var child: NNRequestManagerProtocol?
     weak var delegate: NNRequestManagerDelegate?
 
-    var successBlock: NNRequestBlock?
-    var failureBlock: NNRequestBlock?
-    var resultBlock: NNRequestBlock?
+    var successBlock: NNRequestSuccessBlock?
+    var failureBlock: NNRequestFailureBlock?
 
     override init() {
         super.init()
     }
     
-    func startRequest(success: @escaping NNRequestBlock, fail: @escaping NNRequestBlock) {
+    func startRequest(success: @escaping NNRequestSuccessBlock, fail: @escaping NNRequestFailureBlock) -> DataRequest? {
         successBlock = success;
         failureBlock = fail;
-        startRequest()
+        return startRequest()
     }
-    
-    func startRequest(closure: @escaping NNRequestBlock) {
-        resultBlock = closure;
-        startRequest()
-    }
-    
-    func startRequest() {
+        
+    func startRequest() -> DataRequest? {
         if child?.validateParams() == false {
-            let error: NSError = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
+            let error = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
             
-            delegate?.manager(self, dic: nil, error: error);
-            failureBlock?(self, nil, error)
-            resultBlock?(self, nil, error)
-            return
+            delegate?.manager(self, error: error);
+            failureBlock?(self, error)
+            return nil
         }
         
-        if (child != nil) && child?.jsonFromCache!() != nil {
-            let cacheDic = child?.jsonFromCache!()
+        if let child = child, let cacheDic = child.jsonFromCache?() as [String: Any]? {
             
-            NNLog.logResponseInfo((child?.requestURI())!, json: cacheDic!)
+            NNLog.logResponseInfo(child.requestURI(), json: cacheDic)
 
-            delegate?.manager(self, dic: cacheDic, error: nil);
-            successBlock?(self, cacheDic, nil)
-            resultBlock?(self, cacheDic, nil)
-            return
+            delegate?.manager(self, dic: cacheDic);
+            successBlock?(self, cacheDic)
+            return nil
         }
-        startRequestFromNetwork();
+        return startRequestFromNetwork();
     }
     
-    func startRequestFromNetwork() {
+    func startRequestFromNetwork() -> DataRequest? {
         isLoading = true
         //请求日志
         NNLog.logRequestInfo((child?.requestURI())!, params: (child?.requestParams())!)
         
-        NNRequstAgent.shared.request((child?.requestURI())!, method: HTTPMethod(rawValue: (child?.requestType())!)!, parameters: child?.requestParams() as Any) { (response) in
+        return NNRequstAgent.shared.request((child?.requestURI())!, method: HTTPMethod(rawValue: (child?.requestType())!)!, parameters: child?.requestParams() as Any) { (response) in
 //            guard let self = self else { fatalError("请检查参数");}
             self.isLoading = false
             
             if response.error != nil {
                 self.didFailure(response, errorType: .ServerError)
-                
             } else {
                 self.didSuccess(response)
-                
             }
         };
     }
@@ -150,16 +141,14 @@ class NNRequstManager: NSObject {
         
         NNLog.logResponseInfo((child?.requestURI())!, json: jsonDic)
         
-        delegate?.manager(self, dic: jsonDic, error: nil);
-        successBlock?(self, jsonDic, nil)
-        resultBlock?(self, jsonDic, nil)
+        delegate?.manager(self, dic: jsonDic)
+        successBlock?(self, jsonDic)
         
         //缓存数据
         _ = child?.saveJsonOfCache!(jsonDic)
     }
     
     func didFailure(_ response: DefaultDataResponse, errorType: NNRequestCode) {
-        
         var tip: String?
         switch errorType {
         case .ParamsError:
@@ -200,9 +189,8 @@ class NNRequstManager: NSObject {
         }
         
         _ = UIAlertController.showAlert("", msg: tip!)
-        delegate?.manager(self, dic: nil, error: response.error)
-        failureBlock?(self, nil, response.error)
-        resultBlock?(self, nil, response.error)
+        delegate?.manager(self, error: response.error as! NSError)
+        failureBlock?(self, response.error as! NSError)
     }
     
 }

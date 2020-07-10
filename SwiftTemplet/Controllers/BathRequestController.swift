@@ -16,30 +16,30 @@ class BathRequestController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        batchRquest([], success: { (api, dic, error) in
+        batchRquest([], success: { (api, dic) in
             DDLog(dic)
             
-        }) { (api, dic, error) in
+        }) { (api, error) in
             NNProgressHUD.showError(error.debugDescription)
         }
         
         batchRquest([]) { (api) in
-            api.startRequest(success: { (api, dic, error) in
-                DDLog(dic)
+            _ = api.startRequest(success: { (api, dic) in
+                    DDLog(dic)
 
-            }) { (api, dic, error) in
-                NNProgressHUD.showError(error.debugDescription)
-            }
+                }) { (api, error) in
+                    NNProgressHUD.showError(error.debugDescription)
+                }
         }
     }
     
 
-    func batchRquest(_ list: [NNBaseRequestApi], success: @escaping NNRequestBlock, fail: @escaping NNRequestBlock) {
+    func batchRquest(_ list: [NNBaseRequestApi], success: @escaping NNRequestSuccessBlock, fail: @escaping NNRequestFailureBlock) {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = list.count
         list.forEach {api in
             queue.addOperation {
-                api.startRequest(success: success, fail: fail)
+                _ = api.startRequest(success: success, fail: fail)
             }
         }
     }

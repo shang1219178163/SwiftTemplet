@@ -28,67 +28,62 @@ class NNRequstAgent: NSObject {
     }()
   
     /// 常规请求
-    func request(_ url: String = NNAPIConfig.serviceURLString, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) {
-        Alamofire
-            .request(URL(string: url)!,
-                          method: method,
-                          parameters: (parameters as! Parameters),
-                          headers: NNRequstAgent.shared.headers)
-            .response(completionHandler: result)
+    func request(_ url: String = NNAPIConfig.serviceURLString, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) -> DataRequest {
+        return Alamofire.request(URL(string: url)!,
+                                      method: method,
+                                      parameters: (parameters as! Parameters),
+                                      headers: NNRequstAgent.shared.headers)
+                                    .response(completionHandler: result)
     
     }
     
     /// 多图上传
     func upload(_ url: String = NNAPIConfig.serviceURLString, parameters: Any, images: [UIImage],
         fileNames: [String]?, result: @escaping (DefaultDataResponse) -> Void) {
-        
-        Alamofire
-            .upload(multipartFormData: { (MultipartFormData) in
+        return Alamofire.upload(multipartFormData: { (MultipartFormData) in
+            for e in images.enumerated() {
+                let model: NNUploadModel = NNUploadModel.upload(images: images, fileNames: fileNames, idx: e.offset)
+                MultipartFormData.append(model.data!, withName: model.name!, mimeType: model.mimeType!);
+            }
+            
+            if let obj = parameters as? Data {
+                MultipartFormData.append(obj, withName: "data")
+            }
+            
+            if let obj = parameters as? String {
+                let data: Data = obj.data(using: .utf8)!
+                MultipartFormData.append(data, withName: "data")
                 
-                for e in images.enumerated() {
-                    let model: NNUploadModel = NNUploadModel.upload(images: images, fileNames: fileNames, idx: e.offset)
-                    MultipartFormData.append(model.data!, withName: model.name!, mimeType: model.mimeType!);
-                }
-                
-                if let obj = parameters as? Data {
-                    MultipartFormData.append(obj, withName: "data")
-                }
-                
-                if let obj = parameters as? String {
-                    let data: Data = obj.data(using: .utf8)!
-                    MultipartFormData.append(data, withName: "data")
-                    
-                    DDLog("formData_\(obj)");
-                }
-                
-                if let obj = parameters as? Dictionary<String, Any> {
-                    let string: String = (obj as NSDictionary).jsonString
-                    let data: Data = string.data(using: .utf8)!
-                    MultipartFormData.append(data, withName: "data")
+                DDLog("formData_\(obj)");
+            }
+            
+            if let obj = parameters as? Dictionary<String, Any> {
+                let string: String = (obj as NSDictionary).jsonString
+                let data: Data = string.data(using: .utf8)!
+                MultipartFormData.append(data, withName: "data")
 
-                    DDLog("formData_\(string)");
-                }                
-                
-            }, to: URL(string: url)!) { (encodingResult) in
-                
-                switch encodingResult {
-                case .success(let request, _, _):
-                    request.uploadProgress(queue: DispatchQueue.main, closure: { (progress) in
-                        print("上传进度_\(progress.fractionCompleted)")
-                    })
-                
-                case .failure(_):
-                    print("上传失败")
-                }
+                DDLog("formData_\(string)");
+            }
+            
+        }, to: URL(string: url)!) { (encodingResult) in
+            
+            switch encodingResult {
+            case .success(let request, _, _):
+                request.uploadProgress(queue: DispatchQueue.main, closure: { (progress) in
+                    print("上传进度_\(progress.fractionCompleted)")
+                })
+            
+            case .failure(_):
+                print("上传失败")
+            }
                 
         }
     }
     
     /// 文件下载
-    func download(_ url: String = NNAPIConfig.serviceURLString, parameters: Parameters) {
-    
-        Alamofire.download(URL(string: url)!, method: .get, parameters: parameters, headers: headers, to: nil)
-            .responseData { (response) in
+    func download(_ url: String = NNAPIConfig.serviceURLString, parameters: Parameters) -> DownloadRequest {
+        return Alamofire.download(URL(string: url)!, method: .get, parameters: parameters, headers: headers, to: nil)
+                .responseData { (response) in
                 if let data = response.result.value {
 //                    let image = UIImage(data: data)
                 }

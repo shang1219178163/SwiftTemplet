@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 import SwiftExpand
-import Kingfisher
 import IQKeyboardManagerSwift
 
 
@@ -130,7 +129,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          let array = [1, 3, 5, 7, 9];
         DDLog(array.reduce(0, +))
         DDLog(array.reduce(0){ $0 * 10 + $1 })
-
+        
+        
+        UserDefaults.standard["a", default: "3"] = "111"
+        let aaa = UserDefaults.standard["b", default: "T"]
+        DDLog(aaa)
 
 //        let dic = ["1" : 3, "2" : 4, "3" : nil, ]
 //        let dicNew = dic.compactMapValues { $0 }
@@ -169,6 +172,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

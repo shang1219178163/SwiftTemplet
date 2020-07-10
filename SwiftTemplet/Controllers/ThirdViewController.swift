@@ -32,6 +32,7 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["RxRequestExampleController", "RxSwift 网络请求", ],
              ["AppStoreGameController", "AppStore游戏界面", ],
              ["SubscribeListController", "微信公众号信息列表", ],
              ["BookReaderController", "UIPageViewController", ],
@@ -72,7 +73,7 @@ class ThirdViewController: UIViewController{
              ["NNFormViewController", "表单视图", ],
              ],
             [["TableViewPrefetchRowController", "image预加载", ],
-            ["AppIconChangeController", "App图标更换", ],
+             ["AppIconChangeController", "App图标更换", ],
              ["NNUserLogInController", "RxSwift函数响应型编程", ],
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
@@ -233,7 +234,7 @@ class ThirdViewController: UIViewController{
     
     func requestInfo() {
         NNProgressHUD.showLoading("努力加载中")
-        updateAPi.startRequest(success: { (manager, dic, error) in
+        updateAPi.startRequest(success: { (manager, dic) in
             
             guard let data = try? JSONSerialization.data(withJSONObject: dic as Any, options: []) as Data,
             let jsonString: String = String(data: data, encoding: .utf8),
@@ -252,7 +253,7 @@ class ThirdViewController: UIViewController{
             NNProgressHUD.dismiss()
             self.tableView.mj_header!.endRefreshing()
             self.tableView.mj_footer!.endRefreshing()
-        }) { (manager, dic, error) in
+        }) { (manager, error) in
             NNProgressHUD.showError(error.debugDescription)
         }
     }
