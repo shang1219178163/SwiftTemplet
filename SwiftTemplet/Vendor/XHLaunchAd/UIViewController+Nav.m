@@ -9,6 +9,7 @@
 #import "UIViewController+Nav.h"
 
 @implementation UIViewController (Nav)
+
 - (UINavigationController*)myNavigationController
 {
     UINavigationController* nav = nil;
@@ -25,4 +26,5 @@
     }
     return nav;
 }
+
 @end
