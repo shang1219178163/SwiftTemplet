@@ -10,4 +10,6 @@
 
 @interface XHLaunchAdManager : NSObject
 
+@property (nonatomic, strong) NSString *urlString;
+
 @end
