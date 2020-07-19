@@ -87,8 +87,8 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
             
             textfield.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp_right).offset(kPadding)
-                make.right.equalTo(btnCode.snp_left).offset(-kPadding)
+                make.left.equalTo(labelLeft.snp.right).offset(kPadding)
+                make.right.equalTo(btnCode.snp.left).offset(-kPadding)
                 make.height.equalTo(labelLeft);
             }
         } else {
@@ -102,7 +102,7 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
             textfield.snp.makeConstraints { (make) in
                 make.top.equalTo(btnCode);
                 make.left.equalToSuperview().offset(Xgap)
-                make.right.equalTo(btnCode.snp_left).offset(-kPadding)
+                make.right.equalTo(btnCode.snp.left).offset(-kPadding)
                 make.height.equalTo(btnCode);
             }
         }
@@ -122,6 +122,13 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         //        UIApplication.shared.keyWindow?.endEditing(true);
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            textField.text = ""
+        }
         return true
     }
     

@@ -15,10 +15,30 @@ import SwiftExpand
     var numOfRow: Int = 3
     
     var row: Int = 3
+    
+    var lineSpacing: CGFloat = 10{
+        willSet{
+            setNeedsLayout()
+        }
+    }
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var interitemSpacing: CGFloat = 10{
+        willSet{
+            setNeedsLayout()
+        }
+    }
 
-    var itemType: UIButton.Type = UIButton.self
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10){
+        willSet{
+            setNeedsLayout()
+        }
+    }
+
+    var itemType: UIButton.Type = UIButton.self{
+        willSet{
+            setNeedsLayout()
+        }
+    }
 
     // MARK: -lazy
     lazy var items: [UIButton] = {
@@ -51,7 +71,16 @@ import SwiftExpand
             return;
         }
         
-        items.snp.distributeSudokuViews(fixedLineSpacing: 5, fixedInteritemSpacing: 10, warpCount: numOfRow, edgeInset: inset)
+        if row == 1 {
+            items.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: interitemSpacing, leadSpacing: inset.left, tailSpacing: inset.right)
+            items.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(inset.top)
+                make.bottom.equalToSuperview().offset(-inset.bottom)
+            }
+            return
+        }
+        
+        items.snp.distributeSudokuViews(fixedLineSpacing: lineSpacing, fixedInteritemSpacing: interitemSpacing, warpCount: numOfRow, edgeInset: inset)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

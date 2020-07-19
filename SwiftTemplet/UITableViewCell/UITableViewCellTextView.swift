@@ -44,7 +44,8 @@ class UITableViewCellTextView: UITableViewCell {
         labelLeftSub.text = "0" + "/" + "\(wordCount)"
         labelLeftSub.textAlignment = .right
         labelLeftSub.font = UIFont.systemFont(ofSize: 13)
-        textView.delegate = self;
+        
+        textView.delegate = self
         textView.returnKeyType = .done
         
         labelLeft.numberOfLines = 1

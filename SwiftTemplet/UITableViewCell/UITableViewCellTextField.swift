@@ -12,13 +12,16 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UITextField(输入框)
-class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
+class UITableViewCellTextField: UITableViewCell {
     
     var viewBlock: TextFieldClosure?
     
     var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false
+    
+    var isBackDelete = true
+
     // MARK: -life cycle
     deinit {
         labelLeft.removeObserver(self, forKeyPath: "text")
@@ -31,7 +34,7 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
         contentView.addSubview(textfield);
         
         labelLeft.numberOfLines = 1
-        textfield.placeholder = "99.0";
+        textfield.placeholder = "请输入";
         textfield.textAlignment = .center;
         textfield.delegate = self;
 //        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
@@ -76,6 +79,16 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
         if bounds.height <= 10.0 {
             return
         }
+        
+        if labelLeft.isHidden {
+            textfield.snp.makeConstraints { (make) in
+                make.top.equalToSuperview()
+                make.left.equalToSuperview().offset(Xgap)
+                make.right.equalToSuperview().offset(-Xgap)
+                make.bottom.equalToSuperview()
+            }
+            return
+        }
 
         let size: CGSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
@@ -98,21 +111,6 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
         
     }
     
-    //    MARK: -textfield
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        //        UIApplication.shared.keyWindow?.endEditing(true);
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        viewBlock?(textField)
-    }
-
     //MARK: -funtions
     func block(_ action:@escaping TextFieldClosure) {
         viewBlock = action
@@ -124,4 +122,29 @@ class UITableViewCellTextField: UITableViewCell, UITextFieldDelegate {
    
 }
 
-
+extension UITableViewCellTextField: UITextFieldDelegate{
+    
+    //    MARK: -textfield
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+//        UIApplication.shared.keyWindow?.endEditing(true);
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if isBackDelete {
+            if string == "" {
+                textField.text = ""
+            }
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        viewBlock?(textField)
+    }
+}
