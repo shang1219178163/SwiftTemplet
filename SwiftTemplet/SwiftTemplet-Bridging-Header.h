@@ -4,8 +4,11 @@
 
 
 #import <AFNetworking/AFNetworking.h>
+#import <YYModel/YYModel.h>
 #import <YYCache/YYCache.h>
 
 #import "NNAddressLabelRootModel.h"
 #import "NNAddressPickerViewModel.h"
 #import "NNGuidePageManager.h"
+
+#import "NNImageAndVideoPickerController.h"

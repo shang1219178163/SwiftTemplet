@@ -10,6 +10,7 @@ import UIKit
 import SwiftExpand
 
 class AppIconChangeController: UIViewController {
+    var dataList: NSMutableArray = [];
 
     override func viewDidLoad() {
         super.viewDidLoad()

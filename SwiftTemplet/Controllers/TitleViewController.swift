@@ -37,10 +37,12 @@ class TitleViewController: NNTitleViewSelectController{
             self.gemetryView.subType = Int(arc4random_uniform(3))
         }
         
-        createBtnBarItem("Next") { (tap, supView, idx) in
-            let ctrl = SheetViewController()
-            self.navigationController?.pushViewController(ctrl, animated: true)
-        }
+        let rightBtn = UIButton.createBtnBarItem("next")
+        rightBtn.addActionHandler({ (control) in
+            let controller = SheetViewController()
+            self.navigationController?.pushViewController(controller, animated: true);
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 
         view.addSubview(segmentCtlOne)
         view.addSubview(checkBox)
@@ -51,6 +53,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.addSubview(buttonBottom)
         view.addSubview(buttonRight)
         
+        view.addSubview(textFieldBtnView)
+        view.addSubview(textFieldBtnCodeView)
         view.addSubview(chooseView)
 
         
@@ -130,6 +134,22 @@ class TitleViewController: NNTitleViewSelectController{
         buttonRight.snp.makeConstraints { (make) in
             make.top.equalTo(button).offset(0);
             make.left.equalTo(buttonBottom.snp.right).offset(20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
+        textFieldBtnView.snp.makeConstraints { (make) in
+            make.top.equalTo(button.snp.bottom).offset(50);
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
+        
+        textFieldBtnCodeView.snp.makeConstraints { (make) in
+            make.top.equalTo(textFieldBtnView.snp.bottom).offset(5);
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }
@@ -321,6 +341,40 @@ class TitleViewController: NNTitleViewSelectController{
         view.amount = "0.00"
         return view
     }()
+    
+    lazy var textFieldBtnView: NNTextFieldView = {
+        var view = NNTextFieldView(frame: .zero)
+        view.label.text = "手机号码:"
+        view.textfield.placeholder = "请输入手机号码"
+//        view.label.isHidden = true
+        view.btn.addActionHandler { (control) in
+            guard let sender = control as? UIButton else { return }
+            DDLog(sender.currentTitle!)
+        }
+        view.block { (textFieldView, textField) in
+            DDLog(textField.text ?? "")
+        }
+        return view
+    }()
+    
+    lazy var textFieldBtnCodeView: NNTextFieldView = {
+        var view = NNTextFieldView(frame: .zero)
+        view.label.text = "验  证  码:"
+        view.textfield.placeholder = "请输入验证码"
+        view.btn.isHidden = true
+        view.label.isHidden = true
+
+        view.btn.addActionHandler { (control) in
+            guard let sender = control as? UIButton else { return }
+            DDLog(sender.currentTitle!)
+        }
+        view.block { (textFieldView, textField) in
+            DDLog(textField.text ?? "")
+        }
+        return view
+    }()
+    
+
 }
 
 extension TitleViewController: NNTitleViewSelectControllerDelegate{

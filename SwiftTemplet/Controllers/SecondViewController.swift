@@ -14,10 +14,16 @@ import SwiftExpand
 import SDWebImage
 import SnapKit
 
+import RxSwift
+
+
 class SecondViewController: UIViewController{
     let url = "https://httpbin.org/get";
     let kTips_Fleet = "·请选择车场及出\\入口后,开启车队模式\n·该功能需要arm3.5.4.0以上版本支持\n·如有需要请联系运维人员升级"
-    
+    var dataList: NSMutableArray = [];
+
+    var disposeBag = DisposeBag()
+
     //MARK: -lazy
     lazy var footerView: NNTableFooterView = {
         var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
@@ -52,6 +58,19 @@ class SecondViewController: UIViewController{
         navigationItem.titleView = segmentCtl
         view.addSubview(tbView);
         
+        tbView.refreshHeader {
+            DDLog("111")
+
+            }.rx.event
+            .subscribe(onNext: { (header) in
+                DDLog(header)
+                header.endRefreshing()
+            }, onError: { (error) in
+                DDLog("error")
+            }, onCompleted: {
+                DDLog("onCompleted")
+            })
+        
         setupData();
 
     }
@@ -59,8 +78,7 @@ class SecondViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        tbView.reloadData()
-        
+        testRxSwiftFun()
     }
         
     override func didReceiveMemoryWarning() {
@@ -102,7 +120,58 @@ class SecondViewController: UIViewController{
         DDLog(222)
     }
     
+    @objc func testRxSwiftFun() {
+//        tbView.reloadData()
+        let A = BehaviorSubject(value: "A的默认消息")
+        let B = BehaviorSubject(value: "B的默认消息")
 
+//        Observable.of(A,B)
+//        .flatMap {$0}
+//        .subscribe(onNext: {
+//            print($0)
+//        })
+//        .disposed(by: disposeBag)
+//        A的默认消息
+//        B的默认消息
+//        A-2
+//        A-3
+//        B-2
+//        B-3
+//        B-4
+        
+//        Observable.of(A,B)
+//        .flatMapLatest {$0}
+//        .subscribe(onNext: {
+//            print($0)
+//        })
+//        .disposed(by: disposeBag)
+//        当观察者从A转到B的时候，就不再观察A发出来的元素。
+//        A的默认消息
+//        B的默认消息
+//        B-2
+//        B-3
+//        B-4
+
+//        A.onNext("A-2")
+//        A.onNext("A-3")
+//        B.onNext("B-2")
+//        B.onNext("B-3")
+//        B.onNext("B-4")
+
+        Observable.of(A,B)
+        .concatMap {$0}
+        .subscribe(onNext: {
+            print($0)}
+        )
+        .disposed(by: disposeBag)
+
+        A.onNext("A-2")
+        B.onNext("B-2")
+        B.onNext("B-3")
+        A.onCompleted()
+        A.onNext("A-3")
+        B.onNext("B-4")
+    }
 }
 
 extension SecondViewController: UITableViewDataSource, UITableViewDelegate{

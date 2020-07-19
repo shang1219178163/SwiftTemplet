@@ -50,7 +50,7 @@
         //在UIApplicationDidFinishLaunching时初始化开屏广告,做到对业务层无干扰,当然你也可以直接在AppDelegate didFinishLaunchingWithOptions方法中初始化
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidFinishLaunchingNotification object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             //初始化开屏广告
-            [self setupXHLaunchAd];
+//            [self setupXHLaunchAd];
         }];
     }
     return self;
@@ -170,7 +170,7 @@
     //配置广告数据
     XHLaunchImageAdConfiguration *imageAdconfiguration = [XHLaunchImageAdConfiguration new];
     //广告停留时间
-    imageAdconfiguration.duration = 5;
+    imageAdconfiguration.duration = 3;
     //广告frame
     imageAdconfiguration.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.8);
     //广告图片URLString/或本地图片名(.jpg/.gif请带上后缀)

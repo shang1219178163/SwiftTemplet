@@ -8,6 +8,16 @@
 
 import UIKit
 
-class NSURLRequest_Helper: NSURLRequest {
+extension URLRequest {
 
+//    func requestGetURL(_ urlString: String) -> URLRequest {
+//        let url = URL(string: urlString)
+//        let request = URLRequest(url:url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 6)
+//        return request
+//    }
+//    
+//    func requestPostURL(_ urlString: String){
+//        guard let url = URL(string: urlString) else { return }
+//        return request
+//    }
 }

@@ -32,6 +32,16 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["NNFeedbackController", "kOP Upload", ],
+             ["NNImageAndVideoPickerController", "kOP UploadImages", ],
+             ["PKMineController", "kOP 我的", ],
+             ["PKLoginController", "kOP 登录页", ],
+             ["PKSettingsController", "kOP 设置页", ],
+             ["PKUserInfoEditController", "kOP 用户信息", ],
+             ["PKRecommendToFriendsController", "kOP 推荐给好友", ],
+             ["PKAccountAboutController", "kOP 账户与安全", ],
+             ["PKAppAbountController", "kOP 关于停车王", ],
+
              ["RxRequestExampleController", "RxSwift 网络请求", ],
              ["AppStoreGameController", "AppStore游戏界面", ],
              ["SubscribeListController", "微信公众号信息列表", ],
@@ -297,7 +307,6 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
         cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
-        
         
         let itemList = list[indexPath.section][indexPath.row]
         cell.textLabel!.text = itemList[1]

@@ -20,16 +20,13 @@ class PlateNumberController: UIViewController {
         // Do any additional setup after loading the view.
         title = "车牌号键盘"
         
-        createBtnBarItem("segment", isLeft: true) { (tap, view, idx) in
-            let controller = TitleViewController()
-            self.navigationController?.pushViewController(controller, animated: true);
-        }
-        
-        createBtnBarItem("Do", isLeft: false) { (tap, view, idx) in
+        let rightBtn = UIButton.createBtnBarItem("next")
+        rightBtn.addActionHandler({ (control) in
             let controller = PlateNumOriginController()
             self.navigationController?.pushViewController(controller, animated: true);
-        }
-        
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+
         
         view.addGestureTap { (reco) in
             UIApplication.shared.keyWindow?.endEditing(true)

@@ -32,10 +32,11 @@ class TmpViewController: UIViewController {
         })
 
         view.addSubview(contentView)
-        createBtnBarItem("Next") { (reco, view, idx) in
+        let rightBtn = UIButton.createBtnBarItem("next")
+        rightBtn.addActionHandler({ (control) in
             self.emergencyOpenView.show();
-        }
-        
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         view.getViewLayer()
     }
     /// 增加虚线边框
@@ -123,7 +124,7 @@ class TmpViewController: UIViewController {
         }
         
         plateLab.snp.makeConstraints { (make) in
-            make.top.equalTo(topLab.snp_bottom).offset(10);
+            make.top.equalTo(topLab.snp.bottom).offset(10);
             make.left.equalTo(topLab);
             make.right.equalTo(topLab);
             make.height.equalTo(topLab);
@@ -131,14 +132,14 @@ class TmpViewController: UIViewController {
         
         let itemViewH = itemView.itemViewHeight();
         itemView.snp.makeConstraints { (make) in
-            make.top.equalTo(plateLab.snp_bottom).offset(5);
+            make.top.equalTo(plateLab.snp.bottom).offset(5);
             make.left.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
             make.height.equalTo(itemViewH);
         }
         
         openLab.snp.makeConstraints { (make) in
-            make.top.equalTo(itemView.snp_bottom).offset(10);
+            make.top.equalTo(itemView.snp.bottom).offset(10);
             make.left.equalTo(topLab);
             make.right.equalTo(topLab);
             make.height.equalTo(topLab);
@@ -152,17 +153,17 @@ class TmpViewController: UIViewController {
         }
         
         btnSure.snp.makeConstraints { (make) in
-            make.left.equalTo(btnCancel.snp_right);
+            make.left.equalTo(btnCancel.snp.right);
             make.width.equalToSuperview().multipliedBy(0.5);
             make.bottom.equalToSuperview();
             make.height.equalTo(50);
         }
         
         scrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(openLab.snp_bottom).offset(5);
+            make.top.equalTo(openLab.snp.bottom).offset(5);
             make.left.equalTo(itemView);
             make.right.equalTo(itemView);
-            make.bottom.equalTo(btnCancel.snp_top).offset(-5);
+            make.bottom.equalTo(btnCancel.snp.top).offset(-5);
         }
         
         let itemViewOneH = itemViewOne.itemViewHeight();

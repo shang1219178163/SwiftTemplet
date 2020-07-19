@@ -17,10 +17,12 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
         // Do any additional setup after loading the view.
         view.addSubview(tableView)
         
-        _ = createBtnBarItem("语音通话") { (reco, view, idx) in
+        let rightBtn = UIButton.createBtnBarItem("语音通话")
+        rightBtn.addActionHandler({ (control) in
             self.phoneView.show();
-        }
-        
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+
 //        tableView.holderView.isHidden = (tableView.visibleCells.count != 0)
 //        tableView.setHolderView(for: .loading)
 //        tableView.holderView.getViewLayer()

@@ -16,7 +16,8 @@ import SDWebImage
 class TestViewController: UIViewController{
     let url = "https://httpbin.org/get";
     let kTips_Fleet = "·请选择车场及出\\入口后,开启车队模式\n·该功能需要arm3.5.4.0以上版本支持\n·如有需要请联系运维人员升级"
-    
+    var dataList: NSMutableArray = [];
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -94,10 +94,12 @@ class CenterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let itemRight = createBtnBarItem("done", imageName: nil, isLeft: false, isHidden: false) { (sender: UIControl) in
-            DDLog(sender);
-        };
-        DDLog(itemRight);
+        
+        let rightBtn = UIButton.createBtnBarItem("done")
+        rightBtn.addActionHandler({ (control) in
+            DDLog(control);
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
     }
 
     @objc func handleActionSender() {

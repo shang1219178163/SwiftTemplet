@@ -12,27 +12,43 @@ import SwiftExpand
 /// 自定义图像方向按钮
 @objcMembers class NNButton: UIButton {
     ///图像位置上左下右
-    var direction: UIView.Direction = .left
-    var iconLocation: UIView.Location = .rightTop
-
-    var iconSize: CGSize = CGSize(width: 25, height: 14)
+    var direction: UIView.Direction = .left{
+        willSet{
+            setNeedsLayout()
+        }
+    }
+    var iconLocation: UIView.Location = .rightTop{
+        willSet{
+            setNeedsLayout()
+        }
+    }
+    
+    var iconSize: CGSize = CGSize(width: 60, height: 18)
     var labelHeight: CGFloat = 25
 
-    lazy var iconImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect.zero);
+    lazy var iconBtn: UIButton = {
+        let view = UIButton(type: .custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.isUserInteractionEnabled = true;
-        view.contentMode = .scaleAspectFit;
-//        view.image = UIImage(named: "icon_discount_orange");
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 12);
         return view
     }()
+        
+//    lazy var iconImageView: UIImageView = {
+//        let view = UIImageView(frame: CGRect.zero);
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.isUserInteractionEnabled = true;
+//        view.contentMode = .scaleAspectFit;
+////        view.image = UIImage(named: "icon_discount_orange");
+//        return view
+//    }()
         
     // MARK: -lifecycle
             
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(iconImageView)
+        addSubview(iconBtn)
                 
         let normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
         let seletedTextColor: UIColor = UIColor.systemBlue
@@ -47,6 +63,8 @@ import SwiftExpand
         adjustsImageWhenHighlighted = false
 //        titleLabel?.isUserInteractionEnabled = true
 //        imageView?.isUserInteractionEnabled = true
+        
+        iconBtn.tag = tag
         getViewLayer()
     }
     
@@ -84,20 +102,20 @@ import SwiftExpand
             break
         }
         
-        iconImageView.isHidden = (iconLocation == .none)
         switch iconLocation {
         case .leftTop:
-            iconImageView.frame = CGRect(x: 0, y: 0, width: iconSize.width, height: iconSize.height)
+            iconBtn.frame = CGRect(x: 0, y: 0, width: iconSize.width, height: iconSize.height)
 
         case .leftBottom:
-            iconImageView.frame = CGRect(x: 0, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
+            iconBtn.frame = CGRect(x: 0, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
 
         case .rightTop:
-            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
+            iconBtn.frame = CGRect(x: bounds.width - iconSize.width, y: 0, width: iconSize.width, height: iconSize.height)
 
         case .rightBottom:
-            iconImageView.frame = CGRect(x: bounds.width - iconSize.width, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
+            iconBtn.frame = CGRect(x: bounds.width - iconSize.width, y: bounds.height - iconSize.height, width: iconSize.width, height: iconSize.height)
         default:
+            iconBtn.isHidden = true
             break
         }
         
@@ -108,8 +126,9 @@ import SwiftExpand
             imageView!.frame = bounds
         }
         
-        if iconImageView.image == nil {
-            iconImageView.isHidden = true
+        let invalid = iconBtn.currentImage == nil && iconBtn.currentTitle == nil && iconBtn.backgroundImage(for: .normal) == nil
+        if iconBtn.isHidden == false &&  invalid {
+            iconBtn.isHidden = true
         }
     }
 }

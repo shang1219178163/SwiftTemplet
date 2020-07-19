@@ -19,13 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NSObject.initializeMethod()
-        UIViewController.initializeMethod();
-        UINavigationController.initializeMethod();
+//        UIViewController.initializeMethod();
         UIImageView.initializeMethod();
 //        UIColor.theme = UIColor.systemBlue
         UIColor.theme = UIColor.hexValue(0x29B5FE)
         UIApplication.setupAppearanceDefault(false);
-
         IQKeyboardManager.shared.enable = true;
         
         // Override point for customization after application launch.
@@ -50,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.setupRootController(controller, true);
         window = UIApplication.mainWindow;
+        
+
         
 //        UIApplication.setupRootController(&(window!), controller, true);
         //方式三
@@ -104,18 +104,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let n = formatter.string(for: 1.4988) ?? "0"
 //        DDLog(a, b, c, d, e, f, g , h, m, n, o)
 
-        let xx = ["1", "2", "3", "4", "5", "6"]
-        let num1 = xx.map { ($0 != "3" ? $0 : nil) }
-        DDLog(num1)
-        
-        let number = [[1, 2, 3, nil], [4, 5, 6]]
-        let flat = number.flatMap { $0 }
-        let compact = flat.compactMap { $0 }
-        DDLog(flat, compact)
-        
-        let items = [1, 2, 3, 4, 5, ]
-        let flat2 = items.compactMap { $0 }
-        DDLog(flat2)
+//        let xx = ["1", "2", "3", "4", "5", "6"]
+//        let num1 = xx.map { ($0 != "3" ? $0 : nil) }
+//        DDLog(num1)
+//
+//        let number = [[1, 2, 3, nil], [4, 5, 6]]
+//        let flat = number.flatMap { $0 }
+//        let compact = flat.compactMap { $0 }
+//        DDLog(flat, compact)
+//
+//        let items = [1, 2, 3, 4, 5, ]
+//        let flat2 = items.compactMap { $0 }
+//        DDLog(flat2)
                 
         let dic = ["1" : 11,
         "2" : 22,
@@ -124,16 +124,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let compact2 = dic.compactMapValues { $0 + 100 }
         let compact3 = dic.compactMapValues { $0 > 20 }
-        DDLog(compact2, compact3)
+//        DDLog(compact2, compact3)
         
          let array = [1, 3, 5, 7, 9];
-        DDLog(array.reduce(0, +))
-        DDLog(array.reduce(0){ $0 * 10 + $1 })
+//        DDLog(array.reduce(0, +))
+//        DDLog(array.reduce(0){ $0 * 10 + $1 })
         
         
-        UserDefaults.standard["a", default: "3"] = "111"
-        let aaa = UserDefaults.standard["b", default: "T"]
-        DDLog(aaa)
+//        UserDefaults.standard["a", default: "3"] = "111"
+//        let aaa = UserDefaults.standard["b", default: "T"]
+//        DDLog(aaa)
 
 //        let dic = ["1" : 3, "2" : 4, "3" : nil, ]
 //        let dicNew = dic.compactMapValues { $0 }

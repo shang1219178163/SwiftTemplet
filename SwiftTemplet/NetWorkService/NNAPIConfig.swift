@@ -17,11 +17,10 @@ class NNAPIConfig: NSObject {
     }
     //测试接口集合
     static var urlTestList: [String]{
-        return [
-                "测试接口一",
+        return ["测试接口一",
                 "测试接口二",
                 "测试接口三",
-            ];
+                ];
     }
     
     //当前测试接口(必须是urlTestList成员)
