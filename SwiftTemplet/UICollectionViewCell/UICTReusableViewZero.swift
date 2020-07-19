@@ -20,9 +20,9 @@ class UICTReusableViewZero: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imgView)
-        addSubview(label)
+        addSubview(lab)
         
-        label.backgroundColor = UIColor.random
+        lab.backgroundColor = UIColor.random
         imgView.backgroundColor = UIColor.random
     }
     
@@ -33,7 +33,7 @@ class UICTReusableViewZero: UICollectionReusableView {
             make.top.left.bottom.right.equalToSuperview()
         }
         
-        label.snp.makeConstraints { (make) in
+        lab.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.left.equalToSuperview().offset(kX_GAP)
             make.right.equalToSuperview().offset(-kX_GAP)

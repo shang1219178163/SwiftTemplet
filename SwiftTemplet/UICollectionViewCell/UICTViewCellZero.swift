@@ -21,13 +21,13 @@ class UICTViewCellZero: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(imgView)
-        contentView.addSubview(label)
+        contentView.addSubview(lab)
         
         contentView.addSubview(lineBottom)
         contentView.addSubview(lineRight)
         
-        label.textAlignment = .center
-//        label.backgroundColor = UIColor.random
+        lab.textAlignment = .center
+//        lab.backgroundColor = UIColor.random
 //        imgView.backgroundColor = UIColor.random
 
         lineBottom.isHidden = true
@@ -41,7 +41,7 @@ class UICTViewCellZero: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
         
-        label.snp.makeConstraints { (make) in
+        lab.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(kPadding)
             make.bottom.right.equalToSuperview().offset(-kPadding)
         }

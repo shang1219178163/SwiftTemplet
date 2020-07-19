@@ -140,12 +140,12 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
         view.collectionView.register(cellType: UICTViewCellOne.self)
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
             let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
-            cell.label.text = "标题\(indexPath.row)"
+            cell.lab.text = "标题\(indexPath.row)"
             if let title = view.list[indexPath.row] as? String {
-                cell.label.text = title;
+                cell.lab.text = title;
             }
             
-            cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
+            cell.lab.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
 //            cell.contentView.backgroundColor = UIColor.random;
             cell.imgView.isHidden = true;
             return cell;

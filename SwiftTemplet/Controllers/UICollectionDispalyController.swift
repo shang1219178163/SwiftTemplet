@@ -17,6 +17,21 @@ class UICollectionDispalyController: UIViewController{
     let footIdentifier   = "UICTReusableViewZeroFooter"
 
     
+    lazy var ctView: UICollectionView = {
+        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
+        view.backgroundColor = UIColor.background
+
+        if self.conforms(to: UICollectionViewDelegate.self) {
+            view.delegate = (self as! UICollectionViewDelegate)
+        }
+        if self.conforms(to: UICollectionViewDataSource.self) {
+            view.dataSource = (self as! UICollectionViewDataSource)
+        }
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "UICollectionView小解"
@@ -124,7 +139,7 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
         cell.lineBottom.isHidden = false
         cell.lineRight.isHidden = false
 //        cell.imgView.backgroundColor = .random
-           cell.label.text = String(format:"%ditem",indexPath.row)
+           cell.lab.text = String(format:"%ditem",indexPath.row)
            return cell
        }
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellZero.self, indexPath: indexPath)
@@ -132,7 +147,7 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
         cell.lineRight.isHidden = false
     
 //       cell.imgView.backgroundColor = .random
-       cell.label.text = String(format:"%ditem",indexPath.row)
+       cell.lab.text = String(format:"%ditem",indexPath.row)
        return cell
    }
 
@@ -146,13 +161,13 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
         if kind == UICollectionView.elementKindSectionHeader {
            let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
         
-           view.label.text = kind.components(separatedBy: "ElementKind").last;
-           view.labelRight.text = "999+"
+           view.lab.text = kind.components(separatedBy: "ElementKind").last;
+           view.labRight.text = "999+"
            return view;
         }
        
         let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind, indexPath: indexPath)
-        view.label.text = kind.components(separatedBy: "ElementKind").last;
+        view.lab.text = kind.components(separatedBy: "ElementKind").last;
         return view;
     }
     

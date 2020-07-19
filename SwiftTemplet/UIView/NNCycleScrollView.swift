@@ -192,16 +192,16 @@ extension NNCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         
         if let imageURL = URL(string: obj), obj.hasPrefix("http") {
-            cell.label.isHidden = true
+            cell.lab.isHidden = true
             cell.imgView.isHidden = false
 
             cell.imgView.contentMode = .scaleToFill
             cell.imgView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"img_car_default"))
         } else {
             cell.imgView.isHidden = true
-            cell.label.isHidden = false
+            cell.lab.isHidden = false
             
-            cell.label.text = obj
+            cell.lab.text = obj
         }
         return cell
     }
