@@ -164,6 +164,7 @@ class EntryViewController: UIViewController {
             ],
             [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
+            ["用户头像", "UITableViewCellRightAvart", "60.0", "", "seller_bank_account", ],
             ["*有效时间:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
             ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
             ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
@@ -186,7 +187,8 @@ class EntryViewController: UIViewController {
             ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
             ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
             ["九宫格", "UITableViewCellSudokuLabel", " 80.0", "", "recharge", ],
-            ["九宫格2", "UITableViewCellSudokuButton", " 80.0", "", "recharge", ],
+            ["九宫格2", "UITableViewCellSudokuButton", " 180.0", "", "recharge", ],
+            ["九宫格T", "UITableViewCellSudokuButtonNew", " 180.0", "", "recharge", ],
 //            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
 
 //            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
@@ -320,6 +322,20 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.getViewLayer()
             return cell
+            
+        case "UITableViewCellRightAvart":
+            let cell = UITableViewCellRightAvart.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+
+            cell.textLabel?.text = value0
+            cell.btn.setBackgroundColor(.systemBlue, for: .normal)
+            cell.accessoryType = .disclosureIndicator
+            
+            cell.getViewLayer()
+            return cell
+                        
         case "UITableViewCellProgressView":
             let cell = UITableViewCellProgressView.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
@@ -704,13 +720,18 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellSudokuButton":
             let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
-    //            cell.accessoryType = .disclosureIndicator
+//            cell.accessoryType = .disclosureIndicator
             cell.numOfRow = 3
             cell.row = 2
             cell.itemType = NNButton.self
 //            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
             cell.items.forEach {
-                $0.addActionHandler({ control in
+
+                guard let sender = $0 as? NNButton else { return }
+                sender.direction = .top
+                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+
+                sender.addActionHandler({ control in
                     guard let sender = control as? UIButton else { return }
                     DDLog(sender.tag)
                 }, for: .touchUpInside)
@@ -720,6 +741,39 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
             cell.getViewLayer();
             return cell;
+        case "UITableViewCellSudokuButtonNew":
+            let cell = UITableViewCellSudokuButtonNew.dequeueReusableCell(tableView);
+//            cell.accessoryType = .disclosureIndicator
+            cell.numOfRow = 4
+            cell.row = 2
+            cell.count = 6
+
+            cell.itemType = NNButton.self
+//            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
+            cell.items.forEach {
+                guard let sender = $0 as? NNButton else { return }
+                sender.direction = .top
+                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+                sender.iconBtn.setTitle("价值100", for: .normal)
+//                sender.iconBtn.setImage(UIImage(named: "icon_discount_orange"), for: .normal)
+                sender.iconBtn.setBackgroundColor(UIColor.theme, for: .normal)
+//                sender.iconBtn.sizeToFit()
+                sender.iconSize = CGSize(width: 50, height: 20)
+                sender.setNeedsLayout()
+                
+                sender.addActionHandler({ control in
+                    guard let sender = control as? UIButton else { return }
+                    DDLog(sender.tag)
+                }, for: .touchUpInside)
+            }
+            
+//            cell.items.filter { $0.tag >= 5 }.forEach({ $0.isHidden = true })
+            
+            DDLog(cell.items.first!)
+
+            cell.getViewLayer();
+            return cell;
+            
                                     
         case "UITableViewCellChoice":
             let cell = UITableViewCellChoice.dequeueReusableCell(tableView);

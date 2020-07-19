@@ -76,7 +76,11 @@ def common_pods
 
 #iOS自带悬浮窗调试工具,摇晃手机即可显示系统的UI调试界面。
 #    pod 'UIDebuggingTool'
-    
+    pod 'EAIntroView'
+    pod 'XHLaunchAd'
+    pod 'Instructions'
+    pod 'TZImagePickerController'
+
 end
 
 

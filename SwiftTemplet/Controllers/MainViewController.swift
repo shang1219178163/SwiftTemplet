@@ -13,22 +13,20 @@ import SwiftExpand
 
 class MainViewController: UIViewController {
     
-//    var dataList : NSMutableArray = [];
+    var dataList: NSMutableArray = [];
     
     override func viewDidLoad() {
         super.viewDidLoad();
         
         title = "Main";
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(handActionBtn));
         
-//        self.createBarItem(titile:"Next", imgName:nil, isLeft:false, isHidden:false, target:self, action:#selector(MainViewController.handActionBtn));
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(handActionBtn));
-        
-        createBtnBarItem("next", imageName: nil, isLeft: false, isHidden: false) { (item) in
+        let rightBtn = UIButton.createBtnBarItem("next")
+        rightBtn.addActionHandler({ (control) in
             let controller = UICtrFromString("DetailViewController");
             self.navigationController?.pushViewController(controller, animated: true);
-        }
-
-        print(view.frame,view.bounds)
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 
         view.addSubview(tbView);
         

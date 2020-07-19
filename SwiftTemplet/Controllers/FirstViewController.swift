@@ -11,6 +11,7 @@ import SwiftExpand
 import SDWebImage
 
 class FirstViewController: UIViewController {
+    var dataList: NSMutableArray = [];
 
     //MARK: - layz
     //    lazy var tableView: UITableView = {
@@ -31,7 +32,7 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
         createBarItem( .done, isLeft: false) {[weak self] (obj:AnyObject?) in
-            self?.goController("IOPAuthRechargeController")
+            self?.pushVC("IOPAuthRechargeController")
         }
         view.addSubview(tbView);
         
@@ -66,6 +67,17 @@ class FirstViewController: UIViewController {
         super.viewWillAppear(animated)
 //        DDLog("viewWillAppear")
 
+        let msg = """
+感谢您对停车王的信任！
+请注意，在您使用本软件过程中我们会按照《服务协议》、《隐私协议》收集、使用和共享您的个人信息，请认真阅读并充分理解。
+
+特别提示：
+1.基于您的授权，我们可能会获取您的位置等信息，您有权拒绝或取消授权；
+2.我们会采取业界先进的安全措施保护您的信息安全；
+3.未经您同意，我们不会从第三方处获取、共享或向其提供您的信息
+"""
+        UIAlertController.showAlert("温馨提示", message: msg, alignment: .left, actionTitles: [kTitleSure])
+                
     }
     
     override func viewWillDisappear(_ animated: Bool) {

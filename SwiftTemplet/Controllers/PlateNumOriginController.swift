@@ -20,13 +20,8 @@ class PlateNumOriginController: UIViewController {
         // Do any additional setup after loading the view.
         title = "车牌号键盘(原始)"
         
-        createBtnBarItem("Do", isLeft: false) { (tap, view, idx) in
-//            self.plateKeyboard.bindTextField(searchBar.textField!, showSearch: true)
-        }
-        
         view.addSubview(btn)
         
-        btn.setBackgroundImage(UIImage(color: .green), for: .normal)
         
 //        setupKeyboradView(textField, handler: handler)
 //        handler.setKeyBoardView(view: btn);
@@ -104,8 +99,8 @@ class PlateNumOriginController: UIViewController {
         let view: UIButton = UIButton(type: .custom)
         view.setTitle("请输入车牌号码", for: .normal)
         view.setTitleColor(UIColor.gray, for: .normal)
+        view.setBackgroundImage(UIImage(color: .green), for: .normal)
         view.addActionHandler({ (control) in
-            
             
         }, for: .touchUpInside)
         return view

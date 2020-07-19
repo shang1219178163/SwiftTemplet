@@ -15,11 +15,14 @@ class PickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = createBtnBarItem("picker", imageName: nil, isLeft: false, isHidden: false) { (control) in
+        
+        let rightBtn = UIButton.createBtnBarItem("next")
+        rightBtn.addActionHandler({ (control) in
             self.customPickerView.show();
             self.btn.transform = CGAffineTransform.identity
 
-        }
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         
         itemView.frame = CGRect(x: kX_GAP, y: 10, width: kScreenWidth - kX_GAP*2, height: 100.0)
         view.addSubview(itemView)

@@ -29,7 +29,7 @@ NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta nobis est
 - (void)showGuideView {
     NSString *hide = [NSUserDefaults.standardUserDefaults objectForKey:kDefaultGuideViewHide];
     if ([hide isEqualToString:@"1"]) {
-//        return;
+        return;
     }
     
     EAIntroPage *page1 = [EAIntroPage page];
@@ -63,6 +63,7 @@ NSString * const sampleDescription4 = @"Nam libero tempore, cum soluta nobis est
     intro.skipButtonY = 80.f;
     intro.pageControlY = 42.f;
     
+    [intro.skipButton setTitle:@"跳过" forState:UIControlStateNormal];
     intro.skipButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
     intro.skipButton.layer.borderColor = UIColor.whiteColor.CGColor;
     intro.skipButton.layer.borderWidth = 1;

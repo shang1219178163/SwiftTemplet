@@ -8,6 +8,6 @@
 
 import UIKit
 
-class NSURLSession_Helper: NSURLSession {
+extension URLSession {
 
 }

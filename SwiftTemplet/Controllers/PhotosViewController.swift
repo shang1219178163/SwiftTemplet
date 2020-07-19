@@ -18,7 +18,8 @@ class PhotosViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _ = createBtnBarItem("相册", imageName: nil, isLeft: false, isHidden: false) { (control) in
+        let rightBtn = UIButton.createBtnBarItem("相册")
+        rightBtn.addActionHandler({ (control) in
             let items: [String] = ["image Picker", "custom ImagePicker","imagePicker With selected assets",]
             UIAlertController.showSheet("请选择", msg: nil, items: items, handler: { (controller, action) in
                 let x = items.firstIndex(of: action.title!)
@@ -37,10 +38,9 @@ class PhotosViewController: UIViewController{
                 }
                 
             })
-        }
-    
-      
-//        itemView.frame = CGRect(x: 20, y: 20, width: kScreenWidth - 40.0, height: kScreenWidth - 40.0)
+        })
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+            
         view.addSubview(itemView)
         itemView.backgroundColor = UIColor.red
         

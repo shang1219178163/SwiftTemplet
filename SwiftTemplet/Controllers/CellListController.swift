@@ -139,7 +139,7 @@ class CellListController: UIViewController {
         view.blockDidSelectRow({ (tableView, indexPath) in
             let itemList = view.list![indexPath.row] as! [String]
             DDLog(itemList);
-            self.goController(itemList.last!)
+            self.pushVC(itemList.last!)
         })
         view.blockCellHeightForRow { (tableView, indexPath) -> CGFloat in
             let itemList = view.list![indexPath.row] as! [String]

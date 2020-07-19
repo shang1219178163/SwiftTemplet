@@ -68,7 +68,7 @@ class CCSEmergencyOpenView: UIView {
         }
         
         plateLab.snp.makeConstraints { (make) in
-            make.top.equalTo(topLab.snp_bottom).offset(10);
+            make.top.equalTo(topLab.snp.bottom).offset(10);
             make.left.equalTo(topLab);
             make.right.equalTo(topLab);
             make.height.equalTo(topLab);
@@ -76,14 +76,14 @@ class CCSEmergencyOpenView: UIView {
         
         let itemViewH = itemView.itemViewHeight();
         itemView.snp.makeConstraints { (make) in
-            make.top.equalTo(plateLab.snp_bottom).offset(5);
+            make.top.equalTo(plateLab.snp.bottom).offset(5);
             make.left.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
             make.height.equalTo(itemViewH);
         }
         
         openLab.snp.makeConstraints { (make) in
-            make.top.equalTo(itemView.snp_bottom).offset(10);
+            make.top.equalTo(itemView.snp.bottom).offset(10);
             make.left.equalTo(topLab);
             make.right.equalTo(topLab);
             make.height.equalTo(topLab);
@@ -98,29 +98,29 @@ class CCSEmergencyOpenView: UIView {
         }
         
         lineVer.snp.makeConstraints { (make) in
-            make.left.equalTo(btnCancel.snp_right);
+            make.left.equalTo(btnCancel.snp.right);
             make.bottom.equalToSuperview();
             make.width.equalTo(1);
             make.height.equalTo(btnCancel);
         }
         
         btnSure.snp.makeConstraints { (make) in
-            make.left.equalTo(lineVer.snp_right);
+            make.left.equalTo(lineVer.snp.right);
             make.bottom.equalTo(btnCancel);
             make.width.height.equalTo(btnCancel);
         }
         
         lineHor.snp.makeConstraints { (make) in
-            make.bottom.equalTo(btnCancel.snp_top).offset(-1);
+            make.bottom.equalTo(btnCancel.snp.top).offset(-1);
             make.width.equalToSuperview();
             make.height.equalTo(1);
         }
         
         scrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(openLab.snp_bottom).offset(5);
+            make.top.equalTo(openLab.snp.bottom).offset(5);
             make.left.equalTo(itemView);
             make.right.equalTo(itemView);
-            make.bottom.equalTo(btnCancel.snp_top).offset(-5);
+            make.bottom.equalTo(btnCancel.snp.top).offset(-5);
         }
         
         

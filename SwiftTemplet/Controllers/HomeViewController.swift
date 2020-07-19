@@ -11,11 +11,12 @@ import SwiftExpand
 
 class HomeViewController: UITabBarController {
     
-    
     private lazy var animator: NNTransitionAnimator = {
         let animator = NNTransitionAnimator(duration: 0.25, animateType: .fade)
         return animator
     }()
+        
+    private lazy var manager = NNGuidePageManager()
     
 //    private lazy var animator: TabbarAnimator = {
 //        let animator = TabbarAnimator(edge: .left)
@@ -68,7 +69,7 @@ class HomeViewController: UITabBarController {
         viewControllers = UINavListFromList(itemList);
 
 //        delegate = self
-//        view.addGestureRecognizer(self.panGesture)
+//        view.addGestureRecognizer(panGesture)
         
         selectedIndex = 2
     }
@@ -76,7 +77,13 @@ class HomeViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-//        configureCenterBtn();
+//        configureCenterBtn();        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        manager.showGuideView()
     }
     
     func configureCenterBtn() {
@@ -85,7 +92,6 @@ class HomeViewController: UITabBarController {
         let width = tabBar.bounds.width / CGFloat(viewControllers!.count);
         let rect = CGRect(x: 0, y: 0, width: width, height:tabBar.bounds.height);
         btnCenter.frame = rect.offsetBy(dx: width*2, dy: 0);
-        
     }
     
     @objc func handleActionSender(_ sender:UIButton){
