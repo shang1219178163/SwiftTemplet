@@ -135,19 +135,19 @@ class UITableViewCellCoupon: UITableViewCell {
         labelTop.sizeToFit();
         labelTop.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(8);
-            make.left.equalTo(labelLeft.snp_right).offset(8);
+            make.left.equalTo(labelLeft.snp.right).offset(8);
             make.height.equalTo(20);
         }
         
         labelMid.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTop.snp_bottom).offset(5);
+            make.top.equalTo(labelTop.snp.bottom).offset(5);
             make.left.equalTo(labelTop);
             make.right.equalToSuperview().offset(10);
             make.height.equalTo(20);
         }
         
         labelBom.snp.makeConstraints { (make) in
-            make.top.equalTo(labelMid.snp_bottom);
+            make.top.equalTo(labelMid.snp.bottom);
             make.left.equalTo(labelTop);
             make.right.equalToSuperview().offset(10);
             make.height.equalTo(20);

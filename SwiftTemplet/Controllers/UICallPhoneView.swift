@@ -83,14 +83,14 @@ class UICallPhoneView: UIView {
         }
         
         labTwo.snp.makeConstraints { (make) in
-            make.top.equalTo(labOne.snp_bottom).offset(30);
+            make.top.equalTo(labOne.snp.bottom).offset(30);
             make.left.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
             make.height.equalTo(20);
         }
 
         btnSoundSwitch.snp.makeConstraints { (make) in
-            make.top.equalTo(labTwo.snp_bottom).offset(50);
+            make.top.equalTo(labTwo.snp.bottom).offset(50);
             make.centerX.equalToSuperview();
             make.width.height.equalTo(50);
         }

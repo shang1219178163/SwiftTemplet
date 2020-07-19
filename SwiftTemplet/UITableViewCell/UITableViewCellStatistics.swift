@@ -84,12 +84,12 @@ class UITableViewCellStatistics: UITableViewCell {
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalTo(labelRight);
             make.left.equalToSuperview().offset(kX_GAP);
-            make.right.equalTo(labelRight.snp_left).offset(-kPadding);
+            make.right.equalTo(labelRight.snp.left).offset(-kPadding);
             make.height.equalTo(labelRight);
         }
         
         lineTop.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft.snp_bottom).offset(kPadding);
+            make.top.equalTo(labelLeft.snp.bottom).offset(kPadding);
             make.left.equalTo(labelLeft);
             make.right.equalTo(labelRight);
             make.height.equalTo(1);
@@ -98,14 +98,14 @@ class UITableViewCellStatistics: UITableViewCell {
         let labSubList = [labelLeftSub, labelMidSub, labelRightSub]
         labSubList.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: kPadding, leadSpacing: kX_GAP, tailSpacing: kX_GAP)
         labSubList.snp.makeConstraints { (make) in
-            make.top.equalTo(lineTop.snp_bottom).offset(kPadding);
+            make.top.equalTo(lineTop.snp.bottom).offset(kPadding);
             make.height.equalTo(20);
         }
         
         let labSubValueList = [labelLeftSubValue, labelMidSubValue, labelRightSubValue]
         labSubValueList.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: kPadding, leadSpacing: kX_GAP, tailSpacing: kX_GAP)
         labSubValueList.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeftSub.snp_bottom).offset(5);
+            make.top.equalTo(labelLeftSub.snp.bottom).offset(5);
             make.height.equalTo(20);
         }
         

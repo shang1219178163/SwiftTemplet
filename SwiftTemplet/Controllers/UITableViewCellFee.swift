@@ -103,14 +103,14 @@ class UITableViewCellFee: UITableViewCell {
         }
                 
         labelMid.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTop.snp_bottom).offset(5);
+            make.top.equalTo(labelTop.snp.bottom).offset(5);
             make.left.equalTo(labelTop);
             make.right.equalTo(labelRight);
             make.height.equalTo(20);
         }
         
         labelBom.snp.makeConstraints { (make) in
-            make.top.equalTo(labelMid.snp_bottom).offset(5);
+            make.top.equalTo(labelMid.snp.bottom).offset(5);
             make.left.equalTo(labelTop);
             make.right.equalTo(labelRight);
             make.height.equalTo(20);

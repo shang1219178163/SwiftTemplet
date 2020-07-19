@@ -11,7 +11,7 @@ import UIKit
 /// 确认按钮
 class UITableViewCellButton: UITableViewCell {
     
-    var contentInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     // MARK: -life cycle
 
@@ -39,7 +39,7 @@ class UITableViewCellButton: UITableViewCell {
         }
         
         btn.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentInset)
+            make.edges.equalTo(inset)
         }
     }
     
