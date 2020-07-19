@@ -129,7 +129,7 @@ class NNUpdateVersionView: UIView {
         UIApplication.shared.keyWindow?.endEditing(true)
         UIApplication.shared.keyWindow?.addSubview(self);
         
-        self.transform = self.transform.scaledBy(x: 0.5, y: 0.5)
+//        self.transform = self.transform.scaledBy(x: 2.5, y: 2.5)
         UIView.animate(withDuration: 0.15, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0.6);
             self.transform = CGAffineTransform.identity
@@ -140,7 +140,7 @@ class NNUpdateVersionView: UIView {
     func dismiss() {
         UIView.animate(withDuration: 0.15, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0);
-            self.transform = self.transform.scaledBy(x: 0.5, y: 0.5)
+//            self.transform = self.transform.scaledBy(x: 0.5, y: 0.5)
 
         }) { (isFinished) in
             self.removeFromSuperview();

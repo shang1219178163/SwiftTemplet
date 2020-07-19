@@ -12,10 +12,10 @@ import UIKit
 import SnapKit
 import SwiftExpand
         
-///
+/// 左标题右按钮
 class NNTextFieldView: UIView {
 
-    var Xgap: CGFloat = 15;
+    var Xgap: CGFloat = 0;
     var lineHeight: CGFloat = 0.5;
     var btnSize: CGSize = CGSize(width: 90, height: 30)
 
@@ -55,11 +55,11 @@ class NNTextFieldView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         if bounds.height <= 0.0 {
             return;
         }
-        
+
         if label.isHidden == false {
             let size = label.sizeThatFits(.zero)
             label.snp.makeConstraints { (make) in
@@ -68,7 +68,7 @@ class NNTextFieldView: UIView {
                 make.bottom.equalToSuperview().offset(-2)
                 make.width.equalTo(size.width)
             }
-            
+
             if btn.isHidden == false {
                 btn.snp.makeConstraints { (make) in
                     make.centerY.equalToSuperview()
@@ -81,7 +81,7 @@ class NNTextFieldView: UIView {
                     make.right.equalTo(btn.snp.left).offset(-kPadding)
                     make.height.equalTo(label);
                 }
-                
+
             } else {
                 textfield.snp.makeConstraints { (make) in
                     make.top.equalTo(label);
@@ -99,12 +99,12 @@ class NNTextFieldView: UIView {
                     make.size.equalTo(btnSize)
                 }
                 textfield.snp.makeConstraints { (make) in
-                    make.top.equalTo(label)
+                    make.centerY.equalToSuperview()
                     make.left.equalToSuperview().offset(Xgap)
                     make.right.equalTo(btn.snp.left).offset(-kPadding)
-                    make.height.equalTo(label)
+                    make.height.equalToSuperview().multipliedBy(0.9)
                 }
-                
+
             } else {
                 textfield.snp.makeConstraints { (make) in
                     make.centerY.equalToSuperview()
@@ -114,7 +114,7 @@ class NNTextFieldView: UIView {
                 }
             }
         }
-        
+
         lineView.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(0)
             make.left.equalToSuperview().offset(Xgap)

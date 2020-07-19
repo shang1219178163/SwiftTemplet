@@ -17,12 +17,11 @@ class NNRequstAgent: NSObject {
     static let shared = NNRequstAgent()
     private override init() {
         super.init()
- 
     }
     
     lazy var headers: HTTPHeaders = {
         let dic: HTTPHeaders = ["User-Agent": NNAPIConfig.headerUserAgent,
-                   "Accept-Version": NNAPIConfig.headerAcceptVersion,
+                                "Accept-Version": NNAPIConfig.headerAcceptVersion,
         ];
         return dic;
     }()
