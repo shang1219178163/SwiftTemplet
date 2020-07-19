@@ -18,15 +18,15 @@ class UICTReusableViewOne: UICollectionReusableView {
         didSet {
             if oldValue == 0 {
                 //右边文字优先展示
-                labelRight.sizeToFit();
-                label.textAlignment = .left;
-                label.adjustsFontSizeToFitWidth = true
+                labRight.sizeToFit();
+                lab.textAlignment = .left;
+                lab.adjustsFontSizeToFitWidth = true
                 
             } else {
                 //左边文字优先展示
-                label.sizeToFit();
-                labelRight.textAlignment = .right;
-                labelRight.adjustsFontSizeToFitWidth = true
+                lab.sizeToFit();
+                labRight.textAlignment = .right;
+                labRight.adjustsFontSizeToFitWidth = true
             }
         }
     }
@@ -38,16 +38,16 @@ class UICTReusableViewOne: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imgView)
-        addSubview(label)
-        addSubview(labelRight)
+        addSubview(lab)
+        addSubview(labRight)
         addSubview(imgViewRight)
         
         imgView.image = UIImage(named: kIMG_notice);
         
-        label.numberOfLines = 1;
-        labelRight.numberOfLines = 1;
+        lab.numberOfLines = 1;
+        labRight.numberOfLines = 1;
         
-        label.backgroundColor = UIColor.random
+        lab.backgroundColor = UIColor.random
         imgView.backgroundColor = UIColor.random
     }
     
@@ -77,32 +77,32 @@ class UICTReusableViewOne: UICollectionReusableView {
                 
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.sizeToFit();
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.sizeToFit();
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
                     
-                    label.snp.makeConstraints { (make) in
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgView.snp.right).offset(kPadding)
-                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                        make.right.equalTo(labRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
                     
                 } else {
                     //左边文字优先展示
-                    label.sizeToFit();
-                    label.snp.makeConstraints { (make) in
+                    lab.sizeToFit();
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgView.snp.right).offset(kPadding)
                         make.height.equalTo(height)
                     }
                     
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
-                        make.left.equalTo(label.snp.right).offset(kPadding)
+                        make.left.equalTo(lab.snp.right).offset(kPadding)
                         make.right.greaterThanOrEqualTo(imgViewRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
@@ -117,31 +117,31 @@ class UICTReusableViewOne: UICollectionReusableView {
                 }
                 
                 if type == 0 {
-                    labelRight.sizeToFit();
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.sizeToFit();
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
                     
-                    label.snp.makeConstraints { (make) in
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                        make.right.equalTo(labRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
                     
                 } else {
-                    label.sizeToFit();
-                    label.snp.makeConstraints { (make) in
+                    lab.sizeToFit();
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.height.equalTo(height)
                     }
                     
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
-                        make.left.equalTo(label.snp.right).offset(kPadding)
+                        make.left.equalTo(lab.snp.right).offset(kPadding)
                         make.right.equalTo(imgViewRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
@@ -159,32 +159,32 @@ class UICTReusableViewOne: UICollectionReusableView {
                 
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.sizeToFit();
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.sizeToFit();
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
                         make.height.equalTo(height)
                     }
                     
-                    label.snp.makeConstraints { (make) in
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgView.snp.right).offset(kPadding)
-                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                        make.right.equalTo(labRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
                     
                 } else {
                     //左边文字优先展示
-                    label.sizeToFit();
-                    label.snp.makeConstraints { (make) in
+                    lab.sizeToFit();
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalTo(imgView.snp.right).offset(kPadding)
                         make.height.equalTo(height)
                     }
                     
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
-                        make.left.equalTo(label.snp.right).offset(kPadding)
+                        make.left.equalTo(lab.snp.right).offset(kPadding)
                         make.right.equalToSuperview().offset(-kX_GAP)
                         make.height.equalTo(height)
                     }
@@ -198,31 +198,31 @@ class UICTReusableViewOne: UICollectionReusableView {
                 }
                 if type == 0 {
                     //右边文字优先展示
-                    labelRight.sizeToFit();
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.sizeToFit();
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.right.equalToSuperview().offset(-kX_GAP);
                         make.height.equalTo(height)
                     }
                     
-                    label.snp.makeConstraints { (make) in
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
-                        make.right.equalTo(labelRight.snp.left).offset(-kPadding)
+                        make.right.equalTo(labRight.snp.left).offset(-kPadding)
                         make.height.equalTo(height)
                     }
                 } else {
                     //左边文字优先展示
-                    label.sizeToFit();
-                    label.snp.makeConstraints { (make) in
+                    lab.sizeToFit();
+                    lab.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
                         make.left.equalToSuperview().offset(kX_GAP)
                         make.height.equalTo(height)
                     }
                     
-                    labelRight.snp.makeConstraints { (make) in
+                    labRight.snp.makeConstraints { (make) in
                         make.centerY.equalToSuperview()
-                        make.left.equalTo(label.snp.right).offset(kPadding)
+                        make.left.equalTo(lab.snp.right).offset(kPadding)
                         make.right.equalToSuperview().offset(-kX_GAP)
                         make.height.equalTo(height)
                     }

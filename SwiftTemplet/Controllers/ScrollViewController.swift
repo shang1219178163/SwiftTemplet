@@ -51,10 +51,10 @@ class ScrollViewController: UIViewController {
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
 //            let cell: UICTViewCellOne = UICTViewCellOne.dequeueReusableCell(collectionView, indexPath: indexPath) as! UICTViewCellOne
             let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
-            cell.label.text = "标题\(indexPath.row)"
-            cell.label.text = "\(view.list[indexPath.row])"
+            cell.lab.text = "标题\(indexPath.row)"
+            cell.lab.text = "\(view.list[indexPath.row])"
 
-            cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
+            cell.lab.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
 //            cell.contentView.backgroundColor = UIColor.random;
             cell.imgView.isHidden = true;
             cell.getViewLayer()
@@ -82,9 +82,9 @@ class ScrollViewController: UIViewController {
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
 
-            cell.label.text = "标题\(indexPath.row)"
+            cell.lab.text = "标题\(indexPath.row)"
             
-            cell.label.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
+            cell.lab.textColor = view.selectIndexPath == indexPath ? view.selectedColor : view.normalColor;
 //            cell.contentView.backgroundColor = UIColor.random;
             cell.imgView.isHidden = true;
             return cell;

@@ -81,9 +81,9 @@ extension UICollectionMultipleSectionController: UICollectionViewDelegate, UICol
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let view = collectionView.dequeueReusableCell(withReuseIdentifier: "UICTViewCellOne", for: indexPath) as? UICTViewCellOne else { return UICollectionViewCell() }
-        view.label.text = "{\(indexPath.section), \(indexPath.row)}"
+        view.lab.text = "{\(indexPath.section), \(indexPath.row)}"
         view.imgView.isHidden = true
-        view.label.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+        view.lab.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
 
         return view
     }
@@ -92,7 +92,7 @@ extension UICollectionMultipleSectionController: UICollectionViewDelegate, UICol
         guard let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "UICTViewCellOne", for: indexPath) as? UICTViewCellOne else { return UICollectionReusableView() }
         view.imgView.isHidden = true
         
-        view.label.text = "\(sectionName(indexPath))"
+        view.lab.text = "\(sectionName(indexPath))"
         
         let isHeader: Bool = (kind == UICollectionView.elementKindSectionHeader)
         view.contentView.backgroundColor = isHeader ? .systemBlue : .systemGreen

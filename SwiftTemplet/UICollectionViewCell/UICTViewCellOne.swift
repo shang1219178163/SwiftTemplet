@@ -24,15 +24,15 @@ class UICTViewCellOne: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(imgView)
-        contentView.addSubview(label)
+        contentView.addSubview(lab)
         
         contentView.addSubview(lineBottom)
         contentView.addSubview(lineRight)
         
         contentView.backgroundColor = UIColor.white
-        label.backgroundColor = .clear
+        lab.backgroundColor = .clear
 
-        label.textAlignment = .center
+        lab.textAlignment = .center
         imgView.image = UIImage(named: kIMG_defaultFailed_S)
         lineBottom.isHidden = true
         lineRight.isHidden = true
@@ -41,7 +41,7 @@ class UICTViewCellOne: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if label.isHidden == true {
+        if lab.isHidden == true {
             imgView.snp.makeConstraints { (make) in
 //                make.edges.equalToSuperview()
                 make.edges.equalTo(inset)
@@ -50,7 +50,7 @@ class UICTViewCellOne: UICollectionViewCell {
         }
         
         if imgView.isHidden == true {
-            label.snp.makeConstraints { (make) in
+            lab.snp.makeConstraints { (make) in
 //                make.edges.equalToSuperview()
                 make.edges.equalTo(inset)
             }
@@ -74,7 +74,7 @@ class UICTViewCellOne: UICollectionViewCell {
             make.bottom.equalToSuperview().offset(-kH_LABEL)
         }
         
-        label.snp.makeConstraints { (make) in
+        lab.snp.makeConstraints { (make) in
             make.top.equalTo(imgView.snp.bottom).offset(0)
             make.left.right.equalTo(imgView)
             make.height.equalTo(kH_LABEL)

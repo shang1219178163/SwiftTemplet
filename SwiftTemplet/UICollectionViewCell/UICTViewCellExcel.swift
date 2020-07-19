@@ -22,17 +22,17 @@ class UICTViewCellExcel: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.backgroundColor = .white
-        contentView.addSubview(label)
+        contentView.addSubview(lab)
         
-        label.addSubview(lineTop)
-        label.addSubview(lineBottom)
-        label.addSubview(lineRight)
+        lab.addSubview(lineTop)
+        lab.addSubview(lineBottom)
+        lab.addSubview(lineRight)
 
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.textColor = .gray
+        lab.adjustsFontSizeToFitWidth = true
+        lab.font = UIFont.systemFont(ofSize: 15)
+        lab.textAlignment = .center
+        lab.numberOfLines = 1
+        lab.textColor = .gray
     }
     
     override func layoutSubviews() {
@@ -40,7 +40,7 @@ class UICTViewCellExcel: UICollectionViewCell {
         
         lineTop.isHidden = (indexP.section != 0)
         
-        label.snp.makeConstraints { (make) in
+        lab.snp.makeConstraints { (make) in
             make.top.left.equalToSuperview().offset(0)
             make.right.bottom.equalToSuperview().offset(0)
         }
