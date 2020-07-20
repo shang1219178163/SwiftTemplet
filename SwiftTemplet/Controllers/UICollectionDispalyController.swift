@@ -7,40 +7,36 @@
 //
 
 import UIKit
-
 import SwiftExpand
 
 class UICollectionDispalyController: UIViewController{
-//    var collectionView : UICollectionView?
-    let Identifier       = "UICTViewCellZero"
-    let headerIdentifier = "UICTReusableViewZeroHeader"
-    let footIdentifier   = "UICTReusableViewZeroFooter"
 
     
-    lazy var ctView: UICollectionView = {
-        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault)
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.identifier)
-        view.backgroundColor = UIColor.background
+    lazy var flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionView.layoutDefault();
+        layout.headerReferenceSize = CGSize(width: self.view.bounds.width, height: 60);
+        layout.footerReferenceSize = CGSize(width: self.view.bounds.width, height: 60);
 
-        if self.conforms(to: UICollectionViewDelegate.self) {
-            view.delegate = (self as! UICollectionViewDelegate)
-        }
-        if self.conforms(to: UICollectionViewDataSource.self) {
-            view.dataSource = (self as! UICollectionViewDataSource)
-        }
-        return view
+        return layout;
     }()
     
+    lazy var ctView: UICollectionView = {
+        let view = UICollectionView.create(self.view.bounds, layout: self.flowLayout)
+        view.backgroundColor = .white
+
+        view.delegate = self
+        view.dataSource = self
+        return view
+    }()
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "UICollectionView小解"
         view.backgroundColor = UIColor.white
        
         // 注册cell
-        ctView.backgroundColor = UIColor.white
-        ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne",],
-                            UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero",],
+        ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne", "UICTViewCellSubtitle"],
+                            UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero", "UICTViewCellValue"],
                             UICollectionView.elementKindSectionItem: ["UICTViewCellZero","UICTViewCellOne"],
         ]
         view.addSubview(ctView)
@@ -107,11 +103,11 @@ class UICollectionDispalyController: UIViewController{
 //        view.dataSource = self
 //        
 //        // 注册cell
-//        //        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
-//        //        // 注册headerView
-//        //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
-//        //        // 注册footView
-//        //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
+//        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
+//        // 注册headerView
+//        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
+//        // 注册footView
+//        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
 //        
 //        view.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
 //                                     UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
@@ -125,7 +121,7 @@ class UICollectionDispalyController: UIViewController{
 extension UICollectionDispalyController: UICollectionViewDataSource, UICollectionViewDelegate{
     //MARK: --UICollectionView
    func numberOfSections(in collectionView: UICollectionView) -> Int {
-       return 1
+       return 2
    }
 
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -148,6 +144,7 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
     
 //       cell.imgView.backgroundColor = .random
        cell.lab.text = String(format:"%ditem",indexPath.row)
+    
        return cell
    }
 
@@ -158,17 +155,39 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
    //设定header和footer的方法，根据kind不同进行不同的判断即可
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        DDLog(kind);
-        if kind == UICollectionView.elementKindSectionHeader {
-           let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
         
-           view.lab.text = kind.components(separatedBy: "ElementKind").last;
-           view.labRight.text = "999+"
-           return view;
+        switch indexPath.section {
+        case 1:
+            if kind == UICollectionView.elementKindSectionHeader {
+                let view = collectionView.dequeueReusableSupplementaryView(for: UICTViewCellSubtitle(), kind: kind, indexPath: indexPath)
+             
+                view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellSubtitle.identifier
+                view.labDetail.text = "999+"
+                view.getViewLayer()
+                return view;
+             }
+            
+             let view = collectionView.dequeueReusableSupplementaryView(for: UICTViewCellValue.self, kind: kind, indexPath: indexPath)
+             view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellValue.identifier
+             view.labDetail.text = "999+"
+             view.getViewLayer()
+             return view;
+            
+        default:
+            if kind == UICollectionView.elementKindSectionHeader {
+                let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
+             
+                view.lab.text = kind.components(separatedBy: "ElementKind").last;
+                view.labDetail.text = "999+"
+                 view.getViewLayer()
+                return view;
+             }
+            
+             let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind, indexPath: indexPath)
+             view.lab.text = kind.components(separatedBy: "ElementKind").last;
+             view.getViewLayer()
+             return view;
         }
-       
-        let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewZero.self, kind: kind, indexPath: indexPath)
-        view.lab.text = kind.components(separatedBy: "ElementKind").last;
-        return view;
     }
     
 }

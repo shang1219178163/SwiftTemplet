@@ -13,7 +13,7 @@ import MJRefresh
 @objc public extension UIScrollView {
 
     ///纯色背景色下拉刷新
-    func headerRefresh(_ action: @escaping MJRefreshComponentAction,
+    func headerColorRefresh(_ action: @escaping MJRefreshComponentAction,
                       textColor: UIColor = .gray,
                       backgroundColor: UIColor = .clear) {
         let backView = UIView(frame: CGRect(x: 0, y: -1000, width: UIScreen.main.bounds.width, height: 960))

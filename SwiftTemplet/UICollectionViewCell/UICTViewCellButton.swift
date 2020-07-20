@@ -11,7 +11,7 @@ import SwiftExpand
 
 class UICTViewCellButton: UICollectionViewCell {
        
-    var contentInset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     deinit {
         btn.titleLabel!.removeObserver(self, forKeyPath: "text")
@@ -37,7 +37,7 @@ class UICTViewCellButton: UICollectionViewCell {
         super.layoutSubviews()
         
         btn.snp.makeConstraints { (make) in
-            make.edges.equalTo(contentInset)
+            make.edges.equalTo(inset)
         }
     }
     

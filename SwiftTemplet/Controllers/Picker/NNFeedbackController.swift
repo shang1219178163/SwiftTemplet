@@ -58,9 +58,11 @@ class NNFeedbackController: UIViewController {
         view.frame = CGRectMake(0, 0, self.view.bounds.width, 110)
         view.currrentVC = self
         view.images = [view.imageDefault]
+        view.maxCount = 4
         view.rowHeight = view.frame.height
         view.delegate = self
 
+        view.tag = 1000
         return view
     }()
     
@@ -185,10 +187,12 @@ extension NNFeedbackController: UITableViewDataSource, UITableViewDelegate{
         case "UITableViewCell":
             let cell = UITableViewCell.dequeueReusableCell(tableView);
             
-            cell.contentView.addSubview(uploadImagesView)
+            if let view = cell.contentView.viewWithTag(1000) as? NNUploadImagesView {
+                DDLog(view.self)
+            } else {
+                cell.contentView.addSubview(uploadImagesView)
+            }
         
-//            let items = cell.items.filter { $0.tag >= images.count }
-//            DDLog(cell.items.count, items, images.count)
             cell.getViewLayer();
             return cell;
         default:

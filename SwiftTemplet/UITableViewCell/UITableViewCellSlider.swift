@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISlider
-class UITableViewCellSlider: UITableViewCell,UITextFieldDelegate {
+class UITableViewCellSlider: UITableViewCell {
         
     var Xgap: CGFloat = 15;
     /// 是否有星标

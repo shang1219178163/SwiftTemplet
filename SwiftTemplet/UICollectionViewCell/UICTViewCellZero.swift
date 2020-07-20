@@ -46,7 +46,6 @@ class UICTViewCellZero: UICollectionViewCell {
             make.bottom.right.equalToSuperview().offset(-kPadding)
         }
         
-        
         lineBottom.snp.makeConstraints { (make) in
              make.left.right.bottom.equalToSuperview()
              make.height.equalTo(kH_LINE_VIEW)
