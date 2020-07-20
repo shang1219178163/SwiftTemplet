@@ -10,7 +10,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UITextField(输入框)
-class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
+class UITableViewCellCode: UITableViewCell {
     
     var Xgap: CGFloat = 15;
 
@@ -113,7 +113,20 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
         super.setSelected(selected, animated: animated)
         
     }
+        
+    //MARK: -funtions
+    func block(_ action:@escaping TextFieldClosure) {
+        viewBlock = action
+    }
     
+    lazy var btnCode: UIButton = {
+        let view = UIButton.create(.zero, title: "发送验证码", imgName: nil, type: 1)
+        return view
+    }()
+
+}
+
+extension UITableViewCellCode: UITextFieldDelegate {
     //    MARK: -textfield
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
@@ -135,18 +148,4 @@ class UITableViewCellCode: UITableViewCell,UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         viewBlock?(textField)
     }
-    
-    //MARK: -funtions
-    func block(_ action:@escaping TextFieldClosure) {
-        viewBlock = action
-    }
-    
-    lazy var btnCode: UIButton = {
-        let view = UIButton.create(.zero, title: "发送验证码", imgName: nil, type: 1)
-        return view
-    }()
-
 }
-
-
-

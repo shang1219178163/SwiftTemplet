@@ -12,6 +12,7 @@ import SnapKit
 import SwiftExpand
 
 class UICTReusableViewZero: UICollectionReusableView {
+    var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,7 +31,7 @@ class UICTReusableViewZero: UICollectionReusableView {
         super.layoutSubviews()
         
         imgView.snp.makeConstraints { (make) in
-            make.top.left.bottom.right.equalToSuperview()
+            make.edges.equalTo(inset)
         }
         
         lab.snp.makeConstraints { (make) in

@@ -66,25 +66,22 @@ class ScrollHorizontalController: UIViewController{
     }()
     
     lazy var collectionView: UICollectionView = {
-//        let ctView = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.layout)
-        let ctView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault)
-
-        ctView.backgroundColor = UIColor.white;
-        ctView.showsVerticalScrollIndicator = false;
-        ctView.showsHorizontalScrollIndicator = false;
-        ctView.scrollsToTop = false;
-        ctView.isPagingEnabled = true;
+//        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.layout)
+        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault())
+        view.backgroundColor = .background;
+        view.showsVerticalScrollIndicator = false;
+        view.showsHorizontalScrollIndicator = false;
+        view.scrollsToTop = false;
+        view.isPagingEnabled = true;
 //        ctView.bounces = false;
-        ctView.dataSource = self;
-        ctView.delegate = self;
+        view.dataSource = self;
+        view.delegate = self;
 //        ctView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         
-        
-        ctView.register(cellType: UICTViewCellOne.self)
-        ctView.register(supplementaryViewType: UICTReusableViewZero.self, ofKind: UICollectionView.elementKindSectionHeader)
-        ctView.register(supplementaryViewType: UICTReusableViewZero.self, ofKind: UICollectionView.elementKindSectionFooter)
-
-        return ctView;
+        view.register(cellType: UICTViewCellOne.self)
+        view.register(supplementaryViewType: UICTReusableViewZero.self, ofKind: UICollectionView.elementKindSectionHeader)
+        view.register(supplementaryViewType: UICTReusableViewZero.self, ofKind: UICollectionView.elementKindSectionFooter)
+        return view;
     }()
     
     lazy var indicatorView: UIView = {

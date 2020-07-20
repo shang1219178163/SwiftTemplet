@@ -11,10 +11,12 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
+
+@objcMembers
 class UICTViewCellOne: UICollectionViewCell {
     
     /// 仅在只有图片或者文字时才起作用
-    @objc var inset: UIEdgeInsets = .zero
+    var inset: UIEdgeInsets = .zero
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,15 +45,6 @@ class UICTViewCellOne: UICollectionViewCell {
         
         if lab.isHidden == true {
             imgView.snp.makeConstraints { (make) in
-//                make.edges.equalToSuperview()
-                make.edges.equalTo(inset)
-            }
-            return;
-        }
-        
-        if imgView.isHidden == true {
-            lab.snp.makeConstraints { (make) in
-//                make.edges.equalToSuperview()
                 make.edges.equalTo(inset)
             }
             
@@ -64,7 +57,23 @@ class UICTViewCellOne: UICollectionViewCell {
                  make.top.right.bottom.equalToSuperview()
                  make.width.equalTo(kH_LINE_VIEW)
              }
+            return;
+        }
+        
+        if imgView.isHidden == true {
+            lab.snp.makeConstraints { (make) in
+                make.edges.equalTo(inset)
+            }
             
+            lineBottom.snp.makeConstraints { (make) in
+                 make.left.right.bottom.equalToSuperview()
+                 make.height.equalTo(kH_LINE_VIEW)
+             }
+             
+             lineRight.snp.makeConstraints { (make) in
+                 make.top.right.bottom.equalToSuperview()
+                 make.width.equalTo(kH_LINE_VIEW)
+             }
             return;
         }
         

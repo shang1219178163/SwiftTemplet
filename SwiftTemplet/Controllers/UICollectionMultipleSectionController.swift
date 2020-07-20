@@ -21,6 +21,9 @@ class UICollectionMultipleSectionController: UIViewController {
         layout.delegate = self
         
         let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        view.backgroundColor = UIColor.white
+        view.alwaysBounceVertical = true
+        
         view.register(cellType: UICTViewCellOne.self)
         view.register(UICTViewCellOne.self, forCellWithReuseIdentifier: "UICTViewCellOne")
         view.register(UICTViewCellOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTViewCellOne")
@@ -28,8 +31,6 @@ class UICollectionMultipleSectionController: UIViewController {
         
         view.delegate   = self
         view.dataSource = self
-        view.backgroundColor = UIColor.white
-        view.alwaysBounceVertical = true
         return view
     }()
     

@@ -32,6 +32,8 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+                             
+            ["PKParkCollectListController", "kOP 收藏", ],
              ["NNFeedbackController", "kOP Upload", ],
              ["NNImageAndVideoPickerController", "kOP UploadImages", ],
              ["PKMineController", "kOP 我的", ],
@@ -226,7 +228,7 @@ class ThirdViewController: UIViewController{
 //           backgroundColor: UIColor.theme)
 //        tableView.mj_header = header
 
-        tableView.headerRefresh({
+        tableView.headerColorRefresh({
             self.requestInfo()
         }, textColor: UIColor.white, backgroundColor: UIColor.theme)
         

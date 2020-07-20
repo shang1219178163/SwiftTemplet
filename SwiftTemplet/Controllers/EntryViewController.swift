@@ -320,6 +320,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelRight.text = dataModel.valueText(forKeyPath: value4, defalut: "-")
             cell.accessoryType = .disclosureIndicator
             
+            cell.labelRight.text = "99+"
             cell.getViewLayer()
             return cell
             
@@ -464,8 +465,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateRangeView.rangeDay = 0
             cell.dateRangeView.isFuture = true
             cell.dateRangeView.labTitle.text = value0
-            let dateTimeKeys = (itemList.last! as NSString).components(separatedBy: ",")
-           
+            let dateTimeKeys = itemList.last!.components(separatedBy: ",")
+
             let beginTime: String = dataModel.valueText(forKeyPath: dateTimeKeys.first!)
             let endTime: String = dataModel.valueText(forKeyPath: dateTimeKeys.last!)
             if beginTime.count == 19 && endTime.count == 19 {

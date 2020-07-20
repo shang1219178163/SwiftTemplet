@@ -22,11 +22,12 @@ class UICollectionBatchUpdateController: UIViewController {
         flowLayout.scrollDirection = .vertical
         
         let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        view.register(cellType: UICollectionViewCell.self)
-        view.delegate   = self
-        view.dataSource = self
         view.backgroundColor = UIColor.white
         view.alwaysBounceVertical = true
+        view.register(cellType: UICollectionViewCell.self)
+
+        view.delegate   = self
+        view.dataSource = self
         return view
     }()
 

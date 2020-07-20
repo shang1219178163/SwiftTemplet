@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISegment分段按钮
-class UITableViewCellSegment: UITableViewCell, UITextFieldDelegate {
+class UITableViewCellSegment: UITableViewCell {
     
     var ctlAlignment = NSTextAlignment.center
     

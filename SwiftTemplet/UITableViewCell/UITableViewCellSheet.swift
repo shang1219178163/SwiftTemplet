@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+sheet
-class UITableViewCellSheet: UITableViewCell,UITextFieldDelegate {
+class UITableViewCellSheet: UITableViewCell {
     
     var viewBlock:((String) -> Void)?
     var itemList: [String]? {

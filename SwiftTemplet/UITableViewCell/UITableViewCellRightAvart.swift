@@ -11,7 +11,8 @@ import SwiftExpand
 
 /// 右边头像
 class UITableViewCellRightAvart: UITableViewCell {
-        
+    var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -34,13 +35,12 @@ class UITableViewCellRightAvart: UITableViewCell {
             return
         }
             
-        let height = bounds.height - 10
+        let height = bounds.height - inset.top - inset.bottom
         btn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(5);
-            make.right.equalToSuperview().offset(-10);
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-inset.right);
             make.width.height.equalTo(height);
         }
-        DDLog(bounds, btn.bounds)
         btn.layer.cornerRadius = height*0.5
         btn.layer.masksToBounds = true
     }
