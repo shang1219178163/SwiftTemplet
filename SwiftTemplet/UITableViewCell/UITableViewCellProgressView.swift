@@ -13,7 +13,7 @@ import SwiftExpand
 /// 一行多选/单选
 class UITableViewCellProgressView: UITableViewCell {
      
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -49,17 +49,25 @@ class UITableViewCellProgressView: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        progressView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-15);
-            make.bottom.equalToSuperview().offset(-10);
-            make.width.equalTo(bounds.height - 20);
+        if bounds.height < 10 {
+            return
         }
+        let height = bounds.height - inset.top - inset.bottom
+
+        let right: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let left: CGFloat = inset.left
+        
+        progressView.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-right);
+            make.width.height.equalTo(height);
+        }
+
         let list = [labelLeft, labelLeftSub]
-        list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 10, leadSpacing: 10, tailSpacing: 8)
+        list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 10, leadSpacing: inset.top, tailSpacing: inset.bottom)
         list.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalTo(progressView.snp.left).offset(-8);
+            make.left.equalToSuperview().offset(left);
+            make.right.equalTo(progressView.snp.left).offset(-kPadding);
         }
     }
 

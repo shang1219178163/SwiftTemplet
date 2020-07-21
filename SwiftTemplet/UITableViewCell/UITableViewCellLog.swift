@@ -11,7 +11,7 @@ import UIKit
 
 class UITableViewCellLog: UITableViewCell {
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     // MARK: -lazy
     lazy var labelOne: UILabel = {
@@ -139,40 +139,40 @@ class UITableViewCellLog: UITableViewCell {
         }
         
         let height: CGFloat = bounds.height - 20
-        let right: CGFloat = accessoryType == .none ? -10.0 : 0.0
+        let endX: CGFloat = accessoryType == .none ? inset.right : 0.0
 
         if imgViewLeft.isHidden == true {
             labelOneRight.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.right.equalToSuperview().offset(right)
+                make.top.equalToSuperview().offset(inset.top);
+                make.right.equalToSuperview().offset(-endX)
                 make.height.equalTo(height/4);
                 make.width.equalTo(120)
             }
             
             labelOne.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(Xgap)
+                make.top.equalToSuperview().offset(inset.top);
+                make.left.equalToSuperview().offset(inset.left)
                 make.right.equalTo(labelOneRight.snp.left).offset(-8)
                 make.height.equalTo(height/4);
             }
 
         } else {
             imgViewLeft.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(Xgap);
+                make.top.equalToSuperview().offset(inset.top);
+                make.left.equalToSuperview().offset(inset.left)
                 make.bottom.equalToSuperview().offset(-10);
                 make.width.equalTo(height)
             }
             
             labelOneRight.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.right.equalToSuperview().offset(right)
+                make.top.equalToSuperview().offset(inset.top);
+                make.right.equalToSuperview().offset(-endX)
                 make.height.equalTo(height/4);
                 make.width.equalTo(120)
             }
             
             labelOne.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
+                make.top.equalToSuperview().offset(inset.top);
                 make.left.equalTo(imgViewLeft.snp.right).offset(8)
                 make.right.equalTo(labelOneRight.snp.left).offset(-8)
                 make.height.equalTo(height/4);
@@ -203,7 +203,7 @@ class UITableViewCellLog: UITableViewCell {
             make.top.equalTo(labelThree.snp.bottom).offset(0);
             make.left.equalTo(labelOne)
             make.right.equalTo(labelOneRight)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-inset.bottom)
         }
                 
     }

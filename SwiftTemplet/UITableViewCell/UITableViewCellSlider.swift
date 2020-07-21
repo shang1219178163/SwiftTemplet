@@ -13,7 +13,10 @@ import SwiftExpand
 /// 文字+UISlider
 class UITableViewCellSlider: UITableViewCell {
         
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    var spacing: CGFloat = 20
+    
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -31,7 +34,8 @@ class UITableViewCellSlider: UITableViewCell {
         
         labelRight.numberOfLines = 1;
         labelRight.adjustsFontSizeToFitWidth = true;
-
+        labelRight.font = UIFont.systemFont(ofSize: 13)
+        
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
         sliderCtl.addObserver(self, forKeyPath: "value", options: .new, context: nil)
     }
@@ -45,7 +49,6 @@ class UITableViewCellSlider: UITableViewCell {
         } else if keyPath == "value" {
             if let slider = object as? UISlider {
                 labelRight.text = String(format: "%.2f", slider.value)
-
             }
         }
         else {
@@ -68,28 +71,28 @@ class UITableViewCellSlider: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-        labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        let height = bounds.height - inset.top - inset.bottom
+//        let endX = accessoryType == .none ? inset.right : 0
+
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(Xgap)
-            make.size.equalTo(labelLeft.size);
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(labelLeftSize.width)
+            make.height.equalTo(height)
         }
-        
-        let width = contentView.frame.width - labelLeft.frame.maxX - Xgap
-        let ctlWidth = width*0.7
         
         labelRight.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-Xgap)
+            make.right.equalToSuperview().offset(-inset.right)
             make.width.equalTo(45)
             make.height.equalTo(labelLeft);
         }
         
         sliderCtl.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
+            make.left.equalTo(labelLeft.snp.right).offset(spacing)
             make.right.equalTo(labelRight.snp.left).offset(-kPadding)
-            make.width.greaterThanOrEqualTo(ctlWidth)
             make.height.equalTo(labelLeft);
         }
     }

@@ -14,7 +14,7 @@ import UIKit
  */
 class UITableViewCellFive: UITableViewCell {
 
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -51,28 +51,32 @@ class UITableViewCellFive: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-                
-        imgViewLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(70)
-            make.height.equalTo(70)
+        let labHeight: CGFloat = 20
+
+        let endBottom = labelLeftSub.isHidden ? inset.bottom : inset.bottom + labHeight
+    
+        if labelLeftSub.isHidden == false {
+            labelLeftSub.snp.makeConstraints { (make) in
+                make.left.equalToSuperview().offset(inset.left);
+                make.right.equalToSuperview().offset(-inset.right);
+                make.bottom.equalToSuperview().offset(inset.bottom);
+                make.height.equalTo(labHeight);
+            }
         }
         
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalTo(imgViewLeft.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
-            make.height.equalTo(20);
+            make.left.equalToSuperview().offset(inset.left);
+            make.right.equalToSuperview().offset(-inset.right);
+            make.bottom.equalTo(endBottom).offset(0);
+            make.height.equalTo(labHeight);
         }
         
-        labelLeftSub.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
-            make.height.equalTo(labelLeft);
+        imgViewLeft.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(inset.top)
+            make.left.equalToSuperview().offset(inset.left);
+            make.right.equalToSuperview().offset(-inset.right);
+            make.bottom.equalTo(labelLeft.snp.top).offset(0);
         }
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

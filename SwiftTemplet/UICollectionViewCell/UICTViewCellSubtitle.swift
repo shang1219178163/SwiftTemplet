@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 class UICTViewCellSubtitle: UICollectionViewCell {
-    var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     var btnSize = CGSize(width: 20, height: 20)
 

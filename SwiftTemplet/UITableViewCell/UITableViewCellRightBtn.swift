@@ -1,20 +1,26 @@
 //
-//  UITableViewCellFour.swift
+//  UITableViewCellRightBtn.swift
 //  BuildUI
 //
 //  Created by Bin Shang on 2018/12/19.
 //  Copyright © 2018 Bin Shang. All rights reserved.
 //
+/**
+ 按钮+文字
+ 文字+按钮
+ 按钮
+ */
 
 import UIKit
 import SwiftExpand
 
 /// 勾选按钮+文字
-class UITableViewCellFour: UITableViewCell {
+class UITableViewCellRightBtn: UITableViewCell {
 
-    var Xgap: CGFloat = 15;
-
-    var type: Int = 0{
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+    var btnSize = CGSize(width: 25, height: 25)
+    
+    var isShowLeft = false{
         didSet {
             setNeedsLayout()
         }
@@ -51,33 +57,43 @@ class UITableViewCellFour: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-        if type == 0 {
+        let height = bounds.height - inset.top - inset.bottom
+        let endX = accessoryType == .none ? inset.right : 0
+        
+        if labelLeft.isHidden == true {
+            btn.snp.makeConstraints { (make) in
+                make.edges.equalTo(inset)
+            }
+            return
+        }
+
+        if isShowLeft == false {
             btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalToSuperview().offset(Xgap)
-                make.width.height.equalTo(kSizeArrow.height)
+                make.right.equalToSuperview().offset(-endX)
+                make.size.equalTo(btnSize)
             }
             
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalTo(btn.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-Xgap)
-                make.height.equalTo(btn)
-            }
-            
-        } else {
-            btn.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-Xgap)
-                make.width.height.equalTo(kSizeArrow.height)
-            }
-            
-            labelLeft.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalToSuperview().offset(Xgap)
+                make.left.equalToSuperview().offset(inset.left)
                 make.right.equalTo(btn.snp.left).offset(-kPadding)
-                make.height.equalTo(btn)
+                make.height.equalTo(height)
             }
+            return
+        }
+        
+        btn.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(inset.left)
+            make.size.equalTo(btnSize)
+        }
+        
+        labelLeft.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(btn.snp.right).offset(kPadding)
+            make.right.equalTo(btn.snp.left).offset(-endX)
+            make.height.equalTo(height)
         }
     }
     

@@ -19,6 +19,8 @@ import SwiftExpand
     
     weak var delegate: NNDateRangeViewDelegate?
 
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
     var isEmptyDate: Bool = false{
         willSet{
             labBegin.text = "开始时间"
@@ -127,33 +129,35 @@ import SwiftExpand
         }
         setupDefault()
         
+        let height = bounds.height - inset.top - inset.bottom
+
         let labTitleSize = labTitle.sizeThatFits(.zero)
         labTitle.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10)
-            make.left.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(inset.left)
             make.width.equalTo(labTitleSize.width)
-            make.bottom.equalToSuperview().offset(-10)
+            make.height.equalTo(height)
         }
         
-        let width = bounds.width - labTitleSize.width - 10*2
+        let width = bounds.width - labTitleSize.width - inset.left - inset.right
         let labWidth = (width - 20 - 5*2 - 8)*0.5
 
         labBegin.snp.remakeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labTitle.snp.right).offset(8)
-            make.width.equalTo(labWidth);
+            make.width.equalTo(labWidth)
         }
         
         labLine.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labBegin.snp.right).offset(5)
-            make.width.equalTo(20);
+            make.width.equalTo(20)
         }
         
         labEnd.snp.remakeConstraints { (make) in
             make.top.bottom.equalTo(labTitle)
             make.left.equalTo(labLine.snp.right).offset(5)
-            make.width.equalTo(labWidth);
+            make.width.equalTo(labWidth)
         }
     }
         

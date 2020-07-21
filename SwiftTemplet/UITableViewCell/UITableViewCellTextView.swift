@@ -25,7 +25,7 @@ class UITableViewCellTextView: UITableViewCell {
     }
     private var viewBlock: ((UITableViewCellTextView, String) -> Void)?
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -68,48 +68,52 @@ class UITableViewCellTextView: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-        let size = labelLeft.sizeThatFits(.zero)
         
+        let endX = accessoryType == .none ? inset.right : 0
+        
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         switch type {
         case 1:
             labelLeft.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(kY_GAP)
-                make.left.equalToSuperview().offset(Xgap)
-                make.size.equalTo(size)
+                make.top.equalToSuperview().offset(inset.top)
+                make.left.equalToSuperview().offset(inset.left)
+                make.width.equalTo(labelLeftSize.width)
+                make.height.equalTo(20)
             }
             
             labelLeftSub.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft)
-                make.right.equalToSuperview().offset(-Xgap)
+                make.right.equalToSuperview().offset(-endX)
                 make.size.equalTo(labelLeft)
             }
             
             textView.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft.snp.bottom).offset(kPadding);
                 make.left.equalTo(labelLeft)
-                make.right.equalTo(labelLeftSub.snp.right)
-                make.bottom.equalToSuperview().offset(-kY_GAP);
+                make.right.equalTo(labelLeftSub)
+                make.bottom.equalToSuperview().offset(-inset.bottom);
             }
             
         default:
             labelLeft.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(kY_GAP)
-                make.left.equalToSuperview().offset(Xgap)
-                make.size.equalTo(size);
+                make.top.equalToSuperview().offset(inset.top)
+                make.left.equalToSuperview().offset(inset.left)
+                make.width.equalTo(labelLeftSize.width)
+                make.height.equalTo(20)
             }
             
             labelLeftSub.snp.makeConstraints { (make) in
                 make.left.equalTo(labelLeft)
                 make.right.equalTo(labelLeft)
-                make.bottom.equalToSuperview().offset(-kY_GAP);
-                make.height.equalTo(25)
+                make.bottom.equalToSuperview().offset(-inset.bottom);
+                make.height.equalTo(labelLeft)
             }
             
             textView.snp.makeConstraints { (make) in
                 make.top.equalTo(labelLeft);
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-Xgap)
-                make.bottom.equalToSuperview().offset(-kY_GAP);
+                make.right.equalToSuperview().offset(-inset.right)
+                make.bottom.equalToSuperview().offset(-inset.bottom);
             }
         }
     }

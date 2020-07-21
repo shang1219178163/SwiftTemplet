@@ -13,10 +13,10 @@ import SwiftExpand
 
 /// 文字+UITextField(输入框)
 class UITableViewCellTextField: UITableViewCell {
-    
+
     var viewBlock: TextFieldClosure?
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     /// 是否有星标
     var hasAsterisk = false
     
@@ -79,30 +79,29 @@ class UITableViewCellTextField: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
+        let height = bounds.height - inset.top - inset.bottom
+        let endX = accessoryType == .none ? inset.right : 0
         
         if labelLeft.isHidden {
             textfield.snp.makeConstraints { (make) in
-                make.top.equalToSuperview()
-                make.left.equalToSuperview().offset(Xgap)
-                make.right.equalToSuperview().offset(-Xgap)
-                make.bottom.equalToSuperview()
+                make.edges.equalTo(inset)
             }
             return
         }
 
-        let size: CGSize = labelLeft.sizeThatFits(.zero)
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(Xgap)
-            make.width.lessThanOrEqualTo(ceil(size.width))
-            make.height.equalTo(35)
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(labelLeftSize.width)
+            make.height.equalTo(height)
         }
         
         textfield.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft);
+            make.top.equalTo(labelLeft)
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-Xgap)
-            make.height.equalTo(labelLeft);
+            make.right.equalToSuperview().offset(-endX)
+            make.height.equalTo(labelLeft)
         }
     }
     

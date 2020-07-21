@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 class UICTReusableViewZero: UICollectionReusableView {
-    var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

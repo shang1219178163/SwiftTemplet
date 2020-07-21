@@ -11,7 +11,7 @@ import UIKit
 
 class UITableViewCellHorizontal: UITableViewCell {
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     var spacing: CGFloat = 15;
 
     // MARK: -lazy
@@ -87,13 +87,14 @@ class UITableViewCellHorizontal: UITableViewCell {
         if bounds.height <= 10.0 {
             return;
         }
-        let tailSpacing: CGFloat = accessoryType == .none ? Xgap : 0.0
-        
+        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let leadSpacing: CGFloat = inset.left
+
         let list = [labelOne, labelTwo, labelThree, labelFour].filter { $0.isHidden == false }
-        list.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: spacing, leadSpacing: Xgap, tailSpacing: tailSpacing)
+        list.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: spacing, leadSpacing: leadSpacing, tailSpacing: tailSpacing)
         list.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
-            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalToSuperview().offset(inset.top);
+            make.bottom.equalToSuperview().offset(-inset.bottom)
         }
     }
     

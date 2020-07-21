@@ -7,13 +7,12 @@
 //
 
 import UIKit
+import SwiftExpand
 
 
 class UITableViewCellVertical: UITableViewCell {
-    
-    var Xgap: CGFloat = 15;
-
-    var imageSize: CGSize = .zero
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var btnSize = CGSize(width: 25, height: 25)
 
     // MARK: -lazy
     lazy var labelOne: UILabel = {
@@ -63,13 +62,13 @@ class UITableViewCellVertical: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
   
-        contentView.addSubview(imgViewLeft);
+        contentView.addSubview(btn);
         contentView.addSubview(labelOne);
         contentView.addSubview(labelTwo);
         contentView.addSubview(labelThree);
         contentView.addSubview(labelFour);
         
-        imgViewLeft.backgroundColor = .systemGreen
+        btn.backgroundColor = .systemGreen
     }
         
     required init?(coder aDecoder: NSCoder) {
@@ -88,25 +87,23 @@ class UITableViewCellVertical: UITableViewCell {
             return;
         }
         
-        let height: CGFloat = bounds.height - 20
-        var left: CGFloat = Xgap
+//        let height = bounds.height - inset.top - inset.bottom
+        let labStartX = btn.isHidden ? inset.left : btnSize.width + inset.left + kPadding
+        let endX = accessoryType == .none ? inset.right : 0
 
-        if imgViewLeft.isHidden == false {
-            let size = imageSize == .zero ? CGSize(width: height, height: height) : imageSize
-            imgViewLeft.snp.makeConstraints { (make) in
+        if btn.isHidden == false {
+            btn.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalToSuperview().offset(Xgap);
-                make.size.equalTo(size)
+                make.left.equalToSuperview().offset(inset.left)
+                make.size.equalTo(btnSize)
             }
-            left = Xgap + size.width + 8
         }
         
-        let right: CGFloat = accessoryType == .none ? -10.0 : 0.0
         let list = [labelOne, labelTwo, labelThree, labelFour].filter { $0.isHidden == false }
-        list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: 10, tailSpacing: 10)
+        list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
         list.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(left);
-            make.right.equalToSuperview().offset(right);
+            make.left.equalToSuperview().offset(labStartX)
+            make.right.equalToSuperview().offset(-endX)
         }
     }
     

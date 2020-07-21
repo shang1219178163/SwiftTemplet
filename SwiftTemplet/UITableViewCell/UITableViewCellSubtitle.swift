@@ -12,18 +12,19 @@ import SnapKit
 import SwiftExpand
 
 /*
- 文字+文字
- 文字+文字
+ 图像 文字+文字
+      文字+文字
  */
 class UITableViewCellSubtitle: UITableViewCell {
 
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var btnSize = CGSize(width: 25, height: 25)
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
-        contentView.addSubview(imgViewLeft);
+        contentView.addSubview(btn);
 
         contentView.addSubview(labelRight);
         contentView.addSubview(labelRightSub);
@@ -65,62 +66,49 @@ class UITableViewCellSubtitle: UITableViewCell {
         if bounds.height <= 10.0 {
             return;
         }
-                
-        let height: CGFloat = bounds.height - 20
+        
+        let height = bounds.height - inset.top - inset.bottom
+        let labStartX = btn.isHidden ? inset.left : btnSize.width + inset.left + kPadding
+        let endX = accessoryType == .none ? inset.right : 0
 
-        imgViewLeft.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview();
-            make.left.equalToSuperview().offset(Xgap);
-            make.bottom.equalToSuperview().offset(-10);
-            make.width.equalTo(height);
+        if btn.isHidden == false {
+            btn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.left.equalToSuperview().offset(inset.left)
+                make.size.equalTo(btnSize)
+            }
         }
         
-        labelRight.sizeToFit();
+        let labelRightSize = labelRight.sizeThatFits(.zero)
         labelRight.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-Xgap);
-            make.height.equalTo(height*0.5);
+            make.top.equalToSuperview().offset(inset.top)
+            make.right.equalToSuperview().offset(-endX)
+            make.width.equalTo(labelRightSize.width)
+            make.height.equalTo(height*0.5)
         }
         
-        labelRightSub.sizeToFit();
+        let labelRightSubSize = labelRightSub.sizeThatFits(.zero)
         labelRightSub.snp.makeConstraints { (make) in
-            make.top.equalTo(labelRight.snp.bottom).offset(0);
-            make.right.equalTo(labelRight);
-//            make.width.equalTo(150)
+            make.top.equalTo(labelRight.snp.bottom).offset(0)
+            make.right.equalToSuperview().offset(-endX)
+            make.width.equalTo(labelRightSubSize.width)
+            make.height.equalTo(height*0.5)
+        }
+
+        labelLeft.snp.makeConstraints { (make) in
+            make.centerY.equalTo(labelRight);
+            make.left.equalToSuperview().offset(labStartX);
+            make.right.equalTo(labelRight.snp.left).offset(-8);
             make.height.equalTo(labelRight);
         }
-
-        if imgViewLeft.isHidden {
-            labelLeft.snp.makeConstraints { (make) in
-                make.centerY.equalTo(labelRight);
-                make.left.equalToSuperview().offset(Xgap);
-                make.right.equalTo(labelRight.snp.left).offset(-8);
-                make.height.equalTo(labelRight);
-            }
-            
-            labelLeftSub.snp.makeConstraints { (make) in
-                make.centerY.equalTo(labelRightSub);
-                make.left.equalTo(labelLeft);
-                make.right.equalTo(labelRightSub.snp.left).offset(-8);
-                make.height.equalTo(labelRightSub);
-            }
-
-        } else {
-            labelLeft.snp.makeConstraints { (make) in
-                make.centerY.equalTo(labelRight);
-                make.left.equalTo(imgViewLeft.snp.right).offset(8);
-                make.right.equalTo(labelRight.snp.left).offset(-8);
-                make.height.equalTo(labelRight);
-            }
-            
-            labelLeftSub.snp.makeConstraints { (make) in
-                make.centerY.equalTo(labelRightSub);
-                make.left.equalTo(labelLeft);
-                make.right.equalTo(labelRightSub.snp.left).offset(-8);
-                make.height.equalTo(labelRightSub);
-            }
-        }
         
+        labelLeftSub.snp.makeConstraints { (make) in
+            make.centerY.equalTo(labelRightSub);
+            make.left.equalTo(labelLeft);
+            make.right.equalTo(labelRightSub.snp.left).offset(-8);
+            make.height.equalTo(labelRightSub);
+        }
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

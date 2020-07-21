@@ -13,10 +13,10 @@ import SwiftExpand
 
 /// 单选+NNPickListView(UITableView)
 class UITableViewCellPickerView: UITableViewCell {
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     var viewBlock:((UITableViewCellPickerView, String, [Any]) -> Void)?
     
-    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -60,19 +60,22 @@ class UITableViewCellPickerView: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-        labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        let height = bounds.height - inset.top - inset.bottom
+        let endX = accessoryType == .none ? inset.right : 0
+
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(Xgap)
-            make.size.equalTo(labelLeft.size);
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(labelLeftSize.width)
+            make.height.equalTo(height)
         }
         
         textfield.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft);
+            make.top.equalTo(labelLeft)
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(-Xgap)
-            make.height.equalTo(labelLeft);
+            make.right.equalToSuperview().offset(-endX)
+            make.height.equalTo(labelLeft)
         }
     }
 

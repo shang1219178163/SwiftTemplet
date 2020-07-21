@@ -11,7 +11,6 @@ import UIKit
 /// 有效日期选择
 class UITableViewCellDateRange: UITableViewCell {
 
-    var Xgap: CGFloat = 15;
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle

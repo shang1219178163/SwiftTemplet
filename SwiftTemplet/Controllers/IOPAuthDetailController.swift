@@ -109,10 +109,10 @@ extension IOPAuthDetailController: UITableViewDataSource, UITableViewDelegate {
         
         switch itemList[1].intValue {
         case 3:
-            let cell = UITableViewCellThree.dequeueReusableCell(tableView)
-            cell.labelLeft.text = itemList[0]
-            cell.labelRight.text = kBlankTwo + itemList[4]
-            cell.labelRight.textAlignment = .left
+            let cell = UITableViewCell.dequeueReusableCell(tableView)
+//            cell.labelLeft.text = itemList[0]
+//            cell.labelRight.text = kBlankTwo + itemList[4]
+//            cell.labelRight.textAlignment = .left
 
             return cell
             
@@ -125,10 +125,8 @@ extension IOPAuthDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         //        cell.isSelected = !cell.isSelected
         //        tableView.deselectRow(at: indexPath, animated: true)
-        tableView.reloadData()
         
     }
     
