@@ -14,13 +14,13 @@ class FirstViewController: UIViewController {
     var dataList: NSMutableArray = [];
 
     //MARK: - layz
-    //    lazy var tableView: UITableView = {
-    //        let table = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-    //        table.dataSource = self;
-    //        table.delegate = self;
-    //
-    //        return table;
-    //    }();
+//    lazy var tableView: UITableView = {
+//        let view = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
+//        view.dataSource = self;
+//        view.delegate = self;
+//
+//        return view
+//    }()
     
     var imgList = ["https://www.huizhubang.com/attachment/rotation/9.jpg",
         "https://www.huizhubang.com/attachment/rotation/8.jpg",
@@ -42,7 +42,7 @@ class FirstViewController: UIViewController {
         if title == nil {
             title = self.controllerName;
         }
-        
+                
         for _ in 0...1 {
             let marr : NSMutableArray = [];
             for j in 0...6{
@@ -51,22 +51,29 @@ class FirstViewController: UIViewController {
             }
             dataList.add(marr);
         }
-        
-        //        DDLog(dataList);
         tbView.reloadData();
-        
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        tbView.frame = view.bounds
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        DDLog("viewWillAppear")
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+        
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func showAlert() {
         let msg = """
 感谢您对停车王的信任！
 请注意，在您使用本软件过程中我们会按照《服务协议》、《隐私协议》收集、使用和共享您的个人信息，请认真阅读并充分理解。
@@ -77,16 +84,6 @@ class FirstViewController: UIViewController {
 3.未经您同意，我们不会从第三方处获取、共享或向其提供您的信息
 """
         UIAlertController.showAlert("温馨提示", message: msg, alignment: .left, actionTitles: [kTitleSure])
-                
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-        
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
@@ -197,8 +194,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
 //            cell.imgViewRight.isHidden = true;
-
-            
             //随机元素
 //            imgList = imgList.sorted(by: {$0 < $1});
 //            imgList = imgList.sorted(by:<);
@@ -243,7 +238,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         label.backgroundColor = .green;
         label.text = "header\(section)";
         return label;
-        
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
