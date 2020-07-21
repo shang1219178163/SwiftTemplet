@@ -207,7 +207,6 @@
 		146F09822228AF4700E13F53 /* NNVehicleInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */; };
 		146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* NNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* NNUpdateVersionView.swift */; };
-		146F098A22291A1200E13F53 /* NNPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F098922291A1200E13F53 /* NNPhotosView.swift */; };
 		1472C23724596E36000F8441 /* NNParentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472C23624596E36000F8441 /* NNParentController.swift */; };
 		1472C23924598DB8000F8441 /* HHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472C23824598DB7000F8441 /* HHTabBarController.swift */; };
 		1472C23B24598E18000F8441 /* ReuseChildsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1472C23A24598E18000F8441 /* ReuseChildsController.swift */; };
@@ -608,7 +607,6 @@
 		146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNVehicleInfoCardView.swift; sourceTree = "<group>"; };
 		146F09832228CD7000E13F53 /* NNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
-		146F098922291A1200E13F53 /* NNPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPhotosView.swift; sourceTree = "<group>"; };
 		1472C23624596E36000F8441 /* NNParentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNParentController.swift; sourceTree = "<group>"; };
 		1472C23824598DB7000F8441 /* HHTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHTabBarController.swift; sourceTree = "<group>"; };
 		1472C23A24598E18000F8441 /* ReuseChildsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseChildsController.swift; sourceTree = "<group>"; };
@@ -900,13 +898,6 @@
 				143917F624C42EC600CBABF0 /* NNUploadImagesController.swift */,
 			);
 			path = Picker;
-			sourceTree = "<group>";
-		};
-		1439180224C5334600CBABF0 /* Refresh */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Refresh;
 			sourceTree = "<group>";
 		};
 		14488702224E1D2300B550AF /* Keyboard */ = {
@@ -1269,7 +1260,6 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1439180224C5334600CBABF0 /* Refresh */,
 				143917ED24C2EF3B00CBABF0 /* Picker */,
 				1451EBDA2498BF0B00059BDC /* TapStore */,
 				146D49A92497609900B25EE7 /* BookReader */,
@@ -1460,7 +1450,6 @@
 				146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */,
 				146F09832228CD7000E13F53 /* NNRecordCardView.swift */,
 				146F09872229033E00E13F53 /* NNUpdateVersionView.swift */,
-				146F098922291A1200E13F53 /* NNPhotosView.swift */,
 				142A76F122275EE00016D3DA /* NNAnnularProgress.swift */,
 				142A76E422275EDF0016D3DA /* NNCalendarView.swift */,
 				142A76E322275EDF0016D3DA /* NNCellDefaultView.swift */,
@@ -1688,9 +1677,6 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
-				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
-				"${BUILT_PRODUCTS_DIR}/BSImageView/BSImageView.framework",
 				"${BUILT_PRODUCTS_DIR}/EAIntroView/EAIntroView.framework",
 				"${BUILT_PRODUCTS_DIR}/EARestrictedScrollView/EARestrictedScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
@@ -1731,9 +1717,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImageView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EAIntroView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EARestrictedScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
@@ -1802,7 +1785,6 @@
 				147E3050246CD5000076C704 /* UITableViewCellCouponRecharge.swift in Sources */,
 				14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */,
 				14C901A12315435B0084A946 /* NNSegmentView.swift in Sources */,
-				146F098A22291A1200E13F53 /* NNPhotosView.swift in Sources */,
 				1422A9D324496AD2002D6145 /* NNTransitionAnimator.swift in Sources */,
 				1443F84B230BF2A70023C777 /* TestViewController.swift in Sources */,
 				143917F724C42EC700CBABF0 /* NNUploadImagesController.swift in Sources */,

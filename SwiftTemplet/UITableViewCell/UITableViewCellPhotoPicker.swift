@@ -7,20 +7,33 @@
 //
 
 import UIKit
+import SwiftExpand
 
 // 图片封装视图
 class UITableViewCellPhotoPicker: UITableViewCell {
+    
+    lazy var pickView: NNUploadImagesView = {
+        let view = NNUploadImagesView()
+        view.currrentVC = currrentVC
+        view.images = [view.imageDefault]
+        view.rowHeight = view.frame.height
+        view.delegate = self
 
+        return view
+    }()
+    
+    var currrentVC: UIViewController?
+    
+    var block: (([UIImage]) -> Void)?
+
+    // MARK: -lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
-        contentView.addSubview(defaultView);
-        defaultView.snp.makeConstraints { (make) in
+        contentView.addSubview(pickView);
+        pickView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-//        defaultView.snp.makeConstraints { (make) in
-//            make.top.left.right.equalToSuperview()
-//        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,11 +52,13 @@ class UITableViewCellPhotoPicker: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    lazy var defaultView: NNPhotosView = {
-        var view = NNPhotosView(frame: .zero)
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        return view
-    }()
-    
+    // MARK: - funtions
+
+}
+
+extension UITableViewCellPhotoPicker: NNUploadImagesViewDelegate {
+    func didFinishPicker(_ images: [UIImage], isSelectOriginalPhoto: Bool) {
+        DDLog(images.count)
+        block?(images)
+    }
 }

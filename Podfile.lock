@@ -17,11 +17,6 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
-  - BSGridCollectionViewLayout (1.2.5)
-  - BSImagePicker (2.10.3):
-    - BSGridCollectionViewLayout (= 1.2.5)
-    - BSImageView (= 1.0.3)
-  - BSImageView (1.0.3)
   - EAIntroView (2.12.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
@@ -96,7 +91,6 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - AlamofireImage
-  - BSImagePicker
   - EAIntroView
   - HandyJSON
   - HFNavigationController
@@ -132,9 +126,6 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - AlamofireImage
-    - BSGridCollectionViewLayout
-    - BSImagePicker
-    - BSImageView
     - EAIntroView
     - EARestrictedScrollView
     - FLAnimatedImage
@@ -174,9 +165,6 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
-  BSGridCollectionViewLayout: 333dcb457a5a3bdd9212607ab5756553dcfe06cb
-  BSImagePicker: 07404254f2fcdaf5a2eb403c0f8c337267ce8738
-  BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
@@ -212,6 +200,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: fca36fe6ad0b4dfb756d3226c6fd646e64959678
+PODFILE CHECKSUM: c445cd76e175a8f1d6ce4eb711e4ee6171d7a2f5
 
 COCOAPODS: 1.9.3
