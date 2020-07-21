@@ -101,7 +101,6 @@
 		143917F124C3CDA800CBABF0 /* NNFeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143917F024C3CDA800CBABF0 /* NNFeedbackController.swift */; };
 		143917F724C42EC700CBABF0 /* NNUploadImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143917F624C42EC600CBABF0 /* NNUploadImagesController.swift */; };
 		1439180124C5331200CBABF0 /* PKParkCollectListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1439180024C5331200CBABF0 /* PKParkCollectListController.swift */; };
-		1439180424C5338000CBABF0 /* NNRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1439180324C5338000CBABF0 /* NNRefreshHeader.swift */; };
 		1439180D24C57A3C00CBABF0 /* UICTViewCellSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1439180C24C57A3C00CBABF0 /* UICTViewCellSubtitle.swift */; };
 		1439180F24C57A5100CBABF0 /* UICTViewCellValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1439180E24C57A5100CBABF0 /* UICTViewCellValue.swift */; };
 		143D1E4423C472FB00A5850D /* UITableViewCellSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143D1E4323C472FB00A5850D /* UITableViewCellSubtitle.swift */; };
@@ -321,7 +320,6 @@
 		14BE1769237FB9450007B148 /* NNTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1768237FB9450007B148 /* NNTabView.swift */; };
 		14BE176B237FC5070007B148 /* NNTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE176A237FC5070007B148 /* NNTabViewController.swift */; };
 		14BEDC6124A85E330031852F /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BEDC6024A85E330031852F /* Person.swift */; };
-		14BEDC6324A8954F0031852F /* NSDecimalNumber+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BEDC6224A8954F0031852F /* NSDecimalNumber+Helper.swift */; };
 		14BEDC6F24A976BF0031852F /* KVOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BEDC6E24A976BF0031852F /* KVOViewController.swift */; };
 		14BEED06240FBEF800289BA6 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BEED05240FBEF800289BA6 /* CloudKit.framework */; };
 		14C1196022D75194009D18A3 /* NNSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1195F22D75194009D18A3 /* NNSegmentedControl.swift */; };
@@ -502,7 +500,6 @@
 		143917F024C3CDA800CBABF0 /* NNFeedbackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNFeedbackController.swift; sourceTree = "<group>"; };
 		143917F624C42EC600CBABF0 /* NNUploadImagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNUploadImagesController.swift; sourceTree = "<group>"; };
 		1439180024C5331200CBABF0 /* PKParkCollectListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKParkCollectListController.swift; sourceTree = "<group>"; };
-		1439180324C5338000CBABF0 /* NNRefreshHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRefreshHeader.swift; sourceTree = "<group>"; };
 		1439180C24C57A3C00CBABF0 /* UICTViewCellSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellSubtitle.swift; sourceTree = "<group>"; };
 		1439180E24C57A5100CBABF0 /* UICTViewCellValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellValue.swift; sourceTree = "<group>"; };
 		143D1E4323C472FB00A5850D /* UITableViewCellSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSubtitle.swift; sourceTree = "<group>"; };
@@ -729,7 +726,6 @@
 		14BE1768237FB9450007B148 /* NNTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabView.swift; sourceTree = "<group>"; };
 		14BE176A237FC5070007B148 /* NNTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabViewController.swift; sourceTree = "<group>"; };
 		14BEDC6024A85E330031852F /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		14BEDC6224A8954F0031852F /* NSDecimalNumber+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Helper.swift"; sourceTree = "<group>"; };
 		14BEDC6E24A976BF0031852F /* KVOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOViewController.swift; sourceTree = "<group>"; };
 		14BEED04240FBEF400289BA6 /* SwiftTemplet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftTemplet.entitlements; sourceTree = "<group>"; };
 		14BEED05240FBEF800289BA6 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -909,7 +905,6 @@
 		1439180224C5334600CBABF0 /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
-				1439180324C5338000CBABF0 /* NNRefreshHeader.swift */,
 			);
 			path = Refresh;
 			sourceTree = "<group>";
@@ -1257,7 +1252,6 @@
 				14E8561C232A4E2F0006E4C2 /* NSObject+Helper.swift */,
 				141329792386183C00E7AFCA /* UIApplication+Permission.swift */,
 				146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */,
-				14BEDC6224A8954F0031852F /* NSDecimalNumber+Helper.swift */,
 				147D79A324BEE80200458F3D /* NSURLRequest+Helper.swift */,
 				147D79A524BEE82300458F3D /* NSURLSession+Helper.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
@@ -1813,7 +1807,6 @@
 				1443F84B230BF2A70023C777 /* TestViewController.swift in Sources */,
 				143917F724C42EC700CBABF0 /* NNUploadImagesController.swift in Sources */,
 				1401BE992277D70E0078A722 /* NNURLResponse.swift in Sources */,
-				1439180424C5338000CBABF0 /* NNRefreshHeader.swift in Sources */,
 				1422A9CC24495420002D6145 /* NNAgreementAlertController.swift in Sources */,
 				147FF47321CF49B000351E94 /* UICTViewCellOne.swift in Sources */,
 				1472C23F24599309000F8441 /* NNParentOneController.swift in Sources */,
@@ -1900,7 +1893,6 @@
 				14A3755F24B72018002C9E4B /* RxRequestHelper.swift in Sources */,
 				14D91B19234DB96600554994 /* NNPopView.swift in Sources */,
 				148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */,
-				14BEDC6324A8954F0031852F /* NSDecimalNumber+Helper.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */,
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,

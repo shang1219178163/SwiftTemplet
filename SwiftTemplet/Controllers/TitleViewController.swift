@@ -53,8 +53,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.addSubview(buttonBottom)
         view.addSubview(buttonRight)
         
+        view.addSubview(textFieldView)
         view.addSubview(textFieldBtnView)
-        view.addSubview(textFieldBtnCodeView)
         view.addSubview(chooseView)
 
         
@@ -138,19 +138,17 @@ class TitleViewController: NNTitleViewSelectController{
             make.height.equalTo(40)
         }
         
-        textFieldBtnView.snp.makeConstraints { (make) in
+        textFieldView.snp.makeConstraints { (make) in
             make.top.equalTo(button.snp.bottom).offset(50);
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.width.equalTo(100)
             make.height.equalTo(40)
         }
         
-        textFieldBtnCodeView.snp.makeConstraints { (make) in
-            make.top.equalTo(textFieldBtnView.snp.bottom).offset(5);
+        textFieldBtnView.snp.makeConstraints { (make) in
+            make.top.equalTo(textFieldView.snp.bottom).offset(5);
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.width.equalTo(100)
             make.height.equalTo(40)
         }
         
@@ -342,7 +340,7 @@ class TitleViewController: NNTitleViewSelectController{
         return view
     }()
     
-    lazy var textFieldBtnView: NNTextFieldView = {
+    lazy var textFieldView: NNTextFieldView = {
         var view = NNTextFieldView(frame: .zero)
         view.label.text = "手机号码:"
         view.textfield.placeholder = "请输入手机号码"
@@ -357,7 +355,7 @@ class TitleViewController: NNTitleViewSelectController{
         return view
     }()
     
-    lazy var textFieldBtnCodeView: NNTextFieldView = {
+    lazy var textFieldBtnView: NNTextFieldView = {
         var view = NNTextFieldView(frame: .zero)
         view.label.text = "验  证  码:"
         view.textfield.placeholder = "请输入验证码"
