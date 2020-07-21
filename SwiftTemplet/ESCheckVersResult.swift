@@ -9,48 +9,48 @@ import HandyJSON
 @objcMembers
 class ESCheckVersResult: NSObject, HandyJSON{
 
-	@objc var advisories : [AnyObject]?
-	@objc var appletvScreenshotUrls : [AnyObject]?
-	@objc var artistId : Int = 0
-	@objc var artistName : String?
-	@objc var artistViewUrl : String?
-	@objc var artworkUrl100 : String?
-	@objc var artworkUrl512 : String?
-	@objc var artworkUrl60 : String?
-	@objc var averageUserRating : CGFloat = 0
-	@objc var bundleId : String?
-	@objc var contentAdvisoryRating : String?
-	@objc var currency : String?
-	@objc var currentVersionReleaseDate : String?
-	@objc var descriptionField : String?
-	@objc var features : [AnyObject]?
-	@objc var fileSizeBytes : String?
-	@objc var formattedPrice : String?
-	@objc var genreIds : [String]?
-	@objc var genres : [String]?
-	@objc var ipadScreenshotUrls : [AnyObject]?
-	@objc var isGameCenterEnabled : Bool = false
-	@objc var isVppDeviceBasedLicensingEnabled : Bool = false
-	@objc var kind : String?
-	@objc var languageCodesISO2A : [String]?
-	@objc var minimumOsVersion : String?
-	@objc var price : Int = 0
-	@objc var primaryGenreId : Int = 0
-	@objc var primaryGenreName : String?
-	@objc var releaseDate : String?
-	@objc var releaseNotes : String?
-	@objc var screenshotUrls : [String]?
-	@objc var sellerName : String?
-	@objc var sellerUrl : String?
-	@objc var supportedDevices : [String]?
-	@objc var trackCensoredName : String?
-	@objc var trackContentRating : String?
-	@objc var trackId : Int = 0
-	@objc var trackName : String?
-	@objc var trackViewUrl : String?
-	@objc var userRatingCount : Int = 0
-	@objc var version : String?
-	@objc var wrapperType : String?
+	var advisories : [AnyObject]?
+	var appletvScreenshotUrls : [AnyObject]?
+	var artistId : Int = 0
+	var artistName : String?
+	var artistViewUrl : String?
+	var artworkUrl100 : String?
+	var artworkUrl512 : String?
+	var artworkUrl60 : String?
+	var averageUserRating : CGFloat = 0
+	var bundleId : String?
+	var contentAdvisoryRating : String?
+	var currency : String?
+	var currentVersionReleaseDate : String?
+	var descriptionField : String?
+	var features : [AnyObject]?
+	var fileSizeBytes : String?
+	var formattedPrice : String?
+	var genreIds : [String]?
+	var genres : [String]?
+	var ipadScreenshotUrls : [AnyObject]?
+	var isGameCenterEnabled : Bool = false
+	var isVppDeviceBasedLicensingEnabled : Bool = false
+	var kind : String?
+	var languageCodesISO2A : [String]?
+	var minimumOsVersion : String?
+	var price : Int = 0
+	var primaryGenreId : Int = 0
+	var primaryGenreName : String?
+	var releaseDate : String?
+	var releaseNotes : String?
+	var screenshotUrls : [String]?
+	var sellerName : String?
+	var sellerUrl : String?
+	var supportedDevices : [String]?
+	var trackCensoredName : String?
+	var trackContentRating : String?
+	var trackId : Int = 0
+	var trackName : String?
+	var trackViewUrl : String?
+	var userRatingCount : Int = 0
+	var version : String?
+	var wrapperType : String?
 
 
 	///	implement an empty initializer.

@@ -5,10 +5,12 @@
 import UIKit
 import HandyJSON
 
+
+@objcMembers
 class NNCheckVersRootClass : NSObject,HandyJSON {
 
-    @objc var results: [NNCheckVersResultsModel]?
-    @objc var resultCount: Int = 0
+    var results: [NNCheckVersResultsModel]?
+    var resultCount: Int = 0
 
     required override init() {}
     func mapping(mapper: HelpingMapper) {
@@ -18,91 +20,93 @@ class NNCheckVersRootClass : NSObject,HandyJSON {
     
 }
 
+
+@objcMembers
 class NNCheckVersResultsModel : NSObject,HandyJSON {
 
-    @objc var primaryGenreName: String?
+    var primaryGenreName: String?
     
-    @objc var artworkUrl100: String?
+    var artworkUrl100: String?
     
-    @objc var sellerUrl: String?
+    var sellerUrl: String?
     
-    @objc var currency: String?
+    var currency: String?
     
-    @objc var artworkUrl512: String?
+    var artworkUrl512: String?
     
-    @objc var ipadScreenshotUrls: [String]?
+    var ipadScreenshotUrls: [String]?
     
-    @objc var fileSizeBytes: String?
+    var fileSizeBytes: String?
     
-    @objc var genres: [String]?
+    var genres: [String]?
     
-    @objc var languageCodesISO2A: [String]?
+    var languageCodesISO2A: [String]?
     
-    @objc var artworkUrl60: String?
+    var artworkUrl60: String?
     
-    @objc var supportedDevices: [String]?
+    var supportedDevices: [String]?
     
-    @objc var trackViewUrl: String?
+    var trackViewUrl: String?
     
-    @objc var desc: String?
+    var desc: String?
     
-    @objc var version: String?
+    var version: String?
     
-    @objc var bundleId: String?
+    var bundleId: String?
     
-    @objc var artistViewUrl: String?
+    var artistViewUrl: String?
     
-    @objc var genreIds: [String]?
+    var genreIds: [String]?
     
-    @objc var isGameCenterEnabled: Bool = false
+    var isGameCenterEnabled: Bool = false
     
-    @objc var appletvScreenshotUrls: [String]?
+    var appletvScreenshotUrls: [String]?
     
-    @objc var releaseDate: String?
+    var releaseDate: String?
     
-    @objc var wrapperType: String?
+    var wrapperType: String?
     
-    @objc var trackId: Int = 0
+    var trackId: Int = 0
     
-    @objc var minimumOsVersion: String?
+    var minimumOsVersion: String?
     
-    @objc var formattedPrice: String?
+    var formattedPrice: String?
     
-    @objc var primaryGenreId: Int = 0
+    var primaryGenreId: Int = 0
     
-    @objc var currentVersionReleaseDate: String?
+    var currentVersionReleaseDate: String?
     
-    @objc var userRatingCount: Int = 0
+    var userRatingCount: Int = 0
     
-    @objc var artistId: Int = 0
+    var artistId: Int = 0
     
-    @objc var trackContentRating: String?
+    var trackContentRating: String?
     
-    @objc var artistName: String?
+    var artistName: String?
     
-    @objc var price: Int = 0
+    var price: Int = 0
     
-    @objc var trackCensoredName: String?
+    var trackCensoredName: String?
     
-    @objc var trackName: String?
+    var trackName: String?
     
-    @objc var kind: String?
+    var kind: String?
     
-    @objc var features: [String]?
+    var features: [String]?
     
-    @objc var contentAdvisoryRating: String?
+    var contentAdvisoryRating: String?
     
-    @objc var screenshotUrls: [String]?
+    var screenshotUrls: [String]?
     
-    @objc var releaseNotes: String?
+    var releaseNotes: String?
     
-    @objc var isVppDeviceBasedLicensingEnabled: Bool = false
+    var isVppDeviceBasedLicensingEnabled: Bool = false
     
-    @objc var sellerName: String?
+    var sellerName: String?
     
-    @objc var averageUserRating: Double = 0
+    var averageUserRating: Double = 0
     
-    @objc var advisories: [String]?
+    var advisories: [String]?
 
 
     required override init() {}
@@ -147,7 +151,7 @@ class NNCheckVersResultsModel : NSObject,HandyJSON {
 //        mapper <<< releaseNotes <-- "releaseNotes"
 //        mapper <<< isVppDeviceBasedLicensingEnabled <-- "isVppDeviceBasedLicensingEnabled"
 //        mapper <<< sellerName <-- "sellerName"
-        //     getcapper <<< averageUserRating <-- "averageUserRating"
+//        mapper <<< averageUserRating <-- "averageUserRating"
 //        mapper <<< advisories <-- "advisories"
     }
 }

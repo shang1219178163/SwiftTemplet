@@ -5,12 +5,11 @@
 import Foundation 
 import HandyJSON
 
-
+@objcMembers
 class ESCheckVersRootClass: NSObject, HandyJSON{
 
-	@objc var resultCount : Int = 0
-	@objc var results : [ESCheckVersResult]?
-
+	var resultCount : Int = 0
+	var results : [ESCheckVersResult]?
 
 	///	implement an empty initializer.
 	required override init(){

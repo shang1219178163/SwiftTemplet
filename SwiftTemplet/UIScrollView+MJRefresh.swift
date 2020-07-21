@@ -16,7 +16,7 @@ import MJRefresh
     func headerColorRefresh(_ action: @escaping MJRefreshComponentAction,
                       textColor: UIColor = .gray,
                       backgroundColor: UIColor = .clear) {
-        let backView = UIView(frame: CGRect(x: 0, y: -500, width: UIScreen.main.bounds.width, height: 500))
+        let backView = UIView(frame: CGRect(x: 0, y: -500, width: UIScreen.main.bounds.width, height: 460))
         backView.backgroundColor = backgroundColor
         addSubview(backView)
         

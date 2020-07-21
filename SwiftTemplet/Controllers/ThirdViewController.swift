@@ -150,12 +150,10 @@ class ThirdViewController: UIViewController{
         super.viewDidLoad()
         
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-//            self.goController("FleetDetailNewController", obj: nil, objOne: nil)
             UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
         }
         
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in
-//            self.goController("IOPAuthDetailController", obj: nil, objOne: nil)
             guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
             rootViewController.present(self.navController, animated: true, completion: nil)
         }
@@ -191,7 +189,6 @@ class ThirdViewController: UIViewController{
 
 //        let controller = CellListController()
 //        navigationController?.pushViewController(controller, animated: true);
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -221,27 +218,14 @@ class ThirdViewController: UIViewController{
 //        let backView = UIView(frame: CGRect(x: 0, y: -1000, width: UIScreen.main.bounds.width, height: 960))
 //        backView.backgroundColor = UIColor.theme
 //        tableView.addSubview(backView)
-//
-//        var header = MJRefreshNormalHeader.block({
-//            self.requestInfo()
-//        }, textColor: UIColor.white,
-//           backgroundColor: UIColor.theme)
-//        tableView.mj_header = header
 
         tableView.headerColorRefresh({
             self.requestInfo()
         }, textColor: UIColor.white, backgroundColor: UIColor.theme)
         
-        var footer: MJRefreshBackNormalFooter {
-            let footer = MJRefreshBackNormalFooter{
-                self.requestInfo()
-            }
-            footer.stateLabel?.isHidden = true
-            footer.arrowView?.isHidden = true
-            return footer;
+        tableView.footerRefresh {
+            self.requestInfo()
         }
-        tableView.mj_footer = footer
-        
     }
     
     func requestInfo() {
