@@ -14,7 +14,7 @@ import SwiftExpand
 /// 图片+文字+文字+图片
 class UITableViewCellOne: UITableViewCell {
 
-    var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     ///0优先显示右边文字,1代表优先显示左边文字
     var type: Int = 0{
@@ -28,7 +28,6 @@ class UITableViewCellOne: UITableViewCell {
                 //左边文字优先展示
                 labelRight.textAlignment = .right;
                 labelRight.adjustsFontSizeToFitWidth = true
-                
             }
         }
     }
@@ -82,7 +81,8 @@ class UITableViewCellOne: UITableViewCell {
         let height = bounds.height - inset.top - inset.bottom
         
         let labStartX = imgViewLeft.isHidden == false ? height + inset.left + kPadding : inset.left
-        let labEndX = inset.right
+        let endX = accessoryType == .none ? inset.right : 0
+        
         //头像不为空
         if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in
@@ -97,7 +97,7 @@ class UITableViewCellOne: UITableViewCell {
             let size: CGSize = labelRight.sizeThatFits(.zero)
             labelRight.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
-                make.right.equalToSuperview().offset(-labEndX)
+                make.right.equalToSuperview().offset(-endX)
                 make.width.equalTo(ceil(size.width))
                 make.bottom.equalToSuperview().offset(-inset.bottom)
             }
@@ -121,7 +121,7 @@ class UITableViewCellOne: UITableViewCell {
             labelRight.snp.makeConstraints { (make) in
                 make.top.bottom.equalTo(labelLeft)
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-                make.right.equalToSuperview().offset(-labEndX)
+                make.right.equalToSuperview().offset(-endX)
             }
         }
     

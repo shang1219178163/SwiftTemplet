@@ -14,7 +14,7 @@ import SwiftExpand
 /// 一行多选/单选
 class UITableViewCellChoice: UITableViewCell {
      
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
      /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -46,26 +46,22 @@ class UITableViewCellChoice: UITableViewCell {
         
         if labelLeft.isHidden {
             groupView.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft.snp.bottom).offset(10);
-                make.left.equalToSuperview().offset(Xgap);
-                make.right.equalToSuperview().offset(-Xgap);
-                make.bottom.equalToSuperview().offset(-10);
+                make.edges.equalTo(inset);
             }
             return
         }
         
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(5);
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
+            make.top.equalToSuperview().offset(inset.top);
+            make.left.equalToSuperview().offset(inset.left);
+            make.right.equalToSuperview().offset(-inset.right);
             make.height.lessThanOrEqualTo(25);
         }
         
         groupView.snp.makeConstraints { (make) in
             make.top.equalTo(labelLeft.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
-            make.bottom.equalToSuperview().offset(-10);
+            make.left.right.equalTo(labelLeft)
+            make.bottom.equalToSuperview().offset(-inset.bottom);
         }
     }
 

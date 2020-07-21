@@ -13,8 +13,7 @@ import SwiftExpand
 
 /// 文字+时间选择器
 class UITableViewCellDatePicker: UITableViewCell {
-    
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
      /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -58,19 +57,22 @@ class UITableViewCellDatePicker: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-        let size: CGSize = labelLeft.sizeThatFits(.zero)
+        
+        let height: CGFloat = bounds.height - 20
+        let endX = accessoryType == .none ? inset.right : 0
+
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(Xgap)
-            make.width.equalTo(ceil(size.width))
-            make.bottom.equalToSuperview().offset(-kPadding)
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(ceil(labelLeftSize.width))
+            make.height.equalTo(height)
         }
         
-        let right = accessoryType == .none ? -Xgap : 0
         textfield.snp.makeConstraints { (make) in
-            make.top.equalTo(labelLeft);
+            make.centerY.equalToSuperview()
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
-            make.right.equalToSuperview().offset(right)
+            make.right.equalToSuperview().offset(-endX)
             make.height.equalTo(labelLeft);
         }
     }

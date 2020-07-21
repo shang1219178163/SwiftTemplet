@@ -16,7 +16,7 @@ class UITableViewCellFee: UITableViewCell {
     /// 显示正数
     var isPositive = true;
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,16 +88,17 @@ class UITableViewCellFee: UITableViewCell {
         if bounds.height <= 10.0 {
             return;
         }
+//        let height = bounds.height - inset.top - inset.bottom
         
         labelRight.sizeToFit();
         labelRight.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-10)
+            make.top.equalToSuperview().offset(inset.top);
+            make.right.equalToSuperview().offset(-inset.right)
         }
         
         labelTop.snp.makeConstraints { (make) in
             make.centerY.equalTo(labelRight)
-            make.left.equalToSuperview().offset(Xgap)
+            make.left.equalToSuperview().offset(inset.left)
             make.right.equalTo(labelRight.snp.left).offset(-kPadding)
             make.height.equalTo(labelRight)
         }

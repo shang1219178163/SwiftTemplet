@@ -12,7 +12,7 @@ import SwiftExpand
 /// 上中下6 label
 class UITableViewCellSixLable: UITableViewCell {
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
     // MARK: -lazy
     lazy var labelTop: UILabel = {
@@ -106,7 +106,6 @@ class UITableViewCellSixLable: UITableViewCell {
         
         labelBomRight.font = UIFont.systemFont(ofSize: 12)
         labelBomRight.numberOfLines = 1;
-                
     }
         
     required init?(coder aDecoder: NSCoder) {
@@ -126,64 +125,30 @@ class UITableViewCellSixLable: UITableViewCell {
         }
         
         let height: CGFloat = bounds.height - 20
-        let right: CGFloat = accessoryType == .none ? -10.0 : 0.0
+        
+        let labStartX = imgViewLeft.isHidden ? inset.left : height + inset.left + kPadding
+        let endX = accessoryType == .none ? inset.right : 0
 
-        if imgViewLeft.isHidden == true {
-            labelTopRight.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.right.equalToSuperview().offset(right)
-                make.height.equalTo(height/3);
-                make.width.equalTo(120)
-            }
-            
-            labelTop.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(Xgap)
-                make.right.equalTo(labelTopRight.snp.left).offset(-8)
-                make.height.equalTo(height/3);
-            }
-
-        } else {
+        if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.left.equalToSuperview().offset(Xgap);
-                make.bottom.equalToSuperview().offset(-10);
-                make.width.equalTo(height)
-            }
-            
-            labelTopRight.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.right.equalToSuperview().offset(right)
-                make.height.equalTo(height/3);
-                make.width.equalTo(120)
-            }
-            
-            labelTop.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10);
-                make.left.equalTo(imgViewLeft.snp.right).offset(8)
-                make.right.equalTo(labelTopRight.snp.left).offset(-8)
-                make.height.equalTo(height/3);
+                make.centerY.equalToSuperview().offset(0)
+                make.left.equalToSuperview().offset(inset.left);
+                make.width.height.equalTo(height);
             }
         }
         
-        labelMidRight.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTop.snp.bottom).offset(0);
-            make.left.right.height.equalTo(labelTopRight);
+        let listRight = [labelTopRight, labelMidRight, labelBomRight,].filter { $0.isHidden == false }
+        listRight.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
+        listRight.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(endX)
+            make.width.equalTo(120)
         }
         
-        labelMid.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTop.snp.bottom).offset(0);
-            make.left.right.height.equalTo(labelTop);
-        }
-        
-        labelBomRight.snp.makeConstraints { (make) in
-            make.top.equalTo(labelMid.snp.bottom).offset(0);
-            make.left.right.height.equalTo(labelTopRight);
-        }
-        
-        labelBom.snp.makeConstraints { (make) in
-            make.top.equalTo(labelMid.snp.bottom).offset(0);
-            make.left.right.height.equalTo(labelTop);
+        let list = [labelTop, labelMid, labelBom,].filter { $0.isHidden == false }
+        list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
+        list.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(labStartX)
+            make.right.equalTo(labelTopRight.snp.left).offset(-kPadding)
         }
         
     }

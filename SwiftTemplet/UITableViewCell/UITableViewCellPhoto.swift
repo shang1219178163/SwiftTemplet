@@ -12,7 +12,7 @@ import SnapKit
 
 class UITableViewCellPhoto: UITableViewCell {
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -41,10 +41,7 @@ class UITableViewCellPhoto: UITableViewCell {
         }
         
         imgViewLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
-            make.left.equalToSuperview().offset(Xgap);
-            make.right.equalToSuperview().offset(-Xgap);
-            make.bottom.equalToSuperview().offset(-10);
+            make.edges.equalToSuperview()
         }
         
     }

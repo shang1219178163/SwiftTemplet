@@ -194,10 +194,9 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate{
         let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
         let itemList = foldModel.dataList[indexPath.row]
         
-        let cell = UITableViewCellFour.dequeueReusableCell(tableView)
+        let cell = UITableViewCellRightBtn.dequeueReusableCell(tableView)
         
         cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-        cell.type = 1
         cell.btn.addActionHandler({ (sender) in
             cell.btn.isSelected = !cell.btn.isSelected
         }, for: .touchUpInside)

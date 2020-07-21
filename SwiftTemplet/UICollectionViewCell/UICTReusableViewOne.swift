@@ -13,10 +13,8 @@ import SwiftExpand
 
 class UICTReusableViewOne: UICollectionReusableView {
     
-    var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     var btnSize = CGSize(width: 20, height: 20)
-    
 
 //    var type = 0;//0优先显示右边文字,1代表优先显示左边文字
     var type: Int = 0{
@@ -68,9 +66,9 @@ class UICTReusableViewOne: UICollectionReusableView {
         }
         
         let height = bounds.height - inset.top - inset.bottom
-                
-        let labStartX = imgView.isHidden == false ? height + inset.left + kPadding : inset.left
-        let labEndX = btn.isHidden == false ? btnSize.width + inset.right + kPadding : inset.right
+        
+        let labStartX = imgView.isHidden ? inset.left : height + inset.left + kPadding
+        let labEndX = btn.isHidden ? inset.right : btnSize.width + inset.right + kPadding
         
         if btn.isHidden == false {
             btn.snp.makeConstraints { (make) in

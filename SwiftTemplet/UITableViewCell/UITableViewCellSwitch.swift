@@ -13,12 +13,12 @@ import SwiftExpand
 /// 文字+UISwitch
 class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     
-    /// switch布局方式
-    var layoutType = 0
-    /// layoutType 不等于0时的才起作用
-    var ctlAlignment = NSTextAlignment.right
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    var isShowLeft = false
+    var spacing: CGFloat = 20
+
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -64,44 +64,27 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
         if bounds.height <= 10.0 {
             return
         }
-        labelLeft.sizeToFit()
-        labelLeft.frame.size = CGSize(width: labelLeft.frame.width, height: 35)
+        let height = bounds.height - inset.top - inset.bottom
+//        let endX = accessoryType == .none ? inset.right : 0
+
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(Xgap)
-            make.size.equalTo(labelLeft.size);
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(labelLeftSize.width)
+            make.height.equalTo(height)
         }
         
-        if layoutType == 0 {
+        if isShowLeft == false {
             switchCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.right.equalToSuperview().offset(-Xgap)
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(-inset.right)
             }
-            return;
+            return
         }
-        
-        //segment,slider的相对对齐方式
-        let width = contentView.frame.width - labelLeft.frame.maxX - Xgap
-        let ctlWidth = width*0.7
-        
-        switch ctlAlignment {
-        case .left:
-            switchCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp.right).offset((width - ctlWidth)*0.5)
-            }
-            
-        case .right:
-            switchCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.right.greaterThanOrEqualToSuperview().offset(-(width - ctlWidth)*0.5)
-            }
-            
-        default:
-            switchCtl.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.left.equalTo(labelLeft.snp.right).offset((width - switchCtl.frame.width)*0.5)
-            }
+        switchCtl.snp.makeConstraints { (make) in
+            make.top.equalTo(labelLeft);
+            make.left.equalTo(labelLeft.snp.right).offset(spacing)
         }
     }
     

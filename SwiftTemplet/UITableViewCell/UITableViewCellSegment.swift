@@ -12,10 +12,12 @@ import SwiftExpand
 
 /// 文字+UISegment分段按钮
 class UITableViewCellSegment: UITableViewCell {
+        
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
-    var ctlAlignment = NSTextAlignment.center
-    
-    var Xgap: CGFloat = 15;
+    var isShowLeft = false
+    var spacing: CGFloat = 20
+
     /// 是否有星标
     var hasAsterisk = false
     // MARK: -life cycle
@@ -61,24 +63,33 @@ class UITableViewCellSegment: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
-        labelLeft.sizeToFit()
+        let height = bounds.height - inset.top - inset.bottom
+
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(Xgap)
-//            make.width.equalTo(labelLeft.frame.width)
-            make.height.equalTo(30)
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(labelLeftSize.width)
+            make.height.equalTo(height)
         }
         
-        let width = contentView.frame.width - labelLeft.frame.maxX - Xgap
-        let ctlWidth = width*0.7
-        
+        let ctlWidth: CGFloat = CGFloat(segmentCtl.numberOfSegments)*68.0
+        if isShowLeft == false {
+            segmentCtl.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(-inset.right)
+                make.width.lessThanOrEqualTo(ctlWidth)
+                make.height.equalTo(30);
+            }
+            return
+        }
         segmentCtl.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-15)
+            make.left.equalTo(labelLeft.snp.right).offset(spacing)
             make.width.lessThanOrEqualTo(ctlWidth)
-            make.height.equalTo(labelLeft);
+            make.height.equalTo(30);
         }
-//        DDLog(segmentCtl.frame)
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

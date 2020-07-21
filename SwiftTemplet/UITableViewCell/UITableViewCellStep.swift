@@ -12,7 +12,11 @@ import SwiftExpand
 /// 文字+ppnumber(商品j加减控件)
 class UITableViewCellStep: UITableViewCell {
     
-    var Xgap: CGFloat = 15;
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    
+    var isShowLeft = false
+    var spacing: CGFloat = 20
+    
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -57,19 +61,32 @@ class UITableViewCellStep: UITableViewCell {
         if bounds.height < 20 {
             return;
         }
-        let size = labelLeft.sizeThatFits(.zero)
+        let height = bounds.height - inset.top - inset.bottom
+//        let endX = accessoryType == .none ? inset.right : 0
+
+        let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10)
-            make.left.equalToSuperview().offset(Xgap)
-            make.bottom.equalToSuperview().offset(-10)
-            make.width.equalTo(size.width)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(inset.left)
+            make.width.equalTo(labelLeftSize.width)
+            make.height.equalTo(height)
+        }
+        
+        if isShowLeft == false {
+            ppBtn.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(-inset.right)
+                make.width.equalTo(120)
+                make.height.equalTo(35)
+            }
+            return
         }
         
         ppBtn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(12)
-            make.right.equalToSuperview().offset(-Xgap)
-            make.bottom.equalToSuperview().offset(-12)
+            make.centerY.equalToSuperview()
+            make.left.equalTo(labelLeft.snp.right).offset(spacing)
             make.width.equalTo(120)
+            make.height.equalTo(35)
         }
     }
     

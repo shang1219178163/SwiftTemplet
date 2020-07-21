@@ -159,15 +159,14 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
+            ["标题", "UITableViewCellTitle", "50.0", "", "recharge", ],
             ["标签", "UITableViewCellTags", "70.0", "", "recharge", ],
             ["优惠券充值", "UITableViewCellCouponRecharge", "100.0", "", "recharge", ],
             ["停车统计", "UITableViewCellStatistics", "110.0", "", "recharge", ],
             ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
             ["操作日志2", "UITableViewCellLog", "120.0", "", "recharge", ],
-            ["服务包价格", "UITableViewCellThreeLable", "95.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
-            ["订单选择", "UITableViewCellChoose", "70.0", "", "recharge", ],
             ["星期选择", "UITableViewCellChoice", "110.0", "", "recharge", ],
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
             ["停车费用", "UITableViewCellFee", "90.0", "", "recharge", ],
@@ -177,25 +176,25 @@ class EntryViewController: UIViewController {
             [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
             ["*图片选择:", "UITableViewCellPhotoPicker", "110", "", "recharge", ],
-            ["用户头像", "UITableViewCellRightAvart", "60.0", "", "seller_bank_account", ],
+            ["用户头像", "UITableViewCellRightAvart", "60.0", "", "recharge", ],
+            ["圆形进度:", "UITableViewCellProgressView", "90.0", "", "cardName", ],
+            ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
+            ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
+            ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
+            ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
+            ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["*有效时间:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
             ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
             ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
             ["有效时段3:", "UITableViewCellDateRange", "60.0", "3", "btime,etime", ],
-            ["圆形进度:", "UITableViewCellProgressView", "90.0", "", "cardName", ],
-            ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
-            ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
-            ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
-            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代",],
+            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代,四代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
             ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  "生产,不生产",],
             ["品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
             ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
-            ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
-            ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
             ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
             ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
@@ -338,10 +337,23 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
+        case "UITableViewCellTitle":
+            let cell = UITableViewCellTitle.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = .textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            
+            cell.labelLeft.text = "这是一个标题"
+//            btn.addActionHandler({ (control) in
+//                UIAlertController.showAlert("温馨提示", msg: "亲爱的客户请检查........")
+//            }, for: .touchUpInside)
+            cell.getViewLayer()
+            return cell
+            
         case "UITableViewCellRightAvart":
             let cell = UITableViewCellRightAvart.dequeueReusableCell(tableView)
-            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
-            cell.labelLeft.textColor = UIColor.textColor3
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.textLabel?.textColor = .textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
 
             cell.textLabel?.text = value0
@@ -354,7 +366,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellProgressView":
             let cell = UITableViewCellProgressView.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
-            cell.labelLeft.textColor = UIColor.textColor3
+            cell.labelLeft.textColor = .textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
             
@@ -597,13 +609,23 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //            cell.imgViewLeft.isHidden = true
             cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
             cell.accessoryType = .disclosureIndicator
+//            cell.btnSize = CGSize(width: 45, height: 45)
+            
+            cell.btn.setBackgroundImage(UIImage(named: "btn_selected_NO"), for: .normal)
+            cell.btn.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
+            cell.btn.addActionHandler({ (control) in
+              guard let sender = control as? UIButton else { return }
+              sender.isSelected = !sender.isSelected
+//                  self.handleChooseAction(sender, model: model)
+              
+            }, for: .touchUpInside)
             
             cell.getViewLayer();
             return cell;
             
         case "UITableViewCellWebView":
             let cell = UITableViewCellWebView.dequeueReusableCell(tableView);
-             cell.loadContent = "asdfasdfasdf"
+             cell.loadContent = "WebView"
 
              cell.getViewLayer();
              return cell;
@@ -640,25 +662,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             return cell;
-                        
-        case "UITableViewCellThreeLable":
-            let cell = UITableViewCellThreeLable.dequeueReusableCell(tableView);
-            cell.labelTop.text = "标准服务套餐包"
-            cell.labelMid.text = "\("¥106.00")／通道／年"
-            cell.labelBom.text = "优惠价：\("¥599")   原价：\("¥799")"
-            
-//            if let imageURL = URL(string: "http://api.3rd.parkingwang.com/goods/img/get?img=goods/2020-02-18/1582006542_产品标志.png") {
-//                cell.imgViewLeft.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "bug.png"))
-//            }
-            
-//            cell.accessoryType = .disclosureIndicator
-//            cell.imgViewLeft.isHidden = true
-            cell.getViewLayer();
-            return cell;
-            
+                                    
         case "UITableViewCellSixLable":
             let cell = UITableViewCellSixLable.dequeueReusableCell(tableView);
-            cell.imgViewLeft.isHidden = true
+//            cell.imgViewLeft.isHidden = true
             cell.accessoryType = .disclosureIndicator
 
             cell.labelTop.text = "标准服务套餐包"
@@ -702,7 +709,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellVertical":
             let cell = UITableViewCellVertical.dequeueReusableCell(tableView);
             cell.accessoryType = .disclosureIndicator
-            cell.imageSize = CGSize(width: 70, height: 70)
+            cell.btnSize = CGSize(width: 70, height: 70)
             cell.labelFour.isHidden = true
 
             cell.labelOne.text = "标准服务套餐包"
@@ -849,29 +856,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelRightSubValue.text = "¥180.00";
              
 //            cell.getViewLayer();
-            return cell;
-            
-            
-        case "UITableViewCellChoose":
-            let cell = UITableViewCellChoose.dequeueReusableCell(tableView)
-            cell.labelLeft.text = "商品名称"
-            cell.labelLeft.textColor = UIColor.textColor3
-
-            cell.labelLeftSub.text = "用户名称"
-            cell.labelLeftSub.textColor = UIColor.textColor6
-            
-            cell.labelRight.text = "价格"
-            cell.labelRight.textColor = UIColor.textColor9
-            
-            cell.labelRightSub.text = "日期时间"
-            cell.labelRightSub.textColor = UIColor.theme
-//            cell.btn.isSelected = chooseList.contains(model)
-            cell.btn.addActionHandler({ (control) in
-              guard let sender = control as? UIButton else { return }
-              sender.isSelected = !sender.isSelected
-//                  self.handleChooseAction(sender, model: model)
-              
-            }, for: .touchUpInside)
             return cell;
 
         case "UITableViewCellCouponRecharge":

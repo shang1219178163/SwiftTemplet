@@ -12,8 +12,9 @@ import SwiftExpand
 /// 文字+UITextField(输入框)
 class UITableViewCellCode: UITableViewCell {
     
-    var Xgap: CGFloat = 15;
-
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var btnSize = CGSize(width: 100, height: 35)
+    
     var viewBlock: TextFieldClosure?
     /// 是否有星标
     var hasAsterisk = false;
@@ -69,44 +70,44 @@ class UITableViewCellCode: UITableViewCell {
         if bounds.height <= 10.0 {
             return
         }
+        
+        let height = bounds.height - inset.top - inset.bottom
+        
         if labelLeft.isHidden == false {
             let size = labelLeft.sizeThatFits(.zero)
             labelLeft.snp.makeConstraints { (make) in
-                make.top.equalToSuperview().offset(10)
-                make.left.equalToSuperview().offset(Xgap)
-                make.bottom.equalToSuperview().offset(-10)
+                make.centerY.equalToSuperview()
+                make.left.equalToSuperview().offset(inset.left)
                 make.width.equalTo(size.width)
+                make.height.equalTo(height)
             }
             
             btnCode.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
-                make.right.equalToSuperview().offset(-Xgap)
-                make.width.equalTo(100);
-                make.bottom.equalTo(labelLeft);
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(-inset.right)
+                make.size.equalTo(btnSize)
             }
             
             textfield.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft);
+                make.centerY.equalToSuperview()
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                 make.right.equalTo(btnCode.snp.left).offset(-kPadding)
-                make.height.equalTo(labelLeft);
+                make.height.equalTo(height)
             }
         } else {
             btnCode.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-Xgap)
-                make.width.equalTo(100);
-                make.height.equalTo(35);
+                make.right.equalToSuperview().offset(-inset.right)
+                make.size.equalTo(btn)
             }
             
             textfield.snp.makeConstraints { (make) in
-                make.top.equalTo(btnCode);
-                make.left.equalToSuperview().offset(Xgap)
+                make.centerY.equalToSuperview()
+                make.left.equalToSuperview().offset(inset.left)
                 make.right.equalTo(btnCode.snp.left).offset(-kPadding)
-                make.height.equalTo(btnCode);
+                make.height.equalTo(height);
             }
         }
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
