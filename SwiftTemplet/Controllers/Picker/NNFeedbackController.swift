@@ -69,7 +69,7 @@ class NNFeedbackController: UIViewController {
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["问题或建议:", "UITableViewCellTextView", "170.0", "", "",],
-             ["图片数组", "UITableViewCell", "110.0", "", "",],
+             ["图片数组", "UITableViewCellPhotoPicker", "110.0", "", "",],
              ["联系方式:", "UITableViewCellTextField", "50.0", "", "",],
             ],
         ]
@@ -131,10 +131,10 @@ extension NNFeedbackController: UITableViewDataSource, UITableViewDelegate{
         if itemList[2] == "" {
             return UITableView.automaticDimension;
         }
-        let height = itemList[2].cgFloatValue
-        if indexPath.row == 1 {
+        if itemList[1] == "UITableViewCellPhotoPicker" {
             return uploadImagesView.totalHeight
         }
+        let height = itemList[2].cgFloatValue
         return height
     }
     
@@ -184,8 +184,8 @@ extension NNFeedbackController: UITableViewDataSource, UITableViewDelegate{
             cell.getViewLayer()
             return cell
             
-        case "UITableViewCell":
-            let cell = UITableViewCell.dequeueReusableCell(tableView);
+        case "UITableViewCellPhotoPicker":
+            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: value1);
             
             if let view = cell.contentView.viewWithTag(1000) as? NNUploadImagesView {
                 DDLog(view.self)

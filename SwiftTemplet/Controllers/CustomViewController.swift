@@ -9,8 +9,6 @@
 import UIKit
 
 import SwiftExpand
-import BSImageView
-import BSImagePicker
 import Photos
 
 class CustomViewController: UIViewController {

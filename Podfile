@@ -6,14 +6,13 @@ use_frameworks!
 def common_pods
 
     pod 'AFNetworking'
-  
 #  pod 'AImage'
     pod 'Alamofire'
     pod 'AlamofireImage'
 
 #    pod 'Aspects'
-    pod 'BSImagePicker'
-#   pod 'BluetoothKit'
+#    pod 'BSImagePicker'
+#    pod 'BluetoothKit'
 #    pod 'CryptoSwift'
 #    pod 'EZSwiftExtensions'
 #   pod 'FoldingCell'
@@ -29,7 +28,7 @@ def common_pods
     pod 'MJRefresh'
     pod 'UICircularProgressRing'
 
-   pod 'MonkeyKing'
+    pod 'MonkeyKing'
 #   pod 'Permission'
 #   pod 'PromiseKit'
 #   pod 'ReachabilitySwift'

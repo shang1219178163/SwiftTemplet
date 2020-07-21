@@ -45,6 +45,18 @@ class EntryViewController: UIViewController {
         return button
     }()
     
+    lazy var uploadImagesView: NNUploadImagesView = {
+        let view = NNUploadImagesView()
+        view.frame = CGRectMake(0, 0, self.view.bounds.width, 110)
+        view.currrentVC = self
+        view.images = [view.imageDefault]
+        view.maxCount = 9
+        view.rowHeight = view.frame.height
+        view.delegate = self
+
+        view.tag = 1000
+        return view
+    }()
     
     // MARK: -life cycle
     deinit {
@@ -164,6 +176,7 @@ class EntryViewController: UIViewController {
             ],
             [["上传文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "etc_project_report", ],
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
+            ["*图片选择:", "UITableViewCellPhotoPicker", "110", "", "recharge", ],
             ["用户头像", "UITableViewCellRightAvart", "60.0", "", "seller_bank_account", ],
             ["*有效时间:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
             ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
@@ -191,9 +204,7 @@ class EntryViewController: UIViewController {
             ["九宫格T", "UITableViewCellSudokuButtonNew", " 180.0", "", "recharge", ],
 //            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
 
-//            ["*图片选择:", "UITableViewCellPhotoPicker", "", "", "recharge", ],
-
-             ],
+            ],
 
         ]
         return array
@@ -292,7 +303,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         let sectionList = list[indexPath.section]
         let itemList = sectionList[indexPath.row]
         if itemList[2] == "" {
-            return  UITableView.automaticDimension;
+            return UITableView.automaticDimension;
+        }
+        if itemList[1] == "UITableViewCellPhotoPicker" {
+            return uploadImagesView.totalHeight
         }
         let height = itemList[2].cgFloatValue
         return height
@@ -552,16 +566,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.text = value0
             cell.block { (view, title, obj) in
                 DDLog(title,obj)
-            }
-            
-            cell.getViewLayer()
-            return cell
-            
-        case "UITableViewCellPhotoPicker":
-            let cell = UITableViewCellPhotoPicker.dequeueReusableCell(tableView)
-            
-            cell.defaultView.block { (view, list) in
-                DDLog(list.count)
             }
             
             cell.getViewLayer()
@@ -882,6 +886,17 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer();
             return cell;
             
+        case "UITableViewCellPhotoPicker":
+            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: value1)
+            if let view = cell.contentView.viewWithTag(1000) as? NNUploadImagesView {
+                DDLog(view.self)
+            } else {
+                cell.contentView.addSubview(uploadImagesView)
+            }
+            
+            cell.getViewLayer()
+            return cell
+            
         default:
             break
         }
@@ -994,5 +1009,11 @@ extension EntryViewController: NNPopoverButtonDelegate {
             self.navigationController?.pushViewController(controller, animated: true)
         }
 
+    }
+}
+
+extension EntryViewController: NNUploadImagesViewDelegate {
+    func didFinishPicker(_ images: [UIImage], isSelectOriginalPhoto: Bool) {
+        DDLog(images.count)
     }
 }
