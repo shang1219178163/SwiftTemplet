@@ -82,31 +82,26 @@ class NNSegmentedControl: UISegmentedControl {
     
     func setupControl() {
         if #available(iOS 13, *) {
-            setBackgroundImage(UIImage(color: backgroundColor ?? .white), for: .normal, barMetrics: .default)
-            setBackgroundImage(UIImage(color: .white), for: .selected, barMetrics: .default)
-            setBackgroundImage(UIImage(color: .white), for: .highlighted, barMetrics: .default)
+//            ensureiOS12Style()
+            let clearColorImage = UIImage(color: .clear)
+
+            setBackgroundImage(UIImage(color: backgroundColor ?? .clear), for: .normal, barMetrics: .default)
+            setBackgroundImage(clearColorImage, for: .selected, barMetrics: .default)
+            setBackgroundImage(clearColorImage, for: .highlighted, barMetrics: .default)
             
-            setDividerImage(UIImage(color: .clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-            setDividerImage(UIImage(color: .clear), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-            setDividerImage(UIImage(color: .clear), forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
-            
-//            setTitleTextAttributes([.foregroundColor: normalColor as Any,
-//                                    .font: UIFont.systemFont(ofSize: 15)], for: .normal)
-//            setTitleTextAttributes([.foregroundColor: selectedColor,
-//                                    .font: UIFont.systemFont(ofSize: 15)], for: .selected)
-            
+            setDividerImage(clearColorImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(clearColorImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(clearColorImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
+
+            layer.borderColor = UIColor.clear.cgColor
 //            layer.borderWidth = 1.0;
-            layer.borderColor = UIColor.clear.cgColor;
 //            layer.masksToBounds = true;
 //            layer.cornerRadius = 1.0;
-            
-//            indicator.layer.borderColor = selectedColor.cgColor;
-//            return;
         }
 //        tintColor = UIColor.white
 //        backgroundColor = UIColor.white
-        tintColor = UIColor.clear
-        backgroundColor = UIColor.clear
+        tintColor = .clear
+        backgroundColor = .clear
         let attDic = [NSAttributedString.Key.foregroundColor: normalColor,
                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
                     ]
@@ -142,7 +137,7 @@ class NNSegmentedControl: UISegmentedControl {
             bringSubviewToFront(indicator)
 
         case .bottomLine:
-            self.lineView.frame = CGRectMake(0, bounds.height - 1, bounds.width, 0.35)
+            self.lineView.frame = CGRectMake(0, bounds.height - 0.35, bounds.width, 0.35)
             bringSubviewToFront(lineView)
 
             UIView.animate(withDuration: duration) {

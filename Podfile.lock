@@ -25,6 +25,7 @@ PODS:
   - HFNavigationController (1.2.0)
   - Instructions (2.0.0)
   - IQKeyboardManagerSwift (6.5.5)
+  - KeychainSwift (19.0.0)
   - Kingfisher (4.10.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -96,6 +97,7 @@ DEPENDENCIES:
   - HFNavigationController
   - Instructions
   - IQKeyboardManagerSwift
+  - KeychainSwift
   - Kingfisher
   - MBProgressHUD
   - MJRefresh
@@ -133,6 +135,7 @@ SPEC REPOS:
     - HFNavigationController
     - Instructions
     - IQKeyboardManagerSwift
+    - KeychainSwift
     - Kingfisher
     - Masonry
     - MBProgressHUD
@@ -172,6 +175,7 @@ SPEC CHECKSUMS:
   HFNavigationController: 298362bca19235a9d59cc3a8ea234541013b8d99
   Instructions: debf9cedeaf8d095108fd35d2c54b97ccf769e65
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -200,6 +204,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: c445cd76e175a8f1d6ce4eb711e4ee6171d7a2f5
+PODFILE CHECKSUM: e34435756201bcb11c040a96f52b71e9384b4fdd
 
 COCOAPODS: 1.9.3

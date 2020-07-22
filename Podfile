@@ -64,6 +64,7 @@ def common_pods
 #    pod 'KeychainAccess'
 #    pod 'SwiftOCR'
 #    pod "Koloda" #探探主页效果
+    pod 'KeychainSwift'
 
     pod 'NNPlateKeyboard'
     pod 'NNPopoverButton'
