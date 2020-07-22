@@ -46,7 +46,7 @@ class SecondViewController: UIViewController{
         view.items = ["过去", "现在", "将来"]
         view.addActionHandler({ (control) in
             guard let sender = control as? UISegmentedControl else { return }
-            DDLog(sender)
+            DDLog(sender.selectedSegmentIndex)
         }, for: .valueChanged)
         return view;
     }()
@@ -63,7 +63,7 @@ class SecondViewController: UIViewController{
 
             }.rx.event
             .subscribe(onNext: { (header) in
-                DDLog(header)
+//                DDLog(header)
                 header.endRefreshing()
             }, onError: { (error) in
                 DDLog("error")
