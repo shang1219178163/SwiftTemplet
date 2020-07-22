@@ -21,12 +21,12 @@ class UITableViewCellOne: UITableViewCell {
         didSet {
             if oldValue == 0 {
                 //右边文字优先展示
-                labelLeft.textAlignment = .left;
+                labelLeft.textAlignment = .left
                 labelLeft.adjustsFontSizeToFitWidth = true
                 
             } else {
                 //左边文字优先展示
-                labelRight.textAlignment = .right;
+                labelRight.textAlignment = .right
                 labelRight.adjustsFontSizeToFitWidth = true
             }
         }
@@ -80,7 +80,7 @@ class UITableViewCellOne: UITableViewCell {
         }
         let height = bounds.height - inset.top - inset.bottom
         
-        let labStartX = imgViewLeft.isHidden == false ? height + inset.left + kPadding : inset.left
+        let labStartX = imgViewLeft.isHidden ? inset.left : height + inset.left + kPadding
         let endX = accessoryType == .none ? inset.right : 0
         
         //头像不为空
@@ -104,7 +104,7 @@ class UITableViewCellOne: UITableViewCell {
             
             labelLeft.snp.makeConstraints { (make) in
                 make.top.bottom.equalTo(labelRight)
-                make.left.equalToSuperview().offset(inset.left)
+                make.left.equalToSuperview().offset(labStartX)
                 make.right.equalTo(labelRight.snp.left).offset(-kPadding)
             }
             

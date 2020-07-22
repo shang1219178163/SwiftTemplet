@@ -108,15 +108,15 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row {
         case 0:
             let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView);
+            cell.accessoryType = .disclosureIndicator
+
             cell.labelLeft.text = "日期选择:";
 //            cell.textfield.asoryView(true, text: "小时")
             cell.datePicker.block { (picker, idx) in
                 let dateStr = DateFormatter.stringFromDate(picker.datePicker.date)
                 DDLog(dateStr);
-                
             }
         
-            cell.accessoryType = .disclosureIndicator
             cell.getViewLayer();
             return cell;
         case 1:
@@ -189,7 +189,8 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             
         case 5:
             let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne4")
-            
+            cell.accessoryType = .disclosureIndicator
+
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
@@ -205,6 +206,8 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
             return cell;
         case 6:
             let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne4")
+            cell.accessoryType = .disclosureIndicator
+
             cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
             cell.labelRight.text = "990" + "\(indexPath.row)";
             cell.imgViewLeft.image = UIImage(named: "dragon");
@@ -213,8 +216,9 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
 //            imgList = imgList.sorted(by:<);
 //            let imgUrl = imgList.randomElement()!;
 //            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-//            cell.type = 1;
-            
+            cell.type = 1;
+            cell.labelRight.textAlignment = .right
+
             cell.getViewLayer();
             return cell;
         default:
