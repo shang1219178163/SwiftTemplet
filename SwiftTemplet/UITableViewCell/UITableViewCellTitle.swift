@@ -24,7 +24,9 @@ class UITableViewCellTitle: UITableViewCell {
         contentView.addSubview(btn);
 
         labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        btn.setImage(UIImage(named: "icon_card_tips"), for: .normal)
+//        btn.setImage(UIImage(named: "icon_card_tips"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "icon_card_tips"), for: .normal)
+
         btn.addTarget(self, action: #selector(handleAction), for: .touchUpInside)
     }
     

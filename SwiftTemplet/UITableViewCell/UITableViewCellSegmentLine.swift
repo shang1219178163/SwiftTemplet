@@ -1,9 +1,9 @@
 //
-//  UITableViewCellSegment.swift
+//  UITableViewCellSegmentLine.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/1/10.
-//  Copyright © 2019 BN. All rights reserved.
+//  Created by Bin Shang on 2020/7/25.
+//  Copyright © 2020 BN. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISegment分段按钮
-class UITableViewCellSegment: UITableViewCell {
+class UITableViewCellSegmentLine: UITableViewCell {
         
     var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
@@ -107,6 +107,13 @@ class UITableViewCellSegment: UITableViewCell {
     //MARK: -lazy
     lazy var segmentCtl: NNSegmentedControl = {
         var view = NNSegmentedControl.create( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
+        let clearColorImage = UIImage(color: .clear)
+        view.setBackgroundImage(clearColorImage, for: .normal, barMetrics: .default)
+        view.setBackgroundImage(clearColorImage, for: .selected, barMetrics: .default)
+        view.setBackgroundImage(clearColorImage, for: .highlighted, barMetrics: .default)
+        
+        view.setDividerImage(UIImage(color: .line), forLeftSegmentState: [.normal, .selected, .highlighted], rightSegmentState: .normal, barMetrics: .default)
+        
         return view
     }()
     
