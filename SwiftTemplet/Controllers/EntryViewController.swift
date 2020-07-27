@@ -159,12 +159,13 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
+            ["Excel", "UITableViewCellExcel", "155", "", "recharge", ],
             ["标题", "UITableViewCellTitle", "50.0", "", "recharge", ],
             ["标签", "UITableViewCellTags", "70.0", "", "recharge", ],
             ["优惠券充值", "UITableViewCellCouponRecharge", "100.0", "", "recharge", ],
             ["停车统计", "UITableViewCellStatistics", "110.0", "", "recharge", ],
             ["操作日志", "UITableViewCellSixLable", "90.0", "", "recharge", ],
-            ["操作日志2", "UITableViewCellLog", "120.0", "", "recharge", ],
+            ["操作日", "UITableViewCellLog", "120.0", "", "recharge", ],
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
             ["星期选择", "UITableViewCellChoice", "110.0", "", "recharge", ],
@@ -187,10 +188,11 @@ class EntryViewController: UIViewController {
             ["有效时段1:", "UITableViewCellDateRange", "60.0", "1", "btime,etime", ],
             ["有效时段2:", "UITableViewCellDateRange", "60.0", "2", "btime,etime", ],
             ["有效时段3:", "UITableViewCellDateRange", "60.0", "3", "btime,etime", ],
-            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge",  "元"],
-            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge",  "一代,二代,三代,四代",],
+            ["商品价格:", "UITableViewCellTextField", "60.0", "", "recharge", "元"],
+            ["商品种类:", "UITableViewCellSegment", "60.0", "", "recharge", "一代,二代,三代,四代",],
+            ["商品种类:", "UITableViewCellSegmentLine", "60.0", "", "recharge", "一代,二代,三代,四代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
-            ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge",  "生产,不生产",],
+            ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge", "生产,不生产",],
             ["品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
             ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
@@ -321,6 +323,22 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         let value4 = itemList[4]
         
         switch value1 {
+        case "UITableViewCellExcel":
+            let cell = UITableViewCellExcel.dequeueReusableCell(tableView)
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            
+            let width = (kScreenWidth - cell.inset.left - cell.inset.right)/3.0
+            cell.excelView.layout.itemSize = CGSize(width: width, height: 45)
+            cell.excelView.label.text = "    全天"
+            cell.excelView.xGap = 0
+            cell.excelView.label.backgroundColor = UIColor.hexValue(0xF5F5F5)
+            cell.excelView.headerBackgroudColor = .white
+            cell.excelView.dataList = [["08:00 - 20:00", "2元/小时", "封顶20元",],
+                                       ["08:00 - 20:00", "2元/小时", "封顶20元",],
+                                        ]
+            cell.getViewLayer()
+            return cell
+            
         case "UITableViewCellOne":
             let cell = UITableViewCellOne.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
@@ -422,6 +440,42 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }, for: .valueChanged)
      
+//            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellSegmentLine":
+            let cell = UITableViewCellSegmentLine.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            
+            cell.labelLeft.isHidden = true
+            cell.inset = UIEdgeInsetsMake(15, 10, 15, 10)
+            
+            cell.labelLeft.text = value0
+            let titles = itemList.last!.components(separatedBy: ",")
+            cell.segmentCtl.items = titles
+            cell.segmentCtl.addActionHandler({ (sender: UIControl) in
+                if let control = sender as? UISegmentedControl {
+                    DDLog(control.selectedSegmentIndex)
+                }
+            }, for: .valueChanged)
+            ///
+            cell.segmentCtl.showStyle = .seprateLine
+            cell.segmentCtl.layer.borderColor = UIColor.clear.cgColor
+
+            let image0 = UIImage.textEmbededImage(image: UIImage(named: "img_dialog_inquiry")!, string: titles[0], color: .systemRed)
+            let image1 = UIImage.textEmbededImage(image: UIImage(named: "img_dialog_warning")!, string: titles[1], color: .systemOrange)
+            let image2 = UIImage.textEmbededImage(image: UIImage(named: "btn_selected_NO")!, string: titles[2], color: .systemYellow)
+            let image3 = UIImage.textEmbededImage(image: UIImage(named: "icon_password")!, string: titles[3], color: .systemGreen)
+            
+            cell.segmentCtl.setImage(image0.withRenderingMode(.alwaysOriginal), forSegmentAt: 0)
+            cell.segmentCtl.setImage(image1.withRenderingMode(.alwaysOriginal), forSegmentAt: 1)
+            cell.segmentCtl.setImage(image2.withRenderingMode(.alwaysOriginal), forSegmentAt: 2)
+            cell.segmentCtl.setImage(image3.withRenderingMode(.alwaysOriginal), forSegmentAt: 3)
+
+
 //            cell.getViewLayer()
             return cell
             
