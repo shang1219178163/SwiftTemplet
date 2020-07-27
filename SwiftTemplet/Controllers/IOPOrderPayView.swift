@@ -35,7 +35,7 @@ class IOPOrderPayView: UIView {
     @objc func handleAction(_ sender: UIButton) {
         delegate?.orderPayView(sender)
         
-        print(sender.currentTitle!)
+        print(sender.currentTitle ?? "无标题")
     }
     
     // MARK: - lifecycle

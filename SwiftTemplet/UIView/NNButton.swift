@@ -11,6 +11,7 @@ import SwiftExpand
 
 /// 自定义图像方向按钮
 @objcMembers class NNButton: UIButton {
+    
     ///图像位置上左下右
     var direction: UIView.Direction = .left{
         willSet{
@@ -33,15 +34,6 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 12);
         return view
     }()
-        
-//    lazy var iconImageView: UIImageView = {
-//        let view = UIImageView(frame: CGRect.zero);
-//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.isUserInteractionEnabled = true;
-//        view.contentMode = .scaleAspectFit;
-////        view.image = UIImage(named: "icon_discount_orange");
-//        return view
-//    }()
         
     // MARK: -lifecycle
             
@@ -84,9 +76,9 @@ import SwiftExpand
             imageView!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - labelHeight)
             titleLabel!.frame = CGRect(x: 0, y: imageView!.frame.maxY, width: bounds.width, height: labelHeight)
             
-//        case .left:
-//            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
-//            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
+        case .left:
+            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
+            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
                 
         case .bottom:
             titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: labelHeight)
@@ -97,8 +89,6 @@ import SwiftExpand
             titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width - bounds.height, height: bounds.height)
             
         default:
-            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
-            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
             break
         }
         

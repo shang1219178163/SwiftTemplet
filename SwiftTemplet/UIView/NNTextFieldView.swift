@@ -21,7 +21,7 @@ class NNTextFieldView: UIView {
 
     var isBackDelete = true
     
-    typealias ViewClick = ((NNTextFieldView, UITextField) -> Void)
+    typealias ViewClick = ((NNTextFieldView, String) -> Void)
     var viewBlock: ViewClick?;
     
     override init(frame: CGRect) {
@@ -44,9 +44,9 @@ class NNTextFieldView: UIView {
         label.text = "验  证  码:"
         label.numberOfLines = 1
         
-        lineView.backgroundColor = UIColor.lightGray;
+        lineView.backgroundColor = .lightGray;
 //        backgroundColor = .systemGreen
-        getViewLayer()
+//        getViewLayer()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -163,7 +163,7 @@ class NNTextFieldView: UIView {
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
         return view;
@@ -187,7 +187,7 @@ extension NNTextFieldView: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        //        UIApplication.shared.keyWindow?.endEditing(true);
+//        UIApplication.shared.keyWindow?.endEditing(true);
         return true
     }
     
@@ -197,10 +197,11 @@ extension NNTextFieldView: UITextFieldDelegate{
                 textField.text = ""
             }
         }
+        viewBlock?(self, (textField.text ?? "") + string)
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        viewBlock?(self, textField)
+        viewBlock?(self, textField.text ?? "")
     }
 }

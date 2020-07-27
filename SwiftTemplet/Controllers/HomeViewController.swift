@@ -18,11 +18,6 @@ class HomeViewController: UITabBarController {
         
     private lazy var manager = NNGuidePageManager()
     
-//    private lazy var animator: TabbarAnimator = {
-//        let animator = TabbarAnimator(edge: .left)
-//        return animator
-//    }()
-//
 //    private lazy var panGesture: UIPanGestureRecognizer = {
 //        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
 //        return pan
@@ -38,7 +33,7 @@ class HomeViewController: UITabBarController {
 //            beginInteractiveTransitionIfPossible(sender: sender)
 //        }
 //    }
-    
+//
 //    private func beginInteractiveTransitionIfPossible(sender: UIPanGestureRecognizer) {
 //        let translation = sender.translation(in: self.view)
 //
@@ -72,6 +67,7 @@ class HomeViewController: UITabBarController {
 //        view.addGestureRecognizer(panGesture)
         
         selectedIndex = 2
+        selectedIndex = 4
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,8 +117,9 @@ class HomeViewController: UITabBarController {
 //            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["groupgroup", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["TestViewController", "测试",  "Item_center_N",  "Item_center_H"],
-            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
+//            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
 //            ["KVOViewController", "测试",  "Item_center_N",  "Item_center_H"],
+            ["PKFuntionListController", "KOP",  "Item_center_N",  "Item_center_H"],
             
             ];
         return list;
@@ -144,7 +141,6 @@ extension HomeViewController: UITabBarControllerDelegate {
         let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
         let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
         DDLog("\(fromIndex) -> \(toIndex)")
-//        animator.targetEdge = fromIndex < toIndex ? .right : .left
         animator.animateType = fromIndex < toIndex ? .right : .left
         return animator
     }

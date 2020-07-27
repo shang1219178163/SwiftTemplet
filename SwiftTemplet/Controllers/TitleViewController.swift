@@ -269,7 +269,6 @@ class TitleViewController: NNTitleViewSelectController{
     lazy var radioButton: NNButton = {
         var view = NNButton(type:.custom);
         view.setTitle("荷塘夜色", for: .normal);
-
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
         return view
@@ -278,7 +277,6 @@ class TitleViewController: NNTitleViewSelectController{
     lazy var button: NNButton = {
         var view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
-        
 //        var normlImage: UIImage = UIImage(named: "photo_cancell")!
 //        var seletedImage: UIImage = UIImage(named: "photo_select")!
 //        view.setImage(normlImage, for: .normal)
@@ -347,10 +345,10 @@ class TitleViewController: NNTitleViewSelectController{
 //        view.label.isHidden = true
         view.btn.addActionHandler { (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
         }
-        view.block { (textFieldView, textField) in
-            DDLog(textField.text ?? "")
+        view.block { (textFieldView, text) in
+            DDLog(text)
         }
         return view
     }()
@@ -364,10 +362,10 @@ class TitleViewController: NNTitleViewSelectController{
 
         view.btn.addActionHandler { (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
         }
-        view.block { (textFieldView, textField) in
-            DDLog(textField.text ?? "")
+        view.block { (textFieldView, text) in
+            DDLog(text)
         }
         return view
     }()

@@ -69,10 +69,9 @@ class SecondViewController: UIViewController{
                 DDLog("error")
             }, onCompleted: {
                 DDLog("onCompleted")
-            })
+            }).disposed(by: disposeBag)
         
         setupData();
-
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -88,10 +87,9 @@ class SecondViewController: UIViewController{
     
     //MARK: -funtions
     func setupData() {
-        let array = ["分组0","分组1","分组2","分组3","分组4","分组5","分组6","分组7","分组8","分组9"];
+        let array = ["分组0", "分组1", "分组2", "分组3", "分组4", "分组5", "分组6", "分组7", "分组8", "分组9"];
 
         for i in 0..<array.count{
-            
             let foldModel = NNFoldSectionModel()
             foldModel.isOpen = true
             foldModel.isCanOpen = true
@@ -107,7 +105,6 @@ class SecondViewController: UIViewController{
                 foldModel.dataList.append(string)
             }
             dataList.add(foldModel)
-            
         }
         tbView.reloadData()
     }

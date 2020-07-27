@@ -260,7 +260,7 @@ class NNTagView: UIView {
             for e in self.subviews.enumerated() {
                 if e.element.isKind(of: UIButton.self) {
                     guard let sender = e.element as? UIButton else { return }
-                    if titles.contains(sender.currentTitle!) {
+                    if titles.contains(sender.currentTitle ?? "无标题") {
                         sender.setTitleColor(color, for: .normal)
                         sender.layer.borderColor = color.cgColor
                     }

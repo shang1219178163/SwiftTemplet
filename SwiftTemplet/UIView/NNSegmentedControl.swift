@@ -30,6 +30,11 @@ class NNSegmentedControl: UISegmentedControl {
     var showStyle: ShowStyle = .system{
         didSet{
             setupIndicator()
+            
+            let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .clear)
+            setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(dividerImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(dividerImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
         }
     }
     
@@ -84,24 +89,24 @@ class NNSegmentedControl: UISegmentedControl {
         if #available(iOS 13, *) {
 //            ensureiOS12Style()
             let clearColorImage = UIImage(color: .clear)
-
             setBackgroundImage(UIImage(color: backgroundColor ?? .clear), for: .normal, barMetrics: .default)
-            setBackgroundImage(clearColorImage, for: .selected, barMetrics: .default)
-            setBackgroundImage(clearColorImage, for: .highlighted, barMetrics: .default)
-            
-            setDividerImage(clearColorImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
-            setDividerImage(clearColorImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
-            setDividerImage(clearColorImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
+            setBackgroundImage(UIImage(color: .systemTeal), for: .selected, barMetrics: .default)
+            setBackgroundImage(UIImage(color: .systemTeal), for: .highlighted, barMetrics: .default)
+
+            let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .clear)
+            setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(dividerImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(dividerImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
 
             layer.borderColor = UIColor.clear.cgColor
-//            layer.borderWidth = 1.0;
-//            layer.masksToBounds = true;
-//            layer.cornerRadius = 1.0;
+            layer.borderWidth = 1.0;
+            layer.masksToBounds = true;
+            layer.cornerRadius = 1.0;
+            
+        } else {
+            tintColor = .clear
+            backgroundColor = .clear
         }
-//        tintColor = UIColor.white
-//        backgroundColor = UIColor.white
-        tintColor = .clear
-        backgroundColor = .clear
         let attDic = [NSAttributedString.Key.foregroundColor: normalColor,
                       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15),
                     ]
@@ -109,10 +114,8 @@ class NNSegmentedControl: UISegmentedControl {
         let attDicH = [NSAttributedString.Key.foregroundColor: selectedColor,
                        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),
                     ]
-        
         setTitleTextAttributes(attDic, for: .normal)
         setTitleTextAttributes(attDicH, for: .selected)
-        
         indicator.layer.borderColor = selectedColor.cgColor;
     }
     
@@ -151,8 +154,18 @@ class NNSegmentedControl: UISegmentedControl {
                 self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.frame.height)
             }
             bringSubviewToFront(indicator)
+        case .seprateLine:
+            self.lineView.frame = .zero
+            layer.borderColor = UIColor.clear.cgColor
 
         default:
+            
+            DispatchQueue.main.async{
+                self.setBackgroundImage(UIImage(color: .clear), for: .normal, barMetrics: .default)
+                self.setBackgroundImage(UIImage(color: .systemTeal), for: .selected, barMetrics: .default)
+                self.setBackgroundImage(UIImage(color: .systemTeal), for: .highlighted, barMetrics: .default)
+            }
+
             break;
         }
     }
@@ -182,6 +195,7 @@ extension NNSegmentedControl{
         case box
         case topLine
         case bottomLine
+        case seprateLine
     }
 
     static func create(_ style: ShowStyle) -> Self {

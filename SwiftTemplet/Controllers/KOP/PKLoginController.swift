@@ -15,7 +15,7 @@ class PKLoginController: UIViewController {
     lazy var label: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "登录注册享受更多福利";
-        view.font = UIFont.systemFont(ofSize: 15);
+        view.font = UIFont.systemFont(ofSize: 16);
         view.textAlignment = .center;
         view.textColor = .black;
         return view;
@@ -24,31 +24,51 @@ class PKLoginController: UIViewController {
     lazy var labelTip: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "未注册手机号验证后自动创建为停车王账号";
-        view.font = UIFont.systemFont(ofSize: 15);
-        view.textAlignment = .left;
+        view.font = UIFont.systemFont(ofSize: 12);
+        view.textAlignment = .center;
         view.textColor = .gray;
         return view;
     }()
     
     lazy var labelAgreement: UILabel = {
         let view = UILabel(frame: .zero);
-        view.text = "同意《用户协议》和《隐私政策》";
-        view.font = UIFont.systemFont(ofSize: 15);
+        view.text = "同意《用户协议》和《隐私政策》"
+        view.font = UIFont.systemFont(ofSize: 12);
         view.textAlignment = .left;
         view.numberOfLines = 1
         view.adjustsFontSizeToFitWidth = true
         return view;
     }()
     
+    lazy var seperateView: UIView = {
+        let view = UIView(frame: .zero);
+        view.backgroundColor = .line
+        return view;
+    }()
+    
+    lazy var labelSeperate: UILabel = {
+        let view = UILabel(frame: .zero);
+        view.text = "其他登录方式"
+        view.textColor = .textColor9
+
+        view.font = UIFont.systemFont(ofSize: 12);
+        view.textAlignment = .center;
+        view.numberOfLines = 1
+        view.adjustsFontSizeToFitWidth = true
+        view.backgroundColor = .white
+        return view;
+    }()
+    
     lazy var btnClose: UIButton = {
         let view = UIButton(type: .custom);
         
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle("关闭", for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
+//        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
+//        view.setTitle("关闭", for: .normal);
+//        view.setTitleColor(UIColor.theme, for: .normal);
+        view.setImage(UIImage(named: "icon_quit"), for: .normal)
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
         return view;
@@ -59,15 +79,18 @@ class PKLoginController: UIViewController {
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("登录", for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
+        view.setTitleColor(.white, for: .normal)
+        view.setBackgroundColor(.theme, for: .normal)
+        view.setBackgroundColor(.gray, for: .disabled);
         
-        view.layer.borderColor = UIColor.gray.cgColor;
-        view.layer.borderWidth = 1;
-        view.layer.cornerRadius = 20;
+//        view.layer.borderColor = UIColor.gray.cgColor;
+//        view.layer.borderWidth = 1;
+        view.layer.masksToBounds = true;
+        view.isEnabled = false
         
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
             if !self.btnRadio.isSelected {
                 NNProgressHUD.showText("您必须同意用户协议和隐私政策才可登录")
                 return
@@ -100,12 +123,14 @@ class PKLoginController: UIViewController {
     lazy var btnLoginWx: UIButton = {
         let view = UIButton(type: .custom);
         
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle("微信登录", for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
+//        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
+//        view.setTitle("微信登录", for: .normal);
+//        view.setTitleColor(UIColor.theme, for: .normal);
+        view.setBackgroundImage(UIImage(named: "icon_weixin"), for: .normal)
+
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
         return view;
@@ -119,7 +144,7 @@ class PKLoginController: UIViewController {
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
         return view;
@@ -133,7 +158,21 @@ class PKLoginController: UIViewController {
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
+
+        }, for: .touchUpInside)
+        return view;
+    }()
+    
+    lazy var btnLoginAppleID: UIButton = {
+        let view = UIButton(type: .custom);
+        
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
+        view.setTitle("Apple登录", for: .normal);
+        view.setTitleColor(.theme, for: .normal);
+        view.addActionHandler({ (control) in
+            guard let sender = control as? UIButton else { return }
+            DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
         return view;
@@ -142,15 +181,16 @@ class PKLoginController: UIViewController {
     lazy var textFieldView: NNTextFieldView = {
         var view = NNTextFieldView(frame: .zero)
         view.label.text = "手机号码:"
-        view.textfield.placeholder = "请输入手机号码"
+        view.textfield.placeholder = "手机号码"
         view.label.isHidden = true
+        view.btn.isHidden = true
 
         view.btn.addActionHandler { (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
         }
-        view.block { (textFieldView, textField) in
-            DDLog(textField.text ?? "")
+        view.block { (textFieldView, text) in
+            DDLog(text)
         }
         return view
     }()
@@ -158,16 +198,20 @@ class PKLoginController: UIViewController {
     lazy var textFieldCodeView: NNTextFieldView = {
         var view = NNTextFieldView(frame: .zero)
         view.label.text = "验  证  码:"
-        view.textfield.placeholder = "请输入验证码"
-        view.btn.isHidden = true
+        view.textfield.placeholder = "短信验证码"
         view.label.isHidden = true
+//        view.btn.isHidden = true
 
         view.btn.addActionHandler { (control) in
             guard let sender = control as? UIButton else { return }
-            DDLog(sender.currentTitle!)
+            DDLog(sender.currentTitle ?? "无标题")
         }
-        view.block { (textFieldView, textField) in
-            DDLog(textField.text ?? "")
+        view.block { (textFieldView, text) in
+            DDLog(text)
+            
+            if let phone = self.textFieldView.textfield.text {
+                self.btn.isEnabled = (phone.count >= 11 && text.count >= 4)
+            }
         }
         return view
     }()
@@ -187,6 +231,9 @@ class PKLoginController: UIViewController {
         view.addSubview(btnRadio)
         view.addSubview(labelAgreement)
         view.addSubview(btn)
+        view.addSubview(seperateView)
+        view.addSubview(labelSeperate)
+
         view.addSubview(btnLoginWx)
         view.addSubview(btnLoginQQ)
         view.addSubview(btnLoginWeiBo)
@@ -198,7 +245,10 @@ class PKLoginController: UIViewController {
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         
-        view.getViewLayer()
+        btnLoginQQ.isHidden = true
+        btnLoginWeiBo.isHidden = true
+        btnLoginAppleID.isHidden = true
+//        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -217,55 +267,79 @@ class PKLoginController: UIViewController {
             make.right.equalToSuperview().offset(-45);
             make.height.equalTo(25);
         }
+        
+        labelTip.snp.makeConstraints { (make) in
+            make.top.equalTo(label.snp.bottom).offset(0);
+            make.left.equalToSuperview().offset(15);
+            make.right.equalToSuperview().offset(-15);
+            make.height.equalTo(20)
+        }
                 
         textFieldView.snp.makeConstraints { (make) in
-            make.top.equalTo(label.snp.bottom).offset(20);
-            make.left.equalToSuperview().offset(40)
-            make.right.equalToSuperview().offset(-40)
-            make.height.equalTo(40)
+            make.top.equalTo(labelTip.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalTo(45)
         }
         
         textFieldCodeView.snp.makeConstraints { (make) in
             make.top.equalTo(textFieldView.snp.bottom).offset(5);
             make.left.right.width.height.equalTo(textFieldView)
         }
-        
-        labelTip.snp.makeConstraints { (make) in
-            make.top.equalTo(textFieldCodeView.snp.bottom).offset(0);
-            make.left.right.width.equalTo(textFieldCodeView)
-            make.height.equalTo(25)
-        }
-        
+                
         btn.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTip.snp.bottom).offset(30);
+            make.top.equalTo(textFieldCodeView.snp.bottom).offset(30);
             make.left.equalToSuperview().offset(40)
             make.right.equalToSuperview().offset(-40)
-            make.height.equalTo(35)
+            make.height.equalTo(45)
         }
         
         btnRadio.snp.makeConstraints { (make) in
-            make.top.equalTo(btn.snp.bottom).offset(20);
+            make.top.equalTo(btn.snp.bottom).offset(10);
             make.left.equalTo(btn).offset(40)
-            make.height.equalTo(30)
-            make.width.equalTo(30)
+            make.height.equalTo(20)
+            make.width.equalTo(20)
         }
         
         labelAgreement.snp.makeConstraints { (make) in
-            make.top.equalTo(btn.snp.bottom).offset(20);
+            make.top.equalTo(btnRadio).offset(0);
             make.left.equalTo(btnRadio.snp.right).offset(10)
             make.right.equalTo(btn)
             make.height.equalTo(btnRadio)
         }
-                
-        let Xgap: CGFloat = 85;
-        let list = [btnLoginWx, btnLoginQQ, btnLoginWeiBo].filter { $0.isHidden == false }
-        list.snp.distributeViewsAlong(axisType: .horizontal, fixedItemLength: 50, leadSpacing: Xgap, tailSpacing: Xgap)
-        list.snp.makeConstraints { (make) in
-            make.top.equalTo(labelAgreement.snp.bottom).offset(20);
-            make.height.equalTo(50)
+        
+        seperateView.snp.makeConstraints { (make) in
+            make.top.equalTo(btnRadio.snp.bottom).offset(30);
+            make.left.equalToSuperview().offset(15)
+            make.right.equalToSuperview().offset(-15)
+            make.height.equalTo(0.5)
         }
         
-        DDLog(labelAgreement.frame)
+        let labelSeperateSize = labelSeperate.sizeThatFits(.zero)
+        labelSeperate.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview().offset(0)
+            make.centerY.equalTo(seperateView).offset(0)
+            make.width.equalTo(labelSeperateSize.width)
+            make.height.equalTo(20)
+        }
+                
+        let Xgap: CGFloat = 85;
+        let list = [btnLoginWx, btnLoginQQ, btnLoginWeiBo, btnLoginAppleID].filter { $0.isHidden == false }
+        if list.count == 1 {
+            list[0].snp.makeConstraints { (make) in
+                make.centerX.equalToSuperview()
+                make.top.equalTo(labelSeperate.snp.bottom).offset(20);
+                make.width.height.equalTo(40)
+            }
+        } else {
+            list.snp.distributeViewsAlong(axisType: .horizontal, fixedItemLength: 50, leadSpacing: Xgap, tailSpacing: Xgap)
+            list.snp.makeConstraints { (make) in
+                make.top.equalTo(labelAgreement.snp.bottom).offset(20);
+                make.height.equalTo(50)
+            }
+        }
+        
+        btn.layer.cornerRadius = 22.5;
         updateAgreement()
     }
     
@@ -277,8 +351,8 @@ class PKLoginController: UIViewController {
     
     // MARK: -funtions
     func updateAgreement() {
-        let tapTexts = ["用户协议", "隐私政策"]
-        labelAgreement.text = "同意《\(tapTexts[0])》和《\(tapTexts[1])》"
+        let tapTexts = ["《用户协议》", "《隐私政策》"]
+        labelAgreement.text = "同意\(tapTexts[0])和\(tapTexts[1])"
         labelAgreement.attributedText = NSAttributedString.attString(labelAgreement.text!, textTaps: tapTexts, font: 13, tapFont: 13)
 
         _ = labelAgreement.addGestureTap { (reco) in

@@ -19,7 +19,7 @@ class SubscribeListController: UIViewController {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: self.createLayout())
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .systemBackground
-        collectionView.backgroundColor = UIColor.gray
+        collectionView.backgroundColor = .gray
 
         collectionView.register(NNCollectionViewCellList.self, forCellWithReuseIdentifier: NNCollectionViewCellList.identifier)
         collectionView.delegate = self

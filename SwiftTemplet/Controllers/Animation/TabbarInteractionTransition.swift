@@ -14,14 +14,13 @@ class TabbarInteractionTransition: UIPercentDrivenInteractiveTransition {
     
     private var transitionContext: UIViewControllerContextTransitioning?
     
-    private var initialLocationInContainerView: CGPoint = CGPoint.zero
-    private var initialTranslationInContainerView: CGPoint = CGPoint.zero
+    private var initialLocationInContainerView: CGPoint = .zero
+    private var initialTranslationInContainerView: CGPoint = .zero
     
     init(pan: UIPanGestureRecognizer) {
         super.init()
         
         self.panGesture = pan
-        
         self.panGesture!.addTarget(self, action: #selector(gestureRecognizeDidUpdate(sender:)))
     }
     
@@ -34,7 +33,6 @@ class TabbarInteractionTransition: UIPercentDrivenInteractiveTransition {
         self.transitionContext = transitionContext
         
         self.initialLocationInContainerView = self.panGesture!.location(in: transitionContext.containerView)
-        
         self.initialTranslationInContainerView = self.panGesture!.translation(in: transitionContext.containerView)
         
         super.startInteractiveTransition(transitionContext)
@@ -46,12 +44,10 @@ class TabbarInteractionTransition: UIPercentDrivenInteractiveTransition {
         }
         
         let transitionContainerView = self.transitionContext?.containerView
-        
         let translationInContainerView = gesture.translation(in: transitionContainerView)
         
         if (translationInContainerView.x > 0 && self.initialTranslationInContainerView.x < 0) ||
             (translationInContainerView.x < 0 && self.initialTranslationInContainerView.x > 0) {
-            
             return -1
         }
         
@@ -66,7 +62,6 @@ class TabbarInteractionTransition: UIPercentDrivenInteractiveTransition {
             print(self.percentForGesture(gesture: sender))
             if self.percentForGesture(gesture: sender) < 0 {
                 self.cancel()
-
                 self.panGesture!.removeTarget(self, action: #selector(gestureRecognizeDidUpdate(sender:)))
             } else {
                 

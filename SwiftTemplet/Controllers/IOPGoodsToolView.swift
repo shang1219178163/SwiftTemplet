@@ -51,7 +51,7 @@ class IOPGoodsToolView: UIView {
     @objc func handleAction(_ sender: UIButton) {
         delegate?.goodsToolView(sender)
         
-        print(sender.currentTitle!)
+        print(sender.currentTitle ?? "无标题")
     }
     
     // MARK: - lifecycle

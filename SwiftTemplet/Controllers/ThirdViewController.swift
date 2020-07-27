@@ -32,18 +32,13 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
-                             
+             ["SubscribeListNewController", "微信公众号信息列表1", ],
+
+            ["ProtocolViewController", "面向协议编程", ],
+            ["AppleSignInViewController", "AppleSignIn", ],
             ["PKParkCollectListController", "kOP 收藏", ],
              ["NNFeedbackController", "kOP Upload", ],
              ["NNImageAndVideoPickerController", "kOP UploadImages", ],
-             ["PKMineController", "kOP 我的", ],
-             ["PKLoginController", "kOP 登录页", ],
-             ["PKSettingsController", "kOP 设置页", ],
-             ["PKUserInfoEditController", "kOP 用户信息", ],
-             ["PKRecommendToFriendsController", "kOP 推荐给好友", ],
-             ["PKAccountAboutController", "kOP 账户与安全", ],
-             ["PKAppAbountController", "kOP 关于停车王", ],
-
              ["RxRequestExampleController", "RxSwift 网络请求", ],
              ["AppStoreGameController", "AppStore游戏界面", ],
              ["SubscribeListController", "微信公众号信息列表", ],
@@ -182,6 +177,7 @@ class ThirdViewController: UIViewController{
         
 //        let image = UIImage(color: .white)
 //        DDLog(image.cgImage)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

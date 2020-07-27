@@ -55,7 +55,6 @@ class UITableViewCellSegmentLine: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews();
-        
         setupConstraint()
     }
     
