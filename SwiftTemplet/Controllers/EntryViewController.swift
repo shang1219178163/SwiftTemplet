@@ -197,6 +197,7 @@ class EntryViewController: UIViewController {
             ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
+            ["PhotoShow", "NNTableViewCellPhotoShow", "216.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
             ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
             ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
@@ -380,7 +381,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.getViewLayer()
             return cell
-                        
+                                  
         case "UITableViewCellProgressView":
             let cell = UITableViewCellProgressView.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
@@ -529,6 +530,14 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.getViewLayer()
             return cell
+            
+        case "NNTableViewCellPhotoShow":
+            let cell = NNTableViewCellPhotoShow.dequeueReusableCell(tableView)
+            cell.labelLeft.text = "进场图片"
+            
+            cell.getViewLayer()
+            return cell
+            
         case "UITableViewCellDateRange":
             
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange())
@@ -784,6 +793,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer();
             return cell;
             
+
         case "UITableViewCellSudokuButton":
             let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
 //            cell.accessoryType = .disclosureIndicator
@@ -854,7 +864,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 self.weekIdxList = groupView.selectedIdxList
             }
             
-//            cell.getViewLayer();
+            cell.getViewLayer();
             return cell;
             
         case "UITableViewCellGoodsDuration":
@@ -869,7 +879,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 DDLog(groupView.selectedIdxList)
                 self.timeIdxList = groupView.selectedIdxList
             }
-//            cell.getViewLayer();
+            cell.getViewLayer();
             return cell;
             
         case "UITableViewCellFee":

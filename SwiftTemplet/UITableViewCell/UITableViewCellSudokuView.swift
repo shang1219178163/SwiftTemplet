@@ -9,7 +9,6 @@
 import UIKit
 import SwiftExpand
 ///九宫格
-
 @objcMembers class UITableViewCellSudokuView: UITableViewCell {
 
     var numOfRow: Int = 3
@@ -67,6 +66,15 @@ import SwiftExpand
     func setupConstraint() {
         if bounds.height <= 10.0 {
             return;
+        }
+        
+        if numOfRow == 1 {
+            items.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
+            items.snp.makeConstraints { (make) in
+                make.left.equalToSuperview().offset(inset.left)
+                make.right.equalToSuperview().offset(-inset.right)
+            }
+            return
         }
         
         if row == 1 {

@@ -15,7 +15,6 @@ class NNTagView: UIView {
     var tags: [String]?
     {
         didSet{
-            DDLog(oldValue)
             resetTagButton()
         }
     }

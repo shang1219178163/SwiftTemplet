@@ -15,10 +15,30 @@ import SwiftExpand
     
     var row: Int = 3
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    
-    var itemType: UILabel.Type = UILabel.self
+    var lineSpacing: CGFloat = 10{
+        willSet{
+            setNeedsLayout()
+        }
+    }
 
+    var interitemSpacing: CGFloat = 10{
+        willSet{
+            setNeedsLayout()
+        }
+    }
+
+    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10){
+        willSet{
+            setNeedsLayout()
+        }
+    }
+
+    var itemType: UILabel.Type = UILabel.self{
+        willSet{
+            setNeedsLayout()
+        }
+    }
+    
     // MARK: -lazy
     lazy var items: [UILabel] = {
         return self.contentView.updateLabelItems(self.row*self.numOfRow, type: self.itemType) { (sender) in
@@ -48,7 +68,27 @@ import SwiftExpand
         if bounds.height <= 10.0 {
             return;
         }
-        items.snp.distributeSudokuViews(fixedLineSpacing: 5, fixedInteritemSpacing: 10, warpCount: numOfRow, edgeInset: inset)
+        
+        if numOfRow == 1 {
+            items.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
+            items.snp.makeConstraints { (make) in
+                make.left.equalToSuperview().offset(inset.left)
+                make.right.equalToSuperview().offset(-inset.right)
+            }
+            return
+        }
+        
+        if row == 1 {
+            items.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: interitemSpacing, leadSpacing: inset.left, tailSpacing: inset.right)
+            items.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(inset.top)
+                make.bottom.equalToSuperview().offset(-inset.bottom)
+            }
+            return
+        }
+        
+        items.snp.distributeSudokuViews(fixedLineSpacing: lineSpacing, fixedInteritemSpacing: interitemSpacing, warpCount: numOfRow, edgeInset: inset)
+
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

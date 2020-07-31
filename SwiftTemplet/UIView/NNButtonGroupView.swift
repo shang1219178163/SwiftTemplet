@@ -101,11 +101,13 @@ import UIKit
                 view.setBackgroundImage(self.backgroudImage, for: .normal)
                 view.setBackgroundImage(self.selectedBackgroudImage, for: .selected)
                 view.setBackgroundImage(self.selectedBackgroudImage, for: .disabled)
+                view.adjustsImageWhenHighlighted = false;
 
                 let title = newValue[view.tag]
                 view.setTitle(title, for: .normal)
                 view.addTarget(self, action: #selector(self.handleAction(_:)), for: .touchUpInside)
             })
+            selectedIdxList = [0]
         }
     }
     

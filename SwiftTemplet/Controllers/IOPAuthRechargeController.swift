@@ -24,11 +24,11 @@ class IOPAuthRechargeController: UIViewController {
      
         
         createBarItem( .edit, isLeft: true) { (sender: AnyObject) in
-            self.pushVC("FleetDetailNewController")
+            self.navigationController?.pushVC("FleetDetailNewController")
         }
         
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in
-            self.pushVC("IOPAuthDetailController")
+            self.navigationController?.pushVC("IOPAuthDetailController")
 
         }
     }

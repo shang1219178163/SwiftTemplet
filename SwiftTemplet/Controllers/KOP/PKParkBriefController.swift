@@ -36,9 +36,8 @@ import SwiftExpand
         let button = UIButton.create(.zero, title: "进件须知", imgName: nil, type: 6)
         button.sizeToFit()
         button.addActionHandler({ (control) in
-//            let controller = IOPInPartAgreementController()
-//            controller.type = "1"
-//            self.navigationController?.pushViewController(controller, animated: true)
+            let controller = BlankSpaceViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
 
         }, for: .touchUpInside)
         return button
@@ -66,7 +65,7 @@ import SwiftExpand
 
         // Do any additional setup after loading the view.
         title = "详情"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 
 //        tableView.tableFooterView = footerView;
         view.addSubview(tableView)
@@ -140,7 +139,7 @@ extension PKParkBriefController: UITableViewDataSource, UITableViewDelegate{
 //            cell.textLabel?.text = value0
             cell.detailTextLabel?.text = "上传"
 
-            let result: String = dataModel.valueText(forKeyPath: value4, defalut: "-")
+//            let result: String = dataModel.valueText(forKeyPath: value4, defalut: "-")
 //            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
 //            cell.getViewLayer()
             return cell;

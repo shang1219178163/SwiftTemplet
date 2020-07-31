@@ -69,6 +69,15 @@ import SwiftExpand
             return;
         }
         
+        if numOfRow == 1 {
+            items.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
+            items.snp.makeConstraints { (make) in
+                make.left.equalToSuperview().offset(inset.left)
+                make.right.equalToSuperview().offset(-inset.right)
+            }
+            return
+        }
+        
         if row == 1 {
             items.snp.distributeViewsAlong(axisType: .horizontal, fixedSpacing: interitemSpacing, leadSpacing: inset.left, tailSpacing: inset.right)
             items.snp.makeConstraints { (make) in

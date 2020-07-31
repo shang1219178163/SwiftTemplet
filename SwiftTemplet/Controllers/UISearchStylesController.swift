@@ -45,7 +45,8 @@ class UISearchStylesController: UIViewController{
 
     lazy var allList: [[[String]]] = {
         var array: [[[String]]] = [
-            [["PopViewController", "titleView🔍", ],
+            [["NNSearchListController", "titleView🔍", ],
+//                ["PopViewController", "titleView🔍", ],
             ["CCSDeskViewController", "titleView自定义🔍", ],
             ["NNSearchController", "复合🔍", ],
             ],

@@ -31,8 +31,8 @@ class FirstViewController: UIViewController {
      
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
-        createBarItem( .done, isLeft: false) {[weak self] (obj:AnyObject?) in
-            self?.pushVC("IOPAuthRechargeController")
+        createBarItem( .done, isLeft: false) {[weak self] (obj) in
+            self?.navigationController?.pushVC("IOPAuthRechargeController")
         }
         view.addSubview(tbView);
         

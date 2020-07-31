@@ -37,6 +37,8 @@ class TextFieldStyleController: UIViewController {
     
     // MARK: -life cycle
     deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         DDLog(1111)
     }
     
@@ -51,8 +53,22 @@ class TextFieldStyleController: UIViewController {
 
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
         view.addSubview(tableView);
+        
+        //监听键盘
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_ :)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDismiss(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-        //MARK: -func
+    //MARK: -func
+    //键盘弹出监听
+    @objc func keyboardShow(_ noti: Notification)  {
+        navigationController?.preferredContentSize = CGSize(width: kScreenWidth, height: 560)
+    }
+    
+    //键盘隐藏监听
+    @objc func keyboardDismiss(_ noti: Notification){
+        navigationController?.preferredContentSize = CGSize(width: kScreenWidth, height: 370)
+    }
+    
     func titleViewTap() {
         textField.text = "闭包的回调方法"
         

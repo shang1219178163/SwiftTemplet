@@ -68,10 +68,10 @@ import SwiftExpand
 //        if sender.title == "返回" {
 //            switch self.navigationController?.viewControllers[1] {
 //            case is PHHCouponShopVC://返回列表 1
-//                navigationController?.popToViewController(PHHCouponShopVC.self, animate: true)
+//                navigationController?.popToVC(PHHCouponShopVC.self, animate: true)
 //
 //            case is PHHOrderVC://返回列表 2
-//                navigationController?.popToViewController(PHHOrderVC.self, animate: true)
+//                navigationController?.popToVC(PHHOrderVC.self, animate: true)
 //
 //            default:
 //                navigationController?.popViewController(animated: true)

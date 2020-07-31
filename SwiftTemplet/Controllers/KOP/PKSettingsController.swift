@@ -129,7 +129,7 @@ extension PKSettingsController: UITableViewDataSource, UITableViewDelegate{
             UIApplication.openURLString(UIApplication.appUrlWithID(""))
             
         } else  if value4.hasSuffix("Controller") {
-            pushVC(value4, animated: true)
+            navigationController?.pushVC(value4, animated: true)
         }
         
     }

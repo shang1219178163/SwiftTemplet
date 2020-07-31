@@ -177,7 +177,7 @@ extension PKUserInfoEditController: UITableViewDataSource, UITableViewDelegate{
             pickerVC.show()
             
         case "昵称","真实姓名":
-            pushVC(PKTextFieldInputController.self, animated: true) { (vc) in
+            navigationController?.pushVC(PKTextFieldInputController.self, animated: true) { (vc) in
                 vc.title = itemList.first!
             }
             
