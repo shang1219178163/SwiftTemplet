@@ -70,7 +70,7 @@ PODS:
   - SnapKit (4.2.0)
   - SnapKitExtend (1.0.7):
     - SnapKit
-  - SwiftExpand (3.9.4)
+  - SwiftExpand (3.9.5)
   - SwiftyJSON (5.0.0)
   - TZImagePickerController (3.3.2)
   - UICircularProgressRing (7.0.0)
@@ -193,7 +193,7 @@ SPEC CHECKSUMS:
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
-  SwiftExpand: 92efe971791e9cf1449debebac697e3b2f3c9d2d
+  SwiftExpand: 1e81122db5ca0212bf816b82d5a806ad84d0272c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
@@ -204,6 +204,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: e34435756201bcb11c040a96f52b71e9384b4fdd
+PODFILE CHECKSUM: e920ef514efe6031507c0efdd8746c7ea6964fbb
 
 COCOAPODS: 1.9.3

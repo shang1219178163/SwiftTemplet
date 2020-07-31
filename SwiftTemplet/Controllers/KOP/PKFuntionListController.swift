@@ -16,6 +16,7 @@ import SwiftExpand
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["PKParkBriefController", "车场空车位", ],
+             ["PKRegionParkListController", "当前区域车场", ],
              ["PKParkDetailController", "车场详情", ],
              ["PKMineController", "kOP 我的", ],
              ["PKLoginController", "kOP 登录页", ],
@@ -40,7 +41,8 @@ import SwiftExpand
         
     lazy var rightBtn: UIButton = {
         let button = UIButton.create(.zero, title: "保存", imgName: nil, type: 6)
-        button.isHidden = true;
+        
+//        button.isHidden = true;
         button.sizeToFit()
         button.addActionHandler({ (control) in
             
@@ -57,6 +59,7 @@ import SwiftExpand
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "KOP功能"
         setupExtendedLayout()
         setupUI()
     }
@@ -69,7 +72,12 @@ import SwiftExpand
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        pushVC(PKParkBriefController.self, animated: false, block: nil)
+//        pushVC(PKRegionParkListController.self, animated: false, block: nil)
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        navigationController?.navigationBar.setBackgroudColor(.clear)
+        navigationController?.navigationBar.setTextColor(.systemGreen)
     }
         
     override func didReceiveMemoryWarning() {

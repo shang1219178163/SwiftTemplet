@@ -16,7 +16,7 @@ class UITableViewCellSheet: UITableViewCell {
     var viewBlock:((String) -> Void)?
     var itemList: [String]? {
         willSet{
-            alertCtrl = UIAlertController.createSheet("请选择", msg: nil, items: newValue, handler: { (controller: UIAlertController, action:UIAlertAction) in
+            alertCtrl = UIAlertController.createSheet("请选择", msg: nil, items: newValue, handler: { (controller, action) in
                 if action.title != kTitleCancell {
                     self.textfield.text = action.title
                     self.viewBlock?(action.title!)
@@ -49,8 +49,10 @@ class UITableViewCellSheet: UITableViewCell {
         accessoryType = .disclosureIndicator
 
         _ = contentView.addGestureTap { (sender) in
-            UIApplication.shared.keyWindow?.endEditing(true)
-            UIApplication.shared.keyWindow?.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
+            if let keyWindow = UIApplication.shared.keyWindow {
+                keyWindow.endEditing(true)
+                keyWindow.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
+            }
         }
     }
     

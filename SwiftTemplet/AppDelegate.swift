@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NSObject.initializeMethod()
-//        UIViewController.initializeMethod();
-//        UIImageView.initializeMethod();
+        UIViewController.initializeMethod()
+//        UIImageView.initializeMethod()
 //        UIColor.theme = UIColor.systemBlue
         UIColor.theme = UIColor.hexValue(0x29B5FE)
         UIApplication.setupAppearanceDefault(false);

@@ -99,7 +99,6 @@ class SubscribeListNewController: UIViewController {
 
     func createCardSection(using section: SectionModel) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(0.9))
-
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 //        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
 

@@ -206,6 +206,7 @@
 		146D49B12497612C00B25EE7 /* BookReaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D49B02497612C00B25EE7 /* BookReaderController.swift */; };
 		146D49B32497613700B25EE7 /* BookContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D49B22497613700B25EE7 /* BookContentController.swift */; };
 		146D49B52497716E00B25EE7 /* ReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D49B42497716E00B25EE7 /* ReaderViewController.swift */; };
+		146EBB3724D2BC6600F268E0 /* UINavigationBar+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146EBB3624D2BC6600F268E0 /* UINavigationBar+Helper.swift */; };
 		146F09822228AF4700E13F53 /* NNVehicleInfoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */; };
 		146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09832228CD7000E13F53 /* NNRecordCardView.swift */; };
 		146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146F09872229033E00E13F53 /* NNUpdateVersionView.swift */; };
@@ -281,6 +282,10 @@
 		148040AE240F89A90032EB07 /* NNTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148040AD240F89A90032EB07 /* NNTableHeaderView.swift */; };
 		148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148040B3240F8E4C0032EB07 /* IOPOrdersChooseView.swift */; };
 		1480B0D1238CA7B000E24BDB /* UIStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */; };
+		148C1D0724CE815B0017FEBB /* NNTableViewCellPhotoShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D0624CE815B0017FEBB /* NNTableViewCellPhotoShow.swift */; };
+		148C1D0924CE87AD0017FEBB /* BlankSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D0824CE87AD0017FEBB /* BlankSpaceViewController.swift */; };
+		148C1D4724CEBD6C0017FEBB /* PKRegionParkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */; };
+		148C1D6124D000790017FEBB /* NNSearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D6024D000790017FEBB /* NNSearchListController.swift */; };
 		149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149111A022719F300078A7BB /* AppGlobleConfig.swift */; };
 		149946852383F743005E43CC /* NNPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946842383F743005E43CC /* NNPictureView.swift */; };
 		149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946862383F93B005E43CC /* UICTViewCellTwo.swift */; };
@@ -615,6 +620,7 @@
 		146D49B02497612C00B25EE7 /* BookReaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReaderController.swift; sourceTree = "<group>"; };
 		146D49B22497613700B25EE7 /* BookContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContentController.swift; sourceTree = "<group>"; };
 		146D49B42497716E00B25EE7 /* ReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewController.swift; sourceTree = "<group>"; };
+		146EBB3624D2BC6600F268E0 /* UINavigationBar+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Helper.swift"; sourceTree = "<group>"; };
 		146F09812228AF4700E13F53 /* NNVehicleInfoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNVehicleInfoCardView.swift; sourceTree = "<group>"; };
 		146F09832228CD7000E13F53 /* NNRecordCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNRecordCardView.swift; sourceTree = "<group>"; };
 		146F09872229033E00E13F53 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
@@ -695,6 +701,10 @@
 		148040AD240F89A90032EB07 /* NNTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNTableHeaderView.swift; sourceTree = "<group>"; };
 		148040B3240F8E4C0032EB07 /* IOPOrdersChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPOrdersChooseView.swift; sourceTree = "<group>"; };
 		1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewController.swift; sourceTree = "<group>"; };
+		148C1D0624CE815B0017FEBB /* NNTableViewCellPhotoShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTableViewCellPhotoShow.swift; sourceTree = "<group>"; };
+		148C1D0824CE87AD0017FEBB /* BlankSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankSpaceViewController.swift; sourceTree = "<group>"; };
+		148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKRegionParkListController.swift; sourceTree = "<group>"; };
+		148C1D6024D000790017FEBB /* NNSearchListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSearchListController.swift; sourceTree = "<group>"; };
 		149111A022719F300078A7BB /* AppGlobleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobleConfig.swift; sourceTree = "<group>"; };
 		149946842383F743005E43CC /* NNPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPictureView.swift; sourceTree = "<group>"; };
 		149946862383F93B005E43CC /* UICTViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellTwo.swift; sourceTree = "<group>"; };
@@ -1216,6 +1226,7 @@
 			isa = PBXGroup;
 			children = (
 				14B7405624CAB54600569888 /* PKFuntionListController.swift */,
+				148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */,
 				14B7405824CAC07500569888 /* PKParkDetailBottomView.swift */,
 				14B7405A24CACDEB00569888 /* PKParkSpaceView.swift */,
 				1439168924C18C1700CBABF0 /* kopMedia.xcassets */,
@@ -1238,6 +1249,7 @@
 				143917E324C2E2E600CBABF0 /* PKTextFieldInputController.swift */,
 				14B7405224CA792600569888 /* UITableViewCellExcel.swift */,
 				14B7405024CA72DE00569888 /* UITableViewCellParkInfo.swift */,
+				148C1D0824CE87AD0017FEBB /* BlankSpaceViewController.swift */,
 			);
 			path = KOP;
 			sourceTree = "<group>";
@@ -1293,6 +1305,7 @@
 				146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */,
 				147D79A324BEE80200458F3D /* NSURLRequest+Helper.swift */,
 				147D79A524BEE82300458F3D /* NSURLSession+Helper.swift */,
+				146EBB3624D2BC6600F268E0 /* UINavigationBar+Helper.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -1308,6 +1321,7 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				148C1D6024D000790017FEBB /* NNSearchListController.swift */,
 				14B7406224CC41F200569888 /* Animation */,
 				1439181624C83E5C00CBABF0 /* SignInWithApple */,
 				143917ED24C2EF3B00CBABF0 /* Picker */,
@@ -1470,6 +1484,7 @@
 				14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */,
 				14B7405E24CADCFC00569888 /* UITableViewCellSudokuView.swift */,
 				143917E124C2D42100CBABF0 /* UITableViewCellRightAvart.swift */,
+				148C1D0624CE815B0017FEBB /* NNTableViewCellPhotoShow.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -1901,6 +1916,7 @@
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				14D91B15234C88B400554994 /* CellListController.swift in Sources */,
 				1461A24523191850006A758F /* ScrollViewController.swift in Sources */,
+				148C1D4724CEBD6C0017FEBB /* PKRegionParkListController.swift in Sources */,
 				143917F124C3CDA800CBABF0 /* NNFeedbackController.swift in Sources */,
 				145C91512334CD0E00849E9D /* NNTabController.swift in Sources */,
 				14A86A7523557ABD00AD9BC1 /* NNSearchResultController.swift in Sources */,
@@ -1919,6 +1935,7 @@
 				1472C2432459AE26000F8441 /* NNTitleViewSelectController.swift in Sources */,
 				1461E114239A06C20078EB79 /* PlateKeybordController.swift in Sources */,
 				147E304E246CD2FE0076C704 /* UITableViewCellStatistics.swift in Sources */,
+				148C1D0924CE87AD0017FEBB /* BlankSpaceViewController.swift in Sources */,
 				141495C1242B4F6E00141A9F /* NNAddressLabelRootModel.m in Sources */,
 				51C9B58B211D1793003E9AA7 /* FirstViewController.swift in Sources */,
 				14403E6223320689005DB45B /* CCSEmergencyOpenView.swift in Sources */,
@@ -2021,6 +2038,7 @@
 				142A770422275EE10016D3DA /* PPNumberButton.swift in Sources */,
 				14F0F0DA24BF0F6800263DAA /* NNWebViewController.swift in Sources */,
 				1472C23B24598E18000F8441 /* ReuseChildsController.swift in Sources */,
+				146EBB3724D2BC6600F268E0 /* UINavigationBar+Helper.swift in Sources */,
 				1460728221F16C1D003AE810 /* CircleTransitionAnimator.swift in Sources */,
 				14579B9B2293F28C001FEB0C /* NNUserLogInController.swift in Sources */,
 				1451EBF12498BF2400059BDC /* AppStoreGameController.swift in Sources */,
@@ -2069,6 +2087,7 @@
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				14F18E852382346D0018626C /* UITableViewCellFee.swift in Sources */,
 				1422A9D524496D11002D6145 /* TransitionAnimatorShowController.swift in Sources */,
+				148C1D6124D000790017FEBB /* NNSearchListController.swift in Sources */,
 				1479D5D024455A4D007F7CC4 /* TabbarInteractionTransition.swift in Sources */,
 				1473C2202477833B00092ECF /* UICTViewCellExcel.swift in Sources */,
 				14E546F124C05E270095B22D /* PKSettingsController.swift in Sources */,
@@ -2098,6 +2117,7 @@
 				142A76F422275EE10016D3DA /* NNExpandView.swift in Sources */,
 				141495C4242B50E500141A9F /* IOPParkDistrictApi.swift in Sources */,
 				149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */,
+				148C1D0724CE815B0017FEBB /* NNTableViewCellPhotoShow.swift in Sources */,
 				14E546F624C062E00095B22D /* PKAccountAboutController.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
 				142A770222275EE10016D3DA /* NNCircleView.swift in Sources */,

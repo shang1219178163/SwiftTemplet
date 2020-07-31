@@ -57,7 +57,6 @@ import SwiftExpand
 //        imageView?.isUserInteractionEnabled = true
         
         iconBtn.tag = tag
-        getViewLayer()
     }
     
     required init?(coder: NSCoder) {

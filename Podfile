@@ -80,6 +80,7 @@ def common_pods
     pod 'XHLaunchAd'
     pod 'Instructions'
     pod 'TZImagePickerController'
+#    pod 'FloatingPanel'
 
 end
 
