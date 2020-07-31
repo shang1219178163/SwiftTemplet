@@ -251,7 +251,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel(frame: .zero);
         label.backgroundColor = .yellow;
-        
         label.text = "footer\(section)";
         return label;
     }

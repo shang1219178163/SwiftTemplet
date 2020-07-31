@@ -268,6 +268,9 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        let foldModel = dataList[section] as! NNFoldSectionModel
-        return tableView.sectionView(viewForSection: section, title: nil, isHeader: false);
+        return tableView.createSectionView(30) { (label) in
+             label.text = "section\(section)"
+             label.textAlignment = .left
+         }
     }
 }

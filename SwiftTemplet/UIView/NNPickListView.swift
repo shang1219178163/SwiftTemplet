@@ -185,7 +185,10 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let height: CGFloat = title != nil ? tableView.rowHeight : 0.01;
-        return UITableView.createSectionView(tableView, text: title, textAlignment: .center, height:height)
+        return tableView.createSectionView(height) { (label) in
+            label.text = self.title
+            label.textAlignment = .center
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -195,7 +198,10 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let height: CGFloat = tips != nil ? tableView.rowHeight : 0.01;
-        return UITableView.createSectionView(tableView, text: tips, textAlignment: .left, height: height)
+        return tableView.createSectionView(height) { (label) in
+            label.text = self.tips
+            label.textAlignment = .left
+        }
     }
 
 }
