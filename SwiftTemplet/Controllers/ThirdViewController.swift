@@ -81,6 +81,7 @@ class ThirdViewController: UIViewController{
              ],
             [["TableViewPrefetchRowController", "image预加载", ],
              ["AppIconChangeController", "App图标更换", ],
+             ["AlerSheetStudyController", "AlerSheet研究", ],             
              ["NNUserLogInController", "RxSwift函数响应型编程", ],
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
