@@ -197,7 +197,7 @@ class EntryViewController: UIViewController {
             ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
-            ["PhotoShow", "NNTableViewCellPhotoShow", "216.0", "", "recharge", ],
+            ["PhotoShow", "UITableViewCellPhotoShow", "216.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
             ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
             ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
@@ -531,8 +531,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case "NNTableViewCellPhotoShow":
-            let cell = NNTableViewCellPhotoShow.dequeueReusableCell(tableView)
+        case "UITableViewCellPhotoShow":
+            let cell = UITableViewCellPhotoShow.dequeueReusableCell(tableView)
             cell.labelLeft.text = "进场图片"
             
             cell.getViewLayer()

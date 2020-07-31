@@ -1,5 +1,5 @@
 //
-//  NNTableViewCellPhotoShow.swift
+//  UITableViewCellPhotoShow.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/7/27.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 ///
-class NNTableViewCellPhotoShow: UITableViewCell {
+class UITableViewCellPhotoShow: UITableViewCell {
     var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
     lazy var lineView: UIImageView = {

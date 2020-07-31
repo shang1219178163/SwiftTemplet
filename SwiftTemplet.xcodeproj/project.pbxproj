@@ -282,7 +282,7 @@
 		148040AE240F89A90032EB07 /* NNTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148040AD240F89A90032EB07 /* NNTableHeaderView.swift */; };
 		148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148040B3240F8E4C0032EB07 /* IOPOrdersChooseView.swift */; };
 		1480B0D1238CA7B000E24BDB /* UIStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */; };
-		148C1D0724CE815B0017FEBB /* NNTableViewCellPhotoShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D0624CE815B0017FEBB /* NNTableViewCellPhotoShow.swift */; };
+		148C1D0724CE815B0017FEBB /* UITableViewCellPhotoShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D0624CE815B0017FEBB /* UITableViewCellPhotoShow.swift */; };
 		148C1D0924CE87AD0017FEBB /* BlankSpaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D0824CE87AD0017FEBB /* BlankSpaceViewController.swift */; };
 		148C1D4724CEBD6C0017FEBB /* PKRegionParkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */; };
 		148C1D6124D000790017FEBB /* NNSearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D6024D000790017FEBB /* NNSearchListController.swift */; };
@@ -701,7 +701,7 @@
 		148040AD240F89A90032EB07 /* NNTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNTableHeaderView.swift; sourceTree = "<group>"; };
 		148040B3240F8E4C0032EB07 /* IOPOrdersChooseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPOrdersChooseView.swift; sourceTree = "<group>"; };
 		1480B0D0238CA7B000E24BDB /* UIStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewController.swift; sourceTree = "<group>"; };
-		148C1D0624CE815B0017FEBB /* NNTableViewCellPhotoShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTableViewCellPhotoShow.swift; sourceTree = "<group>"; };
+		148C1D0624CE815B0017FEBB /* UITableViewCellPhotoShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellPhotoShow.swift; sourceTree = "<group>"; };
 		148C1D0824CE87AD0017FEBB /* BlankSpaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankSpaceViewController.swift; sourceTree = "<group>"; };
 		148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKRegionParkListController.swift; sourceTree = "<group>"; };
 		148C1D6024D000790017FEBB /* NNSearchListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSearchListController.swift; sourceTree = "<group>"; };
@@ -1484,7 +1484,7 @@
 				14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */,
 				14B7405E24CADCFC00569888 /* UITableViewCellSudokuView.swift */,
 				143917E124C2D42100CBABF0 /* UITableViewCellRightAvart.swift */,
-				148C1D0624CE815B0017FEBB /* NNTableViewCellPhotoShow.swift */,
+				148C1D0624CE815B0017FEBB /* UITableViewCellPhotoShow.swift */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -2117,7 +2117,7 @@
 				142A76F422275EE10016D3DA /* NNExpandView.swift in Sources */,
 				141495C4242B50E500141A9F /* IOPParkDistrictApi.swift in Sources */,
 				149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */,
-				148C1D0724CE815B0017FEBB /* NNTableViewCellPhotoShow.swift in Sources */,
+				148C1D0724CE815B0017FEBB /* UITableViewCellPhotoShow.swift in Sources */,
 				14E546F624C062E00095B22D /* PKAccountAboutController.swift in Sources */,
 				14E8692621C20A2E009CE33E /* DetailViewController.swift in Sources */,
 				142A770222275EE10016D3DA /* NNCircleView.swift in Sources */,
