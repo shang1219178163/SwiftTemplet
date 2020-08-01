@@ -12,3 +12,5 @@
 #import "NNGuidePageManager.h"
 
 #import "NNImageAndVideoPickerController.h"
+
+#import "LeftRightTableViewController.h"
