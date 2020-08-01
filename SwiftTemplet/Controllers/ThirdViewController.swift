@@ -153,11 +153,11 @@ class ThirdViewController: UIViewController{
             rootViewController.present(self.navController, animated: true, completion: nil)
         }
 
-        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
-        btn.addActionHandler { (control) in
-            DDLog(control)
-        }
+//        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+//        btn.addActionHandler { (control) in
+//            DDLog(control)
+//        }
         
         tableView.rowHeight = 50;
         view.addSubview(tableView)

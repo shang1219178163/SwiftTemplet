@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftExpand
+import HFNavigationController
 
 
 @objcMembers class AlerSheetStudyController: UIViewController {
@@ -23,13 +24,15 @@ import SwiftExpand
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["UIAlertSeetStyle", "样式", ],
-            ["UIAlertSeetStyle1", "样式", ],
-             ["UIAlertSeetStyle2", "样式", ],
-             ["UIAlertSeetStyle3", "样式", ],
-             ["UIAlertSeetStyle4", "样式", ],
-             ["UIAlertSeetStyle5", "样式", ],
-             ["UIAlertSeetStyle6", "样式", ],
+            [["AlertSheetStyle", "样式", ],
+             ["AlertSheetStyle1", "样式", ],
+             ["AlertSheetStyle2", "样式", ],
+             ["AlertSheetStyle3", "样式", ],
+             ["AlertSheetStyle4", "样式", ],
+             ["AlertSheetStyle5", "样式", ],
+             ["AlertSheetStyle6", "样式", ],
+             ["AlertStyle", "默认", ],
+             ["AlertStyle1", "HFNavigationController自定义", ],
 
              ],
         ]
@@ -56,6 +59,34 @@ import SwiftExpand
         }
         return alertVC
     }()
+    
+    // MARK: -HFNavigationController
+    let frameCenter = CGRect(x: 30,
+                             y: (UIScreen.main.bounds.height - 380)*0.5 - 30,
+                             width: UIScreen.main.bounds.width - 60,
+                             height: 380)
+    
+    lazy var textController: NNAlertController = {
+        let controller = NNAlertController()
+        
+        let customView = UIView(frame: .zero)
+        customView.backgroundColor = .systemRed
+        controller.customView = customView
+        return controller
+    }()
+    
+    lazy var navController: HFNavigationController = {
+        let controller = HFNavigationController(rootViewController: textController)
+        controller.modalTransitionStyle = .crossDissolve
+        controller.tapBackViewDismiss = false
+        controller.view.layer.cornerRadius = 15
+        controller.view.layer.masksToBounds = true
+        
+        controller.setupDefaultFrame(self.frameCenter)
+
+        return controller;
+    }()
+    
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,6 +205,7 @@ import SwiftExpand
         }) { (controller, action) in
             DDLog(action.title as Any)
         }
+
     }
     
     func showActionSheet6(){
@@ -203,6 +235,36 @@ import SwiftExpand
         self.present(alertVC, animated: true, completion: nil)
         alertVC.view.getViewLayer()
 
+    }
+
+    
+    func showAlert() {
+        let message = "我试图解决UIAlertController的局限性，但是无论如何管理，它都不够好。如果您仍在为此苦苦挣扎，那么我创建了 一个库 可能会有所帮助。它使您可以创建具有一系列内置类型的自定义工作表。也可以扩展和重新设置样式。我试图解决UIAlertController的局限性，但是无论如何管理，它都不够好。如果您仍在为此苦苦挣扎，那么我创建了 一个库 可能会有所帮助。它使您可以创建具有一系列内置类型的自定义工作表。也可以扩展和重新设置样式。"
+        let alertController = UIAlertController(title: "Translation Language",
+                                                message: message,
+                                                preferredStyle: .alert)
+
+        var top: CGFloat = alertController.title == nil ? 0.0 : 45
+        if let message = alertController.message {
+            let messageSize = self.sizeWithText(message, font: 16, width: kScreenWidth - 88)
+            top += messageSize.height
+        }
+        
+        let inset = UIEdgeInsetsMake(top + 60, 16, 8, 16)
+        alertController.addCustomView(UIView.self, height: 200, inset: inset, block: { (sender) in
+            sender.backgroundColor = .systemBlue
+        })
+
+        alertController.addAction(UIAlertAction(title: "know", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "sure", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+
+        alertController.view.getViewLayer()
+    }
+    
+    func showAlert1(){
+        present(navController, animated: false, completion: nil)
     }
 }
 
@@ -241,30 +303,38 @@ extension AlerSheetStudyController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         let itemList = list[indexPath.section][indexPath.row]
 //        DDLog(itemList);
 
         switch itemList[0] {
-        case "UIAlertSeetStyle1":
+        case "AlertSheetStyle":
             showActionSheet()
             
-        case "UIAlertSeetStyle1":
+        case "AlertSheetStyle1":
             showActionSheet1()
             
-        case "UIAlertSeetStyle2":
+        case "AlertSheetStyle2":
             showActionSheet2()
             
-        case "UIAlertSeetStyle3":
+        case "AlertSheetStyle3":
             showActionSheet3()
             
-        case "UIAlertSeetStyle4":
+        case "AlertSheetStyle4":
             showActionSheet4()
             
-        case "UIAlertSeetStyle5":
+        case "AlertSheetStyle5":
             showActionSheet5()
             
-        case "UIAlertSeetStyle6":
+        case "AlertSheetStyle6":
             showActionSheet6()
+            
+        case "AlertStyle":
+            showAlert()
+        
+        case "AlertStyle1":
+            showAlert1()
+            
         default:
             break
         }

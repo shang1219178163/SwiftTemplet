@@ -347,6 +347,7 @@
 		14CA757224D5420500D649DC /* NNLeftRightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA757124D5420500D649DC /* NNLeftRightTableViewController.swift */; };
 		14CA757424D554A600D649DC /* UITableViewCellOneListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA757324D554A600D649DC /* UITableViewCellOneListController.swift */; };
 		14CA757624D5571800D649DC /* FoldSectionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA757524D5571800D649DC /* FoldSectionListController.swift */; };
+		14CA757824D5BF1600D649DC /* NNAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA757724D5BF1600D649DC /* NNAlertController.swift */; };
 		14D0E956249076420022971E /* UITableViewCellProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D0E955249076420022971E /* UITableViewCellProgressView.swift */; };
 		14D0E958249098A90022971E /* NNCircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D0E957249098A90022971E /* NNCircleProgressView.swift */; };
 		14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */; };
@@ -774,6 +775,7 @@
 		14CA757124D5420500D649DC /* NNLeftRightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNLeftRightTableViewController.swift; sourceTree = "<group>"; };
 		14CA757324D554A600D649DC /* UITableViewCellOneListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellOneListController.swift; sourceTree = "<group>"; };
 		14CA757524D5571800D649DC /* FoldSectionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldSectionListController.swift; sourceTree = "<group>"; };
+		14CA757724D5BF1600D649DC /* NNAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAlertController.swift; sourceTree = "<group>"; };
 		14D0E955249076420022971E /* UITableViewCellProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellProgressView.swift; sourceTree = "<group>"; };
 		14D0E957249098A90022971E /* NNCircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNCircleProgressView.swift; sourceTree = "<group>"; };
 		14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellCode.swift; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 				14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */,
 				146D28D9245118B9004655B1 /* SimpleListController.swift */,
 				14CA756924D46F5E00D649DC /* AlerSheetStudyController.swift */,
+				14CA757724D5BF1600D649DC /* NNAlertController.swift */,
 				146D28D724505B02004655B1 /* PopoverViewController.swift */,
 				14C38A872411253600816A8E /* IOPFileUploadController.swift */,
 				14E02F6D2420D81E00E1EA2C /* IOPImageUploadController.swift */,
@@ -2174,6 +2177,7 @@
 				147D797824BEDA6400458F3D /* NNGuidePageManager.m in Sources */,
 				1451EBE92498BF2400059BDC /* SectionModel.swift in Sources */,
 				142EB9E424810CD700950B63 /* UICollectionMultipleSectionController.swift in Sources */,
+				14CA757824D5BF1600D649DC /* NNAlertController.swift in Sources */,
 				14D91B17234DB51D00554994 /* PopViewController.swift in Sources */,
 				1439181324C6C98E00CBABF0 /* UITableViewCellRightBtn.swift in Sources */,
 				14D91B12234C874500554994 /* UITableViewCellPark.swift in Sources */,
