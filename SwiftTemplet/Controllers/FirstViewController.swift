@@ -8,265 +8,163 @@
 
 import UIKit
 import SwiftExpand
-import SDWebImage
+import HandyJSON
+import MJRefresh
 
-class FirstViewController: UIViewController {
-    var dataList: NSMutableArray = [];
+class FirstViewController: UIViewController{
 
-    //MARK: - layz
-//    lazy var tableView: UITableView = {
-//        let view = UITableView(frame:self.view.bounds, style:UITableViewStyle.grouped);
-//        view.dataSource = self;
-//        view.delegate = self;
-//
-//        return view
-//    }()
+    //MARK: -lazy
+    lazy var tableView: UITableView = {
+        let view: UITableView = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        view.dataSource = self
+        view.delegate = self
+
+        return view
+    }()
     
-    var imgList = ["https://www.huizhubang.com/attachment/rotation/9.jpg",
-        "https://www.huizhubang.com/attachment/rotation/8.jpg",
-        "https://www.huizhubang.com/attachment/rotation/7.jpg",]
+    lazy var list: [[[String]]] = {
+        var array: [[[String]]] = [
+            [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
+             ["FoldSectionListController", "Swift折叠列表", ],
+             ["NNLeftRightTableViewController", "Swift极简左右联动", ],
+             ["LeftRightTableViewController", "极简左右联动", ],
+
+             ],
+        ]
+        return array
+    }()
     
+
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        // Do any additional setup after loading the view.
-//        title = NSStringFromSelector(#function);
-        createBarItem( .done, isLeft: false) {[weak self] (obj) in
-            self?.navigationController?.pushVC("IOPAuthRechargeController")
-        }
-        view.addSubview(tbView);
         
-        DDLog(self);
-        DDLog(NSStringFromClass(self.classForCoder));
+        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
+            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
+        }
+        
+        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        btn.addActionHandler { (control) in
+            DDLog(control)
+        }
+        
+        view.addSubview(tableView)
 
-        if title == nil {
-            title = self.controllerName;
-        }
-                
-        for _ in 0...1 {
-            let marr : NSMutableArray = [];
-            for j in 0...6{
-                marr.add(j);
-                
-            }
-            dataList.add(marr);
-        }
-        tbView.reloadData();
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(animated);
+//        DDLog("viewWillAppear")
 
+//        let string = "[[\"\\u9655A91D6P\"]]";
+//        let obj = JSONSerialization.jsonObjectFromString(string);
+//        DDLog(obj)
+//        NSObject.printChengfaBiao()
+//        tableView.nextResponder(UIWindow.self, isPrint: true)
+        
+//        let image = UIImage(color: .white)
+//        DDLog(image.cgImage)
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+//        let controller = CellListController()
+//        navigationController?.pushViewController(controller, animated: true);
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func showAlert() {
-        let msg = """
-感谢您对停车王的信任！
-请注意，在您使用本软件过程中我们会按照《服务协议》、《隐私协议》收集、使用和共享您的个人信息，请认真阅读并充分理解。
+    // MARK: -funtions
 
-特别提示：
-1.基于您的授权，我们可能会获取您的位置等信息，您有权拒绝或取消授权；
-2.我们会采取业界先进的安全措施保护您的信息安全；
-3.未经您同意，我们不会从第三方处获取、共享或向其提供您的信息
-"""
-        UIAlertController.showAlert("温馨提示", message: msg, alignment: .left, actionTitles: [kTitleSure])
-    }
-    
+
 }
 
 extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
-     //    MARK: - tableView
+    //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return dataList.count;
+        return list.count;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arraySection: NSArray = dataList[section] as! NSArray;
-        return arraySection.count;
+        return list[section].count;
     };
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60;
-    };
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch indexPath.row {
-        case 0:
-            let cell = UITableViewCellDatePicker.dequeueReusableCell(tableView);
-            cell.accessoryType = .disclosureIndicator
-
-            cell.labelLeft.text = "日期选择:";
-//            cell.textfield.asoryView(true, text: "小时")
-            cell.datePicker.block { (picker, idx) in
-                let dateStr = DateFormatter.stringFromDate(picker.datePicker.date)
-                DDLog(dateStr);
-            }
-        
-            cell.getViewLayer();
-            return cell;
-        case 1:
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-            
-            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-            cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon");
-            
-            //随机元素
-            imgList = imgList.sorted(by: {$0 < $1});
-            imgList = imgList.sorted(by:<);
-            let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-//        cell.type = 1;
-            
-            cell.getViewLayer();
-            return cell;
-        case 2:
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne1")
-            
-            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-            cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon");
-            
-            //随机元素
-            imgList = imgList.sorted(by: {$0 < $1});
-            imgList = imgList.sorted(by:<);
-            let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-            cell.type = 1;
-            
-            cell.getViewLayer();
-            return cell;
-            
-        case 3:
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne2")
-            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-            cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon");
-            cell.imgViewLeft.isHidden = true;
-
-            //随机元素
-            imgList = imgList.sorted(by: {$0 < $1});
-            imgList = imgList.sorted(by:<);
-            let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-//            cell.type = 1;
-            cell.labelRight.textAlignment = .right
-            
-            cell.getViewLayer();
-            return cell;
-        case 4:
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne3")
-            
-            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-            cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon");
-            cell.imgViewLeft.isHidden = true;
-
-            //随机元素
-            imgList = imgList.sorted(by: {$0 < $1});
-            imgList = imgList.sorted(by:<);
-            let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-            cell.type = 1;
-            
-            cell.getViewLayer();
-            return cell;
-            
-        case 5:
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne4")
-            cell.accessoryType = .disclosureIndicator
-
-            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-            cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon");
-//            cell.imgViewRight.isHidden = true;
-            //随机元素
-//            imgList = imgList.sorted(by: {$0 < $1});
-//            imgList = imgList.sorted(by:<);
-//            let imgUrl = imgList.randomElement()!;
-//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-//            cell.type = 1;
-            
-            cell.getViewLayer();
-            return cell;
-        case 6:
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: "UITableViewCellOne4")
-            cell.accessoryType = .disclosureIndicator
-
-            cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
-            cell.labelRight.text = "990" + "\(indexPath.row)";
-            cell.imgViewLeft.image = UIImage(named: "dragon");
-//随机元素
-//            imgList = imgList.sorted(by: {$0 < $1});
-//            imgList = imgList.sorted(by:<);
-//            let imgUrl = imgList.randomElement()!;
-//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
-            cell.type = 1;
-            cell.labelRight.textAlignment = .right
-
-            cell.getViewLayer();
-            return cell;
-        default:
-            break
-        }
-        let cell = UITableViewCell.dequeueReusableCell(tableView)
-        return cell;
+        return tableView.rowHeight
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        let controller = UICtrFromString("DetailViewController");
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel!.textColor = UIColor.theme;
+
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.detailTextLabel?.textColor = UIColor.gray;
+        cell.accessoryType = .disclosureIndicator;
+        
+        let itemList = list[indexPath.section][indexPath.row]
+        cell.textLabel!.text = itemList[1]
+//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
+        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+
+        cell.detailTextLabel?.text = itemList[0];
+        
+//        if #available(iOS 10.0, *) {
+//            let circleSize = CGSize(width: tableView.rowHeight - 10, height: tableView.rowHeight - 10)
+//            let renderer = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
+//
+//            let circleImage = renderer.image{ ctx in
+//                UIColor.red.setFill()
+//                ctx.cgContext.setFillColor(UIColor.random.cgColor)
+//                ctx.cgContext.addEllipse(in: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
+//                ctx.cgContext.drawPath(using: .fill)
+//            }
+//            cell.imageView?.image = circleImage
+//        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let itemList = list[indexPath.section][indexPath.row]
+//        DDLog(itemList);
+        let controller = UICtrFromString(itemList.first!)
+        controller.title = itemList.last!
         navigationController?.pushViewController(controller, animated: true);
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45;
+        return 10;
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero);
-        label.backgroundColor = .green;
-        label.text = "header\(section)";
-        return label;
-    }
+
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return UIView();
+//    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 45;
+        return 0.01;
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let label = UILabel(frame: .zero);
-        label.backgroundColor = .yellow;
-        label.text = "footer\(section)";
+        //        label.backgroundColor = .green;
+        //        label.text = "header\(section)";
         return label;
     }
-        
-}
-
-
-extension FirstViewController: UIScrollViewDelegate{
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetToShow: CGFloat = 60.0;
-        let alpha: CGFloat = (offsetToShow - scrollView.contentOffset.y) / offsetToShow;
-        
-//        DDLog("\(#function):\(alpha)")
-        let image = UIImage(color: UIColor.theme.alpha(alpha))
-        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
-    }
+    
 }

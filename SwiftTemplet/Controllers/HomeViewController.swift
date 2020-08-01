@@ -113,14 +113,14 @@ class HomeViewController: UITabBarController {
             ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
 //            ["CenterViewController", "总览",  "Item_center_N",  "Item_center_H"],
             ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
-            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
+//            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
 //            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["groupgroup", "我的",  "Item_center_N",  "Item_center_H"],
 //            ["TestViewController", "测试",  "Item_center_N",  "Item_center_H"],
-//            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
+            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
 //            ["KVOViewController", "测试",  "Item_center_N",  "Item_center_H"],
             ["PKFuntionListController", "KOP",  "Item_center_N",  "Item_center_H"],
-            
+
             ];
         return list;
     }();
