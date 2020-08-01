@@ -80,14 +80,16 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
-                make.size.equalTo(labelLeftSize)
+                make.width.greaterThanOrEqualTo(labelLeftSize.width)
+                make.height.equalTo(height)
             }
         } else {
             let labelLeftSize = labelLeft.sizeThatFits(.zero)
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(indicatorView.snp.right).offset(kPadding)
-                make.size.equalTo(labelLeftSize)
+                make.width.greaterThanOrEqualTo(labelLeftSize.width)
+                make.height.equalTo(height)
             }
         }
         
@@ -95,7 +97,8 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         labelRight.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-inset.right)
-            make.size.equalTo(labelRightSize)
+            make.width.greaterThanOrEqualTo(labelRightSize.width)
+            make.height.equalTo(height)
         }
         
         lineBottom.snp.makeConstraints { (make) in
