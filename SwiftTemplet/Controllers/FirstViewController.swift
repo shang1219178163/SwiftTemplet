@@ -28,7 +28,8 @@ class FirstViewController: UIViewController{
              ["FoldSectionListController", "Swift折叠列表", ],
              ["NNLeftRightTableViewController", "Swift极简左右联动", ],
              ["LeftRightTableViewController", "极简左右联动", ],
-
+             ["AlerSheetStudyController", "AlerSheet自定义", ],
+             
              ],
         ]
         return array
