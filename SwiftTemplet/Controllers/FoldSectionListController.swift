@@ -60,7 +60,7 @@ class FoldSectionListController: UIViewController{
             foldModel.isCanOpen = true
             foldModel.title = array[i]
             foldModel.image = "bug.png"
-            foldModel.headerHeight = 60
+            foldModel.headerHeight = 40
             foldModel.footerHeight = 10
             foldModel.headerColor = .green
             foldModel.footerColor = .yellow
@@ -86,14 +86,14 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
         let foldModel = dataList[section] as! NNFoldSectionModel
         let count = foldModel.isOpen == true ? foldModel.dataList.count : 0;
         return count;
-    };
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.rowHeight
-    };
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let foldModel = dataList[indexPath.section] as! NNFoldSectionModel
+        guard let foldModel = dataList[indexPath.section] as? NNFoldSectionModel else { return UITableViewCell()}
         let itemList = foldModel.dataList[indexPath.row]
         
         let cell = UITableViewCellRightBtn.dequeueReusableCell(tableView)
@@ -105,7 +105,6 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
         
 //        cell.getViewLayer()
         return cell;
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -114,13 +113,13 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let foldModel = dataList[section] as! NNFoldSectionModel
+        guard let foldModel = dataList[section] as? NNFoldSectionModel else { return 0}
         return foldModel.headerHeight;
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let foldModel = dataList[section] as! NNFoldSectionModel
-        
+        guard let foldModel = dataList[section] as? NNFoldSectionModel else { return nil}
+
         let view = UITableHeaderFooterViewZero.dequeueReusableHeaderFooterView(tableView)
 //        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
         
@@ -136,43 +135,21 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
         view.block { (headerView: UITableHeaderFooterViewZero) in
             foldModel.isOpen = !foldModel.isOpen
             tableView.reloadSections([section], with: .fade)
-            
         }
 
-//        view.getViewLayer()
+        view.getViewLayer()
         return view
-        
-//        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: foldModel.headerHeight))
-//        contentView.backgroundColor = UIColor.background
-//        contentView.backgroundColor = foldModel.headerColor
-//
-//        let label = UILabel(frame: .zero);
-//        label.frame = CGRect(x: 10, y: contentView.frame.midY - 25/2.0, width: contentView.frame.maxX - 20, height: 25)
-//        label.backgroundColor = foldModel.headerColor;
-//        label.text = foldModel.title;
-//
-//        contentView.addSubview(label)
-
-//        if [1,2].contains(section) {
-//            contentView.addActionHandler { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
-//                if foldModel.isCanOpen == true {
-//                    foldModel.isOpen = !foldModel.isOpen
-//                    tableView.reloadSections([section], with: .fade)
-//                }
-//            }
-//            return contentView;
-//        }
-//        return UIView();
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let foldModel = dataList[section] as! NNFoldSectionModel
+        guard let foldModel = dataList[section] as? NNFoldSectionModel else { return 0}
         return foldModel.footerHeight;
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let foldModel = dataList[section] as? NNFoldSectionModel else { return nil}
 //        let foldModel = dataList[section] as! NNFoldSectionModel
-        return tableView.createSectionView(30) { (label) in
+        return tableView.createSectionView(foldModel.footerHeight) { (label) in
              label.text = "section\(section)"
              label.textAlignment = .left
          }

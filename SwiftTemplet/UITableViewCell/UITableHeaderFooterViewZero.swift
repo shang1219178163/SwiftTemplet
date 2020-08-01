@@ -14,6 +14,9 @@ import SwiftExpand
 class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
 
     private var viewBlock: ((UITableHeaderFooterViewZero) -> Void)?
+    
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+
     // MARK: -life cycle
 
     override init(reuseIdentifier: String?) {
@@ -58,40 +61,41 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         if bounds.height <= 10.0 {
             return
         }
+        let height = bounds.height - inset.top - inset.bottom
+
         indicatorView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(kX_GAP)
+            make.left.equalToSuperview().offset(inset.left)
             make.size.equalTo(CGSize(width: 25, height: 25))
         }
         
-        if imgViewLeft.image != nil {
+        if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(indicatorView.snp.right).offset(kPadding)
-//                make.width.height.equalTo(contentView.bounds.height - kY_GAP*2)
-                make.width.height.equalTo(40)
+                make.width.height.equalTo(height)
             }
             
-            labelLeft.sizeToFit()
+            let labelLeftSize = labelLeft.sizeThatFits(.zero)
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
-                make.height.lessThanOrEqualTo(kSizeArrow.height)
+                make.size.equalTo(labelLeftSize)
             }
         } else {
-            labelLeft.sizeToFit()
+            let labelLeftSize = labelLeft.sizeThatFits(.zero)
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(indicatorView.snp.right).offset(kPadding)
-                make.height.lessThanOrEqualTo(kSizeArrow.height)
+                make.size.equalTo(labelLeftSize)
             }
         }
         
-        labelRight.sizeToFit()
+        let labelRightSize = labelRight.sizeThatFits(.zero)
         labelRight.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-kX_GAP)
-            make.height.equalTo(kSizeArrow.height)
+            make.right.equalToSuperview().offset(-inset.right)
+            make.size.equalTo(labelRightSize)
         }
         
         lineBottom.snp.makeConstraints { (make) in
