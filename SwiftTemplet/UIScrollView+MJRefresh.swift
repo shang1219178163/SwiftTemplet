@@ -13,14 +13,14 @@ import MJRefresh
 @objc public extension UIScrollView {
 
     ///纯色背景色下拉刷新
-    func headerColorRefresh(_ action: @escaping MJRefreshComponentAction,
+    func headerColorRefresh(_ block: @escaping MJRefreshComponentAction,
                       textColor: UIColor = .gray,
                       backgroundColor: UIColor = .clear) {
         let backView = UIView(frame: CGRect(x: 0, y: -500, width: UIScreen.main.bounds.width, height: 460))
         backView.backgroundColor = backgroundColor
         addSubview(backView)
         
-        let header = MJRefreshNormalHeader(refreshingBlock: action)
+        let header = MJRefreshNormalHeader(refreshingBlock: block)
         header.lastUpdatedTimeLabel?.isHidden = true
         header.stateLabel?.textColor = textColor
         header.backgroundColor = backgroundColor
@@ -56,12 +56,8 @@ import MJRefresh
     }
     
     ///项目封装结束加载
-    func endHeaderRefreshing() {
+    func endRefreshing() {
         mj_header?.endRefreshing()
-    }
-    
-    ///项目封装结束加载
-    func endFooterRefreshing() {
         mj_footer?.endRefreshing()
     }
     

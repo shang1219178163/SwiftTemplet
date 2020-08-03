@@ -62,7 +62,7 @@ public enum RxMapModelError: Error {
 public extension Observable where Element: Any {
     
     //将JSON数据转成对象
-    func mapModel<T: HandyJSON>(type: T.Type) -> Observable<T> {
+    func mapHandyJSONModel<T: HandyJSON>(type: T.Type) -> Observable<T> {
         return self.map { (element) -> T in
             guard let parsedElement = T.deserialize(from: element as? Dictionary) else {
                 throw RxMapModelError.parsingError
@@ -72,7 +72,7 @@ public extension Observable where Element: Any {
     }
     
     //将JSON数据转成数组
-    func mapModels<T: HandyJSON>(type: T.Type) -> Observable<[T]> {
+    func mapHandyJSONModels<T: HandyJSON>(type: T.Type) -> Observable<[T]> {
         return self.map { (element) -> [T] in
             guard let parsedArray = [T].deserialize(from: element as? [Any]) else {
                 throw RxMapModelError.parsingError
@@ -80,7 +80,29 @@ public extension Observable where Element: Any {
             return parsedArray as! [T]
         }
     }
+
+    //将JSON数据转成对象
+    func mapYYModel<T: NSObject>(type: T.Type) -> Observable<T> {
+        return self.map { (element) -> T in
+            guard let parsedElement = T.yy_model(withJSON: element) else {
+                throw RxMapModelError.parsingError
+            }
+            return parsedElement
+        }
+    }
+    
+    //将JSON数据转成数组
+    func mapYYModels<T: NSObject>(type: T.Type) -> Observable<[T]> {
+        return self.map { (element) -> [T] in
+            guard let parsedArray = NSArray.yy_modelArray(with: T.self, json: element) else {
+                throw RxMapModelError.parsingError
+            }
+            return parsedArray as! [T]
+        }
+    }
 }
+
+
 
 //public extension Observable where Element:Any {
 //

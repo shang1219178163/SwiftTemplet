@@ -108,7 +108,7 @@ class NNUploadImagesView: UIView {
             self.images = array
             self.tableView?.reloadData()
 //            DDLog(self.images.count, self.tableView)
-            self.delegate?.didFinishPicker(self.images, isSelectOriginalPhoto: isOriginImage)
+            self.delegate?.didFinishPicker(self.images.filter({ $0 != self.imageDefault }), isSelectOriginalPhoto: isOriginImage)
         }
         return controller
     }()

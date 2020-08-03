@@ -70,7 +70,7 @@ PODS:
   - SnapKit (4.2.0)
   - SnapKitExtend (1.0.7):
     - SnapKit
-  - SwiftExpand (3.9.5)
+  - SwiftExpand (3.13.0)
   - SwiftyJSON (5.0.0)
   - TZImagePickerController (3.3.2)
   - UICircularProgressRing (7.0.0)
@@ -193,7 +193,7 @@ SPEC CHECKSUMS:
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
-  SwiftExpand: 1e81122db5ca0212bf816b82d5a806ad84d0272c
+  SwiftExpand: 17351a701d80464a997241dc43e7d70feda30397
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d

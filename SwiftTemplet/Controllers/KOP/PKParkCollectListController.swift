@@ -26,13 +26,13 @@ import SwiftExpand
 
         view.headerRefresh {
             DispatchQueue.main.after(1) {
-                view.endHeaderRefreshing()
+                view.endRefreshing()
             }
         }
         
         view.footerRefresh {
             DispatchQueue.main.after(1) {
-                view.endFooterRefreshing()
+                view.endRefreshing()
             }
         }
         

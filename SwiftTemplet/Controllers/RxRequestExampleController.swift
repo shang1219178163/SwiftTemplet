@@ -83,7 +83,7 @@ class RxRequestExampleController: UIViewController {
                 DDLog(dic.jsonString)
                 return json
             })
-            .mapModel(type: NNRootAppInfoModel.self)
+            .mapHandyJSONModel(type: NNRootAppInfoModel.self)
             .subscribe(onNext: { (rootModel) in
                 DDLog(rootModel)
                 NNProgressHUD.dismiss()
