@@ -201,11 +201,10 @@ class EntryViewController: UIViewController {
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
             ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
             ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
-            ["九宫格", "UITableViewCellSudokuLabel", " 80.0", "", "recharge", ],
+            ["九宫格", "UITableViewCellSudokuLabel", "80.0", "", "recharge", ],
             ["九宫格2", "UITableViewCellSudokuButton", " 180.0", "", "recharge", ],
             ["九宫格T", "UITableViewCellSudokuButtonNew", " 180.0", "", "recharge", ],
 //            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
-
             ],
 
         ]
@@ -787,18 +786,20 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellSudokuLabel.dequeueReusableCell(tableView);
 //            cell.accessoryType = .disclosureIndicator
             cell.numOfRow = 3
-            cell.row = 3
-            cell.items.forEach { $0.textColor = .systemBlue }
+            cell.row = 2
+            cell.items.forEach {
+                $0.textColor = .systemBlue
+                $0.textAlignment = .center
+            }
 
-            cell.getViewLayer();
+//            cell.getViewLayer();
             return cell;
-            
 
         case "UITableViewCellSudokuButton":
             let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
 //            cell.accessoryType = .disclosureIndicator
             cell.numOfRow = 3
-            cell.row = 2
+            cell.row = 3
             cell.itemType = NNButton.self
 //            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
             cell.items.forEach {
@@ -813,10 +814,13 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 }, for: .touchUpInside)
             }
             
-            DDLog(cell.items.first!)
-
-            cell.getViewLayer();
+            cell.dividerColor = .red
+            cell.dividerWidth = 2
+            cell.dividerSpacing = 10
+            
+//            cell.getViewLayer();
             return cell;
+            
         case "UITableViewCellSudokuButtonNew":
             let cell = UITableViewCellSudokuButtonNew.dequeueReusableCell(tableView);
 //            cell.accessoryType = .disclosureIndicator
@@ -844,13 +848,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
 //            cell.items.filter { $0.tag >= 5 }.forEach({ $0.isHidden = true })
-            
-            DDLog(cell.items.first!)
 
             cell.getViewLayer();
             return cell;
-            
-                                    
+                        
         case "UITableViewCellChoice":
             let cell = UITableViewCellChoice.dequeueReusableCell(tableView);
             cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]

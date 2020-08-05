@@ -45,6 +45,17 @@ import SwiftExpand
             
         }
     }()
+    // MARK: -分隔符号
+    var showDividers = true
+    var dividerColor: UIColor = .line
+    var dividerWidth: CGFloat = 1
+    var dividerSpacing: CGFloat = 5
+    
+    lazy var dividers: [UIImageView] = {
+        return self.contentView.updateItems(self.row*self.numOfRow, type: UIImageView.self) {
+            $0.backgroundColor = self.dividerColor
+        }
+    }()
 
     
     // MARK: -life cycle
@@ -84,11 +95,14 @@ import SwiftExpand
                 make.top.equalToSuperview().offset(inset.top)
                 make.bottom.equalToSuperview().offset(-inset.bottom)
             }
+            
+            handleDivers()
             return
         }
         
         items.snp.distributeSudokuViews(fixedLineSpacing: lineSpacing, fixedInteritemSpacing: interitemSpacing, warpCount: numOfRow, edgeInset: inset)
-
+        
+        handleDivers()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -98,7 +112,27 @@ import SwiftExpand
     }
     
     // MARK: -funtions
-    
+    func handleDivers() {
+        if showDividers == false {
+            return
+        }
+//        let rowCount = items.count % numOfRow == 0 ? items.count/numOfRow : items.count/numOfRow + 1;
+        let rowCount = row
+        let itemWidth = (bounds.width - CGFloat(numOfRow - 1)*interitemSpacing - inset.left - inset.right)/CGFloat(numOfRow)
+        let itemHeight = (bounds.height - CGFloat(rowCount - 1)*lineSpacing - inset.top - inset.bottom)/CGFloat(rowCount)
+        
+        for e in items.enumerated() {
+            let x = CGFloat(e.offset % numOfRow) * (itemWidth + interitemSpacing) + inset.left
+            let y = CGFloat(e.offset / numOfRow) * (itemHeight + lineSpacing) + inset.top
+//            let rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+            
+            dividers[e.offset].frame = CGRect(x: x + itemWidth + interitemSpacing*0.5,
+                                              y: y + dividerSpacing,
+                                              width: dividerWidth,
+                                              height: itemHeight - dividerSpacing*2)
+            dividers[e.offset].isHidden = (e.offset % numOfRow == (numOfRow - 1))
+        }
+    }
 
 }
 
