@@ -93,7 +93,7 @@ class NNSegmentedControl: UISegmentedControl {
             setBackgroundImage(UIImage(color: .systemTeal), for: .selected, barMetrics: .default)
             setBackgroundImage(UIImage(color: .systemTeal), for: .highlighted, barMetrics: .default)
 
-            let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .clear)
+            let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .systemTeal)
             setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
             setDividerImage(dividerImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
             setDividerImage(dividerImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
@@ -159,11 +159,12 @@ class NNSegmentedControl: UISegmentedControl {
             layer.borderColor = UIColor.clear.cgColor
 
         default:
-            
-            DispatchQueue.main.async{
-                self.setBackgroundImage(UIImage(color: .clear), for: .normal, barMetrics: .default)
-                self.setBackgroundImage(UIImage(color: .systemTeal), for: .selected, barMetrics: .default)
-                self.setBackgroundImage(UIImage(color: .systemTeal), for: .highlighted, barMetrics: .default)
+            if #available(iOS 13.0, *) {
+                DispatchQueue.main.async{
+                    self.setBackgroundImage(UIImage(color: .clear), for: .normal, barMetrics: .default)
+                    self.setBackgroundImage(UIImage(color: .systemTeal), for: .selected, barMetrics: .default)
+                    self.setBackgroundImage(UIImage(color: .systemTeal), for: .highlighted, barMetrics: .default)
+                }
             }
 
             break;

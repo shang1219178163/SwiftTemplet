@@ -26,7 +26,8 @@ import SwiftExpand
             [["标题", "UITableViewCellTitle", "35.0", "", "recharge", ],
             ["支付标签", "UITableViewCellParkInfo", " 30.0", "", "recharge", ],
             ["车位信息", "UITableViewCellSudokuView", "70.0", "请输入收款人", "park_name_copy", ],
-            ["路线规划", "UITableViewCellSegmentLine", "45.0", "", "park_name", "查路线,去这里", ],
+//            ["路线规划", "UITableViewCellSegmentLine", "45.0", "", "park_name", "查路线,去这里", ],
+            ["路线规划", "UITableViewCellSudokuButton", "45.0", "", "park_name", "查路线,去这里", ],
             ],
         ]
         return array
@@ -202,7 +203,47 @@ extension PKParkBriefController: UITableViewDataSource, UITableViewDelegate{
 
 //            cell.getViewLayer();
             return cell;
-                        
+                  
+        case "UITableViewCellSudokuButton":
+            let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
+//            cell.accessoryType = .disclosureIndicator
+            cell.numOfRow = 2
+            cell.row = 1
+            cell.itemType = UIButton.self
+//            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
+            cell.items.forEach {
+
+                guard let sender = $0 as? UIButton else { return }
+                $0.setTitleColor(.textColor3, for: .normal)
+
+                switch sender.tag {
+                case 0:
+                    let image = UIImage(named: "icon_map_route")?.withRenderingMode(.alwaysOriginal)
+                    sender.setImage(image, for: .normal)
+                    sender.setTitle(" 查路线", for: .normal)
+                case 1:
+                    let image = UIImage(named: "icon_map_diver")?.withRenderingMode(.alwaysOriginal)
+                    sender.setImage(image, for: .normal)
+                    sender.setTitle(" 去这里", for: .normal)
+
+                default:
+                    break
+                }
+
+                sender.addActionHandler({ control in
+                    guard let sender = control as? UIButton else { return }
+                    DDLog(sender.tag)
+                }, for: .touchUpInside)
+            }
+            
+            cell.showDividers = true
+//            cell.dividerColor = .red
+//            cell.dividerWidth = 2
+//            cell.dividerSpacing = 10
+            
+//            cell.getViewLayer();
+            return cell;
+            
         case "UITableViewCellSegmentLine":
             let cell = UITableViewCellSegmentLine.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)

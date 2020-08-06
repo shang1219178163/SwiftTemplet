@@ -771,7 +771,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellVertical":
             let cell = UITableViewCellVertical.dequeueReusableCell(tableView);
             cell.accessoryType = .disclosureIndicator
-            cell.btnSize = CGSize(width: 70, height: 70)
+            cell.imageViewSize = CGSize(width: 70, height: 70)
             cell.labelFour.isHidden = true
 
             cell.labelOne.text = "标准服务套餐包"

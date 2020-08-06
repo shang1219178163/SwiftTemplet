@@ -12,7 +12,7 @@ import SwiftExpand
 
 class UITableViewCellVertical: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    var btnSize = CGSize(width: 25, height: 25)
+    var imageViewSize = CGSize(width: 25, height: 25)
 
     // MARK: -lazy
     lazy var labelOne: UILabel = {
@@ -62,13 +62,13 @@ class UITableViewCellVertical: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
   
-        contentView.addSubview(btn);
+        contentView.addSubview(imgViewLeft);
         contentView.addSubview(labelOne);
         contentView.addSubview(labelTwo);
         contentView.addSubview(labelThree);
         contentView.addSubview(labelFour);
         
-        btn.backgroundColor = .systemGreen
+        imgViewLeft.image = UIImage(color: .systemBlue)
     }
         
     required init?(coder aDecoder: NSCoder) {
@@ -88,14 +88,14 @@ class UITableViewCellVertical: UITableViewCell {
         }
         
 //        let height = bounds.height - inset.top - inset.bottom
-        let labStartX = btn.isHidden ? inset.left : btnSize.width + inset.left + kPadding
+        let labStartX = imgViewLeft.isHidden ? inset.left : imageViewSize.width + inset.left + kPadding
         let endX = accessoryType == .none ? inset.right : 0
 
-        if btn.isHidden == false {
-            btn.snp.makeConstraints { (make) in
+        if imgViewLeft.isHidden == false {
+            imgViewLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(inset.left)
-                make.size.equalTo(btnSize)
+                make.size.equalTo(imageViewSize)
             }
         }
         
