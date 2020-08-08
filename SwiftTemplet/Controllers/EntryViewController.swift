@@ -58,6 +58,11 @@ class EntryViewController: UIViewController {
         return view
     }()
     
+    lazy var instructionView: NNInstructionView = {
+        let view = NNInstructionView(frame: .zero)
+        return view
+    }()
+    
     // MARK: -life cycle
     deinit {
         DDLog(1111)
@@ -811,6 +816,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 sender.addActionHandler({ control in
                     guard let sender = control as? UIButton else { return }
                     DDLog(sender.tag)
+                    
+                    self.instructionView.show(sender, message: "一场仍在持续的大流行病，陡然提升了医疗产业的重要性。")
                 }, for: .touchUpInside)
             }
             
