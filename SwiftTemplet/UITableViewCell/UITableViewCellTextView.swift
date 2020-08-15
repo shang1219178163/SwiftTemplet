@@ -47,6 +47,8 @@ class UITableViewCellTextView: UITableViewCell {
         
         textView.delegate = self
         textView.returnKeyType = .done
+        textView.layer.borderColor = UIColor.line.cgColor
+        textView.layer.borderWidth = 0.5
         
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)

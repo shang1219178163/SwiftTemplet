@@ -48,7 +48,7 @@ import SwiftExpand
         }
     }()
     // MARK: -分隔符号
-    var showDividers = true
+    var showDividers = false
     var dividerColor: UIColor = .line
     var dividerWidth: CGFloat = 1
     var dividerSpacing: CGFloat = 5

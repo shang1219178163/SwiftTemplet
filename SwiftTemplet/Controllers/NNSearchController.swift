@@ -34,6 +34,7 @@ class NNSearchController: UIViewController {
     // MARK: -lazy
     lazy var searchResultVC: NNSearchResultController = {
         let controller = NNSearchResultController()
+        controller.edgesForExtendedLayout = []
         return controller;
     }()
   

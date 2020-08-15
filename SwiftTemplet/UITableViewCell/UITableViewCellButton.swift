@@ -12,7 +12,7 @@ import UIKit
 class UITableViewCellButton: UITableViewCell {
     
     var inset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    
+        
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -38,8 +38,15 @@ class UITableViewCellButton: UITableViewCell {
             return
         }
         
+//        btn.snp.makeConstraints { (make) in
+//            make.edges.equalTo(inset)
+//        }
+        
         btn.snp.makeConstraints { (make) in
-            make.edges.equalTo(inset)
+            make.top.equalToSuperview().offset(inset.top);
+            make.left.equalToSuperview().offset(inset.left);
+            make.right.equalToSuperview().offset(-inset.right);
+            make.bottom.equalToSuperview().offset(-inset.bottom);
         }
     }
     
@@ -49,20 +56,20 @@ class UITableViewCellButton: UITableViewCell {
     }
     
     // observeValue
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "text" {
-            guard let imageView = btn.imageView, let titleLabel = btn.titleLabel else { return }
-            btn.sizeToFit()
-            btn.center = self.contentView.center
-            btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageView.bounds.width, bottom: 0, right: imageView.bounds.width)
-            if btn.imageView?.image != nil {
-                btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleLabel.bounds.width+3.0, bottom: 0, right: -titleLabel.bounds.width-3.0)
-            }
-        }
-        else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
-    }
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == "text" {
+//            guard let imageView = btn.imageView, let titleLabel = btn.titleLabel else { return }
+//            btn.sizeToFit()
+//            btn.center = self.contentView.center
+//            btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: -imageView.bounds.width, bottom: 0, right: imageView.bounds.width)
+//            if btn.imageView?.image != nil {
+//                btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: titleLabel.bounds.width+3.0, bottom: 0, right: -titleLabel.bounds.width-3.0)
+//            }
+//        }
+//        else {
+//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+//        }
+//    }
 
 }
 

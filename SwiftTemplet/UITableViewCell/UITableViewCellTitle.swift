@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import SwiftExpand
 
 /// 标题+按钮
 class UITableViewCellTitle: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     var btnSize = CGSize(width: 17, height: 17)
+    
+    var imageSize = CGSize(width: 2.5, height: 17)
+
     /// 按钮位置
     var alignment: NSTextAlignment = .left
     // MARK: -life cycle
@@ -20,9 +24,12 @@ class UITableViewCellTitle: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
+        contentView.addSubview(imgViewLeft);
         contentView.addSubview(labelLeft);
         contentView.addSubview(btn);
 
+        imgViewLeft.backgroundColor = .systemBlue
+        imgViewLeft.isHidden = true
         labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
 //        btn.setImage(UIImage(named: "icon_card_tips"), for: .normal)
         btn.setBackgroundImage(UIImage(named: "icon_card_tips"), for: .normal)
@@ -42,11 +49,21 @@ class UITableViewCellTitle: UITableViewCell {
             return
         }
         let height = bounds.height - inset.top - inset.bottom
+        
+        let labStartX = imgViewLeft.isHidden ? inset.left : imageSize.width + inset.left + kPadding
+
+        if imgViewLeft.isHidden == false {
+            imgViewLeft.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview().offset(0);
+                make.left.equalToSuperview().offset(inset.left);
+                make.size.equalTo(imageSize);
+            }
+        }
 
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(inset.left)
+            make.left.equalToSuperview().offset(labStartX)
             make.width.greaterThanOrEqualTo(labelLeftSize.width)
             make.height.equalTo(height)
         }

@@ -12,6 +12,7 @@ import SnapKit
 import SwiftExpand
 
 class UICTViewCellZero: UICollectionViewCell {
+    var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,23 +39,23 @@ class UICTViewCellZero: UICollectionViewCell {
         super.layoutSubviews()
         
         imgView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(inset)
         }
         
         lab.snp.makeConstraints { (make) in
-            make.top.left.equalToSuperview().offset(kPadding)
-            make.bottom.right.equalToSuperview().offset(-kPadding)
+            make.top.left.equalToSuperview().offset(inset.top)
+            make.bottom.right.equalToSuperview().offset(-inset.bottom)
         }
         
         lineBottom.snp.makeConstraints { (make) in
-             make.left.right.bottom.equalToSuperview()
-             make.height.equalTo(kH_LINE_VIEW)
-         }
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(kH_LINE_VIEW)
+        }
          
-         lineRight.snp.makeConstraints { (make) in
-             make.top.right.bottom.equalToSuperview()
-             make.width.equalTo(kH_LINE_VIEW)
-         }
+        lineRight.snp.makeConstraints { (make) in
+            make.top.right.bottom.equalToSuperview()
+            make.width.equalTo(kH_LINE_VIEW)
+        }
     }
     
 }

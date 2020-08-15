@@ -39,7 +39,6 @@ import SwiftExpand
 //        view.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
 //            self.viewModel.requestRefresh()
 //        });
-        
 
 //        view.holderView.getViewLayer()
         return view
@@ -47,13 +46,13 @@ import SwiftExpand
         
     
     lazy var searchBar: UISearchBar = {
-        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 2*44 - 2*20, 30))
+        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - (44 - 20)*1, 30))
         view.layer.cornerRadius = 0;
-        view.showsCancelButton = false;
-        view.backgroundColor = .background
+        view.showsCancelButton = true;
+        view.backgroundColor = .theme
         view.textField?.textColor = .gray
         view.textField?.placeholder = "请输入停车场名称";
-        view.textField?.backgroundColor = UIColor.background
+        view.textField?.backgroundColor = UIColor.theme
         view.textField?.layer.cornerRadius = 5;
         view.textField?.layer.masksToBounds = true;
 
@@ -89,6 +88,7 @@ import SwiftExpand
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+//        navigationItem.leftBarButtonItem = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,17 +103,16 @@ import SwiftExpand
     
     // MARK: - funtions
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
 //        navigationItem.rightBarButtonItem = UIBarBut.ptonItem(customView: rightBtn)
         
-        let item = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(handleAction));
-        navigationItem.rightBarButtonItem = item
+//        let item = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(handleAction));
+//        navigationItem.rightBarButtonItem = item
         
-        navigationItem.setHidesBackButton(true, animated: false)
-//        DDLog(navigationItem.hidesBackButton)
-        if navigationItem.hidesBackButton {
-            searchBar.frame = CGRectMake(0, 0, kScreenWidth - 80, 30)
-        }
+//        navigationItem.setHidesBackButton(true, animated: false)
+//        if navigationItem.hidesBackButton {
+//            searchBar.frame = CGRectMake(0, 0, kScreenWidth - 80, 30)
+//        }
         
         let titleView: UIView = UIView(frame: searchBar.bounds)
         titleView.addSubview(searchBar)
@@ -127,6 +126,7 @@ import SwiftExpand
 //        tableView.setHolderView(for: .loading)
 //        tableView.setHolderView(for: .empty)
 
+        searchBar.getViewLayer()
         navigationController?.navigationBar.getViewLayer()
     }
 
@@ -191,7 +191,7 @@ extension NNSearchListController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let title = section == 0 ? "我的收藏" : "历史记录"
-        let view = tableView.createSectionView { (label) in
+        let view = tableView.createSectionViewLabel { (label) in
             label.text = title
             label.textColor = .black
         }
@@ -229,7 +229,7 @@ extension NNSearchListController: UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        searchBar.showsCancelButton = !(searchBar.text!.count == 1 && text == "")
+//        searchBar.showsCancelButton = !(searchBar.text!.count == 1 && text == "")
         return true;
     }
     
