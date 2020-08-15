@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import NotificationBannerSwift
 
 class ExampleViewController: UIViewController {
     
@@ -19,6 +18,19 @@ class ExampleViewController: UIViewController {
         exampleView = ExampleView(delegate: self)
         view = exampleView
         title = "Notification Banner"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handleRightItem))
+    }
+    
+    @objc func handleRightItem() {
+        let banner = NotificationBanner(title: "Custom Warning Notification",
+                                        subtitle: "Displayed Under/Over the Navigation/Tab Bar",
+                                        style: .warning,
+                                        colors: CustomBannerColors())
+        banner.delegate = self
+        banner.onTap = {
+            self.showAlert(title: "Banner Notification Tapped", message: "")
+        }
+        banner.show(queuePosition: .front, bannerPosition: .top, on: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
