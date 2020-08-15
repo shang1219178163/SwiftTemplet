@@ -149,7 +149,7 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let foldModel = dataList[section] as? NNFoldSectionModel else { return nil}
 //        let foldModel = dataList[section] as! NNFoldSectionModel
-        return tableView.createSectionView(foldModel.footerHeight) { (label) in
+        return tableView.createSectionViewLabel(foldModel.footerHeight) { (label) in
              label.text = "section\(section)"
              label.textAlignment = .left
          }

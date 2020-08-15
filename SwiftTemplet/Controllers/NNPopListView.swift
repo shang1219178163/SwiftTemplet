@@ -211,7 +211,7 @@ extension NNPopListView: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let height: CGFloat = title != nil ? tableView.rowHeight : 0.01;
-        return tableView.createSectionView(height) { (label) in
+        return tableView.createSectionViewLabel(height) { (label) in
             label.text = self.title
             label.textAlignment = .center
         }
@@ -224,7 +224,7 @@ extension NNPopListView: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let height: CGFloat = tips != nil ? tableView.rowHeight : 0.01;
-        return tableView.createSectionView(height) { (label) in
+        return tableView.createSectionViewLabel(height) { (label) in
             label.text = self.tips
             label.textAlignment = .left
         }

@@ -288,7 +288,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        let foldModel = dataList[section] as! NNFoldSectionModel
-        return tableView.createSectionView(30) { (label) in
+        return tableView.createSectionViewLabel(30) { (label) in
              label.text = "section\(section)"
              label.textAlignment = .left
          }
