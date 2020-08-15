@@ -15,17 +15,18 @@ class NNOfflineTipController: UIViewController {
         view.text = """
 请设置你的网络
 
-1.打开设备的“系统设置”>“无线和网络”>“移动网络”
+1.打开设备的“系统设置”>“无线和网络”>“移动网络”;
 
-2.打开设备的“系统设置”>“WiFi”，启用WiFi后从中选择一个可用的WiFi热点接入如果
+2.打开设备的“系统设置”>“WiFi”，启用WiFi后从中选择一个可用的WiFi热点接入;
         
-你已经连接WiFi网络:
+
+如果你已经连接WiFi网络:
         
-请检查您所连接的WiFi热点是否已接入互联网，或该热点是否已允许您的设备访问互联网
+请检查您所连接的WiFi热点是否已接入互联网，或该热点是否已允许您的设备访问互联网;
 """;
-        view.font = UIFont.systemFont(ofSize: 14);
+        view.font = UIFont.systemFont(ofSize: 13);
 //        view.textAlignment = .center;
-        view.textColor = .black;
+        view.textColor = UIColor.hexValue(0x33333);
         view.numberOfLines = 0
 
         return view;
@@ -35,7 +36,10 @@ class NNOfflineTipController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
         title = "未能连接到互联网"
+        
         view.addSubview(label)
     }
     

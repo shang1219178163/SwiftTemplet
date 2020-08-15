@@ -22,10 +22,17 @@ class PKMineController: UIViewController {
     }()
     
     lazy var centerView: NNUserCenterHeaderView = {
-        let view = NNUserCenterHeaderView(frame: CGRectMake(0, 0, kScreenWidth, 90+170))
+        let view = NNUserCenterHeaderView(frame: CGRectMake(0, 0, kScreenWidth, 90+170+UIScreen.navBarHeight))
+        view.userInfoView.inset = .zero
         view.userInfoView.name = "王小兰"
         view.userInfoView.level = "30"
+        view.userInfoView.points = "3300"
         view.userInfoView.couponNumber = "12"
+        view.userInfoView.btnLevel.addActionHandler({ (control) in
+            self.navigationController?.pushVC(PKUserLevelController.self, animated: true) { (vc) in
+                
+            }
+        }, for: .touchUpInside)
         return view
     }()
     
@@ -60,6 +67,7 @@ class PKMineController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = .all
         tableView.tableHeaderView = centerView
         view.addSubview(tableView)
 
@@ -137,7 +145,7 @@ extension PKMineController: UITableViewDataSource, UITableViewDelegate{
                 cell.numOfRow = 4
                 let items = itemList.last!.components(separatedBy: ",")
                 
-                cell.row = items.count % cell.numOfRow == 0 ? items.count/cell.numOfRow + 1 : items.count/cell.numOfRow + 1
+                cell.row = items.count % cell.numOfRow == 0 ? items.count/cell.numOfRow : items.count/cell.numOfRow + 1
                 cell.itemType = NNButton.self
     //            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
                 cell.items.forEach {

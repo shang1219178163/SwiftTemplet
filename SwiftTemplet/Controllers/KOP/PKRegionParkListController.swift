@@ -82,7 +82,7 @@ import UIKit
         
         setupExtendedLayout()
         title = ""
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 
         groupView.items = ["全部", "路侧", "地上", "地下", "停车楼", ]
 

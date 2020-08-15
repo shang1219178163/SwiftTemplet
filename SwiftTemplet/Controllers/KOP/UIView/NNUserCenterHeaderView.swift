@@ -1,16 +1,16 @@
 //
-//	NNUserCenterHeaderView.swift
-//	MacTemplet
+//    NNUserCenterHeaderView.swift
+//    MacTemplet
 //
-//	Created by shang on 2020/07/17 15:27
-//	Copyright © 2020 shang. All rights reserved.
+//    Created by shang on 2020/07/17 15:27
+//    Copyright © 2020 shang. All rights reserved.
 //
 
 
 import UIKit
 
 import SnapKit
-import SwiftExpand
+
         
 ///
 class NNUserCenterHeaderView: UIImageView {
@@ -18,10 +18,13 @@ class NNUserCenterHeaderView: UIImageView {
     typealias ViewClick = (NNUserCenterHeaderView, Int) -> Void;
     var viewBlock: ViewClick?;
     
+    var inset = UIEdgeInsets(top: UIScreen.navBarHeight, left: 15, bottom: 0, right: 15)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
 //        backgroundColor = .systemBlue
+        isUserInteractionEnabled = true
         backgroundColor = .clear
         contentMode = .scaleToFill
         image = UIImage(named: "bg_blue")
@@ -30,7 +33,7 @@ class NNUserCenterHeaderView: UIImageView {
         addSubview(imgView)
         addSubview(imgViewArc)
         
-        userInfoView.inset = UIEdgeInsetsMake(10, 15, 0, 15)
+//        userInfoView.inset = UIEdgeInsetsMake(10, 15, 0, 15)
         imgViewArc.image = UIImage(named: "mask_radian")
         imgView.image = UIImage(named: "ad_user")
     }
@@ -47,9 +50,9 @@ class NNUserCenterHeaderView: UIImageView {
         }
         
         userInfoView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(0);
-            make.left.equalToSuperview().offset(0);
-            make.right.equalToSuperview().offset(0);
+            make.top.equalToSuperview().offset(inset.top);
+            make.left.equalToSuperview().offset(inset.left);
+            make.right.equalToSuperview().offset(-inset.right);
             make.height.equalTo(70)
         }
         
@@ -62,9 +65,9 @@ class NNUserCenterHeaderView: UIImageView {
         
         imgView.snp.makeConstraints { (make) in
             make.top.equalTo(userInfoView.snp.bottom).offset(0);
-            make.left.equalTo(userInfoView).offset(userInfoView.inset.left);
-            make.right.equalTo(userInfoView).offset(-userInfoView.inset.right);
-            make.bottom.equalTo(imgViewArc.snp.top)
+            make.left.equalTo(userInfoView).offset(0);
+            make.right.equalTo(userInfoView).offset(0);
+            make.bottom.equalTo(imgViewArc)
         }
 
     }
@@ -98,17 +101,4 @@ class NNUserCenterHeaderView: UIImageView {
         return view;
     }()
         
-    lazy var btnSure: UIButton = {
-        let view = UIButton(type: .custom);
-        
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle(kTitleSure, for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-            }
-
-        }, for: .touchUpInside)
-        return view;
-    }();
 }

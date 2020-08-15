@@ -37,10 +37,8 @@ class PKAppAbountController: UIViewController {
         return view
     }()
     
-    lazy var rightsView: NNCompanyRightsView = {
-        let view = NNCompanyRightsView(frame: .zero)
-        view.btn.setBackgroundColor(.systemGreen, for: .normal)
-        view.label.text = "Powered By iRain Cloud ©2019 iRain Cloud.All rights reserved."
+    lazy var rightsView: NNCopyrightView = {
+        let view = NNCopyrightView(frame: .zero)
         return view
     }()
     

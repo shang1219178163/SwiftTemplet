@@ -158,7 +158,7 @@ extension PKParkSpaceView: UITableViewDataSource, UITableViewDelegate{
             cell.numOfRow = 4
             let items = itemList.last!.components(separatedBy: ",")
             
-            cell.row = items.count % cell.numOfRow == 0 ? items.count/cell.numOfRow + 1 : items.count/cell.numOfRow + 1
+            cell.row = items.count % cell.numOfRow == 0 ? items.count/cell.numOfRow : items.count/cell.numOfRow + 1
             cell.itemType = NNButton.self
 //            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
             cell.items.forEach {

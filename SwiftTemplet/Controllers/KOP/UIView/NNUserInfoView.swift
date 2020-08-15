@@ -38,6 +38,19 @@ class NNUserInfoView: UIView {
         }
     }
     
+    var points = "0"{
+        willSet{
+            if newValue == "" {
+                btnPoints.setTitle("-- 积分", for: .normal)
+                return
+            }
+            
+            let result = newValue.cgFloatValue > 1000 ? "\(newValue.cgFloatValue/1000)K" : newValue
+            btnPoints.setTitle("\(result)积分", for: .normal)
+            setNeedsLayout()
+        }
+    }
+    
     var couponNumber = "0"{
         willSet{
             btnCoupon.setTitle("卡券(\(newValue))", for: .normal)
@@ -57,33 +70,36 @@ class NNUserInfoView: UIView {
         addSubview(imgView)
         addSubview(btnName)
         addSubview(btnLevel)
-        addSubview(padView)
-        addSubview(btnStar)
+        addSubview(btnPoints)
         addSubview(verLineView)
         addSubview(btnCoupon)
-
         
         btnName.setTitle("姓名", for: .normal)
         btnName.setTitleColor(.white, for: .normal)
         btnName.setImage(UIImage(named: "icon_male"), for: .normal)
 
-        btnStar.setImage(UIImage(named: "icon_star"), for: .normal)
-
-        btnLevel.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        btnLevel.setBackgroundImage(UIImage(color: UIColor.hexValue(0x292B2F)), for: .normal)
-//        btnLevel.setTitle("Lv.30", for: .normal)
+        btnLevel.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        btnLevel.adjustsImageWhenHighlighted = true
+        btnLevel.setBackgroundImage(UIImage(named: "bg_level"), for: .normal)
+        btnLevel.setTitleColor(UIColor.hexValue(0xFAC993), for: .normal);
+        btnLevel.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0)
+            
+        btnPoints.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        btnPoints.adjustsImageWhenHighlighted = true
+        btnPoints.setBackgroundImage(UIImage(named: "bg_gradient_orange_1"), for: .normal)
+        btnPoints.setTitleColor(UIColor.hexValue(0x814F0B), for: .normal);
         
-        btnCoupon.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        btnCoupon.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         btnCoupon.setImage(UIImage(named: "icon_coupon"), for: .normal)
 //        btnCoupon.setTitle("卡券(12)", for: .normal)
         btnCoupon.setTitleColor(.white, for: .normal)
-        btnCoupon.imageView!.transform = btnCoupon.imageView!.transform.scaledBy(x: 0.6, y: 0.6)
-        
-        name = "王小兰"
-        level = "30"
-        couponNumber = "12"
-//        padView.isHidden = true
-        getViewLayer()
+        btnCoupon.imageEdgeInsets = UIEdgeInsetsMake(3, -3, 3, 0)
+
+//        name = "王小兰"
+//        level = "30"
+//        points = "12"
+//        couponNumber = "12"
+//        getViewLayer()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -111,31 +127,25 @@ class NNUserInfoView: UIView {
             make.height.equalTo(imgView.snp.height).multipliedBy(0.4);
             make.width.equalTo(nameSize.width);
         }
-        
-        btnStar.snp.makeConstraints { (make) in
-            make.top.equalTo(btnName.snp.bottom).offset(5);
-            make.left.equalTo(btnName).offset(0);
-            make.width.height.equalTo(30);
-        }
-          
-        let levelSize = btnLevel.sizeThatFits(.zero)
+                
         btnLevel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(btnStar).offset(0);
-            make.left.equalTo(btnStar.snp.right).offset(0);
-            make.width.equalTo(levelSize.width)
-            make.height.equalTo(btnName)
+            make.top.equalTo(btnName.snp.bottom).offset(5);
+            make.left.equalTo(imgView.snp.right).offset(10);
+            make.width.equalTo(65);
+            make.height.equalTo(21);
         }
         
-        padView.snp.makeConstraints { (make) in
-            make.centerY.equalTo(btnStar)
-            make.left.equalTo(btnName).offset(15);
-            make.width.equalTo(btnStar);
-            make.height.equalTo(btnLevel);
+        let btnPointsSize = btnPoints.sizeThatFits(.zero)
+        btnPoints.snp.makeConstraints { (make) in
+            make.centerY.equalTo(btnLevel).offset(0);
+            make.left.equalTo(btnLevel.snp.right).offset(8);
+            make.width.equalTo(ceil(btnPointsSize.width));
+            make.height.equalTo(17);
         }
-        
+                
         verLineView.snp.makeConstraints { (make) in
             make.top.equalTo(btnLevel).offset(0);
-            make.left.equalTo(btnLevel.snp.right).offset(10);
+            make.left.equalTo(btnPoints.snp.right).offset(8);
             make.width.equalTo(1)
             make.height.equalTo(btnLevel)
         }
@@ -143,7 +153,7 @@ class NNUserInfoView: UIView {
         let couponnSize = btnCoupon.sizeThatFits(.zero)
         btnCoupon.snp.makeConstraints { (make) in
             make.top.equalTo(btnLevel).offset(0);
-            make.left.equalTo(verLineView.snp.right).offset(10);
+            make.left.equalTo(verLineView.snp.right).offset(8);
             make.width.equalTo(couponnSize.width)
             make.height.equalTo(btnLevel)
         }
@@ -151,6 +161,8 @@ class NNUserInfoView: UIView {
         btnLevel.layer.cornerRadius = btnLevel.frame.height*0.5
         btnLevel.layer.masksToBounds = true
         
+        imgView.layer.cornerRadius = imgView.bounds.height*0.5
+        imgView.layer.masksToBounds = true
     }
     
     // MARK: - funtions
@@ -168,8 +180,6 @@ class NNUserInfoView: UIView {
         
         view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.white.cgColor
-        view.layer.cornerRadius = view.frame.height*0.5
-        view.layer.masksToBounds = true
         return view;
     }()
     
@@ -179,21 +189,6 @@ class NNUserInfoView: UIView {
         view.backgroundColor = .white
         return view;
     }()
-    
-    lazy var padView: UIImageView = {
-        var view = UIImageView(frame: .zero);
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.backgroundColor = UIColor.hexValue(0x292B2F)
-        return view;
-    }()
-    
-//    lazy var label: UILabel = {
-//        let view = UILabel(frame: .zero);
-//        view.text = "请选择";
-//        view.textColor = UIColor.gray;
-//        view.textAlignment = .center;
-//        return view;
-//    }();
     
     lazy var btnName: NNButton = {
         let view = NNButton(type: .custom);
@@ -213,10 +208,11 @@ class NNUserInfoView: UIView {
         }, for: .touchUpInside)
         return view;
     }()
-    
-    lazy var btnStar: UIButton = {
+        
+    lazy var btnLevel: UIButton = {
         let view = UIButton(type: .custom);
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (control) in
@@ -229,15 +225,14 @@ class NNUserInfoView: UIView {
         return view;
     }()
     
-    lazy var btnLevel: UIButton = {
+    lazy var btnPoints: UIButton = {
         let view = UIButton(type: .custom);
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.setTitle(kTitleSure, for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
+        view.setTitleColor(.systemBlue, for: .normal);
         view.addActionHandler({ (control) in
-            DDLog(control)
             if let sender = control as? UIButton {
+//                self.delegate?.taskCenterHeaderView(self, sender: sender)
 
             }
 

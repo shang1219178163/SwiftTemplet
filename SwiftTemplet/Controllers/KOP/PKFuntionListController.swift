@@ -25,6 +25,10 @@ import SwiftExpand
              ["PKRecommendToFriendsController", "kOP 推荐给好友", ],
              ["PKAccountAboutController", "kOP 账户与安全", ],
              ["PKAppAbountController", "kOP 关于停车王", ],
+             ["PKUserLevelController", "用户等级", ],
+             ["PKUserTaskListController", "我的任务", ],
+             ["PKUserPointsListController", "我的积分", ],
+             
             ],
         ]
         return array
