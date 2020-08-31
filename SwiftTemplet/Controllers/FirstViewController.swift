@@ -15,21 +15,34 @@ class FirstViewController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
         return view
     }()
     
+    lazy var tipView: NNNetWorkOfflineView = {
+        let view = NNNetWorkOfflineView(frame: .zero)
+        return view
+    }()
+    
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
+             ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
+             ["ChatInputController", "聊天输入框", ],
+             ["NNInstructionViewController", "NNInstructionView", ],
              ["FoldSectionListController", "Swift折叠列表", ],
              ["NNLeftRightTableViewController", "Swift极简左右联动", ],
              ["LeftRightTableViewController", "极简左右联动", ],
              ["AlerSheetStudyController", "AlerSheet自定义", ],
+             ["ExampleViewController", "Banner通知视图", ],
+             ["PopoverViewExampleController", "PopoverView", ],
+             ["ScrollLabelController", "ScrollLabel", ],
              
+             ],
+            [["TableSectionCornerListController", "OC section 圆角", ],
              ],
         ]
         return array
@@ -48,15 +61,20 @@ class FirstViewController: UIViewController{
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         btn.addActionHandler { (control) in
             DDLog(control)
+            control.isSelected.toggle()
+//            self.tipView.isHidden = control.isSelected
+            if control.isSelected {
+                self.tipView.show()
+            } else {
+                self.tipView.dismiss()
+            }
         }
-        
         view.addSubview(tableView)
-
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-                
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +90,13 @@ class FirstViewController: UIViewController{
 //        let image = UIImage(color: .white)
 //        DDLog(image.cgImage)
         
+        let encryptText = NSString.encryptAES(withPlainText: "AABBCC测试数据")
+        let decryptText = NSString.decryptAES(withCipherText: encryptText)
+        DDLog(decryptText)
+//        let encryptText = NSString.encryptAES256(withPlainText: "AABBCC测试数据")
+//        let decryptText = NSString.decryptAES256(withCipherText: "AAAAQVFWRldSbGRTYkdSVFlrZFNWRmxyWkZOV1JteHk=")
+//        DDLog(decryptText)
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,22 +175,80 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10;
+        return 10.01;
     }
 
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView();
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionView = UIView()
+        return sectionView
+    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01;
     }
     
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let label = UILabel(frame: .zero);
-        //        label.backgroundColor = .green;
-        //        label.text = "header\(section)";
-        return label;
-    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let label = UILabel(frame: .zero);
+//        //        label.backgroundColor = .green;
+//        //        label.text = "header\(section)";
+//        return label;
+//    }
     
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.selectionStyle = .none;
+        cell.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
+        // 设置cell 背景色为透明
+        cell.backgroundColor = UIColor.clear
+        
+        // 圆角角度
+        let radius: CGFloat = 10
+        // 获取显示区域大小
+        let bounds: CGRect = cell.bounds.insetBy(dx: 10, dy: 0)
+        // 获取每组行数
+        let rowNum: Int = tableView.numberOfRows(inSection: indexPath.section)
+        // 贝塞尔曲线
+        var bezierPath: UIBezierPath?
+        if rowNum == 1 {
+            // 一组只有一行（四个角全部为圆角）
+            bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: radius, height: radius))
+            
+        } else {
+            if indexPath.row == 0 {
+                // 每组第一行（添加左上和右上的圆角）
+                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius))
+            } else if indexPath.row == rowNum-1 {
+                // 每组最后一行（添加左下和右下的圆角）
+                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: radius, height: radius))
+            } else {
+                // 每组不是首位的行不设置圆角
+                bezierPath = UIBezierPath(rect: bounds)
+            }
+        }
+
+        // 创建两个layer
+        let normalLayer = CAShapeLayer()
+        let selectLayer = CAShapeLayer()
+        // 把已经绘制好的贝塞尔曲线路径赋值给图层，然后图层根据path进行图像渲染render
+        normalLayer.path = bezierPath?.cgPath
+        selectLayer.path = bezierPath?.cgPath
+        
+        // 设置填充颜色
+        normalLayer.fillColor = UIColor.white.cgColor
+        normalLayer.strokeColor = UIColor.white.cgColor
+        cell.layer.insertSublayer(normalLayer, at: 0)
+
+//        let nomarBgView: UIView = UIView(frame: bounds)
+//        nomarBgView.backgroundColor = .clear
+//        cell.backgroundView = nomarBgView
+//        // 添加图层到nomarBgView中
+//        nomarBgView.layer.insertSublayer(normalLayer, at: 0)
+        
+//        let selectedBackgroundView: UIView = UIView(frame: bounds)
+//        selectLayer.fillColor = tableView.separatorColor?.cgColor
+//        selectedBackgroundView.layer.insertSublayer(selectLayer, at: 0)
+//        selectedBackgroundView.backgroundColor = UIColor.clear
+//        cell.selectedBackgroundView = selectedBackgroundView
+    }
 }
