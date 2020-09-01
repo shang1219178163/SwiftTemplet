@@ -16,11 +16,6 @@ import SwiftExpand
     /// 数据请求返回
     var dataModel = NSObject()
     
-//    lazy var viewModel: PKParkSearchListViewModel = {
-//        let viewModel = PKParkSearchListViewModel()
-//        viewModel.delegate = self
-//        return viewModel
-//    }()
         
     var list = NSMutableArray()
     var dataList = NSMutableArray()
@@ -45,18 +40,16 @@ import SwiftExpand
     }()
         
     
-    lazy var searchBar: UISearchBar = {
-        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - (44 - 20)*1, 30))
-        view.layer.cornerRadius = 0;
-        view.showsCancelButton = true;
-        view.backgroundColor = .theme
-        view.textField?.textColor = .gray
-        view.textField?.placeholder = "请输入停车场名称";
-        view.textField?.backgroundColor = UIColor.theme
-        view.textField?.layer.cornerRadius = 5;
-        view.textField?.layer.masksToBounds = true;
+    lazy var titleView: NNSearchbarTitleView = {
+        let view = NNSearchbarTitleView(frame: CGRectMake(0, 0, kScreenWidth - 2*15, 35))
+        view.searchBar.layer.cornerRadius = 5;
+        view.searchBar.layer.masksToBounds = true;
+        view.searchBar.delegate = self
 
-        view.delegate = self;
+        view.cancellBtn.addActionHandler { (controll) in
+            self.dismiss(animated: false, completion: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         return view
     }()
     
@@ -66,6 +59,9 @@ import SwiftExpand
         
         setupExtendedLayout()
         title = ""
+        navigationItem.leftBarButtonItem?.setHidden(true)
+        navigationItem.backBarButtonItem?.setHidden(true)
+
         setupUI()
         
         dataList.addObjects(from: ["1", "2", "3"])
@@ -75,25 +71,18 @@ import SwiftExpand
         list.add(historyList)
         tableView.reloadData()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
         
-        if searchBar.isHidden {
-            return;
-        }
-
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-//        navigationItem.leftBarButtonItem = nil
+        navigationController?.navigationBar.setBackgroudColor(nil, for: .default)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        navigationItem.leftBarButtonItem?.setHidden(false)
+
     }
         
     override func didReceiveMemoryWarning() {
@@ -104,29 +93,10 @@ import SwiftExpand
     // MARK: - funtions
     func setupUI() {
         view.backgroundColor = .white
-//        navigationItem.rightBarButtonItem = UIBarBut.ptonItem(customView: rightBtn)
-        
-//        let item = UIBarButtonItem(title: "取消", style: .plain, target: self, action: #selector(handleAction));
-//        navigationItem.rightBarButtonItem = item
-        
-//        navigationItem.setHidesBackButton(true, animated: false)
-//        if navigationItem.hidesBackButton {
-//            searchBar.frame = CGRectMake(0, 0, kScreenWidth - 80, 30)
-//        }
-        
-        let titleView: UIView = UIView(frame: searchBar.bounds)
-        titleView.addSubview(searchBar)
-        navigationItem.titleView = titleView
-        
-        view.addSubview(tableView);
-//        tableView.setHolderViewImage(UIImage(named: "img_placeholder_search")!, for: .empty)
-//        tableView.setHolderViewTitle("试一试搜索功能，搜索你想去的停车场吧！", for: .empty)
-//        tableView.holderView.isHidden = false
-        
-//        tableView.setHolderView(for: .loading)
-//        tableView.setHolderView(for: .empty)
 
-        searchBar.getViewLayer()
+        navigationItem.titleView = titleView
+        view.addSubview(tableView);
+
         navigationController?.navigationBar.getViewLayer()
     }
 
@@ -135,7 +105,6 @@ import SwiftExpand
 //        tableView.mj_header.beginRefreshing();
     }
 
-    
     @objc func handleAction() {
         
     }
