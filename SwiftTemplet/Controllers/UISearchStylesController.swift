@@ -14,6 +14,7 @@ class UISearchStylesController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupExtendedLayout()
         view.addSubview(plainView)
         
         if title == nil {
@@ -87,7 +88,7 @@ class UISearchStylesController: UIViewController{
             
             let controller = UICtrFromString(itemList.first!)
             controller.title = itemList.last!
-            self.navigationController?.pushViewController(controller, animated: true);
+            self.navigationController?.pushViewController(controller, animated: true)
         })
         
 //        view.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
