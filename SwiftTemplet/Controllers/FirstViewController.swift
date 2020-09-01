@@ -40,7 +40,8 @@ class FirstViewController: UIViewController{
              ["ExampleViewController", "Banner通知视图", ],
              ["PopoverViewExampleController", "PopoverView", ],
              ["ScrollLabelController", "ScrollLabel", ],
-             
+             ["AddShadowViewController", "addShadow", ],
+
              ],
             [["TableSectionCornerListController", "OC section 圆角", ],
              ],
@@ -53,6 +54,9 @@ class FirstViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupExtendedLayout()
+        view.backgroundColor = .white;
+
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
             UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
         }
@@ -70,6 +74,7 @@ class FirstViewController: UIViewController{
             }
         }
         view.addSubview(tableView)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -151,18 +156,6 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
 
         cell.detailTextLabel?.text = itemList[0];
         
-//        if #available(iOS 10.0, *) {
-//            let circleSize = CGSize(width: tableView.rowHeight - 10, height: tableView.rowHeight - 10)
-//            let renderer = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
-//
-//            let circleImage = renderer.image{ ctx in
-//                UIColor.red.setFill()
-//                ctx.cgContext.setFillColor(UIColor.random.cgColor)
-//                ctx.cgContext.addEllipse(in: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
-//                ctx.cgContext.drawPath(using: .fill)
-//            }
-//            cell.imageView?.image = circleImage
-//        }
         return cell
     }
     
@@ -178,15 +171,15 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         return 10.01;
     }
 
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = UIView()
-        return sectionView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01;
-    }
-    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let sectionView = UIView()
+//        return sectionView
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 0.01;
+//    }
+//
 //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        let label = UILabel(frame: .zero);
 //        //        label.backgroundColor = .green;
@@ -194,61 +187,55 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
 //        return label;
 //    }
     
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.selectionStyle = .none;
-        cell.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
-        // 设置cell 背景色为透明
-        cell.backgroundColor = UIColor.clear
-        
-        // 圆角角度
-        let radius: CGFloat = 10
-        // 获取显示区域大小
-        let bounds: CGRect = cell.bounds.insetBy(dx: 10, dy: 0)
-        // 获取每组行数
-        let rowNum: Int = tableView.numberOfRows(inSection: indexPath.section)
-        // 贝塞尔曲线
-        var bezierPath: UIBezierPath?
-        if rowNum == 1 {
-            // 一组只有一行（四个角全部为圆角）
-            bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: radius, height: radius))
-            
-        } else {
-            if indexPath.row == 0 {
-                // 每组第一行（添加左上和右上的圆角）
-                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius))
-            } else if indexPath.row == rowNum-1 {
-                // 每组最后一行（添加左下和右下的圆角）
-                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: radius, height: radius))
-            } else {
-                // 每组不是首位的行不设置圆角
-                bezierPath = UIBezierPath(rect: bounds)
-            }
-        }
-
-        // 创建两个layer
-        let normalLayer = CAShapeLayer()
-        let selectLayer = CAShapeLayer()
-        // 把已经绘制好的贝塞尔曲线路径赋值给图层，然后图层根据path进行图像渲染render
-        normalLayer.path = bezierPath?.cgPath
-        selectLayer.path = bezierPath?.cgPath
-        
-        // 设置填充颜色
-        normalLayer.fillColor = UIColor.white.cgColor
-        normalLayer.strokeColor = UIColor.white.cgColor
-        cell.layer.insertSublayer(normalLayer, at: 0)
-
-//        let nomarBgView: UIView = UIView(frame: bounds)
-//        nomarBgView.backgroundColor = .clear
-//        cell.backgroundView = nomarBgView
-//        // 添加图层到nomarBgView中
-//        nomarBgView.layer.insertSublayer(normalLayer, at: 0)
-        
-//        let selectedBackgroundView: UIView = UIView(frame: bounds)
-//        selectLayer.fillColor = tableView.separatorColor?.cgColor
-//        selectedBackgroundView.layer.insertSublayer(selectLayer, at: 0)
-//        selectedBackgroundView.backgroundColor = UIColor.clear
-//        cell.selectedBackgroundView = selectedBackgroundView
+        tableView.addSectionRoundCorner(cell: cell, forRowAt: indexPath)
     }
 }
+
+
+//@objc public extension UITableView{
+//    
+//    func addSectionRoundCorner(_ radius: CGFloat = 10, cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.selectionStyle = .none;
+//        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+//        // 设置cell 背景色为透明
+//        cell.backgroundColor = UIColor.clear
+//        
+////        // 圆角角度
+////        let radius: CGFloat = 10
+//        // 获取显示区域大小
+//        let bounds: CGRect = cell.bounds.insetBy(dx: 10, dy: 0)
+//        // 获取每组行数
+//        let rowNum: Int = self.numberOfRows(inSection: indexPath.section)
+//        // 贝塞尔曲线
+//        var bezierPath: UIBezierPath?
+//        if rowNum == 1 {
+//            // 一组只有一行（四个角全部为圆角）
+//            bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: radius, height: radius))
+//            
+//        } else {
+//            if indexPath.row == 0 {
+//                // 每组第一行（添加左上和右上的圆角）
+//                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius))
+//            } else if indexPath.row == rowNum-1 {
+//                // 每组最后一行（添加左下和右下的圆角）
+//                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: radius, height: radius))
+//            } else {
+//                // 每组不是首位的行不设置圆角
+//                bezierPath = UIBezierPath(rect: bounds)
+//            }
+//        }
+//
+//        // 创建两个layer
+//        let normalLayer = CAShapeLayer()
+//        let selectLayer = CAShapeLayer()
+//        // 把已经绘制好的贝塞尔曲线路径赋值给图层，然后图层根据path进行图像渲染render
+//        normalLayer.path = bezierPath?.cgPath
+//        selectLayer.path = bezierPath?.cgPath
+//        
+//        // 设置填充颜色
+//        normalLayer.fillColor = UIColor.white.cgColor
+//        normalLayer.strokeColor = UIColor.white.cgColor
+//        cell.layer.insertSublayer(normalLayer, at: 0)
+//    }
+//}

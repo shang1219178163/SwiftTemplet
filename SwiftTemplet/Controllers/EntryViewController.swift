@@ -36,7 +36,7 @@ class EntryViewController: UIViewController {
         button.sizeToFit()
         button.parentVC = self
         button.contentWidth = 160
-        button.list = ["优惠券样式", "文本框样式", ]
+        button.list = ["优惠券样式", "文本框样式", "九宫格视图"]
         button.setTitle(button.list.first, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.sizeToFit()
@@ -1058,6 +1058,10 @@ extension EntryViewController: NNPopoverButtonDelegate {
         switch indexPath.row {
         case 1:
             let controller = TextFieldStyleController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        case 2:
+            let controller = NNSudokuViewController()
             self.navigationController?.pushViewController(controller, animated: true)
             
         default:
