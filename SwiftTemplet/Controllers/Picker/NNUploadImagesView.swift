@@ -34,7 +34,10 @@ class NNUploadImagesView: UIView {
             itemList = updateButtonItems(newValue.count, type: NNButton.self, hanler: { (sender) in
 //                DDLog(self.images.count, newValue.count, sender.tag)
                 sender.iconLocation = .rightTop
-                sender.iconSize = CGSize(width: 25, height: 25)
+                sender.iconSize = CGSize(width: 20, height: 20)
+                sender.iconOffset = UIOffset(horizontal: 8, vertical: -8)
+                sender.eventInsetDX = 8
+                sender.eventInsetDY = 8
                 sender.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
                 
                 if newValue.count > sender.tag {
