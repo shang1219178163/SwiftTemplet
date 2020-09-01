@@ -86,7 +86,7 @@ class NNCellDefaultView: UIView {
             labelRight.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-labEndX)
-                make.width.equalTo(size.width)
+                make.width.lessThanOrEqualTo(size.width)
                 make.height.equalTo(height)
             }
             
@@ -102,7 +102,7 @@ class NNCellDefaultView: UIView {
             labelLeft.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(labStartX)
-                make.width.equalTo(size.width)
+                make.width.lessThanOrEqualTo(size.width)
                 make.height.equalTo(height)
             }
             

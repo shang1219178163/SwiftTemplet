@@ -40,10 +40,6 @@ import UIKit
             selectedBackgroudImage = UIImage(color: newValue)
         }
     }
-
-//    var selectedLineColor: UIColor = .theme
-//    var selectedTitleColor: UIColor = .white
-//    var selectedBackgroudColor: UIColor = .theme
     
     var iconSize: CGSize = CGSize(width: 35, height: 14)
     var iconLocation: UIView.Location = .rightTop
@@ -103,6 +99,9 @@ import UIKit
                 view.setBackgroundImage(self.selectedBackgroudImage, for: .disabled)
                 view.adjustsImageWhenHighlighted = false;
 
+                view.iconSize = self.iconSize
+                view.iconLocation = self.iconLocation
+                
                 let title = newValue[view.tag]
                 view.setTitle(title, for: .normal)
                 view.addTarget(self, action: #selector(self.handleAction(_:)), for: .touchUpInside)

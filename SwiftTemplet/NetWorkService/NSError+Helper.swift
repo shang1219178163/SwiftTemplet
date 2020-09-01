@@ -10,35 +10,40 @@ import UIKit
 
 import SwiftExpand
 
-public extension NSError{
+@objc public extension NSError{
+    private struct AssociateKeys {
+        static var message    = "NSError" + "message"
+        static var requstCode = "NSError" + "requstCode"
+        static var obj        = "NSError" + "obj"
+    }
     
-    @objc var message: String {
+    var message: String {
         get {
-            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as! String;
+            let obj = objc_getAssociatedObject(self, &AssociateKeys.message) as! String;
             return obj;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, &AssociateKeys.message, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
-    @objc var requstCode: Int {
+    var requstCode: Int {
         get {
-            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as! Int;
+            let obj = objc_getAssociatedObject(self, &AssociateKeys.requstCode) as! Int;
             return obj;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, &AssociateKeys.requstCode, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
-    @objc var obj: Any {
+    var obj: Any {
         get {
-            let obj = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function)) as Any;
+            let obj = objc_getAssociatedObject(self, &AssociateKeys.obj) as Any;
             return obj;
         }
         set {
-            objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            objc_setAssociatedObject(self, &AssociateKeys.obj, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
     
@@ -46,7 +51,7 @@ public extension NSError{
         let model = NSError()
         model.message = message
         model.requstCode = code
-        model.obj = obj
+        model.obj = obj as Any
         return model;
     }
 }

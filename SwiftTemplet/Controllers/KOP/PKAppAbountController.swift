@@ -27,7 +27,7 @@ class PKAppAbountController: UIViewController {
         let view = NNTableHeaderView(frame: CGRectMake(0, 0, UIScreen.sizeWidth, 180))
         view.topPadding = 40;
         view.btn.setTitle("版本号: v\(UIApplication.appVer)", for: .normal)
-        view.btn.setTitleColor(.black, for: .normal)
+        view.btn.setTitleColor(.textColor3, for: .normal)
         view.btn.addActionHandler({ (control) in
             DDLog(control)
             

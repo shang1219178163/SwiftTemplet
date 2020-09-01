@@ -12,7 +12,7 @@ import SwiftExpand
 
 class NNProgressHUD: NSObject {
     
-    @objc static func showText(_ text: String?, model: MBProgressHUDMode, imgName: String?, isHidden: Bool, inView: UIView = UIApplication.shared.keyWindow!) {
+    @objc static func showText(_ text: String?, model: MBProgressHUDMode, imageName: String?, isHidden: Bool, inView: UIView = UIApplication.shared.keyWindow!) {
         
         MBProgressHUD.hide(for: inView, animated: false);
         let hud: MBProgressHUD = MBProgressHUD.showAdded(to: inView, animated: true)
@@ -21,11 +21,11 @@ class NNProgressHUD: NSObject {
         hud.contentColor = UIColor.white;
         hud.minSize = model == MBProgressHUDMode.annularDeterminate ? CGSize(width: 90, height: 90) : CGSize(width: 130, height: 130)
         hud.bezelView.style = .solidColor
-        hud.bezelView.color = UIColor.hexValue(0x000000, a: 0.5)
+        hud.bezelView.color = UIColor(white: 0, alpha: 0.4)
         hud.bezelView.layer.cornerRadius = 5;
         hud.backgroundView.backgroundColor = UIColor.clear
         
-        if let image = UIImage(named: imgName!) {
+        if let image = UIImage(named: imageName!) {
             hud.mode = MBProgressHUDMode.customView
             hud.customView = UIImageView(image: image)
             
@@ -57,6 +57,11 @@ class NNProgressHUD: NSObject {
         // 标志:必须为true,才可以隐藏,  隐藏的时候从父控件中移除
         hud.removeFromSuperViewOnHide = true;
         
+        if (text != nil && imageName == nil) {
+            hud.minSize = CGSize(width: 120, height: 40)
+            hud.margin = 10;
+        }
+        
         if isHidden == true {
             hud.hide(animated: true, afterDelay: 1.5)
         }
@@ -74,15 +79,15 @@ class NNProgressHUD: NSObject {
     }
     
     @objc static func showLoading(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
-        NNProgressHUD.showText(text, model: .annularDeterminate, imgName: "toast_loading", isHidden: false, inView: inView)
+        NNProgressHUD.showText(text, model: .annularDeterminate, imageName: "toast_loading", isHidden: false, inView: inView)
     }
     
     @objc static func showSuccess(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
-        NNProgressHUD.showText(text, model: .customView, imgName: "toast_success", isHidden: true, inView: inView)
+        NNProgressHUD.showText(text, model: .customView, imageName: "toast_success", isHidden: true, inView: inView)
     }
     
     @objc static func showError(_ text: String?, inView: UIView = UIApplication.shared.keyWindow!) {
-        NNProgressHUD.showText(text, model: .customView, imgName: "toast_error", isHidden: true, inView: inView)
+        NNProgressHUD.showText(text, model: .customView, imageName: "toast_error", isHidden: true, inView: inView)
     }
     
     @objc static func dismiss(_ inView: UIView = UIApplication.shared.keyWindow!) {

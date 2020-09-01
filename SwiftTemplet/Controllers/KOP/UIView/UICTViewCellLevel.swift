@@ -30,6 +30,7 @@ class UICTViewCellLevel: UICollectionViewCell {
         contentView.addSubview(lab)
         contentView.addSubview(progressView)
 
+        imgView.contentMode = .scaleToFill
         lab.textAlignment = .center
 //        lab.backgroundColor = UIColor.random
 //        imgView.backgroundColor = UIColor.random

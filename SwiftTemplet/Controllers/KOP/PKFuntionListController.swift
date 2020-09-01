@@ -49,7 +49,7 @@ import SwiftExpand
 //        button.isHidden = true;
         button.sizeToFit()
         button.addActionHandler({ (control) in
-            
+            DDLog(control)
         }, for: .touchUpInside)
         return button
     }()
@@ -80,7 +80,7 @@ import SwiftExpand
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        navigationController?.navigationBar.shadowImage = UIImage()
         
-        navigationController?.navigationBar.setBackgroudColor(.clear)
+        navigationController?.navigationBar.setBackgroudColor(.clear, for: .default)
         navigationController?.navigationBar.setTextColor(.systemGreen)
     }
         

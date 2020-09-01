@@ -169,6 +169,14 @@ extension SimpleListController: UITableViewDataSource, UITableViewDelegate{
 //            return
 //        }
 //    }
+
+//  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//      let height = scrollView.frame.size.height;
+//      let offsetY = scrollView.contentOffset.y;
+//       let distanceFromBottom = scrollView.contentSize.height - offsetY;
+//
+//       btnSure.isEnabled = (distanceFromBottom <= height*1.1)
+//  }
 //}
 
 extension SimpleListController: UISearchBarDelegate{
