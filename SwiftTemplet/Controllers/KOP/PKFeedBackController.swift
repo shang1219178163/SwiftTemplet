@@ -194,6 +194,9 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
                 sender.direction = .top
                 sender.iconLocation = .rightTop
                 sender.iconSize = CGSize(width: 20, height: 20)
+                sender.iconOffset = UIOffset(horizontal: 8, vertical: -8)
+                sender.eventInsetDX = 8
+                sender.eventInsetDY = 8
                 sender.iconBtn.setBackgroundColor(.red, for: .normal)
 
                 if self.images.count > sender.tag {

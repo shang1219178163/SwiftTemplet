@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) BOOL needCircleCrop;
 @property (assign, nonatomic) BOOL allowPickingMuitlpleVideo;
 @property (assign, nonatomic) BOOL showSelectedIndex;
+///默认黑色
+@property (strong, nonatomic) UIColor *navigationBarTintColor;
 
 @property (nonatomic, copy) void (^didFinishPickerBlock)(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto);
 

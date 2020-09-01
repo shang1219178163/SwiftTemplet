@@ -78,6 +78,8 @@
         _allowCrop = true;
         _needCircleCrop = false;
         _showSelectedIndex = true;
+        
+        _navigationBarTintColor = UIColor.blackColor;
     }
     return self;
 }
@@ -105,9 +107,9 @@
         return;
     }
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:self.maxCount columnNumber:self.columnNumber delegate:self pushPhotoPickerVc:YES];
-    // imagePickerVc.barItemTextColor = [UIColor blackColor];
-    // [imagePickerVc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
-    // imagePickerVc.navigationBar.tintColor = [UIColor blackColor];
+//    imagePickerVc.navigationBar.tintColor = self.navigationBarTintColor;
+//    imagePickerVc.barItemTextColor = imagePickerVc.navigationBar.tintColor;
+//    [imagePickerVc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : imagePickerVc.navigationBar.tintColor}];
     // imagePickerVc.naviBgColor = [UIColor whiteColor];
     // imagePickerVc.navigationBar.translucent = NO;
     
