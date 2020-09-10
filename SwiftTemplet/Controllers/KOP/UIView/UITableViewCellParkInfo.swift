@@ -120,7 +120,7 @@ class UITableViewCellParkInfo: UITableViewCell {
         }
         
         let labelInfoSize = labelInfo.sizeThatFits(.zero)
-        labelInfo.snp.makeConstraints { (make) in
+        labelInfo.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(lineView.snp.right).offset(padding);
             make.width.equalTo(labelInfoSize.width + 5);
