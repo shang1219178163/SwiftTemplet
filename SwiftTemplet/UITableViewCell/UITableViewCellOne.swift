@@ -95,7 +95,7 @@ class UITableViewCellOne: UITableViewCell {
         if type == 0 {
             //右边文字优先展示
             let size: CGSize = labelRight.sizeThatFits(.zero)
-            labelRight.snp.makeConstraints { (make) in
+            labelRight.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.right.equalToSuperview().offset(-endX)
                 make.width.equalTo(ceil(size.width))
@@ -111,7 +111,7 @@ class UITableViewCellOne: UITableViewCell {
         } else {
             //左边文字优先展示
             let size: CGSize = labelLeft.sizeThatFits(.zero)
-            labelLeft.snp.makeConstraints { (make) in
+            labelLeft.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(labStartX)
                 make.width.equalTo(ceil(size.width))

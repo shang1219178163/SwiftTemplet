@@ -34,7 +34,7 @@ class UITableViewCellTitle: UITableViewCell {
 //        btn.setImage(UIImage(named: "icon_card_tips"), for: .normal)
         btn.setBackgroundImage(UIImage(named: "icon_card_tips"), for: .normal)
 
-        btn.addTarget(self, action: #selector(handleAction), for: .touchUpInside)
+//        btn.addTarget(self, action: #selector(handleAction), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,7 +49,6 @@ class UITableViewCellTitle: UITableViewCell {
             return
         }
         let height = bounds.height - inset.top - inset.bottom
-        
         let labStartX = imgViewLeft.isHidden ? inset.left : imageSize.width + inset.left + kPadding
 
         if imgViewLeft.isHidden == false {
@@ -59,14 +58,19 @@ class UITableViewCellTitle: UITableViewCell {
                 make.size.equalTo(imageSize);
             }
         }
-
-        let labelLeftSize = labelLeft.sizeThatFits(.zero)
+        
+        labelLeft.sizeToFit()
         labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(labStartX)
-            make.width.greaterThanOrEqualTo(labelLeftSize.width)
-            make.height.equalTo(height)
         }
+//        let labelLeftSize = labelLeft.sizeThatFits(.zero)
+//        labelLeft.snp.remakeConstraints { (make) in
+//            make.centerY.equalToSuperview()
+//            make.left.equalToSuperview().offset(labStartX)
+//            make.width.greaterThanOrEqualTo(labelLeftSize.width)
+//            make.height.equalTo(height)
+//        }
         
         if alignment == .left {
             btn.snp.makeConstraints { (make) in

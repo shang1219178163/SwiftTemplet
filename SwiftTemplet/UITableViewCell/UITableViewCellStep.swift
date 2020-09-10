@@ -65,7 +65,7 @@ class UITableViewCellStep: UITableViewCell {
 //        let endX = accessoryType == .none ? inset.right : 0
 
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
-        labelLeft.snp.makeConstraints { (make) in
+        labelLeft.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(inset.left)
             make.width.equalTo(labelLeftSize.width)

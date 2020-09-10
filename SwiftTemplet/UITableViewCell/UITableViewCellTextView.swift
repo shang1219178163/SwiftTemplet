@@ -76,7 +76,7 @@ class UITableViewCellTextView: UITableViewCell {
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
         switch type {
         case 1:
-            labelLeft.snp.makeConstraints { (make) in
+            labelLeft.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(inset.left)
                 make.width.equalTo(labelLeftSize.width)
@@ -97,7 +97,7 @@ class UITableViewCellTextView: UITableViewCell {
             }
             
         default:
-            labelLeft.snp.makeConstraints { (make) in
+            labelLeft.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(inset.left)
                 make.width.equalTo(labelLeftSize.width)

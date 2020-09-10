@@ -80,7 +80,7 @@ class UITableViewCellSubtitle: UITableViewCell {
         }
         
         let labelRightSize = labelRight.sizeThatFits(.zero)
-        labelRight.snp.makeConstraints { (make) in
+        labelRight.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top)
             make.right.equalToSuperview().offset(-endX)
             make.width.equalTo(labelRightSize.width)
@@ -88,7 +88,7 @@ class UITableViewCellSubtitle: UITableViewCell {
         }
         
         let labelRightSubSize = labelRightSub.sizeThatFits(.zero)
-        labelRightSub.snp.makeConstraints { (make) in
+        labelRightSub.snp.remakeConstraints { (make) in
             make.top.equalTo(labelRight.snp.bottom).offset(0)
             make.right.equalToSuperview().offset(-endX)
             make.width.equalTo(labelRightSubSize.width)

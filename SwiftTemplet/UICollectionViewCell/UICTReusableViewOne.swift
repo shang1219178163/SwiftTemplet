@@ -88,7 +88,7 @@ class UICTReusableViewOne: UICollectionReusableView {
 
         if type == 0 {
             let size = labDetail.sizeThatFits(.zero)
-            labDetail.snp.makeConstraints { (make) in
+            labDetail.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-labEndX)
                 make.width.equalTo(size.width)
@@ -104,7 +104,7 @@ class UICTReusableViewOne: UICollectionReusableView {
             
         } else {
             let size = lab.sizeThatFits(.zero)
-            lab.snp.makeConstraints { (make) in
+            lab.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(labStartX)
                 make.width.equalTo(size.width)

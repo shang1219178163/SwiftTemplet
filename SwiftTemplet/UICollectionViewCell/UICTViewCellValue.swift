@@ -63,7 +63,7 @@ class UICTViewCellValue: UICollectionViewCell {
         }
 
         let size: CGSize = labDetail.sizeThatFits(.zero)
-        labDetail.snp.makeConstraints { (make) in
+        labDetail.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-labEndX)
             make.width.equalTo(ceil(size.width))
