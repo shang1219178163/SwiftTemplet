@@ -44,10 +44,10 @@ extension NNTransitionAnimator {
     static func animateTransition(using transitionContext: UIViewControllerContextTransitioning,
                                   duration: TimeInterval,
                                   type: AnimateType = .fade) {
-        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from),
-            let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to),
-            let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) ?? fromVC.view,
-            let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) ?? toVC.view
+        guard let fromVC = transitionContext.viewController(forKey: .from),
+            let toVC = transitionContext.viewController(forKey: .to),
+            let fromView = transitionContext.view(forKey: .from) ?? fromVC.view,
+            let toView = transitionContext.view(forKey: .to) ?? toVC.view
             else { return }
         
         let containerView = transitionContext.containerView

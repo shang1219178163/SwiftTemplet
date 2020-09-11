@@ -8,6 +8,6 @@
 
 import UIKit
 
-class CircleTransitionAnimator: NSObject {
+class NNCircleTransitionAnimator: NSObject {
 
 }
