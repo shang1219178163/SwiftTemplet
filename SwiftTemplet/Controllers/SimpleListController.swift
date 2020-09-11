@@ -83,9 +83,7 @@ import SnapKit
         view.backgroundColor = UIColor.red
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-        
-        view.addSubview(tipLab);
-        
+                
 //        tableView.tableHeaderView = searchBar
         view.addSubview(tableView);
     }
