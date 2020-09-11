@@ -26,7 +26,7 @@
 //    popoverView.hideAfterTouchOutside = NO; // 点击外部时不允许隐藏
 //    popover.width = 120;
 //    popover.lockArrowUp = true;
-    
+
     CGRect rect = [view convertRect:view.bounds toView:nil];
     CGPoint point = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
 

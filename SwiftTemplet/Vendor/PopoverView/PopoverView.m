@@ -35,15 +35,13 @@ float PopoverViewDegreesToRadians(float angle)
 @implementation PopoverView
 
 #pragma mark - Lift Cycle
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame{
     if (!(self = [super initWithFrame:frame])) return nil;
     [self initialize];
     return self;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews{
     [super layoutSubviews];
     
     _tableView.frame = CGRectMake(0, _isUpward ? self.arrowSize.height : 0,
@@ -51,44 +49,38 @@ float PopoverViewDegreesToRadians(float angle)
 }
 
 #pragma mark - Setter
-- (void)setHideAfterTouchOutside:(BOOL)hideAfterTouchOutside
-{
+- (void)setHideAfterTouchOutside:(BOOL)hideAfterTouchOutside{
     _hideAfterTouchOutside = hideAfterTouchOutside;
     _tapGesture.enabled = _hideAfterTouchOutside;
 }
 
-- (void)setShowShade:(BOOL)showShade
-{
+- (void)setShowShade:(BOOL)showShade{
     _showShade = showShade;
-    
     _shadeView.backgroundColor = _showShade ? [UIColor colorWithWhite:0.f alpha:0.18f] : [UIColor clearColor];
-    
     if (_borderLayer) {
-        
         _borderLayer.strokeColor = _showShade ? [UIColor clearColor].CGColor : _tableView.separatorColor.CGColor;
     }
 }
 
-- (void)setStyle:(PopoverViewStyle)style
-{
+- (void)setStyle:(PopoverViewStyle)style{
     _style = style;
-    
     _tableView.separatorColor = [PopoverViewCell bottomLineColorForStyle:_style];
-    
     if (_style == PopoverViewStyleDefault) {
-        
         self.backgroundColor = [UIColor whiteColor];
-    }
-    else {
-        
+    } else {
         self.backgroundColor = [UIColor colorWithRed:0.29 green:0.29 blue:0.29 alpha:1.00];
     }
 }
 
+- (void)setSeparatorColor:(UIColor *)separatorColor{
+    _separatorColor = separatorColor;
+    
+    _tableView.separatorColor = separatorColor;
+}
+
 #pragma mark - Private
 /*! @brief 初始化相关 */
-- (void)initialize
-{
+- (void)initialize{
     // data
     _actions = @[];
     _isUpward = YES;
@@ -118,7 +110,7 @@ float PopoverViewDegreesToRadians(float angle)
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.separatorColor = [PopoverViewCell bottomLineColorForStyle:_style];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.estimatedRowHeight = 0.0;
@@ -130,8 +122,7 @@ float PopoverViewDegreesToRadians(float angle)
 /**
  显示弹窗指向某个点
  */
-- (void)showToPoint:(CGPoint)toPoint
-{
+- (void)showToPoint:(CGPoint)toPoint{
     // 截取弹窗时相关数据
     CGFloat arrowWidth = self.arrowSize.width;
     CGFloat cornerRadius = self.cornerRadius;
@@ -312,8 +303,7 @@ float PopoverViewDegreesToRadians(float angle)
 }
 
 /*! @brief 计算最大宽度 */
-- (CGFloat)calculateMaxWidth
-{
+- (CGFloat)calculateMaxWidth{
     CGFloat maxWidth = 0.f, titleLeftEdge = 0.f, imageWidth = 0.f, imageMaxHeight = kPopoverViewCellHeight - PopoverViewCellVerticalMargin*2;
     CGSize imageSize = CGSizeZero;
     UIFont *titleFont = self.font;
@@ -365,8 +355,7 @@ float PopoverViewDegreesToRadians(float angle)
 /**
  点击外部隐藏弹窗
  */
-- (void)hide
-{
+- (void)hide{
     [UIView animateWithDuration:0.25f animations:^{
         self.alpha = 0.f;
         _shadeView.alpha = 0.f;
@@ -378,13 +367,11 @@ float PopoverViewDegreesToRadians(float angle)
 }
 
 #pragma mark - Public
-+ (instancetype)popoverView
-{
++ (instancetype)popoverView{
     return [[self alloc] init];
 }
 
-- (void)showToView:(UIView *)pointView withActions:(NSArray<PopoverAction *> *)actions
-{
+- (void)showToView:(UIView *)pointView withActions:(NSArray<PopoverAction *> *)actions{
     // 判断 pointView 是偏上还是偏下
     CGRect pointViewRect = [pointView.superview convertRect:pointView.frame toView:_keyWindow];
     CGFloat pointViewUpLength = CGRectGetMinY(pointViewRect);
@@ -419,8 +406,7 @@ float PopoverViewDegreesToRadians(float angle)
     [self showToPoint:toPoint];
 }
 
-- (void)showToPoint:(CGPoint)toPoint withActions:(NSArray<PopoverAction *> *)actions
-{
+- (void)showToPoint:(CGPoint)toPoint withActions:(NSArray<PopoverAction *> *)actions{
     if (!actions) {
         _actions = @[];
     } else {
@@ -436,29 +422,26 @@ float PopoverViewDegreesToRadians(float angle)
 }
 
 #pragma mark - UITableViewDelegate & UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _actions.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return kPopoverViewCellHeight;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PopoverViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPopoverCellReuseId];
     cell.style = _style;
     [cell setAction:_actions[indexPath.row]];
-    [cell showBottomLine: indexPath.row < _actions.count - 1];
+//    [cell showBottomLine: indexPath.row < _actions.count - 1];
     cell.button.titleLabel.font = self.font ? : cell.button.titleLabel.font;
     [cell.button setTitleColor:self.textColor forState:UIControlStateNormal];
+    cell.separatorInset = self.cellSeparatorInset;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [UIView animateWithDuration:0.25f animations:^{
         self.alpha = 0.f;
         self.shadeView.alpha = 0.f;

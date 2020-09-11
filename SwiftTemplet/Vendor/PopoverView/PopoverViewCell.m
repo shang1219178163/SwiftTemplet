@@ -21,7 +21,6 @@ float const PopoverViewCellTitleLeftEdge = 8.f; ///< 标题左边边距
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
     self.backgroundColor = [UIColor clearColor];
     self.contentView.backgroundColor = self.backgroundColor;
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
     // initialize
     [self initialize];
     
@@ -78,6 +77,7 @@ float const PopoverViewCellTitleLeftEdge = 8.f; ///< 标题左边边距
     
 //    _button.layer.borderColor = UIColor.blueColor.CGColor;
 //    _button.layer.borderWidth = 1;
+    bottomLine.hidden = true;
 }
 
 #pragma mark - Public

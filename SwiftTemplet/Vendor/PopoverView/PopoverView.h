@@ -42,6 +42,9 @@ typedef NS_ENUM(NSUInteger, PopoverViewArrowStyle) {
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIFont *font;
 
+@property (nonatomic, assign) UIEdgeInsets cellSeparatorInset;
+@property (nonatomic, strong) UIColor *separatorColor;
+
 + (instancetype)popoverView;
 
 /**

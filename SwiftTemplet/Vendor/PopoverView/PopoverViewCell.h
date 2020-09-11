@@ -19,6 +19,4 @@ UIKIT_EXTERN float const PopoverViewCellTitleLeftEdge; ///< 标题左边边距
 
 - (void)setAction:(PopoverAction *)action;
 
-- (void)showBottomLine:(BOOL)show;
-
 @end
