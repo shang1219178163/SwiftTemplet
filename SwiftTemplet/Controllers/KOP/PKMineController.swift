@@ -105,16 +105,17 @@ extension PKMineController: UITableViewDataSource, UITableViewDelegate{
         
         switch value1 {
             case "UITableViewCell":
-                let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellValue1", style: .subtitle);
+                let cell = UITableViewCellShare.dequeueReusableCell(tableView, identifier: "UITableViewCellShare", style: .subtitle);
     //            cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
-                
                 cell.textLabel?.text = value0
                 if value0 == "邀请好友" {
-                    cell.imageView!.transform = cell.imageView!.transform.scaledBy(x: 0.6, y: 0.6)
-                    cell.detailTextLabel?.textColor = .textColor3
+                    cell.detailTextLabel?.textColor = .textColor9
+                    cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
                     
-                    cell.imageView?.image = UIImage(named: "icon_share")
+                    cell.imageView?.image = UIImage(named: "icon_shareToFriends")
+                    cell.imageView?.contentMode = .scaleAspectFit
+                    
                     cell.textLabel?.text = value0
                     cell.detailTextLabel?.text = "快速出行，共享停车"
 //                    cell.accessoryType = .disclosureIndicator
@@ -139,6 +140,46 @@ extension PKMineController: UITableViewDataSource, UITableViewDelegate{
 
                 cell.getViewLayer();
                 return cell;
+//            case "UITableViewCell":
+//                let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellValue1", style: .subtitle);
+//    //            cell.accessoryType = .disclosureIndicator
+//                cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+//
+//                cell.textLabel?.text = value0
+//                if value0 == "邀请好友" {
+//                    cell.imageView!.transform = cell.imageView!.transform.scaledBy(x: 0.6, y: 0.6)
+//                    cell.detailTextLabel?.textColor = .textColor3
+//
+//                    cell.imageView?.image = UIImage(named: "icon_shareToFriends")
+//                    if let imageView = cell.imageView, imageView.transform == .identity {
+//                        imageView.transform = imageView.transform.scaledBy(x: 0.55, y: 0.55)
+//                        imageView.contentMode = .center
+//                    }
+//
+//                    cell.textLabel?.text = value0
+//                    cell.detailTextLabel?.text = "快速出行，共享停车"
+////                    cell.accessoryType = .disclosureIndicator
+//
+//                    if let btn = cell.viewWithTag(100) as? UIButton {
+//
+//                    } else {
+//                        let btn: UIButton = {
+//                            let rect = CGRectMake(0, 0, 60, 11)
+//                            let view = UIButton(type: .custom)
+//                            view.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+//                            view.frame = rect
+//                            return view
+//                        }()
+//                        btn.setTitleColor(.textColor3, for: .normal)
+////                        btn.setTitle("点击邀请", for: .normal)
+////                        btn.setImage(UIImage(named: "icon_arrow_right_black"), for: .normal)
+//                        btn.setBackgroundImage(UIImage(named: "icon_invite"), for: .normal)
+//                        cell.accessoryView = btn
+//                    }
+//                }
+//
+//                cell.getViewLayer();
+//                return cell;
             
             case "UITableViewCellSudokuButton":
                 let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView, identifier: "UITableViewCellSudokuButton\(value0)");

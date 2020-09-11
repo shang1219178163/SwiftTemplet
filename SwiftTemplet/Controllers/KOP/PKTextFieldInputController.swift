@@ -68,7 +68,8 @@ class PKTextFieldInputController: UIViewController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .background
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
         
         view.addSubview(tableView)
         view.addSubview(btn)

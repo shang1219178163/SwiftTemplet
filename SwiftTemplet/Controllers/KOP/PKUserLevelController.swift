@@ -75,6 +75,7 @@ class PKUserLevelController: UIViewController {
 
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
+        view.backgroundColor = .white
         
         userLevelView.updateLevelDesc()
         view.addSubview(userLevelView)

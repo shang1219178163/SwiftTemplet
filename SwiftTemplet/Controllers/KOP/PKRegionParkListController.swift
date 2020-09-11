@@ -25,7 +25,7 @@ import UIKit
 
     // MARK: - lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 95)
+        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 195)
         view.dataSource = self
         view.delegate = self
 
@@ -155,40 +155,23 @@ extension PKRegionParkListController: UITableViewDataSource, UITableViewDelegate
 //        let cell = UITableViewCell.dequeueReusableCell(tableView)
 //        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
 //        cell.textLabel?.textColor = .textColor3
-////        cell.isHidden = value2.cgFloatValue <= 0.0
-//
+//        cell.isHidden = value2.cgFloatValue <= 0.0
+        
 //        cell.textLabel?.text = "value0"
         
-//        let sender: NNButton = {
-//            let btn: NNButton = {
-//                let sender = NNButton(type: .custom)
-//                sender.frame = CGRect(x: 0, y: 0, width: 27, height: 35)
-//                sender.labelHeight = 15
-//
-//                sender.direction = .top
-//                sender.setTitleColor(.textColor3, for: .normal)
-//                return sender
-//            }()
-//            cell.accessoryView = btn
-//            return btn
-//        }()
-        
-        let cell = UITableViewCellSudokuLabel.dequeueReusableCell(tableView);
+        let cell = UITableViewCellSudokuLabel.dequeueReusableCell(tableView)
 //            cell.accessoryType = .disclosureIndicator
         cell.numOfRow = 1
         cell.row = 3
         cell.items.forEach { $0.textColor = .systemBlue }
         
-        let sender = cell.assoryBtn(NNButton.self)
-        sender.frame = CGRect(x: 0, y: 0, width: 27, height: 35)
+        let sender = cell.assoryView(NNButton.self, size: CGSize(width: 27, height: 35))
         sender.labelHeight = 15
         sender.direction = .top
         sender.setTitleColor(.textColor3, for: .normal)
         
         sender.setImage(UIImage(named: "icon_map_route_black"), for: .normal)
         sender.setTitle("195m", for: .normal)
-
-        sender.getViewLayer()
         
 //        guard let model = dataList[indexPath.row] as? IOPParkModel else { return cell; }
 //        cell.textLabel?.text = model.name

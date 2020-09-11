@@ -63,6 +63,9 @@ class PKAppAbountController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        
         title = "关于应用"
         tableView.tableHeaderView = headerView;
         view.addSubview(tableView)

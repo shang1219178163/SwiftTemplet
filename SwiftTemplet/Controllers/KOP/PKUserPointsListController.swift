@@ -65,6 +65,8 @@ import SwiftExpand
     
     func showPopover(_ sender: UIButton) {
         PopoverView.show(sender, titles: popoverTitles, block: { (popover) in
+            popover.separatorColor = UIColor.hexValue(0xE8E8E8)
+            popover.cellSeparatorInset = UIEdgeInsetsMake(0, 18, 0, 18)
             popover.arrowStyle = .none
             popover.contentWidth = 120
             popover.lockArrowUp = true
@@ -133,7 +135,7 @@ extension PKUserPointsListController: UITableViewDataSource, UITableViewDelegate
 
             cell.labelLeft.text = "积分记录"
             
-            let sender = cell.assoryBtn(UIButton.self)
+            let sender = cell.assoryView(UIButton.self)
             sender.frame = CGRect(x: 0, y: 0, width: 63, height: 22)
             sender.setTitleColor(.white, for: .normal)
             sender.titleLabel?.font = UIFont.systemFont(ofSize: 13)

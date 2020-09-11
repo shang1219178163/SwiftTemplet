@@ -137,6 +137,9 @@ class PKBindPhoneController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        
         title = "绑定手机"
         view.addSubview(labelTitle)
         view.addSubview(label)
@@ -161,7 +164,7 @@ class PKBindPhoneController: UIViewController {
         }
         
         let size = label.sizeThatFits(CGSize(width: self.view.bounds.width - 30, height: 0))
-        label.snp.makeConstraints { (make) in
+        label.snp.remakeConstraints { (make) in
             make.top.equalTo(labelTitle.snp.bottom).offset(10)
             make.left.right.equalTo(labelTitle)
             make.height.equalTo(size.height);

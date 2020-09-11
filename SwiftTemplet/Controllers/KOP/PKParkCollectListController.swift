@@ -20,7 +20,7 @@ import SwiftExpand
 
     // MARK: - lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
+        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 75)
         view.dataSource = self
         view.delegate = self
 
@@ -120,7 +120,6 @@ import SwiftExpand
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         
         view.addSubview(searchBar);
-        view.addSubview(tipLab);
         view.addSubview(tableView);
         
         searchBar.isHidden = true
@@ -149,22 +148,32 @@ extension PKParkCollectListController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellSubtitle", style: .subtitle)
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel?.text = "--"
-        cell.textLabel?.textColor = UIColor.textColor3;
-
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
-        cell.detailTextLabel?.text = "--"
-        cell.detailTextLabel?.textColor = UIColor.textColor6;
-        cell.accessoryType = .disclosureIndicator;
+//        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellSubtitle", style: .subtitle)
+//        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+//        cell.textLabel?.text = "--"
+//        cell.textLabel?.textColor = UIColor.textColor3;
+//
+//        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
+//        cell.detailTextLabel?.text = "--"
+//        cell.detailTextLabel?.textColor = UIColor.textColor6;
+//        cell.accessoryType = .disclosureIndicator;
+        
+        let cell = UITableViewCellCollect.dequeueReusableCell(tableView)
+        cell.assoryView(NNButton.self, size: CGSize(width: 54, height: 39)) { (sender) in
+            sender.labelHeight = 15
+            sender.direction = .top
+            sender.setTitleColor(.textColor3, for: .normal)
+            sender.setImage(UIImage(named: "icon_map_route_black"), for: .normal)
+            sender.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+            sender.setTitle("距离-", for: .normal)
+        }
         
 //        guard let model = dataList[indexPath.row] as? IOPParkModel else { return cell; }
 //        cell.textLabel?.text = model.name
 //        cell.detailTextLabel?.text = model.statusDes
 //        cell.detailTextLabel?.textColor = model.statusDes == "已接入" ? UIColor.theme : UIColor.textColor9;
 
-//        cell.getViewLayer()
+        cell.getViewLayer()
         return cell;
     }
     

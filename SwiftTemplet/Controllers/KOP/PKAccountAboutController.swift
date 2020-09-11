@@ -52,6 +52,9 @@ class PKAccountAboutController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        
         title = "设置"
 //        tableView.tableFooterView = footerView;
         view.addSubview(tableView)

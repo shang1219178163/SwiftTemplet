@@ -222,6 +222,9 @@ class PKLoginController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        
         view.addSubview(btnClose)
         view.addSubview(label)
         view.addSubview(textFieldView)
@@ -316,7 +319,7 @@ class PKLoginController: UIViewController {
         }
         
         let labelSeperateSize = labelSeperate.sizeThatFits(.zero)
-        labelSeperate.snp.makeConstraints { (make) in
+        labelSeperate.snp.remakeConstraints { (make) in
             make.centerX.equalToSuperview().offset(0)
             make.centerY.equalTo(seperateView).offset(0)
             make.width.equalTo(labelSeperateSize.width)
