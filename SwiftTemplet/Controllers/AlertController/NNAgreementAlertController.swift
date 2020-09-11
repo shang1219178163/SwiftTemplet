@@ -55,6 +55,8 @@ import UIKit
         let textView = UITextView(frame: .zero)
         textView.isSelectable = true
         textView.isEditable = false
+        textView.delegate = self
+
         return textView
     }()
     
@@ -201,7 +203,6 @@ import UIKit
         let tapUrls = ["http://api.parkingwang.com/app/iop/register.html", "http://api.parkingwang.com/app/iop/register.html",];
         let string = "\t用户协议和隐私政策请您务必审值阅读、充分理解 “用户协议” 和 ”隐私政策” 各项条款，包括但不限于：为了向您提供即时通讯、内容分享等服务，我们需要收集您的设备信息、操作日志等个人信息。\n\t您可阅读\(tapTexts[0])和\(tapTexts[1])了解详细信息。如果您同意，请点击 “同意” 开始接受我们的服务;"
         textView.setupUserAgreements(string, tapTexts: tapTexts, tapUrls: tapUrls)
-        textView.delegate = self
     }
 }
 
