@@ -164,6 +164,7 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
+            ["车场标签", "UITableViewCellParkType", "30", "", "recharge", ],                
             ["Excel", "UITableViewCellExcel", "155", "", "recharge", ],
             ["标题", "UITableViewCellTitle", "50.0", "", "recharge", ],
             ["标签", "UITableViewCellTags", "70.0", "", "recharge", ],
@@ -328,6 +329,17 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         let value4 = itemList[4]
         
         switch value1 {
+        case "UITableViewCellParkType":
+            let cell = UITableViewCellParkType.dequeueReusableCell(tableView)
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            
+            cell.parkType = "非经营性车场"
+            cell.parkTags = ["全部", "路侧", "地上", "地下", "停车楼", ]
+
+            cell.getViewLayer()
+            return cell
+        
+            
         case "UITableViewCellExcel":
             let cell = UITableViewCellExcel.dequeueReusableCell(tableView)
             cell.isHidden = value2.cgFloatValue <= 0.0
@@ -527,7 +539,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
             cell.type = 1;
             cell.labelLeft.text = "备注信息"
-            cell.textView.placeHolderTextView.text = "最多140字"
+            cell.textView.placeHolderLabel.text = "最多140字"
             cell.block { ( view:UITableViewCellTextView, text:String) in
                 DDLog(text)
             }
