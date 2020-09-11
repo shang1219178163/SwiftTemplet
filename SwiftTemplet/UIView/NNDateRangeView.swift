@@ -132,7 +132,7 @@ import SwiftExpand
         let height = bounds.height - inset.top - inset.bottom
 
         let labTitleSize = labTitle.sizeThatFits(.zero)
-        labTitle.snp.makeConstraints { (make) in
+        labTitle.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(inset.left)
             make.width.equalTo(labTitleSize.width)

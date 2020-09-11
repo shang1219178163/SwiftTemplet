@@ -47,7 +47,7 @@ class NNOfflineTipController: UIViewController {
         super.viewDidLayoutSubviews()
         
         let size = label.sizeThatFits(CGSize(width: self.view.bounds.width - 40, height: 0))
-        label.snp.makeConstraints { (make) in
+        label.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(20)
             make.left.equalToSuperview().offset(20);
             make.right.equalToSuperview().offset(-20);

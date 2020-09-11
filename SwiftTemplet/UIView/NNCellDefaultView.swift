@@ -83,7 +83,7 @@ class NNCellDefaultView: UIView {
 
         if type == 0 {
             let size = labelRight.sizeThatFits(.zero)
-            labelRight.snp.makeConstraints { (make) in
+            labelRight.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(-labEndX)
                 make.width.lessThanOrEqualTo(size.width)
@@ -99,7 +99,7 @@ class NNCellDefaultView: UIView {
             
         } else {
             let size = labelLeft.sizeThatFits(.zero)
-            labelLeft.snp.makeConstraints { (make) in
+            labelLeft.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(labStartX)
                 make.width.lessThanOrEqualTo(size.width)

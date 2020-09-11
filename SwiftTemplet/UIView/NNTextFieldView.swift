@@ -62,7 +62,7 @@ class NNTextFieldView: UIView {
 
         if label.isHidden == false {
             let size = label.sizeThatFits(.zero)
-            label.snp.makeConstraints { (make) in
+            label.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(2)
                 make.left.equalToSuperview().offset(Xgap)
                 make.bottom.equalToSuperview().offset(-2)

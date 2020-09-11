@@ -42,9 +42,8 @@ import SwiftExpand
         cancellBtn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.right.equalToSuperview().offset(-inset.right);
-            make.bottom.equalToSuperview().offset(-10);
+            make.bottom.equalToSuperview().offset(-inset.bottom);
             make.width.equalTo(40);
-            make.height.equalToSuperview();
         }
         
         searchBar.snp.makeConstraints { (make) in

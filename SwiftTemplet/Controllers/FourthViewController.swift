@@ -404,7 +404,7 @@ extension FourthViewController: IOPGoodsToolViewDelegate{
 //    public func create(title: String, action: @escaping ((UIMenuItem) -> Void)) -> UIMenuItem {
 //        let item = UIMenuItem(title: title, action: #selector(p_handleAction(_:)))
 //
-//        objc_setAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #function), action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        objc_setAssociatedObject(self, &AssociateKeys., action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //        return item
 //    }
 //

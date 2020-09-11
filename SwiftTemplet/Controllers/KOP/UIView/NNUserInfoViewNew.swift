@@ -102,7 +102,7 @@ class NNUserInfoViewNew: UIView {
         }
         
         let nameSize = btnName.sizeThatFits(.zero)
-        btnName.snp.makeConstraints { (make) in
+        btnName.snp.remakeConstraints { (make) in
             make.top.equalTo(imgView).offset(0);
             make.left.equalTo(imgView.snp.right).offset(10);
             make.height.equalTo(imgView.snp.height).multipliedBy(0.4);
@@ -110,7 +110,7 @@ class NNUserInfoViewNew: UIView {
         }
                   
         let levelSize = btnLevel.sizeThatFits(.zero)
-        btnLevel.snp.makeConstraints { (make) in
+        btnLevel.snp.remakeConstraints { (make) in
             make.top.equalTo(btnName.snp.bottom).offset(5);
             make.left.equalTo(btnName).offset(0);
             make.width.equalTo(levelSize.width)
@@ -125,7 +125,7 @@ class NNUserInfoViewNew: UIView {
         }
         
         let couponnSize = btnCoupon.sizeThatFits(.zero)
-        btnCoupon.snp.makeConstraints { (make) in
+        btnCoupon.snp.remakeConstraints { (make) in
             make.top.equalTo(btnLevel).offset(0);
             make.left.equalTo(verLineView.snp.right).offset(10);
             make.width.equalTo(couponnSize.width)

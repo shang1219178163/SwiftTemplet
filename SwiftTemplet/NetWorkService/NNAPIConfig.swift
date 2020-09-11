@@ -37,7 +37,7 @@ class NNAPIConfig: NSObject {
     }
     
     static var headerUserAgent: String{
-        return UIApplication.iphoneType + "," + UIApplication.phoneSystemVer ;
+        return UIApplication.deviceModelName + "," + UIApplication.deviceSystemVer ;
     }
     
     static var headerAcceptVersion: String{
@@ -45,7 +45,7 @@ class NNAPIConfig: NSObject {
     }
     
     static var timeOut: CGFloat{
-        return 6.0
+        return 20.0
     }
 
     

@@ -29,7 +29,7 @@ import SwiftExpand
     var jsString: String = ""
     var loadingProgressColor: UIColor = UIColor.systemBlue {
         willSet{
-            progress.progressTintColor = newValue
+            progressView.progressTintColor = newValue
         }
     }
     
@@ -43,8 +43,8 @@ import SwiftExpand
     var showReloadBtn: Bool = false
     
     deinit {
-        reloadBtn.removeObserver(webView, forKeyPath: "hidden")
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        webView.removeObserver(self, forKeyPath: "URL")
         webView.stopLoading()
         webView.uiDelegate = nil
         webView.navigationDelegate = nil
@@ -53,12 +53,12 @@ import SwiftExpand
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        autoresizingMask = [.flexibleWidth, .flexibleHeight]
         backgroundColor = UIColor.white;
-        self.addSubview(reloadBtn)
         self.addSubview(webView)
-        self.addSubview(progress)
+        self.addSubview(progressView)
         
-        progress.progressTintColor = loadingProgressColor
+        progressView.progressTintColor = loadingProgressColor
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,31 +68,24 @@ import SwiftExpand
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        progress.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
-        webView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
-        reloadBtn.center = webView.center;
+//        progressView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
+//        webView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
     }
     
     //MARK: -observe
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            progress.setProgress(Float(webView.estimatedProgress), animated: true)
+            progressView.setProgress(Float(webView.estimatedProgress), animated: true)
             if webView.estimatedProgress >= 1 {
-                progress.isHidden = true
+                progressView.isHidden = true
                 refreshControl.endRefreshing()
             }
             
-        } else if keyPath == "hidden" {
-            if let newValue = change![NSKeyValueChangeKey.newKey] as? NSNumber {
-                if newValue == true {
-                    bringSubviewToFront(reloadBtn)
-                } else {
-                    sendSubviewToBack(reloadBtn)
-                }
-            }
-        }
-        else {
+        } else if keyPath == "URL" {
+            DDLog(webView.url?.absoluteString)
+            
+        } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
@@ -123,7 +116,10 @@ import SwiftExpand
    
     //MARK: -lazy
     lazy var webView: WKWebView = {
-        let view = WKWebView(frame: bounds, configuration: WKWebView.confiDefault)
+        let conf = WKWebView.confiDefault
+        conf.applicationNameForUserAgent = "IRAIN_KOP"
+        
+        let view = WKWebView(frame: self.bounds, configuration: conf)
         view.uiDelegate = self
         view.navigationDelegate = self
         view.allowsBackForwardNavigationGestures = true
@@ -134,7 +130,8 @@ import SwiftExpand
         }
         
         view.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        
+        view.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
+
         return view
     }()
 
@@ -144,20 +141,8 @@ import SwiftExpand
         return view
     }()
     
-    lazy var progress: UIProgressView = {
+    lazy var progressView: UIProgressView = {
         let view: UIProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 2))
-        return view
-    }()
-    
-    lazy var reloadBtn: UIButton = {
-        let view = UIButton(type: .custom)
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        view.setTitle("重新加载", for: .normal)
-        view.setTitleColor(UIColor.red, for: .normal)
-        view.addTarget(self, action: #selector(loadRequest), for: .touchUpInside)
-        
-        view.addObserver(webView, forKeyPath: "hidden", options: .new, context: nil)
         return view
     }()
 }

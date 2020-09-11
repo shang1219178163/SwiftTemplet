@@ -174,7 +174,7 @@ extension NNFeedbackController: UITableViewDataSource, UITableViewDelegate{
             let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
             cell.type = 1;
             cell.labelLeft.text = "备注信息"
-            cell.textView.placeHolderTextView.text = "最多140字"
+            cell.textView.placeHolderLabel.text = "最多140字"
             cell.block { ( view:UITableViewCellTextView, text:String) in
                 DDLog(text)
             }

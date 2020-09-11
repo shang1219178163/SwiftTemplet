@@ -133,7 +133,7 @@ extension NNSearchListController: UITableViewDataSource, UITableViewDelegate{
         cell.row = 2
         cell.items.forEach { $0.textColor = .systemBlue }
         
-        let sender = cell.assoryBtn(NNButton.self)
+        let sender = cell.assoryView(NNButton.self)
         sender.frame = CGRect(x: 0, y: 0, width: 27, height: 35)
         sender.labelHeight = 15
         sender.direction = .top

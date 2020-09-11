@@ -103,7 +103,7 @@ import SwiftExpand
         }
         
         let labelSize = label.sizeThatFits(.zero)
-        label.snp.makeConstraints { (make) in
+        label.snp.remakeConstraints { (make) in
             make.top.equalTo(imgView).offset(10);
             make.left.equalTo(imgView.snp.right).offset(10);
             make.width.equalTo(ceil(labelSize.width));
@@ -111,7 +111,7 @@ import SwiftExpand
         }
         
         let levelSize = btnLevel.sizeThatFits(.zero)
-        btnLevel.snp.makeConstraints { (make) in
+        btnLevel.snp.remakeConstraints { (make) in
             make.centerY.equalTo(label)
             make.left.equalTo(label.snp.right).offset(10);
             make.width.equalTo(ceil(levelSize.width));
