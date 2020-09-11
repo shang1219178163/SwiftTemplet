@@ -31,6 +31,7 @@ class FirstViewController: UIViewController{
         var array: [[[String]]] = [
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
              ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
+             ["ConstraintArrayDSLController", "Snapkit 扩展", ],
              ["ChatInputController", "聊天输入框", ],
              ["NNInstructionViewController", "NNInstructionView", ],
              ["FoldSectionListController", "Swift折叠列表", ],
@@ -41,7 +42,9 @@ class FirstViewController: UIViewController{
              ["PopoverViewExampleController", "PopoverView", ],
              ["ScrollLabelController", "ScrollLabel", ],
              ["AddShadowViewController", "addShadow", ],
-
+             ],
+            [["GreenViewController", "转场动画缩放", ],
+             ["RedViewController", "转场动画下拉上推", ],
              ],
             [["TableSectionCornerListController", "OC section 圆角", ],
              ],
@@ -101,7 +104,18 @@ class FirstViewController: UIViewController{
 //        let encryptText = NSString.encryptAES256(withPlainText: "AABBCC测试数据")
 //        let decryptText = NSString.decryptAES256(withCipherText: "AAAAQVFWRldSbGRTYkdSVFlrZFNWRmxyWkZOV1JteHk=")
 //        DDLog(decryptText)
-                
+        
+        
+        let cal = Calculator()
+        cal.add(5).add(8).print().multiply(2).print().divide(3).print()
+//        cal.add(5).add(8).printResult().sub(2).printResult().clear().printResult();
+        
+//        Calculator.zz_makeCalcuclate { (make) in
+//            make.add(10).sub(3).add(2).add(198).printResult;
+//        }
+        
+//        view.nn_borderColor(UIColor.red).nn_borderWidth(5)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,8 +136,11 @@ class FirstViewController: UIViewController{
     }
     
     // MARK: -funtions
-
-
+    func addTo (adder: Int) -> (Int) -> Int{
+        return { num  in
+            return num + adder
+        }
+    }
 }
 
 extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
