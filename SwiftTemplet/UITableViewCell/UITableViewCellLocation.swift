@@ -158,7 +158,7 @@ class UITableViewCellLocation: UITableViewCell {
         
         let plateTailSpacing: CGFloat = 26 + 8 + inset.right
 
-        var prev: UIButton?
+        var prev: UIView?
         for (_, v) in limitPlateLabels.enumerated().reversed() {
             v.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
