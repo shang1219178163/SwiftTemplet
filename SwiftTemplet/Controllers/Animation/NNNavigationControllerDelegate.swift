@@ -14,14 +14,12 @@ class NNNavigationControllerDelegate: NSObject {
     private var pushAnimator: UIViewControllerAnimatedTransitioning?
     private var popAnimator: UIViewControllerAnimatedTransitioning?
     
-    private var isInteraction: Bool = false
     var interaction: UIPercentDrivenInteractiveTransition?
 
-    @objc required convenience init(push: UIViewControllerAnimatedTransitioning, pop: UIViewControllerAnimatedTransitioning, isInteraction: Bool) {
+    @objc required convenience init(push: UIViewControllerAnimatedTransitioning, pop: UIViewControllerAnimatedTransitioning) {
         self.init()
         self.pushAnimator = push
         self.popAnimator = pop
-        self.isInteraction = isInteraction
     }
 }
 
@@ -37,7 +35,7 @@ extension NNNavigationControllerDelegate: UINavigationControllerDelegate {
     }
     
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return isInteraction ? interaction : nil
+        return interaction
     }
     
 }

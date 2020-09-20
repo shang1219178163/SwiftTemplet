@@ -51,11 +51,11 @@ class GreenViewController: UIViewController {
         btn.addTarget(self, action:#selector(push) , for: .touchUpInside)
         
         
-        let btn_present = UIButton.init(type: .custom)
-        btn_present.frame = CGRect(x:30,y: 230 ,width: 100, height: 100)
-        self.view.addSubview(btn_present)
-        btn_present.setTitle("btn_present", for: .normal)
-        btn_present.addTarget(self, action:#selector(pre) , for: .touchUpInside)
+        let presentBtn = UIButton.init(type: .custom)
+        presentBtn.frame = CGRect(x:30,y: 230 ,width: 100, height: 100)
+        self.view.addSubview(presentBtn)
+        presentBtn.setTitle("present", for: .normal)
+        presentBtn.addTarget(self, action:#selector(presentVC) , for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +79,7 @@ class GreenViewController: UIViewController {
         let second = BlueViewController()
         self.navigationController?.pushViewController(second, animated: true)
     }
-    @objc func pre() {
+    @objc func presentVC() {
         let second = BlueViewController()
         self.present(second, animated: true) {
             

@@ -32,11 +32,11 @@ class BlueViewController: UIViewController {
         view.addSubview(btn)
 
         
-        let btn_dismiss = UIButton.init(type: .custom)
-        btn_dismiss.frame = CGRect(x:30,y: 230 ,width: 100, height: 100)
-        btn_dismiss.setTitle("btn_dismiss", for: .normal)
-        btn_dismiss.addTarget(self, action:#selector(dism) , for: .touchUpInside)
-        view.addSubview(btn_dismiss)
+        let dismissBtn = UIButton.init(type: .custom)
+        dismissBtn.frame = CGRect(x:30,y: 230 ,width: 100, height: 100)
+        dismissBtn.setTitle("dismiss", for: .normal)
+        dismissBtn.addTarget(self, action:#selector(dism) , for: .touchUpInside)
+        view.addSubview(dismissBtn)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +58,5 @@ class BlueViewController: UIViewController {
             
         })
     }
-    
-
 
 }
