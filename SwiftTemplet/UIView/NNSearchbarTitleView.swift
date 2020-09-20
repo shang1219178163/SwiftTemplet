@@ -39,6 +39,16 @@ import SwiftExpand
             return;
         }
         
+        if cancellBtn.isHidden == true {
+            searchBar.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(inset.top);
+                make.left.equalToSuperview().offset(inset.left);
+                make.right.equalToSuperview().offset(inset.right);
+                make.height.equalToSuperview();
+            }
+            return
+        }
+        
         cancellBtn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.right.equalToSuperview().offset(-inset.right);
