@@ -32,11 +32,10 @@ class ConstraintArrayDSLController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        items.snp.distributeViewsHorizontal(fixedSpacing: 5, leadSpacing: 10, tailSpacing: 10, reversed: false)
+        items.snp.distributeViewsHorizontal(fixedSpacing: 5, leadSpacing: 10, tailSpacing: 10, isReverse: true)
     }
 
 }
-
 
 /////不固定宽度视图平铺
 //public func distributeViewsHorizontal(fixedSpacing: CGFloat, leadSpacing: CGFloat, tailSpacing: CGFloat , reversed: Bool) {
@@ -54,7 +53,7 @@ class ConstraintArrayDSLController: UIViewController {
 //    let list = reversed == false ? array : array.reversed()
 //
 //    var prev: ConstraintView?
-//    for (_, v) in list.enumerated() {
+//    for (i, v) in list.enumerated() {
 //        v.snp.remakeConstraints { (make) in
 //            make.centerY.equalToSuperview()
 //
@@ -64,11 +63,19 @@ class ConstraintArrayDSLController: UIViewController {
 //                 } else {
 //                     make.left.equalTo(prev!.snp.right).offset(fixedSpacing)
 //                 }
+//
+//                if i == list.count - 1 {
+//                    make.right.equalTo(tempSuperView).offset(-tailSpacing)
+//                }
 //            } else {
 //                if prev == nil {
 //                    make.right.equalToSuperview().offset(-tailSpacing)
 //                } else {
 //                    make.right.equalTo(prev!.snp.left).offset(-fixedSpacing)
+//                }
+//
+////                if i == 0 {
+////                    make.left.equalTo(tempSuperView).offset(leadSpacing)
 //                }
 //            }
 //        }
