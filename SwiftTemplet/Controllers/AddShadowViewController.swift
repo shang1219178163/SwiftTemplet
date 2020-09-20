@@ -11,9 +11,18 @@ import SwiftExpand
 
 class AddShadowViewController: UIViewController {
     
-    lazy var roundView: UIView = {
-        let view = UIView()
+    lazy var roundView: UIButton = {
+        let view = UIButton(type: .custom);
+        view.setTitle("  搜索当前位置车场", for: .normal)
+        view.setTitleColor(.theme, for: .normal)
+        view.adjustsImageWhenHighlighted = false
         view.backgroundColor = .systemGreen
+        view.addActionHandler({ (control) in
+            print(control)
+
+        }, for: .touchUpInside)
+
+        
         return view
     }()
 
@@ -43,17 +52,16 @@ class AddShadowViewController: UIViewController {
 
     /// 设置阴影
     private func addShadow() {
-//        let rect = roundView.bounds
-//        let rect = CGRectMake(10, 10, 100, 100)
-//        roundView.addShadow(.red)
-//        DDLog(rect)
+        roundView.layer.cornerRadius = 12
+        
+        roundView.layer.borderColor = UIColor.systemBlue.cgColor
+        roundView.layer.borderWidth = 1
+
         roundView.layer.shadowColor = UIColor.red.cgColor
         roundView.layer.shadowRadius = 3.5
         roundView.layer.shadowOpacity = 0.8
-        roundView.layer.shadowOffset = CGSize(width: 1, height: 1)
-
-//        let path = UIBezierPath(rect: rect.offsetBy(dx: 1, dy: 1))
-//        roundView.layer.shadowPath = path.cgPath
+        roundView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        roundView.layer.shadowRadius = 6.0
     }
 
 }
