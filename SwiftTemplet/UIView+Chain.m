@@ -31,30 +31,12 @@
     };
 }
 
-- (UIView * _Nonnull (^)(UIColor * _Nonnull))nn_shadowColor{
-    return ^(UIColor *value){
-        self.layer.shadowColor = value.CGColor;
-        return self;
-    };
-}
-
-- (UIView * _Nonnull (^)(CGFloat))nn_shadowOpacity{
-    return ^(CGFloat value) {
-        self.layer.shadowOpacity = value;
-        return self;
-    };
-}
-
-- (UIView * _Nonnull (^)(CGFloat))nn_shadowRadius{
-    return ^(CGFloat value) {
-        self.layer.shadowRadius = value;
-        return self;
-    };
-}
-
-- (UIView * _Nonnull (^)(CGSize))nn_shadowOffset{
-    return ^(CGSize value) {
-        self.layer.shadowOffset = value;
+- (UIView * _Nonnull (^)(UIColor * _Nonnull, CGFloat, CGFloat, CGSize))nn_shadow{
+    return ^(UIColor *color, CGFloat radius, CGFloat opacity, CGSize offset){
+        self.layer.shadowColor = color.CGColor;
+        self.layer.shadowRadius = radius;
+        self.layer.shadowOpacity = opacity;
+        self.layer.shadowOffset = offset;
         return self;
     };
 }

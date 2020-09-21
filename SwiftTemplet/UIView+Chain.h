@@ -23,15 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, readonly) UIView *(^nn_borderColor)(UIColor *value);
 /// 边框宽度 默认 0.0
 @property(nonatomic, strong, readonly) UIView *(^nn_borderWidth)(CGFloat value);
-/// 阴影
-/// 阴影颜色 默认 black
-@property(nonatomic, strong, readonly) UIView *(^nn_shadowColor)(UIColor *value);
-/// 阴影模糊度 默认 0.0
-@property(nonatomic, strong, readonly) UIView *(^nn_shadowRadius)(CGFloat value);
-/// (0~1] 默认 0.0
-@property(nonatomic, strong, readonly) UIView *(^nn_shadowOpacity)(CGFloat value);
-/// 阴影偏移方向和距离 默认 {0.0，0.0}
-@property(nonatomic, strong, readonly) UIView *(^nn_shadowOffset)(CGSize value);
+/// 阴影(颜色 默认 black, 半径, 模糊度 (0~1] 默认 0.0, 偏移方向和距离 默认 {0.0，0.0})
+@property(nonatomic, strong, readonly) UIView *(^nn_shadow)(UIColor *color, CGFloat radius, CGFloat opacity, CGSize offset);
 /// 图层
 @property(nonatomic, strong, readonly) UIView *(^nn_zPosition)(CGFloat value);
 
