@@ -35,8 +35,8 @@ class UITableViewCellDefault: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    lazy var defaultView: NNCellDefaultView = {
-        var view = NNCellDefaultView(frame: .zero)
+    lazy var defaultView: NNContentCellView = {
+        var view = NNContentCellView(frame: .zero)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         return view
