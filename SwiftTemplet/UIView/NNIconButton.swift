@@ -15,6 +15,7 @@ class NNIconButton: UIButton {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
+        
 //        view.image = UIImage(named: "icon_discount_orange");
         return view
     }()
