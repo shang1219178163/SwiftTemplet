@@ -28,6 +28,9 @@ import SDWebImage
 
     var delegate: NNCycleScrollViewDelegate?
     
+    var didSelectedBlock: ((Int)->Void)?
+    var cellForItemBlock: ((UICollectionView, IndexPath, String) -> UICollectionViewCell)?
+    
     var direction: UICollectionView.ScrollDirection = .horizontal{
         willSet{
             flowLayout.scrollDirection = newValue
@@ -188,6 +191,9 @@ extension NNCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
         if let cell = delegate?.cellForItem?(collectionView, cellForItemAtIndexPath: indexPath, obj: obj) {
             return cell
         }
+        if let cell = cellForItemBlock?(collectionView, indexPath, obj) {
+            return cell
+        }
         
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         
@@ -208,6 +214,7 @@ extension NNCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectedIndex(indexPath.item)
+        didSelectedBlock?(indexPath.item)
     }
     
     
