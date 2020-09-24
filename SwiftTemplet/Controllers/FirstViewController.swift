@@ -30,6 +30,8 @@ class FirstViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
+            ["TestScrollViewController", "TestScrollViewController", ],
+            ["NNCellDefaultViewController", "NNCellDefaultView", ],
              ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
              ["ConstraintArrayDSLController", "Snapkit 扩展", ],
              ["ChatInputController", "聊天输入框", ],
@@ -45,6 +47,7 @@ class FirstViewController: UIViewController{
              ],
             [["GreenViewController", "转场动画缩放", ],
              ["RedViewController", "转场动画下拉上推", ],
+             ["SwipeRightToPopViewController", "左滑返回", ],
              ],
             [["TableSectionCornerListController", "OC section 圆角", ],
              ],

@@ -204,6 +204,8 @@ class EntryViewController: UIViewController {
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
             ["PhotoShow", "UITableViewCellPhotoShow", "216.0", "", "recharge", ],
+            ["Banner", "UITableViewCellBanner", "216.0", "", "recharge", ],
+            ["Cycle", "UITableViewCellCycle", "70.0", "", "recharge", ],
             ["WebView", "UITableViewCellWebView", "90.0", "", "recharge", ],
             ["水平排布", "UITableViewCellHorizontal", " 50.0", "", "recharge", ],
             ["垂直排布", "UITableViewCellVertical", " 120.0", "", "recharge", ],
@@ -554,6 +556,30 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
+        case "UITableViewCellBanner":
+            let cell = UITableViewCellBanner.dequeueReusableCell(tableView)
+            
+            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellCycle":
+            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellCycle")
+            
+            let inset = UIEdgeInsetsMake(10, 10, 10, 10)
+            cell.contentView.createSubTypeView(NNCycleScrollView.self, tag: 100, inset: inset) { (view) in
+                view.direction = .vertical
+                view.list =  ["我们对权限控制做了升级，现在可以精准控制app端的权限了","由管理员在网页端设置。如果您发现您原来“运营”菜单中有的功能不见了，请联系集团管理员添加，给您带来不便敬请谅解。", "qqqqqqqqqqqqqqqq"]
+
+        //        view.pageControl.isHidden = true
+                view.timeInterval = 5
+                view.didSelectedBlock = { idx in
+                    DDLog(idx)
+                }
+            }
+            
+//            cell.getViewLayer()
+            return cell
+            
         case "UITableViewCellDateRange":
             
 //            let cell = tableView.dequeueReuCell(for: UITableViewCellDateRange())
@@ -581,7 +607,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }
             cell.dateRangeView.block { (dateRangeView) in
                 DDLog(dateRangeView.beginTime, dateRangeView.endTime)
-                if dateRangeView.endTime.isNewer(version: dateRangeView.beginTime) == false {
+                if dateRangeView.endTime.isBig(dateRangeView.beginTime) == false {
                     NNProgressHUD.showText("结束时间必须大于开始时间")
                     return
                 }
@@ -678,8 +704,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellDefault":
             let cell = UITableViewCellDefault.dequeueReusableCell(tableView)
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.defaultView.labelLeft.text = value0
-            cell.defaultView.labelRight.text = value4
+            cell.defaultView.textLabel.text = value0
+            cell.defaultView.detailTextLabel.text = value4
             cell.getViewLayer()
             return cell
             
@@ -837,7 +863,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dividerWidth = 2
             cell.dividerSpacing = 10
             
-//            cell.getViewLayer();
+            cell.getViewLayer();
             return cell;
             
         case "UITableViewCellSudokuButtonNew":
