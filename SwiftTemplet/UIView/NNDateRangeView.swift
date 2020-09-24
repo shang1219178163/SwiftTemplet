@@ -32,6 +32,8 @@ import SwiftExpand
     }
 
     var rangeDay: Int = 30
+    
+    var isLockRangeDay = false
 
     var endDate: Date = Date(){
         willSet{
@@ -77,13 +79,17 @@ import SwiftExpand
             self.datePicker.datePicker.minimumDate = self.isFuture == false ? Date.distantPast : self.beginDate
             self.datePicker.datePicker.date = self.beginDate
             self.datePicker.show()
-            self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
-                self.labBegin.text = dateStr
-                self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date)
-                if picker.datePicker.datePickerMode == .time {
-                    self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kTimeFormatBegin)
+            self.datePicker.block({ (picker: NNDatePicker, idx: Int) in
+                self.beginDate = picker.datePicker.date;
+                if (self.isLockRangeDay) {
+                    self.endDate = Date(timeInterval: TimeInterval(self.rangeDay*24*60*60), since: picker.datePicker.date)
                 }
+//                let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
+//                self.labBegin.text = dateStr
+//                self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date)
+//                if picker.datePicker.datePickerMode == .time {
+//                    self.beginTime = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kTimeFormatBegin)
+//                }
                 
                 self.delegate?.dateRangeView(self)
                 self.viewBlock?(self)
@@ -94,13 +100,17 @@ import SwiftExpand
             self.datePicker.datePicker.minimumDate = self.beginDate
             self.datePicker.datePicker.date = self.endDate
             self.datePicker.show()
-            self.datePicker.block({ (picker: NNDatePicker, idx:Int) in
-                let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
-                self.labEnd.text = dateStr
-                self.endTime = DateFormatter.stringFromDate(picker.datePicker.date)
-                if picker.datePicker.datePickerMode == .time {
-                    self.endTime = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kTimeFormatEnd)
+            self.datePicker.block({ (picker: NNDatePicker, idx: Int) in
+                self.endDate = picker.datePicker.date;
+                if (self.isLockRangeDay) {
+                    self.beginDate = Date(timeInterval: TimeInterval(-self.rangeDay*24*60*60), since: picker.datePicker.date)
                 }
+//                let dateStr = DateFormatter.dateFromPicker(picker.datePicker, date: picker.datePicker.date)
+//                self.labEnd.text = dateStr
+//                self.endTime = DateFormatter.stringFromDate(picker.datePicker.date)
+//                if picker.datePicker.datePickerMode == .time {
+//                    self.endTime = DateFormatter.stringFromDate(picker.datePicker.date, fmt: kTimeFormatEnd)
+//                }
                 
                 self.delegate?.dateRangeView(self)
                 self.viewBlock?(self)
