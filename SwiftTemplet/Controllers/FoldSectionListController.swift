@@ -122,21 +122,27 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
 
         let view = UITableHeaderFooterViewZero.dequeueReusableHeaderFooterView(tableView)
 //        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
+        view.backgroundView = UIView(frame: CGRectMake(0, 0, kScreenWidth, 55))
+        view.backgroundView?.backgroundColor = UIColor.clear
+        view.backgroundView?.backgroundColor = UIColor.background
         
+        view.indicatorView.isHidden = true
+        view.imgViewLeft.isHidden = true
+
         view.isCanOpen = foldModel.isCanOpen
         view.isOpen = foldModel.isOpen
         view.labelLeft.text = foldModel.title
-        view.labelRight.text = "\(foldModel.dataList.count)个"
+        view.btn.setTitle("\(foldModel.dataList.count)个", for: .normal)
         view.imgViewLeft.image = UIImageNamed(foldModel.image)
         view.contentView.backgroundColor = UIColor.white
         UIView.animate(withDuration: kDurationDrop, animations: {
             view.indicatorView.transform = view.isOpen == true ? (view.indicatorView.transform.rotated(by: CGFloat(Double.pi/2))) : .identity;
         })
-        view.block { (headerView: UITableHeaderFooterViewZero) in
+        view.block = { headerView in
             foldModel.isOpen = !foldModel.isOpen
             tableView.reloadSections([section], with: .fade)
         }
-
+        
         view.getViewLayer()
         return view
     }
