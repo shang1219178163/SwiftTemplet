@@ -203,12 +203,18 @@ extension NNDateRangeVerticalView: UITableViewDataSource, UITableViewDelegate{
             if indexPath.row == 0 {
                 self.beginDate = picker.datePicker.date;
                 if (self.isLockRangeDay) {
-                    self.endDate = Date(timeInterval: TimeInterval(self.rangeDay*24*60*60), since: picker.datePicker.date)
+                    let date = Date(timeInterval: TimeInterval(self.rangeDay*24*60*60), since: picker.datePicker.date)
+                    if date < self.endDate {
+                        self.endDate = date
+                    }
                 }
             } else {
                 self.endDate = picker.datePicker.date;
                 if (self.isLockRangeDay) {
-                    self.beginDate = Date(timeInterval: TimeInterval(-self.rangeDay*24*60*60), since: picker.datePicker.date)
+                    let date = Date(timeInterval: TimeInterval(-self.rangeDay*24*60*60), since: picker.datePicker.date)
+                    if date > self.beginDate {
+                        self.beginDate = date
+                    }
                 }
             }
             self.delegate?.dateRangeView(self)
