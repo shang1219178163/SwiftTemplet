@@ -18,8 +18,7 @@ class NNCheckVersApi: NNBaseRequestApi {
     }
     
     override func requestParams() -> Dictionary<String, Any> {
-        return [
-            "id": kAppStoreID,
+        return [ "id": kAppStoreID,
         ];
     }
     
