@@ -13,9 +13,14 @@ import SwiftExpand
 ///  指示器 标题     子标题
 class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
 
-    private var viewBlock: ((UITableHeaderFooterViewZero) -> Void)?
+    var block: ((UITableHeaderFooterViewZero)->Void)?
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+    
+    var indicatorViewSize = CGSize(width: 25, height: 25)
+    var imgViewLeftSize = CGSize(width: 30, height: 30)
+
+    var spacing: CGFloat = 8
 
     // MARK: -life cycle
 
@@ -24,28 +29,22 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         contentView.addSubview(indicatorView);
         contentView.addSubview(imgViewLeft);
         contentView.addSubview(labelLeft);
-        contentView.addSubview(labelRight);
+        contentView.addSubview(btn);
         contentView.addSubview(lineBottom)
 
-        labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
         
         indicatorView.image = UIImageNamed(kIMG_arrowRight)
-        labelRight.textAlignment = .center
 
         _ = contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }
             if self.isCanOpen == true {
-                self.viewBlock?(self)
+                self.block?(self)
             }
         }
         
     }
-    
-    func block(_ action: @escaping ((UITableHeaderFooterViewZero) -> Void)) {
-        self.viewBlock = action;
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
         fatalError("init(coder:) has not been implemented")
@@ -62,50 +61,45 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
             return
         }
         let height = bounds.height - inset.top - inset.bottom
+        
+        var labStartX = inset.left
+        var imgViewLeftStartX = inset.left
 
-        indicatorView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(inset.left)
-            make.size.equalTo(CGSize(width: 25, height: 25))
+        
+        let btnSize = btn.sizeThatFits(.zero)
+        let labeEndX = btn.isHidden == false ? btnSize.width + inset.right + spacing : inset.right
+        if btn.isHidden == false {
+            btn.snp.remakeConstraints { (make) in
+                make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
+                make.right.equalToSuperview().offset(-inset.right)
+                make.size.equalTo(btnSize)
+            }
+        }
+        
+        if indicatorView.isHidden == false {
+            indicatorView.snp.remakeConstraints { (make) in
+                make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
+                make.left.equalToSuperview().offset(inset.left)
+                make.size.equalTo(indicatorViewSize)
+            }
+            labStartX += indicatorViewSize.width + spacing
+            imgViewLeftStartX += indicatorViewSize.width + spacing
         }
         
         if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalTo(indicatorView.snp.right).offset(kPadding)
-                make.width.height.equalTo(height)
+                make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
+                make.left.equalToSuperview().offset(imgViewLeftStartX)
+                make.size.equalTo(imgViewLeftSize)
             }
-            
-            let labelLeftSize = labelLeft.sizeThatFits(.zero)
-            labelLeft.snp.remakeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalTo(imgViewLeft.snp.right).offset(kPadding)
-                make.width.lessThanOrEqualTo(labelLeftSize.width)
-                make.height.equalTo(height)
-            }
-        } else {
-            let labelLeftSize = labelLeft.sizeThatFits(.zero)
-            labelLeft.snp.remakeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.left.equalTo(indicatorView.snp.right).offset(kPadding)
-                make.width.lessThanOrEqualTo(labelLeftSize.width)
-                make.height.equalTo(height)
-            }
+            labStartX += imgViewLeftSize.width + spacing
         }
         
-        let labelRightSize = labelRight.sizeThatFits(.zero)
-        labelRight.snp.remakeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-inset.right)
-            make.width.lessThanOrEqualTo(labelRightSize.width)
+        labelLeft.snp.remakeConstraints { (make) in
+            make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
+            make.left.equalToSuperview().offset(labStartX)
+            make.right.equalToSuperview().offset(-labeEndX)
             make.height.equalTo(height)
-        }
-        
-        lineBottom.snp.makeConstraints { (make) in
-            make.left.equalToSuperview();
-            make.right.equalToSuperview();
-            make.bottom.equalToSuperview().offset(0);
-            make.height.equalTo(0.33);
         }
     }
 
