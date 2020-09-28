@@ -131,7 +131,7 @@ class UITableViewCellSixLable: UITableViewCell {
 
         if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview().offset(0)
+                make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
                 make.left.equalToSuperview().offset(inset.left);
                 make.width.height.equalTo(height);
             }

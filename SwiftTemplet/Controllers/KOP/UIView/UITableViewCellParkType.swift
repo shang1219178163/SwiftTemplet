@@ -88,7 +88,7 @@ class UITableViewCellParkType: UITableViewCell {
 
         let labelSize = label.sizeThatFits(.zero)
         label.snp.remakeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(0);
+            make.centerY.equalToSuperview().offset(inset.top - inset.bottom);
             make.left.equalToSuperview().offset(inset.left);
             make.size.equalTo(labelSize);
         }
