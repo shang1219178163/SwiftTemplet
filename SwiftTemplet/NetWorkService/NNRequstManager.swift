@@ -189,8 +189,8 @@ class NNRequstManager: NSObject {
         }
         
         _ = UIAlertController.showAlert("", msg: tip!)
-        delegate?.manager(self, error: response.error as! NSError)
-        failureBlock?(self, response.error as! NSError)
+        delegate?.manager(self, error: response.error! as NSError)
+        failureBlock?(self, response.error! as NSError)
     }
     
 }

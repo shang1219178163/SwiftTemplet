@@ -38,13 +38,13 @@ import SwiftExpand
     var endDate: Date = Date(){
         willSet{
             endTime = DateFormatter.stringFromDate(newValue)
-            labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: newValue)
+            labEnd.text = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: newValue)
         }
     }
     var beginDate: Date = Date(){
         willSet{
             beginTime = DateFormatter.stringFromDate(newValue)
-            labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: newValue)
+            labBegin.text = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: newValue)
         }
     }
     
@@ -181,8 +181,8 @@ import SwiftExpand
             return
         }
         assert(endTime.count == 19 && beginTime.count == 19 , "必须是完整的时间字符串,例'2020-05-15 01:06:29'")
-        labBegin.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: beginDate)
-        labEnd.text = DateFormatter.dateFromPicker(datePicker.datePicker, date: endDate)
+        labBegin.text = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: beginDate)
+        labEnd.text = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: endDate)
     }
     
     //MARK: -lazy

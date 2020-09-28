@@ -49,14 +49,14 @@ import SwiftExpand
     var endDate: Date = Date(){
         willSet{
 //            endTime = DateFormatter.stringFromDate(newValue)
-            endTime = DateFormatter.dateFromPicker(datePicker.datePicker, date: newValue)
+            endTime = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: newValue)
             tableView.reloadData()
         }
     }
     var beginDate: Date = Date(){
         willSet{
 //            beginTime = DateFormatter.stringFromDate(newValue)
-            beginTime = DateFormatter.dateFromPicker(datePicker.datePicker, date: newValue)
+            beginTime = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: newValue)
             tableView.reloadData()
         }
     }
@@ -104,13 +104,12 @@ import SwiftExpand
         addSubview(bomLineView)
         addSubview(tableView)
 
-        endTime = DateFormatter.dateFromPicker(datePicker.datePicker, date: endDate)
-        beginTime = DateFormatter.dateFromPicker(datePicker.datePicker, date: beginDate)
+        endTime = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: endDate)
+        beginTime = DateFormatter.dateFromPickerMode(datePicker.datePicker.datePickerMode, date: beginDate)
 
 //        topLineView.backgroundColor = .systemRed
 //        bomLineView.backgroundColor = .systemRed
-
-        DDLog(beginTime, endTime)
+//        DDLog(beginTime, endTime)
         tableView.reloadData()
     }
     

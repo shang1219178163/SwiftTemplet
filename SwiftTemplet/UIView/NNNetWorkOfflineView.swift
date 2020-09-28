@@ -92,14 +92,14 @@ import SwiftExpand
         }
         
         btn.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(0);
+            make.centerY.equalToSuperview().offset(inset.top - inset.bottom);
             make.right.equalToSuperview().offset(-inset.right);
             make.width.equalTo(8);
             make.height.equalTo(13);
         }
         
         label.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(0);
+            make.centerY.equalToSuperview().offset(inset.top - inset.bottom);
             make.left.equalToSuperview().offset(labStartX);
             make.right.equalTo(btn.snp.left).offset(-8);
             make.height.equalToSuperview().multipliedBy(0.5)

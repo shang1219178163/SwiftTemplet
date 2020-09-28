@@ -14,7 +14,7 @@ class NNCollectionViewCellList: UICollectionViewCell {
     static let reuseIdentifier = String(describing: self)
     let accessoryImageView = UIImageView()
     let seperatorView = UIView()
-    var seperatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    var inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     lazy var labelTitle: UILabel = {
         let label = UILabel()
@@ -67,7 +67,7 @@ class NNCollectionViewCellList: UICollectionViewCell {
         
         if accessoryImageView.isHidden == false {
             accessoryImageView.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview().offset(0);
+                make.centerY.equalToSuperview().offset(inset.top - inset.bottom);
                 make.width.equalTo(13)
                 make.height.equalTo(20)
                 make.right.equalToSuperview().offset(-10);
@@ -98,8 +98,8 @@ class NNCollectionViewCellList: UICollectionViewCell {
         }
         
         seperatorView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(seperatorInset.left);
-            make.right.equalToSuperview().offset(-seperatorInset.right);
+            make.left.equalToSuperview().offset(inset.left);
+            make.right.equalToSuperview().offset(-inset.right);
             make.bottom.equalToSuperview().offset(0);
             make.height.equalTo(0.5);
         }

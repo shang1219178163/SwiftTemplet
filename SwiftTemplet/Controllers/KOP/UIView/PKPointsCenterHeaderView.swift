@@ -64,7 +64,7 @@ class PKPointsCenterHeaderView: UIImageView {
 //        let btnHeight: CGFloat = 21
 
         btn.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(0);
+            make.centerY.equalToSuperview().offset(inset.top - inset.bottom);
             make.right.equalToSuperview().offset(-inset.right);
             make.width.equalTo(90);
             make.height.equalTo(27);
