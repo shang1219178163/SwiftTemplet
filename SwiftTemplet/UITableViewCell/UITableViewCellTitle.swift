@@ -112,7 +112,7 @@ class UITableViewCellTitle: UITableViewCell {
 二十六杯酒，乌蝇不飞，若心悸的你我躲在叶下看秋雨渐衰。
 二十七杯酒，弹几点泪，轻轻放下酒杯。
 """
-        UIAlertController.showAlert("温馨提示", msg: message)
+        UIAlertController.showAlert("温馨提示", message: message)
     }
 }
 

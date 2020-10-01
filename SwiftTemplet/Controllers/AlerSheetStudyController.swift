@@ -46,9 +46,9 @@ import HFNavigationController
                       UIImage(named:"icon_num3")!.withRenderingMode(.alwaysOriginal),
         ]
 
-        let alertVC = UIAlertController.createSheet("标题", msg: "这是一条提示信息", items: titles) { (controller, action) in
+        let alertVC = UIAlertController.createSheet("标题", message: "这是一条提示信息", items: titles) { (controller, action) in
             let actionIdx = controller.actions.firstIndex(of: action)
-            DDLog(actionIdx)
+            DDLog(actionIdx as Any)
         }
         alertVC.actions.forEach { (action) in
             guard let actionIdx = alertVC.actions.firstIndex(of: action) else { return }

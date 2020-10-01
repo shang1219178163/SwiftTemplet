@@ -149,7 +149,7 @@ class EntryViewController: UIViewController {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
+        var alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -164,7 +164,8 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
-            ["车场标签", "UITableViewCellParkType", "30", "", "recharge", ],                
+            ["更多内容", "UITableViewCellArticle", "135", "", "recharge", ],
+            ["车场标签", "UITableViewCellParkType", "30", "", "recharge", ],
             ["Excel", "UITableViewCellExcel", "155", "", "recharge", ],
             ["标题", "UITableViewCellTitle", "50.0", "", "recharge", ],
             ["标签", "UITableViewCellTags", "70.0", "", "recharge", ],
@@ -382,7 +383,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.labelLeft.text = "这是一个标题"
 //            btn.addActionHandler({ (control) in
-//                UIAlertController.showAlert("温馨提示", msg: "亲爱的客户请检查........")
+//                UIAlertController.showAlert("温馨提示", message: "亲爱的客户请检查........")
 //            }, for: .touchUpInside)
             cell.getViewLayer()
             return cell
@@ -572,7 +573,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
         //        view.pageControl.isHidden = true
                 view.timeInterval = 5
-                view.didSelectedBlock = { idx in
+                view.didSelectedBlock = { sender, idx in
                     DDLog(idx)
                 }
             }
@@ -987,6 +988,20 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 cell.contentView.addSubview(uploadImagesView)
             }
+            
+            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellArticle":
+            let cell = UITableViewCellArticle.dequeueReusableCell(tableView)
+            cell.labelLeft.text = "爱车里需要购置什么常用需的实用物品，配置哪些车购置什么常用购置什么常用购置什么常用…"
+            cell.labelLeftSub.text = "有些车型可能会不适合,副驾驶遮阳板上的抽纸在后视镜上的雨眉。"
+            
+            cell.fromImgView.image = UIApplication.appIcon
+            cell.fromLabel.text = "艾润停车王"
+            
+            cell.imgViewRight.isHidden = true
+            cell.imgViewRight.image = UIImage(color: .systemGreen)
             
             cell.getViewLayer()
             return cell

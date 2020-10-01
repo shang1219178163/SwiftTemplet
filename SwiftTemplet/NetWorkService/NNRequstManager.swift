@@ -188,7 +188,7 @@ class NNRequstManager: NSObject {
             tip = "请求失败,请稍后重试"
         }
         
-        _ = UIAlertController.showAlert("", msg: tip!)
+        _ = UIAlertController.showAlert("", message: tip!)
         delegate?.manager(self, error: response.error! as NSError)
         failureBlock?(self, response.error! as NSError)
     }

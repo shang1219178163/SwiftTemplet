@@ -16,7 +16,7 @@ class UITableViewCellSheet: UITableViewCell {
     var viewBlock:((String) -> Void)?
     var itemList: [String]? {
         willSet{
-            alertCtrl = UIAlertController.createSheet("请选择", msg: nil, items: newValue, handler: { (controller, action) in
+            alertCtrl = UIAlertController.createSheet("请选择", message: nil, items: newValue, handler: { (controller, action) in
                 if action.title != kTitleCancell {
                     self.textfield.text = action.title
                     self.viewBlock?(action.title!)
@@ -116,7 +116,7 @@ class UITableViewCellSheet: UITableViewCell {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", msg: nil, items:nil, handler: { (controller, action) in
+        var alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (controller, action) in
             DDLog(action.title as Any)
         })
         return alertController
