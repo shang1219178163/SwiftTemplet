@@ -466,14 +466,14 @@ open class BaseNotificationBanner: UIView {
 
         let edgeInsets = bannerEdgeInsets ?? .zero
 
-        let newY = (bannerPosition == .top) ? (frame.origin.y) : (window.height - bannerHeight + edgeInsets.top - edgeInsets.bottom)
+        let newY = (bannerPosition == .top) ? (frame.origin.y) : (window.bounds.height - bannerHeight + edgeInsets.top - edgeInsets.bottom)
         frame = CGRect(x: frame.origin.x,
                        y: newY,
-                       width: window.width - edgeInsets.left - edgeInsets.right,
+                       width: window.bounds.width - edgeInsets.left - edgeInsets.right,
                        height: bannerHeight)
 
         bannerPositionFrame = BannerPositionFrame(bannerPosition: bannerPosition,
-                                                  bannerWidth: window.width,
+                                                  bannerWidth: window.bounds.width,
                                                   bannerHeight: bannerHeight,
                                                   maxY: maximumYPosition(),
                                                   finishYOffset: finishBannerYOffset(),
@@ -575,7 +575,7 @@ open class BaseNotificationBanner: UIView {
         if let parentViewController = parentViewController {
             return parentViewController.view.frame.height
         } else {
-            return appWindow?.height ?? 0
+            return appWindow?.bounds.height ?? 0
         }
     }
 
