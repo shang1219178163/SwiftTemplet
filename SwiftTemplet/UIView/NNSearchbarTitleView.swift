@@ -1,9 +1,9 @@
 //
-//	NNSearchbarTitleView.swift
-//	MacTemplet
+//    NNSearchbarTitleView.swift
+//    MacTemplet
 //
-//	Created by shang on 2020/08/21 15:19
-//	Copyright © 2020 shang. All rights reserved.
+//    Created by shang on 2020/08/21 15:19
+//    Copyright © 2020 shang. All rights reserved.
 //
 
 
@@ -16,6 +16,8 @@ import SwiftExpand
     
     var inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
+    var searchbarHeight: CGFloat = 30
+    
     // MARK: -lifecycle
     override var intrinsicContentSize: CGSize{
         return UIView.layoutFittingExpandedSize;
@@ -39,30 +41,27 @@ import SwiftExpand
             return;
         }
         
-        if cancellBtn.isHidden == true {
-            searchBar.snp.makeConstraints { (make) in
+        if #available(iOS 11.0, *) {
+//            inset = UIEdgeInsets(top: 6, left: inset.left, bottom: 6, right: inset.right)
+        }
+        
+        let searchBarEndX = cancellBtn.isHidden == false ? 40 + 5 + inset.right : inset.right
+        
+        if cancellBtn.isHidden == false {
+            cancellBtn.snp.makeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top);
-                make.left.equalToSuperview().offset(inset.left);
-                make.right.equalToSuperview().offset(inset.right);
-                make.height.equalToSuperview();
+                make.right.equalToSuperview().offset(-inset.right);
+                make.bottom.equalToSuperview().offset(-inset.bottom);
+                make.width.equalTo(40);
             }
-            return
         }
-        
-        cancellBtn.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(inset.top);
-            make.right.equalToSuperview().offset(-inset.right);
-            make.bottom.equalToSuperview().offset(-inset.bottom);
-            make.width.equalTo(40);
-        }
-        
+
         searchBar.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(inset.top);
+            make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
             make.left.equalToSuperview().offset(inset.left);
-            make.right.equalTo(cancellBtn.snp.left).offset(-5);
-            make.height.equalToSuperview();
+            make.right.equalToSuperview().offset(-searchBarEndX);
+            make.height.equalTo(searchbarHeight)
         }
-        
     }
     
     // MARK: - funtions
@@ -73,11 +72,16 @@ import SwiftExpand
         view.layer.cornerRadius = 0;
         view.showsCancelButton = false;
         view.backgroundColor = .white
-        
-        view.textField?.placeholder = "请输入名称";
+        view.setImage(UIImage(named: "icon_search"), for: .search, state: .normal)
+//        view.searchTextPositionAdjustment = UIOffset(horizontal: 5, vertical: 0)
+        view.placeholder = "请输入名称";
         view.textField?.backgroundColor = UIColor.background
         view.textField?.layer.cornerRadius = 5;
         view.textField?.layer.masksToBounds = true;
+        view.textField?.font = UIFont.systemFont(ofSize: 14)
+//        if #available(iOS 11.0, *) {
+//            view.heightAnchor.constraint(equalToConstant: 44).isActive = true
+//        }
         return view
     }()
     
