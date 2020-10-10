@@ -30,8 +30,10 @@ class FirstViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
-            ["TestScrollViewController", "TestScrollViewController", ],
-            ["NNCellDefaultViewController", "NNCellDefaultView", ],
+             ["GXSegmentPageViewExampleController", "GXSegmentPageView", ],
+             ["QRCodeViewController", "二维码", ],
+             ["TestScrollViewController", "TestScrollViewController", ],
+             ["NNCellDefaultViewController", "NNCellDefaultView", ],
              ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
              ["ConstraintArrayDSLController", "Snapkit 扩展", ],
              ["ChatInputController", "聊天输入框", ],
@@ -44,6 +46,8 @@ class FirstViewController: UIViewController{
              ["PopoverViewExampleController", "PopoverView", ],
              ["ScrollLabelController", "ScrollLabel", ],
              ["AddShadowViewController", "addShadow", ],
+             ["FourthViewController", "FourthView", ],
+             ["TitleViewController", "TitleView", ],             
              ],
             [["GreenViewController", "转场动画缩放", ],
              ["RedViewController", "转场动画下拉上推", ],
@@ -80,7 +84,6 @@ class FirstViewController: UIViewController{
             }
         }
         view.addSubview(tableView)
-        
     }
     
     override func viewDidLayoutSubviews() {

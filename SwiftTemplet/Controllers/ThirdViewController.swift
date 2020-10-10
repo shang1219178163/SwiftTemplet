@@ -24,6 +24,7 @@ class ThirdViewController: UIViewController{
         return view
     }()
     
+    
     lazy var listiOS13: [String] = {
         return ["SystemColorShowController", "AppStoreGameController", "SubscribeListController"]
     }()
@@ -31,11 +32,10 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
-             ["SubscribeListNewController", "微信公众号信息列表1", ],
-
+//             ["SubscribeListNewController", "微信公众号信息列表1", ],
+             ["FloatingPanelExampleController", "FloatingPanel浮层", ],             
             ["ProtocolViewController", "面向协议编程", ],
             ["AppleSignInViewController", "AppleSignIn", ],
-            ["PKParkCollectListController", "kOP 收藏", ],
              ["NNFeedbackController", "kOP Upload", ],
              ["NNImageAndVideoPickerController", "kOP UploadImages", ],
              ["RxRequestExampleController", "RxSwift 网络请求", ],
@@ -66,8 +66,7 @@ class ThirdViewController: UIViewController{
              ["TitleViewController", "导航栏下拉菜单", ],
              ["NNButtonStudyController", "按钮研究", ],
              
-             ["UICollectionDispalyController", "UICollectionView展示", ],
-             ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],
+            ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
 //             ["NNTabViewController", "NNTabView组件", ],
              ["CustomViewController", "自定义View", ],
              ["CalendarViewController", "CalenderView", ],
@@ -134,7 +133,29 @@ class ThirdViewController: UIViewController{
 
         view.block({ (versionView, idx) in
             DDLog(idx)
+            versionView.dismiss()
         })
+        return view
+    }()
+            
+    lazy var updateOneView: NNUpdateVersionOneView = {
+        var view = NNUpdateVersionOneView(frame: .zero)
+        view.isForceUpdate = true
+        view.labelContent.text = "数据显示，2020上半年全国300个大中城市住宅用地成交楼面均价5150元/平方米，同比上涨16.5%，300个大中城市土地平均溢价率13.6%。其中长三角城市的涨势尤其亮眼，在一些二三线城市房地产不景气的情况下，南京、宁波、杭州、南通、扬州等长三角城市的房价逆势上涨。"
+        return view
+    }()
+    
+    lazy var agreementView: NNAgreementView = {
+        var view = NNAgreementView(frame: .zero)
+        view.labelTitle.text = "温馨提示"
+        view.textView.textColor = .textColor3
+        view.delegate = self
+                        
+        let tapTexts = ["《服务协议》", "《隐私政策》",];
+        let tapUrls = ["", "",];
+        let string = "感谢您对停车王的信任！\n\n请注意，在您使用本软件过程中我们会按照\(tapTexts[0])、\(tapTexts[1])收集、使用和共享您的个人信息，请认真阅读并充分理解。\n\n特别提示：\n1.基于您的授权，我们可能会获取您的位置等信息，您有权拒绝或取消授权；\n2.我们会采取业界先进的安全措施保护您的信息安全；\n3.未经您同意，我们不会从第三方处获取、共享或向其提供您的信息;"
+        view.textView.setupUserAgreements(string, tapTexts: tapTexts, tapUrls: tapUrls, fontSize: 16)
+        view.setNeedsLayout()
         return view
     }()
     
@@ -144,14 +165,31 @@ class ThirdViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
-        }
         
-        createBarItem( .done, isLeft: false) { (sender: AnyObject) in
-            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-            rootViewController.present(self.navController, animated: true, completion: nil)
-        }
+        let barItem = UIBarButtonItem(title: "升级", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        let barItem1 = UIBarButtonItem(title: "协议", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        let barItem2 = UIBarButtonItem(title: "弹窗", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        let barItem3 = UIBarButtonItem(title: "升级", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        let barItem4 = UIBarButtonItem(title: "展示", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        let barItem5 = UIBarButtonItem(title: "展示2", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        barItem.tag = 0
+        barItem1.tag = 1
+        barItem2.tag = 2
+        barItem3.tag = 3
+        barItem4.tag = 4
+        barItem5.tag = 5
+        navigationItem.leftBarButtonItems = [barItem, barItem1, barItem2]
+        navigationItem.rightBarButtonItems = [barItem3, barItem4, barItem5]
+
+//        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
+////            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
+//            self.updateOneView.check()
+//        }
+//
+//        createBarItem( .done, isLeft: false) { (sender: AnyObject) in
+//            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+//            rootViewController.present(self.navController, animated: true, completion: nil)
+//        }
 
 //        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
@@ -191,6 +229,7 @@ class ThirdViewController: UIViewController{
 
 //        let controller = CellListController()
 //        navigationController?.pushViewController(controller, animated: true);
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -230,6 +269,79 @@ class ThirdViewController: UIViewController{
         }
     }
     
+    @objc func handleActionItem(_ item: UIBarButtonItem) {
+        switch item.tag {
+        case 0:
+            updateOneView.check()
+
+        case 1:
+            agreementView.show()
+        
+        case 2:
+            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+            rootViewController.present(self.navController, animated: true, completion: nil)
+            
+        case 3:
+            let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"
+            UIAlertController.showAlert("提示", message: message)
+            
+        case 4:
+            let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"
+            UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+                .addActionTitle(kTitleCancell, style: .destructive) { (action) in
+                    DDLog(action.title as Any)
+            }
+            .addActionTitle(kTitleSure, style: .default) { (action) in
+                DDLog(action.title as Any)
+            }
+            .addTextFieldPlaceholder("", handler: { (textfield) in
+                DDLog(textfield.text as Any)
+            })
+                .present {
+//                DDLog("present")
+            }
+            
+        case 5:
+            let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。我已经解决了所有问题，但是我希望能够捕捉平移手势是否被反转。"
+            UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+                .addActionTitles([kTitleCancell, kTitleSure]) { (action) in
+                    DDLog(action.title as Any)
+            }
+//            .addTextFields(["请输入账号", "请输入密码"]) { (textfield) in
+//                DDLog(textfield.text as Any)
+//                textfield.addTarget(self, action: #selector(self.handleTextfield(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
+//            }
+            .present {
+//                DDLog("present")
+            }
+            UIApplication.shared.keyWindow?.endEditing(true)
+        default:
+            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
+            break
+        }
+    }
+    
+    @objc func handleTextfield(_ sender: UITextField) {
+        DDLog(sender.text)
+    }
+    
+    func showAlert() {
+        UIAlertController(title: "提示", message: "xinx", preferredStyle: .alert)
+            .addActionTitle(kTitleSure, style: .default) { (action) in
+                DDLog(action.title)
+        }
+        .addActionTitle(kTitleCancell, style: .destructive) { (action) in
+            DDLog(action.title)
+        }
+        .addTextFieldPlaceholder("请输入", handler: { (textfield) in
+            DDLog(textfield.text)
+
+        }).present {
+            DDLog("present")
+        }
+    }
+    
+    
     func requestInfo() {
         NNProgressHUD.showLoading("努力加载中")
         updateAPi.startRequest(success: { (manager, dic) in
@@ -263,7 +375,7 @@ class ThirdViewController: UIViewController{
         updateView.labelTwo.text = "更新内容:"
         updateView.labelThree.text = "\(model.releaseNotes ?? "--")"
         if let releaseDate = model.currentVersionReleaseDate, releaseDate.count >= 10 {
-            updateView.labelOne.text = "v\(model.version ?? "--") (\(releaseDate.substringTo(9)))"
+            updateView.labelOne.text = "v\(model.version ?? "--") (\(releaseDate.substring(to: 9)))"
         }
         let isUpdate: Bool = model.version?.compare(UIApplication.appVer, options: .numeric, range: nil, locale: nil) == .orderedDescending
         if isUpdate {
@@ -408,7 +520,29 @@ extension ThirdViewController: NNAgreementAlertControllerDelegate{
 
 }
 
-extension ThirdViewController{
+extension ThirdViewController: NNAgreementViewDelegate{
+    func agreementView(_ view: NNAgreementView, sender: UIButton) {
+        DDLog(sender.currentTitle, sender.tag)
+        switch sender.tag {
+        case 0:
+            exit(0)
+        default: break
+        }
+    }
+    
+    func agreementView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        DDLog(URL.absoluteString)
+        if URL.scheme?.contains("_") == true {
+            guard let urlString = URL.absoluteString.components(separatedBy: "_").last else { return false}
+            UIApplication.openURLString(urlString)
+        }
+
+//        if URL.scheme == "" {
+//            return false
+//        }
+        return true
+    }
+    
 
 
 }
