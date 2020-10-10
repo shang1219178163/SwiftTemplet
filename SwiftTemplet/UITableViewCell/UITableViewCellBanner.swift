@@ -17,11 +17,13 @@ import SwiftExpand
         let view = NNCycleScrollView(frame: .zero)
         view.direction = .horizontal
         view.list =  ["我们对权限控制做了升级，现在可以精准控制app端的权限了","由管理员在网页端设置。如果您发现您原来“运营”菜单中有的功能不见了，请联系集团管理员添加，给您带来不便敬请谅解。", "1qqqqqqqqqqqqqqqq"]
-        view.list = ["http://upload-images.jianshu.io/upload_images/1714291-6c664d526b380115.jpg",                        "http://img.parkingwang.com/6100000074/629906_1.jpg",                            "http://upload-images.jianshu.io/upload_images/3580598-482508548410c111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
-
+//        view.list = ["http://upload-images.jianshu.io/upload_images/1714291-6c664d526b380115.jpg",                        "http://img.parkingwang.com/6100000074/629906_1.jpg",                            "http://upload-images.jianshu.io/upload_images/3580598-482508548410c111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
+        view.list = ["https://img.zcool.cn/community/01ca4c5eef4071a801215aa0c5a660.png",
+                     "https://img.zcool.cn/community/016ed95eef4046a801215aa0d30d4f.jpg",
+                     "https://img.zcool.cn/community/013a905eef40a0a8012066211d5a45.jpg"];
 //        view.pageControl.isHidden = true
         view.timeInterval = 5
-        view.didSelectedBlock = { idx in
+        view.didSelectedBlock = { sender, idx in
             DDLog(idx)
         }
         
