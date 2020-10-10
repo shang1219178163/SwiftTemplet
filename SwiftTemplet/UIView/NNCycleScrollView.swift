@@ -18,25 +18,25 @@
 import UIKit
 import SDWebImage
 
-@objc public protocol NNCycleScrollViewDelegate : class {
-    @objc func didSelectedIndex(_ index: Int)
+@objc protocol NNCycleScrollViewDelegate : NSObjectProtocol {
+    @objc func didSelectedIndex(_ view: NNCycleScrollView, index: Int)
     @objc optional func cellForItem(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath, obj: String) -> UICollectionViewCell
 }
 
 ///轮播图
 @objcMembers class NNCycleScrollView: UIView {
 
-    var delegate: NNCycleScrollViewDelegate?
+    weak var delegate: NNCycleScrollViewDelegate?
     
-    var didSelectedBlock: ((Int)->Void)?
+    var didSelectedBlock: ((NNCycleScrollView, Int)->Void)?
     var cellForItemBlock: ((UICollectionView, IndexPath, String) -> UICollectionViewCell)?
-    
+
     var direction: UICollectionView.ScrollDirection = .horizontal{
         willSet{
             flowLayout.scrollDirection = newValue
         }
     }
-    var pageControl: UIPageControl = UIPageControl()
+    var pageControl = UIPageControl()
     var timeInterval: TimeInterval = 2
     ///图像链接或者文本
     var list: [String] = []{
@@ -44,12 +44,12 @@ import SDWebImage
             if newValue.count == 0 {
                 return
             }
-            pageControl.numberOfPages = list.count
+            pageControl.numberOfPages = newValue.count
             if !pageControl.isHidden {
-                pageControl.isHidden = (list.count <= 1)
+                pageControl.isHidden = (newValue.count <= 1)
             }
             
-            collectionView.isScrollEnabled = (list.count > 1)
+            collectionView.isScrollEnabled = (newValue.count > 1)
             isAutoScroll = collectionView.isScrollEnabled;
             collectionView.reloadData()
 
@@ -59,6 +59,10 @@ import SDWebImage
             }
         }
     }
+    
+    
+    var placeholderImage = UIImage(named:"img_placeholder")
+    
     var isinFiniteLoop: Bool = true
     var isAutoScroll: Bool = true{
         willSet{
@@ -144,7 +148,9 @@ import SDWebImage
         let currentIndex = self.currentIndex()
         let targetIndex = currentIndex + 1
         let indexPath = IndexPath(item: targetIndex, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: [], animated: true)
+        if indexPath.row < (list.count + 2) {
+            collectionView.scrollToItem(at: indexPath, at: [], animated: true)
+        }
     }
     
     func dataSourceIndex(forCurrentIndex index: Int) -> Int {
@@ -202,19 +208,27 @@ extension NNCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
             cell.imgView.isHidden = false
 
             cell.imgView.contentMode = .scaleToFill
-            cell.imgView.sd_setImage(with: imageURL, placeholderImage: UIImage(named:"img_car_default"))
-        } else {
-            cell.imgView.isHidden = true
-            cell.lab.isHidden = false
+            cell.imgView.sd_setImage(with: imageURL, placeholderImage: placeholderImage)
+        } else if let image = UIImage(named: obj){
+            cell.lab.isHidden = true
+            cell.imgView.isHidden = false
+
+            cell.imgView.contentMode = .scaleToFill
+            cell.imgView.image = image
             
+        } else  {
+            cell.lab.isHidden = false
+            cell.imgView.isHidden = true
+
             cell.lab.text = obj
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectedIndex(indexPath.item)
-        didSelectedBlock?(indexPath.item)
+        let idx = isinFiniteLoop && list.count > 1 ? indexPath.item - 1 : indexPath.item
+        delegate?.didSelectedIndex(self, index: idx)
+        didSelectedBlock?(self, idx)
     }
     
     

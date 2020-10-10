@@ -148,6 +148,7 @@ class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
     convenience init(tipPosition: CGFloat = 69, halfPosition: CGFloat = 216, fullPosition: CGFloat = 16) {
         self.init()
         self.fullPosition = fullPosition
+        self.halfPosition = halfPosition
         self.tipPosition = tipPosition
     }
     // MARK: -

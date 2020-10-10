@@ -33,7 +33,7 @@ class NNAppleSignInManager: NSObject {
         }
     }
     
-   var familyName: String {
+    var familyName: String {
         get {
             return UserDefaults.standard.string(forKey: "AppleFamilyName") ?? ""
         }
