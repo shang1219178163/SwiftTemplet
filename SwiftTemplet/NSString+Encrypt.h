@@ -24,7 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 ///对密文解密
 +(NSString *)decryptAESWithCipherText:(NSString *)ciphertexts;
 
-    
+
+/*AES256加密方法*/
++(NSData *)AEC256EncryptWithPlainText:(NSString *)plainText withKey:(NSData *)key;
+/*AES256解密方法*/
++ (NSData *)AES256DecryptWithCipherData:(NSData *)cipherData withKey:(NSData *)key;
+
 @end
 
 NS_ASSUME_NONNULL_END

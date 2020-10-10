@@ -70,7 +70,7 @@
     return plainText;
 }
 /*AES256加密方法*/
-+(NSData *)AEC256EncryptWithPlainText:(NSString *)plainText withKey:(NSData *)key{
++ (NSData *)AEC256EncryptWithPlainText:(NSString *)plainText withKey:(NSData *)key{
     if (plainText == nil) {
         return nil;
     }
