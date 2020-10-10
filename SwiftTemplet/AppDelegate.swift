@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NSObject.initializeMethod()
         UIViewController.initializeMethod()
+        UINavigationController.initializeMethod()
+        UITextView.initializeMethod()
+//        UIButton.initializeMethod()
+//        UITapGestureRecognizer.initializeMethod()
 //        UIImageView.initializeMethod()
 //        UIColor.theme = UIColor.systemBlue
         UIColor.theme = UIColor.hexValue(0x29B5FE)
@@ -38,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //方式二
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
+        
 //        controller = UICtrFromString("UIRecognizerController");
 //        controller = UICtrFromString("IOPAuthRechargeController");
 //        controller = UICtrFromString("NNUserLogInController");

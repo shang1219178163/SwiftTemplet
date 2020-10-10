@@ -1,6 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 def common_pods
@@ -70,7 +70,7 @@ def common_pods
     pod 'NNPopoverButton'
     pod 'HFNavigationController'
     pod 'NNExcelView'
-
+#    pod 'swiftScan'
 #    pod 'YBAttributeTextTapAction'
 #    pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 
@@ -80,8 +80,15 @@ def common_pods
     pod 'XHLaunchAd'
     pod 'Instructions'
     pod 'TZImagePickerController'
-#    pod 'FloatingPanel'
+    pod 'FloatingPanel'
+    pod 'MarqueeLabel'
+    pod 'NotificationBannerSwift'
+    pod 'EFQRCode'
 
+    #  :configurations => ['Debug'] 只是在xcode debug 时才会加入；
+    pod 'Reveal-SDK', :configurations => ['Debug']
+
+    pod 'BXKAdvertSDK'
 end
 
 
