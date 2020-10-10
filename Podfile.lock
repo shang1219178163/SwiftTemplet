@@ -17,16 +17,26 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - BXKAdvertSDK (1.0.1):
+    - AFNetworking
+    - Masonry
+    - SDWebImage
   - EAIntroView (2.12.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
+  - EFQRCode (5.1.8):
+    - EFQRCode/Core (= 5.1.8)
+  - EFQRCode/Core (5.1.8)
   - FLAnimatedImage (1.0.12)
+  - FloatingPanel (1.7.5)
   - HandyJSON (5.0.2)
   - HFNavigationController (1.2.0)
   - Instructions (2.0.0)
   - IQKeyboardManagerSwift (6.5.5)
   - KeychainSwift (19.0.0)
   - Kingfisher (4.10.1)
+  - MarqueeLabel (4.0.2)
+  - MarqueeLabel/Swift (3.2.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.4.3)
@@ -40,6 +50,9 @@ PODS:
     - SnapKitExtend
     - SwiftExpand
   - NNPopoverButton (1.5.0)
+  - NotificationBannerSwift (2.1.0):
+    - MarqueeLabel/Swift (~> 3.2.1)
+    - SnapKit (~> 4.2.0)
   - OHHTTPStubs (9.0.0):
     - OHHTTPStubs/Default (= 9.0.0)
   - OHHTTPStubs/Core (9.0.0)
@@ -53,6 +66,7 @@ PODS:
   - OHHTTPStubs/NSURLSession (9.0.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (9.0.0)
+  - Reveal-SDK (26)
   - RxAlamofire (5.1.0):
     - RxAlamofire/Core (= 5.1.0)
   - RxAlamofire/Core (5.1.0):
@@ -70,7 +84,8 @@ PODS:
   - SnapKit (4.2.0)
   - SnapKitExtend (1.0.7):
     - SnapKit
-  - SwiftExpand (3.13.0)
+  - SwiftExpand (4.1.0):
+    - SnapKit
   - SwiftyJSON (5.0.0)
   - TZImagePickerController (3.3.2)
   - UICircularProgressRing (7.0.0)
@@ -92,13 +107,17 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - AlamofireImage
+  - BXKAdvertSDK
   - EAIntroView
+  - EFQRCode
+  - FloatingPanel
   - HandyJSON
   - HFNavigationController
   - Instructions
   - IQKeyboardManagerSwift
   - KeychainSwift
   - Kingfisher
+  - MarqueeLabel
   - MBProgressHUD
   - MJRefresh
   - MMPopupView
@@ -106,7 +125,9 @@ DEPENDENCIES:
   - NNExcelView
   - NNPlateKeyboard
   - NNPopoverButton
+  - NotificationBannerSwift
   - OHHTTPStubs
+  - Reveal-SDK
   - RxAlamofire
   - RxCocoa
   - RxSwift
@@ -128,15 +149,19 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - AlamofireImage
+    - BXKAdvertSDK
     - EAIntroView
     - EARestrictedScrollView
+    - EFQRCode
     - FLAnimatedImage
+    - FloatingPanel
     - HandyJSON
     - HFNavigationController
     - Instructions
     - IQKeyboardManagerSwift
     - KeychainSwift
     - Kingfisher
+    - MarqueeLabel
     - Masonry
     - MBProgressHUD
     - MJRefresh
@@ -145,7 +170,9 @@ SPEC REPOS:
     - NNExcelView
     - NNPlateKeyboard
     - NNPopoverButton
+    - NotificationBannerSwift
     - OHHTTPStubs
+    - Reveal-SDK
     - RxAlamofire
     - RxCocoa
     - RxRelay
@@ -168,15 +195,19 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  BXKAdvertSDK: 76421da3448a0d3f7011ef306e23f669bd7ce38a
   EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
+  EFQRCode: de5eb598ca2e51bb25013d9ce484acc3152ce187
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  FloatingPanel: bb17fd6fc7ae519f877f7bd30f4f6115a78acf07
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   HFNavigationController: 298362bca19235a9d59cc3a8ea234541013b8d99
   Instructions: debf9cedeaf8d095108fd35d2c54b97ccf769e65
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
@@ -185,7 +216,9 @@ SPEC CHECKSUMS:
   NNExcelView: 2481f5cc0e9e867525958386717d777533b06ac2
   NNPlateKeyboard: feb53e620615c5a632f2049038e1414af6364558
   NNPopoverButton: 315a96c50b73edf2342d449c7928a47592e390fa
+  NotificationBannerSwift: 4483919639202bec56d6bfe8f106ebc352d38bc7
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
+  Reveal-SDK: 5f94f14aff3d5f2a49f246edcd266fa4472679e9
   RxAlamofire: a2d7621de4c23a0c6e7b476b504acc32838ee341
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -193,7 +226,7 @@ SPEC CHECKSUMS:
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
-  SwiftExpand: 17351a701d80464a997241dc43e7d70feda30397
+  SwiftExpand: d569795d688d035cfe59f5a0382c418ee106b3a1
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
@@ -204,6 +237,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: e920ef514efe6031507c0efdd8746c7ea6964fbb
+PODFILE CHECKSUM: 57efe8473066644a817029e3fcd306f090763494
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.beta.2
