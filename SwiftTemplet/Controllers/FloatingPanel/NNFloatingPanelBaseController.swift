@@ -141,6 +141,10 @@ class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
     var fullPosition: CGFloat = 16
     var tipPosition: CGFloat = 169
     var halfPosition: CGFloat = 216
+    
+    var initPosition: FloatingPanelPosition = .half
+    var suportPositions: Set<FloatingPanelPosition> = [.full, .half, .tip]
+    var backdropAlpha: CGFloat = 0
 
     var leftSpacing: CGFloat = 0
     var rightSpacing: CGFloat = 0
@@ -153,11 +157,11 @@ class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
     }
     // MARK: -
     public var initialPosition: FloatingPanelPosition {
-        return .half
+        return initPosition
     }
     
     public var supportedPositions: Set<FloatingPanelPosition> {
-        return [.full, .half]
+        return suportPositions
     }
 
     public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
@@ -189,6 +193,6 @@ class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
     }
 
     public func backdropAlphaFor(position: FloatingPanelPosition) -> CGFloat {
-        return 0.0
+        return backdropAlpha
     }
 }
