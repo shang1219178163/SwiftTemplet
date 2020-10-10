@@ -77,7 +77,7 @@ class NNOperationStateView: UIView {
                 topImage = "icon_car_red_ban"
             }
 
-            topIcon.image = UIImageNamed(topImage)
+            topIcon.image = UIImage(named: topImage)
             topLabel.textColor = UIColor.hex(topTitleColor)
             topLabel.text = topTitle + "- \(newValue)"
             topBgView.backgroundColor = UIColor.hex(topBgViewColor)
@@ -337,8 +337,8 @@ class NNOperationStateView: UIView {
         var view = NNSliderControlView(frame: .zero)
         view.text = "滑动开始运客";
         view.textFinish = "操作成功!";
-        view.thumbImage = UIImageNamed("icon_carLeft_green");
-        view.thumbFinishImage = UIImageNamed("icon_car_red");
+        view.thumbImage = UIImage(named: "icon_carLeft_green");
+        view.thumbFinishImage = UIImage(named: "icon_car_red");
         return view
     }()
     

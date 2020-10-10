@@ -42,7 +42,7 @@ class AppIconChangeController: UIViewController {
             let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
             
             cell.accessoryType = .disclosureIndicator;
-            cell.imageView?.image = UIImageNamed(itemList[0])
+            cell.imageView?.image = UIImage(named: itemList[0])
             cell.imageView?.contentMode = .scaleAspectFit
 //            cell.textLabel!.text = itemList[0]
 //            cell.textLabel!.textColor = UIColor.theme;

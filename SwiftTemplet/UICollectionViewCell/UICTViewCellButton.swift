@@ -23,8 +23,8 @@ class UICTViewCellButton: UICollectionViewCell {
         contentView.addSubview(btn)
         
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-//        btn.setImage(UIImageNamed("icon_arrow_down_blank_black_small"), for: .normal)
-//        btn.setImage(UIImageNamed("icon_arrow_up_blank_small"), for: .selected)
+//        btn.setImage(UIImage(named: "icon_arrow_down_blank_black_small"), for: .normal)
+//        btn.setImage(UIImage(named: "icon_arrow_up_blank_small"), for: .selected)
 
         btn.titleLabel!.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }

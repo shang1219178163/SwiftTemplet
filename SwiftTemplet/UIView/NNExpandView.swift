@@ -82,7 +82,7 @@ class NNExpandView: UIView {
     lazy var btnDelete: UIButton = {
         var view = UIButton(type: .custom)
 //        view.setBackgroundImage(UIImage(named: "icon_notice"), for: .normal)
-        view.setImage(UIImageNamed("icon_delete"), for: .normal)
+        view.setImage(UIImage(named: "icon_delete"), for: .normal)
         view.addActionHandler({ (control) in
             if let sender = control as? UIButton {
                 DDLog(sender.tag)
@@ -102,7 +102,7 @@ class NNExpandView: UIView {
         var view = UIButton(type: .custom)
         //        view.setTitle("闭包的回调方法", for: .normal);
         //        view.setTitleColor(.white, for: .normal);
-        view.setImage(UIImageNamed("icon_notice_black"), for: .normal)
+        view.setImage(UIImage(named: "icon_notice_black"), for: .normal)
         view.setBackgroundImage(UIImage(color: .white), for: .normal)
         view.adjustsImageWhenHighlighted = false
         view.addActionHandler({ (control) in

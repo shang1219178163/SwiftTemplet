@@ -133,7 +133,7 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
         view.isOpen = foldModel.isOpen
         view.labelLeft.text = foldModel.title
         view.btn.setTitle("\(foldModel.dataList.count)个", for: .normal)
-        view.imgViewLeft.image = UIImageNamed(foldModel.image)
+        view.imgViewLeft.image = UIImage(named: foldModel.image)
         view.contentView.backgroundColor = UIColor.white
         UIView.animate(withDuration: kDurationDrop, animations: {
             view.indicatorView.transform = view.isOpen == true ? (view.indicatorView.transform.rotated(by: CGFloat(Double.pi/2))) : .identity;

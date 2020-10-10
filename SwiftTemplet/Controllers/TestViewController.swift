@@ -46,7 +46,7 @@ class TestViewController: UIViewController{
         let photosView = createGroupView(rect, list: urlArray, numberOfRow: 3, padding: 10, type: 1) { (tap, itemView, idx) in
             DDLog(idx)
             let value = urlArray[idx];
-//            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+//            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
 
 //            (itemView as! UIImageView).showImageEnlarge()
             (itemView as! UIImageView).showPictureView(urlArray, index: itemView.tag)
@@ -132,7 +132,7 @@ class TestViewController: UIViewController{
             imgView.image = UIImage(named: value);
             imgView.tag = i;
             DDLog(value)
-            imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+            imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
 
             if action != nil {
                 imgView.addActionClosure(action!)
@@ -267,7 +267,7 @@ extension TestViewController: UITableViewDataSource, UITableViewDelegate{
         view.isOpen = foldModel.isOpen
         view.labelLeft.text = foldModel.title
         view.labelRight.text = "\(foldModel.dataList.count)"
-        view.imgViewLeft.image = UIImageNamed(foldModel.image)
+        view.imgViewLeft.image = UIImage(named: foldModel.image)
         UIView.animate(withDuration: kDurationDrop, animations: {
             view.imgViewRight.transform = view.isOpen == true ? (view.imgViewRight.transform.rotated(by: CGFloat(Double.pi/2))) : .identity;
         })

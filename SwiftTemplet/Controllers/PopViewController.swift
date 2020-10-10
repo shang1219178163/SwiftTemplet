@@ -88,7 +88,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
         view.titleLabel?.minimumScaleFactor = 1.0;
         view.isExclusiveTouch = true;
         view.setTitle("测试按钮", for: .normal)
-        view.setImage(UIImageNamed("img_arrowDown_gray"), for: .normal)
+        view.setImage(UIImage(named: "img_arrowDown_gray"), for: .normal)
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
         return view

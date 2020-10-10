@@ -138,7 +138,7 @@ class PickerViewController: UIViewController {
         var view = NNVehicleInfoCardView(frame: .zero)
         view.imgViewRight.isHidden = true
         
-        view.imgView.image = UIImageNamed("bug")
+        view.imgView.image = UIImage(named: "bug")
         view.labelLeft.text = "陕A-U2200"
         view.labelSub.text = "222222"
         view.labelSubOne.text = "333333"
@@ -153,7 +153,7 @@ class PickerViewController: UIViewController {
         var view = NNVehicleInfoCardView(frame: .zero)
         view.imgViewRight.isHidden = true
         
-        view.imgView.image = UIImageNamed("bug")
+        view.imgView.image = UIImage(named: "bug")
         view.labelLeft.text = "陕A-U2200"
         view.labelSub.text = "222222"
         view.labelSubOne.text = "333333"

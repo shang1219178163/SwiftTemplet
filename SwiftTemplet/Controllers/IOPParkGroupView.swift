@@ -71,7 +71,7 @@ class IOPParkGroupView: UIView {
         
         if hideImage == false {
             btn.setImage(UIImage(color: UIColor.hexValue(0xF3F3F3)), for: .normal)
-            btn.setImage(UIImageNamed("icon_choose_blue"), for: .selected)
+            btn.setImage(UIImage(named: "icon_choose_blue"), for: .selected)
         }
     }
     

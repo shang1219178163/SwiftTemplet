@@ -35,7 +35,7 @@ class FifthViewControlle: UIViewController {
             self.textField.endEditing(true)
         }
         
-        imgViewOne.image = UIImageNamed("icon_select_YES")
+        imgViewOne.image = UIImage(named: "icon_select_YES")
         view.addSubview(imgViewOne)
         imgViewOne.tintColor = UIColor.theme
 
@@ -90,7 +90,7 @@ class FifthViewControlle: UIViewController {
     lazy var imgViewOne: UIImageView = {
         var view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.image = UIImageNamed("icon_select_YES")
+        view.image = UIImage(named: "icon_select_YES")
 
         return view;
     }();

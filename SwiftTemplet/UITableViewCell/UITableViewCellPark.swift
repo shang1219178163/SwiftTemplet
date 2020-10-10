@@ -18,10 +18,10 @@ class UITableViewCellPark: UITableViewCell {
         willSet{
             switch newValue {
             case 1:
-                btnLeft.setImage(UIImageNamed("icon_time_out"), for: .normal)
+                btnLeft.setImage(UIImage(named: "icon_time_out"), for: .normal)
                 
             default:
-                btnLeft.setImage(UIImageNamed("icon_time_in"), for: .normal)
+                btnLeft.setImage(UIImage(named: "icon_time_in"), for: .normal)
                 labelRightSub.text = "未出场"
             }
         }
@@ -47,11 +47,11 @@ class UITableViewCellPark: UITableViewCell {
 
         btnLeft.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btnLeft.setTitleColor(UIColor.textColor6, for: .normal)
-        btnLeft.setImage(UIImageNamed("icon_time_in"), for: .normal)
+        btnLeft.setImage(UIImage(named: "icon_time_in"), for: .normal)
         
         btnLeftMark.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         btnLeftMark.setTitleColor(UIColor.textColor6, for: .normal)
-        btnLeftMark.setImage(UIImageNamed("icon_time_duration"), for: .normal)
+        btnLeftMark.setImage(UIImage(named: "icon_time_duration"), for: .normal)
         
         labelLeft.text = "车牌号"
         labelRight.text = "临时车"

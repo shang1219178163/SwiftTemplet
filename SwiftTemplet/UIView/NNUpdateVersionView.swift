@@ -256,7 +256,7 @@ class NNUpdateVersionView: UIView {
         var view = UIButton(type: .custom)
 //        view.setTitle("取消", for: .normal);
         view.setTitleColor(.white, for: .normal);
-        view.setImage(UIImageNamed("icon_close"), for: .normal)
+        view.setImage(UIImage(named: "icon_close"), for: .normal)
         //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
         view.addActionHandler({ (control) in

@@ -13,7 +13,7 @@ class NNPictureViewController: UIViewController {
     
     lazy var cycleScrollView: NNCycleScrollView = {
         let view = NNCycleScrollView(frame: .zero)
-        view.direction = .vertical
+        view.direction = .horizontal
         view.delegate = self
         view.list =  ["我们对权限控制做了升级，现在可以精准控制app端的权限了","由管理员在网页端设置。如果您发现您原来“运营”菜单中有的功能不见了，请联系集团管理员添加，给您带来不便敬请谅解。", "1qqqqqqqqqqqqqqqq"]
         view.list = ["http://upload-images.jianshu.io/upload_images/1714291-6c664d526b380115.jpg",                        "http://img.parkingwang.com/6100000074/629906_1.jpg",                            "http://upload-images.jianshu.io/upload_images/3580598-482508548410c111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
@@ -34,7 +34,7 @@ class NNPictureViewController: UIViewController {
         let photosView = createGroupView(rect, list: urlArray, numberOfRow: 3, padding: 10, type: 1) { (tap, itemView, idx) in
             DDLog(idx)
             let value = urlArray[idx];
-//            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+//            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
 
 //            (itemView as! UIImageView).showImageEnlarge()
             (itemView as! UIImageView).showPictureView(urlArray, index: itemView.tag)
@@ -71,7 +71,7 @@ class NNPictureViewController: UIViewController {
             imgView.image = UIImage(named: value);
             imgView.tag = i;
 //            DDLog(value)
-            imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+            imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
 
             if action != nil {
                 imgView.addActionClosure(action!)
@@ -86,7 +86,7 @@ class NNPictureViewController: UIViewController {
 
 
 extension NNPictureViewController: NNCycleScrollViewDelegate{
-    func didSelectedIndex(_ index: Int) {
+    func didSelectedIndex(_ view: NNCycleScrollView, index: Int) {
         DDLog(index)
     }
     

@@ -55,8 +55,8 @@ class NNVehicleInfoCardView: UIView {
         labelSubOne.textColor = UIColor.white
         labelSubOne.numberOfLines = 1;
 
-        iconLabSub.image = UIImageNamed("icon_businessCard")
-        iconLabSubOne.image = UIImageNamed("icon_company_white")
+        iconLabSub.image = UIImage(named: "icon_businessCard")
+        iconLabSubOne.image = UIImage(named: "icon_company_white")
         gradientLayer.colors = CAGradientLayer.defaultColors;
 
     }

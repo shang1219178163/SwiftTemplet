@@ -149,7 +149,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
     
     lazy var imgView: UIImageView = {
         var view = UIImageView(frame: .zero)
-        view.image = UIImageNamed("Skull.jpg")
+        view.image = UIImage(named: "Skull.jpg")
         return view
     }()
 

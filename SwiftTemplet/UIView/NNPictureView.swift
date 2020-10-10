@@ -138,7 +138,7 @@ extension NNPictureView: UICollectionViewDataSource, UICollectionViewDelegate {
 
         let value = list[indexPath.row];
         cell.labelTop.text = "\(indexPath.row+1)/\(list.count)"
-        cell.imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImageNamed("img_failedDefault_S"))
+        cell.imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
         cell.labelBom.text = value
         
         if usePanGesture == false {
