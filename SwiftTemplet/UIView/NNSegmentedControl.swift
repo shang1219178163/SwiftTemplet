@@ -13,6 +13,8 @@ import SwiftExpand
 class NNSegmentedControl: UISegmentedControl {
     
     var indicatorHeight: CGFloat = 1.5
+    var indicatorWidth: CGFloat = 0
+
     var cornerRadius: CGFloat = 3
 
     var normalColor: UIColor = UIColor.black {
@@ -88,12 +90,12 @@ class NNSegmentedControl: UISegmentedControl {
     func setupControl() {
         if #available(iOS 13, *) {
 //            ensureiOS12Style()
-            let clearColorImage = UIImage(color: .clear)
-            setBackgroundImage(UIImage(color: backgroundColor ?? .clear), for: .normal, barMetrics: .default)
-            setBackgroundImage(UIImage(color: .systemTeal), for: .selected, barMetrics: .default)
-            setBackgroundImage(UIImage(color: .systemTeal), for: .highlighted, barMetrics: .default)
+            let image = UIImage(color: backgroundColor ?? .clear)
+            setBackgroundImage(image, for: .normal, barMetrics: .default)
+            setBackgroundImage(image, for: .selected, barMetrics: .default)
+            setBackgroundImage(image, for: .highlighted, barMetrics: .default)
 
-            let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .systemTeal)
+            let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .clear)
             setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
             setDividerImage(dividerImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
             setDividerImage(dividerImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
@@ -125,9 +127,13 @@ class NNSegmentedControl: UISegmentedControl {
         }
         
         let duration = CGRect.zero.equalTo(indicator.frame) ? 0.0 : kDurationShow;
-        let segmentWidth = sizeWidth/CGFloat(numberOfSegments)
-        let originX = segmentWidth * CGFloat(selectedSegmentIndex);
-        
+        var segmentWidth = bounds.width/CGFloat(numberOfSegments)
+        var originX = segmentWidth * CGFloat(selectedSegmentIndex);
+        if indicatorWidth > 0 {
+            originX = segmentWidth * CGFloat(selectedSegmentIndex) + (segmentWidth - indicatorWidth)/2.0
+            segmentWidth = indicatorWidth
+        }
+
         /// 0: default, 1, topLine, 2,bottomLine, 3,box
         switch showStyle {
         case .topLine:
