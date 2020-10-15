@@ -86,7 +86,7 @@
 		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>202010102031</string>
+	<string>202010141645</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>alipay</string>
@@ -141,5 +141,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
