@@ -192,8 +192,12 @@ extension NNCycleScrollView: UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let currentIndex: Int = dataSourceIndex(forCurrentIndex: indexPath.item)
-        let obj: String = list[currentIndex]
+        var obj = list[0]
+        if isinFiniteLoop && list.count > 1 {
+            let currentIndex: Int = dataSourceIndex(forCurrentIndex: indexPath.item)
+            obj = list[currentIndex]
+        }
+        
         if let cell = delegate?.cellForItem?(collectionView, cellForItemAtIndexPath: indexPath, obj: obj) {
             return cell
         }
