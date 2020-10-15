@@ -92,7 +92,7 @@ class UITableViewCellParkInfo: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         let height = bounds.height - inset.top - inset.bottom

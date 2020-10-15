@@ -68,7 +68,7 @@ class UITableViewCellTask: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         
@@ -96,7 +96,7 @@ class UITableViewCellTask: UITableViewCell {
             make.right.size.equalTo(btn)
         }
                 
-        labelLeft.snp.makeConstraints { (make) in
+        labelLeft.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.left.equalToSuperview().offset(labStartX);
             make.right.equalTo(btn.snp.left).offset(-kPadding);

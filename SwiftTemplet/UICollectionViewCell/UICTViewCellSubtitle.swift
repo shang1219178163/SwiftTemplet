@@ -63,7 +63,7 @@ class UICTViewCellSubtitle: UICollectionViewCell {
             }
         }
 
-        lab.snp.makeConstraints { (make) in
+        lab.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.left.equalToSuperview().offset(labStartX)
             make.right.equalToSuperview().offset(-labEndX)

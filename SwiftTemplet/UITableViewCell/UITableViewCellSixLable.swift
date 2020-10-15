@@ -120,7 +120,7 @@ class UITableViewCellSixLable: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         

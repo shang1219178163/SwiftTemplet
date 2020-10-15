@@ -46,7 +46,7 @@ class UITableViewCellCollect: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         
@@ -55,14 +55,14 @@ class UITableViewCellCollect: UITableViewCell {
         let endX = accessoryType == .none ? inset.right : 0
 
         if imgViewLeft.isHidden == false {
-            imgViewLeft.snp.makeConstraints { (make) in
+            imgViewLeft.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(inset.left)
                 make.size.equalTo(imageSize)
             }
         }
         
-        labelLeft.snp.makeConstraints { (make) in
+        labelLeft.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.left.equalToSuperview().offset(labStartX);
             make.right.equalToSuperview().offset(-endX);

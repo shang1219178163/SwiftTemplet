@@ -75,7 +75,7 @@ class UITableViewCellOne: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return
         }
         let height = bounds.height - inset.top - inset.bottom
@@ -102,7 +102,7 @@ class UITableViewCellOne: UITableViewCell {
                 make.bottom.equalToSuperview().offset(-inset.bottom)
             }
             
-            labelLeft.snp.makeConstraints { (make) in
+            labelLeft.snp.remakeConstraints { (make) in
                 make.top.bottom.equalTo(labelRight)
                 make.left.equalToSuperview().offset(labStartX)
                 make.right.equalTo(labelRight.snp.left).offset(-kPadding)

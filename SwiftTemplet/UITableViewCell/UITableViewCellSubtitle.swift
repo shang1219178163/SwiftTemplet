@@ -63,7 +63,7 @@ class UITableViewCellSubtitle: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         
@@ -95,7 +95,7 @@ class UITableViewCellSubtitle: UITableViewCell {
             make.height.equalTo(height*0.5)
         }
 
-        labelLeft.snp.makeConstraints { (make) in
+        labelLeft.snp.remakeConstraints { (make) in
             make.centerY.equalTo(labelRight);
             make.left.equalToSuperview().offset(labStartX);
             make.right.equalTo(labelRight.snp.left).offset(-8);

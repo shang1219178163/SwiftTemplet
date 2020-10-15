@@ -48,7 +48,7 @@ class UITableViewCellFive: UITableViewCell {
     }
     
     func setupConstraint() {
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return
         }
         let labHeight: CGFloat = 20
@@ -64,7 +64,7 @@ class UITableViewCellFive: UITableViewCell {
             }
         }
         
-        labelLeft.snp.makeConstraints { (make) in
+        labelLeft.snp.remakeConstraints { (make) in
             make.left.equalToSuperview().offset(inset.left);
             make.right.equalToSuperview().offset(-inset.right);
             make.bottom.equalTo(endBottom).offset(0);

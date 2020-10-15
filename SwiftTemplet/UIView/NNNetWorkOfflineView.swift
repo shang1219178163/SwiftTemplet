@@ -75,7 +75,7 @@ import SwiftExpand
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         let height = bounds.height - inset.top - inset.bottom
@@ -98,7 +98,7 @@ import SwiftExpand
             make.height.equalTo(13);
         }
         
-        label.snp.makeConstraints { (make) in
+        label.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview().offset(inset.top - inset.bottom);
             make.left.equalToSuperview().offset(labStartX);
             make.right.equalTo(btn.snp.left).offset(-8);

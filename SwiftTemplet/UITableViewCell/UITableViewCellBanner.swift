@@ -47,7 +47,7 @@ import SwiftExpand
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return
         }
         cycleScrollView.snp.makeConstraints { (make) in

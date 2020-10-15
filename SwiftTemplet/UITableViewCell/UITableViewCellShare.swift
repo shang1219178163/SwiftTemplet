@@ -62,6 +62,9 @@ class UITableViewCellShare: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        if bounds.height <= 10 {
+            return
+        }
         let labelStartX: CGFloat = imgView.isHidden == false ? inset.left + imagSize.width + 10 : inset.left
         let labelEndX: CGFloat = -10 - inset.right
         let labelHeight: CGFloat = (self.bounds.height - inset.top - inset.bottom - 5)*0.5
@@ -75,7 +78,7 @@ class UITableViewCellShare: UITableViewCell {
         }
                 
         if labelDetail.isHidden == false {
-            label.snp.makeConstraints { (make) in
+            label.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top);
                 make.left.equalToSuperview().offset(labelStartX);
                 make.right.equalToSuperview().offset(labelEndX);
@@ -88,7 +91,7 @@ class UITableViewCellShare: UITableViewCell {
                 make.height.equalTo(labelHeight)
             }
         } else {
-            label.snp.makeConstraints { (make) in
+            label.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top);
                 make.left.equalToSuperview().offset(labelStartX);
                 make.right.equalToSuperview().offset(labelEndX);

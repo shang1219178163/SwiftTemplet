@@ -70,7 +70,7 @@ class UICTViewCellValue: UICollectionViewCell {
             make.height.equalTo(height);
         }
         
-        lab.snp.makeConstraints { (make) in
+        lab.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(labStartX)
             make.right.equalTo(labDetail.snp.left).offset(-kPadding)

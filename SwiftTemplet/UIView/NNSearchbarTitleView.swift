@@ -37,7 +37,7 @@ import SwiftExpand
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return;
         }
         
@@ -56,7 +56,7 @@ import SwiftExpand
             }
         }
 
-        searchBar.snp.makeConstraints { (make) in
+        searchBar.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview().offset(inset.top - inset.bottom)
             make.left.equalToSuperview().offset(inset.left);
             make.right.equalToSuperview().offset(-searchBarEndX);

@@ -59,7 +59,7 @@ class NNCollectionViewCellList: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 0 {
+        if bounds.height <= 10 {
             return
         }
         
@@ -77,7 +77,7 @@ class NNCollectionViewCellList: UICollectionViewCell {
         
         if labelDetail.isHidden == false {
             let heigth: CGFloat = (bounds.height - 25)/2
-            labelTitle.snp.makeConstraints { (make) in
+            labelTitle.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(10);
                 make.left.equalToSuperview().offset(10);
                 make.right.equalToSuperview().offset(-labelRight);
@@ -89,7 +89,7 @@ class NNCollectionViewCellList: UICollectionViewCell {
                 make.left.right.height.equalTo(labelTitle)
             }
         } else {
-            labelTitle.snp.makeConstraints { (make) in
+            labelTitle.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(10);
                 make.left.equalToSuperview().offset(10);
                 make.right.equalToSuperview().offset(-labelRight);

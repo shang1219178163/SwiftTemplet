@@ -108,6 +108,9 @@ class UITableViewCellLocation: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        if bounds.height <= 10 {
+            return;
+        }
         
         let labelStartX: CGFloat = imgView.isHidden == false ? inset.left + imagSize.width + 8 : inset.left
 //        let labelEndX: CGFloat = limitPlates.count == 0 ? inset.right : inset.right + 26 + limitPlates.count.toCGFloat*(10+4) - 4 + 8*2
@@ -140,7 +143,7 @@ class UITableViewCellLocation: UITableViewCell {
                 make.height.equalTo(20);
             }
             
-            label.snp.makeConstraints { (make) in
+            label.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top);
                 make.left.equalToSuperview().offset(labelStartX);
                 make.right.equalTo(weatherImgView.snp.left).offset(-5);

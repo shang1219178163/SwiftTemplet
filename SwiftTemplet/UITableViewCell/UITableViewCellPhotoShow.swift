@@ -40,7 +40,7 @@ class UITableViewCellPhotoShow: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
-        if bounds.height <= 10.0 {
+        if bounds.height <= 10 {
             return
         }
             
