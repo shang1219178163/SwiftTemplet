@@ -97,7 +97,10 @@ class NNDatePicker: UIView {
         datePicker.datePickerMode = .date;
         datePicker.locale = Locale(identifier: "zh_CN");
         datePicker.backgroundColor = .white;
-
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        
         datePicker.addTarget(self, action: #selector(handleAction(_:)), for: .valueChanged);
         return datePicker;
     }();
