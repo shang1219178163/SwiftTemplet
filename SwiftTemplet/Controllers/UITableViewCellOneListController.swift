@@ -89,7 +89,11 @@ class UITableViewCellOneListController: UIViewController {
 2.我们会采取业界先进的安全措施保护您的信息安全；
 3.未经您同意，我们不会从第三方处获取、共享或向其提供您的信息
 """
-        UIAlertController.showAlert("温馨提示", message: msg, alignment: .left, actionTitles: [kTitleSure])
+        UIAlertController.showAlert("温馨提示", message: msg, actionTitles: [kTitleSure]) { (style) in
+            style.alignment = .left
+        } handler: { (action) in
+            DDLog(action.title as Any)
+        }
     }
     
 }
