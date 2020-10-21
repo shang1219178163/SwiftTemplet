@@ -559,7 +559,7 @@
 - (void)showAlertTitle:(NSString * _Nullable)title
                message:(NSString *_Nullable)message
           actionTitles:(NSArray *_Nullable)actionTitles
-               handler:(void(^_Nullable)(UIAlertController *alertVC, UIAlertAction *action))handler{
+               handler:(void(^_Nullable)(UIAlertAction *action))handler{
     
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title
                                                                      message:message
@@ -568,14 +568,14 @@
     for (NSString *title in actionTitles) {
         UIAlertActionStyle style = [title isEqualToString: @"取消"] == true? UIAlertActionStyleDestructive : UIAlertActionStyleDefault;
         [alertVC addAction:[UIAlertAction actionWithTitle:title style:style handler:^(UIAlertAction * _Nonnull action) {
-            if (handler) handler(alertVC, action);
+            if (handler) handler(action);
             
         }]];
     }
     
     if (![actionTitles containsObject:@"取消"]) {
         [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            if (handler) handler(alertVC, action);
+            if (handler) handler(action);
             
         }]];
     }

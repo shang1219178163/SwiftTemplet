@@ -83,13 +83,10 @@ class IOPImageUploadController: UIViewController {
     }
   
     func showSheet() {
-        let alertVC = UIAlertController.createSheet("请选择", message: nil, items:items, handler: { (controller: UIAlertController, action: UIAlertAction) in
+        UIAlertController.createSheet("请选择", message: nil, items:items, handler: { (action) in
             self.handleAction(action.title!)
 
-        })
-        if let rootVC = UIApplication.shared.keyWindow!.rootViewController {
-            rootVC.present(alertVC, animated: true, completion: nil)
-        }
+        }).present()
     }
     
     func handleAction(_ title: String) {

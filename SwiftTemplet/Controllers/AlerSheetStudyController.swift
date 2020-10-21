@@ -45,11 +45,13 @@ import HFNavigationController
                       UIImage(named:"icon_num2")!.withRenderingMode(.alwaysOriginal),
                       UIImage(named:"icon_num3")!.withRenderingMode(.alwaysOriginal),
         ]
-
-        let alertVC = UIAlertController.createSheet("标题", message: "这是一条提示信息", items: titles) { (controller, action) in
-            let actionIdx = controller.actions.firstIndex(of: action)
+        
+        let alertVC = UIAlertController(title: "标题", message: "这是一条提示信息", preferredStyle: .alert)
+        alertVC.addActionTitles(titles) { (action) in
+            let actionIdx = alertVC.actions.firstIndex(of: action)
             DDLog(actionIdx as Any)
         }
+
         alertVC.actions.forEach { (action) in
             guard let actionIdx = alertVC.actions.firstIndex(of: action) else { return }
             if actionIdx < images.count {
@@ -183,7 +185,7 @@ import HFNavigationController
     }
     
     func showActionSheet4(){
-        let alertVC = UIAlertController.createAlertImage("提示", image: "Skull.jpg", contentMode: .scaleToFill, count: 17, actionTitles: [kTitleKnow]) { (controller, action) in
+        let alertVC = UIAlertController.createAlertImage("提示", image: "Skull.jpg", contentMode: .scaleToFill, count: 17, actionTitles: [kTitleKnow]) { (action) in
             DDLog(action.title as Any)
         }
         self.present(alertVC, animated: true, completion: nil)
@@ -202,7 +204,7 @@ import HFNavigationController
                                         sender.setBackgroundColor(.systemRed, for: .normal)
                                         sender.setTitle(sender.className(), for: .normal)
                                         sender.setTitleColor(.white, for: .normal)
-        }) { (controller, action) in
+        }) { (action) in
             DDLog(action.title as Any)
         }
 

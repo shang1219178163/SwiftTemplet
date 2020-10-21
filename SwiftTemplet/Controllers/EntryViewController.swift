@@ -149,16 +149,16 @@ class EntryViewController: UIViewController {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (controller: UIAlertController, action:UIAlertAction) in
+        let alertVC = UIAlertController(title: "请选择", message: nil, preferredStyle: .actionSheet)
+        alertVC.addActionTitles([kTitleCancell]) { (action) in
             DDLog("完成取消")
-            
             UIView.animate(withDuration: 0.5, animations: {
                 self.textField.rightView?.transform = .identity
                 
             }, completion: nil)
-            
-        })
-        return alertController
+        }
+
+        return alertVC
     }()
         
     lazy var list: [[[String]]] = {

@@ -288,18 +288,15 @@ class ThirdViewController: UIViewController{
         case 4:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"
             UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-                .addActionTitle(kTitleCancell, style: .destructive) { (action) in
+                .addActionTitles([kTitleCancell, kTitleSure], handler: { (action) in
                     DDLog(action.title as Any)
-            }
-            .addActionTitle(kTitleSure, style: .default) { (action) in
-                DDLog(action.title as Any)
-            }
-            .addTextFieldPlaceholder("", handler: { (textfield) in
+                })
+                .addTextFieldPlaceholders(["请输入"], handler: { (textfield) in
                 DDLog(textfield.text as Any)
-            })
+                })
                 .present {
 //                DDLog("present")
-            }
+                }
             
         case 5:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。我已经解决了所有问题，但是我希望能够捕捉平移手势是否被反转。"
@@ -327,18 +324,15 @@ class ThirdViewController: UIViewController{
     
     func showAlert() {
         UIAlertController(title: "提示", message: "xinx", preferredStyle: .alert)
-            .addActionTitle(kTitleSure, style: .default) { (action) in
-                DDLog(action.title)
-        }
-        .addActionTitle(kTitleCancell, style: .destructive) { (action) in
-            DDLog(action.title)
-        }
-        .addTextFieldPlaceholder("请输入", handler: { (textfield) in
-            DDLog(textfield.text)
-
-        }).present {
-            DDLog("present")
-        }
+            .addActionTitles([kTitleCancell, kTitleSure], handler: { (action) in
+                DDLog(action.title as Any)
+            })
+            .addTextFieldPlaceholders(["请输入"], handler: { (textfield) in
+                DDLog(textfield.text)
+        
+            }).present {
+                DDLog("present")
+            }
     }
     
     
