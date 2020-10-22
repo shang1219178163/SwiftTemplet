@@ -87,8 +87,7 @@ extension NNPageController: UIPageViewControllerDelegate {
         guard let controller = pendingViewControllers.first else { return }
         title = controller.title
         
-        beginAppearanceTransition(true, animated: true);
-        endAppearanceTransition();
+        controller.beginAppearanceTransition(true, animated: true);
     }
 
     //动画结束
@@ -96,9 +95,9 @@ extension NNPageController: UIPageViewControllerDelegate {
         if completed == false {
             return
         }
-//        guard let controller = previousViewControllers.first else { return }
-//        beginAppearanceTransition(false, animated: true);
-//        endAppearanceTransition();
+
+        guard let controller = previousViewControllers.first else { return }
+        controller.endAppearanceTransition();
     }
 
     //书脊位置
