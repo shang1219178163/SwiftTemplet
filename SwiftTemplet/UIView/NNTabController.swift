@@ -86,7 +86,9 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
             make.bottom.equalToSuperview();
         }
         
-//        DDLog(scrollViewContent)
+    
+//        scrollViewContent.frame = CGRectMake(0, 50, view.bounds.width, view.bounds.height - 50)
+        DDLog(scrollViewContent.frame)
         guard viewControllers!.count > 0 else {
             return;
         }
@@ -134,7 +136,6 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
     lazy var scrollViewTop: NNSegmentView = {
         let view = NNSegmentView(frame: .zero)
         view.list = ["0", "1", "2", "3", "4", ];
-        view.indicatorType = 2;
         view.showItemNum = 4.5;
         
         view.collectionView.register(cellType: UICTViewCellOne.self)

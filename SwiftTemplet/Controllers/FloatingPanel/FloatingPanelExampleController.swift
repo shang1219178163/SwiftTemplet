@@ -11,6 +11,16 @@ import FloatingPanel
 
 class FloatingPanelExampleController: NNFloatingPanelBaseController {
     
+    lazy var panelLayout: NNPanelLandscapeBaseLayout = {
+        let layout = NNPanelLandscapeBaseLayout()
+        layout.tipPosition = 49
+        layout.halfPosition = 300
+        layout.fullPosition = 60
+        
+        layout.initPosition = .half
+        return layout;
+    }()
+    
     lazy var contentVC: SimpleListController = {
         let vc = SimpleListController()
         vc.view.layer.borderColor = UIColor.line.cgColor
@@ -45,7 +55,7 @@ extension FloatingPanelExampleController: NNFloatingPanelDelegate {
     }
     
     func nFloatingPanelLayout(_ vc: FloatingPanelController) -> NNPanelLandscapeBaseLayout {
-        return NNPanelLandscapeBaseLayout(tipPosition: 69, halfPosition: 216, fullPosition: 50)
+        return panelLayout
     }
         
 

@@ -10,16 +10,24 @@
 import UIKit
 import SwiftExpand
 
+/// UISegmentedControl 升级版,支持0: box, 1, topLine, 2,bottomLine 三种样式
 @objcMembers class NNSegmentView: UIView {
     
-    var showItemNum: CGFloat = 4;
-    var indicatorHeight: CGFloat = 2;
-    var indicatorType: Int = 0;
+    public enum IndicatorType : Int {
+        case none
+        case box
+        case topLine
+        case bottomLine
+    }
+        
+    public var showItemNum: CGFloat = 4;
+    public var indicatorHeight: CGFloat = 2;
+    public var indicatorType: IndicatorType = .bottomLine;
 
-    var cellForItemClosure: CellForItemClosure?
-    var didSelectItemClosure: DidSelectItemClosure?
+    public var cellForItemClosure: CellForItemClosure?
+    public var didSelectItemClosure: DidSelectItemClosure?
     
-    var list: NSMutableArray = []{
+    public var list: NSMutableArray = []{
         willSet{
             if newValue.count < Int(showItemNum) {
                 showItemNum = CGFloat(newValue.count);
@@ -28,7 +36,7 @@ import SwiftExpand
         }
     }
     
-    var selectIndexPath = IndexPath(row: 0, section: 0) {
+    public var selectIndexPath = IndexPath(row: 0, section: 0) {
         didSet{
             setupIndicator();
             collectionView.selectItem(at: oldValue, animated: true, scrollPosition: .centeredHorizontally)
@@ -36,8 +44,8 @@ import SwiftExpand
         }
     }
     
-    var normalColor = UIColor.gray;
-    dynamic var selectedColor = UIColor.theme {
+    public var normalColor = UIColor.gray;
+    public dynamic var selectedColor = UIColor.theme {
         didSet{
             indicatorView.layer.backgroundColor = oldValue.withAlphaComponent(0.2).cgColor;
             indicatorView.layer.borderColor = oldValue.cgColor;
@@ -46,6 +54,10 @@ import SwiftExpand
     
 
     // MARK: -life cycle
+    override var intrinsicContentSize: CGSize{
+        return UIView.layoutFittingExpandedSize
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -90,7 +102,8 @@ import SwiftExpand
         }
         
         switch indicatorType {
-        case 1:
+        case .topLine:
+            self.indicatorView.isHidden = false
             self.indicatorView.layer.backgroundColor = self.selectedColor.cgColor;
             UIView.animate(withDuration: 0.15) {
                 if self.layout.scrollDirection == .horizontal {
@@ -107,7 +120,8 @@ import SwiftExpand
                 }
             };
             
-        case 2:
+        case .bottomLine:
+            self.indicatorView.isHidden = false
             self.indicatorView.layer.backgroundColor = self.selectedColor.cgColor;
             UIView.animate(withDuration: 0.15) {
                 if (self.layout.scrollDirection == .horizontal) {
@@ -124,7 +138,8 @@ import SwiftExpand
                 }
             };
             
-        case 3:
+        case .box:
+            self.indicatorView.isHidden = false
             self.indicatorView.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.2).cgColor;
             UIView.animate(withDuration: 0.15) {
                 if (self.layout.scrollDirection == .horizontal) {

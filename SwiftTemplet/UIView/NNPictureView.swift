@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftExpand
+import SnapKit
 
 /// 图片浏览器
 @objcMembers class NNPictureView: UIView {
@@ -41,7 +42,6 @@ import SwiftExpand
         collectionView.register(UICTViewCellTwo.self, forCellWithReuseIdentifier: "UICTViewCellTwo")
         addSubview(collectionView)
         addSubview(labelTop)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,10 +57,22 @@ import SwiftExpand
             return;
         }
         
-        labelTop.frame = CGRectMake(10, 44, bounds.width - 10*2, kH_LABEL)
-        collectionView.frame = CGRectMake(0, labelTop.maxY, bounds.width, bounds.height - labelTop.maxY)
-        layout.itemSize = collectionView.frame.size;
         
+        labelTop.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(0);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(25);
+        }
+        
+        collectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(labelTop.snp.bottom).offset(0);
+            make.left.equalToSuperview().offset(0);
+            make.right.equalToSuperview().offset(0);
+            make.bottom.equalToSuperview().offset(0);
+        }
+        
+        layout.itemSize = CGSize(width: bounds.width, height: bounds.height - 25)
         collectionView.scrollToItem(at: IndexPath(row: selectIndex, section: 0), at: .centeredHorizontally, animated: false)
     }
 

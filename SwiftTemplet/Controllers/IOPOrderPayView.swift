@@ -57,6 +57,10 @@ class IOPOrderPayView: UIView {
     }
     
     func setupConstraint() {
+        if bounds.height < 10 {
+            return
+        }
+        
         btn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(8);
             make.right.equalToSuperview().offset(-10);

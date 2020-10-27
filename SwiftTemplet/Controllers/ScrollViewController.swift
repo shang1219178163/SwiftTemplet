@@ -43,7 +43,6 @@ class ScrollViewController: UIViewController {
     lazy var scrollView: NNSegmentView = {
         let view = NNSegmentView(frame: .zero)
         view.list = ["1", "2", "3", "4", "5", "6",];
-        view.indicatorType = 2;
         view.showItemNum = 4.5;
 
         view.collectionView.register(cellType: UICTViewCellOne.self)
@@ -76,7 +75,6 @@ class ScrollViewController: UIViewController {
         let view = NNSegmentView(frame: .zero)
         view.list = ["1", "2", "3", "4", "5", "6",];
         view.layout.scrollDirection = .vertical
-        view.indicatorType = 3;
         view.collectionView.register(UICTViewCellOne.self, forCellWithReuseIdentifier: "UICTViewCellOne")
         
         view.blockCellForItem({ (collectionView, indexPath) -> UICollectionViewCell? in

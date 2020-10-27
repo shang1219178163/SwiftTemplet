@@ -12,6 +12,21 @@ import SwiftExpand
 
 class UICTViewCellTwo: UICollectionViewCell {
     
+    // MARK: - lazy
+    lazy var labelTop: UILabel = {
+        let view = UILabel.create()
+        return view;
+    }()
+    
+    lazy var labelBom: UILabel = {
+        let view = UILabel.create()
+        return view;
+    }()
+    
+    var topLabelHeight: CGFloat = 25
+    var bomLabelHeight: CGFloat = 25
+    
+    // MARK: -lifecycle
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -35,34 +50,19 @@ class UICTViewCellTwo: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if labelTop.isHidden == true {
-            labelBom.snp.makeConstraints { (make) in
-                make.left.right.equalToSuperview()
-                make.bottom.equalToSuperview()
-                make.height.equalTo(kH_LABEL)
-            }
-            
-            imgView.snp.makeConstraints { (make) in
-                make.top.equalToSuperview()
-                make.left.right.equalToSuperview();
-                make.bottom.equalTo(labelBom.snp.top)
-            }
-            return;
+        let topY = labelTop.isHidden == false ? topLabelHeight : 0
+        let bomY = labelBom.isHidden == false ? bomLabelHeight : 0
+
+        labelTop.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(topY)
         }
         
-        if labelBom.isHidden == true {
-            labelTop.snp.makeConstraints { (make) in
-                make.top.equalToSuperview()
-                make.left.right.equalToSuperview()
-                make.height.equalTo(kH_LABEL)
-            }
-            
-            imgView.snp.makeConstraints { (make) in
-                make.top.equalTo(labelTop.snp.bottom)
-                make.left.right.equalToSuperview();
-                make.bottom.equalToSuperview()
-            }
-            return;
+        labelBom.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(bomY)
         }
         
         if imgView.isHidden == true {
@@ -74,32 +74,11 @@ class UICTViewCellTwo: UICollectionViewCell {
             return;
         }
         
-        labelTop.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.right.equalToSuperview()
-            make.height.equalTo(kH_LABEL)
-        }
-        
-        labelBom.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.height.equalTo(kH_LABEL)
-        }
-        
         imgView.snp.makeConstraints { (make) in
-            make.top.equalTo(labelTop.snp.bottom)
+            make.top.equalToSuperview().offset(topY)
             make.left.right.equalToSuperview();
-            make.bottom.equalTo(labelBom.snp.top)
+            make.bottom.equalToSuperview().offset(bomY)
         }
     }
-    // MARK: - lazy
-    lazy var labelTop: UILabel = {
-        let view = UILabel.create()
-        return view;
-    }()
-    
-    lazy var labelBom: UILabel = {
-        let view = UILabel.create()
-        return view;
-    }()
+
 }

@@ -36,9 +36,8 @@ import SwiftExpand
         tabBar.isTranslucent = false;
 //        viewControllers = UICtlrListFromList(itemList, isNavController: false)
 
-        delegate = self
-        
-        selectedIndex = 2
+//        delegate = self
+//        selectedIndex = 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
