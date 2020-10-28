@@ -27,7 +27,7 @@ import SwiftExpand
     public var cellForItemClosure: CellForItemClosure?
     public var didSelectItemClosure: DidSelectItemClosure?
     
-    public var list: NSMutableArray = []{
+    public var list: [String] = []{
         willSet{
             if newValue.count < Int(showItemNum) {
                 showItemNum = CGFloat(newValue.count);
