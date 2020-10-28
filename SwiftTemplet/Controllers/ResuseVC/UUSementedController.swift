@@ -21,7 +21,7 @@ import SwiftExpand
         case fade
         case slide
     }
-    public var animateType: AnimateType = .fade
+    public var animateType: AnimateType = .none
     public var animateDuration: TimeInterval = 0.35
 
     weak var delegate: UUSementedControllerDelegate?
@@ -72,34 +72,53 @@ import SwiftExpand
     var isTitleFollow: Bool = true
 
     //MARK:属性
-//    lazy var itemList: [[String]] = {
-//        let list: [[String]] = [
-//            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-//            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
-//            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
-//            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
-//            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
-//
-//            ];
-//        return list;
-//    }()
+    lazy var itemList: [[String]] = {
+        let list: [[String]] = [
+            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
+            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
+            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
+            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
+            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
+
+            ];
+        return list;
+    }()
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        viewControllers = UICtlrListFromList(itemList, isNavController: false)
+        viewControllers = UICtlrListFromList(itemList, isNavController: false)
         view.addSubview(segmentCtl)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        children.forEach { $0.beginAppearanceTransition(true, animated: animated) }
+    }
+    
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        children.forEach { $0.endAppearanceTransition() }
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        children.forEach { $0.beginAppearanceTransition(false, animated: animated) }
+    }
+
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        children.forEach { $0.endAppearanceTransition() }
     }
 
 
@@ -138,7 +157,8 @@ import SwiftExpand
     }
     
     func transitionViewAnimate(_ fromVC: UIViewController, toVC: UIViewController, type: AnimateType, inAnimationBlock: Bool) {
-        guard let fromIndex = children.firstIndex(of: fromVC), let toIndex = children.firstIndex(of: toVC) else { return }
+        guard let fromIndex = children.firstIndex(of: fromVC),
+              let toIndex = children.firstIndex(of: toVC) else { return }
         switch type {
         case .fade:
             if inAnimationBlock {
