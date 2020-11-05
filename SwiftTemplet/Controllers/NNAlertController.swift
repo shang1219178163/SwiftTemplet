@@ -53,9 +53,15 @@ import UIKit
     }
     
     var btns: [UIButton] = []
-//    var btnSeprateView: [UIView] = []
+    
+    var message: String?{
+        willSet{
+            guard let newValue = newValue else { return }
+            textView.text = newValue
+        }
+    }
 
-    lazy var textView: UITextView = {
+    private lazy var textView: UITextView = {
         let textView = UITextView(frame: .zero)
         textView.isSelectable = true
         textView.isEditable = false
@@ -96,7 +102,7 @@ import UIKit
         if let customView = customView {
             view.addSubview(customView)
         }
-        view.getViewLayer()
+//        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -125,6 +131,8 @@ import UIKit
 //        if let attributedText = textView.attributedText {
 //            textViewSize = attributedText.size(view.bounds.width - inset.left - inset.right)
 //        }
+        
+        
         let textViewSize = textView.sizeThatFits(CGSize(width: view.bounds.width - inset.left - inset.right, height: 0))
         textView.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
@@ -179,8 +187,6 @@ import UIKit
             
             verLineView.isHidden = true
 
-//            DDLog(view.frame, btns[0], btns[1], btns[2])
-
         default:
             btns[0].snp.remakeConstraints { (make) in
                 make.left.equalToSuperview().offset(0);
@@ -206,6 +212,7 @@ import UIKit
         }
 
         if let customView = customView {
+            view.addSubview(customView)
             customView.snp.makeConstraints { (make) in
                 make.top.equalTo(textView.snp.bottom).offset(0);
                 make.left.equalToSuperview().offset(inset.left);
@@ -219,6 +226,9 @@ import UIKit
 
     func setupContent() {
         title = "用户协议和隐私政策"
+        if textView.isHidden || message == nil || message == "" {
+            return
+        }
         
         let tapTexts = ["《用户协议》", "《隐私政策》",];
         let tapUrls = ["http://api.parkingwang.com/app/iop/register.html", "http://api.parkingwang.com/app/iop/register.html",];
