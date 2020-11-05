@@ -185,6 +185,7 @@ class EntryViewController: UIViewController {
             ["上传照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img",],
             ["*图片选择:", "UITableViewCellPhotoPicker", "110", "", "recharge", ],
             ["用户头像", "UITableViewCellRightAvart", "60.0", "", "recharge", ],
+            ["模板文件上传", "UITableViewCellUpload", "60.0", "", "recharge", ],
             ["圆形进度:", "UITableViewCellProgressView", "90.0", "", "cardName", ],
             ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
@@ -398,6 +399,21 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.btn.setBackgroundColor(.systemBlue, for: .normal)
             cell.accessoryType = .disclosureIndicator
             
+            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellUpload":
+            let cell = UITableViewCellUpload.dequeueReusableCell(tableView)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.textLabel?.textColor = .textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+
+            cell.textLabel?.text = value0
+            cell.accessoryType = .disclosureIndicator
+            
+            cell.btnCenter.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+
             cell.getViewLayer()
             return cell
                                   
