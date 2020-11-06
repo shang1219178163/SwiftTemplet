@@ -118,7 +118,7 @@ class UITableViewCellOne: UITableViewCell {
                 make.bottom.equalToSuperview().offset(-inset.bottom)
             }
             
-            labelRight.snp.makeConstraints { (make) in
+            labelRight.snp.remakeConstraints { (make) in
                 make.top.bottom.equalTo(labelLeft)
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                 make.right.equalToSuperview().offset(-endX)

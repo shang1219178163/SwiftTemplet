@@ -104,14 +104,14 @@ class UITableViewCellTextView: UITableViewCell {
                 make.height.equalTo(20)
             }
             
-            labelLeftSub.snp.makeConstraints { (make) in
+            labelLeftSub.snp.remakeConstraints { (make) in
                 make.left.equalTo(labelLeft)
                 make.right.equalTo(labelLeft)
                 make.bottom.equalToSuperview().offset(-inset.bottom);
                 make.height.equalTo(labelLeft)
             }
             
-            textView.snp.makeConstraints { (make) in
+            textView.snp.remakeConstraints { (make) in
                 make.top.equalTo(labelLeft);
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                 make.right.equalToSuperview().offset(-inset.right)

@@ -71,7 +71,7 @@ class UITableViewCellPickerView: UITableViewCell {
             make.height.equalTo(height)
         }
         
-        textfield.snp.makeConstraints { (make) in
+        textfield.snp.remakeConstraints { (make) in
             make.top.equalTo(labelLeft)
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
             make.right.equalToSuperview().offset(-endX)

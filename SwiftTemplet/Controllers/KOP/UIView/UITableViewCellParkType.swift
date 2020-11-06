@@ -95,7 +95,7 @@ class UITableViewCellParkType: UITableViewCell {
         
         lineView.isHidden = items.count <= 0
         
-        lineView.snp.makeConstraints { (make) in
+        lineView.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(label.snp.right).offset(8);
             make.width.equalTo(1);

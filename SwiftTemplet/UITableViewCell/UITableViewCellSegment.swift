@@ -90,7 +90,7 @@ class UITableViewCellSegment: UITableViewCell {
             }
             return
         }
-        segmentCtl.snp.makeConstraints { (make) in
+        segmentCtl.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(labelLeft.snp.right).offset(spacing)
             make.width.lessThanOrEqualTo(ctlWidth)

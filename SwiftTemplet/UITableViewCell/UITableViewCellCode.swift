@@ -88,7 +88,7 @@ class UITableViewCellCode: UITableViewCell {
                 make.size.equalTo(btnSize)
             }
             
-            textfield.snp.makeConstraints { (make) in
+            textfield.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalTo(labelLeft.snp.right).offset(kPadding)
                 make.right.equalTo(btnCode.snp.left).offset(-kPadding)

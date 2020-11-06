@@ -102,7 +102,7 @@ class UITableViewCellSubtitle: UITableViewCell {
             make.height.equalTo(labelRight);
         }
         
-        labelLeftSub.snp.makeConstraints { (make) in
+        labelLeftSub.snp.remakeConstraints { (make) in
             make.centerY.equalTo(labelRightSub);
             make.left.equalTo(labelLeft);
             make.right.equalTo(labelRightSub.snp.left).offset(-8);

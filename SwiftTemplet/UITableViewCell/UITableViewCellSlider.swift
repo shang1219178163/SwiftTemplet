@@ -82,14 +82,14 @@ class UITableViewCellSlider: UITableViewCell {
             make.height.equalTo(height)
         }
         
-        labelRight.snp.makeConstraints { (make) in
+        labelRight.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(-inset.right)
             make.width.equalTo(45)
             make.height.equalTo(labelLeft);
         }
         
-        sliderCtl.snp.makeConstraints { (make) in
+        sliderCtl.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(labelLeft.snp.right).offset(spacing)
             make.right.equalTo(labelRight.snp.left).offset(-kPadding)

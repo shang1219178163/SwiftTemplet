@@ -69,7 +69,7 @@ class UITableViewCellDatePicker: UITableViewCell {
             make.height.equalTo(height)
         }
         
-        textfield.snp.makeConstraints { (make) in
+        textfield.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
             make.right.equalToSuperview().offset(-endX)

@@ -82,7 +82,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
             }
             return
         }
-        switchCtl.snp.makeConstraints { (make) in
+        switchCtl.snp.remakeConstraints { (make) in
             make.top.equalTo(labelLeft);
             make.left.equalTo(labelLeft.snp.right).offset(spacing)
         }

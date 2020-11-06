@@ -136,7 +136,7 @@ class UITableViewCellLocation: UITableViewCell {
                 make.size.equalTo(weatherLabelSize);
             }
             
-            weatherImgView.snp.makeConstraints { (make) in
+            weatherImgView.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.right.equalTo(weatherLabel.snp.left).offset(-5);
                 make.width.equalTo(20);

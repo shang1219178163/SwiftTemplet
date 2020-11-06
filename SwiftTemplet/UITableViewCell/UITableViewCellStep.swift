@@ -82,7 +82,7 @@ class UITableViewCellStep: UITableViewCell {
             return
         }
         
-        ppBtn.snp.makeConstraints { (make) in
+        ppBtn.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(labelLeft.snp.right).offset(spacing)
             make.width.equalTo(120)
