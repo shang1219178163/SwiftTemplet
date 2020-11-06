@@ -1,5 +1,5 @@
 //
-//  NNAlertViewController.swift
+//  NNAlertTextViewController.swift
 //  HFNavigationController_Example
 //
 //  Created by Bin Shang on 2020/4/16.
@@ -10,20 +10,20 @@ import UIKit
 import SwiftExpand
 
 @objc protocol NNAlertViewControllerDelegate: NSObjectProtocol {
-    @objc func alertVC(_ controller: NNAlertViewController, sender: UIButton);
+    @objc func alertVC(_ controller: NNAlertTextViewController, sender: UIButton);
     
 }
 
-class NNAlertViewController: UIViewController {
+class NNAlertTextViewController: UIViewController {
         
     weak var delegate: NNAlertViewControllerDelegate?
     
     let contentInset = UIEdgeInsets.zero
     
     var actionTitles = ["取消", "确定"]{
-        didSet{
+        willSet{
             btns.removeAll()
-            for e in oldValue.enumerated() {
+            for e in newValue.enumerated() {
                 let button: UIButton = {
                     let button = UIButton(type: .custom);
                     button.setTitle(e.element, for: .normal);
@@ -39,6 +39,13 @@ class NNAlertViewController: UIViewController {
                         guard let sender = control as? UIButton else { return }
 //                        DDLog(sender.currentTitle)
                         self.delegate?.alertVC(self, sender: sender)
+                        if sender.currentTitle == "取消" {
+                            self.navigationController?.dismiss(animated: false, completion: nil)
+                        }
+                        
+                        if self.delegate == nil {
+                            self.dismiss(animated: true, completion: nil)
+                        }
                         
                     }, for: .touchUpInside)
                     

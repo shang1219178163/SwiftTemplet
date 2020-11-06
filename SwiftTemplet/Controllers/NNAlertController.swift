@@ -21,9 +21,9 @@ import UIKit
     let inset = UIEdgeInsets(top: 0, left: 16, bottom: 10, right: 16)
 
     var actionTitles = ["取消", "确定"]{
-        didSet{
+        willSet{
             btns.removeAll()
-            for e in oldValue.enumerated() {
+            for e in newValue.enumerated() {
                 let button: UIButton = {
                     let button = UIButton(type: .custom);
                     button.setTitle(e.element, for: .normal);
@@ -41,6 +41,10 @@ import UIKit
                         self.delegate?.alertVC(self, sender: sender)
                         if sender.currentTitle == "取消" {
                             self.navigationController?.dismiss(animated: false, completion: nil)
+                        }
+                        
+                        if self.delegate == nil {
+                            self.dismiss(animated: true, completion: nil)
                         }
                         
                     }, for: .touchUpInside)
@@ -87,7 +91,7 @@ import UIKit
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = "用户协议和隐私政策"
+        title = "自定义弹窗"
         actionTitles = ["暂不使用", "同意"]
         setupContent()
 

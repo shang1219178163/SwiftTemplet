@@ -17,8 +17,8 @@ class NNAlertShowController: UIViewController {
                              width: UIScreen.main.bounds.width*0.9,
                              height: 300)
     
-    lazy var textController: NNAlertViewController = {
-        let controller = NNAlertViewController()
+    lazy var textController: NNAlertTextViewController = {
+        let controller = NNAlertTextViewController()
 //        controller.actionTitles = ["one", "two", "three"]
 //        controller.actionTitles = ["one", ]
         controller.actionTitles = ["暂不使用", "同意"]
@@ -79,7 +79,7 @@ extension NNAlertShowController: UITextViewDelegate{
 }
 
 extension NNAlertShowController: NNAlertViewControllerDelegate{
-    func alertVC(_ controller: NNAlertViewController, sender: UIButton) {
+    func alertVC(_ controller: NNAlertTextViewController, sender: UIButton) {
         DDLog(sender.currentTitle, sender.tag)
         switch sender.tag {
         case 0:
