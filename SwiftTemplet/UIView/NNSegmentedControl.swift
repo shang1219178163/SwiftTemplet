@@ -17,13 +17,13 @@ class NNSegmentedControl: UISegmentedControl {
 
     var cornerRadius: CGFloat = 3
 
-    var normalColor: UIColor = UIColor.black {
+    var normalColor: UIColor = .black {
         didSet{
             setupControl()
         }
     }
     
-    var selectedColor: UIColor = UIColor.systemBlue {
+    var selectedColor: UIColor = .systemBlue {
         didSet{
             setupControl()
         }
@@ -34,8 +34,8 @@ class NNSegmentedControl: UISegmentedControl {
             setupIndicator()
             
             let dividerImage = UIImage(color: (showStyle == .seprateLine) ? .line : .clear)
-            setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
             setDividerImage(dividerImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            setDividerImage(dividerImage, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
             setDividerImage(dividerImage, forLeftSegmentState: .highlighted, rightSegmentState: .normal, barMetrics: .default)
         }
     }
@@ -118,7 +118,15 @@ class NNSegmentedControl: UISegmentedControl {
                     ]
         setTitleTextAttributes(attDic, for: .normal)
         setTitleTextAttributes(attDicH, for: .selected)
-        indicator.layer.borderColor = selectedColor.cgColor;
+        setTitleTextAttributes(attDicH, for: .highlighted)
+
+        if showStyle == .box {
+            indicator.backgroundColor = .clear
+            indicator.layer.borderColor = selectedColor.cgColor
+        } else {
+            indicator.layer.borderColor = selectedColor.cgColor
+            indicator.backgroundColor = selectedColor
+        }
     }
     
     func setupIndicator() {

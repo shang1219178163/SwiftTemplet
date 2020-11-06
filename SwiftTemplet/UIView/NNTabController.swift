@@ -36,7 +36,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
                 }
 //                DDLog("element_\(e.element.title)",e.offset)
             }
-            scrollViewTop.list = listName;
+            scrollViewTop.list = listName as! [String];
             selectedViewController = newValue?.first;
             selectedViewController?.beginAppearance(true, animated: true);
         }

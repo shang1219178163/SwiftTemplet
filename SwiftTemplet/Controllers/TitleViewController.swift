@@ -166,13 +166,13 @@ class TitleViewController: NNTitleViewSelectController{
         super.viewWillAppear(animated)
 //        DDLog("viewWillAppear")
         
-        let model = Person()
-        
-        var dic = [String: Any]()
-        model.enumeratePropertys { (property_t, name, value) in
-            dic[name] = value ?? "=="
-        }
-        DDLog(dic)
+//        let model = Person()
+//
+//        var dic = [String: Any]()
+//        model.enumeratePropertys { (property_t, name, value) in
+//            dic[name] = value ?? "=="
+//        }
+//        DDLog(dic)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -58,7 +58,6 @@ class NNVehicleInfoCardView: UIView {
         iconLabSub.image = UIImage(named: "icon_businessCard")
         iconLabSubOne.image = UIImage(named: "icon_company_white")
         gradientLayer.colors = CAGradientLayer.defaultColors;
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -68,8 +67,11 @@ class NNVehicleInfoCardView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        gradientLayer.frame = bounds
+//        gradientLayer.frame = bounds
+        gradientLayer.frame = CGRectMake(0, 0, bounds.width, bounds.height)
+
         
+        DDLog(gradientLayer.frame, gradientLayer.colors)
         setupConstraint()
     }
     
