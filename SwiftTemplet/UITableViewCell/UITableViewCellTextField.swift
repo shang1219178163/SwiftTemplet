@@ -90,14 +90,14 @@ class UITableViewCellTextField: UITableViewCell {
         }
 
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
-        labelLeft.snp.remakeConstraints { (make) in
+        labelLeft.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(inset.left)
             make.width.equalTo(labelLeftSize.width)
             make.height.equalTo(height)
         }
         
-        textfield.snp.remakeConstraints { (make) in
+        textfield.snp.makeConstraints { (make) in
             make.top.equalTo(labelLeft)
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
             make.right.equalToSuperview().offset(-endX)

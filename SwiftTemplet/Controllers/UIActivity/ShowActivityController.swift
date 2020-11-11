@@ -33,6 +33,16 @@ import UIKit
         return view
     }()
         
+    
+    lazy var customActivity: NNActivity = {
+        let activity = NNActivity()
+        activity.title = "CustomActivity"
+        activity.type = "NNActivity"
+        activity.image = UIApplication.appIcon
+        activity.shareContexts = ["欢迎关注我", UIApplication.appIcon, URL(string: "https://github.com/wslcmk")!]
+
+        return activity
+    }()
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,14 +78,16 @@ import UIKit
     }
     
     func showActivityVC(_ sender: UIButton) {
-        let customActivity = UIActivity()
         
         let activityItems: [UIActivity.ActivityType] = [.airDrop, .message, .mail, .markupAsPDF, .print, .copyToPasteboard, ]
-        let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: customActivity.shareContexts!, applicationActivities: [customActivity])
 //        if let popover = activityVC.popoverPresentationController {
 //            popover.sourceView = sender
 //            popover.permittedArrowDirections = .up
 //        }
+        activityVC.completionWithItemsHandler = { activity, success, items, error in
+            print(activity.debugDescription)
+        }
         activityVC.present()
     }
 
