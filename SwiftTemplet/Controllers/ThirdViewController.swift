@@ -32,6 +32,7 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["ReuseChildsController", "控制器复用", ],
 //             ["SubscribeListNewController", "微信公众号信息列表1", ],
              ["FloatingPanelExampleController", "FloatingPanel浮层", ],             
             ["ProtocolViewController", "面向协议编程", ],
@@ -51,7 +52,6 @@ class ThirdViewController: UIViewController{
 //             ["CellListController", "自定义Cell界面", ],
              ["TextFieldStyleController", "TextField样式显示", ],                
              ["IOPPlateEntryController", "多车牌录入", ],
-             ["ReuseChildsController", "控制器复用", ],
              ["FlipImageViewController", "FlipImageView", ],
              ["NNTitleViewSelectController", "导航栏下拉菜单封装", ],
              ["TransitionAnimatorShowController", "动画效果", ],
@@ -221,7 +221,30 @@ class ThirdViewController: UIViewController{
         
 //        let image = UIImage(color: .white)
 //        DDLog(image.cgImage)
-        
+        let string = """
+        {"status":"success",
+        "object":{
+        "blocks":[
+        {"id":1,"value":1,"level":0,"name":"A区","description":"描述信息","disabled":false},
+        {"id":2,"value":2,"level":0,"name":"B区","disabled":false},
+        {"id":3,"value":3,"level":0,"name":"C区","disabled":false},
+        {"id":4,"value":4,"level":0,"name":"D区","disabled":false}],
+            "floors":[
+        {"id":51,"value":1,"level":2,"name":"1层","disabled":false},
+        {"id":52,"value":2,"level":2,"name":"2层","disabled":false},
+        {"id":53,"value":3,"level":2,"name":"3层","disabled":false},
+        {"id":54,"value":4,"level":2,"name":"4层","disabled":false}],
+            "buildings":[
+        {"id":11,"value":1,"level":1,"name":"1栋","disabled":false},
+        {"id":12,"value":2,"level":1,"name":"2栋","disabled":false},
+        {"id":13,"value":3,"level":1,"name":"3栋","disabled":false},
+        {"id":14,"value":4,"level":1,"name":"4栋","disabled":false}]
+                }
+        }
+        """
+//        guard let dic = JSONSerialization.jsonObjectFromString(string) as? [AnyHashable : Any] else { return }
+//        let rootModel = PKRootModel.yy_model(with: dic)
+//        DDLog(dic, rootModel?.object?.floors)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -278,8 +301,7 @@ class ThirdViewController: UIViewController{
             agreementView.show()
         
         case 2:
-            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-            rootViewController.present(self.navController, animated: true, completion: nil)
+            navController.present()
             
         case 3:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"
@@ -520,7 +542,9 @@ extension ThirdViewController: NNAgreementViewDelegate{
         switch sender.tag {
         case 0:
             exit(0)
-        default: break
+        default:
+            view.dismiss()
+            break
         }
     }
     
