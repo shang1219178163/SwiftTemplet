@@ -33,6 +33,8 @@ import HFNavigationController
              ["AlertSheetStyle6", "样式", ],
              ["AlertStyle", "默认", ],
              ["AlertStyle1", "HFNavigationController自定义", ],
+             ["AlertTable", "tableAlertController自定义", ],
+             ["AlertStyleHud", "HFNavigationController自定义", ],
 
              ],
         ]
@@ -86,6 +88,50 @@ import HFNavigationController
         
         controller.setupDefaultFrame(self.frameCenter)
 
+        return controller;
+    }()
+    
+    
+    lazy var hudController: NNAlertController = {
+        let controller = NNAlertController()
+        
+        let hud = UIActivityIndicatorView(style: .gray)
+        hud.startAnimating()
+
+        controller.customView = hud
+        return controller
+    }()
+    
+    lazy var navHudController: HFNavigationController = {
+        let controller = HFNavigationController(rootViewController: hudController)
+        controller.modalTransitionStyle = .crossDissolve
+        controller.tapBackViewDismiss = false
+        controller.view.layer.cornerRadius = 15
+        controller.view.layer.masksToBounds = true
+        
+        controller.setupDefaultFrame(self.frameCenter)
+
+        return controller;
+    }()
+    
+    lazy var tableAlertController: NNAlertTableController = {
+        let controller = NNAlertTableController()
+        return controller
+    }()
+    
+    lazy var navTableAlertController: HFNavigationController = {
+        let controller = HFNavigationController(rootViewController: tableAlertController)
+        controller.modalTransitionStyle = .crossDissolve
+        controller.tapBackViewDismiss = false
+        controller.view.layer.cornerRadius = 15
+        controller.view.layer.masksToBounds = true
+        
+        
+        let frame = CGRect(x: 30,
+                           y: (UIScreen.main.bounds.height - 470)*0.5 - 30,
+                        width: UIScreen.main.bounds.width - 60,
+                        height: 470)
+        controller.setupDefaultFrame(frame)
         return controller;
     }()
     
@@ -257,7 +303,6 @@ import HFNavigationController
             sender.backgroundColor = .systemBlue
         })
 
-        alertController.addAction(UIAlertAction(title: "know", style: .default, handler: nil))
         alertController.addAction(UIAlertAction(title: "sure", style: .default, handler: nil))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
@@ -266,7 +311,26 @@ import HFNavigationController
     }
     
     func showAlert1(){
-        present(navController, animated: false, completion: nil)
+        navController.present()
+    }
+    
+    func showAlertTableView(){
+        navTableAlertController.present()
+    }
+    
+    func showAlertHud(){
+//        navHudController.present()
+        UIAlertController.createSheet("title", message: "message", type: UIActivityIndicatorView.self, height: 60) {
+            if #available(iOS 13.0, *) {
+                $0.style = .large
+            } else {
+                $0.style = .gray
+            }
+            $0.startAnimating()
+        } handler: { (action) in
+            DDLog(action.title ?? "-")
+        }
+        .present()
     }
 }
 
@@ -336,6 +400,12 @@ extension AlerSheetStudyController: UITableViewDataSource, UITableViewDelegate{
         
         case "AlertStyle1":
             showAlert1()
+            
+        case "AlertTable":
+            showAlertTableView()
+            
+        case "AlertStyleHud":
+            showAlertHud()
             
         default:
             break
