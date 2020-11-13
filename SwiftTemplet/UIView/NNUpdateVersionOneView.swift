@@ -240,8 +240,12 @@ import SwiftExpand
     
     //MARK: -funtions
     func show() {
-        UIApplication.shared.keyWindow?.endEditing(true)
-        UIApplication.shared.keyWindow?.addSubview(self);
+        guard let keyWindow = UIApplication.shared.keyWindow else {
+            return
+        }
+        keyWindow.endEditing(true)
+        keyWindow.addSubview(self);
+        self.center = keyWindow.center
         
 //        self.transform = self.transform.scaledBy(x: 2.5, y: 2.5)
         UIView.animate(withDuration: 0.15, animations: {
