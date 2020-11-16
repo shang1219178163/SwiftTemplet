@@ -46,7 +46,7 @@ class PickerViewController: UIViewController {
             self.versionView.show();
         }
 
-//        view.getViewLayer()
+        view.getViewLayer()
     }
 
     
@@ -145,6 +145,7 @@ class PickerViewController: UIViewController {
         
 //        view.gradientLayer.colors = [UIColor.red.cgColor, UIColor.green.cgColor]
 //        view.gradientLayer.colors = [UIColor.hex("#999999").withAlphaComponent(0.8).cgColor, UIColor.hex("#999999").cgColor]
+//        view.backgroundColor = UIColor.systemGreen
 
         return view
     }()
@@ -159,6 +160,7 @@ class PickerViewController: UIViewController {
         view.labelSubOne.text = "333333"
         
         view.type = 1
+//        view.backgroundColor = UIColor.systemGreen
         return view
     }()
     
