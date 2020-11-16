@@ -219,6 +219,6 @@ extension NNSegmentedControl{
         view.normalColor = UIColor.white
         view.selectedColor = .systemBlue
 
-        return view as! Self;
+        return view as! Self
     }
 }
