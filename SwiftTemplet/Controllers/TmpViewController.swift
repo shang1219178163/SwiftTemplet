@@ -15,12 +15,12 @@ class TmpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(btn)
-        btn.frame = CGRectMake(10, 10, 100, 45);
+        btn.frame = CGRectMake(10, 10, 100, 1);
 //        addLineDashLayer(color: UIColor.theme, width: 1, cornerRadius: 0, view:btn)
         
-        view.addSubview(couponView)
-        couponView.frame = CGRectMake(10, 60, 100, 45);
-        couponView.setNeedsLayout();
+        view.addSubview(lineDashView)
+        lineDashView.frame = CGRectMake(10, 60, 100, 45);
+        lineDashView.setNeedsLayout();
         
         itemView.items = NSArray.range(0, 2, 1).map({ (index) in
             "\(index)"
@@ -37,7 +37,33 @@ class TmpViewController: UIViewController {
             self.emergencyOpenView.show();
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-        view.getViewLayer()
+//        view.getViewLayer()
+        
+        ///虚线
+        let imgView = UIImageView(frame: CGRect(x: 0, y: 250,
+                                                width:self.view.frame.width,
+                                                height: 2))
+//        imgView.backgroundColor = .systemGreen
+        view.addSubview(imgView)
+        
+        UIGraphicsBeginImageContext(imgView.frame.size) // 位图上下文绘制区域 FlyElephant
+        imgView.image?.draw(in: imgView.bounds)
+        
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return
+        }
+        context.setLineCap(CGLineCap.square)
+        
+        let lengths:[CGFloat] = [5, 3] // 绘制 跳过 无限循环
+        
+        context.setStrokeColor(UIColor.systemBlue.cgColor)
+        context.setLineWidth(1)
+        context.setLineDash(phase: 0, lengths: lengths)
+        context.move(to: CGPoint(x: 0, y: 0))
+        context.addLine(to: CGPoint(x: imgView.bounds.width, y: 0))
+        context.strokePath()
+                        
+        imgView.image = UIGraphicsGetImageFromCurrentImageContext()
     }
     /// 增加虚线边框
     @objc func getLineCGPath(view: UIView, type:Int = 0) -> CGPath {
@@ -302,8 +328,9 @@ class TmpViewController: UIViewController {
         return btn;
     }();
     
-    lazy var couponView: NNLineDashView = {
+    lazy var lineDashView: NNLineDashView = {
         let view = NNLineDashView(frame: CGRectMake(10, 60, 100, 45));
+        view.style = .line
 
         return view;
     }();
