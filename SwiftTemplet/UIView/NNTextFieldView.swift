@@ -31,7 +31,8 @@ class NNTextFieldView: UIView {
         addSubview(textfield);
         addSubview(btn);
         addSubview(lineView);
-
+        addSubview(lineSeprateView);
+        
         textfield.placeholder = "请输入验证码";
         textfield.delegate = self;
         
@@ -45,6 +46,8 @@ class NNTextFieldView: UIView {
         label.numberOfLines = 1
         
         lineView.backgroundColor = .lightGray;
+        lineSeprateView.isHidden = true
+
 //        backgroundColor = .systemGreen
 //        getViewLayer()
     }
@@ -121,6 +124,17 @@ class NNTextFieldView: UIView {
             make.right.equalToSuperview().offset(-Xgap)
             make.height.equalTo(lineHeight);
         }
+        
+        if btn.isHidden == false && lineSeprateView.isHidden == false {
+            lineSeprateView.snp.makeConstraints { (make) in
+                make.centerY.equalTo(textfield);
+                make.left.equalTo(textfield.snp.right).offset(3.5)
+                make.width.equalTo(1)
+                make.height.equalTo(textfield).multipliedBy(0.66);
+            }
+
+        }
+        
     }
     
     // MARK: - funtions
@@ -172,7 +186,13 @@ class NNTextFieldView: UIView {
     
     lazy var lineView: UIView = {
         let view = UIView(frame: .zero);
-        view.backgroundColor = UIColor.red;
+        view.backgroundColor = .red;
+        return view;
+    }()
+    
+    lazy var lineSeprateView: UIView = {
+        let view = UIView(frame: .zero);
+        view.backgroundColor = .red;
         return view;
     }()
 }
