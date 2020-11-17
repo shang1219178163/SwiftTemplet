@@ -10,9 +10,13 @@ import UIKit
 
 import SwiftExpand
 
-class NNTableFooterView: UIView {
+
+@objcMembers class NNTableFooterView: UIView {
     /// 图像距离顶端间距
     var topPadding: CGFloat = 20;
+    
+    var layoutBlock:((NNTableFooterView)->Void)?
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,11 +29,16 @@ class NNTableFooterView: UIView {
         addSubview(label)
         addSubview(labelTop)
 
-        backgroundColor = UIColor.background;
+        backgroundColor = .background;
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        if let layoutBlock = layoutBlock {
+            layoutBlock(self)
+            return
+        }
         
         labelTop.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
@@ -52,7 +61,7 @@ class NNTableFooterView: UIView {
         }
     }
 
-    @objc lazy var btn: UIButton = {
+    lazy var btn: UIButton = {
         var view: UIButton = UIButton.create( .zero, title: "确定", imgName: nil, type: 1);
             view.addActionHandler({ (sender) in
                 if let obj = sender as? UIButton {
@@ -62,9 +71,9 @@ class NNTableFooterView: UIView {
             }, for: .touchUpInside)
         
         return view;
-    }();
+    }()
     
-    @objc lazy var label: UILabel = {
+    lazy var label: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.hex("#999999")
         view.font = UIFont.systemFont(ofSize: 14)
@@ -74,7 +83,7 @@ class NNTableFooterView: UIView {
         return view
     }()
     
-    @objc lazy var labelTop: UILabel = {
+    lazy var labelTop: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.hex("#999999")
         view.font = UIFont.systemFont(ofSize: 14)
