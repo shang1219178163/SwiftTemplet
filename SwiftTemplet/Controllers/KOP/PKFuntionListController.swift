@@ -15,9 +15,11 @@ import SwiftExpand
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["EDriverViewController", "E代驾", ],
+            [
+             ["PKAccountLogOffOneController", "AccountLogOff", ],
+             ["EDriverViewController", "E代驾", ],
              ["AliBianXianKeController", "变现客", ],
-            ["BXKViewController", "变现客", ],
+             ["BXKViewController", "变现客", ],
 
              ["PKParkBriefController", "车场空车位", ],
              ["PKParkCollectListController", "kOP 收藏", ],
