@@ -10,17 +10,25 @@ import UIKit
 import SnapKit
 
 import SwiftExpand
+
+
 /// 图片+文字+文字+图片
-class NNContentCellView: UIView {
+class NNContentCellView: UIImageView {
     var cellStyle: UITableViewCell.CellStyle = .default
 
     var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    var imageSize = CGSize.zero
+
+    var imageSize: CGSize = CGSize(width: 40, height: 40)
+
     var btnSize = CGSize(width: 8, height: 13)
+    
+    var lineSpacing: CGFloat = 5
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .clear
         addSubview(imageView);
         addSubview(textLabel);
         addSubview(detailTextLabel);
@@ -33,9 +41,6 @@ class NNContentCellView: UIView {
         textLabel.numberOfLines = 1;
         btn.setTitle(">", for: .normal)
         btn.setTitleColor(.gray, for: .normal)
-        
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 0.5
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,9 +77,6 @@ class NNContentCellView: UIView {
                 make.width.height.equalTo(height);
             }
         }
-        
-//        textLabel.snp.removeConstraints()
-//        detailTextLabel.snp.removeConstraints()
 
         switch cellStyle {
         case .subtitle:
@@ -84,11 +86,11 @@ class NNContentCellView: UIView {
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(labStartX)
                 make.right.equalToSuperview().offset(-labEndX)
-                make.height.equalTo((height - 5)/2.0)
+                make.height.equalTo((height - lineSpacing)/2.0)
             }
 
             detailTextLabel.snp.remakeConstraints { (make) in
-                make.top.equalTo(textLabel.snp.bottom).offset(5)
+                make.top.equalTo(textLabel.snp.bottom).offset(lineSpacing)
                 make.left.equalToSuperview().offset(labStartX)
                 make.right.equalToSuperview().offset(-labEndX)
                 make.height.equalTo(textLabel)
@@ -111,19 +113,17 @@ class NNContentCellView: UIView {
             }
             
         default:
-            let size = textLabel.sizeThatFits(.zero)
             textLabel.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
                 make.left.equalToSuperview().offset(labStartX)
-                make.width.lessThanOrEqualTo(size.width)
+                make.right.equalToSuperview().offset(-labEndX)
                 make.height.equalTo(height)
             }
             
             detailTextLabel.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.left.equalTo(textLabel.snp.right).offset(kPadding)
                 make.right.equalToSuperview().offset(-labEndX)
-                make.height.equalTo(height)
+                make.width.height.equalTo(0)
             }
         }
     }
@@ -145,8 +145,8 @@ class NNContentCellView: UIView {
         view.tag = 1;
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.setTitle(kTitleSure, for: .normal);
-        view.setTitleColor(.systemBlue, for: .normal);
+//        view.setTitle(kTitleSure, for: .normal);
+//        view.setTitleColor(.systemBlue, for: .normal);
         view.addActionHandler({ (control) in
             DDLog(control)
 
@@ -157,11 +157,11 @@ class NNContentCellView: UIView {
     lazy var textLabel: UILabel = {
         var view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.font = UIFont.systemFont(ofSize: 16);
+        view.font = UIFont.systemFont(ofSize: 14);
 
         view.textAlignment = .left;
         view.numberOfLines = 0;
-        view.lineBreakMode = .byCharWrapping;
+        view.lineBreakMode = .byTruncatingTail;
         view.isUserInteractionEnabled = true;
   
         return view;
@@ -170,11 +170,11 @@ class NNContentCellView: UIView {
     lazy var detailTextLabel: UILabel = {
         var view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.font = UIFont.systemFont(ofSize: 16);
+        view.font = UIFont.systemFont(ofSize: 12);
 
         view.textAlignment = .right;
         view.numberOfLines = 0;
-        view.lineBreakMode = .byCharWrapping;
+        view.lineBreakMode = .byTruncatingTail;
         view.isUserInteractionEnabled = true;
     
         return view;

@@ -42,7 +42,7 @@ import SwiftExpand
     // MARK: -lazy
     lazy var items: [UIView] = {
         return self.contentView.updateItems(self.row*self.numOfRow, type: self.itemType) {
-            $0.backgroundColor = .random
+            $0.backgroundColor = .clear
         }
     }()
     

@@ -1,16 +1,20 @@
 //
-//	NNUserInfoView.swift
-//	MacTemplet
+//    NNUserInfoView.swift
+//    MacTemplet
 //
-//	Created by shang on 2020/07/17 15:27
-//	Copyright © 2020 shang. All rights reserved.
+//    Created by shang on 2020/07/17 15:27
+//    Copyright © 2020 shang. All rights reserved.
 //
 
 
 import UIKit
+import SwiftExpand
 
 import SnapKit
-import SwiftExpand
+
+@objc enum NNUserInfoViewState: Int {
+    case normol, login
+}
         
 ///
 class NNUserInfoView: UIView {
@@ -19,7 +23,7 @@ class NNUserInfoView: UIView {
     
     var name = "-" {
         willSet{
-            btnName.setTitle(newValue + kBlankOne, for: .normal)
+            labName.text = newValue
             setNeedsLayout()
         }
     }
@@ -27,7 +31,7 @@ class NNUserInfoView: UIView {
     var isMale = true {
         willSet{
             let imageName = newValue ? "icon_male" : "icon_female"
-            btnName.setImage(UIImage(named: imageName), for: .normal)
+//            labName.setImage(UIImage(named: imageName), for: .normal)
         }
     }
     
@@ -44,9 +48,7 @@ class NNUserInfoView: UIView {
                 btnPoints.setTitle("-- 积分", for: .normal)
                 return
             }
-            
-            let result = newValue.cgFloatValue > 1000 ? "\(newValue.cgFloatValue/1000)K" : newValue
-            btnPoints.setTitle("\(result)积分", for: .normal)
+            btnPoints.setTitle("\(newValue.thousandDes)积分", for: .normal)
             setNeedsLayout()
         }
     }
@@ -58,9 +60,20 @@ class NNUserInfoView: UIView {
         }
     }
     
-    typealias ViewClick = (NNUserInfoView) -> Void;
-    var viewBlock: ViewClick?;
-    
+    var state: NNUserInfoViewState = .normol{
+        willSet{
+            if newValue == .normol {
+                imgView.image = UIImage(named: "icon_avatar")
+            }
+            labName.isHidden = labName.isHidden ? labName.isHidden : (newValue == .normol)
+            btnLevel.isHidden = btnLevel.isHidden ? btnLevel.isHidden : (newValue == .normol)
+            verLineView.isHidden = verLineView.isHidden ? verLineView.isHidden : (newValue == .normol)
+            btnPoints.isHidden = btnPoints.isHidden ? btnPoints.isHidden : (newValue == .normol)
+            btnCoupon.isHidden = btnCoupon.isHidden ? btnCoupon.isHidden : (newValue == .normol)
+            btnLogin.isHidden = (newValue == .login)
+        }
+    }
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -68,23 +81,21 @@ class NNUserInfoView: UIView {
         backgroundColor = .clear
         
         addSubview(imgView)
-        addSubview(btnName)
+        addSubview(labName)
         addSubview(btnLevel)
         addSubview(btnPoints)
         addSubview(verLineView)
         addSubview(btnCoupon)
-        
-        btnName.setTitle("姓名", for: .normal)
-        btnName.setTitleColor(.white, for: .normal)
-        btnName.setImage(UIImage(named: "icon_male"), for: .normal)
+        addSubview(btnLogin)
 
         btnLevel.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         btnLevel.adjustsImageWhenHighlighted = true
         btnLevel.setBackgroundImage(UIImage(named: "bg_level"), for: .normal)
         btnLevel.setTitleColor(UIColor.hexValue(0xFAC993), for: .normal);
         btnLevel.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0)
-            
+                
         btnPoints.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        btnPoints.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5)
         btnPoints.adjustsImageWhenHighlighted = true
         btnPoints.setBackgroundImage(UIImage(named: "bg_gradient_orange_1"), for: .normal)
         btnPoints.setTitleColor(UIColor.hexValue(0x814F0B), for: .normal);
@@ -97,7 +108,6 @@ class NNUserInfoView: UIView {
 
 //        name = "王小兰"
 //        level = "30"
-//        points = "12"
 //        couponNumber = "12"
 //        getViewLayer()
     }
@@ -109,52 +119,54 @@ class NNUserInfoView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 10 {
+        if bounds.height <= 10.0 {
             return;
         }
         
+        let height = self.bounds.height - inset.top - inset.bottom
         imgView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.left.equalToSuperview().offset(inset.left);
             make.bottom.equalToSuperview().offset(-inset.bottom);
-            make.width.equalTo(self.bounds.height - inset.top - inset.bottom)
+            make.width.equalTo(height)
         }
         
-        let nameSize = btnName.sizeThatFits(.zero)
-        btnName.snp.remakeConstraints { (make) in
+//        DDLog(labName.text)
+        let nameSize = labName.sizeThatFits(.zero)
+        labName.snp.makeConstraints { (make) in
             make.top.equalTo(imgView).offset(0);
             make.left.equalTo(imgView.snp.right).offset(10);
             make.height.equalTo(imgView.snp.height).multipliedBy(0.4);
-            make.width.equalTo(nameSize.width);
+            make.width.greaterThanOrEqualTo(nameSize.width);
         }
                 
         btnLevel.snp.makeConstraints { (make) in
-            make.top.equalTo(btnName.snp.bottom).offset(5);
+            make.top.equalTo(labName.snp.bottom).offset(5);
             make.left.equalTo(imgView.snp.right).offset(10);
             make.width.equalTo(65);
             make.height.equalTo(21);
         }
         
         let btnPointsSize = btnPoints.sizeThatFits(.zero)
-        btnPoints.snp.remakeConstraints { (make) in
+        btnPoints.snp.makeConstraints { (make) in
             make.centerY.equalTo(btnLevel).offset(0);
             make.left.equalTo(btnLevel.snp.right).offset(8);
-            make.width.equalTo(ceil(btnPointsSize.width));
+            make.width.greaterThanOrEqualTo(ceil(btnPointsSize.width));
             make.height.equalTo(17);
         }
                 
         verLineView.snp.makeConstraints { (make) in
-            make.top.equalTo(btnLevel).offset(0);
+            make.centerY.equalTo(btnLevel)
             make.left.equalTo(btnPoints.snp.right).offset(8);
             make.width.equalTo(1)
-            make.height.equalTo(btnLevel)
+            make.height.equalTo(btnLevel).multipliedBy(0.7)
         }
         
         let couponnSize = btnCoupon.sizeThatFits(.zero)
-        btnCoupon.snp.remakeConstraints { (make) in
+        btnCoupon.snp.makeConstraints { (make) in
             make.top.equalTo(btnLevel).offset(0);
             make.left.equalTo(verLineView.snp.right).offset(8);
-            make.width.equalTo(couponnSize.width)
+            make.width.greaterThanOrEqualTo(couponnSize.width)
             make.height.equalTo(btnLevel)
         }
         
@@ -163,13 +175,17 @@ class NNUserInfoView: UIView {
         
         imgView.layer.cornerRadius = imgView.bounds.height*0.5
         imgView.layer.masksToBounds = true
+        
+        let loginSize = btnLogin.sizeThatFits(.zero)
+        btnLogin.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview().offset(0);
+            make.left.equalTo(imgView.snp.right).offset(10);
+            make.size.equalTo(loginSize);
+        }
     }
     
     // MARK: - funtions
-    func block(_ action: @escaping ViewClick) {
-        self.viewBlock = action;
-    }
-    
+
         
     //MARK: - lazy
     
@@ -180,6 +196,7 @@ class NNUserInfoView: UIView {
         
         view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.white.cgColor
+
         return view;
     }()
     
@@ -189,23 +206,13 @@ class NNUserInfoView: UIView {
         view.backgroundColor = .white
         return view;
     }()
-    
-    lazy var btnName: NNButton = {
-        let view = NNButton(type: .custom);
-        view.direction = .right
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        view.titleLabel?.adjustsFontSizeToFitWidth = true
-        view.imageView?.contentMode = .center
+        
+    lazy var labName: UILabel = {
+        let view = UILabel(frame: .zero);
+        view.text = "--";
+        view.textColor = .white;
+        view.font = UIFont.systemFont(ofSize: 17);
 
-        view.setTitle(kTitleSure, for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
-
-        }, for: .touchUpInside)
         return view;
     }()
         
@@ -224,7 +231,7 @@ class NNUserInfoView: UIView {
         }, for: .touchUpInside)
         return view;
     }()
-    
+        
     lazy var btnPoints: UIButton = {
         let view = UIButton(type: .custom);
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
@@ -247,6 +254,23 @@ class NNUserInfoView: UIView {
 
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
+        view.addActionHandler({ (control) in
+            DDLog(control)
+            if let sender = control as? UIButton {
+
+            }
+
+        }, for: .touchUpInside)
+        return view;
+    }()
+    
+    lazy var btnLogin: UIButton = {
+        let view = UIButton(type: .custom);
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold);
+        view.imageView?.contentMode = .scaleAspectFit
+
+        view.setTitle("登录/注册 →", for: .normal);
+        view.setTitleColor(.white, for: .normal);
         view.addActionHandler({ (control) in
             DDLog(control)
             if let sender = control as? UIButton {

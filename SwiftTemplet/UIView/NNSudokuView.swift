@@ -53,7 +53,8 @@ import SwiftExpand
     var showDividers = false
     var dividerColor: UIColor = .line
     var dividerWidth: CGFloat = 1
-    var dividerSpacing: CGFloat = 5
+    var dividerSpacingTop: CGFloat = 5
+    var dividerSpacingBom: CGFloat = 5
     
     lazy var dividers: [UIImageView] = {
         return self.updateItems(self.row*self.numOfRow, type: UIImageView.self) {
@@ -120,16 +121,17 @@ import SwiftExpand
 //            let rect = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
             
             dividers[e.offset].frame = CGRect(x: x + itemWidth + interitemSpacing*0.5,
-                                              y: y + dividerSpacing,
+                                              y: y + dividerSpacingTop,
                                               width: dividerWidth,
-                                              height: itemHeight - dividerSpacing*2)
+                                              height: itemHeight - dividerSpacingTop - dividerSpacingBom)
             dividers[e.offset].isHidden = (e.offset % numOfRow == (numOfRow - 1))
         }
     }
 
     func show() {
-        UIApplication.shared.keyWindow?.endEditing(true)
-        UIApplication.shared.keyWindow?.addSubview(self);
+        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+        keyWindow.endEditing(true)
+        keyWindow.addSubview(self)
         
 //        self.transform = self.transform.scaledBy(x: 1.5, y: 1.5)
         UIView.animate(withDuration: 0.15, animations: {
