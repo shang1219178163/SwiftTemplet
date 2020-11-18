@@ -25,14 +25,18 @@ class PlateNumMainController: NNTabController, NNTabControllerDelegate {
                            threeVC,
                            fourVC,
                            fiveVC]
+        
+        createItem("done", style: .plain, isLeft: false) { (item) in
+            self.navigationController?.pushVC(PickerViewController.self)
+        }
     }
     
     // MARK: -NNTabControllerDelegate
     func tabController(_ tabController: NNTabController, willSelect viewController: UIViewController) {
-        DDLog(viewController)
+//        DDLog(viewController)
     }
     func tabController(_ tabController: NNTabController, didSelect viewController: UIViewController) {
-        DDLog(viewController)
+//        DDLog(viewController)
     }
     
     // MARK: -lazy

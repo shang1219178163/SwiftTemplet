@@ -132,7 +132,6 @@ class NNTextFieldView: UIView {
                 make.width.equalTo(1)
                 make.height.equalTo(textfield).multipliedBy(0.66);
             }
-
         }
         
     }

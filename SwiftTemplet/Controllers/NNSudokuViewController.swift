@@ -32,8 +32,6 @@ class NNSudokuViewController: UIViewController {
         
         view.showDividers = true
         view.dividerColor = .red
-        view.dividerWidth = 2
-        view.dividerSpacing = 10
         return view
     }()
 
