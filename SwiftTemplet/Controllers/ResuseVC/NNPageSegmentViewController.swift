@@ -18,7 +18,7 @@ import UIKit
 }
 
 ///滑动分段菜单选择
-class NNPageSegmentViewController: NNCycleViewController {
+class NNPageSegmentViewController: NNCycleController {
     
     weak var delegate: NNPageSegmentViewControllerDelegate?
     

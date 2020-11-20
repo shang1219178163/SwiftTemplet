@@ -10,7 +10,7 @@
 import UIKit
 
 ///
-@objcMembers class NNPageSegmentedControlController: NNCycleViewController{
+@objcMembers class NNPageSegmentedControlController: NNCycleController{
         
     //MARK: -lazy
     lazy var segmentCtl: NNSegmentedControl = {

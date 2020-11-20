@@ -1,5 +1,5 @@
 //
-//  NNCycleViewStyle1Controller.swift
+//  NNCycleStyle1Controller.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/10/24.
@@ -9,17 +9,17 @@
 import UIKit
 
 
-@objc protocol NNCycleViewStyle1Delegate : NSObjectProtocol {
+@objc protocol NNCycleStyle1Delegate : NSObjectProtocol {
 
-    @objc optional func cycleController(_ controller: NNCycleViewStyle1Controller, shouldSelect idx: Int) -> Bool
+    @objc optional func cycleController(_ controller: NNCycleStyle1Controller, shouldSelect idx: Int) -> Bool
 
-    @objc optional func cycleController(_ controller: NNCycleViewStyle1Controller, didSelect idx: Int)
+    @objc optional func cycleController(_ controller: NNCycleStyle1Controller, didSelect idx: Int)
     
 }
 
-class NNCycleViewStyle1Controller: NNCycleViewController {
+class NNCycleStyle1Controller: NNCycleController {
     
-    weak var delegate: NNCycleViewStyle1Delegate?
+    weak var delegate: NNCycleStyle1Delegate?
     
     enum LocationStyle: Int {
         case top, bottom, titleView

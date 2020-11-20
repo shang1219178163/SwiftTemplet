@@ -1,15 +1,15 @@
 //
-//  NNPageTabarController.swift
+//  NNCycleTabbarController.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2020/10/24.
+//  Created by Bin Shang on 2020/11/20.
 //  Copyright © 2020 BN. All rights reserved.
 //
 
 import UIKit
 import SwiftExpand
 
-class NNPageTabarController: NNCycleViewController {
+class NNCycleTabbarController: NNCycleController {
 
     lazy var tabBar: UITabBar = {
         let tabBar = UITabBar()
@@ -21,15 +21,20 @@ class NNPageTabarController: NNCycleViewController {
         return tabBar
     }()
     
-    lazy var itemList: [[String]] = {
-        return [
-            ["FirstViewController", "First", "Item_first_N", "Item_first_H"],
-            ["SecondViewController", "Second", "Item_second_N", "Item_second_H"],
-            ["ThirdViewController", "Third", "Item_third_N", "Item_third_H"],
-            ["FourthViewController", "Fourth",  "Item_fourth_N",  "Item_fourth_H"],
-            ];
-    }()
+    ///例[["FirstViewController", "First", "Item_first_N", "Item_first_H"],];
+    var itemList = [[String]](){
+        willSet{
+            if newValue.count == 0 || newValue.first!.count == 0 {
+                return
+            }
+            updateItems(newValue)
+        }
+    }
     
+    var scrollToItemAnimated = true
+    
+    ///滚动到某个页面
+    var scrollViewBlock: ((Int)->Void)?
     
     // MARK: -lifecycle
     override func viewDidLoad() {
@@ -41,11 +46,15 @@ class NNPageTabarController: NNCycleViewController {
         
         scrollViewPageIdxBlock = { idx in
             self.tabBar.selectedItem = self.tabBar.items![idx]
+            self.scrollViewBlock?(idx)
         }
         
-        tabBar.items = UITabBar.barItems(itemList)
-        tabBar.selectedItem = tabBar.items?.first!
-        viewControllers = itemList.map({ UICtrFromString($0.first!) })
+        itemList = [
+            ["FirstViewController", "First", "Item_first_N", "Item_first_H"],
+            ["SecondViewController", "Second", "Item_second_N", "Item_second_H"],
+            ["ThirdViewController", "Third", "Item_third_N", "Item_third_H"],
+            ["FourthViewController", "Fourth",  "Item_fourth_N",  "Item_fourth_H"],
+            ];
     }
     
     override func viewDidLayoutSubviews() {
@@ -55,7 +64,7 @@ class NNPageTabarController: NNCycleViewController {
             make.left.equalToSuperview().offset(0);
             make.right.equalToSuperview().offset(0);
             make.bottom.equalToSuperview().offset(0);
-            make.height.equalTo(49);
+            make.height.equalTo(UIScreen.tabBarHeight);
         }
         
         collectionView.snp.remakeConstraints { (make) in
@@ -65,20 +74,28 @@ class NNPageTabarController: NNCycleViewController {
             make.bottom.equalTo(tabBar.snp.top).offset(0);
         }
                 
-        layout.itemSize = CGSize(width: view.bounds.width, height: view.bounds.height - 49)
+        layout.itemSize = CGSize(width: view.bounds.width, height: view.bounds.height - UIScreen.tabBarHeight)
         collectionView.reloadData()
     }
 
+    
+    func updateItems(_ itemList: [[String]]) {
+        tabBar.items = UITabBar.barItems(itemList)
+        tabBar.selectedItem = tabBar.items?.first!
+        viewControllers = itemList.map({ UICtrFromString($0.first!) })
+    }
 
 }
 
-extension NNPageTabarController: UITabBarDelegate{
+extension NNCycleTabbarController: UITabBarDelegate{
         
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 //        guard let viewControllers = viewControllers, let fromVC = selectedViewController else { return }
 //        guard let toVC = viewControllers[toIndex] as UIViewController? else { return }
         guard let toIndex = tabBar.items?.firstIndex(of: item) else { return }
         let indexP = IndexPath(row: toIndex, section: 0)
-        collectionView.scrollToItem(at: indexP, at: .centeredHorizontally, animated: true)
+        collectionView.scrollToItem(at: indexP, at: .centeredHorizontally, animated: scrollToItemAnimated)
+        
+        self.scrollViewBlock?(indexP.row)
     }
 }

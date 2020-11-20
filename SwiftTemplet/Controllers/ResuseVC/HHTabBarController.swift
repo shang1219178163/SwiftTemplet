@@ -47,14 +47,14 @@ import SwiftExpand
         
 }
 
-extension HHTabBarController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
-        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
-//        DDLog("\(fromIndex) -> \(toIndex)")
-        animator.animateType = fromIndex < toIndex ? .right : .left
-        return animator
-    }
-
-}
+//extension HHTabBarController: UITabBarControllerDelegate {
+//    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//
+//        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
+//        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
+////        DDLog("\(fromIndex) -> \(toIndex)")
+//        animator.animateType = fromIndex < toIndex ? .right : .left
+//        return animator
+//    }
+//
+//}

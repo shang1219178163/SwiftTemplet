@@ -1,5 +1,5 @@
 //
-//  NNCycleViewController.swift
+//  NNCycleController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/10/23.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class NNCycleViewController: UIViewController {
+class NNCycleController: UIViewController {
 
     
     /// 载体布局视图
@@ -59,7 +59,7 @@ class NNCycleViewController: UIViewController {
     
     var scrollViewPageIdx: Int = 0
     
-    var scrollViewPageIdxBlock: ((Int)->Void)?
+    internal var scrollViewPageIdxBlock: ((Int)->Void)?
     
 
     // MARK: -lifecycle
@@ -122,7 +122,7 @@ class NNCycleViewController: UIViewController {
 }
 
 
-extension NNCycleViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension NNCycleController: UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK: -UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return children.count;
@@ -189,7 +189,7 @@ extension NNCycleViewController: UICollectionViewDataSource, UICollectionViewDel
 //    }
 }
 
-extension NNCycleViewController: UICollectionViewDelegateFlowLayout {
+extension NNCycleController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
