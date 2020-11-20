@@ -54,7 +54,7 @@ import SwiftExpand
                 e.element.view.backgroundColor = e.element.view.backgroundColor ?? UIColor.white
                 e.element.view.snp.makeConstraints { (make) in
                     make.top.left.right.equalToSuperview().offset(0);
-                    make.bottom.equalToSuperview().offset(-49.5);
+                    make.bottom.equalToSuperview().offset(-UIScreen.tabBarHeight);
                 }
             }
             selectedIndex = 0

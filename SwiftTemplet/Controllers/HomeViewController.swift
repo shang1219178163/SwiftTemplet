@@ -18,6 +18,13 @@ class HomeViewController: UITabBarController {
         
     private lazy var manager = NNGuidePageManager()
     
+    ///当前选择
+    static var selectedIndex: Int {
+        guard let keyWindow = UIApplication.shared.keyWindow,
+              let rootController = keyWindow.rootViewController as? HomeViewController else { return 0}
+        return rootController.selectedIndex
+    }
+    
 //    private lazy var panGesture: UIPanGestureRecognizer = {
 //        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
 //        return pan

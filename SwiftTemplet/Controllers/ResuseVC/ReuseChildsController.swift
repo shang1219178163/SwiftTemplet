@@ -23,12 +23,21 @@ class ReuseChildsController: UIViewController {
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [[
+            ["NNCycleController", "NNCycleController", ],
+            ["NNCycleStyle1Controller", "NNCycleStyle1Controller", ],
+            ["NNCycleTabbarController", "NNCycleTabbar", ],
+            ["NNPageSegmentViewController", "NNPageSegmentView", ],
+            ["NNPageSegmentedControlController", "NNPageSegmentedControl", ],
+            
+            ["NNPageTitleViewController", "NNPageTitleView", ],
+            
+            ["NNScrollViewController", "NNScrollViewController", ],            
             ["PageTmpController", "继承NNPageController", ],
             ["NNParentTwoController", "HHTabBarController子类极简实现", ],
             ["NNParentController", "UUTabBarController子类极简实现", ],
-//             ["UUSementedController", "分段组件", ],
+            ["UUSementedController", "分段组件", ],
             ["NNParentOneController", "UUSementedController子类极简实现", ],
-//             ["UUTabBarController", "UUTabBarController", ],
+            ["UUTabBarController", "UUTabBarController", ],
             ["OOTabBarController", "OOTabBar", ],
             ["PlateNumMainController", "NNTabController组件", ],
 

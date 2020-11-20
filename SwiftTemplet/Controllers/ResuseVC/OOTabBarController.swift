@@ -113,7 +113,7 @@ import SwiftExpand
             make.left.equalToSuperview().offset(0);
             make.right.equalToSuperview().offset(0);
             make.bottom.equalToSuperview().offset(0);
-            make.height.equalTo(49);
+            make.height.equalTo(UIScreen.tabBarHeight);
         }
     }
 
