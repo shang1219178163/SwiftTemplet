@@ -10,6 +10,14 @@
 import UIKit
 import WebKit
 import SwiftExpand
+
+//let kAppUniversalLink = "https://wx.parkingwang.com/"
+//let kPayURLScheme = "ParkingWang"
+//
+//let kWXAppID = ""
+//let kWXAppSecret = ""
+//
+//let kAliAppId = ""
         
 ///ali/wx h5 支付页
 @objcMembers class NNOrderPayH5Controller: UIViewController {
@@ -88,6 +96,7 @@ import SwiftExpand
 
 
 extension NNOrderPayH5Controller: NNWebViewDelegate{
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url as URL?,
             let absoluteString = url.absoluteString as String?

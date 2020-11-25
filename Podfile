@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
+install!'cocoapods', :deterministic_uuids => false
 platform :ios, '10.0'
 use_frameworks!
 
@@ -81,10 +82,23 @@ def common_pods
     pod 'Instructions'
     pod 'TZImagePickerController'
     pod 'FloatingPanel'
+#    pod 'ContainerController'
+#    pod 'XLPagerTabStrip'
+
     pod 'MarqueeLabel'
     pod 'NotificationBannerSwift'
     pod 'EFQRCode'
 
+    pod 'AlipaySDK-iOS'
+    pod 'WechatOpenSDK'
+    
+#    pod 'UMCCommon'
+#    pod 'mob_sharesdk/ShareSDKUI'
+#    pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
+#    pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
+#    pod 'mob_sharesdk/ShareSDKPlatforms/AliPaySocial'
+#    pod 'mob_sharesdk/ShareSDKExtension'
+    
     #  :configurations => ['Debug'] 只是在xcode debug 时才会加入；
     pod 'Reveal-SDK', :configurations => ['Debug']
 
@@ -94,4 +108,13 @@ end
 
 target 'SwiftTemplet' do
     common_pods
+end
+
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_VERSION'] = '5.3'
+      end
+  end
 end
