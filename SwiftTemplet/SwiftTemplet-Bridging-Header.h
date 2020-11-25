@@ -7,6 +7,8 @@
 #import <YYModel/YYModel.h>
 #import <YYCache/YYCache.h>
 
+#import "NNPayManager.h"
+
 #import "NNAddressLabelRootModel.h"
 #import "NNAddressPickerViewModel.h"
 #import "NNGuidePageManager.h"
@@ -29,6 +31,7 @@
 #import "UIView+Chain.h"
 #import "Calculator.h"
 #import "Calculator+Chain.h"
+
 
 
 #import <BXKAdvertSDK/BXKAdvertSDK.h>
