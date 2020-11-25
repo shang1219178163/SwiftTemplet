@@ -11,6 +11,7 @@ import WebKit
 import SwiftExpand
 
 @objc protocol NNWebViewDelegate: NSObjectProtocol {
+    @objc optional func webView(_ webView: WKWebView, absoluteString: String)
     @objc optional func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void);
 
 }
@@ -83,7 +84,18 @@ import SwiftExpand
             }
             
         } else if keyPath == "URL" {
-            DDLog(webView.url?.absoluteString)
+            guard let url = webView.url,
+                  let absoluteString = url.absoluteString as String?
+                  else { return }
+            DDLog(absoluteString.removingPercentEncoding as Any)
+            
+            if let delegate = delegate {
+                delegate.webView?(self.webView, absoluteString: absoluteString)
+            }
+            
+            if absoluteString.hasPrefix("tel:") {
+                UIApplication.openURLString(url.absoluteString)
+            }
             
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
