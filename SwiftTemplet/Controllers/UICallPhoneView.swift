@@ -272,7 +272,8 @@ class UICallPhoneView: UIView {
 //    }()
     
     lazy var btnCancel: UIButton = {
-        let btn = UIButton.create(.zero, title: nil, imgName: "icon_phone_refuse", type: 4)
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "icon_phone_refuse"), for: .normal)
         btn.tag = 0;
         btn.addTarget(self, action: #selector(handleActionControl(_:)), for: .touchUpInside)
 
@@ -280,7 +281,8 @@ class UICallPhoneView: UIView {
     }();
     
     lazy var btnSure: UIButton = {
-        let btn = UIButton.create(.zero, title: nil, imgName: "icon_phone_answer", type: 4)
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "icon_phone_answer"), for: .normal)
         btn.tag = 1;
         btn.addTarget(self, action: #selector(handleActionControl(_:)), for: .touchUpInside)
 
@@ -288,7 +290,8 @@ class UICallPhoneView: UIView {
     }();
     
     lazy var btnSoundSwitch: UIButton = {
-        let btn = UIButton.create(.zero, title: nil, imgName: "icon_phone_soundon", type: 4)
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "icon_phone_soundon"), for: .normal)
         btn.tag = 2;
         btn.addTarget(self, action: #selector(handleActionControl(_:)), for: .touchUpInside)
 
@@ -296,7 +299,8 @@ class UICallPhoneView: UIView {
     }();
     
     lazy var btnSoundSmall: UIButton = {
-        let btn = UIButton.create(.zero, title: nil, imgName: "icon_toSmall", type: 4)
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage(named: "icon_toSmall"), for: .normal)
         btn.tag = 3;
         btn.addTarget(self, action: #selector(handleActionControl(_:)), for: .touchUpInside)
         return btn;

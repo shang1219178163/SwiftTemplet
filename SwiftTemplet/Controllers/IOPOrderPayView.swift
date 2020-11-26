@@ -25,7 +25,10 @@ class IOPOrderPayView: UIView {
     }()
 
     lazy var btn: UIButton = {
-        let btn = UIButton.create(.zero, title: "确认支付", imgName: nil, type: 5)
+        let btn = UIButton.create(.zero, title: "确认支付", textColor: .theme, backgroundColor: .clear)
+        btn.layer.borderColor = UIColor.theme.cgColor;
+        btn.layer.borderWidth = 1;
+        
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         btn.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
         return btn

@@ -121,7 +121,7 @@ class UITableViewCellCouponRecharge: UITableViewCell {
     }
     
     @objc lazy var btnName: UIButton = {
-        let view = UIButton.create(title: "--", imgName: nil)
+        let view = UIButton.create(.zero, title: "--", textColor: .systemBlue, backgroundColor: .clear)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         
         return view

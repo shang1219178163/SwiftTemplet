@@ -62,13 +62,16 @@ import SwiftExpand
     }
 
     lazy var btn: UIButton = {
-        var view: UIButton = UIButton.create( .zero, title: "确定", imgName: nil, type: 1);
-            view.addActionHandler({ (sender) in
-                if let obj = sender as? UIButton {
-                    DDLog(obj.currentTitle as Any)
-                    
-                }
-            }, for: .touchUpInside)
+        let view = UIButton.create(.zero, title: "确定", textColor: .white, backgroundColor: .clear)
+        view.setBackgroundImage(UIImage(color: .theme), for: .normal)
+        view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
+        
+        view.addActionHandler({ (sender) in
+            if let obj = sender as? UIButton {
+                DDLog(obj.currentTitle as Any)
+                
+            }
+        }, for: .touchUpInside)
         
         return view;
     }()

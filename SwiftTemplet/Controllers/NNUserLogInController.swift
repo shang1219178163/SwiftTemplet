@@ -166,8 +166,8 @@ class NNUserLogInController: UIViewController {
     }()
     
     lazy var loginBtn: UIButton = {
-//        var btn = UIButton(type: .custom);
-        var view = UIButton.create(title: "登录", imgName: nil);
+        var view = UIButton(type: .custom);
+        view.setTitle("登录", for: .normal)        
         view.setTitleColor( .white, for: .normal)
         view.setTitleColor( .white, for: .disabled)
         view.setTitle("用户名/密码错误", for: .disabled)

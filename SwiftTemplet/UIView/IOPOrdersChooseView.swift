@@ -67,8 +67,11 @@ class IOPOrdersChooseView: UIView {
         return view
     }()
     
-    @objc lazy var btn: UIButton = {
-        var view: UIButton = UIButton.create( .zero, title: "下一步", imgName: nil, type: 1);
+    @objc lazy var btn: UIButton = {        
+        let view = UIButton.create(.zero, title: "下一步", textColor: .white, backgroundColor: .clear)
+        view.setBackgroundImage(UIImage(color: .theme), for: .normal)
+        view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
+        
         view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         view.addActionHandler({ (control) in
             guard let sender = control as? UIButton else { return }

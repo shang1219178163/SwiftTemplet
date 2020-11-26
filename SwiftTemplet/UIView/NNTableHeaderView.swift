@@ -94,7 +94,8 @@ class NNTableHeaderView: UIView {
     
     
     @objc lazy var btn: UIButton = {
-        var view: UIButton = UIButton.create( .zero, title: "标题", imgName: nil, type: 3);
+        var view = UIButton.create( .zero, title: "标题", textColor: .white, backgroundColor: .clear)
+        
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {
                 DDLog(obj.currentTitle as Any)

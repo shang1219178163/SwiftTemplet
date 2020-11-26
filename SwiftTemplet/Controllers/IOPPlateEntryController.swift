@@ -30,7 +30,7 @@ import SwiftExpand
     }()
     
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "进件须知", imgName: nil, type: 6)
+        let button = UIButton.create(.zero, title: "进件须知", textColor: .theme, backgroundColor: .clear)
         button.sizeToFit()
         button.addActionHandler({ (control) in
 //            let controller = IOPInPartAgreementController()
@@ -42,7 +42,7 @@ import SwiftExpand
     }()
     
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 

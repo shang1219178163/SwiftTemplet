@@ -18,16 +18,16 @@ class RxRequestExampleController: UIViewController {
     var disposeBag = DisposeBag()
 
     lazy var rightBtn: UIButton = {
-        let sender = UIButton.create(title: "Done", imgName: nil)
-        sender.setTitleColor(.white, for: .normal)
-        sender.setBackgroundColor(.theme, for: .normal)
-//        button.isHidden = true;
-        sender.sizeToFit()
-        sender.addActionHandler({ (control) in
+        let view = UIButton.create(.zero, title: "Done", textColor: .white, backgroundColor: .clear)
+        view.setTitleColor(.white, for: .normal)
+        view.setBackgroundColor(.theme, for: .normal)
+//        view.isHidden = true;
+        view.sizeToFit()
+        view.addActionHandler({ (control) in
             self.requestAppInfo1()
             
         }, for: .touchUpInside)
-        return sender
+        return view
     }()
     
     // MARK: -lifecycle

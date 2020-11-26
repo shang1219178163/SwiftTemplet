@@ -17,7 +17,7 @@ class TextFieldStyleController: UIViewController {
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -25,7 +25,8 @@ class TextFieldStyleController: UIViewController {
     }()
         
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "优惠券", imgName: nil, type: 3)
+        let button = UIButton.create(.zero, title: "优惠券", textColor: .white, backgroundColor: .clear)
+        
         button.sizeToFit()
         button.addActionHandler({ (control) in
             let controller = CCSCouponRecordController()

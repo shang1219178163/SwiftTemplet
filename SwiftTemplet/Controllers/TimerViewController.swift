@@ -63,8 +63,11 @@ class TimerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    lazy var btn: UIButton = {
-        var view = UIButton.create(.zero, title: "发送验证码", imgName: nil, type: 1)
+    lazy var btn: UIButton = {        
+        let view = UIButton.create(.zero, title: "发送验证码", textColor: .white, backgroundColor: .clear)
+        view.setBackgroundImage(UIImage(color: .theme), for: .normal)
+        view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
+        
         view.addActionHandler({ [weak self] (control) in
             guard let sender = control as? UIButton else { return }
             sender.timerStart(12)

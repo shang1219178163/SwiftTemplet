@@ -17,7 +17,7 @@ import SwiftExpand
 
     // MARK: - lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
         view.backgroundColor = UIColor.white
         view.dataSource = self
         view.delegate = self
@@ -26,7 +26,7 @@ import SwiftExpand
     }()
         
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "保存", imgName: nil, type: 6)
+        let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
         button.isHidden = true;
         button.sizeToFit()
         button.addActionHandler({ (control) in

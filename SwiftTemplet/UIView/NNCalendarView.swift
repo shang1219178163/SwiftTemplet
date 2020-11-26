@@ -143,7 +143,8 @@ class NNCalendarView: UIView {
     }
     
     lazy var yearPreBtn: UIButton = {
-        var view = UIButton.create(.zero, title: nil, imgName: "left", type: 4)
+        var view = UIButton(type: .custom)
+        view.setImage(UIImage(named: "left"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             self.year -= 1
@@ -154,7 +155,8 @@ class NNCalendarView: UIView {
     }()
 
     lazy var yearNextBtn: UIButton = {
-        var view = UIButton.create(.zero, title: nil, imgName: "right", type: 4)
+        var view = UIButton(type: .custom)
+        view.setImage(UIImage(named: "right"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             self.year += 1
@@ -165,7 +167,8 @@ class NNCalendarView: UIView {
     }()
     
     lazy var monthPreBtn: UIButton = {
-        var view = UIButton.create(.zero, title: nil, imgName: "left", type: 4)
+        var view = UIButton(type: .custom)
+        view.setImage(UIImage(named: "left"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             if self.month == 1 {
@@ -181,7 +184,8 @@ class NNCalendarView: UIView {
     }()
     
     lazy var monthNextBtn: UIButton = {
-        var view = UIButton.create(.zero, title: nil, imgName: "right", type: 4)
+        var view = UIButton(type: .custom)
+        view.setImage(UIImage(named: "right"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             if self.month == 12 {
@@ -199,7 +203,8 @@ class NNCalendarView: UIView {
     lazy var titleBtn: UIButton = {
         var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormatMonth_CH)
         dateStr = "\(year)年\(month)月"
-        var view = UIButton.create(.zero, title: dateStr, imgName: nil, type: 2)
+        var view = UIButton.create(.zero, title: dateStr, textColor: .red, backgroundColor: .clear)
+        
         view.addActionHandler({[weak self] (control) in
             DDLog(dateStr)
             }, for: .touchUpInside)
@@ -207,7 +212,7 @@ class NNCalendarView: UIView {
     }()
     
     lazy var todayBtn: UIButton = {
-        var view = UIButton.create(.zero, title: "今天", imgName: nil, type: 2)
+        var view = UIButton.create(.zero, title: "今天", textColor: .red, backgroundColor: .clear)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             let comp = Date.dateComponents(Date())

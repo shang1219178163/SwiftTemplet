@@ -35,7 +35,11 @@ class CustomViewController: UIViewController {
         var rect = CGRect.make(20, itemView.maxY+20, 80, 60)
 //        rect = CGRect(x: 20, y: itemView.maxY+20, width: 60, height: 40)
         rect = CGRectMake(120, itemView.maxY+20, 80, 60)
-        let btn = UIButton.create(rect, title: "自定义", imgName: nil, type: 0);
+        let btn = UIButton.create(.zero, title: "自定义", textColor: .white, backgroundColor: .clear)
+        btn.setTitleColor( .white, for: .normal)
+        btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
+        btn.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
+        
         btn.addActionHandler({ (sender) in
             if let button = sender as? UIButton {
                 DDLog(button.titleLabel?.text as Any)

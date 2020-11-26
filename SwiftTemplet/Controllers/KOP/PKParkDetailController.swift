@@ -40,7 +40,7 @@ import SwiftExpand
     }()
 
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "进件须知", imgName: nil, type: 6)
+        let button = UIButton.create(.zero, title: "进件须知", textColor: .theme, backgroundColor: .clear)
         button.sizeToFit()
         button.addActionHandler({ (control) in
 //            let controller = IOPInPartAgreementController()
@@ -60,7 +60,7 @@ import SwiftExpand
     }()
 
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 40)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 40)
         view.dataSource = self
         view.delegate = self
 
@@ -257,15 +257,17 @@ extension PKParkDetailController: UITableViewDataSource, UITableViewDelegate{
             let cell = UITableViewCellExcel.dequeueReusableCell(tableView)
             cell.isHidden = value2.cgFloatValue <= 0.0
             
-            let width = (kScreenWidth - cell.inset.left - cell.inset.right)/3.0
-            cell.excelView.layout.itemSize = CGSize(width: width, height: 45)
-            cell.excelView.label.text = "    全天"
-            cell.excelView.xGap = 0
-            cell.excelView.label.backgroundColor = UIColor.hexValue(0xF5F5F5)
+            cell.excelView.visibleNumOfRow = 3
+            cell.excelView.titleLabel.text = "    全天"
+            cell.excelView.titleLabel.backgroundColor = UIColor.hexValue(0xF5F5F5)
             cell.excelView.headerBackgroudColor = .white
+            
+//            cell.excelView.titleList = ["时段", "单位价格", "封顶价格",]
             cell.excelView.dataList = [["08:00 - 20:00", "2元/小时", "封顶20元",],
                                        ["08:00 - 20:00", "2元/小时", "封顶20元",],
                                         ]
+            cell.excelView.reloadData()
+
             cell.getViewLayer()
             return cell
             

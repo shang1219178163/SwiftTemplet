@@ -101,7 +101,7 @@ import SwiftExpand
     
     
     lazy var btnCancel: UIButton = {
-        var view: UIButton = UIButton.create(title: "取消", textColor: .white, backgroundColor: .theme)
+        var view = UIButton.create(title: "取消", textColor: .white, backgroundColor: .theme)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {
@@ -114,7 +114,7 @@ import SwiftExpand
     }()
     
     lazy var btnDone: UIButton = {
-        var view: UIButton = UIButton.create(title: "下一步", textColor: .textColor3, backgroundColor: .white)
+        var view = UIButton.create(title: "下一步", textColor: .textColor3, backgroundColor: .white)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {

@@ -39,7 +39,11 @@ class IOPGoodsToolView: UIView {
             }
             
             newValue!.forEach { (title) in
-                let btn = UIButton.create(.zero, title: title, imgName: nil, type: 5)
+                let btn = UIButton.create(.zero, title: title, textColor: .theme, backgroundColor: .clear)
+                btn.setTitleColor( .theme, for: .normal);
+                btn.layer.borderColor = UIColor.theme.cgColor;
+                btn.layer.borderWidth = 1;
+                
                 btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
                 btn.frame = CGRect(x: 0, y: 0, width: btnWidth, height: btnHeight)
                 btn.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)

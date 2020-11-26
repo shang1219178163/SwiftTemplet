@@ -14,13 +14,15 @@ import UICircularProgressRing
 class FourthViewController: UIViewController {
     
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "展示", imgName: nil, type: 1)
-        button.sizeToFit()
-        button.addActionHandler({ (control) in
+        let btn = UIButton.create(.zero, title: "展示", textColor: .white, backgroundColor: .clear)
+        btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
+        btn.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
+        btn.sizeToFit()
+        btn.addActionHandler({ (control) in
             self.showPopoverAction(control as! UIButton)
             
         }, for: .touchUpInside)
-        return button
+        return btn
     }()
     
     lazy var itemView: NNItemsView = {

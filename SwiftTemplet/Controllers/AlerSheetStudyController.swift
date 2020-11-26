@@ -15,7 +15,7 @@ import HFNavigationController
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
