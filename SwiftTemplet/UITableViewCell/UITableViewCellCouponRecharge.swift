@@ -12,7 +12,8 @@ import UIKit
 import SwiftExpand
 
 /// 优惠券充值记录
-class UITableViewCellCouponRecharge: UITableViewCell {
+
+@objcMembers class UITableViewCellCouponRecharge: UITableViewCell {
             
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -120,14 +121,14 @@ class UITableViewCellCouponRecharge: UITableViewCell {
         
     }
     
-    @objc lazy var btnName: UIButton = {
+    lazy var btnName: UIButton = {
         let view = UIButton.create(.zero, title: "--", textColor: .systemBlue, backgroundColor: .clear)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         
         return view
     }()
     
-    @objc lazy var labelMidLeft: UILabel = {
+    lazy var labelMidLeft: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont.systemFont(ofSize: 12)
         view.text = kNilText;
@@ -135,7 +136,7 @@ class UITableViewCellCouponRecharge: UITableViewCell {
         return view
     }()
     
-    @objc lazy var labelMidRight: UILabel = {
+    lazy var labelMidRight: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
@@ -143,7 +144,7 @@ class UITableViewCellCouponRecharge: UITableViewCell {
         return view
     }()
     
-    @objc lazy var labelBottomLeft: UILabel = {
+    lazy var labelBottomLeft: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
@@ -151,7 +152,7 @@ class UITableViewCellCouponRecharge: UITableViewCell {
         return view
     }()
     
-    @objc lazy var labelBottomRight: UILabel = {
+    lazy var labelBottomRight: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;

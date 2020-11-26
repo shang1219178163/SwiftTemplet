@@ -97,7 +97,7 @@ class UITableViewCellStep: UITableViewCell {
     }
     
     lazy var ppBtn: PPNumberButton = {
-        var numberBtn = PPNumberButton(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
+        let numberBtn = PPNumberButton(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
         //设置加减按钮的标题
 //        numberBtn.setTitle(decreaseTitle: "减", increaseTitle: "加")
         numberBtn.setImage(decreaseImage: UIImage(named: kIMG_elemetDec)!, increaseImage: UIImage(named: kIMG_elemetInc)!)

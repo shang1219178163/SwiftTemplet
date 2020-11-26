@@ -86,7 +86,7 @@ class NNUserCenterHeaderView: UIImageView {
     
     
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "icon_avatar")
         
@@ -94,7 +94,7 @@ class NNUserCenterHeaderView: UIImageView {
     }()
     
     lazy var imgViewArc: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "icon_avatar")
         

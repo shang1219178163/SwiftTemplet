@@ -14,7 +14,7 @@ class UITableViewCellPhotoShow: UITableViewCell {
     var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
     lazy var lineView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.backgroundColor = .line
         return view
     }()

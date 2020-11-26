@@ -51,7 +51,7 @@ class NNThreeLabelView: UIView {
     }
     
     lazy var labelTop: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "top";
         view.textColor = UIColor.black;
         view.textAlignment = .center;
@@ -61,7 +61,7 @@ class NNThreeLabelView: UIView {
     }();
     
     lazy var labelMid: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "midem";
         view.textColor = UIColor.black;
         view.textAlignment = .center;
@@ -71,7 +71,7 @@ class NNThreeLabelView: UIView {
     }();
     
     lazy var labelBom: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "bottom";
         view.textColor = UIColor.hex("#999999")
         view.textAlignment = .center;

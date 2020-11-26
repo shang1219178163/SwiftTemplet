@@ -13,7 +13,7 @@ import SnapKitExtend
 class NNCellDefaultViewController: UIViewController {
         
     lazy var cellView: NNContentCellView = {
-        var view = NNContentCellView(frame: .zero)
+        let view = NNContentCellView(frame: .zero)
         view.cellStyle = .default
         view.textLabel.text = "手机号码:"
         view.detailTextLabel.text = "请输入手机号码"
@@ -28,7 +28,7 @@ class NNCellDefaultViewController: UIViewController {
 
     
     lazy var cellView1: NNContentCellView = {
-        var view = NNContentCellView(frame: .zero)
+        let view = NNContentCellView(frame: .zero)
         view.cellStyle = .value1
 
         view.textLabel.text = "手机号码:"

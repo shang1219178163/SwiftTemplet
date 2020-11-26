@@ -130,7 +130,7 @@ class EntryViewController: UIViewController {
     }
     
     lazy var textField: UITextField = {
-        var view = UITextField(frame: .zero);
+        let view = UITextField(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.contentVerticalAlignment = .center;
@@ -161,7 +161,7 @@ class EntryViewController: UIViewController {
     }()
     
     lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+        let view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
         view.label.text = ""
         view.label.textAlignment = .center
         view.btn.setTitle("提交", for: .normal)
@@ -174,7 +174,7 @@ class EntryViewController: UIViewController {
     }()
     
     lazy var suspendBtn: NNSuspendButton = {
-          var view = NNSuspendButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+        let view = NNSuspendButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
           view.insets = UIEdgeInsets(top: 40, left: 0, bottom: 80, right: 0)
 //          view.parController = self
           view.addActionHandler({ (sender) in
@@ -187,7 +187,7 @@ class EntryViewController: UIViewController {
       }()
         
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [
             ["更多内容", "UITableViewCellArticle", "135", "", "recharge", ],
             ["车场标签", "UITableViewCellParkType", "30", "", "recharge", ],

@@ -13,7 +13,7 @@ import SwiftExpand
 class NNButtonStudyController: UIViewController{
 
     lazy var btn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 80, height: 35)
         view.setTitle("默认样式", for: .normal);
 
@@ -27,7 +27,7 @@ class NNButtonStudyController: UIViewController{
     }()
     
     lazy var checkBox: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("绿肥红瘦", for: .normal);
 
@@ -54,7 +54,7 @@ class NNButtonStudyController: UIViewController{
     }()
     
     lazy var boxButton: NNBoxButton = {
-        var view = NNBoxButton(frame: .zero)
+        let view = NNBoxButton(frame: .zero)
         view.isImageRight = true
         view.setTitle("蓝瘦香菇", for: .normal);
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
@@ -63,7 +63,7 @@ class NNButtonStudyController: UIViewController{
     }()
     
     lazy var radioButton: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("荷塘夜色", for: .normal);
 
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
@@ -89,7 +89,7 @@ class NNButtonStudyController: UIViewController{
     }()
     
     lazy var buttonTop: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
         view.direction = .top
         view.iconLocation = .leftTop
@@ -105,7 +105,7 @@ class NNButtonStudyController: UIViewController{
     }()
     
     lazy var buttonBottom: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
 //        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .bottom
         view.iconLocation = .leftBottom
@@ -121,7 +121,7 @@ class NNButtonStudyController: UIViewController{
     }()
     
     lazy var buttonRight: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
         view.direction = .right
         view.iconLocation = .rightBottom

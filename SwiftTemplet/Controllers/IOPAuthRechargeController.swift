@@ -47,20 +47,18 @@ class IOPAuthRechargeController: UIViewController {
     }
     
     lazy var allList: [[[String]]] = {
-        var array: [[[String]]] = [
-                                    [["卡数量  ", "1", "60.0", "", "cardName", "0",],
-                                    ["充值数量", "105", "60.0", "", "validEndTime", "0",],
-                                    ["结束时间", "102", "60.0", "", "balance", "0",],
-                                    ["应付金额", "106", "60.0", "", "recharge", "0", "  元    "],
-                                    ],
-                                    [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
-                                     ["卡类型  ", "1", "60.0", "", "cardName", "0",],
-                                     ["结束日期", "102", "60.0", "", "validEndTime", "0",],
-                                     ["充值时长", "106", "60.0", "", "balance", "0", "  小时"],
-                                     ["缴费金额", "106", "60.0", "", "recharge", "0", "  元    "],
-                                     ]
-                                    ]
-        return array
+        return  [[["卡数量  ", "1", "60.0", "", "cardName", "0",],
+                ["充值数量", "105", "60.0", "", "validEndTime", "0",],
+                ["结束时间", "102", "60.0", "", "balance", "0",],
+                ["应付金额", "106", "60.0", "", "recharge", "0", "  元    "],
+                ],
+                [["内嵌车场  ", "1", "60.0", "", "cardName", "1",],
+                 ["卡类型  ", "1", "60.0", "", "cardName", "0",],
+                 ["结束日期", "102", "60.0", "", "validEndTime", "0",],
+                 ["充值时长", "106", "60.0", "", "balance", "0", "  小时"],
+                 ["缴费金额", "106", "60.0", "", "recharge", "0", "  元    "],
+                 ]
+                ]
     }()
     
     lazy var list:[[String]] = {
@@ -69,7 +67,7 @@ class IOPAuthRechargeController: UIViewController {
     
     //MARK: -Lazy Property
     lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+        let view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
         view.label.text = ""
         view.label.textAlignment = .center
         view.btn.setTitle("提交", for: .normal)

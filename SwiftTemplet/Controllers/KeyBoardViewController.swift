@@ -31,13 +31,13 @@ class KeyBoardViewController: UIViewController {
     }
 
     lazy var textField: UITextField = {
-        var view = UITextField(frame: .zero)
+        let view = UITextField(frame: .zero)
         view.inputView = keyBoardView
         return view
     }()
     
     lazy var keyBoardView: ZMKeyBoardView = {
-        var view = ZMKeyBoardView()
+        let view = ZMKeyBoardView()
         return view
     }()
 }

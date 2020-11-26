@@ -262,7 +262,7 @@ class CCSEmergencyOpenView: UIView {
     }()
     
     lazy var itemViewOne: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         view.isMutiChoose = false;
         view.padding = 12;
         view.numberOfRow = 2;

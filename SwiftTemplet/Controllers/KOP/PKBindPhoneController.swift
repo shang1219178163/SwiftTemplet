@@ -92,7 +92,7 @@ class PKBindPhoneController: UIViewController {
     
     
     lazy var textFieldView: NNTextFieldView = {
-        var view = NNTextFieldView(frame: .zero)
+        let view = NNTextFieldView(frame: .zero)
         view.label.text = "手    机    号"
         view.textfield.placeholder = "请输入"
 //        view.label.isHidden = true
@@ -109,7 +109,7 @@ class PKBindPhoneController: UIViewController {
     }()
     
     lazy var textFieldCodeView: NNTextFieldView = {
-        var view = NNTextFieldView(frame: .zero)
+        let view = NNTextFieldView(frame: .zero)
         view.label.text = "短信验证码"
         view.textfield.placeholder = "请输入"
 //        view.btn.isHidden = true

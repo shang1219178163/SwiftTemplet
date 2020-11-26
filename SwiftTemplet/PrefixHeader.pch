@@ -12,4 +12,10 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+#ifdef DEBUG
+#define DDLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define DDLog(...)
+#endif
+
 #endif /* PrefixHeader_pch */

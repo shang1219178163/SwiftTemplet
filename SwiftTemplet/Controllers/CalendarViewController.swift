@@ -31,7 +31,7 @@ class CalendarViewController: UIViewController {
     }
     
     lazy var calendarView: NNCalendarView = {
-        var view = NNCalendarView(frame: .zero)
+        let view = NNCalendarView(frame: .zero)
         return view
     }()
 

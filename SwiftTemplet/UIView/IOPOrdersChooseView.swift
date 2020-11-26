@@ -14,7 +14,8 @@ import SwiftExpand
     func ordersChooseViewNext(_ sender: UIButton)
 }
 
-class IOPOrdersChooseView: UIView {
+
+@objcMembers class IOPOrdersChooseView: UIView {
 
     weak var delegate: IOPOrdersChooseViewDelegate?
     var count: Int = 0{
@@ -67,7 +68,7 @@ class IOPOrdersChooseView: UIView {
         return view
     }()
     
-    @objc lazy var btn: UIButton = {        
+    lazy var btn: UIButton = {
         let view = UIButton.create(.zero, title: "下一步", textColor: .white, backgroundColor: .clear)
         view.setBackgroundImage(UIImage(color: .theme), for: .normal)
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
@@ -83,7 +84,7 @@ class IOPOrdersChooseView: UIView {
         return view;
     }();
     
-    @objc lazy var labelTitle: UILabel = {
+    lazy var labelTitle: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.hex("#999999")
         view.font = UIFont.systemFont(ofSize: 14)
@@ -93,7 +94,7 @@ class IOPOrdersChooseView: UIView {
         return view
     }()
     
-    @objc lazy var labelTitleSub: UILabel = {
+    lazy var labelTitleSub: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.hex("#999999")
         view.font = UIFont.systemFont(ofSize: 14)

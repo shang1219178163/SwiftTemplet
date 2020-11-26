@@ -119,7 +119,7 @@ import SwiftExpand
     //MARK: -lazy
 
     lazy var btn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("请选择", for: .normal);
         view.setTitleColor(.white, for: .normal);
@@ -147,7 +147,7 @@ import SwiftExpand
     }()
     
     lazy var contentView: UIView = {
-        var view = UIView(frame: parController!.view.bounds)
+        let view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
@@ -159,7 +159,7 @@ import SwiftExpand
     }()
     
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: 50)
+        let table = UITableView.create(bounds, style: .plain, rowHeight: 50)
         table.dataSource = self
         table.delegate = self
         return table

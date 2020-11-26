@@ -228,13 +228,13 @@ class NNOperationStateView: UIView {
     }
     
     lazy var topBgView: UIView = {
-        var view = UIView(frame: .zero)
+        let view = UIView(frame: .zero)
         
         return view
     }()
     
     lazy var label: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "目前未参与运营";
         view.textColor = UIColor.black;
         view.textAlignment = .center;
@@ -244,13 +244,13 @@ class NNOperationStateView: UIView {
     
     
     lazy var topIcon: UIImageView = {
-        var view = UIImageView(frame: .zero)
+        let view = UIImageView(frame: .zero)
         view.contentMode = .scaleAspectFit
         return view
     }()
     
     lazy var topLabel: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "目前未参与运营";
         view.textColor = UIColor.black;
         view.textAlignment = .center;
@@ -260,7 +260,7 @@ class NNOperationStateView: UIView {
 
     /// 正在运客
     lazy var operationView6: UIView = {
-        var view = UIView(frame: .zero)
+        let view = UIView(frame: .zero)
         view.backgroundColor = .white
         view.addSubview(threeLabView)
         view.addSubview(threeLabViewOne)
@@ -270,7 +270,7 @@ class NNOperationStateView: UIView {
     }()
     
     lazy var threeLabView: NNThreeLabelView = {
-        var view = NNThreeLabelView(frame: .zero)
+        let view = NNThreeLabelView(frame: .zero)
         view.labelTop.text = "2.5"
         view.labelMid.text = "公里"
         view.labelBom.text = "标准2~60公里"
@@ -279,7 +279,7 @@ class NNOperationStateView: UIView {
     }()
     
     lazy var threeLabViewOne: NNThreeLabelView = {
-        var view = NNThreeLabelView(frame: .zero)
+        let view = NNThreeLabelView(frame: .zero)
         view.labelTop.text = "32"
         view.labelMid.text = "分钟"
         view.labelBom.text = "标准20~60分钟"
@@ -288,14 +288,14 @@ class NNOperationStateView: UIView {
     }()
     
     lazy var lineView: UIView = {
-        var view = UIView(frame: .zero)
+        let view = UIView(frame: .zero)
         view.backgroundColor = UIColor.hex("#e5e5e5")
         return view
     }()
     
     /// 蓄车中
     lazy var operationView3: UIView = {
-        var view = UIView(frame: .zero)
+        let view = UIView(frame: .zero)
         view.backgroundColor = .white
         view.addSubview(operationView3LabelOne)
         view.addSubview(operationView3LabelTwo)
@@ -304,7 +304,7 @@ class NNOperationStateView: UIView {
     }()
     
     lazy var operationView3LabelOne: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "已等待";
         view.textColor = UIColor.hex("#444444");
         view.textAlignment = .center;
@@ -313,7 +313,7 @@ class NNOperationStateView: UIView {
     }();
     
     lazy var operationView3LabelTwo: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "1小时3分钟";
         view.textColor = UIColor.black;
         view.textAlignment = .center;
@@ -324,7 +324,7 @@ class NNOperationStateView: UIView {
     
     /// 接客中
     lazy var operationView5: UIView = {
-        var view = UIView(frame: .zero)
+        let view = UIView(frame: .zero)
         view.backgroundColor = .white
         view.addSubview(sliderControlView)
         view.addSubview(operationView5LabelOne)
@@ -334,7 +334,7 @@ class NNOperationStateView: UIView {
     
     //滑块
     lazy var sliderControlView: NNSliderControlView = {
-        var view = NNSliderControlView(frame: .zero)
+        let view = NNSliderControlView(frame: .zero)
         view.text = "滑动开始运客";
         view.textFinish = "操作成功!";
         view.thumbImage = UIImage(named: "icon_carLeft_green");
@@ -343,7 +343,7 @@ class NNOperationStateView: UIView {
     }()
     
     lazy var operationView5LabelOne: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "已到达...";
         view.textColor = UIColor.hex("#444444");
         view.textAlignment = .center;

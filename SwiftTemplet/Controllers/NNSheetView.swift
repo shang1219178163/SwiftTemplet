@@ -189,7 +189,7 @@ enum SheetDirection: Int {
     }()
     
     lazy var contentView: UIView = {
-        var view = UIView(frame: parController!.view.bounds)
+        let view = UIView(frame: parController!.view.bounds)
 //        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
@@ -201,7 +201,7 @@ enum SheetDirection: Int {
     }()
     
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: 50)
+        let table = UITableView.create(bounds, style: .plain, rowHeight: 50)
         table.dataSource = self
         table.delegate = self
         return table

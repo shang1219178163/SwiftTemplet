@@ -105,7 +105,7 @@ class UITableViewCellPickerView: UITableViewCell {
     
     //MARK: -lazy
     lazy var pickView: NNPickListView = {
-        var view = NNPickListView(frame: .zero)
+        let view = NNPickListView(frame: .zero)
         view.title = "请选择"
 //        view.tips = "新年快乐!"
         view.itemList = [["11111", "123"],

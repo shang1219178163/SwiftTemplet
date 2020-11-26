@@ -133,7 +133,7 @@ import SwiftExpand
     }()
     
     lazy var contentView: UIView = {
-        var view = UIView()
+        let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
@@ -147,7 +147,7 @@ import SwiftExpand
     
     
     lazy var btnCancel: UIButton = {
-        var view = UIButton.create(title: "取消", textColor: .white, backgroundColor: .theme)
+        let view = UIButton.create(title: "取消", textColor: .white, backgroundColor: .theme)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {

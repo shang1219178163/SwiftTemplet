@@ -17,7 +17,7 @@ class SheetViewController: UIViewController {
     var indexP = IndexPath(row: 0, section: 0)
 
     lazy var sheetView: NNSheetView = {
-        var view = NNSheetView()
+        let view = NNSheetView()
         view.parController = self
         view.indexP = IndexPath(row: 0, section: 0)
         view.setupTitleView()
@@ -44,7 +44,7 @@ class SheetViewController: UIViewController {
     }()
     
     lazy var btn: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("荷塘夜色", for: .normal);
 
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)

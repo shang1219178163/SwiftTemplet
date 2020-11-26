@@ -272,7 +272,7 @@ class TmpViewController: UIViewController {
     }();
     
     lazy var itemView: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         view.isMutiChoose = false;
         view.padding = 12;
         view.numberOfRow = 2;
@@ -295,7 +295,7 @@ class TmpViewController: UIViewController {
     }()
     
     lazy var itemViewOne: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         view.isMutiChoose = true;
         view.padding = 12;
         view.numberOfRow = 2;

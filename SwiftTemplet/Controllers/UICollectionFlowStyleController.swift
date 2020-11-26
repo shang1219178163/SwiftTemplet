@@ -23,7 +23,7 @@ class UICollectionFlowStyleController: UIViewController{
     }()
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["UICollectionViewCardController", "卡片样式", ],
             ["UICollectionDispalyController", "UICollectionView展示", ],
             ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],

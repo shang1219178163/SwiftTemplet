@@ -37,7 +37,7 @@ class PKMineController: UIViewController {
     }()
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["我的订单", "UITableViewCell", "40.0", "", "invoicing_name", ],
              ["我的订单", "UITableViewCellSudokuButton", "80.0", "", "","停车,车位商城", ],
             ],

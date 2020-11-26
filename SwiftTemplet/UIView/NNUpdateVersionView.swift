@@ -154,7 +154,7 @@ class NNUpdateVersionView: UIView {
     //MARK: -lazy
     
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
 //        view.contentMode = .scaleAspectFit;
@@ -162,7 +162,7 @@ class NNUpdateVersionView: UIView {
     }()
     
     lazy var label: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -173,7 +173,7 @@ class NNUpdateVersionView: UIView {
     }()
     
     lazy var labelOne: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -184,7 +184,7 @@ class NNUpdateVersionView: UIView {
     }()
     
     lazy var labelTwo: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -197,7 +197,7 @@ class NNUpdateVersionView: UIView {
     }()
 
     lazy var labelThree: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -210,7 +210,7 @@ class NNUpdateVersionView: UIView {
     }()
 
 //    lazy var labelFour: UILabel = {
-//        var view = UILabel(frame: .zero);
+//        let view = UILabel(frame: .zero);
 //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        view.textAlignment = .left;
 //        view.numberOfLines = 0;
@@ -224,7 +224,7 @@ class NNUpdateVersionView: UIView {
 
  
     lazy var btn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.setTitle("立即升级", for: .normal);
         view.setTitleColor(.white, for: .normal);
         view.adjustsImageWhenHighlighted = false
@@ -253,7 +253,7 @@ class NNUpdateVersionView: UIView {
     }()
     
     lazy var btnCancell: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
 //        view.setTitle("取消", for: .normal);
         view.setTitleColor(.white, for: .normal);
         view.setImage(UIImage(named: "icon_close"), for: .normal)
@@ -267,7 +267,7 @@ class NNUpdateVersionView: UIView {
     }()
     
     lazy var contentView: UIView = {
-        var view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.white
         view.addSubview(imgView)
         view.addSubview(label)

@@ -121,7 +121,7 @@ import SwiftExpand
     }()
     
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .grouped, rowHeight: kH_CellHeight)
+        let table = UITableView.create(bounds, style: .grouped, rowHeight: kH_CellHeight)
         table.dataSource = self
         table.delegate = self
         table.tableFooterView = self.footerView;

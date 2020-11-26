@@ -10,7 +10,8 @@ import UIKit
 import SwiftExpand
 
 /// 通用列表视图
-class NNFormView: UIView {
+
+@objcMembers class NNFormView: UIView {
     
     var list: [UITextField] = []
     var placeholders: [String] = [] {
@@ -53,8 +54,8 @@ class NNFormView: UIView {
     }
     
     //MARK: -lazy
-    @objc lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
+    lazy var tableView: UITableView = {
+        let table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
         table.dataSource = self
         table.delegate = self
         return table

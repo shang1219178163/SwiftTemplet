@@ -27,7 +27,7 @@ class PKUserInfoEditController: UIViewController{
     }()
         
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["用户头像", "UITableViewCellRightAvart", "50.0", "", "seller_bank_account", ],
              ["昵称", "UITableViewCell", "50.0", "", "seller_bank_account", ],
              ["真实姓名", "UITableViewCell", "50.0", "", "seller_bank_account", ],

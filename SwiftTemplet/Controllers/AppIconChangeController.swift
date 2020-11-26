@@ -33,7 +33,7 @@ class AppIconChangeController: UIViewController {
 
     
     lazy var plainView: NNTablePlainView = {
-        var view = NNTablePlainView(frame: self.view.bounds)
+        let view = NNTablePlainView(frame: self.view.bounds)
         view.list = (dataList as! [Any])
         //        view.tableView.tableFooterView = footerView
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in

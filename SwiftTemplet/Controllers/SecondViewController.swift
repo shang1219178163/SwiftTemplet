@@ -39,6 +39,8 @@ class SecondViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemGreen
+
         navigationItem.titleView = segmentCtl
         
         tbView.refreshHeader {
@@ -59,6 +61,20 @@ class SecondViewController: UIViewController{
         super.viewWillAppear(animated);
         
         testRxSwiftFun()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
     }
         
     override func didReceiveMemoryWarning() {

@@ -147,7 +147,7 @@ class NNCellSubtitleView: UIView {
     //MARK: -lazy
     
     lazy var imgViewLeft: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
@@ -156,7 +156,7 @@ class NNCellSubtitleView: UIView {
     }()
     
     lazy var imgViewRight: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
@@ -165,7 +165,7 @@ class NNCellSubtitleView: UIView {
     }()
     
     lazy var labelLeft: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -176,7 +176,7 @@ class NNCellSubtitleView: UIView {
     }()
     
     lazy var labelSub: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;

@@ -120,7 +120,7 @@ class NNRecordCardView: UIView {
     //MARK: -lazy
     
     lazy var labelLeft: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
@@ -131,7 +131,7 @@ class NNRecordCardView: UIView {
     }()
     
     lazy var labelLeftSub: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
@@ -142,7 +142,7 @@ class NNRecordCardView: UIView {
     }()
     
     lazy var labelRight: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
@@ -153,7 +153,7 @@ class NNRecordCardView: UIView {
     }()
     
     lazy var labelRightSub: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .center;
         view.numberOfLines = 0;
@@ -164,7 +164,7 @@ class NNRecordCardView: UIView {
     }()
     
     lazy var lineView: UIView = {
-        var view = UIView(frame: .zero)
+        let view = UIView(frame: .zero)
         view.backgroundColor = UIColor.hex("#e5e5e5")
         return view
     }()

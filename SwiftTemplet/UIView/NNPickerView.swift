@@ -166,7 +166,7 @@ class NNPickerView: UIView {
     }();
     
     lazy var pickerView: UIPickerView = {
-        var view = UIPickerView()
+        let view = UIPickerView()
         view.backgroundColor = .white
 
         view.delegate = self;
@@ -179,7 +179,7 @@ class NNPickerView: UIView {
     }()
     
     lazy var contentView: UIView = {
-        var view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.white
         view.addSubview(toobarView)
         view.addSubview(lineView)
@@ -188,7 +188,7 @@ class NNPickerView: UIView {
     }()
     
     lazy var masView: UIView = {
-        var view = UIView()
+        let view = UIView()
         _ = view.addGestureTap({ (recognizer) in
             self.dismiss()
         })
@@ -196,7 +196,7 @@ class NNPickerView: UIView {
     }()
     
     lazy var lineView: UIView = {
-        var view = UIView()
+        let view = UIView()
         view.backgroundColor = UIColor.line
         return view
     }()

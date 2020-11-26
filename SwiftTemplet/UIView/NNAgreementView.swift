@@ -106,7 +106,7 @@ import SwiftExpand
     }()
     
     lazy var contentView: UIView = {
-        var view = UIView()
+        let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = contentCornerRadius
         view.layer.masksToBounds = true

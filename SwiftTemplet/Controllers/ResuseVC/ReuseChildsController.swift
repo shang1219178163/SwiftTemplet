@@ -22,7 +22,7 @@ class ReuseChildsController: UIViewController {
     }();
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [[
+        let array: [[[String]]] = [[
             ["NNCycleController", "NNCycleController", ],
             ["NNCycleStyle1Controller", "NNCycleStyle1Controller", ],
             ["NNCycleTabbarController", "NNCycleTabbar", ],

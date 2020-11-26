@@ -45,7 +45,7 @@ class UISearchStylesController: UIViewController{
     
 
     lazy var allList: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["NNSearchController", "复合🔍", ],
              ["NNSearchListController", "titleView🔍", ],
 //                ["PopViewController", "titleView🔍", ],
@@ -61,7 +61,7 @@ class UISearchStylesController: UIViewController{
     
     
     lazy var plainView: NNTablePlainView = {
-        var view = NNTablePlainView(frame: self.view.bounds)
+        let view = NNTablePlainView(frame: self.view.bounds)
         view.list = allList.first
         //        view.tableView.tableFooterView = footerView
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in

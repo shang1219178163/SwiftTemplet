@@ -186,7 +186,7 @@ class TitleViewController: NNTitleViewSelectController{
     }
     
     lazy var btn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.setTitle("闭包的回调方法", for: .normal);
         view.setTitleColor(.white, for: .normal);
         view.setImage(UIImage(named: kIMG_arrowDown), for: .normal)
@@ -198,7 +198,7 @@ class TitleViewController: NNTitleViewSelectController{
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (action) in
+        let alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (action) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
@@ -212,7 +212,7 @@ class TitleViewController: NNTitleViewSelectController{
     
     
     lazy var gemetryView: NNGeometryView = {
-        var view = NNGeometryView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
+        let view = NNGeometryView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
         view.type = 0
         view.subType = 3
         return view
@@ -231,7 +231,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var checkBox: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("绿肥红瘦", for: .normal);
 
@@ -258,7 +258,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var boxButton: NNBoxButton = {
-        var view = NNBoxButton(frame: .zero)
+        let view = NNBoxButton(frame: .zero)
         view.isImageRight = true
         view.setTitle("蓝瘦香菇", for: .normal);
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
@@ -267,7 +267,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var radioButton: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("荷塘夜色", for: .normal);
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
@@ -275,7 +275,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var button: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
 //        var normlImage: UIImage = UIImage(named: "photo_cancell")!
 //        var seletedImage: UIImage = UIImage(named: "photo_select")!
@@ -287,7 +287,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var buttonTop: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯Top", for: .normal);
         view.direction = .top
         view.iconLocation = .leftTop
@@ -302,7 +302,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var buttonBottom: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
 //        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .bottom
         view.iconLocation = .leftBottom
@@ -317,7 +317,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var buttonRight: NNButton = {
-        var view = NNButton(type:.custom);
+        let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
         view.direction = .right
         view.iconLocation = .rightBottom
@@ -332,14 +332,14 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var chooseView: IOPOrdersChooseView = {
-        var view = IOPOrdersChooseView(frame: .zero)
+        let view = IOPOrdersChooseView(frame: .zero)
         view.count = 0
         view.amount = "0.00"
         return view
     }()
     
     lazy var textFieldView: NNTextFieldView = {
-        var view = NNTextFieldView(frame: .zero)
+        let view = NNTextFieldView(frame: .zero)
         view.label.text = "手机号码:"
         view.textfield.placeholder = "请输入手机号码"
 //        view.label.isHidden = true
@@ -354,7 +354,7 @@ class TitleViewController: NNTitleViewSelectController{
     }()
     
     lazy var textFieldBtnView: NNTextFieldView = {
-        var view = NNTextFieldView(frame: .zero)
+        let view = NNTextFieldView(frame: .zero)
         view.label.text = "验  证  码:"
         view.textfield.placeholder = "请输入验证码"
         view.btn.isHidden = true

@@ -12,7 +12,7 @@ import UIKit
 import SwiftExpand
 
 
-class NNTableHeaderView: UIView {
+@objcMembers class NNTableHeaderView: UIView {
     /// 图像距离顶端间距
     var topPadding: CGFloat = 8;
     /// 图像切圆形
@@ -84,8 +84,8 @@ class NNTableHeaderView: UIView {
     }
     // MARK: -lazy
     
-    @objc lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+    lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "icon_avatar")
    
@@ -93,8 +93,8 @@ class NNTableHeaderView: UIView {
     }();
     
     
-    @objc lazy var btn: UIButton = {
-        var view = UIButton.create( .zero, title: "标题", textColor: .white, backgroundColor: .clear)
+    lazy var btn: UIButton = {
+        let view = UIButton.create( .zero, title: "标题", textColor: .white, backgroundColor: .clear)
         
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {
@@ -106,7 +106,7 @@ class NNTableHeaderView: UIView {
         return view;
     }();
     
-    @objc lazy var labelOne: UILabel = {
+    lazy var labelOne: UILabel = {
         let view = UILabel()
         view.textColor = UIColor.white
         view.textAlignment = .center

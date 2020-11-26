@@ -38,7 +38,7 @@ class PKAccountAboutController: UIViewController {
     }
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["手机号", "UITableViewCell", "50.0", "", "",],
             ],
             [["微信账号", "UITableViewCellTextField", "50.0", "", "ti_number", ],

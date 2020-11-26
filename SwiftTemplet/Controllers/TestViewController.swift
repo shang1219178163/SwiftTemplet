@@ -118,7 +118,7 @@ class TestViewController: UIViewController{
     
     //MARK: -lazy
     lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
+        let view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
         view.label.text = kTips_Fleet;
         view.label.textAlignment = .center
         view.btn.addActionHandler({ (sender: UIControl) in
@@ -130,7 +130,7 @@ class TestViewController: UIViewController{
     }()
     
     lazy var itemView: NNGroupView = {
-        var view = NNGroupView(frame: .zero)
+        let view = NNGroupView(frame: .zero)
         view.padding = 10;
         view.numberOfRow = 3;
         view.isMutiChoose = true;
@@ -146,7 +146,7 @@ class TestViewController: UIViewController{
     }()
     
     lazy var parkGroupView: NNButtonGroupView = {
-        var view = NNButtonGroupView(frame: .zero)
+        let view = NNButtonGroupView(frame: .zero)
         view.padding = 15;
         view.numberOfRow = 3;
         view.isMutiChoose = false;
@@ -157,7 +157,7 @@ class TestViewController: UIViewController{
     }()
     
     lazy var pictureView: NNPictureView = {
-        var view = NNPictureView(frame: .zero)
+        let view = NNPictureView(frame: .zero)
         view.backgroundColor = .black
         return view;
     }()

@@ -108,19 +108,19 @@ class CustomViewController: UIViewController {
     }()
     
     lazy var tipsView: NNTipsView = {
-        var view = NNTipsView(frame: .zero)
+        let view = NNTipsView(frame: .zero)
         view.label.text = "无网络连接"
         return view
     }()
     
     lazy var expandView: NNExpandView = {
-        var view = NNExpandView(frame: .zero)
+        let view = NNExpandView(frame: .zero)
         return view
     }()
     
     lazy var defaultView: NNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 70)
-        var view = NNCellSubtitleView(frame: rect)
+        let view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
@@ -143,7 +143,7 @@ class CustomViewController: UIViewController {
     
     lazy var defaultViewFail: NNCellSubtitleView = {
         let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.sizeWidth - kX_GAP*2, 70)
-        var view = NNCellSubtitleView(frame: rect)
+        let view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
         view.labelSub.font = UIFont.systemFont(ofSize: 13)
@@ -163,7 +163,7 @@ class CustomViewController: UIViewController {
     }()
     
     lazy var operationView: NNOperationStateView = {
-        var view = NNOperationStateView(frame: .zero)
+        let view = NNOperationStateView(frame: .zero)
         view.type = 0;
         
         return view

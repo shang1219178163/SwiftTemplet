@@ -42,7 +42,7 @@ class IOPTableViewCellGroupView: UITableViewCell {
     
     
     lazy var parkGroupView: IOPParkGroupView = {
-        var view = IOPParkGroupView(frame: .zero)
+        let view = IOPParkGroupView(frame: .zero)
         view.padding = 15;
         view.numberOfRow = 3;
         view.isMutiChoose = false;

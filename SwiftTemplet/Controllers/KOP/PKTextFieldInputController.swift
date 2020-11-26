@@ -42,7 +42,7 @@ class PKTextFieldInputController: UIViewController{
     }()
         
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["昵称", "UITableViewCellTextField", "50.0", "", "seller_bank_account", ],
             ],
         ]

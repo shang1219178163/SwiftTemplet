@@ -50,7 +50,7 @@ class PKFeedBackController: UIViewController {
     }()
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["问题或建议:", "UITableViewCellTextView", "170.0", "", "",],
              ["图片数组", "UITableViewCellSudokuButton", "110.0", "", "",],
              ["联系方式:", "UITableViewCellTextField", "50.0", "", "",],

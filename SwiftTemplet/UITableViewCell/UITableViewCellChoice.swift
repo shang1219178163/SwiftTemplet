@@ -86,7 +86,7 @@ class UITableViewCellChoice: UITableViewCell {
     
     //MARK: -lazy
     lazy var groupView: NNButtonGroupView = {
-        var view = NNButtonGroupView(frame: .zero)
+        let view = NNButtonGroupView(frame: .zero)
         view.padding = 10;
         view.numberOfRow = 4;
         

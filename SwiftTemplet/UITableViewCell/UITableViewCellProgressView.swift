@@ -92,7 +92,7 @@ class UITableViewCellProgressView: UITableViewCell {
     
     //MARK: -lazy
     lazy var progressView: NNCircleProgressView = {
-        var view = NNCircleProgressView(frame: .zero)
+        let view = NNCircleProgressView(frame: .zero)
 //        view.strokeWidth = 5;
         
         return view;

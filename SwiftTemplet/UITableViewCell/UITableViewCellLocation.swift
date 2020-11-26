@@ -35,7 +35,7 @@ class UITableViewCellLocation: UITableViewCell {
     private var limitPlateLabels = [UIButton]()
     
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "icon_park_location")
 
@@ -54,7 +54,7 @@ class UITableViewCellLocation: UITableViewCell {
     
     
     lazy var weatherImgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 //        view.image = UIImage(named: "icon_park_location")
         view.contentMode = .scaleAspectFit

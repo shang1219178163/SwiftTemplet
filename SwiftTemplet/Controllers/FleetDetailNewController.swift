@@ -102,7 +102,7 @@ class FleetDetailNewController: UIViewController{
     
     //MARK: -lazy
     lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 160))
+        let view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 160))
         view.label.text = kTips_Fleet;
         view.label.textAlignment = .left
         view.btn.setTitleColor(.theme, for: .normal)

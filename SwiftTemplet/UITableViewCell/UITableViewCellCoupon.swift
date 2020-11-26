@@ -211,7 +211,7 @@ class UITableViewCellCoupon: UITableViewCell {
     
     // MARK: -lazy
     lazy var labelTop: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "top";
         view.textColor = UIColor.black;
         view.font = UIFont.systemFont(ofSize: 15)
@@ -220,7 +220,7 @@ class UITableViewCellCoupon: UITableViewCell {
     }();
     
     lazy var labelMid: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "midem";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
@@ -229,7 +229,7 @@ class UITableViewCellCoupon: UITableViewCell {
     }();
     
     lazy var labelBom: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "bottom";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)

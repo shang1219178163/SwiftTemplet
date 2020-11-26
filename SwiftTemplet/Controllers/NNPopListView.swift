@@ -139,9 +139,9 @@ class NNPopListView: UIView {
     }();
 
     lazy var tableView: UITableView = {
-        var table = UITableView.create(bounds, style: .grouped, rowHeight: 50);
-            table.dataSource = self
-            table.delegate = self
+        let table = UITableView.create(bounds, style: .grouped, rowHeight: 50);
+        table.dataSource = self
+        table.delegate = self
         
         return table
     }()

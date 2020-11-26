@@ -80,7 +80,7 @@ class FifthViewControlle: UIViewController {
 
     //MARK: - layz
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "bug.png")
 
@@ -88,7 +88,7 @@ class FifthViewControlle: UIViewController {
     }();
 
     lazy var imgViewOne: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "icon_select_YES")
 
@@ -96,7 +96,7 @@ class FifthViewControlle: UIViewController {
     }();
     
     lazy var textField: UITextField = {
-        var view = UITextField(frame: .zero);
+        let view = UITextField(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.contentVerticalAlignment = .center;

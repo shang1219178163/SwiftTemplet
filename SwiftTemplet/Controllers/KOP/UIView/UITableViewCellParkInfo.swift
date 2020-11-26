@@ -65,7 +65,7 @@ class UITableViewCellParkInfo: UITableViewCell {
     }()
     
     lazy var lineView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.backgroundColor = .line
         return view
     }()

@@ -30,7 +30,7 @@ class ThirdViewController: UIViewController{
     }()
 
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
              ["ReuseChildsController", "控制器复用", ],
              ["IOPFuntionListController", "iop 视图", ],
@@ -128,7 +128,7 @@ class ThirdViewController: UIViewController{
     }()
     
     lazy var updateView: NNUpdateVersionView = {
-        var view = NNUpdateVersionView(frame: .zero)
+        let view = NNUpdateVersionView(frame: .zero)
         view.label.text = "发现新版本"
         view.labelOne.text = "V1.2.0"
         view.labelTwo.text = "更新内容:"
@@ -142,14 +142,14 @@ class ThirdViewController: UIViewController{
     }()
             
     lazy var updateOneView: NNUpdateVersionOneView = {
-        var view = NNUpdateVersionOneView(frame: .zero)
+        let view = NNUpdateVersionOneView(frame: .zero)
         view.isForceUpdate = true
         view.labelContent.text = "数据显示，2020上半年全国300个大中城市住宅用地成交楼面均价5150元/平方米，同比上涨16.5%，300个大中城市土地平均溢价率13.6%。其中长三角城市的涨势尤其亮眼，在一些二三线城市房地产不景气的情况下，南京、宁波、杭州、南通、扬州等长三角城市的房价逆势上涨。"
         return view
     }()
     
     lazy var agreementView: NNAgreementView = {
-        var view = NNAgreementView(frame: .zero)
+        let view = NNAgreementView(frame: .zero)
         view.labelTitle.text = "温馨提示"
         view.textView.textColor = .textColor3
         view.delegate = self

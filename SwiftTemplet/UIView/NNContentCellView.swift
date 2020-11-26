@@ -155,7 +155,7 @@ class NNContentCellView: UIImageView {
     }();
     
     lazy var textLabel: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.font = UIFont.systemFont(ofSize: 14);
 
@@ -168,7 +168,7 @@ class NNContentCellView: UIImageView {
     }()
     
     lazy var detailTextLabel: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.font = UIFont.systemFont(ofSize: 12);
 

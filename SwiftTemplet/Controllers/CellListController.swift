@@ -114,7 +114,7 @@ class CellListController: UIViewController {
 
     // MARK: -lazy
     lazy var plainView: NNTablePlainView = {
-        var view = NNTablePlainView(frame: self.view.bounds)
+        let view = NNTablePlainView(frame: self.view.bounds)
         view.list = list
         view.tableView.rowHeight = 70;
 //        view.tableView.tableFooterView = footerView

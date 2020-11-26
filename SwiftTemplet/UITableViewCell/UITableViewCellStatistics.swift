@@ -9,8 +9,9 @@
 import SnapKit
 import SwiftExpand
 
-/// 
-class UITableViewCellStatistics: UITableViewCell {
+///
+
+@objcMembers class UITableViewCellStatistics: UITableViewCell {
     
     var viewBlock: ObjClosure?
     
@@ -116,7 +117,7 @@ class UITableViewCellStatistics: UITableViewCell {
         
     }
     
-    @objc lazy var labelMidSub: UILabel = {
+    lazy var labelMidSub: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont.systemFont(ofSize: 12)
         view.text = kNilText;
@@ -125,7 +126,7 @@ class UITableViewCellStatistics: UITableViewCell {
         return view
     }()
     
-    @objc lazy var labelMidSubValue: UILabel = {
+    lazy var labelMidSubValue: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
@@ -134,7 +135,7 @@ class UITableViewCellStatistics: UITableViewCell {
         return view
     }()
     
-    @objc lazy var labelLeftSubValue: UILabel = {
+    lazy var labelLeftSubValue: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
@@ -143,7 +144,7 @@ class UITableViewCellStatistics: UITableViewCell {
         return view
     }()
     
-    @objc lazy var labelRightSubValue: UILabel = {
+    lazy var labelRightSubValue: UILabel = {
         let view = UILabel.create(.zero, type: 2)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;

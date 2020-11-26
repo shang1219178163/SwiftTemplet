@@ -23,7 +23,7 @@ import SwiftExpand
     weak var delegate: NNTitleViewSelectControllerDelegate?
 
     lazy var topView: NNTopSheetView = {
-        var view = NNTopSheetView()
+        let view = NNTopSheetView()
         view.parController = self
         view.indexP = IndexPath(row: 0, section: 0)
         view.setupTitleView()
@@ -33,7 +33,7 @@ import SwiftExpand
     }()
     
     lazy var list: [[String]] = {
-        var array: [[String]] = [
+        let array: [[String]] = [
             ["商品0:", "50.0", "", "cardName","0"],
             ["商品1:", "50.0", "", "cardName","0"],
             ["商品2:", "50.0", "", "cardName","0"],

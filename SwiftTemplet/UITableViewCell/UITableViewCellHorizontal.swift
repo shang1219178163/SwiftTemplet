@@ -16,7 +16,7 @@ class UITableViewCellHorizontal: UITableViewCell {
 
     // MARK: -lazy
     lazy var labelOne: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "-";
         view.textColor = .black;
         view.textAlignment = .left
@@ -27,7 +27,7 @@ class UITableViewCellHorizontal: UITableViewCell {
     }();
     
     lazy var labelTwo: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "-";
         view.textColor = UIColor.hexValue(0x666666)
         view.textAlignment = .right
@@ -39,7 +39,7 @@ class UITableViewCellHorizontal: UITableViewCell {
     }();
     
     lazy var labelThree: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "-";
         view.textColor = UIColor.hexValue(0x666666)
         view.textAlignment = .left
@@ -51,7 +51,7 @@ class UITableViewCellHorizontal: UITableViewCell {
     }();
     
     lazy var labelFour: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "-";
         view.textColor = UIColor.hexValue(0x666666)
         view.textAlignment = .right

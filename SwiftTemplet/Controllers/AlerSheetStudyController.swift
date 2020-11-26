@@ -23,7 +23,7 @@ import HFNavigationController
     }()
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["AlertSheetStyle", "样式", ],
              ["AlertSheetStyle1", "样式", ],
              ["AlertSheetStyle2", "样式", ],

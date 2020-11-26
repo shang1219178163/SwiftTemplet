@@ -143,7 +143,7 @@ class NNCalendarView: UIView {
     }
     
     lazy var yearPreBtn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.setImage(UIImage(named: "left"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
@@ -155,7 +155,7 @@ class NNCalendarView: UIView {
     }()
 
     lazy var yearNextBtn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.setImage(UIImage(named: "right"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
@@ -167,7 +167,7 @@ class NNCalendarView: UIView {
     }()
     
     lazy var monthPreBtn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.setImage(UIImage(named: "left"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
@@ -184,7 +184,7 @@ class NNCalendarView: UIView {
     }()
     
     lazy var monthNextBtn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         view.setImage(UIImage(named: "right"), for: .normal)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
@@ -212,7 +212,7 @@ class NNCalendarView: UIView {
     }()
     
     lazy var todayBtn: UIButton = {
-        var view = UIButton.create(.zero, title: "今天", textColor: .red, backgroundColor: .clear)
+        let view = UIButton.create(.zero, title: "今天", textColor: .red, backgroundColor: .clear)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             let comp = Date.dateComponents(Date())
@@ -224,7 +224,7 @@ class NNCalendarView: UIView {
     }()
     
     lazy var weeksView: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         view.items = weekInfo
         view.numberOfRow = weekInfo.count
         view.padding = 0.0
@@ -232,7 +232,7 @@ class NNCalendarView: UIView {
     }()
     
     lazy var daysView: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         view.items = [String](repeating: "", count: 37)
         view.numberOfRow = weekInfo.count
         view.padding = 0.0

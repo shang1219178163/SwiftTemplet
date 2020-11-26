@@ -69,12 +69,12 @@ class NNTipsView: UIView {
     }
     
     lazy var btn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         return view
     }()
     
     lazy var label: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "请选择";
         view.textColor = UIColor.black;
         view.textAlignment = .center;

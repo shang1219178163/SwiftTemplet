@@ -12,7 +12,7 @@ import SnapKit
 class FlipImageViewController: UIViewController {
     
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "btn_selected_YES")
 

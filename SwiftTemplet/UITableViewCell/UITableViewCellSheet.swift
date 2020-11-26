@@ -116,7 +116,7 @@ class UITableViewCellSheet: UITableViewCell {
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        var alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (action) in
+        let alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (action) in
             DDLog(action.title as Any)
         })
         return alertController

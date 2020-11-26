@@ -170,7 +170,7 @@ class NNVehicleInfoCardView: UIView {
     //MARK: -lazy
     
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
@@ -180,7 +180,7 @@ class NNVehicleInfoCardView: UIView {
     }()
     
     lazy var imgViewRight: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
@@ -189,7 +189,7 @@ class NNVehicleInfoCardView: UIView {
     }()
     
     lazy var labelLeft: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -200,7 +200,7 @@ class NNVehicleInfoCardView: UIView {
     }()
     
     lazy var labelSub: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -211,7 +211,7 @@ class NNVehicleInfoCardView: UIView {
     }()
     
     lazy var labelSubOne: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.numberOfLines = 0;
@@ -222,7 +222,7 @@ class NNVehicleInfoCardView: UIView {
     }()
     
     lazy var iconLabSub: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
@@ -231,7 +231,7 @@ class NNVehicleInfoCardView: UIView {
     }()
     
     lazy var iconLabSubOne: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;

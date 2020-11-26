@@ -138,35 +138,35 @@ class NNUserLogInController: UIViewController {
 
     // MARK: -lazy
     lazy var userNameTextField: UITextField = {
-        var view = UITextField();
+        let view = UITextField();
         view.font = UIFont.systemFont(ofSize: 14)
         view.placeholder = "用户名:8~20字符"
         return view;
     }()
     
     lazy var userPwdTextField: UITextField = {
-        var view = UITextField();
+        let view = UITextField();
         view.font = UIFont.systemFont(ofSize: 14)
         view.placeholder = "用户密码:6~20字符(不能纯数字)"
         return view;
     }()
     
     lazy var userNameValidLab: UILabel = {
-        var view = UILabel();
+        let view = UILabel();
         view.font = UIFont.systemFont(ofSize: 11)
         view.textColor = .red
         return view;
     }()
     
     lazy var userPwdValidLab: UILabel = {
-        var view = UILabel();
+        let view = UILabel();
         view.font = UIFont.systemFont(ofSize: 11)
         view.textColor = .red
         return view;
     }()
     
     lazy var loginBtn: UIButton = {
-        var view = UIButton(type: .custom);
+        let view = UIButton(type: .custom);
         view.setTitle("登录", for: .normal)        
         view.setTitleColor( .white, for: .normal)
         view.setTitleColor( .white, for: .disabled)

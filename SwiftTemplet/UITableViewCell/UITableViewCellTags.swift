@@ -46,7 +46,7 @@ class UITableViewCellTags: UITableViewCell {
     }
     
     lazy var tagView: NNTagView = {
-        var view = NNTagView(frame: self.contentView.bounds)
+        let view = NNTagView(frame: self.contentView.bounds)
         view.fontSize = 9;
         view.textColorNormal = .orange;
         view.tag = 2010115;

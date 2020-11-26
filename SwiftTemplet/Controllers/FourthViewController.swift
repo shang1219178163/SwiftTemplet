@@ -26,7 +26,7 @@ class FourthViewController: UIViewController {
     }()
     
     lazy var itemView: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         
         var list: [String] = []
         for i in 0...4 {
@@ -45,7 +45,7 @@ class FourthViewController: UIViewController {
     }()
     
     lazy var processingView: NNProcessingView = {
-        var view = NNProcessingView(frame: .zero)
+        let view = NNProcessingView(frame: .zero)
         
         var list: [String] = []
         for i in 0...2 {
@@ -95,7 +95,7 @@ class FourthViewController: UIViewController {
     }()
     
     lazy var pickView: NNPopListView = {
-        var view = NNPopListView(frame: .zero)
+        let view = NNPopListView(frame: .zero)
         view.title = "请选择"
 //        view.tips = "新年快乐!"
         view.itemList = [["11111", "123"],
@@ -259,7 +259,7 @@ class FourthViewController: UIViewController {
     }
     
     lazy var goodsToolView: IOPGoodsToolView = {
-        var view = IOPGoodsToolView(frame: .zero)
+        let view = IOPGoodsToolView(frame: .zero)
         view.padding = 10;
         view.numberOfRow = 5;
         view.titles = ["扩容", "减配", "续费"]
@@ -269,7 +269,7 @@ class FourthViewController: UIViewController {
     }()
     
     lazy var orderPayView: IOPOrderPayView = {
-        var view = IOPOrderPayView(frame: .zero)
+        let view = IOPOrderPayView(frame: .zero)
 
         return view;
     }()
@@ -287,7 +287,7 @@ class FourthViewController: UIViewController {
     }
         
     lazy var clockView: NNClockView = {
-        var view = NNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
+        let view = NNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
         view.itemList = ["111","222","333","444","555","666","777","888",];
         view.backgroundColor = .random;
         view.image = UIImage(named: "beach");

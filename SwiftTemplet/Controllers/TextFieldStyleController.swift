@@ -81,7 +81,7 @@ class TextFieldStyleController: UIViewController {
     }
     
     lazy var textField: UITextField = {
-        var view = UITextField(frame: .zero);
+        let view = UITextField(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left;
         view.contentVerticalAlignment = .center;

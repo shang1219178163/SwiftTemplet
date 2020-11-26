@@ -34,7 +34,7 @@ import SwiftExpand
     }()
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["车场位置", "UITableViewCell", "45.0", "", "recharge", ],
             ["请输入停车场名称", "UITableViewCellButton", "45.0", "", "recharge", ],
              ["我的订单", "UITableViewCellSudokuButton", "90.0", "", "","付停车费,车位商城", ],

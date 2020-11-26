@@ -89,7 +89,7 @@ class PickerViewController: UIViewController {
     
     /// itemsView
     lazy var itemView: NNItemsView = {
-        var view = NNItemsView(frame: .zero)
+        let view = NNItemsView(frame: .zero)
         
         var list:[String] = []
         for i in 0...4 {
@@ -115,7 +115,7 @@ class PickerViewController: UIViewController {
     
     ///
     lazy var customPickerView: NNPickerView = {
-        var view = NNPickerView(frame: .zero)
+        let view = NNPickerView(frame: .zero)
         view.pickerView.delegate = self
         view.pickerView.dataSource = self
         view.block({ (pickerView, tag) in
@@ -126,7 +126,7 @@ class PickerViewController: UIViewController {
     
     //MARK: -lazy
     lazy var datePicker: NNDatePicker = {
-        var view = NNDatePicker();
+        let view = NNDatePicker();
         view.block({ (sender, idx) in
             DDLog(view,sender.datePicker.date,idx);
           
@@ -135,7 +135,7 @@ class PickerViewController: UIViewController {
     }()
     
     lazy var cardView: NNVehicleInfoCardView = {
-        var view = NNVehicleInfoCardView(frame: .zero)
+        let view = NNVehicleInfoCardView(frame: .zero)
         view.imgViewRight.isHidden = true
         
         view.imgView.image = UIImage(named: "bug")
@@ -151,7 +151,7 @@ class PickerViewController: UIViewController {
     }()
     
     lazy var cardViewOne: NNVehicleInfoCardView = {
-        var view = NNVehicleInfoCardView(frame: .zero)
+        let view = NNVehicleInfoCardView(frame: .zero)
         view.imgViewRight.isHidden = true
         
         view.imgView.image = UIImage(named: "bug")
@@ -165,7 +165,7 @@ class PickerViewController: UIViewController {
     }()
     
     lazy var payCardView: NNRecordCardView = {
-        var view = NNRecordCardView(frame: .zero)
+        let view = NNRecordCardView(frame: .zero)
 
         view.labelLeft.text = "总支付金额(元)"
         view.labelLeftSub.text = "1000"
@@ -178,7 +178,7 @@ class PickerViewController: UIViewController {
     }()
     
     lazy var  mileageCardView: NNRecordCardView = {
-        var view = NNRecordCardView(frame: .zero)
+        let view = NNRecordCardView(frame: .zero)
         
         view.labelLeft.text = "总次数"
         view.labelLeftSub.text = "200"
@@ -191,7 +191,7 @@ class PickerViewController: UIViewController {
     }()
     
     lazy var versionView: NNUpdateVersionView = {
-        var view = NNUpdateVersionView(frame: .zero)
+        let view = NNUpdateVersionView(frame: .zero)
 //        view.label.text = "发现新版本"
 //        view.labelOne.text = "V1.2.0"
 //        view.labelTwo.text = "更新内容:"

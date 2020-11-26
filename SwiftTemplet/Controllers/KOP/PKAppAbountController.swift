@@ -48,7 +48,7 @@ class PKAppAbountController: UIViewController {
     }
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["官方网址", "UITableViewCell", "50.0", "", "seller_bank_account", ],
              ["客服电话", "UITableViewCell", "50.0", "", "seller_bank_account", ],
              ["用户协议", "UITableViewCell", "50.0", "", "seller_bank_account", ],

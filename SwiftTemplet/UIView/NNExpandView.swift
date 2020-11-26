@@ -80,7 +80,7 @@ class NNExpandView: UIView {
     }
     
     lazy var btnDelete: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
 //        view.setBackgroundImage(UIImage(named: "icon_notice"), for: .normal)
         view.setImage(UIImage(named: "icon_delete"), for: .normal)
         view.addActionHandler({ (control) in
@@ -99,7 +99,7 @@ class NNExpandView: UIView {
     }()
     
     lazy var btn: UIButton = {
-        var view = UIButton(type: .custom)
+        let view = UIButton(type: .custom)
         //        view.setTitle("闭包的回调方法", for: .normal);
         //        view.setTitleColor(.white, for: .normal);
         view.setImage(UIImage(named: "icon_notice_black"), for: .normal)
@@ -118,7 +118,7 @@ class NNExpandView: UIView {
     }()
     
     lazy var label: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.font = UIFont.systemFont(ofSize: 15)
         view.text = "                         " + "您于2017年10月11日13:28因违反相关规定";
         view.textColor = UIColor.black;
@@ -129,7 +129,7 @@ class NNExpandView: UIView {
 
     
     lazy var contentView: UIView = {
-        var view = UIView(frame: bounds)
+        let view = UIView(frame: bounds)
 
         view.addSubview(label)
         view.addSubview(btnDelete)

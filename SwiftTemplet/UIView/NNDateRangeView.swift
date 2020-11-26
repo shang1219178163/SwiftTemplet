@@ -187,7 +187,7 @@ import SwiftExpand
     
     //MARK: -lazy
     lazy var labTitle: UILabel = {
-        var view = UILabel()
+        let view = UILabel()
         view.text = "日期选择:"
         view.textAlignment = .center
         view.font = UIFont.systemFont(ofSize: 16)
@@ -195,7 +195,7 @@ import SwiftExpand
     }()
     
     lazy var labBegin: UILabel = {
-        var view = UILabel()
+        let view = UILabel()
         view.text = "开始时间"
         view.textColor = .gray
         view.textAlignment = .center
@@ -208,7 +208,7 @@ import SwiftExpand
     
     
     lazy var labEnd: UILabel = {
-        var view = UILabel()
+        let view = UILabel()
         view.text = "结束时间"
         view.textColor = UIColor.gray
         view.textAlignment = .center
@@ -220,7 +220,7 @@ import SwiftExpand
     }()
     
     lazy var labLine: UILabel = {
-        var view = UILabel()
+        let view = UILabel()
         view.textColor = .gray
         view.text = "~"
         view.textAlignment = .center
@@ -230,7 +230,7 @@ import SwiftExpand
     
     //MARK: -lazy
     lazy var datePicker: NNDatePicker = {
-        var view = NNDatePicker(model: .date);
+        let view = NNDatePicker(model: .date);
 //        view.block({ (sender, idx) in
 //            DDLog(view,sender.datePicker.date,idx);
 //            self.viewBlock?(self);

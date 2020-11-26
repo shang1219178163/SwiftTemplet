@@ -23,7 +23,7 @@ class NNTabViewController: UIViewController {
     }
     
     lazy var tabView: NNTabView = {
-        var view = NNTabView(frame: .zero)
+        let view = NNTabView(frame: .zero)
         view.items = [oneVC.view, twoVC.view, threeVC.view, fourVC.view, ];
         view.delegate = self;
         return view;

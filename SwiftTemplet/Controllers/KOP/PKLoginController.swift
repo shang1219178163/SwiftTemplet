@@ -179,7 +179,7 @@ class PKLoginController: UIViewController {
     }()
     
     lazy var textFieldView: NNTextFieldView = {
-        var view = NNTextFieldView(frame: .zero)
+        let view = NNTextFieldView(frame: .zero)
         view.label.text = "手机号码:"
         view.textfield.placeholder = "手机号码"
         view.label.isHidden = true
@@ -196,7 +196,7 @@ class PKLoginController: UIViewController {
     }()
     
     lazy var textFieldCodeView: NNTextFieldView = {
-        var view = NNTextFieldView(frame: .zero)
+        let view = NNTextFieldView(frame: .zero)
         view.label.text = "验  证  码:"
         view.textfield.placeholder = "短信验证码"
         view.label.isHidden = true

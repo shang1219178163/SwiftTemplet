@@ -58,7 +58,7 @@ class PKUserLevelController: UIViewController {
     }()
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["UITableViewCell", "30", "如何提升等级", ],
              ["UITableViewCell", "45", "经验值决定等级高低，通过完成任务，可以积累一定数量的经验值，经验值达到指定数额，即可实现升级。", ],
              ["UITableViewCellButton", "50", "去看看升级任务 >", ],

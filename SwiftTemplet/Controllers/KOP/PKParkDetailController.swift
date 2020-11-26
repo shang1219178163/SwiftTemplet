@@ -22,7 +22,7 @@ import SwiftExpand
     lazy var viewModel = NSObject()
 
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
+        let array: [[[String]]] = [
             [["标题", "UITableViewCellTitle", "50.0", "", "recharge", ],
             ["支付标签", "UITableViewCellSudokuButton", " 40.0", "", "recharge", ],
             ["车场地址", "UITableViewCell", "45.0", "", "park_name",],

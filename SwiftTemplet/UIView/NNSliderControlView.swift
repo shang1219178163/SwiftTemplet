@@ -157,7 +157,7 @@ class NNSliderControlView: UIView {
     
     //MARK: -lazy
     lazy var labFront: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.font = UIFont.systemFont(ofSize: 17)
         view.textColor = UIColor.white;
         view.textAlignment = .center;
@@ -167,7 +167,7 @@ class NNSliderControlView: UIView {
     }();
     
     lazy var labBack: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.font = UIFont.systemFont(ofSize: 17)
         view.textColor = UIColor.white;
         view.textAlignment = .center;
@@ -183,7 +183,7 @@ class NNSliderControlView: UIView {
     }();
     
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;

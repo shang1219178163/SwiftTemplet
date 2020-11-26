@@ -137,7 +137,7 @@ class UITableViewCellAfford: UITableViewCell {
     // MARK: -lazy
     
     lazy var labelMark: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "未下发";
         view.textColor = UIColor.red;
         view.font = UIFont.systemFont(ofSize: 11)

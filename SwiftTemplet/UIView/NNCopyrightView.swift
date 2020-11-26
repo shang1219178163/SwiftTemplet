@@ -18,7 +18,7 @@ class NNCopyrightView: UIView {
 
     //MARK: - lazy
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "irain_logo_lightgray")
         view.contentMode = .scaleAspectFit

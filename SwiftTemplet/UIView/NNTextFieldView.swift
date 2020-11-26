@@ -154,7 +154,7 @@ class NNTextFieldView: UIView {
     }()
     
     lazy var textfield: UITextField = {
-        var view = UITextField(frame: CGRect.zero);
+        let view = UITextField(frame: CGRect.zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.font = UIFont.systemFont(ofSize: 15);
         view.textAlignment = .left;

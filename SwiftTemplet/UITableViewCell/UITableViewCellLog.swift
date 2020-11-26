@@ -15,7 +15,7 @@ class UITableViewCellLog: UITableViewCell {
 
     // MARK: -lazy
     lazy var labelOne: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.black;
         view.font = UIFont.systemFont(ofSize: 15)
@@ -24,7 +24,7 @@ class UITableViewCellLog: UITableViewCell {
     }()
     
     lazy var labelTwo: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
@@ -33,7 +33,7 @@ class UITableViewCellLog: UITableViewCell {
     }()
     
     lazy var labelThree: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
@@ -42,7 +42,7 @@ class UITableViewCellLog: UITableViewCell {
     }()
     
     lazy var labelOneRight: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.black;
         view.textColor = UIColor.hexValue(0x666666)
@@ -54,7 +54,7 @@ class UITableViewCellLog: UITableViewCell {
     }()
     
     lazy var labelTwoRight: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
@@ -65,7 +65,7 @@ class UITableViewCellLog: UITableViewCell {
     }()
     
     lazy var labelThreeRight: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
@@ -76,7 +76,7 @@ class UITableViewCellLog: UITableViewCell {
     }()
         
     lazy var labelFour: UILabel = {
-        var view = UILabel(frame: .zero);
+        let view = UILabel(frame: .zero);
         view.text = "Label";
         view.textColor = UIColor.hexValue(0x666666)
         view.font = UIFont.systemFont(ofSize: 11)
