@@ -21,7 +21,7 @@ class EntryViewController: UIViewController {
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -147,7 +147,6 @@ class EntryViewController: UIViewController {
         return view
     }()
     
-    //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
         let alertVC = UIAlertController(title: "请选择", message: nil, preferredStyle: .actionSheet)
         alertVC.addActionTitles([kTitleCancell]) { (action) in
@@ -160,6 +159,32 @@ class EntryViewController: UIViewController {
 
         return alertVC
     }()
+    
+    lazy var footerView: NNTableFooterView = {
+        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
+        view.label.text = ""
+        view.label.textAlignment = .center
+        view.btn.setTitle("提交", for: .normal)
+        view.btn.addActionHandler({[weak self] (sender:UIControl) in
+            let obj = sender as! UIButton
+            DDLog(obj.tag)
+            
+            }, for: .touchUpInside)
+        return view
+    }()
+    
+    lazy var suspendBtn: NNSuspendButton = {
+          var view = NNSuspendButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+          view.insets = UIEdgeInsets(top: 40, left: 0, bottom: 80, right: 0)
+//          view.parController = self
+          view.addActionHandler({ (sender) in
+              DDLog(sender.center)
+                        
+//            let controller = CCSCouponRecordController()
+//            self.navigationController?.present(controller, animated: true, completion: nil)
+          }, for: .touchUpInside)
+          return view
+      }()
         
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
@@ -214,39 +239,22 @@ class EntryViewController: UIViewController {
             ["九宫格", "UITableViewCellSudokuLabel", "80.0", "", "recharge", ],
             ["九宫格2", "UITableViewCellSudokuButton", " 180.0", "", "recharge", ],
             ["九宫格T", "UITableViewCellSudokuButtonNew", " 180.0", "", "recharge", ],
+            ["精选商品", "UITableViewCellSudokuView", "120", "", "", "清洁养护,汽车配件,车载内饰,动机系统"],
+
 //            ["确认提交", "UITableViewCellButton", "60.0", "", "recharge", ],
             ],
 
         ]
         return array
     }()
- 
-    lazy var footerView: NNTableFooterView = {
-        var view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 150))
-        view.label.text = ""
-        view.label.textAlignment = .center
-        view.btn.setTitle("提交", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
-            
-            }, for: .touchUpInside)
-        return view
-    }()
-    
-    lazy var suspendBtn: NNSuspendButton = {
-          var view = NNSuspendButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
-          view.insets = UIEdgeInsets(top: 40, left: 0, bottom: 80, right: 0)
-//          view.parController = self
-          view.addActionHandler({ (sender) in
-              DDLog(sender.center)
-                        
-//            let controller = CCSCouponRecordController()
-//            self.navigationController?.present(controller, animated: true, completion: nil)
-          }, for: .touchUpInside)
-          return view
-      }()
-    
+
+    var unitDic: [String: String] {
+        return ["清洁养护": "icon_car_clean,爆款窗膜 一站式养护,bg_car_goods_1",
+                "汽车配件": "icon_car_parts,正品低价 精准匹配,bg_car_goods_2",
+                "车载内饰": "icon_car_interior,性价比好货 限量抢购,bg_car_goods_3",
+                "动机系统": "icon_car_machine,大品牌 更安心,bg_car_goods_4",
+        ]
+    }
     // MARK: -funtions
     /// 跳转相册类
     func jumpXiangce(_ itemList: [String]) {
@@ -348,15 +356,20 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellExcel.dequeueReusableCell(tableView)
             cell.isHidden = value2.cgFloatValue <= 0.0
             
-            let width = (kScreenWidth - cell.inset.left - cell.inset.right)/3.0
-            cell.excelView.layout.itemSize = CGSize(width: width, height: 45)
-            cell.excelView.label.text = "    全天"
-            cell.excelView.xGap = 0
-            cell.excelView.label.backgroundColor = UIColor.hexValue(0xF5F5F5)
-            cell.excelView.headerBackgroudColor = .white
+            cell.excelView.visibleNumOfRow = 3
+            cell.excelView.titleLabel.text = "    全天"
+            cell.excelView.titleLabel.backgroundColor = UIColor.hexValue(0xF5F5F5)
+            cell.excelView.titleLabel.isHidden = true
+//            cell.excelView.headerBackgroudColor = .white
+//            
+//            cell.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
+            cell.excelView.titleList = ["时段", "单位价格", "封顶价格",]
+            
             cell.excelView.dataList = [["08:00 - 20:00", "2元/小时", "封顶20元",],
                                        ["08:00 - 20:00", "2元/小时", "封顶20元",],
                                         ]
+            cell.excelView.reloadData()
+
             cell.getViewLayer()
             return cell
             
@@ -913,7 +926,55 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
             cell.getViewLayer();
             return cell;
-                        
+  
+        case "UITableViewCellSudokuView":
+            let cell = UITableViewCellSudokuView.dequeueReusableCell(tableView)
+//            cell.accessoryType = .disclosureIndicator
+            cell.numOfRow = 2
+            cell.row = 2
+            cell.itemType = NNContentCellView.self
+//            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
+            cell.inset = .zero
+            cell.lineSpacing = 1
+            cell.interitemSpacing = 1
+            
+            let items = itemList.last!.components(separatedBy: ",")
+
+            cell.items.forEach {
+                guard let sender = $0 as? NNContentCellView,
+                let title = items[sender.tag] as String?,
+                let value = self.unitDic[title] as String?,
+                let values = value.components(separatedBy: ",") as [String]?
+                else { return }
+                sender.inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 10)
+                sender.textLabel.textColor = .white;
+                sender.detailTextLabel.textColor = .white;
+                sender.btn.setTitleColor(.white, for: .normal)
+                sender.cellStyle = .subtitle
+                sender.btn.isHidden = true
+                sender.image = UIImage(named: values[2])
+                
+                sender.imageView.image = UIImage(named: values[0])
+                sender.textLabel.text = title
+                sender.detailTextLabel.text = values[1]
+                
+                sender.addGestureTap { (gesture) in
+                    DDLog(gesture.view?.tag as Any)
+
+//                    switch gesture.view!.tag {
+//                        case 0:
+//                        case 1:
+//                        case 2:
+//                        case 3:
+//                        default:
+//                            DDLog(title)
+//                            IOPProgressHUD.showText(kTitleDeveloping)
+//                        }
+                }
+            }
+//            cell.getViewLayer()
+            return cell
+            
         case "UITableViewCellChoice":
             let cell = UITableViewCellChoice.dequeueReusableCell(tableView);
             cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]

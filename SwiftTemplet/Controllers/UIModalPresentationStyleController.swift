@@ -12,7 +12,7 @@ import SwiftExpand
 class UIModalPresentationStyleController: UIViewController{
     
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 70)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 70)
         view.dataSource = self
         view.delegate = self
 

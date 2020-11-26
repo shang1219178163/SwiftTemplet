@@ -17,7 +17,7 @@ class ThirdViewController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -33,6 +33,9 @@ class ThirdViewController: UIViewController{
         var array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
              ["ReuseChildsController", "控制器复用", ],
+             ["IOPFuntionListController", "iop 视图", ],
+             ["AttrStringViewController", "优雅的富文本", ],
+
 //             ["SubscribeListNewController", "微信公众号信息列表1", ],
              ["FloatingPanelExampleController", "FloatingPanel浮层", ],             
             ["ProtocolViewController", "面向协议编程", ],
@@ -363,9 +366,9 @@ class ThirdViewController: UIViewController{
         updateAPi.startRequest(success: { (manager, dic) in
             
             guard let data = try? JSONSerialization.data(withJSONObject: dic as Any, options: []) as Data,
-            let jsonString: String = String(data: data, encoding: .utf8),
-            let string: String = jsonString.replacingOccurrences(of: "\\", with: "")
+            let jsonString = String(data: data, encoding: .utf8)
             else { return }
+            let string: String = jsonString.replacingOccurrences(of: "\\", with: "")
 //            DDLog(string as Any)
 //            if let response = NNCheckVersRootClass.deserialize(from: dic) {
             if let response = ESCheckVersRootClass.deserialize(from: dic) {

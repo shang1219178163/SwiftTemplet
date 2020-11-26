@@ -15,7 +15,7 @@ class FirstViewController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -30,6 +30,8 @@ class FirstViewController: UIViewController{
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
+             ["AlerSheetStudyController", "AlerSheet自定义", ],
+             ["ShowActivityController", "ShowActivity", ],
              ["GXSegmentPageViewExampleController", "GXSegmentPageView", ],
              ["QRCodeViewController", "二维码", ],
              ["TestScrollViewController", "TestScrollViewController", ],
@@ -41,7 +43,6 @@ class FirstViewController: UIViewController{
              ["FoldSectionListController", "Swift折叠列表", ],
              ["NNLeftRightTableViewController", "Swift极简左右联动", ],
              ["LeftRightTableViewController", "极简左右联动", ],
-             ["AlerSheetStudyController", "AlerSheet自定义", ],
              ["ExampleViewController", "Banner通知视图", ],
              ["PopoverViewExampleController", "PopoverView", ],
              ["ScrollLabelController", "ScrollLabel", ],
@@ -122,18 +123,28 @@ class FirstViewController: UIViewController{
         
 //        view.nn_borderColor(UIColor.red).nn_borderWidth(5)
 
+        let date = Date()
+        let a = date.timeIntervalSince1970
+        let b = Int(date.timeIntervalSince1970)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DDLog("")
 
 //        let controller = CellListController()
 //        navigationController?.pushViewController(controller, animated: true);
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DDLog("")
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
+        DDLog("")
+
     }
     
     override func didReceiveMemoryWarning() {

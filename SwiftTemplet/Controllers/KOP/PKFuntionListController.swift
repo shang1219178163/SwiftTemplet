@@ -36,6 +36,8 @@ import SwiftExpand
              ["PKUserTaskListController", "我的任务", ],
              ["PKUserPointsListController", "我的积分", ],
              
+            ["PKTabBarViewController", "PKTabBar", ],
+                
             ],
         ]
         return array
@@ -43,7 +45,7 @@ import SwiftExpand
 
     // MARK: - lazy
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -51,11 +53,15 @@ import SwiftExpand
     }()
         
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "保存", imgName: nil, type: 6)
+        let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
 //        button.isHidden = true;
         button.sizeToFit()
         button.addActionHandler({ (control) in
-            DDLog(control)
+//            DDLog(control)
+            self.navigationController?.pushVC(SimpleListController.self, animated: true, block: { (vc) in
+                vc.label.text = "SimpleListController"
+            })
+            
         }, for: .touchUpInside)
         return button
     }()
