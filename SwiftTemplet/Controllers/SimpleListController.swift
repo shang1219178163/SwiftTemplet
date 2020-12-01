@@ -22,17 +22,48 @@ import SnapKit
     
     weak var delegate: TableViewSelectDelegate?
     // MARK: - lazy
+//    lazy var tableView: UITableView = {
+//        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
+//        view.backgroundColor = UIColor.white
+//        view.dataSource = self
+//        view.delegate = self
+//
+//        return view
+//    }()
+        
+//    private var _tableView: UITableView?
+//    lazy var tableView: UITableView = {
+//        if _tableView == nil {
+//            _tableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+//            _tableView!.dataSource = self
+//            _tableView!.delegate = self
+//        }
+//        return _tableView!
+//    }()
+    
+//    lazy var tableView: UITableView = {
+//        guard let tableView = view.subView(UITableView.self) as? UITableView else {
+//            let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+//            view.dataSource = self
+//            view.delegate = self
+//            return view
+//        }
+//        return tableView
+//    }()
+    
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
-        view.backgroundColor = UIColor.white
+        if let tableView = view.subView(UITableView.self) as? UITableView {
+            return tableView
+        }
+                
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
-
         return view
     }()
-        
+    
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "保存", imgName: nil, type: 6)
+        let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
         button.isHidden = true;
         button.sizeToFit()
         button.addActionHandler({ (control) in
@@ -40,22 +71,12 @@ import SnapKit
         }, for: .touchUpInside)
         return button
     }()
-    
-    @objc func handleAction(_ sender: UIButton) {
-        
-    }
-    
-    lazy var searchBar: UISearchBar = {
-        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 50))
-        view.layer.cornerRadius = 0;
-        view.showsCancelButton = false;
-        view.backgroundColor = .white
-        view.textField?.placeholder = "请输入名称搜索";
-        view.textField?.backgroundColor = UIColor.background
-        view.textField?.layer.cornerRadius = 5;
-        view.textField?.layer.masksToBounds = true;
-
-        view.delegate = self;
+            
+    // MARK: - lazy
+    lazy var label: UILabel = {
+        let view = UILabel(frame: CGRectMake(0, 0, kScreenWidth, 50))
+        view.backgroundColor = .systemGreen
+        view.numberOfLines = 0
         return view
     }()
     
@@ -64,13 +85,32 @@ import SnapKit
         super.viewDidLoad()
         
         setupExtendedLayout()
-        title = ""
+        title = "SimpleListController"
         setupUI()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(0);
+            make.left.equalToSuperview().offset(0);
+            make.right.equalToSuperview().offset(0);
+            make.bottom.equalToSuperview().offset(0);
+        }
+        
+        label.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(15);
+            make.left.equalToSuperview().offset(15);
+            make.right.equalToSuperview().offset(-15);
+            make.height.equalTo(225);
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
+        label.attributedText = AttrString.test()
     }
         
     override func didReceiveMemoryWarning() {
@@ -86,13 +126,9 @@ import SnapKit
                 
 //        tableView.tableHeaderView = searchBar
         view.addSubview(tableView);
+        view.addSubview(label);
+//        label.isHidden = true
     }
-
-    func requestForSearch(_ searchbar: UISearchBar) {
-//        viewModel.listAPI.name = searchBar.text!;
-//        tableView.mj_header.beginRefreshing();
-    }
-
 
 }
 
@@ -176,39 +212,3 @@ extension SimpleListController: UITableViewDataSource, UITableViewDelegate{
 //       btnSure.isEnabled = (distanceFromBottom <= height*1.1)
 //  }
 //}
-
-extension SimpleListController: UISearchBarDelegate{
-    // MARK: -UISearchBar
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool{
-        return true;
-    }
-    
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        return true;
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count < 3 {
-            return;
-        }
-        requestForSearch(searchBar)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        searchBar.showsCancelButton = !(searchBar.text!.count == 1 && text == "")
-        return true;
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        requestForSearch(searchBar)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-}
-
