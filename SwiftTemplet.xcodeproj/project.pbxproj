@@ -249,7 +249,7 @@
 		1479D5CF24455A4D007F7CC4 /* TabbarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479D5CD24455A4C007F7CC4 /* TabbarAnimator.swift */; };
 		1479D5D024455A4D007F7CC4 /* TabbarInteractionTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479D5CE24455A4D007F7CC4 /* TabbarInteractionTransition.swift */; };
 		1479D5DF24480952007F7CC4 /* UILabelMultipleTapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479D5DE24480952007F7CC4 /* UILabelMultipleTapController.swift */; };
-		1479D62E24484BDD007F7CC4 /* NNAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479D62D24484BDD007F7CC4 /* NNAlertViewController.swift */; };
+		1479D62E24484BDD007F7CC4 /* NNAlertTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1479D62D24484BDD007F7CC4 /* NNAlertTextViewController.swift */; };
 		147C0929245819B6000FC477 /* UUTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147C0928245819B6000FC477 /* UUTabBarController.swift */; };
 		147D797824BEDA6400458F3D /* NNGuidePageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 147D797624BEDA6400458F3D /* NNGuidePageManager.m */; };
 		147D798924BEDACD00458F3D /* pageDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 147D797A24BEDACD00458F3D /* pageDot.png */; };
@@ -315,14 +315,19 @@
 		14923E8C24E0E74600E56939 /* ChatInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14923E8B24E0E74600E56939 /* ChatInputController.swift */; };
 		14923E8E24E0EB1D00E56939 /* NNInputAsoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14923E8D24E0EB1D00E56939 /* NNInputAsoryView.swift */; };
 		14923E9024E13F9000E56939 /* NNChatKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14923E8F24E13F9000E56939 /* NNChatKeyboardView.swift */; };
+		1493CD3F2567636A006EC1C5 /* PKTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1493CD3E2567636A006EC1C5 /* PKTabBarViewController.swift */; };
+		1493CD4B25676AF9006EC1C5 /* NNCycleTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1493CD4A25676AF9006EC1C5 /* NNCycleTabbarController.swift */; };
 		149946852383F743005E43CC /* NNPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946842383F743005E43CC /* NNPictureView.swift */; };
 		149946872383F93B005E43CC /* UICTViewCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946862383F93B005E43CC /* UICTViewCellTwo.swift */; };
 		149946892384E5E5005E43CC /* UIRecognizerUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */; };
+		149A4D18255B78F400092DA0 /* ShowActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4D17255B78F400092DA0 /* ShowActivityController.swift */; };
+		149A4D1E255B7E4D00092DA0 /* NNActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4D1D255B7E4D00092DA0 /* NNActivity.swift */; };
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		149E401C23AA0811006C05BC /* ObserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E401B23AA0811006C05BC /* ObserveViewController.swift */; };
 		149EF8B5248A3B5700EB1F5F /* NNOrderPayH5Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EF8B4248A3B5700EB1F5F /* NNOrderPayH5Controller.swift */; };
 		149EF8B7248A6CC300EB1F5F /* NNIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149EF8B6248A6CC300EB1F5F /* NNIconButton.swift */; };
+		14A1AB192553D97F00AB4CE5 /* PKRootModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */; };
 		14A3755C24B7169C002C9E4B /* RxRequestExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3755B24B7169C002C9E4B /* RxRequestExampleController.swift */; };
 		14A3755F24B72018002C9E4B /* RxRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3755E24B72018002C9E4B /* RxRequestHelper.swift */; };
 		14A3756124B7218E002C9E4B /* NNRootAppInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3756024B7218E002C9E4B /* NNRootAppInfoModel.swift */; };
@@ -331,6 +336,8 @@
 		14A4B4E42421E906007FC3A1 /* NNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4B4E32421E906007FC3A1 /* NNButton.swift */; };
 		14A4B4E6242305FD007FC3A1 /* NNButtonStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4B4E5242305FD007FC3A1 /* NNButtonStudyController.swift */; };
 		14A736BF24FA16CC0098D6E2 /* NSString+Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A736BE24FA16CC0098D6E2 /* NSString+Encrypt.m */; };
+		14A79E282543027E0048B01B /* NNCycleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A79E272543027E0048B01B /* NNCycleController.swift */; };
+		14A79E2B2543C41F0048B01B /* NNScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A79E2A2543C41F0048B01B /* NNScrollViewController.swift */; };
 		14A81D9B23F81979003E6EB4 /* UITableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A81D9A23F81979003E6EB4 /* UITableViewCellTitle.swift */; };
 		14A86A7323557AAC00AD9BC1 /* NNSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A7223557AAC00AD9BC1 /* NNSearchController.swift */; };
 		14A86A7523557ABD00AD9BC1 /* NNSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A86A7423557ABD00AD9BC1 /* NNSearchResultController.swift */; };
@@ -359,6 +366,12 @@
 		14B7406124CBD2D000569888 /* UITableViewCellSegmentLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7406024CBD2D000569888 /* UITableViewCellSegmentLine.swift */; };
 		14B7406424CC429300569888 /* NNNavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7406324CC429300569888 /* NNNavigationControllerDelegate.swift */; };
 		14B7406624CC52B900569888 /* SubscribeListNewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B7406524CC52B900569888 /* SubscribeListNewController.swift */; };
+		14B74CEE2566049F00F03F3E /* NNExcelAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B74CED2566049F00F03F3E /* NNExcelAlertView.swift */; };
+		14B74D522566110500F03F3E /* IOPFuntionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B74D512566110500F03F3E /* IOPFuntionListController.swift */; };
+		14B74D542566115700F03F3E /* NNExcelAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B74D532566115700F03F3E /* NNExcelAlertViewController.swift */; };
+		14B8FF3F2563A77C006A6D47 /* PKAccountLogOffFailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B8FF3C2563A77C006A6D47 /* PKAccountLogOffFailController.swift */; };
+		14B8FF402563A77C006A6D47 /* PKAccountLogOffOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B8FF3D2563A77C006A6D47 /* PKAccountLogOffOneController.swift */; };
+		14B8FF412563A77C006A6D47 /* PKAccountLogOffTwoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B8FF3E2563A77C006A6D47 /* PKAccountLogOffTwoController.swift */; };
 		14B940B1237E2FBC00A49D1F /* NNGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B0237E2FBC00A49D1F /* NNGroupView.swift */; };
 		14B940B3237E3B6300A49D1F /* IOPParkGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */; };
 		14B940B6237E3E0F00A49D1F /* icon_choose_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */; };
@@ -366,6 +379,10 @@
 		14B940B9237E3FBE00A49D1F /* IOPParkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B8237E3FBE00A49D1F /* IOPParkButton.swift */; };
 		14B940BB237E53A300A49D1F /* IOPTableViewCellGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */; };
 		14BB0C9B24862ECF00CA4865 /* UITableViewCellChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BB0C9A24862ECF00CA4865 /* UITableViewCellChoice.swift */; };
+		14BC6198254FA00C0043FFC6 /* NNTableViewAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6197254FA00C0043FFC6 /* NNTableViewAlertController.swift */; };
+		14BC619A254FA1670043FFC6 /* NNAlertTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6199254FA1670043FFC6 /* NNAlertTableController.swift */; };
+		14BC61B1254FF0DE0043FFC6 /* NSPredicate+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC61B0254FF0DE0043FFC6 /* NSPredicate+Helper.swift */; };
+		14BC61BC254FFE990043FFC6 /* UITableViewCellUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC61BB254FFE990043FFC6 /* UITableViewCellUpload.swift */; };
 		14BD733F22D418F7008788B1 /* PlateNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD733E22D418F7008788B1 /* PlateNumberController.swift */; };
 		14BD734522D43B1C008788B1 /* PlateNumOriginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */; };
 		14BE1769237FB9450007B148 /* NNTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1768237FB9450007B148 /* NNTabView.swift */; };
@@ -396,6 +413,7 @@
 		14C9FA3A2501D9380097080F /* PKParkBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C9FA392501D9380097080F /* PKParkBriefView.swift */; };
 		14C9FA3F2501E90A0097080F /* AnimationContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C9FA3C2501E9090097080F /* AnimationContoller.m */; };
 		14C9FA402501E90A0097080F /* KLTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C9FA3D2501E90A0097080F /* KLTNavigationController.m */; };
+		14CA2AFA2543D6A50070252A /* NNCycleStyle1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA2AF92543D6A50070252A /* NNCycleStyle1Controller.swift */; };
 		14CA756A24D46F5E00D649DC /* AlerSheetStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA756924D46F5E00D649DC /* AlerSheetStudyController.swift */; };
 		14CA756E24D527AE00D649DC /* LeftRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14CA756D24D527AD00D649DC /* LeftRightTableViewController.m */; };
 		14CA757024D530BF00D649DC /* NNLeftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA756F24D530BF00D649DC /* NNLeftTableViewCell.swift */; };
@@ -442,6 +460,12 @@
 		14E2049F24E687270075AB47 /* PopoverView+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E2049E24E687270075AB47 /* PopoverView+Helper.m */; };
 		14E204A224E688990075AB47 /* PopoverViewExampleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E204A124E688990075AB47 /* PopoverViewExampleController.m */; };
 		14E204A424E688C50075AB47 /* PopoverViewMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E204A324E688C50075AB47 /* PopoverViewMedia.xcassets */; };
+		14E2FED8256E66C9008B0CD6 /* NNPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FED7256E66C9008B0CD6 /* NNPayManager.m */; };
+		14E2FF2D256E6BBC008B0CD6 /* NNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FF2C256E6BBC008B0CD6 /* NNWebViewController.swift */; };
+		14E2FF62256E6D66008B0CD6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E2FF61256E6D66008B0CD6 /* libWeChatSDK.a */; };
+		14E2FF97256F66AB008B0CD6 /* AttrString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FF96256F66AB008B0CD6 /* AttrString.swift */; };
+		14E2FF99256F922A008B0CD6 /* AttrStringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E2FF98256F922A008B0CD6 /* AttrStringViewController.swift */; };
+		14E2FF9B256F9472008B0CD6 /* WechatIMG375.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E2FF9A256F9472008B0CD6 /* WechatIMG375.png */; };
 		14E546F124C05E270095B22D /* PKSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E546F024C05E270095B22D /* PKSettingsController.swift */; };
 		14E546F624C062E00095B22D /* PKAccountAboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E546F224C062DF0095B22D /* PKAccountAboutController.swift */; };
 		14E546F724C062E00095B22D /* PKUserInfoEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E546F324C062DF0095B22D /* PKUserInfoEditController.swift */; };
@@ -473,7 +497,6 @@
 		14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */; };
 		14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */; };
 		14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */; };
-		14F0F0DA24BF0F6800263DAA /* NNWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0F0D924BF0F6800263DAA /* NNWebViewController.swift */; };
 		14F0F0DC24BF11E300263DAA /* PKBindPhoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0F0DB24BF11E300263DAA /* PKBindPhoneController.swift */; };
 		14F0F0DE24BF1ED700263DAA /* NNOfflineTipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0F0DD24BF1ED700263DAA /* NNOfflineTipController.swift */; };
 		14F0F0E124BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */; };
@@ -490,6 +513,9 @@
 		14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAAE21E709DA00FB7570 /* UITableViewCellPickerView.swift */; };
 		14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAB021E70A0000FB7570 /* UITableViewCellDateRange.swift */; };
 		14F7AAB721E722B300FB7570 /* IOPAuthDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAB621E722B300FB7570 /* IOPAuthDetailController.swift */; };
+		14FB99F625482881007C7C6D /* NNPageSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB99F325482881007C7C6D /* NNPageSegmentViewController.swift */; };
+		14FB99F725482881007C7C6D /* NNPageTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB99F425482881007C7C6D /* NNPageTitleViewController.swift */; };
+		14FB99F825482881007C7C6D /* NNPageSegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB99F525482881007C7C6D /* NNPageSegmentedControlController.swift */; };
 		14FE3C32245ABB12006B14D4 /* OOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */; };
 		14FE3C34245AC206006B14D4 /* FlipImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -771,7 +797,7 @@
 		1479D5CD24455A4C007F7CC4 /* TabbarAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarAnimator.swift; sourceTree = "<group>"; };
 		1479D5CE24455A4D007F7CC4 /* TabbarInteractionTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarInteractionTransition.swift; sourceTree = "<group>"; };
 		1479D5DE24480952007F7CC4 /* UILabelMultipleTapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelMultipleTapController.swift; sourceTree = "<group>"; };
-		1479D62D24484BDD007F7CC4 /* NNAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNAlertViewController.swift; sourceTree = "<group>"; };
+		1479D62D24484BDD007F7CC4 /* NNAlertTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNAlertTextViewController.swift; sourceTree = "<group>"; };
 		147C0928245819B6000FC477 /* UUTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UUTabBarController.swift; sourceTree = "<group>"; };
 		147D797624BEDA6400458F3D /* NNGuidePageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNGuidePageManager.m; sourceTree = "<group>"; };
 		147D797724BEDA6400458F3D /* NNGuidePageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNGuidePageManager.h; sourceTree = "<group>"; };
@@ -843,14 +869,19 @@
 		14923E8B24E0E74600E56939 /* ChatInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputController.swift; sourceTree = "<group>"; };
 		14923E8D24E0EB1D00E56939 /* NNInputAsoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNInputAsoryView.swift; sourceTree = "<group>"; };
 		14923E8F24E13F9000E56939 /* NNChatKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNChatKeyboardView.swift; sourceTree = "<group>"; };
+		1493CD3E2567636A006EC1C5 /* PKTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKTabBarViewController.swift; sourceTree = "<group>"; };
+		1493CD4A25676AF9006EC1C5 /* NNCycleTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCycleTabbarController.swift; sourceTree = "<group>"; };
 		149946842383F743005E43CC /* NNPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPictureView.swift; sourceTree = "<group>"; };
 		149946862383F93B005E43CC /* UICTViewCellTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICTViewCellTwo.swift; sourceTree = "<group>"; };
 		149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerUpdateController.swift; sourceTree = "<group>"; };
+		149A4D17255B78F400092DA0 /* ShowActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowActivityController.swift; sourceTree = "<group>"; };
+		149A4D1D255B7E4D00092DA0 /* NNActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNActivity.swift; sourceTree = "<group>"; };
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		149E401B23AA0811006C05BC /* ObserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveViewController.swift; sourceTree = "<group>"; };
 		149EF8B4248A3B5700EB1F5F /* NNOrderPayH5Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNOrderPayH5Controller.swift; sourceTree = "<group>"; };
 		149EF8B6248A6CC300EB1F5F /* NNIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNIconButton.swift; sourceTree = "<group>"; };
+		14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKRootModel.swift; sourceTree = "<group>"; };
 		14A3755B24B7169C002C9E4B /* RxRequestExampleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRequestExampleController.swift; sourceTree = "<group>"; };
 		14A3755E24B72018002C9E4B /* RxRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRequestHelper.swift; sourceTree = "<group>"; };
 		14A3756024B7218E002C9E4B /* NNRootAppInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNRootAppInfoModel.swift; sourceTree = "<group>"; };
@@ -860,6 +891,8 @@
 		14A4B4E5242305FD007FC3A1 /* NNButtonStudyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNButtonStudyController.swift; sourceTree = "<group>"; };
 		14A736BD24FA16CC0098D6E2 /* NSString+Encrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Encrypt.h"; sourceTree = "<group>"; };
 		14A736BE24FA16CC0098D6E2 /* NSString+Encrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encrypt.m"; sourceTree = "<group>"; };
+		14A79E272543027E0048B01B /* NNCycleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCycleController.swift; sourceTree = "<group>"; };
+		14A79E2A2543C41F0048B01B /* NNScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNScrollViewController.swift; sourceTree = "<group>"; };
 		14A81D9A23F81979003E6EB4 /* UITableViewCellTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellTitle.swift; sourceTree = "<group>"; };
 		14A86A7223557AAC00AD9BC1 /* NNSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSearchController.swift; sourceTree = "<group>"; };
 		14A86A7423557ABD00AD9BC1 /* NNSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSearchResultController.swift; sourceTree = "<group>"; };
@@ -888,6 +921,12 @@
 		14B7406024CBD2D000569888 /* UITableViewCellSegmentLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegmentLine.swift; sourceTree = "<group>"; };
 		14B7406324CC429300569888 /* NNNavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNNavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		14B7406524CC52B900569888 /* SubscribeListNewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeListNewController.swift; sourceTree = "<group>"; };
+		14B74CED2566049F00F03F3E /* NNExcelAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNExcelAlertView.swift; sourceTree = "<group>"; };
+		14B74D512566110500F03F3E /* IOPFuntionListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPFuntionListController.swift; sourceTree = "<group>"; };
+		14B74D532566115700F03F3E /* NNExcelAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNExcelAlertViewController.swift; sourceTree = "<group>"; };
+		14B8FF3C2563A77C006A6D47 /* PKAccountLogOffFailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKAccountLogOffFailController.swift; sourceTree = "<group>"; };
+		14B8FF3D2563A77C006A6D47 /* PKAccountLogOffOneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKAccountLogOffOneController.swift; sourceTree = "<group>"; };
+		14B8FF3E2563A77C006A6D47 /* PKAccountLogOffTwoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKAccountLogOffTwoController.swift; sourceTree = "<group>"; };
 		14B940B0237E2FBC00A49D1F /* NNGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNGroupView.swift; sourceTree = "<group>"; };
 		14B940B2237E3B6300A49D1F /* IOPParkGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPParkGroupView.swift; sourceTree = "<group>"; };
 		14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_choose_blue@3x.png"; sourceTree = "<group>"; };
@@ -895,6 +934,10 @@
 		14B940B8237E3FBE00A49D1F /* IOPParkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPParkButton.swift; sourceTree = "<group>"; };
 		14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPTableViewCellGroupView.swift; sourceTree = "<group>"; };
 		14BB0C9A24862ECF00CA4865 /* UITableViewCellChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellChoice.swift; sourceTree = "<group>"; };
+		14BC6197254FA00C0043FFC6 /* NNTableViewAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTableViewAlertController.swift; sourceTree = "<group>"; };
+		14BC6199254FA1670043FFC6 /* NNAlertTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAlertTableController.swift; sourceTree = "<group>"; };
+		14BC61B0254FF0DE0043FFC6 /* NSPredicate+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Helper.swift"; sourceTree = "<group>"; };
+		14BC61BB254FFE990043FFC6 /* UITableViewCellUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellUpload.swift; sourceTree = "<group>"; };
 		14BD733E22D418F7008788B1 /* PlateNumberController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateNumberController.swift; sourceTree = "<group>"; };
 		14BD734422D43B1C008788B1 /* PlateNumOriginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateNumOriginController.swift; sourceTree = "<group>"; };
 		14BE1768237FB9450007B148 /* NNTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTabView.swift; sourceTree = "<group>"; };
@@ -931,6 +974,7 @@
 		14C9FA3C2501E9090097080F /* AnimationContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationContoller.m; sourceTree = "<group>"; };
 		14C9FA3D2501E90A0097080F /* KLTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTNavigationController.m; sourceTree = "<group>"; };
 		14C9FA3E2501E90A0097080F /* AnimationContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationContoller.h; sourceTree = "<group>"; };
+		14CA2AF92543D6A50070252A /* NNCycleStyle1Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCycleStyle1Controller.swift; sourceTree = "<group>"; };
 		14CA756924D46F5E00D649DC /* AlerSheetStudyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerSheetStudyController.swift; sourceTree = "<group>"; };
 		14CA756C24D527AD00D649DC /* LeftRightTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftRightTableViewController.h; sourceTree = "<group>"; };
 		14CA756D24D527AD00D649DC /* LeftRightTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftRightTableViewController.m; sourceTree = "<group>"; };
@@ -983,6 +1027,13 @@
 		14E204A024E688990075AB47 /* PopoverViewExampleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverViewExampleController.h; sourceTree = "<group>"; };
 		14E204A124E688990075AB47 /* PopoverViewExampleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverViewExampleController.m; sourceTree = "<group>"; };
 		14E204A324E688C50075AB47 /* PopoverViewMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PopoverViewMedia.xcassets; sourceTree = "<group>"; };
+		14E2FED6256E66C9008B0CD6 /* NNPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNPayManager.h; sourceTree = "<group>"; };
+		14E2FED7256E66C9008B0CD6 /* NNPayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNPayManager.m; sourceTree = "<group>"; };
+		14E2FF2C256E6BBC008B0CD6 /* NNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNWebViewController.swift; sourceTree = "<group>"; };
+		14E2FF61256E6D66008B0CD6 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Pods/WechatOpenSDK/OpenSDK1.8.7.1/libWeChatSDK.a; sourceTree = "<group>"; };
+		14E2FF96256F66AB008B0CD6 /* AttrString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttrString.swift; sourceTree = "<group>"; };
+		14E2FF98256F922A008B0CD6 /* AttrStringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttrStringViewController.swift; sourceTree = "<group>"; };
+		14E2FF9A256F9472008B0CD6 /* WechatIMG375.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WechatIMG375.png; sourceTree = "<group>"; };
 		14E546F024C05E270095B22D /* PKSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKSettingsController.swift; sourceTree = "<group>"; };
 		14E546F224C062DF0095B22D /* PKAccountAboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKAccountAboutController.swift; sourceTree = "<group>"; };
 		14E546F324C062DF0095B22D /* PKUserInfoEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKUserInfoEditController.swift; sourceTree = "<group>"; };
@@ -1017,7 +1068,6 @@
 		14F030D1223B8B5500C3DE5B /* KeyBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardViewController.swift; sourceTree = "<group>"; };
 		14F030F8223CFC2800C3DE5B /* NSRegularExpression+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSRegularExpression+Helper.swift"; sourceTree = "<group>"; };
 		14F0D2E121E6E34A00674460 /* UITableHeaderFooterViewTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableHeaderFooterViewTwo.swift; sourceTree = "<group>"; };
-		14F0F0D924BF0F6800263DAA /* NNWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNWebViewController.swift; sourceTree = "<group>"; };
 		14F0F0DB24BF11E300263DAA /* PKBindPhoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKBindPhoneController.swift; sourceTree = "<group>"; };
 		14F0F0DD24BF1ED700263DAA /* NNOfflineTipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNOfflineTipController.swift; sourceTree = "<group>"; };
 		14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSudokuButtonNew.swift; sourceTree = "<group>"; };
@@ -1034,6 +1084,9 @@
 		14F7AAAE21E709DA00FB7570 /* UITableViewCellPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellPickerView.swift; sourceTree = "<group>"; };
 		14F7AAB021E70A0000FB7570 /* UITableViewCellDateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDateRange.swift; sourceTree = "<group>"; };
 		14F7AAB621E722B300FB7570 /* IOPAuthDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthDetailController.swift; sourceTree = "<group>"; };
+		14FB99F325482881007C7C6D /* NNPageSegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPageSegmentViewController.swift; sourceTree = "<group>"; };
+		14FB99F425482881007C7C6D /* NNPageTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPageTitleViewController.swift; sourceTree = "<group>"; };
+		14FB99F525482881007C7C6D /* NNPageSegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPageSegmentedControlController.swift; sourceTree = "<group>"; };
 		14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OOTabBarController.swift; sourceTree = "<group>"; };
 		14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipImageViewController.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -1067,6 +1120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E2FF62256E6D66008B0CD6 /* libWeChatSDK.a in Frameworks */,
 				1448872A224E203D00B550AF /* CoreGraphics.framework in Frameworks */,
 				14BEED06240FBEF800289BA6 /* CloudKit.framework in Frameworks */,
 				14488728224E1D9F00B550AF /* QuartzCore.framework in Frameworks */,
@@ -1086,6 +1140,7 @@
 				51B3DA2821264E3800710A76 /* Default-568h@2x.png */,
 				14B940B5237E3E0F00A49D1F /* icon_choose_blue@2x.png */,
 				14B940B4237E3E0F00A49D1F /* icon_choose_blue@3x.png */,
+				14E2FF9A256F9472008B0CD6 /* WechatIMG375.png */,
 				5182442C213E75BA00071A9D /* dataList.geojson */,
 				51824434213E812A00071A9D /* HttpHeaders.geojson */,
 				51824435213E82E000071A9D /* news.geojson */,
@@ -1328,7 +1383,7 @@
 		1472C244245A6559000F8441 /* AlertController */ = {
 			isa = PBXGroup;
 			children = (
-				1479D62D24484BDD007F7CC4 /* NNAlertViewController.swift */,
+				1479D62D24484BDD007F7CC4 /* NNAlertTextViewController.swift */,
 				1422A9CB24495420002D6145 /* NNAgreementAlertController.swift */,
 				1422A9D024495B21002D6145 /* NNAlertShowController.swift */,
 			);
@@ -1338,8 +1393,8 @@
 		1472C245245A657F000F8441 /* ResuseVC */ = {
 			isa = PBXGroup;
 			children = (
-				1472C2422459AE26000F8441 /* NNTitleViewSelectController.swift */,
 				1472C23A24598E18000F8441 /* ReuseChildsController.swift */,
+				1472C2422459AE26000F8441 /* NNTitleViewSelectController.swift */,
 				1472C23824598DB7000F8441 /* HHTabBarController.swift */,
 				147C0928245819B6000FC477 /* UUTabBarController.swift */,
 				1472C23C245991C6000F8441 /* UUSementedController.swift */,
@@ -1348,6 +1403,13 @@
 				1472C23E24599309000F8441 /* NNParentOneController.swift */,
 				14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */,
 				1451EBD424985FC500059BDC /* PageTmpController.swift */,
+				14A79E2A2543C41F0048B01B /* NNScrollViewController.swift */,
+				14A79E272543027E0048B01B /* NNCycleController.swift */,
+				14CA2AF92543D6A50070252A /* NNCycleStyle1Controller.swift */,
+				1493CD4A25676AF9006EC1C5 /* NNCycleTabbarController.swift */,
+				14FB99F525482881007C7C6D /* NNPageSegmentedControlController.swift */,
+				14FB99F325482881007C7C6D /* NNPageSegmentViewController.swift */,
+				14FB99F425482881007C7C6D /* NNPageTitleViewController.swift */,
 			);
 			path = ResuseVC;
 			sourceTree = "<group>";
@@ -1449,6 +1511,15 @@
 			path = cornerTableViewSection;
 			sourceTree = "<group>";
 		};
+		149A4D1C255B7E3000092DA0 /* UIActivity */ = {
+			isa = PBXGroup;
+			children = (
+				149A4D1D255B7E4D00092DA0 /* NNActivity.swift */,
+				149A4D17255B78F400092DA0 /* ShowActivityController.swift */,
+			);
+			path = UIActivity;
+			sourceTree = "<group>";
+		};
 		14B0A28B2531660B00C930B1 /* GXSegmentPageView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1480,6 +1551,15 @@
 				145ECEC42512011600952360 /* Example */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		14B74CEC2566049100F03F3E /* IOP */ = {
+			isa = PBXGroup;
+			children = (
+				14B74D512566110500F03F3E /* IOPFuntionListController.swift */,
+				14B74D532566115700F03F3E /* NNExcelAlertViewController.swift */,
+			);
+			path = IOP;
 			sourceTree = "<group>";
 		};
 		14CA756B24D5278200D649DC /* leftright */ = {
@@ -1569,6 +1649,16 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		14E2FED5256E66C9008B0CD6 /* NNPayTool */ = {
+			isa = PBXGroup;
+			children = (
+				14E2FED6256E66C9008B0CD6 /* NNPayManager.h */,
+				14E2FED7256E66C9008B0CD6 /* NNPayManager.m */,
+				14E2FF2C256E6BBC008B0CD6 /* NNWebViewController.swift */,
+			);
+			path = NNPayTool;
+			sourceTree = "<group>";
+		};
 		14E85619232A4D860006E4C2 /* SwiftTempletOne */ = {
 			isa = PBXGroup;
 			children = (
@@ -1612,11 +1702,14 @@
 		14F0F0DF24BF242100263DAA /* KOP */ = {
 			isa = PBXGroup;
 			children = (
+				1439168924C18C1700CBABF0 /* kopMedia.xcassets */,
 				14E2050424E788A10075AB47 /* UIView */,
 				14B7405624CAB54600569888 /* PKFuntionListController.swift */,
+				14B8FF3D2563A77C006A6D47 /* PKAccountLogOffOneController.swift */,
+				14B8FF3E2563A77C006A6D47 /* PKAccountLogOffTwoController.swift */,
+				14B8FF3C2563A77C006A6D47 /* PKAccountLogOffFailController.swift */,
 				14C9FA372501D8D10097080F /* PKMapViewController.swift */,
 				148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */,
-				1439168924C18C1700CBABF0 /* kopMedia.xcassets */,
 				14B7404D24CA705500569888 /* PKParkBriefController.swift */,
 				14B7404C24CA705500569888 /* PKParkDetailController.swift */,
 				1439180024C5331200CBABF0 /* PKParkCollectListController.swift */,
@@ -1643,6 +1736,7 @@
 				14EDF7B7251C438E007512CC /* BXKTestViewController.h */,
 				14EDF7B8251C438E007512CC /* BXKTestViewController.m */,
 				14B4BA5625188F01005CEF8B /* EDriverViewController.swift */,
+				1493CD3E2567636A006EC1C5 /* PKTabBarViewController.swift */,
 			);
 			path = KOP;
 			sourceTree = "<group>";
@@ -1678,6 +1772,7 @@
 		516859FF208EA75700CE8099 /* SwiftTemplet */ = {
 			isa = PBXGroup;
 			children = (
+				14E2FED5256E66C9008B0CD6 /* NNPayTool */,
 				14BEED04240FBEF400289BA6 /* SwiftTemplet.entitlements */,
 				51824424213E74B200071A9D /* Controllers */,
 				51824425213E74C300071A9D /* DataModel */,
@@ -1698,6 +1793,7 @@
 				146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */,
 				147D79A324BEE80200458F3D /* NSURLRequest+Helper.swift */,
 				147D79A524BEE82300458F3D /* NSURLSession+Helper.swift */,
+				14BC61B0254FF0DE0043FFC6 /* NSPredicate+Helper.swift */,
 				14A736BD24FA16CC0098D6E2 /* NSString+Encrypt.h */,
 				14A736BE24FA16CC0098D6E2 /* NSString+Encrypt.m */,
 				14C57498250522AE00E5E7C7 /* UIView+Chain.h */,
@@ -1706,6 +1802,7 @@
 				14C5746E250500B200E5E7C7 /* Calculator.m */,
 				14C574942505226C00E5E7C7 /* Calculator+Chain.h */,
 				14C574952505226C00E5E7C7 /* Calculator+Chain.m */,
+				14E2FF96256F66AB008B0CD6 /* AttrString.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -1721,6 +1818,7 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				149A4D1C255B7E3000092DA0 /* UIActivity */,
 				148A540B24FCAB4B00DD357B /* cornerTableViewSection */,
 				14EECE0E24F269DA00DEE094 /* NNScrollLabelView */,
 				14EFA01324E7C23E00A9C94C /* FloatingPanel */,
@@ -1738,11 +1836,15 @@
 				14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */,
 				146D28D9245118B9004655B1 /* SimpleListController.swift */,
 				14CA756924D46F5E00D649DC /* AlerSheetStudyController.swift */,
+				14B74CEC2566049100F03F3E /* IOP */,
+				14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */,
 				14C9FA3E2501E90A0097080F /* AnimationContoller.h */,
 				14C9FA3C2501E9090097080F /* AnimationContoller.m */,
 				14C9FA3B2501E9090097080F /* KLTNavigationController.h */,
 				14C9FA3D2501E90A0097080F /* KLTNavigationController.m */,
 				14CA757724D5BF1600D649DC /* NNAlertController.swift */,
+				14BC6197254FA00C0043FFC6 /* NNTableViewAlertController.swift */,
+				14BC6199254FA1670043FFC6 /* NNAlertTableController.swift */,
 				146D28D724505B02004655B1 /* PopoverViewController.swift */,
 				14C38A872411253600816A8E /* IOPFileUploadController.swift */,
 				14E02F6D2420D81E00E1EA2C /* IOPImageUploadController.swift */,
@@ -1766,7 +1868,6 @@
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
 				14129CA321EC72C5009BFA74 /* TitleViewController.swift */,
 				14B4BA5A2519A527005CEF8B /* NNCellDefaultViewController.swift */,
-				14F0F0D924BF0F6800263DAA /* NNWebViewController.swift */,
 				1439181424C82F0500CBABF0 /* ProtocolViewController.swift */,
 				1439181924C91B7C00CBABF0 /* AppleSignInViewController.swift */,
 				14BEDC6E24A976BF0031852F /* KVOViewController.swift */,
@@ -1850,6 +1951,7 @@
 				14923E8F24E13F9000E56939 /* NNChatKeyboardView.swift */,
 				14BF265224E14FF70024726E /* NNChatInputView.swift */,
 				14EECE0C24F0FA2800DEE094 /* NNSudokuViewController.swift */,
+				14E2FF98256F922A008B0CD6 /* AttrStringViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1911,6 +2013,7 @@
 				14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */,
 				14B7405E24CADCFC00569888 /* UITableViewCellSudokuView.swift */,
 				143917E124C2D42100CBABF0 /* UITableViewCellRightAvart.swift */,
+				14BC61BB254FFE990043FFC6 /* UITableViewCellUpload.swift */,
 				148C1D0624CE815B0017FEBB /* UITableViewCellPhotoShow.swift */,
 				14C9FA2024FF28010097080F /* UITableViewCellShare.swift */,
 				14C9FA2B24FF93E90097080F /* UITableViewCellLocation.swift */,
@@ -1922,6 +2025,7 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				14B74CED2566049F00F03F3E /* NNExcelAlertView.swift */,
 				14EECE0A24F0F9B200DEE094 /* NNSudokuView.swift */,
 				14EECE0024EFC0D700DEE094 /* NNSearchbarTitleView.swift */,
 				14E2048224E635240075AB47 /* NNNetWorkOfflineView.swift */,
@@ -1985,6 +2089,7 @@
 		D00BFF54645FD929E4AB5244 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14E2FF61256E6D66008B0CD6 /* libWeChatSDK.a */,
 				14BEED05240FBEF800289BA6 /* CloudKit.framework */,
 				14488729224E203D00B550AF /* CoreGraphics.framework */,
 				14488727224E1D9F00B550AF /* QuartzCore.framework */,
@@ -2007,6 +2112,7 @@
 				300E587879584EE68001D352 /* [CP] Embed Pods Frameworks */,
 				14B617F2239790CD00A9336D /* BundleVersion */,
 				14991B48247E075D006FA52A /* Embed Frameworks */,
+				026CD4CE5803E94198B0AE18 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2080,6 +2186,7 @@
 				147D798D24BEDACD00458F3D /* title3@2x.png in Resources */,
 				14E204A424E688C50075AB47 /* PopoverViewMedia.xcassets in Resources */,
 				146050AB23A2303900C10F34 /* InfoPlist.strings in Resources */,
+				14E2FF9B256F9472008B0CD6 /* WechatIMG375.png in Resources */,
 				145C90E62333111500849E9D /* icon_coupon_fail@3x.png in Resources */,
 				145C910723338DF300849E9D /* icon_phone_soundon@2x.png in Resources */,
 				147D79BF24BEEC1C00458F3D /* image0.jpg in Resources */,
@@ -2145,6 +2252,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		026CD4CE5803E94198B0AE18 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet-resources.sh",
+				"${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		14B617F2239790CD00A9336D /* BundleVersion */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2294,6 +2419,7 @@
 			files = (
 				14EDF7B9251C438E007512CC /* BXKTestViewController.m in Sources */,
 				147E3050246CD5000076C704 /* UITableViewCellCouponRecharge.swift in Sources */,
+				14B74CEE2566049F00F03F3E /* NNExcelAlertView.swift in Sources */,
 				14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */,
 				14C901A12315435B0084A946 /* NNSegmentView.swift in Sources */,
 				1422A9D324496AD2002D6145 /* NNTransitionAnimator.swift in Sources */,
@@ -2311,13 +2437,16 @@
 				1472C23F24599309000F8441 /* NNParentOneController.swift in Sources */,
 				149EF8B5248A3B5700EB1F5F /* NNOrderPayH5Controller.swift in Sources */,
 				142A76FE22275EE10016D3DA /* NNSectionView.swift in Sources */,
+				14B74D522566110500F03F3E /* IOPFuntionListController.swift in Sources */,
 				147E3046246BD5FA0076C704 /* IOPCouponFliterDropView.swift in Sources */,
 				1448871A224E1D2300B550AF /* ZMKeyBoardButtonView.swift in Sources */,
 				142A76F922275EE10016D3DA /* NNTopSheetView.swift in Sources */,
 				143917E224C2D42100CBABF0 /* UITableViewCellRightAvart.swift in Sources */,
 				14F3966B227ED0F2000CD7B4 /* NNCheckVersApi.swift in Sources */,
 				146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */,
+				14BC619A254FA1670043FFC6 /* NNAlertTableController.swift in Sources */,
 				1451DC3024DE330E00F67A0D /* NNInstructionView.swift in Sources */,
+				149A4D1E255B7E4D00092DA0 /* NNActivity.swift in Sources */,
 				1418FEFF23D589D500921E2E /* IOPGoodsToolView.swift in Sources */,
 				1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */,
 				1465E1B925077FD90053C9BD /* UITableViewCellParkType.swift in Sources */,
@@ -2330,11 +2459,14 @@
 				145ECEC6251206EE00952360 /* SwipeRightToPopViewController.swift in Sources */,
 				142A76F222275EE10016D3DA /* NNClockView.swift in Sources */,
 				14775DF024872CF30093DC3D /* NNCycleScrollView.swift in Sources */,
+				14B74D542566115700F03F3E /* NNExcelAlertViewController.swift in Sources */,
 				142A770922275EE10016D3DA /* NNAnnularProgress.swift in Sources */,
 				145ECEB1250B0C4100952360 /* NNCustomAimator.swift in Sources */,
 				14A81D9B23F81979003E6EB4 /* UITableViewCellTitle.swift in Sources */,
 				142A770622275EE10016D3DA /* NNOperationStateView.swift in Sources */,
 				14E2047024E629D30075AB47 /* GrowingNotificationBanner.swift in Sources */,
+				14FB99F625482881007C7C6D /* NNPageSegmentViewController.swift in Sources */,
+				14E2FF97256F66AB008B0CD6 /* AttrString.swift in Sources */,
 				14F7AAAF21E709DA00FB7570 /* UITableViewCellPickerView.swift in Sources */,
 				142A76FC22275EE10016D3DA /* NNCalendarView.swift in Sources */,
 				1472C23724596E36000F8441 /* NNParentController.swift in Sources */,
@@ -2390,9 +2522,11 @@
 				14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */,
 				145C90EA233324ED00849E9D /* UICallPhoneView.swift in Sources */,
 				1418FF2723D6891000921E2E /* UICollectionBatchUpdateController.swift in Sources */,
+				14FB99F825482881007C7C6D /* NNPageSegmentedControlController.swift in Sources */,
 				147D79C524BEF7AB00458F3D /* PKLoginController.swift in Sources */,
 				14B7405924CAC07500569888 /* PKParkDetailBottomView.swift in Sources */,
 				149E401C23AA0811006C05BC /* ObserveViewController.swift in Sources */,
+				14FB99F725482881007C7C6D /* NNPageTitleViewController.swift in Sources */,
 				14E2047324E629D30075AB47 /* NotificationBannerQueue.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				14D91B15234C88B400554994 /* CellListController.swift in Sources */,
@@ -2408,6 +2542,7 @@
 				14BF265F24E27B460024726E /* UICTViewCellLevel.swift in Sources */,
 				1472C23D245991C6000F8441 /* UUSementedController.swift in Sources */,
 				14E2047E24E629DF0075AB47 /* CustomBannerColors.swift in Sources */,
+				14E2FF99256F922A008B0CD6 /* AttrStringViewController.swift in Sources */,
 				14E2048324E635240075AB47 /* NNNetWorkOfflineView.swift in Sources */,
 				147FF4D121D0CB4700351E94 /* UITableHeaderFooterViewOne.swift in Sources */,
 				142A770B222761050016D3DA /* PickerViewController.swift in Sources */,
@@ -2435,11 +2570,14 @@
 				148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */,
+				14E2FED8256E66C9008B0CD6 /* NNPayManager.m in Sources */,
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
 				149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */,
 				14E9350924E39B5D0023512F /* PKUserTaskListController.swift in Sources */,
+				14BC6198254FA00C0043FFC6 /* NNTableViewAlertController.swift in Sources */,
 				14E204A224E688990075AB47 /* PopoverViewExampleController.m in Sources */,
 				149946852383F743005E43CC /* NNPictureView.swift in Sources */,
+				14A79E2B2543C41F0048B01B /* NNScrollViewController.swift in Sources */,
 				14BEDC6124A85E330031852F /* Person.swift in Sources */,
 				14E546FB24C063D90095B22D /* PKAppAbountController.swift in Sources */,
 				14F030F9223CFC2800C3DE5B /* NSRegularExpression+Helper.swift in Sources */,
@@ -2467,6 +2605,7 @@
 				145C90E023323C1600849E9D /* NNLineDashView.swift in Sources */,
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,
 				14CA757424D554A600D649DC /* UITableViewCellOneListController.swift in Sources */,
+				1493CD3F2567636A006EC1C5 /* PKTabBarViewController.swift in Sources */,
 				147FF47521CF511800351E94 /* UICTReusableViewOne.swift in Sources */,
 				51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */,
 				1479D5CA244407A5007F7CC4 /* TableViewPrefetchRowController.swift in Sources */,
@@ -2531,6 +2670,7 @@
 				14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */,
 				14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */,
 				1451EBF82499B5A600059BDC /* SubscribeListController.swift in Sources */,
+				1493CD4B25676AF9006EC1C5 /* NNCycleTabbarController.swift in Sources */,
 				1401BEAE2277EA780078A722 /* NSError+Helper.swift in Sources */,
 				14F7AAB121E70A0000FB7570 /* UITableViewCellDateRange.swift in Sources */,
 				14A86A952357268300AD9BC1 /* UISearchStylesController.swift in Sources */,
@@ -2544,7 +2684,7 @@
 				1421D5C721F2FD1000635582 /* CustomViewController.swift in Sources */,
 				1458F81D249C96C8007555EF /* UITableViewCellLog.swift in Sources */,
 				142A770422275EE10016D3DA /* PPNumberButton.swift in Sources */,
-				14F0F0DA24BF0F6800263DAA /* NNWebViewController.swift in Sources */,
+				14A79E282543027E0048B01B /* NNCycleController.swift in Sources */,
 				1472C23B24598E18000F8441 /* ReuseChildsController.swift in Sources */,
 				148130C0251DC58C008D2BEB /* UITableViewCellArticle.swift in Sources */,
 				1460728221F16C1D003AE810 /* NNCircleTransitionAnimator.swift in Sources */,
@@ -2568,7 +2708,9 @@
 				145ECEA5250B037900952360 /* NNLargeAnimator.swift in Sources */,
 				146F09822228AF4700E13F53 /* NNVehicleInfoCardView.swift in Sources */,
 				142A76F522275EE10016D3DA /* NNGeometryView.swift in Sources */,
+				14B8FF412563A77C006A6D47 /* PKAccountLogOffTwoController.swift in Sources */,
 				141495C2242B4F6E00141A9F /* NNAddressPickerController.swift in Sources */,
+				14BC61BC254FFE990043FFC6 /* UITableViewCellUpload.swift in Sources */,
 				1439168724C18A8200CBABF0 /* NNUserCenterHeaderView.swift in Sources */,
 				146F09842228CD7000E13F53 /* NNRecordCardView.swift in Sources */,
 				1451EBF42498BF2400059BDC /* SelfConfiguringCell.swift in Sources */,
@@ -2598,16 +2740,18 @@
 				14E2048C24E674690075AB47 /* PKUserPointsListController.swift in Sources */,
 				145ECEA9250B043300952360 /* GreenViewController.swift in Sources */,
 				145ECEB9250B165D00952360 /* NNRightAnimator.swift in Sources */,
-				1479D62E24484BDD007F7CC4 /* NNAlertViewController.swift in Sources */,
+				1479D62E24484BDD007F7CC4 /* NNAlertTextViewController.swift in Sources */,
 				51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */,
 				14B940B1237E2FBC00A49D1F /* NNGroupView.swift in Sources */,
 				14A3756724BAD983002C9E4B /* RxRequestVendor.swift in Sources */,
 				14BEDC6F24A976BF0031852F /* KVOViewController.swift in Sources */,
 				1454AAB0240A996900170BBD /* NNPictureViewController.swift in Sources */,
 				1451EBEF2498BF2400059BDC /* NNCardInfoCell.swift in Sources */,
+				14B8FF402563A77C006A6D47 /* PKAccountLogOffOneController.swift in Sources */,
 				14004E2F24E3E5EF005A8B38 /* NNTaskCenterHeaderView.swift in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
 				1422A9D124495B21002D6145 /* NNAlertShowController.swift in Sources */,
+				14A1AB192553D97F00AB4CE5 /* PKRootModel.swift in Sources */,
 				14AB52C32468E0DF00D075D3 /* IOPPlateEntryController.swift in Sources */,
 				14CA757024D530BF00D649DC /* NNLeftTableViewCell.swift in Sources */,
 				14E2046C24E629D30075AB47 /* StatusBarNotificationBanner.swift in Sources */,
@@ -2622,6 +2766,7 @@
 				14E546F124C05E270095B22D /* PKSettingsController.swift in Sources */,
 				5186E923212103A0005B71AD /* CenterViewController.swift in Sources */,
 				141495C0242B4F6E00141A9F /* NNChooseAreaController.swift in Sources */,
+				14E2FF2D256E6BBC008B0CD6 /* NNWebViewController.swift in Sources */,
 				14B4BA5D2519B21B005CEF8B /* NNDateRangeVerticalView.swift in Sources */,
 				147972B62473DE7800555279 /* TextFieldStyleController.swift in Sources */,
 				14E2046924E629D30075AB47 /* BannerPositionFrame.swift in Sources */,
@@ -2635,6 +2780,7 @@
 				14E2046A24E629D30075AB47 /* BannerStyle.swift in Sources */,
 				14488719224E1D2300B550AF /* ZMKeyBoardView.swift in Sources */,
 				51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */,
+				149A4D18255B78F400092DA0 /* ShowActivityController.swift in Sources */,
 				14E2047D24E629DF0075AB47 /* NorthCarolinaBannerView.swift in Sources */,
 				147D79A624BEE82300458F3D /* NSURLSession+Helper.swift in Sources */,
 				148A541024FCF10100DD357B /* AddShadowViewController.swift in Sources */,
@@ -2652,6 +2798,7 @@
 				14EECE0D24F0FA2800DEE094 /* NNSudokuViewController.swift in Sources */,
 				143010AF237AB989009E8AAC /* NNLabelsVerView.swift in Sources */,
 				140EC547248DFA8600DAC1CB /* NNChoiceView.swift in Sources */,
+				14B8FF3F2563A77C006A6D47 /* PKAccountLogOffFailController.swift in Sources */,
 				14C5749A250522AE00E5E7C7 /* UIView+Chain.m in Sources */,
 				14C9FA382501D8D10097080F /* PKMapViewController.swift in Sources */,
 				14BF265D24E245FF0024726E /* NNUserLevelInfoView.swift in Sources */,
@@ -2685,6 +2832,7 @@
 				14E2046F24E629D30075AB47 /* String+heightForConstrainedWidth.swift in Sources */,
 				14EFA01924E95E5800A9C94C /* NNCollectionViewTagsFlowLayout.swift in Sources */,
 				14FE3C34245AC206006B14D4 /* FlipImageViewController.swift in Sources */,
+				14CA2AFA2543D6A50070252A /* NNCycleStyle1Controller.swift in Sources */,
 				147D797824BEDA6400458F3D /* NNGuidePageManager.m in Sources */,
 				1451EBE92498BF2400059BDC /* SectionModel.swift in Sources */,
 				142EB9E424810CD700950B63 /* UICollectionMultipleSectionController.swift in Sources */,
@@ -2693,6 +2841,7 @@
 				1439181324C6C98E00CBABF0 /* UITableViewCellRightBtn.swift in Sources */,
 				14B0A2932531660B00C930B1 /* GXSegmentView+Configuration.swift in Sources */,
 				14D91B12234C874500554994 /* UITableViewCellPark.swift in Sources */,
+				14BC61B1254FF0DE0043FFC6 /* NSPredicate+Helper.swift in Sources */,
 				14E2047C24E629DF0075AB47 /* ExampleView.swift in Sources */,
 				14B7404F24CA705600569888 /* PKParkBriefController.swift in Sources */,
 				1458F827249CDA9A007555EF /* UITableViewCellVertical.swift in Sources */,
@@ -2800,6 +2949,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2855,6 +3005,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2931,10 +3082,11 @@
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/pjnath\"",
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/pjsip\"",
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/third_party\"",
+					"$(PROJECT_DIR)/Pods/WechatOpenSDK/OpenSDK1.8.7.1",
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "\"-DDEBUG\" \"-DAPPTYPE_SWIFT\"";
-				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet;
+				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet.st;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTemplet/SwiftTemplet-Bridging-Header.h";
@@ -3015,10 +3167,11 @@
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/pjnath\"",
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/pjsip\"",
 					"\"$(SRCROOT)/SwiftTemplet/Vendor/PJSIP/libs/third_party\"",
+					"$(PROJECT_DIR)/Pods/WechatOpenSDK/OpenSDK1.8.7.1",
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "\"-DAPPTYPE_SWIFT\"";
-				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet;
+				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet.st;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftTemplet/SwiftTemplet-Bridging-Header.h";

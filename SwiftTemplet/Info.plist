@@ -83,15 +83,46 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict/>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>h5支付正式</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx.parkingwang.com</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>alipayShare</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ap2021001188683352</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>202010141645</string>
+	<string>202012011848</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>itms-apps</string>
+		<string>iosamap</string>
+		<string>baidumap</string>
 		<string>alipay</string>
-		<string>wechat</string>
 		<string>weixin</string>
+		<string>wechat</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>sinaweibosso</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
+		<string>weixinULAPI</string>
+		<string>alipayshare</string>
+		<string>alipays</string>
+		<string>tbopen</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
