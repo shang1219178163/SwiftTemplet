@@ -250,7 +250,7 @@ import HFNavigationController
                                         sender.setBackgroundColor(.systemRed, for: .normal)
                                         sender.setTitle(sender.className(), for: .normal)
                                         sender.setTitleColor(.white, for: .normal)
-        }) { (action) in
+                                    }) { (alertVC, action) in
             DDLog(action.title as Any)
         }
 
@@ -327,7 +327,7 @@ import HFNavigationController
                 $0.style = .gray
             }
             $0.startAnimating()
-        } handler: { (action) in
+        } handler: { (alertVC, action) in
             DDLog(action.title ?? "-")
         }
         .present()
