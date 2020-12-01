@@ -72,6 +72,10 @@ import SnapKitExtend
     var redirect_url: String = ""
     
     var isLoading: Bool = false
+    
+
+    var appearBlock:(()->Void)?
+    var disappearBlock:(()->Void)?
 
     // MARK: -lifecycle
     deinit {
@@ -116,12 +120,19 @@ import SnapKitExtend
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     
+        appearBlock?()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
 //        UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        disappearBlock?()
     }
     
     @objc func handleActionItem(_ item: UIBarButtonItem) {
