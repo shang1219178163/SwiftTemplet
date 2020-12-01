@@ -44,9 +44,11 @@ class UITableViewCellOne: UITableViewCell {
         contentView.addSubview(labelLeft);
         contentView.addSubview(labelRight);
         
-        labelRight.numberOfLines = 1;
+        labelLeft.textColor = .textColor3
+        labelLeft.font = UIFont.systemFont(ofSize: 15)
         labelLeft.numberOfLines = 1;
-        
+        labelRight.numberOfLines = 1;
+
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
