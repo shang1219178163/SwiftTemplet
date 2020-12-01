@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        controller = UICtrFromString("TitleViewController");
 //        controller = UICtrFromString("ScrollHorizontalController");        
         
-        UIApplication.setupRootController(controller, true);
+        UIApplication.setupRootController(controller, isAdjust: true);
         window = UIApplication.mainWindow;
 
 //        UIApplication.setupRootController(&(window!), controller, true);
