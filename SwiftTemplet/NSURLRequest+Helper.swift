@@ -8,7 +8,8 @@
 
 import UIKit
 
-extension URLRequest {
+
+public extension URLRequest {
     private struct AssociateKeys {
         static var taskDic   = "NSURLRequest" + "taskDic"
     }
@@ -26,19 +27,11 @@ extension URLRequest {
             objc_setAssociatedObject(self, &AssociateKeys.taskDic, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
     }
-//    func requestGetURL(_ urlString: String) -> URLRequest {
-//        let url = URL(string: urlString)
-//        let request = URLRequest(url:url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 6)
-//        return request
-//    }
-//    
-//    func requestPostURL(_ urlString: String){
-//        guard let url = URL(string: urlString) else { return }
-//        return request
-//    }
-    
+
     func send(_ urlString: String, method: String = "POST", parameters: [String: Any], handler: @escaping ([String: Any]?, Error?) -> Void) {
-        let url = URL(string: urlString)!
+        guard let url = URL(string: urlString) else {
+            print(#function, "url 错误\(urlString)")
+            return }
         var request = URLRequest(url: url)
         request.httpMethod = method
         
