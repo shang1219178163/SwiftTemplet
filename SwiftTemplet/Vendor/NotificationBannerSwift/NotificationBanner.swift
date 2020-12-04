@@ -19,7 +19,7 @@
 import UIKit
 import SnapKit
 
-import MarqueeLabel
+//import MarqueeLabel
 
 @objcMembers
 open class NotificationBanner: BaseNotificationBanner {

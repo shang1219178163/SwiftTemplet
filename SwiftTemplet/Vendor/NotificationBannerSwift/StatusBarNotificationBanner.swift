@@ -18,7 +18,7 @@
 
 import UIKit
 
-import MarqueeLabel
+//import MarqueeLabel
 
 @objcMembers
 open class StatusBarNotificationBanner: BaseNotificationBanner {
