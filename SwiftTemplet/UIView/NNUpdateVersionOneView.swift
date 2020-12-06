@@ -101,6 +101,7 @@ import SwiftExpand
                     self.delegate?.updateVersionOneViewDelegate(self, sender: sender)
                 }
             }
+            self.storeDateTime()
             self.dismiss()
         }, for: .touchUpInside)
         return view;
@@ -265,14 +266,20 @@ import SwiftExpand
         }
     }
     
+    func storeDateTime() {
+        let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
+        UserDefaults.standard.set(dateStr, forKey: "lastUpdateTime")
+        UserDefaults.standard.synchronize()
+    }
+
+    
     func check() {
-//        let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
-//        if dateStr == (UserDefaults.standard.string(forKey: "lastUpdateTime") ?? "") {
-//            DDLog("一天只能提醒一次")
-//            return
-//        }
-//        UserDefaults.standard.set(dateStr, forKey: "lastUpdateTime")
-//        UserDefaults.standard.synchronize()
+        let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormatDay)
+//        let dateStr = DateFormatter.stringFromDate(Date(), fmt: kDateFormatMinute)
+        if let lastUpdateTime = UserDefaults.standard.string(forKey: "lastUpdateTime"), lastUpdateTime == dateStr {
+            DDLog("一天只能提醒一次")
+            return
+        }
         
         dismiss()
         UIApplication.updateVersion(appStoreID: appStoreID) { (dic, appStoreVer, releaseNotes, isUpdate) in

@@ -92,7 +92,7 @@ import SwiftExpand
         let screenBounds = UIScreen.main.bounds
         let messageSize = label.sizeThatFits(CGSize(width: screenBounds.width - 60, height: CGFloat.greatestFiniteMagnitude))
         
-        if convertFrame.center.y > screenBounds.center.y {
+        if convertFrame.midY > screenBounds.midY {
             label.frame = CGRect(x: 30, y: convertFrame.minY - messageSize.height - 15, width: messageSize.width, height: messageSize.height)
         } else {
             label.frame = CGRect(x: 30, y: convertFrame.maxY + 15, width: messageSize.width, height: messageSize.height)

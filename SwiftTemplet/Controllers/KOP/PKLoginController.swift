@@ -367,9 +367,9 @@ class PKLoginController: UIViewController {
                 agreementVC.title = text
                 switch idx {
                 case 0:
-                    agreementVC.urlString = ""
+                    agreementVC.urlString = AppPlatformAgreement
                 case 1:
-                    agreementVC.urlString = ""
+                    agreementVC.urlString = AppPrivacyAgreement
 
                 default:
                     break

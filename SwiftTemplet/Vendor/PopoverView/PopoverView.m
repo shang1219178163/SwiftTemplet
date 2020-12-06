@@ -284,6 +284,12 @@ float PopoverViewDegreesToRadians(float angle)
         borderLayer.lineWidth = 1;
         borderLayer.fillColor = [UIColor clearColor].CGColor;
         borderLayer.strokeColor = _tableView.separatorColor.CGColor;
+        
+        //阴影
+//        borderLayer.shadowColor = UIColor.redColor.CGColor;
+//        borderLayer.shadowRadius = 3.5;
+//        borderLayer.shadowOpacity = 1;
+//        borderLayer.shadowOffset = CGSizeMake(1, 1);
 
         [self.layer addSublayer:borderLayer];
         _borderLayer = borderLayer;
