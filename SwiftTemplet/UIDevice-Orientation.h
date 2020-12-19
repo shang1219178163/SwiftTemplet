@@ -8,13 +8,13 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface UIDevice (Orientation) <UIAccelerometerDelegate>
-- (float) orientationAngleRelativeToOrientation:(UIDeviceOrientation) someOrientation;
+- (double) orientationAngleRelativeToOrientation:(UIDeviceOrientation) someOrientation;
 + (NSString *) orientationString: (UIDeviceOrientation) orientation;
 
 @property (nonatomic, readonly) BOOL isLandscape;
 @property (nonatomic, readonly) BOOL isPortrait;
 @property (nonatomic, readonly) NSString *orientationString;
-@property (nonatomic, readonly) float orientationAngle;
+@property (nonatomic, readonly) double orientationAngle;
 @property (nonatomic, readonly) UIDeviceOrientation acceleratorBasedOrientation;
 
 @end

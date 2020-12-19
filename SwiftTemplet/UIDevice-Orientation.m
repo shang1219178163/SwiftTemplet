@@ -12,7 +12,7 @@
 #pragma mark current angle
 CGFloat device_angle;
 
-- (CGFloat) orientationAngle{
+- (double) orientationAngle{
 #if TARGET_IPHONE_SIMULATOR
 	switch (self.orientation)
 	{
@@ -57,7 +57,7 @@ CGFloat device_angle;
 #pragma mark relative orientation
 
 // Thanks Jonah Williams
-- (CGFloat) orientationAngleRelativeToOrientation:(UIDeviceOrientation) someOrientation{
+- (double) orientationAngleRelativeToOrientation:(UIDeviceOrientation) someOrientation{
  	CGFloat dOrientation = 0.0f;
 	switch (someOrientation)
 	{
