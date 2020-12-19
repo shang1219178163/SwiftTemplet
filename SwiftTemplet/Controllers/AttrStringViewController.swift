@@ -32,6 +32,14 @@ import SnapKit
         return view
     }()
     
+    lazy var textView: UITextView = {
+        let textView = UITextView(frame: .zero)
+        textView.isSelectable = true
+        textView.isEditable = false
+        textView.delegate = self
+        return textView
+    }()
+    
     lazy var imgView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
@@ -49,8 +57,8 @@ import SnapKit
         view.setCustomType(.titleRedAndOutline)
         view.adjustsImageWhenHighlighted = false
         
-        view.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "-")
         }
         return view
@@ -69,6 +77,7 @@ import SnapKit
         view.addSubview(label);
         view.addSubview(imgView);
         view.addSubview(btn);
+        view.addSubview(textView);
 
 //        label.isHidden = true
 //        view.getViewLayer()
@@ -97,6 +106,13 @@ import SnapKit
             make.right.equalToSuperview().offset(-15);
             make.height.equalTo(50);
         }
+        
+        textView.snp.makeConstraints { (make) in
+            make.top.equalTo(btn.snp.bottom).offset(15);
+            make.left.equalToSuperview().offset(15);
+            make.right.equalToSuperview().offset(-15);
+            make.bottom.equalToSuperview().offset(-15);
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +120,43 @@ import SnapKit
         
         label.attributedText = AttrString.test()
         imgView.image = UIImage(named: "WechatIMG375.png")
+        
+        let str1: AttrString = """
+          Hello \("user", .color(.blue), .underline(.red, .single)), how do you like this?
+          """
+        
+//        DDLog(AttrString.test().rangeSubAttStringDic)
+        let tmp = NSMutableAttributedString(attributedString: label.attributedText!)
+        tmp[0] = str1.attributedString
+        label.attributedText = tmp
+        
+        
+//        let att0 = NSAttributedString(string: "Swift,", attributes: nil)
+        let att0 = "Swift,".attributed
+            .font(UIFont.systemFont(ofSize: 16))
+            .color(.systemBlue)
+            .underline(.red, .single)
+            .oblique(0.5)
+            .link("https://www.hackingwithswift.com")
+        
+//        let att1 = NSAttributedString(string: " how do you like this?", attributes: nil)
+        let att1 = " how do you like this?".attributed
+            .font(UIFont.systemFont(ofSize: 12))
+            .color(.systemGreen)
+            .strikethrough(.lightRed, .single)
+        
+//        let att2 = NSAttributedString(string: ", YES?", attributes: nil)
+        let att2 = ", YES?".attributed
+        .font(UIFont.systemFont(ofSize: 20))
+        .color(.systemOrange)
+        .oblique(-0.5)
+        
+        textView.attributedText = (att0 + att1 + att2)
+            .font(UIFont.systemFont(ofSize: 30))
+//            .color(.systemPink)
+//            .bgColor(.lightGreen)
+//            .oblique(0.3)
+
     }
         
     override func didReceiveMemoryWarning() {
@@ -112,3 +165,14 @@ import SnapKit
     }
     
 }
+
+
+extension AttrStringViewController: UITextViewDelegate{
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        DDLog(URL.absoluteString, characterRange, interaction)
+        return true
+    }
+}
+
+

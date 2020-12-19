@@ -68,8 +68,8 @@ class TimerViewController: UIViewController {
         view.setBackgroundImage(UIImage(color: .theme), for: .normal)
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         
-        view.addActionHandler({ [weak self] (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ [weak self] (sender) in
+            
             sender.timerStart(12)
 
             }, for: .touchUpInside)

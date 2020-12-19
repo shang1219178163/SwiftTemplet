@@ -57,12 +57,12 @@ import SwiftExpand
 //        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
 //        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
         view.layoutButton(direction: 1, imageTitleSpace: 2)
-        view.addActionHandler({ (control) in
-            control.isSelected = !control.isSelected
-            self.chooseAll = control.isSelected
-            self.delegate?.ordersChooseViewAll(control as! UIButton, isAll: self.chooseAll)
+        view.addActionHandler({ (sender) in
+            sender.isSelected = !sender.isSelected
+            self.chooseAll = sender.isSelected
+            self.delegate?.ordersChooseViewAll(sender, isAll: self.chooseAll)
 
-            guard let sender = control as? UIButton else { return }
+            
 //            DDLog(sender.currentTitle as Any)
         }, for: .touchUpInside)
         return view
@@ -74,8 +74,8 @@ import SwiftExpand
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle as Any)
             self.delegate?.ordersChooseViewNext(sender)
             

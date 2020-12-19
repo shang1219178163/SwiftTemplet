@@ -178,7 +178,7 @@ extension PKParkSpaceView: UITableViewDataSource, UITableViewDelegate{
                 }
 
                 sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                    
                     DDLog(sender.tag)
                     
                     self.viewBlock?(self, sender)

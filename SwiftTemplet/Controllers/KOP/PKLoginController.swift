@@ -66,8 +66,8 @@ class PKLoginController: UIViewController {
 //        view.setTitle("关闭", for: .normal);
 //        view.setTitleColor(UIColor.theme, for: .normal);
         view.setImage(UIImage(named: "icon_quit"), for: .normal)
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -88,8 +88,8 @@ class PKLoginController: UIViewController {
         view.layer.masksToBounds = true;
         view.isEnabled = false
         
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
             if !self.btnRadio.isSelected {
                 NNProgressHUD.showText("您必须同意用户协议和隐私政策才可登录")
@@ -112,8 +112,8 @@ class PKLoginController: UIViewController {
         view.setBackgroundImage(UIImage(named: "btn_selected_NO"), for: .normal)
         view.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
 
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender)
             sender.isSelected.toggle()
         }, for: .touchUpInside)
@@ -128,8 +128,8 @@ class PKLoginController: UIViewController {
 //        view.setTitleColor(UIColor.theme, for: .normal);
         view.setBackgroundImage(UIImage(named: "icon_weixin"), for: .normal)
 
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -142,8 +142,8 @@ class PKLoginController: UIViewController {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("QQ登录", for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -156,8 +156,8 @@ class PKLoginController: UIViewController {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("微博登录", for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -170,8 +170,8 @@ class PKLoginController: UIViewController {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("Apple登录", for: .normal);
         view.setTitleColor(.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -185,8 +185,8 @@ class PKLoginController: UIViewController {
         view.label.isHidden = true
         view.btn.isHidden = true
 
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in
@@ -202,8 +202,8 @@ class PKLoginController: UIViewController {
         view.label.isHidden = true
 //        view.btn.isHidden = true
 
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in

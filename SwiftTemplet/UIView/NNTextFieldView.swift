@@ -174,8 +174,8 @@ class NNTextFieldView: UIView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("获取验证码", for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)

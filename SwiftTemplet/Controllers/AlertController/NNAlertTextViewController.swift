@@ -35,8 +35,8 @@ class NNAlertTextViewController: UIViewController {
                     
                     button.backgroundColor = UIColor.white;
                     button.tag = e.offset;
-                    button.addActionHandler({ (control) in
-                        guard let sender = control as? UIButton else { return }
+                    button.addActionHandler({ (sender) in
+                        
 //                        DDLog(sender.currentTitle)
                         self.delegate?.alertVC(self, sender: sender)
                         if sender.currentTitle == "取消" {

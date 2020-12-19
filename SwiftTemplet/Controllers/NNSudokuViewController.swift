@@ -23,8 +23,8 @@ class NNSudokuViewController: UIViewController {
             sender.direction = .top
             sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
 
-            sender.addActionHandler({ control in
-                guard let sender = control as? UIButton else { return }
+            sender.addActionHandler({ sender in
+                
                 DDLog(sender.tag)
 
             }, for: .touchUpInside)

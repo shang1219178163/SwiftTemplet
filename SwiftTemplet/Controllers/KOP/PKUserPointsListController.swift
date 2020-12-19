@@ -119,7 +119,7 @@ extension PKUserPointsListController: UITableViewDataSource, UITableViewDelegate
                 $0.setTitle(nil, for: .normal)
                 sender.setImage(UIImage(named: "img_points_shop"), for: .normal)
                 sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                    
                     DDLog(sender.tag)
                 }, for: .touchUpInside)
             }

@@ -285,7 +285,7 @@ extension PKParkDetailController: UITableViewDataSource, UITableViewDelegate{
 //                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
 
                 sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                    
                     DDLog(sender.tag)
                 }, for: .touchUpInside)
             }
@@ -345,7 +345,7 @@ extension PKParkDetailController: UITableViewDataSource, UITableViewDelegate{
                 sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
 
                 sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                    
                     DDLog(sender.tag)
                 }, for: .touchUpInside)
             }

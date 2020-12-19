@@ -131,8 +131,7 @@ extension IOPPlateEntryController: UITableViewDataSource, UITableViewDelegate{
             let image = indexPath.row == 0 ? imageAdd : imageDelete
             btn.setBackgroundImage(image, for: .normal)
             
-            btn.addActionHandler({ (control) in
-                guard let sender = control as? UIButton else { return }
+            btn.addActionHandler({ (sender) in
                 if sender.backgroundImage(for: .normal) == imageAdd {
                     self.plateList.append("")
                 } else {

@@ -17,7 +17,7 @@ class PopoverViewController: UIViewController {
         sender.setTitle("UIButton", for: .normal)
         sender.setTitleColor(UIColor.yellow, for: .normal)
         sender.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+            
             DDLog(sender.currentTitle)
             
         }, for: .touchUpInside)

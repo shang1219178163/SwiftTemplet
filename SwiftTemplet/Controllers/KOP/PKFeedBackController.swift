@@ -12,7 +12,7 @@ import SwiftExpand
 class PKFeedBackController: UIViewController {
 
     lazy var tableView: UITableView = {
-        guard let tableView = view.subView(UITableView.self) as? UITableView else {
+        guard let tableView = view.findSubView(UITableView.self) as? UITableView else {
             let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
             view.dataSource = self
             view.delegate = self
@@ -215,7 +215,7 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
                 sender.setNeedsLayout()
 
                 sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                    
                     DDLog(sender.tag)
                     
                     if let image = sender.backgroundImage(for: .normal), image == self.imageDefault {
@@ -224,7 +224,7 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
                 }, for: .touchUpInside)
                 
                 sender.iconBtn.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                    
                     DDLog(sender.tag)
                     if self.images.count > control.tag {
                         self.images.remove(at: control.tag)

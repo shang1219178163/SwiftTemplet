@@ -97,8 +97,8 @@ extension CCSCouponRecordController: UITableViewDataSource, UITableViewDelegate{
         cell.labelBom.text = "发放时间: 2019-08-12 12:00 ~ 2019-09-12 12:00"
         cell.labelLeft.backgroundColor = UIColor.theme;
         cell.btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
-        cell.btn.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        cell.btn.addActionHandler({ (sender) in
+            
             DDLog(indexPath.section);
             
 

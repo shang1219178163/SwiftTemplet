@@ -18,8 +18,8 @@ class NNCellDefaultViewController: UIViewController {
         view.textLabel.text = "手机号码:"
         view.detailTextLabel.text = "请输入手机号码"
 //        view.label.isHidden = true
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
 
@@ -34,8 +34,8 @@ class NNCellDefaultViewController: UIViewController {
         view.textLabel.text = "手机号码:"
         view.detailTextLabel.text = "请输入手机号码"
 //        view.label.isHidden = true
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
 
@@ -50,8 +50,8 @@ class NNCellDefaultViewController: UIViewController {
         view.textLabel.text = "手机号码:"
         view.detailTextLabel.text = "请输入手机号码"
 //        view.label.isHidden = true
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
 

@@ -98,8 +98,8 @@ import SwiftExpand
 //        view.textfield.asoryView(false, image: UIImage(named: "icon_guard_white")!)
 //        view.textfield.asoryView(false, image: UIImage(named: "icon_guard_big")!)
         
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
             return
 //            let phone = self.textFieldView.textfield.text

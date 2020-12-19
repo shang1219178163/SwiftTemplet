@@ -60,8 +60,8 @@ class PKBindPhoneController: UIViewController {
 //        view.layer.borderWidth = 1;
         view.layer.masksToBounds = true;
         view.isEnabled = false
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
             sender.isSelected.toggle()
             if !self.btnRadio.isSelected {
@@ -82,8 +82,8 @@ class PKBindPhoneController: UIViewController {
         view.setBackgroundImage(UIImage(named: "btn_selected_NO"), for: .normal)
         view.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
 
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender)
             sender.isSelected.toggle()
         }, for: .touchUpInside)
@@ -98,8 +98,8 @@ class PKBindPhoneController: UIViewController {
 //        view.label.isHidden = true
         view.btn.isHidden = true
 
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in
@@ -116,8 +116,8 @@ class PKBindPhoneController: UIViewController {
 //        view.label.isHidden = true
 //        view.btn.layer.borderColor = UIColor.clear.cgColor
         
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in

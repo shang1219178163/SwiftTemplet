@@ -12,7 +12,7 @@ import SwiftExpand
 class PKMineController: UIViewController {
 
     lazy var tableView: UITableView = {
-        guard let tableView = view.subView(UITableView.self) as? UITableView else {
+        guard let tableView = view.findSubView(UITableView.self) as? UITableView else {
             let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
             view.dataSource = self
             view.delegate = self
@@ -206,7 +206,7 @@ extension PKMineController: UITableViewDataSource, UITableViewDelegate{
                     }
 
                     sender.addActionHandler({ control in
-                        guard let sender = control as? UIButton else { return }
+                        
                         DDLog(sender.tag)
                     }, for: .touchUpInside)
                 }
