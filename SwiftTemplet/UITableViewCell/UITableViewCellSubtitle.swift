@@ -17,7 +17,7 @@ import SwiftExpand
  */
 class UITableViewCellSubtitle: UITableViewCell {
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var btnSize = CGSize(width: 25, height: 25)
     // MARK: -life cycle
 

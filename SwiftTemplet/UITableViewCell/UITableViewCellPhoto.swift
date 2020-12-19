@@ -12,7 +12,7 @@ import SnapKit
 
 class UITableViewCellPhoto: UITableViewCell {
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     // MARK: -life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -12,7 +12,7 @@ import SwiftExpand
 /// 标题+按钮
 class UITableViewCellTitle: UITableViewCell {
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var btnSize = CGSize(width: 17, height: 17)
     
     var imageSize = CGSize(width: 2.5, height: 17)

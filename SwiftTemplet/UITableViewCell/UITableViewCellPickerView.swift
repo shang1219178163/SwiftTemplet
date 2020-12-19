@@ -2,23 +2,26 @@
 //  UITableViewCellPickerView.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/1/10.
-//  Copyright © 2019 BN. All rights reserved.
+//  Created by Bin Shang on 2020/12/18.
+//  Copyright © 2020 BN. All rights reserved.
 //
 
 import UIKit
+
+
 import SnapKit
 import SwiftExpand
 
 
-/// 单选+NNPickListView(UITableView)
+/// 单选+NNPickerView
 class UITableViewCellPickerView: UITableViewCell {
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-
-    var viewBlock:((UITableViewCellPickerView, String, [Any]) -> Void)?
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
     /// 是否有星标
     var hasAsterisk = false;
+    
+    var pickeItems: [String]?
+    
     // MARK: -life cycle
     deinit {
         labelLeft.removeObserver(self, forKeyPath: "text")
@@ -99,27 +102,15 @@ class UITableViewCellPickerView: UITableViewCell {
     }
     
     //MARK: -funtions
-    func block(_ action: @escaping ((UITableViewCellPickerView, String, [Any]) -> Void)) {
-        self.viewBlock = action
-    }
     
     //MARK: -lazy
-    lazy var pickView: NNPickListView = {
-        let view = NNPickListView(frame: .zero)
-        view.title = "请选择"
-//        view.tips = "新年快乐!"
-        view.itemList = [["11111", "123"],
-                        ["22222", "234"],
-                        ["33333", "456"],
-                    ]
-        view.block({ (view, indexP) in
-            DDLog(indexP.string)
-            let cellItem = view.itemList![indexP.row] 
-            self.textfield.text = cellItem.first
-            self.viewBlock?(self,  cellItem.first!, cellItem)
-            
-        })
-        return view;
+    lazy var pickView: NNPickerView = {
+        let view = NNPickerView(frame: .zero)
+//        view.pickerView.delegate = self
+//        view.pickerView.dataSource = self
+        view.block = { picker, sender in
+            DDLog(sender.currentTitle, picker.selectedItem, picker.selectedValue)
+        }
+        return view
     }()
-
 }

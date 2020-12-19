@@ -1,8 +1,8 @@
 //
-//  UITableViewCellSheet.swift
+//  UITableViewCellPickerViewNew.swift
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/1/12.
+//  Created by Bin Shang on 2019/1/10.
 //  Copyright © 2019 BN. All rights reserved.
 //
 
@@ -10,60 +10,49 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-/// 文字+sheet
-class UITableViewCellSheet: UITableViewCell {
-    
-    var viewBlock:((String) -> Void)?
-    var itemList: [String]? {
-        willSet{
-            alertCtrl = UIAlertController.createSheet("请选择", message: nil, items: newValue, handler: { (action) in
-                if action.title != kTitleCancell {
-                    self.textfield.text = action.title
-                    self.viewBlock?(action.title!)
-                }
-            })
-        }
-    }
-    
+
+/// 单选+NNPickListView(UITableView)
+class UITableViewCellPickerViewNew: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+
+    var viewBlock:((UITableViewCellPickerViewNew, String, [Any]) -> Void)?
+        
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
     deinit {
         labelLeft.removeObserver(self, forKeyPath: "text")
     }
-    
+    // MARK: -life cycle
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier);
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.addSubview(labelLeft);
         contentView.addSubview(textfield);
         
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
-
+        
         textfield.placeholder = "请选择";
         textfield.textColor = UIColor.theme
         textfield.textAlignment = .center;
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
 
-        _ = contentView.addGestureTap { (sender) in
-            if let keyWindow = UIApplication.shared.keyWindow {
-                keyWindow.endEditing(true)
-                keyWindow.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)
-            }
+        contentView.addGestureTap { (sender) in
+            self.pickView.show();
         }
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder);
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
+
     
     override func layoutSubviews() {
-        super.layoutSubviews();
-
+        super.layoutSubviews()
+        
         setupConstraint()
     }
     
@@ -89,10 +78,11 @@ class UITableViewCellSheet: UITableViewCell {
             make.height.equalTo(labelLeft)
         }
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
+
+        // Configure the view for the selected state
     }
     
     //MARK: -observe
@@ -109,19 +99,27 @@ class UITableViewCellSheet: UITableViewCell {
     }
     
     //MARK: -funtions
-    func block(_ action: @escaping ((String) -> Void)) {
+    func block(_ action: @escaping ((UITableViewCellPickerViewNew, String, [Any]) -> Void)) {
         self.viewBlock = action
     }
     
-    
     //MARK: -lazy
-    lazy var alertCtrl: UIAlertController = {
-        let alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (action) in
-            DDLog(action.title as Any)
+    lazy var pickView: NNPickListView = {
+        let view = NNPickListView(frame: .zero)
+        view.title = "请选择"
+//        view.tips = "新年快乐!"
+        view.itemList = [["11111", "123"],
+                        ["22222", "234"],
+                        ["33333", "456"],
+                    ]
+        view.block({ (view, indexP) in
+            DDLog(indexP.string)
+            let cellItem = view.itemList![indexP.row] 
+            self.textfield.text = cellItem.first
+            self.viewBlock?(self,  cellItem.first!, cellItem)
+            
         })
-        return alertController
+        return view;
     }()
     
 }
-
-

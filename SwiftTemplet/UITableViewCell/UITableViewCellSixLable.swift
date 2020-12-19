@@ -12,7 +12,7 @@ import SwiftExpand
 /// 上中下6 label
 class UITableViewCellSixLable: UITableViewCell {
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
     // MARK: -lazy
     lazy var labelTop: UILabel = {

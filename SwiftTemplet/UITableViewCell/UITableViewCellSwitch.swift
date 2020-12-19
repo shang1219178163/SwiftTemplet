@@ -14,7 +14,7 @@ import SwiftExpand
 class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
     var isShowLeft = false
     var spacing: CGFloat = 20

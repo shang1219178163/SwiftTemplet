@@ -16,7 +16,7 @@ class UITableViewCellTextField: UITableViewCell {
 
     var viewBlock: TextFieldClosure?
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     /// 是否有星标
     var hasAsterisk = false
     
@@ -90,14 +90,14 @@ class UITableViewCellTextField: UITableViewCell {
         }
 
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
-        labelLeft.snp.makeConstraints { (make) in
+        labelLeft.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(inset.left)
             make.width.equalTo(labelLeftSize.width)
             make.height.equalTo(height)
         }
         
-        textfield.snp.makeConstraints { (make) in
+        textfield.snp.remakeConstraints { (make) in
             make.top.equalTo(labelLeft)
             make.left.equalTo(labelLeft.snp.right).offset(kPadding)
             make.right.equalToSuperview().offset(-endX)

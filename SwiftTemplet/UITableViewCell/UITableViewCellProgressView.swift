@@ -13,7 +13,7 @@ import SwiftExpand
 /// 一行多选/单选
 class UITableViewCellProgressView: UITableViewCell {
      
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle

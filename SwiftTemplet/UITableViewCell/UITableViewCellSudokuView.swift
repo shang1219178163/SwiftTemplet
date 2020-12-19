@@ -27,7 +27,7 @@ import SwiftExpand
         }
     }
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10){
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15){
         willSet{
             setNeedsLayout()
         }

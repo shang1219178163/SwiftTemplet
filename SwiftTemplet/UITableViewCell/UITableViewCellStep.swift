@@ -12,7 +12,7 @@ import SwiftExpand
 /// 文字+ppnumber(商品j加减控件)
 class UITableViewCellStep: UITableViewCell {
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
     var isShowLeft = false
     var spacing: CGFloat = 20

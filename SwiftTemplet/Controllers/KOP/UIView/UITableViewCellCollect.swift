@@ -11,7 +11,7 @@ import SwiftExpand
 
 
 class UITableViewCellCollect: UITableViewCell {
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var imageSize = CGSize(width: 22, height: 22)
         
     // MARK: -life cycle

@@ -11,7 +11,7 @@ import SwiftExpand
 
 class UITableViewCellParkInfo: UITableViewCell {
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var spacing: CGFloat = 15
     
     // MARK: -lazy
@@ -32,8 +32,8 @@ class UITableViewCellParkInfo: UITableViewCell {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("电子支付", for: .normal);
         view.setTitleColor(UIColor.textColor6, for: .normal);
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -51,8 +51,8 @@ class UITableViewCellParkInfo: UITableViewCell {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("现金支付", for: .normal);
         view.setTitleColor(.textColor6, for: .normal);
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UIButton else { return }
+        view.addActionHandler({ (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)

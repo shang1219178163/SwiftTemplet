@@ -12,7 +12,7 @@ import SwiftExpand
 /// 文字+UITextField(输入框)
 class UITableViewCellCode: UITableViewCell {
     
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var btnSize = CGSize(width: 100, height: 35)
     
     var viewBlock: TextFieldClosure?

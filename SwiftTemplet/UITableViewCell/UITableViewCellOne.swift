@@ -14,7 +14,7 @@ import SwiftExpand
 /// 图片+文字+文字+图片
 class UITableViewCellOne: UITableViewCell {
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
     ///0优先显示右边文字,1代表优先显示左边文字
     var type: Int = 0{
