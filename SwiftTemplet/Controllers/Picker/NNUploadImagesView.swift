@@ -93,7 +93,7 @@ class NNUploadImagesView: UIView {
 
     var currrentVC: UIViewController?
     var tableView: UITableView?{
-        if let view = currrentVC?.view.subView(UITableView.self) as? UITableView {
+        if let view = currrentVC?.view.findSubView(UITableView.self) as? UITableView {
             return view
         }
         return nil

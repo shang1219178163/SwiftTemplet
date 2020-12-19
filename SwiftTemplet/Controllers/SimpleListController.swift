@@ -42,7 +42,7 @@ import SnapKit
 //    }()
     
 //    lazy var tableView: UITableView = {
-//        guard let tableView = view.subView(UITableView.self) as? UITableView else {
+//        guard let tableView = view.findSubView(UITableView.self) as? UITableView else {
 //            let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
 //            view.dataSource = self
 //            view.delegate = self
@@ -52,7 +52,7 @@ import SnapKit
 //    }()
     
     lazy var tableView: UITableView = {
-        if let tableView = view.subView(UITableView.self) as? UITableView {
+        if let tableView = view.findSubView(UITableView.self) as? UITableView {
             return tableView
         }
                 
