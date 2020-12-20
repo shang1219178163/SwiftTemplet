@@ -32,8 +32,10 @@ import UIKit
     var iconSize: CGSize = CGSize(width: 60, height: 18)
     var labelHeight: CGFloat = 25
 
-    ///响应区域
-    var eventSize: CGSize = .zero
+    var spacing: CGFloat = 5
+
+//    ///响应区域
+//    var eventSize: CGSize = .zero
     
     lazy var iconBtn: UIButton = {
         let view = UIButton(type: .custom);
@@ -42,16 +44,7 @@ import UIKit
         view.titleLabel?.font = UIFont.systemFont(ofSize: 12);
         return view
     }()
-        
-//    lazy var iconImageView: UIImageView = {
-//        let view = UIImageView(frame: CGRect.zero);
-//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.isUserInteractionEnabled = true;
-//        view.contentMode = .scaleAspectFit;
-////        view.image = UIImage(named: "icon_discount_orange");
-//        return view
-//    }()
-        
+                
     // MARK: -lifecycle
             
     override init(frame: CGRect) {
@@ -89,24 +82,24 @@ import UIKit
         
         switch direction {
         case .top:
-            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - labelHeight)
-            titleLabel!.frame = CGRect(x: 0, y: imageView!.frame.maxY, width: bounds.width, height: labelHeight)
+            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - labelHeight - spacing*0.5)
+            titleLabel!.frame = CGRect(x: 0, y: imageView!.frame.maxY + spacing, width: bounds.width, height: labelHeight - spacing*0.5)
             
 //        case .left:
 //            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
 //            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
                 
         case .bottom:
-            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: labelHeight)
-            imageView!.frame = CGRect(x: 0, y: titleLabel!.frame.maxY, width: bounds.width, height: bounds.height - labelHeight)
+            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: labelHeight - spacing*0.5)
+            imageView!.frame = CGRect(x: 0, y: titleLabel!.frame.maxY + spacing, width: bounds.width, height: bounds.height - labelHeight - spacing*0.5)
                     
         case .right:
             imageView!.frame = CGRect(x: bounds.width - bounds.height, y: 0, width: bounds.height, height: bounds.height)
-            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width - bounds.height, height: bounds.height)
+            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width - bounds.height - spacing, height: bounds.height)
             
         default:
             imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
-            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
+            titleLabel!.frame = CGRect(x: imageView!.frame.maxX + spacing, y: 0, width: bounds.width - imageView!.frame.width - spacing, height: bounds.height)
             break
         }
         

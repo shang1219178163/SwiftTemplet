@@ -24,7 +24,7 @@ class CenterViewController: UIViewController {
         
         DDLog("_%@_",UIApplication.mainWindow);
         DDLog("__%@_",UIApplication.shared.keyWindow);
-        DDLog(view.hashValue,UIApplication.mainWindow.hashValue)
+        DDLog(view.hashValue, UIApplication.mainWindow.hashValue)
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
         

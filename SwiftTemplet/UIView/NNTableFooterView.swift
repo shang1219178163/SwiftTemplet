@@ -40,6 +40,13 @@ import SwiftExpand
             return
         }
         
+        if ![labelTop.isHidden, label.isHidden].contains(false) {
+            btn.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+            return
+        }
+        
         labelTop.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.left.equalToSuperview().offset(10)

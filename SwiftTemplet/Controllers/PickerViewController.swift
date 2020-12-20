@@ -118,9 +118,11 @@ class PickerViewController: UIViewController {
         let view = NNPickerView(frame: .zero)
         view.pickerView.delegate = self
         view.pickerView.dataSource = self
-        view.block({ (pickerView, tag) in
-            DDLog(tag)
-        })
+        view.block = { picker, sender in
+            DDLog(sender.currentTitle, picker.selectedItem, picker.selectedValue)
+        }
+        
+        
         return view
     }()
     

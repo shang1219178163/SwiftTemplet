@@ -16,7 +16,7 @@ import SwiftExpand
 class NNContentCellView: UIImageView {
     var cellStyle: UITableViewCell.CellStyle = .default
 
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
     var imageSize: CGSize = CGSize(width: 40, height: 40)
 

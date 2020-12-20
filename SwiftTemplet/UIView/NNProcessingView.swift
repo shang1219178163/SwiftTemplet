@@ -95,7 +95,7 @@ class NNProcessingView: UIView {
     }
     
     @objc func handleAction(_ sender: UIButton) {
-        print("\(#function)\(sender)")
+        print("\(#function)_\(sender.tag)")
     }
 
     func createBtn(rect:CGRect, title: String, tag: NSInteger) -> UIButton {
