@@ -222,11 +222,8 @@ class NNUserInfoView: UIView {
         view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;
@@ -237,11 +234,9 @@ class NNUserInfoView: UIView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-//                self.delegate?.taskCenterHeaderView(self, sender: sender)
-
-            }
+        view.addActionHandler({ (sender) in
+            
+//             self.delegate?.taskCenterHeaderView(self, sender: sender)
 
         }, for: .touchUpInside)
         return view;
@@ -254,11 +249,8 @@ class NNUserInfoView: UIView {
 
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;
@@ -271,11 +263,8 @@ class NNUserInfoView: UIView {
 
         view.setTitle("登录/注册 →", for: .normal);
         view.setTitleColor(.white, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;

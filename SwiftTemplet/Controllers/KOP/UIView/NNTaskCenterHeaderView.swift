@@ -144,10 +144,9 @@ class NNTaskCenterHeaderView: UIImageView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-//                self.delegate?.taskCenterHeaderView(self, sender: sender)
-            }
+        view.addActionHandler({ (sender) in
+            
+//              self.delegate?.taskCenterHeaderView(self, sender: sender)
 
         }, for: .touchUpInside)
         return view;
@@ -161,10 +160,8 @@ class NNTaskCenterHeaderView: UIImageView {
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
         view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-//                self.delegate?.taskCenterHeaderView(self, sender: sender)
-
-            }
+            
+//            self.delegate?.taskCenterHeaderView(self, sender: sender)
 
         }, for: .touchUpInside)
         return view;
@@ -177,11 +174,8 @@ class NNTaskCenterHeaderView: UIImageView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
 //        view.setTitle(kTitleSure, for: .normal);
 //        view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.delegate?.taskCenterHeaderView(self, sender: sender)
-            }
-
+        view.addActionHandler({ (sender) in                
+            self.delegate?.taskCenterHeaderView(self, sender: sender)
         }, for: .touchUpInside)
         return view;
     }();

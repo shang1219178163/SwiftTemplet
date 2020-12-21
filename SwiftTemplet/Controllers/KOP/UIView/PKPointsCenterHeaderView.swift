@@ -112,11 +112,9 @@ class PKPointsCenterHeaderView: UIImageView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
 //        view.setTitle(kTitleSure, for: .normal);
 //        view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.delegate?.pointsCenterHeaderview(self, sender: sender)
-            }
-
+        view.addActionHandler({ (sender) in
+            self.delegate?.pointsCenterHeaderview(self, sender: sender)
+            
         }, for: .touchUpInside)
         return view;
     }();

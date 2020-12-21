@@ -196,20 +196,20 @@ extension UITableViewCellWebView: WKNavigationDelegate{
     
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure], handler:  { (action) in
             completionHandler();
-        }
+        })
     }
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure], handler:  { (action) in
             if action.title == kTitleCancell{
                 completionHandler(false)
                 return
             }
             completionHandler(true)
-        }
+        })
     }
 }
 

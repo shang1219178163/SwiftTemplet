@@ -75,10 +75,8 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.viewBlock!(self,sender.tag);
-            }
+        view.addActionHandler({ (sender) in
+            self.viewBlock?(self, sender.tag);
 
         }, for: .touchUpInside)
         return view;

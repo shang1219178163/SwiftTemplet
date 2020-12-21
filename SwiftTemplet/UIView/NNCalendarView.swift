@@ -237,11 +237,8 @@ class NNCalendarView: UIView {
         view.numberOfRow = weekInfo.count
         view.padding = 0.0
         view.isMutiChoose = false
-        view.block({ (itemsView, control) in
-            if let sender = control as? UIButton {
-                DDLog(sender.tag)
-            }
-            
+        view.block({ (itemsView, sender) in
+            DDLog(sender.tag)
         })
         return view
     }()

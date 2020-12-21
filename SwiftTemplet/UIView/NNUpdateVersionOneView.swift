@@ -78,10 +78,8 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleUpdate, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.delegate?.updateVersionOneViewDelegate(self, sender: sender)
-            }
+        view.addActionHandler({ (sender) in
+            self.delegate?.updateVersionOneViewDelegate(self, sender: sender)
             UIApplication.openURLString(UIApplication.appUrlWithID(self.appStoreID))
 
         }, for: .touchUpInside)
@@ -95,12 +93,8 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleCancell, for: .normal);
         view.setTitleColor(.systemRed, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                if let sender = control as? UIButton {
-                    self.delegate?.updateVersionOneViewDelegate(self, sender: sender)
-                }
-            }
+        view.addActionHandler({ (sender) in                
+            self.delegate?.updateVersionOneViewDelegate(self, sender: sender)
             self.storeDateTime()
             self.dismiss()
         }, for: .touchUpInside)

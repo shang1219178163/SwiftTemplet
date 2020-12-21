@@ -55,7 +55,9 @@ class FirstViewController: UIViewController{
              ["SwipeRightToPopViewController", "左滑返回", ],
              ],
             [["TableSectionCornerListController", "OC section 圆角", ],
+             ["ValidateProtocolController", "协议扩展", ]
              ],
+            
         ]
         return array
     }()

@@ -78,17 +78,18 @@ import UIKit
     }
     
     func showActivityVC(_ sender: UIButton) {
-        
-        let activityItems: [UIActivity.ActivityType] = [.airDrop, .message, .mail, .markupAsPDF, .print, .copyToPasteboard, ]
-        let activityVC = UIActivityViewController(activityItems: customActivity.shareContexts!, applicationActivities: [customActivity])
-//        if let popover = activityVC.popoverPresentationController {
-//            popover.sourceView = sender
-//            popover.permittedArrowDirections = .up
-//        }
-        activityVC.completionWithItemsHandler = { activity, success, items, error in
-            print(activity.debugDescription)
+        if #available(iOS 11, *) {
+            let activityItems: [UIActivity.ActivityType] = [.airDrop, .message, .mail, .markupAsPDF, .print, .copyToPasteboard, ]
+            let activityVC = UIActivityViewController(activityItems: customActivity.shareContexts!, applicationActivities: [customActivity])
+    //        if let popover = activityVC.popoverPresentationController {
+    //            popover.sourceView = sender
+    //            popover.permittedArrowDirections = .up
+    //        }
+            activityVC.completionWithItemsHandler = { activity, success, items, error in
+                print(activity.debugDescription)
+            }
+            activityVC.present()
         }
-        activityVC.present()
     }
 
 }

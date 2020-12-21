@@ -141,10 +141,9 @@ import NNExcelView
         view.adjustsImageWhenHighlighted = false;
         view.tag = 1;
 
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.block?(sender);
-            }
+        view.addActionHandler({ (sender) in
+            self.block?(sender)
+            
         }, for: .touchUpInside)
         return view;
     }()

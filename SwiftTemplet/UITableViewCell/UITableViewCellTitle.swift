@@ -48,7 +48,7 @@ class UITableViewCellTitle: UITableViewCell {
         if bounds.height <= 10 {
             return
         }
-        let height = bounds.height - inset.top - inset.bottom
+//        let height = bounds.height - inset.top - inset.bottom
         let labStartX = imgViewLeft.isHidden ? inset.left : imageSize.width + inset.left + kPadding
 
         if imgViewLeft.isHidden == false {

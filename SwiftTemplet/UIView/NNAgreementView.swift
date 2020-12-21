@@ -64,11 +64,9 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.delegate?.agreementView(self, sender: sender)
-                self.actionBlock?(self, sender)
-            }
+        view.addActionHandler({ (sender) in
+            self.delegate?.agreementView(self, sender: sender)
+            self.actionBlock?(self, sender)
 
         }, for: .touchUpInside)
         return view;
@@ -81,13 +79,9 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleCancell, for: .normal);
         view.setTitleColor(.systemRed, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                if let sender = control as? UIButton {
-                    self.delegate?.agreementView(self, sender: sender)
-                    self.actionBlock?(self, sender)
-                }
-            }
+        view.addActionHandler({ (sender) in
+            self.delegate?.agreementView(self, sender: sender)
+            self.actionBlock?(self, sender)
             self.dismiss()
         }, for: .touchUpInside)
         return view;

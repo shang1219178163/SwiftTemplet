@@ -73,7 +73,7 @@ class NNCellDefaultViewController: UIViewController {
         view.backgroundColor = .systemGreen
         view.backgroundColor = .white
 
-        createItem("done") { (item) in
+        createBarItem("done") { (item) in
             self.dateRangeShow()
         }
         

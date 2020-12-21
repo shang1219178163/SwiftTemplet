@@ -61,11 +61,9 @@ import SwiftExpand
         view.setTitle("Lv.18 达人车侠", for: .normal);
         view.setTitleColor(UIColor.hexValue(0x814f0b), for: .normal);
         view.setBackgroundImage(UIImage(named: "bg_level_desc"), for: .normal)
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.viewBlock!(self,sender.tag);
-            }
-
+        view.addActionHandler({ (sender) in
+            self.viewBlock?(self, sender.tag);
+            
         }, for: .touchUpInside)
         return view;
     }()

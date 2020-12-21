@@ -170,11 +170,8 @@ class NNUserInfoViewNew: UIView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;
@@ -188,9 +185,7 @@ class NNUserInfoViewNew: UIView {
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (control) in
             DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
+            
 
         }, for: .touchUpInside)
         return view;
@@ -201,11 +196,8 @@ class NNUserInfoViewNew: UIView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            if let sender = control as? UIButton {
-
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;

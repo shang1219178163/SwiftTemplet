@@ -93,10 +93,8 @@ import SwiftExpand
         view.adjustsImageWhenHighlighted = false;
         view.tag = 1;
 
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                DDLog(sender.currentTitle ?? "")
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender.currentTitle ?? "")
 
         }, for: .touchUpInside)
         return view;

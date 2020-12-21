@@ -26,7 +26,7 @@ class PlateNumMainController: NNTabController, NNTabControllerDelegate {
                            fourVC,
                            fiveVC]
         
-        createItem("done", style: .plain, isLeft: false) { (item) in
+        createBarItem("done", style: .plain, isLeft: false) { (item) in
             self.navigationController?.pushVC(PickerViewController.self)
         }
     }

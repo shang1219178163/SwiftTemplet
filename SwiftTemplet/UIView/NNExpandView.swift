@@ -83,16 +83,14 @@ class NNExpandView: UIView {
         let view = UIButton(type: .custom)
 //        view.setBackgroundImage(UIImage(named: "icon_notice"), for: .normal)
         view.setImage(UIImage(named: "icon_delete"), for: .normal)
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                DDLog(sender.tag)
-                
-                var rect = self.frame
-                rect.size.width = 0.0
-                UIView.animate(withDuration: 0.35, animations: {
-                    self.frame = rect;
-                })
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender.tag)
+            
+            var rect = self.frame
+            rect.size.width = 0.0
+            UIView.animate(withDuration: 0.35, animations: {
+                self.frame = rect;
+            })
             
         }, for: .touchUpInside)
         return view
@@ -105,11 +103,8 @@ class NNExpandView: UIView {
         view.setImage(UIImage(named: "icon_notice_black"), for: .normal)
         view.setBackgroundImage(UIImage(color: .white), for: .normal)
         view.adjustsImageWhenHighlighted = false
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                DDLog(sender.tag)
-                
-            }
+        view.addActionHandler({ (sender) in
+            DDLog(sender.tag)
             
         }, for: .touchUpInside)
 //        view.layer.zPosition = 1;

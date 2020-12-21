@@ -116,7 +116,7 @@ class UITableViewCellTextField: UITableViewCell {
     }
     
     @objc func handleSend(_ sender: UITextField) {
-        DDLog(sender.text)
+        DDLog(sender.text as Any)
     }
    
 }
