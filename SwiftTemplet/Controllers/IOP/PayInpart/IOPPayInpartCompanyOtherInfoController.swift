@@ -8,8 +8,10 @@
 
 
 import UIKit
-        
-///
+import SwiftExpand
+import SnapKit
+
+///企业信息-其他信息
 @objcMembers class IOPPayInpartCompanyOtherInfoController: UIViewController{
         
     var dataList = NSMutableArray()
@@ -25,13 +27,59 @@ import UIKit
     }()
     
     lazy var tableView: UITableView = {
-        let view: UITableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
         return view
     }()
+    
+    lazy var processingView: NNProcessingView = {
+        var view = NNProcessingView(frame: CGRectMake(0, 0, self.view.bounds.width, 70))
         
+        var list: [String] = []
+        view.items = ["基础信息", "企业信息", "完成"]
+        view.contentInset = UIEdgeInsetsMake(0, 20, 0, 20)
+        view.padding = 90
+        view.index = 1
+
+//        view.getViewLayer()
+        return view;
+    }()
+    
+    lazy var footerView: NNTableFooterView = {
+        let view = NNTableFooterView.create("下一步", topPadding: 0, height: 50);
+        view.label.isHidden = true
+        view.labelTop.isHidden = true
+
+        view.btn.addActionHandler { (control) in
+            DDLog(control)
+        }
+
+        return view
+    }()
+        
+//    lazy var uploadImageVC: IOPUploadImageController = {
+//        let controller = IOPUploadImageController()
+//        controller.delegate = self
+//        return controller
+//    }()
+    
+    let kOtherInfo = "1. 必须和营业执照主体相同;\n2. 该银行账号将作为收款账号；\n3. 商户号生成中该账号会涉及到收付款等操作;"
+    
+    lazy var list: [[[String]]] = {
+        return [
+            [["企业信息-其他信息", "UITableViewCellTitle", "50.0", kOtherInfo, "",],
+             ["开通微信免密", "UITableViewCellSegment", "50.0", "请输入姓名", "is_free", "开通,不开通"],
+            ["*停车费收费资质证明文件", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "certificate_img", ],
+            ["*停车场备案证书", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "record_certificate_img", ],
+            ],
+        ]
+    }()
+
+    var dataModel = NSObject()
+    
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +88,27 @@ import UIKit
         title = ""
         setupUI()
         
-        tableView.mj_header.beginRefreshing()
+//        dataModel.capital_mg_img_template = IOPAPIRequestURLDownDocMoney("1")
+//        dataModel.self_sign_img_template = IOPAPIRequestURLDownDocMoney("2")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        view.addSubview(footerView);
+        footerView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(0);
+            make.right.equalToSuperview().offset(0);
+            make.bottom.equalToSuperview().offset(0);
+            make.height.equalTo(60);
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(0);
+            make.left.equalToSuperview().offset(0);
+            make.right.equalToSuperview().offset(0);
+            make.bottom.equalTo(footerView.snp.top).offset(0);
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,43 +127,182 @@ import UIKit
         view.backgroundColor = .white
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-
-        view.addSubview(tableView)
+        view.addSubview(tableView);
+        tableView.tableHeaderView = processingView;
+//        tableView.tableFooterView = footerView;
     }
 
+    func jumpXiangce(_ itemList:[String]) {
+//        let controller = UIStoryboard.storyboard(with: "ParkRecord", identifier: "IOPParkRecordImageViewController") as! IOPParkRecordImageViewController
+//        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
+//        if let url = URL(string: dataModel.value(forKeyPath: itemList[4]) as! String) {
+//            controller.inImageUrlArray = [url]
+//        }
+//        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func jumpUploadPicture(_ itemList: [String]) {
+//        DDLog(itemList)
+        
+//        let controller = uploadImageVC
+//        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
+//        controller.key = itemList[4]
+//
+//        let imgUrl = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
+//        controller.imgUrl = imgUrl
+//        controller.isFromPickerVC = false
+//        controller.showImageDefault = true
+//        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func jumpFileAction(_ itemList: [String]) {
+//        DDLog(itemList)
+
+//        let urlString = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
+//        if urlString.hasPrefix("http") == false {
+//            IOPProgressHUD.showText("文件链接无效")
+//            return
+//        }
+//
+//        let controller = IOPFileUploadController()
+//        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
+//        controller.key = itemList[4]
+//
+//        controller.isUpload = urlString == ""
+//        controller.fileUrl = urlString == "" ? nil : NSURL(string: urlString)
+//        DDLog("isUpload:\(controller.isUpload)_fileUrl:\(controller.fileUrl)")
+//        navigationController?.pushViewController(controller, animated: true);
+    }
+    
 }
         
 extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITableViewDelegate{
-    
+    //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return list.count;
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
+        let sections = list[section]
+//        if section == 1 && dataModel.is_free == "0" {
+//            return 2
+//        }
+        return sections.count;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let sections = list[indexPath.section]
+        let itemList = sections[indexPath.row]
+        return itemList[2].cgFloatValue
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellSubtitle", style: .subtitle)
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel?.text = "--"
-        cell.textLabel?.textColor = UIColor.textColor3;
-
-        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
-        cell.detailTextLabel?.text = "--"
-        cell.detailTextLabel?.textColor = UIColor.textColor6;
-        cell.accessoryType = .disclosureIndicator;
+        let sections = list[indexPath.section]
+        let itemList = sections[indexPath.row]
+        let value0 = itemList[0]
+        let value2 = itemList[2]
+        let value3 = itemList[3]
+        let value4 = itemList[4]
         
+        switch itemList[1] {
+        case "UITableViewCellTitle":
+            let cell = UITableViewCellTitle.cellWithTableView(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            
+            cell.labelLeft.text = value0
+            cell.btn.addActionHandler({ (control) in
+//                self.showAlert(value0, message: value3)
+
+//                UIAlertController.showAlert(value0, message: value3)
+                UIAlertController.showAlert(value0, message: value3) { (style) in
+                    style.alignment = .left
+                } handler: { (action) in
+                    
+                }
+
+            }, for: .touchUpInside)
+            
+            let isHiddenBtnImage = (value0 == "协议")
+            cell.btn.isHidden = isHiddenBtnImage
+//            cell.getViewLayer()
+            return cell
+                        
+        case "UITableViewCell":
+            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellValue1", style: .value1)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.textLabel?.textColor = UIColor.textColor3;
+
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.detailTextLabel?.textColor = UIColor.theme
+            cell.accessoryType = .disclosureIndicator;
+            
+            cell.textLabel?.text = value0
+            cell.detailTextLabel?.text = "上传"
+
+            let hasAsterisk = value0.contains("*")
+            if hasAsterisk {
+                cell.textLabel?.attributedText = cell.textLabel!.text!.toAsterisk(cell.textLabel!.textColor, font: cell.textLabel!.font.pointSize)
+            }
+            
+            if value4.contains("_img") {
+                let result: String = dataModel.valueText(forKeyPath: value4, defalut: "")
+                let hasPicture = result.hasPrefix("http")
+                if value3.contains(",") {
+                    let titles = value3.components(separatedBy: ",")
+                    cell.detailTextLabel?.text = hasPicture ? titles[0] : titles[1]
+                } else {
+                    cell.detailTextLabel?.text = hasPicture ? kTitleLook : kTitleUpload
+   //                 cell.detailTextLabel?.textColor = hasPicture ? UIColor.gray : UIColor.theme
+                }
+             }
+//            cell.getViewLayer()
+            return cell;
+            
+        case "UITableViewCellSegment":
+            let cell = UITableViewCellSegment.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = itemList[2].cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+
+            cell.labelLeft.text = value0
+            cell.segmentCtl.items = (itemList.last! as NSString).components(separatedBy: ",")
+            let index = dataModel.valueText(forKeyPath: value4, defalut: "0") == "1" ? 1 : 0
+            cell.segmentCtl.selectedSegmentIndex = index
+//            cell.segmentCtl.addTarget(self, action: #selector(handleActionSender(_:)), for: .valueChanged)
+            cell.segmentCtl.addActionHandler({ (control) in
+                guard let sender = control as? UISegmentedControl else { return }
+                DDLog(sender.selectedSegmentIndex)
+                let value = "\(sender.selectedSegmentIndex)"
+                self.dataModel.setValue(value, forKeyPath: value4)
+                self.tableView.reloadData()
+
+            }, for: .valueChanged)
+//            cell.getViewLayer()
+            return cell
+            
+        default:
+            break
+        }
+        let cell = UITableViewCellZero.cellWithTableView(tableView)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let model = dataList[indexPath.row] as? IOPParkModel else { return }
-//        let controller = IOPParkDetailController()
-//        controller.parkModel = model
-//        navigationController?.pushViewController(controller, animated: true)
+        let sections = list[indexPath.section]
+        let itemList = sections[indexPath.row]
+        if itemList[4].contains("_img") {
+            jumpUploadPicture(itemList)
+
+//            let hasPicture = dataModel.valueText(forKeyPath: itemList[4], defalut: "").hasPrefix("http")
+//            if hasPicture {
+//                 jumpXiangce(itemList)
+//             } else {
+//                 jumpUploadPicture(itemList)
+//             }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -112,6 +314,9 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == tableView.numberOfSections - 1 {
+            return 10.01;
+        }
         return 0.01;
     }
     
@@ -120,3 +325,10 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
     }
 }
 
+extension IOPPayInpartCompanyOtherInfoController: IOPUploadImageControllerDelegate{
+    func uploadImage(_ url: String, forKey key: String) {
+        DDLog(key, url)
+        dataModel.setValue(url, forKeyPath: key)
+        tableView.reloadData()
+    }
+}
