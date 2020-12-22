@@ -13,10 +13,43 @@ import SwiftExpand
 
 class NNPickerView: UIView {
 
-    let contentViewH: CGFloat = kPickerViewHeight+kNaviBarHeight
+    let contentViewH: CGFloat = kPickerViewHeight + 44
 
-    typealias ViewClick = (NNPickerView, Int) -> Void;
-    var viewBlock: ViewClick?;
+    var block: ((NNPickerView, Int) -> Void)?
+    
+    var items: [String]?{
+        willSet{
+            guard let newValue = newValue, newValue.count > 0 else {
+                return
+            }
+            pickerView.reloadAllComponents()
+            selectedItem = newValue.first
+        }
+    }
+    
+    var itemDic: [String : String]?{
+        willSet{
+            guard let newValue = newValue, newValue.count > 0 else {
+                return
+            }
+            items = newValue.keys.sorted()
+        }
+    }
+    
+    private(set) var selectedItem: String?{
+        willSet{
+            guard let newValue = newValue else {
+                return
+            }
+            if let itemDic = itemDic,
+               itemDic.keys.contains(newValue) {
+                selectedValue = itemDic[newValue]
+            }
+        }
+    }
+    
+    private(set) var selectedValue: String?
+
     
     // MARK: -lifecycle
     override init(frame: CGRect) {
@@ -25,7 +58,6 @@ class NNPickerView: UIView {
         self.frame = UIScreen.main.bounds
         addSubview(masView)
         addSubview(contentView)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,7 +74,7 @@ class NNPickerView: UIView {
         
         toobarView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(kNaviBarHeight)
+            make.height.equalTo(44)
         }
         
         btnCancell.snp.makeConstraints { (make) in
@@ -108,10 +140,6 @@ class NNPickerView: UIView {
         }
     }
     
-    func block(_ action:@escaping ViewClick) {
-        self.viewBlock = action;
-    }
-    
     // MARK: -lazy
     lazy var toobarView: UIView = {
         var view = UIView(frame: .zero)
@@ -128,12 +156,10 @@ class NNPickerView: UIView {
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleCancell, for: .normal);
-        view.setTitleColor(.lightGray, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
-                self.viewBlock?(self, sender.tag);
-                self.dismiss();
-            }
+        view.setTitleColor(.gray, for: .normal);
+        view.addActionHandler({ (sender) in
+            self.block?(self, sender.tag)
+            self.dismiss();
 
         }, for: .touchUpInside)
         return view;
@@ -142,24 +168,25 @@ class NNPickerView: UIView {
     lazy var label: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "请选择";
-        view.textColor = .lightGray;
+        view.textColor = .gray;
         view.textAlignment = .center;
         return view;
     }();
     
-    lazy var btnSure:UIButton = {
+    lazy var btnSure: UIButton = {
         let view = UIButton(type: .custom);
         view.tag = 1;
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            if let sender = control as? UIButton {
+        view.addActionHandler({ (sender) in
+            if self.pickerView.numberOfComponents == 3 {
                 print("被选中的索引为：\(self.pickerView.selectedRow(inComponent: 0)),\(self.pickerView.selectedRow(inComponent: 1)),\(self.pickerView.selectedRow(inComponent: 2))")
-                self.viewBlock?(self, sender.tag);
-                self.dismiss();
             }
+
+            self.block?(self, sender.tag)
+            self.dismiss();
 
         }, for: .touchUpInside)
         return view;
@@ -207,16 +234,47 @@ extension NNPickerView: UIPickerViewDelegate, UIPickerViewDataSource {
 
     /// 设置选择框的列数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        guard items != nil else {
+            return 3
+        }
+        return 1
     }
     
     /// 设置选择框的行数
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 9
+        guard let items = items else {
+            return 9
+        }
+        return items.count
     }
 
     /// 设置选择框各选项的内容
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(component) + "-" + String(row)
+        guard let items = items else {
+            return String(component) + "-" + String(row)
+        }
+        return items[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label: UILabel = (view as? UILabel) ?? UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.textAlignment = .center
+
+        guard let items = items else {
+            label.text = String(component) + "-" + String(row)
+            return label
+        }
+        label.text = items[row]
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let items = items else {
+            return
+        }
+        selectedItem = items[row]
     }
 }
+
+
