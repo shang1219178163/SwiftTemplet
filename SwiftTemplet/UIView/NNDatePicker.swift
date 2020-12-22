@@ -22,7 +22,7 @@ class NNDatePicker: UIView {
     typealias ViewClick = (NNDatePicker, Int) -> Void;
     var viewBlock: ViewClick?;
 
-    private let btnSize = CGSize(width: 60, height: kNaviBarHeight);
+    private let btnSize = CGSize(width: 60, height: 44);
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -75,14 +75,14 @@ class NNDatePicker: UIView {
     
     //MARK: - layz
     lazy var contentView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: UIScreen.sizeHeight - (kNaviBarHeight + kPickerViewHeight), width: UIScreen.sizeWidth, height: (kNaviBarHeight + kPickerViewHeight)));
+        let view = UIView(frame: CGRect(x: 0, y: UIScreen.sizeHeight - (44 + kPickerViewHeight), width: UIScreen.sizeWidth, height: (44 + kPickerViewHeight)));
        
         view.backgroundColor = UIColor(r: 230, g: 230, b: 230, a: 1);
         
         btnCancel.frame = CGRect(x: 0, y: 0, width: btnSize.width, height: btnSize.height);
         btnSure.frame = CGRect(x: UIScreen.sizeWidth - 60, y: 0, width: btnSize.width, height: btnSize.height);
-        datePicker.frame = CGRect(x: 0, y: kNaviBarHeight, width: UIScreen.sizeWidth, height: kPickerViewHeight);
-        label.frame = CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: kNaviBarHeight);
+        datePicker.frame = CGRect(x: 0, y: 44, width: UIScreen.sizeWidth, height: kPickerViewHeight);
+        label.frame = CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: 44);
 
         view.addSubview(btnCancel);
         view.addSubview(btnSure);
@@ -107,7 +107,7 @@ class NNDatePicker: UIView {
     
     lazy var btnCancel: UIButton = {
         let btn = UIButton(type: .custom);
-//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
+//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: 44);
         btn.tag = 0;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
@@ -120,7 +120,7 @@ class NNDatePicker: UIView {
     
     lazy var btnSure: UIButton = {
         let btn = UIButton(type: .custom);
-//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: kNaviBarHeight);
+//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: 44);
         btn.tag = 1;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
@@ -132,7 +132,7 @@ class NNDatePicker: UIView {
     }();
     
     lazy var label: UILabel = {
-        let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: kNaviBarHeight));
+        let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: 44));
         lab.tag = 10;
         lab.text = "请选择";
         lab.textColor = .lightGray;
