@@ -25,6 +25,9 @@ class NNTablePlainView: UIView {
     var viewBlockDidSelectRow: DidSelectRowClosure?
     var viewBlockHeightForRow: CellHeightForRowClosure?
 
+    
+    var heightForHeaderInSection: CGFloat = 10
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     
@@ -103,7 +106,7 @@ extension NNTablePlainView: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0;
+        return heightForHeaderInSection
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -111,7 +114,7 @@ extension NNTablePlainView: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01;
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
