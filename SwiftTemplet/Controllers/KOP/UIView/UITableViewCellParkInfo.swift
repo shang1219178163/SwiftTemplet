@@ -96,7 +96,7 @@ class UITableViewCellParkInfo: UITableViewCell {
             return;
         }
         let height = bounds.height - inset.top - inset.bottom
-        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : kPadding
         
         let list = [btnOne, btnTwo,].filter { $0.isHidden == false }
         let itemWidth: CGFloat = 50

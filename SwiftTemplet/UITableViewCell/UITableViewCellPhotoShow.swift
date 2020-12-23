@@ -45,7 +45,7 @@ class UITableViewCellPhotoShow: UITableViewCell {
         }
             
         let height = bounds.height - inset.top - inset.bottom
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
 
         labelLeft.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top)

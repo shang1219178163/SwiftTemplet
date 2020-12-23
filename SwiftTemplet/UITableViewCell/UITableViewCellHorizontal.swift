@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftExpand
 
 
 class UITableViewCellHorizontal: UITableViewCell {
@@ -87,7 +88,7 @@ class UITableViewCellHorizontal: UITableViewCell {
         if bounds.height <= 10 {
             return;
         }
-        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : kPadding
         let leadSpacing: CGFloat = inset.left
 
         let list = [labelOne, labelTwo, labelThree, labelFour].filter { $0.isHidden == false }

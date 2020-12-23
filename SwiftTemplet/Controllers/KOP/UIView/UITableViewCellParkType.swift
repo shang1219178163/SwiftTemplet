@@ -81,7 +81,7 @@ class UITableViewCellParkType: UITableViewCell {
             return;
         }
         let height = bounds.height - inset.top - inset.bottom
-        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let tailSpacing: CGFloat = accessoryType == .none ? inset.right : kPadding
         
         
         contentView.addSubview(label)
@@ -97,7 +97,7 @@ class UITableViewCellParkType: UITableViewCell {
         
         lineView.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalTo(label.snp.right).offset(8);
+            make.left.equalTo(label.snp.right).offset(kPadding);
             make.width.equalTo(1);
             make.height.equalTo(label);
         }

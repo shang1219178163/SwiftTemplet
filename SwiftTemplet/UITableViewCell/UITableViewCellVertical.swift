@@ -89,7 +89,7 @@ class UITableViewCellVertical: UITableViewCell {
         
 //        let height = bounds.height - inset.top - inset.bottom
         let labStartX = imgViewLeft.isHidden ? inset.left : imageViewSize.width + inset.left + kPadding
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
 
         if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in

@@ -127,7 +127,7 @@ class UITableViewCellSixLable: UITableViewCell {
         let height: CGFloat = bounds.height - 20
         
         let labStartX = imgViewLeft.isHidden ? inset.left : height + inset.left + kPadding
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
 
         if imgViewLeft.isHidden == false {
             imgViewLeft.snp.makeConstraints { (make) in

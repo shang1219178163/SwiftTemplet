@@ -54,7 +54,7 @@ class UITableViewCellProgressView: UITableViewCell {
         }
         let height = bounds.height - inset.top - inset.bottom
 
-        let right: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let right: CGFloat = accessoryType == .none ? inset.right : kPadding
         let left: CGFloat = inset.left
         
         progressView.snp.makeConstraints { (make) in

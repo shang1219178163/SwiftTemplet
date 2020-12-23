@@ -71,7 +71,7 @@ class UITableViewCellTextView: UITableViewCell {
             return
         }
         
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
         
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
         switch type {

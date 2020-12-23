@@ -58,7 +58,7 @@ class UITableViewCellRightBtn: UITableViewCell {
             return
         }
         let height = bounds.height - inset.top - inset.bottom
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
         
         if labelLeft.isHidden == true {
             btn.snp.makeConstraints { (make) in

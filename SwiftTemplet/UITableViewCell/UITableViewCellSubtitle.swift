@@ -69,7 +69,7 @@ class UITableViewCellSubtitle: UITableViewCell {
         
         let height = bounds.height - inset.top - inset.bottom
         let labStartX = btn.isHidden ? inset.left : btnSize.width + inset.left + kPadding
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
 
         if btn.isHidden == false {
             btn.snp.makeConstraints { (make) in

@@ -83,7 +83,7 @@ class UITableViewCellOne: UITableViewCell {
         let height = bounds.height - inset.top - inset.bottom
         
         let labStartX = imgViewLeft.isHidden ? inset.left : height + inset.left + kPadding
-        let endX = accessoryType == .none ? inset.right : 0
+        let endX = accessoryType == .none ? inset.right : kPadding
         
         //头像不为空
         if imgViewLeft.isHidden == false {

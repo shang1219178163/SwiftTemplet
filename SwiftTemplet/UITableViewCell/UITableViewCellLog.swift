@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftExpand
 
 class UITableViewCellLog: UITableViewCell {
     
@@ -139,7 +139,7 @@ class UITableViewCellLog: UITableViewCell {
         }
         
         let height: CGFloat = bounds.height - 20
-        let endX: CGFloat = accessoryType == .none ? inset.right : 0.0
+        let endX: CGFloat = accessoryType == .none ? inset.right : kPadding
 
         if imgViewLeft.isHidden == true {
             labelOneRight.snp.makeConstraints { (make) in

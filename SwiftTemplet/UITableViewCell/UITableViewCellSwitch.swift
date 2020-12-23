@@ -65,7 +65,7 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
             return
         }
         let height = bounds.height - inset.top - inset.bottom
-//        let endX = accessoryType == .none ? inset.right : 0
+//        let endX = accessoryType == .none ? inset.right : kPadding
 
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
         labelLeft.snp.remakeConstraints { (make) in
