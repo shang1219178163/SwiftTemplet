@@ -74,10 +74,11 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        let scrollViewTopHeight = scrollViewTop.isHidden ? 0.0 : 50
         scrollViewTop.snp.makeConstraints { (make) in
             make.top.equalToSuperview();
             make.left.right.equalToSuperview();
-            make.height.equalTo(50);
+            make.height.equalTo(scrollViewTopHeight);
         }
         
         scrollViewContent.snp.makeConstraints { (make) in
@@ -88,7 +89,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
         
     
 //        scrollViewContent.frame = CGRectMake(0, 50, view.bounds.width, view.bounds.height - 50)
-        DDLog(scrollViewContent.frame)
+//        DDLog(scrollViewContent.frame)
         guard viewControllers!.count > 0 else {
             return;
         }

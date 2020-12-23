@@ -18,7 +18,8 @@ import SnapKit
 class NNAddressPickerController: NNTabController{
     
     weak var addressDelegate: NNAddressPickerControllerDelegate?
-    
+    var addressBlock:((NNAddressPickerController)->Void)?
+
     var provinceModel: NNAddressLabelModel?{
         return firstVC.dataModel;
     }
@@ -31,8 +32,14 @@ class NNAddressPickerController: NNTabController{
         return thirdVC.dataModel;
     }
     
-    var level = 3
-
+    var level = 3{
+        willSet{
+            scrollViewTop.isHidden = (newValue == 1)
+        }
+    }
+    
+    var indexP: IndexPath?
+    // MARK: -lifecylce
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,7 +79,8 @@ class NNAddressPickerController: NNTabController{
             self.dismiss(animated: true, completion: nil)
 //            DDLog("\(self.provinceModel?.label)\(self.cityModel?.label)\(self.areaModel?.label)")
             self.addressDelegate?.addressPickerVC(self)
-            
+            self.addressBlock?(self)
+
         }, for: .touchUpInside)
         
     }
