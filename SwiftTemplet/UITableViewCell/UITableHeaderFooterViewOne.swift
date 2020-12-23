@@ -43,7 +43,7 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         labelLeft.numberOfLines = 1;
         imgViewRight.image = UIImage(named: kIMG_arrowRight)
 
-        _ = contentView.addGestureTap {[weak self] (sender) in
+        contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }
             if self.isCanOpen == true {
                 self.viewBlock?(self)

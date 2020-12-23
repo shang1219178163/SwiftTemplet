@@ -43,7 +43,7 @@ class UITableViewCellPickerView: UITableViewCell {
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
 
-        _ = contentView.addGestureTap { (sender) in
+        contentView.addGestureTap { (sender) in
             self.pickView.show();
         }
     }

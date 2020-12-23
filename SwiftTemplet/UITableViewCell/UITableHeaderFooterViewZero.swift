@@ -36,7 +36,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
         
         indicatorView.image = UIImage(named: kIMG_arrowRight)
 
-        _ = contentView.addGestureTap {[weak self] (sender) in
+        contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }
             if self.isCanOpen == true {
                 self.block?(self)

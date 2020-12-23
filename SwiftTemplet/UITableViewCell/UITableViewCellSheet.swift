@@ -48,7 +48,7 @@ class UITableViewCellSheet: UITableViewCell {
         textfield.isEnabled = false
         accessoryType = .disclosureIndicator
 
-        _ = contentView.addGestureTap { (sender) in
+        contentView.addGestureTap { (sender) in
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.endEditing(true)
                 keyWindow.rootViewController?.present(self.alertCtrl, animated: true, completion: nil)

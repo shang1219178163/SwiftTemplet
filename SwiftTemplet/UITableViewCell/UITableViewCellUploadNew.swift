@@ -11,10 +11,9 @@ import SwiftExpand
 
 /// 文件图片上传
 class UITableViewCellUploadNew: UITableViewCell {
-    var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     
     var btnTipSize = CGSize(width: 17, height: 17)
-    var btnCenterOffsetY: CGFloat = -50
+    var btnCenterRightSpacing: CGFloat = -50
 
     lazy var btnTip: UIButton = {
         let view = UIButton(type: .custom);
@@ -73,7 +72,7 @@ class UITableViewCellUploadNew: UITableViewCell {
             btnCenter.sizeToFit()
             btnCenter.snp.remakeConstraints { (make) in
                 make.centerY.equalToSuperview()
-                make.right.equalTo(detailTextLabel.snp.left).offset(btnCenterOffsetY)
+                make.right.equalTo(detailTextLabel.snp.left).offset(btnCenterRightSpacing)
             }
         }
         

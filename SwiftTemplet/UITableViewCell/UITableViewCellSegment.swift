@@ -107,6 +107,7 @@ class UITableViewCellSegment: UITableViewCell {
     //MARK: -lazy
     lazy var segmentCtl: NNSegmentedControl = {
         let view = NNSegmentedControl.create( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
+        view.cornerRadius = 4
         return view
     }()
     
