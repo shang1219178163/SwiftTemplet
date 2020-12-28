@@ -61,7 +61,7 @@ public enum RxMapModelError: Error {
 //.扩展Observable：增加模型映射方法
 public extension Observable where Element: Any {
     
-    //将JSON数据转成对象
+    //HandyJSON 将JSON数据转成对象
     func mapHandyJSONModel<T: HandyJSON>(type: T.Type) -> Observable<T> {
         return self.map { (element) -> T in
             guard let parsedElement = T.deserialize(from: element as? Dictionary) else {
@@ -71,7 +71,7 @@ public extension Observable where Element: Any {
         }
     }
     
-    //将JSON数据转成数组
+    //HandyJSON 将JSON数据转成数组
     func mapHandyJSONModels<T: HandyJSON>(type: T.Type) -> Observable<[T]> {
         return self.map { (element) -> [T] in
             guard let parsedArray = [T].deserialize(from: element as? [Any]) as? [T] else {

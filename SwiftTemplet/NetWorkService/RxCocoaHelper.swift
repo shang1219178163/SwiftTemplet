@@ -1,5 +1,5 @@
 //
-//  RXCocoaHelper.swift
+//  RxCocoaHelper.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/12/24.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class RXCocoaHelper: NSObject {
+class RxCocoaHelper: NSObject {
 
 }
 
@@ -64,6 +64,13 @@ public extension Reactive where Base: UISearchBar{
             } onDisposed: {
                 
             }
+    }
+}
+
+public extension UIButton{
+    ///避免连续调用(1.5 秒响应一次)
+    func rxDrive(onNext: @escaping ((UIButton) -> Void)) -> Disposable {
+        return self.rx.safeDrive(onNext: onNext)
     }
 }
 
