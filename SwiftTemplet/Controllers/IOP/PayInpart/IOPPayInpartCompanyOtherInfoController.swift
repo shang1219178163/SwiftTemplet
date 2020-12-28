@@ -18,7 +18,7 @@ import SnapKit
 
     lazy var rightBtn: UIButton = {
         let view = UIButton.create(title: "Next", textColor: .white, backgroundColor: .theme)
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
 //            let controller = UIViewController()
 //            self.navigationController?.pushViewController(controller, animated: true)
             
@@ -145,6 +145,8 @@ import SnapKit
 //        DDLog(itemList)
         
 //        let controller = uploadImageVC
+//        let controller = IOPUploadImageController()
+
 //        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
 //        controller.key = itemList[4]
 //
@@ -152,6 +154,10 @@ import SnapKit
 //        controller.imgUrl = imgUrl
 //        controller.isFromPickerVC = false
 //        controller.showImageDefault = true
+//        controller.block = { vc in
+//            dataModel.setValue(vc.imgUrl, forKeyPath: vc.key)
+//            self.tableView.reloadData()
+//        }
 //        navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -212,7 +218,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
             cell.isHidden = value2.cgFloatValue <= 0.0
             
             cell.labelLeft.text = value0
-            cell.btn.addActionHandler({ (control) in
+            cell.btn.addActionHandler({ (sender) in
 //                self.showAlert(value0, message: value3)
 
 //                UIAlertController.showAlert(value0, message: value3)
@@ -272,8 +278,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
             let index = dataModel.valueText(forKeyPath: value4, defalut: "0") == "1" ? 1 : 0
             cell.segmentCtl.selectedSegmentIndex = index
 //            cell.segmentCtl.addTarget(self, action: #selector(handleActionSender(_:)), for: .valueChanged)
-            cell.segmentCtl.addActionHandler({ (control) in
-                guard let sender = control as? UISegmentedControl else { return }
+            cell.segmentCtl.addActionHandler({ (sender) in
                 DDLog(sender.selectedSegmentIndex)
                 let value = "\(sender.selectedSegmentIndex)"
                 self.dataModel.setValue(value, forKeyPath: value4)
@@ -322,13 +327,5 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UILabel();
-    }
-}
-
-extension IOPPayInpartCompanyOtherInfoController: IOPUploadImageControllerDelegate{
-    func uploadImage(_ url: String, forKey key: String) {
-        DDLog(key, url)
-        dataModel.setValue(url, forKeyPath: key)
-        tableView.reloadData()
     }
 }

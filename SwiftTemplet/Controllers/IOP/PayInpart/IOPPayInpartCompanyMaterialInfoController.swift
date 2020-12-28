@@ -74,19 +74,30 @@ import HFNavigationController
 //        return controller
 //    }()
     
-    lazy var addressPickerVC: NNAddressPickerController = {
-        let controller = NNAddressPickerController()
-        controller.addressDelegate = self
-//        controller.level = 2
-      return controller;
-    }()
-
     lazy var navController: HFNavigationController = {
-        let controller = HFNavigationController(rootViewController: addressPickerVC)
-        controller.modalPresentationStyle = .custom
-        controller.transitioningDelegate = controller as UIViewControllerTransitioningDelegate
-        controller.setupDefaultHeight(UIScreen.main.bounds.height*0.8)
-        return controller;
+        let pickerVC = NNAddressPickerController()
+//        pickerVC.level = 2
+        pickerVC.addressBlock = { vc in
+            guard let provinceModel = vc.provinceModel,
+                  let cityModel = vc.cityModel,
+                  let areaModel = vc.areaModel
+            else { return }
+//            self.dataModel.license_province_name = provinceModel.label
+//            self.dataModel.license_province = provinceModel.value
+//
+//            self.dataModel.license_city_name = cityModel.label
+//            self.dataModel.license_city = cityModel.value
+//            
+//            self.dataModel.license_area_name = areaModel.label
+//            self.dataModel.license_area = areaModel.value
+//            if let indexP = vc.indexP {
+//                self.tableView.reloadRows(at: [indexP], with: .automatic)
+//            }
+        }
+        
+        let nav = HFNavigationController(rootViewController: pickerVC)
+        nav.setupDefaultHeight(UIScreen.main.bounds.height*0.8)
+        return nav;
     }()
     
     // MARK: - lifecycle
@@ -157,6 +168,10 @@ import HFNavigationController
 //        controller.imgUrl = imgUrl
 //        controller.isFromPickerVC = false
 //        controller.showImageDefault = true
+//        controller.block = { vc in
+//            dataModel.setValue(vc.imgUrl, forKeyPath: vc.key)
+//            self.tableView.reloadData()
+//        }
 //        navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -197,7 +212,7 @@ extension IOPPayInpartCompanyMaterialInfoController: UITableViewDataSource, UITa
             cell.isHidden = value2.cgFloatValue <= 0.0
             
             cell.labelLeft.text = value0
-            cell.btn.addActionHandler({ (control) in
+            cell.btn.addActionHandler({ (sender) in
 //                UIAlertController.showAlert(value0, message: value3, alignment: .left)
                 if value0 == "营业执照" {
 
@@ -339,39 +354,3 @@ extension IOPPayInpartCompanyMaterialInfoController: UITableViewDataSource, UITa
     }
 }
 
-extension IOPPayInpartCompanyMaterialInfoController: IOPUploadImageControllerDelegate{
-    func uploadImage(_ url: String, forKey key: String) {
-        DDLog(key, url)
-        dataModel.setValue(url, forKeyPath: key)
-        tableView.reloadData()
-    }
-}
-
-extension IOPPayInpartCompanyMaterialInfoController: NNAddressPickerControllerDelegate {
-
-    func addressPickerVC(_ controller: NNAddressPickerController) {
-        if controller == addressPickerVC {
-            guard let provinceModel = controller.provinceModel,
-                let cityModel = controller.cityModel else { return }
-//            dataModel.bank_province_name = provinceModel.label
-//            dataModel.bank_province = provinceModel.value
-//
-//            dataModel.bank_city_name = cityModel.label
-//            dataModel.bank_city = cityModel.value
-            
-        } else {
-            guard let provinceModel = controller.provinceModel,
-                let cityModel = controller.cityModel,
-                let areaModel = controller.areaModel else { return }
-//            dataModel.parkModel.province_name = provinceModel.label
-//            dataModel.parkModel.province = provinceModel.value
-//
-//            dataModel.parkModel.city_name = cityModel.label
-//            dataModel.parkModel.city = cityModel.value
-//
-//            dataModel.parkModel.area_name = areaModel.label
-//            dataModel.parkModel.area = areaModel.value
-        }
-        tableView.reloadData()
-    }
-}

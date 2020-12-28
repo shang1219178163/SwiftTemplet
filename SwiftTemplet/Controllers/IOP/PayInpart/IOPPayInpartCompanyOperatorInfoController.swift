@@ -190,6 +190,10 @@ import SnapKit
 //        controller.imgUrl = imgUrl
 //        controller.isFromPickerVC = false
 //        controller.showImageDefault = true
+//        controller.block = { vc in
+//            dataModel.setValue(vc.imgUrl, forKeyPath: vc.key)
+//            self.tableView.reloadData()
+//        }
 //        navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -242,7 +246,7 @@ extension IOPPayInpartCompanyOperatorInfoController: UITableViewDataSource, UITa
             cell.isHidden = value2.cgFloatValue <= 0.0
             
             cell.labelLeft.text = value0
-            cell.btn.addActionHandler({ (control) in
+            cell.btn.addActionHandler({ (sender) in
 //                UIAlertController.showAlert(value0, message: value3, alignment: .left)
                 if value0 == "营业执照" {
 
@@ -430,13 +434,5 @@ extension IOPPayInpartCompanyOperatorInfoController: UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UILabel();
-    }
-}
-
-extension IOPPayInpartCompanyOperatorInfoController: IOPUploadImageControllerDelegate{
-    func uploadImage(_ url: String, forKey key: String) {
-        DDLog(key, url)
-        dataModel.setValue(url, forKeyPath: key)
-        tableView.reloadData()
     }
 }
