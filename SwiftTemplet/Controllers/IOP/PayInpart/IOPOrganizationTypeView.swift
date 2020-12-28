@@ -108,7 +108,7 @@ extension IOPOrganizationTypeView: UITableViewDataSource, UITableViewDelegate{
         
         let attr: AttrString = """
         \(itemList[0], .font(UIFont.systemFont(ofSize: 15, weight: .medium)))
-        \(itemList[3], .color(.textColor6), .font(UIFont.systemFont(ofSize: 13)), .alignment(.left, lineSpacing: 0, paragraphSpacingBefore: 5, lineBreakMode: .byWordWrapping))
+        \(itemList[3], .color(.textColor6), .font(UIFont.systemFont(ofSize: 13)), .paraStyle(.left, lineSpacing: 0, paragraphSpacingBefore: 5, lineBreakMode: .byWordWrapping))
         """
         cell.label.attributedText = attr.attributedString
         return cell;
