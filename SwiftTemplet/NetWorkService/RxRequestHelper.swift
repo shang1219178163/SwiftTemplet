@@ -74,10 +74,10 @@ public extension Observable where Element: Any {
     //将JSON数据转成数组
     func mapHandyJSONModels<T: HandyJSON>(type: T.Type) -> Observable<[T]> {
         return self.map { (element) -> [T] in
-            guard let parsedArray = [T].deserialize(from: element as? [Any]) else {
+            guard let parsedArray = [T].deserialize(from: element as? [Any]) as? [T] else {
                 throw RxMapModelError.parsingError
             }
-            return parsedArray as! [T]
+            return parsedArray
         }
     }
 
@@ -94,10 +94,10 @@ public extension Observable where Element: Any {
     //将JSON数据转成数组
     func mapYYModels<T: NSObject>(type: T.Type) -> Observable<[T]> {
         return self.map { (element) -> [T] in
-            guard let parsedArray = NSArray.yy_modelArray(with: T.self, json: element) else {
+            guard let parsedArray = NSArray.yy_modelArray(with: T.self, json: element) as? [T] else {
                 throw RxMapModelError.parsingError
             }
-            return parsedArray as! [T]
+            return parsedArray
         }
     }
 }
