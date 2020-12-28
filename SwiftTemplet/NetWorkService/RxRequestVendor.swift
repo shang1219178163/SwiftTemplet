@@ -41,47 +41,6 @@ extension Reactive where Base: MJRefreshComponent {
     }
 }
 
-//----
-/* ============================ Refreshable ================================ */
-// 需要使用 MJExtension 的控制器使用
-
-protocol Refreshable {
-    
-}
-extension Refreshable where Self : UIViewController {
-    func initRefreshHeader(_ scrollView: UIScrollView, _ action: @escaping () -> Void) -> MJRefreshHeader {
-        scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { action() })
-        return scrollView.mj_header!
-    }
-    
-    func initRefreshFooter(_ scrollView: UIScrollView, _ action: @escaping () -> Void) -> MJRefreshFooter {
-        scrollView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { action() })
-        return scrollView.mj_footer!
-    }
-}
-
-//-------------------------------------------------------------------------
-extension UIScrollView {
-    func refreshHeader(_ action: @escaping () -> Void) -> MJRefreshHeader {
-        guard let mj_header = mj_header else {
-            let component = MJRefreshNormalHeader(refreshingBlock: { action() })
-            self.mj_header = component
-            return component
-        }
-        return mj_header
-    }
-    
-    func refreshFooter(_ action: @escaping () -> Void) -> MJRefreshFooter {
-        guard let mj_footer = mj_footer else {
-            let component = MJRefreshAutoNormalFooter(refreshingBlock: { action() })
-            self.mj_footer = component
-            return component
-        }
-        return mj_footer
-    }
-}
-
-
 //class RxTarget: NSObject, Disposable {  // RxTarget 是 Rxswift 源码
 //    private var retainSelf: RxTarget?
 //    override init() {
