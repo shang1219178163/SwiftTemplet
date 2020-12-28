@@ -54,7 +54,7 @@ class IOPInvoiceCreateController: UIViewController {
     lazy var rightBtn: UIButton = {
         let button = UIButton.create(.zero, title: "进件须知", textColor: .theme, backgroundColor: .clear)
         button.sizeToFit()
-        button.addActionHandler({ (control) in
+        button.addActionHandler({ (sender) in
             
         }, for: .touchUpInside)
         return button
@@ -222,8 +222,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
             let index = dataModel.valueText(forKeyPath: value4, defalut: "0") == "0" ? 0 : 1
             cell.segmentCtl.selectedSegmentIndex = index
 //            cell.segmentCtl.addTarget(self, action: #selector(handleActionSender(_:)), for: .valueChanged)
-            cell.segmentCtl.addActionHandler({ (control) in
-                guard let sender = control as? UISegmentedControl else { return }
+            cell.segmentCtl.addActionHandler({ (sender) in
 //                DDLog(sender.selectedSegmentIndex)
                 let value = "\(sender.selectedSegmentIndex)"
 //                let value: String = sender.selectedSegmentIndex == 0 ? "0" : "1"

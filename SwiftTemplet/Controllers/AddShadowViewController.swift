@@ -17,8 +17,8 @@ class AddShadowViewController: UIViewController {
         view.setTitleColor(.theme, for: .normal)
         view.adjustsImageWhenHighlighted = false
         view.backgroundColor = .systemGreen
-        view.addActionHandler({ (control) in
-            print(control)
+        view.addActionHandler({ (sender) in
+            print(sender)
 
         }, for: .touchUpInside)
 

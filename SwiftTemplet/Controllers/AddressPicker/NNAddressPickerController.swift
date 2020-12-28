@@ -75,7 +75,7 @@ class NNAddressPickerController: NNTabController{
         let button = UIButton.create(.zero, title: "确定", textColor: .theme, backgroundColor: .clear)
         button.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
-        button.addActionHandler({ (control) in
+        button.addActionHandler({ (sender) in
             self.dismiss(animated: true, completion: nil)
 //            DDLog("\(self.provinceModel?.label)\(self.cityModel?.label)\(self.areaModel?.label)")
             self.addressDelegate?.addressPickerVC(self)
