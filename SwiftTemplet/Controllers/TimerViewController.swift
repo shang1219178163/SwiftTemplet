@@ -47,7 +47,7 @@ class TimerViewController: UIViewController {
 //        clickNums = 5
         
         isPause = !isPause;
-        timer.pause(isPause)
+        timer.pause()
 //        timer.fireDate = isPause == false ? Date.distantFuture : Date.distantPast;
         
         print(isPause)

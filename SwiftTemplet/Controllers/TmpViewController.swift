@@ -33,7 +33,7 @@ class TmpViewController: UIViewController {
 
         view.addSubview(contentView)
         let rightBtn = UIButton.createBtnBarItem("next")
-        rightBtn.addActionHandler({ (control) in
+        rightBtn.addActionHandler({ (sender) in
             self.emergencyOpenView.show();
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)

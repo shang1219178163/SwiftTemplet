@@ -182,7 +182,7 @@ extension IOPOrdersChooseView{
 //        view.btn.setTitle(title, for: .normal)
 //        view.btn.setBackgroundImage(UIImage(color: UIColor.theme), for: .normal);
 //        view.btn.setTitleColor(UIColor.white, for: .normal)
-//        view.btn.addActionHandler({ (control) in
+//        view.btn.addActionHandler({ (sender) in
 //            DDLog(control)
 //
 //        }, for: .touchUpInside)

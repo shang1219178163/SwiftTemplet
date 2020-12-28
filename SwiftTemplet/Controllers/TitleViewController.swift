@@ -38,7 +38,7 @@ class TitleViewController: NNTitleViewSelectController{
         }
         
         let rightBtn = UIButton.createBtnBarItem("next")
-        rightBtn.addActionHandler({ (control) in
+        rightBtn.addActionHandler({ (sender) in
             let controller = SheetViewController()
             self.navigationController?.pushViewController(controller, animated: true);
         })
@@ -73,7 +73,7 @@ class TitleViewController: NNTitleViewSelectController{
             }
             
         }, for: .touchUpInside)
-//        view.getViewLayer()
+        view.getViewLayer()
         
         let obj = 3.repeatArray("334")
         DDLog(obj)
@@ -223,9 +223,9 @@ class TitleViewController: NNTitleViewSelectController{
         view.showStyle = .bottomLine
         view.selectedColor = .systemBlue
         view.items = ["是", "否", "其他"]
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UISegmentedControl else { return }
+        view.addActionHandler({ (sender) in
             DDLog(sender)
+            
         }, for: .valueChanged)
         return view;
     }()
@@ -277,10 +277,10 @@ class TitleViewController: NNTitleViewSelectController{
     lazy var button: NNButton = {
         let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
-//        var normlImage: UIImage = UIImage(named: "photo_cancell")!
-//        var seletedImage: UIImage = UIImage(named: "photo_select")!
-//        view.setImage(normlImage, for: .normal)
-//        view.setImage(seletedImage, for: .selected)
+        var normlImage: UIImage = UIImage(named: "photo_cancell")!
+        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        view.setImage(normlImage, for: .normal)
+        view.setImage(seletedImage, for: .selected)
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
         return view
@@ -288,7 +288,7 @@ class TitleViewController: NNTitleViewSelectController{
     
     lazy var buttonTop: NNButton = {
         let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯Top", for: .normal);
+        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .top
         view.iconLocation = .leftTop
 
@@ -303,7 +303,7 @@ class TitleViewController: NNTitleViewSelectController{
     
     lazy var buttonBottom: NNButton = {
         let view = NNButton(type:.custom);
-//        view.setTitle("浪迹天涯", for: .normal);
+        view.setTitle("浪迹天涯", for: .normal);
         view.direction = .bottom
         view.iconLocation = .leftBottom
 
@@ -343,8 +343,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.label.text = "手机号码:"
         view.textfield.placeholder = "请输入手机号码"
 //        view.label.isHidden = true
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in
@@ -360,8 +360,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.btn.isHidden = true
         view.label.isHidden = true
 
-        view.btn.addActionHandler { (control) in
-            guard let sender = control as? UIButton else { return }
+        view.btn.addActionHandler { (sender) in
+            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in

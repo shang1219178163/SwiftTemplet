@@ -29,7 +29,7 @@ import SnapKit
         
     lazy var rightBtn: UIButton = {
         let view = UIButton.create(title: "Next", textColor: .white, backgroundColor: .theme)
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
 //            let controller = UIViewController()
 //            self.navigationController?.pushViewController(controller, animated: true)
             
@@ -209,7 +209,7 @@ extension IOPPayInpartBaseInfoController: UITableViewDataSource, UITableViewDele
             
             cell.btn.isHidden = true
             cell.labelLeft.text = value0
-            cell.btn.addActionHandler({ (control) in
+            cell.btn.addActionHandler({ (sender) in
 //                UIAlertController.showAlert(value0, message: value3, alignment: .left)
                 
             }, for: .touchUpInside)

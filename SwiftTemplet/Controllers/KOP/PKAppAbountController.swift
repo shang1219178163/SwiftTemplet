@@ -28,8 +28,8 @@ class PKAppAbountController: UIViewController {
         view.topPadding = 40;
         view.btn.setTitle("版本号: v\(UIApplication.appVer)", for: .normal)
         view.btn.setTitleColor(.textColor3, for: .normal)
-        view.btn.addActionHandler({ (control) in
-            DDLog(control)
+        view.btn.addActionHandler({ (sender) in
+            DDLog(sender)
             
         }, for: .touchUpInside)
         view.imgView.image = UIApplication.appIcon

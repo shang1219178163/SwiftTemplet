@@ -183,9 +183,8 @@ class NNUserInfoViewNew: UIView {
         view.titleLabel?.adjustsFontSizeToFitWidth = true
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
-            
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;

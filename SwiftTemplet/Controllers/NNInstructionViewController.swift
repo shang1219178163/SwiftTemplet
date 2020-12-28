@@ -16,7 +16,7 @@ import UIKit
 
     lazy var rightBtn: UIButton = {
         let view = UIButton.create(title: "下一步骤", textColor: .white, backgroundColor: .theme)
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
 //            let controller = IOPInPartAgreementController()
 //            controller.type = "1"
 //            self.navigationController?.pushViewController(controller, animated: true)

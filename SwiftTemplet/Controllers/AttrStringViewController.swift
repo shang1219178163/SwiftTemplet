@@ -18,7 +18,7 @@ import SnapKit
         let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
         button.isHidden = true;
         button.sizeToFit()
-        button.addActionHandler({ (control) in
+        button.addActionHandler({ (sender) in
             
         }, for: .touchUpInside)
         return button
@@ -131,32 +131,36 @@ import SnapKit
         label.attributedText = tmp
         
         
-//        let att0 = NSAttributedString(string: "Swift,", attributes: nil)
-        let att0 = "Swift,".attributed
+        let att0 = "Swift,".matt
             .font(UIFont.systemFont(ofSize: 16))
             .color(.systemBlue)
-            .underline(.red, .single)
+            .underline(.single, .red)
             .oblique(0.5)
             .link("https://www.hackingwithswift.com")
         
 //        let att1 = NSAttributedString(string: " how do you like this?", attributes: nil)
-        let att1 = " how do you like this?".attributed
+        let att1 = " how do you like this?".matt
             .font(UIFont.systemFont(ofSize: 12))
             .color(.systemGreen)
-            .strikethrough(.lightRed, .single)
+            .strikethrough(.single, .lightRed)
         
 //        let att2 = NSAttributedString(string: ", YES?", attributes: nil)
-        let att2 = ", YES?".attributed
+        let att2 = ", YES?".matt
         .font(UIFont.systemFont(ofSize: 20))
         .color(.systemOrange)
         .oblique(-0.5)
         
-        textView.attributedText = (att0 + att1 + att2)
+        let att3 = "666".matt
+            .color(.red)
+            .bgColor(.green)
+            .font(UIFont.systemFont(ofSize: 15))
+            .oblique(0.3)
+        
+        textView.attributedText = (att0 + att1 + att2 + att3).matt
             .font(UIFont.systemFont(ofSize: 30))
 //            .color(.systemPink)
 //            .bgColor(.lightGreen)
 //            .oblique(0.3)
-
     }
         
     override func didReceiveMemoryWarning() {

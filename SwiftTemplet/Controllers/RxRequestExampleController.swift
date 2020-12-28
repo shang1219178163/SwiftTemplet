@@ -23,7 +23,7 @@ class RxRequestExampleController: UIViewController {
         view.setBackgroundColor(.theme, for: .normal)
 //        view.isHidden = true;
         view.sizeToFit()
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             self.requestAppInfo1()
             
         }, for: .touchUpInside)

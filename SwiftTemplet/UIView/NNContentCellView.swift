@@ -147,8 +147,8 @@ class NNContentCellView: UIImageView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
 //        view.setTitle(kTitleSure, for: .normal);
 //        view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
-            DDLog(control)
+        view.addActionHandler({ (sender) in
+            DDLog(sender)
 
         }, for: .touchUpInside)
         return view;

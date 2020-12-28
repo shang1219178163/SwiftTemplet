@@ -18,7 +18,7 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
         view.addSubview(tableView)
         
         let rightBtn = UIButton.createBtnBarItem("语音通话")
-        rightBtn.addActionHandler({ (control) in
+        rightBtn.addActionHandler({ (sender) in
             self.phoneView.show();
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
@@ -64,8 +64,8 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
 //        view.layer.cornerRadius = 3.5;
 //        view.layer.masksToBounds = true;
 //        view.layoutButton(direction: 0)
-//        view.addActionHandler({ (control) in
-//            //            UIView.GCDTimerAdd((control as! UIButton).titleLabel, date: NSDate())
+//        view.addActionHandler({ (sender) in
+//            UIView.GCDTimerAdd((control as! UIButton).titleLabel, date: NSDate())
 //            self.phoneView.show();
 //
 //        })

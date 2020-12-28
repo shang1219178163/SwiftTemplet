@@ -159,7 +159,7 @@ class NNTaskCenterHeaderView: UIImageView {
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle(kTitleSure, for: .normal);
         view.setTitleColor(.systemBlue, for: .normal);
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             
 //            self.delegate?.taskCenterHeaderView(self, sender: sender)
 

@@ -21,8 +21,7 @@ import UIKit
         view.indicatorHeight = 2
         view.lineView.backgroundColor = .clear
         view.items = ["过去", "现在", "将来"]
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UISegmentedControl else { return }
+        view.addActionHandler({ (sender) in
             let idx = sender.selectedSegmentIndex
             let indexP = IndexPath(row: idx, section: 0)
             self.collectionView.scrollToItem(at: indexP, at: .centeredHorizontally, animated: true)

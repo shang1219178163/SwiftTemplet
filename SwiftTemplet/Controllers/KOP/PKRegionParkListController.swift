@@ -42,8 +42,8 @@ import UIKit
     lazy var rightBtn: UIButton = {
         let sender = UIButton(type: .custom)
         sender.setBackgroundImage(UIImage(named: "icon_quit"), for: .normal)
-        sender.addActionHandler({ (control) in
-            print(control)
+        sender.addActionHandler({ (sender) in
+            print(sender)
             
         }, for: .touchUpInside)
         return sender

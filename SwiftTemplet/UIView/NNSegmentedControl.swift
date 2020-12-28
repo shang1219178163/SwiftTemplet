@@ -15,7 +15,7 @@ class NNSegmentedControl: UISegmentedControl {
     var indicatorHeight: CGFloat = 1.5
     var indicatorWidth: CGFloat = 0
 
-    var cornerRadius: CGFloat = 3
+    var cornerRadius: CGFloat = 0
 
     var normalColor: UIColor = .black {
         didSet{

@@ -28,7 +28,7 @@ class PKMineController: UIViewController {
         view.userInfoView.level = "30"
         view.userInfoView.points = "3300"
         view.userInfoView.couponNumber = "12"
-        view.userInfoView.btnLevel.addActionHandler({ (control) in
+        view.userInfoView.btnLevel.addActionHandler({ (sender) in
             self.navigationController?.pushVC(PKUserLevelController.self, animated: true) { (vc) in
                 
             }

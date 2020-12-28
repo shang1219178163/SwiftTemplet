@@ -117,8 +117,8 @@ extension NNTableFooterView{
         view.btn.setTitle(title, for: .normal)
         view.btn.setBackgroundImage(UIImage(color: UIColor.theme), for: .normal);
         view.btn.setTitleColor(UIColor.white, for: .normal)
-        view.btn.addActionHandler({ (control) in
-            DDLog(control)
+        view.btn.addActionHandler({ (sender) in
+            DDLog(sender)
             
         }, for: .touchUpInside)
         return view;

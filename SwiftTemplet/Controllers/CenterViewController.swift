@@ -98,8 +98,8 @@ class CenterViewController: UIViewController {
         
         
         let rightBtn = UIButton.createBtnBarItem("done")
-        rightBtn.addActionHandler({ (control) in
-            DDLog(control);
+        rightBtn.addActionHandler({ (sender) in
+            DDLog(sender);
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
     }

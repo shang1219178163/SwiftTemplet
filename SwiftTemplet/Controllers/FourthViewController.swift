@@ -18,8 +18,8 @@ class FourthViewController: UIViewController {
         btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
         btn.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         btn.sizeToFit()
-        btn.addActionHandler({ (control) in
-            self.showPopoverAction(control as! UIButton)
+        btn.addActionHandler({ (sender) in
+            self.showPopoverAction(sender)
             
         }, for: .touchUpInside)
         return btn
@@ -66,8 +66,7 @@ class FourthViewController: UIViewController {
         view.selectedColor = .white
         view.items = ["昨天", "今天", "明天"]
         view.indicatorWidth = 40
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UISegmentedControl else { return }
+        view.addActionHandler({ (sender) in
             DDLog(sender)
             self.fliterView.show()
 

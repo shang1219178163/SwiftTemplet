@@ -205,7 +205,7 @@ class UICallPhoneView: UIView {
         view.layer.cornerRadius = 3.5;
         view.layer.masksToBounds = true;
         view.layoutButton(direction: 0)
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             self.show();
             
         })

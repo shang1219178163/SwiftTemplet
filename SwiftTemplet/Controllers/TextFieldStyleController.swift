@@ -28,7 +28,7 @@ class TextFieldStyleController: UIViewController {
         let button = UIButton.create(.zero, title: "优惠券", textColor: .white, backgroundColor: .clear)
         
         button.sizeToFit()
-        button.addActionHandler({ (control) in
+        button.addActionHandler({ (sender) in
             let controller = CCSCouponRecordController()
             self.navigationController?.pushViewController(controller, animated: true)
             
@@ -174,9 +174,9 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
                 let sender = cell.textfield.asoryView(true, obj: itemList.last!)
                 sender.setImage(UIImage(named: "icon_eye_close"), for: .normal)
                 sender.setImage(UIImage(named: "icon_eye_open"), for: .selected)
-                sender.addActionHandler({ (control) in
-                    control.isSelected = !control.isSelected
-                    cell.textfield.isSecureTextEntry = !control.isSelected
+                sender.addActionHandler({ (sender) in
+                    sender.isSelected = !sender.isSelected
+                    cell.textfield.isSecureTextEntry = !sender.isSelected
                 }, for: .touchUpInside)
 
             default:

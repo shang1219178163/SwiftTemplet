@@ -44,7 +44,7 @@ class UITableViewCellTextField: UITableViewCell {
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
 //        textfield.addTarget(self, action: #selector(handleSend(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
-//        textfield.addActionHandler({ (control) in
+//        textfield.addActionHandler({ (sender) in
 //            guard let sender = control as? UITextField else { return }
 //            DDLog(sender.text)
 //

@@ -16,7 +16,7 @@ import MJRefresh
 
     lazy var rightBtn: UIButton = {
         let view = UIButton.create(title: "Next", textColor: .white, backgroundColor: .theme)
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
 //            let controller = UIViewController()
 //            self.navigationController?.pushViewController(controller, animated: true)
             

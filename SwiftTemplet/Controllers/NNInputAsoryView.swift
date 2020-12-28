@@ -34,8 +34,8 @@ import SwiftExpand
         view.setTitleColor(.systemBlue, for: .normal);
         view.setBackgroundImage(UIImage(named: "img_chat_voice"), for: .normal)
         
-        view.addActionHandler({ (control) in
-            self.delegate?.inputAsoryview(self, sender: control as! UIButton)
+        view.addActionHandler({ (sender) in
+            self.delegate?.inputAsoryview(self, sender: sender)
 
         }, for: .touchUpInside)
         return view;
@@ -52,8 +52,8 @@ import SwiftExpand
         
         view.setBackgroundImage(UIImage(named: "img_chat_keyboard"), for: .normal)
 
-        view.addActionHandler({ (control) in
-            self.delegate?.inputAsoryview(self, sender: control as! UIButton)
+        view.addActionHandler({ (sender) in
+            self.delegate?.inputAsoryview(self, sender: sender)
 
         }, for: .touchUpInside)
         return view;
@@ -69,8 +69,8 @@ import SwiftExpand
         
         view.setBackgroundImage(UIImage(named: "img_chat_more"), for: .normal)
 
-        view.addActionHandler({ (control) in
-            self.delegate?.inputAsoryview(self, sender: control as! UIButton)
+        view.addActionHandler({ (sender) in
+            self.delegate?.inputAsoryview(self, sender: sender)
 
         }, for: .touchUpInside)
         return view;

@@ -36,7 +36,7 @@ import SwiftExpand
     lazy var rightBtn: UIButton = {
         let button = UIButton.create(.zero, title: "进件须知", textColor: .theme, backgroundColor: .clear)
         button.sizeToFit()
-        button.addActionHandler({ (control) in
+        button.addActionHandler({ (sender) in
             let controller = BlankSpaceViewController()
             self.navigationController?.pushViewController(controller, animated: true)
 

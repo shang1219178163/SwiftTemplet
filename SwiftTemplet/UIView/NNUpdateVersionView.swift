@@ -233,7 +233,7 @@ class NNUpdateVersionView: UIView {
 //        let image = UIImage(color: .systemGreen)
 //        view.setBackgroundImage(image, for: .normal)
         
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             self.dismiss()
             self.viewBlock?(self,  1)
             
@@ -259,7 +259,7 @@ class NNUpdateVersionView: UIView {
         view.setImage(UIImage(named: "icon_close"), for: .normal)
         //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             self.dismiss()
             self.viewBlock?(self,  0)
         }, for: .touchUpInside)

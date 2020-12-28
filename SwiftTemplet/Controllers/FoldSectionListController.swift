@@ -22,9 +22,9 @@ class FoldSectionListController: UIViewController{
         view.normalColor = .gray
         view.selectedColor = .white
         view.items = ["过去", "现在", "将来"]
-        view.addActionHandler({ (control) in
-            guard let sender = control as? UISegmentedControl else { return }
+        view.addActionHandler({ (sender) in
             DDLog(sender.selectedSegmentIndex)
+            
         }, for: .valueChanged)
         return view;
     }()

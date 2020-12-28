@@ -17,7 +17,7 @@ class PickerViewController: UIViewController {
         
         
         let rightBtn = UIButton.createBtnBarItem("next")
-        rightBtn.addActionHandler({ (control) in
+        rightBtn.addActionHandler({ (sender) in
             self.customPickerView.show();
             self.btn.transform = CGAffineTransform.identity
 
@@ -68,7 +68,7 @@ class PickerViewController: UIViewController {
         view.backgroundColor = UIColor.systemBlue
         view.setTitle("获取信息", for: .normal)
         
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             print("被选中的索引为：\(self.pickerView.selectedRow(inComponent: 0))、\(self.pickerView.selectedRow(inComponent: 1))、\(self.pickerView.selectedRow(inComponent: 2))")
             view.transform = view.transform.translatedBy(x: 0, y: -20)
 

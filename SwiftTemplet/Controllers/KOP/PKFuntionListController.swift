@@ -56,7 +56,7 @@ import SwiftExpand
         let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
 //        button.isHidden = true;
         button.sizeToFit()
-        button.addActionHandler({ (control) in
+        button.addActionHandler({ (sender) in
 //            DDLog(control)
             self.navigationController?.pushVC(SimpleListController.self, animated: true, block: { (vc) in
                 vc.label.text = "SimpleListController"

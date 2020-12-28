@@ -80,10 +80,10 @@ class PlateNumOriginController: UIViewController {
 //
 //                view.layer.borderWidth = 1;
 //                view.layer.borderColor = handler.cellBorderColor.cgColor;
-//                view.addActionHandler({ (control) in
-//                    control.isSelected = !control.isSelected;
-//                    //                    DDLog(control.isSelected)
-//                    self.handler.changeInputType(isNewEnergy: control.isSelected)
+//                view.addActionHandler({ (sender) in
+//                    sender.isSelected = !sender.isSelected;
+//                    DDLog(sender.isSelected)
+//                    self.handler.changeInputType(isNewEnergy: sender.isSelected)
 //
 //                }, for: .touchUpInside)
 //                return view;
@@ -100,7 +100,7 @@ class PlateNumOriginController: UIViewController {
         view.setTitle("请输入车牌号码", for: .normal)
         view.setTitleColor(UIColor.gray, for: .normal)
         view.setBackgroundImage(UIImage(color: .green), for: .normal)
-        view.addActionHandler({ (control) in
+        view.addActionHandler({ (sender) in
             
         }, for: .touchUpInside)
         return view
