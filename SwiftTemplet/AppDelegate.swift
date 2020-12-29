@@ -11,6 +11,11 @@ import Foundation
 import SwiftExpand
 import IQKeyboardManagerSwift
 
+let AppStoreID = "1002789852"
+let AppSubtitle = "智慧停车领域专家"
+let AppSerivcePhone = "400-966-8001"
+let AppPlatformAgreement = "http://api.parkingwang.com/app/iop/register.html"
+let AppPrivacyAgreement = "http://iop.parkingwang.com/static/protocol/parkingwang.html"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -68,7 +73,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.setupRootController(tabBarController!);
 //        UIApplication.tabBarController?.selectedIndex = 4;
 
-        testFunc()
+        
+        let a = "123_"
+        var b = a*3
+        DDLog(b, b*=3)
+        
+        
+        let urlString = "https://t.bilibili.com/?spm_id_from=333.851.b_696e7465726e6174696f6e616c486561646572.28"
+        if let url = URL(string: urlString) {
+            DDLog(url.queryParameters as Any, url.queryValue(for: "spm_id_from") as Any)
+            DDLog(url.appendingQueryParameters(["phone": "18729742695"]))
+        }
+        
+//        let json = Bundle.main.infoDictionary?.jsonString
+//        DDLog(json?.trimmed)
+
+        let formatter = NumberFormatter()
+        formatter.roundingMode = .halfUp
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 4
+        formatter.paddingPosition = .beforePrefix
+        formatter.paddingCharacter = "0"
+        formatter.minimumIntegerDigits = 5
+
+        let aa = "\(Double.pi, formatter: formatter)" // 00003.1416
+        let ab = "\(5, formatter: formatter)" // 00005.0
+        let ac = "\(5.3, formatter: formatter)" // 00005.0
+        DDLog(aa, ab, ac)
+
+        var bb = String(11, radix: 2, uppercase: true)
+        DDLog(bb)
+        
         return true
     }
     
@@ -104,6 +139,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: -funtions
     func testFunc() {
+        DDLog(#function, String(describing: self), type(of: self))
+        return
         let result = resultByOpt(5, 3) { (num1, num2) -> Int in
             num1 + num2
         }
@@ -112,27 +149,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let r = RoundFloat(23.6250)
 //        DDLog(r);
         
-        let a = NumberFormatter.fractionDigits(obj: 1.4988)
-        let b = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .down)
-        let c = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .up)
-        let d = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 2, roundingMode: .up)
-
-        let e = NSNumber(1.4988).to_string();
-        let f = NSNumber(1.4988).to_string(3);
-        
-        let num: CGFloat = 3.7999
-        let fmt = NumberFormatter()
-        fmt.numberStyle = .spellOut
-//        fmt.locale = NSLocale(localeIdentifier: "zh_Hans") as Locale
-        let g = fmt.string(from: NSNumber(floatLiteral: Double(num)))
-        let h = NumberFormatter.fractionDigits(obj: num, min: 1, max: 4, identify: kNumIdentifySpellOut)
-        
-        let m = NumberFormatter.positiveFormat(54312346.4567, format: "¥####.##元", defalut: "-")
-        let n = NumberFormatter.positive(54312346.4567, prefix: "人", suffix: "民", defalut: "-")
-
-        let formatter = NumberFormatter()
-        formatter.positiveFormat = "####.##元"
-        let o = formatter.string(for: 1.4988) ?? "0"
+//        let a = NumberFormatter.fractionDigits(obj: 1.4988)
+//        let b = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .down)
+//        let c = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .up)
+//        let d = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 2, roundingMode: .up)
+//
+//        let e = NSNumber(1.4988).to_string();
+//        let f = NSNumber(1.4988).to_string(3);
+//
+//        let num: CGFloat = 3.7999
+//        let fmt = NumberFormatter()
+//        fmt.numberStyle = .spellOut
+////        fmt.locale = NSLocale(localeIdentifier: "zh_Hans") as Locale
+//        let g = fmt.string(from: NSNumber(floatLiteral: Double(num)))
+//        let h = NumberFormatter.fractionDigits(obj: num, min: 1, max: 4, identify: kNumIdentifySpellOut)
+//
+//        let m = NumberFormatter.positiveFormat(54312346.4567, format: "¥####.##元", defalut: "-")
+//        let n = NumberFormatter.positive(54312346.4567, prefix: "人", suffix: "民", defalut: "-")
+//
+//        let formatter = NumberFormatter()
+//        formatter.positiveFormat = "####.##元"
+//        let o = formatter.string(for: 1.4988) ?? "0"
 
 //        formatter.numberStyle = .decimal
 ////        fmt.positiveFormat = format
@@ -161,9 +198,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let compact2 = dic.compactMapValues { $0 + 100 }
         let compact3 = dic.compactMapValues { $0 > 20 }
-//        DDLog(compact2, compact3)
+        DDLog(compact2, compact3)
         
-         let array = [1, 3, 5, 7, 9];
+//         let array = [1, 3, 5, 7, 9];
 //        DDLog(array.reduce(0, +))
 //        DDLog(array.reduce(0){ $0 * 10 + $1 })
 //
@@ -215,7 +252,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        DDLog("".count)
                 
     }
-
+    
 }
 
 
