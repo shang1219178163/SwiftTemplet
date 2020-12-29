@@ -73,9 +73,8 @@ class IOPAuthDetailController: UIViewController {
         view.label.text = "更多详细信息,请登录网页端"
         view.label.textAlignment = .center
         view.btn.setTitle("充值", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
+        view.btn.addActionHandler({[weak self] (sender) in
+            DDLog(sender.tag)
             
             }, for: .touchUpInside)
         return view

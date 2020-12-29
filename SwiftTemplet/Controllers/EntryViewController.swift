@@ -201,6 +201,8 @@ class EntryViewController: UIViewController {
             ["车场支付记录", "UITableViewCellAfford", "70.0", "", "recharge", ],
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
             ["星期选择", "UITableViewCellChoice", "110.0", "", "recharge", ],
+            ["单选", "UITableViewCellChoiceRadio", "70.0", "", "recharge", ],
+                
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
             ["停车费用", "UITableViewCellFee", "90.0", "", "recharge", ],
             ["停车记录", "UITableViewCellPark", "90.0", "", "recharge", ],
@@ -211,6 +213,7 @@ class EntryViewController: UIViewController {
             ["*图片选择:", "UITableViewCellPhotoPicker", "110", "", "recharge", ],
             ["用户头像", "UITableViewCellRightAvart", "60.0", "", "recharge", ],
             ["模板文件上传", "UITableViewCellUpload", "60.0", "", "recharge", ],
+            ["模板文件上传Tip", "UITableViewCellUploadNew", "60.0", "", "recharge", ],
             ["圆形进度:", "UITableViewCellProgressView", "90.0", "", "cardName", ],
             ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
@@ -228,6 +231,7 @@ class EntryViewController: UIViewController {
             ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge", "生产,不生产",],
             ["品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
             ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
+            ["厂家选择:", "UITableViewCellPickerViewNew", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],
             ["PhotoShow", "UITableViewCellPhotoShow", "216.0", "", "recharge", ],
@@ -396,7 +400,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.isHidden = value2.cgFloatValue <= 0.0
             
             cell.labelLeft.text = "这是一个标题"
-//            btn.addActionHandler({ (control) in
+//            btn.addActionHandler({ (sender) in
 //                UIAlertController.showAlert("温馨提示", message: "亲爱的客户请检查........")
 //            }, for: .touchUpInside)
             cell.getViewLayer()
@@ -419,17 +423,36 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellUpload.dequeueReusableCell(tableView)
             cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
             cell.textLabel?.textColor = .textColor3
+
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
             cell.isHidden = value2.cgFloatValue <= 0.0
 
             cell.textLabel?.text = value0
             cell.accessoryType = .disclosureIndicator
-            
+
             cell.btnCenter.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             cell.btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
 
             cell.getViewLayer()
             return cell
-                                  
+                        
+        case "UITableViewCellUploadNew":
+            let cell = UITableViewCellUploadNew.dequeueReusableCell(tableView)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.textLabel?.textColor = .textColor3
+            
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.isHidden = value2.cgFloatValue <= 0.0
+
+            cell.textLabel?.text = value0
+            cell.accessoryType = .disclosureIndicator
+
+            cell.btnTip.isHidden = true
+            cell.btnCenter.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+
+            cell.getViewLayer()
+            return cell
+            
         case "UITableViewCellProgressView":
             let cell = UITableViewCellProgressView.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
@@ -483,10 +506,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")
             cell.segmentCtl.items = titles
-            cell.segmentCtl.addActionHandler({ (sender: UIControl) in
-                if let control = sender as? UISegmentedControl {
-                    DDLog(control.selectedSegmentIndex)
-                }
+            cell.segmentCtl.addActionHandler({ (sender) in
+                DDLog(sender.selectedSegmentIndex)
+
             }, for: .valueChanged)
      
 //            cell.getViewLayer()
@@ -505,10 +527,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")
             cell.segmentCtl.items = titles
-            cell.segmentCtl.addActionHandler({ (sender: UIControl) in
-                if let control = sender as? UISegmentedControl {
-                    DDLog(control.selectedSegmentIndex)
-                }
+            cell.segmentCtl.addActionHandler({ (sender) in
+                DDLog(sender.selectedSegmentIndex)
+
             }, for: .valueChanged)
             ///
             cell.segmentCtl.showStyle = .seprateLine
@@ -656,10 +677,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.labelLeft.text = value0
             cell.sliderCtl.value = 50
-            cell.sliderCtl.addActionHandler({ (sender: UIControl) in
-                if let control = sender as? UISlider {
-                    DDLog(control.value)
-                }
+            cell.sliderCtl.addActionHandler({ (sender) in
+                DDLog(sender.value)
+                
             }, for: .valueChanged)
 
             cell.getViewLayer()
@@ -676,10 +696,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
 //            cell.layoutType = 1
-            cell.switchCtl.addActionHandler({ (sender: UIControl) in
-                if let control = sender as? UISwitch {
-                    DDLog(control.isOn)
-                }
+            cell.switchCtl.addActionHandler({ (sender) in
+                DDLog(sender.isOn)
+                
             }, for: .valueChanged)
             
 //            cell.getViewLayer()
@@ -694,7 +713,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.hasAsterisk = value0.contains("*")
             
             cell.labelLeft.text = value0
-            cell.itemList = ["阿里","腾讯","百度","谷歌",]
+            cell.itemList = ["阿里","腾讯","百度","谷歌", kTitleCancell,]
             cell.block { (title) in
                 DDLog(title)
             }
@@ -705,27 +724,53 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCellPickerView.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
+            cell.textfield.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.hasAsterisk = value0.contains("*")
             cell.textfield.rightViewMode = .never
             cell.accessoryType = .disclosureIndicator
             
             cell.labelLeft.text = value0
+            cell.pickView.itemDic = ["法人": "0",
+                                     "实际控制人": "1",
+                                     "代理人": "2",
+                                     "其他": "3",
+            ]
+            
+            cell.pickView.block = { picker, idx in
+                DDLog(idx, picker.selectedItem, picker.selectedValue)
+                if idx == 1 {
+                    cell.textfield.text = picker.selectedItem
+                }
+            }
+            
+            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellPickerViewNew":
+            let cell = UITableViewCellPickerViewNew.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
+            cell.labelLeft.textColor = UIColor.textColor3
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.hasAsterisk = value0.contains("*")
+            cell.textfield.rightViewMode = .never
+            cell.accessoryType = .disclosureIndicator
+            
+            cell.labelLeft.text = value0
+
             cell.block { (view, title, obj) in
                 DDLog(title,obj)
             }
-            
             cell.getViewLayer()
             return cell
             
         case "UITableViewCellCode":
             let cell = UITableViewCellCode.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
-            cell.btnCode.addActionHandler({ (control) in
+            cell.btnCode.addActionHandler({ (sender) in
                 DDLog(self.list.count)
-                if let sender: UIButton = control as? UIButton {
-                    sender.timerStart(60)
-                }
+                sender.timerStart(60)
             }, for: .touchUpInside)
           
             cell.getViewLayer()
@@ -748,8 +793,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.btn.setBackgroundImage(UIImage(named: "btn_selected_NO"), for: .normal)
             cell.btn.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
-            cell.btn.addActionHandler({ (control) in
-              guard let sender = control as? UIButton else { return }
+            cell.btn.addActionHandler({ (sender) in
+              
               sender.isSelected = !sender.isSelected
 //                  self.handleChooseAction(sender, model: model)
               
@@ -881,8 +926,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 sender.direction = .top
                 sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
 
-                sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+                sender.addActionHandler({ sender in
+                    
                     DDLog(sender.tag)
                     
                     self.instructionView.show(sender, message: "一场仍在持续的大流行病，陡然提升了医疗产业的重要性。")
@@ -916,8 +961,15 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 sender.iconSize = CGSize(width: 50, height: 20)
                 sender.setNeedsLayout()
                 
-                sender.addActionHandler({ control in
-                    guard let sender = control as? UIButton else { return }
+//                sender.direction = .left
+//                var normlImage: UIImage = UIImage(named: "photo_cancell")!
+//                var seletedImage: UIImage = UIImage(named: "photo_select")!
+//                sender.setImage(normlImage, for: .normal)
+//                sender.setImage(seletedImage, for: .selected)
+                
+                sender.addActionHandler({ sender in
+                    
+                    sender.isSelected.toggle()
                     DDLog(sender.tag)
                 }, for: .touchUpInside)
             }
@@ -982,6 +1034,23 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.groupView.enableIdxList = [1,2,3,4,5]
             cell.groupView.selectedIdxList = cell.groupView.enableIdxList
+
+            cell.groupView.block { (groupView, btn) in
+                DDLog(groupView.selectedIdxList)
+                self.weekIdxList = groupView.selectedIdxList
+            }
+            
+            cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellChoiceRadio":
+            let cell = UITableViewCellChoiceRadio.dequeueReusableCell(tableView);
+            cell.labelLeft.text = "经营者/法人是否为最终受益人"
+            
+            cell.groupView.items = ["周一", "周二", "周三", ]
+            cell.groupView.selectedIdxList = weekIdxList
+
+            cell.groupView.numberOfRow = 3
 
             cell.groupView.block { (groupView, btn) in
                 DDLog(groupView.selectedIdxList)

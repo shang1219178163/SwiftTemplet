@@ -104,7 +104,7 @@ class UITableViewCellSlider: UITableViewCell {
     
     //MARK: -lazy
     lazy var sliderCtl: UISlider = {
-        let view = UISlider.create( .zero, value: 0, minValue: 0, maxValue: 100)
+        let view = UISlider.create( .zero, minValue: 0, maxValue: 100)
         return view
     }()
     

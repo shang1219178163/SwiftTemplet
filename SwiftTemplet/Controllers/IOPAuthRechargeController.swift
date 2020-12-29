@@ -71,9 +71,8 @@ class IOPAuthRechargeController: UIViewController {
         view.label.text = ""
         view.label.textAlignment = .center
         view.btn.setTitle("提交", for: .normal)
-        view.btn.addActionHandler({[weak self] (sender:UIControl) in
-            let obj = sender as! UIButton
-            DDLog(obj.tag)
+        view.btn.addActionHandler({[weak self] (sender) in
+            DDLog(sender.tag)
             
             }, for: .touchUpInside)
         return view

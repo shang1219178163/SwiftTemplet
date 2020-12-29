@@ -32,19 +32,16 @@ class CenterViewController: UIViewController {
 //            DDLog(sender);
             self.dismiss(animated: true, completion: nil)
 
-            let btnItem = sender as! UIBarButtonItem
-            let style = btnItem.value(forKey: "systemItem");
+            let style = sender.value(forKey: "systemItem");
             if UIBarButtonItem.SystemItem(rawValue: style as! Int) == UIBarButtonItem.SystemItem.redo {
                 DDLog("111111");
                 
             }
             
-            if (sender as! UIBarButtonItem).systemType == UIBarButtonItem.SystemItem.reply {
+            if sender.systemType == UIBarButtonItem.SystemItem.reply {
                 DDLog("4444");
-                
             }
-            DDLog(btnItem.tag)
-         
+            DDLog(sender.tag)
         }
 
         
@@ -85,7 +82,7 @@ class CenterViewController: UIViewController {
         let btnOne = UIButton.create( rectOne, title: "666+", textColor: .white, backgroundColor: .theme)
         view.addSubview(btnOne)
         
-        btnOne.addActionHandler({ (sender: UIControl) in
+        btnOne.addActionHandler({ (sender) in
             DDLog(btnOne.titleLabel?.text as Any)
             
         }, for: .touchUpInside)

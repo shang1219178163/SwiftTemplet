@@ -291,10 +291,9 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")
             cell.segmentCtl.items = titles
-            cell.segmentCtl.addActionHandler({ (sender: UIControl) in
-                if let control = sender as? UISegmentedControl {
-                    DDLog(control.selectedSegmentIndex)
-                }
+            cell.segmentCtl.addActionHandler({ (sender) in
+                DDLog(sender.selectedSegmentIndex)
+
             }, for: .valueChanged)
      
 //            cell.getViewLayer()

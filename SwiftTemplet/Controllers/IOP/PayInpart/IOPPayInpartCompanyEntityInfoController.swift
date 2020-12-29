@@ -267,7 +267,7 @@ import HFNavigationController
     func jumpXiangce(_ itemList:[String]) {
 //        let controller = UIStoryboard.storyboard(with: "ParkRecord", identifier: "IOPParkRecordImageViewController") as! IOPParkRecordImageViewController
 //        controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
-//        if let url = URL(string: dataModel.value(forKeyPath: itemList[4]) as! String) {
+//        if let url = URL(string: dataModel.value(forKeyPath: itemList[4])) {
 //            controller.inImageUrlArray = [url]
 //        }
 //        navigationController?.pushViewController(controller, animated: true)

@@ -17,12 +17,12 @@ class UITableViewCellCoupon: UITableViewCell {
     /// 优惠券类型(0正常, 1已使用, 2已过期)
     var couponType: Int = 0{
         willSet{
-            guard let dic: [String : Any] = couponTypeDic[newValue] else { return }
-            guard let color = dic["color"] else { return }
-            labelLeft.backgroundColor = (color as! UIColor)
-            labelTop.textColor = (color as! UIColor)
-            guard let title = dic["title"] else { return }
-            labelLeft.text = (title as! String)
+            guard let dic: [String : Any] = couponTypeDic[newValue],
+                  let color = dic["color"] as? UIColor else { return }
+            labelLeft.backgroundColor = color
+            labelTop.textColor = color
+            guard let title = dic["title"] as? String else { return }
+            labelLeft.text = title
 //            DDLog("title_\(title)")
         }
     }

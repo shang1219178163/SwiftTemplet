@@ -12,7 +12,8 @@ import SwiftExpand
 
 typealias NNNetworkBlock = (NNURLResponse) -> Void
 
-class NNRequstAgent: NSObject {
+
+@objcMembers class NNRequstAgent: NSObject {
 
     static let shared = NNRequstAgent()
     private override init() {
@@ -27,8 +28,10 @@ class NNRequstAgent: NSObject {
     }()
   
     /// 常规请求
-    func request(_ url: String = NNAPIConfig.serviceURLString, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) -> DataRequest {
-        return Alamofire.request(URL(string: url)!,
+    func request(_ url: String, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) -> DataRequest {
+        
+        let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
+        return Alamofire.request(URL(string: urlStr)!,
                                       method: method,
                                       parameters: (parameters as! Parameters),
                                       headers: NNRequstAgent.shared.headers)
@@ -37,8 +40,10 @@ class NNRequstAgent: NSObject {
     }
     
     /// 多图上传
-    func upload(_ url: String = NNAPIConfig.serviceURLString, parameters: Any, images: [UIImage],
+    func upload(_ url: String, parameters: Any, images: [UIImage],
         fileNames: [String]?, result: @escaping (DefaultDataResponse) -> Void) {
+        
+        let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
         return Alamofire.upload(multipartFormData: { (MultipartFormData) in
             for e in images.enumerated() {
                 let model: NNUploadModel = NNUploadModel.upload(images: images, fileNames: fileNames, idx: e.offset)
@@ -64,7 +69,7 @@ class NNRequstAgent: NSObject {
                 DDLog("formData_\(string)");
             }
             
-        }, to: URL(string: url)!) { (encodingResult) in
+        }, to: URL(string: urlStr)!) { (encodingResult) in
             
             switch encodingResult {
             case .success(let request, _, _):
@@ -80,7 +85,7 @@ class NNRequstAgent: NSObject {
     }
     
     /// 文件下载
-    func download(_ url: String = NNAPIConfig.serviceURLString, parameters: Parameters) -> DownloadRequest {
+    func download(_ url: String, parameters: Parameters) -> DownloadRequest {
         return Alamofire.download(URL(string: url)!, method: .get, parameters: parameters, headers: headers, to: nil)
                 .responseData { (response) in
                 if let data = response.result.value {

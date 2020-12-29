@@ -62,7 +62,7 @@ class TitleViewController: NNTitleViewSelectController{
         topView.btn.addActionHandler({[weak self] (sender) in
             guard let self = self else { return }
             UIApplication.shared.keyWindow?.endEditing(true)
-            if let imgView = (sender as! UIButton).imageView{
+            if let imgView = sender.imageView{
                 imgView.transformRotationCycle()
             }
             

@@ -106,10 +106,8 @@ class FleetDetailNewController: UIViewController{
         view.label.text = kTips_Fleet;
         view.label.textAlignment = .left
         view.btn.setTitleColor(.theme, for: .normal)
-        view.btn.addActionHandler({ (sender: UIControl) in
-            let obj = sender as! UIButton
-            
-            DDLog(obj.tag)
+        view.btn.addActionHandler({ (sender) in            
+            DDLog(sender.tag)
         }, for: .touchUpInside)
         return view
     }()

@@ -41,6 +41,8 @@ enum NNRequestCode: Int {
 
     @objc func requestParams() -> [String: Any]
     @objc func validateParams() -> Bool
+    @objc func shouldCache() -> Bool
+    @objc func needLogin() -> Bool
     @objc func printLog() -> Bool
 
     @objc optional func saveJsonOfCache(_ json: [String: Any]?) -> Bool
@@ -126,18 +128,19 @@ class NNRequstManager: NSObject {
             return;
         }
         
-        guard let jsonDic: [String : Any] = JSONSerialization.jsonObjectFromData(response.data!) as? [String : Any] else {
+        guard let data = response.data,
+              let jsonDic = JSONSerialization.jsonObjectFromData(data) as? [String : Any] else {
             self.didFailure(response, errorType: .JSONError)
             return;
         }
         
 //        let jsonDic: Dictionary<String, Any> = ObjFromData(response.data!) as! Dictionary<String, Any>
-        let codeKey = jsonDic.keys.contains("code") ? "code" : "resultCount";
-        let code: NSInteger = jsonDic[codeKey] as! NSInteger
-        if code != 1 {
-            self.didFailure(response, errorType: .ServerError)
-            return;
-        }
+//        let codeKey = jsonDic.keys.contains("code") ? "code" : "resultCount";
+//        let code: NSInteger = jsonDic[codeKey] as! NSInteger
+//        if code != 1 {
+//            self.didFailure(response, errorType: .ServerError)
+//            return;
+//        }
         
         NNLog.logResponseInfo((child?.requestURI())!, json: jsonDic)
         
@@ -145,7 +148,7 @@ class NNRequstManager: NSObject {
         successBlock?(self, jsonDic)
         
         //缓存数据
-        _ = child?.saveJsonOfCache!(jsonDic)
+        child?.saveJsonOfCache!(jsonDic)
     }
     
     func didFailure(_ response: DefaultDataResponse, errorType: NNRequestCode) {
@@ -188,7 +191,7 @@ class NNRequstManager: NSObject {
             tip = "请求失败,请稍后重试"
         }
         
-        _ = UIAlertController.showAlert("", message: tip!)
+        UIAlertController.showAlert("", message: tip!)
         delegate?.manager(self, error: response.error! as NSError)
         failureBlock?(self, response.error! as NSError)
     }

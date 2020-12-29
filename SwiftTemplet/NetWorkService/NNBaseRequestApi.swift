@@ -8,9 +8,9 @@
 
 import UIKit
 
-class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
 
-    
+@objcMembers class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
+
   
     override init() {
         super.init()
@@ -32,6 +32,14 @@ class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
 
     func validateParams() -> Bool {
         return true;
+    }
+    
+    func needLogin() -> Bool {
+        return true
+    }
+    
+    func shouldCache() -> Bool {
+        return false
     }
     
     func printLog() -> Bool {

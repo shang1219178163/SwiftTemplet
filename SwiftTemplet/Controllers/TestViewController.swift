@@ -121,10 +121,9 @@ class TestViewController: UIViewController{
         let view = NNTableFooterView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 240))
         view.label.text = kTips_Fleet;
         view.label.textAlignment = .center
-        view.btn.addActionHandler({ (sender: UIControl) in
-            let obj = sender as! UIButton
+        view.btn.addActionHandler({ (sender) in
+            DDLog(sender.tag)
             
-            DDLog(obj.tag)
         }, for: .touchUpInside)
         return view
     }()
