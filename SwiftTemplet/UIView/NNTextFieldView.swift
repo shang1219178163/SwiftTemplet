@@ -41,6 +41,10 @@ class NNTextFieldView: UIView {
         btn.layer.borderColor = UIColor.theme.cgColor
         btn.layer.cornerRadius = 3;
         btn.layer.masksToBounds = true;
+        if btn.isEnabled == false {
+            let color = btn.titleColor(for: .disabled) ?? .lightGray
+            btn.layer.borderColor = color.cgColor
+        }
         
         label.text = "验  证  码:"
         label.numberOfLines = 1
@@ -173,9 +177,9 @@ class NNTextFieldView: UIView {
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("获取验证码", for: .normal);
-        view.setTitleColor(UIColor.theme, for: .normal);
+        view.setTitleColor(.theme, for: .normal);
+        view.setTitleColor(.lightGray, for: .disabled);
         view.addActionHandler({ (sender) in
-            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -214,6 +218,7 @@ extension NNTextFieldView: UITextFieldDelegate{
         if isBackDelete {
             if string == "" {
                 textField.text = ""
+                textfield.sendActions(for: .valueChanged)
             }
         }
         viewBlock?(self, (textField.text ?? "") + string)
