@@ -102,33 +102,6 @@ public extension Observable where Element: Any {
     }
 }
 
-
-
-//public extension Observable where Element:Any {
-//
-//    //将JSON数据转成对象
-//    func mapModel<T>(type:T.Type) -> Observable<T> where T:HandyJSON {
-//        return self.map { (element) -> T in
-//            guard let parsedElement = T.deserialize(from: element as? Dictionary) else {
-//                throw RxMapModelError.parsingError
-//            }
-//
-//            return parsedElement
-//        }
-//    }
-//
-//    //将JSON数据转成数组
-//    func mapModels<T>(type:T.Type) -> Observable<[T]> where T:HandyJSON {
-//        return self.map { (element) -> [T] in
-//            guard let parsedArray = [T].deserialize(from: element as? [Any]) else {
-//                throw RxMapModelError.parsingError
-//            }
-//
-//            return parsedArray as! [T]
-//        }
-//    }
-//}
-
 extension Reactive where Base: NNRequstManager {
     
     func requestAsSingle() -> Single<[AnyHashable: Any]> {
@@ -140,11 +113,7 @@ extension Reactive where Base: NNRequstManager {
 //                let error = NSError(domain: errorModel.message ?? "出现未知错误", code: errorModel.code, userInfo: nil)
 //                single(.error(error))
 //            }
-//            return Disposables.create {
-//                if let task = task {
-//                    task.cancel()
-//                }
-//            }
+//            return Disposables.create { task?.cancel() }
 //        }
     }
     ///发出请求
@@ -156,33 +125,9 @@ extension Reactive where Base: NNRequstManager {
             }) { (api, error) in
                 observer.onError(error)
             }
-            
-            return Disposables.create {
-                if let task = task {
-                    task.cancel()
-                }
-            }
+            return Disposables.create { task?.cancel() }
         }
     }
-    
-//     func request() -> Observable<Any> {
-//        return Observable.create{ observer in
-//            let task = self.base.startRequest(successBlock: { (manager, dic) in
-//                observer.onNext(dic)
-//                observer.onCompleted()
-//            }) { (manager, errorModel) in
-//                let error = NSError(domain: errorModel.message ?? "出现未知错误", code: errorModel.code, userInfo: nil)
-//                observer.onError(error)
-//            }
-//
-//            return Disposables.create {
-//                if let task = task {
-//                    task.cancel()
-//                }
-//            }
-//        }
-//    }
-
 }
 
 
