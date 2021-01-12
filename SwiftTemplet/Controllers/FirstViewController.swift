@@ -71,7 +71,7 @@ class FirstViewController: UIViewController{
         view.backgroundColor = .white;
 
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
+            UIApplication.openURLString("wx.parkingwang.com://")
         }
         
         let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
@@ -132,21 +132,17 @@ class FirstViewController: UIViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DDLog("")
 
-//        let controller = CellListController()
-//        navigationController?.pushViewController(controller, animated: true);
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        DDLog("")
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        DDLog("")
-
+        
     }
     
     override func didReceiveMemoryWarning() {

@@ -9,6 +9,8 @@
 import UIKit
 import SwiftExpand
 import SnapKitExtend
+import RxSwift
+import RxCocoa
 
 class PKLoginController: UIViewController {
     
@@ -81,7 +83,7 @@ class PKLoginController: UIViewController {
         view.setTitle("登录", for: .normal);
         view.setTitleColor(.white, for: .normal)
         view.setBackgroundColor(.theme, for: .normal)
-        view.setBackgroundColor(.gray, for: .disabled);
+        view.setBackgroundColor(.lightGray, for: .disabled);
         
 //        view.layer.borderColor = UIColor.gray.cgColor;
 //        view.layer.borderWidth = 1;
@@ -113,7 +115,6 @@ class PKLoginController: UIViewController {
         view.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
 
         view.addActionHandler({ (sender) in
-            
             DDLog(sender)
             sender.isSelected.toggle()
         }, for: .touchUpInside)
@@ -129,7 +130,6 @@ class PKLoginController: UIViewController {
         view.setBackgroundImage(UIImage(named: "icon_weixin"), for: .normal)
 
         view.addActionHandler({ (sender) in
-            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -143,7 +143,6 @@ class PKLoginController: UIViewController {
         view.setTitle("QQ登录", for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (sender) in
-            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -157,7 +156,6 @@ class PKLoginController: UIViewController {
         view.setTitle("微博登录", for: .normal);
         view.setTitleColor(UIColor.theme, for: .normal);
         view.addActionHandler({ (sender) in
-            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -171,7 +169,6 @@ class PKLoginController: UIViewController {
         view.setTitle("Apple登录", for: .normal);
         view.setTitleColor(.theme, for: .normal);
         view.addActionHandler({ (sender) in
-            
             DDLog(sender.currentTitle ?? "无标题")
 
         }, for: .touchUpInside)
@@ -180,13 +177,14 @@ class PKLoginController: UIViewController {
     
     lazy var textFieldView: NNTextFieldView = {
         let view = NNTextFieldView(frame: .zero)
+        view.isBackDelete = false
+
         view.label.text = "手机号码:"
         view.textfield.placeholder = "手机号码"
         view.label.isHidden = true
         view.btn.isHidden = true
 
         view.btn.addActionHandler { (sender) in
-            
             DDLog(sender.currentTitle ?? "无标题")
         }
         view.block { (textFieldView, text) in
@@ -201,6 +199,8 @@ class PKLoginController: UIViewController {
         view.textfield.placeholder = "短信验证码"
         view.label.isHidden = true
 //        view.btn.isHidden = true
+        view.btn.isEnabled = false
+        view.btn.layer.borderColor = UIColor.lightGray.cgColor
 
         view.btn.addActionHandler { (sender) in
             
@@ -209,13 +209,17 @@ class PKLoginController: UIViewController {
         view.block { (textFieldView, text) in
             DDLog(text)
             
-            if let phone = self.textFieldView.textfield.text {
-                self.btn.isEnabled = (phone.count >= 11 && text.count >= 4)
-            }
+//            if let phone = self.textFieldView.textfield.text {
+//                self.btn.isEnabled = (phone.count >= 11 && text.count >= 4)
+//            }
         }
         return view
     }()
     
+    let minimalUsernameLength = 11
+    let minimalPasswordLength = 4
+
+    let disposeBag = DisposeBag()
     
     // MARK: -lifecycle
     override func viewDidLoad() {
@@ -247,10 +251,12 @@ class PKLoginController: UIViewController {
             self.navigationController?.pushViewController(controller, animated: true);
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-        
+                
         btnLoginQQ.isHidden = true
         btnLoginWeiBo.isHidden = true
         btnLoginAppleID.isHidden = true
+        
+        checkInput()
 //        view.getViewLayer()
     }
     
@@ -378,6 +384,47 @@ class PKLoginController: UIViewController {
             }
         }
     }
+    
+    func checkInput() {
+        ///参数校验
+        let usernameValid = textFieldView.textfield.rx.text.orEmpty
+            .map { [self] in $0.count >= minimalUsernameLength }
+            .share(replay: 1)
+        
+        let passwordValid = textFieldCodeView.textfield.rx.text.orEmpty
+//            .debug()
+            .map { [self] in $0.count >= minimalPasswordLength }
+            .share(replay: 1)
+        
+        usernameValid
+            .bind(to: textFieldCodeView.btn.rx.isEnabled)
+            .disposed(by: disposeBag)
 
+        Observable.combineLatest(usernameValid, passwordValid) { $0 && $1 }
+        .share(replay: 1)
+        .bind(to: btn.rx.isEnabled)
+        .disposed(by: disposeBag)
+
+        
+        textFieldCodeView.btn.rx.observeWeakly(Bool.self, "enabled", options: .new)
+            .subscribe { (value) in
+                guard let value = value else { return }
+                self.textFieldCodeView.btn.layer.borderColor = value == true ? UIColor.theme.cgColor : UIColor.lightGray.cgColor
+                self.textFieldCodeView.btn.layer.borderWidth = 1
+
+            } onError: { (error) in
+        
+            } onCompleted: {
+        
+            } onDisposed: {
+            
+            }
+            .disposed(by: disposeBag)
+
+        
+//        textFieldCodeView.btn.addObserverBlock(forKeyPath: "enabled") { (value1, value2, value3) in
+//            DDLog(value1)
+//        }
+    }
 
 }

@@ -17,7 +17,7 @@ class AppleSignInViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        createBarItem(.done, isLeft: false) { (item) in
+        createBarItem("done") { (item) in
             if #available(iOS 13.0, *) {
                 NNAppleSignInManager.shared.loginInWithApple { (flag, message) in
                     if flag {
