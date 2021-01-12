@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 @objcMembers class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
 
   
@@ -22,7 +21,7 @@ import UIKit
     }
     
     func requestType() -> String {
-        return kRequestGET;
+        return kHTTPMethodGet
     }
     
     func requestParams() -> [String : Any] {

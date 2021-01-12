@@ -21,7 +21,7 @@ class IOPParkDistrictApi: NNBaseRequestApi {
     }
 
     override func requestType() -> String {
-        return kRequestGET
+        return kHTTPMethodGet
     }
     
     

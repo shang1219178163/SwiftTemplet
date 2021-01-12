@@ -122,45 +122,49 @@ class RxRequestExampleController: UIViewController {
 
 
     ///上传数据
-    func upload(_ url: URLConvertible, method: HTTPMethod = .post, parameters: [String: Any], headers: HTTPHeaders? = nil) -> Observable<String>{
-        return Observable<String>.create({observer in
-            Alamofire.upload(multipartFormData: { formData in
-//                if let imageData = image.jpegData(compressionQuality: 0.8) {
-//                    formData.append(imageData, withName: "file", fileName: "file.jpg", mimeType: "image/jpg")
-//                }
-                for (key, value) in parameters {
-                    switch value {
-                    case is String:
-                        if let data = (value as! String).data(using: .utf8) {
-                            formData.append(data, withName: key)
-                        }
+    func upload(_ url: URLConvertible, method: HTTPMethod = .post, parameters: [String: Any], headers: HTTPHeaders? = nil) -> Observable<Data>{
+        return Observable<Data>.create({observer in
+            AF.upload(multipartFormData: { (MultipartFormData) in
+
+                parameters.forEach { (key, obj) in
+                    if let value = obj as? String {
+                        guard let data = value.data(using: .utf8) else { return }
+                        MultipartFormData.append(data, withName: key)
                         
-                    case is Data:
-                        formData.append(value as! Data, withName: key, fileName:"file.jpg", mimeType: "image/jpg")
-
-                    case is URL, is NSURL:
-                        formData.append(value as! URL, withName: key)
-
-                    default:
-                        break
+                    } else if let value = obj as? Data {
+                        let fileName = DateFormatter.stringFromDate(Date(), fmt: "yyyyMMddHHmmss")
+                        let imageType = UIImage.contentType(value as NSData)
+                        let mimeType = "image/\(imageType)"
+                        print("\(#function)_\(key)_\(value.fileSize)_\(fileName)_\(mimeType)_")
+                        
+                        MultipartFormData.append(value, withName: key, fileName: fileName, mimeType: mimeType)
+                        
+                    } else if let value = obj as? URL {
+                        MultipartFormData.append(value, withName: key)
+                        
                     }
                 }
-                
-            }, to: url, method: method, headers: headers,
-                    encodingCompletion: { encodingResult in
-                        switch encodingResult {
-                        case .success(let upload, _, _):
-                            upload.responseJSON { response in
-                                guard let value = response.result.value else {
-                                    return
-                                }
-//                                observer.onNext(JSON(value)["path"].stringValue)
-                                observer.onCompleted()
-                            }
-                        case .failure(let error):
-                            observer.onError(error)
-                        }
-            })
+                    
+            }, to: url)
+            .responseJSON { (response) in
+                switch response.result {
+                case .success:
+//                    print("Validation Successful")
+                    guard let jsonData = response.data else {
+                        return
+                    }
+                    
+                    observer.onNext(jsonData)
+                    observer.onCompleted()
+                    
+                case .failure(let error):
+                    print(error)
+                    if let statusCode = response.response?.statusCode {
+                        print(statusCode)
+                    }
+                    observer.onError(error)
+                }
+            }
             return Disposables.create();
         })
     }
@@ -169,7 +173,7 @@ class RxRequestExampleController: UIViewController {
         return Observable<String>.create({observer in
 
             let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-            Alamofire.download(url, method: method, parameters: parameters, encoding: URLEncoding.default,
+            AF.download(url, method: method, parameters: parameters, encoding: URLEncoding.default,
                                 headers: headers, to: destination)
                 .downloadProgress(closure: { (progress) in
                     let current = progress.completedUnitCount/progress.totalUnitCount

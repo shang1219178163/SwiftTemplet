@@ -128,7 +128,7 @@ class EDriverViewController: UIViewController {
             DDLog(url)
             return }
         
-        Alamofire.request(URL, method: .post, parameters: params, headers: nil)
+        AF.request(URL, method: .post, parameters: params, headers: nil)
             .response { (response) in
                 
                 guard response.response?.statusCode == 200 else {

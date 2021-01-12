@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftExpand
 
-typealias NNNetworkBlock = (NNURLResponse) -> Void
+typealias NNNetworkBlock = ((NNURLResponse) -> Void)
 
 
 @objcMembers class NNRequstAgent: NSObject {
@@ -28,67 +28,72 @@ typealias NNNetworkBlock = (NNURLResponse) -> Void
     }()
   
     /// 常规请求
-    func request(_ url: String, method: HTTPMethod, parameters: Any, result: @escaping (DefaultDataResponse) -> Void) -> DataRequest {
+    func request(_ url: String,
+                 method: HTTPMethod,
+                 parameters: [String: Any],
+                 result: @escaping (AFDataResponse<Data?>) -> Void) -> DataRequest {
         
         let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
-        return Alamofire.request(URL(string: urlStr)!,
-                                      method: method,
-                                      parameters: (parameters as! Parameters),
-                                      headers: NNRequstAgent.shared.headers)
-                                    .response(completionHandler: result)
-    
+        return AF.request(URL(string: urlStr)!,
+                          method: method,
+                          parameters: parameters,
+                          headers: NNRequstAgent.shared.headers)
+            .response(completionHandler: result)
     }
     
     /// 多图上传
-    func upload(_ url: String, parameters: Any, images: [UIImage],
-        fileNames: [String]?, result: @escaping (DefaultDataResponse) -> Void) {
+    func upload(_ url: String,
+                parameters: [String: Any],
+                progressBlock: @escaping ((Progress) -> Void),
+                block: @escaping (AFDataResponse<Data?>) -> Void) -> DataRequest? {
         
         let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
-        return Alamofire.upload(multipartFormData: { (MultipartFormData) in
-            for e in images.enumerated() {
-                let model: NNUploadModel = NNUploadModel.upload(images: images, fileNames: fileNames, idx: e.offset)
-                MultipartFormData.append(model.data!, withName: model.name!, mimeType: model.mimeType!);
-            }
-            
-            if let obj = parameters as? Data {
-                MultipartFormData.append(obj, withName: "data")
-            }
-            
-            if let obj = parameters as? String {
-                let data: Data = obj.data(using: .utf8)!
-                MultipartFormData.append(data, withName: "data")
-                
-                DDLog("formData_\(obj)");
-            }
-            
-            if let obj = parameters as? Dictionary<String, Any> {
-                let string: String = (obj as NSDictionary).jsonString
-                let data: Data = string.data(using: .utf8)!
-                MultipartFormData.append(data, withName: "data")
 
-                DDLog("formData_\(string)");
+        return AF.upload(multipartFormData: { (MultipartFormData) in
+            parameters.forEach { (key, obj) in
+                if let value = obj as? String {
+                    guard let data = value.data(using: .utf8) else { return }
+                    MultipartFormData.append(data, withName: key)
+                    
+                } else if let value = obj as? Data {
+                    let fileName = DateFormatter.stringFromDate(Date(), fmt: "yyyyMMddHHmmss")
+                    let imageType = UIImage.contentType(value as NSData)
+                    let mimeType = "image/\(imageType)"
+                    print("\(#function)_\(key)_\(value.fileSize)_\(fileName)_\(mimeType)_")
+                    
+                    MultipartFormData.append(value, withName: key, fileName: fileName, mimeType: mimeType)
+                    
+                } else if let value = obj as? URL {
+                    MultipartFormData.append(value, withName: key)
+                    
+                }
             }
-            
-        }, to: URL(string: urlStr)!) { (encodingResult) in
-            
-            switch encodingResult {
-            case .success(let request, _, _):
-                request.uploadProgress(queue: DispatchQueue.main, closure: { (progress) in
-                    print("上传进度_\(progress.fractionCompleted)")
-                })
-            
-            case .failure(_):
-                print("上传失败")
-            }
-                
-        }
+  
+        }, to: urlStr)
+        .uploadProgress(closure: progressBlock)
+        .response(completionHandler: block)
+//        .responseJSON { (response) in
+//            switch response.result {
+//            case .success:
+//                print("Validation Successful")
+//                guard let jsonData = response.data else {
+//                    return
+//                }
+//
+//            case .failure(let error):
+//                print(error)
+//                if let statusCode = response.response?.statusCode {
+//                    print(statusCode)
+//                }
+//            }
+//        }
     }
     
     /// 文件下载
     func download(_ url: String, parameters: Parameters) -> DownloadRequest {
-        return Alamofire.download(URL(string: url)!, method: .get, parameters: parameters, headers: headers, to: nil)
+        return AF.download(url, method: .get, parameters: parameters, headers: headers, to: nil)
                 .responseData { (response) in
-                if let data = response.result.value {
+                    if response.result != nil {
 //                    let image = UIImage(data: data)
                 }
                 

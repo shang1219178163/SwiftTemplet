@@ -66,7 +66,7 @@ class AliBianXianKeController: UIViewController {
         
         DDLog(url)
         DDLog(params.jsonString)
-        Alamofire.request(URL, method: method, parameters: params, headers: nil)
+        AF.request(URL, method: method, parameters: params, headers: nil)
             .response { (response) in
                 guard let data = response.data,
                     let jsonDic = JSONSerialization.jsonObjectFromData(data) as? [String : Any] else {

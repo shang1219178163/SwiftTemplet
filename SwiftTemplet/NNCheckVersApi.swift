@@ -14,7 +14,7 @@ class NNCheckVersApi: NNBaseRequestApi {
     }
     
     override func requestType() -> String {
-        return kRequestGET;
+        return kHTTPMethodGet
     }
     
     override func requestParams() -> Dictionary<String, Any> {
