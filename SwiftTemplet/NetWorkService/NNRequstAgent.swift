@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftExpand
 
-typealias NNNetworkBlock = ((NNURLResponse) -> Void)
+//typealias NNNetworkBlock = ((NNURLResponse) -> Void)
 
 
 @objcMembers class NNRequstAgent: NSObject {
@@ -31,21 +31,21 @@ typealias NNNetworkBlock = ((NNURLResponse) -> Void)
     func request(_ url: String,
                  method: HTTPMethod,
                  parameters: [String: Any],
-                 result: @escaping (AFDataResponse<Data?>) -> Void) -> DataRequest {
+                 handler: @escaping (AFDataResponse<Data?>) -> Void) -> DataRequest {
         
         let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
         return AF.request(URL(string: urlStr)!,
                           method: method,
                           parameters: parameters,
                           headers: NNRequstAgent.shared.headers)
-            .response(completionHandler: result)
+            .response(completionHandler: handler)
     }
     
     /// 多图上传
     func upload(_ url: String,
                 parameters: [String: Any],
                 progressBlock: @escaping ((Progress) -> Void),
-                block: @escaping (AFDataResponse<Data?>) -> Void) -> DataRequest? {
+                handler: @escaping (AFDataResponse<Data?>) -> Void) -> DataRequest? {
         
         let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
 
@@ -71,12 +71,13 @@ typealias NNNetworkBlock = ((NNURLResponse) -> Void)
   
         }, to: urlStr)
         .uploadProgress(closure: progressBlock)
-        .response(completionHandler: block)
+        .response(completionHandler: handler)
 //        .responseJSON { (response) in
 //            switch response.result {
 //            case .success:
 //                print("Validation Successful")
 //                guard let jsonData = response.data else {
+//                    print(error)
 //                    return
 //                }
 //
@@ -90,14 +91,33 @@ typealias NNNetworkBlock = ((NNURLResponse) -> Void)
     }
     
     /// 文件下载
-    func download(_ url: String, parameters: Parameters) -> DownloadRequest {
-        return AF.download(url, method: .get, parameters: parameters, headers: headers, to: nil)
-                .responseData { (response) in
-                    if response.result != nil {
-//                    let image = UIImage(data: data)
+    func download(_ url: String,
+                  parameters: Parameters,
+                  successBlock: ((URL) -> Void)?,
+                  failBlock: ((Error) -> Void)?) -> DownloadRequest {
+        let urlStr = url.hasPrefix("http") ? url : NNAPIConfig.serviceURLString + url
+        
+        let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
+        return AF.download(urlStr, method: .get, parameters: parameters, headers: headers, to: destination)
+//            .response(completionHandler: handler)
+            .responseData { (response) in
+//                print(response.fileURL?.lastPathComponent)
+                switch response.result {
+                case .success:
+//                    print("Validation Successful")
+                    guard let fileURL = response.fileURL else {
+                        print(#function, "文件 fileURL 无效 ")
+                        return
+                    }
+                    successBlock?(fileURL)
+
+                case .failure(let error):
+                    print(error)
+                    if let statusCode = response.response?.statusCode {
+                        print(statusCode)
+                    }
+                    failBlock?(error)
                 }
-                
-        }
+            }
     }
-    
 }

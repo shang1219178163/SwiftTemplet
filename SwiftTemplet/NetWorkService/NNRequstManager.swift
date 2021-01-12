@@ -13,7 +13,8 @@ import SwiftExpand
 
 let kHTTPMethodGet: String = "GET"
 let kHTTPMethodPOST: String = "POST"
-let kHTTPMethodPostFormData: String = "PostFormData"
+let kHTTPMethodUpload: String = "upload"
+let kHTTPMethodDownload: String = "download"
 
 enum NNRequestCode: Int {
     case Success         = 1        //请求成功
@@ -87,16 +88,15 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
         
     func startRequest() -> DataRequest? {
         if child?.validateParams() == false {
-            let error = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
-            
-            delegate?.manager(self, error: error);
-            failureBlock?(self, error)
+//            let error = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
+//
+//            delegate?.manager(self, error: error);
+//            failureBlock?(self, error)
             return nil
         }
         
         if let child = child, let cacheDic = child.jsonFromCache?() as [String: Any]? {
-            
-            NNLog.logResponseInfo(child.requestURI(), json: cacheDic)
+            printLog(cacheDic, isRequest: false)
 
             delegate?.manager(self, dic: cacheDic);
             successBlock?(self, cacheDic)
@@ -110,19 +110,24 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
         
         guard let child = child else { return nil }
         
+        var url = child.requestURI()
+        if !url.hasPrefix("http") {
+            url = NNAPIConfig.serviceURLString + url
+        }
+        
         var params = child.requestParams()
         if params.keys.contains("token") {
             params.merge(["token": UIApplication.token], uniquingKeysWith: {$1})
         }
         
         //请求日志
-        NNLog.logRequestInfo(child.requestURI(), params: params)
+        printLog(params, isRequest: true)
         
         switch child.requestType() {
-        case kHTTPMethodPostFormData:
-            return NNRequstAgent.shared.upload(child.requestURI(), parameters: params) { (progress) in
+        case kHTTPMethodUpload:
+            return NNRequstAgent.shared.upload(url, parameters: params) { (progress) in
                 
-            } block: { (response) in
+            } handler: { (response) in
                 self.isLoading = false
                 
                 switch response.result {
@@ -145,10 +150,9 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
             }
 
         default:
-            return NNRequstAgent.shared.request(child.requestURI(),
+            return NNRequstAgent.shared.request(url,
                                                 method: HTTPMethod(rawValue: child.requestType()),
                                                 parameters: params) { (response) in
-    //            guard let self = self else { fatalError("请检查参数");}
                 self.isLoading = false
                 
                 switch response.result {
@@ -186,8 +190,8 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
         }
         
         guard let child = child else { return }
-        NNLog.logResponseInfo(child.requestURI(), json: jsonDic)
-        
+        printLog(jsonDic, isRequest: false)
+
         delegate?.manager(self, dic: jsonDic)
         successBlock?(self, jsonDic)
         
@@ -235,9 +239,27 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
             break
         }
         
-//        UIAlertController.showAlert("", message: tip!)
+        UIAlertController.showAlert("", message: tip)
         delegate?.manager(self, error: response.error! as NSError)
         failureBlock?(self, response.error! as NSError)
+    }
+    
+    func printLog(_ params: [String: Any], isRequest: Bool) {
+        guard let child = child else { return }
+        if !child.printLog() {
+            return
+        }
+        
+        var url = child.requestURI()
+        if !url.hasPrefix("http") {
+            url = NNAPIConfig.serviceURLString + url
+        }
+        
+        if isRequest {
+            NNLog.logRequestInfo(url, params: params)
+        } else {
+            NNLog.logResponseInfo(url, json: params)
+        }
     }
     
 }
