@@ -97,7 +97,7 @@ class UITableViewCellArticle: UITableViewCell {
             make.height.equalTo(labelLefSubSize.height);
         }
         
-        fromImgView.snp.makeConstraints { (make) in
+        fromImgView.snp.remakeConstraints { (make) in
             make.left.equalToSuperview().offset(inset.left)
             make.bottom.equalToSuperview().offset(-inset.bottom)
             make.size.equalTo(iconSize)

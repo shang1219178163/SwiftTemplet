@@ -12,6 +12,7 @@ import MJRefresh
 
 @objc public extension UIScrollView {
     
+    @discardableResult
     func refreshHeader(_ block: @escaping MJRefreshComponentAction) -> MJRefreshHeader {
         guard let mj_header = mj_header else {
             let component = MJRefreshNormalHeader(refreshingBlock: block)
@@ -21,6 +22,7 @@ import MJRefresh
         return mj_header
     }
 
+    @discardableResult
     func refreshFooter(_ block: @escaping MJRefreshComponentAction) -> MJRefreshFooter {
         guard let mj_footer = mj_footer else {
             let component = MJRefreshAutoNormalFooter(refreshingBlock: block)
@@ -31,6 +33,7 @@ import MJRefresh
     }
 
     ///纯色背景色下拉刷新
+    @discardableResult
     func headerColorRefresh(_ block: @escaping MJRefreshComponentAction,
                       textColor: UIColor = .gray,
                       backgroundColor: UIColor = .clear) -> MJRefreshHeader {
@@ -47,6 +50,7 @@ import MJRefresh
     }
 
     ///项目封装下拉加载
+    @discardableResult
     func headerRefresh(_ block: @escaping MJRefreshComponentAction) -> MJRefreshHeader {
         let header = MJRefreshNormalHeader.init(refreshingBlock: block)
         header.lastUpdatedTimeLabel?.isHidden = true
@@ -57,6 +61,7 @@ import MJRefresh
         return header
     }
     ///项目封装上拉加载
+    @discardableResult
     func footerRefresh(_ block: @escaping MJRefreshComponentAction) -> MJRefreshFooter {
         let footer = MJRefreshBackNormalFooter.init(refreshingBlock: block)
         footer.stateLabel?.isHidden = true
