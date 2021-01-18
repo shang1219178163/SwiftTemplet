@@ -89,7 +89,6 @@ class NNSegmentedControl: UISegmentedControl {
     
     func setupControl() {
         if #available(iOS 13, *) {
-//            ensureiOS12Style()
             let image = UIImage(color: backgroundColor ?? .clear)
             setBackgroundImage(image, for: .normal, barMetrics: .default)
             setBackgroundImage(image, for: .selected, barMetrics: .default)

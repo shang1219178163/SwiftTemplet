@@ -1,6 +1,6 @@
 //
 //	NNUploadImagesView.swift
-//	MacTemplet
+//	SwiftTemplet
 //
 //	Created by shang on 2020/07/19 07:52
 //	Copyright © 2020 shang. All rights reserved.

@@ -26,7 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(Calculator *)clear;
 ///打印结果
 -(Calculator *)print;
-
 @end
 
 NS_ASSUME_NONNULL_END

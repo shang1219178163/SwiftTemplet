@@ -38,8 +38,7 @@ class MainViewController: UIViewController {
             }
             dataList.add(marr);
         }
-        DDLog(dataList);
-     
+//        DDLog(dataList);
     }
     
     override func viewWillAppear(_ animated: Bool) {

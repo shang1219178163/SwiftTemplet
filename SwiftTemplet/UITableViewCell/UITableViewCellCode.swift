@@ -15,7 +15,7 @@ class UITableViewCellCode: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var btnSize = CGSize(width: 100, height: 35)
     
-    var viewBlock: TextFieldClosure?
+    var viewBlock: ((UITextField) ->Void)?
     /// 是否有星标
     var hasAsterisk = false;
     // MARK: -life cycle
@@ -116,7 +116,7 @@ class UITableViewCellCode: UITableViewCell {
     }
         
     //MARK: -funtions
-    func block(_ action:@escaping TextFieldClosure) {
+    func block(_ action:@escaping ((UITextField) ->Void)) {
         viewBlock = action
     }
     

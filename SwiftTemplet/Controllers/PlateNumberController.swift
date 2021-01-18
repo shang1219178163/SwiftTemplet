@@ -58,14 +58,7 @@ class PlateNumberController: UIViewController {
         super.viewWillAppear(animated)
         
 //        textField.becomeFirstResponder()
-        
-//        let format = "yyyy-MM-dd HH:mm:ss";
-//        let time = "2019-05-08 18:32:12"
-        let format = "yyyy-MM";
-        let time = "2019-05"
-        
-        let isSame = DateFormatter.isSameFormat(time, fmt: format)
-        DDLog("isSame", isSame);
+
     }
         
     //MARK: -funtions

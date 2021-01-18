@@ -12,9 +12,7 @@ import SwiftExpand
 ///
 
 @objcMembers class UITableViewCellStatistics: UITableViewCell {
-    
-    var viewBlock: ObjClosure?
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         

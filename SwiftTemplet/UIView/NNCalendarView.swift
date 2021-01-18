@@ -17,22 +17,14 @@ class NNCalendarView: UIView {
     var dateList: Set<String> = []
 
     var currentDate: Date = Date()
-//    var currentDate: Date = Date()
-//    {
-//        didSet{
-//            let comp = Date.dateComponents(oldValue)
-//            year = comp.year!
-//            month = comp.month!
-//        }
-//    }
     
-    var year: Int = Date.dateComponents(Date()).year!
+    var year: Int = Calendar.shared.dateComponents(Calendar.unitFlags, from: Date()).year!
     {
         willSet{
             handleTitleBtnChange(newValue, month: month)
         }
     }
-    var month: Int = Date.dateComponents(Date()).month!
+    var month: Int = Calendar.shared.dateComponents(Calendar.unitFlags, from: Date()).month!
     {
         willSet{
             handleTitleBtnChange(year, month: newValue)
@@ -52,7 +44,7 @@ class NNCalendarView: UIView {
         addSubview(weeksView)
         addSubview(daysView)
 
-        if let comp = Date.dateComponents(currentDate) as DateComponents? {
+        if let comp = Calendar.shared.dateComponents(Calendar.unitFlags, from: currentDate) as DateComponents? {
             year = comp.year!
             month = comp.month!
         }
@@ -215,7 +207,7 @@ class NNCalendarView: UIView {
         let view = UIButton.create(.zero, title: "今天", textColor: .red, backgroundColor: .clear)
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
-            let comp = Date.dateComponents(Date())
+            let comp = Calendar.shared.dateComponents(Calendar.unitFlags, from: Date())
             self.year = comp.year!
             self.month = comp.month!
             
@@ -255,7 +247,7 @@ class NNCalendarView: UIView {
             if e.offset >= startIdx && e.offset <= (count + startIdx - 1) {
                 e.element.setTitle("\(e.offset - startIdx + 1)", for: .normal)
                 
-                let day = Date.dateComponents(Date()).day
+                let day = Calendar.shared.dateComponents(Calendar.unitFlags, from: Date()).day
                 if day == e.offset - startIdx + 1 {
                     e.element.isSelected = true
                     self.dateList.insert(dateStrFmtFrom(e.element))
@@ -289,13 +281,13 @@ class NNCalendarView: UIView {
         let monthDes = (month >= 10 ? "\(month)" : "0\(month)")
         let dateStr = "\(year)年\(monthDes)月"
         titleBtn.setTitle(dateStr, for: .normal)
-        currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormatMonth_CH)
+        currentDate = DateFormatter.dateFromString(dateStr, fmt: kDateFormatMonth_CH)!
     }
     
     func dateStrFmtFrom(_ btn: UIButton) -> String {
 //        DDLog(self.titleBtn.titleLabel!.text ?? "空", btn.titleLabel!.text ?? "空")
         let dateStr = (self.titleBtn.titleLabel!.text ?? "空") + (btn.titleLabel!.text ?? "空") + "日"
-        let date = DateFormatter.dateFromString(dateStr, fmt: kDateFormatDay_CH)
+        let date = DateFormatter.dateFromString(dateStr, fmt: kDateFormatDay_CH)!
         let dateStrFmt = DateFormatter.stringFromDate(date)
         return dateStrFmt
     }

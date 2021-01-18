@@ -313,7 +313,7 @@ class UICallPhoneView: UIView {
     }()
     
     @objc func handActionTimer(_ timer: Timer) {
-        labTwo.text = "\((startDate as NSDate).agoInfo(1, length: 5))"
+//        labTwo.text = "\((startDate as NSDate).agoInfo(1, length: 5))"
 
     }
 }

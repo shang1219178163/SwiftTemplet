@@ -14,7 +14,7 @@ import SwiftExpand
 /// 文字+UITextField(输入框)
 class UITableViewCellTextField: UITableViewCell {
 
-    var viewBlock: TextFieldClosure?
+    var viewBlock: ((UITextField) ->Void)?
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     /// 是否有星标
@@ -111,7 +111,7 @@ class UITableViewCellTextField: UITableViewCell {
     }
     
     //MARK: -funtions
-    func block(_ action:@escaping TextFieldClosure) {
+    func block(_ action:@escaping ((UITextField) ->Void)) {
         viewBlock = action
     }
     

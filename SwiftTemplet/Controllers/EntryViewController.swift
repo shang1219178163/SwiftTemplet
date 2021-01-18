@@ -84,6 +84,7 @@ class EntryViewController: UIViewController {
         
 //        DDLog(view.responderChain())
         IQKeyboardManager.shared.enable = true;
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -270,12 +271,10 @@ class EntryViewController: UIViewController {
 //        navigationController?.pushViewController(controller, animated: true)
     }
     
-    func jumpUploadPicture(_ itemList: [String]) {
+    func jumpUploadPicture(_ itemList: [String], dataModel: NSObject) {
 //        DDLog(itemList)
         
         let controller = IOPImageUploadController()
-        controller.delegate = self
-
         controller.title = itemList[0].replacingOccurrences(of: "*", with: "")
         controller.key = itemList[4]
         
@@ -283,11 +282,27 @@ class EntryViewController: UIViewController {
         controller.imgUrl = imgUrl
         controller.isFromPickerVC = false
         controller.showImageDefault = true
+        controller.block = { vc in
+            dataModel.setValue(vc.imgUrl, forKeyPath: vc.key)
+            self.tableView.reloadData()
+        }
+        if ["license_img"].contains(controller.key) {
+            controller.ocrType = .license
+        } else {
+            controller.ocrType = .none
+        }
+        controller.ocrblock = { model in
+            guard let model = model as? TXOCRLicenseDetailModel else { return  }
+            dataModel.setValue(model.Name, forKey: "merchant_username")
+            dataModel.setValue(model.RegNum, forKey: "registration_number")
+            dataModel.setValue(model.Address, forKey: "license_detailed_address")
+            self.tableView.reloadData()
+        }
         navigationController?.pushViewController(controller, animated: true)
     }
     
     
-    func jumpUploadFile(_ itemList: [String]) {
+    func jumpUploadFile(_ itemList: [String], dataModel: NSObject) {
 //        DDLog(itemList)
 
         let urlString = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
@@ -304,6 +319,10 @@ class EntryViewController: UIViewController {
         controller.isUpload = urlString == ""
         controller.fileUrl = urlString == "" ? nil : NSURL(string: urlString)
         DDLog("isUpload:\(controller.isUpload)_fileUrl:\(controller.fileUrl)")
+        controller.block = { vc, url in
+            dataModel.setValue(url, forKey: vc.key)
+            self.tableView.reloadData()
+        }
         navigationController?.pushViewController(controller, animated: true);
     }
     
@@ -447,7 +466,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textLabel?.text = value0
             cell.accessoryType = .disclosureIndicator
 
-            cell.btnTip.isHidden = true
+//            cell.btnTip.isHidden = true
+            cell.btnTip.addActionHandler { (sender) in
+                UIAlertController(title: "tips", message: "这是一个简单说明", preferredStyle: .alert)
+                    .present()
+            }
             cell.btnCenter.titleLabel?.font = UIFont.systemFont(ofSize: 14)
 
             cell.getViewLayer()
@@ -652,9 +675,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             let beginTime: String = dataModel.valueText(forKeyPath: dateTimeKeys.first!)
             let endTime: String = dataModel.valueText(forKeyPath: dateTimeKeys.last!)
             if beginTime.count == 19 && endTime.count == 19 {
-               cell.dateRangeView.beginDate = DateFormatter.dateFromString(beginTime)
-               cell.dateRangeView.endDate = DateFormatter.dateFromString(endTime)
-           
+               cell.dateRangeView.beginDate = DateFormatter.dateFromString(beginTime)!
+               cell.dateRangeView.endDate = DateFormatter.dateFromString(endTime)!
             }
             cell.dateRangeView.block { (dateRangeView) in
                 DDLog(dateRangeView.beginTime, dateRangeView.endTime)
@@ -1183,10 +1205,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         let sections = list[indexPath.section]
         let itemList = sections[indexPath.row]
         if itemList[0].contains("上传文件") {
-            jumpUploadFile(itemList)
+            jumpUploadFile(itemList, dataModel: dataModel)
 
         } else if itemList[0].contains("上传照片") {
-            jumpUploadPicture(itemList)
+            jumpUploadPicture(itemList, dataModel: dataModel)
         }
         
     }
@@ -1230,14 +1252,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         DDLog(action)
     }
         
-}
-
-extension EntryViewController: IOPUploadImageControllerDelegate{
-    func uploadImage(_ url: String, forKey key: String) {
-        DDLog("\(key)_\(url)")
-        dataModel.setValue(url, forKeyPath: key)
-        tableView.reloadData()
-    }
 }
 
 extension EntryViewController: IOPFileUploadControllerDelegate{

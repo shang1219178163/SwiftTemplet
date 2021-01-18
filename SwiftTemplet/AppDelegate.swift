@@ -72,38 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let tabBarController = UITarBarCtrFromList(list);
 //        UIApplication.setupRootController(tabBarController!);
 //        UIApplication.tabBarController?.selectedIndex = 4;
+        DDLog("".count)
 
-        
-        let a = "123_"
-        var b = a*3
-        DDLog(b, b*=3)
-        
-        
-        let urlString = "https://t.bilibili.com/?spm_id_from=333.851.b_696e7465726e6174696f6e616c486561646572.28"
-        if let url = URL(string: urlString) {
-            DDLog(url.queryParameters as Any, url.queryValue(for: "spm_id_from") as Any)
-            DDLog(url.appendingQueryParameters(["phone": "18729742695"]))
-        }
-        
-//        let json = Bundle.main.infoDictionary?.jsonString
-//        DDLog(json?.trimmed)
-
-        let formatter = NumberFormatter()
-        formatter.roundingMode = .halfUp
-        formatter.minimumFractionDigits = 1
-        formatter.maximumFractionDigits = 4
-        formatter.paddingPosition = .beforePrefix
-        formatter.paddingCharacter = "0"
-        formatter.minimumIntegerDigits = 5
-
-        let aa = "\(Double.pi, formatter: formatter)" // 00003.1416
-        let ab = "\(5, formatter: formatter)" // 00005.0
-        let ac = "\(5.3, formatter: formatter)" // 00005.0
-        DDLog(aa, ab, ac)
-
-        var bb = String(11, radix: 2, uppercase: true)
-        DDLog(bb)
-        
+        testFunc()
         return true
     }
     
@@ -139,8 +110,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: -funtions
     func testFunc() {
-        DDLog(#function, String(describing: self), type(of: self))
+        let za = "12".padding(toLength: 5, withPad: "*", startingAt: 0)
+        DDLog(za)
+        
+        let btime = "2020-01-13 09:43:50"
+        DDLog(btime.dayBegin, btime.dayEnd)
+
+        let date = DateFormatter.dateFromString(btime)
+        DDLog(date!.betweenInfo(Date()))
+                
+        let etime = "2020-02-13 09:43:50"
+        let eDate = DateFormatter.dateFromString(etime)
+        DDLog(eDate)
+
+
+        let l = DateFormatter.betweenDateDays(btime, endTime: etime)
+        DDLog(l)
         return
+            
+//        DDLog(#function, String(describing: self), type(of: self))
+        
         let result = resultByOpt(5, 3) { (num1, num2) -> Int in
             num1 + num2
         }
@@ -148,6 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let r = RoundFloat(23.6250)
 //        DDLog(r);
+        
         
 //        let a = NumberFormatter.fractionDigits(obj: 1.4988)
 //        let b = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .down)
@@ -248,8 +238,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //        UIApplication.token = "123456789";
 //        DDLog( UIApplication.token)
-//
-//        DDLog("".count)
+        
+        let a = "123_"
+        var b = a*3
+        DDLog(b, b*=3)
+        
+        
+        let urlString = "https://t.bilibili.com/?spm_id_from=333.851.b_696e7465726e6174696f6e616c486561646572.28"
+        if let url = URL(string: urlString) {
+            DDLog(url.queryParameters as Any, url.queryValue(for: "spm_id_from") as Any)
+            DDLog(url.appendingQueryParameters(["phone": "18729742695"]))
+        }
+        
+//        let json = Bundle.main.infoDictionary?.jsonString
+//        DDLog(json?.trimmed)
+
+        let formatter = NumberFormatter()
+        formatter.roundingMode = .halfUp
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 4
+        formatter.paddingPosition = .beforePrefix
+        formatter.paddingCharacter = "0"
+        formatter.minimumIntegerDigits = 5
+
+        let aa = "\(Double.pi, formatter: formatter)" // 00003.1416
+        let ab = "\(5, formatter: formatter)" // 00005.0
+        let ac = "\(5.3, formatter: formatter)" // 00005.0
+        DDLog(aa, ab, ac)
+
+        let bb = String(11, radix: 2, uppercase: true)
+        DDLog(bb)
+        
+        
+        var z = [10, 2, 5]
+        z.sort()
+        let zz = [10, 2, 5].sorted()
+
+        DDLog(z, zz)
                 
     }
     

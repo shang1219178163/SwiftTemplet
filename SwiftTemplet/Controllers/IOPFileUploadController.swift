@@ -1,6 +1,6 @@
 //
 //  IOPFileUploadController.swift
-//  IntelligentOfParking
+//  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/3/2.
 //  Copyright © 2020 Xi'an iRain IoT. Technology Service CO., Ltd. . All rights reserved.
@@ -13,14 +13,15 @@ import AFNetworking
 import SwiftExpand
 
 @objc protocol IOPFileUploadControllerDelegate{
-    @objc optional func fileUpload(_ url: String, forKey key: String)
-    @objc optional func fileShare(_ url: String, forKey key: String)
+    @objc optional func fileUpload(_ vc: IOPFileUploadController, url: String)
+    @objc optional func fileShare(_ vc: IOPFileUploadController, url: String)
 }
 
 /// 文件上传,下载,分享
 class IOPFileUploadController: UIViewController {
     
     weak var delegate: IOPFileUploadControllerDelegate?
+    var block: ((IOPFileUploadController, String)->Void)?
 
     /// 文件最大尺寸(M)
     var fileMaxSize: Double = 10
@@ -41,7 +42,7 @@ class IOPFileUploadController: UIViewController {
     /// true上传, false下载
     var isUpload: Bool = true
 
-    var isFromPickerVC: Bool = false
+//    var isFromPickerVC: Bool = false
     var resetFileUrl: Bool = false{
         willSet{
             if newValue == false {
@@ -123,10 +124,6 @@ class IOPFileUploadController: UIViewController {
     func presentDocPicker() {
         docPickVC.setupContentInsetAdjustmentBehavior(true)
         present(docPickVC, animated: true, completion: nil)
-//        let documentPickVC = UIDocumentPickerViewController(documentTypes: IOPFileUploadController.docTypes, in: .import)
-//        documentPickVC.modalPresentationStyle = .fullScreen
-//        documentPickVC.delegate = self
-//        self.present(documentPickVC, animated: true, completion: nil)
     }
     
     func presentOptionsMenu() {
@@ -134,7 +131,7 @@ class IOPFileUploadController: UIViewController {
             NNProgressHUD.showText("文件链接不能为空")
             return
         }
-        delegate?.fileShare?(url.path, forKey: key)
+        delegate?.fileShare?(self, url: url.path)
 
         docShareVC.url = url
         let result = docShareVC.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
@@ -195,17 +192,17 @@ class IOPFileUploadController: UIViewController {
                      constructingBodyWith: { (formData) in
             for (key, value) in parameters {
                 switch value {
-                case is String:
-                    if let data = (value as! String).data(using: .utf8) {
+                case let obj as String:
+                    if let data = obj.data(using: .utf8) {
                         formData.appendPart(withForm: data, name: key)
                     }
                     
-                case is Data:
-                    formData.appendPart(withForm: value as! Data, name: key)
+                case let obj as Data:
+                    formData.appendPart(withForm: obj, name: key)
                     
-                case is URL, is NSURL:
+                case let obj as URL:
                     do{
-                        try formData.appendPart(withFileURL: value as! URL, name: key)
+                        try formData.appendPart(withFileURL: obj, name: key)
                     } catch {
                         DDLog("error:\(error.localizedDescription)")
                     }
@@ -227,8 +224,8 @@ class IOPFileUploadController: UIViewController {
                 print("No userInfo found in notification")
                 return
             }
-//            let dic = (responseObject as! [String: Any])["data"] as! [String: Any]
-            self.delegate?.fileUpload?(url, forKey: self.key)
+            self.delegate?.fileUpload?(self, url: url)
+            self.block?(self, url)
             
         }) { (task, error) in
             NNProgressHUD.showError(error.localizedDescription)
