@@ -1,22 +1,31 @@
 //
 //  IOPImageUploadController.swift
-//  IntelligentOfParking
+//  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/2/14.
 //  Copyright © 2020 Xi'an iRain IoT. Technology Service CO., Ltd. . All rights reserved.
 //
 
 import UIKit
+import Alamofire
+
+@objc enum ImageOCRType: Int {
+    case none, iDCard, license
+}
 
 @objc protocol IOPUploadImageControllerDelegate{
-    @objc func uploadImage(_ url: String, forKey key: String)
+    @objc func uploadImage(_ vc: IOPImageUploadController)
 }
 
 
 class IOPImageUploadController: UIViewController {
     
     weak var delegate: IOPUploadImageControllerDelegate?
-
+    var block: ((IOPImageUploadController)->Void)?
+    ///证件类型会有好多种,每种返回的数据模型都有差异
+    var ocrblock: ((NSObject)->Void)?
+    
+    
     var key: String = ""
     
     lazy var uploadApi = NSObject()
@@ -69,6 +78,18 @@ class IOPImageUploadController: UIViewController {
         requestUploadImage()
     }
 
+    // MARK: -证件识别
+    var ocrType: ImageOCRType = .none{
+        willSet{
+            if newValue == .license {
+                pickerVC.allowsEditing = false
+            }
+        }
+    }
+    
+    var ocrManager = NNTencentOCRManager()
+
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,7 +100,7 @@ class IOPImageUploadController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
     }
   
     func showSheet() {
@@ -120,10 +141,121 @@ class IOPImageUploadController: UIViewController {
 //        uploadApi.startRequest(successBlock: { (manager, dic) in
 //            DDLog(dic)
 //            NNProgressHUD.showSuccess(kAPISuccess)
-//            self.delegate?.uploadImage(dic["url"] as! String, forKey: self.key)
+//
+//            guard let url = dic["url"] as? String else {
+//                print(#function, "接口返回错误")
+//                return
+//            }
+//            self.delegate?.uploadImage(self)
 //
 //        }) { (manager, errorModel) in
 //            NNProgressHUD.showError(errorModel.message)
+//        }
+        
+        
+        let url = "http://api-iop.dev.irainone.com/iop/ipk/img_upload"
+        let token = "867fcfbfbb73682e6c461000b8b4b800"
+        let data = UIImage.compressData(image, limit: 1024*1024)
+
+        let parameters: [String: Any] = ["token": token,
+                                         "file" : data
+        ]
+
+        NNProgressHUD.showLoading("上传中...")
+        AF.upload(multipartFormData: { (multipartFormData) in
+
+            parameters.forEach { (key, obj) in
+                if let value = obj as? String {
+                    guard let data = value.data(using: .utf8) else { return }
+                    multipartFormData.append(data, withName: key)
+                    
+                } else if let value = obj as? Data {
+                    let fileName = DateFormatter.stringFromDate(Date(), fmt: "yyyyMMddHHmmss")
+                    let imageType = UIImage.contentType(value as NSData)
+                    let mimeType = "image/\(imageType)"
+                    print("\(#function)_\(key)_\(value.fileSize)_\(fileName)_\(mimeType)_")
+                    
+                    multipartFormData.append(value, withName: key, fileName: fileName, mimeType: mimeType)
+                    
+                } else if let value = obj as? URL {
+                    multipartFormData.append(value, withName: key)
+                    
+                }
+            }
+
+        }, to: url)
+        .uploadProgress(closure: { (progress) in
+//            print("\(#function), 上传进度_\(progress.fractionCompleted)")
+        })
+        .response { (response) in
+//            NNProgressHUD.dismiss()
+            
+            switch response.result {
+            case .success:
+//                print(#function, "Validation Successful")
+                guard let jsonData = response.data,
+                      let dic = jsonData.objValue as? [String: Any]
+                      else {
+                    print(#function, "接口返回错误")
+                    return
+                }
+                
+                guard let code = dic["code"] as? String,
+                      let message = dic["message"] as? String,
+                      let url = dic["url"] as? String
+                      else {
+                    print(#function, "接口返回错误\(dic.jsonString)")
+                    return
+                }
+                
+                if code != "200" {
+                    NNProgressHUD.showError(message)
+                    return
+                }
+                NNProgressHUD.showSuccess(message)
+                
+                self.imgUrl = url
+                self.delegate?.uploadImage(self)
+                self.block?(self)
+                self.requestOCR(self.imgUrl)
+                
+            case .failure(let error):
+                print(error)
+                if let statusCode = response.response?.statusCode {
+                    print(statusCode)
+                }
+                NNProgressHUD.showError("上传失败")
+            }
+        }
+    }
+    
+    func requestOCR(_ imgUrl: String) {
+//        switch ocrType {
+//        case .iDCard:
+//            ocrManager.recognizeIDCard(imgUrl) { (model) in
+//                IOPProgressHUD.dismiss()
+//                self.ocrblock?(model)
+//                self.navigationController?.popViewController(animated: true);
+//            } failBlock: { (message) in
+////                IOPProgressHUD.showError(withStatus: message)
+//                let tips = message + ",请手动输入"
+//                IOPProgressHUD.showError(withStatus: tips)
+//            }
+//
+//        case .license:
+//            ocrManager.recognizeLicense(imgUrl) { (model) in
+//                IOPProgressHUD.dismiss()
+//                self.ocrblock?(model)
+//                self.navigationController?.popViewController(animated: true);
+//            } failBlock: { (message) in
+//                let tips = message + ",请手动输入"
+//                IOPProgressHUD.showError(withStatus: tips)
+//            }
+//
+//        case .none:
+//            break
+//        default:
+//            break
 //        }
     }
 }
@@ -132,15 +264,19 @@ class IOPImageUploadController: UIViewController {
 extension IOPImageUploadController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print(info)
+//        print(info)
         dismiss(animated: true, completion: nil)
-        guard let image: UIImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-            return
+        
+        var image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        if picker.allowsEditing == true {
+            guard let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+                return
+            }
+            image = editedImage
         }
         
         // 拍照
         if picker.sourceType == .camera {
-            //保存相册
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
         }
         self.image = image;
@@ -154,10 +290,8 @@ extension IOPImageUploadController: UIImagePickerControllerDelegate, UINavigatio
     @objc func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
         if error != nil {
             print("保存失败")
-
         } else {
             print("保存成功")
-
         }
     }
 }
@@ -179,7 +313,7 @@ extension IOPImageUploadController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCellPhoto.dequeueReusableCell(tableView)
     
-        _ = cell.imgViewLeft.addGestureTap({ (reco) in
+        cell.imgViewLeft.addGestureTap({ (reco) in
             self.showSheet()
         })
 //        cell.imgViewLeft.image = image

@@ -49,23 +49,26 @@ import SwiftExpand
         
         let urlStr = !url.hasPrefix("http") ? NNAPIConfig.serviceURLString + url : url
 
-        return AF.upload(multipartFormData: { (MultipartFormData) in
-            parameters.forEach { (key, obj) in
-                if let value = obj as? String {
-                    guard let data = value.data(using: .utf8) else { return }
-                    MultipartFormData.append(data, withName: key)
+        return AF.upload(multipartFormData: { (formData) in
+            parameters.forEach { (key, value) in
+                switch value {
+                case let obj as String:
+                    guard let data = obj.data(using: .utf8) else { return }
+                    formData.append(data, withName: key)
                     
-                } else if let value = obj as? Data {
+                case let obj as Data:
                     let fileName = DateFormatter.stringFromDate(Date(), fmt: "yyyyMMddHHmmss")
-                    let imageType = UIImage.contentType(value as NSData)
+                    let imageType = UIImage.contentType(obj as NSData)
                     let mimeType = "image/\(imageType)"
-                    print("\(#function)_\(key)_\(value.fileSize)_\(fileName)_\(mimeType)_")
+                    print("\(#function)_\(key)_\(obj.fileSize)_\(fileName)_\(mimeType)_")
                     
-                    MultipartFormData.append(value, withName: key, fileName: fileName, mimeType: mimeType)
+                    formData.append(obj, withName: key, fileName: fileName, mimeType: mimeType)
                     
-                } else if let value = obj as? URL {
-                    MultipartFormData.append(value, withName: key)
+                case let obj as URL:
+                    formData.append(obj, withName: key)
                     
+                default:
+                    break
                 }
             }
   
