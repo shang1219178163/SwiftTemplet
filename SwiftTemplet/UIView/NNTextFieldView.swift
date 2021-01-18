@@ -13,11 +13,11 @@ import SnapKit
 import SwiftExpand
         
 /// 左标题右按钮
-class NNTextFieldView: UIView {
+@objcMembers class NNTextFieldView: UIView {
 
     var Xgap: CGFloat = 0;
     var lineHeight: CGFloat = 0.5;
-    var btnSize: CGSize = CGSize(width: 90, height: 30)
+    var btnSize = CGSize(width: 90, height: 30)
 
     var isBackDelete = true
     
