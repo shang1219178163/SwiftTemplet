@@ -111,8 +111,8 @@ class PKLoginController: UIViewController {
 //        view.setTitle("登录", for: .normal);
 //        view.setTitleColor(UIColor.theme, for: .normal);
         
-        view.setBackgroundImage(UIImage(named: "btn_selected_NO"), for: .normal)
-        view.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
+        view.setBackgroundImage(UIImage(named: "icon_selected_no_blue"), for: .normal)
+        view.setBackgroundImage(UIImage(named: "icon_selected_yes_blue"), for: .selected)
 
         view.addActionHandler({ (sender) in
             DDLog(sender)

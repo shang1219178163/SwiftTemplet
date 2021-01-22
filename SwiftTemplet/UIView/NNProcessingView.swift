@@ -109,7 +109,7 @@ class NNProcessingView: UIView {
         view.setTitleColor(UIColor.black, for: .normal)
 
         let normlImage: UIImage = UIImage(named: "icon_num\(tag+1)")!
-        let seletedImage: UIImage = UIImage(named: "btn_selected_YES")!
+        let seletedImage: UIImage = UIImage(named: "icon_selected_yes_blue")!
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         

@@ -42,8 +42,8 @@ import SwiftExpand
         view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         view.setTitle("全选", for: .normal);
 
-        let normlImage: UIImage = UIImage(named: "photo_cancell")!
-        let seletedImage: UIImage = UIImage(named: "photo_select")!
+        let normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+        let seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
         let normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
         let seletedTextColor: UIColor = UIColor.systemBlue
         view.setImage(normlImage, for: .normal)

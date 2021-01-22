@@ -277,8 +277,8 @@ extension IOPPayInpartBaseInfoController: UITableViewDataSource, UITableViewDele
 
                 guard let sender = $0 as? NNButton else { return }
                 sender.direction = .left
-                sender.setImage(UIImage(named: "icon_selected_NO_rect"), for: .normal)
-                sender.setImage(UIImage(named: "icon_selected_YES_rect"), for: .selected)
+                sender.setImage(UIImage(named: "icon_selected_no_rect"), for: .normal)
+                sender.setImage(UIImage(named: "icon_selected_yes_rect"), for: .selected)
 
                 sender.setTitle(items[sender.tag], for: .normal)
 

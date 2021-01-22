@@ -51,8 +51,8 @@ class UITableViewCellChioceItem: UITableViewCell {
 //        btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
 //        btn.layer.cornerRadius = 3
         
-        let normlImage = UIImage(named: "icon_selected_NO_gray")!
-        let seletedImage = UIImage(named: "icon_selected_YES_circle")!
+        let normlImage = UIImage(named: "icon_selected_no_gray")!
+        let seletedImage = UIImage(named: "icon_selected_yes_circle")!
         btn.setImage(normlImage, for: .normal)
         btn.setImage(seletedImage, for: .selected)
     }

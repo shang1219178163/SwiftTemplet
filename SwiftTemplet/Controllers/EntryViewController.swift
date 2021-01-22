@@ -560,7 +560,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
             let image0 = UIImage.textEmbededImage(image: UIImage(named: "img_dialog_inquiry")!, string: titles[0], color: .systemRed)
             let image1 = UIImage.textEmbededImage(image: UIImage(named: "img_dialog_warning")!, string: titles[1], color: .systemOrange)
-            let image2 = UIImage.textEmbededImage(image: UIImage(named: "btn_selected_NO")!, string: titles[2], color: .systemYellow)
+            let image2 = UIImage.textEmbededImage(image: UIImage(named: "icon_selected_no_blue")!, string: titles[2], color: .systemYellow)
             let image3 = UIImage.textEmbededImage(image: UIImage(named: "icon_password")!, string: titles[3], color: .systemGreen)
             
             cell.segmentCtl.setImage(image0.withRenderingMode(.alwaysOriginal), forSegmentAt: 0)
@@ -813,8 +813,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.accessoryType = .disclosureIndicator
 //            cell.btnSize = CGSize(width: 45, height: 45)
             
-            cell.btn.setBackgroundImage(UIImage(named: "btn_selected_NO"), for: .normal)
-            cell.btn.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .selected)
+            cell.btn.setBackgroundImage(UIImage(named: "icon_selected_no_blue"), for: .normal)
+            cell.btn.setBackgroundImage(UIImage(named: "icon_selected_yes_blue"), for: .selected)
             cell.btn.addActionHandler({ (sender) in
               
               sender.isSelected = !sender.isSelected
@@ -946,7 +946,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
                 guard let sender = $0 as? NNButton else { return }
                 sender.direction = .top
-                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+                sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
 
                 sender.addActionHandler({ sender in
                     
@@ -975,7 +975,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.items.forEach {
                 guard let sender = $0 as? NNButton else { return }
                 sender.direction = .top
-                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+                sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
                 sender.iconBtn.setTitle("价值100", for: .normal)
 //                sender.iconBtn.setImage(UIImage(named: "icon_discount_orange"), for: .normal)
                 sender.iconBtn.setBackgroundColor(UIColor.theme, for: .normal)
@@ -984,8 +984,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 sender.setNeedsLayout()
                 
 //                sender.direction = .left
-//                var normlImage: UIImage = UIImage(named: "photo_cancell")!
-//                var seletedImage: UIImage = UIImage(named: "photo_select")!
+//                var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+//                var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
 //                sender.setImage(normlImage, for: .normal)
 //                sender.setImage(seletedImage, for: .selected)
                 

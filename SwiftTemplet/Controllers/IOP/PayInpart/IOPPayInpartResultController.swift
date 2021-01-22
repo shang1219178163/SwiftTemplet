@@ -102,7 +102,7 @@ extension IOPPayInpartResultController: UITableViewDataSource, UITableViewDelega
             sender.direction = .top
             sender.setTitle("提交成功", for: .normal)
             sender.setTitleColor(.textColor3, for: .normal)
-            sender.setImage(UIImage(named: "icon_selected_YES_circle_big"), for: .normal)
+            sender.setImage(UIImage(named: "icon_selected_yes_circle_big"), for: .normal)
             sender.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(inset.left)

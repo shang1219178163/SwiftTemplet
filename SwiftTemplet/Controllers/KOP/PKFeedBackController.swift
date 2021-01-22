@@ -210,8 +210,8 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
                     sender.setTitle(nil, for: .normal)
                 }
 
-//                sender.setBackgroundImage(UIImage(named: "btn_selected_YES"), for: .normal)
-//                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+//                sender.setBackgroundImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
+//                sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
                 sender.setNeedsLayout()
 
                 sender.addActionHandler({ control in

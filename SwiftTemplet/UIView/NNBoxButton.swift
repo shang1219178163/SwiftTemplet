@@ -11,8 +11,8 @@ import UIKit
 /// 单选框(弃用,NNButton代替)
 class NNBoxButton: UIButton {
 
-    var normlImage: UIImage = UIImage(named: "photo_cancell")!
-    var seletedImage: UIImage = UIImage(named: "photo_select")!
+    var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+    var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
 
     var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
     var seletedTextColor: UIColor = UIColor.systemBlue

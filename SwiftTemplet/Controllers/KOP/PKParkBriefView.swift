@@ -235,7 +235,7 @@ extension PKParkBriefView: UITableViewDataSource, UITableViewDelegate{
 //
 //                guard let sender = $0 as? NNVeritalButtonView else { return }
 //                sender.direction = .top
-//                sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+//                sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
 //                sender.backgroundColor = .white
 //                sender.items[0].setTitleColor(.textColor3, for: .normal)
 //                sender.items[1].setTitleColor(.textColor9, for: .normal)

@@ -195,7 +195,7 @@ extension PKMineController: UITableViewDataSource, UITableViewDelegate{
                     sender.direction = .top
                     sender.titleLabel?.font = UIFont.systemFont(ofSize: 12)
 
-                    sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+                    sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
 //                    sender.setTitle(items[sender.tag], for: .normal)
                     sender.setTitleColor(.textColor3, for: .normal)
                     if items.count > sender.tag {

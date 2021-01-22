@@ -14,7 +14,7 @@ class FlipImageViewController: UIViewController {
     lazy var imgView: UIImageView = {
         let view = UIImageView(frame: .zero);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.image = UIImage(named: "btn_selected_YES")
+        view.image = UIImage(named: "icon_selected_yes_blue")
 
         return view;
     }();
@@ -42,7 +42,7 @@ class FlipImageViewController: UIViewController {
     }
     
     @objc func handleAction() {
-        let backImage = UIImage(named: "btn_selected_NO")
+        let backImage = UIImage(named: "icon_selected_no_blue")
         imgView.addFlipAnimtion(imgView.image!, backImage: backImage!)
     }
 

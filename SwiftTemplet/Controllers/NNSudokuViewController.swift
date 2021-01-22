@@ -21,7 +21,7 @@ class NNSudokuViewController: UIViewController {
 
             guard let sender = $0 as? NNButton else { return }
             sender.direction = .top
-            sender.setImage(UIImage(named: "btn_selected_YES"), for: .normal)
+            sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
 
             sender.addActionHandler({ sender in
                 
