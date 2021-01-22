@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TextFieldViewController : UIViewController
 
+@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UIButton *button;
+
 @end
 
 NS_ASSUME_NONNULL_END
