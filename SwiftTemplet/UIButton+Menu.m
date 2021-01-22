@@ -9,7 +9,7 @@
 #import "UIButton+Menu.h"
 #import <objc/runtime.h>
 
-@interface NNMenuTarget()<UITableViewDataSource, UITableViewDelegate>
+@interface NNButtonMenuTarget()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong, readwrite) NSString *selectedText;
@@ -19,8 +19,31 @@
 @end
 
 
-@implementation NNMenuTarget
+@implementation NNButtonMenuTarget
 
+- (void)dealloc{
+    [self.button removeObserver:self forKeyPath:@"selected"];
+}
+
+#pragma mark -observe
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if ([object isKindOfClass:[UIButton class]]) {
+//        UIButton *sender = (UIButton *)object;
+        if ([keyPath isEqualToString:@"selected"]) {
+            NSNumber *newValue = change[NSKeyValueChangeNewKey];
+//            DDLog(@"newValue: %@", newValue);
+            if (newValue.boolValue) {
+                [self showHistory];
+            } else {
+                [self hideHistroy];
+            }
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+#pragma mark -set,get
 - (NSMutableArray<NSString *> *)list{
     return objc_getAssociatedObject(self, _cmd);
 }
@@ -35,7 +58,6 @@
 }
 
 #pragma mark -tableview
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.list.count;
 }
@@ -141,16 +163,6 @@
     }
 }
 
-- (void)handleAction:(UIButton *)sender{
-    sender.selected = !sender.selected;
-//    DDLog(@"isSelected_%@", @(sender.isSelected));
-    if (sender.isSelected) {
-        [self.button.target showHistory];
-    } else {
-        [self.button.target hideHistroy];
-    }
-}
-
 #pragma mark -lazy
 - (UITableView *)tableView{
     UITableView *view = objc_getAssociatedObject(self, _cmd);
@@ -175,16 +187,16 @@
 
 @implementation UIButton (Menu)
 
-- (NNMenuTarget *)target{
-    NNMenuTarget *obj = objc_getAssociatedObject(self, _cmd);
+- (NNButtonMenuTarget *)menuTarget{
+    NNButtonMenuTarget *obj = objc_getAssociatedObject(self, _cmd);
     if (obj) {
         return obj;
     }
-    NNMenuTarget *tmp = [[NNMenuTarget alloc]init];
+    NNButtonMenuTarget *tmp = [[NNButtonMenuTarget alloc]init];
     tmp.button = self;
     
-    [self addTarget:tmp action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
-    objc_setAssociatedObject(self, @selector(target), tmp, OBJC_ASSOCIATION_RETAIN);
+    [tmp.button addObserver:tmp forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
+    objc_setAssociatedObject(self, @selector(menuTarget), tmp, OBJC_ASSOCIATION_RETAIN);
     return tmp;
 }
 

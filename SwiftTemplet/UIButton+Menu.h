@@ -24,9 +24,9 @@
              sender;
          });
                  
-         _button.target.hiddenClearButton = true;
-         _button.target.list = @[@"北京", @"上海", @"广州", @"深圳", @"西安"].mutableCopy;
-         _button.target.block = ^(NNMenuTarget *tagget) {
+         _button.menuTarget.hiddenClearButton = true;
+         _button.menuTarget.list = @[@"北京", @"上海", @"广州", @"深圳", @"西安"].mutableCopy;
+         _button.menuTarget.block = ^(NNButtonMenuTarget *tagget) {
              DDLog(@"%@", tagget.selectedText);
          };
      }
@@ -38,21 +38,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NNMenuTarget : NSObject
+@interface NNButtonMenuTarget : NSObject
 
 @property (nonatomic, strong) NSMutableArray<NSString *> *list;
 @property (nonatomic, strong, readonly, nullable) NSString *selectedText;
 @property (nonatomic, assign) bool hiddenClearButton;
 
 @property (nonatomic, copy) UITableViewCell *(^blockCellForRow)(UITableView *tableView, NSIndexPath *indexPath, NSString *selectedText);
-@property (nonatomic, copy) void(^block)(NNMenuTarget *);
+@property (nonatomic, copy) void(^block)(NNButtonMenuTarget *);
 
 @end
 
 
 @interface UIButton (Menu)
 
-@property (nonatomic, strong, readonly) NNMenuTarget *target;
+@property (nonatomic, strong, readonly) NNButtonMenuTarget *menuTarget;
 
 @end
 

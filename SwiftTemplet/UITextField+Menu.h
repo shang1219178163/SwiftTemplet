@@ -1,8 +1,9 @@
 //
-//  UITextField+History.h
-//  NNCategoryPro
+//  UITextField+Menu.h
+//  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/11/11.
+//  Created by Bin Shang on 2021/1/22.
+//  Copyright © 2021 BN. All rights reserved.
 //
 
 /*
@@ -16,8 +17,8 @@
          _textField = [[UITextField alloc]init];
          _textField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:14]}];
 
-         _textField.target.list = @[@"111", @"222", @"333", @"444", @"555"].mutableCopy;
-         _textField.target.block = ^(NNMenuTarget *tagget) {
+         _textField.Menutarget.list = @[@"111", @"222", @"333", @"444", @"555"].mutableCopy;
+         _textField.menutarget.block = ^(NNButtonMenuTarget *tagget) {
              DDLog(@"%@", tagget.selectedText);
          };
      }
@@ -29,22 +30,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NNHistoryTarget : NSObject
+@interface NNTextFieldMenuTarget : NSObject
 
 @property (nonatomic, strong) NSMutableArray<NSString *> *list;
 @property (nonatomic, strong, readonly, nullable) NSString *selectedText;
 
 @property (nonatomic, copy) UITableViewCell *(^blockCellForRow)(UITableView *tableView, NSIndexPath *indexPath, NSString *selectedText);
-@property (nonatomic, copy) void(^block)(NNHistoryTarget *);
-
+@property (nonatomic, copy) void(^block)(NNTextFieldMenuTarget *);
 
 @end
 
 
 
-@interface UITextField (History)
+@interface UITextField (Menu)
 
-@property (nonatomic, strong, readonly) NNHistoryTarget *target;
+@property (nonatomic, strong, readonly) NNTextFieldMenuTarget *menuTarget;
 
 @end
 

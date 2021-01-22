@@ -1,14 +1,15 @@
 //
-//  UITextField+History.m
-//  NNCategoryPro
+//  UITextField+Menu.m
+//  SwiftTemplet
 //
-//  Created by Bin Shang on 2019/11/11.
+//  Created by Bin Shang on 2021/1/22.
+//  Copyright © 2021 BN. All rights reserved.
 //
 
-#import "UITextField+History.h"
+#import "UITextField+Menu.h"
 #import <objc/runtime.h>
 
-@interface NNHistoryTarget()<UITableViewDataSource, UITableViewDelegate>
+@interface NNTextFieldMenuTarget()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong, readwrite) NSString *selectedText;
@@ -17,7 +18,7 @@
 
 @end
 
-@implementation NNHistoryTarget
+@implementation NNTextFieldMenuTarget
 
 - (NSMutableArray<NSString *> *)list{
     return objc_getAssociatedObject(self, _cmd);
@@ -140,9 +141,9 @@
     sender.selected = !sender.selected;
 //    DDLog(@"isSelected_%@", @(sender.isSelected));
     if (sender.isSelected) {
-        [self.textField.target showHistory];
+        [self.textField.menuTarget showHistory];
     } else {
-        [self.textField.target hideHistroy];
+        [self.textField.menuTarget hideHistroy];
     }
 
 }
@@ -168,14 +169,14 @@
 
 
 
-@implementation UITextField (History)
+@implementation UITextField (Menu)
 
-- (NNHistoryTarget *)target{
-    NNHistoryTarget *obj = objc_getAssociatedObject(self, _cmd);
+- (NNTextFieldMenuTarget *)menuTarget{
+    NNTextFieldMenuTarget *obj = objc_getAssociatedObject(self, _cmd);
     if (obj) {
         return obj;
     }
-    NNHistoryTarget *tmp = [[NNHistoryTarget alloc]init];
+    NNTextFieldMenuTarget *tmp = [[NNTextFieldMenuTarget alloc]init];
     tmp.textField = self;
     
     tmp.textField.rightViewMode = UITextFieldViewModeAlways;
@@ -194,13 +195,9 @@
     if (!tmp.textField.backgroundColor) {
         tmp.textField.layer.borderColor = UIColor.lightGrayColor.CGColor;
         tmp.textField.layer.borderWidth = 0.5;
-    }    
-    objc_setAssociatedObject(self, @selector(target), tmp, OBJC_ASSOCIATION_RETAIN);
+    }
+    objc_setAssociatedObject(self, @selector(menuTarget), tmp, OBJC_ASSOCIATION_RETAIN);
     return tmp;
 }
 
-
 @end
-
-
-
