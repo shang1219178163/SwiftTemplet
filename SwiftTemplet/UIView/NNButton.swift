@@ -10,6 +10,7 @@ import UIKit
 
 /// 自定义图像方向按钮
 @objcMembers class NNButton: UIButton {
+    
     ///图像位置上左下右
     var direction: UIView.Direction = .left{
         willSet{
@@ -32,12 +33,9 @@ import UIKit
     var iconSize: CGSize = CGSize(width: 60, height: 18)
     var labelHeight: CGFloat = 25
 
-    var spacing: CGFloat = 5
-
-//    ///响应区域
-//    var eventSize: CGSize = .zero
+    var spacing: CGFloat = 3
     
-    lazy var iconBtn: UIButton = {
+    private(set) lazy var iconBtn: UIButton = {
         let view = UIButton(type: .custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -45,8 +43,17 @@ import UIKit
         return view
     }()
                 
+    private var borderColorDic = [UIControl.State.RawValue: UIColor]()
+    private var borderWidthDic = [UIControl.State.RawValue: CGFloat]()
+    private var cornerRadiusDic = [UIControl.State.RawValue: CGFloat]()
+    
+
     // MARK: -lifecycle
-            
+    deinit {
+        removeObserver(self, forKeyPath: "selected")
+        removeObserver(self, forKeyPath: "highlighted")
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -66,7 +73,8 @@ import UIKit
 //        titleLabel?.isUserInteractionEnabled = true
 //        imageView?.isUserInteractionEnabled = true
         
-        iconBtn.tag = tag
+        addObserver(self, forKeyPath: "selected", options: .new, context: nil)
+        addObserver(self, forKeyPath: "highlighted", options: .new, context: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -76,30 +84,55 @@ import UIKit
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if bounds.height <= 0 {
+        iconBtn.tag = tag
+        if bounds.height <= 10 {
             return
         }
         
         switch direction {
         case .top:
-            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height - labelHeight - spacing*0.5)
-            titleLabel!.frame = CGRect(x: 0, y: imageView!.frame.maxY + spacing, width: bounds.width, height: labelHeight - spacing*0.5)
+            imageView!.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: bounds.width,
+                                      height: bounds.height - labelHeight - spacing*0.5)
+            titleLabel!.frame = CGRect(x: 0,
+                                       y: imageView!.frame.maxY + spacing,
+                                       width: bounds.width,
+                                       height: labelHeight - spacing*0.5)
             
 //        case .left:
 //            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
 //            titleLabel!.frame = CGRect(x: imageView!.frame.maxX, y: 0, width: bounds.width - imageView!.frame.width, height: bounds.height)
                 
         case .bottom:
-            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width, height: labelHeight - spacing*0.5)
-            imageView!.frame = CGRect(x: 0, y: titleLabel!.frame.maxY + spacing, width: bounds.width, height: bounds.height - labelHeight - spacing*0.5)
+            titleLabel!.frame = CGRect(x: 0,
+                                       y: 0,
+                                       width: bounds.width,
+                                       height: labelHeight - spacing*0.5)
+            imageView!.frame = CGRect(x: 0,
+                                      y: titleLabel!.frame.maxY + spacing,
+                                      width: bounds.width,
+                                      height: bounds.height - labelHeight - spacing*0.5)
                     
         case .right:
-            imageView!.frame = CGRect(x: bounds.width - bounds.height, y: 0, width: bounds.height, height: bounds.height)
-            titleLabel!.frame = CGRect(x: 0, y: 0, width: bounds.width - bounds.height - spacing, height: bounds.height)
+            imageView!.frame = CGRect(x: bounds.width - bounds.height,
+                                      y: 0,
+                                      width: bounds.height,
+                                      height: bounds.height)
+            titleLabel!.frame = CGRect(x: spacing,
+                                       y: (bounds.height - labelHeight)*0.5,
+                                       width: bounds.width - bounds.height - spacing*2,
+                                       height: labelHeight)
             
         default:
-            imageView!.frame = CGRect(x: 0, y: 0, width: bounds.height, height: bounds.height)
-            titleLabel!.frame = CGRect(x: imageView!.frame.maxX + spacing, y: 0, width: bounds.width - imageView!.frame.width - spacing, height: bounds.height)
+            imageView!.frame = CGRect(x: 0,
+                                      y: 0,
+                                      width: bounds.height,
+                                      height: bounds.height)
+            titleLabel!.frame = CGRect(x: imageView!.frame.maxY + spacing,
+                                       y: (bounds.height - labelHeight)*0.5,
+                                       width: bounds.width - imageView!.frame.width - spacing*2,
+                                       height: labelHeight)
             break
         }
         
@@ -125,9 +158,9 @@ import UIKit
         inconRect.origin.y += iconOffset.vertical
         iconBtn.frame = inconRect
         //
-        if currentImage == nil {
+        if currentImage == nil || imageView!.isHidden{
             titleLabel!.frame = bounds
-        } else if currentTitle == nil {
+        } else if currentTitle == nil || titleLabel!.isHidden {
             imageView!.frame = bounds
         }
         
@@ -142,4 +175,73 @@ import UIKit
         return eventBounds.contains(point)
     }
 
+    // MARK: -observe
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if let sender = object as? NNButton {
+            if keyPath == "selected" || keyPath == "highlighted" {
+                sender.changeLayerBorderColor()
+                sender.changeLayerBorderWidth()
+                sender.changeLayerCornerRadius()
+            }
+        } else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+
+    // MARK: -public
+    func setBorderColor(_ color: UIColor?, for state: UIControl.State){
+        guard let color = color else { return }
+        borderColorDic[state.rawValue] = color
+        changeLayerBorderColor()
+    }
+    func borderColor(for state: UIControl.State) -> UIColor?{
+        return borderColorDic[state.rawValue]
+    }
+    
+    func setBorderWidth(_ value: CGFloat, for state: UIControl.State){
+        borderWidthDic[state.rawValue] = value
+        changeLayerBorderWidth()
+    }
+    func borderWidth(for state: UIControl.State) -> CGFloat{
+        return borderWidthDic[state.rawValue] ?? 0
+    }
+    
+    func setCornerRadius(_ value: CGFloat, for state: UIControl.State){
+        cornerRadiusDic[state.rawValue] = value
+        changeLayerCornerRadius()
+    }
+    func cornerRadius(for state: UIControl.State) -> CGFloat{
+        return cornerRadiusDic[state.rawValue] ?? 0
+    }
+
+    // MARK: -private
+    private func changeLayerBorderColor() {
+        guard let normalColor = borderColorDic[UIControl.State.normal.rawValue] else { return }
+        let color = borderColorDic[state.rawValue] ?? normalColor
+        self.layer.borderColor = color.cgColor
+
+        if self.layer.borderWidth == 0 {
+            self.layer.borderWidth = 1
+        }
+    }
+    
+    private func changeLayerBorderWidth() {
+        guard let normalValue = borderWidthDic[UIControl.State.normal.rawValue] else { return }
+        let value = borderWidthDic[state.rawValue] ?? normalValue
+        self.layer.borderWidth = value
+        
+        if self.layer.borderWidth == 0 {
+            self.layer.borderWidth = 1
+        }
+    }
+    
+    private func changeLayerCornerRadius() {
+        guard let normalValue = cornerRadiusDic[UIControl.State.normal.rawValue] else { return }
+        let value = cornerRadiusDic[state.rawValue] ?? normalValue
+        self.layer.cornerRadius = value
+
+        if self.layer.borderWidth == 0 {
+            self.layer.borderWidth = 1
+        }
+    }
 }
