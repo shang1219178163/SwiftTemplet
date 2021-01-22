@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class ValidateProtocolController: UIViewController {
+class ValidateProtocolController: UIViewController, ValidateProtocol {
 
     ///重写
     func isValidPhone(_ value: String) -> Bool {
@@ -33,6 +33,4 @@ class ValidateProtocolController: UIViewController {
 }
 
 
-extension UIViewController: ValidateProtocol{
-    
-}
+//extension UIViewController: ValidateProtocol{ }
