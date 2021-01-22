@@ -5,18 +5,18 @@
       "scale" : "1x"
     },
     {
-      "filename" : "icon_selected_NO_gray@2x.png",
       "idiom" : "universal",
+      "filename" : "photo_original@2x.png",
       "scale" : "2x"
     },
     {
-      "filename" : "icon_selected_NO_gray@3x.png",
       "idiom" : "universal",
+      "filename" : "photo_original@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
