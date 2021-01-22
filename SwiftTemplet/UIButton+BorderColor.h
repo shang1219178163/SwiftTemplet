@@ -6,6 +6,17 @@
 //  Copyright © 2021 BN. All rights reserved.
 //
 
+/*
+ [_button1 setBorderColor:UIColor.lightGrayColor forState:UIControlStateNormal];
+ [_button1 setBorderColor:UIColor.systemBlueColor forState:UIControlStateSelected];
+ [_button1 setCornerRadius:4 forState:UIControlStateNormal];
+ [_button1 setCornerRadius:14 forState:UIControlStateSelected];
+ 
+ - (void)handleAction:(UIButton *)sender{
+     sender.selected = !sender.selected;
+ }
+ **/
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
