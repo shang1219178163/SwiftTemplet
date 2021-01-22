@@ -35,6 +35,9 @@ import UIKit
 
     var spacing: CGFloat = 3
     
+    ///addObserver(self, forKeyPath: "selected", options: .new, context: nil)
+    var observerBlock:((String?, NNButton?, [NSKeyValueChangeKey: Any]?)->Void)?
+        
     private(set) lazy var iconBtn: UIButton = {
         let view = UIButton(type: .custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -182,6 +185,7 @@ import UIKit
                 sender.changeLayerBorderColor()
                 sender.changeLayerBorderWidth()
                 sender.changeLayerCornerRadius()
+                sender.observerBlock?(keyPath, sender, change)
             }
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)

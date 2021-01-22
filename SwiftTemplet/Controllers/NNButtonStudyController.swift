@@ -79,6 +79,14 @@ class NNButtonStudyController: UIViewController{
         view.setBorderColor(.lightGray, for: .normal)
         view.setBorderColor(.systemBlue, for: .selected)
         view.setCornerRadius(4, for: .normal)
+        
+        view.observerBlock = { keyPath, sender, change in
+            guard let keyPath = keyPath,
+                  let sender = sender,
+                  let change = change
+                  else { return }
+            DDLog(keyPath)
+        }
 
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
         return view
