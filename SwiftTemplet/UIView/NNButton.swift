@@ -52,10 +52,10 @@ import UIKit
     
 
     // MARK: -lifecycle
-    deinit {
-        removeObserver(self, forKeyPath: "selected")
-        removeObserver(self, forKeyPath: "highlighted")
-    }
+//    deinit {
+//        removeObserver(self, forKeyPath: "selected")
+//        removeObserver(self, forKeyPath: "highlighted")
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,8 +76,8 @@ import UIKit
 //        titleLabel?.isUserInteractionEnabled = true
 //        imageView?.isUserInteractionEnabled = true
         
-        addObserver(self, forKeyPath: "selected", options: .new, context: nil)
-        addObserver(self, forKeyPath: "highlighted", options: .new, context: nil)
+//        addObserver(self, forKeyPath: "selected", options: .new, context: nil)
+//        addObserver(self, forKeyPath: "highlighted", options: .new, context: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -178,74 +178,74 @@ import UIKit
         return eventBounds.contains(point)
     }
 
-    // MARK: -observe
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if let sender = object as? NNButton {
-            if keyPath == "selected" || keyPath == "highlighted" {
-                sender.changeLayerBorderColor()
-                sender.changeLayerBorderWidth()
-                sender.changeLayerCornerRadius()
-                sender.observerBlock?(keyPath, sender, change)
-            }
-        } else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
-    }
-
-    // MARK: -public
-    func setBorderColor(_ color: UIColor?, for state: UIControl.State){
-        guard let color = color else { return }
-        borderColorDic[state.rawValue] = color
-        changeLayerBorderColor()
-    }
-    func borderColor(for state: UIControl.State) -> UIColor?{
-        return borderColorDic[state.rawValue]
-    }
-    
-    func setBorderWidth(_ value: CGFloat, for state: UIControl.State){
-        borderWidthDic[state.rawValue] = value
-        changeLayerBorderWidth()
-    }
-    func borderWidth(for state: UIControl.State) -> CGFloat{
-        return borderWidthDic[state.rawValue] ?? 0
-    }
-    
-    func setCornerRadius(_ value: CGFloat, for state: UIControl.State){
-        cornerRadiusDic[state.rawValue] = value
-        changeLayerCornerRadius()
-    }
-    func cornerRadius(for state: UIControl.State) -> CGFloat{
-        return cornerRadiusDic[state.rawValue] ?? 0
-    }
-
-    // MARK: -private
-    private func changeLayerBorderColor() {
-        guard let normalColor = borderColorDic[UIControl.State.normal.rawValue] else { return }
-        let color = borderColorDic[state.rawValue] ?? normalColor
-        self.layer.borderColor = color.cgColor
-
-        if self.layer.borderWidth == 0 {
-            self.layer.borderWidth = 1
-        }
-    }
-    
-    private func changeLayerBorderWidth() {
-        guard let normalValue = borderWidthDic[UIControl.State.normal.rawValue] else { return }
-        let value = borderWidthDic[state.rawValue] ?? normalValue
-        self.layer.borderWidth = value
-        
-        if self.layer.borderWidth == 0 {
-            self.layer.borderWidth = 1
-        }
-    }
-    
-    private func changeLayerCornerRadius() {
-        guard let normalValue = cornerRadiusDic[UIControl.State.normal.rawValue] else { return }
-        let value = cornerRadiusDic[state.rawValue] ?? normalValue
-        self.layer.cornerRadius = value
-
-        if self.layer.borderWidth == 0 {
-            self.layer.borderWidth = 1
-        }
-    }
+//    // MARK: -observe
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if let sender = object as? NNButton {
+//            if keyPath == "selected" || keyPath == "highlighted" {
+//                sender.changeLayerBorderColor()
+//                sender.changeLayerBorderWidth()
+//                sender.changeLayerCornerRadius()
+//                sender.observerBlock?(keyPath, sender, change)
+//            }
+//        } else {
+//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+//        }
+//    }
+//
+//    // MARK: -public
+//    func setBorderColor(_ color: UIColor?, for state: UIControl.State){
+//        guard let color = color else { return }
+//        borderColorDic[state.rawValue] = color
+//        changeLayerBorderColor()
+//    }
+//    func borderColor(for state: UIControl.State) -> UIColor?{
+//        return borderColorDic[state.rawValue]
+//    }
+//
+//    func setBorderWidth(_ value: CGFloat, for state: UIControl.State){
+//        borderWidthDic[state.rawValue] = value
+//        changeLayerBorderWidth()
+//    }
+//    func borderWidth(for state: UIControl.State) -> CGFloat{
+//        return borderWidthDic[state.rawValue] ?? 0
+//    }
+//
+//    func setCornerRadius(_ value: CGFloat, for state: UIControl.State){
+//        cornerRadiusDic[state.rawValue] = value
+//        changeLayerCornerRadius()
+//    }
+//    func cornerRadius(for state: UIControl.State) -> CGFloat{
+//        return cornerRadiusDic[state.rawValue] ?? 0
+//    }
+//
+//    // MARK: -private
+//    private func changeLayerBorderColor() {
+//        guard let normalColor = borderColorDic[UIControl.State.normal.rawValue] else { return }
+//        let color = borderColorDic[state.rawValue] ?? normalColor
+//        self.layer.borderColor = color.cgColor
+//
+//        if self.layer.borderWidth == 0 {
+//            self.layer.borderWidth = 1
+//        }
+//    }
+//
+//    private func changeLayerBorderWidth() {
+//        guard let normalValue = borderWidthDic[UIControl.State.normal.rawValue] else { return }
+//        let value = borderWidthDic[state.rawValue] ?? normalValue
+//        self.layer.borderWidth = value
+//
+//        if self.layer.borderWidth == 0 {
+//            self.layer.borderWidth = 1
+//        }
+//    }
+//
+//    private func changeLayerCornerRadius() {
+//        guard let normalValue = cornerRadiusDic[UIControl.State.normal.rawValue] else { return }
+//        let value = cornerRadiusDic[state.rawValue] ?? normalValue
+//        self.layer.cornerRadius = value
+//
+//        if self.layer.borderWidth == 0 {
+//            self.layer.borderWidth = 1
+//        }
+//    }
 }
