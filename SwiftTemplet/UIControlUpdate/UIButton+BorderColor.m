@@ -34,13 +34,14 @@
 - (void)dealloc{
     [self.button removeObserver:self forKeyPath:@"selected"];
     [self.button removeObserver:self forKeyPath:@"highlighted"];
+    [self.button removeObserver:self forKeyPath:@"enabled"];
 }
 
 #pragma mark -observe
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([object isKindOfClass:[UIButton class]]) {
         UIButton *sender = (UIButton *)object;
-        if ([keyPath isEqualToString:@"selected"] || [keyPath isEqualToString:@"highlighted"]) {
+        if ([keyPath isEqualToString:@"selected"] || [keyPath isEqualToString:@"highlighted"] || [keyPath isEqualToString:@"enabled"]) {
             [self changeLayerBorderColor: sender];
             [self changeLayerBorderWidth: sender];
             [self changeLayerCornerRadius: sender];
@@ -55,6 +56,8 @@
 - (NSMutableDictionary<NSNumber *,UIColor *> *)borderColorDic{
     if (!_borderColorDic) {
         _borderColorDic = @{
+            @(0): UIColor.darkGrayColor,
+            @(1): UIColor.systemBlueColor,
             
         }.mutableCopy;
     }
@@ -64,6 +67,8 @@
 - (NSMutableDictionary<NSNumber *, NSNumber *> *)borderWidthDic{
     if (!_borderWidthDic) {
         _borderWidthDic = @{
+            @(0): @(1),
+            @(1): @(1),
             
         }.mutableCopy;
     }
@@ -73,6 +78,8 @@
 - (NSMutableDictionary<NSNumber *, NSNumber *> *)cornerRadiusDic{
     if (!_cornerRadiusDic) {
         _cornerRadiusDic = @{
+            @(0): @(4),
+            @(1): @(4),
             
         }.mutableCopy;
     }
@@ -207,6 +214,7 @@
     
     [target.button addObserver:target forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
     [target.button addObserver:target forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
+    [target.button addObserver:target forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:nil];
 
     objc_setAssociatedObject(self, @selector(borderTarget), target, OBJC_ASSOCIATION_RETAIN);
     return target;

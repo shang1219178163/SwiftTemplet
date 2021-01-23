@@ -5,6 +5,16 @@
 //  Created by Bin Shang on 2021/1/23.
 //  Copyright © 2021 BN. All rights reserved.
 //
+/**
+ UIControlStateNormal = 0;
+ UIControlStateHighlighted = 1;
+ UIControlStateDisabled = 2;
+ UIControlStateSelected = 4;
+ UIControlStateFocused = 8;
+ UIControlStateApplication = 16711680;
+ UIControlStateReserved = 4278190080;
+}
+ */
 
 import UIKit
 
@@ -15,20 +25,33 @@ class NNButtonLayerTarget: NSObject {
     ///addObserver(self, forKeyPath: "selected", options: .new, context: nil)
     var observerBlock:((String?, UIButton?, [NSKeyValueChangeKey: Any]?)->Void)?
     
-    var borderColorDic = [UIControl.State.RawValue: UIColor]()
-    var borderWidthDic = [UIControl.State.RawValue: CGFloat]()
-    var cornerRadiusDic = [UIControl.State.RawValue: CGFloat]()
+//    var borderColorDic = [UIControl.State.RawValue: UIColor]()
+//    var borderWidthDic = [UIControl.State.RawValue: CGFloat]()
+//    var cornerRadiusDic = [UIControl.State.RawValue: CGFloat]()
+    
+    var borderColorDic: [UIControl.State.RawValue: UIColor] = [0: UIColor.darkGray,
+                                                               1: UIColor.systemBlue,
+    ]
+
+    var borderWidthDic: [UIControl.State.RawValue: CGFloat] = [0: 1,
+                                                               1: 1,
+    ]
+    
+    var cornerRadiusDic: [UIControl.State.RawValue: CGFloat] = [0: 4,
+                                                                1: 4,
+    ]
     
     // MARK: -lifecycle
     deinit {
         removeObserver(self, forKeyPath: "selected")
         removeObserver(self, forKeyPath: "highlighted")
+        removeObserver(self, forKeyPath: "enabled")
     }
     
     // MARK: -observe
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if let sender = object as? UIButton {
-            if keyPath == "selected" || keyPath == "highlighted" {
+            if keyPath == "selected" || keyPath == "highlighted" || keyPath == "enabled" {
                 changeLayerBorderColor(sender)
                 changeLayerBorderWidth(sender)
                 changeLayerCornerRadius(sender)
@@ -119,7 +142,7 @@ public extension UIButton{
             
             target.button?.addObserver(target, forKeyPath: "selected", options: .new, context: nil)
             target.button?.addObserver(target, forKeyPath: "highlighted", options: .new, context: nil)
-
+            target.button?.addObserver(target, forKeyPath: "enabled", options: .new, context: nil)
             objc_setAssociatedObject(self, &AssociateKeys.layerTarget, target, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             return target
         }
