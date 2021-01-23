@@ -198,7 +198,7 @@ class NNButtonStudyController: UIViewController{
         view.addSubview(boxButton)
         view.addSubview(radioButton)
         
-//        if #available(iOS 14.0, *) {
+        if #available(iOS 14.0, *) {
 //            let destruct = UIAction(title: "Destruct", attributes: .destructive) { DDLog($0.title) }
 //
 //            let items = UIMenu(title: "More", options: .displayInline, children: [
@@ -209,7 +209,10 @@ class NNButtonStudyController: UIViewController{
 //            ])
 //
 //            button.menu = UIMenu(title: "", children: [items, destruct])
-//        }
+//            button.showsMenuAsPrimaryAction = true
+//            button.addAction(UIAction(title: ""){ _ in print("Hello Menu")},for: .menuActionTriggered)
+
+        }
                 
 //        button.isHidden = true
         checkBox.isHidden = true

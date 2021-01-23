@@ -1,49 +1,25 @@
 //
-//  UIButton+Menu.m
+//  UITextField+Menu.m
 //  SwiftTemplet
 //
-//  Created by Bin Shang on 2021/1/14.
+//  Created by Bin Shang on 2021/1/22.
 //  Copyright © 2021 BN. All rights reserved.
 //
 
-#import "UIButton+Menu.h"
+#import "UITextField+Menu.h"
 #import <objc/runtime.h>
 
-@interface NNButtonMenuTarget()<UITableViewDataSource, UITableViewDelegate>
+@interface NNTextFieldMenuTarget()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong, readwrite) NSString *selectedText;
 
-@property (nonatomic, weak) UIButton *button;
+@property (nonatomic, weak) UITextField *textField;
 
 @end
 
+@implementation NNTextFieldMenuTarget
 
-@implementation NNButtonMenuTarget
-
-- (void)dealloc{
-    [self.button removeObserver:self forKeyPath:@"selected"];
-}
-
-#pragma mark -observe
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    if ([object isKindOfClass:[UIButton class]]) {
-//        UIButton *sender = (UIButton *)object;
-        if ([keyPath isEqualToString:@"selected"]) {
-            NSNumber *newValue = change[NSKeyValueChangeNewKey];
-//            DDLog(@"newValue: %@", newValue);
-            if (newValue.boolValue) {
-                [self showHistory];
-            } else {
-                [self hideHistroy];
-            }
-        }
-    } else {
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-}
-
-#pragma mark -set,get
 - (NSMutableArray<NSString *> *)list{
     return objc_getAssociatedObject(self, _cmd);
 }
@@ -58,6 +34,7 @@
 }
 
 #pragma mark -tableview
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.list.count;
 }
@@ -74,9 +51,7 @@
     }
     cell.separatorInset = UIEdgeInsetsZero;
     cell.textLabel.textColor = UIColor.grayColor;
-    cell.textLabel.font = self.button.titleLabel.font ? : [UIFont systemFontOfSize:15];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.textLabel.font = self.textField.font ? : [UIFont systemFontOfSize:15];
 
     cell.textLabel.text = self.list[indexPath.row];
     return cell;
@@ -86,12 +61,15 @@
     self.selectedText = self.list[indexPath.row];
     [self hideHistroy];
     
-    [self.button setTitle:self.selectedText forState:UIControlStateNormal];
+    self.textField.text = self.selectedText;
     if (self.block) {
         self.block(self);
     }
     
-    self.button.selected = !self.button.selected;
+    if ([self.textField.rightView isKindOfClass:[UIButton class]]) {
+        UIButton *sender = (UIButton *)self.textField.rightView;
+        sender.selected = !sender.selected;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,21 +77,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    CGFloat height = self.hiddenClearButton ? 0.01 : tableView.rowHeight;
-    return height;
+    return tableView.rowHeight;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (self.hiddenClearButton) {
-        return [[UIView alloc]init];
-    }
+//    if (self.list.count == 0) {
+//        return UIView();
+//    }
     UIButton *sender = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [sender setTitle:@"全部清除" forState:UIControlStateNormal];
     [sender addTarget:self action:@selector(clearHistory) forControlEvents:UIControlEventTouchUpInside];
     return sender;
 }
-
-
 #pragma mark -functions
 
 - (void)showHistory{
@@ -124,15 +99,14 @@
         NSLog(@"%s%@", __func__, @"列表为空!!!");
         return;
     }
-    self.tableView.frame = CGRectMake(CGRectGetMinX(self.button.frame),
-                                      CGRectGetMaxY(self.button.frame),
-                                      CGRectGetWidth(self.button.frame),
+    self.tableView.frame = CGRectMake(CGRectGetMinX(self.textField.frame),
+                                      CGRectGetMaxY(self.textField.frame),
+                                      CGRectGetWidth(self.textField.frame),
                                       1);
-    [self.button.superview addSubview:self.tableView];
-    NSInteger count = self.hiddenClearButton ? self.list.count : self.list.count + 1;
+    [self.textField.superview addSubview:self.tableView];
     
     CGRect rect = self.tableView.frame;
-    rect.size.height = self.tableView.rowHeight*count;
+    rect.size.height = self.tableView.rowHeight*(self.list.count + 1);
 
     [UIView animateWithDuration:0.35 animations:^{
         self.tableView.frame = rect;
@@ -163,6 +137,16 @@
     }
 }
 
+- (void)handleAction:(UIButton *)sender{
+    sender.selected = !sender.selected;
+//    DDLog(@"isSelected_%@", @(sender.isSelected));
+    if (sender.isSelected) {
+        [self.textField.menuTarget showHistory];
+    } else {
+        [self.textField.menuTarget hideHistroy];
+    }
+
+}
 #pragma mark -lazy
 - (UITableView *)tableView{
     UITableView *view = objc_getAssociatedObject(self, _cmd);
@@ -185,22 +169,35 @@
 
 
 
-@implementation UIButton (Menu)
+@implementation UITextField (Menu)
 
-- (NNButtonMenuTarget *)menuTarget{
-    NNButtonMenuTarget *obj = objc_getAssociatedObject(self, _cmd);
+- (NNTextFieldMenuTarget *)menuTarget{
+    NNTextFieldMenuTarget *obj = objc_getAssociatedObject(self, _cmd);
     if (obj) {
         return obj;
     }
-    NNButtonMenuTarget *tmp = [[NNButtonMenuTarget alloc]init];
-    tmp.button = self;
+    NNTextFieldMenuTarget *target = [[NNTextFieldMenuTarget alloc]init];
+    target.textField = self;
     
-    [tmp.button addObserver:tmp forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
-    objc_setAssociatedObject(self, @selector(menuTarget), tmp, OBJC_ASSOCIATION_RETAIN);
-    return tmp;
+    target.textField.rightViewMode = UITextFieldViewModeAlways;
+    target.textField.rightView = ({
+        UIButton *sender = [UIButton buttonWithType:UIButtonTypeCustom];
+        [sender setTitle:@"展开" forState:UIControlStateNormal];
+        [sender setTitle:@"收起" forState:UIControlStateSelected];
+        [sender setTitleColor:UIColor.systemBlueColor forState:UIControlStateNormal];
+        [sender setTitleColor:UIColor.systemBlueColor forState:UIControlStateSelected];
+        sender.titleLabel.font = [UIFont systemFontOfSize:15];
+        sender.frame = CGRectMake(0, 0, 50, 30);
+        [sender addTarget:target action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
+        sender;
+    });
+    
+    if (!target.textField.backgroundColor) {
+        target.textField.layer.borderColor = UIColor.lightGrayColor.CGColor;
+        target.textField.layer.borderWidth = 0.5;
+    }
+    objc_setAssociatedObject(self, @selector(menuTarget), target, OBJC_ASSOCIATION_RETAIN);
+    return target;
 }
 
 @end
-
-
-

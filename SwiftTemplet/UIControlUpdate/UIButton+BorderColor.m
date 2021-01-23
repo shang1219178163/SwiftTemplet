@@ -13,6 +13,10 @@
 
 @property (nonatomic, weak) UIButton *button;
 
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, UIColor *> *borderColorDic;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSNumber *> *borderWidthDic;
+@property (nonatomic, strong) NSMutableDictionary<NSNumber *, NSNumber *> *cornerRadiusDic;
+
 - (void)setBorderColor:(nullable UIColor *)color forState:(UIControlState)state;
 - (nullable UIColor *)borderColorForState:(UIControlState)state;
 
@@ -35,11 +39,11 @@
 #pragma mark -observe
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([object isKindOfClass:[UIButton class]]) {
-//        UIButton *sender = (UIButton *)object;
+        UIButton *sender = (UIButton *)object;
         if ([keyPath isEqualToString:@"selected"] || [keyPath isEqualToString:@"highlighted"]) {
-            [self changeLayerBorderColor];
-            [self changeLayerBorderWidth];
-            [self changeLayerCornerRadius];
+            [self changeLayerBorderColor: sender];
+            [self changeLayerBorderWidth: sender];
+            [self changeLayerCornerRadius: sender];
         }
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -48,41 +52,68 @@
 
 
 #pragma mark -set,get
-- (NSMutableDictionary<NSNumber *, UIColor *> *)borderColorDic{
-    id obj = objc_getAssociatedObject(self, _cmd);
-    if (obj) {
-        return obj;
+- (NSMutableDictionary<NSNumber *,UIColor *> *)borderColorDic{
+    if (!_borderColorDic) {
+        _borderColorDic = @{
+            
+        }.mutableCopy;
     }
-    
-    NSMutableDictionary *mdic = @{}.mutableCopy;
-    
-    objc_setAssociatedObject(self, _cmd, mdic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    return mdic;
+    return _borderColorDic;
 }
 
 - (NSMutableDictionary<NSNumber *, NSNumber *> *)borderWidthDic{
-    id obj = objc_getAssociatedObject(self, _cmd);
-    if (obj) {
-        return obj;
+    if (!_borderWidthDic) {
+        _borderWidthDic = @{
+            
+        }.mutableCopy;
     }
-    
-    NSMutableDictionary *mdic = @{}.mutableCopy;
-    
-    objc_setAssociatedObject(self, _cmd, mdic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    return mdic;
+    return _borderWidthDic;
 }
 
 - (NSMutableDictionary<NSNumber *, NSNumber *> *)cornerRadiusDic{
-    id obj = objc_getAssociatedObject(self, _cmd);
-    if (obj) {
-        return obj;
+    if (!_cornerRadiusDic) {
+        _cornerRadiusDic = @{
+            
+        }.mutableCopy;
     }
-    
-    NSMutableDictionary *mdic = @{}.mutableCopy;
-    
-    objc_setAssociatedObject(self, _cmd, mdic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    return mdic;
+    return _cornerRadiusDic;
 }
+
+//- (NSMutableDictionary<NSNumber *, UIColor *> *)borderColorDic{
+//    id obj = objc_getAssociatedObject(self, _cmd);
+//    if (obj) {
+//        return obj;
+//    }
+//
+//    NSMutableDictionary *mdic = @{}.mutableCopy;
+//
+//    objc_setAssociatedObject(self, _cmd, mdic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    return mdic;
+//}
+//
+//- (NSMutableDictionary<NSNumber *, NSNumber *> *)borderWidthDic{
+//    id obj = objc_getAssociatedObject(self, _cmd);
+//    if (obj) {
+//        return obj;
+//    }
+//
+//    NSMutableDictionary *mdic = @{}.mutableCopy;
+//
+//    objc_setAssociatedObject(self, _cmd, mdic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    return mdic;
+//}
+//
+//- (NSMutableDictionary<NSNumber *, NSNumber *> *)cornerRadiusDic{
+//    id obj = objc_getAssociatedObject(self, _cmd);
+//    if (obj) {
+//        return obj;
+//    }
+//
+//    NSMutableDictionary *mdic = @{}.mutableCopy;
+//
+//    objc_setAssociatedObject(self, _cmd, mdic, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    return mdic;
+//}
 
 
 #pragma mark -public
@@ -92,7 +123,7 @@
         return;
     }
     self.borderColorDic[@(state)] = color;
-    [self changeLayerBorderColor];
+    [self changeLayerBorderColor: self.button];
 }
 
 - (nullable UIColor *)borderColorForState:(UIControlState)state{
@@ -101,7 +132,7 @@
 
 - (void)setBorderWidth:(CGFloat)value forState:(UIControlState)state{
     self.borderWidthDic[@(state)] = @(value);
-    [self changeLayerBorderWidth];
+    [self changeLayerBorderWidth: self.button];
 }
 
 - (CGFloat)borderWidthForState:(UIControlState)state{
@@ -110,7 +141,7 @@
 
 - (void)setCornerRadius:(CGFloat)value forState:(UIControlState)state{
     self.cornerRadiusDic[@(state)] = @(value);
-    [self changeLayerCornerRadius];
+    [self changeLayerCornerRadius: self.button];
 }
 
 - (CGFloat)cornerRadiusForState:(UIControlState)state{
@@ -118,58 +149,51 @@
 }
 
 #pragma mark -private
-- (void)changeLayerBorderColor{
+- (void)changeLayerBorderColor:(UIButton *)sender{
     UIColor *normalColor = self.borderColorDic[@(UIControlStateNormal)];
     if (!normalColor) {
         return;
     }
 
-    UIColor *color = self.borderColorDic[@(self.button.state)] ? : normalColor;
-    self.button.layer.borderColor = color.CGColor;
+    UIColor *color = self.borderColorDic[@(sender.state)] ? : normalColor;
+    sender.layer.borderColor = color.CGColor;
     
-    if (self.button.layer.borderWidth == 0) {
-        self.button.layer.borderWidth = 1;
+    if (sender.layer.borderWidth == 0) {
+        sender.layer.borderWidth = 1;
     }
 }
 
-- (void)changeLayerBorderWidth{
+- (void)changeLayerBorderWidth:(UIButton *)sender{
     NSNumber *normalValue = self.borderWidthDic[@(UIControlStateNormal)];
     if (!normalValue) {
         return;
     }
     
-    NSNumber *numer = self.borderWidthDic[@(self.button.state)] ? : normalValue;
-    self.button.layer.borderWidth = numer.floatValue;
+    NSNumber *numer = self.borderWidthDic[@(sender.state)] ? : normalValue;
+    sender.layer.borderWidth = numer.floatValue;
     
-    if (self.button.layer.borderWidth == 0) {
-        self.button.layer.borderWidth = 1;
+    if (sender.layer.borderWidth == 0) {
+        sender.layer.borderWidth = 1;
     }
 }
 
-- (void)changeLayerCornerRadius{
+- (void)changeLayerCornerRadius:(UIButton *)sender{
     NSNumber *normalValue = self.cornerRadiusDic[@(UIControlStateNormal)];
     if (!normalValue) {
         return;
     }
     
-    NSNumber *numer = self.cornerRadiusDic[@(self.button.state)] ? : normalValue;
-    self.button.layer.cornerRadius = numer.floatValue;
+    NSNumber *numer = self.cornerRadiusDic[@(sender.state)] ? : normalValue;
+    sender.layer.cornerRadius = numer.floatValue;
     
-    if (self.button.layer.borderWidth == 0) {
-        self.button.layer.borderWidth = 1;
+    if (sender.layer.borderWidth == 0) {
+        sender.layer.borderWidth = 1;
     }
 }
 
 @end
 
 
-@interface UIButton()
-
-@property (nonatomic, strong, readwrite) NSMutableDictionary<NSNumber *, UIColor *> *borderColorDic;
-@property (nonatomic, strong, readwrite) NSMutableDictionary<NSNumber *, NSNumber *> *borderWidthDic;
-@property (nonatomic, strong, readwrite) NSMutableDictionary<NSNumber *, NSNumber *> *cornerRadiusDic;
-
-@end
 
 @implementation UIButton (BorderColor)
 
@@ -178,14 +202,14 @@
     if (obj) {
         return obj;
     }
-    NNBorderTarget *tmp = [[NNBorderTarget alloc]init];
-    tmp.button = self;
+    NNBorderTarget *target = [[NNBorderTarget alloc]init];
+    target.button = self;
     
-    [tmp.button addObserver:tmp forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
-    [tmp.button addObserver:tmp forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
+    [target.button addObserver:target forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
+    [target.button addObserver:target forKeyPath:@"highlighted" options:NSKeyValueObservingOptionNew context:nil];
 
-    objc_setAssociatedObject(self, @selector(borderTarget), tmp, OBJC_ASSOCIATION_RETAIN);
-    return tmp;
+    objc_setAssociatedObject(self, @selector(borderTarget), target, OBJC_ASSOCIATION_RETAIN);
+    return target;
 }
 
 - (void)setBorderColor:(nullable UIColor *)color forState:(UIControlState)state{
