@@ -1,12 +1,12 @@
 //
-//  UIButton+BorderColor.m
+//  UIButton+Border.m
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2021/1/22.
 //  Copyright © 2021 BN. All rights reserved.
 //
 
-#import "UIButton+BorderColor.h"
+#import "UIButton+Border.h"
 #import <objc/runtime.h>
 
 @interface NNBorderTarget : NSObject
@@ -202,7 +202,7 @@
 
 
 
-@implementation UIButton (BorderColor)
+@implementation UIButton (Border)
 
 - (NNBorderTarget *)borderTarget{
     id obj = objc_getAssociatedObject(self, _cmd);
