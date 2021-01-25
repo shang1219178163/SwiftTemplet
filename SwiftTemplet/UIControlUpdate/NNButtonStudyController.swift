@@ -79,6 +79,16 @@ class NNButtonStudyController: UIViewController{
         view.setBorderColor(.lightGray, for: .normal)
         view.setBorderColor(.systemBlue, for: .selected)
         view.setCornerRadius(4, for: .normal)
+        view.setCornerRadius(14, for: .selected)
+        
+//        view.setTitleColor(.green, for: .normal)
+//        view.setTitleColor(.systemBlue, for: .selected)
+        view.setTitleColor(.darkGray, for: .disabled)
+
+        view.setBorderColor(.darkGray, for: .disabled)
+        view.setBorderWidth(4, for: .disabled)
+
+//        view.isEnabled = false
         
         view.observerBlock = { keyPath, sender, change in
             guard let keyPath = keyPath,

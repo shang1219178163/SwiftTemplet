@@ -8,8 +8,7 @@
 
 #import "NNButtonDispalyController.h"
 #import "NNButton.h"
-
-//#import <SwiftExpand/SwiftExpand-Swift.h>
+#import "UIButton+BorderColor.h"
 
 @interface NNButtonDispalyController ()
 
@@ -112,7 +111,7 @@
 - (NNButton *)button1{
     if (!_button1) {
         _button1 = ({
-            NNButton *view = [[NNButton alloc]initWithFrame:CGRectZero];
+            NNButton *view = [NNButton buttonWithType:UIButtonTypeCustom];
             [view setTitle:@"Button" forState:UIControlStateNormal];
             view.titleLabel.adjustsFontSizeToFitWidth = YES;
             view.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -127,6 +126,7 @@
         [_button1 setBorderColor:UIColor.lightGrayColor forState:UIControlStateNormal];
         [_button1 setBorderColor:UIColor.systemBlueColor forState:UIControlStateSelected];
         [_button1 setCornerRadius:4 forState:UIControlStateNormal];
+        [_button1 setCornerRadius:14 forState:UIControlStateSelected];
 
         _button1.direction = NNButtonDirectionTop;
         _button1.iconLocation = NNButtonLocationNone;
