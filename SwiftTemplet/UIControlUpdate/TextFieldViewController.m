@@ -9,7 +9,7 @@
 #import "TextFieldViewController.h"
 #import "UITextField+Menu.h"
 #import "UIButton+Menu.h"
-#import "UIButton+BorderColor.h"
+#import "UIButton+Border.h"
 
 #import <Masonry/Masonry.h>
 

@@ -21,7 +21,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIButton (BorderColor)
+@interface UIButton (Border)
 
 - (void)setBorderColor:(nullable UIColor *)color forState:(UIControlState)state;
 - (nullable UIColor *)borderColorForState:(UIControlState)state;

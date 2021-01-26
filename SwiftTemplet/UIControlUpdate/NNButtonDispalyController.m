@@ -8,7 +8,7 @@
 
 #import "NNButtonDispalyController.h"
 #import "NNButton.h"
-#import "UIButton+BorderColor.h"
+#import "UIButton+Border.h"
 
 @interface NNButtonDispalyController ()
 
