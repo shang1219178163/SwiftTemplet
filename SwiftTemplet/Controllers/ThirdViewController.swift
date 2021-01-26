@@ -12,6 +12,7 @@ import SwiftExpand
 import HandyJSON
 import MJRefresh
 import HFNavigationController
+import Alamofire
 
 class ThirdViewController: UIViewController{
 
@@ -35,16 +36,15 @@ class ThirdViewController: UIViewController{
              ["ReuseChildsController", "控制器复用", ],
              ["IOPFuntionListController", "iop 视图", ],
              ["AttrStringViewController", "优雅的富文本", ],
-
+             ["NNButtonStudyController", "按钮封装", ],
 //             ["SubscribeListNewController", "微信公众号信息列表1", ],
              ["FloatingPanelExampleController", "FloatingPanel浮层", ],             
-            ["ProtocolViewController", "面向协议编程", ],
-            ["AppleSignInViewController", "AppleSignIn", ],
+
              ["NNFeedbackController", "kOP Upload", ],
              ["NNImageAndVideoPickerController", "kOP UploadImages", ],
              ["RxRequestExampleController", "RxSwift 网络请求", ],
              ["AppStoreGameController", "AppStore游戏界面", ],
-             ["SubscribeListController", "微信公众号信息列表", ],
+//             ["SubscribeListController", "微信公众号信息列表", ],
              ["BookReaderController", "UIPageViewController", ],
              ["CalendarViewController", "CalenderView", ],
              ["NNTitleViewSelectController", "NNTitleViewSelect", ],             
@@ -67,7 +67,6 @@ class ThirdViewController: UIViewController{
              ["NNPlateKeyboardController", "自定义车牌键盘重构", ],
 //             ["PlateKeybordController", "自定义车牌键盘", ],
              ["TitleViewController", "导航栏下拉菜单", ],
-             ["NNButtonStudyController", "按钮研究", ],
              
             ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
 //             ["NNTabViewController", "NNTabView组件", ],
@@ -78,18 +77,27 @@ class ThirdViewController: UIViewController{
              ["ScrollHorizontalController", "重构", ],
              ["ScrollViewController", "分段组件", ],
              ["CCSCouponRecordController", "优惠券列表", ],
-             ["NNFormViewController", "表单视图", ],
+             ["KeyBoardViewController", "KeyBoardView", ],
+
+//             ["NNFormViewController", "表单视图", ],
              ],
+            
+            [["ValidateProtocolController", "MixIn协议扩展", ],
+            ["CurryViewController", "Curry", ],
+            ["NNUserLogInController", "RxSwift函数响应型编程", ],
+            ["TimerViewController", "Timer", ],
+            ["ObserveViewController", "Observe", ],
+            ["ProtocolViewController", "面向协议编程", ],
+            ["AppleSignInViewController", "AppleSignIn", ],
+            ["TestViewController", "新想法测试", ],
+
+            ],
+            
             [["TableViewPrefetchRowController", "image预加载", ],
              ["AppIconChangeController", "App图标更换", ],
              ["AlerSheetStudyController", "AlerSheet研究", ],             
-             ["NNUserLogInController", "RxSwift函数响应型编程", ],
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
-             ["KeyBoardViewController", "KeyBoardView", ],
-             ["TimerViewController", "Timer", ],
-             ["ObserveViewController", "Observe", ],
-             ["TestViewController", "新想法测试", ],
              ["IOPInvoiceCreateController", "折叠", ],
              ["AttrStringEffectiveController", "AttrString", ],
              ["SystemColorShowController", "SystemColor", ],
@@ -249,6 +257,8 @@ class ThirdViewController: UIViewController{
 //        guard let dic = JSONSerialization.jsonObjectFromString(string) as? [AnyHashable : Any] else { return }
 //        let rootModel = PKRootModel.yy_model(with: dic)
 //        DDLog(dic, rootModel?.object?.floors)
+        
+        hookRequest()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -403,6 +413,24 @@ class ThirdViewController: UIViewController{
         }
     }
     
+    func hookRequest() {
+        let url = UIApplication.appDetailUrlWithID(kAppStoreID)
+        OHHTTPStubsHelper.installStubs(url: url, jsonName: nil)
+//        UIApplication.updateVersion(appStoreID: kAppStoreID) { (dic, ver, notes, isUpdate) in
+//            DDLog(dic)
+//        }
+        
+        guard let URL = URL(string: url) else { return  }
+        AF.request(URL, method: .get, parameters: nil, headers: nil)
+            .response { (response) in
+                guard let data = response.data,
+                    let jsonDic = JSONSerialization.jsonObjectFromData(data) as? [String : Any] else {
+                    DDLog("数据解析错误")
+                    return;
+                }
+                DDLog(jsonDic.jsonString)
+        }
+    }
 }
 
 extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{

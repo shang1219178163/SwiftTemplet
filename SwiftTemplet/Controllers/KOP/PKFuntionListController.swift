@@ -16,6 +16,7 @@ import SwiftExpand
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
             [
+            ["PKLoginController", "kOP 登录页", ],
              ["PKAccountLogOffOneController", "AccountLogOff", ],
              ["EDriverViewController", "E代驾", ],
              ["AliBianXianKeController", "变现客", ],
@@ -26,7 +27,6 @@ import SwiftExpand
              ["PKRegionParkListController", "当前区域车场", ],
              ["PKParkDetailController", "车场详情", ],
              ["PKMineController", "kOP 我的", ],
-             ["PKLoginController", "kOP 登录页", ],
              ["PKSettingsController", "kOP 设置页", ],
              ["PKUserInfoEditController", "kOP 用户信息", ],
              ["PKRecommendToFriendsController", "kOP 推荐给好友", ],

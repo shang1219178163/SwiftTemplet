@@ -9,13 +9,26 @@
 
 import UIKit
 import SwiftExpand
+import RxSwift
+import RxCocoa
 
 /// 列表
 @objcMembers class IOPFuntionListController: UIViewController{
     
+    var disposeBag = DisposeBag()
+
+    
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [["NNExcelAlertViewController", "NNExcelAlertView", ],
+             ["IOPPayInpartBaseInfoController", "支付进件基础信息", ],
+             ["IOPPayInpartCompanyEntityInfoController", "CompanyEntityInfo", ],
+             ["IOPPayInpartCompanyMaterialInfoController", "CompanyMaterialInfo", ],
+             ["IOPPayInpartCompanySettlementBankInfoController", "CompanySettlementBank", ],
+             ["IOPPayInpartCompanyOperatorInfoController", "CompanyOperatorInfo", ],
+             ["IOPPayInpartCompanyOtherInfoController", "CompanyOtherInfo", ],
+
+             ["IOPPayInpartResultController", "支付进件结果", ],
              
             ],
         ]
@@ -35,17 +48,68 @@ import SwiftExpand
         let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
 //        button.isHidden = true;
         button.sizeToFit()
-        button.addActionHandler({ (control) in
-            DDLog(control)
-        }, for: .touchUpInside)
+//        button.addActionHandler({ (sender) in
+//            DDLog(sender)
+//
+//        }, for: .touchUpInside)
+        
+//        button.rx.safeDrive { (sender) in
+//            DDLog(sender.currentTitle as Any)
+//        }.disposed(by: dispose)
+        
+        button.rxDrive { (sender) in
+            DDLog(sender.currentTitle as Any)
+        }.disposed(by: disposeBag)
+        
+//        button.rx.safeDrive().asDriver().drive {
+//            DDLog(button.currentTitle)
+//        } onCompleted: {
+//
+//        } onDisposed: {
+//
+//        }
+        
         return button
     }()
     
-    @objc func handleAction(_ sender: UIButton) {
+    
+    lazy var searchBar: UISearchBar = {
+//        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 50))
+//        view.layer.cornerRadius = 3;
+//        view.layer.masksToBounds = true;
+//
+//        view.showsCancelButton = false;
+//        view.backgroundColor = .white
+//        view.textField?.placeholder = "请输入商品名称搜索";
+////        view.textField?.tintColor = .white;
+//        view.textField?.font = UIFont.systemFont(ofSize: 13)
+//        view.textField?.borderStyle = .roundedRect;
+//        view.textField?.backgroundColor = UIColor.background
+//        view.textField?.layer.cornerRadius = 5;
+//        view.textField?.layer.masksToBounds = true;
         
-    }
+        let view = UISearchBar(frame: CGRectMake(0, 0, kScreenWidth - 70, 50))
+        view.textField?.placeholder = "请输入名称搜索";
+//        view.backgroundColor = .white
+
+        return view
+    }()
     
+    lazy var label: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 80, height: 30))
+        label.text = "Gan"
+        return label
+    }()
     
+    lazy var btn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setTitle("按钮标题", for: .normal)
+        btn.setTitle("按钮高亮", for: .highlighted)
+        btn.setTitleColor(.systemBlue, for: .normal)
+        btn.sizeToFit()
+        return btn
+    }()
+        
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +117,14 @@ import SwiftExpand
         title = "KOP功能"
         setupExtendedLayout()
         setupUI()
+        
+        searchBar.rxDrive { (query) in
+            DDLog(query)
+        }.disposed(by: disposeBag)
+        
+        searchBar.rx.safeDrive { (query) in
+            DDLog(query)
+        }.disposed(by: disposeBag)
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,8 +154,128 @@ import SwiftExpand
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         
-        view.addSubview(tableView);
+        view.addSubview(tableView)
+        tableView.tableHeaderView = searchBar
+        
+        testFunc()
     }
+    
+    func testFunc() {
+        label.rxTap { (tap) in
+            DDLog(tap.view as Any)
+        }.disposed(by: disposeBag)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: label)
+        
+        navigationItem.titleView = btn
+//        btn.rx.tap.subscribe { () in
+//            self.btn.isSelected.toggle()
+////            DDLog(btn.isSelected)
+//
+//            self.label.text = "\(self.btn.isSelected)"
+//        } onError: { (error) in
+//
+//        } onCompleted: {
+//
+//        } onDisposed: {
+//
+//        }.disposed(by: disposeBag)
+        
+        btn.rxDrive { (sendder) in
+            sendder.isSelected.toggle()
+//            DDLog(btn.isSelected)
+            
+            self.label.text = "\(sendder.isSelected)"
+        }.disposed(by: disposeBag)
+
+        
+        label.rx.observeWeakly(String.self, "text")
+            .subscribe(onNext: { (value) in
+                DDLog(value as Any)
+            })
+            .disposed(by: disposeBag)
+                
+//        Timer.rxSchedule(1000) { (value) in
+//            DDLog(value)
+//        }.disposed(by: dispose)
+        
+        setupRequest()
+//        setupTimer()
+        setupNotification()
+        setupGestureRecognizer()
+//        setupScrollerView()
+//        setupTextFiled()
+//        setupButton()
+        setupKVO()
+    }
+
+    //MARK: - RxSwift应用-网络请求
+    func setupRequest() {
+        guard let url = URL(string: "https://www.baidu.com") else { return }
+        URLSession.shared.rx.response(request: URLRequest(url: url))
+            .subscribe(onNext: { (response, data) in
+                print(response.statusCode)
+        }).disposed(by: disposeBag)
+    }
+    
+    func setupTimer() {
+        let timer = Observable<Int>.interval(.milliseconds(1000), scheduler: MainScheduler.instance)
+        timer.subscribe(onNext: { (num) in
+            print(num)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func setupNotification(){
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .subscribe(onNext: { (noti) in
+                print(noti)
+            })
+        .disposed(by: disposeBag)
+        
+    }
+    
+    func setupGestureRecognizer(){
+        let tap = UITapGestureRecognizer()
+        label.addGestureRecognizer(tap)
+        label.isUserInteractionEnabled = true
+        tap.rx.event.subscribe(onNext: { (tap) in
+            print(tap.view)
+        })
+        .disposed(by: disposeBag)
+    }
+    
+    func setupScrollerView() {
+        tableView.rx.contentOffset
+            .subscribe(onNext: { [weak self](offset) in
+                DDLog(offset)
+            })
+        .disposed(by: disposeBag)
+    }
+    
+    func setupTextFiled() {
+        searchBar.rx.text.orEmpty
+            .subscribe(onNext: { (text) in
+               print(text)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setupButton() {
+        self.btn.rx.tap
+            .subscribe(onNext: { () in
+                print("点击来了")
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setupKVO() {
+        self.label.rx.observeWeakly(String.self, "text")
+            .subscribe(onNext: { (value) in
+                print(value as Any)
+            })
+            .disposed(by: disposeBag)
+    }
+
 
 
 }

@@ -25,7 +25,7 @@ class IOPFileUploadController: UIViewController {
 
     /// 文件最大尺寸(M)
     var fileMaxSize: Double = 10
-    
+    ///线上链接
     var fileUrl: NSURL?
     
     var localFileUrl: NSURL?{
@@ -52,6 +52,8 @@ class IOPFileUploadController: UIViewController {
         }
     }
     
+    var key: String = ""
+
     lazy var chooseItem = UIBarButtonItem.create("选择", style: .plain, target: self, action: #selector(handleActionFile(_:)))
     lazy var uploadItem = UIBarButtonItem.create("上传", style: .plain, target: self, action: #selector(handleActionFile(_:)))
     lazy var shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleActionFile(_:)))
@@ -82,7 +84,6 @@ class IOPFileUploadController: UIViewController {
         return controller
     }()
 
-    var key: String = ""
     
     // MARK: -lifecycle
     override func viewDidLoad() {
@@ -187,7 +188,7 @@ class IOPFileUploadController: UIViewController {
         manager.requestSerializer.setValue("3.3.1", forHTTPHeaderField: "Accept-Version")
         
         manager.post(urlString,
-                     parameters: parameters,
+                     parameters: nil,
                      headers: nil,
                      constructingBodyWith: { (formData) in
             for (key, value) in parameters {
@@ -220,16 +221,17 @@ class IOPFileUploadController: UIViewController {
             NNProgressHUD.showSuccess("请求成功")
             guard let dict = responseObject as? [String: Any],
                 let dic = dict["data"] as? [String: Any],
-                let url = dic["url"] as? String else {
-                print("No userInfo found in notification")
+                let url = dic["url"] as? String,
+                let URL = NSURL(string: url) else {
+                print(#function, "接口返回数据错误")
                 return
             }
+            self.fileUrl = URL
             self.delegate?.fileUpload?(self, url: url)
             self.block?(self, url)
             
         }) { (task, error) in
             NNProgressHUD.showError(error.localizedDescription)
-
         }
     }
 
