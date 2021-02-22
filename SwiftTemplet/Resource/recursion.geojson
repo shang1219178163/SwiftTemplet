@@ -1,0 +1,912 @@
+[
+    {
+        "tab": "no",
+        "sort": "1",
+        "id": "1060001",
+        "is_power": "0",
+        "power_name": "全部车场总览",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "see",
+                "sort": "99",
+                "id": "1060002",
+                "is_power": "0",
+                "power_name": "全部车场收入统计",
+                "level": "1",
+                "superior_id": "1060001",
+                "type": "2",
+                "item_id": "6",
+                "url": "iop.general.income_general"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.general"
+    },
+    {
+        "tab": "no",
+        "sort": "2",
+        "id": "1060003",
+        "is_power": "0",
+        "power_name": "单车场总览",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "see",
+                "sort": "99",
+                "id": "1060004",
+                "is_power": "0",
+                "power_name": "单车场收入统计",
+                "level": "1",
+                "superior_id": "1060003",
+                "type": "2",
+                "item_id": "6",
+                "url": "iop.single_park.income_single"
+            },
+            {
+                "tab": "see",
+                "sort": "99",
+                "id": "1060005",
+                "is_power": "0",
+                "power_name": "车场流量统计",
+                "level": "1",
+                "superior_id": "1060003",
+                "type": "2",
+                "item_id": "6",
+                "url": "iop.single_park.flow"
+            },
+            {
+                "tab": "see",
+                "sort": "99",
+                "id": "1060006",
+                "is_power": "0",
+                "power_name": "车场异常车次",
+                "level": "1",
+                "superior_id": "1060003",
+                "type": "2",
+                "item_id": "6",
+                "url": "iop.single_park.exception"
+            },
+            {
+                "tab": "see",
+                "sort": "99",
+                "id": "1060007",
+                "is_power": "0",
+                "power_name": "场内车/饱和度统计",
+                "level": "1",
+                "superior_id": "1060003",
+                "type": "2",
+                "item_id": "6",
+                "url": "iop.single_park.in_park"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.single_park"
+    },
+    {
+        "tab": "no",
+        "sort": "3",
+        "id": "1060008",
+        "is_power": "0",
+        "power_name": "车场管理",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "no",
+                "sort": "1",
+                "id": "1060009",
+                "is_power": "0",
+                "power_name": "车位授权",
+                "level": "1",
+                "superior_id": "1060008",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060010",
+                        "is_power": "0",
+                        "power_name": "车位授权_查询",
+                        "level": "2",
+                        "superior_id": "1060009",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_auth.see"
+                    },
+                    {
+                        "tab": "add",
+                        "sort": "99",
+                        "id": "1060011",
+                        "is_power": "0",
+                        "power_name": "车位授权_新增",
+                        "level": "2",
+                        "superior_id": "1060009",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_auth.add"
+                    },
+                    {
+                        "tab": "other",
+                        "sort": "99",
+                        "id": "1060012",
+                        "is_power": "0",
+                        "power_name": "车位授权_充值",
+                        "level": "2",
+                        "superior_id": "1060009",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_auth.recharge"
+                    },
+                    {
+                        "tab": "save",
+                        "sort": "99",
+                        "id": "1060013",
+                        "is_power": "0",
+                        "power_name": "车位授权_编辑",
+                        "level": "2",
+                        "superior_id": "1060009",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_auth.save"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_manage.park_auth"
+            },
+            {
+                "tab": "no",
+                "sort": "2",
+                "id": "1060014",
+                "is_power": "0",
+                "power_name": "车位商城",
+                "level": "1",
+                "superior_id": "1060008",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060015",
+                        "is_power": "0",
+                        "power_name": "车位商城_查询",
+                        "level": "2",
+                        "superior_id": "1060014",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.approval.see"
+                    },
+                    {
+                        "tab": "other",
+                        "sort": "99",
+                        "id": "1060016",
+                        "is_power": "0",
+                        "power_name": "车位商城_审核",
+                        "level": "2",
+                        "superior_id": "1060014",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.approval.verify"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_manage.approval"
+            },
+            {
+                "tab": "no",
+                "sort": "3",
+                "id": "1060017",
+                "is_power": "0",
+                "power_name": "空车位",
+                "level": "1",
+                "superior_id": "1060008",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060018",
+                        "is_power": "0",
+                        "power_name": "空车位_查询",
+                        "level": "2",
+                        "superior_id": "1060017",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.empty_modify.see"
+                    },
+                    {
+                        "tab": "save",
+                        "sort": "99",
+                        "id": "1060019",
+                        "is_power": "0",
+                        "power_name": "空车位_修改",
+                        "level": "2",
+                        "superior_id": "1060017",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.empty_modify.save"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_manage.empty_modify"
+            },
+            {
+                "tab": "no",
+                "sort": "4",
+                "id": "1060020",
+                "is_power": "0",
+                "power_name": "不良车",
+                "level": "1",
+                "superior_id": "1060008",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060021",
+                        "is_power": "0",
+                        "power_name": "不良车_查询",
+                        "level": "2",
+                        "superior_id": "1060020",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.unhealthy_cars.see"
+                    },
+                    {
+                        "tab": "add",
+                        "sort": "99",
+                        "id": "1060022",
+                        "is_power": "0",
+                        "power_name": "不良车_添加",
+                        "level": "2",
+                        "superior_id": "1060020",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.unhealthy_cars.add"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_manage.unhealthy_cars"
+            },
+            {
+                "tab": "no",
+                "sort": "5",
+                "id": "1060023",
+                "is_power": "0",
+                "power_name": "车队模式",
+                "level": "1",
+                "superior_id": "1060008",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060024",
+                        "is_power": "0",
+                        "power_name": "车队模式_查询",
+                        "level": "2",
+                        "superior_id": "1060023",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.fleet_mode.see"
+                    },
+                    {
+                        "tab": "add",
+                        "sort": "99",
+                        "id": "1060025",
+                        "is_power": "0",
+                        "power_name": "车队模式_新建",
+                        "level": "2",
+                        "superior_id": "1060023",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.fleet_mode.add"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_manage.fleet_mode"
+            },
+            {
+                "tab": "no",
+                "sort": "6",
+                "id": "1060026",
+                "is_power": "0",
+                "power_name": "车场管理",
+                "level": "1",
+                "superior_id": "1060008",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060027",
+                        "is_power": "0",
+                        "power_name": "车场管理_查询",
+                        "level": "2",
+                        "superior_id": "1060026",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_list.see"
+                    },
+                    {
+                        "tab": "add",
+                        "sort": "99",
+                        "id": "1060028",
+                        "is_power": "0",
+                        "power_name": "车场管理_新增",
+                        "level": "2",
+                        "superior_id": "1060026",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_list.add"
+                    },
+                    {
+                        "tab": "save",
+                        "sort": "99",
+                        "id": "1060029",
+                        "is_power": "0",
+                        "power_name": "车场管理_编辑",
+                        "level": "2",
+                        "superior_id": "1060026",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_manage.park_list.save"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_manage.park_list"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.park_manage"
+    },
+    {
+        "tab": "no",
+        "sort": "4",
+        "id": "1060030",
+        "is_power": "0",
+        "power_name": "数据查询",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "no",
+                "sort": "1",
+                "id": "1060033",
+                "is_power": "0",
+                "power_name": "车场记录",
+                "level": "1",
+                "superior_id": "1060030",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060034",
+                        "is_power": "0",
+                        "power_name": "车场记录_查询",
+                        "level": "2",
+                        "superior_id": "1060033",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.query.park_record.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.query.park_record"
+            },
+            {
+                "tab": "no",
+                "sort": "2",
+                "id": "1060031",
+                "is_power": "0",
+                "power_name": "车辆追踪",
+                "level": "1",
+                "superior_id": "1060030",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060032",
+                        "is_power": "0",
+                        "power_name": "车辆追踪_查询",
+                        "level": "2",
+                        "superior_id": "1060031",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.query.car_track.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.query.car_track"
+            },
+            {
+                "tab": "no",
+                "sort": "3",
+                "id": "1060035",
+                "is_power": "0",
+                "power_name": "线上支付记录",
+                "level": "1",
+                "superior_id": "1060030",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060036",
+                        "is_power": "0",
+                        "power_name": "线上支付记录_查询",
+                        "level": "2",
+                        "superior_id": "1060035",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.query.onlinepay_record.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.query.onlinepay_record"
+            },
+            {
+                "tab": "no",
+                "sort": "4",
+                "id": "1060037",
+                "is_power": "0",
+                "power_name": "收费员交账",
+                "level": "1",
+                "superior_id": "1060030",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060038",
+                        "is_power": "0",
+                        "power_name": "收费员交账_查询",
+                        "level": "2",
+                        "superior_id": "1060037",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.query.cashier_account.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.query.cashier_account"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.query"
+    },
+    {
+        "tab": "no",
+        "sort": "5",
+        "id": "1060039",
+        "is_power": "0",
+        "power_name": "统计分析",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "no",
+                "sort": "1",
+                "id": "1060042",
+                "is_power": "0",
+                "power_name": "收入统计",
+                "level": "1",
+                "superior_id": "1060039",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060043",
+                        "is_power": "0",
+                        "power_name": "收入统计_查询",
+                        "level": "2",
+                        "superior_id": "1060042",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.stat.income_single.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.stat.income_single"
+            },
+            {
+                "tab": "no",
+                "sort": "2",
+                "id": "1060044",
+                "is_power": "0",
+                "power_name": "流量统计",
+                "level": "1",
+                "superior_id": "1060039",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060045",
+                        "is_power": "0",
+                        "power_name": "流量统计_查询",
+                        "level": "2",
+                        "superior_id": "1060044",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.stat.flow.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.stat.flow"
+            },
+            {
+                "tab": "no",
+                "sort": "3",
+                "id": "1060046",
+                "is_power": "0",
+                "power_name": "停车时长统计",
+                "level": "1",
+                "superior_id": "1060039",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060047",
+                        "is_power": "0",
+                        "power_name": "停车时长统计_查询",
+                        "level": "2",
+                        "superior_id": "1060046",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.stat.park_period.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.stat.park_period"
+            },
+            {
+                "tab": "no",
+                "sort": "4",
+                "id": "1060048",
+                "is_power": "0",
+                "power_name": "免费开闸统计",
+                "level": "1",
+                "superior_id": "1060039",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060049",
+                        "is_power": "0",
+                        "power_name": "免费开闸统计_查询",
+                        "level": "2",
+                        "superior_id": "1060048",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.stat.free_statistics.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.stat.free_statistics"
+            },
+            {
+                "tab": "no",
+                "sort": "5",
+                "id": "1060040",
+                "is_power": "0",
+                "power_name": "每日统计",
+                "level": "1",
+                "superior_id": "1060039",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060041",
+                        "is_power": "0",
+                        "power_name": "每日统计_查询",
+                        "level": "2",
+                        "superior_id": "1060040",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.stat.daily_stat.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.stat.daily_stat"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.stat"
+    },
+    {
+        "tab": "no",
+        "sort": "6",
+        "id": "1060050",
+        "is_power": "0",
+        "power_name": "车场报表",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "no",
+                "sort": "1",
+                "id": "1060051",
+                "is_power": "0",
+                "power_name": "日报",
+                "level": "1",
+                "superior_id": "1060050",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060052",
+                        "is_power": "0",
+                        "power_name": "日报_查询",
+                        "level": "2",
+                        "superior_id": "1060051",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_report.daily_report.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_report.daily_report"
+            },
+            {
+                "tab": "no",
+                "sort": "2",
+                "id": "1060053",
+                "is_power": "0",
+                "power_name": "周报",
+                "level": "1",
+                "superior_id": "1060050",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060054",
+                        "is_power": "0",
+                        "power_name": "周报_查询",
+                        "level": "2",
+                        "superior_id": "1060053",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.park_report.week_report.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.park_report.week_report"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.park_report"
+    },
+    {
+        "tab": "no",
+        "sort": "7",
+        "id": "1060055",
+        "is_power": "0",
+        "power_name": "优惠券",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "no",
+                "sort": "1",
+                "id": "1060061",
+                "is_power": "0",
+                "power_name": "发券统计",
+                "level": "1",
+                "superior_id": "1060055",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060062",
+                        "is_power": "0",
+                        "power_name": "发券统计_查询",
+                        "level": "2",
+                        "superior_id": "1060061",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.ecp.grant_stat.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.ecp.grant_stat"
+            },
+            {
+                "tab": "no",
+                "sort": "2",
+                "id": "1060063",
+                "is_power": "0",
+                "power_name": "商户统计",
+                "level": "1",
+                "superior_id": "1060055",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060064",
+                        "is_power": "0",
+                        "power_name": "商户统计_查询",
+                        "level": "2",
+                        "superior_id": "1060063",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.ecp.merchant_stat.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.ecp.merchant_stat"
+            },
+            {
+                "tab": "no",
+                "sort": "3",
+                "id": "1060056",
+                "is_power": "0",
+                "power_name": "发券记录",
+                "level": "1",
+                "superior_id": "1060055",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060057",
+                        "is_power": "0",
+                        "power_name": "发券记录_查询",
+                        "level": "2",
+                        "superior_id": "1060056",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.ecp.records.see"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.ecp.records"
+            },
+            {
+                "tab": "no",
+                "sort": "4",
+                "id": "1060058",
+                "is_power": "0",
+                "power_name": "充值记录",
+                "level": "1",
+                "superior_id": "1060055",
+                "son": [
+                    {
+                        "tab": "see",
+                        "sort": "99",
+                        "id": "1060059",
+                        "is_power": "0",
+                        "power_name": "充值记录_查询",
+                        "level": "2",
+                        "superior_id": "1060058",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.ecp.recharge_records.see"
+                    },
+                    {
+                        "tab": "other",
+                        "sort": "99",
+                        "id": "1060060",
+                        "is_power": "0",
+                        "power_name": "充值记录_充值",
+                        "level": "2",
+                        "superior_id": "1060058",
+                        "type": "2",
+                        "item_id": "6",
+                        "url": "iop.ecp.recharge_records.recharge"
+                    }
+                ],
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.ecp.recharge_records"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.ecp"
+    },
+    {
+        "tab": "no",
+        "sort": "8",
+        "id": "1060065",
+        "is_power": "0",
+        "power_name": "商品中心",
+        "level": "0",
+        "superior_id": "0",
+        "son": [
+            {
+                "tab": "no",
+                "sort": "1",
+                "id": "1060066",
+                "is_power": "0",
+                "power_name": "商品中心",
+                "level": "1",
+                "superior_id": "1060065",
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.goods_manage.goods_center"
+            },
+            {
+                "tab": "no",
+                "sort": "2",
+                "id": "1060070",
+                "is_power": "0",
+                "power_name": "商品管理",
+                "level": "1",
+                "superior_id": "1060065",
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.goods_manage.goods_manage"
+            },
+            {
+                "tab": "no",
+                "sort": "3",
+                "id": "1060067",
+                "is_power": "0",
+                "power_name": "订单管理",
+                "level": "1",
+                "superior_id": "1060065",
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.goods_manage.goods_bill"
+            },
+            {
+                "tab": "no",
+                "sort": "4",
+                "id": "1060069",
+                "is_power": "0",
+                "power_name": "发票管理",
+                "level": "1",
+                "superior_id": "1060065",
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.goods_manage.goods_invoice"
+            },
+            {
+                "tab": "no",
+                "sort": "5",
+                "id": "1060068",
+                "is_power": "0",
+                "power_name": "进件管理",
+                "level": "1",
+                "superior_id": "1060065",
+                "type": "1",
+                "item_id": "6",
+                "url": "iop.goods_manage.goods_inpart"
+            }
+        ],
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.goods_manage"
+    },
+    {
+        "tab": "no",
+        "sort": "9",
+        "id": "1060071",
+        "is_power": "0",
+        "power_name": "集团管理",
+        "level": "0",
+        "superior_id": "0",
+        "type": "1",
+        "item_id": "6",
+        "url": "iop.group_manager"
+    }
+]
