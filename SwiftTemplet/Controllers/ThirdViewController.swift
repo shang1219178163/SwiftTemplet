@@ -89,8 +89,8 @@ class ThirdViewController: UIViewController{
             ["ObserveViewController", "Observe", ],
             ["ProtocolViewController", "面向协议编程", ],
             ["AppleSignInViewController", "AppleSignIn", ],
+            ["RecursionViewController", "Recursion", ],
             ["TestViewController", "新想法测试", ],
-
             ],
             
             [["TableViewPrefetchRowController", "image预加载", ],

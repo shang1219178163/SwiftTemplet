@@ -126,6 +126,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let l = DateFormatter.betweenDateDays(btime, endTime: etime)
         DDLog(l)
+        
+        let dateStr = ("\(NSDate())" as NSString).substring(to: 19)
+//        var dateStrMore = dateStr.replacingOccurrences(of: "-", with: "")
+//        dateStrMore = dateStrMore.replacingOccurrences(of: ":", with: "")
+//        dateStrMore = dateStrMore.replacingOccurrences(of: " ", with: "")
+        
+        let dateStrMore = dateStr.replacingOccurrences(of: [" ", ":", "-"], replacement: "")
+        DDLog(dateStr, dateStrMore)
+        
+    
         return
             
 //        DDLog(#function, String(describing: self), type(of: self))
@@ -144,8 +154,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let c = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 3, roundingMode: .up)
 //        let d = NumberFormatter.fractionDigits(obj: 1.4988, min: 2, max: 2, roundingMode: .up)
 //
-//        let e = NSNumber(1.4988).to_string();
-//        let f = NSNumber(1.4988).to_string(3);
+//        let e = NSNumber(1.4988).toString();
+//        let f = NSNumber(1.4988).toString(3);
 //
 //        let num: CGFloat = 3.7999
 //        let fmt = NumberFormatter()

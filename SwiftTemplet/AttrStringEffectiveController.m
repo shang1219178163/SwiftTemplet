@@ -8,6 +8,7 @@
 
 #import "AttrStringEffectiveController.h"
 #import <Masonry/Masonry.h>
+#import "NSMutableAttributedString+Chain.h"
 
 #import "SwiftTemplet-Swift.h"
 
@@ -27,7 +28,7 @@
 }
 
 
-#pragma mark -lazy
+#pragma mark -lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -44,6 +45,8 @@
     [super viewWillAppear:animated];
     
     [self effectiveRange];
+    
+    [self testFuntion];
 }
 
 - (void)effectiveRange {
@@ -111,6 +114,29 @@
     [dic enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSAttributedString * _Nonnull obj, BOOL * _Nonnull stop) {
         NSAttributedString *subAttString = [attString attributedSubstringFromRange:NSRangeFromString(key)];
         NSLog(@"attributedSubstring: %@", subAttString);
+    }];
+}
+
+- (void)testFuntion {
+    NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:@"BoBiBu"];
+    
+    
+    NSMutableDictionary *mdic = @{
+        @"1": @"111",
+        @"2": @"222",
+        @"3": @"333",
+    }.mutableCopy;
+//    [mdic setObject:nil forKey:@"1"];
+    DDLog(@"mdc: %@", mdic);
+    
+    
+    
+    [mdic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        DDLog(@"%@: %@", key, obj);
+    }];
+    
+    [mdic enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        DDLog(@"_%@: %@", key, obj);
     }];
 }
 

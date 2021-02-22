@@ -67,7 +67,7 @@ class HomeViewController: UITabBarController {
 //        view.addGestureRecognizer(panGesture)
         
         selectedIndex = 2
-//        selectedIndex = 4
+        selectedIndex = 4
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,7 +110,7 @@ class HomeViewController: UITabBarController {
     lazy var itemList: [[String]] = {
         return [
             ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
+//            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
 //            ["CenterViewController", "总览",  "Item_center_N",  "Item_center_H"],
             ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
 //            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
@@ -120,7 +120,8 @@ class HomeViewController: UITabBarController {
             ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
 //            ["KVOViewController", "测试",  "Item_center_N",  "Item_center_H"],
             ["PKFuntionListController", "KOP",  "Item_center_N",  "Item_center_H"],
-
+            ["IOPFuntionListController", "IOP",  "Item_center_N",  "Item_center_H"],
+            
             ]
     }()
     
