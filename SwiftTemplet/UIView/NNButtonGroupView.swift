@@ -16,6 +16,7 @@ import UIKit
 @objcMembers class NNButtonGroupView: UIView {
 
     weak var delegate: NNButtonGroupViewDelegate?
+    var viewBlock: ((NNButtonGroupView, UIButton) -> Void)?
 
     var cornerRadius: CGFloat = 5.0
     var borderWidth: CGFloat = 0.5
@@ -75,7 +76,7 @@ import UIKit
     var enableIdxList: [Int] = []{
         willSet{
             guard let count = items?.count, count > 0 else { return }
-            _ = updateButtonItems(count, type: NNIconButton.self) {
+            _ = updateButtonItems(count, type: NNButton.self) {
                 $0.isEnabled = newValue.contains($0.tag)
 //                DDLog($0.currentTitle!, $0.isEnabled)
                 $0.alpha = $0.isEnabled ? 1 : 0.5
@@ -88,7 +89,7 @@ import UIKit
     var items: [String]?{
         willSet{
             guard let newValue = newValue, items != newValue else { return }
-            itemList = updateButtonItems(newValue.count, type: NNIconButton.self, hanler: { (view) in
+            itemList = updateButtonItems(newValue.count, type: NNButton.self, hanler: { (view) in
                 view.titleLabel?.font = UIFont.systemFont(ofSize: self.fontSize)
                 view.setTitleColor(self.titleColor, for: .normal)
                 view.setTitleColor(self.selectedTitleColor, for: .selected)
@@ -111,9 +112,7 @@ import UIKit
     }
     
     private var itemList: [UIButton] = []
-    
-    var viewBlock: ((NNButtonGroupView, UIButton) -> Void)?
-    
+        
     @objc func handleAction(_ sender: UIButton) {
 //        print("NNButtonGroupView_\(hasLessOne)_\(selectedList.count)_\(sender.isSelected)")
         if hasLessOne == true && selectedList.count == 1 && sender.isSelected == true {

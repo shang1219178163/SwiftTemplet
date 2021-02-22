@@ -74,10 +74,8 @@ import SwiftExpand
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         
         view.addActionHandler({ (sender) in
-            if let obj = sender as? UIButton {
-                DDLog(obj.currentTitle as Any)
+            DDLog(sender.currentTitle as Any)
                 
-            }
         }, for: .touchUpInside)
         
         return view;

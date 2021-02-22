@@ -33,7 +33,7 @@ class TitleViewController: NNTitleViewSelectController{
         
         view.addSubview(gemetryView)
         
-        _ = gemetryView.addGestureTap { (recognizer) in
+        gemetryView.addGestureTap { (recognizer) in
             self.gemetryView.subType = Int(arc4random_uniform(3))
         }
         
@@ -43,20 +43,6 @@ class TitleViewController: NNTitleViewSelectController{
             self.navigationController?.pushViewController(controller, animated: true);
         })
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-
-        view.addSubview(segmentCtlOne)
-        view.addSubview(checkBox)
-        view.addSubview(boxButton)
-        view.addSubview(radioButton)
-        view.addSubview(button)
-        view.addSubview(buttonTop)
-        view.addSubview(buttonBottom)
-        view.addSubview(buttonRight)
-        
-        view.addSubview(textFieldView)
-        view.addSubview(textFieldBtnView)
-        view.addSubview(chooseView)
-
         
         topView.btn = radioButton
         topView.btn.addActionHandler({[weak self] (sender) in
@@ -82,6 +68,20 @@ class TitleViewController: NNTitleViewSelectController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        view.addSubview(segmentCtlOne)
+        view.addSubview(checkBox)
+        view.addSubview(boxButton)
+        view.addSubview(radioButton)
+        view.addSubview(button)
+        view.addSubview(buttonTop)
+        view.addSubview(buttonBottom)
+        view.addSubview(buttonRight)
+        
+        view.addSubview(textFieldView)
+        view.addSubview(textFieldBtnView)
+        view.addSubview(chooseView)
+        
+        return
         segmentCtlOne.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(100);
             make.left.equalToSuperview().offset(20)
@@ -235,8 +235,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("绿肥红瘦", for: .normal);
 
-        var normlImage: UIImage = UIImage(named: "photo_cancell")!
-        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         
@@ -277,8 +277,8 @@ class TitleViewController: NNTitleViewSelectController{
     lazy var button: NNButton = {
         let view = NNButton(type:.custom);
         view.setTitle("浪迹天涯", for: .normal);
-        var normlImage: UIImage = UIImage(named: "photo_cancell")!
-        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
@@ -292,8 +292,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.direction = .top
         view.iconLocation = .leftTop
 
-        var normlImage: UIImage = UIImage(named: "photo_cancell")!
-        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
         view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
@@ -307,8 +307,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.direction = .bottom
         view.iconLocation = .leftBottom
 
-        var normlImage: UIImage = UIImage(named: "photo_cancell")!
-        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
 
@@ -322,8 +322,8 @@ class TitleViewController: NNTitleViewSelectController{
         view.direction = .right
         view.iconLocation = .rightBottom
 
-        var normlImage: UIImage = UIImage(named: "photo_cancell")!
-        var seletedImage: UIImage = UIImage(named: "photo_select")!
+        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
+        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
         view.setImage(normlImage, for: .normal)
         view.setImage(seletedImage, for: .selected)
 
