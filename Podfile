@@ -8,8 +8,9 @@ def common_pods
 
     pod 'AFNetworking'
 #  pod 'AImage'
-    pod 'Alamofire'
-    pod 'AlamofireImage'
+    pod 'Alamofire', '~> 5.4.1'
+#    pod 'AlamofireImage'
+    pod 'RxAlamofire'
 
 #    pod 'Aspects'
 #    pod 'BSImagePicker'
@@ -49,11 +50,13 @@ def common_pods
 #   pod 'Whisper'
 #   pod 'RealmSwift'
 
-    pod 'RxAlamofire'
+#    pod 'RxAlamofire'
 #    pod 'RxBlocking'
     pod 'RxCocoa'
     pod 'RxSwift'
     pod 'OHHTTPStubs'
+    
+    pod 'Starscream'
 
     pod 'HandyJSON'
     
@@ -85,8 +88,8 @@ def common_pods
 #    pod 'ContainerController'
 #    pod 'XLPagerTabStrip'
 
-    pod 'MarqueeLabel'
-    pod 'NotificationBannerSwift'
+#    pod 'MarqueeLabel'
+#    pod 'NotificationBannerSwift'
     pod 'EFQRCode'
 
     pod 'AlipaySDK-iOS'
@@ -103,6 +106,11 @@ def common_pods
     pod 'Reveal-SDK', :configurations => ['Debug']
 
     pod 'BXKAdvertSDK'
+    
+    #SwiftUI 辅助库
+#    pod 'SwiftUIX'
+#    pod "Introspect"
+    
 end
 
 
