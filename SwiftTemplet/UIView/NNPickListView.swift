@@ -13,8 +13,7 @@ class NNPickListView: UIView {
 
     var title: String?
     var tips: String?
-//    var indexP: IndexPath?
-    var indexP: IndexPath = IndexPath(row: 0, section: 0)
+    var indexP = IndexPath(row: 0, section: 0)
 
     private var viewBlock: ((NNPickListView, IndexPath) -> Void)? = nil
 

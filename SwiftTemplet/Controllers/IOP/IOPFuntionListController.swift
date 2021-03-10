@@ -19,7 +19,7 @@ import RxCocoa
 
     
     lazy var list: [[[String]]] = {
-        let array: [[[String]]] = [
+        return [
             [["NNExcelAlertViewController", "NNExcelAlertView", ],
              ["IOPPayInpartBaseInfoController", "支付进件基础信息", ],
              ["IOPPayInpartCompanyEntityInfoController", "CompanyEntityInfo", ],
@@ -29,10 +29,8 @@ import RxCocoa
              ["IOPPayInpartCompanyOtherInfoController", "CompanyOtherInfo", ],
 
              ["IOPPayInpartResultController", "支付进件结果", ],
-             
             ],
         ]
-        return array
     }()
 
     // MARK: - lazy
