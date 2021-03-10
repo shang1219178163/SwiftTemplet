@@ -15,17 +15,12 @@
 @interface AttrStringEffectiveController ()
 
 @property(nonatomic, strong) UILabel *label;
+@property(nonatomic, strong) NSTimer *socketTimer;
 
 @end
 
 @implementation AttrStringEffectiveController
 
-- (UILabel *)label{
-    if (!_label) {
-        _label = [[UILabel alloc]init];
-    }
-    return _label;
-}
 
 
 #pragma mark -lifecycle
@@ -33,6 +28,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.label];
+
+    
+
 }
 
 - (void)viewDidLayoutSubviews{
@@ -45,8 +43,19 @@
     [super viewWillAppear:animated];
     
     [self effectiveRange];
-    
     [self testFuntion];
+    
+    NSURL *url = [NSURL URLWithString:@"https://github.com/search?q=appendingQueryParameters"];
+    url = [url appendingQueryParameters:@{@"token": @"111"}];
+    DDLog(@"url: %@", url.absoluteString);
+    
+//    self.socketTimer = [NSTimer scheduled:5 repeats:true action:^(NSTimer *timer) {
+//        DDLog(@"timer: _%@_%f_", timer.fireDate, timer.timeInterval);
+//    }];
+    
+    NSDictionary *dic = @{};
+    NSString *url1 = dic[@"date"][@"url"];
+    DDLog(@"url: %@", url1);
 }
 
 - (void)effectiveRange {
@@ -138,6 +147,14 @@
     [mdic enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         DDLog(@"_%@: %@", key, obj);
     }];
+}
+
+#pragma mark -lifecycle
+- (UILabel *)label{
+    if (!_label) {
+        _label = [[UILabel alloc]init];
+    }
+    return _label;
 }
 
 @end
