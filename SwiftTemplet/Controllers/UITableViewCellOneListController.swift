@@ -91,7 +91,7 @@ class UITableViewCellOneListController: UIViewController {
 """
         UIAlertController.showAlert("温馨提示", message: msg, actionTitles: [kTitleSure]) { (style) in
             style.alignment = .left
-        } handler: { (action) in
+        } handler: { (alertVC, action) in
             DDLog(action.title as Any)
         }
     }

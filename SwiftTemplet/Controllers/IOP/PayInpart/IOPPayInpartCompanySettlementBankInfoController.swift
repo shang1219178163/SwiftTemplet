@@ -214,7 +214,7 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
                 } else {
                     UIAlertController.showAlert(value0, message: value3) { (style) in
                         style.alignment = .left
-                    } handler: { (action) in
+                    } handler: { (alertVC, action) in
                         
                     }
                 }

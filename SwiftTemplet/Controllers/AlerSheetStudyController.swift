@@ -49,7 +49,7 @@ import HFNavigationController
         ]
         
         let alertVC = UIAlertController(title: "标题", message: "这是一条提示信息", preferredStyle: .alert)
-        alertVC.addActionTitles(titles) { (action) in
+        alertVC.addActionTitles(titles) { (alertVC, action) in
             let actionIdx = alertVC.actions.firstIndex(of: action)
             DDLog(actionIdx as Any)
         }
@@ -231,7 +231,7 @@ import HFNavigationController
     }
     
     func showActionSheet4(){
-        let alertVC = UIAlertController.createAlertImage("提示", image: "Skull.jpg", contentMode: .scaleToFill, count: 17, actionTitles: [kTitleKnow]) { (action) in
+        let alertVC = UIAlertController.createAlertImage("提示", image: "Skull.jpg", contentMode: .scaleToFill, count: 17, actionTitles: [kTitleKnow]) { (alertVC, action) in
             DDLog(action.title as Any)
         }
         self.present(alertVC, animated: true, completion: nil)

@@ -324,7 +324,7 @@ class ThirdViewController: UIViewController{
         case 4:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"
             UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-                .addActionTitles([kTitleCancell, kTitleSure], handler: { (action) in
+                .addActionTitles([kTitleCancell, kTitleSure], handler: { (alertVC, action) in
                     DDLog(action.title as Any)
                 })
                 .addTextFieldPlaceholders(["请输入"], handler: { (textfield) in
@@ -337,7 +337,7 @@ class ThirdViewController: UIViewController{
         case 5:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。我已经解决了所有问题，但是我希望能够捕捉平移手势是否被反转。"
             UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-                .addActionTitles([kTitleCancell, kTitleSure]) { (action) in
+                .addActionTitles([kTitleCancell, kTitleSure]) { (alertVC, action) in
                     DDLog(action.title as Any)
             }
 //            .addTextFields(["请输入账号", "请输入密码"]) { (textfield) in
@@ -360,7 +360,7 @@ class ThirdViewController: UIViewController{
     
     func showAlert() {
         UIAlertController(title: "提示", message: "xinx", preferredStyle: .alert)
-            .addActionTitles([kTitleCancell, kTitleSure], handler: { (action) in
+            .addActionTitles([kTitleCancell, kTitleSure], handler: { (alertVC, action) in
                 DDLog(action.title as Any)
             })
             .addTextFieldPlaceholders(["请输入"], handler: { (textfield) in

@@ -191,7 +191,7 @@ extension NNWebView: WKUIDelegate{
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (alertVC, action) in
             if action.title == kTitleCancell{
                 completionHandler(false)
                 return
@@ -206,7 +206,7 @@ extension NNWebView: WKUIDelegate{
 //            textField.text = defaultText
 //        }
 //
-//        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+//        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertVC, action) in
 //            if let text = alertVC.textFields?.first?.text {
 //                completionHandler(text)
 //            } else {
@@ -214,7 +214,7 @@ extension NNWebView: WKUIDelegate{
 //            }
 //        }))
 //
-//        alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+//        alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alertVC, action) in
 //            completionHandler(nil)
 //        }))
 //

@@ -96,7 +96,7 @@ class UITableViewCellCoupon: UITableViewCell {
             }
         } else if keyPath == "backgroundColor" {
             let value: UIColor = change![NSKeyValueChangeKey.newKey] as! UIColor;
-            addLineDashLayer(color: value, width: 2, cornerRadius: 0, view: labelLeft, size: CGSize(width: 80, height: 80))
+            addDashLayer(color: value, width: 2, cornerRadius: 0, view: labelLeft, size: CGSize(width: 80, height: 80))
 
         }
         else {
@@ -167,7 +167,7 @@ class UITableViewCellCoupon: UITableViewCell {
             make.height.equalTo(60);
         }
         
-        addLineDashLayer(color: labelLeft.backgroundColor!, width: 2, cornerRadius: 0, view: labelLeft, size: CGSize(width: 80, height: 80))
+        addDashLayer(color: labelLeft.backgroundColor!, width: 2, cornerRadius: 0, view: labelLeft, size: CGSize(width: 80, height: 80))
 
         btn.layer.borderColor = UIColor.theme.cgColor;
         btn.layer.borderWidth = 1;
@@ -182,11 +182,11 @@ class UITableViewCellCoupon: UITableViewCell {
     }
     
     // MARK: -funtions
-    @objc func addLineDashLayer(color: UIColor = UIColor.red,
-                                width: CGFloat = 1,
-                                dashPattern: [NSNumber] = [NSNumber(floatLiteral: 4), NSNumber(floatLiteral: 5)],
-                                cornerRadius: CGFloat = 0, view: UIView,
-                                size: CGSize = CGSize.zero) {
+    @objc func addDashLayer(color: UIColor = UIColor.red,
+                            width: CGFloat = 1,
+                            dashPattern: [NSNumber] = [NSNumber(floatLiteral: 4), NSNumber(floatLiteral: 5)],
+                            cornerRadius: CGFloat = 0, view: UIView,
+                            size: CGSize = CGSize.zero) {
         assert(CGRect.zero.equalTo(view.bounds) == false || CGSize.zero.equalTo(size) == false);
 
         view.layer.borderColor = UIColor.clear.cgColor;

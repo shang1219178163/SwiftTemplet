@@ -224,7 +224,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
 //                UIAlertController.showAlert(value0, message: value3)
                 UIAlertController.showAlert(value0, message: value3) { (style) in
                     style.alignment = .left
-                } handler: { (action) in
+                } handler: { (alertVC, action) in
                     
                 }
 

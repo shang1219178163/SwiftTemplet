@@ -9,7 +9,8 @@
 
 import UIKit
 
-class NNLineDashView: UIView {
+
+@objcMembers class NNLineDashView: UIView {
     
     enum Style: Int {
         case rect, line

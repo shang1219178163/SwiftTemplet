@@ -150,7 +150,7 @@ class EntryViewController: UIViewController {
     
     lazy var alertCtrl: UIAlertController = {
         let alertVC = UIAlertController(title: "请选择", message: nil, preferredStyle: .actionSheet)
-        alertVC.addActionTitles([kTitleCancell]) { (action) in
+        alertVC.addActionTitles([kTitleCancell]) { (alertVC, action) in
             DDLog("完成取消")
             UIView.animate(withDuration: 0.5, animations: {
                 self.textField.rightView?.transform = .identity
@@ -190,6 +190,8 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [
+            ["二维码券", "PHHQRcodeCouponChooseCell", "45.0", "", "recharge", ],
+            ["二维码券", "PHHQrcodeOverageNewCell", "75.0", "", "recharge", ],
             ["更多内容", "UITableViewCellArticle", "135", "", "recharge", ],
             ["车场标签", "UITableViewCellParkType", "30", "", "recharge", ],
             ["Excel", "UITableViewCellExcel", "155", "", "recharge", ],
@@ -1174,6 +1176,19 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
+        case "PHHQrcodeOverageNewCell":
+            let cell = PHHQrcodeOverageNewCell.dequeueReusableCell(tableView)
+            cell.labTitle.text = "爱车里需要购置什么常用需的实用物品，配置哪些车购置什么常用购置什么常用购置什么常用…"
+            cell.labSubTitle.text = DateFormatter.stringFromDate(Date())
+            
+//            cell.getViewLayer()
+            return cell
+            
+        case "PHHQRcodeCouponChooseCell":
+            let cell = PHHQRcodeCouponChooseCell.dequeueReusableCell(tableView)
+            
+            cell.getViewLayer()
+            return cell
         default:
             break
         }

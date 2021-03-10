@@ -198,7 +198,7 @@ class TitleViewController: NNTitleViewSelectController{
     
     //MARK: -lazy
     lazy var alertCtrl: UIAlertController = {
-        let alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (action) in
+        let alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (alertVC, action) in
             DDLog("完成取消")
             
             UIView.animate(withDuration: 0.5, animations: {
