@@ -6,6 +6,25 @@
 //  Copyright © 2021 BN. All rights reserved.
 //
 
+/**
+ //  WSEngine.swift 中 有 bug,服务器不可用时,有时会定留在 waiting 状态,
+ public func connectionChanged(state: ConnectionState) {
+ ...
+ case .waiting:
+     break
+ ...
+}
+ 做错误兼容性处理, 改为如下
+ public func connectionChanged(state: ConnectionState) {
+ ...
+ case .waiting:
+     let error = WSError(type: .serverError, message: "服务器不可用时, iPhone真机有时不走错误, 走此处", code: 500)
+     handleError(error)
+     break
+ ...
+}
+ */
+
 import UIKit
 import Starscream
 
@@ -56,6 +75,7 @@ class WebSocketViewController: UIViewController {
     private(set) var isConnected = false
     
     var connectedBlk:(([String: String])->Void)?
+    var connectedErrorBlk:((WebSocketManager, String)->Void)?
     var disconnectedBlk:((String, UInt16)->Void)?
     var receivedTextBlk:((String)->Void)?
     var receivedDataBlk:((Data)->Void)?
@@ -80,10 +100,13 @@ class WebSocketViewController: UIViewController {
     func handleError(_ error: Error?) {
         if let e = error as? WSError {
             print("websocket encountered an error: \(e.message)")
+            connectedErrorBlk?(self, e.message)
         } else if let e = error {
             print("websocket encountered an error: \(e.localizedDescription)")
+            connectedErrorBlk?(self, e.localizedDescription)
         } else {
             print("websocket encountered an error")
+            connectedErrorBlk?(self, "网络异常, 链接断开, 请尝试重连")
         }
     }
     
