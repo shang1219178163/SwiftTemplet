@@ -43,9 +43,9 @@ class NNButtonLayerTarget: NSObject {
     
     // MARK: -lifecycle
     deinit {
-        removeObserver(self, forKeyPath: "selected")
-        removeObserver(self, forKeyPath: "highlighted")
-        removeObserver(self, forKeyPath: "enabled")
+        button?.removeObserver(self, forKeyPath: "selected")
+        button?.removeObserver(self, forKeyPath: "highlighted")
+        button?.removeObserver(self, forKeyPath: "enabled")
     }
     
     // MARK: -observe
