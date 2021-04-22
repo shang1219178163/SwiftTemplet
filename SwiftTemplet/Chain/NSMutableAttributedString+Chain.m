@@ -10,14 +10,14 @@
 
 @implementation NSMutableAttributedString (Chain)
 
-- (NSMutableAttributedString * _Nonnull (^)(NSDictionary<NSAttributedStringKey, id> * _Nonnull))addAttrs{
+- (NSMutableAttributedString * (^)(NSDictionary<NSAttributedStringKey, id> * _Nonnull))addAttrs{
     return ^(NSDictionary<NSAttributedStringKey, id> * dic) {
         [self addAttributes:dic range:NSMakeRange(0, self.length)];
         return self;
     };
 }
 
-- (NSMutableAttributedString * _Nonnull (^)(NSParagraphStyle * _Nonnull))paragraphStyle{
+- (NSMutableAttributedString * (^)(NSParagraphStyle * _Nonnull))paragraphStyle{
     return ^(NSParagraphStyle *style) {
         [self addAttributes:@{NSParagraphStyleAttributeName: style} range:NSMakeRange(0, self.length)];
         return self;
@@ -117,7 +117,7 @@
     };
 }
 
-- (NSMutableAttributedString * _Nonnull (^)(UIColor * _Nonnull, CGFloat))stroke{
+- (NSMutableAttributedString * (^)(UIColor * _Nonnull, CGFloat))stroke{
     return ^(UIColor *color, CGFloat value) {
         [self addAttributes:@{NSStrokeColorAttributeName: color} range:NSMakeRange(0, self.length)];
         [self addAttributes:@{NSStrokeWidthAttributeName: @(value)} range:NSMakeRange(0, self.length)];

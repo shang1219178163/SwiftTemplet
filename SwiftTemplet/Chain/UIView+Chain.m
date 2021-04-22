@@ -10,29 +10,29 @@
 
 @implementation UIView (Chain)
 
-- (UIView * _Nonnull (^)(CGFloat))nn_conrnerRadius{
-    return ^(CGFloat value){
+- (UIView * _Nonnull (^)(CGFloat))conrnerRadiusChain{
+    return ^(CGFloat value) {
         self.layer.cornerRadius = value;
         return self;
     };
 }
 
-- (UIView * _Nonnull (^)(UIColor * _Nonnull))nn_borderColor{
-    return ^(UIColor *value){
+- (UIView * _Nonnull (^)(UIColor * _Nonnull))borderColorChain{
+    return ^(UIColor *value) {
         self.layer.borderColor = value.CGColor;
         return self;
     };
 }
 
-- (UIView * _Nonnull (^)(CGFloat))nn_borderWidth{
-    return ^(CGFloat value){
+- (UIView * _Nonnull (^)(CGFloat))borderWidthChain{
+    return ^(CGFloat value) {
         self.layer.borderWidth = value;
         return self;
     };
 }
 
-- (UIView * _Nonnull (^)(UIColor * _Nonnull, CGFloat, CGFloat, CGSize))nn_shadow{
-    return ^(UIColor *color, CGFloat radius, CGFloat opacity, CGSize offset){
+- (UIView * _Nonnull (^)(UIColor * _Nonnull, CGFloat, CGFloat, CGSize))shadowChain{
+    return ^(UIColor *color, CGFloat radius, CGFloat opacity, CGSize offset) {
         self.layer.shadowColor = color.CGColor;
         self.layer.shadowRadius = radius;
         self.layer.shadowOpacity = opacity;
@@ -41,8 +41,8 @@
     };
 }
 
-- (UIView * _Nonnull (^)(CGFloat))nn_zPosition{
-    return ^(CGFloat value){
+- (UIView * _Nonnull (^)(CGFloat))zPositionChain{
+    return ^(CGFloat value) {
         self.layer.zPosition = value;
         return self;
     };
