@@ -33,7 +33,6 @@ import SwiftExpand
     
     lazy var webView: NNWebView = {
         let view: NNWebView = NNWebView(frame: self.view.bounds)
-        view.showReloadBtn = true
         view.delegate = self
         return view
     }()

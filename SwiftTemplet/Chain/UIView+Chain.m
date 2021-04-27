@@ -10,28 +10,28 @@
 
 @implementation UIView (Chain)
 
-- (UIView * _Nonnull (^)(CGFloat))conrnerRadiusChain{
+- (UIView * (^)(CGFloat))conrnerRadiusChain{
     return ^(CGFloat value) {
         self.layer.cornerRadius = value;
         return self;
     };
 }
 
-- (UIView * _Nonnull (^)(UIColor * _Nonnull))borderColorChain{
+- (UIView * (^)(UIColor * _Nonnull))borderColorChain{
     return ^(UIColor *value) {
         self.layer.borderColor = value.CGColor;
         return self;
     };
 }
 
-- (UIView * _Nonnull (^)(CGFloat))borderWidthChain{
+- (UIView * (^)(CGFloat))borderWidthChain{
     return ^(CGFloat value) {
         self.layer.borderWidth = value;
         return self;
     };
 }
 
-- (UIView * _Nonnull (^)(UIColor * _Nonnull, CGFloat, CGFloat, CGSize))shadowChain{
+- (UIView * (^)(UIColor * _Nonnull, CGFloat, CGFloat, CGSize))shadowChain{
     return ^(UIColor *color, CGFloat radius, CGFloat opacity, CGSize offset) {
         self.layer.shadowColor = color.CGColor;
         self.layer.shadowRadius = radius;
@@ -41,7 +41,7 @@
     };
 }
 
-- (UIView * _Nonnull (^)(CGFloat))zPositionChain{
+- (UIView * (^)(CGFloat))zPositionChain{
     return ^(CGFloat value) {
         self.layer.zPosition = value;
         return self;

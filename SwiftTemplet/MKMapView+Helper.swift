@@ -37,7 +37,7 @@ import MapKit
 public extension MKMapView {
 
     /// 泛型复用cell - cellType: "类名.self" (默认identifier: 类名字符串)
-    final func dequeueReusableCell<T: MKAnnotationView>(for type: T.Type, annotation: MKAnnotation?, identifier: String = String(describing: T.self)) -> T{
+    final func dequeueReusableAnnoView<T: MKAnnotationView>(for type: T.Type, annotation: MKAnnotation?, identifier: String) -> T{
         if let view = self.dequeueReusableAnnotationView(withIdentifier: identifier) as? T{
             return view
         }
@@ -45,4 +45,15 @@ public extension MKMapView {
         return view;
     }
 
+}
+
+public extension MKAnnotationView {
+    static func dequeueReusableAnnoView(_ mapView: MKMapView, annotation: MKAnnotation?, identifier: String) -> MKAnnotationView{
+        if let annoView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier){
+            return annoView
+        }
+        let annoView = self.init(annotation: annotation, reuseIdentifier: identifier)
+        annoView.canShowCallout = true
+        return annoView
+    }
 }

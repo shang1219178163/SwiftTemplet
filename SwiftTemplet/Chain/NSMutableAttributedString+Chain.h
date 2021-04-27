@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSMutableAttributedString (Chain)
 
-// addAttrs
-@property(nonatomic, strong, readonly) NSMutableAttributedString *(^addAttrs)(NSDictionary<NSAttributedStringKey, id> *);
+// addAttributes
+@property(nonatomic, strong, readonly) NSMutableAttributedString *(^addAttributes)(NSDictionary<NSAttributedStringKey, id> *);
 
 // ParagraphStyle
 @property(nonatomic, strong, readonly) NSMutableAttributedString *(^paragraphStyle)(NSParagraphStyle *);

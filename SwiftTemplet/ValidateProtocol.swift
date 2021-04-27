@@ -32,7 +32,7 @@ extension ValidateProtocol{
 
     public func isValidHttpUrl(_ value: String) -> Bool {
         guard let url = URL(string: value) else { return false }
-        return url.scheme == "http"
+        return url.scheme == "http" || url.scheme == "https"
     }
     
     public func isValidFileUrl(_ value: String) -> Bool {
