@@ -38,8 +38,8 @@ class NNPopView: UIView {
         }
     }
 
-    var blockCellForRow: CellForRowClosure?
-    var blockDidSelectRow: DidSelectRowClosure?
+    var blockCellForRow: ((UITableView, IndexPath) ->UITableViewCell?)?
+    var blockDidSelectRow: ((UITableView, IndexPath) ->Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,11 +94,11 @@ class NNPopView: UIView {
         })
     }
     
-    func viewBlockCellForRow(_ action: @escaping CellForRowClosure) {
+    func viewBlockCellForRow(_ action: @escaping ((UITableView, IndexPath) ->UITableViewCell?)) {
         self.blockCellForRow = action;
     }
     
-    func viewBlockDidSelectRow(_ action: @escaping DidSelectRowClosure) {
+    func viewBlockDidSelectRow(_ action: @escaping ((UITableView, IndexPath) ->Void)) {
         self.blockDidSelectRow = action;
     }
     

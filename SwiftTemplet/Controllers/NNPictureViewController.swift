@@ -31,14 +31,14 @@ class NNPictureViewController: UIViewController {
         
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.toCGFloat)
         
-        let photosView = createGroupView(rect, list: urlArray, numberOfRow: 3, padding: 10, type: 1) { (tap, itemView, idx) in
-            DDLog(idx)
-            let value = urlArray[idx];
-//            (itemView as! UIImageView).sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
+        let photosView = createGroupView(rect, list: urlArray, numberOfRow: 3, padding: 10, type: 1) { (tap) in
+            guard let itemView = tap.view as? UIImageView else { return }
+            DDLog(itemView.tag)
 
-//            (itemView as! UIImageView).showImageEnlarge()
-            (itemView as! UIImageView).showPictureView(urlArray, index: itemView.tag)
-
+//            let value = urlArray[itemView.tag];
+//            itemView.sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
+//            itemView.showImageEnlarge()
+            itemView.showPictureView(urlArray, index: itemView.tag)
         }
         view.addSubview(photosView)
         
@@ -51,7 +51,7 @@ class NNPictureViewController: UIViewController {
     }
     
     /// [源]GroupView创建
-    func createGroupView(_ rect: CGRect = CGRect.zero, list: [String], numberOfRow: Int = 4, padding: CGFloat = kPadding, type: Int = 0, action: ((UITapGestureRecognizer?, UIView, NSInteger)->Void)? = nil) -> UIView {
+    func createGroupView(_ rect: CGRect = CGRect.zero, list: [String], numberOfRow: Int = 4, padding: CGFloat = kPadding, type: Int = 0, action: ((UITapGestureRecognizer)->Void)? = nil) -> UIView {
         
         let rowCount: Int = list.count % numberOfRow == 0 ? list.count/numberOfRow : list.count/numberOfRow + 1;
         let itemWidth = (rect.width - CGFloat(numberOfRow - 1)*padding)/CGFloat(numberOfRow)
@@ -73,8 +73,8 @@ class NNPictureViewController: UIViewController {
 //            DDLog(value)
             imgView.sd_setImage(with: URL(string: value), placeholderImage: UIImage(named: "img_failedDefault_S"))
 
-            if action != nil {
-                imgView.addActionClosure(action!)
+            if let action = action {
+                imgView.addGestureTap(action)
             }
             backView.addSubview(imgView);
         }

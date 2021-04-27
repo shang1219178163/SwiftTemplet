@@ -205,7 +205,7 @@ extension FleetDetailNewController: UITableViewDataSource, UITableViewDelegate{
 
         contentView.addSubview(label)
         if [1,2].contains(section) {
-            contentView.addActionClosure { (tap:UITapGestureRecognizer?, view:UIView, idx:Int) in
+            contentView.addGestureTap { (tap) in
                 if foldModel.isCanOpen == true {
                     foldModel.isOpen = !foldModel.isOpen
                     tableView.reloadSections([section], with: .fade)

@@ -49,14 +49,13 @@ class CenterViewController: UIViewController {
         imgView.tag = 111;
         view.addSubview(imgView);
         
-        imgView.addActionClosure { (tap, view, idx) in
-            DDLog(idx);
-            
+        imgView.addGestureTap { (tap) in
+            DDLog(tap.view?.tag);
         }
         
         view.tag = 999
-        view.addActionClosure { (tap, view, idx) in
-            DDLog(idx);
+        view.addGestureTap { (tap) in
+            DDLog(tap.view?.tag);
             
         }
         

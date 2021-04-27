@@ -23,7 +23,7 @@ class NNTablePlainView: UIView {
     var list:[Any]?
     var viewBlockCellForRow: CellForRowClosure?
     var viewBlockDidSelectRow: DidSelectRowClosure?
-    var viewBlockHeightForRow: CellHeightForRowClosure?
+    var viewBlockHeightForRow: ((UITableView, IndexPath) ->CGFloat)?
 
     
     var heightForHeaderInSection: CGFloat = 10
@@ -44,7 +44,7 @@ class NNTablePlainView: UIView {
     }
 
     // MARK: - funtions
-    func blockCellHeightForRow(_ action: @escaping CellHeightForRowClosure) {
+    func blockCellHeightForRow(_ action: @escaping ((UITableView, IndexPath) ->CGFloat)) {
         viewBlockHeightForRow = action;
     }
     
@@ -76,8 +76,8 @@ extension NNTablePlainView: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if viewBlockHeightForRow != nil && viewBlockHeightForRow!(tableView, indexPath) > 10 {
-            let height = viewBlockHeightForRow!(tableView, indexPath);
+        if let viewBlockHeightForRow = viewBlockHeightForRow {
+           let height = viewBlockHeightForRow(tableView, indexPath)
             return height
         }
         

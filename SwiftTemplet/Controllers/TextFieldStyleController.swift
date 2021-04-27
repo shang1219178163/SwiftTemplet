@@ -72,9 +72,7 @@ class TextFieldStyleController: UIViewController {
     
     func titleViewTap() {
         textField.text = "闭包的回调方法"
-        
-        _ = textField.addGestureTap { (reco) in
- 
+        textField.addGestureTap { (reco) in
             DDLog(reco)
         }
         navigationItem.titleView = textField
@@ -94,25 +92,22 @@ class TextFieldStyleController: UIViewController {
         view.textColor = .white
         view.textAlignment = .center;
         let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
-        _ = view.asoryView(true, image: image!)
+//        _ = view.asoryView(true, image: image!)
+        
         return view
     }()
     
     //MARK: -lazy
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
-            [
-            ["账号:", "UITableViewCellTextField", "60.0", "手机号码或者邮箱", "recharge",  "icon_username"],
+        return [
+            [["账号:", "UITableViewCellTextField", "60.0", "手机号码或者邮箱", "recharge",  "icon_username"],
             ["密码:", "UITableViewCellTextField", "60.0", "8位数字字符组合", "recharge",  "icon_password"],
             ["价格:", "UITableViewCellTextField", "60.0", "1-9999", "recharge",  "元"],
             ["价格:", "UITableViewCellTextField", "60.0", "1-9999", "recharge",  "小时"],
             ["价格:", "UITableViewCellTextField", "60.0", "1-9999", "recharge",  "金圆券"],
             ["价格:", "UITableViewCellTextField", "60.0", "1-9999", "recharge",  "美元 💵"],
-
              ],
-
         ]
-        return array
     }()
 
     // MARK: -funtions
@@ -160,34 +155,53 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
             cell.textfield.textAlignment = .left
             cell.textfield.placeholder = value3
             cell.textfield.isSecureTextEntry = false
+            cell.textfield.font = UIFont.systemFont(ofSize: 14)
 
             cell.labelLeft.text = value0
                         
             switch indexPath.row {
             case 0:
-                _ = cell.textfield.asoryView(false, obj: itemList.last!)
+//                cell.textfield.asoryView(false, obj: itemList.last!, viewSize: CGSize(width: 40, height: 35))
+                cell.textfield.addLeftViewButton(CGSize(width: 30, height: 30)) { (sender) in
+                    sender.setImage(UIImage(named: "icon_username"), for: .normal)
+                } action: { (sender) in
+                    DDLog(sender.isSelected)
+                }
 
             case 1:
-                cell.textfield.isSecureTextEntry = true
-
-                _ = cell.textfield.asoryView(false, obj: itemList.last!)
-                let sender = cell.textfield.asoryView(true, obj: itemList.last!)
-                sender.setImage(UIImage(named: "icon_eye_close"), for: .normal)
-                sender.setImage(UIImage(named: "icon_eye_open"), for: .selected)
-                sender.addActionHandler({ (sender) in
-                    sender.isSelected = !sender.isSelected
-                    cell.textfield.isSecureTextEntry = !sender.isSelected
-                }, for: .touchUpInside)
+//                cell.textfield.addPasswordEveBlock { (sender) in
+//                    DDLog(sender.isSelected)
+//                }
+                cell.textfield.addRightViewButton { (sender) in
+                    sender.setImage(UIImage(named: "icon_eye_close"), for: .normal)
+                    sender.setImage(UIImage(named: "icon_eye_open"), for: .selected)
+                } action: { (sender) in
+                    DDLog(sender.isSelected)
+                }
 
             default:
-                cell.textfield.textAlignment = .right
-                _ = cell.textfield.asoryView(true, obj: itemList.last!)
+//                cell.textfield.textAlignment = .right
+//                cell.textfield.addRightViewLabel { (sender) in
+//                    sender.font = UIFont.systemFont(ofSize: 14)
+//                    sender.text = itemList.last!
+//                    sender.sizeToFit()
+//                    DDLog(sender.text as Any)
+//                }
+                cell.textfield.rightView(UILabel.self, viewMode: .always) { (sender) in
+                    sender.font = UIFont.systemFont(ofSize: 14)
+                    sender.text = itemList.last!
+                }
+
+                cell.textfield.leftView(UILabel.self, viewMode: .always) { (sender) in
+                    sender.font = UIFont.systemFont(ofSize: 14)
+                    sender.text = "手机号码:"
+                }
             }
             
             cell.block { (textField) in
                 DDLog(textField.text as Any)
             }
-            cell.getViewLayer()
+//            cell.getViewLayer()
             return cell
         default:
             break

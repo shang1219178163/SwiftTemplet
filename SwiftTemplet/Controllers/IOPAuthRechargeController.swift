@@ -118,7 +118,11 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
         case 106:
             let cell = UITableViewCellTextField.dequeueReusableCell(tableView)
             cell.labelLeft.text = itemList[0]
-            cell.textfield.asoryView(true, text: itemList.last!)
+//            cell.textfield.asoryView(true, text: itemList.last!)
+            cell.textfield.addRightViewLabel { (sender) in
+                sender.font = UIFont.systemFont(ofSize: 14)
+                sender.text = itemList.last!
+            }
 //            cell.textfield.rightView = nil;
             
             cell.textfield.textAlignment = .right

@@ -31,11 +31,11 @@ class CCSEmergencyOpenView: UIView {
         
         self.addSubview(contentView);
         
-        self.addActionClosure { (tap , view, idx) in
+        addGestureTap { (tap) in
             if self.isDismissBlank == true {
                 self.dismiss();
             }
-        };
+        }
 //        getViewLayer()
     }
     

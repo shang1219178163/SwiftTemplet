@@ -31,7 +31,7 @@ class FifthViewControlle: UIViewController {
         textField.frame = CGRect(x: imgView.frame.minX, y: imgView.frame.maxY+20, width: imgView.frame.width, height: 35)
         view.addSubview(textField)
         
-        view.addActionClosure { (sender:UITapGestureRecognizer?, view:UIView, idx:Int) in
+        view.addGestureTap { (tap) in
             self.textField.endEditing(true)
         }
         

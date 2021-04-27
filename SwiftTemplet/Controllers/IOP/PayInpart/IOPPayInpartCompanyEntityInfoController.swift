@@ -323,7 +323,7 @@ extension IOPPayInpartCompanyEntityInfoController: UITableViewDataSource, UITabl
         
         switch itemList[1] {
         case "UITableViewCellTitle":
-            let cell = UITableViewCellTitle.cellWithTableView(tableView)
+            let cell = UITableViewCellTitle.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
@@ -347,7 +347,7 @@ extension IOPPayInpartCompanyEntityInfoController: UITableViewDataSource, UITabl
             return cell
             
         case "UITableViewCellTextField":
-            let cell = UITableViewCellTextField.cellWithTableView(tableView)
+            let cell = UITableViewCellTextField.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.textfield.font = UIFont.systemFont(ofSize: 14)
@@ -456,7 +456,7 @@ extension IOPPayInpartCompanyEntityInfoController: UITableViewDataSource, UITabl
         default:
             break
         }
-        let cell = UITableViewCellZero.cellWithTableView(tableView)
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         return cell
     }
     

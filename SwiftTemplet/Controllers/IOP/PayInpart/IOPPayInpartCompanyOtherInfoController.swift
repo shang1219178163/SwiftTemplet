@@ -212,7 +212,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
         
         switch itemList[1] {
         case "UITableViewCellTitle":
-            let cell = UITableViewCellTitle.cellWithTableView(tableView)
+            let cell = UITableViewCellTitle.dequeueReusableCell(tableView)
             cell.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
@@ -291,7 +291,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
         default:
             break
         }
-        let cell = UITableViewCellZero.cellWithTableView(tableView)
+        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
         return cell
     }
     

@@ -54,7 +54,8 @@ import SnapKit
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom)
         view.setTitle("自定义标题", for: .normal)
-        view.setCustomType(.titleRedAndOutline)
+        view.setTitleColor(.red, for: .normal)
+        view.setCustomType(.titleAndOutline)
         view.adjustsImageWhenHighlighted = false
         
         view.addActionHandler { (sender) in

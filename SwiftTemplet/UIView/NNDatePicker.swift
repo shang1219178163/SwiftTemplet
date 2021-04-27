@@ -34,7 +34,7 @@ class NNDatePicker: UIView {
         self.datePicker.datePickerMode = model;
         self.addSubview(contentView);
 
-        self.addActionClosure { (tap, view, idx) in
+        self.addGestureTap { (tap) in
             self.dismiss();
         };
     }

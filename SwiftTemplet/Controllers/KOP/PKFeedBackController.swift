@@ -154,8 +154,11 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
             cell.textfield.textAlignment = .left
             
             cell.labelLeft.text = value0
-            cell.textfield.asoryView(true, text: itemList.last!)
-
+//            cell.textfield.asoryView(true, text: itemList.last!)
+            cell.textfield.addRightViewLabel { (sender) in
+                sender.font = UIFont.systemFont(ofSize: 14)
+                sender.text = itemList.last!
+            }
 //            cell.textfield.rightView = nil;
 //            cell.textfield.textAlignment = .right
             
