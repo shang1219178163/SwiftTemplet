@@ -93,14 +93,20 @@ class ThirdViewController: UIViewController{
             ["TestViewController", "新想法测试", ],
             ],
             
-            [["TableViewPrefetchRowController", "image预加载", ],
+            [["SystemColorShowController", "SystemColor", ],
+             ["TableViewPrefetchRowController", "image预加载", ],
              ["AppIconChangeController", "App图标更换", ],
              ["AlerSheetStudyController", "AlerSheet研究", ],             
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
              ["IOPInvoiceCreateController", "折叠", ],
              ["AttrStringEffectiveController", "AttrString", ],
-             ["SystemColorShowController", "SystemColor", ],
+             ["NumberFormatterExampleController", "NumberFormatter", ],
+             ["ChainExampleController", "ChainExample", ],
+             ["ChainExampleSwiftController", "ChainExampleSwift", ],
+             ["PasswordStrengthCheckController", "PasswordStrengthCheck", ],
+             ["PasswordStrengthCheckSwiftController", "PasswordStrengthCheckSwift", ],             
+//             ["SwiftCollectionsController", "SwiftCollections", ],
             ],
         ]
         return array
@@ -336,18 +342,24 @@ class ThirdViewController: UIViewController{
             
         case 5:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。我已经解决了所有问题，但是我希望能够捕捉平移手势是否被反转。"
-            UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-                .addActionTitles([kTitleCancell, kTitleSure]) { (alertVC, action) in
-                    DDLog(action.title as Any)
-            }
-//            .addTextFields(["请输入账号", "请输入密码"]) { (textfield) in
-//                DDLog(textfield.text as Any)
-//                textfield.addTarget(self, action: #selector(self.handleTextfield(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
+//            UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+//                .addActionTitles([kTitleCancell, kTitleSure]) { (alertVC, action) in
+//                    DDLog(action.title as Any)
 //            }
-            .present {
-//                DDLog("present")
-            }
-            UIApplication.shared.keyWindow?.endEditing(true)
+////            .addTextFields(["请输入账号", "请输入密码"]) { (textfield) in
+////                DDLog(textfield.text as Any)
+////                textfield.addTarget(self, action: #selector(self.handleTextfield(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
+////            }
+//            .present {
+////                DDLog("present")
+//            }
+//            UIApplication.shared.keyWindow?.endEditing(true)
+            
+            let alertVC = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: kTitleSure, style: .default, handler: { (action) in
+                DDLog(action.title)
+            }))
+            alertVC.present()
         default:
             UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
             break

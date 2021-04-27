@@ -1,5 +1,5 @@
 //
-//  UIControlUpfdateController.swift
+//  UIControlUpdateController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2021/1/23.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftExpand
 
-class UIControlUpfdateController: UIViewController{
+class UIControlUpdateController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
@@ -50,6 +50,7 @@ class UIControlUpfdateController: UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +86,7 @@ class UIControlUpfdateController: UIViewController{
     }
 }
 
-extension UIControlUpfdateController: UITableViewDataSource, UITableViewDelegate{
+extension UIControlUpdateController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;

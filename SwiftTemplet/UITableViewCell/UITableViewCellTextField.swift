@@ -15,7 +15,8 @@ import SwiftExpand
 class UITableViewCellTextField: UITableViewCell {
 
     var viewBlock: ((UITextField) ->Void)?
-    
+    var textFieldEditingChangedBlock: ((UITextField) -> Void)?
+
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     /// 是否有星标
     var hasAsterisk = false
@@ -37,6 +38,8 @@ class UITableViewCellTextField: UITableViewCell {
         textfield.placeholder = "请输入";
         textfield.textAlignment = .center;
         textfield.delegate = self;
+        textfield.addTarget(self, action: #selector(handleEditingChanged(_:)), for: .editingChanged)
+
 //        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
 //        _ = textfield.asoryView(true, image: image)
 //        textfield.asoryView(true, unitName: "公斤(万元)");
@@ -115,6 +118,10 @@ class UITableViewCellTextField: UITableViewCell {
         viewBlock = action
     }
     
+    @objc func handleEditingChanged(_ textField: UITextField) {
+        textFieldEditingChangedBlock?(textfield)
+    }
+    
     @objc func handleSend(_ sender: UITextField) {
         DDLog(sender.text as Any)
     }
@@ -138,6 +145,7 @@ extension UITableViewCellTextField: UITextFieldDelegate{
         if isBackDelete {
             if string == "" {
                 textField.text = ""
+                textFieldEditingChangedBlock?(textField)
             }
         }
         return true
