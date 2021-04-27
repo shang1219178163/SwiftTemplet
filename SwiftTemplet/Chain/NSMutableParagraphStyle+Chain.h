@@ -45,6 +45,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy, readonly) NSMutableParagraphStyle *(^allowsDefaultTighteningForTruncationChain)(BOOL) API_AVAILABLE(macos(10.11), ios(9.0));
 @property(nonatomic, copy, readonly) NSMutableParagraphStyle *(^lineBreakStrategyChain)(NSLineBreakStrategy) API_AVAILABLE(macos(10.11), ios(9.0));
 
+@property(nonatomic, copy, readonly) NSMutableParagraphStyle *(^addTabStopChain)(NSTextTab *) API_AVAILABLE(macos(10.11), ios(9.0));
+@property(nonatomic, copy, readonly) NSMutableParagraphStyle *(^removeTabStopChain)(NSTextTab *) API_AVAILABLE(macos(10.11), ios(9.0));
+@property(nonatomic, copy, readonly) NSMutableParagraphStyle *(^setParagraphStyleChain)(NSParagraphStyle *) API_AVAILABLE(macos(10.11), ios(9.0));
 
 @end
 

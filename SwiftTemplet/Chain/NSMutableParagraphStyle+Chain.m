@@ -131,6 +131,25 @@
     };
 }
 
+- (NSMutableParagraphStyle * (^)(NSTextTab *))addTabStopChain{
+    return ^(NSTextTab *value) {
+        [self addTabStop:value];
+        return self;
+    };
+}
 
+- (NSMutableParagraphStyle * (^)(NSTextTab *))removeTabStopChain{
+    return ^(NSTextTab *value) {
+        [self removeTabStop:value];
+        return self;
+    };
+}
+
+- (NSMutableParagraphStyle * (^)(NSParagraphStyle *))setParagraphStyleChain{
+    return ^(NSParagraphStyle *value) {
+        [self setParagraphStyle:value];
+        return self;
+    };
+}
 
 @end

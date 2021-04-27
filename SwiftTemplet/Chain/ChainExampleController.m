@@ -33,7 +33,7 @@
     [super viewWillAppear:animated];
     
     
-    switch (1) {
+    switch (4) {
         case 1:
             [self testPersonName];
             break;
@@ -254,7 +254,8 @@
    /// 输出 kilograms
    NSMassFormatterUnit uko = NSMassFormatterUnitKilogram;
    NSString *outputString4 = [formatter unitStringFromKilograms:200 usedUnit:&uko];
-         /// 输出 kilograms
+    /// 输出 kilograms
+    DDLog(@"outputString: %@", @[outputString1, outputString2, outputString3, outputString4]);
 }
 
 - (void)testNSLengthFormatter {
@@ -269,6 +270,7 @@
     NSLengthFormatterUnit uko = NSLengthFormatterUnitMeter;
     NSString *outputString4 = [formatter unitStringFromMeters:222 usedUnit:&uko];
     /// 输出 kilograms
+    DDLog(@"outputString: %@", @[outputString1, outputString2, outputString3, outputString4]);
 }
 
 - (void)testNSEnergyFormatter {
