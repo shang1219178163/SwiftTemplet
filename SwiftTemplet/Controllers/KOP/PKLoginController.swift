@@ -245,7 +245,7 @@ class PKLoginController: UIViewController {
         view.addSubview(btnLoginQQ)
         view.addSubview(btnLoginWeiBo)
         
-        let rightBtn = UIButton.createBtnBarItem("next")
+        let rightBtn = UIButton(barItem: "next")
         rightBtn.addActionHandler({ (sender) in
             let controller = NNOfflineTipController()
             self.navigationController?.pushViewController(controller, animated: true);

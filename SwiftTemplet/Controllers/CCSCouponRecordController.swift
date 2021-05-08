@@ -17,7 +17,7 @@ class CCSCouponRecordController: UIViewController, UICallPhoneViewDelegate {
         // Do any additional setup after loading the view.
         view.addSubview(tableView)
         
-        let rightBtn = UIButton.createBtnBarItem("语音通话")
+        let rightBtn = UIButton(barItem: "语音通话")
         rightBtn.addActionHandler({ (sender) in
             self.phoneView.show();
         })

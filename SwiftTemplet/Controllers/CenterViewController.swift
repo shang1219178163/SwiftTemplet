@@ -93,7 +93,7 @@ class CenterViewController: UIViewController {
         super.viewWillAppear(animated)
         
         
-        let rightBtn = UIButton.createBtnBarItem("done")
+        let rightBtn = UIButton(barItem: "done")
         rightBtn.addActionHandler({ (sender) in
             DDLog(sender);
         })

@@ -37,7 +37,7 @@ class TitleViewController: NNTitleViewSelectController{
             self.gemetryView.subType = Int(arc4random_uniform(3))
         }
         
-        let rightBtn = UIButton.createBtnBarItem("next")
+        let rightBtn = UIButton(barItem: "next")
         rightBtn.addActionHandler({ (sender) in
             let controller = SheetViewController()
             self.navigationController?.pushViewController(controller, animated: true);

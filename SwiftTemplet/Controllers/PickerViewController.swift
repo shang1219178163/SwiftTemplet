@@ -16,7 +16,7 @@ class PickerViewController: UIViewController {
         super.viewDidLoad()
         
         
-        let rightBtn = UIButton.createBtnBarItem("next")
+        let rightBtn = UIButton(barItem: "next")
         rightBtn.addActionHandler({ (sender) in
             self.customPickerView.show();
             self.btn.transform = CGAffineTransform.identity

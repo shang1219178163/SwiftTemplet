@@ -129,7 +129,7 @@ import SwiftExpand
     }()
     
     lazy var labelMidLeft: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont.systemFont(ofSize: 12)
         view.text = kNilText;
         
@@ -137,7 +137,7 @@ import SwiftExpand
     }()
     
     lazy var labelMidRight: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
 
@@ -145,7 +145,7 @@ import SwiftExpand
     }()
     
     lazy var labelBottomLeft: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
 
@@ -153,7 +153,7 @@ import SwiftExpand
     }()
     
     lazy var labelBottomRight: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
 

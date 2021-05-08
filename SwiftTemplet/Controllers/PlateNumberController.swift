@@ -20,7 +20,7 @@ class PlateNumberController: UIViewController {
         // Do any additional setup after loading the view.
         title = "车牌号键盘"
         
-        let rightBtn = UIButton.createBtnBarItem("next")
+        let rightBtn = UIButton(barItem: "next")
         rightBtn.addActionHandler({ (sender) in
             let controller = PlateNumOriginController()
             self.navigationController?.pushViewController(controller, animated: true);

@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
         title = "Main";
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "next", style: .done, target: self, action: #selector(handActionBtn));
         
-        let rightBtn = UIButton.createBtnBarItem("next")
+        let rightBtn = UIButton(barItem: "next")
         rightBtn.addActionHandler({ (sender) in
             let controller = UICtrFromString("DetailViewController");
             self.navigationController?.pushViewController(controller, animated: true);

@@ -116,7 +116,7 @@ import SwiftExpand
     }
     
     lazy var labelMidSub: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont.systemFont(ofSize: 12)
         view.text = kNilText;
         view.textAlignment = .center
@@ -125,7 +125,7 @@ import SwiftExpand
     }()
     
     lazy var labelMidSubValue: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
         view.textAlignment = .center
@@ -134,7 +134,7 @@ import SwiftExpand
     }()
     
     lazy var labelLeftSubValue: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
         view.textAlignment = .center
@@ -143,7 +143,7 @@ import SwiftExpand
     }()
     
     lazy var labelRightSubValue: UILabel = {
-        let view = UILabel.create(.zero, type: 2)
+        let view = UILabel.create(.zero, type: .oneLine)
         view.font = UIFont(name: UIFont.kPingFangSemibold, size: 14)
         view.text = kNilText;
         view.textAlignment = .center

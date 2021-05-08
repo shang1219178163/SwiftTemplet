@@ -15,8 +15,7 @@ class NNFormViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem.create("Next")
-        navigationItem.rightBarButtonItem?.addAction({ (item) in
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init("Next", style: .plain, action: { (item) in
             DDLog(item);
         })
                 
