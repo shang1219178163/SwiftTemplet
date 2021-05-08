@@ -12,8 +12,11 @@ import SwiftExpand
 import SnapKitExtend
 
 @objc protocol NNWebViewControllerDelegate: NSObjectProtocol{
-    @objc func webViewController(_ vc: NNWebViewController, absoluteString: String)
+    @objc func webViewVC(_ vc: NNWebViewController, url: URL)
     
+    @objc optional func webViewVC(_ vc: NNWebViewController, webView: WKWebView, didFinishNavigation: WKNavigation!)
+
+    @objc optional func webViewVC(_ vc: NNWebViewController, webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
 }
 
 @objcMembers class NNWebViewController: UIViewController {
@@ -173,9 +176,7 @@ import SnapKitExtend
                   else { return }
             DDLog(absoluteString.removingPercentEncoding as Any)
             
-            if let delegate = delegate {
-                delegate.webViewController(self, absoluteString: url.absoluteString)
-            }
+            delegate?.webViewVC(self, url: url)
     
             if absoluteString.hasPrefix("tel:") {
                 UIApplication.openURLString(url.absoluteString)
@@ -220,13 +221,16 @@ import SnapKitExtend
     }
 }
 
-extension NNWebViewController: WKUIDelegate{
-    //MARK: -webView
+extension NNWebViewController: WKNavigationDelegate{
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
 
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.setCookieByJavaScript(httpHeaderFieldsDic) { (result, error) in
+            DDLog(result as Any, error.debugDescription)
+        }
+        
         webView.evaluateJavaScript("document.title") { (obj, error) in
             guard let title = obj as? String else {
                 print(obj as Any)
@@ -246,17 +250,23 @@ extension NNWebViewController: WKUIDelegate{
         
         refreshControl.endRefreshing()
     }
-        
-    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
-        NSLog("进程被终止");
-        webView.reload()
-    }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 //        decisionHandler(.allow)
         guard let url = navigationAction.request.url as URL?,
             let absoluteString = url.absoluteString as String?
             else { return }
+        
+        if navigationAction.targetFrame == nil{
+            webView.load(navigationAction.request)
+            decisionHandler(.allow)
+            return
+        }
+        
+        if delegate != nil {
+            delegate?.webViewVC?(self, webView: webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
+            return
+        }
 
 //        DDLog(absoluteString)
         if absoluteString.contains("alipay://alipayclient") {
@@ -314,22 +324,50 @@ extension NNWebViewController: WKUIDelegate{
         }
     }
     
+//    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+////        UIAlertController.showAlert("提示", message: (error as NSError).domain, actionTitles: nil, handler: nil);
+////        IOPProgressHUD.showError(withStatus: (error as NSError).domain)
+//    }
+//
+//    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+////        UIAlertController.showAlert("提示", message: (error as NSError).domain, actionTitles: nil, handler: nil);
+////        IOPProgressHUD.showError(withStatus: (error as NSError).domain)
+//    }
+    
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        NSLog("进程被终止");
+        webView.reload()
+    }
+
+}
+
+
+extension NNWebViewController: WKUIDelegate{
+
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        
+        if let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame == false{
+            webView.load(navigationAction.request)
+        }
+        return nil
+    }
+    
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (alertVC, action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure], handler:  { (alertVC, action) in
             completionHandler();
-        }
+        })
     }
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (alertVC, action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure], handler:  { (alertVC, action) in
             if action.title == kTitleCancell{
                 completionHandler(false)
                 return
             }
             completionHandler(true)
-        }
+        })
     }
     
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
@@ -353,18 +391,6 @@ extension NNWebViewController: WKUIDelegate{
         if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
             rootVC.present(alertVC, animated: true, completion: nil)
         }
-    }
-}
-
-extension NNWebViewController: WKNavigationDelegate{
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-//        UIAlertController.showAlert("提示", message: (error as NSError).domain, actionTitles: nil, handler: nil);
-//        IOPProgressHUD.showError(withStatus: (error as NSError).domain)
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-//        UIAlertController.showAlert("提示", message: (error as NSError).domain, actionTitles: nil, handler: nil);
-//        IOPProgressHUD.showError(withStatus: (error as NSError).domain)
     }
 }
 

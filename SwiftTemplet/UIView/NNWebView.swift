@@ -11,8 +11,11 @@ import WebKit
 import SwiftExpand
 
 @objc protocol NNWebViewDelegate: NSObjectProtocol {
-    @objc optional func webView(_ webView: WKWebView, absoluteString: String)
-    @objc optional func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void);
+    @objc optional func webView(_ webView: WKWebView, url: URL)
+    
+    @objc optional func webView(_ webView: WKWebView, didFinishNavigation: WKNavigation!)
+
+    @objc func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void)
 
 }
 
@@ -20,29 +23,51 @@ import SwiftExpand
     
     weak var delegate: NNWebViewDelegate?
    
+    var httpHeaderFieldsDic = [String: String]()
+
     var urlString: String = ""{
         willSet{
             DispatchQueue.main.async{
-                self.loadRequest()
+                self.request(newValue)
             }
         }
     }
+    
+    var htmlString: String = ""{
+        willSet{
+//            webView.loadHTMLString(newValue, baseURL: nil)
+            webView.loadHTMLStringWithMagic(newValue, baseURL: nil)
+        }
+    }
+    
     var jsString: String = ""
+    
     var loadingProgressColor: UIColor = UIColor.systemBlue {
         willSet{
             progressView.progressTintColor = newValue
         }
     }
     
-    var loadContent: String = ""{
-        willSet{
-            webView.loadHTMLString(newValue, baseURL: nil)
-        }
-    }
+    var userAgent: String = ""
 
-    ///展示重载按钮
-    var showReloadBtn: Bool = false
+    var URLScheme: String {
+        var result = "wx.parkingwang.com"
+        #if DEBUG
+            result = "dev.parkingwang.com"
+        #endif
+        return result
+    }
+    ///第三方公司微信 H5 支付配置的授权域名
+    var refererUrl: String?
+
+    ///查询结果
+    var redirect_url: String = ""
     
+    var isLoading: Bool = false
+    
+    var titleBlock:((String)->Void)?
+
+    // MARK: -lifecycle
     deinit {
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         webView.removeObserver(self, forKeyPath: "URL")
@@ -58,8 +83,6 @@ import SwiftExpand
         backgroundColor = UIColor.white;
         self.addSubview(webView)
         self.addSubview(progressView)
-        
-        progressView.progressTintColor = loadingProgressColor
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,8 +92,8 @@ import SwiftExpand
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        progressView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: 2)
-//        webView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        progressView.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: 1.5)
+        webView.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: frame.size.height)
     }
     
     //MARK: -observe
@@ -84,13 +107,15 @@ import SwiftExpand
             }
             
         } else if keyPath == "URL" {
-            guard let url = webView.url,
-                  let absoluteString = url.absoluteString as String?
+            guard let url = webView.url
                   else { return }
+            let absoluteString = url.absoluteString
             DDLog(absoluteString.removingPercentEncoding as Any)
             
             if let delegate = delegate {
-                delegate.webView?(self.webView, absoluteString: absoluteString)
+                delegate.webView?(self.webView, url: url)
+//                webView.stopLoading()
+                return
             }
             
             if absoluteString.hasPrefix("tel:") {
@@ -102,20 +127,52 @@ import SwiftExpand
         }
     }
     
-    @objc func loadRequest() {
-        assert(urlString != "")
-        if !urlString.hasPrefix("http") {
-            urlString = "http://" + urlString;
-        }
-        if urlString != "", let url = NSURL(string: urlString) as NSURL? {
-            let request = URLRequest(url: url as URL)
-            webView.load(request)
-        } else {
-            print("\(#function) 链接无效:\(urlString)")
-        }
+//    @objc func loadRequest() {
+//        if urlString == "" {
+//            self.refreshControl.endRefreshing()
+//            return
+//        }
+//        progressView.setProgress(0, animated: false)
+//        progressView.isHidden = false
+//
+//        if !urlString.hasPrefix("http") {
+//            urlString = "http://" + urlString;
+//        }
+//        if let url = URL(string: urlString) {
+//            let request = URLRequest(url: url)
+//            webView.load(request)
+//        } else {
+//            print("\(#function) 链接无效:\(urlString)")
+//        }
+//    }
+    
+    @objc func refreshOrderResult() {
+        webView.loadUrl(redirect_url, additionalHttpHeaders: httpHeaderFieldsDic, isAddUserScript: false)
+
+//        guard let urlStr = redirect_url.removingPercentEncoding as String? else { return }
+//        if let url = URL(string: urlStr) as URL? {
+//            var request = URLRequest(url: url as URL)
+//            httpHeaderFieldsDic.forEach { (key, value) in
+//                request.addValue(value, forHTTPHeaderField: key)
+//            }
+//            wkWebView.load(request)
+//        }
+    }
+    
+    func request(_ urlString: String?) {
+        guard let urlString = urlString, urlString != "" else {
+            refreshControl.endRefreshing()
+            return }
+        progressView.setProgress(0, animated: false)
+        progressView.isHidden = false
+        
+        webView.loadUrl(urlString, additionalHttpHeaders: httpHeaderFieldsDic)
     }
     
     @objc func webViewReload() {
+        guard let url = webView.url, url.absoluteString.hasPrefix("http") else {
+            webView.scrollView.refreshControl?.endRefreshing()
+            return }
         webView.reload()
     }
     
@@ -140,7 +197,7 @@ import SwiftExpand
         if #available(iOS 10.0, *) {
             view.scrollView.refreshControl = self.refreshControl;
         }
-        
+                
         view.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         view.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
 
@@ -149,98 +206,123 @@ import SwiftExpand
 
     lazy var refreshControl: UIRefreshControl = {
         let view = UIRefreshControl()
-        view.addTarget(self, action:#selector(loadRequest), for: .valueChanged)
+        view.addTarget(self, action:#selector(webViewReload), for: .valueChanged)
         return view
     }()
     
     lazy var progressView: UIProgressView = {
-        let view: UIProgressView = UIProgressView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 2))
+        let view = UIProgressView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 2))
         return view
     }()
 }
 
-extension NNWebView: WKUIDelegate{
-    //MARK: -webView
+extension NNWebView: WKNavigationDelegate{
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        if showReloadBtn {
-            webView.isHidden = false
-        }
+
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        delegate?.webView?(webView, didFinishNavigation: navigation)
+
         webView.evaluateJavaScript("document.title") { (obj, error) in
+            guard let title = obj as? String else {
+                print(obj as Any)
+                return
+            }
+            if title.contains(".png") {
+                self.titleBlock?("图片")
+            } else {
+                self.titleBlock?("title")
+            }
+        }
+        let doc = "document.body.outerHTML";
+        webView.evaluateJavaScript(doc) { (obj, error) in
 //            print(obj)
         }
         refreshControl.endRefreshing()
     }
-    
+    //! WKWeView在每次加载请求前会调用此方法来确认是否进行请求跳转
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if delegate == nil {
             decisionHandler(.allow)
             return
         }
-        delegate?.webView?(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
+        
+        if navigationAction.targetFrame == nil{
+            webView.load(navigationAction.request)
+            decisionHandler(.allow)
+            return
+        }
+        
+        delegate?.webView(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
+    }
+    
+//    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+//        UIAlertController.showAlert("提示", message: error.localizedDescription, actionTitles: nil, handler: nil);
+//    }
+//
+//    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+//        UIAlertController.showAlert("提示", message: error.localizedDescription, actionTitles: nil, handler: nil);
+//    }
+    
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        webView.reload()
+    }
+    
+}
+
+
+extension NNWebView: WKUIDelegate{
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        
+        if let targetFrame = navigationAction.targetFrame, targetFrame.isMainFrame == false{
+            webView.load(navigationAction.request)
+        }
+        return nil
     }
     
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure], handler: { (alertVC, action) in
             completionHandler();
-        }
+        })
     }
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         DDLog(message)
-        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure]) { (alertVC, action) in
+        UIAlertController.showAlert("温馨提示", message: message, actionTitles: [kTitleSure], handler: { (alertVC, action) in
             if action.title == kTitleCancell{
                 completionHandler(false)
                 return
             }
             completionHandler(true)
-        }
+        })
     }
     
-//    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-//        let alertVC = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
-//        alertVC.addTextField { (textField) in
-//            textField.text = defaultText
-//        }
-//
-//        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertVC, action) in
-//            if let text = alertVC.textFields?.first?.text {
-//                completionHandler(text)
-//            } else {
-//                completionHandler(defaultText)
-//            }
-//        }))
-//
-//        alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (alertVC, action) in
-//            completionHandler(nil)
-//        }))
-//
-//        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
-//            rootVC.present(alertVC, animated: true, completion: nil)
-//        }
-//    }
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        let alertVC = UIAlertController(title: nil, message: prompt, preferredStyle: .alert)
+        alertVC.addTextField { (textField) in
+            textField.text = defaultText
+        }
+
+        alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+            if let text = alertVC.textFields?.first?.text {
+                completionHandler(text)
+            } else {
+                completionHandler(defaultText)
+            }
+        }))
+
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            completionHandler(nil)
+        }))
+
+        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
+            rootVC.present(alertVC, animated: true, completion: nil)
+        }
+    }
 }
 
-extension NNWebView: WKNavigationDelegate{
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        if showReloadBtn {
-//            webView.isHidden = true
-        }
-//        UIAlertController.showAlert("提示", message: error.localizedDescription, actionTitles: nil, handler: nil);
-//        IOPProgressHUD.showError(withStatus: error.localizedDescription)
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        if showReloadBtn {
-//            webView.isHidden = true
-        }
-//        UIAlertController.showAlert("提示", message: error.localizedDescription, actionTitles: nil, handler: nil);
-//        IOPProgressHUD.showError(withStatus: error.localizedDescription)
-    }
-}
 
 extension NNWebView: WKScriptMessageHandler{
     //MARK: -WKScriptMessageHandler js 拦截 调用OC方法
