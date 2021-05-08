@@ -25,10 +25,6 @@ extension AttrString: CustomStringConvertible {
 }
 
 extension AttrString: ExpressibleByStringInterpolation {
-    init(stringInterpolation: StringInterpolation) {
-        self.attributedString = NSAttributedString(attributedString: stringInterpolation.attributedString)
-    }
-
     struct StringInterpolation: StringInterpolationProtocol {
         var attributedString: NSMutableAttributedString
 
@@ -45,6 +41,10 @@ extension AttrString: ExpressibleByStringInterpolation {
             let astr = NSAttributedString(string: string, attributes: attributes)
             self.attributedString.append(astr)
         }
+    }
+    
+    init(stringInterpolation: StringInterpolation) {
+        self.attributedString = NSAttributedString(attributedString: stringInterpolation.attributedString)
     }
 }
 
@@ -129,88 +129,6 @@ public struct AttrStringStyle {
     }
   
 }
-//extension AttrString {
-//    struct Style {
-//        let attributes: [NSAttributedString.Key: Any]
-//        static func font(_ font: UIFont) -> Style {
-//            return Style(attributes: [.font: font])
-//        }
-//
-//        static func color(_ color: UIColor) -> Style {
-//            return Style(attributes: [.foregroundColor: color])
-//        }
-//
-//        static func bgColor(_ color: UIColor) -> Style {
-//            return Style(attributes: [.backgroundColor: color])
-//        }
-//
-//        static func link(_ value: String) -> Style {
-//            return .linkURL(URL(string: value)!)
-//        }
-//
-//        static func linkURL(_ value: URL) -> Style {
-//            return Style(attributes: [.link: value])
-//        }
-//        //设置字体倾斜度，取值为float，正值右倾，负值左倾
-//        static func oblique(_ value: CGFloat = 0.1) -> Style {
-//            return Style(attributes: [.obliqueness: value])
-//        }
-//
-//        //字符间距
-//        static func kern(_ value: CGFloat) -> Style {
-//            return Style(attributes: [.kern: value])
-//        }
-//
-//        //设置字体的横向拉伸，取值为float，正值拉伸 ，负值压缩
-//        static func expansion(_ value: CGFloat) -> Style {
-//            return Style(attributes: [.expansion: value])
-//        }
-//
-//        //设置下划线
-//        static func underline(_ color: UIColor, _ style: NSUnderlineStyle) -> Style {
-//            return Style(attributes: [
-//                .underlineColor: color,
-//                .underlineStyle: style.rawValue
-//            ])
-//        }
-//
-//        //设置删除线
-//        static func strikethrough(_ color: UIColor, _ style: NSUnderlineStyle) -> Style {
-//            return Style(attributes: [
-//                .strikethroughColor: color,
-//                .strikethroughStyle: style.rawValue,
-//            ])
-//        }
-//
-//        ///设置基准位置 (正上负下)
-//        static func baseline(_ value: CGFloat) -> Style {
-//            return Style(attributes: [.baselineOffset: value])
-//        }
-//
-//        ///设置段落
-//        static func paraStyle(_ alignment: NSTextAlignment,
-//                              lineSpacing: CGFloat = 0,
-//                              paragraphSpacingBefore: CGFloat = 0,
-//                              lineBreakMode: NSLineBreakMode = .byTruncatingTail) -> Style {
-//            let style = NSMutableParagraphStyle()
-//            style.alignment = alignment
-//            style.lineBreakMode = lineBreakMode
-//            style.lineSpacing = lineSpacing
-//            style.paragraphSpacingBefore = paragraphSpacingBefore
-//            return Style(attributes: [.paragraphStyle: style])
-//        }
-//
-//        ///设置属性字典
-//        static func addAttributes(_ dic: [NSAttributedString.Key: Any]) -> Style {
-//            return Style(attributes: dic)
-//        }
-//
-//        ///设置段落
-//        static func paragraphStyle(_ style: NSMutableParagraphStyle) -> Style {
-//            return Style(attributes: [.paragraphStyle: style])
-//        }
-//  }
-//}
 
 extension AttrString.StringInterpolation {
     func appendInterpolation(_ string: String, _ style: AttrStringStyle...) {

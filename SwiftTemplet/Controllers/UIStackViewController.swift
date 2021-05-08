@@ -11,6 +11,19 @@ import UIKit
 /// textView.isScrollEnabled = false
 class UIStackViewController: UIViewController {
 
+    lazy var stackView: UIStackView = {
+        //创建StackView
+        let stackView = UIStackView()
+        //设置子视图间隔
+        stackView.spacing = 10
+        //子视图的高度或宽度保持一致
+        stackView.distribution = .fillProportionally
+        stackView.backgroundColor = UIColor.lightBlue
+
+        return stackView;
+    }()
+
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -99,17 +112,11 @@ class UIStackViewController: UIViewController {
 //
 //    }
     
-    lazy var stackView: UIStackView = {
-        //创建StackView
-        let stackView = UIStackView()
-        //设置子视图间隔
-        stackView.spacing = 10
-        //子视图的高度或宽度保持一致
-        stackView.distribution = .fillProportionally
-        stackView.backgroundColor = UIColor.lightBlue
 
-        return stackView;
-    }()
-
+    // MARK: -funtsion
+    
+    func test() {
+        
+    }
   
 }

@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 ///升级弹窗
-class NNUpdateVersionView: UIView {
+@objcMembers class NNUpdateVersionView: UIView {
     
     let containX: CGFloat = 40
     let containY: CGFloat = 140
