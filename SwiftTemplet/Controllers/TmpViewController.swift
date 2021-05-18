@@ -22,12 +22,12 @@ class TmpViewController: UIViewController {
         lineDashView.frame = CGRectMake(10, 60, 100, 45);
         lineDashView.setNeedsLayout();
         
-        itemView.items = NSArray.range(0, 2, 1).map({ (index) in
+        itemView.items = NSArray.generate(0, 2, 1).map({ (index) in
             "\(index)"
         })
 
         
-        itemViewOne.items = NSArray.range(0, 8, 1).map({ (index) in
+        itemViewOne.items = NSArray.generate(0, 8, 1).map({ (index) in
             "\(index)"
         })
 

@@ -32,6 +32,8 @@
     [self.view addSubview:self.button3];
     [self.view addSubview:self.button4];
     [self.view addSubview:self.button5];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(handleActionItem:)];
 
 //    NSDictionary *dic = @{
 //        @"UIControlStateNormal": @(UIControlStateNormal),
@@ -62,7 +64,11 @@
 }
 
 #pragma mark -funtions
-
+- (void)handleActionItem:(UIBarButtonItem *)sender {
+    NNButtonDispalyController *vc = [[NNButtonDispalyController alloc]init];
+    [self.navigationController pushViewController:vc animated:true];
+}
+    
 - (void)handleActionChoose:(NNButton *)sender {
     sender.selected = !sender.isSelected;
 //    DDLog(@"sender.isSelected: %@", @(sender.isSelected));

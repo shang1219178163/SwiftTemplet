@@ -82,7 +82,7 @@ import SwiftExpand
         super.viewWillDisappear(animated)
         
         navigationItem.leftBarButtonItem?.setHidden(false)
-
+        navigationController?.navigationBar.setBackgroudColor(.theme, for: .default)
     }
         
     override func didReceiveMemoryWarning() {

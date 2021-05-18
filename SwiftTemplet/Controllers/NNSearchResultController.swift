@@ -11,6 +11,21 @@ import SwiftExpand
 
 class NNSearchResultController: UIViewController {
     
+    var list = [Int].generate(10, 100, 1).map { "\($0)" };
+
+    var items = [String]()
+    
+    var query: String?{
+        willSet{
+            guard let newValue = newValue, newValue != "" else { return }
+            items = list.filter({ $0.lowercased().contains(newValue.lowercased()) })
+            tbView.reloadData()
+        }
+    }
+
+    var block: ((String)->Void)?
+    
+    // MARK: -lifcycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +34,11 @@ class NNSearchResultController: UIViewController {
         
         view.addSubview(tbView)
         tbView.tableFooterView = UIView();
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
 }
@@ -27,20 +46,22 @@ class NNSearchResultController: UIViewController {
 extension NNSearchResultController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3;
+        return query != nil ? items.count : list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-        cell.labelLeft.text = "\(indexPath.section),\(indexPath.row)"
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
+        
+        let text = query != nil ? items[indexPath.row] : list[indexPath.row]
+        cell.textLabel?.text = "\(text)"
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         DDLog(indexPath.row)
+        
+        let text = query != nil ? items[indexPath.row] : list[indexPath.row]
+        block?(text)
     }
 }
 
-extension NNSearchResultController: UISearchControllerDelegate, UISearchBarDelegate {
-
-}

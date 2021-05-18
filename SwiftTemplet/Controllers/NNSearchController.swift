@@ -12,7 +12,24 @@ import SwiftExpand
 import IQKeyboardManagerSwift
 
 class NNSearchController: UIViewController {
-   
+    
+    lazy var searchResultVC: NNSearchResultController = {
+        let controller = NNSearchResultController()
+//        controller.edgesForExtendedLayout = []
+        return controller;
+    }()
+  
+    lazy var searchVC: UISearchController = {
+        let controller = self.createSearchVC(self.searchResultVC)
+        controller.searchResultsUpdater = self
+        controller.delegate = self;
+        return controller
+    }()
+    
+//    let list = [String].init(repeating: "0", count: 100)
+    let list = Array<Int>.generate(10, 100, 2);
+
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,32 +47,19 @@ class NNSearchController: UIViewController {
         super.viewDidAppear(animated)
 
     }
-    
-    // MARK: -lazy
-    lazy var searchResultVC: NNSearchResultController = {
-        let controller = NNSearchResultController()
-        controller.edgesForExtendedLayout = []
-        return controller;
-    }()
-  
-    lazy var searchVC: UISearchController = {
-        let controller = self.createSearchVC(self.searchResultVC)
-        
-//        controller.searchBar.delegate = self;
-        controller.delegate = self;
-        return controller
-    }()
+
+
 }
 
 extension NNSearchController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3;
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCellOne.dequeueReusableCell(tableView)
-        cell.labelLeft.text = "\(indexPath.row)"
+        cell.labelLeft.text = "\(list[indexPath.row])"
         return cell;
     }
     
@@ -86,32 +90,12 @@ extension NNSearchController: UISearchControllerDelegate {
     }
 }
 
-extension UIViewController{
+
+extension NNSearchController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let query = searchController.searchBar.text else { return }
+        DDLog(query)
+        searchResultVC.query = query
+    }
     
-//    /// [源]创建UISearchController(设置IQKeyboardManager.shared.enable = false;//避免searchbar下移)
-//    func createSearchVC(_ resultsController: UIViewController) -> UISearchController {
-//        definesPresentationContext = true;
-//
-//        let searchVC = UISearchController(searchResultsController: resultsController)
-//        if resultsController.conforms(to: UISearchResultsUpdating.self) {
-//            searchVC.searchResultsUpdater = resultsController as? UISearchResultsUpdating;
-//        }
-//        
-//        searchVC.dimsBackgroundDuringPresentation = true;
-////        searchVC.hidesNavigationBarDuringPresentation = true;
-//        if #available(iOS 9.1, *) {
-//            searchVC.obscuresBackgroundDuringPresentation = true;
-//        }
-//        
-//        searchVC.searchBar.barStyle = .default;
-////        searchVC.searchBar.barTintColor = UIColor.theme;
-//
-//        searchVC.searchBar.isTranslucent = false;
-//        searchVC.searchBar.setValue("取消", forKey: "_cancelButtonText")
-//        searchVC.searchBar.placeholder = "搜索";
-//        
-////        searchVC.searchBar.delegate = self;
-////        searchVC.delegate = self;
-//        return searchVC;
-//    }
 }
