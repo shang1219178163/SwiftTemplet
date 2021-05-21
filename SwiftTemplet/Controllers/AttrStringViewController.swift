@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftChain
 import SwiftExpand
 import SnapKit
         
@@ -59,7 +60,6 @@ import SnapKit
         view.adjustsImageWhenHighlighted = false
         
         view.addActionHandler { (sender) in
-            
             DDLog(sender.currentTitle ?? "-")
         }
         return view
@@ -131,37 +131,37 @@ import SnapKit
         tmp[0] = str1.attributedString
         label.attributedText = tmp
         
-        
         let att0 = "Swift,".matt
-            .font(UIFont.systemFont(ofSize: 16))
-            .color(.systemBlue)
-            .underline(.single, .red)
-            .oblique(0.5)
-            .link("https://www.hackingwithswift.com")
-        
+            .fontChain(UIFont.systemFont(ofSize: 16))
+            .foregroundColorChain(.systemBlue)
+            .underlineChain(.single, .red)
+            .obliqueChain(0.5)
+            .linkChain("https://www.hackingwithswift.com")
+
+
 //        let att1 = NSAttributedString(string: " how do you like this?", attributes: nil)
         let att1 = " how do you like this?".matt
-            .font(UIFont.systemFont(ofSize: 12))
-            .color(.systemGreen)
-            .strikethrough(.single, .lightRed)
+            .fontChain(UIFont.systemFont(ofSize: 12))
+            .foregroundColorChain(.systemGreen)
+            .strikethroughChain(.single, .lightRed)
         
 //        let att2 = NSAttributedString(string: ", YES?", attributes: nil)
         let att2 = ", YES?".matt
-        .font(UIFont.systemFont(ofSize: 20))
-        .color(.systemOrange)
-        .oblique(-0.5)
+        .fontChain(UIFont.systemFont(ofSize: 20))
+        .foregroundColorChain(.systemOrange)
+        .obliqueChain(-0.5)
         
         let att3 = "666".matt
-            .color(.red)
-            .bgColor(.green)
-            .font(UIFont.systemFont(ofSize: 15))
-            .oblique(0.3)
+            .foregroundColorChain(.red)
+            .backgroundColorChain(.green)
+            .fontChain(UIFont.systemFont(ofSize: 15))
+            .obliqueChain(0.3)
         
         textView.attributedText = (att0 + att1 + att2 + att3).matt
-            .font(UIFont.systemFont(ofSize: 30))
+            .fontChain(UIFont.systemFont(ofSize: 30))
 //            .color(.systemPink)
 //            .bgColor(.lightGreen)
-//            .oblique(0.3)
+//            .obliqueChain(0.3)
     }
         
     override func didReceiveMemoryWarning() {
