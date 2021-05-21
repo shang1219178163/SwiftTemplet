@@ -76,25 +76,27 @@ import SwiftExpand
         }
     }
     
-    //MARK:属性
-    lazy var itemList: [[String]] = {
-        let list: [[String]] = [
-            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
-            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
-            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
-            
-            ];
-        return list;
+    lazy var items: [(UIViewController, String, UIImage?, UIImage?)] = {
+        return [
+            (FirstViewController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
+            (ThirdViewController(), "总览", UIImage(named: "Item_third_N"), UIImage(named: "Item_third_H")),
+            (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+
+            ]
     }()
     
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 //        setValue(tabBar, forKey: "tabBar")
 
-        viewControllers = UICtlrListFromList(itemList, isNavController: false)
+        viewControllers = items.map({ (vc, title, image, imageH) -> UIViewController in
+            let ctrl = vc
+            ctrl.reloadTabarItem((title, image, imageH))
+            return ctrl
+        })
         view.addSubview(tabBar)
         
 //        DDLog(view.subviews)

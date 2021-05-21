@@ -11,25 +11,31 @@ import SwiftExpand
 
 class NNParentOneController: UUSementedController {
 
-    //MARK:属性
-    lazy var list: [[String]] = {
-        let list: [[String]] = [
-            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
-            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
-            
-            ];
-        return list;
-    }()
+
     
-    
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         animateType = .fade
         segmentCtl.items = ["过去1", "现在1", "将来1"]
-        viewControllers = UICtlrListFromList(list, isNavController: false)
+        
+        
+        let items: [(UIViewController, String, UIImage?, UIImage?)] = {
+            return [
+                (FirstViewController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
+                (ThirdViewController(), "总览", UIImage(named: "Item_third_N"), UIImage(named: "Item_third_H")),
+                (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+
+                ]
+        }()
+        
+        viewControllers = items.map({ (vc, title, image, imageH) -> UIViewController in
+            let ctrl = vc
+            ctrl.reloadTabarItem((title, image, imageH))
+            return ctrl
+        })
         
         delegate = self
     }

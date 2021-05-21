@@ -10,11 +10,12 @@ import UIKit
 import SwiftExpand
 
 class PKTabBarViewController: UIViewController {
-
-    lazy var itemList: [[String]] = {
+    
+    lazy var items: [(UIViewController, String, UIImage?, UIImage?)] = {
         return [
-            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
+            (FirstViewController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
+            (ThirdViewController(), "总览", UIImage(named: "Item_third_N"), UIImage(named: "Item_third_H")),
+            (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
 
             ]
     }()
@@ -27,12 +28,15 @@ class PKTabBarViewController: UIViewController {
         return tabBar
     }()
     
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tabBar.items = UITabBar.barItems(itemList)
-        
+        let list = items.map({ (vc, title, image, imageH) -> (String, UIImage?, UIImage?) in
+            return (title, image, imageH)
+        })
+        tabBar.reloadTabarItems(list)
     }
     
     override func viewDidLayoutSubviews() {

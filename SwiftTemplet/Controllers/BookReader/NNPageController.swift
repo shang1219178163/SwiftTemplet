@@ -19,9 +19,10 @@ import UIKit
     }
 
     lazy var pageController: UIPageViewController = {
-        let options = [UIPageViewController.OptionsKey.interPageSpacing: 5,
-                       UIPageViewController.OptionsKey.spineLocation: UIPageViewController.SpineLocation.min
-            ] as [UIPageViewController.OptionsKey : Any]
+        let options: [UIPageViewController.OptionsKey : Any] = [
+            .interPageSpacing: 5,
+            .spineLocation: UIPageViewController.SpineLocation.min
+        ]
         let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageController.dataSource = self
         pageController.delegate = self
@@ -33,10 +34,13 @@ import UIKit
         super.viewDidLoad()
 
         addChild(pageController)
-        pageController.view.frame = view.bounds
         view.addSubview(pageController.view)
         pageController.didMove(toParent: self)
-
+        
+        let views = ["pageController": pageController.view] as [String: AnyObject]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pageController]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pageController]|", options: [], metrics: nil, views: views))
+        
 //        var list = [UIViewController]()
 //        for idx in 1 ... 5 {
 //            let vc = UIViewController()

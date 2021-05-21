@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import SafariServices
 
 @available(iOS 11.0, *)
@@ -14,7 +15,7 @@ class PageDemoController: UIViewController {
     var controllers = [UIViewController]()
     
     lazy var pageController: UIPageViewController = {
-        let pageController = UIPageViewController(transitionStyle: .pageCurl,
+        let pageController = UIPageViewController(transitionStyle: .scroll,
                                                   navigationOrientation: .horizontal,
                                                   options: nil)
         pageController.dataSource = self
@@ -26,13 +27,16 @@ class PageDemoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        edgesForExtendedLayout = []
+        
         addChild(pageController)
         view.addSubview(pageController.view)
         pageController.didMove(toParent: self)
 
-        let views = ["pageController": pageController.view] as [String: AnyObject]
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pageController]|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pageController]|", options: [], metrics: nil, views: views))
+//        let views: [String: AnyObject] = ["pageController": pageController.view]
+//        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pageController]|", options: [], metrics: nil, views: views))
+//        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pageController]|", options: [], metrics: nil, views: views))
 
         for _ in 1 ... 5 {
             let vc = UIViewController()
@@ -44,6 +48,18 @@ class PageDemoController: UIViewController {
             self.showTutorial(1)
         }
 
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        pageController.view.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(20);
+            make.left.equalToSuperview().offset(20);
+            make.right.equalToSuperview().offset(-20);
+            make.bottom.equalToSuperview().offset(-20);
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

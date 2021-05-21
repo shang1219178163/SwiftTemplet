@@ -22,9 +22,9 @@ class NNCycleTabbarController: NNCycleController {
     }()
     
     ///例[["FirstViewController", "First", "Item_first_N", "Item_first_H"],];
-    var itemList = [[String]](){
+    var itemList = [(UIViewController, String, UIImage?, UIImage?)](){
         willSet{
-            if newValue.count == 0 || newValue.first!.count == 0 {
+            if newValue.count == 0 {
                 return
             }
             updateItems(newValue)
@@ -50,13 +50,13 @@ class NNCycleTabbarController: NNCycleController {
         }
         
         itemList = [
-            ["FirstViewController", "First", "Item_first_N", "Item_first_H"],
-            ["SecondViewController", "Second", "Item_second_N", "Item_second_H"],
-            ["ThirdViewController", "Third", "Item_third_N", "Item_third_H"],
-            ["FourthViewController", "Fourth",  "Item_fourth_N",  "Item_fourth_H"],
-            ];
+                (FirstViewController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
+                (ThirdViewController(), "总览", UIImage(named: "Item_third_N"), UIImage(named: "Item_third_H")),
+                (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+
+                ]
     }
-    
+    // MARK: -lifecycle
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -79,10 +79,15 @@ class NNCycleTabbarController: NNCycleController {
     }
 
     
-    func updateItems(_ itemList: [[String]]) {
-        tabBar.items = UITabBar.barItems(itemList)
+    func updateItems(_ items: [(UIViewController, String, UIImage?, UIImage?)]) {
+        viewControllers = items.map({ (vc, title, image, imageH) -> UIViewController in
+            let ctrl = vc
+            ctrl.reloadTabarItem((title, image, imageH))
+            return ctrl
+        })
+        
+        tabBar.items = viewControllers.map({ $0.tabBarItem })
         tabBar.selectedItem = tabBar.items?.first!
-        viewControllers = itemList.map({ UICtrFromString($0.first!) })
     }
 
 }

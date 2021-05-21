@@ -17,7 +17,7 @@ class UIStackViewController: UIViewController {
         //设置子视图间隔
         stackView.spacing = 10
         //子视图的高度或宽度保持一致
-        stackView.distribution = .fillProportionally
+//        stackView.distribution = .fillProportionally
         stackView.backgroundColor = UIColor.lightBlue
 
         return stackView;

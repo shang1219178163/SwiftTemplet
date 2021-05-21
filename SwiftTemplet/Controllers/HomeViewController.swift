@@ -55,13 +55,45 @@ class HomeViewController: UITabBarController {
 //        })
 //    }
     
+    //MARK:属性
+    lazy var items: [(UIViewController, String, UIImage?, UIImage?)] = {
+        return [
+            (FirstViewController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
+//            (SecondViewController(), "圈子", UIImage(named: "Item_second_N"), UIImage(named: "Item_second_H")),
+//            (CenterViewController(), "总览", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            (ThirdViewController(), "总览", UIImage(named: "Item_third_N"), UIImage(named: "Item_third_H")),
+//            (FourthViewController(), "消息", UIImage(named: "Item_fourth_N"), UIImage(named: "Item_fourth_H")),
+//            (FifthViewControlle(), "我的", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+//            (TestViewController()", "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+//            (KVOViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            (PKFuntionListController(), "KOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+             ];
+    }()
+    
+    lazy var btnCenter: UIButton = {
+        let btn = UIButton();
+        btn.backgroundColor = UIColor.theme;
+        btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
+        btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
+        
+        return btn;
+    }();
+    
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tabBar.tintColor = UIColor.theme;
         tabBar.barTintColor = UIColor.white;
         tabBar.isTranslucent = false;
-        viewControllers = UINavListFromList(itemList);
+
+        viewControllers = items.map({ (vc, title, image, imageH) -> UIViewController in
+            let ctrl = vc.isKind(of: UINavigationController.self) ? vc : UINavigationController(rootViewController: vc)
+            ctrl.reloadTabarItem((title, image, imageH))
+            return ctrl
+        })
 
 //        delegate = self
 //        view.addGestureRecognizer(panGesture)
@@ -106,33 +138,7 @@ class HomeViewController: UITabBarController {
         
     }
     
-    //MARK:属性
-    lazy var itemList: [[String]] = {
-        return [
-            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-//            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
-//            ["CenterViewController", "总览",  "Item_center_N",  "Item_center_H"],
-            ["ThirdViewController", "总览", "Item_third_N", "Item_third_H"],
-//            ["FourthViewController", "消息",  "Item_fourth_N",  "Item_fourth_H"],
-//            ["FifthViewControlle", "我的",  "Item_center_N",  "Item_center_H"],
-//            ["groupgroup", "我的",  "Item_center_N",  "Item_center_H"],
-//            ["TestViewController", "测试",  "Item_center_N",  "Item_center_H"],
-            ["TitleViewController", "测试",  "Item_center_N",  "Item_center_H"],
-//            ["KVOViewController", "测试",  "Item_center_N",  "Item_center_H"],
-            ["PKFuntionListController", "KOP",  "Item_center_N",  "Item_center_H"],
-            ["IOPFuntionListController", "IOP",  "Item_center_N",  "Item_center_H"],
-            
-            ]
-    }()
-    
-    lazy var btnCenter : UIButton = {
-        let btn = UIButton();
-        btn.backgroundColor = UIColor.theme;
-        btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
-        btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
-        
-        return btn;
-    }();
+
 }
 
 extension HomeViewController: UITabBarControllerDelegate {
