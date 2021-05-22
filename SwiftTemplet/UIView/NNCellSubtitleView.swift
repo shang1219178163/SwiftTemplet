@@ -160,7 +160,7 @@ class NNCellSubtitleView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true;
         view.contentMode = .scaleAspectFit;
-        view.image = UIImage(named: kIMG_arrowRight);
+        view.image = UIImage(named: "img_arrowRight_gray");
         return view;
     }()
     

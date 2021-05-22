@@ -51,7 +51,7 @@ import UIKit
         }
         
         viewControllers = [FirstViewController(), TitleViewController(), FourthViewController(), TestViewController(), ThirdViewController()]
-        segmentCtl.items = viewControllers.map({ $0.title ?? $0.controllerName })
+        segmentCtl.items = viewControllers.map({ $0.title ?? $0.vcName })
         navigationItem.titleView = segmentCtl
         
 //        segmentCtl.showStyle = .system

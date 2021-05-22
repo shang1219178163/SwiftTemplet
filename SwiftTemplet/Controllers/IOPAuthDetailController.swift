@@ -19,7 +19,7 @@ class IOPAuthDetailController: UIViewController {
         view.addSubview(tbView);
         
         if title == nil {
-            title = self.controllerName;
+            title = self.vcName;
         }
         
         //        DDLog(dataList);

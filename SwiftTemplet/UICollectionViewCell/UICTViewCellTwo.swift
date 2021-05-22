@@ -42,7 +42,7 @@ class UICTViewCellTwo: UICollectionViewCell {
         labelTop.textAlignment = .center
         labelBom.text = kNilText;
 
-        imgView.image = UIImage(named: kIMG_defaultFailed_S);
+        imgView.image = UIImage(named: "img_failedDefault_S");
 //        label.backgroundColor = UIColor.random
 //        imgView.backgroundColor = UIColor.random
     }

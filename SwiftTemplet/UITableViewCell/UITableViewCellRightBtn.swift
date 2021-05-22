@@ -32,8 +32,8 @@ class UITableViewCellRightBtn: UITableViewCell {
         contentView.addSubview(btn);
         contentView.addSubview(labelLeft);
         
-        btn.setBackgroundImage(UIImage(named: kIMG_selected_NO), for: .normal)
-        btn.setBackgroundImage(UIImage(named: kIMG_selected_YES), for: .selected)
+        btn.setBackgroundImage(UIImage(named: "icon_selected_no_blue"), for: .normal)
+        btn.setBackgroundImage(UIImage(named: "icon_selected_yes_blue"), for: .selected)
         btn.imageView?.contentMode = .scaleAspectFit;
 //        btn.addObserver(self, forKeyPath: "selected", options: .new, context: nil)
     }

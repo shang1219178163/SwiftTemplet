@@ -44,7 +44,7 @@ class WebSocketViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = controllerName
+        title = vcName
                 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "链接", style: .plain, target: self, action: #selector(disconnect(_:)))
         

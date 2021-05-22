@@ -11,7 +11,7 @@ import SwiftExpand
 
 class NNSearchResultController: UIViewController {
     
-    var list = [Int].generate(10, 100, 1).map { "\($0)" };
+    var list = [String].init(count: 100) { "\($0)" }
 
     var items = [String]()
     

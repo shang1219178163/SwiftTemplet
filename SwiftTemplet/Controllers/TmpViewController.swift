@@ -18,18 +18,20 @@ class TmpViewController: UIViewController {
         btn.frame = CGRectMake(10, 10, 100, 1);
 //        addLineDashLayer(color: UIColor.theme, width: 1, cornerRadius: 0, view:btn)
         
+        
         view.addSubview(lineDashView)
         lineDashView.frame = CGRectMake(10, 60, 100, 45);
         lineDashView.setNeedsLayout();
         
-        itemView.items = NSArray.generate(0, 2, 1).map({ (index) in
-            "\(index)"
-        })
-
-        
-        itemViewOne.items = NSArray.generate(0, 8, 1).map({ (index) in
-            "\(index)"
-        })
+//        itemView.items = NSArray.generate(3).map({ (index) in
+//            "\(index)"
+//        })
+//
+//
+//        itemViewOne.items = NSArray.generate(3).map({ (index) in
+//            "\(index)"
+//        })
+                
 
         view.addSubview(contentView)
         let rightBtn = UIButton(barItem: "next")

@@ -42,7 +42,7 @@ class UITableViewCellOneListController: UIViewController {
         DDLog(NSStringFromClass(self.classForCoder));
 
         if title == nil {
-            title = self.controllerName;
+            title = self.vcName;
         }
                 
         for _ in 0...1 {
@@ -140,7 +140,7 @@ extension UITableViewCellOneListController: UITableViewDataSource, UITableViewDe
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
 //        cell.type = 1;
             
             cell.getViewLayer();
@@ -156,7 +156,7 @@ extension UITableViewCellOneListController: UITableViewDataSource, UITableViewDe
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
             cell.type = 1;
             
             cell.getViewLayer();
@@ -173,7 +173,7 @@ extension UITableViewCellOneListController: UITableViewDataSource, UITableViewDe
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
 //            cell.type = 1;
             cell.labelRight.textAlignment = .right
             
@@ -191,7 +191,7 @@ extension UITableViewCellOneListController: UITableViewDataSource, UITableViewDe
             imgList = imgList.sorted(by: {$0 < $1});
             imgList = imgList.sorted(by:<);
             let imgUrl = imgList.randomElement()!;
-            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
             cell.type = 1;
             
             cell.getViewLayer();
@@ -209,7 +209,7 @@ extension UITableViewCellOneListController: UITableViewDataSource, UITableViewDe
 //            imgList = imgList.sorted(by: {$0 < $1});
 //            imgList = imgList.sorted(by:<);
 //            let imgUrl = imgList.randomElement()!;
-//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
 //            cell.type = 1;
             
             cell.getViewLayer();
@@ -225,7 +225,7 @@ extension UITableViewCellOneListController: UITableViewDataSource, UITableViewDe
 //            imgList = imgList.sorted(by: {$0 < $1});
 //            imgList = imgList.sorted(by:<);
 //            let imgUrl = imgList.randomElement()!;
-//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//            cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
             cell.type = 1;
             cell.labelRight.textAlignment = .right
 

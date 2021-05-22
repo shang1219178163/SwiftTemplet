@@ -192,7 +192,7 @@ import SwiftExpand
         default:
             break
         }
-//        DDLog("__\(inAnimationBlock)_\(fromVC.controllerName):\(fromVC.view.frame)_\(toVC.controllerName):\(toVC.view.frame)")
+//        DDLog("__\(inAnimationBlock)_\(fromVC.vcName):\(fromVC.view.frame)_\(toVC.controllerName):\(toVC.view.frame)")
     }
 
 }

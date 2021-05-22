@@ -35,7 +35,7 @@ class UICTViewCellOne: UICollectionViewCell {
         lab.backgroundColor = .clear
 
         lab.textAlignment = .center
-        imgView.image = UIImage(named: kIMG_defaultFailed_S)
+        imgView.image = UIImage(named: "img_failedDefault_S")
         lineBottom.isHidden = true
         lineRight.isHidden = true
     }

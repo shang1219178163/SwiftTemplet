@@ -19,7 +19,7 @@ class IOPAuthRechargeController: UIViewController {
         view.addSubview(tbView);
 
         if title == nil {
-            title = self.controllerName;
+            title = self.vcName;
         }
      
         createBarItem( .done, isLeft: false) { (sender: AnyObject) in

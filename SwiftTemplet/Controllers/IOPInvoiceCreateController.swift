@@ -82,7 +82,7 @@ class IOPInvoiceCreateController: UIViewController {
     
 //    @objc lazy var imgViewMore: UIImageView = {
 //        let view: UIImageView = UIImageView.create(CGRectMake(0, 0, 8, 13), imgName: "img_arrowRight_gray")
-//        let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
+//        let image = UIImage(named: "img_arrowRight_gray", podName: "SwiftExpand")
 //        view.image = image;
 //        
 //        return view;
@@ -113,7 +113,7 @@ class IOPInvoiceCreateController: UIViewController {
             let imgView: UIImageView = {
                 let rect = CGRectMake(0, 0, 14, 14)
                 let view: UIImageView = UIImageView.create(rect, imgName: "icon_arrow_right_lightGray")
-                let image = UIImage.image(named: "img_arrowRight_gray", podClassName: "SwiftExpand")
+                let image = UIImage(named: "img_arrowRight_gray", podName: "SwiftExpand")
                 view.image = image;
                 view.contentMode = .center
                 return view

@@ -29,7 +29,7 @@ class UICTViewCellTag: UICollectionViewCell {
         lab.textAlignment = .center
         lab.numberOfLines = 1;
         
-        imgView.image = UIImage(named: kIMG_defaultFailed_S)
+        imgView.image = UIImage(named: "img_failedDefault_S")
         
         lineBottom.isHidden = true
         lineRight.isHidden = true

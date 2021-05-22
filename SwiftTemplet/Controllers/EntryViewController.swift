@@ -143,7 +143,7 @@ class EntryViewController: UIViewController {
         
         view.textColor = .white
         view.textAlignment = .center;
-        let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
+        let image = UIImage(named: "img_arrowDown_black", podName: "SwiftExpand")
 //        _ = view.asoryView(true, image: image!)
         return view
     }()

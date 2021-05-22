@@ -123,7 +123,7 @@ import SwiftExpand
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
         view.setTitle("请选择", for: .normal);
         view.setTitleColor(.white, for: .normal);
-        let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
+        let image = UIImage(named: "img_arrowDown_black", podName: "SwiftExpand")
         view.setImage(image, for: .normal)
         view.adjustsImageWhenHighlighted = false
         

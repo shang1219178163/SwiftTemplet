@@ -45,7 +45,7 @@ class UICTReusableViewOne: UICollectionReusableView {
         addSubview(labDetail)
         addSubview(btn)
         
-        imgView.image = UIImage(named: kIMG_notice);
+        imgView.image = UIImage(named: "img_notice");
         
         lab.numberOfLines = 1;
         labDetail.numberOfLines = 1;

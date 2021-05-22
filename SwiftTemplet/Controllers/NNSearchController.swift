@@ -27,7 +27,7 @@ class NNSearchController: UIViewController {
     }()
     
 //    let list = [String].init(repeating: "0", count: 100)
-    let list = Array<Int>.generate(10, 100, 2);
+    var list = [Int].init(count: 100) { $0 }
 
     // MARK: -lifecycle
     override func viewDidLoad() {

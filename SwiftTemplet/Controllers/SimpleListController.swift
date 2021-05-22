@@ -11,16 +11,11 @@ import UIKit
 import SwiftExpand
 import SnapKit
         
-/// 自定义协议
-@objc protocol TableViewSelectDelegate{
-    @objc func tableViewSelect(_ tableView: UITableView, indexPath: IndexPath)
-
-}
-
 /// 列表
 @objcMembers class SimpleListController: UIViewController{
+        
+    var block: ((UIViewController, IndexPath)->Void)?
     
-    weak var delegate: TableViewSelectDelegate?
     // MARK: - lazy
 //    lazy var tableView: UITableView = {
 //        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
@@ -160,21 +155,12 @@ extension SimpleListController: UITableViewDataSource, UITableViewDelegate{
         
         cell.textLabel?.text = indexPath.string
 
-//        guard let model = dataList[indexPath.row] as? IOPParkModel else { return cell; }
-//        cell.textLabel?.text = model.name
-//        cell.detailTextLabel?.text = model.statusDes
-//        cell.detailTextLabel?.textColor = model.statusDes == "已接入" ? UIColor.theme : UIColor.textColor9;
-
 //        cell.getViewLayer()
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.tableViewSelect(tableView, indexPath: indexPath)
-//        guard let model = dataList[indexPath.row] as? IOPParkModel else { return }
-//        let controller = IOPParkDetailController()
-//        controller.parkModel = model
-//        navigationController?.pushViewController(controller, animated: true)
+        block?(self, indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

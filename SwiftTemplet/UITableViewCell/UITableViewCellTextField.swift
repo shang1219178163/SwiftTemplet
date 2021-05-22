@@ -40,7 +40,7 @@ class UITableViewCellTextField: UITableViewCell {
         textfield.delegate = self;
         textfield.addTarget(self, action: #selector(handleEditingChanged(_:)), for: .editingChanged)
 
-//        let image = UIImage.image(named: kIMG_arrowRight, podClassName: "SwiftExpand")
+//        let image = UIImage(named: "img_arrowRight_gray", podName: "SwiftExpand")
 //        _ = textfield.asoryView(true, image: image)
 //        textfield.asoryView(true, unitName: "公斤(万元)");
 

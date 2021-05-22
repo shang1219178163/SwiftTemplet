@@ -32,7 +32,7 @@ class UIModalPresentationStyleController: UIViewController{
         view.addSubview(tableView)
         
         if title == nil {
-            title = self.controllerName;
+            title = self.vcName;
         }
         
         view.getViewLayer()

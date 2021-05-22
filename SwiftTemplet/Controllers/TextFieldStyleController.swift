@@ -55,6 +55,8 @@ class TextFieldStyleController: UIViewController {
 //        _ScrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
         view.addSubview(tableView);
         
+        titleViewTap()
+        
         //监听键盘
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow(_ :)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDismiss(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -91,7 +93,16 @@ class TextFieldStyleController: UIViewController {
         
         view.textColor = .white
         view.textAlignment = .center;
-        let image = UIImage.image(named: kIMG_arrowDown, podClassName: "SwiftExpand")
+        
+        view.textColor = .red
+
+        view.backgroundColor = .yellow
+//        let image = UIImage(named: "img_arrowDown_black", podName: "SwiftExpand")
+        let image = UIImage(named: "img_arrowDown_black", podName: "SwiftExpand")
+
+        view.addLeftViewButton { (sender) in
+            sender.setImage(image, for: .normal)
+        }
 //        _ = view.asoryView(true, image: image!)
         
         return view

@@ -189,7 +189,7 @@ class TitleViewController: NNTitleViewSelectController{
         let view = UIButton(type: .custom)
         view.setTitle("闭包的回调方法", for: .normal);
         view.setTitleColor(.white, for: .normal);
-        view.setImage(UIImage(named: kIMG_arrowDown), for: .normal)
+        view.setImage(UIImage(named: "img_arrowDown_black"), for: .normal)
 //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
 

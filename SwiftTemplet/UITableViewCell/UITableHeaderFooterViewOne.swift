@@ -41,7 +41,7 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
 
         labelRight.numberOfLines = 1;
         labelLeft.numberOfLines = 1;
-        imgViewRight.image = UIImage(named: kIMG_arrowRight)
+        imgViewRight.image = UIImage(named: "img_arrowRight_gray")
 
         contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }

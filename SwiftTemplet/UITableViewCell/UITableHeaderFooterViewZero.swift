@@ -34,7 +34,7 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
 
         labelLeft.numberOfLines = 1;
         
-        indicatorView.image = UIImage(named: kIMG_arrowRight)
+        indicatorView.image = UIImage(named: "img_arrowRight_gray")
 
         contentView.addGestureTap {[weak self] (sender) in
             guard let self = self else { return }

@@ -100,7 +100,8 @@ class UITableViewCellStep: UITableViewCell {
         let numberBtn = PPNumberButton(frame: CGRect(x: 100, y: 220, width: 150, height: 44))
         //设置加减按钮的标题
 //        numberBtn.setTitle(decreaseTitle: "减", increaseTitle: "加")
-        numberBtn.setImage(decreaseImage: UIImage(named: kIMG_elemetDec)!, increaseImage: UIImage(named: kIMG_elemetInc)!)
+        numberBtn.setImage(decreaseImage: UIImage(named: "img_elemet_decrease")!,
+                           increaseImage: UIImage(named: "img_elemet_increase")!)
 
         //设置加减按钮标题的字体大小
         numberBtn.buttonTitleFont(UIFont.systemFont(ofSize: 15))
