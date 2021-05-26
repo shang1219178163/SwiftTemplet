@@ -21,7 +21,7 @@ class FleetDetailNewController: UIViewController{
         super.viewDidLoad()
         
         if title == nil {
-            title = self.controllerName;
+            title = self.vcName;
         }
         
         view.addSubview(tbView);
@@ -137,7 +137,7 @@ extension FleetDetailNewController: UITableViewDataSource, UITableViewDelegate{
         cell.labelLeft.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
         cell.labelRight.text = "990" + "\(indexPath.row)";
 //        let imgUrl = imgList.randomElement()!;
-//        cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: kIMG_defaultPortrait))
+//        cell.imgViewLeft.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "img_portrait_N"))
         
         let data = foldModel.dataList[indexPath.row]
         if let obj = data as? Dictionary<String, String>{

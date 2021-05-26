@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import SwiftChain
 import SwiftExpand
+
 import HandyJSON
 import MJRefresh
 
@@ -15,7 +17,7 @@ class FirstViewController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -27,9 +29,31 @@ class FirstViewController: UIViewController{
         return view
     }()
     
+    lazy var annAlertView: NNAnnouncementAlertView = {
+        let view = NNAnnouncementAlertView(frame: .zero)
+        view.label.text = "关于增值功能免费升级及相关奖励 政策说明"
+        view.labelSub.text = "2020-12-12 12:00:00"
+        view.block = { annoView, sender in
+            DDLog(sender.currentTitle)
+        }
+        return view
+    }()
+    
+    
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
+            [["NNButtonStudyController", "Swift 按钮封装", ],
+             ["NNButtonDispalyController", "OC 按钮封装", ],
+             ["TextFieldViewController", "OC TextField下拉列表", ],
+             ["TextSizeController", "字体高度计算", ],
+             
+            ],
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
+             ["PageDemoController", "PageDemo", ],
+             ["CKShareDemoController", "CKShareDemo", ],
+             ["ColorPickeDemoController", "ColorPickeDemo", ],
+             ["FeedbackGeneratorDemoController", "触感反馈", ],
+
              ["AlerSheetStudyController", "AlerSheet自定义", ],
              ["ShowActivityController", "ShowActivity", ],
              ["GXSegmentPageViewExampleController", "GXSegmentPageView", ],
@@ -48,16 +72,17 @@ class FirstViewController: UIViewController{
              ["ScrollLabelController", "ScrollLabel", ],
              ["AddShadowViewController", "addShadow", ],
              ["FourthViewController", "FourthView", ],
-             ["TitleViewController", "TitleView", ],             
+             ["TitleViewController", "TitleView", ],
+             ["MainViewController", "Main", ],
              ],
             [["GreenViewController", "转场动画缩放", ],
              ["RedViewController", "转场动画下拉上推", ],
              ["SwipeRightToPopViewController", "左滑返回", ],
              ],
             [["TableSectionCornerListController", "OC section 圆角", ],
-             ["ValidateProtocolController", "协议扩展", ]
-             ],
-            
+             ["TestWebViewController", "TestWebView", ],
+             
+            ]
         ]
         return array
     }()
@@ -71,45 +96,94 @@ class FirstViewController: UIViewController{
         view.backgroundColor = .white;
 
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-            UIApplication.openURLString("wx.parkingwang.com://")
+//            UIApplication.openURLString("wx.parkingwang.com://")
+//            self.annAlertView.urlString = "http://h5-kop.dev.irainone.com/#/pages/SystemMsgDetails/Index"
+//            self.annAlertView.show()
+                        
+            let vc = UIViewController()
+            vc.view.backgroundColor = .lightOrange
+            vc.view.addGestureTap { (reco) in
+                vc.dismiss(animated: false, completion: nil)
+            }
+//            self.present(vc, animated: true) {
+//                DDLog("A", self.presentingViewController, self.presentedViewController)
+//                DDLog("B", vc.presentingViewController, vc.presentedViewController)
+//            }
+            
+            guard let keyWindow = UIApplication.shared.keyWindow,
+                  let rootVC = keyWindow.rootViewController
+                  else { return }
+
+            vc.present(true) {
+                DDLog("vc", vc.presentingViewController, vc.presentedViewController)
+                DDLog("B", rootVC.presentingViewController, rootVC.presentedViewController)
+                
+                vc.present()
+            }
+
         }
         
         let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
-        btn.addActionHandler { (control) in
-            DDLog(control)
-            control.isSelected.toggle()
+        btn.sizeToFit()
+        btn.frame = CGRectMake(0, 0, 80, 40)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        btn.addActionHandler { (sender) in
+            DDLog(sender)
+            sender.isSelected.toggle()
 //            self.tipView.isHidden = control.isSelected
-            if control.isSelected {
+            if sender.isSelected {
                 self.tipView.show()
             } else {
                 self.tipView.dismiss()
             }
         }
         view.addSubview(tableView)
+        
+        navigationItem.rightBarButtonItems = UIBarButtonItem.createTitles(["黑色", "白色"], style: .plain, action: { (item) in
+            if item.title == "黑色" {
+                self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
+                item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+            } else {
+                self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
+                item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+            }
+        });
+        
+        
+        let content = "分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t"
+        annAlertView.htmlString = content
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        let layout = UICollectionViewFlowLayout()
+            .minimumLineSpacingChain(1)
+            .minimumInteritemSpacingChain(2)
+            .itemSizeChain(CGSize(width: 1, height: 2))
+            
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
 //        DDLog("viewWillAppear")
-
+        
+        let z = (UIColor.white.cgColor == navigationController?.navigationBar.barTintColor?.cgColor)
+        DDLog(z, UIColor.white, navigationController?.navigationBar.barTintColor)
+        DDLog(z, UIColor.white.isDark, navigationController?.navigationBar.barTintColor?.isDark, navigationController?.navigationBar.tintColor?.isDark)
+        
 //        let string = "[[\"\\u9655A91D6P\"]]";
 //        let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
-//        NSObject.printChengfaBiao()
+//        9.printChengfaBiao()
 //        tableView.nextResponder(UIWindow.self, isPrint: true)
         
 //        let image = UIImage(color: .white)
 //        DDLog(image.cgImage)
         
-        let encryptText = NSString.encryptAES(withPlainText: "AABBCC测试数据")
-        let decryptText = NSString.decryptAES(withCipherText: encryptText)
-        DDLog(decryptText)
+//        let encryptText = NSString.encryptAES(withPlainText: "AABBCC测试数据")
+//        let decryptText = NSString.decryptAES(withCipherText: encryptText)
+//        DDLog(decryptText)
 //        let encryptText = NSString.encryptAES256(withPlainText: "AABBCC测试数据")
 //        let decryptText = NSString.decryptAES256(withCipherText: "AAAAQVFWRldSbGRTYkdSVFlrZFNWRmxyWkZOV1JteHk=")
 //        DDLog(decryptText)
@@ -128,6 +202,9 @@ class FirstViewController: UIViewController{
         let date = Date()
         let a = date.timeIntervalSince1970
         let b = Int(date.timeIntervalSince1970)
+        DDLog(addTo(10)(1))
+        
+        test()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,10 +228,22 @@ class FirstViewController: UIViewController{
     }
     
     // MARK: -funtions
-    func addTo (adder: Int) -> (Int) -> Int{
+    func addTo(_ value: Int) -> (Int) -> Int{
         return { num  in
-            return num + adder
+            return num + value
         }
+    }
+    
+    func test() {
+        var dic = ["a": ["1", "2", "3",],]
+        
+        var list = dic["a"]
+        list!.remove(at: 0)
+        DDLog(list)
+        DDLog(dic)
+        
+        dic["a"]!.remove(at: 0)
+        DDLog(dic)
     }
 }
 
@@ -173,11 +262,12 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel!.textColor = UIColor.theme;
+        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle)
 
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = UIColor.theme;
+
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         
@@ -208,9 +298,9 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
 //        return sectionView
 //    }
 //
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0.01;
-//    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == tableView.numberOfSections - 1 ? 10 : 0.01;
+    }
 //
 //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 //        let label = UILabel(frame: .zero);

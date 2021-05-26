@@ -32,17 +32,15 @@ class NNFormViewController: UIViewController {
         let swipe = UISwipeGestureRecognizer(target: nil, action: nil)
         swipe.direction = .left
         view.addGestureRecognizer(swipe);
-        swipe.funcName = "left"
         swipe.addAction { (reco) in
-           DDLog(reco.funcName)
+           DDLog(reco)
         }
         
         let swipe1 = UISwipeGestureRecognizer(target: nil, action: nil)
         swipe1.direction = .right
         view.addGestureRecognizer(swipe1);
-        swipe1.funcName = "right"
         swipe1.addAction { (reco) in
-           DDLog(reco.funcName)
+           DDLog(reco)
         }
         
     }

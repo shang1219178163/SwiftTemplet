@@ -14,7 +14,7 @@ class PKAppAbountController: UIViewController {
 
     lazy var tableView: UITableView = {
         guard let tableView = view.findSubView(UITableView.self) as? UITableView else {
-            let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+            let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
             view.dataSource = self
             view.delegate = self
             return view

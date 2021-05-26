@@ -64,20 +64,6 @@ class NNButtonStudyController: UIViewController{
         return view
     }()
     
-    lazy var buttonImage: NNButtonWithImage = {
-        let view = NNButtonWithImage(type:.custom)
-        view.setTitle("荷塘夜色", for: .normal)
-        view.setTitleColor(.systemBlue, for: .normal)
-        view.setImage(normlImage, for: .normal)
-        view.setBorderColor(.lightGray, for: .normal)
-        view.setBorderColor(.systemBlue, for: .selected)
-        
-        view.titleLabel?.adjustsFontSizeToFitWidth = true
-        view.contentVerticalAlignment = .center
-        view.adjustsImageWhenHighlighted = false
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
-    }()
         
     lazy var button: NNButton = {
         var view = NNButton(type:.custom);
@@ -206,7 +192,7 @@ class NNButtonStudyController: UIViewController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        title = controllerName
+        title = vcName
         view.addSubview(button)
         view.addSubview(buttonRight)
         view.addSubview(buttonTop)
@@ -217,7 +203,6 @@ class NNButtonStudyController: UIViewController{
         view.addSubview(checkBox)
         view.addSubview(boxButton)
         view.addSubview(radioButton)
-        view.addSubview(buttonImage)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handActionItem(_:)));
         return
@@ -256,7 +241,6 @@ class NNButtonStudyController: UIViewController{
         checkBox.frame = CGRectMake(20, btn.frame.maxY + 20, 120, 135);
         boxButton.frame = CGRectMake(20, checkBox.frame.maxY + 20,  120, 35);
         radioButton.frame = CGRectMake(20, boxButton.frame.maxY + 20,  120, 35);
-        buttonImage.frame = CGRectMake(20, radioButton.frame.maxY + 20,  120, 35);
 
         return
 //        checkBox.snp.makeConstraints { (make) in

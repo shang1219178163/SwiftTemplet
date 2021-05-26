@@ -15,7 +15,7 @@ import HFNavigationController
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -215,7 +215,15 @@ import HFNavigationController
 
         var top: CGFloat = alertController.title == nil ? 0.0 : 45
         if let message = alertController.message {
-            let messageSize = self.sizeWithText(message, font: 15, width: kScreenWidth - 52)
+            let messageSize = message.size(with: kScreenWidth - 52, font: UIFont.systemFont(ofSize:15))
+//            let attDic = [NSAttributedString.Key.font: UIFont.systemFont(ofSize:15),];
+//            var size = message.boundingRect(with: CGSize(width: kScreenWidth - 52, height: CGFloat(MAXFLOAT)),
+//                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+//                                            attributes: attDic, context: nil).size;
+//            size.width = ceil(size.width);
+//            size.height = ceil(size.height);
+//            let messageSize = CGSize(width: size.width, height: size.height)
+            
             top += messageSize.height
         }
         
@@ -294,7 +302,8 @@ import HFNavigationController
 
         var top: CGFloat = alertController.title == nil ? 0.0 : 45
         if let message = alertController.message {
-            let messageSize = self.sizeWithText(message, font: 16, width: kScreenWidth - 88)
+            let messageSize = message.size(with: kScreenWidth - 88, font: UIFont.systemFont(ofSize:16))
+
             top += messageSize.height
         }
         

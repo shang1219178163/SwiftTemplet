@@ -15,7 +15,7 @@ import SnapKit
 @objcMembers class IOPPayInpartCompanyOperatorInfoController: UIViewController{
             
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -325,7 +325,7 @@ extension IOPPayInpartCompanyOperatorInfoController: UITableViewDataSource, UITa
 
             let hasAsterisk = value0.contains("*")
             if hasAsterisk {
-                cell.textLabel?.attributedText = cell.textLabel!.text!.toAsterisk(cell.textLabel!.textColor, font: cell.textLabel!.font.pointSize)
+                cell.textLabel?.attributedText = cell.textLabel!.text!.insertPrefix(cell.textLabel!.textColor, font: cell.textLabel!.font)
             }
             
             if value4.contains("_img") || value4.contains("_pic") {

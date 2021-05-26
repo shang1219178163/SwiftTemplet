@@ -48,7 +48,7 @@ class PKUserLevelController: UIViewController {
     var dataList = ["0", "1", "2", "3", "4", "5", ]
     
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
         view.backgroundColor = .white

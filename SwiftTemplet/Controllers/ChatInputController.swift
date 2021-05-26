@@ -12,7 +12,7 @@ import SwiftExpand
 class ChatInputController: UIViewController {
     
     lazy var tableView: UITableView = {
-        let view = UITableView.create(.zero, style: .plain, rowHeight: 60)
+        let view = UITableView(rect: .zero, style: .plain, rowHeight: 60)
         view.register(cellType: UITableViewCell.self)
         view.dataSource = self
         view.delegate = self

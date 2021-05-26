@@ -132,7 +132,7 @@ import SwiftExpand
 //        fromVC.view.alpha = 0
 //        toVC.view.alpha = 1
         transition(from: fromVC, to: toVC, duration: 0.0, options: .transitionCrossDissolve, animations: {
-            DDLog("__\(fromVC.controllerName):\(fromVC.view.frame)_\(toVC.controllerName):\(toVC.view.frame)")
+            DDLog("__\(fromVC.vcName):\(fromVC.view.frame)_\(toVC.vcName):\(toVC.view.frame)")
 //            fromVC.view.alpha = 1
 //            toVC.view.alpha = 0
             

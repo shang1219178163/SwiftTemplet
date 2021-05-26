@@ -55,7 +55,7 @@ import SwiftExpand
     
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let table = UITableView.create(bounds, style: .plain, rowHeight: kH_CellHeight)
+        let table = UITableView(rect: bounds, style: .plain, rowHeight: kH_CellHeight)
         table.dataSource = self
         table.delegate = self
         return table

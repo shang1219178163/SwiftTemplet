@@ -39,7 +39,7 @@ class UITableViewCellSegmentLine: UITableViewCell {
         if keyPath == "text" {
             //标题星号处理
             if hasAsterisk {
-                labelLeft.attributedText = labelLeft.text?.toAsterisk(labelLeft.textColor, font: labelLeft.font.pointSize)
+                labelLeft.attributedText = labelLeft.text?.insertPrefix(labelLeft.textColor, font: labelLeft.font)
             }
         }
         else {

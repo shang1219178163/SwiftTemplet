@@ -21,7 +21,7 @@ class EntryViewController: UIViewController {
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -232,8 +232,9 @@ class EntryViewController: UIViewController {
             ["商品种类:", "UITableViewCellSegmentLine", "60.0", "", "recharge", "一代,二代,三代,四代",],
             ["库存周期:", "UITableViewCellSlider", "60.0", "", "recharge", ],
             ["继续生产:", "UITableViewCellSwitch", "60.0", "", "recharge", "生产,不生产",],
-            ["品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
-            ["生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
+            ["*品牌列表:", "UITableViewCellSheet", "60.0", "", "recharge", ],
+            ["列表品牌:", "UITableViewCellSheet", "60.0", "", "recharge", ],
+            ["*生产厂家:", "UITableViewCellPickerView", "60.0", "", "recharge", ],
             ["厂家选择:", "UITableViewCellPickerViewNew", "60.0", "", "recharge", ],
             ["验 证 码:", "UITableViewCellCode", "60.0", "", "recharge", ],
             ["*备注信息:", "UITableViewCellTextView", "160.0", "", "recharge", ],

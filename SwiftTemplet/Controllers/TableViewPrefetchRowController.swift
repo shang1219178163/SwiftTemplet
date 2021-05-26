@@ -27,7 +27,7 @@ struct PrefetchModel {
 class TableViewPrefetchRowController: UIViewController {
     
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 100)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 100)
         view.dataSource = self
         view.delegate = self
         

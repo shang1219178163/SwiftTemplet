@@ -18,7 +18,7 @@ import SnapKit
     
     // MARK: - lazy
 //    lazy var tableView: UITableView = {
-//        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 60)
+//        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 60)
 //        view.backgroundColor = UIColor.white
 //        view.dataSource = self
 //        view.delegate = self
@@ -29,7 +29,7 @@ import SnapKit
 //    private var _tableView: UITableView?
 //    lazy var tableView: UITableView = {
 //        if _tableView == nil {
-//            _tableView = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+//            _tableView = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
 //            _tableView!.dataSource = self
 //            _tableView!.delegate = self
 //        }
@@ -38,7 +38,7 @@ import SnapKit
     
 //    lazy var tableView: UITableView = {
 //        guard let tableView = view.findSubView(UITableView.self) as? UITableView else {
-//            let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+//            let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
 //            view.dataSource = self
 //            view.delegate = self
 //            return view
@@ -51,7 +51,7 @@ import SnapKit
             return tableView
         }
                 
-        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
         return view

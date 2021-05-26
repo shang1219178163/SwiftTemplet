@@ -15,7 +15,7 @@ class UICollectionFlowStyleController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
         view.dataSource = self
         view.delegate = self
 
@@ -64,7 +64,7 @@ class UICollectionFlowStyleController: UIViewController{
 //        let string = "[[\"\\u9655A91D6P\"]]";
 //        let obj = JSONSerialization.jsonObjectFromString(string);
 //        DDLog(obj)
-//        NSObject.printChengfaBiao()
+//        9.printChengfaBiao()
 //        tableView.nextResponder(UIWindow.self, isPrint: true)
         
 //        let image = UIImage(color: .white)

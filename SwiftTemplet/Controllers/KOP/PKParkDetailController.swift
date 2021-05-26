@@ -60,7 +60,7 @@ import SwiftExpand
     }()
 
     lazy var tableView: UITableView = {
-        let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 40)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 40)
         view.dataSource = self
         view.delegate = self
 

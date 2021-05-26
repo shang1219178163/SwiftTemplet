@@ -243,9 +243,17 @@ class FourthViewController: UIViewController {
     }
 
     @objc func showPopoverAction(_ sender: UIButton) {
-        let popoverContentVC = SimpleListController()
+        let contentVC = SimpleListController()
+        contentVC.block = { vc, indexP in
+            DDLog(indexP.string)
+
+            vc.navigationController?.pushVC(UIViewController.self, animated: true, block: { (sender) in
+                sender.view.backgroundColor = .systemGreen
+            })
+        }
+
+        let popoverContentVC = UINavigationController(rootViewController: contentVC)
         popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 20, height: 400)
-        popoverContentVC.delegate = self
 //        popoverContentVC.modalPresentationStyle = .popover
 //        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
 //        popoverPresentationVC.permittedArrowDirections = .up
@@ -254,7 +262,9 @@ class FourthViewController: UIViewController {
 //        popoverPresentationVC.delegate = self
 //        present(popoverContentVC, animated: true, completion: nil)
 
-        presentPopover(popoverContentVC, sender: sender, arrowDirection: .up, completion: nil)
+//        presentPopover(popoverContentVC, sender: sender, arrowDirection: UIPopoverArrowDirection.init(rawValue: 0), completion: nil)
+        presentPopover(popoverContentVC, sender: self.view, arrowDirection: UIPopoverArrowDirection.init(rawValue: 0), completion: nil)
+
     }
     
     lazy var goodsToolView: IOPGoodsToolView = {
@@ -367,14 +377,6 @@ extension FourthViewController: UIPopoverPresentationControllerDelegate {
     func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
 //        setAlphaOfBackgroundViews(0.7)
     }
-}
-
-extension FourthViewController: TableViewSelectDelegate {
-    func tableViewSelect(_ tableView: UITableView, indexPath: IndexPath) {
-        DDLog(indexPath.string)
-    }
-    
-
 }
 
 extension FourthViewController: IOPGoodsToolViewDelegate{

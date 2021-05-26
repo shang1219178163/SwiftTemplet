@@ -20,14 +20,14 @@ class CCSEmergencyOpenView: UIView {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds;
         
-        itemView.items = NSArray.generate(0, 2, 1).map({ (index) in
-            "\(index)"
-        })
-        
-        
-        itemViewOne.items = NSArray.generate(0, 8, 1).map({ (index) in
-            "\(index)"
-        })
+//        itemView.items = NSArray.generate(0, 2, 1).map({ (index) in
+//            "\(index)"
+//        })
+//        
+//        
+//        itemViewOne.items = NSArray.generate(0, 8, 1).map({ (index) in
+//            "\(index)"
+//        })
         
         self.addSubview(contentView);
         
