@@ -14,6 +14,7 @@
 
 #ifdef DEBUG
 #define DDLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+//#define DDLog(...) printf("%s %s [Line %d]: %s", __TIME__, __PRETTY_FUNCTION__, __LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
 #else
 #define DDLog(...)
 #endif

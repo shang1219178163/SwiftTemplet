@@ -167,6 +167,7 @@
 		1449775625BBB6A700256043 /* NNButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1449775525BBB6A700256043 /* NNButton.m */; };
 		144FE77E24BD9B0300334FD9 /* NNTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144FE77D24BD9B0300334FD9 /* NNTextFieldView.swift */; };
 		1450C7C32630037D00522534 /* NNPasswordLevelLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450C7C22630037D00522534 /* NNPasswordLevelLabel.swift */; };
+		145140F8265B37FF00858143 /* TextSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145140F7265B37FF00858143 /* TextSizeController.swift */; };
 		1451DC3024DE330E00F67A0D /* NNInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451DC2F24DE330E00F67A0D /* NNInstructionView.swift */; };
 		1451DC3224DE37C700F67A0D /* NNInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451DC3124DE37C700F67A0D /* NNInstructionViewController.swift */; };
 		1451EBD12498509700059BDC /* NNPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451EBD02498509700059BDC /* NNPageController.swift */; };
@@ -786,6 +787,7 @@
 		1449775525BBB6A700256043 /* NNButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNButton.m; sourceTree = "<group>"; };
 		144FE77D24BD9B0300334FD9 /* NNTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTextFieldView.swift; sourceTree = "<group>"; };
 		1450C7C22630037D00522534 /* NNPasswordLevelLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPasswordLevelLabel.swift; sourceTree = "<group>"; };
+		145140F7265B37FF00858143 /* TextSizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSizeController.swift; sourceTree = "<group>"; };
 		1451DC2F24DE330E00F67A0D /* NNInstructionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNInstructionView.swift; sourceTree = "<group>"; };
 		1451DC3124DE37C700F67A0D /* NNInstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNInstructionViewController.swift; sourceTree = "<group>"; };
 		1451EBD02498509700059BDC /* NNPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPageController.swift; sourceTree = "<group>"; };
@@ -2147,6 +2149,7 @@
 				14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */,
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
+				145140F7265B37FF00858143 /* TextSizeController.swift */,
 				51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */,
 				51C9B590211D17B4003E9AA7 /* FourthViewController.swift */,
 				517D142C2140EE0C00F08FE5 /* FifthViewControlle.swift */,
@@ -2865,6 +2868,7 @@
 				14E2047324E629D30075AB47 /* NotificationBannerQueue.swift in Sources */,
 				51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */,
 				14D91B15234C88B400554994 /* CellListController.swift in Sources */,
+				145140F8265B37FF00858143 /* TextSizeController.swift in Sources */,
 				1449774D25BBA96E00256043 /* UIButton+Layer.swift in Sources */,
 				14C9FA3F2501E90A0097080F /* AnimationContoller.m in Sources */,
 				1461A24523191850006A758F /* ScrollViewController.swift in Sources */,

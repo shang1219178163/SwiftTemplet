@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+
         NSObject.initializeMethod()
-        UIViewController.initializeMethod()
+//        UIViewController.initializeMethod()
         UINavigationController.initializeMethod()
         UITextView.initializeMethod()
 //        UIButton.initializeMethod()
@@ -35,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.setupAppearanceDefault(false);
         IQKeyboardManager.shared.enable = true;
         
-        // Override point for customization after application launch.
         
         //方式一
 //        window = UIWindow(frame:UIScreen.main.bounds);
@@ -55,10 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        controller = UICtrFromString("TitleViewController");
 //        controller = UICtrFromString("ScrollHorizontalController");        
         
-        UIApplication.setupRootController(controller, isAdjust: true);
         window = UIApplication.mainWindow;
+        window?.rootViewController = controller
 
-//        UIApplication.setupRootController(&(window!), controller, true);
         //方式三
 //        let list:Array = [
 //            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
 //            ];
 //        let tabBarController = UITarBarCtrFromList(list);
-//        UIApplication.setupRootController(tabBarController!);
+//        window?.rootViewController = tabBarController
 //        UIApplication.tabBarController?.selectedIndex = 4;
         DDLog("".count)
 
@@ -110,41 +110,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: -funtions
     func testFunc() {
-        let za = "12".padding(toLength: 5, withPad: "*", startingAt: 0)
-        DDLog(za)
-        
-        let btime = "2020-01-13 09:43:50"
-        DDLog(btime.dayBegin, btime.dayEnd)
-
-        let date = DateFormatter.dateFromString(btime)
-        DDLog(date!.betweenInfo(Date()))
-                
-        let etime = "2020-02-13 09:43:50"
-        let eDate = DateFormatter.dateFromString(etime)
-        DDLog(eDate)
-
-
-        let l = DateFormatter.betweenDateDays(btime, endTime: etime)
-        DDLog(l)
-        
-        let dateStr = ("\(NSDate())" as NSString).substring(to: 19)
+//        let za = "12".padding(toLength: 5, withPad: "*", startingAt: 0)
+//        DDLog(za)
+//
+//        let btime = "2020-01-13 09:43:50"
+//        DDLog(btime.dayBegin, btime.dayEnd)
+//
+//        let date = DateFormatter.dateFromString(btime)
+//        DDLog(date!.betweenInfo(Date()))
+//
+//        let etime = "2020-02-13 09:43:50"
+//        let eDate = DateFormatter.dateFromString(etime)
+//        DDLog(eDate)
+//
+//
+//        let l = DateFormatter.betweenDateDays(btime, endTime: etime)
+//        DDLog(l)
+//
+//        let dateStr = ("\(NSDate())" as NSString).substring(to: 19)
 //        var dateStrMore = dateStr.replacingOccurrences(of: "-", with: "")
 //        dateStrMore = dateStrMore.replacingOccurrences(of: ":", with: "")
 //        dateStrMore = dateStrMore.replacingOccurrences(of: " ", with: "")
         
-        let dateStrMore = dateStr.replacingOccurrences(of: [" ", ":", "-"], replacement: "")
-        DDLog(dateStr, dateStrMore)
+//        let dateStrMore = dateStr.replacingOccurrences(of: [" ", ":", "-"], replacement: "")
+//        DDLog(dateStr, dateStrMore)
         
-    
+        DDLog("".intValue)
+        DDLog("".count)
+        DDLog("".isEmpty)
+        
+        
+        let absoluteString = "iop://Goods?openNames=30027&activeName=960001"
+        switch absoluteString {
+        case let value where absoluteString.hasPrefix("iop://Goods"):
+            DDLog(value)
+            if var URL = URL(string: value) {
+                DDLog(URL.queryParameters)
+                
+                URL = URL.appendingQueryParameters(["token": "1111111"])
+//                URL.appendQueryParameters(["token": "1111111"])
+                DDLog("append", URL)
+                
+                URL = URL.removingQueryParameters(for: ["token", "activeName"])
+//                URL.removeQueryParameters(for: ["token", "activeName"])
+                DDLog("delete", URL)
+            }
+            
+        default:
+            break
+        }
+        
         return
             
 //        DDLog(#function, String(describing: self), type(of: self))
-        
-        let result = resultByOpt(5, 3) { (num1, num2) -> Int in
-            num1 + num2
-        }
-        DDLog(result);
-        
 //        let r = RoundFloat(23.6250)
 //        DDLog(r);
         
@@ -235,7 +253,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        DDLog(end)
 //        DDLog(start)
 //
-//        let obj1 = NNStringFromClass(UITableViewCellOne.self);
 //        let obj2 = String(describing: UITableViewCellOne.self);
 //        let obj3 = String(describing: NNCheckVersApi.self);
 //        let obj4 = String(describing: NSObject.self);

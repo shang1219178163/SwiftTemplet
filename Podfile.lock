@@ -29,7 +29,7 @@ PODS:
   - FLAnimatedImage (1.0.12)
   - FloatingPanel (1.7.5)
   - HandyJSON (5.0.2)
-  - HFNavigationController (1.2.0)
+  - HFNavigationController (1.4.2)
   - Instructions (2.0.0)
   - IQKeyboardManagerSwift (6.5.5)
   - KeychainSwift (19.0.0)
@@ -79,8 +79,10 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Starscream (4.0.4)
-  - SwiftExpand (6.3.1):
+  - SwiftChain (1.0.0.4)
+  - SwiftExpand (7.0.0):
     - SnapKit
+    - SwiftChain
   - SwiftyJSON (5.0.0)
   - TZImagePickerController (3.3.2)
   - UICircularProgressRing (7.0.0)
@@ -175,6 +177,7 @@ SPEC REPOS:
     - SnapKit
     - SnapKitExtend
     - Starscream
+    - SwiftChain
     - SwiftExpand
     - SwiftyJSON
     - TZImagePickerController
@@ -198,7 +201,7 @@ SPEC CHECKSUMS:
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FloatingPanel: bb17fd6fc7ae519f877f7bd30f4f6115a78acf07
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  HFNavigationController: 298362bca19235a9d59cc3a8ea234541013b8d99
+  HFNavigationController: 2d5d92ffcf0437f9f021c471df8bb764987ec46b
   Instructions: debf9cedeaf8d095108fd35d2c54b97ccf769e65
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
@@ -221,7 +224,8 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  SwiftExpand: c880d318155ade7906c5235f5d0c80a8577b1466
+  SwiftChain: 1caf78adcb336774f92678a4ee38e26d67261feb
+  SwiftExpand: 2ee57a589fc1db72ab0891fd9f3db1e9c68d11a1
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
@@ -233,6 +237,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 9986c32f7ceecd8e36242f15370cf3040cd8a09b
+PODFILE CHECKSUM: b6d0abe531d5602bf54771863f237b8bb610b4a6
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
