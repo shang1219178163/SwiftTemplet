@@ -33,6 +33,7 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["ScanningDocumentsController", "ScanningDocuments", ],             
              ["NNPlaceHolderViewController", "占位视图", ],
              ["ReuseChildsController", "控制器复用", ],
              ["IOPFuntionListController", "iop 视图", ],
@@ -97,7 +98,7 @@ class ThirdViewController: UIViewController{
             [["SystemColorShowController", "SystemColor", ],
              ["TableViewPrefetchRowController", "image预加载", ],
              ["AppIconChangeController", "App图标更换", ],
-             ["AlerSheetStudyController", "AlerSheet研究", ],             
+             ["AlertSheetStudyController", "AlerSheet研究", ],             
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
              ["IOPInvoiceCreateController", "折叠", ],
@@ -438,7 +439,7 @@ class ThirdViewController: UIViewController{
         AF.request(URL, method: .get, parameters: nil, headers: nil)
             .response { (response) in
                 guard let data = response.data,
-                    let jsonDic = JSONSerialization.jsonObjectFromData(data) as? [String : Any] else {
+                    let jsonDic = data.objValue as? [String : Any] else {
                     DDLog("数据解析错误")
                     return;
                 }

@@ -81,7 +81,7 @@ import SwiftExpand
         AF.request(URL, method: .post, parameters: params, headers: nil)
             .response { (response) in
                 guard let data = response.data,
-                    let dic = JSONSerialization.jsonObjectFromData(data) as? [String : Any]
+                    let dic = data.objValue as? [String : Any]
                 else {
                     DDLog("数据解析错误 response:\(response)")
                     failBlock?("数据解析错误")
