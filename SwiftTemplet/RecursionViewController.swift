@@ -33,9 +33,7 @@ class RecursionViewController: UIViewController {
         let f = "123456".prefix(2)
         let g = "123456".suffix(2)
 
-        DDLog(a, b, c, d, e, f, g)
-        
-        ProcessInfo
+        DDLog(a, b, c, d, e, f, g)        
     }
     
     

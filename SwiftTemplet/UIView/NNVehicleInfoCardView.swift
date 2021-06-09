@@ -57,7 +57,9 @@ class NNVehicleInfoCardView: UIView {
 
         iconLabSub.image = UIImage(named: "icon_businessCard")
         iconLabSubOne.image = UIImage(named: "icon_company_white")
-        gradientLayer.colors = CAGradientLayer.defaultColors;
+        
+        let list = [UIColor.hexValue(0x6cda53, a: 0.9).cgColor, UIColor.hexValue(0x1a965a, a: 0.9).cgColor]
+        gradientLayer.colors = list
     }
     
     required init?(coder aDecoder: NSCoder) {

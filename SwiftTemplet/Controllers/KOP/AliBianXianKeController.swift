@@ -69,7 +69,7 @@ class AliBianXianKeController: UIViewController {
         AF.request(URL, method: method, parameters: params, headers: nil)
             .response { (response) in
                 guard let data = response.data,
-                    let jsonDic = JSONSerialization.jsonObjectFromData(data) as? [String : Any] else {
+                      let jsonDic = data.objValue as? [String : Any] else {
                     DDLog("数据解析错误")
                     return;
                 }

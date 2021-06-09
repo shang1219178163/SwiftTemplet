@@ -16,36 +16,7 @@ import SnapKit
         
     var block: ((UIViewController, IndexPath)->Void)?
     
-    // MARK: - lazy
-//    lazy var tableView: UITableView = {
-//        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 60)
-//        view.backgroundColor = UIColor.white
-//        view.dataSource = self
-//        view.delegate = self
-//
-//        return view
-//    }()
-        
-//    private var _tableView: UITableView?
-//    lazy var tableView: UITableView = {
-//        if _tableView == nil {
-//            _tableView = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
-//            _tableView!.dataSource = self
-//            _tableView!.delegate = self
-//        }
-//        return _tableView!
-//    }()
-    
-//    lazy var tableView: UITableView = {
-//        guard let tableView = view.findSubView(UITableView.self) as? UITableView else {
-//            let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
-//            view.dataSource = self
-//            view.delegate = self
-//            return view
-//        }
-//        return tableView
-//    }()
-    
+
     lazy var tableView: UITableView = {
         if let tableView = view.findSubView(UITableView.self) as? UITableView {
             return tableView
@@ -67,7 +38,7 @@ import SnapKit
         return button
     }()
             
-    // MARK: - lazy
+
     lazy var label: UILabel = {
         let view = UILabel(frame: CGRectMake(0, 0, kScreenWidth, 50))
         view.backgroundColor = .systemGreen
@@ -94,12 +65,6 @@ import SnapKit
             make.bottom.equalToSuperview().offset(0);
         }
         
-        label.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(15);
-            make.left.equalToSuperview().offset(15);
-            make.right.equalToSuperview().offset(-15);
-            make.height.equalTo(225);
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -121,8 +86,9 @@ import SnapKit
                 
 //        tableView.tableHeaderView = searchBar
         view.addSubview(tableView);
-        view.addSubview(label);
-//        label.isHidden = true
+        
+        label.frame = CGRectMake(0, 0, kScreenWidth, 225)
+        tableView.tableHeaderView = label
     }
 
 }

@@ -9,6 +9,7 @@
 #import "AttrStringEffectiveController.h"
 #import <Masonry/Masonry.h>
 #import "NSMutableAttributedString+Chain.h"
+#import <SwiftExpand/SwiftExpand-Swift.h>
 
 #import "SwiftTemplet-Swift.h"
 
@@ -22,20 +23,17 @@
 @implementation AttrStringEffectiveController
 
 
-
 #pragma mark -lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.label];
-    
-    
 }
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
 
-    self.label.frame = CGRectMake(10, 10, kScreenWidth - 20, 300);
+    self.label.frame = CGRectMake(10, 10, UIScreen.sizeWidth - 20, 300);
 }
 
 - (void)viewWillAppear:(BOOL)animated{

@@ -21,16 +21,6 @@ class TestViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.addSubview(tbView);
-//        setupData();
-        var list:[String] = []
-        for i in 0...6 {
-            list.append("\(i)")
-        }
-        
-        itemView.items = list
-        view.addSubview(itemView)
-        
 //        parkGroupView.items = ["异常出车", "无入场记录", "长时为出"]
         let items = ["异常出车", "无入场记录", "长时为出"]
         parkGroupView.items = items
@@ -47,16 +37,9 @@ class TestViewController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        itemView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(20);
-            make.left.equalToSuperview().offset(20);
-            make.right.equalToSuperview().offset(-20);
-            make.height.equalTo(120);
-        }
-        
+
         parkGroupView.snp.makeConstraints { (make) in
-            make.top.equalTo(itemView.snp.bottom).offset(10);
+            make.top.equalToSuperview().offset(20);
             make.left.equalToSuperview().offset(20);
             make.right.equalToSuperview().offset(-20);
             make.height.equalTo(35);
@@ -127,22 +110,7 @@ class TestViewController: UIViewController{
         }, for: .touchUpInside)
         return view
     }()
-    
-    lazy var itemView: NNGroupView = {
-        let view = NNGroupView(frame: .zero)
-        view.padding = 10;
-        view.numberOfRow = 3;
-        view.isMutiChoose = true;
-        view.showType = .line
-        view.showType = .backgroud
-        view.block({ (itemsView, sender) in
-            if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any, itemsView.selectedList.count, itemsView.selectedIdxList.count)
 
-            }
-        })
-        return view;
-    }()
     
     lazy var parkGroupView: NNButtonGroupView = {
         let view = NNButtonGroupView(frame: .zero)

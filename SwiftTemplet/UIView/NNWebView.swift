@@ -126,37 +126,10 @@ import SwiftExpand
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
-    
-//    @objc func loadRequest() {
-//        if urlString == "" {
-//            self.refreshControl.endRefreshing()
-//            return
-//        }
-//        progressView.setProgress(0, animated: false)
-//        progressView.isHidden = false
-//
-//        if !urlString.hasPrefix("http") {
-//            urlString = "http://" + urlString;
-//        }
-//        if let url = URL(string: urlString) {
-//            let request = URLRequest(url: url)
-//            webView.load(request)
-//        } else {
-//            print("\(#function) 链接无效:\(urlString)")
-//        }
-//    }
+
     
     @objc func refreshOrderResult() {
         webView.loadUrl(redirect_url, additionalHttpHeaders: httpHeaderFieldsDic, isAddUserScript: false)
-
-//        guard let urlStr = redirect_url.removingPercentEncoding as String? else { return }
-//        if let url = URL(string: urlStr) as URL? {
-//            var request = URLRequest(url: url as URL)
-//            httpHeaderFieldsDic.forEach { (key, value) in
-//                request.addValue(value, forHTTPHeaderField: key)
-//            }
-//            wkWebView.load(request)
-//        }
     }
     
     func request(_ urlString: String?) {
