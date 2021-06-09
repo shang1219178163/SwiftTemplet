@@ -68,8 +68,10 @@ class HomeViewController: UITabBarController {
             (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
 //            (KVOViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
             (PKFuntionListController(), "KOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-             ];
+//            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            
+            (FourthViewController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+        ];
     }()
     
     lazy var btnCenter: UIButton = {
@@ -98,8 +100,8 @@ class HomeViewController: UITabBarController {
 //        delegate = self
 //        view.addGestureRecognizer(panGesture)
         
-        selectedIndex = 2
-        selectedIndex = 4
+//        selectedIndex = 2
+//        selectedIndex = 4
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,21 +143,21 @@ class HomeViewController: UITabBarController {
 
 }
 
-extension HomeViewController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
-        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
-        DDLog("\(fromIndex) -> \(toIndex)")
-        animator.animateType = fromIndex < toIndex ? .right : .left
-        return animator
-    }
-
-//    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        if self.panGesture.state == .began || self.panGesture.state == .changed {
-//            return TabbarInteractionTransition(pan: self.panGesture)
-//        } else {
-//            return nil
-//        }
+//extension HomeViewController: UITabBarControllerDelegate {
+//    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//
+//        let fromIndex: Int = self.viewControllers!.firstIndex(of: fromVC)!
+//        let toIndex: Int = self.viewControllers!.firstIndex(of: toVC)!
+//        DDLog("\(fromIndex) -> \(toIndex)")
+//        animator.animateType = fromIndex < toIndex ? .right : .left
+//        return animator
 //    }
-}
+//
+////    func tabBarController(_ tabBarController: UITabBarController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+////        if self.panGesture.state == .began || self.panGesture.state == .changed {
+////            return TabbarInteractionTransition(pan: self.panGesture)
+////        } else {
+////            return nil
+////        }
+////    }
+//}
