@@ -93,10 +93,11 @@ class IOPFileUploadController: UIViewController {
         view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
 
-        previewVC.view.frame = self.view.bounds
-        self.addChild(previewVC)
+        addChild(previewVC)
+        view.addSubview(previewVC.view)
+        previewVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        previewVC.view.frame = view.bounds
         previewVC.didMove(toParent: self)
-        self.view.addSubview(previewVC.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {

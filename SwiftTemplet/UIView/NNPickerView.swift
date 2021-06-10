@@ -140,6 +140,17 @@ class NNPickerView: UIView {
         }
     }
     
+    
+    static func showPickerView(sender: @escaping ((NNPickerView)->Void), block: @escaping((String, Int)->Void)) {
+        let view = NNPickerView(frame: .zero)
+        sender(view)
+        view.block = { picker, idx in
+//            DDLog(idx, picker.selectedItem ?? "")
+            block(picker.selectedItem ?? "", idx)
+        }
+        view.show()
+    }
+    
     // MARK: -lazy
     lazy var toobarView: UIView = {
         var view = UIView(frame: .zero)

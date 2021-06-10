@@ -205,23 +205,26 @@ class NNButtonStudyController: UIViewController{
         view.addSubview(radioButton)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handActionItem(_:)));
-        return
+//        return
 
-        if #available(iOS 14.0, *) {
-            let destruct = UIAction(title: "Destruct", attributes: .destructive) { DDLog($0.title) }
-
-            let items = UIMenu(title: "More", options: .displayInline, children: [
-                UIAction(title: "Item 1", image: UIImage(systemName: "mic"), handler: { DDLog($0.title) }),
-                UIAction(title: "Item 2", image: UIImage(systemName: "envelope"), handler: { DDLog($0.title) }),
-                UIAction(title: "Item 3", image: UIImage(systemName: "flame.fill"), handler: { DDLog($0.title) }),
-                UIAction(title: "Item 4", image: UIImage(systemName: "video"), state: .on, handler: { DDLog($0.title) })
-            ])
-
-            button.menu = UIMenu(title: "", children: [items, destruct])
-            button.showsMenuAsPrimaryAction = true
-            button.addAction(UIAction(title: ""){ _ in print("Hello Menu")},for: .menuActionTriggered)
-        }
-                
+//        if #available(iOS 14.0, *) {
+//            let destruct = UIAction(title: "Destruct", attributes: .destructive) { DDLog($0.title) }
+//
+//            let items = UIMenu(title: "More", options: .displayInline, children: [
+//                UIAction(title: "Item 1", image: UIImage(systemName: "mic"), handler: { DDLog($0.title) }),
+//                UIAction(title: "Item 2", image: UIImage(systemName: "envelope"), handler: { DDLog($0.title) }),
+//                UIAction(title: "Item 3", image: UIImage(systemName: "flame.fill"), handler: { DDLog($0.title) }),
+//                UIAction(title: "Item 4", image: UIImage(systemName: "video"), state: .on, handler: { DDLog($0.title) })
+//            ])
+//
+//            button.menu = UIMenu(title: "", children: [items,
+////                                                           destruct
+//            ])
+//            button.showsMenuAsPrimaryAction = true
+//            button.addAction(UIAction(title: "2222"){ _ in print("Hello Menu")},for: .menuActionTriggered)
+//        }
+        button.setupMenu()
+                        
 //        button.isHidden = true
         checkBox.isHidden = true
 
@@ -308,4 +311,37 @@ class NNButtonStudyController: UIViewController{
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+
+
+protocol SetupMenu{
+    
+    func setupMenu()
+}
+
+
+extension SetupMenu where Self : UIButton{
+    func setupMenu() {
+        if #available(iOS 14.0, *) {
+            let destruct = UIAction(title: "Destruct", attributes: .destructive) { DDLog($0.title) }
+
+            let items = UIMenu(title: "More", options: .displayInline, children: [
+                UIAction(title: "Item 1", image: UIImage(systemName: "mic"), handler: { DDLog($0.title) }),
+                UIAction(title: "Item 2", image: UIImage(systemName: "envelope"), handler: { DDLog($0.title) }),
+                UIAction(title: "Item 3", image: UIImage(systemName: "flame.fill"), handler: { DDLog($0.title) }),
+                UIAction(title: "Item 4", image: UIImage(systemName: "video"), state: .on, handler: { DDLog($0.title) })
+            ])
+
+            self.menu = UIMenu(title: "", children: [items,
+    //                                                           destruct
+            ])
+            self.showsMenuAsPrimaryAction = true
+            self.addAction(UIAction(title: "2222"){ _ in print("Hello Menu")},for: .menuActionTriggered)
+        }
+    }
+}
+
+
+extension UIButton: SetupMenu{}
+
 

@@ -12,7 +12,7 @@ import UIKit
     @objc func buttonGroupView(_ view: NNButtonGroupView, sender: UIButton);
 }
 
-/// UIButton集合视图
+/// UIButton集合视图(弃用,代替者NNGroupButton)
 @objcMembers class NNButtonGroupView: UIView {
 
     weak var delegate: NNButtonGroupViewDelegate?
@@ -222,3 +222,4 @@ import UIKit
         viewBlock = action;
     }
 }
+
