@@ -205,7 +205,8 @@ class EntryViewController: UIViewController {
             ["停车记录类型", "IOPTableViewCellGroupView", "55.0", "", "recharge", ],
             ["星期选择", "UITableViewCellChoice", "110.0", "", "recharge", ],
             ["单选", "UITableViewCellChoiceRadio", "70.0", "", "recharge", ],
-                
+            ["星期选择1", "UITableViewCellChoose", "110.0", "", "recharge", ],
+
             ["停车记录类型", "UITableViewCellGoodsDuration", "110.0", "", "recharge", ],
             ["停车费用", "UITableViewCellFee", "90.0", "", "recharge", ],
             ["停车记录", "UITableViewCellPark", "90.0", "", "recharge", ],
@@ -1087,6 +1088,40 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.getViewLayer();
+            return cell;
+            
+        case "UITableViewCellChoose":
+            let cell = UITableViewCellChoose.dequeueReusableCell(tableView);
+            if cell.groupView.items.count == 0 {
+                cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
+                    let sender = NNButton(type: .custom)
+                    sender.setTitle("item_\(i)", for: .normal)
+                    sender.setTitleColor(.gray, for: .normal)
+                    sender.setTitleColor(.systemBlue, for: .selected)
+
+                    sender.setBorderColor(.line, for: .normal)
+                    sender.setBorderColor(.systemBlue, for: .selected)
+                    
+                    sender.layer.cornerRadius = 5;
+                    sender.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+                                
+        //            sender.iconSize = CGSize(width: 30, height: 18)
+        //            sender.iconBtn.setTitle("\(i)", for: .normal)
+        //            sender.iconBtn.setTitleColor(.red, for: .normal)
+                    return sender
+                })
+            }
+            cell.groupView.items.forEach { (sender) in
+                let backgroudImage = UIImage(color: .hexValue(0xF3F3F3))
+                let selectedBackgroudImage = UIImage(named: "btn_selected_multiple")!
+                sender.setBackgroundImage(backgroudImage, for: .normal)
+                sender.setBackgroundImage(selectedBackgroudImage, for: .selected)
+            }
+            cell.groupView.itemsIndexs = [0,]
+            cell.groupView.disabledIndexs = [0, 1]
+            cell.groupView.block = { view, sender in
+                DDLog(view.itemsIndexs)
+            }
             return cell;
             
         case "UITableViewCellGoodsDuration":
