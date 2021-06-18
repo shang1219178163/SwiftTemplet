@@ -43,23 +43,25 @@ import RxCocoa
     }()
         
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
-//        button.isHidden = true;
-        button.sizeToFit()
-//        button.addActionHandler({ (sender) in
+        let view = UIButton(type: .custom)
+        view.setTitle("保存", for: .normal)
+
+//        view.isHidden = true;
+        view.sizeToFit()
+//        view.addActionHandler({ (sender) in
 //            DDLog(sender)
 //
 //        }, for: .touchUpInside)
         
-//        button.rx.safeDrive { (sender) in
-//            DDLog(sender.currentTitle as Any)
+//        view.rx.safeDrive { (sender) in
+//            DDLog(sender.currentTitle)
 //        }.disposed(by: dispose)
         
-        button.rxDrive { (sender) in
-            DDLog(sender.currentTitle as Any)
+        view.rxDrive { (sender) in
+            DDLog(sender.currentTitle)
         }.disposed(by: disposeBag)
         
-//        button.rx.safeDrive().asDriver().drive {
+//        view.rx.safeDrive().asDriver().drive {
 //            DDLog(button.currentTitle)
 //        } onCompleted: {
 //
@@ -67,7 +69,7 @@ import RxCocoa
 //
 //        }
         
-        return button
+        return view
     }()
     
     
@@ -160,7 +162,7 @@ import RxCocoa
     
     func testFunc() {
         label.rxTap { (tap) in
-            DDLog(tap.view as Any)
+            DDLog(tap.view)
         }.disposed(by: disposeBag)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: label)
         
@@ -188,7 +190,7 @@ import RxCocoa
         
         label.rx.observeWeakly(String.self, "text")
             .subscribe(onNext: { (value) in
-                DDLog(value as Any)
+                DDLog(value)
             })
             .disposed(by: disposeBag)
                 

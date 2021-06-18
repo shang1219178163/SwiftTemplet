@@ -204,7 +204,7 @@ class TmpViewController: UIViewController {
 
     //MRAK: - funtion
     @objc func handleActionControl(_ sender: UIButton) {
-        DDLog(sender.titleLabel?.text as Any);
+        DDLog(sender.titleLabel?.text);
         if sender.titleLabel?.text == kTitleSure {
             
         }
@@ -283,7 +283,7 @@ class TmpViewController: UIViewController {
 
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any)
+                print(btn.titleLabel?.text)
                 
             }
         })
@@ -306,7 +306,7 @@ class TmpViewController: UIViewController {
 
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any)
+                print(btn.titleLabel?.text)
                 
             }
         })

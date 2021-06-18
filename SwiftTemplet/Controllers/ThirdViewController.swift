@@ -19,6 +19,7 @@ class ThirdViewController: UIViewController{
     //MARK: -lazy
     lazy var tableView: UITableView = {
         let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.dataSource = self
         view.delegate = self
 
@@ -185,38 +186,27 @@ class ThirdViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        edgesForExtendedLayout = []
         
-        let barItem = UIBarButtonItem(title: "升级", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        let barItem1 = UIBarButtonItem(title: "协议", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        let barItem2 = UIBarButtonItem(title: "弹窗", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        let barItem3 = UIBarButtonItem(title: "升级", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        let barItem4 = UIBarButtonItem(title: "展示", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        let barItem5 = UIBarButtonItem(title: "展示2", style: .plain, target: self, action: #selector(handleActionItem(_:)))
-        barItem.tag = 0
-        barItem1.tag = 1
-        barItem2.tag = 2
-        barItem3.tag = 3
-        barItem4.tag = 4
-        barItem5.tag = 5
-        navigationItem.leftBarButtonItems = [barItem, barItem1, barItem2]
-        navigationItem.rightBarButtonItems = [barItem3, barItem4, barItem5]
-
-//        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
-////            UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
-//            self.updateOneView.check()
-//        }
-//
-//        createBarItem( .done, isLeft: false) { (sender: AnyObject) in
-//            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-//            rootViewController.present(self.navController, animated: true, completion: nil)
-//        }
-
-//        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
-//        btn.addActionHandler { (control) in
-//            DDLog(control)
-//        }
+        let list: [(String, Selector)] = [
+            ("升级", #selector(handleActionItem(_:))),
+            ("协议", #selector(handleActionItem(_:))),
+            ("弹窗", #selector(handleActionItem(_:))),
+            ("升级", #selector(handleActionItem(_:))),
+            ("展示", #selector(handleActionItem(_:))),
+            ("协议", #selector(handleActionItem(_:))),
+             ];
         
+        let barItems = list.enumerated().map { e -> UIBarButtonItem in
+            let barItem = UIBarButtonItem(title: e.element.0, style: .plain, target: self, action: e.element.1)
+            barItem.tag = e.offset
+            return barItem
+        }
+        
+        navigationItem.leftBarButtonItems = barItems.subarray(with: NSRange(location: 0, length: 3))
+        navigationItem.rightBarButtonItems = barItems.subarray(with: NSRange(location: 3, length: 3))
+        
+
         tableView.rowHeight = 50;
         view.addSubview(tableView)
 
@@ -333,10 +323,10 @@ class ThirdViewController: UIViewController{
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"
             UIAlertController(title: "提示", message: message, preferredStyle: .alert)
                 .addActionTitles([kTitleCancell, kTitleSure], handler: { (alertVC, action) in
-                    DDLog(action.title as Any)
+                    DDLog(action.title)
                 })
                 .addTextFieldPlaceholders(["请输入"], handler: { (textfield) in
-                DDLog(textfield.text as Any)
+                DDLog(textfield.text)
                 })
                 .present {
 //                DDLog("present")
@@ -346,10 +336,10 @@ class ThirdViewController: UIViewController{
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。我已经解决了所有问题，但是我希望能够捕捉平移手势是否被反转。"
 //            UIAlertController(title: "提示", message: message, preferredStyle: .alert)
 //                .addActionTitles([kTitleCancell, kTitleSure]) { (alertVC, action) in
-//                    DDLog(action.title as Any)
+//                    DDLog(action.title)
 //            }
 ////            .addTextFields(["请输入账号", "请输入密码"]) { (textfield) in
-////                DDLog(textfield.text as Any)
+////                DDLog(textfield.text)
 ////                textfield.addTarget(self, action: #selector(self.handleTextfield(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
 ////            }
 //            .present {
@@ -376,7 +366,7 @@ class ThirdViewController: UIViewController{
     func showAlert() {
         UIAlertController(title: "提示", message: "xinx", preferredStyle: .alert)
             .addActionTitles([kTitleCancell, kTitleSure], handler: { (alertVC, action) in
-                DDLog(action.title as Any)
+                DDLog(action.title)
             })
             .addTextFieldPlaceholders(["请输入"], handler: { (textfield) in
                 DDLog(textfield.text)
@@ -395,7 +385,7 @@ class ThirdViewController: UIViewController{
             let jsonString = String(data: data, encoding: .utf8)
             else { return }
             let string: String = jsonString.replacingOccurrences(of: "\\", with: "")
-//            DDLog(string as Any)
+//            DDLog(string)
 //            if let response = NNCheckVersRootClass.deserialize(from: dic) {
             if let response = ESCheckVersRootClass.deserialize(from: dic) {
 //                DDLog(response)

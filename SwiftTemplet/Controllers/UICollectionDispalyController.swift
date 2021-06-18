@@ -159,7 +159,7 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
         switch indexPath.section {
         case 1:
             if kind == UICollectionView.elementKindSectionHeader {
-                let view = collectionView.dequeueReusableSupplementaryView(for: UICTViewCellSubtitle(), kind: kind, indexPath: indexPath)
+                let view = collectionView.dequeueReusableSupplementaryView(for: UICTViewCellSubtitle.self, kind: kind, indexPath: indexPath)
              
                 view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellSubtitle.identifier
                 view.labDetail.text = "999+"
@@ -175,7 +175,7 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
             
         default:
             if kind == UICollectionView.elementKindSectionHeader {
-                let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne(), kind: kind, indexPath: indexPath)
+                let view = collectionView.dequeueReusableSupplementaryView(for: UICTReusableViewOne.self, kind: kind, indexPath: indexPath)
              
                 view.lab.text = kind.components(separatedBy: "ElementKind").last;
                 view.labDetail.text = "999+"

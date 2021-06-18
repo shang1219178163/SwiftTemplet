@@ -15,7 +15,9 @@ import SwiftExpand
         
 
     lazy var rightBtn: UIButton = {
-        let view = UIButton.create(title: "Next", textColor: .white, backgroundColor: .theme)
+        let view = UIButton(type: .custom)
+        view.setTitle("Next", for: .normal)
+
         view.addActionHandler({ (sender) in
             let controller = TmpViewController()
             self.navigationController?.pushViewController(controller, animated: true)
@@ -147,11 +149,13 @@ import SwiftExpand
     
     
     lazy var btnCancel: UIButton = {
-        let view = UIButton.create(title: "取消", textColor: .white, backgroundColor: .theme)
+        let view = UIButton(type: .custom)
+        view.setTitle("取消", for: .normal)
+
         view.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {
-                DDLog(obj.currentTitle as Any)
+                DDLog(obj.currentTitle)
                 
             }
         }, for: .touchUpInside)
@@ -160,11 +164,12 @@ import SwiftExpand
     }()
     
     lazy var btnDone: UIButton = {
-        var view = UIButton.create(title: "确定", textColor: .textColor3, backgroundColor: .white)
+        let view = UIButton(type: .custom)
+        view.setTitle("确定", for: .normal)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {
-                DDLog(obj.currentTitle as Any)
+                DDLog(obj.currentTitle)
                 self.navigationController?.pushVC(PKAccountLogOffFailController.self)
 
             }

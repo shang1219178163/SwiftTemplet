@@ -159,7 +159,7 @@ class CCSEmergencyOpenView: UIView {
     }
     
     @objc func handleActionControl(_ sender: UIButton) {
-        DDLog(sender.titleLabel?.text as Any);
+        DDLog(sender.titleLabel?.text);
         self.dismiss();
         self.viewBlock?(self,  sender.tag)
         
@@ -248,7 +248,7 @@ class CCSEmergencyOpenView: UIView {
 
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any)
+                print(btn.titleLabel?.text)
                 
             }
         })
@@ -270,7 +270,7 @@ class CCSEmergencyOpenView: UIView {
         view.selectedIdxList = [0]
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any)
+                print(btn.titleLabel?.text)
                 
             }
         })

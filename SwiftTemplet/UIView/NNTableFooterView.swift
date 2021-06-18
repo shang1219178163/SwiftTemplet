@@ -69,12 +69,14 @@ import SwiftExpand
     }
 
     lazy var btn: UIButton = {
-        let view = UIButton.create(.zero, title: "确定", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("确定", for: .normal)
+
         view.setBackgroundImage(UIImage(color: .theme), for: .normal)
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         
         view.addActionHandler({ (sender) in
-            DDLog(sender.currentTitle as Any)
+            DDLog(sender.currentTitle)
                 
         }, for: .touchUpInside)
         

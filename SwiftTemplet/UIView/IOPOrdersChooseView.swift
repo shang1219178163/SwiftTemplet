@@ -63,20 +63,22 @@ import SwiftExpand
             self.delegate?.ordersChooseViewAll(sender, isAll: self.chooseAll)
 
             
-//            DDLog(sender.currentTitle as Any)
+//            DDLog(sender.currentTitle)
         }, for: .touchUpInside)
         return view
     }()
     
     lazy var btn: UIButton = {
-        let view = UIButton.create(.zero, title: "下一步", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("下一步", for: .normal)
+
         view.setBackgroundImage(UIImage(color: .theme), for: .normal)
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         view.addActionHandler({ (sender) in
             
-            DDLog(sender.currentTitle as Any)
+            DDLog(sender.currentTitle)
             self.delegate?.ordersChooseViewNext(sender)
             
         }, for: .touchUpInside)

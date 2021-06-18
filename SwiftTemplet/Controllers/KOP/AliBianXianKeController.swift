@@ -26,11 +26,12 @@ class AliBianXianKeController: UIViewController {
         edgesForExtendedLayout = []
         view.backgroundColor = .white
         
-        let btn = UIButton.create(title: "done", textColor: .theme, backgroundColor: .white)
-        btn.addActionHandler { (control) in
+        let view = UIButton(type: .custom)
+        view.setTitle("done", for: .normal)
+        view.addActionHandler { (control) in
             self.test()
         }
-        let doneItem = UIBarButtonItem(customView: btn)
+        let doneItem = UIBarButtonItem(customView: view)
         navigationItem.rightBarButtonItems = [doneItem, ]
     }
     

@@ -72,7 +72,8 @@ class NNAddressPickerController: NNTabController{
     }
     
     func setupUI() {
-        let button = UIButton.create(.zero, title: "确定", textColor: .theme, backgroundColor: .clear)
+        let button = UIButton(type: .custom)
+        button.setTitle("确定", for: .normal)
         button.sizeToFit()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         button.addActionHandler({ (sender) in

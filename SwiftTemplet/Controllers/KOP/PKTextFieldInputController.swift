@@ -139,7 +139,7 @@ extension PKTextFieldInputController: UITableViewDataSource, UITableViewDelegate
             cell.textfield.textAlignment = .left
             
             cell.block { (textField) in
-                DDLog(textField.text as Any)
+                DDLog(textField.text)
             }
             cell.getViewLayer()
             return cell

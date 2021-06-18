@@ -179,7 +179,7 @@ import SwiftExpand
         view.setBackgroundImage(UIImage(named: "bg_announce_top"), for: .normal)
         
         view.addActionHandler({ (sender) in
-            DDLog(sender.currentTitle as Any)
+            DDLog(sender.currentTitle)
 
         }, for: .touchUpInside)
         return view

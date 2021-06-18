@@ -25,15 +25,16 @@ class TextFieldStyleController: UIViewController {
     }()
         
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "优惠券", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("优惠券", for: .normal)
         
-        button.sizeToFit()
-        button.addActionHandler({ (sender) in
+        view.sizeToFit()
+        view.addActionHandler({ (sender) in
             let controller = CCSCouponRecordController()
             self.navigationController?.pushViewController(controller, animated: true)
             
         }, for: .touchUpInside)
-        return button
+        return view
     }()
     
     // MARK: -life cycle
@@ -47,7 +48,7 @@ class TextFieldStyleController: UIViewController {
         super.viewDidLoad()
         
         title = "文本框样式"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 
         tableView.rowHeight = UITableView.automaticDimension;
         tableView.estimatedRowHeight = 70;
@@ -197,7 +198,7 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
 //                    sender.font = UIFont.systemFont(ofSize: 14)
 //                    sender.text = itemList.last!
 //                    sender.sizeToFit()
-//                    DDLog(sender.text as Any)
+//                    DDLog(sender.text)
 //                }
                 cell.textfield.rightView(UILabel.self, viewMode: .always) { (sender) in
                     sender.font = UIFont.systemFont(ofSize: 14)
@@ -211,7 +212,7 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
             }
             
             cell.block { (textField) in
-                DDLog(textField.text as Any)
+                DDLog(textField.text)
             }
 //            cell.getViewLayer()
             return cell

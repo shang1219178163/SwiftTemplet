@@ -11,7 +11,9 @@ import UIKit
 class OrangeViewController: UIViewController {
 
     lazy var btn: UIButton = {
-        let view = UIButton.create(title: "上推", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("上推", for: .normal)
+
         return view
     }()
     

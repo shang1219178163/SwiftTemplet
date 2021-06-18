@@ -15,40 +15,21 @@ class UISearchStylesController: UIViewController{
         super.viewDidLoad()
         
         setupExtendedLayout()
+        title = vcName
+        
         view.addSubview(plainView)
-        
-        if title == nil {
-            title = vcName;
-        }
-        
-        view.getViewLayer()
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     // MARK: -funtions
-    
 
     lazy var allList: [[[String]]] = {
         let array: [[[String]]] = [
             [["NNSearchController", "复合🔍", ],
              ["NNSearchNoResultPageController", "复合🔍无结果页", ],
              ["NNSearchListController", "titleView🔍", ],
+             ["NNSearchOneController", "SearchOne🔍", ],
+
 //                ["PopViewController", "titleView🔍", ],
 //            ["CCSDeskViewController", "titleView自定义🔍", ],
             ],
@@ -68,16 +49,11 @@ class UISearchStylesController: UIViewController{
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-//            let cell = UITableViewCellZero.dequeueReusableCell(tableView) as! UITableViewCellZero;
-//            cell.textLabel!.text = itemList[0]
-
-//            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle) as UITableViewCell;
             let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
-            
             cell.accessoryType = .disclosureIndicator;
             
-            cell.textLabel!.text = itemList[1]
-            cell.textLabel!.textColor = UIColor.theme;
+            cell.textLabel?.text = itemList[1]
+            cell.textLabel?.textColor = UIColor.theme;
             cell.detailTextLabel?.text = itemList[0];
             cell.detailTextLabel?.textColor = UIColor.gray;
             return cell

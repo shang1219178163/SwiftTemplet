@@ -25,11 +25,13 @@ class EDriverViewController: UIViewController {
         edgesForExtendedLayout = []
         view.backgroundColor = .white
         
-        let btn = UIButton.create(title: "done", textColor: .theme, backgroundColor: .white)
+        let btn = UIButton(type: .custom)
+        btn.setTitle("done", for: .normal)
         btn.addActionHandler { (control) in
             self.login()
         }
-        let btn1 = UIButton.create(title: "done1", textColor: .theme, backgroundColor: .white)
+        let btn1 = UIButton(type: .custom)
+        btn1.setTitle("done1", for: .normal)
         btn1.addActionHandler { (control) in
             self.login2()
         }

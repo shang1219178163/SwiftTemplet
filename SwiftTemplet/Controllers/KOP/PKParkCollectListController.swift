@@ -40,13 +40,15 @@ import SwiftExpand
     }()
         
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "保存", textColor: .theme, backgroundColor: .clear)
-        button.isHidden = true;
-        button.sizeToFit()
-        button.addActionHandler({ (sender) in
+        let view = UIButton(type: .custom)
+        view.setTitle("保存", for: .normal)
+
+        view.isHidden = true;
+        view.sizeToFit()
+        view.addActionHandler({ (sender) in
             
         }, for: .touchUpInside)
-        return button
+        return view
     }()
     
     @objc func handleAction(_ sender: UIButton) {

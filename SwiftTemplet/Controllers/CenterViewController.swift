@@ -35,7 +35,6 @@ class CenterViewController: UIViewController {
             let style = sender.value(forKey: "systemItem");
             if UIBarButtonItem.SystemItem(rawValue: style as! Int) == UIBarButtonItem.SystemItem.redo {
                 DDLog("111111");
-                
             }
             
             if sender.systemType == UIBarButtonItem.SystemItem.reply {
@@ -60,7 +59,8 @@ class CenterViewController: UIViewController {
         }
         
         let rect = CGRect(x:260, y: 260, width: 50, height: 50)
-        let btn = UIButton.create(rect, title: "title", textColor: .white, backgroundColor: .clear)
+        let btn = UIButton(type: .custom)
+        btn.setTitle("title", for: .normal)
         btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
         btn.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         btn.addActionHandler({ (sender) in
@@ -78,11 +78,12 @@ class CenterViewController: UIViewController {
         btn.backgroundColor = .red;
         
         let rectOne = CGRect(x: imgView.frame.minX, y: imgView.frame.maxY + 20, width: 100, height: 100)
-        let btnOne = UIButton.create( rectOne, title: "666+", textColor: .white, backgroundColor: .theme)
+        let btnOne = UIButton(type: .custom)
+        btnOne.setTitle("666+", for: .normal)
         view.addSubview(btnOne)
         
         btnOne.addActionHandler({ (sender) in
-            DDLog(btnOne.titleLabel?.text as Any)
+            DDLog(btnOne.titleLabel?.text)
             
         }, for: .touchUpInside)
     

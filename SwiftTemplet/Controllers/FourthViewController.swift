@@ -13,16 +13,31 @@ import UICircularProgressRing
 
 class FourthViewController: UIViewController {
     
+    let labelOne: UILabel = {
+       $0.textAlignment = .center
+       $0.textColor = .black
+       $0.text = "Hello, World!"
+        return $0
+      }(UILabel())
+    
+//    {
+//       $0.textAlignment = .center
+//       $0.textColor = .black
+//       $0.text = "Hello, World!"
+//      }(UILabel())
+    
     lazy var rightBtn: UIButton = {
-        let btn = UIButton.create(.zero, title: "展示", textColor: .white, backgroundColor: .clear)
-        btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
-        btn.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
-        btn.sizeToFit()
-        btn.addActionHandler({ (sender) in
+        let view = UIButton(type: .custom)
+        view.setTitle("展示", for: .normal)
+
+//        view.setBackgroundImage(UIImage(color: .theme), for: .normal)
+//        view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
+        view.sizeToFit()
+        view.addActionHandler({ (sender) in
             self.showPopoverAction(sender)
             
         }, for: .touchUpInside)
-        return btn
+        return view
     }()
     
     lazy var itemView: NNItemsView = {
@@ -37,7 +52,7 @@ class FourthViewController: UIViewController {
         
         view.block({ (itemsView, sender) in
             guard let btn = sender as? UIButton else { return }
-            print(btn.titleLabel?.text as Any)
+            print(btn.titleLabel?.text)
             self.showPopoverAction(btn)
 
         })
@@ -56,6 +71,108 @@ class FourthViewController: UIViewController {
         view.padding = 60
         view.index = 1
         return view;
+    }()
+    
+    lazy var goodsToolView: IOPGoodsToolView = {
+        let view = IOPGoodsToolView(frame: .zero)
+        view.padding = 10;
+        view.numberOfRow = 5;
+        view.titles = ["扩容", "减配", "续费"]
+        view.delegate = self
+        
+        return view;
+    }()
+    
+    lazy var orderPayView: IOPOrderPayView = {
+        let view = IOPOrderPayView(frame: .zero)
+
+        return view;
+    }()
+    
+    func createGroupView() {
+        let list = 12.repeatArray("按钮_")
+
+        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
+        let groupView = UIButton.createGroupView(rect, list: list, numberOfRow: 4, padding: 5) { (control) in
+            DDLog(control.tag);
+            self.showPopoverAction(control )
+        }
+
+        view.addSubview(groupView);
+    }
+        
+    lazy var clockView: NNClockView = {
+        let view = NNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
+        view.itemList = ["111","222","333","444","555","666","777","888",];
+        view.backgroundColor = .random;
+        view.image = UIImage(named: "beach");
+        
+        view.aniDuration = 12;
+        view.animRotation(isClockwise: true, duration: view.aniDuration, repeatCount: MAXFLOAT, key: nil);
+        view.layoutIfNeeded();//激活子视图动画
+        
+        view.layer.cornerRadius = view.frame.width/2.0;
+        view.layer.masksToBounds = true;
+        
+        view.addGestureTap { (tap) in
+            DDLog(tap.view);
+            
+        }
+        return view
+    }()
+    
+    lazy var progressView: NNAnnularProgress = {
+        let progressView = NNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
+        progressView.backgroundColor = .cyan;
+        return progressView;
+    }()
+    
+    lazy var progressRing: UICircularProgressRing = {
+        let progressRing = UICircularProgressRing(frame: .zero);
+        progressRing.maxValue = 100
+        progressRing.style = .ontop
+        progressRing.outerRingColor = .background
+        progressRing.outerRingWidth = 5
+        progressRing.innerRingColor = .systemBlue
+        progressRing.innerRingWidth = 5
+
+        progressRing.fontColor = progressRing.innerRingColor
+        return progressRing;
+    }()
+    
+    lazy var datePicker: NNDatePicker = {
+        let view = NNDatePicker();
+        view.block({ (sender, idx) in
+            if idx == 1 {
+                DDLog(view,sender.datePicker.date,idx);
+                
+            }
+        })
+        return view;
+    }()
+    
+    lazy var button: UIButton = {
+        let sender = UIButton(type: .custom)
+        sender.setTitle("button", for: .normal)
+        sender.setTitleColor(.black, for: .normal)
+        sender.setTitleColor(.red, for: .disabled)
+
+        let backgroudImage = UIImage(color: .hexValue(0xF3F3F3))
+        let selectedBackgroudImage = UIImage(named: "btn_selected_multiple")!
+        sender.setBackgroundImage(backgroudImage, for: .normal)
+        sender.setBackgroundImage(selectedBackgroudImage, for: .selected)
+
+
+        sender.layer.borderWidth = 1
+        sender.layer.borderColor = UIColor.systemBlue.cgColor
+    
+        sender.addActionHandler { (sender) in
+            DDLog(sender.currentTitle)
+            NotificationCenter.default.post(name: Notification.Name.appTokenExpired, object: nil, userInfo: ["1": "aaa"])
+
+        }
+
+        return sender;
     }()
     
     lazy var segmentCtl: NNSegmentedControl = {
@@ -111,10 +228,11 @@ class FourthViewController: UIViewController {
     
     lazy var label: UILabel = {
         let view = UILabel(frame: .zero)
-        view.addLongPressMenuItems()
+        
+//        view.addLongPressMenuItems()
 //        UIMenuController.shared.menuItems = menuItems
         view.text = "这是一调测试信息"
-        
+
         view.backgroundColor = UIColor.background
         return view
     }()
@@ -126,18 +244,81 @@ class FourthViewController: UIViewController {
     ]
         
     var progress: CGFloat = 0.0;
+    
+    lazy var group: NNGroupButton = {
+        let sender = NNGroupButton()
+        sender.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
+            let sender = NNButton(type: .custom)
+            sender.setTitle("item_\(i)", for: .normal)
+            sender.setTitleColor(.gray, for: .normal)
+            sender.setTitleColor(.systemBlue, for: .selected)
+
+            sender.setBorderColor(.line, for: .normal)
+            sender.setBorderColor(.systemBlue, for: .selected)
+            
+            sender.layer.cornerRadius = 5;
+            sender.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            
+//            sender.iconSize = CGSize(width: 30, height: 18)
+//            sender.iconBtn.setTitle("\(i)", for: .normal)
+//            sender.iconBtn.setTitleColor(.red, for: .normal)
+
+//            sender.getViewLayer()
+            return sender
+        })
+        sender.isMutiChoose = true
+        sender.itemsIndexs = [1,3,5]
+        sender.block = { view, sender in
+            DDLog(view.itemsIndexs)
+//            DDLog(view.itemsIndexs)
+        }
+        return sender
+    }()
+    
+    
+    lazy var stepper: UIStepper = {
+                
+        let stepper = UIStepper(frame: CGRect(x: 130, y: 100, width: 0, height: 0))
+        //设置步进对象的对象大小为自适应
+        stepper.sizeToFit();
+        //设置步进对象的默认值为0
+        stepper.value=0;
+        //设置最小最大值
+        stepper.minimumValue=0;
+        stepper.maximumValue=10
+        //设置每次递增递减的值
+        stepper.stepValue=1;
+        //添加状态监听事件
+                      
+        //按住的时候连续变化
+        stepper.isContinuous = true
+
+        //是否循环 当增长到最大值的时候再从新开始
+        stepper.wraps = true
+        
+        stepper.addActionHandler { (control) in
+            guard let sender = control as? UIStepper else { return }
+            DDLog(sender.value);
+        }
+        
+        return stepper
+    }()
 
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        edgesForExtendedLayout = []
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         navigationItem.titleView = segmentCtl
                 
-//        createGroupView();
+        view.addSubview(group)
 
         view.addSubview(itemView)
         view.addSubview(processingView)
+        view.addSubview(button)
+        view.addSubview(stepper)
 
         view.addSubview(goodsToolView)
         view.addSubview(orderPayView)
@@ -166,18 +347,26 @@ class FourthViewController: UIViewController {
         //元组
 //        let score = (java: 12.01, Swift: 34, c:"abcde", oc: 98)
 //        DDLog(score.java, score.Swift);
+        
+//        button.isEnabled = false
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNottification(_:)), name: NSNotification.Name.appTokenExpired, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let height: CGFloat = 90
-        
-        if view.bounds.width < 400 {
-            return
+
+        group.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(10);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(height);
         }
         
         itemView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(10);
+            make.top.equalTo(group.snp.bottom).offset(10);
             make.left.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
             make.height.equalTo(height);
@@ -211,6 +400,21 @@ class FourthViewController: UIViewController {
             make.height.equalTo(140);
         }
         
+        button.snp.makeConstraints { (make) in
+            make.top.equalTo(progressRing.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(40);
+        }
+        
+        
+        stepper.snp.makeConstraints { (make) in
+            make.top.equalTo(button.snp.bottom).offset(20);
+            make.left.equalToSuperview().offset(10);
+            make.right.equalToSuperview().offset(-10);
+            make.height.equalTo(40);
+        }
+        
 //        DDLog(view.bounds, view.subviews)
 
     }
@@ -230,7 +434,7 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showSuccess("success");
 //        NNProgressHUD.showErrorText("fail");
         
-        DDLog("扩容", "减配", "续费")
+        OrderPayContext.testExpample(300)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -267,84 +471,12 @@ class FourthViewController: UIViewController {
 
     }
     
-    lazy var goodsToolView: IOPGoodsToolView = {
-        let view = IOPGoodsToolView(frame: .zero)
-        view.padding = 10;
-        view.numberOfRow = 5;
-        view.titles = ["扩容", "减配", "续费"]
-        view.delegate = self
-        
-        return view;
-    }()
     
-    lazy var orderPayView: IOPOrderPayView = {
-        let view = IOPOrderPayView(frame: .zero)
-
-        return view;
-    }()
-    
-    func createGroupView() {
-        let list = 12.repeatArray("按钮_")
-
-        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
-        let groupView = UIButton.createGroupView(rect, list: list, numberOfRow: 4, padding: 5) { (control) in
-            DDLog(control.tag);
-            self.showPopoverAction(control as! UIButton)
-        }
-
-        view.addSubview(groupView);
+    @objc func handleNottification(_ n: Notification) {
+        DDLog(n.name.rawValue, n.userInfo)
     }
-        
-    lazy var clockView: NNClockView = {
-        let view = NNClockView(frame: CGRect(x: 20, y: 20, width: kScreenWidth - 40, height: kScreenWidth - 40));
-        view.itemList = ["111","222","333","444","555","666","777","888",];
-        view.backgroundColor = .random;
-        view.image = UIImage(named: "beach");
-        
-        view.aniDuration = 12;
-        view.animRotation(isClockwise: true, duration: view.aniDuration, repeatCount: MAXFLOAT, key: nil);
-        view.layoutIfNeeded();//激活子视图动画
-        
-        view.layer.cornerRadius = view.frame.width/2.0;
-        view.layer.masksToBounds = true;
-        
-        view.addGestureTap { (tap) in
-            DDLog(tap.view);
+    
             
-        }
-        return view
-    }()
-    
-    lazy var progressView: NNAnnularProgress = {
-        let progressView = NNAnnularProgress(frame: CGRect(x:50,y:kScreenWidth/2+40,width:100,height:100));
-        progressView.backgroundColor = .cyan;
-        return progressView;
-    }()
-    
-    lazy var progressRing: UICircularProgressRing = {
-        let progressRing = UICircularProgressRing(frame: .zero);
-        progressRing.maxValue = 100
-        progressRing.style = .ontop
-        progressRing.outerRingColor = .background
-        progressRing.outerRingWidth = 5
-        progressRing.innerRingColor = .systemBlue
-        progressRing.innerRingWidth = 5
-
-        progressRing.fontColor = progressRing.innerRingColor
-        return progressRing;
-    }()
-    
-    lazy var datePicker: NNDatePicker = {
-        let view = NNDatePicker();
-        view.block({ (sender, idx) in
-            if idx == 1 {
-                DDLog(view,sender.datePicker.date,idx);
-                
-            }
-        })
-        return view;
-    }()
-        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -360,24 +492,24 @@ class FourthViewController: UIViewController {
     }
 }
 
-extension FourthViewController: UIPopoverPresentationControllerDelegate {
-
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-     
-    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-        return true
-    }
-    
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-//        setAlphaOfBackgroundViews(1)
-    }
-
-    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-//        setAlphaOfBackgroundViews(0.7)
-    }
-}
+//extension FourthViewController: UIPopoverPresentationControllerDelegate {
+//
+//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+//        return .none
+//    }
+//
+//    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+//        return true
+//    }
+//
+//    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+////        setAlphaOfBackgroundViews(1)
+//    }
+//
+//    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+////        setAlphaOfBackgroundViews(0.7)
+//    }
+//}
 
 extension FourthViewController: IOPGoodsToolViewDelegate{
     
@@ -403,24 +535,44 @@ extension FourthViewController: IOPGoodsToolViewDelegate{
 }
 
 
-//@objc extension UIMenuItem {
-//    /// UIControl 添加回调方式
-//    public func create(title: String, action: @escaping ((UIMenuItem) -> Void)) -> UIMenuItem {
-//        let item = UIMenuItem(title: title, action: #selector(p_handleAction(_:)))
+//public func index<Elements: Collection, Element>(of element: Element, in collection: Elements ) -> Elements.Index? where Elements.Element == Element, Element: Equatable
+//{
 //
-//        objc_setAssociatedObject(self, &AssociateKeys., action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-//        return item
+//}
+
+//public extension NSAttributedString {
+//    /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
+//    static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+//        let string = NSMutableAttributedString(attributedString: lhs)
+//        string.append(rhs)
+//        return NSAttributedString(attributedString: string)
 //    }
 //
-//    /// 点击回调
-//    private func p_handleAction(_ sender: UIMenuItem) {
-//        guard let block = objc_getAssociatedObject(self, RuntimeKeyFromSelector(self, aSelector: #selector(create(title:action:)))) as? ((UIMenuItem) -> Void) else { return }
-//        block(sender)
+//    /// Add a NSAttributedString to another NSAttributedString.
+//    static func += (lhs: inout NSAttributedString, rhs: NSAttributedString) {
+//        let string = NSMutableAttributedString(attributedString: lhs)
+//        string.append(rhs)
+//        lhs = string
 //    }
 //
-//    convenience init(title: String, block: @escaping ((UIMenuItem) -> Void)) {
-//        self.init()
-//        self.title = title
-//        self.action = #selector(p_handleAction(_:))
+//    /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
+//    static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+//        return lhs + NSAttributedString(string: rhs)
+//    }
+//
+//    /// Add a NSAttributedString to another NSAttributedString.
+//    static func += (lhs: inout NSAttributedString, rhs: String) {
+//        lhs += NSAttributedString(string: rhs)
+//    }
+//}
+
+//extension Range{
+//    
+//    static func + (lhs: Range<Bound>, rhs: Range<Bound>) -> CountableClosedRange<Int> {
+//        assert(lhs.lowerBound <= rhs.lowerBound, lhs.upperBound >= rhs.upperBound)
+////
+////        let string = NSMutableAttributedString(attributedString: lhs)
+////        string.append(rhs)
+//        return NSAttributedString(attributedString: string)
 //    }
 //}

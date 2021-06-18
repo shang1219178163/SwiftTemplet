@@ -86,7 +86,7 @@ class UIRecognizerController: UIViewController,UIGestureRecognizerDelegate {
 //
 //            recognizer.view?.center = CGPoint(x: (recognizer.view?.center.x)! + translate.x, y: (recognizer.view?.center.y)! + translate.y)
 //            recognizer.setTranslation( .zero, in: recognizer.view?.superview)
-//            //            print(sender.view?.center as Any)
+//            //            print(sender.view?.center)
 //            DDLog(translate,recognizer.view?.center)
             
         }

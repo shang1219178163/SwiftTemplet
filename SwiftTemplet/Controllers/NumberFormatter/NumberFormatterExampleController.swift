@@ -14,7 +14,6 @@ class NumberFormatterExampleController: UIViewController {
     
     
     lazy var btn: UIButton = {
-//        let view = UIButton.create(title: "按钮", textColor: .white, backgroundColor: .clear)
         let view = UIButton(type: .custom)
         view.setTitle("按钮", for: .normal)
 

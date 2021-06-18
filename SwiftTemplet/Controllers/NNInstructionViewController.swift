@@ -15,7 +15,9 @@ import UIKit
     var dataList = NSMutableArray()
 
     lazy var rightBtn: UIButton = {
-        let view = UIButton.create(title: "下一步骤", textColor: .white, backgroundColor: .theme)
+        let view = UIButton(type: .custom)
+        view.setTitle("下一步骤", for: .normal)
+        
         view.addActionHandler({ (sender) in
 //            let controller = IOPInPartAgreementController()
 //            controller.type = "1"

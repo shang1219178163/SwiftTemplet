@@ -146,7 +146,7 @@ class NNDatePicker: UIView {
             DDLog(control.date);
         }
         else if let control = sender as? UIButton {
-            DDLog(control.titleLabel?.text as Any);
+            DDLog(control.titleLabel?.text);
             if control.titleLabel?.text == kTitleSure {
                 delegate?.datePicker(self, index: sender.tag)
                 self.viewBlock?(self, sender.tag);

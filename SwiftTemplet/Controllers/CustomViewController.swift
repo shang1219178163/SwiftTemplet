@@ -35,14 +35,17 @@ class CustomViewController: UIViewController {
         var rect = CGRect.make(20, itemView.maxY+20, 80, 60)
 //        rect = CGRect(x: 20, y: itemView.maxY+20, width: 60, height: 40)
         rect = CGRectMake(120, itemView.maxY+20, 80, 60)
-        let btn = UIButton.create(.zero, title: "自定义", textColor: .white, backgroundColor: .clear)
+        
+        let btn = UIButton(type: .custom)
+        btn.setTitle("自定义", for: .normal)
+
         btn.setTitleColor( .white, for: .normal)
         btn.setBackgroundImage(UIImage(color: .theme), for: .normal)
         btn.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         
         btn.addActionHandler({ (sender) in
             if let button = sender as? UIButton {
-                DDLog(button.titleLabel?.text as Any)
+                DDLog(button.titleLabel?.text)
                 
                 if self.operationView.type < 6 {
                     self.operationView.type += 1;
@@ -100,7 +103,7 @@ class CustomViewController: UIViewController {
         view.numberOfRow = 4;
         view.block({ (itemsView, sender) in
             if let btn = sender as? UIButton {
-                print(btn.titleLabel?.text as Any)
+                print(btn.titleLabel?.text)
 
             }
         })

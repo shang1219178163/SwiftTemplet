@@ -94,11 +94,12 @@ import SwiftExpand
     
     
     lazy var btn: UIButton = {
-        let view = UIButton.create( .zero, title: "标题", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("标题", for: .normal)
         
         view.addActionHandler({ (sender) in
             if let obj = sender as? UIButton {
-                DDLog(obj.currentTitle as Any)
+                DDLog(obj.currentTitle)
                 
             }
         }, for: .touchUpInside)

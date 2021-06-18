@@ -163,7 +163,7 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
 //            cell.textfield.textAlignment = .right
             
             cell.block { (textField) in
-                DDLog(textField.text as Any)
+                DDLog(textField.text)
             }
             cell.getViewLayer()
             return cell

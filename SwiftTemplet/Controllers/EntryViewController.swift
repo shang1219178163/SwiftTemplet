@@ -71,6 +71,7 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        edgesForExtendedLayout = []
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
 
         tableView.rowHeight = UITableView.automaticDimension;
@@ -614,7 +615,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textfield.textAlignment = .right
             
             cell.block { (textField) in
-                DDLog(textField.text as Any)
+                DDLog(textField.text)
             }
             cell.getViewLayer()
             return cell
@@ -1041,7 +1042,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 sender.detailTextLabel.text = values[1]
                 
                 sender.addGestureTap { (gesture) in
-                    DDLog(gesture.view?.tag as Any)
+                    DDLog(gesture.view?.tag)
 
 //                    switch gesture.view!.tag {
 //                        case 0:
@@ -1091,7 +1092,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             return cell;
             
         case "UITableViewCellChoose":
-            let cell = UITableViewCellChoose.dequeueReusableCell(tableView);
+//            let cell = UITableViewCellChoose.dequeueReusableCell(tableView);
+            let cell = tableView.dequeueReusableCell(for: UITableViewCellChoose.self)
+
             if cell.groupView.items.count == 0 {
                 cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
                     let sender = NNButton(type: .custom)

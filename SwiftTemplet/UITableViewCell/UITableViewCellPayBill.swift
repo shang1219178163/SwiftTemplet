@@ -94,7 +94,9 @@ class UITableViewCellPayBill: UITableViewCell {
     }
     
     lazy var btnDelete: UIButton = {
-        let view = UIButton.create(.zero, title: "删除订单", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("删除订单", for: .normal)
+        
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         view.setBackgroundImage(UIImage(color: .systemRed), for: .normal)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 12)
@@ -102,7 +104,9 @@ class UITableViewCellPayBill: UITableViewCell {
     }()
 
     lazy var btnPay: UIButton = {
-        let view = UIButton.create(.zero, title: "支付", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("支付", for: .normal)
+        
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         view.setBackgroundImage(UIImage(color: .systemBlue), for: .normal)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 12)
@@ -110,7 +114,9 @@ class UITableViewCellPayBill: UITableViewCell {
     }()
 
     lazy var btnCancell: UIButton = {
-        let view = UIButton.create(.zero, title: "取消订单", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("取消订单", for: .normal)
+        
         view.setTitleColor( .theme, for: .normal);
         view.layer.borderColor = UIColor.theme.cgColor;
         view.layer.borderWidth = 1;

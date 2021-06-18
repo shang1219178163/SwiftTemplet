@@ -57,6 +57,7 @@ class NNButtonLayerTarget: NSObject {
                 changeLayerCornerRadius(sender)
                 observerBlock?(keyPath, sender, change)
             }
+//            print(#function, sender.currentTitle)
         } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

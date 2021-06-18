@@ -15,7 +15,8 @@ import UIKit
     var dataList = NSMutableArray()
 
     lazy var rightBtn: UIButton = {
-        let view = UIButton.create(title: "Next", textColor: .white, backgroundColor: .theme)
+        let view = UIButton(type: .custom)
+        view.setTitle("Next", for: .normal)
         view.addActionHandler({ (sender) in
 //            let controller = UIViewController()
 //            self.navigationController?.pushViewController(controller, animated: true)

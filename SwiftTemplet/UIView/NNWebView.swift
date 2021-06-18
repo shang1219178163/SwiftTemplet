@@ -110,7 +110,7 @@ import SwiftExpand
             guard let url = webView.url
                   else { return }
             let absoluteString = url.absoluteString
-            DDLog(absoluteString.removingPercentEncoding as Any)
+            DDLog(absoluteString.removingPercentEncoding)
             
             if let delegate = delegate {
                 delegate.webView?(self.webView, url: url)

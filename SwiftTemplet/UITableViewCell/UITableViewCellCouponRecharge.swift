@@ -122,9 +122,10 @@ import SwiftExpand
     }
     
     lazy var btnName: UIButton = {
-        let view = UIButton.create(.zero, title: "--", textColor: .systemBlue, backgroundColor: .clear)
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        let view = UIButton(type: .custom)
+        view.setTitle("--", for: .normal)
         
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         return view
     }()
     

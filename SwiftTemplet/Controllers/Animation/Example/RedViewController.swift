@@ -12,7 +12,8 @@ import UIKit
 class RedViewController: UIViewController {
     
     lazy var btn: UIButton = {
-        let view = UIButton.create(title: "下拉", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("下拉", for: .normal)
         return view
     }()
     // MARK: -lifecycle

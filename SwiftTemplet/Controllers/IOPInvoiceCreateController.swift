@@ -52,12 +52,14 @@ class IOPInvoiceCreateController: UIViewController {
     }()
     
     lazy var rightBtn: UIButton = {
-        let button = UIButton.create(.zero, title: "进件须知", textColor: .theme, backgroundColor: .clear)
-        button.sizeToFit()
-        button.addActionHandler({ (sender) in
+        let view = UIButton(type: .custom)
+        view.setTitle("进件须知", for: .normal)
+
+        view.sizeToFit()
+        view.addActionHandler({ (sender) in
             
         }, for: .touchUpInside)
-        return button
+        return view
     }()
     
     lazy var tableView: UITableView = {

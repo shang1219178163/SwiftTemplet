@@ -121,7 +121,9 @@ class UITableViewCellCode: UITableViewCell {
     }
     
     lazy var btnCode: UIButton = {
-        let view = UIButton.create(.zero, title: "发送验证码", textColor: .white, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("发送验证码", for: .normal)
+
         view.setBackgroundImage(UIImage(color: .theme), for: .normal)
         view.setBackgroundImage(UIImage(color: .lightGray), for: .disabled)
         return view

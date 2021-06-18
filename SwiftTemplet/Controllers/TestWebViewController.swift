@@ -151,7 +151,7 @@ class TestWebViewController: UIViewController {
             guard let url = webView.url,
                   let absoluteString = url.absoluteString as String?
                   else { return }
-            DDLog(absoluteString.removingPercentEncoding as Any)
+            DDLog(absoluteString.removingPercentEncoding)
             
 //            delegate?.webViewVC(self, url: url)
     

@@ -42,11 +42,12 @@ class UICollectionFlowStyleController: UIViewController{
             UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
         }
         
-        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        let btn = UIButton(type: .custom)
+        btn.setTitle("Next", for: .normal)
         btn.addActionHandler { (control) in
             DDLog(control)
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         
         view.addSubview(tableView)
 

@@ -19,7 +19,7 @@ class NNPickListView: UIView {
 
     var itemList: [[String]]? {
         willSet{
-            DDLog(newValue as Any)
+            DDLog(newValue)
             list.removeAll()
             for e in (newValue?.enumerated())! {
                 list.append(e.element.first!)

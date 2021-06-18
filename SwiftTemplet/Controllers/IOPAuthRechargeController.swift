@@ -129,7 +129,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
             
             cell.block { (sender:AnyObject) in
                 if let textField = sender as? UITextField {
-                    DDLog(textField.text as Any)
+                    DDLog(textField.text)
                 }
             }
             return cell

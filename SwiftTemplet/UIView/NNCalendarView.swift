@@ -195,8 +195,9 @@ class NNCalendarView: UIView {
     lazy var titleBtn: UIButton = {
         var dateStr = DateFormatter.stringFromDate(currentDate, fmt: kDateFormatMonth_CH)
         dateStr = "\(year)年\(month)月"
-        var view = UIButton.create(.zero, title: dateStr, textColor: .red, backgroundColor: .clear)
-        
+        let view = UIButton(type: .custom)
+        view.setTitle(dateStr, for: .normal)
+
         view.addActionHandler({[weak self] (control) in
             DDLog(dateStr)
             }, for: .touchUpInside)
@@ -204,7 +205,9 @@ class NNCalendarView: UIView {
     }()
     
     lazy var todayBtn: UIButton = {
-        let view = UIButton.create(.zero, title: "今天", textColor: .red, backgroundColor: .clear)
+        let view = UIButton(type: .custom)
+        view.setTitle("今天", for: .normal)
+
         view.addActionHandler({[weak self] (control) in
             guard let self = self else { return }
             let comp = Calendar.shared.dateComponents(Calendar.unitFlags, from: Date())

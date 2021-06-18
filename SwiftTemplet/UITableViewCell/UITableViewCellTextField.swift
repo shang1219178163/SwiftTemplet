@@ -123,7 +123,7 @@ class UITableViewCellTextField: UITableViewCell {
     }
     
     @objc func handleSend(_ sender: UITextField) {
-        DDLog(sender.text as Any)
+        DDLog(sender.text)
     }
    
 }

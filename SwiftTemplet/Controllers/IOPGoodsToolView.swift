@@ -39,7 +39,9 @@ class IOPGoodsToolView: UIView {
             }
             
             newValue!.forEach { (title) in
-                let btn = UIButton.create(.zero, title: title, textColor: .theme, backgroundColor: .clear)
+                let btn = UIButton(type: .custom)
+                btn.setTitle(title, for: .normal)
+
                 btn.setTitleColor( .theme, for: .normal);
                 btn.layer.borderColor = UIColor.theme.cgColor;
                 btn.layer.borderWidth = 1;

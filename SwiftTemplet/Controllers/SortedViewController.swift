@@ -49,14 +49,10 @@ class SortedViewController: UIViewController {
         
         let b = list[2...5];// ArraySlice
         
-        let c = list.subarray(NSMakeRange(1, 3));
-        let d = list.subarray(1, 3);
+        let c = list.subarray(with: NSMakeRange(1, 3));
         
         DDLog(b);
         DDLog(c);
-        DDLog(d);
-        
-        
     }
     //MARK:字典排序
     func sortDictiony() {
