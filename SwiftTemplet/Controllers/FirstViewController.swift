@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import SwiftChain
 import SwiftExpand
+import Then
 
 import HandyJSON
 import MJRefresh
@@ -45,16 +45,22 @@ class FirstViewController: UIViewController{
             [["NNButtonStudyController", "Swift 按钮封装", ],
              ["NNButtonDispalyController", "OC 按钮封装", ],
              ["TextFieldViewController", "OC TextField下拉列表", ],
-             ["TextSizeController", "字体高度计算", ],
+             ["PropertyWrapperController", "PropertyWrapper", ],            
+             ["CryptoKitController", "Crypto加密", ],
+             ["ProtocolChainController", "ProtocolChain", ],
+             ["OptionWrappedController", "OptionWrapped", ],
+             ["NavigationBarColorChangeController", "BaColorrChange", ],
              
             ],
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
              ["PageDemoController", "PageDemo", ],
              ["CKShareDemoController", "CKShareDemo", ],
-             ["ColorPickeDemoController", "ColorPickeDemo", ],
+             ["PickerDemoController", "PickerDemo", ],
+             ["DateDemoController", "DateTimeFormatter", ],
+
              ["FeedbackGeneratorDemoController", "触感反馈", ],
 
-             ["AlerSheetStudyController", "AlerSheet自定义", ],
+             ["AlertSheetStudyController", "AlertSheet自定义", ],
              ["ShowActivityController", "ShowActivity", ],
              ["GXSegmentPageViewExampleController", "GXSegmentPageView", ],
              ["QRCodeViewController", "二维码", ],
@@ -92,7 +98,8 @@ class FirstViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+//        setupExtendedLayout()
+        edgesForExtendedLayout = [];
         view.backgroundColor = .white;
 
         createBarItem( .action, isLeft: true) { (sender: AnyObject) in
@@ -123,7 +130,9 @@ class FirstViewController: UIViewController{
 
         }
         
-        let btn = UIButton.create(title: "next", textColor: .white, backgroundColor: .theme)
+        let btn = UIButton(type: .custom)
+        btn.setTitle("Next", for: .normal)
+
         btn.sizeToFit()
         btn.frame = CGRectMake(0, 0, 80, 40)
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
@@ -152,16 +161,17 @@ class FirstViewController: UIViewController{
         
         let content = "分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t"
         annAlertView.htmlString = content
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        let layout = UICollectionViewFlowLayout()
-            .minimumLineSpacingChain(1)
-            .minimumInteritemSpacingChain(2)
-            .itemSizeChain(CGSize(width: 1, height: 2))
             
+        let layout = UICollectionViewFlowLayout().then {
+            $0.minimumLineSpacing = 1
+            $0.minimumInteritemSpacing = 2
+            $0.itemSize = CGSize(width: 1, height: 2)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -204,7 +214,8 @@ class FirstViewController: UIViewController{
         let b = Int(date.timeIntervalSince1970)
         DDLog(addTo(10)(1))
         
-        test()
+//        test()
+//        print(buildString())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -245,6 +256,8 @@ class FirstViewController: UIViewController{
         dic["a"]!.remove(at: 0)
         DDLog(dic)
     }
+    
+    
 }
 
 extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
@@ -312,52 +325,139 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         tableView.addSectionRoundCorner(cell: cell, forRowAt: indexPath)
     }
+    
+    
+    // 左侧按钮自定义
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let leftAction = UIContextualAction(style: .normal, title: "左侧") { (action, view, finished) in
+            DDLog(action.title)
+
+            finished(true)
+        }
+        leftAction.backgroundColor = .lightOrange
+
+        let leftAction1 = UIContextualAction(style: .normal, title: "左侧1") { (action, view, finished) in
+            DDLog(action.title)
+
+            finished(true)
+        }
+        leftAction1.backgroundColor = .lightGreen
+        return UISwipeActionsConfiguration(actions: [leftAction, leftAction1])
+    }
+    
+    // 右侧按钮自定义
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "删除") { (action, view, finished) in
+            self.list[indexPath.section].remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+
+            // 回调告知执行成功，否则不会删除此行！！！
+            finished(true)
+        }
+        
+        let archiveAction = UIContextualAction(style: .normal, title: "归档") { (action, view, finished) in
+            DDLog(action.title)
+        }
+        archiveAction.backgroundColor = .lightBlue
+
+        return UISwipeActionsConfiguration(actions: [deleteAction, archiveAction])
+    }
 }
 
 
-//@objc public extension UITableView{
-//    
-//    func addSectionRoundCorner(_ radius: CGFloat = 10, cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.selectionStyle = .none;
-//        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-//        // 设置cell 背景色为透明
-//        cell.backgroundColor = UIColor.clear
-//        
-////        // 圆角角度
-////        let radius: CGFloat = 10
-//        // 获取显示区域大小
-//        let bounds: CGRect = cell.bounds.insetBy(dx: 10, dy: 0)
-//        // 获取每组行数
-//        let rowNum: Int = self.numberOfRows(inSection: indexPath.section)
-//        // 贝塞尔曲线
-//        var bezierPath: UIBezierPath?
-//        if rowNum == 1 {
-//            // 一组只有一行（四个角全部为圆角）
-//            bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: radius, height: radius))
-//            
-//        } else {
-//            if indexPath.row == 0 {
-//                // 每组第一行（添加左上和右上的圆角）
-//                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radius, height: radius))
-//            } else if indexPath.row == rowNum-1 {
-//                // 每组最后一行（添加左下和右下的圆角）
-//                bezierPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: radius, height: radius))
-//            } else {
-//                // 每组不是首位的行不设置圆角
-//                bezierPath = UIBezierPath(rect: bounds)
-//            }
-//        }
+protocol Container{
+    associatedtype Item: Equatable
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+
+
+struct Stack<Element: Equatable>: Container {
+    // Stack<Element> 的原始实现部分
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+    // Container 协议的实现部分
+    mutating func append(_ item: Element) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Element {
+        return items[i]
+    }
+}
+
+
+extension Stack where Element: Equatable {
+    func isTop(_ item: Element) -> Bool {
+        guard let topItem = items.last else {
+            return false
+        }
+        return topItem == item
+    }
+}
+
+
+protocol SuffixableContainer: Container {
+    associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
+    func suffix(_ size: Int) -> Suffix
+}
+
+
+extension Stack: SuffixableContainer {
+    func suffix(_ size: Int) -> Stack {
+        var result = Stack()
+        for index in (count-size)..<count {
+            result.append(self[index])
+        }
+        return result
+    }
+    // Inferred that Suffix is Stack.
+}
+
+
+
+//@resultBuilder
+//struct StringBuilder {
+//    // buildBlock中将多个值构建为一个结果
+//    static func buildBlock(_ strs: String...) -> String {
+//        // 以换行符拼接多个字符串
+//        strs.joined(separator: "\n")
+//    }
 //
-//        // 创建两个layer
-//        let normalLayer = CAShapeLayer()
-//        let selectLayer = CAShapeLayer()
-//        // 把已经绘制好的贝塞尔曲线路径赋值给图层，然后图层根据path进行图像渲染render
-//        normalLayer.path = bezierPath?.cgPath
-//        selectLayer.path = bezierPath?.cgPath
-//        
-//        // 设置填充颜色
-//        normalLayer.fillColor = UIColor.white.cgColor
-//        normalLayer.strokeColor = UIColor.white.cgColor
-//        cell.layer.insertSublayer(normalLayer, at: 0)
+//    // if逻辑分支
+//    static func buildEither(first component: String) -> String {
+//        return "if \(component)"
+//    }
+//
+//    // else逻辑分支
+//    static func buildEither(second component: String) -> String {
+//        return "else \(component)"
 //    }
 //}
+//
+//@StringBuilder
+//func buildString() -> String {
+//    "静夜思"
+//    "唐•李白"
+//    "床前明月光，疑是地上霜。"
+//    "举头望明月，低头思故乡。"
+//
+//    if Bool.random() {
+//        "一首诗"
+//    } else {
+//        "一首词"
+//    }
+//}
+

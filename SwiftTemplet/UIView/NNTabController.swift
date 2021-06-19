@@ -32,7 +32,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
                 scrollViewContent.addSubview(e.element.view)
                 
                 if e.element.title != nil {
-                    listName.replaceObject(at: e.offset, with: e.element.title as Any)
+                    listName.replaceObject(at: e.offset, with: e.element.title)
                 }
 //                DDLog("element_\(e.element.title)",e.offset)
             }
