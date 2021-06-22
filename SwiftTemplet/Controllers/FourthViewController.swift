@@ -289,7 +289,6 @@ class FourthViewController: UIViewController {
         //设置每次递增递减的值
         stepper.stepValue=1;
         //添加状态监听事件
-                      
         //按住的时候连续变化
         stepper.isContinuous = true
 
@@ -300,7 +299,7 @@ class FourthViewController: UIViewController {
             guard let sender = control as? UIStepper else { return }
             DDLog(sender.value);
         }
-        
+      
         return stepper
     }()
 
@@ -349,7 +348,6 @@ class FourthViewController: UIViewController {
 //        DDLog(score.java, score.Swift);
         
 //        button.isEnabled = false
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleNottification(_:)), name: NSNotification.Name.appTokenExpired, object: nil)
     }
@@ -444,6 +442,13 @@ class FourthViewController: UIViewController {
         progressRing.startProgress(to: num, duration: 1) {
             DDLog("动画结束")
         }
+        
+        let array = (1...10).map { "\($0)" }
+        DDLog(array)
+        DDLog(type(of: (1...10)))
+
+        let arrayNew = Array.init(count: 10) { "\($0)" }
+        DDLog(arrayNew)
     }
 
     @objc func showPopoverAction(_ sender: UIButton) {
@@ -538,32 +543,6 @@ extension FourthViewController: IOPGoodsToolViewDelegate{
 //public func index<Elements: Collection, Element>(of element: Element, in collection: Elements ) -> Elements.Index? where Elements.Element == Element, Element: Equatable
 //{
 //
-//}
-
-//public extension NSAttributedString {
-//    /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
-//    static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
-//        let string = NSMutableAttributedString(attributedString: lhs)
-//        string.append(rhs)
-//        return NSAttributedString(attributedString: string)
-//    }
-//
-//    /// Add a NSAttributedString to another NSAttributedString.
-//    static func += (lhs: inout NSAttributedString, rhs: NSAttributedString) {
-//        let string = NSMutableAttributedString(attributedString: lhs)
-//        string.append(rhs)
-//        lhs = string
-//    }
-//
-//    /// Add a NSAttributedString to another NSAttributedString and return a new NSAttributedString instance.
-//    static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
-//        return lhs + NSAttributedString(string: rhs)
-//    }
-//
-//    /// Add a NSAttributedString to another NSAttributedString.
-//    static func += (lhs: inout NSAttributedString, rhs: String) {
-//        lhs += NSAttributedString(string: rhs)
-//    }
 //}
 
 //extension Range{

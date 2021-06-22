@@ -1,6 +1,6 @@
 //
 //	NNPlaceHolderView.swift
-//	SwiftChain
+//	Then
 //
 //	Created by shang on 2020/08/07 14:41
 //	Copyright © 2020 shang. All rights reserved.
@@ -10,6 +10,7 @@
 import UIKit
 import SwiftExpand
 import SnapKit
+import Then
 
 
 @objc public enum NNPlaceHolderViewState: Int {
@@ -53,12 +54,12 @@ import SnapKit
     
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-            .spacingChain(10)
-            .distributionChain(.fill)
-            .backgroundColorChain(UIColor.systemBlue)
-            .axisChain(.vertical)
-
+        let stackView = UIStackView().then({
+            $0.spacing = 10
+            $0.distribution = .fill
+            $0.backgroundColor = UIColor.systemBlue
+            $0.axis = .vertical
+        })
         return stackView;
     }()
     

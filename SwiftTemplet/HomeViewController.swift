@@ -93,6 +93,7 @@ class HomeViewController: UITabBarController {
 
         viewControllers = items.map({ (vc, title, image, imageH) -> UIViewController in
             let ctrl = vc.isKind(of: UINavigationController.self) ? vc : UINavigationController(rootViewController: vc)
+//            self.setupBackItem(ctrl)
             ctrl.reloadTabarItem((title, image, imageH))
             return ctrl
         })
@@ -103,6 +104,7 @@ class HomeViewController: UITabBarController {
 //        selectedIndex = 2
 //        selectedIndex = 4
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
@@ -124,9 +126,21 @@ class HomeViewController: UITabBarController {
         btnCenter.frame = rect.offsetBy(dx: width*2, dy: 0);
     }
     
-    @objc func handleActionSender(_ sender:UIButton){
+    @objc func handleActionSender(_ sender: UIButton){
         let navController = UINavigationController(rootViewController: CenterViewController());
         self.present(navController, animated: true, completion: nil);
+    }
+    
+    func setupBackItem(_ vc: UIViewController){
+        guard let navigationController = vc as? UINavigationController else { return }
+        navigationController.navigationBar.backIndicatorImage = UIImage()
+        navigationController.navigationBar.backIndicatorTransitionMaskImage = UIImage()
+    //图标会偏左一点点
+        navigationController.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_arowLeft_black"), style: .plain, target: nil, action: nil)
+    //定制图标: 在图标左边添加一点空白
+        navigationController.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_back_Customization")?.withRenderingMode(.alwaysOriginal), style: .plain, target: nil, action: nil)
+    
+        navigationController.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_arowLeft_black"), style: .plain, target: nil, action: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,7 +150,7 @@ class HomeViewController: UITabBarController {
     
     //MARK: Delegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        DDLog(tabBar.selectedItem as Any);
+//        DDLog(tabBar.selectedItem);
         
     }
     

@@ -21,7 +21,7 @@ class SubscribeListController: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.backgroundColor = .gray
 
-        collectionView.register(NNCollectionViewCellList.self, forCellWithReuseIdentifier: NNCollectionViewCellList.identifier)
+        collectionView.register(NNCollectionViewCellList.self, forCellWithReuseIdentifier: NNCollectionViewCellList.reuseIdentifier)
         collectionView.delegate = self
         return collectionView
     }()
@@ -67,7 +67,7 @@ class SubscribeListController: UIViewController {
             let isLastCell = indexPath.item + 1 == numberOfItemsInSection
 
             // Get a cell of the desired kind.
-            if let cell = collectionView.dequeueReusableCell( withReuseIdentifier: NNCollectionViewCellList.identifier, for: indexPath) as? NNCollectionViewCellList {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NNCollectionViewCellList.reuseIdentifier, for: indexPath) as? NNCollectionViewCellList {
 
                 // Populate the cell with our item description.
                 cell.labelTitle.text = "\(indexPath.section),\(indexPath.item)"

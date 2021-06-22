@@ -58,7 +58,6 @@ class FirstViewController: UIViewController{
              ["PickerDemoController", "PickerDemo", ],
              ["DateDemoController", "DateTimeFormatter", ],
 
-             ["FeedbackGeneratorDemoController", "触感反馈", ],
 
              ["AlertSheetStudyController", "AlertSheet自定义", ],
              ["ShowActivityController", "ShowActivity", ],
@@ -87,7 +86,9 @@ class FirstViewController: UIViewController{
              ],
             [["TableSectionCornerListController", "OC section 圆角", ],
              ["TestWebViewController", "TestWebView", ],
-             
+             ["FeedbackGeneratorDemoController", "触感反馈", ],
+             ["ForExampleController", "For stride", ],
+
             ]
         ]
         return array
@@ -268,7 +269,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list[section].count;
-    };
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.rowHeight
@@ -278,10 +279,10 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle)
 
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel?.textColor = UIColor.theme;
+        cell.textLabel?.textColor = .theme;
 
         cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
-        cell.detailTextLabel?.textColor = UIColor.gray;
+        cell.detailTextLabel?.textColor = .gray;
         cell.accessoryType = .disclosureIndicator;
         
         let itemList = list[indexPath.section][indexPath.row]
@@ -291,6 +292,12 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
 
         cell.detailTextLabel?.text = itemList[0];
         
+//        let weights: [UIFont.Weight] = [.ultraLight, .thin, .regular, .medium, .semibold, .bold, .heavy, .black]
+//        if indexPath.row < weights.count {
+//            cell.detailTextLabel!.font = UIFont(name: "PingFang SC", size: UIFont.labelFontSize)
+//            cell.detailTextLabel!.font = cell.detailTextLabel!.font.withWeight(weights[indexPath.row])
+//            DDLog(cell.detailTextLabel!.font.fontName)
+//        }
         return cell
     }
     

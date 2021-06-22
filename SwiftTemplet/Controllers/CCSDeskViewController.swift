@@ -30,7 +30,7 @@ class CCSDeskViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.background;
         
-        UIApplication.setupAppearanceSearchbarCancellButton()
+//        UIApplication.setupAppearanceSearchbarCancellButton()
         let titleView: UIView = {
             let titleView = UIView(frame: CGRectMake(0, 0, kScreenWidth-80, 35))
             titleView.backgroundColor = navigationController?.navigationBar.tintColor;

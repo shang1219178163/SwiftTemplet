@@ -19,8 +19,6 @@ class SortedViewController: UIViewController {
         
         self.addChild(controller)
         self.view.addSubview(controller.view)
-        
-        DDLog(UICTReusableViewZero.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {

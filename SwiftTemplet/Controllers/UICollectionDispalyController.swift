@@ -121,7 +121,7 @@ class UICollectionDispalyController: UIViewController{
 extension UICollectionDispalyController: UICollectionViewDataSource, UICollectionViewDelegate{
     //MARK: --UICollectionView
    func numberOfSections(in collectionView: UICollectionView) -> Int {
-       return 2
+       return 3
    }
 
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -161,14 +161,14 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
             if kind == UICollectionView.elementKindSectionHeader {
                 let view = collectionView.dequeueReusableSupplementaryView(for: UICTViewCellSubtitle.self, kind: kind, indexPath: indexPath)
              
-                view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellSubtitle.identifier
+                view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellSubtitle.reuseIdentifier
                 view.labDetail.text = "999+"
                 view.getViewLayer()
                 return view;
              }
             
              let view = collectionView.dequeueReusableSupplementaryView(for: UICTViewCellValue.self, kind: kind, indexPath: indexPath)
-             view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellValue.identifier
+             view.lab.text = kind.components(separatedBy: "ElementKind").last! + UICTViewCellValue.reuseIdentifier
              view.labDetail.text = "999+"
              view.getViewLayer()
              return view;

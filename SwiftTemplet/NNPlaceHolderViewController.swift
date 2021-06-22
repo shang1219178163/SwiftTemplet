@@ -8,15 +8,17 @@
 
 import UIKit
 import SwiftExpand
+import Then
 
 class NNPlaceHolderViewController: UIViewController {
     
     lazy var segmentedCtl: UISegmentedControl = {
         let items = ["nomrol", "loading", "empty", "fail"]
-        let sender = UISegmentedControl(items: items)
-            .selectedSegmentIndexChain(1)
-            .tintColorChain(.systemBlue)
-            .addTargetChain(self, action: #selector(handleActionSeg(_:)), for: .valueChanged)
+        let sender = UISegmentedControl(items: items).then({
+            $0.selectedSegmentIndex = 1
+            $0.tintColor = .systemBlue
+            $0.addTarget(self, action: #selector(handleActionSeg(_:)), for: .valueChanged)            
+        });
         
         return sender
     }()

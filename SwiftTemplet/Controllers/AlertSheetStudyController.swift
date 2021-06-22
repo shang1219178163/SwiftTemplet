@@ -52,7 +52,7 @@ import Then
 //        let alertVC = UIAlertController(title: "标题", message: "这是一条提示信息", preferredStyle: .alert)
 //        alertVC.addActionTitles(titles) { (alertVC, action) in
 //            let actionIdx = alertVC.actions.firstIndex(of: action)
-//            DDLog(actionIdx as Any)
+//            DDLog(actionIdx)
 //        }
 //
 //        alertVC.actions.forEach { (action) in
@@ -143,15 +143,13 @@ import Then
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         
-        let rect = CGRect(x: 0, y: 0, width: 60, height: 30)
-        
-        let btn = UIButton.create(rect, title: "Show", textColor: .white, backgroundColor: .theme)
-        btn.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
-        
-        let btn1 = UIButton.create(rect, title: "done", textColor: .white, backgroundColor: .theme)
-        btn1.addTarget(self, action: #selector(showWebViewVC), for: .touchUpInside)
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: btn), UIBarButtonItem(customView: btn1)]
-        
+        navigationItem.rightBarButtonItems = [("Show", #selector(showActionSheet)), ("done", #selector(showWebViewVC))].map({
+            let btn = UIButton(type: .custom)
+            btn.setTitle($0.0, for: .normal)
+            btn.addTarget(self, action: $0.1, for: .touchUpInside)
+            return UIBarButtonItem(customView: btn)
+        })
+            
         view.addSubview(tableView)
     }
     
@@ -189,7 +187,7 @@ import Then
         let alertVC = UIAlertController(title: "标题", message: "这是一条提示信息", preferredStyle: .alert)
             .addActionTitles(titles) { (alertVC, action) in
                 let actionIdx = alertVC.actions.firstIndex(of: action)
-                DDLog(actionIdx as Any)
+                DDLog(actionIdx)
             }
 
         alertVC.actions.forEach { (action) in
@@ -233,16 +231,16 @@ import Then
             .addActionTitles()
             
             
-        let contentView = UILabel()
-            .numberOfLinesChain(0)
-            .textChain(message)
-            .fontChain(UIFont.systemFont(ofSize: 15))
-            .backgroundColorChain(.systemGreen)
-        
-        
-        let bgView = UIView()
-            .backgroundColorChain(.red)
-        
+        let contentView = UILabel().then({
+            $0.numberOfLines = 0
+            $0.text = message
+            $0.font = UIFont.systemFont(ofSize: 15)
+            $0.backgroundColor = .systemGreen
+        })
+                    
+        let bgView = UIView().then({
+            $0.backgroundColor = .red
+        })        
         bgView.addSubview(contentView)
         
         let inset: UIEdgeInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15)
