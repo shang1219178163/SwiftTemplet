@@ -42,6 +42,7 @@ class NNSearchOneController: UIViewController, UISearchBarDelegate {
         searchController.searchBar.textField?.backgroundColor = .white
         searchController.searchBar.textField?.layer.cornerRadius = 5;
         searchController.searchBar.textField?.layer.masksToBounds = true
+        searchController.searchBar.scopeButtonTitles = ["种类 1", "种类 2", "种类 3", ]
 
         if #available(iOS 11, *) {
             navigationItem.hidesSearchBarWhenScrolling = false

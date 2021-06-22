@@ -10,8 +10,8 @@ import UIKit
 
 
 struct Model {
-    let movie : String
-    let genre : String
+    let movie: String
+    let genre: String
 }
 
 
@@ -19,16 +19,36 @@ class NNSearchNoResultPageController: UITableViewController {
 
     var models = [Model]()
     var filteredModels = [Model]()
-    let searchController = UISearchController(searchResultsController: nil)
     
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+//        searchController.searchBar.barTintColor = UIColor(white: 0.9, alpha: 0.9)
+//        searchController.searchBar.barTintColor = UIColor.red
+        searchController.searchBar.placeholder = "Search by name or genre"
+//        searchController.searchBar.textField?.backgroundColor = .white
+//        searchController.searchBar.textField?.layer.cornerRadius = 5
+//        searchController.searchBar.textField?.layer.masksToBounds = true
+        
+        definesPresentationContext = true
+        return searchController
+    }()
+    
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        if #available(iOS 11, *) {
+            navigationItem.hidesSearchBarWhenScrolling = false
+            navigationItem.searchController = searchController
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
         self.tableView.tableFooterView = UIView()
-        
-        setupSearchController()
-        
+                
         models = [
             Model(movie:"The Dark Night", genre:"Action"),
             Model(movie:"The Avengers", genre:"Action"),
@@ -76,17 +96,6 @@ class NNSearchNoResultPageController: UITableViewController {
         return 1
     }
 
-    func setupSearchController() {
-        definesPresentationContext = true
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.barTintColor = UIColor(white: 0.9, alpha: 0.9)
-        searchController.searchBar.placeholder = "Search by movie name or genre"
-        searchController.hidesNavigationBarDuringPresentation = false
-        
-        tableView.tableHeaderView = searchController.searchBar
-    }
-    
     
     func filterRowsForSearchedText(_ searchText: String) {
         filteredModels = models.filter({( model : Model) -> Bool in

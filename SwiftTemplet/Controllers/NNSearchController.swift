@@ -11,6 +11,7 @@ import UIKit
 import SwiftExpand
 import IQKeyboardManagerSwift
 
+
 class NNSearchController: UIViewController {
     
     lazy var searchResultVC: NNSearchResultController = {
