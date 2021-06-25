@@ -10,9 +10,24 @@ import UIKit
 
 class NNSearchOneController: UIViewController, UISearchBarDelegate {
     
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search by name or genre"
+        searchController.searchBar.backgroundColor = navigationController?.navigationBar.barTintColor
+        searchController.searchBar.tintColor = navigationController?.navigationBar.tintColor
+        searchController.searchBar.textField?.backgroundColor = .white
+        searchController.searchBar.textField?.layer.cornerRadius = 5;
+        searchController.searchBar.textField?.layer.masksToBounds = true
+//        searchController.searchBar.scopeButtonTitles = ["种类 1", "种类 2", "种类 3", ]
+
+        definesPresentationContext = true
+        return searchController
+    }()
     
-    
-    var tableView: UITableView {
+    lazy var tableView: UITableView = {
         let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
         if self.conforms(to: UITableViewDataSource.self) {
             view.dataSource = self as? UITableViewDataSource;
@@ -21,7 +36,7 @@ class NNSearchOneController: UIViewController, UISearchBarDelegate {
             view.delegate = self as? UITableViewDelegate;
         }
         return view
-    }
+    }()
 
 
     // MARK: -lifecycle
@@ -29,20 +44,7 @@ class NNSearchOneController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        edgesForExtendedLayout = []
-        
-        
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "searchChannels"
-        searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.delegate = self
-        searchController.searchBar.backgroundColor = navigationController?.navigationBar.barTintColor
-        searchController.searchBar.textField?.backgroundColor = .white
-        searchController.searchBar.textField?.layer.cornerRadius = 5;
-        searchController.searchBar.textField?.layer.masksToBounds = true
-        searchController.searchBar.scopeButtonTitles = ["种类 1", "种类 2", "种类 3", ]
+//        edgesForExtendedLayout = []
 
         if #available(iOS 11, *) {
             navigationItem.hidesSearchBarWhenScrolling = false

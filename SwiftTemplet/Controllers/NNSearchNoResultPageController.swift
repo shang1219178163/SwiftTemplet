@@ -26,12 +26,12 @@ class NNSearchNoResultPageController: UITableViewController {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
-//        searchController.searchBar.barTintColor = UIColor(white: 0.9, alpha: 0.9)
-//        searchController.searchBar.barTintColor = UIColor.red
         searchController.searchBar.placeholder = "Search by name or genre"
-//        searchController.searchBar.textField?.backgroundColor = .white
-//        searchController.searchBar.textField?.layer.cornerRadius = 5
-//        searchController.searchBar.textField?.layer.masksToBounds = true
+        searchController.searchBar.backgroundColor = .theme
+        searchController.searchBar.tintColor = .black
+        searchController.searchBar.textField?.backgroundColor = .white
+        searchController.searchBar.textField?.layer.cornerRadius = 5;
+        searchController.searchBar.textField?.layer.masksToBounds = true
         
         definesPresentationContext = true
         return searchController
