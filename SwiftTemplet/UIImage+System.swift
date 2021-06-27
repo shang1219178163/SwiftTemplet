@@ -7,13 +7,17 @@
 //
 
 
-@available(iOS 13.0, *)
 @objc public extension UIImage{
     
     var assetName: String? {
         guard let imageAsset = imageAsset else { return nil }
         return imageAsset.value(forKey:"assetName") as? String
     }
+}
+
+
+@available(iOS 13.0, *)
+@objc public extension UIImage{
     
     static var square_and_arrow_up: UIImage? {
         return UIImage(systemName: "square.and.arrow.up")
