@@ -1,5 +1,5 @@
 //
-//  NNSuspendButton.swift
+//  NNFloatingButton.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/1/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NNSuspendButton: UIButton {
+class NNFloatingButton: UIButton {
 
     var isLock: Bool = false
     var insets: UIEdgeInsets = UIEdgeInsets(top: 90, left: 0, bottom: 49+35, right: 0)
