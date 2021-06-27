@@ -190,11 +190,11 @@ class UICallPhoneView: UIView {
         }
     }
     
-    lazy var talkbackBtn: NNSuspendButton = {
+    lazy var talkbackBtn: NNFloatingButton = {
 //        let view = UIButton(type: .custom)
 //        view.frame = CGRectMake(20, 110, 70, 70)
         
-        let view = NNSuspendButton(frame: CGRectMake(20, 110, 70, 70))
+        let view = NNFloatingButton(frame: CGRectMake(20, 110, 70, 70))
         
         view.setTitleColor(UIColor.hexValue(0x39C179), for: .normal)
         view.setTitle("00:00", for: .normal)
