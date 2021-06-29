@@ -81,7 +81,7 @@ class EntryViewController: UIViewController {
         tableView.tableFooterView = footerView
         view.addSubview(tableView);
 
-        view.addSubview(suspendBtn)
+        view.addSubview(floatingBtn)
         
 //        DDLog(view.responderChain())
         IQKeyboardManager.shared.enable = true;
@@ -175,8 +175,8 @@ class EntryViewController: UIViewController {
         return view
     }()
     
-    lazy var suspendBtn: NNSuspendButton = {
-        let view = NNSuspendButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+    lazy var floatingBtn: NNFloatingButton = {
+        let view = NNFloatingButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
           view.insets = UIEdgeInsets(top: 40, left: 0, bottom: 80, right: 0)
 //          view.parController = self
           view.addActionHandler({ (sender) in

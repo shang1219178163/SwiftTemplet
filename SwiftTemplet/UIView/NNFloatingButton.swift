@@ -8,7 +8,8 @@
 
 import UIKit
 
-class NNFloatingButton: UIButton {
+///悬浮按钮
+@objc public class NNFloatingButton: UIButton {
 
     var isLock: Bool = false
     var insets: UIEdgeInsets = UIEdgeInsets(top: 90, left: 0, bottom: 49+35, right: 0)
