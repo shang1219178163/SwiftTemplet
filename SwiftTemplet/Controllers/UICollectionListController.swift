@@ -1,5 +1,5 @@
 //
-//  UICollectionFlowStyleController.swift
+//  UICollectionListController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2020/8/11.
@@ -11,7 +11,7 @@ import SwiftExpand
 import HandyJSON
 import MJRefresh
 
-class UICollectionFlowStyleController: UIViewController{
+class UICollectionListController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
@@ -23,14 +23,14 @@ class UICollectionFlowStyleController: UIViewController{
     }()
     
     lazy var list: [[[String]]] = {
-        let array: [[[String]]] = [
-            [["UICollectionViewCardController", "卡片样式", ],
+        return [
+            [["UICollectionMultipleSectionController", "多布局展示", ],
+            ["UICollectionViewCardController", "卡片样式", ],
             ["UICollectionDispalyController", "UICollectionView展示", ],
             ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],
             ["UICollectionTagsController", "tags", ],
-             ],
+            ],
         ]
-        return array
     }()
     
 
@@ -60,24 +60,12 @@ class UICollectionFlowStyleController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-//        DDLog("viewWillAppear")
 
-//        let string = "[[\"\\u9655A91D6P\"]]";
-//        let obj = JSONSerialization.jsonObjectFromString(string);
-//        DDLog(obj)
-//        9.printChengfaBiao()
-//        tableView.nextResponder(UIWindow.self, isPrint: true)
-        
-//        let image = UIImage(color: .white)
-//        DDLog(image.cgImage)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//        let controller = CellListController()
-//        navigationController?.pushViewController(controller, animated: true);
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -95,7 +83,7 @@ class UICollectionFlowStyleController: UIViewController{
 
 }
 
-extension UICollectionFlowStyleController: UITableViewDataSource, UITableViewDelegate{
+extension UICollectionListController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
