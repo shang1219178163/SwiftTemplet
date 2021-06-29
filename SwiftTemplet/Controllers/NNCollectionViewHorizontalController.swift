@@ -1,6 +1,6 @@
 
 //
-//  ScrollHorizontalController.swift
+//  NNCollectionViewHorizontalController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2019/8/27.
@@ -10,7 +10,7 @@
 import UIKit
 import SwiftExpand
 
-class ScrollHorizontalController: UIViewController{
+class NNCollectionViewHorizontalController: UIViewController{
   
     var list: NSMutableArray = [];
     override func viewDidLoad() {
@@ -28,8 +28,7 @@ class ScrollHorizontalController: UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-//        collectionView.frame = CGRectMake(0, 20, 400, 40);
-        collectionView.frame = view.bounds;
+//        collectionView.frame = view.bounds;
     }
         
     // MARK: -funtions
@@ -38,36 +37,34 @@ class ScrollHorizontalController: UIViewController{
     lazy var layout: UICollectionViewFlowLayout = {
 //        let layout = UICollectionViewFlowLayout();
 ////        layout.scrollDirection = .horizontal
-//        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 //
-//        let rowNum: Int = 4
+//        let numOfRow: Int = 4
 //        let spacing: CGFloat = 10
-//        let width = UIScreen.main.bounds.width;
+//        let width = UIScreen.main.bounds.width
 //
-//        let itemWidth = (width - (rowNum.toCGFloat + 1)*spacing - layout.sectionInset.left - layout.sectionInset.right)/rowNum.toCGFloat;
-//        let itemHeight = itemWidth/0.75;
+//        let itemWidth = (width - (numOfRow.toCGFloat + 1)*spacing - layout.sectionInset.left - layout.sectionInset.right)/numOfRow.toCGFloat
+//        let itemHeight = itemWidth/0.75
 //
-//        let itemSize = CGSize(width: round(itemWidth), height: itemHeight);
-//        let headerSize = CGSize(width: width, height: 40);
-//        let footerSize = CGSize(width: width, height: 30);
+//        let itemSize = CGSize(width: round(itemWidth), height: itemHeight)
+//        let headerSize = CGSize(width: width, height: 40)
+//        let footerSize = CGSize(width: width, height: 30)
 //
+//        layout.minimumInteritemSpacing = spacing
+//        layout.minimumLineSpacing = spacing
+//        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 //        layout.itemSize = itemSize
-//        layout.minimumLineSpacing = spacing;
-//        layout.minimumInteritemSpacing = spacing;
+//
 //        // 设置分区头视图和尾视图宽高
 //        layout.headerReferenceSize = headerSize
 //        layout.footerReferenceSize = footerSize
-//
 //        return layout;
-        
-        return UICollectionViewFlowLayout.createFlowLayout()
-//        return UICollectionView.layoutDefault()
-
+        return UICollectionViewFlowLayout(numOfRow: 4)
     }()
     
     lazy var collectionView: UICollectionView = {
-//        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.layout)
-        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault())
+        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: self.layout)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        let view = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionView.layoutDefault())
         view.backgroundColor = .background;
         view.showsVerticalScrollIndicator = false;
         view.showsHorizontalScrollIndicator = false;
@@ -91,7 +88,7 @@ class ScrollHorizontalController: UIViewController{
     }()
 }
 
-extension ScrollHorizontalController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension NNCollectionViewHorizontalController: UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK: -UICollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
