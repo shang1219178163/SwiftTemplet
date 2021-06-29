@@ -17,7 +17,7 @@ class AppleSignInViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        createBarItem("done") { (item) in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
             if #available(iOS 13.0, *) {
                 NNAppleSignInManager.shared.loginInWithApple { (flag, message) in
                     if flag {
@@ -29,18 +29,7 @@ class AppleSignInViewController: UIViewController {
             } else {
                 NNProgressHUD.showText("不支持 iOS 13.0 以下版本")
             }
-        }
+        })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -50,10 +50,10 @@ class SystemIconDisplayController: UITableViewController {
 
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
-        
-        let barItems = ["done", ].map { UIBarButtonItem(title: $0, style: .plain, target: self, action: #selector(actionitem(_:))) }
-        navigationItem.rightBarButtonItems = barItems
-        
+        navigationItem.rightBarButtonItems = [("done", #selector(actionitem(_:)))]
+            .map {
+                UIBarButtonItem(title: $0.0, style: .plain, target: self, action: $0.1)
+            }
         
         if #available(iOS 11, *) {
             navigationItem.hidesSearchBarWhenScrolling = false

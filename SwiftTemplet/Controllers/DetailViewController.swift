@@ -27,16 +27,15 @@ class DetailViewController: UIViewController {
         let stringType = String(format: "type id: %d", CFGetTypeID(str))
         print(stringType)
         
-        createBarItem( .done, isLeft: false) {[weak self] (item:AnyObject?) in
-            
-            UIView.transition(with: (self!.navigationController?.view)!, duration: 0.1, options: .transitionCrossDissolve, animations: {
-                self!.navigationController?.popViewController(animated: false)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
+            guard let navigationController = self.navigationController as? UINavigationController else { return }
+            UIView.transition(with: navigationController.view, duration: 0.1, options: .transitionCrossDissolve, animations: {
+                navigationController.popViewController(animated: false)
             }, completion: { (finish) in
                 
             })
-        }
+        })
     }
     
-
 
 }

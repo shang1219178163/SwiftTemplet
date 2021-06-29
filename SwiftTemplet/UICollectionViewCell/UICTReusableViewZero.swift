@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 class UICTReusableViewZero: UICollectionReusableView {
-    var inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,8 +23,8 @@ class UICTReusableViewZero: UICollectionReusableView {
         addSubview(imgView)
         addSubview(lab)
         
-        lab.backgroundColor = UIColor.random
-        imgView.backgroundColor = UIColor.random
+        lab.backgroundColor = .random
+        imgView.backgroundColor = .random
     }
     
     override func layoutSubviews() {
@@ -36,8 +36,8 @@ class UICTReusableViewZero: UICollectionReusableView {
         
         lab.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
-            make.left.equalToSuperview().offset(kX_GAP)
-            make.right.equalToSuperview().offset(-kX_GAP)
+            make.left.equalToSuperview().offset(inset.left)
+            make.right.equalToSuperview().offset(-inset.right)
             make.bottom.equalToSuperview().offset(-5)
         }
     }

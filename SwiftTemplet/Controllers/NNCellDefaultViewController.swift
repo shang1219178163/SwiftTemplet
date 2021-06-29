@@ -73,9 +73,10 @@ class NNCellDefaultViewController: UIViewController {
         view.backgroundColor = .systemGreen
         view.backgroundColor = .white
 
-        createBarItem("done") { (item) in
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
             self.dateRangeShow()
-        }
+        })
         
         view.addSubview(cellView)
         view.addSubview(cellView1)

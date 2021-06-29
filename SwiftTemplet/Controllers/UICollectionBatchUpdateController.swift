@@ -35,13 +35,11 @@ class UICollectionBatchUpdateController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        edgesForExtendedLayout = []
         title = "SectionBackground"
-        
-//        setupExtendedLayout()
-        
         setupUI()
-
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -51,16 +49,13 @@ class UICollectionBatchUpdateController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     // MARK: - funtions
     func setupUI() {
-        let updateItem = UIBarButtonItem(title: "更新", style: .plain, target: self, action: #selector(actionRefresh(_:)))
-        let insertItem = UIBarButtonItem(title: "插入", style: .plain, target: self, action: #selector(actionInsert(_:)))
-        navigationItem.rightBarButtonItems = [updateItem, insertItem]
-        
+        navigationItem.rightBarButtonItems = [("更新", #selector(actionRefresh(_:))),
+                                              ("插入", #selector(actionInsert(_:)))]
+            .map({
+                UIBarButtonItem(title: $0.0, style: .plain, target: self, action: $0.1)
+            })
         
         view.addSubview(collectionView)
     }

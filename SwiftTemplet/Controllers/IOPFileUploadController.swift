@@ -54,8 +54,8 @@ class IOPFileUploadController: UIViewController {
     
     var key: String = ""
 
-    lazy var chooseItem = UIBarButtonItem("选择", style: .plain, target: self, action: #selector(handleActionFile(_:)))
-    lazy var uploadItem = UIBarButtonItem("上传", style: .plain, target: self, action: #selector(handleActionFile(_:)))
+    lazy var chooseItem = UIBarButtonItem(obj: "选择", style: .plain, target: self, action: #selector(handleActionFile(_:)))
+    lazy var uploadItem = UIBarButtonItem(obj: "上传", style: .plain, target: self, action: #selector(handleActionFile(_:)))
     lazy var shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleActionFile(_:)))
     /// 预览视图
     lazy var previewVC: QLPreviewController = {

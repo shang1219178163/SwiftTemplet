@@ -40,6 +40,7 @@ class PKUserLevelController: UIViewController {
                           UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero", "UICTViewCellValue"],
                             UICollectionView.elementKindSectionItem: ["UICTViewCellLevel","UICTViewCellOne"],
         ]
+        
         view.delegate = self
         view.dataSource = self
         return view
@@ -83,11 +84,9 @@ class PKUserLevelController: UIViewController {
         view.addSubview(ctView)
         view.addSubview(tableView)
         
-        
-        createBarItem(.done, isLeft: false) { (item) in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
             self.ctView.scrollToItem(at: IndexPath(item: 3, section: 0), at: .centeredHorizontally, animated: false)
-
-        }
+        })
         view.getViewLayer()
     }
 

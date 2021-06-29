@@ -26,65 +26,15 @@ class UICollectionDispalyController: UIViewController{
 
         view.delegate = self
         view.dataSource = self
+        
+        view.addLongPressDragItem()
+
         return view
     }()
-    // MARK: -lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = "UICollectionView小解"
-        view.backgroundColor = UIColor.white
-       
-        // 注册cell
-        ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne", "UICTViewCellSubtitle"],
-                            UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero", "UICTViewCellValue"],
-                            UICollectionView.elementKindSectionItem: ["UICTViewCellZero","UICTViewCellOne"],
-        ]
-        view.addSubview(ctView)
-
-//        view.addGestureTap { (sender) in
-//            guard let tap = sender as? UITapGestureRecognizer else { return }
-//            DDLog(tap)
-//        }
-        
-//        let namespace = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
-//        let one : AnyClass = NSClassFromString(namespace + "." + "UICTViewCellZero")!;
-//        let two = UICTViewCellZero.self
-    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //导航栏变色
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.orange), for: UIBarMetrics.default)
-//        navigationController?.navigationBar.shadowImage = UIImage(color: UIColor.orange)
-
-        //导航栏透明
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(color: UIColor.clear), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage(color: UIColor.clear)
-//
-//        //顶部布局从导航栏开始
-//        edgesForExtendedLayout = UIRectEdge.all;
-        
-        DDLog(ctView == view.subviews[0])
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-//        navigationController?.navigationBar.shadowImage = nil
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-    }
-        
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 //    lazy var collectionView : UICollectionView = {
-//        
+//
 //        // 初始化
 //        let layout = UICollectionViewFlowLayout()
 //        let itemW = (kScreenWidth - 5*5.0)/4.0
@@ -96,19 +46,19 @@ class UICollectionDispalyController: UIViewController{
 //        // 设置分区头视图和尾视图宽高
 //        layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 60)
 //        layout.footerReferenceSize = CGSize(width: kScreenWidth, height: 60)
-//        
+//
 //        let view = UICollectionView(frame: CGRect(x:0, y:64, width:kScreenWidth, height:400), collectionViewLayout: layout)
 //        view.backgroundColor = UIColor.white
 //        view.delegate = self
 //        view.dataSource = self
-//        
+//
 //        // 注册cell
 //        collectionView?.register(UICTViewCellZero.self, forCellWithReuseIdentifier: Identifier)
 //        // 注册headerView
 //        collectionView?.register(UICTReusableViewOne.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "UICTReusableViewOne"+"Header")
 //        // 注册footView
 //        collectionView?.register(UICTReusableViewZero.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footIdentifier)
-//        
+//
 //        view.dictClass = [UICollectionView.elementKindSectionHeader : ["UICTReusableViewOne",],
 //                                     UICollectionView.elementKindSectionFooter : ["UICTReusableViewZero",],
 //                                     UICollectionElementKindSectionItem : ["UICTViewCellZero","UICTViewCellOne"],
@@ -116,16 +66,50 @@ class UICollectionDispalyController: UIViewController{
 //        view.registerAll();
 //        return view
 //    }()
+    
+    var list = [[String].init(count: 12, generator: {"\($0)"}), [String].init(count: 9, generator: {"\($0)"})]
+    
+    // MARK: -lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        title = "UICollectionView小解"
+
+        // 注册cell
+        ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne", "UICTViewCellSubtitle"],
+                            UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero", "UICTViewCellValue"],
+                            UICollectionView.elementKindSectionItem: ["UICTViewCellZero", "UICTViewCellOne"],
+        ]
+        view.addSubview(ctView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+    }
+        
 }
 
 extension UICollectionDispalyController: UICollectionViewDataSource, UICollectionViewDelegate{
     //MARK: --UICollectionView
    func numberOfSections(in collectionView: UICollectionView) -> Int {
-       return 3
+    return list.count
    }
 
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 12
+    return list[section].count
    }
 
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -188,6 +172,15 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
              view.getViewLayer()
              return view;
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        list[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        list[destinationIndexPath.section].insert(list[sourceIndexPath.section][sourceIndexPath.row], at: destinationIndexPath.row)
     }
     
 }

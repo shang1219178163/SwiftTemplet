@@ -27,8 +27,11 @@ class PageDemoController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         edgesForExtendedLayout = []
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
+            self.showTutorial(1)
+        })
+        
         
         addChild(pageController)
         view.addSubview(pageController.view)
@@ -44,10 +47,6 @@ class PageDemoController: UIViewController {
             controllers.append(vc)
         }
         
-        createBarItem("Done") { (item) in
-            self.showTutorial(1)
-        }
-
     }
     
     

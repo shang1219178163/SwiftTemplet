@@ -15,33 +15,22 @@ class CenterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
         view.backgroundColor = .cyan;
 
-//        DispatchQueue.main.after(time: .now() + 2, block: {
-//            IOPProgressHUD.dismiss();
-//            self!.navigationController?.popViewController(animated: true)
-//        })
-        
-        DDLog("_%@_",UIApplication.mainWindow);
-        DDLog("__%@_",UIApplication.shared.keyWindow);
-        DDLog(view.hashValue, UIApplication.mainWindow.hashValue)
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleActionSender));
-        
-        let itemLeft = createBarItem( UIBarButtonItem.SystemItem.reply, isLeft: true) { (sender) in
-//            DDLog(sender);
+                
+        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .reply, action: { item in
             self.dismiss(animated: true, completion: nil)
 
-            let style = sender.value(forKey: "systemItem");
-            if UIBarButtonItem.SystemItem(rawValue: style as! Int) == UIBarButtonItem.SystemItem.redo {
+            if item.systemType == UIBarButtonItem.SystemItem.redo {
                 DDLog("111111");
             }
             
-            if sender.systemType == UIBarButtonItem.SystemItem.reply {
+            if item.systemType == UIBarButtonItem.SystemItem.reply {
                 DDLog("4444");
             }
-            DDLog(sender.tag)
-        }
+            DDLog(item.tag)
+        })
 
         
         imgView.frame = .init(x: 10, y: 80, width: 220, height: 100);

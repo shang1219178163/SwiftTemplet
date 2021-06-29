@@ -65,7 +65,7 @@ class FirstViewController: UIViewController{
              ["QRCodeViewController", "二维码", ],
              ["TestScrollViewController", "TestScrollViewController", ],
              ["NNCellDefaultViewController", "NNCellDefaultView", ],
-             ["UICollectionFlowStyleController", "FlowLayoutStyle", ],
+             ["UICollectionListController", "FlowLayoutStyle", ],
              ["ConstraintArrayDSLController", "Snapkit 扩展", ],
              ["ChatInputController", "聊天输入框", ],
              ["NNInstructionViewController", "NNInstructionView", ],
@@ -103,7 +103,8 @@ class FirstViewController: UIViewController{
         edgesForExtendedLayout = [];
         view.backgroundColor = .white;
 
-        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .action, action: { item in
 //            UIApplication.openURLString("wx.parkingwang.com://")
 //            self.annAlertView.urlString = "http://h5-kop.dev.irainone.com/#/pages/SystemMsgDetails/Index"
 //            self.annAlertView.show()
@@ -129,7 +130,7 @@ class FirstViewController: UIViewController{
                 vc.present()
             }
 
-        }
+        })
         
         let btn = UIButton(type: .custom)
         btn.setTitle("Next", for: .normal)

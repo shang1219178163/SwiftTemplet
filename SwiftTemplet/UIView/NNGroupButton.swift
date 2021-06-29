@@ -62,7 +62,8 @@
             sender.isSelected = indexs.contains(sender.tag)
             sender.alpha = disabledIndexs.contains(sender.tag) ? 0.5 : 1
         }
-        items.updateItemsConstraint(bounds, numberOfRow: numberOfRow, padding: padding, edge: edge, showStyle: .topLeftToRight)
+
+        items.updateItemsConstraint(bounds, numberOfRow: numberOfRow, minimumInteritemSpacing: padding, minimumLineSpacing: padding, sectionInset: edge, showStyle: .topLeftToRight)
     }
     
     

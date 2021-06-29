@@ -22,10 +22,10 @@ class IOPAuthRechargeController: UIViewController {
             title = self.vcName;
         }
      
-        createBarItem( .done, isLeft: false) { (sender: AnyObject) in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
             self.navigationController?.pushVC("IOPAuthDetailController")
 
-        }
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {

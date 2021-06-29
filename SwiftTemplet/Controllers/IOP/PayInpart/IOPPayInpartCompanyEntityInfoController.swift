@@ -258,10 +258,10 @@ import HFNavigationController
         view.backgroundColor = .white
 
 //        tableView.tableFooterView = footerView;
-        
-        createBarItem("next") { (item) in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(obj: "next", action: { item in
             self.hasOranization.toggle()
-        }
+        })
+
     }
     
     func jumpXiangce(_ itemList:[String]) {

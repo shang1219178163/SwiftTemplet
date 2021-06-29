@@ -25,6 +25,7 @@ class UICollectionListController: UIViewController{
     lazy var list: [[[String]]] = {
         return [
             [["UICollectionMultipleSectionController", "多布局展示", ],
+            ["NNCollectionViewHorizontalController", "重构", ],
             ["UICollectionViewCardController", "卡片样式", ],
             ["UICollectionDispalyController", "UICollectionView展示", ],
             ["UICollectionBatchUpdateController", "UICollectionView批量更新", ],
@@ -37,10 +38,12 @@ class UICollectionListController: UIViewController{
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        edgesForExtendedLayout = []
         
-        createBarItem( .action, isLeft: true) { (sender: AnyObject) in
+        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .action, action: { item in
             UIApplication.shared.openURL(URL(string: "wx.parkingwang.com://")!)
-        }
+        })
         
         let btn = UIButton(type: .custom)
         btn.setTitle("Next", for: .normal)

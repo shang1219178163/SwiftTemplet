@@ -26,9 +26,9 @@ class PlateNumMainController: NNTabController, NNTabControllerDelegate {
                            fourVC,
                            fiveVC]
         
-        createBarItem("done", style: .plain, isLeft: false) { (item) in
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
             self.navigationController?.pushVC(PickerViewController.self)
-        }
+        })
     }
     
     // MARK: -NNTabControllerDelegate

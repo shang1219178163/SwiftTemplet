@@ -45,11 +45,10 @@ class NNAlertShowController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        createBarItem( .done, isLeft: false) { (sender: AnyObject) in
-//            self.goController("IOPAuthDetailController", obj: nil, objOne: nil)
-            guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-            rootViewController.present(self.navController, animated: true, completion: nil)
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
+            self.navController.present()
+        })
+        
         setupAlertContent()
     }
     
