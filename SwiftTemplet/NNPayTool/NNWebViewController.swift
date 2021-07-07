@@ -80,6 +80,8 @@ import SnapKitExtend
     var appearBlock:(()->Void)?
     var disappearBlock:(()->Void)?
 
+//    let disposeBag = DisposeBag()
+    
     // MARK: -lifecycle
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "payReturn"), object: nil)
@@ -118,6 +120,19 @@ import SnapKitExtend
             return
         }
         loadRequest()
+        
+                
+//        webView.rx.observeWeakly(URL.self, "URL", options: .new).subscribe {
+//            DDLog("URL: \($0)")
+//        }
+//        .disposed(by: disposeBag)
+//
+//
+//        webView.rx.observeWeakly(String.self, "title", options: .new).subscribe {
+//            DDLog("title: \($0)")
+//        }
+//        .disposed(by: disposeBag)
+        
     }
         
     override func viewWillAppear(_ animated: Bool) {

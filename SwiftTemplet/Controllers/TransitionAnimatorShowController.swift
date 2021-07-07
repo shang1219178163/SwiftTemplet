@@ -32,7 +32,8 @@ class TransitionAnimatorShowController: UIViewController {
         
     //MARK: - layz
     lazy var tableView: UITableView = {
-        let table = UITableView(frame:self.view.bounds, style:.plain);
+        let table = UITableView(frame:self.view.bounds, style:.plain)
+        table.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         table.rowHeight = 60
         table.dataSource = self;
         table.delegate = self;
@@ -52,7 +53,7 @@ class TransitionAnimatorShowController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        edgesForExtendedLayout = []
+        edgesForExtendedLayout = []
 //        self.definesPresentationContext = true
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Left", style: .plain, target: self, action: #selector(handleItemLeft))

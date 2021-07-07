@@ -12,14 +12,15 @@ import SwiftExpand
 ///颜色选择,字体选择
 class PickerDemoController: UIViewController {
 
-    let items: [UIButton] = ["系统字体选择器", "present自定义字体选择器", "push自定义字体选择器", "系统颜色选择器", "折叠列表", "PickerVC", "PickerVC设置contentVC"].enumerated().map { e in
+    let items: [UIButton] = ["系统字体选择器", "present自定义字体选择器", "push自定义字体选择器", "系统颜色选择器", "折叠列表", "PickerVC", "PickerVC设置contentVC", "button"].enumerated().map { e in
         let sender = NNButton(type: .custom)
         sender.setTitle(e.element, for: .normal)
-        sender.setTitleColor(.gray, for: .normal)
+        sender.setTitleColor(.black, for: .normal)
         sender.setTitleColor(.systemBlue, for: .selected)
+        sender.titleLabel?.font = UIFont.systemFont(ofSize: 15)
 
-        sender.setBorderColor(.line, for: .normal)
-        sender.setBorderColor(.systemBlue, for: .selected)
+//        sender.setBorderColor(.line, for: .normal)
+//        sender.setBorderColor(.systemBlue, for: .selected)
         sender.layer.cornerRadius = 5;
         sender.tag = e.offset
         sender.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
@@ -65,7 +66,6 @@ class PickerDemoController: UIViewController {
         super.viewDidLayoutSubviews()
         
         items.updateItemsConstraint(CGRectMake(10, 10, kScreenWidth - 20, 200))
-
     }
     
     @objc func handleAction(_ sender: UIButton) {
@@ -140,9 +140,14 @@ class PickerDemoController: UIViewController {
             
             vc.setContent(vc: redVC, height: kScreenHeight*0.6)
             
-
-            vc.present()
+//            vc.present()
 //            present(vc, animated: true, completion: nil)
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true, completion: nil)
+        case 7:
+            sender.throttled()
+            DDLog(sender.currentTitle)
+            DDLog(CFAbsoluteTimeGetCurrent())
 
         default:
             break

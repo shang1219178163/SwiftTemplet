@@ -34,6 +34,8 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [["EntryViewController", "通用录入界面", ],
+             ["SystemIconDisplayController", "系统图标", ],
+             ["OptionalTestController", "Optional 功能扩展", ],
              ["ScanningDocumentsController", "ScanningDocuments", ],             
              ["NNPlaceHolderViewController", "占位视图", ],
              ["ReuseChildsController", "控制器复用", ],
@@ -63,7 +65,6 @@ class ThirdViewController: UIViewController{
              ["NNAlertShowController", "自定义 UIViewController 弹窗", ],
              ["UILabelMultipleTapController", "多点高亮点击", ],
              ["UISearchStylesController", "搜索🔍样式", ],
-             ["SystemIconDisplayController", "系统图标", ],             
              ["UIStackViewController", "UIStackView", ],
              ["NNPictureViewController", "全屏图册", ],
              ["UIModalPresentationStyleController", "控制器呈现效果", ],
@@ -185,7 +186,7 @@ class ThirdViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        edgesForExtendedLayout = []
+        edgesForExtendedLayout = []
         
         let list: [(String, Selector)] = [
             ("升级", #selector(handleActionItem(_:))),

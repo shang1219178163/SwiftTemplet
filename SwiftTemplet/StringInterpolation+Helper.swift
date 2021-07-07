@@ -35,6 +35,10 @@ public extension String.StringInterpolation {
         appendLiteral(formatter.string(from: value))
     }
     
+    mutating func appendInterpolation(localized key: String, _ args: CVarArg...) {
+        let localized = String(format: NSLocalizedString(key, comment: ""), arguments: args)
+        appendLiteral(localized)
+    }
     
 }
 

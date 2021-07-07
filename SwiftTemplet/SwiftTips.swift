@@ -151,7 +151,6 @@ struct History<Value> {
     
     var wrappedValue: Value {
         get { value }
-
         set {
             history.append(value)
             value = newValue
@@ -222,3 +221,5 @@ class Node {
     }
     
 }
+
+

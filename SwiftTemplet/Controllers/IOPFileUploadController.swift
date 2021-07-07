@@ -269,6 +269,12 @@ class IOPFileUploadController: UIViewController {
 
 
 extension IOPFileUploadController: UIDocumentPickerDelegate{
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {
+            return
+        }
+        localFileUrl = url as NSURL
+    }
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
         localFileUrl = url as NSURL
     }

@@ -13,7 +13,8 @@ class ReuseChildsController: UIViewController {
 
     //MARK: - layz
     lazy var tableView: UITableView = {
-        let table = UITableView(frame:self.view.bounds, style:.plain);
+        let table = UITableView(frame: self.view.bounds, style:.plain)
+        table.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         table.rowHeight = 60
         table.dataSource = self;
         table.delegate = self;
@@ -50,6 +51,7 @@ class ReuseChildsController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//        edgesForExtendedLayout = []
         view.addSubview(tableView)
     }
     

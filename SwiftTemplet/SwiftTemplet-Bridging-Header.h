@@ -36,7 +36,7 @@
 #import "IOPUserDetailModel.h"
 //#import "NSMutableAttributedString+Chain.h"
 
-#import <BXKAdvertSDK/BXKAdvertSDK.h>
+//#import <BXKAdvertSDK/BXKAdvertSDK.h>
 
 #import "TextFieldViewController.h"
 //#import "NNButtonDispalyController.h"

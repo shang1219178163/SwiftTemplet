@@ -65,12 +65,14 @@ class HomeViewController: UITabBarController {
 //            (FourthViewController(), "消息", UIImage(named: "Item_fourth_N"), UIImage(named: "Item_fourth_H")),
 //            (FifthViewControlle(), "我的", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
 //            (TestViewController()", "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-            (TitleViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            (TitleViewController(), "TitleView", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
 //            (KVOViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
             (PKFuntionListController(), "KOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
 //            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
             
             (FourthViewController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+//            (SystemIconDisplayController(), "SystemIcon", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            
         ];
     }()
     
@@ -102,7 +104,8 @@ class HomeViewController: UITabBarController {
 //        view.addGestureRecognizer(panGesture)
         
 //        selectedIndex = 2
-//        selectedIndex = 4
+        selectedIndex = items.count - 1
+        selectedIndex = 0
     }
 
     
