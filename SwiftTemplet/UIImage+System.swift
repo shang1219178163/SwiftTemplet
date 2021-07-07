@@ -6,15 +6,15 @@
 //  Copyright © 2021 BN. All rights reserved.
 //
 
+/*
+@objc public extension UIImage{
 
-//@objc public extension UIImage{
-//
-//    var assetName: String? {
-//        guard let imageAsset = imageAsset else { return nil }
-//        return imageAsset.value(forKey:"assetName") as? String
-//    }
-//}
-
+    var assetName: String? {
+        guard let imageAsset = imageAsset else { return nil }
+        return imageAsset.value(forKey:"assetName") as? String
+    }
+}
+*/
 
 @available(iOS 13.0, *)
 @objc public extension UIImage{
