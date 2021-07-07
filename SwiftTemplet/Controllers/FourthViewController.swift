@@ -277,7 +277,6 @@ class FourthViewController: UIViewController {
     
     
     lazy var stepper: UIStepper = {
-                
         let stepper = UIStepper(frame: CGRect(x: 130, y: 100, width: 0, height: 0))
         //设置步进对象的对象大小为自适应
         stepper.sizeToFit();
@@ -433,6 +432,83 @@ class FourthViewController: UIViewController {
 //        NNProgressHUD.showErrorText("fail");
         
         OrderPayContext.testExpample(300)
+        
+//        let someVar = 3
+//        string varName = nameof(someVar)
+        // 'varName' now holds the string value "someVar"
+        
+        ///     let question = "Which is larger, 3 * 3 * 3 or 10 + 10 + 10?"
+        ///     let hasMathSymbols = question.unicodeScalars.contains(where: {
+        ///         $0.properties.isMath
+        ///     })
+        ///     // hasMathSymbols == true
+//        public var properties: Unicode.Scalar.Properties { get }
+    
+        
+        let result = "www.ScoreTracker.com/postScore"
+        guard var url = URL(string: result) else { return }
+        url.appendQueryParameters(["userName": "Maverick", "highScore": "123456"])
+        DDLog(url.absoluteString) //www.ScoreTracker.com/postScore?userName=Maverick&highScore=123456
+        
+        
+        let params = ["userName": "Maverick", "highScore": "123456"]
+        let queryObject = QueryObject(params: params)
+        let urlString = queryObject.getUrl
+        DDLog(urlString) //www.ScoreTracker.com/postScore?userName=Maverick&highScore=123456
+
+        
+        let queryObject1 = QueryObjectNew(userName:"Maverick", highScore:123456)
+        let urlString1 = queryObject1.getUrl
+        
+        DDLog(\QueryObjectNew.userName)
+        DDLog(String(describing: \QueryObjectNew.userName.description))
+        
+        let type = type(of: \QueryObjectNew.userName)
+        DDLog(type.rootType, type.valueType)
+        
+        
+        let mirror = Mirror(reflecting: queryObject1)
+        for child in mirror.children {
+            DDLog(child.label!, child.value)
+        }
+        
+        
+        let string = """
+            {
+                "ALL TEXT": [
+              {
+                "text": "hello"
+               },
+               {
+                "text": "hi"
+               },
+                {
+                "text": "how r u"
+                }
+            ]
+          }
+"""
+        
+        guard let data = string.data(using: .utf8),
+        let json = try? JSONSerialization.jsonObject(with: data, options: []) as? Dictionary<String, Any>,
+        let allText = json["ALL TEXT"] as? [Dictionary<String, Any>]
+            else {
+            DDLog("解析失败")
+            return }
+        DDLog(allText) // [["text": hello], ["text": hi], ["text": how r u]]
+        
+        let items: [String] = allText.compactMap { $0["text"] as? String }
+        
+        var textsList = [String]()
+        textsList.append(contentsOf: items)
+        DDLog(items) //["hello", "hi", "how r u"]
+        DDLog(textsList) //["hello", "hi", "how r u"]
+        
+        let set = Set(["1", "2", "3"])
+        let array = Array(set)
+        DDLog(set)//Set<String>)
+        DDLog(array)//[String]
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -463,17 +539,16 @@ class FourthViewController: UIViewController {
 
         let popoverContentVC = UINavigationController(rootViewController: contentVC)
         popoverContentVC.preferredContentSize = CGSize(width: kScreenWidth - 20, height: 400)
-//        popoverContentVC.modalPresentationStyle = .popover
-//        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
-//        popoverPresentationVC.permittedArrowDirections = .up
-//        popoverPresentationVC.sourceView = self.view
-//        popoverPresentationVC.sourceRect = sender.frame
-//        popoverPresentationVC.delegate = self
-//        present(popoverContentVC, animated: true, completion: nil)
-
-//        presentPopover(popoverContentVC, sender: sender, arrowDirection: UIPopoverArrowDirection.init(rawValue: 0), completion: nil)
-        presentPopover(popoverContentVC, sender: self.view, arrowDirection: UIPopoverArrowDirection.init(rawValue: 0), completion: nil)
-
+        popoverContentVC.modalPresentationStyle = .popover
+        
+        guard let popoverPresentationVC = popoverContentVC.popoverPresentationController else { return }
+        popoverPresentationVC.permittedArrowDirections = .any
+        popoverPresentationVC.sourceView = sender
+        popoverPresentationVC.sourceRect = sender.frame
+        popoverPresentationVC.delegate = self
+        present(contentVC, animated: true, completion: nil)
+        
+//        presentPopover(contentVC, sender: sender, arrowDirection: UIPopoverArrowDirection.init(rawValue: 0), completion: nil)
     }
     
     
@@ -497,24 +572,24 @@ class FourthViewController: UIViewController {
     }
 }
 
-//extension FourthViewController: UIPopoverPresentationControllerDelegate {
-//
-//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-//        return .none
-//    }
-//
-//    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-//        return true
-//    }
-//
-//    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
-////        setAlphaOfBackgroundViews(1)
-//    }
-//
-//    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
-////        setAlphaOfBackgroundViews(0.7)
-//    }
-//}
+extension FourthViewController: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        return true
+    }
+
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+//        setAlphaOfBackgroundViews(1)
+    }
+
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+//        setAlphaOfBackgroundViews(0.7)
+    }
+}
 
 extension FourthViewController: IOPGoodsToolViewDelegate{
     
@@ -555,3 +630,56 @@ extension FourthViewController: IOPGoodsToolViewDelegate{
 //        return NSAttributedString(attributedString: string)
 //    }
 //}
+
+
+struct QueryObject{
+    
+    var params = [String: String]()
+
+    var getUrl: String{
+        let result = "www.ScoreTracker.com/postScore"
+        guard var url = URL(string: result) else { return result }
+        url.appendQueryParameters(params)
+        return url.absoluteString
+    }
+    
+    init(params: [String: String]) {
+        self.params = params
+    }
+
+}
+
+
+struct QueryObjectNew{
+
+    let userName  : String
+    let highScore : Int
+
+    var getUrl:String{
+        return ""
+//        return "www.ScoreTracker.com/postScore?\(nameof(userName))=\(userName)&\(nameof(highScore))=\(highScore)"
+    }
+}
+
+
+extension QueryObjectNew: CustomStringConvertible{}
+
+
+
+@available(iOS 10.3, *)
+class IconManager {
+    let application = UIApplication.shared
+    
+    // same naming convention in the plist to reference to actual files
+    enum AppIcon: String {
+        case iconDark
+        case iconDarkSimple
+        case iconLight
+        case iconLightSimple
+    }
+   
+    @available(iOS 10.3, *)
+    func changeAppIcon(to appIcon: AppIcon) {
+        application.setAlternateIconName(appIcon.rawValue)
+    }
+}
