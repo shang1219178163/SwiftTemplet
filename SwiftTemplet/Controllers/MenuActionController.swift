@@ -118,7 +118,6 @@ class MenuActionController: UIViewController {
                         ])
                     },for: .menuActionTriggered)
                     
-                    
                 case "Show":
                     sender.showsMenuAsPrimaryAction = true
                     sender.menu = UIMenu.map(data: fileMenuData, handler: { action in
@@ -324,7 +323,6 @@ extension MenuActionController: UITableViewDataSource, UITableViewDelegate{
           }
     }
 }
-
 
 
 protocol SystemMenuAble{
