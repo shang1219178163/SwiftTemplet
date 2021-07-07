@@ -5,6 +5,7 @@
 //  Created by Bin Shang on 2021/6/18.
 //  Copyright © 2021 BN. All rights reserved.
 //
+//SF Symbols 3 beta(https://developer.apple.com/sf-symbols/)
 
 /*
 @objc public extension UIImage{
