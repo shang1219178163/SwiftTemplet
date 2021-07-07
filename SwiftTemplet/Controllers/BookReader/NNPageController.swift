@@ -19,14 +19,14 @@ import UIKit
     }
 
     lazy var pageController: UIPageViewController = {
-        let options: [UIPageViewController.OptionsKey : Any] = [
+        let options: [UIPageViewController.OptionsKey: Any] = [
             .interPageSpacing: 5,
             .spineLocation: UIPageViewController.SpineLocation.min
         ]
-        let pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        pageController.dataSource = self
-        pageController.delegate = self
-        return pageController
+        let vc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        vc.dataSource = self
+        vc.delegate = self
+        return vc
     }()
         
     // MARK: -lifecycle

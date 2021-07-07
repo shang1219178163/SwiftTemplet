@@ -39,20 +39,6 @@ class MenuActionController: UIViewController {
             ),
         ]
     }
-
-//    lazy var btn: UIButton = {
-//        let view = UIButton(type: .custom)
-//        view.setTitle("done", for: .normal);
-//        view.setTitleColor(UIColor.red, for: .normal)
-////        view.adjustsImageWhenHighlighted = false
-//        setupMenu(view) { action in
-//            view.setTitle("\(action.title)", for: .normal);
-//        }
-//
-////        view.setupDeferreMenu()
-//        return view
-//    }()
-
     
     lazy var tableView: UITableView = {
         let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 60)

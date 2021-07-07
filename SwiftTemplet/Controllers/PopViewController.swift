@@ -18,7 +18,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(btnOne)
         view.addSubview(label)
 
-        UIApplication.setupAppearanceSearchbarCancellButton(UIColor.white)
+//        UIApplication.setupAppearanceSearchbarCancellButton(UIColor.white)
         navigationItem.titleView = {
             let titleView = UIView(frame: self.searchBar.bounds)
             titleView.addSubview(self.searchBar)

@@ -17,6 +17,20 @@ class TitleViewController: NNTitleViewSelectController{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        
+        let ItemList: [(String, Selector)] = [
+            ("topSheet", #selector(handleActionItem(_:))),
+            ("next", #selector(handleActionItem(_:))),
+        ]
+        
+        navigationItem.rightBarButtonItems = ItemList.enumerated().map { e -> UIBarButtonItem in
+            let barItem = UIBarButtonItem(title: e.element.0, style: .plain, target: self, action: e.element.1)
+            barItem.tag = e.offset
+            return barItem
+        }
+        
+
         let list: [[String]] = [
                 ["商品名称00:", "60.0", "", "cardName","0"],
                 ["商品名称11:", "60.0", "", "cardName","0"],
@@ -36,14 +50,7 @@ class TitleViewController: NNTitleViewSelectController{
         gemetryView.addGestureTap { (recognizer) in
             self.gemetryView.subType = Int(arc4random_uniform(3))
         }
-        
-        let rightBtn = UIButton(barItem: "next")
-        rightBtn.addActionHandler({ (sender) in
-            let controller = SheetViewController()
-            self.navigationController?.pushViewController(controller, animated: true);
-        })
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
-        
+                
         topView.btn = radioButton
         topView.btn.addActionHandler({[weak self] (sender) in
             guard let self = self else { return }
@@ -184,6 +191,36 @@ class TitleViewController: NNTitleViewSelectController{
         sender.isSelected = !sender.isSelected
         DDLog(sender)
     }
+    
+    @objc func handleActionItem(_ sender: UIBarButtonItem) {
+        switch sender.tag {
+        case 0:
+            let controller = SheetViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        case 1:
+            let vc = NNBottomSheetController()
+            vc.title = "\(Date())"
+
+            vc.block = { value, item in
+                DDLog(value, item.title)
+            }
+            
+            let redVC = UIViewController()
+            redVC.view.backgroundColor = .red
+            
+            vc.setContent(vc: redVC, height: kScreenHeight*0.6)
+            
+            vc.present()
+//            present(vc, animated: true, completion: nil)
+//            vc.modalPresentationStyle = .overFullScreen
+//            present(vc, animated: true, completion: nil)
+            
+        default:
+            break
+        }
+    }
+    
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom)

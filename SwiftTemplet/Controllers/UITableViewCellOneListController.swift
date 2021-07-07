@@ -33,23 +33,21 @@ class UITableViewCellOneListController: UIViewController {
         view.backgroundColor = .white
         // Do any additional setup after loading the view.
 //        title = NSStringFromSelector(#function);
-        createBarItem( .done, isLeft: false) {[weak self] (obj) in
-            self?.navigationController?.pushVC("IOPAuthRechargeController")
-        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, action: { item in
+            self.navigationController?.pushVC("IOPAuthRechargeController")
+        })
+
         view.addSubview(tbView);
         
-        DDLog(self);
-        DDLog(NSStringFromClass(self.classForCoder));
-
         if title == nil {
             title = self.vcName;
         }
                 
         for _ in 0...1 {
-            let marr : NSMutableArray = [];
+            let marr: NSMutableArray = [];
             for j in 0...6{
                 marr.add(j);
-                
             }
             dataList.add(marr);
         }

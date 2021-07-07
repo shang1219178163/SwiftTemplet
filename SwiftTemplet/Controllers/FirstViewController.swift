@@ -51,7 +51,7 @@ class FirstViewController: UIViewController{
              ["OptionWrappedController", "OptionWrapped", ],
              ["NavigationBarColorChangeController", "BaColorrChange", ],
              ["MenuActionController", "UIMenuAction(ios 14)", ],
-//             ["MenuActionChooseOneController", "MenuActionChooseOne(ios 14)", ],
+             ["MenuActionChooseOneController", "MenuActionChooseOne(ios 14)", ],
              
             ],
             [["UITableViewCellOneListController", "列表滑动隐藏导航栏", ],
