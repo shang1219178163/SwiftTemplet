@@ -54,12 +54,19 @@ def common_pods
 #    pod 'RxBlocking'
     pod 'RxCocoa'
     pod 'RxSwift'
+    pod 'RxWebKit'
+
     pod 'OHHTTPStubs'
     
     pod 'Starscream'
 
     pod 'HandyJSON'
-    
+    pod 'Then'
+    #骨架屏
+#    pod 'SkeletonView'
+    #banner图
+#    pod 'FSPagerView'
+
     pod 'YYWebImage'
     pod 'YYCache'
     pod 'YYCategories'
@@ -105,7 +112,7 @@ def common_pods
     #  :configurations => ['Debug'] 只是在xcode debug 时才会加入；
     pod 'Reveal-SDK', :configurations => ['Debug']
 
-    pod 'BXKAdvertSDK'
+#    pod 'BXKAdvertSDK'
     
     #SwiftUI 辅助库
 #    pod 'SwiftUIX'

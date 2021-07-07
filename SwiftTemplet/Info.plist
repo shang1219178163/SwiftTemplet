@@ -26,6 +26,7 @@
 				<string>public.movie</string>
 				<string>public.text</string>
 				<string>public.data</string>
+				<string>public.heic</string>
 			</array>
 		</dict>
 	</array>
@@ -105,7 +106,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>202105250841</string>
+	<string>202107071817</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>itms-apps</string>

@@ -16,10 +16,6 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (5.4.1)
   - AlipaySDK-iOS (15.7.9)
-  - BXKAdvertSDK (1.0.1):
-    - AFNetworking
-    - Masonry
-    - SDWebImage
   - EAIntroView (2.12.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
@@ -72,6 +68,9 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - RxWebKit (1.0.2):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - SDWebImage (5.8.3):
     - SDWebImage/Core (= 5.8.3)
   - SDWebImage/Core (5.8.3)
@@ -79,11 +78,9 @@ PODS:
   - SnapKitExtend (1.0.7):
     - SnapKit
   - Starscream (4.0.4)
-  - SwiftChain (1.0.0.4)
-  - SwiftExpand (7.0.0):
-    - SnapKit
-    - SwiftChain
+  - SwiftExpand (7.7.2)
   - SwiftyJSON (5.0.0)
+  - Then (2.7.0)
   - TZImagePickerController (3.3.2)
   - UICircularProgressRing (7.0.0)
   - WechatOpenSDK (1.8.7.1)
@@ -105,7 +102,6 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire (~> 5.4.1)
   - AlipaySDK-iOS
-  - BXKAdvertSDK
   - EAIntroView
   - EFQRCode
   - FloatingPanel
@@ -127,12 +123,14 @@ DEPENDENCIES:
   - RxAlamofire
   - RxCocoa
   - RxSwift
+  - RxWebKit
   - SDWebImage
   - SnapKit
   - SnapKitExtend
   - Starscream
   - SwiftExpand
   - SwiftyJSON
+  - Then
   - TZImagePickerController
   - UICircularProgressRing
   - WechatOpenSDK
@@ -147,7 +145,6 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - AlipaySDK-iOS
-    - BXKAdvertSDK
     - EAIntroView
     - EARestrictedScrollView
     - EFQRCode
@@ -173,13 +170,14 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - RxWebKit
     - SDWebImage
     - SnapKit
     - SnapKitExtend
     - Starscream
-    - SwiftChain
     - SwiftExpand
     - SwiftyJSON
+    - Then
     - TZImagePickerController
     - UICircularProgressRing
     - WechatOpenSDK
@@ -194,7 +192,6 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlipaySDK-iOS: 94ff4c0e17c5e7d126b8207596d5033006534c25
-  BXKAdvertSDK: 76421da3448a0d3f7011ef306e23f669bd7ce38a
   EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   EFQRCode: de5eb598ca2e51bb25013d9ce484acc3152ce187
@@ -220,13 +217,14 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  RxWebKit: a3085e7cd8b57182b452692686675702474014dd
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  SwiftChain: 1caf78adcb336774f92678a4ee38e26d67261feb
-  SwiftExpand: 2ee57a589fc1db72ab0891fd9f3db1e9c68d11a1
+  SwiftExpand: 7593736072d4378ae7d86b8579bf41a46c71eda8
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
   TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
   UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
@@ -237,6 +235,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: b6d0abe531d5602bf54771863f237b8bb610b4a6
+PODFILE CHECKSUM: 958aadbac9b06210fb9bdcc64983d1204773ef01
 
 COCOAPODS: 1.10.1
