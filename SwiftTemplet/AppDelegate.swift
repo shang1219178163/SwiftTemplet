@@ -17,6 +17,13 @@ let AppSerivcePhone = "400-966-8001"
 let AppPlatformAgreement = "http://api.parkingwang.com/app/iop/register.html"
 let AppPrivacyAgreement = "http://iop.parkingwang.com/static/protocol/parkingwang.html"
 
+
+public extension Notification.Name {
+    static let appLogOut = Notification.Name(rawValue: "AppLogOut")  // 值改变通知
+    static let appTokenExpired = Notification.Name(rawValue: "AppTokenExpired")  // 值改变通知
+}
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,53 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         NSObject.initializeMethod()
-//        UIViewController.initializeMethod()
+        UIViewController.initializeMethod()
         UINavigationController.initializeMethod()
         UITextView.initializeMethod()
-//        UIButton.initializeMethod()
+        UIControl.initializeMethod()
 //        UITapGestureRecognizer.initializeMethod()
 //        UIImageView.initializeMethod()
 //        UIColor.theme = UIColor.systemBlue
         UIColor.theme = UIColor.hexValue(0x29B5FE)
-        UIApplication.setupAppearanceDefault(false);
-        IQKeyboardManager.shared.enable = true;
+        UIApplication.setupAppearance(.white, barTintColor: .theme)
+        IQKeyboardManager.shared.enable = true
         
         
-        //方式一
-//        window = UIWindow(frame:UIScreen.main.bounds);
-//        window?.backgroundColor = .white;
-//        var controller = BNControllerFromString("MainViewController");
-//        controller = BNControllerFromString("HomeViewController");
-//        window?.rootViewController = controller is UINavigationController || controller is UITabBarController ? controller : UINavigationController(rootViewController: controller);
-//        window?.makeKeyAndVisible();
-        //方式二
         var controller = UICtrFromString("MainViewController");
         controller = UICtrFromString("HomeViewController");
-        
-//        controller = UICtrFromString("UIRecognizerController");
-//        controller = UICtrFromString("IOPAuthRechargeController");
-//        controller = UICtrFromString("NNUserLogInController");
-//        controller = UICtrFromString("PlateNumberController");
-//        controller = UICtrFromString("TitleViewController");
-//        controller = UICtrFromString("ScrollHorizontalController");        
-        
+            
         window = UIApplication.mainWindow;
         window?.rootViewController = controller
-
-        //方式三
-//        let list:Array = [
-//            ["FirstViewController", "首页", "Item_first_N", "Item_first_H"],
-//            ["SecondViewController", "圈子", "Item_second_N", "Item_second_H"],
-//            ["CenterViewController", "概况",  "Item_center_N",  "Item_center_H"],
-//            ["FifthViewControlle", "概况",  "Item_center_N",  "Item_center_H"],
-//            ["ThirdViewController", "消息", "Item_third_N", "Item_third_H"],
-//            ["FourthViewController", "我的",  "Item_fourth_N",  "Item_fourth_H"],
-//
-//            ];
-//        let tabBarController = UITarBarCtrFromList(list);
-//        window?.rootViewController = tabBarController
-//        UIApplication.tabBarController?.selectedIndex = 4;
-        DDLog("".count)
 
         testFunc()
         return true
@@ -243,7 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        DDLog(one, one1)
                 
 //        DDLog(self,UIApplication.shared.delegate as! AppDelegate)
-//        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window as Any);
+//        DDLog(UIApplication.mainWindow,UIApplication.shared.delegate?.window);
 //        DDLog(UIApplication.shared.keyWindow);
 //        DDLog(self.window);
         
@@ -273,7 +250,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let urlString = "https://t.bilibili.com/?spm_id_from=333.851.b_696e7465726e6174696f6e616c486561646572.28"
         if let url = URL(string: urlString) {
-            DDLog(url.queryParameters as Any, url.queryValue(for: "spm_id_from") as Any)
+            DDLog(url.queryParameters as Any, url.queryValue(for: "spm_id_from"))
             DDLog(url.appendingQueryParameters(["phone": "18729742695"]))
         }
         
