@@ -30,7 +30,7 @@ class ReuseChildsController: UIViewController {
             ["NNPageSegmentViewController", "NNPageSegmentView", ],
             ["NNPageSegmentedControlController", "NNPageSegmentedControl", ],
             
-            ["NNPageTitleViewController", "NNPageTitleView", ],
+            ["NNPageTitleController", "NNPageTitleView", ],
             
             ["NNScrollViewController", "NNScrollViewController", ],            
             ["PageTmpController", "继承NNPageController", ],

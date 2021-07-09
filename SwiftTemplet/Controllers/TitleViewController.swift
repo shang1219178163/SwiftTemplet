@@ -13,17 +13,32 @@ import SwiftExpand
 
 class TitleViewController: NNTitleViewSelectController{
 
+    //MARK: -lazy
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(frame: self.view.bounds)
+        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        stackView.spacing = 20
+        stackView.axis = .vertical
+        //子视图的高度或宽度保持一致
+//        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
+
+        return stackView;
+    }()
+
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
+        view.backgroundColor = .white
         
         let ItemList: [(String, Selector)] = [
             ("topSheet", #selector(handleActionItem(_:))),
             ("next", #selector(handleActionItem(_:))),
         ]
-        
+                
         navigationItem.rightBarButtonItems = ItemList.enumerated().map { e -> UIBarButtonItem in
             let barItem = UIBarButtonItem(title: e.element.0, style: .plain, target: self, action: e.element.1)
             barItem.tag = e.offset
@@ -44,142 +59,46 @@ class TitleViewController: NNTitleViewSelectController{
         delegate = self
         topView.list = list
         topView.tableView.reloadData()
-        
-        view.addSubview(gemetryView)
-        
-        gemetryView.addGestureTap { (recognizer) in
-            self.gemetryView.subType = Int(arc4random_uniform(3))
-        }
                 
-        topView.btn = radioButton
+        topView.btn = btn
         topView.btn.addActionHandler({[weak self] (sender) in
             guard let self = self else { return }
             UIApplication.shared.keyWindow?.endEditing(true)
             if let imgView = sender.imageView{
                 imgView.transformRotationCycle()
             }
-            
+
             if self.topView.btn.imageView?.transform.isIdentity == false {
                 self.topView.show()
             } else {
                 self.topView.dismiss()
             }
-            
+
         }, for: .touchUpInside)
-        view.getViewLayer()
         
-        let obj = 3.repeatArray("334")
-        DDLog(obj)
+        view.addSubview(stackView)
+
+        let items = [btn, gemetryView, textFieldView, textFieldBtnView, chooseView,]
+        stackView.addArrangedSubviews(items)
+
+//        view.getViewLayer()
+
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        view.addSubview(segmentCtlOne)
-        view.addSubview(checkBox)
-        view.addSubview(boxButton)
-        view.addSubview(radioButton)
-        view.addSubview(button)
-        view.addSubview(buttonTop)
-        view.addSubview(buttonBottom)
-        view.addSubview(buttonRight)
-        
-        view.addSubview(textFieldView)
-        view.addSubview(textFieldBtnView)
-        view.addSubview(chooseView)
-        
-        return
-        segmentCtlOne.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(100);
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.height.equalTo(50)
+
+        stackView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.right.equalToSuperview().offset(-10)
+            make.height.equalToSuperview().offset(-10)
         }
-        
-        checkBox.snp.makeConstraints { (make) in
-            make.top.equalTo(segmentCtlOne.snp.bottom).offset(15);
-            make.left.equalToSuperview().offset(20)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
-        }
-        
-        boxButton.snp.makeConstraints { (make) in
-            make.top.equalTo(checkBox).offset(0);
-            make.left.equalTo(checkBox.snp.right).offset(15)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
-        }
-                
-        radioButton.snp.makeConstraints { (make) in
-            make.top.equalTo(checkBox).offset(0);
-            make.left.equalTo(boxButton.snp.right).offset(15)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
-        }
-            
-        button.snp.makeConstraints { (make) in
-            make.top.equalTo(radioButton.snp.bottom).offset(15);
-            make.left.equalToSuperview().offset(20)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
-        }
-        
-        buttonTop.snp.makeConstraints { (make) in
-            make.top.equalTo(button).offset(0);
-            make.left.equalTo(button.snp.right).offset(15)
-            make.width.equalTo(60)
-            make.height.equalTo(60)
-        }
-        
-        buttonBottom.snp.makeConstraints { (make) in
-            make.top.equalTo(button).offset(0);
-            make.left.equalTo(buttonTop.snp.right).offset(15)
-            make.width.equalTo(60)
-            make.height.equalTo(60)
-        }
-        
-        buttonRight.snp.makeConstraints { (make) in
-            make.top.equalTo(button).offset(0);
-            make.left.equalTo(buttonBottom.snp.right).offset(20)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
-        }
-        
-        textFieldView.snp.makeConstraints { (make) in
-            make.top.equalTo(button.snp.bottom).offset(50);
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.height.equalTo(40)
-        }
-        
-        textFieldBtnView.snp.makeConstraints { (make) in
-            make.top.equalTo(textFieldView.snp.bottom).offset(5);
-            make.left.equalToSuperview().offset(20)
-            make.right.equalToSuperview().offset(-20)
-            make.height.equalTo(40)
-        }
-        
-        chooseView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(0)
-            make.right.equalToSuperview().offset(0)
-            make.bottom.equalToSuperview().offset(0)
-            make.height.equalTo(50)
-        }
-        
-        topView.sender = radioButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        DDLog("viewWillAppear")
-        
-//        let model = Person()
-//
-//        var dic = [String: Any]()
-//        model.enumeratePropertys { (property_t, name, value) in
-//            dic[name] = value ?? "=="
-//        }
-//        DDLog(dic)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -196,7 +115,7 @@ class TitleViewController: NNTitleViewSelectController{
         switch sender.tag {
         case 0:
             let controller = SheetViewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            navigationController?.pushViewController(controller, animated: true)
             
         case 1:
             let vc = NNBottomSheetController()
@@ -224,8 +143,7 @@ class TitleViewController: NNTitleViewSelectController{
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom)
-        view.setTitle("闭包的回调方法", for: .normal);
-        view.setTitleColor(.white, for: .normal);
+        view.setTitle("UIButton", for: .normal);
         view.setImage(UIImage(named: "img_arrowDown_black"), for: .normal)
 //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
@@ -249,125 +167,15 @@ class TitleViewController: NNTitleViewSelectController{
     
     
     lazy var gemetryView: NNGeometryView = {
-        let view = NNGeometryView(frame: CGRect(x: 20, y: 20, width: 100, height: 100))
+        let view = NNGeometryView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         view.type = 0
         view.subType = 3
+        view.addGestureTap { (recognizer) in
+            view.subType = Int(arc4random_uniform(3))
+        }
         return view
     }()
 
-    lazy var segmentCtlOne: NNSegmentedControl = {
-        let view = NNSegmentedControl(frame: .zero)
-        view.showStyle = .bottomLine
-        view.selectedColor = .systemBlue
-        view.items = ["是", "否", "其他"]
-        view.addActionHandler({ (sender) in
-            DDLog(sender)
-            
-        }, for: .valueChanged)
-        return view;
-    }()
-    
-    lazy var checkBox: UIButton = {
-        let view = UIButton(type: .custom)
-        view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
-        view.setTitle("绿肥红瘦", for: .normal);
-
-        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
-        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
-        
-        var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
-        var seletedTextColor: UIColor = UIColor.theme
-        view.setTitleColor(normlTextColor, for: .normal)
-        view.setTitleColor(seletedTextColor, for: .selected)
-        
-        view.adjustsImageWhenHighlighted = false
-        view.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-//        view.sizeToFit()
-//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
-        view.layoutButton(direction: 3, imageTitleSpace: 2)
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-
-        return view
-    }()
-    
-    lazy var boxButton: NNBoxButton = {
-        let view = NNBoxButton(frame: .zero)
-        view.isImageRight = true
-        view.setTitle("蓝瘦香菇", for: .normal);
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-
-        return view
-    }()
-    
-    lazy var radioButton: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("荷塘夜色", for: .normal);
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-
-        return view
-    }()
-    
-    lazy var button: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
-        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
-        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-
-        return view
-    }()
-    
-    lazy var buttonTop: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
-        view.direction = .top
-        view.iconLocation = .leftTop
-
-        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
-        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-
-        return view
-    }()
-    
-    lazy var buttonBottom: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
-        view.direction = .bottom
-        view.iconLocation = .leftBottom
-
-        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
-        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
-
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
-    }()
-    
-    lazy var buttonRight: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
-        view.direction = .right
-        view.iconLocation = .rightBottom
-
-        var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
-        var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
-
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
-    }()
-    
     lazy var chooseView: IOPOrdersChooseView = {
         let view = IOPOrdersChooseView(frame: .zero)
         view.count = 0
@@ -381,8 +189,7 @@ class TitleViewController: NNTitleViewSelectController{
         view.textfield.placeholder = "请输入手机号码"
 //        view.label.isHidden = true
         view.btn.addActionHandler { (sender) in
-            
-            DDLog(sender.currentTitle ?? "无标题")
+            DDLog(sender.currentTitle)
         }
         view.block { (textFieldView, text) in
             DDLog(text)
@@ -398,8 +205,7 @@ class TitleViewController: NNTitleViewSelectController{
         view.label.isHidden = true
 
         view.btn.addActionHandler { (sender) in
-            
-            DDLog(sender.currentTitle ?? "无标题")
+            DDLog(sender.currentTitle)
         }
         view.block { (textFieldView, text) in
             DDLog(text)

@@ -1,5 +1,5 @@
 //
-//  UIImage+SystemNew.swift
+//  UIImage+System.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2021/6/18.

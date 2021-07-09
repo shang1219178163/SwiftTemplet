@@ -75,7 +75,6 @@ class NNSegmentedControl: UISegmentedControl {
     
     //MARK: -funtions
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        //        DDLog("change_\(change)");
         if keyPath == "selectedSegmentIndex" {
             setupIndicator()
 //            if let value = change![NSKeyValueChangeKey.newKey] as? NSNumber {

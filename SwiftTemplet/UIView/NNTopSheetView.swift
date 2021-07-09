@@ -20,7 +20,7 @@ import SwiftExpand
     
     weak var delegate: NNTopSheetViewDelegate?
     
-    var indexP: IndexPath = IndexPath(row: 0, section: 0)
+    var indexP = IndexPath(row: 0, section: 0)
     
     weak var parController: UIViewController?
     var sender: UIView?{
@@ -73,7 +73,7 @@ import SwiftExpand
     func setupTitleView() {
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
-            if let imgView = (sender as! UIButton).imageView{
+            if let imgView = sender.imageView{
                 imgView.transformRotationCycle()
             }
             
@@ -158,7 +158,7 @@ import SwiftExpand
         return view
     }()
     
-    lazy var tableView: UITableView = {
+    private(set) lazy var tableView: UITableView = {
         let table = UITableView(rect: bounds, style: .plain, rowHeight: 50)
         table.dataSource = self
         table.delegate = self
