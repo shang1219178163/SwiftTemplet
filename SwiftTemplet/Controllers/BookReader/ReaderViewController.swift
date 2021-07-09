@@ -11,7 +11,8 @@ import UIKit
 
 class ReaderViewController: UIViewController, UIPageViewControllerDelegate {
     var controllers = [UIViewController]()
-    var list = 7.repeatArray("sdfasdfasdfa")
+
+    var list = [String].init(count: 7) { _ in "abcd" }
 
     lazy var pageController: UIPageViewController = {
         let options = [UIPageViewController.OptionsKey.interPageSpacing: 5,

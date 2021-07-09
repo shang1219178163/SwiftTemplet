@@ -18,9 +18,9 @@ import SwiftExpand
 
 ///阅读器视图(无限的控制器视图)
 @objcMembers class BookReaderController: UIViewController {
-    
-    var list = 7.repeatArray("sdfasdfasdfa")
-    
+        
+    var list = [String].init(count: 7) { _ in "abcd" }
+
     var currentIndex: Int = 0
     
     lazy var pageController: UIPageViewController = {

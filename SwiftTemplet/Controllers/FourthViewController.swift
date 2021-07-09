@@ -90,7 +90,7 @@ class FourthViewController: UIViewController {
     }()
     
     func createGroupView() {
-        let list = 12.repeatArray("按钮_")
+        var list = [String].init(count: 12) { _ in "按钮_" }
 
         let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 20.0*2, height: kScreenWidth - 20.0*2);
         let groupView = UIButton.createGroupView(rect, list: list, numberOfRow: 4, padding: 5) { (control) in
