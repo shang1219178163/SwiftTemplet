@@ -12,80 +12,102 @@ import SwiftExpand
 
 class NNButtonStudyController: UIViewController{
 
-    var normlImage: UIImage = UIImage(named: "icon_selected_no_default")!
-    var seletedImage: UIImage = UIImage(named: "icon_selected_yes_green")!
+    var normlImage = UIImage(named: "icon_selected_no_default")!
+    var seletedImage = UIImage(named: "icon_selected_yes_green")!
     
     lazy var btn: UIButton = {
-        let view = UIButton(type: .custom)
-        view.setTitle("默认样式", for: .normal);
-        view.setTitleColor(UIColor.red, for: .normal)
-//        view.adjustsImageWhenHighlighted = false
+        let sender = UIButton(type: .custom)
+        sender.setTitle("默认样式", for: .normal);
+//        sender.adjustsImageWhenHighlighted = false
         
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        if #available(iOS 13.0, *) {
+            sender.setImage(UIImage.chevron_down, for: .normal)
+            sender.setImage(UIImage.chevron_up, for: .selected)
+        }
+
+        sender.sizeToFit()
+        sender.layoutButton(direction: 3, imageTitleSpace: 8)
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+
+        sender.topMenuTarget.items = [String].init(count: 6, generator: { "icon_selected_no_default_\($0)" })
+        sender.topMenuTarget.selectedBlock = {
+            let title = sender.topMenuTarget.items[$0]
+            sender.setTitle(title, for: .normal)
+            sender.sizeToFit()
+            sender.layoutButton(direction: 3, imageTitleSpace: 8)
+        }
+        sender.topMenuTarget.cellForRowBlock = { tableView, indexPath in
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: UITableViewCellOne.reuseIdentifier, style: .subtitle)
+            
+            cell.imageView?.image = UIImage.img_update
+            cell.textLabel?.text = sender.topMenuTarget.items[indexPath.row]
+            cell.detailTextLabel?.text = sender.topMenuTarget.items[indexPath.row]
+            return cell
+        }
+        return sender
     }()
     
     lazy var checkBox: UIButton = {
-        let view = UIButton(type: .custom)
-        view.setTitle("绿肥红瘦", for: .normal);
+        let sender = UIButton(type: .custom)
+        sender.setTitle("绿肥红瘦", for: .normal);
 
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
+        sender.setImage(normlImage, for: .normal)
+        sender.setImage(seletedImage, for: .selected)
         
         var normlTextColor: UIColor = UIColor.black.withAlphaComponent(0.3)
         var seletedTextColor: UIColor = UIColor.theme
-        view.setTitleColor(normlTextColor, for: .normal)
-        view.setTitleColor(seletedTextColor, for: .selected)
+        sender.setTitleColor(normlTextColor, for: .normal)
+        sender.setTitleColor(seletedTextColor, for: .selected)
         
-        view.adjustsImageWhenHighlighted = false
-        view.sizeToFit()
-//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
-        view.layoutButton(direction: 0, imageTitleSpace: 16)
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        sender.adjustsImageWhenHighlighted = false
+        sender.sizeToFit()
+//        sender.titleEdgeInsets = UIEdgeInsetsMake(0, -sender.imageView!.bounds.width, 0, sender.imageView!.bounds.width)
+//        sender.imageEdgeInsets = UIEdgeInsetsMake(0, sender.titleLabel!.bounds.width+0.0, 0, -sender.titleLabel!.bounds.width-0.0)
+        sender.layoutButton(direction: 0, imageTitleSpace: 16)
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
-//        view.getViewLayer()
-        return view
+//        sender.getViewLayer()
+        return sender
     }()
     
     lazy var boxButton: NNBoxButton = {
-        let view = NNBoxButton(frame: .zero)
-        view.isImageRight = true
-        view.setTitle("蓝瘦香菇", for: .normal);
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        let sender = NNBoxButton(frame: .zero)
+        sender.isImageRight = true
+        sender.setTitle("蓝瘦香菇", for: .normal);
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        return sender
     }()
     
     lazy var radioButton: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("荷塘夜色", for: .normal);
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        let sender = NNButton(type:.custom);
+        sender.setTitle("荷塘夜色", for: .normal);
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
-        return view
+        return sender
     }()
     
         
     lazy var button: NNButton = {
-        var view = NNButton(type:.custom);
-//        var view = NNButton(frame: .zero)
+        var sender = NNButton(type:.custom);
+//        var sender = NNButton(frame: .zero)
 
-        view.setTitle("浪迹天涯", for: .normal)
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
+        sender.setTitle("浪迹天涯", for: .normal)
+        sender.setImage(normlImage, for: .normal)
+        sender.setImage(seletedImage, for: .selected)
         
-        view.setBorderColor(.lightGray, for: .normal)
-        view.setBorderColor(.systemBlue, for: .selected)
-        view.setCornerRadius(4, for: .normal)
-        view.setCornerRadius(14, for: .selected)
-//        view.setTitleColor(.green, for: .normal)
-//        view.setTitleColor(.systemBlue, for: .selected)
-        view.setTitleColor(.darkGray, for: .disabled)
+        sender.setBorderColor(.lightGray, for: .normal)
+        sender.setBorderColor(.systemBlue, for: .selected)
+        sender.setCornerRadius(4, for: .normal)
+        sender.setCornerRadius(14, for: .selected)
+//        sender.setTitleColor(.green, for: .normal)
+//        sender.setTitleColor(.systemBlue, for: .selected)
+        sender.setTitleColor(.darkGray, for: .disabled)
 
-        view.setBorderColor(.darkGray, for: .disabled)
-        view.setBorderWidth(4, for: .disabled)
+        sender.setBorderColor(.darkGray, for: .disabled)
+        sender.setBorderWidth(4, for: .disabled)
 
-//        view.isEnabled = false
-        view.observerBlock = { keyPath, sender, change in
+//        sender.isEnabled = false
+        sender.observerBlock = { keyPath, sender, change in
             guard let keyPath = keyPath,
                   let sender = sender,
                   let change = change
@@ -93,94 +115,99 @@ class NNButtonStudyController: UIViewController{
             DDLog(keyPath)
         }
 
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        return sender
     }()
     
     lazy var buttonTop: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal)
+        let sender = NNButton(type:.custom);
+        sender.setTitle("浪迹天涯", for: .normal)
         
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
+        sender.setImage(normlImage, for: .normal)
+        sender.setImage(seletedImage, for: .selected)
         
-        view.setBorderColor(.lightGray, for: .normal)
-        view.setBorderColor(.systemBlue, for: .selected)
-        view.setCornerRadius(4, for: .normal)
+        sender.setBorderColor(.lightGray, for: .normal)
+        sender.setBorderColor(.systemBlue, for: .selected)
+        sender.setCornerRadius(4, for: .normal)
 
-        view.direction = .top
-        view.iconLocation = .leftTop
+        sender.direction = .top
+        sender.iconLocation = .leftTop
         
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        return sender
     }()
     
     lazy var buttonBottom: NNButton = {
-        let view = NNButton(type:.custom)
-        view.setTitle("浪迹天涯", for: .normal)
+        let sender = NNButton(type:.custom)
+        sender.setTitle("浪迹天涯", for: .normal)
 
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
+        sender.setImage(normlImage, for: .normal)
+        sender.setImage(seletedImage, for: .selected)
         
-        view.setBorderColor(.lightGray, for: .normal)
-        view.setBorderColor(.systemBlue, for: .selected)
-        view.setCornerRadius(4, for: .normal)
+        sender.setBorderColor(.lightGray, for: .normal)
+        sender.setBorderColor(.systemBlue, for: .selected)
+        sender.setCornerRadius(4, for: .normal)
 
-        view.direction = .bottom
-        view.iconLocation = .leftBottom
+        sender.direction = .bottom
+        sender.iconLocation = .leftBottom
 
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        return sender
     }()
     
     lazy var buttonRight: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
+        let sender = NNButton(type:.custom);
+        sender.setTitle("浪迹天涯", for: .normal);
         
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
+        sender.setImage(normlImage, for: .normal)
+        sender.setImage(seletedImage, for: .selected)
         
-        view.setBorderColor(.lightGray, for: .normal)
-        view.setBorderColor(.systemBlue, for: .selected)
-        view.setCornerRadius(4, for: .normal)
+        sender.setBorderColor(.lightGray, for: .normal)
+        sender.setBorderColor(.systemBlue, for: .selected)
+        sender.setCornerRadius(4, for: .normal)
 
-        view.direction = .right
-        view.iconLocation = .rightBottom
+        sender.direction = .right
+        sender.iconLocation = .rightBottom
 
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        return sender
     }()
     
     lazy var buttonAdd: NNButton = {
-        let view = NNButton(type:.custom);
-        view.setTitle("浪迹天涯", for: .normal);
+        let sender = NNButton(type:.custom);
+        sender.setTitle("浪迹天涯", for: .normal);
         
-        view.setImage(normlImage, for: .normal)
-        view.setImage(seletedImage, for: .selected)
-        view.titleLabel?.isHidden = true
+        sender.setImage(normlImage, for: .normal)
+        sender.setImage(seletedImage, for: .selected)
+        sender.titleLabel?.isHidden = true
 
-        view.setBorderColor(.lightGray, for: .normal)
-        view.setBorderColor(.systemBlue, for: .selected)
-        view.setCornerRadius(4, for: .normal)
+        sender.setBorderColor(.lightGray, for: .normal)
+        sender.setBorderColor(.systemBlue, for: .selected)
+        sender.setCornerRadius(4, for: .normal)
         
-        view.direction = .none
-        view.iconLocation = .rightTop
+        sender.direction = .none
+        sender.iconLocation = .rightTop
         
-        view.iconSize = GGSizeMake(20, 20)
-        view.iconOffset = UIOffsetMake(8, -8)
-        view.eventInsetDX = 8;
-        view.eventInsetDY = 8;
-        view.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
-        view.iconBtn.addTarget(self, action: #selector(handActionDelete(_:)), for: .touchUpInside)
+        sender.iconSize = GGSizeMake(20, 20)
+        sender.iconOffset = UIOffsetMake(8, -8)
+        sender.eventInsetDX = 8;
+        sender.eventInsetDY = 8;
+        sender.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
+        sender.iconBtn.addTarget(self, action: #selector(handActionDelete(_:)), for: .touchUpInside)
 
-        view.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
-        return view
+        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
+        return sender
     }()
 
     
     @objc func handActionBtn(_ sender: NNButton) {
-        sender.isSelected = !sender.isSelected
-        DDLog(sender.frame, sender.titleLabel?.frame)
+        sender.isSelected.toggle()
+//        DDLog(sender.isSelected)
+        if sender.isSelected {
+            sender.topMenuTarget.show()
+        } else {
+            sender.topMenuTarget.dismiss()
+        }
     }
 
     @objc func handActionDelete(_ sender: UIButton) {
@@ -205,30 +232,11 @@ class NNButtonStudyController: UIViewController{
         view.addSubview(radioButton)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handActionItem(_:)));
-//        return
-
-//        if #available(iOS 14.0, *) {
-//            let destruct = UIAction(title: "Destruct", attributes: .destructive) { DDLog($0.title) }
-//
-//            let items = UIMenu(title: "More", options: .displayInline, children: [
-//                UIAction(title: "Item 1", image: UIImage(systemName: "mic"), handler: { DDLog($0.title) }),
-//                UIAction(title: "Item 2", image: UIImage(systemName: "envelope"), handler: { DDLog($0.title) }),
-//                UIAction(title: "Item 3", image: UIImage(systemName: "flame.fill"), handler: { DDLog($0.title) }),
-//                UIAction(title: "Item 4", image: UIImage(systemName: "video"), state: .on, handler: { DDLog($0.title) })
-//            ])
-//
-//            button.menu = UIMenu(title: "", children: [items,
-////                                                           destruct
-//            ])
-//            button.showsMenuAsPrimaryAction = true
-//            button.addAction(UIAction(title: "2222"){ _ in print("Hello Menu")},for: .menuActionTriggered)
-//        }
-
-                        
+        navigationItem.titleView = btn
 //        button.isHidden = true
-        checkBox.isHidden = true
+//        checkBox.isHidden = true
 
-        view.getViewLayer()
+//        view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -241,66 +249,20 @@ class NNButtonStudyController: UIViewController{
         buttonAdd.frame = CGRectMake(20, buttonBottom.frame.maxY + 20, 75, 75);
         
         btn.frame = CGRectMake(20, buttonAdd.frame.maxY + 20, 120, 35);
-        checkBox.frame = CGRectMake(20, btn.frame.maxY + 20, 120, 135);
+        checkBox.frame = CGRectMake(20, btn.frame.maxY + 20, 80, 80);
         boxButton.frame = CGRectMake(20, checkBox.frame.maxY + 20,  120, 35);
         radioButton.frame = CGRectMake(20, boxButton.frame.maxY + 20,  120, 35);
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        return
-//        checkBox.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview().offset(20);
-//            make.left.equalToSuperview().offset(20)
-//            make.width.equalTo(100)
-//            make.height.equalTo(40)
-//        }
-//
-//        boxButton.snp.makeConstraints { (make) in
-//            make.top.equalTo(checkBox).offset(0);
-//            make.left.equalTo(checkBox.snp.right).offset(15)
-//            make.width.equalTo(100)
-//            make.height.equalTo(40)
-//        }
-//
-//        radioButton.snp.makeConstraints { (make) in
-//            make.top.equalTo(checkBox).offset(0);
-//            make.left.equalTo(boxButton.snp.right).offset(15)
-//            make.width.equalTo(100)
-//            make.height.equalTo(40)
-//        }
-//
-//        button.snp.makeConstraints { (make) in
-//            make.top.equalTo(radioButton.snp.bottom).offset(15);
-//            make.left.equalToSuperview().offset(20)
-//            make.width.equalTo(100)
-//            make.height.equalTo(40)
-//        }
-//
-//        buttonTop.snp.makeConstraints { (make) in
-//            make.top.equalTo(button).offset(0);
-//            make.left.equalTo(button.snp.right).offset(15)
-//            make.width.equalTo(60)
-//            make.height.equalTo(60)
-//        }
-//
-//        buttonBottom.snp.makeConstraints { (make) in
-//            make.top.equalTo(button).offset(0);
-//            make.left.equalTo(buttonTop.snp.right).offset(15)
-//            make.width.equalTo(60)
-//            make.height.equalTo(60)
-//        }
-//
-//        buttonRight.snp.makeConstraints { (make) in
-//            make.top.equalTo(button).offset(0);
-//            make.left.equalTo(buttonBottom.snp.right).offset(20)
-//            make.width.equalTo(100)
-//            make.height.equalTo(40)
-//        }
-//
-//        btn.snp.makeConstraints { (make) in
-//            make.bottom.equalTo(buttonRight.snp.bottom).offset(60);
-//            make.left.equalToSuperview().offset(20)
-//            make.width.equalTo(100)
-//            make.height.equalTo(40)
-//        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        btn.topMenuTarget.dismiss(false)
     }
     
     //MARK: -func
@@ -311,4 +273,3 @@ class NNButtonStudyController: UIViewController{
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
