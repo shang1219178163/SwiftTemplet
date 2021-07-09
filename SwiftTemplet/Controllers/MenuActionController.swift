@@ -216,7 +216,20 @@ extension MenuActionController: UITableViewDataSource, UITableViewDelegate{
         cell.textLabel?.text = tuple.0
 
         cell.imageView?.image = UIImage(named: "img_update")
+        if let imageView = cell.imageView, imageView.transform == .identity {
+           imageView.transform = imageView.transform.scaledBy(x: 0.35, y: 0.35)
+           imageView.contentMode = .center
+        }
         
+        if indexPath.row == 2 {
+            cell.accessoryView = {
+                let image = UIImage.chevron_right
+                let sender = UIImageView(frame: CGRectMake(0, 0, 11, 13))
+                sender.tintColor = .black.withAlphaComponent(0.3)
+                sender.image = image
+                return sender
+            }()
+        }
         
         if indexPath.row == 3 {
             cell.accessoryView = {
@@ -224,11 +237,10 @@ extension MenuActionController: UITableViewDataSource, UITableViewDelegate{
                 let sender = UIButton(type: .custom)
                 sender.setImage(image, for: .normal)
                 sender.sizeToFit()
-                sender.imageView?.tintColor = .lightGray
+                sender.imageView?.tintColor = .black.withAlphaComponent(0.3)
                 return sender
             }()
         }
-
         return cell
     }
     
@@ -373,4 +385,17 @@ extension UIMenu{
         }
     }
     
+}
+
+
+
+extension UIView{
+    func logViewInfo(_ block: ((UIView)->Void)?) {
+        #if DEBUG
+        for subview in subviews {
+            block?(subview)
+            subview.logViewInfo(block)
+        }
+        #endif
+    }
 }

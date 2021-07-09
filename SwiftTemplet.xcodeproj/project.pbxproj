@@ -27,6 +27,7 @@
 		1401BEAE2277EA780078A722 /* NSError+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401BEAD2277EA780078A722 /* NSError+Helper.swift */; };
 		1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404FAF621E084FD00122E22 /* UIRecognizerController.swift */; };
 		1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1404FAFA21E0A70D00122E22 /* Skull.jpg */; };
+		1407831826984874007031F9 /* UIImage+System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407831726984874007031F9 /* UIImage+System.swift */; };
 		140B6D4521D4D57900050C8F /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 140B6D4421D4D57900050C8F /* bug.png */; };
 		140D5E6825A707FA00F3FBB2 /* OHHTTPStubsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D5E6725A707FA00F3FBB2 /* OHHTTPStubsHelper.swift */; };
 		140EC547248DFA8600DAC1CB /* NNChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140EC546248DFA8600DAC1CB /* NNChoiceView.swift */; };
@@ -89,6 +90,8 @@
 		142A770922275EE10016D3DA /* NNAnnularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A76F122275EE00016D3DA /* NNAnnularProgress.swift */; };
 		142A770B222761050016D3DA /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770A222761050016D3DA /* PickerViewController.swift */; };
 		142A770D222764080016D3DA /* NNPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142A770C222764080016D3DA /* NNPickerView.swift */; };
+		142C6F902696D1D600E14616 /* SegmentControlStyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142C6F8F2696D1D600E14616 /* SegmentControlStyleController.swift */; };
+		142C6F922696F8BA00E14616 /* UIButton+TopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142C6F912696F8BA00E14616 /* UIButton+TopMenu.swift */; };
 		142D7E6225931EA000D15E3B /* UITableViewCellUploadNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7E6125931EA000D15E3B /* UITableViewCellUploadNew.swift */; };
 		142D7E642593250400D15E3B /* UITableViewCellUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7E632593250400D15E3B /* UITableViewCellUpload.swift */; };
 		142D7F142594558700D15E3B /* RxCocoaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7F132594558700D15E3B /* RxCocoaHelper.swift */; };
@@ -454,7 +457,6 @@
 		14B940B9237E3FBE00A49D1F /* IOPParkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940B8237E3FBE00A49D1F /* IOPParkButton.swift */; };
 		14B940BB237E53A300A49D1F /* IOPTableViewCellGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */; };
 		14BAB4382613046900A77284 /* NumberFormatterExampleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BAB4372613046900A77284 /* NumberFormatterExampleController.swift */; };
-		14BAB5E2269589D600B9A9FC /* UIImage+System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BAB5E1269589D600B9A9FC /* UIImage+System.swift */; };
 		14BB0C9B24862ECF00CA4865 /* UITableViewCellChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BB0C9A24862ECF00CA4865 /* UITableViewCellChoice.swift */; };
 		14BC6198254FA00C0043FFC6 /* NNTableViewAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6197254FA00C0043FFC6 /* NNTableViewAlertController.swift */; };
 		14BC619A254FA1670043FFC6 /* NNAlertTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC6199254FA1670043FFC6 /* NNAlertTableController.swift */; };
@@ -662,6 +664,7 @@
 		1401BEAD2277EA780078A722 /* NSError+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Helper.swift"; sourceTree = "<group>"; };
 		1404FAF621E084FD00122E22 /* UIRecognizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerController.swift; sourceTree = "<group>"; };
 		1404FAFA21E0A70D00122E22 /* Skull.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Skull.jpg; sourceTree = "<group>"; };
+		1407831726984874007031F9 /* UIImage+System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+System.swift"; sourceTree = "<group>"; };
 		140B6D4421D4D57900050C8F /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug.png; sourceTree = "<group>"; };
 		140D5E6725A707FA00F3FBB2 /* OHHTTPStubsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHHTTPStubsHelper.swift; sourceTree = "<group>"; };
 		140EC546248DFA8600DAC1CB /* NNChoiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNChoiceView.swift; sourceTree = "<group>"; };
@@ -726,6 +729,8 @@
 		142A76F122275EE00016D3DA /* NNAnnularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNAnnularProgress.swift; sourceTree = "<group>"; };
 		142A770A222761050016D3DA /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		142A770C222764080016D3DA /* NNPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPickerView.swift; sourceTree = "<group>"; };
+		142C6F8F2696D1D600E14616 /* SegmentControlStyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControlStyleController.swift; sourceTree = "<group>"; };
+		142C6F912696F8BA00E14616 /* UIButton+TopMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TopMenu.swift"; sourceTree = "<group>"; };
 		142D7E6125931EA000D15E3B /* UITableViewCellUploadNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellUploadNew.swift; sourceTree = "<group>"; };
 		142D7E632593250400D15E3B /* UITableViewCellUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellUpload.swift; sourceTree = "<group>"; };
 		142D7F132594558700D15E3B /* RxCocoaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaHelper.swift; sourceTree = "<group>"; };
@@ -1121,7 +1126,6 @@
 		14B940B8237E3FBE00A49D1F /* IOPParkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPParkButton.swift; sourceTree = "<group>"; };
 		14B940BA237E53A300A49D1F /* IOPTableViewCellGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPTableViewCellGroupView.swift; sourceTree = "<group>"; };
 		14BAB4372613046900A77284 /* NumberFormatterExampleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterExampleController.swift; sourceTree = "<group>"; };
-		14BAB5E1269589D600B9A9FC /* UIImage+System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+System.swift"; sourceTree = "<group>"; };
 		14BB0C9A24862ECF00CA4865 /* UITableViewCellChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellChoice.swift; sourceTree = "<group>"; };
 		14BC6197254FA00C0043FFC6 /* NNTableViewAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTableViewAlertController.swift; sourceTree = "<group>"; };
 		14BC6199254FA1670043FFC6 /* NNAlertTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAlertTableController.swift; sourceTree = "<group>"; };
@@ -1560,6 +1564,7 @@
 				148870B125BFEFFD00B1BDEB /* UIButton+Border.h */,
 				148870B025BFEFFD00B1BDEB /* UIButton+Border.m */,
 				1449774C25BBA96E00256043 /* UIButton+Layer.swift */,
+				142C6F912696F8BA00E14616 /* UIButton+TopMenu.swift */,
 			);
 			path = UIControlUpdate;
 			sourceTree = "<group>";
@@ -2170,7 +2175,7 @@
 				14847F4E267B62D600095058 /* NavigationBarColorChangeController.swift */,
 				14847F60267CEB0F00095058 /* NNBottomSheetController.swift */,
 				14847F5A267CC27900095058 /* NNFoldTableController.swift */,
-				14BAB5E1269589D600B9A9FC /* UIImage+System.swift */,
+				1407831726984874007031F9 /* UIImage+System.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -2333,6 +2338,7 @@
 				14CFBC0126745C8B00F1F4AE /* DateDemoController.swift */,
 				1428D57F2680419400DCB60D /* ForExampleController.swift */,
 				141C1F9E2685866900A120EF /* SystemIconDisplayController.swift */,
+				142C6F8F2696D1D600E14616 /* SegmentControlStyleController.swift */,
 				14A11DC02693F6EE007963A3 /* MenuActionController.swift */,
 				14A11DC226955013007963A3 /* MenuActionChooseOneController.swift */,
 			);
@@ -2839,6 +2845,7 @@
 				147E3046246BD5FA0076C704 /* IOPCouponFliterDropView.swift in Sources */,
 				1448871A224E1D2300B550AF /* ZMKeyBoardButtonView.swift in Sources */,
 				142A76F922275EE10016D3DA /* NNTopSheetView.swift in Sources */,
+				1407831826984874007031F9 /* UIImage+System.swift in Sources */,
 				143917E224C2D42100CBABF0 /* UITableViewCellRightAvart.swift in Sources */,
 				14F3966B227ED0F2000CD7B4 /* NNCheckVersApi.swift in Sources */,
 				146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */,
@@ -2859,6 +2866,7 @@
 				1455106E240CAD76001772F5 /* UITableViewCellGoodsDuration.swift in Sources */,
 				145ECEC6251206EE00952360 /* SwipeRightToPopViewController.swift in Sources */,
 				142A76F222275EE10016D3DA /* NNClockView.swift in Sources */,
+				142C6F922696F8BA00E14616 /* UIButton+TopMenu.swift in Sources */,
 				14886B3326311F3900788F64 /* NSPersonNameComponentsFormatter+Chain.m in Sources */,
 				1450C7C32630037D00522534 /* NNPasswordLevelLabel.swift in Sources */,
 				14775DF024872CF30093DC3D /* NNCycleScrollView.swift in Sources */,
@@ -2930,6 +2938,7 @@
 				14A3755C24B7169C002C9E4B /* RxRequestExampleController.swift in Sources */,
 				51685A13208EA79C00CE8099 /* MainViewController.swift in Sources */,
 				145ECEA1250B033500952360 /* NNTransitionDelegate.swift in Sources */,
+				142C6F902696D1D600E14616 /* SegmentControlStyleController.swift in Sources */,
 				14B0A2922531660B00C930B1 /* GXSegmentPageView.swift in Sources */,
 				14F030D2223B8B5500C3DE5B /* KeyBoardViewController.swift in Sources */,
 				145C90EA233324ED00849E9D /* UICallPhoneView.swift in Sources */,
@@ -3032,7 +3041,6 @@
 				14BD733F22D418F7008788B1 /* PlateNumberController.swift in Sources */,
 				144742332589B7AA00BA550D /* IOPPayInpartBaseInfoController.swift in Sources */,
 				146D49B52497716E00B25EE7 /* ReaderViewController.swift in Sources */,
-				14BAB5E2269589D600B9A9FC /* UIImage+System.swift in Sources */,
 				145C90E023323C1600849E9D /* NNLineDashView.swift in Sources */,
 				144742312589AA5800BA550D /* UITableViewCellChoiceRadio.swift in Sources */,
 				147FF3CA21CE26BE00351E94 /* UITableViewCellFive.swift in Sources */,

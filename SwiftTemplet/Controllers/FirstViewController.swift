@@ -44,6 +44,8 @@ class FirstViewController: UIViewController{
         var array: [[[String]]] = [
             [["NNButtonStudyController", "Swift 按钮封装", ],
              ["NNButtonDispalyController", "OC 按钮封装", ],
+             ["NNButtonStudyController", "swift 按钮封装", ],
+
              ["TextFieldViewController", "OC TextField下拉列表", ],
              ["PropertyWrapperController", "PropertyWrapper", ],            
              ["CryptoKitController", "Crypto加密", ],
@@ -60,8 +62,9 @@ class FirstViewController: UIViewController{
              ["PickerDemoController", "PickerDemo", ],
              ["DateDemoController", "DateTimeFormatter", ],
 
-
              ["AlertSheetStudyController", "AlertSheet自定义", ],
+             ["SegmentControlStyleController", "SegmentControlStyle", ],
+             
              ["ShowActivityController", "ShowActivity", ],
              ["GXSegmentPageViewExampleController", "GXSegmentPageView", ],
              ["QRCodeViewController", "二维码", ],
@@ -182,9 +185,9 @@ class FirstViewController: UIViewController{
         super.viewWillAppear(animated);
 //        DDLog("viewWillAppear")
         
-        let z = (UIColor.white.cgColor == navigationController?.navigationBar.barTintColor?.cgColor)
-        DDLog(z, UIColor.white, navigationController?.navigationBar.barTintColor)
-        DDLog(z, UIColor.white.isDark, navigationController?.navigationBar.barTintColor?.isDark, navigationController?.navigationBar.tintColor?.isDark)
+//        let z = (UIColor.white.cgColor == navigationController?.navigationBar.barTintColor?.cgColor)
+//        DDLog(z, UIColor.white, navigationController?.navigationBar.barTintColor)
+//        DDLog(z, UIColor.white.isDark, navigationController?.navigationBar.barTintColor?.isDark, navigationController?.navigationBar.tintColor?.isDark)
         
 //        let string = "[[\"\\u9655A91D6P\"]]";
 //        let obj = JSONSerialization.jsonObjectFromString(string);
@@ -213,10 +216,10 @@ class FirstViewController: UIViewController{
         
 //        view.nn_borderColor(UIColor.red).nn_borderWidth(5)
 
-        let date = Date()
-        let a = date.timeIntervalSince1970
-        let b = Int(date.timeIntervalSince1970)
-        DDLog(addTo(10)(1))
+//        let date = Date()
+//        let a = date.timeIntervalSince1970
+//        let b = Int(date.timeIntervalSince1970)
+//        DDLog(addTo(10)(1))
         
 //        test()
 //        print(buildString())

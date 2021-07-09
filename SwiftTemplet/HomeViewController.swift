@@ -71,8 +71,6 @@ class HomeViewController: UITabBarController {
 //            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
             
             (FourthViewController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-//            (SystemIconDisplayController(), "SystemIcon", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-            
         ];
     }()
     
@@ -82,20 +80,19 @@ class HomeViewController: UITabBarController {
         btn.setImage(UIImage(named: "tabbar_add"), for:.normal);
         btn.addTarget(self, action: #selector(handleActionSender(_:)), for: .touchUpInside);
         
-        return btn;
+        return btn
     }();
     
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        tabBar.tintColor = UIColor.theme;
-        tabBar.barTintColor = UIColor.white;
-        tabBar.isTranslucent = false;
+        tabBar.tintColor = .theme
+        tabBar.barTintColor = .white
+        tabBar.isTranslucent = false
 
         viewControllers = items.map({ (vc, title, image, imageH) -> UIViewController in
             let ctrl = vc.isKind(of: UINavigationController.self) ? vc : UINavigationController(rootViewController: vc)
-//            self.setupBackItem(ctrl)
             ctrl.reloadTabarItem((title, image, imageH))
             return ctrl
         })
@@ -104,8 +101,7 @@ class HomeViewController: UITabBarController {
 //        view.addGestureRecognizer(panGesture)
         
 //        selectedIndex = 2
-        selectedIndex = items.count - 1
-        selectedIndex = 0
+//        selectedIndex = items.count - 1
     }
 
     
