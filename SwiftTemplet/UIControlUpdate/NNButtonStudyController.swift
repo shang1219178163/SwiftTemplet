@@ -200,20 +200,6 @@ class NNButtonStudyController: UIViewController{
     }()
 
     
-    @objc func handActionBtn(_ sender: NNButton) {
-        sender.isSelected.toggle()
-//        DDLog(sender.isSelected)
-        if sender.isSelected {
-            sender.topMenuTarget.show()
-        } else {
-            sender.topMenuTarget.dismiss()
-        }
-    }
-
-    @objc func handActionDelete(_ sender: UIButton) {
-        DDLog(sender)
-    }
-    
     // MARK: -life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -265,11 +251,23 @@ class NNButtonStudyController: UIViewController{
         btn.topMenuTarget.dismiss(false)
     }
     
-    //MARK: -func
-        
-    @objc func handActionItem(_ sender: UIBarItem) {
+    //MARK: -functions
+    @objc func handActionBtn(_ sender: NNButton) {
+        sender.isSelected.toggle()
+//        DDLog(sender.isSelected)
+        if sender.isSelected {
+            sender.topMenuTarget.show()
+        } else {
+            sender.topMenuTarget.dismiss()
+        }
+    }
 
+    @objc func handActionDelete(_ sender: UIButton) {
+        DDLog(sender)
+    }
+    
+    @objc func handActionItem(_ sender: UIBarItem) {
         let vc = NNButtonStudyController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
