@@ -45,13 +45,15 @@ class FirstViewController: UIViewController{
             [["NNButtonStudyController", "Swift 按钮封装", ],
              ["NNButtonDispalyController", "OC 按钮封装", ],
              ["NNButtonStudyController", "swift 按钮封装", ],
-
+             
              ["TextFieldViewController", "OC TextField下拉列表", ],
              ["PropertyWrapperController", "PropertyWrapper", ],            
              ["CryptoKitController", "Crypto加密", ],
              ["ProtocolChainController", "ProtocolChain", ],
              ["OptionWrappedController", "OptionWrapped", ],
              ["NavigationBarColorChangeController", "BaColorrChange", ],
+             ["ToorbarViewController", "Toorbar", ],
+
              ["MenuActionController", "UIMenuAction(ios 14)", ],
              ["MenuActionChooseOneController", "MenuActionChooseOne(ios 14)", ],
              
@@ -155,16 +157,17 @@ class FirstViewController: UIViewController{
         }
         view.addSubview(tableView)
         
-        navigationItem.rightBarButtonItems = UIBarButtonItem.createTitles(["黑色", "白色"], style: .plain, action: { (item) in
-            if item.title == "黑色" {
-                self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
-                item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
-            } else {
-                self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
-                item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+        navigationItem.rightBarButtonItems = ["黑色", "白色"].map({
+            UIBarButtonItem(obj: $0) { item in
+                if item.title == "黑色" {
+                    self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
+                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+                } else {
+                    self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
+                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+                }
             }
-        });
-        
+        })
         
         let content = "分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t"
         annAlertView.htmlString = content
@@ -222,7 +225,7 @@ class FirstViewController: UIViewController{
 //        DDLog(addTo(10)(1))
         
 //        test()
-//        print(buildString())
+//        print(buildString())        
     }
     
     override func viewDidAppear(_ animated: Bool) {

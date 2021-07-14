@@ -43,14 +43,14 @@ import SwiftExpand
             var tabBarItems: [UITabBarItem] = []
 
             for e in children.enumerated() {
-                removeControllerVC(e.element)
+                removeChildVC(e.element)
             }
             
             for e in controllers.enumerated() {
                 e.element.tabBarItem.title = e.element.title
                 tabBarItems.append(e.element.tabBarItem)
                 
-                addControllerVC(e.element)
+                addChildVC(e.element)
                 e.element.view.backgroundColor = e.element.view.backgroundColor ?? UIColor.white
                 e.element.view.snp.makeConstraints { (make) in
                     make.top.left.right.equalToSuperview().offset(0);

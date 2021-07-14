@@ -57,12 +57,12 @@ public class NNTopMenuTarget: NSObject {
         senderView = UIApplication.shared.keyWindow
                 
         tableView.frame = CGRect(x: 0,
-                                 y: UIScreen.barHeight,
+                                 y: UIScreen.navBarHeight,
                                  width: UIScreen.sizeWidth,
                                  height: 0)
         
         var dimViewRect = dimView.frame
-        dimViewRect.origin.y = UIScreen.barHeight
+        dimViewRect.origin.y = UIScreen.navBarHeight
         dimView.frame = dimViewRect
         
         senderView?.addSubview(dimView)

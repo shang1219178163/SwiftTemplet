@@ -41,13 +41,13 @@ import SwiftExpand
         willSet{
             guard let controllers = newValue else { return }
             for e in children.enumerated() {
-                removeControllerVC(e.element)
+                removeChildVC(e.element)
             }
 
             segmentCtl.items = controllers.map({ $0.title ?? "-" })
             for e in controllers.enumerated() {
 
-                addControllerVC(e.element)
+                addChildVC(e.element)
                 e.element.view.backgroundColor = e.element.view.backgroundColor ?? UIColor.white
                 e.element.view.snp.makeConstraints { (make) in
                     make.top.equalToSuperview().offset(segmentCtl.bounds.height);
