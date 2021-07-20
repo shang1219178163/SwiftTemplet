@@ -55,7 +55,7 @@ class NNOperationStateView: UIView {
                 topBgViewColor = "#fff6d3"
                 
 //                let tipInfo = getAttString("请于12:32前到达T2地上停车场", textTaps: ["12:32","T2地上停车场"], tapColor: UIColor.red)
-                let tipInfo = NSAttributedString.attString("请于12:32前到达T2地上停车场", textTaps: ["12:32","T2地上停车场"], font: 18, tapFont: 18, color: .black, tapColor: UIColor.hex(topTitleColor), alignment: .center)
+                let tipInfo = NSAttributedString.attString("请于12:32前到达T2地上停车场", textTaps: ["12:32","T2地上停车场"], font: UIFont.systemFont(ofSize: 18), tapFont: UIFont.systemFont(ofSize: 18), color: .black, tapColor: UIColor.hex(topTitleColor), alignment: .center)
                 label.attributedText = tipInfo;
                 
             case 5://接客中

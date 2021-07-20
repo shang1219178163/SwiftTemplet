@@ -134,7 +134,7 @@ import SwiftExpand
     func updateLevelDesc() {
         let taps = ["\(self.levelValue)", "\(self.levelAbsence)",]
         let text = "当前经验值：\(taps[0])，距离 Lv.\(self.levelNext) 还差 \(taps[1]) 经验值";
-        let attString = NSAttributedString.attString(text, textTaps: taps, font: 12, tapFont: 12, color: UIColor.hexValue(0x7F808F), tapColor: UIColor.hexValue(0xF0C09B), alignment: .left)
+        let attString = NSAttributedString.attString(text, textTaps: taps, font: UIFont.systemFont(ofSize: 12), tapFont: UIFont.systemFont(ofSize: 12), color: UIColor.hexValue(0x7F808F), tapColor: UIColor.hexValue(0xF0C09B), alignment: .left)
         labelSub.attributedText = attString
     }
         
