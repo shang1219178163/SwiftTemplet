@@ -114,7 +114,7 @@ class IOPInvoiceCreateController: UIViewController {
 
             let imgView: UIImageView = {
                 let rect = CGRectMake(0, 0, 14, 14)
-                let view: UIImageView = UIImageView(rect, named: "icon_arrow_right_lightGray")
+                let view: UIImageView = UIImageView(rect: rect, named: "icon_arrow_right_lightGray")
                 let image = UIImage(named: "img_arrowRight_gray", podName: "SwiftExpand")
                 view.image = image;
                 view.contentMode = .center

@@ -32,9 +32,9 @@ class CustomViewController: UIViewController {
         }
         itemView.items = listNew
         
-        var rect = CGRect.make(20, itemView.maxY+20, 80, 60)
-//        rect = CGRect(x: 20, y: itemView.maxY+20, width: 60, height: 40)
-        rect = CGRectMake(120, itemView.maxY+20, 80, 60)
+        var rect = CGRect.make(20, itemView.frame.maxY+20, 80, 60)
+//        rect = CGRect(x: 20, y: itemView.frame.maxY+20, width: 60, height: 40)
+        rect = CGRectMake(120, itemView.frame.maxY+20, 80, 60)
         
         let btn = UIButton(type: .custom)
         btn.setTitle("自定义", for: .normal)

@@ -112,10 +112,6 @@ class FirstViewController: UIViewController{
 
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .action, action: { item in
-//            UIApplication.openURLString("wx.parkingwang.com://")
-//            self.annAlertView.urlString = "http://h5-kop.dev.irainone.com/#/pages/SystemMsgDetails/Index"
-//            self.annAlertView.show()
-                        
             let vc = UIViewController()
             vc.view.backgroundColor = .lightOrange
             vc.view.addGestureTap { (reco) in
@@ -136,7 +132,18 @@ class FirstViewController: UIViewController{
                 
                 vc.present()
             }
-
+        })
+        
+        navigationItem.rightBarButtonItems = ["黑色", "白色"].map({
+            UIBarButtonItem(obj: $0) { item in
+                if item.title == "黑色" {
+                    self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
+                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+                } else {
+                    self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
+                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+                }
+            }
         })
         
         let btn = UIButton(type: .custom)
@@ -157,17 +164,6 @@ class FirstViewController: UIViewController{
         }
         view.addSubview(tableView)
         
-        navigationItem.rightBarButtonItems = ["黑色", "白色"].map({
-            UIBarButtonItem(obj: $0) { item in
-                if item.title == "黑色" {
-                    self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
-                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
-                } else {
-                    self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
-                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
-                }
-            }
-        })
         
         let content = "分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司 架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司架构组织架构做了新的调整，分为两个界面，一个是部门架构，一个是公司\n\t"
         annAlertView.htmlString = content

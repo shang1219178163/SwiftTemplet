@@ -21,9 +21,9 @@ class NNPopView: UIView {
             self.originX = 0;
             self.originY = rect.maxY;
             self.sizeWidth = kScreenWidth;
-            self.sizeHeight = parController.view.maxY - newValue.maxY;
+            self.sizeHeight = parController.view.frame.maxY - newValue.frame.maxY;
             
-            let maxHeight = parController.view.sizeHeight - minY - tableView.rowHeight*2;
+            let maxHeight = parController.view.sizeHeight - frame.minY - tableView.rowHeight*2;
             
             tableView.sizeHeight = CGFloat(list.count)*tableView.rowHeight;
             if tableView.sizeHeight >= maxHeight {
