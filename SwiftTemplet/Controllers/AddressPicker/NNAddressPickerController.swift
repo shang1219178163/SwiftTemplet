@@ -43,7 +43,7 @@ class NNAddressPickerController: NNTabController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "地址选择"
         // Do any additional setup after loading the view.
                 

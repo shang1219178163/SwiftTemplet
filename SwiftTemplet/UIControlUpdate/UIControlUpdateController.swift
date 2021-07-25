@@ -41,7 +41,7 @@ class UIControlUpdateController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         view.backgroundColor = .white;
 
         view.addSubview(tableView)

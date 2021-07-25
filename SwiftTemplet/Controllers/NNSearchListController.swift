@@ -57,7 +57,7 @@ import SwiftExpand
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = ""
         navigationItem.leftBarButtonItem?.setHidden(true)
         navigationItem.backBarButtonItem?.setHidden(true)

@@ -14,7 +14,7 @@ class UISearchStylesController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = vcName
         
         view.addSubview(plainView)

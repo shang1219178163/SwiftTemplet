@@ -37,7 +37,7 @@ import SwiftExpand
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "我的任务"
         setupUI()
     }

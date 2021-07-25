@@ -14,7 +14,7 @@ class NNPlateKeyboardController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         view.backgroundColor = UIColor.white
 
         title = "车牌键盘重构"

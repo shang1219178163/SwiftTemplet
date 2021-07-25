@@ -116,7 +116,7 @@ import SwiftExpand
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "系统颜色"
         setupUI()
     }

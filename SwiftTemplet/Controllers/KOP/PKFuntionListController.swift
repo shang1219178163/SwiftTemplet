@@ -77,7 +77,7 @@ import SwiftExpand
         super.viewDidLoad()
         
         title = "KOP功能"
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         setupUI()
     }
     

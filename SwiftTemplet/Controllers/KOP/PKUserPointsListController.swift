@@ -39,7 +39,7 @@ import SwiftExpand
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "我的积分"
         setupUI()
     }

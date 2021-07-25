@@ -106,11 +106,11 @@ class FirstViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setupExtendedLayout()
+//        edgesForExtendedLayout = []
         edgesForExtendedLayout = [];
         view.backgroundColor = .white;
 
-        
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .action, action: { item in
             let vc = UIViewController()
             vc.view.backgroundColor = .lightOrange
@@ -143,6 +143,11 @@ class FirstViewController: UIViewController{
                     self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
                     item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
                 }
+                
+                let tuple = (name: "xiaoming", age: 18, sex: 1)
+                DDLog(tuple.name)
+                DDLog(tuple.age)
+                DDLog(tuple.sex)
             }
         })
         
@@ -438,38 +443,4 @@ extension Stack: SuffixableContainer {
     // Inferred that Suffix is Stack.
 }
 
-
-
-//@resultBuilder
-//struct StringBuilder {
-//    // buildBlock中将多个值构建为一个结果
-//    static func buildBlock(_ strs: String...) -> String {
-//        // 以换行符拼接多个字符串
-//        strs.joined(separator: "\n")
-//    }
-//
-//    // if逻辑分支
-//    static func buildEither(first component: String) -> String {
-//        return "if \(component)"
-//    }
-//
-//    // else逻辑分支
-//    static func buildEither(second component: String) -> String {
-//        return "else \(component)"
-//    }
-//}
-//
-//@StringBuilder
-//func buildString() -> String {
-//    "静夜思"
-//    "唐•李白"
-//    "床前明月光，疑是地上霜。"
-//    "举头望明月，低头思故乡。"
-//
-//    if Bool.random() {
-//        "一首诗"
-//    } else {
-//        "一首词"
-//    }
-//}
 

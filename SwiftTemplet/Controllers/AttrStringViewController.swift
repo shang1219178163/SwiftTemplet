@@ -71,7 +71,7 @@ import SnapKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         view.backgroundColor = .white
         title = "SimpleListController"
 

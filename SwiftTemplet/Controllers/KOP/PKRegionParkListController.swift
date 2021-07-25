@@ -80,7 +80,7 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = ""
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 

@@ -30,7 +30,7 @@ class AddShadowViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         view.backgroundColor = .white
         
         view.addSubview(roundView)

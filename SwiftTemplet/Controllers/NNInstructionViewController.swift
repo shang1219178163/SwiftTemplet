@@ -46,7 +46,7 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = ""
         setupUI()
         

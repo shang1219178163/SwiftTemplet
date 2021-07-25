@@ -216,7 +216,7 @@ import HFNavigationController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = ""
         setupUI()
     }

@@ -47,7 +47,7 @@ import SwiftExpand
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "优惠券支付"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: .plain, target: self, action: #selector(handleAction(_:)))

@@ -100,7 +100,7 @@ import SwiftExpand
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "注销账号"
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
 

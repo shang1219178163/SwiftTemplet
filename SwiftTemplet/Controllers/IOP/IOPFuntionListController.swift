@@ -115,7 +115,7 @@ import RxCocoa
         super.viewDidLoad()
         
         title = "KOP功能"
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         setupUI()
         
         searchBar.rxDrive { (query) in

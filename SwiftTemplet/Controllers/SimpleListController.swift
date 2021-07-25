@@ -52,7 +52,7 @@ import SnapKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "SimpleListController"
         setupUI()
     }

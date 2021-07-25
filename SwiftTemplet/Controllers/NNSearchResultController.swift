@@ -29,7 +29,7 @@ class NNSearchResultController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "搜索结果列表"
         
         view.addSubview(tbView)

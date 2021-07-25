@@ -40,7 +40,7 @@ class NNSudokuViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         view.backgroundColor = .white
         view.addSubview(sudokuView)
         

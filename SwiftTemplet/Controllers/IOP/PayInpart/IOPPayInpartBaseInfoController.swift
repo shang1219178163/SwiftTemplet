@@ -132,7 +132,7 @@ import SnapKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupExtendedLayout()
+        edgesForExtendedLayout = []
         title = "主体类型"
         setupUI()
     }
