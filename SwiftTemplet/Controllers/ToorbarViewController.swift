@@ -14,7 +14,7 @@ class ToorbarViewController: UIViewController {
     private let scrollView = UIScrollView(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: 45))
     private let toorbar = UIToolbar()
 
-
+    // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,12 +32,79 @@ class ToorbarViewController: UIViewController {
                 DDLog(item.systemType.rawValue, item.width)
             }
         })
+                
+        
+
+        var items: [UIBarButtonItem] = ["取消", "", "删除", "", "扩容", "", "减配", "", "续费", "", "加购"]
+            .map({ e -> UIBarButtonItem in
+                if e == "" {
+                    let fixedItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+                    fixedItem.width = 15
+                    return fixedItem
+                }
+                let sender = UIButton(type: .custom)
+                sender.setTitle(e, for: .normal)
+                sender.setTitleColor(.theme, for: .normal)
+                sender.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .light)
+//                sender.setBackgroundColor(.systemBlue, for: .normal)
+                sender.addTarget(self, action: #selector(handleActionBtn(_:)), for: .touchUpInside)
+
+                let size = sender.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 0))
+                sender.widthAnchor.constraint(equalToConstant: size.width + 16).isActive = true
+                sender.heightAnchor.constraint(equalToConstant: 24).isActive = true
+                
+                sender.layer.borderColor = UIColor.systemBlue.cgColor
+                sender.layer.borderWidth = 0.5
+                sender.layer.cornerRadius = 3
+                return UIBarButtonItem(customView: sender)
+            })
+
+        items.insert(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), at: 0)
+        
+        let toorbar1 = UIToolbar()
+        toorbar1.items = items
+        toorbar1.frame = CGRect(x: 0, y: 60, width: kScreenWidth, height: 45)
+        toorbar1.barTintColor = .white
+        view.addSubview(toorbar1)
+        
+        ///
+        let item1s: [UIBarButtonItem] = ["取消", "删除", "扩容", ]
+            .map({ e -> UIBarButtonItem in
+                let sender = UIButton(type: .custom)
+                sender.setTitle(e, for: .normal)
+                sender.setTitleColor(.theme, for: .normal)
+                sender.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .light)
+//                sender.setBackgroundColor(.systemBlue, for: .normal)
+                sender.addTarget(self, action: #selector(handleActionBtn(_:)), for: .touchUpInside)
+
+                sender.sizeToAdjust(16, height: 24)
+                
+                sender.layer.borderColor = UIColor.systemBlue.cgColor
+                sender.layer.borderWidth = 0.5
+                sender.layer.cornerRadius = 3
+                return UIBarButtonItem(customView: sender)
+            })
+        
+        
+        let toorbar2 = NNToolbar()
+        toorbar2.alignment = .center
+        toorbar2.spacing = 15
+        toorbar2.elements = item1s
+        toorbar2.frame = CGRect(x: 0, y: 120, width: kScreenWidth, height: 45)
+        toorbar2.barTintColor = .white
+        view.addSubview(toorbar2)
         
         view.getViewLayer()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+    
+    // MARK: -funtsion
+    @objc func handleActionBtn(_ sender: UIButton) {
+        DDLog(sender.currentTitle)
     }
     
 }
@@ -78,3 +145,5 @@ extension UIBarButtonItem.SystemItem: CaseIterable{
         return list
     }
 }
+
+
