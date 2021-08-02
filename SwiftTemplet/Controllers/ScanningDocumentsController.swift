@@ -18,8 +18,9 @@ class ScanningDocumentsController: UIViewController {
     
     lazy var textRecognitionRequest: VNRecognizeTextRequest = {
         let request = VNRecognizeTextRequest(completionHandler: nil)
-//        request.recognitionLevel = .accurate  // .accurate と .fast が選択可能
-        request.recognitionLanguages = ["en-US", "zh-Hans", "zh-Hant"] // 言語を選ぶ
+        request.recognitionLevel = .accurate  // .accurate と .fast が選択可能
+//        request.recognitionLanguages = ["en-US", "zh-Hans", "zh-Hant"] // 言語を選ぶ
+        request.recognitionLanguages = ["zh-Hans", ]
         request.usesLanguageCorrection = true //
         return request
     }()
@@ -78,15 +79,13 @@ class ScanningDocumentsController: UIViewController {
         
         if #available(iOS 14.0, *) {
             let supportLanguageArray = try? VNRecognizeTextRequest.supportedRecognitionLanguages(for: .accurate, revision: VNRecognizeTextRequestRevision2)
-            print(supportLanguageArray)
+            print(supportLanguageArray as Any)
 //            ["en-US", "fr-FR", "it-IT", "de-DE", "es-ES", "pt-BR", "zh-Hans", "zh-Hant"]
-        } else {
-            // Fallback on earlier versions
         }
-//["en-US"]
     }
     
     @objc func handleActionItem(_ item: UIBarButtonItem) {
+        guard let fixedImage = fixedImage else { return }
         processImage(fixedImage)
     }
 
@@ -164,9 +163,9 @@ class ScanningDocumentsController: UIViewController {
     
     /// Shows a `VNDocumentCameraViewController` to let the user scan documents
     @objc func scanDocument() {
-        let scannerViewController = VNDocumentCameraViewController()
-        scannerViewController.delegate = self
-        present(scannerViewController, animated: true)
+        let scannerVC = VNDocumentCameraViewController()
+        scannerVC.delegate = self
+        present(scannerVC, animated: true)
     }
     
     // MARK: - Scan Handling
