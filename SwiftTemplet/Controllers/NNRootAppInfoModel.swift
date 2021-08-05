@@ -20,6 +20,8 @@ class NNRootAppInfoModel: NSObject, HandyJSON {
     func mapping(mapper: HelpingMapper) {
 
     }
+    
+    
 }
 
 @objcMembers
@@ -118,5 +120,85 @@ class NNResultsAppInfoModel: NSObject, HandyJSON {
         mapper <<< desc <-- "description";
 
     }
+    
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        print("[\(Date()), \(#line)]", "setValue: forUndefinedKey:, 未知键Key: \(key)")
+    }
+
+    override func value(forUndefinedKey key: String) -> Any?{
+        print("[\(Date()), \(#line)]", "valueForUndefinedKey:, 未知键: \(key)")
+        return nil
+    }
+
+    override func setNilValueForKey(_ key: String){
+        print("[\(Date()), \(#line)]", "Invoke setNilValueForKey:, 不能给非指针对象(如NSInteger)赋值 nil")
+        return//给一个非指针对象(如NSInteger)赋值 nil, 直接忽略
+    }
+
+    override func setValuesForKeys(_ keyedValues: [String : Any]) {
+        for (key, value) in keyedValues {
+            setValue(value, forKey: key)
+        }
+    }
 }
 
+//extension NSObject {
+//
+//
+//    override func setValue(_ value: Any?, forKey key: String) {
+//        print("setValue: forUndefinedKey:, 未知键Key: \(key)")
+//    }
+//
+//    override func value(forUndefinedKey key: String) -> Any?{
+//        print("valueForUndefinedKey:, 未知键: \(key)")
+//        return nil
+//    }
+//
+//    override func setNilValueForKey(_ key: String){
+//        print("Invoke setNilValueForKey:, 不能给非指针对象(如NSInteger)赋值 nil")
+//        return//给一个非指针对象(如NSInteger)赋值 nil, 直接忽略
+//    }
+//
+//    override func setValuesForKeys(_ keyedValues: [String : Any]) {
+//        for (key, value) in keyedValues {
+//            setValue(value, forKey: key)
+//        }
+//    }
+//
+//}
+
+//public protocol ValueForKeyProtocol: NSObject {
+//
+//    override func setValue(_ value: Any?, forKey key: String)
+//
+//    override func value(forUndefinedKey key: String) -> Any?
+//
+//    override func setNilValueForKey(_ key: String)
+//
+//    override func setValuesForKeys(_ keyedValues: [String : Any])
+//}
+//
+//
+//public extension ValueForKeyProtocol {
+//
+//    override func setValue(_ value: Any?, forKey key: String) {
+//        print("setValue: forUndefinedKey:, 未知键Key: \(key)")
+//    }
+//
+//    override func value(forUndefinedKey key: String) -> Any?{
+//        print("valueForUndefinedKey:, 未知键: \(key)")
+//        return nil
+//    }
+//
+//    override func setNilValueForKey(_ key: String){
+//        print("Invoke setNilValueForKey:, 不能给非指针对象(如NSInteger)赋值 nil")
+//        return//给一个非指针对象(如NSInteger)赋值 nil, 直接忽略
+//    }
+//
+//    override func setValuesForKeys(_ keyedValues: [String : Any]) {
+//        for (key, value) in keyedValues {
+//            setValue(value, forKey: key)
+//        }
+//    }
+//}

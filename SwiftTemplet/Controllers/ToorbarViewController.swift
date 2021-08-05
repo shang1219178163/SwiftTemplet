@@ -105,6 +105,29 @@ class ToorbarViewController: UIViewController {
     // MARK: -funtsion
     @objc func handleActionBtn(_ sender: UIButton) {
         DDLog(sender.currentTitle)
+        
+        DDLog(sender.currentTitle?.padLeft(10, " "))
+        DDLog(sender.currentTitle?.padRight(10, " "))
+
+        DDLog("*"*3)
+        
+        // To convert Range<String.Index> to NSRange:
+        guard let s = sender.currentTitle else { return }
+        
+        let string = "Hello USA 🇺🇸 !!! Hello World !!!"
+        if let nsRange = string.range(of: "Hello World")?.nsRange(in: string) {
+           let a = (string as NSString).substring(with: nsRange) //  "Hello World"
+            DDLog(a)   // "[{0, 5}, {19, 5}]\n"
+        }
+        
+        if let nsRange = string.nsRange(of: "Hello World") {
+            let a = (string as NSString).substring(with: nsRange) //  "Hello World"
+            DDLog(a)   // "[{0, 5}, {19, 5}]\n"
+        }
+        let nsRanges = string.nsRanges(of: "Hello")
+        DDLog(nsRanges)   // "[{0, 5}, {19, 5}]\n"\
+        
+    
     }
     
 }
@@ -146,4 +169,12 @@ extension UIBarButtonItem.SystemItem: CaseIterable{
     }
 }
 
+
+//extension String{
+//
+//    /// range转换为NSRange
+//    func rangeNew(from nsRange: NSRange) -> Range<String.Index>? {
+//        return Range(nsRange, in: self)
+//    }
+//}
 

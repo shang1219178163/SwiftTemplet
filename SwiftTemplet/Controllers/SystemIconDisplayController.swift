@@ -109,13 +109,14 @@ class SystemIconDisplayController: UITableViewController {
         let cell = tableView.dequeueReusableCell(for: UITableViewCell.self)
         
         cell.textLabel?.text = "\(indexPath.row)"
-        
+
         let name = images[indexPath.row]
-        if #available(iOS 13, *) {
-            cell.imageView?.image = UIImage(systemName: name) ?? UIImage(color: .red)
-        }
         cell.textLabel?.text = "\(name)"
 
+        if #available(iOS 13, *) {
+            cell.imageView?.image = UIImage(systemName: name) ?? UIImage(color: .red, size: CGSize(width: 30, height: 30))
+        }
+        
         return cell
     }
     
