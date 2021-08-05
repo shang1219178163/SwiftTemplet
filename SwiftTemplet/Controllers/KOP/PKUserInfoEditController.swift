@@ -119,7 +119,7 @@ extension PKUserInfoEditController: UITableViewDataSource, UITableViewDelegate{
             cell.labelLeft.textColor = UIColor.textColor3
             cell.textfield.textAlignment = .right
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
 //            cell.textfield.text = dataModel.valueText(forKeyPath: value4, defalut: "请选择")
@@ -141,7 +141,7 @@ extension PKUserInfoEditController: UITableViewDataSource, UITableViewDelegate{
             cell.labelLeft.textColor = UIColor.textColor3
             cell.textfield.textAlignment = .right
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
             cell.itemList = ["男","女",]

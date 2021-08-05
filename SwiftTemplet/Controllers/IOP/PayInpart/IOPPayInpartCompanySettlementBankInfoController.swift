@@ -231,7 +231,7 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
             cell.textfield.font = UIFont.systemFont(ofSize: 14)
 
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.textfield.rightViewMode = .never;
             cell.textfield.textAlignment = .left
@@ -262,7 +262,7 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
 
             let hasAsterisk = value0.contains("*")
             if hasAsterisk {
-                cell.textLabel?.attributedText = cell.textLabel!.text!.insertPrefix(cell.textLabel!.textColor, font: cell.textLabel!.font)
+                cell.textLabel?.attributedText = cell.textLabel!.text!.matt.appendPrefix(font: cell.textLabel!.font)
             }
             
             if value4.contains("_img") || value4.contains("_pic") {
@@ -286,7 +286,7 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")
@@ -305,7 +305,7 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
             cell.labelLeft.textColor = UIColor.textColor3
             cell.textfield.textAlignment = .right
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
 //            cell.textfield.text = dataModel.valueText(forKeyPath: value4, defalut: "请选择")

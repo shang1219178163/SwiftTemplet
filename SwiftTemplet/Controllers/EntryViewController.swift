@@ -406,7 +406,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.imgViewLeft.isHidden = true
             cell.labelLeft.text = value0
@@ -486,7 +486,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = .textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             cell.progressView.value = 0.88
@@ -507,7 +507,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
             cell.textfield.text = dataModel.valueText(forKeyPath: value4, defalut: "请选择")
@@ -529,7 +529,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")
@@ -547,7 +547,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.isHidden = true
             cell.inset = UIEdgeInsetsMake(15, 10, 15, 10)
@@ -582,7 +582,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             cell.ppBtn.minValue = 0
@@ -599,7 +599,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.textfield.rightViewMode = .never;
             cell.textfield.textAlignment = .left
@@ -672,7 +672,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateRangeView.labTitle.font = UIFont.systemFont(ofSize: 14)
             cell.dateRangeView.labTitle.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.dateRangeView.datePicker.datePicker.datePickerMode = UIDatePicker.Mode(rawValue: value3.intValue)!
             cell.dateRangeView.isEmptyDate = true
@@ -704,7 +704,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-//            cell.hasAsterisk = value0.contains("*")
+//            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             cell.sliderCtl.value = 50
@@ -722,7 +722,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
 //            cell.switchCtl.isOn = false
@@ -741,7 +741,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             cell.itemList = ["阿里","腾讯","百度","谷歌", kTitleCancell,]
@@ -758,7 +758,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.textfield.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             cell.textfield.rightViewMode = .never
             cell.accessoryType = .disclosureIndicator
             
@@ -784,7 +784,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             cell.textfield.rightViewMode = .never
             cell.accessoryType = .disclosureIndicator
             

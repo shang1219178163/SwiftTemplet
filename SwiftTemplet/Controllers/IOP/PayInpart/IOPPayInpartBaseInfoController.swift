@@ -251,7 +251,7 @@ extension IOPPayInpartBaseInfoController: UITableViewDataSource, UITableViewDele
             cell.labelLeft.font = UIFont.systemFont(ofSize: 15)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")

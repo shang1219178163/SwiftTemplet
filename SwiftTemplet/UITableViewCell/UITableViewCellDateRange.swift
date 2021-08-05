@@ -55,7 +55,7 @@ class UITableViewCellDateRange: UITableViewCell {
         if keyPath == "text" {
             //标题星号处理
             if hasAsterisk == true {
-                dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.insertPrefix(dateRangeView.labTitle.textColor, font: dateRangeView.labTitle.font)
+                dateRangeView.labTitle.attributedText = dateRangeView.labTitle.text?.matt.appendPrefix(font: dateRangeView.labTitle.font)
             }
         }
         else {

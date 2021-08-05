@@ -58,7 +58,7 @@ class UITableViewCellTextField: UITableViewCell {
         if keyPath == "text" {
             if hasAsterisk {
                 //标题星号处理
-                labelLeft.attributedText = labelLeft.text?.insertPrefix(labelLeft.textColor, font: labelLeft.font)
+                labelLeft.attributedText = labelLeft.text?.matt.appendPrefix(font: labelLeft.font)
             }
         }
         else {

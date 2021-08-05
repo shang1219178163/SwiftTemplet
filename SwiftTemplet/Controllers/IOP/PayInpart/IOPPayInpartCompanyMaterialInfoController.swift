@@ -236,7 +236,7 @@ extension IOPPayInpartCompanyMaterialInfoController: UITableViewDataSource, UITa
             cell.textfield.font = UIFont.systemFont(ofSize: 14)
 
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
@@ -269,7 +269,7 @@ extension IOPPayInpartCompanyMaterialInfoController: UITableViewDataSource, UITa
 
             let hasAsterisk = value0.contains("*")
             if hasAsterisk {
-                cell.textLabel?.attributedText = cell.textLabel!.text!.insertPrefix(cell.textLabel!.textColor, font: cell.textLabel!.font)
+                cell.textLabel?.attributedText = cell.textLabel!.text!.matt.appendPrefix(font: cell.textLabel!.font)
             }
             
             if value4.contains("_img") || value4.contains("_pic") {
@@ -293,7 +293,7 @@ extension IOPPayInpartCompanyMaterialInfoController: UITableViewDataSource, UITa
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = itemList[2].cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
             cell.segmentCtl.items = (itemList.last! as NSString).components(separatedBy: ",")

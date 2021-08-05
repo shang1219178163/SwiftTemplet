@@ -175,7 +175,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.textfield.rightViewMode = .never;
             cell.textfield.textAlignment = .left
@@ -200,7 +200,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             if indexPath.row == 0 {
                 cell.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
@@ -216,7 +216,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = itemList[2].cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
             cell.segmentCtl.items = itemList.last!.components(separatedBy: ",")

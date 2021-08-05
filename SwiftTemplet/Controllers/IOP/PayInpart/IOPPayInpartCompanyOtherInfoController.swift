@@ -251,7 +251,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
 
             let hasAsterisk = value0.contains("*")
             if hasAsterisk {
-                cell.textLabel?.attributedText = cell.textLabel!.text!.insertPrefix(cell.textLabel!.textColor, font: cell.textLabel!.font)
+                cell.textLabel?.attributedText = cell.textLabel!.text!.matt.appendPrefix(font: cell.textLabel!.font)
             }
             
             if value4.contains("_img") {
@@ -273,7 +273,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
             cell.labelLeft.font = UIFont.systemFont(ofSize: 14)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = itemList[2].cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
+            cell.hasAsterisk = value0.hasPrefix("*")
 
             cell.labelLeft.text = value0
             cell.segmentCtl.items = (itemList.last! as NSString).components(separatedBy: ",")
