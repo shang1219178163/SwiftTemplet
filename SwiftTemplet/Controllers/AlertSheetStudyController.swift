@@ -11,6 +11,8 @@ import SwiftExpand
 import HFNavigationController
 import Then
 
+import RxCocoa
+
 @objcMembers class AlertSheetStudyController: UIViewController {
 
     //MARK: -lazy
@@ -37,6 +39,8 @@ import Then
             (#selector(showAlertHud), "HFNavigationController自定义"),
             (#selector(showAlertDatePicker), "showAlertDatePicker"),
             (#selector(showAlertContentVC), "showAlertContentVC"),
+            (#selector(showAlertExamineApproved), "showAlertTextView"),
+            (#selector(showAlertExamineRejected), "showAlertTextView1"),
         ]
     }()
     
@@ -365,6 +369,48 @@ import Then
         alertVC.present()
     }
     
+    @objc func showAlertExamineApproved() {
+        let textView = UITextView()
+
+        let message = "备注：（非必填）"
+
+        let alertVC = UIAlertController(title: "审核通过",
+                                        message: message,
+                                        preferredStyle: .alert)
+            .addActionTitles([kTitleCancell, "确认通过"]) { vc, action in
+                textView.resignFirstResponder()
+                DDLog(action.title)
+                DDLog(textView.text)
+            }
+                
+        alertVC.setMessageParaStyle(NSMutableParagraphStyle().alignmentChain(.left))
+        alertVC.setContent(view: textView, height: 80, inset: UIEdgeInsets(top: 0, left: 15, bottom: 8, right: 15))
+        alertVC.present()
+    }
+    
+    @objc func showAlertExamineRejected() {
+        let textView = UITextView()
+
+        let message = "*原因："
+        let alertVC = UIAlertController(title: "审核驳回",
+                                        message: message,
+                                        preferredStyle: .alert)
+            .addActionTitles([kTitleCancell, "确认驳回"]) { vc, action in
+                textView.resignFirstResponder()
+                DDLog(action.title)
+                DDLog(textView.text)
+            }
+        
+        let attrMsg = message.matt
+            .fontChain(UIFont.systemFont(ofSize: 15))
+            .foregroundColorChain(UIColor.gray)
+            .paraStyleChain(.left)
+            .appendPrefix(font: UIFont.systemFont(ofSize: 15))
+        alertVC.setValue(attrMsg, forKey: kAlertMessage)
+
+        alertVC.setContent(view: textView, height: 80, inset: UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15))
+        alertVC.present()
+    }
     
     @objc func showWebViewVC() {
         let agreementVC = NNWebViewController()

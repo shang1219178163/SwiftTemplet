@@ -108,10 +108,7 @@ class EntryViewController: UIViewController {
 //        tableView.frame = view.bounds
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
         //MARK: -func
     func titleViewTap() {
@@ -196,6 +193,7 @@ class EntryViewController: UIViewController {
             ["更多内容", "UITableViewCellArticle", "135", "", "recharge", ],
             ["车场标签", "UITableViewCellParkType", "30", "", "recharge", ],
             ["Excel", "UITableViewCellExcel", "155", "", "recharge", ],
+            ["Excel", "UITableViewCellExcelOne", "250", "", "recharge", ],
             ["标题", "UITableViewCellTitle", "50.0", "", "recharge", ],
             ["标签", "UITableViewCellTags", "70.0", "", "recharge", ],
             ["优惠券充值", "UITableViewCellCouponRecharge", "100.0", "", "recharge", ],
@@ -392,10 +390,36 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //            
 //            cell.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
             cell.excelView.titleList = ["时段", "单位价格", "封顶价格",]
-            
+
             cell.excelView.dataList = [["08:00 - 20:00", "2元/小时", "封顶20元",],
                                        ["08:00 - 20:00", "2元/小时", "封顶20元",],
                                         ]
+            
+            cell.excelView.reloadData()
+
+            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellExcelOne":
+            let cell = UITableViewCellExcel.dequeueReusableCell(tableView)
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            
+            cell.excelView.visibleNumOfRow = 3
+            cell.excelView.titleLabel.text = "    全天"
+            cell.excelView.titleLabel.backgroundColor = UIColor.hexValue(0xF5F5F5)
+            cell.excelView.titleLabel.isHidden = true
+            cell.excelView.headerBackgroudColor = .white
+//
+//            cell.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
+            
+            cell.excelView.titleList = ["", "变更前", "变更后",]
+            cell.excelView.dataList = [["登记类型", "组织", "个人",],
+                                       ["车主/组织名称", "西安艾润物联网技术服务有限责任公司", "张三",],
+                                       ["联系电话", "13912345678", "13912345678",],
+                                       ["备注", "-", "2020年12月20日摇号中签",],
+
+                                        ]
+            
             cell.excelView.reloadData()
 
             cell.getViewLayer()
@@ -634,7 +658,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellPhotoShow":
             let cell = UITableViewCellPhotoShow.dequeueReusableCell(tableView)
-            cell.labelLeft.text = "进场图片"
+            cell.textLabel?.text = "进场图片"
+            cell.imageView?.image = UIImage(color: .systemGreen)
             
             cell.getViewLayer()
             return cell

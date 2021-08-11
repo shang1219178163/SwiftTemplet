@@ -34,12 +34,12 @@ class TitleViewController: NNTitleViewSelectController{
         edgesForExtendedLayout = []
         view.backgroundColor = .white
         
-        let ItemList: [(String, Selector)] = [
+        let tuple: [(String, Selector)] = [
             ("topSheet", #selector(handleActionItem(_:))),
             ("next", #selector(handleActionItem(_:))),
         ]
                 
-        navigationItem.rightBarButtonItems = ItemList.enumerated().map { e -> UIBarButtonItem in
+        navigationItem.rightBarButtonItems = tuple.enumerated().map { e -> UIBarButtonItem in
             let barItem = UIBarButtonItem(title: e.element.0, style: .plain, target: self, action: e.element.1)
             barItem.tag = e.offset
             return barItem
@@ -73,12 +73,14 @@ class TitleViewController: NNTitleViewSelectController{
             } else {
                 self.topView.dismiss()
             }
-
+            let color = sender.titleColor(for:.normal)
+            DDLog(color)
+            DDLog(UIColor.white)
         }, for: .touchUpInside)
         
         view.addSubview(stackView)
 
-        let items = [btn, gemetryView, textFieldView, textFieldBtnView, chooseView,]
+        let items = [btn, btn1, gemetryView, textFieldView, textFieldBtnView, chooseView,]
         stackView.addArrangedSubviews(items)
 
 //        view.getViewLayer()
@@ -143,11 +145,28 @@ class TitleViewController: NNTitleViewSelectController{
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom)
-        view.setTitle("UIButton", for: .normal);
+        view.setTitle("Button", for: .normal)
+
         view.setImage(UIImage(named: "img_arrowDown_black"), for: .normal)
 //        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
         view.adjustsImageWhenHighlighted = false
+        return view
+    }()
+    
+    lazy var btn1: UIButton = {
+        let view = UIButton(type: .custom)
+        view.setTitle("Button", for: .normal)
 
+        view.setImage(UIImage.img_elemet_increase, for: .normal)
+        view.setImage(UIImage.img_elemet_decrease, for: .selected)
+
+//        view.setBackgroundImage(UIImage(color: .clear), for: .normal)
+        view.adjustsImageWhenHighlighted = false
+        
+        view.addActionHandler { sender in
+            sender.isSelected.toggle()
+            DDLog(sender.currentTitle)
+        }
         return view
     }()
     

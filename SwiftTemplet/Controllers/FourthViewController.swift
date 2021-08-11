@@ -9,7 +9,7 @@
 
 import UIKit
 import SwiftExpand
-import UICircularProgressRing
+//import UICircularProgressRing
 
 class FourthViewController: UIViewController {
     
@@ -127,18 +127,18 @@ class FourthViewController: UIViewController {
         return progressView;
     }()
     
-    lazy var progressRing: UICircularProgressRing = {
-        let progressRing = UICircularProgressRing(frame: .zero);
-        progressRing.maxValue = 100
-        progressRing.style = .ontop
-        progressRing.outerRingColor = .background
-        progressRing.outerRingWidth = 5
-        progressRing.innerRingColor = .systemBlue
-        progressRing.innerRingWidth = 5
-
-        progressRing.fontColor = progressRing.innerRingColor
-        return progressRing;
-    }()
+//    lazy var progressRing: UICircularProgressRing = {
+//        let progressRing = UICircularProgressRing(frame: .zero);
+//        progressRing.maxValue = 100
+//        progressRing.style = .ontop
+//        progressRing.outerRingColor = .background
+//        progressRing.outerRingWidth = 5
+//        progressRing.innerRingColor = .systemBlue
+//        progressRing.innerRingWidth = 5
+//
+//        progressRing.fontColor = progressRing.innerRingColor
+//        return progressRing;
+//    }()
     
     lazy var datePicker: NNDatePicker = {
         let view = NNDatePicker();
@@ -324,7 +324,7 @@ class FourthViewController: UIViewController {
         
         view.addSubview(label)
 
-        view.addSubview(progressRing)
+//        view.addSubview(progressRing)
 //        processingView.isHidden = true
 
         let amount = "¥\(227.00)"
@@ -389,15 +389,15 @@ class FourthViewController: UIViewController {
             make.height.equalTo(40);
         }
         
-        progressRing.snp.makeConstraints { (make) in
-            make.top.equalTo(label.snp.bottom).offset(20);
-            make.left.equalToSuperview().offset(10);
-            make.right.equalToSuperview().offset(-10);
-            make.height.equalTo(140);
-        }
+//        progressRing.snp.makeConstraints { (make) in
+//            make.top.equalTo(label.snp.bottom).offset(20);
+//            make.left.equalToSuperview().offset(10);
+//            make.right.equalToSuperview().offset(-10);
+//            make.height.equalTo(140);
+//        }
         
         button.snp.makeConstraints { (make) in
-            make.top.equalTo(progressRing.snp.bottom).offset(20);
+            make.top.equalTo(label.snp.bottom).offset(20);
             make.left.equalToSuperview().offset(10);
             make.right.equalToSuperview().offset(-10);
             make.height.equalTo(40);
@@ -513,10 +513,10 @@ class FourthViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let num: CGFloat = CGFloat(arc4random() % (100 - 5) + 5)
-        progressRing.startProgress(to: num, duration: 1) {
-            DDLog("动画结束")
-        }
+//        let num: CGFloat = CGFloat(arc4random() % (100 - 5) + 5)
+//        progressRing.startProgress(to: num, duration: 1) {
+//            DDLog("动画结束")
+//        }
         
         let array = (1...10).map { "\($0)" }
         DDLog(array)
@@ -556,10 +556,7 @@ class FourthViewController: UIViewController {
     }
     
             
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - touchesBegan
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -32,27 +32,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        NSObject.initializeMethod()
-        UIViewController.initializeMethod()
-        UINavigationController.initializeMethod()
-        UITextView.initializeMethod()
-        UIControl.initializeMethod()
-//        UITapGestureRecognizer.initializeMethod()
-//        UIImageView.initializeMethod()
-//        UIColor.theme = UIColor.systemBlue
-        UIColor.theme = UIColor.hexValue(0x29B5FE)
-        UIApplication.setupAppearance(.white, barTintColor: .theme)
-//        setupAppearance(.white, barTintColor: .theme)
-        IQKeyboardManager.shared.enable = true
-        
-        
-        var controller = UICtrFromString("MainViewController");
-        controller = UICtrFromString("HomeViewController");
-            
+//        NSObject.initializeMethod()
+//        UIViewController.initializeMethod()
+//        UINavigationController.initializeMethod()
+//        UITextView.initializeMethod()
+//        UIControl.initializeMethod()
+////        UITapGestureRecognizer.initializeMethod()
+////        UIImageView.initializeMethod()
+////        UIColor.theme = UIColor.systemBlue
+//        UIColor.theme = UIColor.hexValue(0x29B5FE)
+//        UIApplication.setupAppearance(.white, barTintColor: .theme)
+////        setupAppearance(.white, barTintColor: .theme)
+//        IQKeyboardManager.shared.enable = true
+//
+//
+//        var controller = UICtrFromString("MainViewController");
+//        controller = UICtrFromString("HomeViewController");
+
+        var controller = HomeViewController()
+
         window = UIApplication.mainWindow;
         window?.rootViewController = controller
-
-        testFunc()
+//
+//        testFunc()
         return true
     }
     
@@ -244,7 +246,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UIApplication.token = "123456789";
 //        DDLog( UIApplication.token)
         
-        let a = "123_"
+        var a = "123_"
         var b = a*3
         DDLog(b, b*=3)
         
@@ -274,13 +276,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let bb = String(11, radix: 2, uppercase: true)
         DDLog(bb)
         
-        
-        var z = [10, 2, 5]
-        z.sort()
-        let zz = [10, 2, 5].sorted()
-
-        DDLog(z, zz)
-                
     }
     
     

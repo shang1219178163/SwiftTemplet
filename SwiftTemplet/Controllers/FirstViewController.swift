@@ -106,10 +106,8 @@ class FirstViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        edgesForExtendedLayout = []
-        edgesForExtendedLayout = [];
-        view.backgroundColor = .white;
-
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .action, action: { item in
             let vc = UIViewController()
@@ -225,8 +223,9 @@ class FirstViewController: UIViewController{
 //        let b = Int(date.timeIntervalSince1970)
 //        DDLog(addTo(10)(1))
         
-//        test()
-//        print(buildString())        
+        test()
+//        print(buildString())
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -244,10 +243,7 @@ class FirstViewController: UIViewController{
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: -funtions
     func addTo(_ value: Int) -> (Int) -> Int{
@@ -266,6 +262,22 @@ class FirstViewController: UIViewController{
         
         dic["a"]!.remove(at: 0)
         DDLog(dic)
+        
+        
+        var a = "aaa"
+        var b = "bbb"
+        DDLog(a, b)
+        (a, b) = (b, a);
+        DDLog("__", a, b)
+        
+        DDLog(1.add(2), 1.add(4).add(6))
+        
+//        let vc = self.view.nextResponder(UIViewController.self, isPrint: true)
+//        let vc1 = self.view.findViewController()
+//        DDLog(vc, vc1)
+        
+        let array1 = [1,2,3,4,3,5,4,5,4,6,].unique.sorted()
+        DDLog(array1)
     }
     
     
@@ -443,4 +455,20 @@ extension Stack: SuffixableContainer {
     // Inferred that Suffix is Stack.
 }
 
+
+extension Int{
+    
+    /// add value
+    func add(_ value: Int) -> Self {
+        return self + value
+    }
+}
+
+extension Array{
+    
+    mutating func swapIndex(_ i: Int, _ j: Int) {
+        (self[i], self[j]) = (self[j], self[i])
+    }
+    
+}
 

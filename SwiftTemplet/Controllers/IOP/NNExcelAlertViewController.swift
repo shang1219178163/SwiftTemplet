@@ -9,24 +9,29 @@
 
 import UIKit
 import SwiftExpand
+import NNExcelView
 
 ///
 @objcMembers class NNExcelAlertViewController: UIViewController{
         
-
-    lazy var rightBtn: UIButton = {
-        let view = UIButton(type: .custom)
-        view.setTitle("Next", for: .normal)
-
-        view.addActionHandler({ (sender) in
-//            let controller = UIViewController()
-//            self.navigationController?.pushViewController(controller, animated: true)
-            self.alertView.show()
-            
-        }, for: .touchUpInside)
+    lazy var excelView: NNExcelView = {
+        let view = NNExcelView(frame: CGRect(x: 0, y: 0, width: kScreenWidth - 60, height: 135))
+//        view.lockColumn = 2
+        view.titleLabel.isHidden = true
+        view.cellItemBlock = { label, indexP in
+            label.adjustsFontSizeToFitWidth = true
+            label.font = UIFont.systemFont(ofSize: 13)
+            label.textColor = .textColor3
+        }
+        
+        view.titleList = ["时段", "单位价格", "封顶价格",]
+        view.dataList = [["08:00 - 20:00", "2元/小时", "封顶20元",],
+                          ["08:00 - 20:00", "2元/小时", "封顶20元",],
+                          ]
+        view.reloadData()
         return view
     }()
-    
+
     lazy var alertView: NNExcelAlertView = {
         let view = NNExcelAlertView(frame: .zero)
 //        view.frame = CGRect(x: 0, y: 0, width: UIScreen.sizeWidth, height: UIScreen.sizeHeight)
@@ -40,6 +45,7 @@ import SwiftExpand
         view.block = { sender in
             view.dismiss()
         }
+
         return view
     }()
         
@@ -48,8 +54,21 @@ import SwiftExpand
         super.viewDidLoad()
         
         edgesForExtendedLayout = []
-        title = ""
-        setupUI()
+        view.backgroundColor = .white
+        
+        navigationItem.rightBarButtonItems = ["show", "done"].map({
+            UIBarButtonItem(obj: $0) { (item: UIBarButtonItem) in
+
+                switch item.title {
+                case "show":
+                    self.alertView.show()
+
+                default:
+                    self.showAlertExcelView()
+                    DDLog(item.title)
+                }
+            }
+        })
         
 //        alertView.excelView.headerBackgroudColor = .white
 //        alertView.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
@@ -72,18 +91,26 @@ import SwiftExpand
         
     }
         
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - funtions
-    func setupUI() {
-        edgesForExtendedLayout = []
-        view.backgroundColor = .white
+    @objc func showAlertExcelView() {
+        let textView = UITextView()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        let message = "备注：（非必填）"
+
+        let alertVC = UIAlertController(title: "审核通过",
+                                        message: message,
+                                        preferredStyle: .alert)
+            .addActionTitles([kTitleCancell, "确认通过"]) { vc, action in
+                textView.resignFirstResponder()
+                DDLog(action.title)
+                DDLog(textView.text)
+            }
+
+        alertVC.setContent(view: self.excelView, height: self.excelView.bounds.height, inset: UIEdgeInsets(top: 0, left: 15, bottom: 8, right: 15))
+        alertVC.present()
+        
     }
-
 }
 

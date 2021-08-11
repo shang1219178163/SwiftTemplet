@@ -65,9 +65,9 @@ class UITableViewCellExcel: UITableViewCell {
 }
 
 extension UITableViewCellExcel: NNExcelViewDelegate {
-    func excelView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    func excelView(_ label: UILabel, didSelectItemAt indexPath: IndexPath) {
         DDLog(indexPath.string)
     }
-    
     
 }
