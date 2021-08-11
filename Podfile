@@ -28,9 +28,9 @@ def common_pods
     pod 'MBProgressHUD'
     pod 'MMPopupView'
     pod 'MJRefresh'
-    pod 'UICircularProgressRing'
+#    pod 'UICircularProgressRing'
 
-    pod 'MonkeyKing'
+#    pod 'MonkeyKing'
 #   pod 'Permission'
 #   pod 'PromiseKit'
 #   pod 'ReachabilitySwift'
@@ -42,7 +42,7 @@ def common_pods
 #   pod 'Surge'
 #   pod 'SwiftOCR'
 #   pod 'SwiftString'
-    pod 'SwiftyJSON'
+#    pod 'SwiftyJSON'
 #   pod 'SwiftyUserDefaults'
     pod 'SwiftExpand'
 
@@ -67,10 +67,11 @@ def common_pods
     #banner图
 #    pod 'FSPagerView'
 
-    pod 'YYWebImage'
+#    pod 'YYWebImage'
     pod 'YYCache'
     pod 'YYCategories'
     pod 'YYModel'
+
 #    pod 'TextFieldEffects'
 #    pod 'KeychainAccess'
 #    pod 'SwiftOCR'

@@ -42,7 +42,7 @@ class NNSegmentedControl: UISegmentedControl {
     
     // MARK: -lifecycle
     deinit {
-        removeObserver(self, forKeyPath: "selectedSegmentIndex")
+//        removeObserver(self, forKeyPath: "selectedSegmentIndex")
     }
     
     override var intrinsicContentSize: CGSize{

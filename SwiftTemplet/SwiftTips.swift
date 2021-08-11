@@ -223,3 +223,7 @@ class Node {
 }
 
 
+enum Result<T> {
+    case success(result: T)
+    case failure(error: String)
+}

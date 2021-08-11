@@ -262,6 +262,12 @@
 		1465E1B925077FD90053C9BD /* UITableViewCellParkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1465E1B825077FD90053C9BD /* UITableViewCellParkType.swift */; };
 		1465E1BD250877D60053C9BD /* UITableViewCellCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1465E1BC250877D60053C9BD /* UITableViewCellCollect.swift */; };
 		1465E1C32509F1E20053C9BD /* ConstraintArrayDSLController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1465E1C22509F1E10053C9BD /* ConstraintArrayDSLController.swift */; };
+		1466C82526C27E1800B5579B /* IOPShopWaitExamineForAddCarCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466C82426C27E1800B5579B /* IOPShopWaitExamineForAddCarCardController.swift */; };
+		1466C82B26C35A7600B5579B /* IOPShopWaitExamineForParkingCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466C82626C35A7500B5579B /* IOPShopWaitExamineForParkingCardController.swift */; };
+		1466C82C26C35A7600B5579B /* IOPShopExamineDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466C82726C35A7600B5579B /* IOPShopExamineDetailController.swift */; };
+		1466C82D26C35A7600B5579B /* IOPShopWaitExamineForAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466C82826C35A7600B5579B /* IOPShopWaitExamineForAddController.swift */; };
+		1466C82E26C35A7600B5579B /* IOPShopWaitExamineForCarOwnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466C82926C35A7600B5579B /* IOPShopWaitExamineForCarOwnerController.swift */; };
+		1466C82F26C35A7600B5579B /* IOPShopWaitExamineForCarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1466C82A26C35A7600B5579B /* IOPShopWaitExamineForCarController.swift */; };
 		146D28CA244E86AE004655B1 /* UITableViewCellSixLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */; };
 		146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */; };
 		146D28D824505B02004655B1 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146D28D724505B02004655B1 /* PopoverViewController.swift */; };
@@ -375,6 +381,7 @@
 		148C1D4724CEBD6C0017FEBB /* PKRegionParkListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */; };
 		148C1D6124D000790017FEBB /* NNSearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148C1D6024D000790017FEBB /* NNSearchListController.swift */; };
 		149111A122719F300078A7BB /* AppGlobleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149111A022719F300078A7BB /* AppGlobleConfig.swift */; };
+		1491311026C3669100B3E787 /* IOPTableViewCellExaminePostmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1491310F26C3669100B3E787 /* IOPTableViewCellExaminePostmark.swift */; };
 		14923E8C24E0E74600E56939 /* ChatInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14923E8B24E0E74600E56939 /* ChatInputController.swift */; };
 		14923E8E24E0EB1D00E56939 /* NNInputAsoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14923E8D24E0EB1D00E56939 /* NNInputAsoryView.swift */; };
 		14923E9024E13F9000E56939 /* NNChatKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14923E8F24E13F9000E56939 /* NNChatKeyboardView.swift */; };
@@ -911,6 +918,12 @@
 		1465E1B825077FD90053C9BD /* UITableViewCellParkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellParkType.swift; sourceTree = "<group>"; };
 		1465E1BC250877D60053C9BD /* UITableViewCellCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellCollect.swift; sourceTree = "<group>"; };
 		1465E1C22509F1E10053C9BD /* ConstraintArrayDSLController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintArrayDSLController.swift; sourceTree = "<group>"; };
+		1466C82426C27E1800B5579B /* IOPShopWaitExamineForAddCarCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPShopWaitExamineForAddCarCardController.swift; sourceTree = "<group>"; };
+		1466C82626C35A7500B5579B /* IOPShopWaitExamineForParkingCardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPShopWaitExamineForParkingCardController.swift; sourceTree = "<group>"; };
+		1466C82726C35A7600B5579B /* IOPShopExamineDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPShopExamineDetailController.swift; sourceTree = "<group>"; };
+		1466C82826C35A7600B5579B /* IOPShopWaitExamineForAddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPShopWaitExamineForAddController.swift; sourceTree = "<group>"; };
+		1466C82926C35A7600B5579B /* IOPShopWaitExamineForCarOwnerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPShopWaitExamineForCarOwnerController.swift; sourceTree = "<group>"; };
+		1466C82A26C35A7600B5579B /* IOPShopWaitExamineForCarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPShopWaitExamineForCarController.swift; sourceTree = "<group>"; };
 		146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSixLable.swift; sourceTree = "<group>"; };
 		146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+MJRefresh.swift"; sourceTree = "<group>"; };
 		146D28D724505B02004655B1 /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -1042,6 +1055,7 @@
 		148C1D4624CEBD6C0017FEBB /* PKRegionParkListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKRegionParkListController.swift; sourceTree = "<group>"; };
 		148C1D6024D000790017FEBB /* NNSearchListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSearchListController.swift; sourceTree = "<group>"; };
 		149111A022719F300078A7BB /* AppGlobleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobleConfig.swift; sourceTree = "<group>"; };
+		1491310F26C3669100B3E787 /* IOPTableViewCellExaminePostmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPTableViewCellExaminePostmark.swift; sourceTree = "<group>"; };
 		14923E8B24E0E74600E56939 /* ChatInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputController.swift; sourceTree = "<group>"; };
 		14923E8D24E0EB1D00E56939 /* NNInputAsoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNInputAsoryView.swift; sourceTree = "<group>"; };
 		14923E8F24E13F9000E56939 /* NNChatKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNChatKeyboardView.swift; sourceTree = "<group>"; };
@@ -1874,6 +1888,13 @@
 				144742672589E17400BA550D /* UITableViewCellChioceItem.swift */,
 				148ACABC25E8CEEE0096D808 /* PHHQrcodeOverageNewCell.swift */,
 				14C8AD4325EF767300553C1F /* PHHQRcodeCouponChooseCell.swift */,
+				1466C82726C35A7600B5579B /* IOPShopExamineDetailController.swift */,
+				1466C82826C35A7600B5579B /* IOPShopWaitExamineForAddController.swift */,
+				1466C82426C27E1800B5579B /* IOPShopWaitExamineForAddCarCardController.swift */,
+				1466C82A26C35A7600B5579B /* IOPShopWaitExamineForCarController.swift */,
+				1466C82926C35A7600B5579B /* IOPShopWaitExamineForCarOwnerController.swift */,
+				1466C82626C35A7500B5579B /* IOPShopWaitExamineForParkingCardController.swift */,
+				1491310F26C3669100B3E787 /* IOPTableViewCellExaminePostmark.swift */,
 			);
 			path = IOP;
 			sourceTree = "<group>";
@@ -2212,12 +2233,12 @@
 				1472C245245A657F000F8441 /* ResuseVC */,
 				1472C244245A6559000F8441 /* AlertController */,
 				141495B4242B4F4700141A9F /* AddressPicker */,
-				1479D5CD24455A4C007F7CC4 /* TabbarAnimator.swift */,
 				14F0F0DF24BF242100263DAA /* KOP */,
+				14B74CEC2566049100F03F3E /* IOP */,
+				1479D5CD24455A4C007F7CC4 /* TabbarAnimator.swift */,
 				14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */,
 				146D28D9245118B9004655B1 /* SimpleListController.swift */,
 				14CA756924D46F5E00D649DC /* AlertSheetStudyController.swift */,
-				14B74CEC2566049100F03F3E /* IOP */,
 				14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */,
 				51C9B58A211D1793003E9AA7 /* FirstViewController.swift */,
 				51C9B58C211D179E003E9AA7 /* SecondViewController.swift */,
@@ -2719,7 +2740,6 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MMPopupView/MMPopupView.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/MonkeyKing/MonkeyKing.framework",
 				"${BUILT_PRODUCTS_DIR}/NNExcelView/NNExcelView.framework",
 				"${BUILT_PRODUCTS_DIR}/NNPlateKeyboard/NNPlateKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/NNPopoverButton/NNPopoverButton.framework",
@@ -2735,16 +2755,12 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKitExtend/SnapKitExtend.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftExpand/SwiftExpand.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
-				"${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework",
 				"${BUILT_PRODUCTS_DIR}/XHLaunchAd/XHLaunchAd.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCategories/YYCategories.framework",
-				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
-				"${BUILT_PRODUCTS_DIR}/YYWebImage/YYWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2765,7 +2781,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMPopupView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MonkeyKing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NNExcelView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NNPlateKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NNPopoverButton.framework",
@@ -2781,16 +2796,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKitExtend.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftExpand.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICircularProgressRing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XHLaunchAd.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCategories.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2891,6 +2902,7 @@
 				142A76FC22275EE10016D3DA /* NNCalendarView.swift in Sources */,
 				14474278258A0A4B00BA550D /* IOPPayInpartCompanyOperatorInfoController.swift in Sources */,
 				1472C23724596E36000F8441 /* NNParentController.swift in Sources */,
+				1466C82D26C35A7600B5579B /* IOPShopWaitExamineForAddController.swift in Sources */,
 				14923E9024E13F9000E56939 /* NNChatKeyboardView.swift in Sources */,
 				1451EBEA2498BF2400059BDC /* NNTableShowCell.swift in Sources */,
 				1439180F24C57A5100CBABF0 /* UICTViewCellValue.swift in Sources */,
@@ -3004,6 +3016,7 @@
 				14D91B19234DB96600554994 /* NNPopView.swift in Sources */,
 				148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */,
 				14EC85582665E5840000839B /* KeyValueObserverController.swift in Sources */,
+				1466C82B26C35A7600B5579B /* IOPShopWaitExamineForParkingCardController.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				14CFBC002674581C00F1F4AE /* PickerDemoController.swift in Sources */,
 				14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */,
@@ -3154,6 +3167,7 @@
 				1472C23B24598E18000F8441 /* ReuseChildsController.swift in Sources */,
 				148130C0251DC58C008D2BEB /* UITableViewCellArticle.swift in Sources */,
 				1460728221F16C1D003AE810 /* NNCircleTransitionAnimator.swift in Sources */,
+				1466C82E26C35A7600B5579B /* IOPShopWaitExamineForCarOwnerController.swift in Sources */,
 				14579B9B2293F28C001FEB0C /* NNUserLogInController.swift in Sources */,
 				1451EBF12498BF2400059BDC /* AppStoreGameController.swift in Sources */,
 				14E2047B24E629DF0075AB47 /* ExampleViewController.swift in Sources */,
@@ -3185,6 +3199,7 @@
 				14F39679228041AA000CD7B4 /* NNCheckVersRootClass.swift in Sources */,
 				1439166324C12FC500CBABF0 /* TZImageUploadOperation.m in Sources */,
 				1447427A258A0A4B00BA550D /* IOPPayInpartResultController.swift in Sources */,
+				1466C82C26C35A7600B5579B /* IOPShopExamineDetailController.swift in Sources */,
 				148040AE240F89A90032EB07 /* NNTableHeaderView.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
 				145C81A224737FB4009F715A /* UICTViewCellButton.swift in Sources */,
@@ -3236,6 +3251,7 @@
 				14E2046C24E629D30075AB47 /* StatusBarNotificationBanner.swift in Sources */,
 				144742E2258B4BA100BA550D /* IOPUserDetailModel.m in Sources */,
 				14A11DC12693F6EE007963A3 /* MenuActionController.swift in Sources */,
+				1466C82F26C35A7600B5579B /* IOPShopWaitExamineForCarController.swift in Sources */,
 				1460728021F09529003AE810 /* UITableHeaderFooterViewZero.swift in Sources */,
 				14EDF7B3251C4306007512CC /* BXKViewController.m in Sources */,
 				14F18E852382346D0018626C /* UITableViewCellFee.swift in Sources */,
@@ -3259,8 +3275,10 @@
 				14ADE22123CD543100037B0B /* IOPUserCenterController.swift in Sources */,
 				14107FCD22CF48EF0011344E /* NNWebView.swift in Sources */,
 				14FE3C32245ABB12006B14D4 /* OOTabBarController.swift in Sources */,
+				1491311026C3669100B3E787 /* IOPTableViewCellExaminePostmark.swift in Sources */,
 				1420FF2426170F33006CA44F /* TestWebViewController.swift in Sources */,
 				148B7EDC25B0231500D2BA59 /* UIButton+Menu.m in Sources */,
+				1466C82526C27E1800B5579B /* IOPShopWaitExamineForAddCarCardController.swift in Sources */,
 				1460727E21F02BB5003AE810 /* UITableViewCellDefault.swift in Sources */,
 				1401BEA72277D7950078A722 /* NNDiskCache.swift in Sources */,
 				14EECE0124EFC0D800DEE094 /* NNSearchbarTitleView.swift in Sources */,

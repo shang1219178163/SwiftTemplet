@@ -46,7 +46,8 @@ class CurryViewController: UIViewController {
     
     // 可以绑定2、3参数的curry化函数
     private func curry2_3<A, B, C, D, E, F>(_ function: @escaping (A, B, C, D, E) -> F) -> (C, D) -> (A, B, E) -> F {
-        return { c, d in { a, b, e in function(a, b, c, d, e) } }
+        return { c, d in { a, b, e in
+            function(a, b, c, d, e) } }
     }
 }
 
