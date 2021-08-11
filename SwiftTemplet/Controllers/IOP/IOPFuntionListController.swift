@@ -18,21 +18,28 @@ import RxCocoa
     var disposeBag = DisposeBag()
 
     
-    lazy var list: [[[String]]] = {
-        return [
-            [["NNExcelAlertViewController", "NNExcelAlertView", ],
-             ["IOPPayInpartBaseInfoController", "支付进件基础信息", ],
-             ["IOPPayInpartCompanyEntityInfoController", "CompanyEntityInfo", ],
-             ["IOPPayInpartCompanyMaterialInfoController", "CompanyMaterialInfo", ],
-             ["IOPPayInpartCompanySettlementBankInfoController", "CompanySettlementBank", ],
-             ["IOPPayInpartCompanyOperatorInfoController", "CompanyOperatorInfo", ],
-             ["IOPPayInpartCompanyOtherInfoController", "CompanyOtherInfo", ],
+    lazy var tuples: [[(String, String)]] = {
+        return [[
+            ("IOPShopExamineDetailController", "审核详情"),
+            ("IOPShopWaitExamineForAddController", "待审核(新增审核)"),
+            ("IOPShopWaitExamineForAddCarCardController", "待审核(新增审核)"),
+            
+            ("IOPShopWaitExamineForCarOwnerController", "待审核(编辑车主)"),
+            ("IOPShopWaitExamineForCarController", "待审核(新增审核)车辆认证资料"),
+            ("IOPShopWaitExamineForParkingCardController", "待审核(购买车位卡)"),
 
-             ["IOPPayInpartResultController", "支付进件结果", ],
+            ("NNExcelAlertViewController", "NNExcelAlertView" ),
+            ("IOPPayInpartBaseInfoController", "支付进件基础信息"),
+            ("IOPPayInpartCompanyEntityInfoController", "CompanyEntityInfo" ),
+            ("IOPPayInpartCompanyMaterialInfoController", "CompanyMaterialInfo"),
+            ("IOPPayInpartCompanySettlementBankInfoController", "CompanySettlementBank"),
+            ("IOPPayInpartCompanyOperatorInfoController", "CompanyOperatorInfo"),
+            ("IOPPayInpartCompanyOtherInfoController", "CompanyOtherInfo"),
+            ("IOPPayInpartResultController", "支付进件结果"),
             ],
         ]
     }()
-
+    
     // MARK: - lazy
     lazy var tableView: UITableView = {
         let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
@@ -143,10 +150,7 @@ import RxCocoa
         navigationController?.navigationBar.setTextColor(.systemGreen)
     }
         
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - funtions
     func setupUI() {
@@ -157,7 +161,7 @@ import RxCocoa
         view.addSubview(tableView)
         tableView.tableHeaderView = searchBar
         
-        testFunc()
+//        testFunc()
     }
     
     func testFunc() {
@@ -283,11 +287,11 @@ import RxCocoa
 extension IOPFuntionListController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return list.count
+        return tuples.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list[section].count;
+        return tuples[section].count;
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -303,24 +307,24 @@ extension IOPFuntionListController: UITableViewDataSource, UITableViewDelegate{
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         
-        let itemList = list[indexPath.section][indexPath.row]
-        cell.textLabel!.text = itemList[1]
-//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
-        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+        let tuple = tuples[indexPath.section][indexPath.row]
+        cell.textLabel!.text = tuple.1
+//        cell.textLabel!.text = NSLocalizedString(tuple.1, comment: "")
+        cell.textLabel!.text = Bundle.localizedString(forKey: tuple.1)
 
-        cell.detailTextLabel?.text = itemList[0];
+        cell.detailTextLabel?.text = tuple.0
 
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let itemList = list[indexPath.section][indexPath.row]
+        let tuple = tuples[indexPath.section][indexPath.row]
 //        DDLog(itemList);
         
-        let controller = UICtrFromString(itemList.first!)
-        controller.title = itemList.last!
-        navigationController?.pushViewController(controller, animated: true);
+        let vc = UICtrFromString(tuple.0)
+        vc.title = tuple.1
+        navigationController?.pushViewController(vc, animated: true);
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
