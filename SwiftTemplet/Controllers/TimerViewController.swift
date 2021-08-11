@@ -58,10 +58,7 @@ class TimerViewController: UIViewController {
         timer.invalidate() // 计时器销毁        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom)

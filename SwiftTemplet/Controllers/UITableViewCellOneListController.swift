@@ -72,10 +72,7 @@ class UITableViewCellOneListController: UIViewController {
         navigationController?.navigationBar.shadowImage = image
     }
         
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     func showAlert() {
         let msg = """

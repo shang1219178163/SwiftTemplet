@@ -40,10 +40,7 @@ class UICollectionExcelController: UIViewController{
 
     }
         
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
 
     
@@ -56,9 +53,8 @@ class UICollectionExcelController: UIViewController{
 }
 
 extension UICollectionExcelController: NNExcelViewDelegate {
-    func excelView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func excelView(_ label: UILabel, didSelectItemAt indexPath: IndexPath) {
         DDLog(indexPath.string)
     }
-    
     
 }

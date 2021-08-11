@@ -71,10 +71,7 @@ class GreenViewController: UIViewController {
 //        self.navigationController?.delegate = nil
 //    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     @objc func push() {
         let second = BlueViewController()
         self.navigationController?.pushViewController(second, animated: true)

@@ -102,14 +102,13 @@ import SwiftExpand
 
         items.snp.distributeSudokuViews(fixedLineSpacing: lineSpacing, fixedInteritemSpacing: interitemSpacing, warpCount: numOfRow, edgeInset: inset)
         
-        handleDivers()
+        if showDividers == true || dividerColor == .clear || dividerWidth <= 0 {
+            handleDivers()
+        }
     }
     
     // MARK: -funtions
     func handleDivers() {
-        if showDividers == false {
-            return
-        }
 //        let rowCount = items.count % numOfRow == 0 ? items.count/numOfRow : items.count/numOfRow + 1;
         let rowCount = row
         let itemWidth = (bounds.width - CGFloat(numOfRow - 1)*interitemSpacing - inset.left - inset.right)/CGFloat(numOfRow)

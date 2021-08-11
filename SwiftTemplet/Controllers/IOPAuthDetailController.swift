@@ -37,10 +37,7 @@ class IOPAuthDetailController: UIViewController {
         tbView.frame = view.bounds
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     lazy var list: [[[String]]] = {
         return [[["车牌号码:", "3", "60.0", "", "cardName", "0",],

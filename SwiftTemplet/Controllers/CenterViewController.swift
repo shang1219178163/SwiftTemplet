@@ -95,10 +95,7 @@ class CenterViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     lazy var imgView:UIImageView = {
         let view = UIImageView.init();

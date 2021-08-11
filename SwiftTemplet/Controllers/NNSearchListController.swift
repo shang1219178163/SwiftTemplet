@@ -59,8 +59,7 @@ import SwiftExpand
         
         edgesForExtendedLayout = []
         title = ""
-        navigationItem.leftBarButtonItem?.setHidden(true)
-        navigationItem.backBarButtonItem?.setHidden(true)
+
 
         setupUI()
         
@@ -81,14 +80,11 @@ import SwiftExpand
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        navigationItem.leftBarButtonItem?.setHidden(false)
+        navigationItem.leftBarButtonItem?.customView?.isHidden = false
         navigationController?.navigationBar.setBackgroudColor(.theme, for: .default)
     }
         
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: - funtions
     func setupUI() {

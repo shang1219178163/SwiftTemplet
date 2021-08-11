@@ -100,7 +100,7 @@ class HomeViewController: UITabBarController {
 //        delegate = self
 //        view.addGestureRecognizer(panGesture)
         
-//        selectedIndex = 2
+        selectedIndex = 1
 //        selectedIndex = items.count - 1
     }
 
@@ -142,10 +142,7 @@ class HomeViewController: UITabBarController {
         navigationController.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_arowLeft_black"), style: .plain, target: nil, action: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     //MARK: Delegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

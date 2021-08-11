@@ -32,7 +32,7 @@ class ThirdViewController: UIViewController{
     }()
 
     lazy var list: [[[String]]] = {
-        let array: [[[String]]] = [
+        return [
             [["EntryViewController", "通用录入界面", ],
              ["SystemIconDisplayController", "系统图标", ],
              ["OptionalTestController", "Optional 功能扩展", ],
@@ -112,7 +112,6 @@ class ThirdViewController: UIViewController{
 //             ["SwiftCollectionsController", "SwiftCollections", ],
             ],
         ]
-        return array
     }()
     
     var sectionTitles = ["视图相关", "其他"]
@@ -256,7 +255,7 @@ class ThirdViewController: UIViewController{
 //        let rootModel = PKRootModel.yy_model(with: dic)
 //        DDLog(dic, rootModel?.object?.floors)
         
-        hookRequest()
+//        hookRequest()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -273,10 +272,7 @@ class ThirdViewController: UIViewController{
         updateAPi.clearCache()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     // MARK: -funtions
     func setupRfresh() {
