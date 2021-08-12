@@ -17,7 +17,7 @@ import RxCocoa
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 60)
         view.dataSource = self
         view.delegate = self
 
@@ -41,6 +41,8 @@ import RxCocoa
             (#selector(showAlertContentVC), "showAlertContentVC"),
             (#selector(showAlertExamineApproved), "showAlertTextView"),
             (#selector(showAlertExamineRejected), "showAlertTextView1"),
+            (#selector(showAlertAgreement), "showAlertAgreement"),
+            
         ]
     }()
     
@@ -374,9 +376,7 @@ import RxCocoa
 
         let message = "备注：（非必填）"
 
-        let alertVC = UIAlertController(title: "审核通过",
-                                        message: message,
-                                        preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "审核通过", message: message, preferredStyle: .alert)
             .addActionTitles([kTitleCancell, "确认通过"]) { vc, action in
                 textView.resignFirstResponder()
                 DDLog(action.title)
@@ -385,6 +385,34 @@ import RxCocoa
                 
         alertVC.setMessageParaStyle(NSMutableParagraphStyle().alignmentChain(.left))
         alertVC.setContent(view: textView, height: 80, inset: UIEdgeInsets(top: 0, left: 15, bottom: 8, right: 15))
+        alertVC.present()
+    }
+    
+    ///协议弹窗
+    @objc func showAlertAgreement() {
+        let title = "用户协议和隐私政策"
+
+        let linkDic = ["《用户协议》": "http://api.irainone.com/app/iop/register.html",
+                       "《隐私政策》": "http://api.irainone.com/app/iop/register.html",]
+        let string = "\t用户协议和隐私政策请您务必审值阅读、充分理解 “用户协议” 和 ”隐私政策” 各项条款，包括但不限于：为了向您提供即时通讯、内容分享等服务，我们需要收集您的设备信息、操作日志等个人信息。\n\t您可阅读《用户协议》和《隐私政策》了解详细信息。如果您同意，请点击 “同意” 开始接受我们的服务;"
+        
+        let attributedText = NSAttributedString.create(string, textTaps: Array(linkDic.keys))
+        
+        let alertVC = UIAlertController(title: title,
+                                        message: nil,
+                                        preferredStyle: .alert)
+            .addActionTitles([kTitleCancell, "同意"]) { vc, action in
+                DDLog(action.title)
+            }
+        
+        alertVC.setValue(attributedText, forKey: kAlertMessage)
+        alertVC.messageLabel?.addGestureTap { reco in
+            reco.didTapLabelAttributedText(linkDic) { text, url in
+                DDLog("\(text), \(url ?? "_")")
+            }
+        }
+        
+        alertVC.changeWidth(UIScreen.main.bounds.width * 0.8)
         alertVC.present()
     }
     
@@ -417,8 +445,7 @@ import RxCocoa
         agreementVC.urlString = "https://www.baidu.com/"
         navigationController?.pushViewController(agreementVC, animated: true)
     }
-    
-    
+        
 }
 
 
@@ -499,7 +526,14 @@ final class DatePickerController: UIViewController {
     fileprivate var action: ((Date) -> Void)?
     
     private(set) lazy var datePicker: UIDatePicker = { [unowned self] in
-        $0.addTarget(self, action: #selector(actionForDatePicker), for: .valueChanged)
+        $0.date = Date()
+        if #available(iOS 13.4, *) {
+            $0.preferredDatePickerStyle = .wheels
+        }
+        
+//        $0.minimumDate = minimumDate
+//        $0.maximumDate = maximumDate
+        $0.addTarget(self, action: #selector(handleActionDatePicker(_:)), for: .valueChanged)
         return $0
     }(UIDatePicker())
     
@@ -507,9 +541,7 @@ final class DatePickerController: UIViewController {
     convenience init(mode: UIDatePicker.Mode, action: ((Date) -> Void)? = nil) {
         self.init()
         datePicker.datePickerMode = mode
-        datePicker.date = Date()
-//        datePicker.minimumDate = minimumDate
-//        datePicker.maximumDate = maximumDate
+
         self.action = action
     }
     
@@ -532,8 +564,8 @@ final class DatePickerController: UIViewController {
 //        datePicker.frame = view.bounds
 //    }
     
-    @objc func actionForDatePicker() {
-        action?(datePicker.date)
+    @objc func handleActionDatePicker(_ sender: UIDatePicker) {
+        action?(sender.date)
     }
 }
 
@@ -545,9 +577,17 @@ class CustomAlertController: UIViewController {
     
     var size = CGSize(width: kScreenWidth - 60, height: 216)
 
+    fileprivate var action: ((Date) -> Void)?
+
     private(set) lazy var datePicker: UIDatePicker = { [unowned self] in
-        $0.backgroundColor = .white
-        $0.addTarget(self, action: #selector(actionForDatePicker), for: .valueChanged)
+        $0.date = Date()
+        if #available(iOS 13.4, *) {
+            $0.preferredDatePickerStyle = .wheels
+        }
+        
+//        $0.minimumDate = minimumDate
+//        $0.maximumDate = maximumDate
+        $0.addTarget(self, action: #selector(handleActionDatePicker(_:)), for: .valueChanged)
         return $0
     }(UIDatePicker())
     
@@ -555,6 +595,7 @@ class CustomAlertController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        datePicker.backgroundColor = .white
         datePicker.frame = CGRectMake(0, 0, size.width, size.height)
         datePicker.center = view.center
         view.addSubview(datePicker)
@@ -582,7 +623,64 @@ class CustomAlertController: UIViewController {
         
     }
     
-    @objc func actionForDatePicker() {
-        DDLog(datePicker.date)
+    @objc func handleActionDatePicker(_ sender: UIDatePicker) {
+        action?(sender.date)
+    }
+}
+
+
+extension AlertSheetStudyController: UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        DDLog(URL.absoluteString)
+        if URL.absoluteString.contains("_") == true {
+            guard let urlString = URL.absoluteString.components(separatedBy: "_").last else { return false}
+            UIApplication.openURLString(urlString)
+        }
+        return true
+    }
+}
+
+fileprivate extension UIAlertController{
+
+    /// 改变宽度
+    func changeWidth(_ newWidth: CGFloat = UIScreen.main.bounds.width * 0.8) {
+//        let newWidth = UIScreen.main.bounds.width * 0.90 - 270
+        // Filtering width constraints of alert base view width
+        let widthConstraints = view.constraints.filter({ return $0.firstAttribute == .width})
+        view.removeConstraints(widthConstraints)
+        // Here you can enter any width that you want
+//        let newWidth = UIScreen.main.bounds.width * 0.90
+        // Adding constraint for alert base view
+        let widthConstraint = NSLayoutConstraint(item: view as Any,
+                                                 attribute: .width,
+                                                 relatedBy: .equal,
+                                                 toItem: nil,
+                                                 attribute: .notAnAttribute,
+                                                 multiplier: 1,
+                                                 constant: newWidth)
+        view.addConstraint(widthConstraint)
+        let firstContainer = view.subviews[0]
+        // Finding first child width constraint
+        let constraint = firstContainer.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
+        firstContainer.removeConstraints(constraint)
+        // And replacing with new constraint equal to view width constraint that we setup earlier
+        view.addConstraint(NSLayoutConstraint(item: firstContainer,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: view,
+                                                    attribute: .width,
+                                                    multiplier: 1.0,
+                                                    constant: 0))
+        // Same for the second child with width constraint with 998 priority
+        let innerBackground = firstContainer.subviews[0]
+        let innerConstraints = innerBackground.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
+        innerBackground.removeConstraints(innerConstraints)
+        firstContainer.addConstraint(NSLayoutConstraint(item: innerBackground,
+                                                        attribute: .width,
+                                                        relatedBy: .equal,
+                                                        toItem: firstContainer,
+                                                        attribute: .width,
+                                                        multiplier: 1.0,
+                                                        constant: 0))
     }
 }

@@ -111,7 +111,7 @@ class NNPickListView: UIView {
     }();
 
     lazy var tableView: UITableView = {
-        let table = UITableView(rect: bounds, style: .grouped, rowHeight: 50);
+        let table = UITableView(rect: bounds, style: .grouped, rowHeight: 60);
             table.dataSource = self
             table.delegate = self
         

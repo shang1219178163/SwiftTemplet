@@ -17,7 +17,7 @@ class FirstViewController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 60)
         view.dataSource = self
         view.delegate = self
 
@@ -41,8 +41,11 @@ class FirstViewController: UIViewController{
     
     
     lazy var list: [[[String]]] = {
-        var array: [[[String]]] = [
-            [["NNButtonStudyController", "Swift 按钮封装", ],
+        return [
+            [["AlertSheetStudyController", "AlertSheet自定义", ],
+            ["SegmentControlStyleController", "SegmentControlStyle", ],
+                
+            ["NNButtonStudyController", "Swift 按钮封装", ],
              ["NNButtonDispalyController", "OC 按钮封装", ],
              ["NNButtonStudyController", "swift 按钮封装", ],
              
@@ -64,8 +67,6 @@ class FirstViewController: UIViewController{
              ["PickerDemoController", "PickerDemo", ],
              ["DateDemoController", "DateTimeFormatter", ],
 
-             ["AlertSheetStudyController", "AlertSheet自定义", ],
-             ["SegmentControlStyleController", "SegmentControlStyle", ],
              
              ["ShowActivityController", "ShowActivity", ],
              ["GXSegmentPageViewExampleController", "GXSegmentPageView", ],
@@ -98,7 +99,6 @@ class FirstViewController: UIViewController{
 
             ]
         ]
-        return array
     }()
     
 

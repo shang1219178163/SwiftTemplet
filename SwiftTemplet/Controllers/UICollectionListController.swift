@@ -15,7 +15,7 @@ class UICollectionListController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 60)
         view.dataSource = self
         view.delegate = self
 

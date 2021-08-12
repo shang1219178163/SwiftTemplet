@@ -18,7 +18,7 @@ class ThirdViewController: UIViewController{
 
     //MARK: -lazy
     lazy var tableView: UITableView = {
-        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .grouped, rowHeight: 60)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.dataSource = self
         view.delegate = self
@@ -310,6 +310,11 @@ class ThirdViewController: UIViewController{
         
         case 2:
             navController.present()
+        
+        
+
+            
+            
             
         case 3:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"

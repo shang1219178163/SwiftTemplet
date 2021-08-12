@@ -28,7 +28,7 @@ class NNSearchOneController: UIViewController, UISearchBarDelegate {
     }()
     
     lazy var tableView: UITableView = {
-        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 60)
         if self.conforms(to: UITableViewDataSource.self) {
             view.dataSource = self as? UITableViewDataSource;
         }
