@@ -398,9 +398,7 @@ import RxCocoa
         
         let attributedText = NSAttributedString.create(string, textTaps: Array(linkDic.keys))
         
-        let alertVC = UIAlertController(title: title,
-                                        message: nil,
-                                        preferredStyle: .alert)
+        let alertVC = UIAlertController(title: title, message: nil, preferredStyle: .alert)
             .addActionTitles([kTitleCancell, "同意"]) { vc, action in
                 DDLog(action.title)
             }
@@ -420,9 +418,7 @@ import RxCocoa
         let textView = UITextView()
 
         let message = "*原因："
-        let alertVC = UIAlertController(title: "审核驳回",
-                                        message: message,
-                                        preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "审核驳回", message: message, preferredStyle: .alert)
             .addActionTitles([kTitleCancell, "确认驳回"]) { vc, action in
                 textView.resignFirstResponder()
                 DDLog(action.title)
