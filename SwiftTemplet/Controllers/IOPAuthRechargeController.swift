@@ -160,11 +160,11 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let view = UITableHeaderFooterViewTwo.dequeueReusableHeaderFooterView(tableView)
         
         let text = "¥200小时"
-        view.labelLeftSub.attributedText = NSAttributedString.attString(text, offsetStart: 0, offsetEnd: 2)
+        let nsRange = NSRange(location: 0, length: text.count - 2)
+        view.labelLeftSub.attributedText = NSAttributedString.attString(text, nsRange: nsRange)
 
         view.backgroundView = UIView()
         view.backgroundView?.backgroundColor = UIColor.yellow

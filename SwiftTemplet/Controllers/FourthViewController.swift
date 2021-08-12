@@ -332,7 +332,7 @@ class FourthViewController: UIViewController {
         
 //        let nsrange = (string as NSString).range(of: "¥227.00")
 //        orderPayView.label.attributedText = NSAttributedString.attString(string, nsRange: nsrange, font: 18, textColor: UIColor.red)
-        orderPayView.label.attributedText = NSAttributedString.attString(string, textTaps: ["¥227.00"], font: UIFont.systemFont(ofSize: 14), tapFont: UIFont.systemFont(ofSize: 18), color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
+        orderPayView.label.attributedText = NSAttributedString.create(string, textTaps: ["¥227.00"], font: UIFont.systemFont(ofSize: 14), tapFont: UIFont.systemFont(ofSize: 18), color: UIColor.textColor3, tapColor: UIColor.red, alignment: .left)
         
 //        view.addSubview(clockView)
         

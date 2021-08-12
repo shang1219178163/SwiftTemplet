@@ -362,11 +362,10 @@ class PKLoginController: UIViewController {
     func updateAgreement() {
         let tapTexts = ["《用户协议》", "《隐私政策》"]
         labelAgreement.text = "同意\(tapTexts[0])和\(tapTexts[1])"
-        labelAgreement.attributedText = NSAttributedString.attString(labelAgreement.text!, textTaps: tapTexts, font: UIFont.systemFont(ofSize: 13), tapFont: UIFont.systemFont(ofSize: 13))
+        labelAgreement.attributedText = NSAttributedString.create(labelAgreement.text!, textTaps: tapTexts, font: UIFont.systemFont(ofSize: 13), tapFont: UIFont.systemFont(ofSize: 13))
 
         _ = labelAgreement.addGestureTap { (reco) in
-            guard let sender = reco as? UITapGestureRecognizer, let label = reco.view as? UILabel else { return }
-            sender.didTapAttributedTextIn(label: label, tapTexts: tapTexts) { (text, idx) in
+            reco.didTapAttributedTextIn(tapTexts) { (text, idx) in
                 DDLog(text, idx)
                 
                 let agreementVC = NNWebViewController()

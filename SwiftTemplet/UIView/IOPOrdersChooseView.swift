@@ -167,7 +167,7 @@ import SwiftExpand
     // MARK: -funtions
     
     func getAttString(_ text: String, textTaps: [String]) -> NSAttributedString {
-        let attString = NSAttributedString.attString(text, textTaps: textTaps, font: UIFont.systemFont(ofSize: 12), tapFont: UIFont.systemFont(ofSize: 12), color: UIColor.textColor6, tapColor: UIColor.theme, alignment: .right)
+        let attString = NSAttributedString.create(text, textTaps: textTaps, font: UIFont.systemFont(ofSize: 12), tapFont: UIFont.systemFont(ofSize: 12), color: UIColor.textColor6, tapColor: UIColor.theme, alignment: .right)
         return attString
     }
 }

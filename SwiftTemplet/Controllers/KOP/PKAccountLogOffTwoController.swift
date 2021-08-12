@@ -76,7 +76,7 @@ import SwiftExpand
         view.numberOfLines = 0
         
         let message = "验证码发送至：17336453728"
-        view.attributedText = NSAttributedString.createAttString(message, textTaps: [], font: view.font, color: .textColor6,  lineSpacing: 5)
+        view.attributedText = NSAttributedString.create(message, textTaps: [], font: view.font, color: .textColor6,  lineSpacing: 5)
         return view;
     }()
     

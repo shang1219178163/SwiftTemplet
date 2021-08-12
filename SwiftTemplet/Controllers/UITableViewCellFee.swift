@@ -60,7 +60,7 @@ class UITableViewCellFee: UITableViewCell {
 //            labelRight.attributedText = NSAttributedString.attString(text, textTaps: [tapText])
             
             let tapColor = isPositive == true ? UIColor.theme : UIColor.red.withAlphaComponent(0.5)
-            labelRight.attributedText = NSAttributedString.attString(labelRight.text!, textTaps: [tapText], tapColor: tapColor, alignment: labelRight.textAlignment)
+            labelRight.attributedText = NSAttributedString.create(labelRight.text!, textTaps: [tapText], tapColor: tapColor, alignment: labelRight.textAlignment)
 
         }
         else {

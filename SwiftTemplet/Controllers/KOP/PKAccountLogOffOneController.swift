@@ -76,7 +76,7 @@ import SwiftExpand
         view.numberOfLines = 0
         
         let message = "1、你的账号基本信息（手机）将被清空且无法恢复\n2、你的账号所含等级、经验将被清空且无法恢复\n3、你的账号所有积分将被清空且无法恢复\n4、你的账号绑定的社交账号信息（微信、支付宝），将被解绑且无法恢复"
-        view.attributedText = NSAttributedString.createAttString(message, textTaps: [], font: view.font, color: .textColor6,  lineSpacing: 5)
+        view.attributedText = NSAttributedString.create(message, textTaps: [], font: view.font, color: .textColor6,  lineSpacing: 5)
         return view;
     }()
     
