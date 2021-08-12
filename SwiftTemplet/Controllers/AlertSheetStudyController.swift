@@ -410,7 +410,7 @@ import RxCocoa
             }
         }
         
-        alertVC.changeWidth(UIScreen.main.bounds.width * 0.8)
+//        alertVC.changeWidth(UIScreen.main.bounds.width * 0.8)
         alertVC.present()
     }
     
