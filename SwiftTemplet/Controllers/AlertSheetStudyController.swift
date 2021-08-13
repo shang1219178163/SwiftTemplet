@@ -40,7 +40,7 @@ import RxCocoa
     }(UIDatePicker())
     
     
-    var style: UIAlertController.Style = .alert
+    var preferredStyle: UIAlertController.Style = .alert
     
     
     lazy var list: [(Selector, String)] = {
@@ -151,7 +151,7 @@ import RxCocoa
     
     @objc func showActionSheetOrAlert(_ sender: UIButton){
         sender.isSelected.toggle()
-        style = sender.isSelected ? .actionSheet : .alert
+        preferredStyle = sender.isSelected ? .actionSheet : .alert
     }
 
     @objc func showActionSheet(){
@@ -162,7 +162,7 @@ import RxCocoa
         ]
         let titles = tuples.map { $0.0 }
 
-        let alertVC = UIAlertController(title: "标题", message: "这是一条提示信息", preferredStyle: style)
+        let alertVC = UIAlertController(title: "标题", message: "这是一条提示信息", preferredStyle: preferredStyle)
             .addActionTitles(titles) { (alertVC, action) in
                 let actionIdx = alertVC.actions.firstIndex(of: action)
                 DDLog(actionIdx)
@@ -201,7 +201,7 @@ import RxCocoa
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         //
-        UIAlertController(title: "Translation Language", message: "我试图解决UIAlertController的局限性", preferredStyle: style)
+        UIAlertController(title: "Translation Language", message: "我试图解决UIAlertController的局限性", preferredStyle: preferredStyle)
             .addActionTitles()
             .setContent(view: bgView, height: 300, inset: .zero)
             .present()
@@ -215,7 +215,7 @@ import RxCocoa
         let contentView = UIImageView(image: UIImage(named: "Skull.jpg"))
         contentView.contentMode = .scaleAspectFit
 
-        UIAlertController(title: "Select date", message: message, preferredStyle: style)
+        UIAlertController(title: "Select date", message: message, preferredStyle: preferredStyle)
             .addActionTitles()
             .setContent(view: contentView, height: 300)
             .present()
@@ -252,11 +252,10 @@ import RxCocoa
         /// Create new alert view vc.
         """;
 
-        let alertVC = UIAlertController(title: "Select color", message: message, preferredStyle: style)
+        UIAlertController(title: "Select color", message: message, preferredStyle: preferredStyle)
             .addActionTitles()
-        
-        alertVC.setContent(view: datePicker, height: 218, inset: .zero)
-        alertVC.present()
+            .setContent(view: datePicker, height: 218, inset: .zero)
+            .present()
     }
     
     @objc func showAlertContentVC() {
@@ -264,12 +263,11 @@ import RxCocoa
         /// Create new alert view vc.
         """;
 
-        let alertVC = UIAlertController(title: nil, message: nil, preferredStyle: style)
+        UIAlertController(title: nil, message: message, preferredStyle: preferredStyle)
             .addActionTitles()
-        
-//        alertVC.setContent(vc: ThirdViewController(), height: 300)
-        alertVC.setContent(vc: UINavigationController(rootViewController: ThirdViewController()), height: 300)
-        alertVC.present()
+//          .setContent(vc: ThirdViewController(), height: 300)
+            .setContent(vc: UINavigationController(rootViewController: ThirdViewController()), height: 300)
+            .present()
     }
     
     @objc func showAlertExamineApproved() {
@@ -277,16 +275,15 @@ import RxCocoa
 
         let message = "备注：（非必填）"
 
-        let alertVC = UIAlertController(title: "审核通过", message: message, preferredStyle: style)
+        UIAlertController(title: "审核通过", message: message, preferredStyle: preferredStyle)
             .addActionTitles([kTitleCancell, "确认通过"]) { vc, action in
                 textView.resignFirstResponder()
                 DDLog(action.title)
                 DDLog(textView.text)
             }
-                
-        alertVC.setMessageParaStyle(NSMutableParagraphStyle().alignmentChain(.left))
-        alertVC.setContent(view: textView, height: 80, inset: UIEdgeInsets(top: 0, left: 15, bottom: 8, right: 15))
-        alertVC.present()
+            .setMessageParaStyle(NSMutableParagraphStyle().alignmentChain(.left))
+            .setContent(view: textView, height: 80, inset: UIEdgeInsets(top: 0, left: 15, bottom: 8, right: 15))
+            .present()
     }
     
     ///协议弹窗
@@ -299,7 +296,7 @@ import RxCocoa
         
         let attributedText = NSAttributedString.create(string, textTaps: Array(linkDic.keys))
         
-        let alertVC = UIAlertController(title: title, message: nil, preferredStyle: style)
+        let alertVC = UIAlertController(title: title, message: nil, preferredStyle: preferredStyle)
             .addActionTitles([kTitleCancell, "同意"]) { vc, action in
                 DDLog(action.title)
             }
@@ -319,7 +316,7 @@ import RxCocoa
         let textView = UITextView()
 
         let message = "*原因："
-        let alertVC = UIAlertController(title: "审核驳回", message: message, preferredStyle: style)
+        let alertVC = UIAlertController(title: "审核驳回", message: message, preferredStyle: preferredStyle)
             .addActionTitles([kTitleCancell, "确认驳回"]) { vc, action in
                 textView.resignFirstResponder()
                 DDLog(action.title)
