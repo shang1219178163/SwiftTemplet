@@ -42,7 +42,7 @@ class FirstViewController: UIViewController{
     
     lazy var list: [[[String]]] = {
         return [
-            [["AlertSheetStudyController", "AlertSheet自定义", ],
+            [["AlertSheetStudyController", "Alert自定义", ],
             ["SegmentControlStyleController", "SegmentControlStyle", ],
                 
             ["NNButtonStudyController", "Swift 按钮封装", ],

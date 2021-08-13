@@ -48,8 +48,9 @@ import RxCocoa
             (#selector(showActionSheet), "✔️样式" ),
             (#selector(showActionSheet3), "自定位视图"),
             (#selector(showActionSheet4), "图片展示"),
-//            (#selector(showActionSheet5), "样式"),
-            (#selector(showActionSheet6), "长列表"),
+            (#selector(showActionSheet5), "长列表"),
+            (#selector(showActionSheet7), "action自定义"),
+            
 //            (#selector(showAlert), "默认"),
             (#selector(showAlert1), "HFNavigationController自定义"),
             (#selector(showAlertTableView), "tableAlertController自定义"),
@@ -215,13 +216,13 @@ import RxCocoa
         let contentView = UIImageView(image: UIImage(named: "Skull.jpg"))
         contentView.contentMode = .scaleAspectFit
 
-        UIAlertController(title: "Select date", message: message, preferredStyle: preferredStyle)
+        UIAlertController(title: "展示图片", message: message, preferredStyle: preferredStyle)
             .addActionTitles()
             .setContent(view: contentView, height: 300)
             .present()
     }
-        
-    @objc func showActionSheet6(){
+    
+    @objc func showActionSheet5(){
         var list = Array.init(count: 15) { "item_\($0)" }
         list.append(kTitleCancell)
         UIAlertController.createSheet("请选择", message: "-", items: list) { ( alertVC, action) in
@@ -231,10 +232,54 @@ import RxCocoa
         }.present()
     }
     
-    @objc func showAlert1(){
-        navController.modalTransitionStyle = .crossDissolve
-        navController.present(false, style: .fullScreen)
+    @objc func showActionSheet7(){
+        var list = Array.init(count: 20) { "item_\($0)" }
+        list.append(kTitleCancell)
+        
+        let alertVC = UIAlertController(title: "请选择", message: "UIAlertAction 自定义 ", preferredStyle: preferredStyle)
+        
+        list.map { e in
+            if e == kTitleCancell {
+                let action = UIAlertAction(title: e, style: .cancel, handler: { action in
+                    DDLog(action.title)
+                })
+                return action
+            }
+            
+            let action = UIAlertAction(title: "", style: .default, handler: nil)
+                            
+            let contentView = NNAlertActionView()
+            contentView.imageView.image = UIImage(named: "Skull.jpg")
+            contentView.textLabel.text = e
+            contentView.detailTextLabel.text = "detailTextLabel"
+            
+//            if #available(iOS 13.0, *) {
+//                contentView.accessoryView = UIImageView(image: UIImage.chevron_right ?? UIImage(color: .red, size: CGSize(width: 20, height: 20)))
+//            }
+            
+            contentView.addGestureTap { reco in
+                action.setValue(NSNumber(booleanLiteral: true), forKey: "checked")
+                alertVC.dismiss(animated: true, completion: nil)
+                DDLog(e)
+            }
+            action.setContent(view: contentView, inset: .zero)
+
+            return action
+        }.forEach {
+            alertVC.addAction($0)
+        }
+        alertVC.present()
     }
+
+    
+    @objc func showAlert1(){
+        navController.present()
+    }
+    
+//    @objc func showAlert1(){
+//        navController.modalTransitionStyle = .crossDissolve
+//        navController.present(false)
+//    }
     
     @objc func showAlertTableView(){
         navTableAlertController.present()
@@ -260,11 +305,11 @@ import RxCocoa
     
     @objc func showAlertContentVC() {
         let message = """
-        /// Create new alert view vc.
+        /// 弹窗内嵌套了一个导航控制器
         """;
 
-        UIAlertController(title: nil, message: message, preferredStyle: preferredStyle)
-            .addActionTitles()
+        UIAlertController(title: "嵌套导航", message: message, preferredStyle: preferredStyle)
+            .addActionTitles([kTitleCancell])
 //          .setContent(vc: ThirdViewController(), height: 300)
             .setContent(vc: UINavigationController(rootViewController: ThirdViewController()), height: 300)
             .present()
@@ -488,9 +533,10 @@ extension AlertSheetStudyController: UITextViewDelegate{
 fileprivate extension UIAlertController{
 
     /// 改变宽度
-    func changeWidth(_ newWidth: CGFloat = UIScreen.main.bounds.width * 0.8) {
+    @discardableResult
+    func changeWidth(_ newWidth: CGFloat = UIScreen.main.bounds.width * 0.8) -> Self {
         if preferredStyle != .alert {
-            return
+            return self
         }
 //        let newWidth = UIScreen.main.bounds.width * 0.90 - 270
         // Filtering width constraints of alert base view width
@@ -530,5 +576,7 @@ fileprivate extension UIAlertController{
                                                         attribute: .width,
                                                         multiplier: 1.0,
                                                         constant: 0))
+        return self
     }
 }
+
