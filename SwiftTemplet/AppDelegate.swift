@@ -32,20 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-//        NSObject.initializeMethod()
-//        UIViewController.initializeMethod()
-//        UINavigationController.initializeMethod()
-//        UITextView.initializeMethod()
-//        UIControl.initializeMethod()
-////        UITapGestureRecognizer.initializeMethod()
-////        UIImageView.initializeMethod()
-////        UIColor.theme = UIColor.systemBlue
-//        UIColor.theme = UIColor.hexValue(0x29B5FE)
-//        UIApplication.setupAppearance(.white, barTintColor: .theme)
-////        setupAppearance(.white, barTintColor: .theme)
-//        IQKeyboardManager.shared.enable = true
-//
-//
+        NSObject.initializeMethod()
+        UIViewController.initializeMethod()
+        UINavigationController.initializeMethod()
+        UITextView.initializeMethod()
+        UIControl.initializeMethod()
+//        UITapGestureRecognizer.initializeMethod()
+//        UIImageView.initializeMethod()
+//        UIColor.theme = UIColor.systemBlue
+        UIColor.theme = UIColor.hexValue(0x29B5FE)
+        UIApplication.setupAppearance(.white, barTintColor: .theme)
+//        setupAppearance(.white, barTintColor: .theme)
+        IQKeyboardManager.shared.enable = true
+
+
 //        var controller = UICtrFromString("MainViewController");
 //        controller = UICtrFromString("HomeViewController");
 
