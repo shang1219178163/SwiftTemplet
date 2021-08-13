@@ -29,21 +29,7 @@ class NNButtonStudyController: UIViewController{
         sender.layoutButton(direction: 3, imageTitleSpace: 8)
         sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
-        sender.topMenuTarget.items = [String].init(count: 6, generator: { "icon_selected_no_default_\($0)" })
-        sender.topMenuTarget.selectedBlock = {
-            let title = sender.topMenuTarget.items[$0]
-            sender.setTitle(title, for: .normal)
-            sender.sizeToFit()
-            sender.layoutButton(direction: 3, imageTitleSpace: 8)
-        }
-        sender.topMenuTarget.cellForRowBlock = { tableView, indexPath in
-            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: UITableViewCellOne.reuseIdentifier, style: .subtitle)
-            
-            cell.imageView?.image = UIImage.img_update
-            cell.textLabel?.text = sender.topMenuTarget.items[indexPath.row]
-            cell.detailTextLabel?.text = sender.topMenuTarget.items[indexPath.row]
-            return cell
-        }
+        setupTopMenuTarget(sender)
         return sender
     }()
     
@@ -67,14 +53,6 @@ class NNButtonStudyController: UIViewController{
         sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
 //        sender.getViewLayer()
-        return sender
-    }()
-    
-    lazy var boxButton: NNBoxButton = {
-        let sender = NNBoxButton(frame: .zero)
-        sender.isImageRight = true
-        sender.setTitle("蓝瘦香菇", for: .normal);
-        sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
         return sender
     }()
     
@@ -214,7 +192,6 @@ class NNButtonStudyController: UIViewController{
 
         view.addSubview(btn)
         view.addSubview(checkBox)
-        view.addSubview(boxButton)
         view.addSubview(radioButton)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handActionItem(_:)));
@@ -236,8 +213,7 @@ class NNButtonStudyController: UIViewController{
         
         btn.frame = CGRectMake(20, buttonAdd.frame.maxY + 20, 120, 35);
         checkBox.frame = CGRectMake(20, btn.frame.maxY + 20, 80, 80);
-        boxButton.frame = CGRectMake(20, checkBox.frame.maxY + 20,  120, 35);
-        radioButton.frame = CGRectMake(20, boxButton.frame.maxY + 20,  120, 35);
+        radioButton.frame = CGRectMake(20, checkBox.frame.maxY + 20,  120, 35);
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -255,6 +231,8 @@ class NNButtonStudyController: UIViewController{
     @objc func handActionBtn(_ sender: NNButton) {
         sender.isSelected.toggle()
 //        DDLog(sender.isSelected)
+
+        setupTopMenuTarget(sender)
         if sender.isSelected {
             sender.topMenuTarget.show()
         } else {
@@ -269,5 +247,23 @@ class NNButtonStudyController: UIViewController{
     @objc func handActionItem(_ sender: UIBarItem) {
         let vc = NNButtonStudyController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    ///配置下拉列表
+    func setupTopMenuTarget(_ sender: UIButton) {
+        sender.topMenuTarget.items = [String].init(count: 20, generator: { "选择_\($0)" })
+        sender.topMenuTarget.selectedBlock = {
+            let title = sender.topMenuTarget.items[$0]
+            sender.setTitle(title, for: .normal)
+            sender.sizeToFit()
+            sender.layoutButton(direction: 3, imageTitleSpace: 8)
+        }
+        sender.topMenuTarget.cellForRowBlock = { tableView, indexPath in
+            let cell = UITableViewCellOne.dequeueReusableCell(tableView, identifier: UITableViewCellOne.reuseIdentifier, style: .subtitle)
+            
+            cell.imageView?.image = UIImage.img_update
+            cell.textLabel?.text = sender.topMenuTarget.items[indexPath.row]
+            cell.detailTextLabel?.text = sender.topMenuTarget.items[indexPath.row]
+            return cell
+        }
     }
 }
