@@ -121,7 +121,10 @@ import SnapKit
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-        label.attributedText = AttrString.test()
+//        label.attributedText = AttrString.test()
+        label.attributedText = AttrString.testNew()
+
+        return
         imgView.image = UIImage(named: "WechatIMG375.png")
         
         let str1: AttrString = """

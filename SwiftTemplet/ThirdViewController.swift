@@ -34,12 +34,16 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         return [
             [["EntryViewController", "通用录入界面", ],
+             ["IOPFuntionListController", "iop 视图", ],
+             ["SuanfaViewController", "常见算法", ],
+             
+             ["AudioPlayerDemoController", "AudioPlayer", ],
+
              ["SystemIconDisplayController", "系统图标", ],
              ["OptionalTestController", "Optional 功能扩展", ],
              ["ScanningDocumentsController", "ScanningDocuments", ],             
              ["NNPlaceHolderViewController", "占位视图", ],
              ["ReuseChildsController", "控制器复用", ],
-             ["IOPFuntionListController", "iop 视图", ],
              ["AttrStringViewController", "优雅的富文本", ],
              ["NNButtonStudyController", "按钮封装", ],
 //             ["SubscribeListNewController", "微信公众号信息列表1", ],

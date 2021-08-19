@@ -23,7 +23,7 @@ import SwiftExpand
 
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["*缴费金额" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "etc_key_request_form", ],
+            [["*缴费金额".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "etc_key_request_form", ],
             ],
         ]
         return array

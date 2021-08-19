@@ -8,6 +8,7 @@
 
 import UIKit
 import QuickLook
+import Photos
 
 import AFNetworking
 import SwiftExpand
@@ -59,29 +60,30 @@ class IOPFileUploadController: UIViewController {
     lazy var shareItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(handleActionFile(_:)))
     /// 预览视图
     lazy var previewVC: QLPreviewController = {
-        let controller = QLPreviewController()
-        controller.edgesForExtendedLayout = []
-        controller.dataSource = self
-        controller.delegate = self
-        controller.currentPreviewItemIndex = 0
+        let vc = QLPreviewController()
+        vc.edgesForExtendedLayout = []
+        vc.dataSource = self
+        vc.delegate = self
+        vc.currentPreviewItemIndex = 0
         
-        return controller
+        return vc
     }()
     
     /// 文件选择器
     lazy var docPickVC: UIDocumentPickerViewController = {
-        let controller = UIDocumentPickerViewController(documentTypes: IOPFileUploadController.docTypes, in: .import)
-        controller.modalPresentationStyle = .fullScreen
-        controller.delegate = self
-        return controller
+        let vc = UIDocumentPickerViewController(documentTypes: IOPFileUploadController.docTypes, in: .import)
+        vc.modalPresentationStyle = .fullScreen
+        vc.allowsMultipleSelection = true
+        vc.delegate = self
+        return vc
     }()
     
     /// 文件分享弹窗
     lazy var docShareVC: UIDocumentInteractionController = {
-        let controller = UIDocumentInteractionController()
-        controller.delegate = self;
-        controller.presentPreview(animated: true)
-        return controller
+        let vc = UIDocumentInteractionController()
+        vc.delegate = self;
+        vc.presentPreview(animated: true)
+        return vc
     }()
 
     
@@ -265,6 +267,29 @@ class IOPFileUploadController: UIViewController {
         }
         task.resume()
     }
+    
+    
+    func download(_ urlString: String) {
+        let videoImageUrl = "https://lanhu-cdn.oss-cn-shenzhen.aliyuncs.com/material/video/46FDAC5BC0C5C22DC220BE82EE1ED63C.mp4"
+        DispatchQueue.global(qos: .background).async {
+            if let url = URL(string: urlString),
+                let urlData = NSData(contentsOf: url) {
+                let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0];
+                let filePath = "\(documentsPath)/tempFile.mp4"
+                DispatchQueue.main.async {
+//                    urlData.write(toFile: filePath, atomically: true)
+                    
+                    PHPhotoLibrary.shared().performChanges({
+                        PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: URL(fileURLWithPath: filePath))
+                    }) { completed, error in
+                        if completed {
+                            print("Video is saved!")
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -363,15 +388,29 @@ extension IOPFileUploadController{
         "com.microsoft.powerpoint.ppt",
         "com.adobe.pdf",
     //    "public.item",
-    //    "public.image",
+        "public.image",
 //        "public.content",
     //    "public.composite-content",
     //    "public.archive",
-    //    "public.audio",
-    //    "public.movie",
+        "public.audio",
+        "public.movie",
         "public.text",
     //    "public.data",
         ]
+//    static let docTypes = ["com.microsoft.word.doc",
+//        "com.microsoft.excel.xls",
+//        "com.microsoft.powerpoint.ppt",
+//        "com.adobe.pdf",
+//    //    "public.item",
+//    //    "public.image",
+////        "public.content",
+//    //    "public.composite-content",
+//    //    "public.archive",
+//    //    "public.audio",
+//    //    "public.movie",
+//        "public.text",
+//    //    "public.data",
+//        ]
 }
 
 

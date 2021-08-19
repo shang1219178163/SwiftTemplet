@@ -183,6 +183,20 @@ public extension NSAttributedString{
 }
 
 extension AttrString{
+
+    public static func testNew(_ title: String = "上传", count: Int = 0, maxCount: Int = 2) -> NSAttributedString {
+        if #available(iOS 13.0, *) {
+            let image: UIImage? = UIImage.chevron_right?
+                .byResize(to: CGSize(width: 12, height: 12))?
+                .maskWithColor(color: .gray)
+
+            let str2: AttrString = """
+              \(title, .color(.theme), .font(UIFont.systemFont(ofSize: 15))) \("0/2", .color(.textColor9), .font(UIFont.systemFont(ofSize: 12))) \(image: image!, scale: 1.0)
+              """
+            return str2.attributedString
+        }
+        return "".matt
+    }
     
     public static func test() -> NSAttributedString {
         let user = "AliSoftware"
@@ -206,4 +220,31 @@ extension AttrString{
           """
         return str2.attributedString
     }
+}
+
+extension UIImage {
+
+    func maskWithColor(color: UIColor) -> UIImage? {
+        let maskImage = cgImage!
+
+        let width = size.width
+        let height = size.height
+        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+
+        context.clip(to: bounds, mask: maskImage)
+        context.setFillColor(color.cgColor)
+        context.fill(bounds)
+
+        if let cgImage = context.makeImage() {
+            let coloredImage = UIImage(cgImage: cgImage)
+            return coloredImage
+        } else {
+            return nil
+        }
+    }
+
 }

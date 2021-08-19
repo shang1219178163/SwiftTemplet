@@ -55,6 +55,10 @@ class EntryViewController: UIViewController {
         view.delegate = self
 
         view.tag = 1000
+        
+        view.tapBlock = {
+            DDLog($0)
+        }
         return view
     }()
     
@@ -188,6 +192,8 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [
+            ["问题回复", "IOPTableViewCellReplay", "180", "", "recharge", ],
+
             ["二维码券", "PHHQRcodeCouponChooseCell", "45.0", "", "recharge", ],
             ["二维码券", "PHHQrcodeOverageNewCell", "75.0", "", "recharge", ],
             ["更多内容", "UITableViewCellArticle", "135", "", "recharge", ],
@@ -221,6 +227,7 @@ class EntryViewController: UIViewController {
             ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
             ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
+            ["*Selecet:", "UITableViewCellSelecet", "60.0", "", "recharge", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["*有效时间:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
@@ -840,6 +847,16 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
+        case "UITableViewCellSelecet":
+            let cell = UITableViewCellSelecet.dequeueReusableCell(tableView)
+            cell.isHidden = value2.cgFloatValue <= 0.0
+            cell.accessoryType = .disclosureIndicator
+            
+            
+            cell.getViewLayer()
+            return cell
+            
+            
         case "UITableViewCellSubtitle":
             let cell = UITableViewCellSubtitle.dequeueReusableCell(tableView);
 //            cell.imgViewLeft.isHidden = true
@@ -972,18 +989,19 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellSudokuButton":
             let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
 //            cell.accessoryType = .disclosureIndicator
-            cell.numOfRow = 3
+            cell.numOfRow = 2
             cell.row = 3
             cell.itemType = NNButton.self
 //            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
             cell.items.forEach {
-
                 guard let sender = $0 as? NNButton else { return }
-                sender.direction = .top
-                sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
+//                sender.direction = .top
+//                sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
 
+                if sender.tag % 2 == 1 {
+                    sender.contentHorizontalAlignment = .right;
+                }
                 sender.addActionHandler({ sender in
-                    
                     DDLog(sender.tag)
                     
                     self.instructionView.show(sender, message: "一场仍在持续的大流行病，陡然提升了医疗产业的重要性。")
@@ -1216,8 +1234,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
             cell.labelBottomLeft.text = "张数 100张";
             cell.labelBottomRight.text = "充值时间 2019-12-10 12:0";
-            cell.getViewLayer();
-            return cell;
+            cell.getViewLayer()
+            return cell
             
         case "UITableViewCellPhotoPicker":
             let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: value1)
@@ -1257,9 +1275,26 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.getViewLayer()
             return cell
+            
+        case "IOPTableViewCellReplay":
+            let cell = IOPTableViewCellReplay.dequeueReusableCell(tableView)
+            
+            cell.userBtn.setTitle("客服", for: .normal)
+            cell.userBtn.setImage(UIImage(named: "bug.png")?.byResize(to: CGSize(width: 35, height: 35)), for: .normal)
+            cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+
+            cell.groupView.block { (groupView, btn) in
+
+                
+            }
+            
+            cell.getViewLayer();
+            return cell;
+            
         default:
             break
         }
+        
         let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellValue1", style: .value1)
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
         cell.textLabel?.textColor = UIColor.textColor3;

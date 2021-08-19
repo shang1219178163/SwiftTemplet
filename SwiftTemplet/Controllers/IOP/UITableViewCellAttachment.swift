@@ -1,16 +1,14 @@
-
 //
-//  UITableViewCellSix.swift
-//  BuildUI
+//  UITableViewCellAttachment.swift
+//  SwiftTemplet
 //
-//  Created by Bin Shang on 2018/12/19.
-//  Copyright © 2018 Bin Shang. All rights reserved.
+//  Created by Bin Shang on 2021/8/18.
+//  Copyright © 2021 BN. All rights reserved.
 //
 
 import UIKit
-import SwiftExpand
 
-class UITableViewCellSix: UITableViewCell {
+class UITableViewCellAttachment: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

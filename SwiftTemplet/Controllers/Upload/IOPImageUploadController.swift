@@ -14,7 +14,7 @@ import Alamofire
 }
 
 @objc protocol IOPUploadImageControllerDelegate{
-    @objc func uploadImage(_ vc: IOPImageUploadController)
+    @objc func uploadImage(_ vc: IOPImageUploadController, url: String, forKey key: String)
 }
 
 
@@ -33,11 +33,13 @@ class IOPImageUploadController: UIViewController {
     let items: [String] = ["从相册选择", "拍照", "取消"]
     
     lazy var pickerVC: UIImagePickerController = {
-        let pickerVC = UIImagePickerController()
-        pickerVC.view.backgroundColor = UIColor.white
-        pickerVC.delegate = self
-        pickerVC.allowsEditing = true
-        return pickerVC
+        let vc = UIImagePickerController()
+        vc.edgesForExtendedLayout = []
+        vc.view.backgroundColor = UIColor.white
+        vc.delegate = self
+        vc.allowsEditing = true
+        vc.modalPresentationStyle = .fullScreen
+        return vc
     }()
     
     var imageDefault: UIImage = UIImage(named: "img_upload")!
@@ -215,7 +217,7 @@ class IOPImageUploadController: UIViewController {
                 NNProgressHUD.showSuccess(message)
                 
                 self.imgUrl = url
-                self.delegate?.uploadImage(self)
+                self.delegate?.uploadImage(self, url: url, forKey: self.key)
                 self.block?(self)
                 self.requestOCR(self.imgUrl)
                 
