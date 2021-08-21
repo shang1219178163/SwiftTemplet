@@ -12,7 +12,7 @@ import UIKit
     @objc func buttonGroupView(_ view: NNButtonGroupView, sender: UIButton);
 }
 
-/// UIButton集合视图(弃用,代替者NNGroupButton)
+@available(*, deprecated, message: "弃用,代替者 NNGroupButton")
 @objcMembers class NNButtonGroupView: UIView {
 
     weak var delegate: NNButtonGroupViewDelegate?

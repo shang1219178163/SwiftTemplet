@@ -28,19 +28,56 @@ class NNDatePicker: UIView {
         super.init(frame: frame)
     }
 
-    convenience init(model: UIDatePicker.Mode = .date) {
-        self.init(frame: UIScreen.main.bounds);
+    convenience init(model: UIDatePicker.Mode = .dateAndTime) {
+        self.init(frame: UIScreen.main.bounds)
 
-        self.datePicker.datePickerMode = model;
-        self.addSubview(contentView);
+        self.datePicker.datePickerMode = model
+        self.addSubview(contentView)
 
-        self.addGestureTap { (tap) in
-            self.dismiss();
-        };
+        addGestureTap { (tap) in
+            self.dismiss()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview().offset(0)
+            make.height.equalTo(44 + kPickerViewHeight)
+        }
+        
+        btnCancel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalToSuperview().offset(10)
+            make.size.equalTo(btnSize)
+        }
+        
+        btnSure.snp.makeConstraints { (make) in
+            make.centerY.equalTo(btnCancel)
+            make.right.equalToSuperview().offset(-10)
+            make.size.equalTo(btnSize)
+        }
+        
+        label.snp.makeConstraints { (make) in
+            make.centerY.equalTo(btnCancel)
+            make.left.equalTo(btnCancel.snp.right).offset(10)
+            make.right.equalTo(btnSure.snp.left).offset(-10)
+            make.height.equalTo(btnSize.height)
+        }
+        
+        datePicker.snp.makeConstraints { (make) in
+            make.top.equalTo(btnCancel.snp.bottom).offset(5)
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview().offset(0)
+        }
     }
     
     func show() {
@@ -75,69 +112,61 @@ class NNDatePicker: UIView {
     
     //MARK: - layz
     lazy var contentView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: UIScreen.sizeHeight - (44 + kPickerViewHeight), width: UIScreen.sizeWidth, height: (44 + kPickerViewHeight)));
-       
-        view.backgroundColor = UIColor(r: 230, g: 230, b: 230, a: 1);
-        
-        btnCancel.frame = CGRect(x: 0, y: 0, width: btnSize.width, height: btnSize.height);
-        btnSure.frame = CGRect(x: UIScreen.sizeWidth - 60, y: 0, width: btnSize.width, height: btnSize.height);
-        datePicker.frame = CGRect(x: 0, y: 44, width: UIScreen.sizeWidth, height: kPickerViewHeight);
-        label.frame = CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: 44);
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .white
 
-        view.addSubview(btnCancel);
-        view.addSubview(btnSure);
-        view.addSubview(label);
-        view.addSubview(datePicker);
-        
-        return view;
-    }();
+        view.addSubview(btnCancel)
+        view.addSubview(btnSure)
+        view.addSubview(label)
+        view.addSubview(datePicker)
+                
+        return view
+    }()
     
     lazy var datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker();
-        datePicker.datePickerMode = .date;
-        datePicker.locale = Locale(identifier: "zh_CN");
-        datePicker.backgroundColor = .white;
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.locale = Locale(identifier: "zh_CN")
+        datePicker.backgroundColor = .white
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
         
-        datePicker.addTarget(self, action: #selector(handleAction(_:)), for: .valueChanged);
-        return datePicker;
+        datePicker.addTarget(self, action: #selector(handleAction(_:)), for: .valueChanged)
+        return datePicker
     }();
     
     lazy var btnCancel: UIButton = {
         let btn = UIButton(type: .custom);
-//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: 44);
+
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        btn.setTitle(kTitleCancell, for: .normal)
+        btn.setTitleColor(.lightGray, for: .normal)
+        btn.addTarget(self, action: #selector(handleAction(_:)), for:.touchUpInside)
         btn.tag = 0;
 
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-        btn.setTitle(kTitleCancell, for: .normal);
-        btn.setTitleColor(.lightGray, for: .normal);
-        btn.addTarget(self, action: #selector(handleAction(_:)), for:.touchUpInside);
-        
-        return btn;
+        return btn
     }();
     
     lazy var btnSure: UIButton = {
         let btn = UIButton(type: .custom);
-//        btn.frame = CGRect(x: 0, y: 0, width: 60, height: 44);
-        btn.tag = 1;
 
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         btn.setTitle(kTitleSure, for: .normal);
         btn.setTitleColor(.systemBlue, for: .normal);
         btn.addTarget(self, action: #selector(handleAction(_:)), for:.touchUpInside);
+        btn.tag = 1;
 
         return btn;
     }();
     
     lazy var label: UILabel = {
-        let lab = UILabel(frame: CGRect(x: btnSize.width, y: 0, width: UIScreen.sizeWidth - btnSize.width*2, height: 44));
-        lab.tag = 10;
-        lab.text = "请选择";
-        lab.textColor = .lightGray;
-        lab.textAlignment = .center;
-        return lab;
+        let lab = UILabel(frame: .zero)
+        lab.tag = 10
+        lab.text = "请选择"
+        lab.textColor = .lightGray
+        lab.textAlignment = .center
+        return lab
     }();
     
     //MRAK: - funtion

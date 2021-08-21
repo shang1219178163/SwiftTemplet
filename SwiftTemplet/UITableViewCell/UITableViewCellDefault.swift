@@ -25,7 +25,7 @@ class UITableViewCellDefault: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews();
+        super.layoutSubviews()
 
     }
 

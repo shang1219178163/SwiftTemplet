@@ -267,9 +267,11 @@
             takePhotoTitle = @"拍摄";
         }
         UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-        [alertVC addAction: [UIAlertAction actionWithTitle:takePhotoTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            [self takePhoto];
-        }]];
+        if (self.allowPickingImage) {
+            [alertVC addAction: [UIAlertAction actionWithTitle:takePhotoTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self takePhoto];
+            }]];
+        }
         
         [alertVC addAction: [UIAlertAction actionWithTitle:@"去相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self pushTZImagePickerController];

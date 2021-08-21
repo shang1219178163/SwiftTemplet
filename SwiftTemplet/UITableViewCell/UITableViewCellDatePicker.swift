@@ -99,7 +99,7 @@ class UITableViewCellDatePicker: UITableViewCell {
     
     //MARK: -lazy
     lazy var datePicker: NNDatePicker = {
-        let view = NNDatePicker(model: .date);
+        let view = NNDatePicker(model: .dateAndTime);
 //        view.block({ (sender, idx) in
 ////          DDLog(view,sender.datePicker.date,idx);
 //            self.viewBlock?(self, sender,idx);

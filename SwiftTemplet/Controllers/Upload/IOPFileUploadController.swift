@@ -126,8 +126,11 @@ class IOPFileUploadController: UIViewController {
     }
     
     func presentDocPicker() {
-        docPickVC.setupContentInsetAdjustmentBehavior(true)
-        present(docPickVC, animated: true, completion: nil)
+        present(docPickVC, animated: true) {
+            if #available(iOS 11, *) {
+                UIScrollView.appearance().contentInsetAdjustmentBehavior = .automatic
+            }
+        }
     }
     
     func presentOptionsMenu() {
@@ -251,7 +254,7 @@ class IOPFileUploadController: UIViewController {
             DDLog("current:\(current)")
             
         }, destination: { (url, response) -> URL in
-            let documentsDirectoryURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let documentsDirectoryURL = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             let docURL: URL = (documentsDirectoryURL?.appendingPathComponent(response.suggestedFilename!))!
             return docURL
         }) { (response, url, error) in
@@ -267,7 +270,6 @@ class IOPFileUploadController: UIViewController {
         }
         task.resume()
     }
-    
     
     func download(_ urlString: String) {
         let videoImageUrl = "https://lanhu-cdn.oss-cn-shenzhen.aliyuncs.com/material/video/46FDAC5BC0C5C22DC220BE82EE1ED63C.mp4"
@@ -295,16 +297,24 @@ class IOPFileUploadController: UIViewController {
 
 extension IOPFileUploadController: UIDocumentPickerDelegate{
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        if #available(iOS 11, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        }
         guard let url = urls.first else {
             return
         }
         localFileUrl = url as NSURL
     }
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        if #available(iOS 11, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        }
         localFileUrl = url as NSURL
     }
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        setupContentInsetAdjustmentBehavior(false)
+        if #available(iOS 11, *) {
+            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        }
     }
 }
 
