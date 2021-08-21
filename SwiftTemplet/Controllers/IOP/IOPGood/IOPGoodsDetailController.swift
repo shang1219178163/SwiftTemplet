@@ -1,8 +1,8 @@
 //
-//	IOPRoutingInspectionDetailController.swift
+//	IOPGoodsDetailController.swift
 //	MacTemplet
 //
-//	Created by Shang on 2021/08/16 18:03
+//	Created by Shang on 2021/08/16 09:53
 //	Copyright © 2021 shang. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPRoutingInspectionDetailController: UIViewController {
+@objcMembers class IOPGoodsDetailController: UIViewController {
     
     var recordID: String = ""
 
@@ -21,28 +21,45 @@ import SwiftExpand
         
     lazy var list: [[(String,String,String,String,String)]] = {
         return [
-            [("识别仪", "UITableViewCellDoubleLabel", "180", "", "statusDes"),
-            ("道闸", "UITableViewCellDoubleLabel", "180", "", "park_name"),
-            ("收费显示屏", "UITableViewCellDoubleLabel", "180", "请输入收款人", "park_name_copy"),
+            [("电子发票进件", "UITableViewCell", "50.0", "", "statusDes"),
+            ("进件车场", "UITableViewCell", "50.0", "", "park_name"),
+            ("复用车场", "UITableViewCell", "50.0", "请输入收款人", "park_name_copy"),
+            ("进件方式", "UITableViewCell", "50.0", "请输入销货方地址", "is_copyDes"),
+            ("进件时间", "UITableViewCell", "50.0", "收件人联系方式", "creat_timeDes"),
+            ("审核时间", "UITableViewCell", "50.0", "收件人联系方式", "update_timeDes"),
+            ("驳回原因", "UITableViewCell", "50.0", "收件人联系方式", "reject_reason"),
             ],
-            
-            [("满意度评价:", "UITableViewCellStarEvaluate", "40", "", "contact_phone"),
-             ("*问题描述", "UITableViewCellTextView", "150.0", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
+            [("企业信息", "UITableViewCell", "50.0", "", ""),
+            ("开票主体名称".padRight(1), "UITableViewCell", "50.0", "请输入开票主体名称", "invoicing_name"),
+            ("纳税人识别号".padRight(1), "UITableViewCell", "50.0", "请输入纳税人识别号", "ti_number"),
+            ("销货方地址".padRight(2), "UITableViewCell", "50.0", "请输入销货方地址", "seller_address"),
+            ("销货方电话".padRight(2), "UITableViewCell", "50.0", "请输入销货方电话", "seller_telephone"),
+            ("销货方开户行".padRight(1), "UITableViewCell", "50.0", "请输入销货方开户行", "seller_bank"),
+            ("销货方银行帐号", "UITableViewCell", "50.0", "请输入销货方银行账号", "seller_bank_account"),
+            ("收款人".padRight(4), "UITableViewCell", "50.0", "请输入收款人", "payee"),
+            ("复核人".padRight(4), "UITableViewCell", "50.0", "输入复核人", "reviewer"),
+            ("开票人".padRight(4), "UITableViewCell", "50.0", "请输入开票人", "drawer"),
+            ("税率".padRight(5), "UITableViewCell", "50.0", "请输入税率", "tax_rate"),
+            ("税收分类编码".padRight(1), "UITableViewCell", "50.0", "请输入税收分类编码", "tax_code"),
+            ],
+            [("收货信息", "UITableViewCell", "50.0", "", ""),
+            ("收件人".padRight(4), "UITableViewCell", "50.0", "请输入收款人", "receipter"),
+            ("收件地址".padRight(3), "UITableViewCell", "50.0", "请输入销货方地址", "receipt_address"),
+            ("收件人联系方式", "UITableViewCell", "50.0", "收件人联系方式", "receipt_phone"),
             ],
         ]
     }()
     
     lazy var tableView: UITableView = {
-        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
+        let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 60)
         view.dataSource = self
         view.delegate = self
 
         return view
     }()
     
-    
     lazy var footerView: NNTableFooterView = {
-        let view = NNTableFooterView.create("评价", topPadding: 30);
+        let view = NNTableFooterView.create("下一步", topPadding: 30);
         view.btn.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
         return view
     }()
@@ -51,9 +68,9 @@ import SwiftExpand
         view.endEditing(true)
 //        DDLog(sender.currentTitle)
         
-//        let vc = IOPInpartInvoiceReceiptController()
-//        vc.dataModel = dataModel
-//        self.navigationController?.pushViewController(vc, animated: true)
+//        let controller = IOPInpartInvoiceReceiptController()
+//        controller.dataModel = dataModel
+//        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     // MARK: -lifecycle
@@ -70,7 +87,8 @@ import SwiftExpand
             }
         })
 
-        tableView.tableFooterView = footerView;
+        
+//        tableView.tableFooterView = footerView;
         view.addSubview(tableView)
     }
 
@@ -95,7 +113,7 @@ import SwiftExpand
 }
 
 
-extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableViewDelegate{
+extension IOPGoodsDetailController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
@@ -109,9 +127,6 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sections = list[indexPath.section]
         let tuple = sections[indexPath.row]
-        if tuple.2 == "" {
-            return UITableView.automaticDimension
-        }
         return tuple.2.cgFloatValue
     }
     
@@ -161,77 +176,18 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
 //            cell.getViewLayer()
             return cell;
             
-        case "UITableViewCellDoubleLabel":
-            let cell = tableView.dequeueReusableCell(for: UITableViewCellDoubleLabel.self)
-            cell.labView.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-
-            cell.labView.labelLeft.text = "识别仪"
-            cell.labView1.labelLeft.attributedText = "识别仪本体工作情况 ".matt + "查看现场图片".matt.foregroundColorChain(.theme)
-            cell.labView2.labelLeft.text = "补光灯工作情况"
-            cell.labView3.labelLeft.text = "起落杆情况"
-            cell.labView4.labelLeft.text = "防砸情况"
-
-            let str1: AttrString = """
-              \(image: UIImage(named: "icon_routingInspection_normal")!, scale: 1.0) 正常
-              """
-            let str2: AttrString = """
-              \(image: UIImage(named: "icon_routingInspection_abnormal")!, scale: 1.0) 故障
-              """
-            let str3: AttrString = """
-              \(image: UIImage(named: "icon_routingInspection_hiddenTrouble")!, scale: 1.0) 故障
-              """
-            let str4: AttrString = """
-              \(image: UIImage(named: "icon_routingInspection_ignore")!, scale: 1.0) 不涉及
-              """
-            cell.labView1.labelRight.attributedText = str1.attributedString
-            cell.labView2.labelRight.attributedText = str2.attributedString
-            cell.labView3.labelRight.attributedText = str3.attributedString
-            cell.labView4.labelRight.attributedText = str4.attributedString
-            
-            cell.labView1.labelLeft.addGestureTap { reco in
-                DDLog(reco.view)
-            }
-
-//            cell.getViewLayer()
-            return cell
-            
-        case "UITableViewCellStarEvaluate":
-            let cell = tableView.dequeueReusableCell(for: UITableViewCellStarEvaluate.self)
-            
-            cell.labelLeft.text = value0
-            cell.labelLeft.isHidden = true
-
-//            cell.starView.isUserInteractionEnabled = false
-//            cell.starView.successBlock = {
-//                DDLog($0, $1, $2)
-//            }
-            cell.starView.block = {
-                DDLog($0.currentStarCount, $1)
-            }
-
-            cell.separatorHidden()
-//            cell.getViewLayer()
-            return cell
-            
-        case "UITableViewCellTextView":
-            let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
-            cell.labelLeft.font = UIFont.systemFont(ofSize: 15)
+        case "UITableViewCellTitle":
+            let cell = UITableViewCellTitle.dequeueReusableCell(tableView)
+            cell.labelLeft.font = UIFont.systemFont(ofSize: 15, weight: .bold)
             cell.labelLeft.textColor = .textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.hasAsterisk = value0.contains("*")
             
-            cell.type = .bottom
-            cell.labelLeft.isHidden = true
-            cell.wordCount = 200
-            cell.labelLeft.text = value0
-            cell.textView.placeHolderLabel.text = "请您给我们的客服一些鼓励吧(选填)"
+            cell.btn.isHidden = true
 
-            cell.block { ( view, text) in
-                DDLog(text)
-            }
-            
-            cell.getViewLayer()
+            cell.labelLeft.text = value0
+//            cell.getViewLayer()
             return cell
+            
         default:
             break
         }

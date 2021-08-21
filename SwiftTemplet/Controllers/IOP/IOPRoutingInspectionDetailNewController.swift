@@ -1,9 +1,9 @@
 //
-//	IOPRoutingInspectionDetailController.swift
-//	MacTemplet
+//    IOPRoutingInspectionDetailNewController.swift
+//    MacTemplet
 //
-//	Created by Shang on 2021/08/16 18:03
-//	Copyright © 2021 shang. All rights reserved.
+//    Created by Shang on 2021/08/16 18:03
+//    Copyright © 2021 shang. All rights reserved.
 //
 
 
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPRoutingInspectionDetailController: UIViewController {
+@objcMembers class IOPRoutingInspectionDetailNewController: UIViewController {
     
     var recordID: String = ""
 
@@ -19,15 +19,15 @@ import SwiftExpand
 
     lazy var viewModel = NSObject()
         
-    lazy var list: [[(String,String,String,String,String)]] = {
+    lazy var list: [[CellModel]] = {
         return [
-            [("识别仪", "UITableViewCellDoubleLabel", "180", "", "statusDes"),
-            ("道闸", "UITableViewCellDoubleLabel", "180", "", "park_name"),
-            ("收费显示屏", "UITableViewCellDoubleLabel", "180", "请输入收款人", "park_name_copy"),
+            [CellModel("识别仪", "UITableViewCellDoubleLabel", "180", "", "statusDes"),
+             CellModel("道闸", "UITableViewCellDoubleLabel", "180", "", "park_name"),
+             CellModel("收费显示屏", "UITableViewCellDoubleLabel", "180", "请输入收款人", "park_name_copy"),
             ],
             
-            [("满意度评价:", "UITableViewCellStarEvaluate", "40", "", "contact_phone"),
-             ("*问题描述", "UITableViewCellTextView", "150.0", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
+            [CellModel("满意度评价:", "UITableViewCellStarEvaluate", "40", "", "contact_phone"),
+             CellModel("*问题描述", "UITableViewCellTextView", "150.0", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
             ],
         ]
     }()
@@ -95,10 +95,10 @@ import SwiftExpand
 }
 
 
-extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableViewDelegate{
+extension IOPRoutingInspectionDetailNewController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return list.count;
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,20 +109,20 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sections = list[indexPath.section]
         let tuple = sections[indexPath.row]
-        if tuple.2 == "" {
+        if tuple.t2 == "" {
             return UITableView.automaticDimension
         }
-        return tuple.2.cgFloatValue
+        return tuple.t2.cgFloatValue
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sections = list[indexPath.section]
         let tuple = sections[indexPath.row]
-        let value0 = tuple.0
-        let value1 = tuple.1
-        let value2 = tuple.2
-        let value3 = tuple.3
-        let value4 = tuple.4
+        let value0 = tuple.t0
+        let value1 = tuple.t1
+        let value2 = tuple.t2
+        let value3 = tuple.t3
+        let value4 = tuple.t4
         
         switch value1 {
         case "UITableViewCell":
