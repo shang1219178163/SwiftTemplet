@@ -175,16 +175,14 @@ public extension UIView {
 extension MBProgressHUD {
     //显示等待消息
     class func showLoading(_ title: String) {
-        let view = viewToShow()
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
     }
         
     ///当前展示 MBProgressHUD
     static var currentHUD: MBProgressHUD? {
-        let view = viewToShow()
-        return MBProgressHUD.forView(view)
+        return MBProgressHUD.forView(keyWindow)
     }
     /// 是否有 hud 正在展示
     static var isShowing: Bool {
@@ -192,24 +190,21 @@ extension MBProgressHUD {
     }
     /// 更新 hud 标题
     static func updateLoading(_ title: String) {
-        let view = viewToShow()
-        if let hud = MBProgressHUD.forView(view) {
+        if let hud = MBProgressHUD.forView(keyWindow) {
             hud.label.text = title
         }
     }
 
     //显示等待消息
     class func hideHud(_ animated: Bool = true, delay: TimeInterval) {
-        let view = viewToShow()
-        if let hud = MBProgressHUD.forView(view) {
+        if let hud = MBProgressHUD.forView(keyWindow) {
             hud.hide(animated: animated, afterDelay: delay)
         }
     }
      
     //显示普通消息
     class func showInfo(_ title: String, image: UIImage? = nil) {
-        let view = viewToShow()
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
         hud.mode = .customView //模式设置为自定义视图
         if let image = image {
             hud.customView = UIImageView(image: image)
@@ -230,21 +225,6 @@ extension MBProgressHUD {
         showInfo(title, image: image)
     }
  
-    //获取用于显示提示框的view
-    class func viewToShow() -> UIView {
-        var window = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first
-        if window?.windowLevel != UIWindow.Level.normal {
-            let windowArray = UIApplication.shared.windows
-            for tempWin in windowArray {
-                if tempWin.windowLevel == UIWindow.Level.normal {
-                    window = tempWin;
-                    break
-                }
-            }
-        }
-        return window!
-    }
-    
 }
 
 
@@ -263,8 +243,7 @@ extension ZZProgressHUD {
 
     //显示等待消息
     static func showLoading(_ title: String) {
-        let view = viewToShow()
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
         hud.label.text = title
         if style != .defaultBgColor {
             hud.contentColor = .white
@@ -275,8 +254,7 @@ extension ZZProgressHUD {
     }
     ///当前展示 MBProgressHUD
     static var currentHUD: MBProgressHUD? {
-        let view = viewToShow()
-        return MBProgressHUD.forView(view)
+        return MBProgressHUD.forView(keyWindow)
     }
     /// 是否有 hud 正在展示
     static var isShowing: Bool {
@@ -284,24 +262,21 @@ extension ZZProgressHUD {
     }
     /// 更新 hud 标题
     static func updateLoading(_ title: String) {
-        let view = viewToShow()
-        if let hud = MBProgressHUD.forView(view) {
+        if let hud = MBProgressHUD.forView(keyWindow) {
             hud.label.text = title
         }
     }
 
     //显示等待消息
     static func hide(_ animated: Bool = true, delay: TimeInterval) {
-        let view = viewToShow()
-        if let hud = MBProgressHUD.forView(view) {
+        if let hud = MBProgressHUD.forView(keyWindow) {
             hud.hide(animated: animated, afterDelay: delay)
         }
     }
      
     //显示普通消息
     static func showInfo(_ title: String, image: UIImage? = nil) {
-        let view = viewToShow()
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
         hud.mode = .customView //模式设置为自定义视图
         hud.label.text = title
         if let image = image {
@@ -327,20 +302,20 @@ extension ZZProgressHUD {
         showInfo(title, image: image)
     }
  
-    //获取用于显示提示框的view
-    static func viewToShow() -> UIView {
-        var window = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first
-        if window?.windowLevel != UIWindow.Level.normal {
-            let windowArray = UIApplication.shared.windows
-            for tempWin in windowArray {
-                if tempWin.windowLevel == UIWindow.Level.normal {
-                    window = tempWin;
-                    break
-                }
-            }
-        }
-        return window!
-    }
+//    //获取用于显示提示框的view
+//    static func viewToShow() -> UIView {
+//        var window = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first
+//        if window?.windowLevel != UIWindow.Level.normal {
+//            let windowArray = UIApplication.shared.windows
+//            for tempWin in windowArray {
+//                if tempWin.windowLevel == UIWindow.Level.normal {
+//                    window = tempWin;
+//                    break
+//                }
+//            }
+//        }
+//        return window!
+//    }
     
 }
 
