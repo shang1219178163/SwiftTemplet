@@ -530,53 +530,53 @@ extension AlertSheetStudyController: UITextViewDelegate{
     }
 }
 
-fileprivate extension UIAlertController{
-
-    /// 改变宽度
-    @discardableResult
-    func changeWidth(_ newWidth: CGFloat = UIScreen.main.bounds.width * 0.8) -> Self {
-        if preferredStyle != .alert {
-            return self
-        }
-//        let newWidth = UIScreen.main.bounds.width * 0.90 - 270
-        // Filtering width constraints of alert base view width
-        let widthConstraints = view.constraints.filter({ return $0.firstAttribute == .width})
-        view.removeConstraints(widthConstraints)
-        // Here you can enter any width that you want
-//        let newWidth = UIScreen.main.bounds.width * 0.90
-        // Adding constraint for alert base view
-        let widthConstraint = NSLayoutConstraint(item: view as Any,
-                                                 attribute: .width,
-                                                 relatedBy: .equal,
-                                                 toItem: nil,
-                                                 attribute: .notAnAttribute,
-                                                 multiplier: 1,
-                                                 constant: newWidth)
-        view.addConstraint(widthConstraint)
-        let firstContainer = view.subviews[0]
-        // Finding first child width constraint
-        let constraint = firstContainer.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
-        firstContainer.removeConstraints(constraint)
-        // And replacing with new constraint equal to view width constraint that we setup earlier
-        view.addConstraint(NSLayoutConstraint(item: firstContainer,
-                                                    attribute: .width,
-                                                    relatedBy: .equal,
-                                                    toItem: view,
-                                                    attribute: .width,
-                                                    multiplier: 1.0,
-                                                    constant: 0))
-        // Same for the second child with width constraint with 998 priority
-        let innerBackground = firstContainer.subviews[0]
-        let innerConstraints = innerBackground.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
-        innerBackground.removeConstraints(innerConstraints)
-        firstContainer.addConstraint(NSLayoutConstraint(item: innerBackground,
-                                                        attribute: .width,
-                                                        relatedBy: .equal,
-                                                        toItem: firstContainer,
-                                                        attribute: .width,
-                                                        multiplier: 1.0,
-                                                        constant: 0))
-        return self
-    }
-}
-
+//fileprivate extension UIAlertController{
+//
+//    /// 改变宽度
+//    @discardableResult
+//    func changeWidth(_ newWidth: CGFloat = UIScreen.main.bounds.width * 0.8) -> Self {
+//        if preferredStyle != .alert {
+//            return self
+//        }
+////        let newWidth = UIScreen.main.bounds.width * 0.90 - 270
+//        // Filtering width constraints of alert base view width
+//        let widthConstraints = view.constraints.filter({ return $0.firstAttribute == .width})
+//        view.removeConstraints(widthConstraints)
+//        // Here you can enter any width that you want
+////        let newWidth = UIScreen.main.bounds.width * 0.90
+//        // Adding constraint for alert base view
+//        let widthConstraint = NSLayoutConstraint(item: view as Any,
+//                                                 attribute: .width,
+//                                                 relatedBy: .equal,
+//                                                 toItem: nil,
+//                                                 attribute: .notAnAttribute,
+//                                                 multiplier: 1,
+//                                                 constant: newWidth)
+//        view.addConstraint(widthConstraint)
+//        let firstContainer = view.subviews[0]
+//        // Finding first child width constraint
+//        let constraint = firstContainer.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
+//        firstContainer.removeConstraints(constraint)
+//        // And replacing with new constraint equal to view width constraint that we setup earlier
+//        view.addConstraint(NSLayoutConstraint(item: firstContainer,
+//                                                    attribute: .width,
+//                                                    relatedBy: .equal,
+//                                                    toItem: view,
+//                                                    attribute: .width,
+//                                                    multiplier: 1.0,
+//                                                    constant: 0))
+//        // Same for the second child with width constraint with 998 priority
+//        let innerBackground = firstContainer.subviews[0]
+//        let innerConstraints = innerBackground.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
+//        innerBackground.removeConstraints(innerConstraints)
+//        firstContainer.addConstraint(NSLayoutConstraint(item: innerBackground,
+//                                                        attribute: .width,
+//                                                        relatedBy: .equal,
+//                                                        toItem: firstContainer,
+//                                                        attribute: .width,
+//                                                        multiplier: 1.0,
+//                                                        constant: 0))
+//        return self
+//    }
+//}
+//
