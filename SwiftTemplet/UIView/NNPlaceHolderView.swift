@@ -20,10 +20,13 @@ import Then
 ///
 @objcMembers public class NNPlaceHolderView: UIView {
 
-    var inset = UIEdgeInsets(top: 64, left: 30, bottom: 64, right: 30)
+//    var inset = UIEdgeInsets(top: 64, left: 100, bottom: 64, right: 100)
+    
+    var offset = UIOffset(horizontal: 0, vertical: -120)
+    
     //MARK: -lazy
     lazy var imgView: UIImageView = {
-        var view = UIImageView(frame: .zero);
+        var view = UIImageView(frame: .zero)
 //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.image = UIImage(named: "icon_avatar")
         view.isUserInteractionEnabled = true
@@ -33,31 +36,36 @@ import Then
     }()
     
     lazy var label: UILabel = {
-        let view = UILabel(frame: .zero);
-        view.text = "请选择";
-        view.textColor = .lightGray;
-        view.textAlignment = .center;
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.systemFont(ofSize: 12)
+        view.text = "请选择"
+        view.textColor = .gray
+        view.textAlignment = .center
+        view.adjustsFontSizeToFitWidth = true
         return view;
-    }();
+    }()
     
     lazy var btn: UIButton = {
         let view = UIButton(type: .custom);
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
         view.setTitle("Learn more", for: .normal);
-        view.setTitleColor(.systemBlue, for: .normal);
+        view.setTitleColor(.white, for: .normal)
+        view.setBackgroundColor(.theme, for: .normal)
+        view.isHidden = true
+
         view.addActionHandler({ (sender) in
             DDLog(sender)
 
         }, for: .touchUpInside)
         return view;
-    }();
+    }()
     
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView().then({
             $0.spacing = 10
-            $0.distribution = .fill
-            $0.backgroundColor = UIColor.systemBlue
+            $0.distribution = .fillProportionally
+            $0.backgroundColor = UIColor.clear
             $0.axis = .vertical
         })
         return stackView;
@@ -76,13 +84,6 @@ import Then
                 NNPlaceHolderViewState.fail: UIImage(named: "img_network_error"),
                 ]
     }()
-    
-//    private lazy var imageDic: [NNPlaceHolderViewState: UIImage?] = {
-//        return [NNPlaceHolderViewState.empty: UIImage(named: "img_data_empty")!,
-//                NNPlaceHolderViewState.loading: UIImage(named: "img_network_loading")!,
-//                NNPlaceHolderViewState.fail: UIImage(named: "img_network_error")!,
-//                ]
-//    }()
     
     var state: NNPlaceHolderViewState = .empty {
         willSet{
@@ -104,8 +105,8 @@ import Then
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
-        btn.isHidden = true
+//        backgroundColor = .white
+        backgroundColor = .groupTableViewBackground
         
         addSubview(stackView)
         let list = [imgView, label, btn,]
@@ -124,13 +125,15 @@ import Then
         super.layoutSubviews()
         
         if bounds.height <= 10 {
-            return;
+            return
         }
-//        stackView.frame = bounds.inset(by: UIEdgeInsets(top: 100, left: 20, bottom: 100, right: 20))
-        stackView.frame = CGRect(x: 20,
-                                 y: bounds.maxY*0.15,
-                                 width: bounds.width - 40,
-                                 height: bounds.maxY*0.3)
+        
+        stackView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview().offset(offset.horizontal)
+            make.centerY.equalToSuperview().offset(offset.vertical)
+            make.width.equalToSuperview().multipliedBy(0.4)
+            make.height.equalToSuperview().multipliedBy(0.3)
+        }
     }
     
     // MARK: - funtions
@@ -174,30 +177,16 @@ import Then
     }
     
     private func hook_reloadData() {
-        guard let dataSource = dataSource else {
-            hook_reloadData()
-            return
-        }
-        
         guard let holderView = subView(NNPlaceHolderView.self) else {
             hook_reloadData()
             return
         }
-        
-        var isEmpty: Bool = true
-        if dataSource.responds(to: #selector(dataSource.numberOfSections(in:))),
-            let sections: Int = dataSource.numberOfSections?(in: self) {
-            isEmpty = (sections <= 0)
-        } else {
-            isEmpty = dataSource.tableView(self, numberOfRowsInSection: 0) <= 0
-        }
-                
-        holderView.isHidden = !isEmpty
+                        
+        holderView.isHidden = !self.isEmpty
         if isEmpty {
             holderView.state = .empty
         }
         hook_reloadData()
     }
-    
 
 }
