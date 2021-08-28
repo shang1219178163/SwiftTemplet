@@ -1,5 +1,5 @@
 //
-//	IOPShopWaitExamineForCarController.swift
+//	IOPShopAuthDetailController.swift
 //	MacTemplet
 //
 //	Created by Bin Shang on 2021/08/11 09:06
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPShopWaitExamineForCarController: UIViewController {
+@objcMembers class IOPShopAuthDetailController: UIViewController {
 
     var model = NSObject()
     
@@ -28,7 +28,17 @@ import SwiftExpand
 //             ("申请时间：", "UITableViewCell", "35", "请输入收款人", "park_name_copy"),
              ("", "IOPTableViewCellExaminePostmark", "70", "", "park_name"),
             ],
+            [("审核备注,驳回原因", "UITableViewCellTitle", "40", "", "statusDes"),
+             ("", "UITableViewCell", "80", "", "park_name"),
+            ],
             [("车主信息", "UITableViewCellTitle", "40", "", ""),
+             ("登记类型：", "UITableViewCell", "35", "", "invoicing_name"),
+             ("车主/组织名称：", "UITableViewCell", "35", "", "ti_number"),
+             ("联系电话：", "UITableViewCell", "35", "", "seller_address"),
+             ("车主编号：", "UITableViewCell", "35", "", "seller_telephone"),
+            ],
+            [("车辆认证", "UITableViewCellTitle", "40", "", ""),
+             ("认证类型：", "UITableViewCell", "35", "", "receipter"),
              ("", "UITableViewCellExcel", "240", "", "receipt_address"),
             ],
         ]
@@ -40,39 +50,6 @@ import SwiftExpand
         view.dataSource = self
         view.delegate = self
 
-        return view
-    }()
-    
-    lazy var footerView: NNSudokuView = {
-        let view = NNSudokuView(frame: CGRectMake(0, 0, kScreenWidth, 65))
-        view.backgroundColor = .white
-        view.inset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
-        view.numOfRow = 2
-        view.row = 1
-        view.itemType = NNButton.self
-//            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
-        view.items.forEach {
-            guard let sender = $0 as? NNButton else { return }
-            switch sender.tag {
-            case 0:
-                sender.setCustomType(.titleAndOutline)
-                sender.setTitle("驳回", for: .normal)
-            case 1:
-                sender.setCustomType(.titleWhiteAndBackgroudTheme)
-                sender.setTitle("通过", for: .normal)
-
-            default:
-                sender.setCustomType(.titleAndOutline)
-                sender.setTitle("button", for: .normal)
-            }
-            sender.addActionHandler({ sender in
-                DDLog(sender.tag)
-
-            }, for: .touchUpInside)
-        }
-        
-        //阴影
-        view.layer.addShadow(.gray.withAlphaComponent(0.5))
         return view
     }()
     
@@ -94,12 +71,9 @@ import SwiftExpand
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
         view.backgroundColor = .groupTableViewBackground
-        title = "详情"
+        title = "审核详情"
 
         view.addSubview(tableView)
-        view.addSubview(footerView)
-
-//        handleRequestDetail()
     }
     
     
@@ -107,24 +81,6 @@ import SwiftExpand
         super.viewWillAppear(animated)
         
 //        handleRequestDetail()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        footerView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(0)
-            make.right.equalToSuperview().offset(0)
-            make.bottom.equalToSuperview().offset(0)
-            make.height.equalTo(65)
-        }
-        
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(0)
-            make.left.equalToSuperview().offset(0)
-            make.right.equalToSuperview().offset(0)
-            make.bottom.equalTo(footerView.snp.top).offset(0)
-        }
     }
     
 //    func handleRequestDetail() {
@@ -162,7 +118,7 @@ import SwiftExpand
 }
 
 
-extension IOPShopWaitExamineForCarController: UITableViewDataSource, UITableViewDelegate{
+extension IOPShopAuthDetailController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;

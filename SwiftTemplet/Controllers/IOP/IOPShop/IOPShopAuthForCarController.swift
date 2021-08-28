@@ -1,5 +1,5 @@
 //
-//	IOPShopWaitExamineForCarOwnerController.swift
+//	IOPShopAuthForCarController.swift
 //	MacTemplet
 //
 //	Created by Bin Shang on 2021/08/11 09:06
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPShopWaitExamineForCarOwnerController: UIViewController {
+@objcMembers class IOPShopAuthForCarController: UIViewController {
 
     var model = NSObject()
     
@@ -127,11 +127,42 @@ import SwiftExpand
         }
     }
     
+//    func handleRequestDetail() {
+//        if recordID == "" {
+////            DDLog(self.model.creat_time, self.model.update_time)
+//            dataModel = model
+//            if ["1", "2"].contains(dataModel.status) == false {
+//                noticeLabel.snp.remakeConstraints { (make) in
+//                    make.height.equalTo(0);
+//                }
+//                tableView.snp.remakeConstraints { (make) in
+//                    make.height.equalTo(self.view.bounds.height);
+//                }
+//            }
+//            tableView.reloadData()
+//            requestDetail(model.topic_id)
+//        } else {
+//            requestDetail(recordID)
+//        }
+//    }
+//
+//    func requestDetail(_ ID: String?) {
+//        viewModel.detailAPI.order_id = ID ?? ""
+//        viewModel.requestDetail { (model) in
+////            DDLog(model.title)
+//            self.dataModel = model.labels
+//            self.dataModel.status = self.model.status
+//            self.dataModel.reject_reason = self.model.reject_reason ?? ""
+//            self.dataModel.creat_time = self.model.creat_time
+//            self.dataModel.update_time = self.model.update_time
+//            self.tableView.reloadData()
+//        }
+//    }
     
 }
 
 
-extension IOPShopWaitExamineForCarOwnerController: UITableViewDataSource, UITableViewDelegate{
+extension IOPShopAuthForCarController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;

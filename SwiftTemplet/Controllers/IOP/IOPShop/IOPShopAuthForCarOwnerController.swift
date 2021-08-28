@@ -1,5 +1,5 @@
 //
-//	IOPShopWaitExamineForParkingCardController.swift
+//	IOPShopAuthForCarOwnerController.swift
 //	MacTemplet
 //
 //	Created by Bin Shang on 2021/08/11 09:06
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPShopWaitExamineForParkingCardController: UIViewController {
+@objcMembers class IOPShopAuthForCarOwnerController: UIViewController {
 
     var model = NSObject()
     
@@ -29,18 +29,7 @@ import SwiftExpand
              ("", "IOPTableViewCellExaminePostmark", "70", "", "park_name"),
             ],
             [("车主信息", "UITableViewCellTitle", "40", "", ""),
-             ("", "UITableViewCellExcel", "175", "", "receipt_address"),
-             ("车位卡名称：", "UITableViewCell", "35", "", "invoicing_name"),
-             ("卡类型：", "UITableViewCell", "35", "", "ti_number"),
-             ("售价：", "UITableViewCell", "35", "", "seller_address"),
-             ("有效星期：", "UITableViewCell", "35", "", "seller_telephone"),
-             ("每日有效时段：", "UITableViewCell", "35", "", "seller_telephone"),
-             ("卡时长：", "UITableViewCell", "35", "", "seller_telephone"),
-             ("储值金额：", "UITableViewCell", "35", "", "seller_telephone"),
-             ("生效时间：", "UITableViewCell", "35", "", "seller_telephone"),
-             ("过期时间：", "UITableViewCell", "35", "", "seller_telephone"),
-             ("共享车位：", "UITableViewCell", "35", "", "seller_telephone"),
-
+             ("", "UITableViewCellExcel", "240", "", "receipt_address"),
             ],
         ]
     }()
@@ -142,7 +131,7 @@ import SwiftExpand
 }
 
 
-extension IOPShopWaitExamineForParkingCardController: UITableViewDataSource, UITableViewDelegate{
+extension IOPShopAuthForCarOwnerController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
@@ -183,8 +172,7 @@ extension IOPShopWaitExamineForParkingCardController: UITableViewDataSource, UIT
             cell.textLabel?.text = value0
             cell.detailTextLabel?.text = "-"
                         
-//            cell.separatorInset = indexPath.section > 0 && indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
+            cell.separatorInset = indexPath.section > 0 && indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
 
 //            cell.getViewLayer()
             return cell;
@@ -215,10 +203,12 @@ extension IOPShopWaitExamineForParkingCardController: UITableViewDataSource, UIT
 //
 //            cell.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
             
-            cell.excelView.titleList = ["序号", "车牌号码", "认证类型", "车主/组织名称",]
-            cell.excelView.dataList = [["1", "陕A11111", "车主认证", "张三",],
-                                       ["2", "陕A22222", "车主认证", "李四",],
-                                       ["3", "陕A33333", "车主认证", "西安艾润物…",],
+            cell.excelView.titleList = ["", "变更前", "变更后",]
+            cell.excelView.dataList = [["登记类型", "组织", "个人",],
+                                       ["车主/组织名称", "西安艾润物联网技术服务有限责任公司", "张三",],
+                                       ["联系电话", "13912345678", "13912345678",],
+                                       ["备注", "-", "2020年12月20日摇号中签",],
+
                                         ]
             
             cell.excelView.cellItemBlock = { label, indexP in
@@ -228,9 +218,6 @@ extension IOPShopWaitExamineForParkingCardController: UITableViewDataSource, UIT
             }
             
             cell.excelView.reloadData()
-            
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
-
             return cell
             
         case "IOPTableViewCellExaminePostmark":

@@ -1,5 +1,5 @@
 //
-//  IOPShopWaitExamineForAddCarCardController.swift
+//  IOPShopAuthForAddCarCardController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2021/8/10.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 ///车辆认证资料
-class IOPShopWaitExamineForAddCarCardController: UIViewController {
+class IOPShopAuthForAddCarCardController: UIViewController {
 
     // MARK: - lazy
     lazy var tableView: UITableView = {
@@ -47,7 +47,7 @@ class IOPShopWaitExamineForAddCarCardController: UIViewController {
 }
 
 
-extension IOPShopWaitExamineForAddCarCardController: UITableViewDataSource, UITableViewDelegate{
+extension IOPShopAuthForAddCarCardController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tuples.count

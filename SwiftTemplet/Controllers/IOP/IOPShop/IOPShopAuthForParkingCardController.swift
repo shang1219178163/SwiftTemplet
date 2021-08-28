@@ -1,5 +1,5 @@
 //
-//	IOPShopWaitExamineForAddController.swift
+//	IOPShopAuthForParkingCardController.swift
 //	MacTemplet
 //
 //	Created by Bin Shang on 2021/08/11 09:06
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPShopWaitExamineForAddController: UIViewController {
+@objcMembers class IOPShopAuthForParkingCardController: UIViewController {
 
     var model = NSObject()
     
@@ -29,14 +29,18 @@ import SwiftExpand
              ("", "IOPTableViewCellExaminePostmark", "70", "", "park_name"),
             ],
             [("车主信息", "UITableViewCellTitle", "40", "", ""),
-             ("登记类型：", "UITableViewCell", "35", "", "invoicing_name"),
-             ("车主/组织名称：", "UITableViewCell", "35", "", "ti_number"),
-             ("联系电话：", "UITableViewCell", "35", "", "seller_address"),
-             ("车主编号：", "UITableViewCell", "35", "", "seller_telephone"),
-            ],
-            [("车辆认证", "UITableViewCellTitle", "40", "", ""),
-             ("认证类型：", "UITableViewCell", "35", "", "receipter"),
-             ("", "UITableViewCellExcel", "240", "", "receipt_address"),
+             ("", "UITableViewCellExcel", "175", "", "receipt_address"),
+             ("车位卡名称：", "UITableViewCell", "35", "", "invoicing_name"),
+             ("卡类型：", "UITableViewCell", "35", "", "ti_number"),
+             ("售价：", "UITableViewCell", "35", "", "seller_address"),
+             ("有效星期：", "UITableViewCell", "35", "", "seller_telephone"),
+             ("每日有效时段：", "UITableViewCell", "35", "", "seller_telephone"),
+             ("卡时长：", "UITableViewCell", "35", "", "seller_telephone"),
+             ("储值金额：", "UITableViewCell", "35", "", "seller_telephone"),
+             ("生效时间：", "UITableViewCell", "35", "", "seller_telephone"),
+             ("过期时间：", "UITableViewCell", "35", "", "seller_telephone"),
+             ("共享车位：", "UITableViewCell", "35", "", "seller_telephone"),
+
             ],
         ]
     }()
@@ -133,12 +137,12 @@ import SwiftExpand
             make.bottom.equalTo(footerView.snp.top).offset(0)
         }
     }
-
+    
     
 }
 
 
-extension IOPShopWaitExamineForAddController: UITableViewDataSource, UITableViewDelegate{
+extension IOPShopAuthForParkingCardController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
@@ -179,7 +183,8 @@ extension IOPShopWaitExamineForAddController: UITableViewDataSource, UITableView
             cell.textLabel?.text = value0
             cell.detailTextLabel?.text = "-"
                         
-            cell.separatorInset = indexPath.section > 0 && indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
+//            cell.separatorInset = indexPath.section > 0 && indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
 
 //            cell.getViewLayer()
             return cell;
@@ -210,11 +215,10 @@ extension IOPShopWaitExamineForAddController: UITableViewDataSource, UITableView
 //
 //            cell.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
             
-            cell.excelView.titleList = ["", "变更前", "变更后",]
-            cell.excelView.dataList = [["序号", "车牌号码", "认证资料",],
-                                       ["1", "陕A11111", "查看",],
-                                       ["2", "陕A22222", "查看",],
-                                       ["3", "陕A33333", "查看",],
+            cell.excelView.titleList = ["序号", "车牌号码", "认证类型", "车主/组织名称",]
+            cell.excelView.dataList = [["1", "陕A11111", "车主认证", "张三",],
+                                       ["2", "陕A22222", "车主认证", "李四",],
+                                       ["3", "陕A33333", "车主认证", "西安艾润物…",],
                                         ]
             
             cell.excelView.cellItemBlock = { label, indexP in
@@ -223,14 +227,10 @@ extension IOPShopWaitExamineForAddController: UITableViewDataSource, UITableView
                 }
             }
             
-            cell.excelView.cellDidSelectBlock = { label, indexP in
-                if label.text == "查看" {
-                    let vc = IOPShopWaitExamineForAddCarCardController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-            
             cell.excelView.reloadData()
+            
+            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
+
             return cell
             
         case "IOPTableViewCellExaminePostmark":

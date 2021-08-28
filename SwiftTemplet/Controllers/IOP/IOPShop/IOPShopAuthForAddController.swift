@@ -1,5 +1,5 @@
 //
-//	IOPShopExamineDetailController.swift
+//	IOPShopAuthForAddController.swift
 //	MacTemplet
 //
 //	Created by Bin Shang on 2021/08/11 09:06
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPShopExamineDetailController: UIViewController {
+@objcMembers class IOPShopAuthForAddController: UIViewController {
 
     var model = NSObject()
     
@@ -27,9 +27,6 @@ import SwiftExpand
 //             ("审核类型：", "UITableViewCell", "35", "", "park_name"),
 //             ("申请时间：", "UITableViewCell", "35", "请输入收款人", "park_name_copy"),
              ("", "IOPTableViewCellExaminePostmark", "70", "", "park_name"),
-            ],
-            [("审核备注,驳回原因", "UITableViewCellTitle", "40", "", "statusDes"),
-             ("", "UITableViewCell", "80", "", "park_name"),
             ],
             [("车主信息", "UITableViewCellTitle", "40", "", ""),
              ("登记类型：", "UITableViewCell", "35", "", "invoicing_name"),
@@ -53,6 +50,39 @@ import SwiftExpand
         return view
     }()
     
+    lazy var footerView: NNSudokuView = {
+        let view = NNSudokuView(frame: CGRectMake(0, 0, kScreenWidth, 65))
+        view.backgroundColor = .white
+        view.inset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        view.numOfRow = 2
+        view.row = 1
+        view.itemType = NNButton.self
+//            cell.items.forEach { $0.setTitleColor(.systemBlue, for: .normal)}
+        view.items.forEach {
+            guard let sender = $0 as? NNButton else { return }
+            switch sender.tag {
+            case 0:
+                sender.setCustomType(.titleAndOutline)
+                sender.setTitle("驳回", for: .normal)
+            case 1:
+                sender.setCustomType(.titleWhiteAndBackgroudTheme)
+                sender.setTitle("通过", for: .normal)
+
+            default:
+                sender.setCustomType(.titleAndOutline)
+                sender.setTitle("button", for: .normal)
+            }
+            sender.addActionHandler({ sender in
+                DDLog(sender.tag)
+
+            }, for: .touchUpInside)
+        }
+        
+        //阴影
+        view.layer.addShadow(.gray.withAlphaComponent(0.5))
+        return view
+    }()
+    
     
     @objc func handleAction(_ sender: UIButton) {
         view.endEditing(true)
@@ -71,9 +101,12 @@ import SwiftExpand
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
         view.backgroundColor = .groupTableViewBackground
-        title = "审核详情"
+        title = "详情"
 
         view.addSubview(tableView)
+        view.addSubview(footerView)
+
+//        handleRequestDetail()
     }
     
     
@@ -83,42 +116,29 @@ import SwiftExpand
 //        handleRequestDetail()
     }
     
-//    func handleRequestDetail() {
-//        if recordID == "" {
-////            DDLog(self.model.creat_time, self.model.update_time)
-//            dataModel = model
-//            if ["1", "2"].contains(dataModel.status) == false {
-//                noticeLabel.snp.remakeConstraints { (make) in
-//                    make.height.equalTo(0);
-//                }
-//                tableView.snp.remakeConstraints { (make) in
-//                    make.height.equalTo(self.view.bounds.height);
-//                }
-//            }
-//            tableView.reloadData()
-//            requestDetail(model.topic_id)
-//        } else {
-//            requestDetail(recordID)
-//        }
-//    }
-//
-//    func requestDetail(_ ID: String?) {
-//        viewModel.detailAPI.order_id = ID ?? ""
-//        viewModel.requestDetail { (model) in
-////            DDLog(model.title)
-//            self.dataModel = model.labels
-//            self.dataModel.status = self.model.status
-//            self.dataModel.reject_reason = self.model.reject_reason ?? ""
-//            self.dataModel.creat_time = self.model.creat_time
-//            self.dataModel.update_time = self.model.update_time
-//            self.tableView.reloadData()
-//        }
-//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        footerView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.bottom.equalToSuperview().offset(0)
+            make.height.equalTo(65)
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(0)
+            make.left.equalToSuperview().offset(0)
+            make.right.equalToSuperview().offset(0)
+            make.bottom.equalTo(footerView.snp.top).offset(0)
+        }
+    }
+
     
 }
 
 
-extension IOPShopExamineDetailController: UITableViewDataSource, UITableViewDelegate{
+extension IOPShopAuthForAddController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
@@ -191,16 +211,22 @@ extension IOPShopExamineDetailController: UITableViewDataSource, UITableViewDele
 //            cell.excelView.headerBackgroudColor = UIColor.hexValue(0xF5F5F5, a: 1)
             
             cell.excelView.titleList = ["", "变更前", "变更后",]
-            cell.excelView.dataList = [["登记类型", "组织", "个人",],
-                                       ["车主/组织名称", "西安艾润物联网技术服务有限责任公司", "张三",],
-                                       ["联系电话", "13912345678", "13912345678",],
-                                       ["备注", "-", "2020年12月20日摇号中签",],
-
+            cell.excelView.dataList = [["序号", "车牌号码", "认证资料",],
+                                       ["1", "陕A11111", "查看",],
+                                       ["2", "陕A22222", "查看",],
+                                       ["3", "陕A33333", "查看",],
                                         ]
             
             cell.excelView.cellItemBlock = { label, indexP in
                 if label.text == "查看" {
                     label.textColor = .theme
+                }
+            }
+            
+            cell.excelView.cellDidSelectBlock = { label, indexP in
+                if label.text == "查看" {
+                    let vc = IOPShopAuthForAddCarCardController()
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             

@@ -1,5 +1,5 @@
 //
-//  IOPFeedBackDetailController.swift
+//  IOPWorkOrderDetailController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2021/8/19.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 用户反馈详情
-class IOPFeedBackDetailController: UIViewController {
+class IOPWorkOrderDetailController: UIViewController {
 
     lazy var tableView: UITableView = {
         let view = UITableView(frame: self.view.bounds, style: .plain)
@@ -120,7 +120,7 @@ class IOPFeedBackDetailController: UIViewController {
 }
 
 
-extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegate{
+extension IOPWorkOrderDetailController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count;
@@ -158,6 +158,9 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
             cell.textLabel?.numberOfLines = 0
 
             cell.textLabel?.text = "艾润客服太专业了，点赞，很详细的解释了问题所在，希 望后面还有机会。艾润客服太专业了，点赞，很详细的解释了问题所在，希 望后面还有机会。"
+            
+            cell.separatorHidden()
+
 //            cell.getViewLayer()
             return cell
         case "IOPTableViewCellIssueMark":
@@ -165,6 +168,9 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
 
             cell.markStatue = "1"
             cell.hasAsterisk = false
+            
+            cell.separatorHidden()
+
             return cell
             
         case "UITableViewCellValu1":
@@ -182,6 +188,7 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
             cell.textLabel?.highlightedTextColor = UIColor.red
             cell.textLabel?.isHighlighted = false
             
+            cell.separatorHidden()
             return cell
             
             
@@ -203,6 +210,8 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
             cell.textLabel?.highlightedTextColor = .red
             cell.textLabel?.isHighlighted = false
             
+            cell.separatorHidden()
+
             return cell
             
         case "UITableViewCellDesc":
@@ -242,8 +251,7 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(for: UITableViewCellReplay.self)
             switch indexPath.section {
             case 2:
-                cell.userBtn.setTitle("图片:", for: .normal)
-                cell.userBtn.setImage(nil, for: .normal)
+ 
                 cell.contentlabel.isHidden = true
 
                 cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
@@ -260,8 +268,7 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
                     return sender
                 })
             case 3:
-                cell.userBtn.setTitle("视频:", for: .normal)
-                cell.userBtn.setImage(nil, for: .normal)
+   
                 cell.contentlabel.isHidden = true
 
                 cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
@@ -278,8 +285,7 @@ extension IOPFeedBackDetailController: UITableViewDataSource, UITableViewDelegat
                     return sender
                 })
             default:
-                cell.userBtn.setTitle("客服", for: .normal)
-                cell.userBtn.setImage(UIImage(named: "icon_sevice"), for: .normal)
+
                 cell.contentlabel.isHidden = false
                 
                 cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in

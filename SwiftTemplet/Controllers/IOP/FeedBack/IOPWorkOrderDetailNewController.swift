@@ -1,5 +1,5 @@
 //
-//  IOPFeedBackDetailNewController.swift
+//  IOPWorkOrderDetailNewController.swift
 //  SwiftTemplet
 //
 //  Created by Bin Shang on 2021/8/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IOPFeedBackDetailNewController: UIViewController {
+class IOPWorkOrderDetailNewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
