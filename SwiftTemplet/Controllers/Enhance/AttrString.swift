@@ -151,9 +151,9 @@ extension AttrString.StringInterpolation {
         self.attributedString.append(mas)
     }
     
-    func appendInterpolation(image: UIImage, scale: CGFloat = 1.0) {
+    func appendInterpolation(image: UIImage, scale: CGFloat = 1.0, verticalOffSet: CGFloat = 0) {
         let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
-        
+
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         image.draw(in: rect)
@@ -162,6 +162,7 @@ extension AttrString.StringInterpolation {
         
         let attachment = NSTextAttachment()
         attachment.image = newImage
+        attachment.bounds = CGRect(x: 0, y: verticalOffSet, width: size.width, height: size.height)
 
         self.attributedString.append(NSAttributedString(attachment: attachment))
 //        print(#function, rect, size)
