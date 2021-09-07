@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISlider
-class UITableViewCellSlider: UITableViewCell {
+@objcMembers class UITableViewCellSlider: UITableViewCell {
         
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
@@ -103,6 +103,26 @@ class UITableViewCellSlider: UITableViewCell {
     }
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var labelRight: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
     lazy var sliderCtl: UISlider = {
         let view = UISlider(rect: .zero, minValue: 0, maxValue: 100)
         return view

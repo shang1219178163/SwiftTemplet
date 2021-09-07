@@ -12,7 +12,7 @@ import UIKit
  主标题
  副标题
  */
-class UITableViewCellFive: UITableViewCell {
+@objcMembers class UITableViewCellFive: UITableViewCell {
 
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     // MARK: -life cycle
@@ -84,6 +84,36 @@ class UITableViewCellFive: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
 
+        return view
+    }()
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var labelLeftSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        
+        return view
+    }()
 }
 

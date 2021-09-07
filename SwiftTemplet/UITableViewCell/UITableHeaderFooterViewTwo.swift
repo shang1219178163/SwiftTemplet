@@ -15,8 +15,12 @@ import SwiftExpand
  文字
  文字(富文本)
 */
-class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
+@objcMembers class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
+    
+    var isOpen: Bool = false
 
+    var isCanOpen: Bool = false
+    // MARK: -lifecycle
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
  
@@ -75,5 +79,27 @@ class UITableHeaderFooterViewTwo: UITableViewHeaderFooterView {
         labelLeftSub.frame.size = CGSize(width: contentView.frame.width - kX_GAP*2, height: h_labSub)
      
     }
+    // MARK: -lazy
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var labelLeftSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        
+        return view
+    }()
     
 }

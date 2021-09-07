@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 /// 图片+文字+文字+图片
-class UITableViewCellOne: UITableViewCell {
+@objcMembers class UITableViewCellOne: UITableViewCell {
 
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
@@ -134,5 +134,34 @@ class UITableViewCellOne: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
 
+        return view
+    }()
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var labelRight: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
 }

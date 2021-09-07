@@ -232,7 +232,7 @@ extension IOPShopAuthDetailController: UITableViewDataSource, UITableViewDelegat
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

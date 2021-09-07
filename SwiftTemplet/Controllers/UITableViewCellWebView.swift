@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 
-class UITableViewCellWebView: UITableViewCell {
+@objcMembers class UITableViewCellWebView: UITableViewCell {
         
     var urlString: String = ""{
         willSet{

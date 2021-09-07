@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UICTViewCellTag: UICollectionViewCell {
+@objcMembers class UICTViewCellTag: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -92,6 +92,39 @@ class UICTViewCellTag: UICollectionViewCell {
         }
  
     }
- 
     
+    // MARK: -lazy
+    public lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+                   
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = UIColor.random
+
+       return view
+    }()
+    
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.setTitleColor(.textColor3, for: .normal)
+        view.setTitleColor(.theme, for: .selected)
+       return view
+   }()
 }

@@ -94,7 +94,7 @@ extension NNTablePlainView: UITableViewDataSource, UITableViewDelegate{
         if let cell = delegate?.plainView?(self, tableView: tableView, cellForRowAt: indexPath) {
             return cell
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

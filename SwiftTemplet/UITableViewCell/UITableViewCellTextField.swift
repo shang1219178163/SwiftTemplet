@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UITextField(输入框)
-class UITableViewCellTextField: UITableViewCell {
+@objcMembers class UITableViewCellTextField: UITableViewCell {
 
     var viewBlock: ((UITextField) ->Void)?
     var textFieldEditingChangedBlock: ((UITextField) -> Void)?
@@ -20,7 +20,7 @@ class UITableViewCellTextField: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     /// 是否有星标
     var hasAsterisk = false
-    
+    ///清空输入框
     var isBackDelete = true
 
     // MARK: -life cycle
@@ -125,7 +125,41 @@ class UITableViewCellTextField: UITableViewCell {
     @objc func handleSend(_ sender: UITextField) {
         DDLog(sender.text)
     }
-   
+    // MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
+    
+    public lazy var textfield: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
 }
 
 extension UITableViewCellTextField: UITextFieldDelegate{

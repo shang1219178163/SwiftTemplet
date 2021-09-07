@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 // 图片封装视图
-class UITableViewCellPhotoPicker: UITableViewCell {
+@objcMembers class UITableViewCellPhotoPicker: UITableViewCell {
     
     lazy var pickView: NNUploadImagesView = {
         let view = NNUploadImagesView()

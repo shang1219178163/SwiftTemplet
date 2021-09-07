@@ -290,7 +290,7 @@ extension IOPPayInpartCompanyOtherInfoController: UITableViewDataSource, UITable
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

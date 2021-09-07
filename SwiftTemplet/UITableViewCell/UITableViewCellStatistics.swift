@@ -114,6 +114,50 @@ import SwiftExpand
         super.setSelected(selected, animated: animated)
         
     }
+    // MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    
+      public lazy var labelLeftSub: UILabel = {
+          let view = UILabel(frame: CGRect.zero)
+          view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+          view.textAlignment = .left
+          view.numberOfLines = 0
+          view.lineBreakMode = .byCharWrapping
+          view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+          
+          return view
+      }()
+      
+      public lazy var labelRight: UILabel = {
+          let view = UILabel(frame: CGRect.zero)
+          view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+          view.textAlignment = .left
+          view.numberOfLines = 0
+          view.lineBreakMode = .byCharWrapping
+          
+          return view
+      }()
+      
+      public lazy var labelRightSub: UILabel = {
+          let view = UILabel(frame: CGRect.zero)
+          view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+          view.font = UIFont.systemFont(ofSize: 15)
+          view.textAlignment = .right
+          view.numberOfLines = 0
+          view.lineBreakMode = .byCharWrapping
+          view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+          view.isUserInteractionEnabled = true
+          return view
+      }()
     
     lazy var labelMidSub: UILabel = {
         let view = UILabel.create(.zero, type: .oneLine)

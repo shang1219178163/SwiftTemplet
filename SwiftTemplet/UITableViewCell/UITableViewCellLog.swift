@@ -9,11 +9,21 @@
 import UIKit
 import SwiftExpand
 
-class UITableViewCellLog: UITableViewCell {
+@objcMembers class UITableViewCellLog: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
     // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+    
     lazy var labelOne: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "Label";

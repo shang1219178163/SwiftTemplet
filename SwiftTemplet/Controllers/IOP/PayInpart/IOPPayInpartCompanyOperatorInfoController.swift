@@ -60,14 +60,14 @@ import SnapKit
     lazy var OperatorItem: [[String]] = {
         return [
             ["企业信息-法人/经营者身份信息", "UITableViewCellTitle", "50.0", kOperatorInfo, "",],
-             ["*身份证正面" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img", ],
-             ["*身份证反面" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_back_img", ],
-             ["*身份证姓名" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "rc_name",],
-             ["*身份证号码" + kBlankOne, "UITableViewCellTextField", "50.0", "18 位有效身份证号码", "id_card",],
+             ["*身份证正面".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img", ],
+             ["*身份证反面".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_back_img", ],
+             ["*身份证姓名".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "rc_name",],
+             ["*身份证号码".padRight(1), "UITableViewCellTextField", "50.0", "18 位有效身份证号码", "id_card",],
              ["*身份证有效开始时间", "UITableViewCellDatePicker", "50.0", "请选择", "id_card_btime", ],
              ["*身份证有效结束时间", "UITableViewCellDatePicker", "50.0", "请选择", "id_card_etime", ],
-             ["*手机号码" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "rc_phone", ],
-             ["*电子邮箱" + kBlankOne, "UITableViewCellTextField", "50.0", "后期作为更改密码等重要操作的凭证", "rc_email", ],
+             ["*手机号码".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "rc_phone", ],
+             ["*电子邮箱".padRight(1), "UITableViewCellTextField", "50.0", "后期作为更改密码等重要操作的凭证", "rc_email", ],
         ]
     }()
     
@@ -75,10 +75,10 @@ import SnapKit
     lazy var beneficiaryItem: [[String]] = {
         return [
             ["企业信息-最终受益人信息", "UITableViewCellTitle", "50.0", kBeneficiaryInfo, "",],
-            ["*身份证正面" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img", ],
-            ["*身份证反面" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_back_img", ],
-            ["*身份证姓名" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "rc_name",],
-            ["*身份证号码" + kBlankOne, "UITableViewCellTextField", "50.0", "18 位有效身份证号码", "id_card",],
+            ["*身份证正面".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_just_img", ],
+            ["*身份证反面".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "id_back_img", ],
+            ["*身份证姓名".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "rc_name",],
+            ["*身份证号码".padRight(1), "UITableViewCellTextField", "50.0", "18 位有效身份证号码", "id_card",],
             ["*身份证有效开始时间", "UITableViewCellDatePicker", "50.0", "请选择", "id_card_btime", ],
             ["*身份证有效结束时间", "UITableViewCellDatePicker", "50.0", "请选择", "id_card_etime", ],
            ]
@@ -88,11 +88,11 @@ import SnapKit
     lazy var contactItem: [[String]] = {
         return [
             ["企业信息-联系人信息", "UITableViewCellTitle", "50.0", kContactInfo, "",],
-             ["*联系人身份" + kBlankOne, "UITableViewCellPickerView", "50.0", "请选择", "rc_type","法人,实际控制人,代理人,其他", ],
-             ["*身份证姓名" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "rc_name",],
-             ["*身份证号" + kBlankTwo, "UITableViewCellTextField", "50.0", "18 位有效身份证号码", "id_card",],
-             ["*手机号码" + kBlankTwo, "UITableViewCellTextField", "50.0", "需微信实名认证，与提供的联系人姓名一致", "rc_phone", ],
-             ["*电子邮箱" + kBlankTwo, "UITableViewCellTextField", "50.0", "后期作为更改密码等重要操作的凭证", "rc_email", ],
+             ["*联系人身份".padRight(1), "UITableViewCellPickerView", "50.0", "请选择", "rc_type","法人,实际控制人,代理人,其他", ],
+             ["*身份证姓名".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "rc_name",],
+             ["*身份证号".padRight(2), "UITableViewCellTextField", "50.0", "18 位有效身份证号码", "id_card",],
+             ["*手机号码".padRight(2), "UITableViewCellTextField", "50.0", "需微信实名认证，与提供的联系人姓名一致", "rc_phone", ],
+             ["*电子邮箱".padRight(2), "UITableViewCellTextField", "50.0", "后期作为更改密码等重要操作的凭证", "rc_email", ],
         ]
     }()
     
@@ -391,7 +391,7 @@ extension IOPPayInpartCompanyOperatorInfoController: UITableViewDataSource, UITa
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

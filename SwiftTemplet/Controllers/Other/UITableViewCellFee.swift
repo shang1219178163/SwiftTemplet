@@ -128,6 +128,16 @@ class UITableViewCellFee: UITableViewCell {
 
     
     // MARK: -lazy
+    public lazy var labelRight: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
     lazy var labelTop: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "top";

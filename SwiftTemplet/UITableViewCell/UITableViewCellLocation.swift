@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 
-class UITableViewCellLocation: UITableViewCell {
+@objcMembers class UITableViewCellLocation: UITableViewCell {
 
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var imagSize = CGSize(width: 11, height: 15)

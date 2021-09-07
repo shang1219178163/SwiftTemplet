@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISwitch
-class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
+@objcMembers class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
@@ -94,6 +94,16 @@ class UITableViewCellSwitch: UITableViewCell,UITextFieldDelegate {
     }
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
     lazy var switchCtl: UISwitch = {
         let view = UISwitch(rect: .zero, isOn: true)
         return view

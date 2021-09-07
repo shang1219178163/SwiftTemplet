@@ -192,7 +192,7 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [
-            ["问题回复", "IOPTableViewCellReplay", "180", "", "recharge", ],
+            ["问题回复", "UITableViewCellReplay", "180", "", "recharge", ],
 
             ["二维码券", "PHHQRcodeCouponChooseCell", "45.0", "", "recharge", ],
             ["二维码券", "PHHQrcodeOverageNewCell", "75.0", "", "recharge", ],
@@ -227,7 +227,7 @@ class EntryViewController: UIViewController {
             ["*商品名称:", "UITableViewCellOne", "60.0", "", "cardName", ],
             ["Subtitle", "UITableViewCellSubtitle", "70.0", "", "recharge", ],
             ["*default:", "UITableViewCellDefault", "60.0", "", "recharge", ],
-            ["*Selecet:", "UITableViewCellSelecet", "60.0", "", "recharge", ],
+            ["*Selecet:", "UITableViewCellRightLabel", "60.0", "", "recharge", ],
             ["*商品数量:", "UITableViewCellStep", "60.0", "", "validEndTime", ],
             ["*上架时间:", "UITableViewCellDatePicker", "60.0", "", "balance", ],
             ["*有效时间:", "UITableViewCellDateRange", "60.0", "0", "validbtime,validetime", ],
@@ -621,7 +621,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             //            cell.ppBtn.currentNumber = value4
             cell.ppBtn.currentNumber = "6"
             
-            cell.textfield.textAlignment = .right
             cell.getViewLayer()
             return cell
             
@@ -653,7 +652,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellTextView":
             let cell = UITableViewCellTextView.dequeueReusableCell(tableView)
-            cell.type = 1;
+//            cell.type = .left
             cell.labelLeft.text = "备注信息"
             cell.textView.placeHolderLabel.text = "最多140字"
             cell.block { ( view:UITableViewCellTextView, text:String) in
@@ -847,8 +846,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case "UITableViewCellSelecet":
-            let cell = UITableViewCellSelecet.dequeueReusableCell(tableView)
+        case "UITableViewCellRightLabel":
+            let cell = UITableViewCellRightLabel.dequeueReusableCell(tableView)
             cell.isHidden = value2.cgFloatValue <= 0.0
             cell.accessoryType = .disclosureIndicator
             
@@ -863,7 +862,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.labelRightSub.text = DateFormatter.stringFromDate(Date());
             cell.accessoryType = .disclosureIndicator
 //            cell.btnSize = CGSize(width: 45, height: 45)
-            
             cell.btn.setBackgroundImage(UIImage(named: "icon_selected_no_blue"), for: .normal)
             cell.btn.setBackgroundImage(UIImage(named: "icon_selected_yes_blue"), for: .selected)
             cell.btn.addActionHandler({ (sender) in
@@ -872,7 +870,9 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //                  self.handleChooseAction(sender, model: model)
               
             }, for: .touchUpInside)
-            
+            cell.btn.isHidden = true
+
+            DDLog(cell.btn.isHidden)
             cell.getViewLayer();
             return cell;
             
@@ -1276,21 +1276,55 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.getViewLayer()
             return cell
             
-        case "IOPTableViewCellReplay":
-            let cell = IOPTableViewCellReplay.dequeueReusableCell(tableView)
-            
-            cell.userBtn.setTitle("客服", for: .normal)
-            cell.userBtn.setImage(UIImage(named: "bug.png")?.byResize(to: CGSize(width: 35, height: 35)), for: .normal)
-            cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+//        case "UITableViewCellReplay":
+//            let cell = UITableViewCellReplay.dequeueReusableCell(tableView)
+//
+//            cell.userBtn.setTitle("客服", for: .normal)
+//            cell.userBtn.setImage(UIImage(named: "bug.png")?.byResize(to: CGSize(width: 35, height: 35)), for: .normal)
+//            cell.groupView.items = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+//
+//            cell.groupView.block { (groupView, btn) in
+//
+//
+//            }
+//
+//            cell.getViewLayer();
+//            return cell;
+        case "UITableViewCellReplay":
+//            let cell = UITableViewCellChoose.dequeueReusableCell(tableView);
+            let cell = tableView.dequeueReusableCell(for: UITableViewCellReplay.self)
 
-            cell.groupView.block { (groupView, btn) in
+            if cell.groupView.items.count == 0 {
+                cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
+                    let sender = NNButton(type: .custom)
+                    sender.setTitle("item_\(i)", for: .normal)
+                    sender.setTitleColor(.gray, for: .normal)
+                    sender.setTitleColor(.systemBlue, for: .selected)
 
-                
+                    sender.setBorderColor(.line, for: .normal)
+                    sender.setBorderColor(.systemBlue, for: .selected)
+                    
+                    sender.layer.cornerRadius = 5;
+                    sender.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+                                
+        //            sender.iconSize = CGSize(width: 30, height: 18)
+        //            sender.iconBtn.setTitle("\(i)", for: .normal)
+        //            sender.iconBtn.setTitleColor(.red, for: .normal)
+                    return sender
+                })
             }
-            
-            cell.getViewLayer();
+            cell.groupView.items.forEach { (sender) in
+                let backgroudImage = UIImage(color: .hexValue(0xF3F3F3))
+                let selectedBackgroudImage = UIImage(named: "btn_selected_multiple")!
+                sender.setBackgroundImage(backgroudImage, for: .normal)
+                sender.setBackgroundImage(selectedBackgroudImage, for: .selected)
+            }
+            cell.groupView.itemsIndexs = [0,]
+            cell.groupView.disabledIndexs = [0, 1]
+            cell.groupView.block = { view, sender in
+                DDLog(view.itemsIndexs)
+            }
             return cell;
-            
         default:
             break
         }

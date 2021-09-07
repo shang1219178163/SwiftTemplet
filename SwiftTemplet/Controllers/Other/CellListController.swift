@@ -124,7 +124,7 @@ class CellListController: UIViewController {
 //        let cell = UITableViewCellZero.dequeueReusableCell(tableView) as! UITableViewCellZero;
 //        cell.textLabel!.text = itemList[0]
 //
-//        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+//        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
 //            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle);
 //
 //            cell.accessoryType = .disclosureIndicator;

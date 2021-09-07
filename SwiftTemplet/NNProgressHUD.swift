@@ -242,13 +242,22 @@ extension ZZProgressHUD {
 //    static var style: ZZProgressHUDStyle = .blackBgColor
 
     //显示等待消息
-    static func showLoading(_ title: String) {
+    static func showLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil) {
         let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
         hud.label.text = title
         if style != .defaultBgColor {
             hud.contentColor = .white
             hud.bezelView.color = .black.withAlphaComponent(0.5)
             hud.bezelView.style = .solidColor
+        }
+        
+        if let cancellBlock = cancellBlock {
+            hud.button.setTitle("取消", for: .normal)
+            hud.button.addActionHandler { sender in
+//                DDLog(sender.currentTitle)
+                cancellBlock(sender)
+                hud.hide(animated: true)
+            }
         }
         hud.removeFromSuperViewOnHide = true
     }

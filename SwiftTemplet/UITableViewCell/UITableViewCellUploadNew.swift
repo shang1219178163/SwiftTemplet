@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 文件图片上传
-class UITableViewCellUploadNew: UITableViewCell {
+@objcMembers class UITableViewCellUploadNew: UITableViewCell {
     
     var btnTipSize = CGSize(width: 17, height: 17)
     var btnCenterRightSpacing: CGFloat = -50

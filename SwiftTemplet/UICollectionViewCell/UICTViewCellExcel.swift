@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UICTViewCellExcel: UICollectionViewCell {
+@objcMembers class UICTViewCellExcel: UICollectionViewCell {
     
     var indexP = IndexPath(row: 0, section: 0)
     
@@ -63,5 +63,16 @@ class UICTViewCellExcel: UICollectionViewCell {
  
     }
  
-    
+    // MARK: -lazy
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = .random
+
+       return view
+    }()
 }

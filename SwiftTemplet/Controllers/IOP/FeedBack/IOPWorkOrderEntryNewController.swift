@@ -480,7 +480,7 @@ extension IOPWorkOrderEntryNewController: UITableViewDataSource, UITableViewDele
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

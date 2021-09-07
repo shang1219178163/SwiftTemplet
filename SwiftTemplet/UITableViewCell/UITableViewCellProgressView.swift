@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 一行多选/单选
-class UITableViewCellProgressView: UITableViewCell {
+@objcMembers class UITableViewCellProgressView: UITableViewCell {
      
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     /// 是否有星标
@@ -91,6 +91,27 @@ class UITableViewCellProgressView: UITableViewCell {
     }
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var labelLeftSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        
+        return view
+    }()
+    
     lazy var progressView: NNCircleProgressView = {
         let view = NNCircleProgressView(frame: .zero)
 //        view.strokeWidth = 5;

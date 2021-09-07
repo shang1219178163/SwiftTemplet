@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UICTViewCellZero: UICollectionViewCell {
+@objcMembers class UICTViewCellZero: UICollectionViewCell {
     var inset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
     required init?(coder aDecoder: NSCoder) {
@@ -57,5 +57,27 @@ class UICTViewCellZero: UICollectionViewCell {
             make.width.equalTo(kH_LINE_VIEW)
         }
     }
+    // MARK: -lazy
+    public lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
     
+                   
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = UIColor.random
+
+       return view
+    }()
 }

@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 文件图片上传
-class UITableViewCellUpload: UITableViewCell {
+@objcMembers class UITableViewCellUpload: UITableViewCell {
     var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
     
     var btnCenterOffsetY: CGFloat = -50
@@ -70,6 +70,17 @@ class UITableViewCellUpload: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    // MARK: -lazy
 
-
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
 }

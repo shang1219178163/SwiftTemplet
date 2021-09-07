@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 /// 一行多选/单选
-class UITableViewCellChoice: UITableViewCell {
+@objcMembers class UITableViewCellChoice: UITableViewCell {
      
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
      /// 是否有星标
@@ -85,6 +85,16 @@ class UITableViewCellChoice: UITableViewCell {
     }
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
     private(set) lazy var groupView: NNButtonGroupView = {
         let view = NNButtonGroupView(frame: .zero)
         view.padding = 10;

@@ -114,7 +114,7 @@ extension IOPAuthDetailController: UITableViewDataSource, UITableViewDelegate {
             break
             
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

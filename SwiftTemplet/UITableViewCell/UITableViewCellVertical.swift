@@ -10,11 +10,21 @@ import UIKit
 import SwiftExpand
 
 
-class UITableViewCellVertical: UITableViewCell {
+@objcMembers class UITableViewCellVertical: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var imageViewSize = CGSize(width: 25, height: 25)
 
     // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+    
     lazy var labelOne: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "-";
@@ -99,7 +109,7 @@ class UITableViewCellVertical: UITableViewCell {
             }
         }
         
-        let list = [labelOne, labelTwo, labelThree, labelFour].filter { $0.isHidden == false }
+        let list = [labelOne, labelTwo, labelThree, labelFour].filter { $0.isHidden == false && $0.text != "" }
         list.snp.distributeViewsAlong(axisType: .vertical, fixedSpacing: 0, leadSpacing: inset.top, tailSpacing: inset.bottom)
         list.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(labStartX)

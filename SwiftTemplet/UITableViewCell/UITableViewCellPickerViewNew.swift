@@ -12,7 +12,7 @@ import SwiftExpand
 
 
 /// 单选+NNPickListView(UITableView)
-class UITableViewCellPickerViewNew: UITableViewCell {
+@objcMembers class UITableViewCellPickerViewNew: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
     var viewBlock:((UITableViewCellPickerViewNew, String, [Any]) -> Void)?
@@ -104,6 +104,29 @@ class UITableViewCellPickerViewNew: UITableViewCell {
     }
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var textfield: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+    
     lazy var pickView: NNPickListView = {
         let view = NNPickListView(frame: .zero)
         view.title = "请选择"

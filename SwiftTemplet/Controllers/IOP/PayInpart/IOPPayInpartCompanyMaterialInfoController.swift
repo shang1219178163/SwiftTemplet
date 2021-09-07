@@ -54,14 +54,14 @@ import HFNavigationController
     lazy var list: [[[String]]] = {
         return [
             [["企业信息-经营资料", "UITableViewCellTitle", "50.0", kMaterialInfo, "",],
-            ["*商户简称" + kBlankOne, "UITableViewCellTextField", "50.0", "简称会出现在用户支付成功后的订单页面上", "merchant_name",],
-            ["*客服电话" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入客服电话", "telephone", ],
-            ["*车场位置" + kBlankOne, "UITableViewCell", "50.0", "请选择所在地", "parkModel.positionDes", ],
-            ["*详细地址" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入车场详细地址", "parkModel.address", ],
-            ["*车场门头照片" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_door_pic", ],
-            ["*车场环境照片1" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_ambient_pic", ],
-            ["*车场环境照片2" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_ambient_pic_1", ],
-            ["*车场环境照片3" + kBlankOne, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_ambient_pic_2", ],
+            ["*商户简称".padRight(1), "UITableViewCellTextField", "50.0", "简称会出现在用户支付成功后的订单页面上", "merchant_name",],
+            ["*客服电话".padRight(1), "UITableViewCellTextField", "50.0", "请输入客服电话", "telephone", ],
+            ["*车场位置".padRight(1), "UITableViewCell", "50.0", "请选择所在地", "parkModel.positionDes", ],
+            ["*详细地址".padRight(1), "UITableViewCellTextField", "50.0", "请输入车场详细地址", "parkModel.address", ],
+            ["*车场门头照片".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_door_pic", ],
+            ["*车场环境照片1".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_ambient_pic", ],
+            ["*车场环境照片2".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_ambient_pic_1", ],
+            ["*车场环境照片3".padRight(1), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "parkModel.park_ambient_pic_2", ],
             ],
         ]
     }()
@@ -312,7 +312,7 @@ extension IOPPayInpartCompanyMaterialInfoController: UITableViewDataSource, UITa
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

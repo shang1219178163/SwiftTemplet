@@ -10,11 +10,21 @@ import UIKit
 import SwiftExpand
 
 /// 上中下6 label
-class UITableViewCellSixLable: UITableViewCell {
+@objcMembers class UITableViewCellSixLable: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
     // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+    
     lazy var labelTop: UILabel = {
         let view = UILabel(frame: .zero);
         view.text = "top";
@@ -75,7 +85,6 @@ class UITableViewCellSixLable: UITableViewCell {
 
         return view;
     }();
-    
     // MARK: -life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);

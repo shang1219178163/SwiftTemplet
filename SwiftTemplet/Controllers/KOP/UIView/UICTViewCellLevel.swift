@@ -59,5 +59,26 @@ class UICTViewCellLevel: UICollectionViewCell {
             make.height.equalTo(20);
         }
     }
-    
+    // MARK: -lazy
+    public lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+                   
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = UIColor.random
+
+       return view
+    }()
 }

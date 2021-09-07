@@ -9,7 +9,7 @@
 import UIKit
 
 /// 有效日期选择
-class UITableViewCellDateRange: UITableViewCell {
+@objcMembers class UITableViewCellDateRange: UITableViewCell {
 
     /// 是否有星标
     var hasAsterisk = false;

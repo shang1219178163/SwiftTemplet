@@ -7,22 +7,27 @@
 //
 
 import UIKit
-
 import SwiftExpand
 
-class UITableViewCellTextView: UITableViewCell {
+
+public enum UITableViewCellTextViewStyle: Int {
+    case top, left, bottom
+}
+
+@objcMembers class UITableViewCellTextView: UITableViewCell {
 
     var wordCount: Int = 140{
         willSet {
-            labelLeftSub.text = "\(textView.text.count)" + "/" + "\(wordCount)字"
+            labelLeftSub.text = "\(textView.text.count)" + "/" + "\(newValue)字"
         }
     }
     
-    var type: Int = 0 {
+    var type: UITableViewCellTextViewStyle = .top {
         willSet {
             setNeedsLayout()
         }
     }
+    
     private var viewBlock: ((UITableViewCellTextView, String) -> Void)?
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
@@ -75,28 +80,7 @@ class UITableViewCellTextView: UITableViewCell {
         
         let labelLeftSize = labelLeft.sizeThatFits(.zero)
         switch type {
-        case 1:
-            labelLeft.snp.remakeConstraints { (make) in
-                make.top.equalToSuperview().offset(inset.top)
-                make.left.equalToSuperview().offset(inset.left)
-                make.width.equalTo(labelLeftSize.width)
-                make.height.equalTo(20)
-            }
-            
-            labelLeftSub.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft)
-                make.right.equalToSuperview().offset(-endX)
-                make.size.equalTo(labelLeft)
-            }
-            
-            textView.snp.makeConstraints { (make) in
-                make.top.equalTo(labelLeft.snp.bottom).offset(kPadding);
-                make.left.equalTo(labelLeft)
-                make.right.equalTo(labelLeftSub)
-                make.bottom.equalToSuperview().offset(-inset.bottom);
-            }
-            
-        default:
+        case .left:
             labelLeft.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(inset.top)
                 make.left.equalToSuperview().offset(inset.left)
@@ -117,6 +101,49 @@ class UITableViewCellTextView: UITableViewCell {
                 make.right.equalToSuperview().offset(-inset.right)
                 make.bottom.equalToSuperview().offset(-inset.bottom);
             }
+            
+        case .bottom:
+            labelLeftSub.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-endX)
+                make.height.equalTo(20)
+                make.bottom.equalToSuperview().offset(-inset.bottom)
+            }
+            
+            labelLeft.snp.remakeConstraints { (make) in
+                make.centerY.equalTo(labelLeftSub)
+                make.left.equalToSuperview().offset(inset.left)
+                make.right.equalTo(labelLeftSub)
+                make.height.equalTo(labelLeftSub)
+            }
+            
+            textView.snp.makeConstraints { (make) in
+                make.top.equalToSuperview().offset(inset.top)
+                make.left.equalToSuperview().offset(inset.left)
+                make.right.equalTo(labelLeftSub)
+                make.bottom.equalTo(labelLeft.snp.top).offset(-kPadding);
+            }
+            
+        default:
+            labelLeft.snp.remakeConstraints { (make) in
+                make.top.equalToSuperview().offset(inset.top)
+                make.left.equalToSuperview().offset(inset.left)
+                make.width.equalTo(labelLeftSize.width)
+                make.height.equalTo(20)
+            }
+            
+            labelLeftSub.snp.makeConstraints { (make) in
+                make.top.equalTo(labelLeft)
+                make.right.equalToSuperview().offset(-endX)
+                make.size.equalTo(labelLeft)
+            }
+            
+            textView.snp.makeConstraints { (make) in
+                make.top.equalTo(labelLeft.snp.bottom).offset(kPadding);
+                make.left.equalTo(labelLeft)
+                make.right.equalTo(labelLeftSub)
+                make.bottom.equalToSuperview().offset(-inset.bottom);
+            }
+
         }
     }
     
@@ -142,6 +169,42 @@ class UITableViewCellTextView: UITableViewCell {
     func block(_ action: @escaping ((UITableViewCellTextView, String) -> Void)) {
         self.viewBlock = action;
     }
+    
+    // MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var labelLeftSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        
+        return view
+    }()
+    
+    public lazy var textView: UITextView = {
+        let view = UITextView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.textAlignment = .left
+        view.autocapitalizationType = .none
+        view.autocorrectionType = .no
+        view.backgroundColor = .white
+        
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 0.5
+        return view
+    }()
 }
 
 extension UITableViewCellTextView: UITextViewDelegate {
@@ -153,6 +216,7 @@ extension UITableViewCellTextView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         labelLeftSub.text = "\(textView.text.count)" + "/" + "\(wordCount)字"
+        labelLeftSub.textColor = textView.text.count > wordCount ? .red : .gray
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

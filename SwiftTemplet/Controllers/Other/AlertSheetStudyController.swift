@@ -13,6 +13,7 @@ import Then
 
 import RxCocoa
 
+
 @objcMembers class AlertSheetStudyController: UIViewController {
 
     //MARK: -lazy
@@ -56,6 +57,8 @@ import RxCocoa
             (#selector(showAlertTableView), "tableAlertController自定义"),
             (#selector(showAlertHud), "HFNavigationController自定义"),
             (#selector(showAlertDatePicker), "showAlertDatePicker"),
+            (#selector(showAlertLoading), "Loading"),
+            
             (#selector(showAlertContentVC), "嵌套导航"),
             (#selector(showAlertExamineApproved), "showAlertTextView"),
             (#selector(showAlertExamineRejected), "showAlertTextView1"),
@@ -379,6 +382,28 @@ import RxCocoa
         alertVC.present()
     }
     
+    
+    @objc func showAlertLoading() {
+        
+        if #available(iOS 13.0, *) {
+            let message = "加载中"
+            let alertVC = UIAlertController(title: nil, message: "加载中...", preferredStyle: preferredStyle)
+    //            .addActionTitles([kTitleCancell, "确认驳回"]) { vc, action in
+    //                textView.resignFirstResponder()
+    //                DDLog(action.title)
+    //                DDLog(textView.text)
+    //            }
+
+            let indicator = UIActivityIndicatorView(style: .large)
+            indicator.startAnimating()
+            
+            alertVC.setContent(view: indicator, height: 40, inset: UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15))
+//            alertVC.present()
+            self.present(alertVC, animated: true, completion: nil)
+        }
+
+    }
+    
     @objc func showWebViewVC() {
         let agreementVC = NNWebViewController()
         agreementVC.urlString = "https://www.baidu.com/"
@@ -399,7 +424,7 @@ extension AlertSheetStudyController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle)
         cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
         cell.textLabel!.textColor = UIColor.theme;
 

@@ -186,10 +186,9 @@ class NNCellSubtitleView: UIView {
         return view;
     }()
 
-//    lazy var gradientLayer: CAGradientLayer = {
-//        //渐变色
-//        let colors = [UIColor.hex("#6cda53").withAlphaComponent(0.9).cgColor, UIColor.hex("#1a965a").withAlphaComponent(0.9).cgColor]
-//        var layer = CAGradientLayer.layerRect(.zero, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
-//        return layer
-//    }()
+    public lazy var gradientLayer: CAGradientLayer = {
+        let colors = [UIColor.theme.withAlphaComponent(0.5).cgColor, UIColor.theme.withAlphaComponent(0.9).cgColor]
+        let layer = CAGradientLayer(colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+        return layer
+    }()
 }

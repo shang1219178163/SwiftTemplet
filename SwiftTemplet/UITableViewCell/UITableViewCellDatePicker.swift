@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+时间选择器
-class UITableViewCellDatePicker: UITableViewCell {
+@objcMembers class UITableViewCellDatePicker: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
      /// 是否有星标
     var hasAsterisk = false;
@@ -98,6 +98,29 @@ class UITableViewCellDatePicker: UITableViewCell {
     //MARK: -funtions
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var textfield: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+    
     lazy var datePicker: NNDatePicker = {
         let view = NNDatePicker(model: .dateAndTime);
 //        view.block({ (sender, idx) in
@@ -107,7 +130,7 @@ class UITableViewCellDatePicker: UITableViewCell {
 //            self.textfield.text = idx == 1 ? dateStr : "";
 //        });
         return view;
-    }();
+    }()
     
 }
 

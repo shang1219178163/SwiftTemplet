@@ -107,7 +107,7 @@ class IOPInvoiceCreateController: UIViewController {
         
     }
     
-    func setupCellFold(_ cell: UITableViewCell, indexPath: IndexPath) {
+    func setupCellFold(_ cell: UITableViewCellTextField, indexPath: IndexPath) {
         let isMoreRow = indexPath.section == 1 && indexPath.row == 6
         cell.textfield.isEnabled = !isMoreRow
         if isMoreRow {
@@ -238,7 +238,7 @@ extension IOPInvoiceCreateController: UITableViewDataSource, UITableViewDelegate
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

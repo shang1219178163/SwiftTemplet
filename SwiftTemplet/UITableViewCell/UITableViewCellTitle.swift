@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 标题+按钮
-class UITableViewCellTitle: UITableViewCell {
+@objcMembers class UITableViewCellTitle: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var btnSize = CGSize(width: 17, height: 17)
@@ -92,7 +92,38 @@ class UITableViewCellTitle: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
 
+        return view
+    }()
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
     
     @objc func handleAction() {
         let message = """

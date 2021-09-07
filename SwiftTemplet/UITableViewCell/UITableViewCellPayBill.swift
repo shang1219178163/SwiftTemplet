@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UITableViewCellPayBill: UITableViewCell {
+@objcMembers class UITableViewCellPayBill: UITableViewCell {
     
     //订单状态(0:待支付,1:已支付,2:已取消)
     var pay_status: String = "0"{
@@ -92,6 +92,16 @@ class UITableViewCellPayBill: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    // MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
     
     lazy var btnDelete: UIButton = {
         let view = UIButton(type: .custom)

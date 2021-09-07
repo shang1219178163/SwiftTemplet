@@ -28,20 +28,20 @@ class IOPTableViewCellIssueMark: UITableViewCell {
     
     // MARK: -life cycle
     deinit {
-        labelLeft.removeObserver(self, forKeyPath: "text")
+        textLabel?.removeObserver(self, forKeyPath: "text")
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
          super.init(style: style, reuseIdentifier: reuseIdentifier);
         
-        contentView.addSubview(labelLeft)
+//        contentView.addSubview(labelLeft)
         contentView.addSubview(markBtn)
         
-        labelLeft.text = "问题详情"
-        labelLeft.font = UIFont.systemFont(ofSize: 15)
+        textLabel?.text = "问题详情"
+        textLabel?.font = UIFont.systemFont(ofSize: 15)
         
-        labelLeft.numberOfLines = 1
-        labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
+        textLabel?.numberOfLines = 1
+        textLabel?.addObserver(self, forKeyPath: "text", options: .new, context: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -58,13 +58,13 @@ class IOPTableViewCellIssueMark: UITableViewCell {
             make.size.equalTo(markSize)
         }
         
-        labelLeft.snp.makeConstraints { (make) in
+        guard let textLabel = textLabel else { return }
+        textLabel.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top);
             make.left.equalToSuperview().offset(inset.left);
             make.right.equalTo(markBtn.snp.left).offset(-kPadding);
             make.bottom.equalToSuperview().offset(-inset.bottom)
         }
-                
 
     }
 
@@ -79,7 +79,9 @@ class IOPTableViewCellIssueMark: UITableViewCell {
         if keyPath == "text" {
             //标题星号处理
             if hasAsterisk == true {
-                labelLeft.attributedText = labelLeft.text?.matt.appendPrefix(font: labelLeft.font)
+                if let textLabel = textLabel {
+                    textLabel.attributedText = textLabel.text?.matt.appendPrefix(font: textLabel.font)
+                }
             }
         }
         else {

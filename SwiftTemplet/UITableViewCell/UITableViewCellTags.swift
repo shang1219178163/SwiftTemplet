@@ -12,7 +12,7 @@ import SnapKit
 import SwiftExpand
 
 /// 星期多选
-class UITableViewCellTags: UITableViewCell {
+@objcMembers class UITableViewCellTags: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
          super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -44,7 +44,8 @@ class UITableViewCellTags: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    // MARK: -lazy
+
     lazy var tagView: NNTagView = {
         let view = NNTagView(frame: self.contentView.bounds)
         view.fontSize = 9;

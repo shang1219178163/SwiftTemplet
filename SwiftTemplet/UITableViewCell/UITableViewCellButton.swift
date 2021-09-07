@@ -9,7 +9,7 @@
 import UIKit
 
 /// 确认按钮
-class UITableViewCellButton: UITableViewCell {
+@objcMembers class UITableViewCellButton: UITableViewCell {
     
     var inset: UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
@@ -70,7 +70,18 @@ class UITableViewCellButton: UITableViewCell {
 //            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
 //        }
 //    }
-
+    // MARK: -lazy
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
 }
 
 

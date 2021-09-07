@@ -87,7 +87,19 @@ class UITableViewCellChioceItem: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    
+    // MARK: -lazy
+
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
 }
 
 

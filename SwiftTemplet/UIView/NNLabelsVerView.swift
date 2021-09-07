@@ -72,7 +72,7 @@ extension NNLabelsVerView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         let textField = list[indexPath.row];
         cell.contentView.addSubview(textField);
         return cell

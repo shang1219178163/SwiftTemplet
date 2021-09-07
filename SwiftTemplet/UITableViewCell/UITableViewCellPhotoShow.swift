@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 ///单图片展示
-class UITableViewCellPhotoShow: UITableViewCell {
+@objcMembers class UITableViewCellPhotoShow: UITableViewCell {
 
     public var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 

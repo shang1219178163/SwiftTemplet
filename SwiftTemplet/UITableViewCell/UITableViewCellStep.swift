@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 文字+ppnumber(商品j加减控件)
-class UITableViewCellStep: UITableViewCell {
+@objcMembers class UITableViewCellStep: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
@@ -95,6 +95,16 @@ class UITableViewCellStep: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    // MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
     
     lazy var ppBtn: PPNumberButton = {
         let numberBtn = PPNumberButton(frame: CGRect(x: 100, y: 220, width: 150, height: 44))

@@ -10,8 +10,12 @@ import UIKit
 import SwiftExpand
 
 /// 图片+文字+文字+图片
-class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
+@objcMembers class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
 
+    var isOpen: Bool = false
+
+    var isCanOpen: Bool = false
+    
     private var viewBlock: ((UITableHeaderFooterViewOne) -> Void)?
 
     var type: Int = 0{
@@ -30,7 +34,6 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
         }
     }
     // MARK: -life cycle
-
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(imgViewLeft);
@@ -247,4 +250,48 @@ class UITableHeaderFooterViewOne: UITableViewHeaderFooterView {
             make.height.equalTo(0.33);
         }
     }
+    
+    
+    // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+    
+    public lazy var imgViewRight: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+        view.image = UIImage(named: "img_arrowRight_gray")
+        
+        return view
+    }()
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+
+    
+    public lazy var labelRight: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
 }

@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UITableViewCellAfford: UITableViewCell {
+@objcMembers class UITableViewCellAfford: UITableViewCell {
     
     /// 优惠券状态(0正常, 1已使用, 2已过期)
     var affordStatus: Int = 0{
@@ -148,6 +148,68 @@ class UITableViewCellAfford: UITableViewCell {
         return view;
     }();
     
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
 
+        return view
+    }()
+    
+    public lazy var imgViewRight: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+        view.image = UIImage(named: "img_arrowRight_gray")
+        
+        return view
+    }()
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var labelLeftSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        
+        return view
+    }()
+    
+    public lazy var labelRight: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var labelRightSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.textAlignment = .right
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
 }
 

@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UITableViewCellPark: UITableViewCell {
+@objcMembers class UITableViewCellPark: UITableViewCell {
     
 
     var parkStatus: Int = 0{
@@ -143,7 +143,38 @@ class UITableViewCellPark: UITableViewCell {
 
     
     // MARK: -lazy
-
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var labelRight: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var labelRightSub: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.font = UIFont.systemFont(ofSize: 15)
+        view.textAlignment = .right
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
     lazy var btnLeft: UIButton = {
         let view = UIButton(type: .custom);
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]

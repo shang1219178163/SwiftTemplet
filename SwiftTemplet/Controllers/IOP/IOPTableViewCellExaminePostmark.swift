@@ -17,6 +17,16 @@ class IOPTableViewCellExaminePostmark: UITableViewCell {
 
     var imageViewOffSet = UIOffset(horizontal: 0, vertical: 0)
     // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+    
     lazy var labelOne: UILabel = {
         let view = UILabel(frame: .zero)
         view.text = "-";

@@ -53,10 +53,10 @@ import HFNavigationController
     lazy var list: [[[String]]] = {
         return [
             [["企业信息-结算银行账户", "UITableViewCellTitle", "50.0", kBankInfo, "",],
-            ["*开户银行" + kBlankOne, "UITableViewCell", "50.0", "请选择开户行", "opening_bank", ],
+            ["*开户银行".padRight(1), "UITableViewCell", "50.0", "请选择开户行", "opening_bank", ],
             ["*账户类型", "UITableViewCellSegment", "60.0", "", "account_type", "对公,对私",],
-            ["*开户名称" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
-            ["*银行卡号" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入银行账户号码", "bank_account_number", ],
+            ["*开户名称".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
+            ["*银行卡号".padRight(1), "UITableViewCellTextField", "50.0", "请输入银行账户号码", "bank_account_number", ],
             ["*开户银行省市", "UITableViewCell", "50.0", "请选择所在地", "bank_addressDes", ],
             ["*开户银行全称（含支行", "UITableViewCellTextField", "50.0", "请输入", "sub_branch_name",],
             ["*开户许可证", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "account_licence_img", ],
@@ -320,7 +320,7 @@ extension IOPPayInpartCompanySettlementBankInfoController: UITableViewDataSource
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

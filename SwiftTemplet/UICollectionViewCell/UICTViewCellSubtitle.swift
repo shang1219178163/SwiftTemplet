@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UICTViewCellSubtitle: UICollectionViewCell {
+@objcMembers class UICTViewCellSubtitle: UICollectionViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
     var btnSize = CGSize(width: 20, height: 20)
@@ -75,4 +75,49 @@ class UICTViewCellSubtitle: UICollectionViewCell {
             make.left.right.height.equalTo(lab).offset(0)
         }
     }
+    
+    // MARK: -lazy
+    public lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+                   
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = UIColor.random
+
+       return view
+    }()
+   
+    public var labDetail: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.numberOfLines = 1
+        view.adjustsFontSizeToFitWidth = true
+        view.textAlignment = .center
+    
+        return view
+    }()
+
+    public var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.setTitleColor(.textColor3, for: .normal)
+        view.setTitleColor(.theme, for: .selected)
+       return view
+   }()
 }

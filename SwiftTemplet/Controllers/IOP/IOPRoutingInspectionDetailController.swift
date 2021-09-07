@@ -21,16 +21,21 @@ import SwiftExpand
         
     lazy var list: [[(String,String,String,String,String)]] = {
         return [
+            [
+            ("", "UITableViewCellTextView", "150", "请输入", "park_name_copy"),
+            ],
             [("识别仪", "UITableViewCellDoubleLabel", "180", "", "statusDes"),
             ("道闸", "UITableViewCellDoubleLabel", "180", "", "park_name"),
             ("收费显示屏", "UITableViewCellDoubleLabel", "180", "请输入收款人", "park_name_copy"),
             ],
             
             [("满意度评价:", "UITableViewCellStarEvaluate", "40", "", "contact_phone"),
-             ("*问题描述", "UITableViewCellTextView", "150.0", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
+             ("*问题描述", "UITableViewCellTextView", "150", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
             ],
         ]
     }()
+    
+    let sectionTitles = ["存在问题的解决办法及处理建议：", "维修保养记录表："]
     
     lazy var tableView: UITableView = {
         let view = UITableView(rect: self.view.bounds, style: .plain, rowHeight: 50)
@@ -198,8 +203,8 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
         case "UITableViewCellStarEvaluate":
             let cell = tableView.dequeueReusableCell(for: UITableViewCellStarEvaluate.self)
             
-            cell.labelLeft.text = value0
-            cell.labelLeft.isHidden = true
+            cell.titleLabel.text = value0
+            cell.titleLabel.isHidden = true
 
 //            cell.starView.isUserInteractionEnabled = false
 //            cell.starView.successBlock = {
@@ -235,7 +240,7 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     
@@ -244,11 +249,26 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if [0, 1].contains(section) {
+            return 45
+        }
         return 10.01;
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UILabel();
+        if [0, 1].contains(section) {
+            let inset = UIEdgeInsetsMake(10, 10, 10, 10)
+            return tableView.createSectionViewLabel(45, labelInset: inset) { sender in
+//                sender.backgroundColor = .clear
+                sender.textColor = .textColor6
+                sender.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+                sender.text = self.sectionTitles[section]
+                sender.text = "self.sectionTitles[section]"
+                sender.textColor = .red
+
+            }
+        }
+        return UILabel()
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -256,6 +276,6 @@ extension IOPRoutingInspectionDetailController: UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UILabel();
+        return UILabel()
     }
 }

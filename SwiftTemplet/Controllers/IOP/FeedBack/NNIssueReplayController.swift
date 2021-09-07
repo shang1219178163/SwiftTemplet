@@ -100,9 +100,7 @@ extension NNIssueReplayController: UITableViewDataSource, UITableViewDelegate{
         case "UITableViewCellReplay":
 //            let cell = UITableViewCellChoose.dequeueReusableCell(tableView);
             let cell = tableView.dequeueReusableCell(for: UITableViewCellReplay.self)
-            cell.userBtn.setTitle("客服", for: .normal)
-            cell.userBtn.setImage(UIImage(named: "bug.png")?.byResize(to: CGSize(width: 35, height: 35)), for: .normal)
-            
+   
             switch indexPath.row {
             case 0:
                 cell.groupView.items = [UIButton].init(count: 6, generator: { (i) -> UIButton in
@@ -139,7 +137,7 @@ extension NNIssueReplayController: UITableViewDataSource, UITableViewDelegate{
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

@@ -152,7 +152,7 @@ extension NNPickListView: UITableViewDataSource,UITableViewDelegate {
     };
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         cell.textLabel!.text = list[indexPath.row]
         cell.textLabel!.textAlignment = .center
         

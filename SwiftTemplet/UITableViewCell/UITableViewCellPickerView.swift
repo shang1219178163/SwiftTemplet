@@ -14,7 +14,7 @@ import SwiftExpand
 
 
 /// 单选+NNPickerView
-class UITableViewCellPickerView: UITableViewCell {
+@objcMembers class UITableViewCellPickerView: UITableViewCell {
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
     /// 是否有星标
@@ -104,6 +104,29 @@ class UITableViewCellPickerView: UITableViewCell {
     //MARK: -funtions
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var textfield: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+    
     lazy var pickView: NNPickerView = {
         let view = NNPickerView(frame: .zero)
 //        view.pickerView.delegate = self

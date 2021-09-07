@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+sheet
-class UITableViewCellSheet: UITableViewCell {
+@objcMembers class UITableViewCellSheet: UITableViewCell {
     
     var viewBlock:((String) -> Void)?
     var itemList: [String]? {
@@ -115,6 +115,29 @@ class UITableViewCellSheet: UITableViewCell {
     
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
+    public lazy var textfield: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+    
     lazy var alertCtrl: UIAlertController = {
         let alertController = UIAlertController.createSheet("请选择", message: nil, items:nil, handler: { (alertVC, action) in
             DDLog(action.title)

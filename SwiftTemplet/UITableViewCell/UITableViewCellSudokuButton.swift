@@ -44,7 +44,7 @@ import SwiftExpand
         return self.contentView.updateItems(self.row*self.numOfRow, type: self.itemType) {
             $0.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             $0.setTitle("\(self.itemType)\($0.tag)", for: .normal)
-            $0.setTitleColor(.systemBlue, for: .normal)
+//            $0.setTitleColor(.systemBlue, for: .normal)
         }
     }()
     // MARK: -分隔符号

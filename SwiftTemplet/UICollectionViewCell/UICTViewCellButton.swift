@@ -9,7 +9,8 @@
 import UIKit
 import SwiftExpand
 
-class UICTViewCellButton: UICollectionViewCell {
+
+@objcMembers class UICTViewCellButton: UICollectionViewCell {
        
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
@@ -58,6 +59,17 @@ class UICTViewCellButton: UICollectionViewCell {
         }
     }
     
-    
-    
+    // MARK: -lazy
+
+    public var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.setTitleColor(.textColor3, for: .normal)
+        view.setTitleColor(.theme, for: .selected)
+       return view
+   }()
 }

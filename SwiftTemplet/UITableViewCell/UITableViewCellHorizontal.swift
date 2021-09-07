@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 
-class UITableViewCellHorizontal: UITableViewCell {
+@objcMembers class UITableViewCellHorizontal: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     var spacing: CGFloat = 15;

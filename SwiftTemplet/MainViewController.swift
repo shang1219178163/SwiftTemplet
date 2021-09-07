@@ -91,7 +91,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate{
     
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //
-//        let cell = UITableViewCellZero.dequeueReusableCell(tableView);
+//        let cell = UITableViewCell.dequeueReusableCell(tableView);
 //        cell.textLabel?.text = String(format: "section_%d,row_%d", indexPath.section,indexPath.row);
 //
 //        return cell;

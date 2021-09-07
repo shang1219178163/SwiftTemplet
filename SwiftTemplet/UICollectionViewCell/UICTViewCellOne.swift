@@ -12,12 +12,16 @@ import SnapKit
 import SwiftExpand
 
 
-@objcMembers
-class UICTViewCellOne: UICollectionViewCell {
+@objcMembers class UICTViewCellOne: UICollectionViewCell {
     
     /// 仅在只有图片或者文字时才起作用
     var inset: UIEdgeInsets = .zero
     
+    
+    var redPointOffset: UIOffset = UIOffsetMake(0, -8)
+    
+    var redPointSize: CGSize = CGSize(width: 5, height: 5)
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -26,6 +30,7 @@ class UICTViewCellOne: UICollectionViewCell {
         super.init(frame: frame)
         
         contentView.addSubview(imgView)
+        contentView.addSubview(redPoint)
         contentView.addSubview(lab)
         
         contentView.addSubview(lineBottom)
@@ -98,7 +103,43 @@ class UICTViewCellOne: UICollectionViewCell {
              make.top.right.bottom.equalToSuperview()
              make.width.equalTo(kH_LINE_VIEW)
          }
- 
+
+        if redPoint.isHidden == false {
+            redPoint.snp.remakeConstraints { (make) in
+                make.centerX.equalToSuperview().offset(redPointOffset.horizontal)
+                make.centerY.equalToSuperview().offset(redPointOffset.vertical)
+                make.size.equalTo(redPointSize)
+            }
+        }
     }
     
+    // MARK: -lazy
+    private(set) lazy var redPoint: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .red
+        return view
+    }()
+
+    public lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+    
+                   
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = UIColor.random
+
+       return view
+    }()
 }

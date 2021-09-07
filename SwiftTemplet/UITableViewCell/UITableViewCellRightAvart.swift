@@ -10,7 +10,7 @@ import UIKit
 import SwiftExpand
 
 /// 右边头像
-class UITableViewCellRightAvart: UITableViewCell {
+@objcMembers class UITableViewCellRightAvart: UITableViewCell {
     var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
     // MARK: -life cycle
@@ -49,8 +49,18 @@ class UITableViewCellRightAvart: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-
-
+    // MARK: -lazy
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
 }
 
 

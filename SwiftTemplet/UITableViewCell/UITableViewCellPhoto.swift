@@ -7,10 +7,9 @@
 //
 
 import UIKit
-
 import SnapKit
 
-class UITableViewCellPhoto: UITableViewCell {
+@objcMembers class UITableViewCellPhoto: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     // MARK: -life cycle
@@ -51,5 +50,15 @@ class UITableViewCellPhoto: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    // MARK: -lazy
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
     
 }

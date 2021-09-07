@@ -89,7 +89,7 @@ extension CCSCouponRecordController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      
-//        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+//        let cell = UITableViewCell.dequeueReusableCell(tableView)
         let cell = UITableViewCellCoupon.dequeueReusableCell(tableView)
 //        cell.labelLeft.text = "金融优惠券"
         cell.labelTop.text = "$2 (满20可以)"

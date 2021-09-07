@@ -11,7 +11,7 @@ import UIKit
 import SnapKit
 import SwiftExpand
 
-class UICTReusableViewZero: UICollectionReusableView {
+@objcMembers class UICTReusableViewZero: UICollectionReusableView {
     var inset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
     required init?(coder aDecoder: NSCoder) {
@@ -41,4 +41,27 @@ class UICTReusableViewZero: UICollectionReusableView {
             make.bottom.equalToSuperview().offset(-5)
         }
     }
+    
+    // MARK: -lazy
+    public lazy var imgView: UIImageView = {
+        let view = UIImageView(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+                   
+    public lazy var lab: UILabel = {
+       let view = UILabel(frame: .zero)
+       view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+       view.font = UIFont.systemFont(ofSize: 15)
+       view.numberOfLines = 0
+       view.lineBreakMode = .byCharWrapping
+       view.textAlignment = .center
+//       view.backgroundColor = UIColor.random
+
+       return view
+    }()
 }

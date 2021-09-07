@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 ///  指示器 标题     子标题
-class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
+@objcMembers class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
 
     var block: ((UITableHeaderFooterViewZero)->Void)?
     
@@ -21,9 +21,11 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
     var imgViewLeftSize = CGSize(width: 30, height: 30)
 
     var spacing: CGFloat = 8
+    
+    var isOpen: Bool = false
 
+    var isCanOpen: Bool = false
     // MARK: -life cycle
-
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(indicatorView);
@@ -102,5 +104,48 @@ class UITableHeaderFooterViewZero: UITableViewHeaderFooterView {
             make.height.equalTo(height)
         }
     }
+    // MARK: -lazy
+    public lazy var indicatorView: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
 
+        return view
+    }()
+    
+    public lazy var imgViewLeft: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.isUserInteractionEnabled = true
+        view.contentMode = .scaleAspectFit
+        view.backgroundColor = .clear
+
+        return view
+    }()
+
+    
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+  
+    public lazy var btn: UIButton = {
+        let view = UIButton(type: .custom)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.titleLabel?.adjustsFontSizeToFitWidth = true
+        view.titleLabel?.minimumScaleFactor = 1.0
+        view.isExclusiveTouch = true
+        view.adjustsImageWhenHighlighted = false
+        view.setTitleColor(.black, for: .normal)
+        
+        return view
+    }()
+    
 }

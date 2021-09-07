@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 商品购买时长
-class UITableViewCellGoodsDuration: UITableViewCell {
+@objcMembers class UITableViewCellGoodsDuration: UITableViewCell {
      
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
          super.init(style: style, reuseIdentifier: reuseIdentifier);
@@ -63,6 +63,16 @@ class UITableViewCellGoodsDuration: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
     
     lazy var groupView: NNButtonGroupView = {
         let view = NNButtonGroupView(frame: .zero)

@@ -66,19 +66,19 @@ import HFNavigationController
     lazy var companyList: [[[String]]] = {
         return [
             [["企业信息-主体资料", "UITableViewCellTitle", "50.0", kEntityInfo, "",],
-             ["*营业执照" + kBlankThree, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
-             ["*商户名称" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
+             ["*营业执照".padRight(3), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
+             ["*商户名称".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
                           
-             ["*营业地址" + kBlankOne, "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
-             ["*详细地址" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
+             ["*营业地址".padRight(1), "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
+             ["*详细地址".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
              
              ["*注册号/统一社会信用代码", "UITableViewCellTextField", "50.0", "请输入", "registration_number", ],
              ["*组织机构代码证照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "organization_img", ],
-             ["*组织机构代码" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入组织机构代码", "organization_code", ],
+             ["*组织机构代码".padRight(1), "UITableViewCellTextField", "50.0", "请输入组织机构代码", "organization_code", ],
              ["*组织机构有效开始时间", "UITableViewCellDatePicker", "50.0", "请选择", "organization_strat_time", ],
              ["*组织机构有效结束时间", "UITableViewCellDatePicker", "50.0", "请请选择", "organization_end_time", ],
              
-             ["*企查查截图" + kBlankTwo, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "qcc_img", ],
+             ["*企查查截图".padRight(2), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "qcc_img", ],
             ],
         ]
     }()
@@ -86,15 +86,15 @@ import HFNavigationController
     lazy var individualList: [[[String]]] = {
         return [
             [["企业信息-主体资料", "UITableViewCellTitle", "50.0", kEntityInfo, "",],
-             ["*营业执照" + kBlankThree, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
-             ["*商户名称" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
+             ["*营业执照".padRight(3), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
+             ["*商户名称".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
                       
              ["*注册号/统一社会信用代码", "UITableViewCellTextField", "50.0", "请输入", "registration_number", ],
              
-             ["*营业地址" + kBlankOne, "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
-             ["*详细地址" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
+             ["*营业地址".padRight(1), "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
+             ["*详细地址".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
                           
-             ["*企查查截图" + kBlankTwo, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "qcc_img", ],
+             ["*企查查截图".padRight(2), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "qcc_img", ],
             ],
         ]
     }()
@@ -102,15 +102,15 @@ import HFNavigationController
     lazy var governmentList: [[[String]]] = {
         return [
             [["企业信息-主体资料", "UITableViewCellTitle", "50.0", kEntityInfo, "",],
-             ["*营业执照" + kBlankThree, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
-             ["*商户名称" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
+             ["*营业执照".padRight(3), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
+             ["*商户名称".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
                           
-             ["*营业地址" + kBlankOne, "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
-             ["*详细地址" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
+             ["*营业地址".padRight(1), "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
+             ["*详细地址".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
              
              ["*证书号", "UITableViewCellTextField", "50.0", "请输入", "register_certificate_no", ],
              ["*组织机构代码证照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "organization_img", ],
-             ["*组织机构代码" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入组织机构代码", "organization_code", ],
+             ["*组织机构代码".padRight(1), "UITableViewCellTextField", "50.0", "请输入组织机构代码", "organization_code", ],
              ["*组织机构有效开始时间", "UITableViewCellDatePicker", "50.0", "请选择", "organization_strat_time", ],
              ["*组织机构有效结束时间", "UITableViewCellDatePicker", "50.0", "请请选择", "organization_end_time", ],
              
@@ -125,15 +125,15 @@ import HFNavigationController
     lazy var othersList: [[[String]]] = {
         return [
             [["企业信息-主体资料", "UITableViewCellTitle", "50.0", kEntityInfo, "",],
-             ["*营业执照" + kBlankThree, "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
-             ["*商户名称" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
+             ["*营业执照".padRight(3), "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "license_img", ],
+             ["*商户名称".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "merchant_name",],
                           
-             ["*营业地址" + kBlankOne, "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
-             ["*详细地址" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
+             ["*营业地址".padRight(1), "UITableViewCell", "50.0", "请选择所在地", "license_address", ],
+             ["*详细地址".padRight(1), "UITableViewCellTextField", "50.0", "请输入", "license_detailed_address",],
              
              ["*注册号/统一社会信用代码", "UITableViewCellTextField", "50.0", "请输入", "registration_number", ],
              ["*组织机构代码证照片", "UITableViewCell", "50.0", "\(kTitleLook),\(kTitleUpload)", "organization_img", ],
-             ["*组织机构代码" + kBlankOne, "UITableViewCellTextField", "50.0", "请输入组织机构代码", "organization_code", ],
+             ["*组织机构代码".padRight(1), "UITableViewCellTextField", "50.0", "请输入组织机构代码", "organization_code", ],
              ["*组织机构有效开始时间", "UITableViewCellDatePicker", "50.0", "请选择", "organization_strat_time", ],
              ["*组织机构有效结束时间", "UITableViewCellDatePicker", "50.0", "请请选择", "organization_end_time", ],
              
@@ -453,7 +453,7 @@ extension IOPPayInpartCompanyEntityInfoController: UITableViewDataSource, UITabl
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

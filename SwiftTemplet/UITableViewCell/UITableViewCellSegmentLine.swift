@@ -11,7 +11,7 @@ import SnapKit
 import SwiftExpand
 
 /// 文字+UISegment分段按钮
-class UITableViewCellSegmentLine: UITableViewCell {
+@objcMembers class UITableViewCellSegmentLine: UITableViewCell {
         
     var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
     
@@ -104,6 +104,16 @@ class UITableViewCellSegmentLine: UITableViewCell {
     }
     
     //MARK: -lazy
+    public lazy var labelLeft: UILabel = {
+        let view = UILabel(frame: CGRect.zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        view.lineBreakMode = .byCharWrapping
+        
+        return view
+    }()
+    
     lazy var segmentCtl: NNSegmentedControl = {
         let view = NNSegmentedControl.create( .zero, items: ["是","否"], selectedIdx: 0, type: 0);
         let clearColorImage = UIImage(color: .clear)

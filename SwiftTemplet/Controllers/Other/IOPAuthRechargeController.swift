@@ -138,7 +138,6 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
 //            cell.ppBtn.currentNumber = itemList[4]
             cell.ppBtn.currentNumber = "6"
 
-            cell.textfield.textAlignment = .right
             cell.getViewLayer()
             return cell
             
@@ -146,7 +145,7 @@ extension IOPAuthRechargeController: UITableViewDataSource, UITableViewDelegate 
             break
             
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     

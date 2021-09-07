@@ -204,7 +204,7 @@ extension MenuActionController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
         cell.textLabel?.textColor = .theme;
 

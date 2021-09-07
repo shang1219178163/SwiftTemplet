@@ -134,7 +134,7 @@ extension NNPopView: UITableViewDataSource, UITableViewDelegate {
         let value0 = itemList[0]
         let value1 = itemList[1]
         
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
         cell.textLabel!.text = value0
         cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;

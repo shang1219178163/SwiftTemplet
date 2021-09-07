@@ -121,8 +121,8 @@ extension IOPWorkOrderStartEvaluationController: UITableViewDataSource, UITableV
         case "UITableViewCellStarEvaluate":
             let cell = tableView.dequeueReusableCell(for: UITableViewCellStarEvaluate.self)
             
-            cell.labelLeft.text = value0
-            cell.labelLeft.isHidden = true
+            cell.titleLabel.text = value0
+            cell.titleLabel.isHidden = true
 
 //            cell.starView.isUserInteractionEnabled = false
 //            cell.starView.successBlock = {
@@ -158,7 +158,7 @@ extension IOPWorkOrderStartEvaluationController: UITableViewDataSource, UITableV
         default:
             break
         }
-        let cell = UITableViewCellZero.dequeueReusableCell(tableView)
+        let cell = UITableViewCell.dequeueReusableCell(tableView)
         return cell
     }
     
