@@ -49,7 +49,7 @@ class UISearchStylesController: UIViewController{
         view.blockCellForRow({ (tableView, indexPath) -> UITableViewCell in
             let itemList = view.list![indexPath.row] as! [String]
             
-            let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+            let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
             cell.accessoryType = .disclosureIndicator;
             
             cell.textLabel?.text = itemList[1]

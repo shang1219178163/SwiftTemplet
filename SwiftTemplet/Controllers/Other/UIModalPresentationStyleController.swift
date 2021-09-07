@@ -82,7 +82,7 @@ extension UIModalPresentationStyleController: UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let itemList = list[indexPath.row]
         
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
+        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
         
         cell.accessoryType = .disclosureIndicator;
         

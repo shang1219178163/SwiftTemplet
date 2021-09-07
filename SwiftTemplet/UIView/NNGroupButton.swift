@@ -13,7 +13,12 @@
     public var block: ((NNGroupButton, UIButton) -> Void)?
 
     public var numberOfRow: Int = 4
-    public var padding: CGFloat = 5.0
+//    public var padding: CGFloat = 5.0
+    
+    public var lineSpacing: CGFloat = 5
+
+    public var interitemSpacing: CGFloat = 5
+    
     public var edge: UIEdgeInsets = .zero
 
     public var isMutiChoose: Bool = false
@@ -63,7 +68,7 @@
             sender.alpha = disabledIndexs.contains(sender.tag) ? 0.5 : 1
         }
 
-        items.updateItemsConstraint(bounds, numberOfRow: numberOfRow, minimumInteritemSpacing: padding, minimumLineSpacing: padding, sectionInset: edge, showStyle: .topLeftToRight)
+        items.updateItemsConstraint(bounds, numberOfRow: numberOfRow, minimumInteritemSpacing: interitemSpacing, minimumLineSpacing: lineSpacing, sectionInset: edge, showStyle: .topLeftToRight)
     }
     
     

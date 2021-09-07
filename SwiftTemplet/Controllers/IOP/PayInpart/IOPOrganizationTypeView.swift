@@ -115,16 +115,18 @@ extension IOPOrganizationTypeView: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.indexP != indexPath  {
-            let newCell = tableView.cellForRow(at: indexPath)
-//            newCell?.accessoryType = .checkmark
-            newCell?.btn.isSelected = true
-            newCell?.textLabel?.textColor = .theme
-
-            let oldCell = tableView.cellForRow(at: indexP)
-//            oldCell?.accessoryType = .none
-            oldCell?.btn.isSelected = false
-            oldCell?.textLabel?.textColor = .textColor6;
+        if self.indexP != indexPath {
+            if let newCell = tableView.cellForRow(at: indexPath) as? UITableViewCellChioceItem {
+    //            newCell.accessoryType = .checkmark
+                newCell.btn.isSelected = true
+                newCell.textLabel?.textColor = .theme
+            }
+            
+            if let oldCell = tableView.cellForRow(at: indexP) as? UITableViewCellChioceItem {
+    //            oldCell.accessoryType = .none
+                oldCell.btn.isSelected = false
+                oldCell.textLabel?.textColor = .textColor6;
+            }
             self.indexP = indexPath
         }
         

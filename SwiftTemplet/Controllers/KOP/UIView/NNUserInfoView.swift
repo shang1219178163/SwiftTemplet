@@ -37,7 +37,7 @@ class NNUserInfoView: UIView {
     
     var level = "0"{
         willSet{
-            btnLevel.setTitle(kBlankOne + "Lv.\(newValue)" + kBlankOne, for: .normal)
+            btnLevel.setTitle(kBlankOne + "Lv.\(newValue)".padRight(1), for: .normal)
             setNeedsLayout()
         }
     }

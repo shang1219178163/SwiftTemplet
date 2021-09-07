@@ -169,4 +169,9 @@ class NNRecordCardView: UIView {
         return view
     }()
     
+    public lazy var gradientLayer: CAGradientLayer = {
+        let colors = [UIColor.theme.withAlphaComponent(0.5).cgColor, UIColor.theme.withAlphaComponent(0.9).cgColor]
+        let layer = CAGradientLayer(colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+        return layer
+    }()
 }

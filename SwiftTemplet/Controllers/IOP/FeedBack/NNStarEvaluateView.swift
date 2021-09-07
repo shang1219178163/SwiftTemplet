@@ -101,7 +101,7 @@ import SwiftExpand
     // MARK: - funtions
     /// 点击评分
     @objc func handlePan(_ pan:UIPanGestureRecognizer) {
-        var offX:CGFloat = 0
+        var offX: CGFloat = 0
         if pan.state == .began{
             offX = pan.location(in: self).x
             
@@ -142,19 +142,5 @@ import SwiftExpand
         view.textAlignment = .center;
         return view;
     }()
-    
-//    lazy var btnSure: UIButton = {
-//        let view = UIButton(type: .custom);
-//        view.setTitle(kTitleSure, for: .normal);
-//        view.setTitleColor(.systemBlue, for: .normal);
-//        view.titleLabel?.font = UIFont.systemFont(ofSize: 16);
-//        view.adjustsImageWhenHighlighted = false;
-//        view.tag = 1;
-//
-//        view.addActionHandler({ (sender) in
-//            self.viewBlock?(self, sender.tag);
-//
-//        }, for: .touchUpInside)
-//        return view;
-//    }()
+
 }

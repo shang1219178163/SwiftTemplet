@@ -21,12 +21,15 @@ import SwiftExpand
 class NNUploadImagesView: UIView {
     
     weak var delegate: NNUploadImagesViewDelegate?
+    
+    var tapBlock: ((UIImage) -> Void)?
 
     var maxCount = 9
     ///cell 高度
     var rowHeight: CGFloat = 110
 
-    let imageDefault = UIImage(named: "img_photo_placeholder")!
+//    let imageDefault = UIImage(named: "img_photo_placeholder")!
+    let imageDefault = UIImage(named: "img_upload_placeholder")!
 
     var images: [UIImage] = []{
         willSet{
@@ -46,20 +49,21 @@ class NNUploadImagesView: UIView {
                     sender.setTitle(nil, for: .normal)
                     sender.iconBtn.isHidden = (image == self.imageDefault)
                 }
-                sender.addActionHandler({ control in
-                     guard control is UIButton else { return }
+                sender.addActionHandler({ sender in
 //                     DDLog(sender.tag, sender.backgroundImage(for: .normal), self.imageDefault)
-                     
-                     if let image = sender.backgroundImage(for: .normal), image == self.imageDefault {
-                         self.pickerVC.show()
-                     }
+                    guard let image = sender.backgroundImage(for: .normal) else {
+                        return }
+                    if image == self.imageDefault {
+                        self.pickerVC.show()
+                    } else {
+                       self.tapBlock?(image)
+                    }
                  }, for: .touchUpInside)
                  
-                 sender.iconBtn.addActionHandler({ control in
-                    guard control is UIButton else { return }
+                 sender.iconBtn.addActionHandler({ sender in
 //                     DDLog(sender.tag)
-                     if self.images.count > control.tag {
-                         self.images.remove(at: control.tag)
+                     if self.images.count > sender.tag {
+                         self.images.remove(at: sender.tag)
                         if self.images.count < self.maxCount && !self.images.contains(self.imageDefault) {
                             self.images.append(self.imageDefault)
                         }
@@ -74,7 +78,7 @@ class NNUploadImagesView: UIView {
 //            DDLog(rowCount, rowHeight, itemHeight, totalHeight)
         }
     }
-    private var itemList: [UIButton] = []
+    private(set) var itemList: [UIButton] = []
 
     private(set) var totalHeight: CGFloat = 0{
         willSet{
@@ -92,6 +96,7 @@ class NNUploadImagesView: UIView {
     var showStyle: ShowStyle = .topLeftToRight
 
     var currrentVC: UIViewController?
+    
     var tableView: UITableView?{
         if let view = currrentVC?.view.findSubView(UITableView.self) as? UITableView {
             return view
@@ -99,10 +104,10 @@ class NNUploadImagesView: UIView {
         return nil
     }
 
-    lazy var pickerVC: NNImageAndVideoPickerController = {
-        let controller = NNImageAndVideoPickerController()
-        controller.maxCount = self.maxCount
-        controller.didFinishPickerBlock = { images, assets, isOriginImage in
+    private(set) lazy var pickerVC: NNImageAndVideoPickerController = {
+        let vc = NNImageAndVideoPickerController()
+        vc.maxCount = self.maxCount
+        vc.didFinishPickerBlock = { images, assets, isOriginImage in
             var array = [UIImage]()
             array.append(contentsOf: images)
             if array.count < self.maxCount {
@@ -113,7 +118,7 @@ class NNUploadImagesView: UIView {
 //            DDLog(self.images.count, self.tableView)
             self.delegate?.didFinishPicker(self.images.filter({ $0 != self.imageDefault }), isSelectOriginalPhoto: isOriginImage)
         }
-        return controller
+        return vc
     }()
 
     // MARK: -lifecycle

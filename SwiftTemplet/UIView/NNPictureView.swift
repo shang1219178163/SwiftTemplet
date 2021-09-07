@@ -167,7 +167,7 @@ extension NNPictureView: UICollectionViewDataSource, UICollectionViewDelegate {
             let pan = UIPanGestureRecognizer(target: self, action: #selector(p_handlePanGesture(_:)))
             //最大最小的手势触摸次数
             pan.minimumNumberOfTouches = 1
-            pan.maximumNumberOfTouches = 3
+            pan.maximumNumberOfTouches = 2
             cell.imgView.addGestureRecognizer(pan)
         }
         
