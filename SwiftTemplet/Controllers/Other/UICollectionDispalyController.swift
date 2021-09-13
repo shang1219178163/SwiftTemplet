@@ -80,7 +80,7 @@ class UICollectionDispalyController: UIViewController{
         // 注册cell
         ctView.dictClass = [UICollectionView.elementKindSectionHeader: ["UICTReusableViewOne", "UICTViewCellSubtitle"],
                             UICollectionView.elementKindSectionFooter: ["UICTReusableViewZero", "UICTViewCellValue"],
-                            UICollectionView.elementKindSectionItem: ["UICTViewCellZero", "UICTViewCellOne"],
+                            UICollectionView.elementKindSectionItem: ["UICTViewCellZero", "UICTViewCellOne", "UICollectionViewCellItem"],
         ]
         view.addSubview(ctView)
     }
@@ -113,7 +113,16 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
    }
 
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        if indexPath.row % 3 == 0 {
+            let cell = collectionView.dequeueReusableCell(for: UICollectionViewCellItem.self, indexPath: indexPath)
+    //        cell.labelTop.isHidden = true
+            cell.labelBottom.isHidden = true
+            cell.imageView.backgroundColor = .random
+        
+            cell.getViewLayer()
+           return cell
+        }
+    
        if indexPath.row % 2 == 0 {
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         cell.lineBottom.isHidden = false
@@ -122,13 +131,13 @@ extension UICollectionDispalyController: UICollectionViewDataSource, UICollectio
            cell.lab.text = String(format:"%ditem",indexPath.row)
            return cell
        }
+    
         let cell = collectionView.dequeueReusableCell(for: UICTViewCellZero.self, indexPath: indexPath)
         cell.lineBottom.isHidden = false
         cell.lineRight.isHidden = false
-    
+
 //       cell.imgView.backgroundColor = .random
        cell.lab.text = String(format:"%ditem",indexPath.row)
-    
        return cell
    }
 

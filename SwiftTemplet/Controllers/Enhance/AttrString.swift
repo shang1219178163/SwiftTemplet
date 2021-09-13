@@ -154,20 +154,21 @@ extension AttrString.StringInterpolation {
     func appendInterpolation(image: UIImage, scale: CGFloat = 1.0, verticalOffSet: CGFloat = 0) {
         let size = CGSize(width: image.size.width * scale, height: image.size.height * scale)
 
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+//        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+//        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+//        image.draw(in: rect)
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
         
         let attachment = NSTextAttachment()
-        attachment.image = newImage
+        attachment.image = image
         attachment.bounds = CGRect(x: 0, y: verticalOffSet, width: size.width, height: size.height)
 
         self.attributedString.append(NSAttributedString(attachment: attachment))
 //        print(#function, rect, size)
     }
 }
+
 
 public extension NSAttributedString{
     ///设置样式

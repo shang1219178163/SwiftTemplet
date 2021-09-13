@@ -135,9 +135,9 @@ extension NNPopView: UITableViewDataSource, UITableViewDelegate {
         let value1 = itemList[1]
         
         let cell = UITableViewCell.dequeueReusableCell(tableView)
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
-        cell.textLabel!.text = value0
-        cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.text = value0
+        cell.textLabel?.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
         if self.blockCellForRow != nil && self.blockCellForRow!(tableView, indexPath) != nil {

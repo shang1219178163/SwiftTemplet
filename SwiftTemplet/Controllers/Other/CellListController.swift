@@ -122,15 +122,15 @@ class CellListController: UIViewController {
             let itemList = view.list![indexPath.row] as! [String]
             
 //        let cell = UITableViewCellZero.dequeueReusableCell(tableView) as! UITableViewCellZero;
-//        cell.textLabel!.text = itemList[0]
+//        cell.textLabel?.text = itemList[0]
 //
 //        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
 //            let cell = UITableViewCell.dequeueCell(tableView, identifier: "cell1", style: .subtitle);
 //
 //            cell.accessoryType = .disclosureIndicator;
 //
-//            cell.textLabel!.text = itemList[0]
-//            cell.textLabel!.textColor = UIColor.theme;
+//            cell.textLabel?.text = itemList[0]
+//            cell.textLabel?.textColor = UIColor.theme;
 //
 //            return cell
             return self.cellForRow(tableView, indexPath: indexPath);

@@ -194,10 +194,10 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         let value1 = itemList[1]
 
         let cell = UITableViewCell.dequeueReusableCell(tableView)
-        cell.textLabel?.text = value0 + indexPath.string
+        cell.textLabel?.text = value0 + indexPath.toString
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
-        cell.textLabel!.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
+        cell.textLabel?.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
         return cell
     }

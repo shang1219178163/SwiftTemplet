@@ -45,6 +45,7 @@ class ThirdViewController: UIViewController{
              ["NNPlaceHolderViewController", "占位视图", ],
              ["ReuseChildsController", "控制器复用", ],
              ["AttrStringViewController", "优雅的富文本", ],
+             ["AttrStringEffectiveController", "AttrString(OC)", ],
              ["NNButtonStudyController", "按钮封装", ],
 //             ["SubscribeListNewController", "微信公众号信息列表1", ],
              ["FloatingPanelExampleController", "FloatingPanel浮层", ],             
@@ -107,7 +108,6 @@ class ThirdViewController: UIViewController{
              ["UIRecognizerUpdateController", "手势集合升级", ],
              ["UIRecognizerController", "手势集合", ],
              ["IOPInvoiceCreateController", "折叠", ],
-             ["AttrStringEffectiveController", "AttrString", ],
              ["NumberFormatterExampleController", "NumberFormatter", ],
              ["ChainExampleController", "ChainExample", ],
              ["ChainExampleSwiftController", "ChainExampleSwift", ],
@@ -190,6 +190,9 @@ class ThirdViewController: UIViewController{
         super.viewDidLoad()
         
         edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        title = "总览"
+
         
         let list: [(String, Selector)] = [
             ("升级", #selector(handleActionItem(_:))),
@@ -459,17 +462,17 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel!.textColor = UIColor.theme;
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = UIColor.theme;
 
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         
         let itemList = list[indexPath.section][indexPath.row]
-        cell.textLabel!.text = itemList[1]
-//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
-        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+        cell.textLabel?.text = itemList[1]
+//        cell.textLabel?.text = NSLocalizedString(itemList[1], comment: "")
+        cell.textLabel?.text = Bundle.localizedString(forKey: itemList[1])
 
         cell.detailTextLabel?.text = itemList[0];
         

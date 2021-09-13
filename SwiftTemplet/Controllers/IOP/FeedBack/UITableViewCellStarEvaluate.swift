@@ -21,10 +21,8 @@ class UITableViewCellStarEvaluate: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(titleLabel)
         contentView.addSubview(starView)
-        
-        titleLabel.text = "满意度评价:"
+        textLabel?.text = "满意度评价:"
     }
     
     required init?(coder: NSCoder) {
@@ -35,7 +33,8 @@ class UITableViewCellStarEvaluate: UITableViewCell {
         super.layoutSubviews()
         
         guard bounds.height > 10 else { return }
-        
+        guard let textLabel = textLabel else { return }
+
         if titleLabel.isHidden {
             starView.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
@@ -45,16 +44,20 @@ class UITableViewCellStarEvaluate: UITableViewCell {
             return
         }
         
-        let dateLabelSize = titleLabel.sizeThatFits(CGSize(width: bounds.width, height: 40))
-        titleLabel.snp.makeConstraints { (make) in
+        if textLabel.superview == nil {
+            contentView.addSubview(textLabel)
+        }
+        
+        let dateLabelSize = textLabel.sizeThatFits(CGSize(width: bounds.width, height: 40))
+        textLabel.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(inset.left)
             make.size.equalTo(dateLabelSize)
         }
         
-        starView.snp.makeConstraints { (make) in
+        starView.snp.remakeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalTo(titleLabel.snp.right).offset(kPadding)
+            make.left.equalTo(textLabel.snp.right).offset(kPadding)
             make.size.equalTo(starViewSize)
         }
     }

@@ -179,3 +179,17 @@ class SuanfaViewController: UIViewController {
     }
 
 }
+
+
+extension String{
+    
+    ///子字符串在父串出现的次数
+    func countOccurencesOf(_ aString: String) -> Int {
+        return components(separatedBy: aString).count - 1
+    }
+    
+    func countOccurencesOf1(_ aString: String) -> Int {
+        let tmp = replacingOccurrences(of: aString, with: "")
+        return (count - tmp.count)/aString.count
+    }
+}

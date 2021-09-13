@@ -68,9 +68,8 @@ class HomeViewController: UITabBarController {
             (TitleViewController(), "TitleView", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
 //            (KVOViewController(), "测试", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
             (PKFuntionListController(), "KOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-//            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
-            
-            (FourthViewController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+            (IOPFuntionListController(), "IOP", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
+//            (FourthViewController(), "Fourth", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
         ];
     }()
     
@@ -101,7 +100,7 @@ class HomeViewController: UITabBarController {
 //        view.addGestureRecognizer(panGesture)
         
         selectedIndex = 1
-//        selectedIndex = items.count - 1
+        selectedIndex = items.count - 1
     }
 
     

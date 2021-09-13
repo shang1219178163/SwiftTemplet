@@ -103,7 +103,7 @@ extension NNCollectionViewHorizontalController: UICollectionViewDataSource, UICo
         let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         cell.contentView.backgroundColor = UIColor.random
         cell.imgView.isHidden = true;
-        cell.lab.text = "标题_\(indexPath.string)"
+        cell.lab.text = "标题_\(indexPath.toString)"
 
         return cell;
     }

@@ -102,11 +102,11 @@ extension SheetViewController: NNSheetViewDelegate {
         cell.labelRight.textAlignment = .left
 
         cell.labelLeft.text = value0
-        cell.labelRight.text = indexPath.string
+        cell.labelRight.text = indexPath.toString
         cell.isHidden = value1.cgFloatValue <= 0.0
 
         let isChoose: Bool = (indexP == indexPath)
-        DDLog(isChoose, indexPath.string)
+        DDLog(isChoose, indexPath.toString)
         cell.labelLeft.textColor = isChoose ? .systemBlue : .gray;
         cell.labelRight.textColor = isChoose ? .systemBlue : .gray;
         cell.accessoryType = isChoose ? .checkmark : .none

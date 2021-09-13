@@ -180,10 +180,10 @@ extension NNPopListView: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.dequeueReusableCell(tableView)
-        cell.textLabel!.text = list[indexPath.row]
-        cell.textLabel!.textAlignment = .center
+        cell.textLabel?.text = list[indexPath.row]
+        cell.textLabel?.textAlignment = .center
         
-        cell.textLabel!.textColor = indexP == indexPath ? .systemBlue : .gray
+        cell.textLabel?.textColor = indexP == indexPath ? .systemBlue : .gray
         cell.accessoryType = indexP == indexPath ? .checkmark : .none
         return cell
     }

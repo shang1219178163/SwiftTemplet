@@ -131,6 +131,8 @@ class UITableViewCellDoubleLabel: UITableViewCell {
     
     var inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
+    public var labelRightWidth: CGFloat?
+
     // MARK: -lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -157,12 +159,21 @@ class UITableViewCellDoubleLabel: UITableViewCell {
             return
         }
         
-        let labelRightSize = labelRight.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20))
+        let labelRightSize = labelRight.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 0))
+        let labelRightHeight = max(labelRightSize.height, 15)
+        
+        var rightWidth = ceil(labelRightSize.width)
+        if let labelRightWidth = labelRightWidth {
+            rightWidth = max(ceil(labelRightSize.width), labelRightWidth)
+        }
+        
+        
         labelRight.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(inset.top)
             make.right.equalToSuperview().offset(-inset.right)
-//            make.bottom.equalToSuperview().offset(-inset.bottom)
-            make.size.width.equalTo(labelRightSize.width)
+//            make.width.equalTo(ceil(labelRightSize.width))
+            make.width.equalTo(rightWidth)
+            make.height.equalTo(labelRightHeight)
         }
         
         labelLeft.snp.remakeConstraints { (make) in

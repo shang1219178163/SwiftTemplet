@@ -188,10 +188,10 @@ extension PKUserLevelController: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row {
         case 0, 3:
             let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellTitle")
-            cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-            cell.textLabel!.textColor = UIColor.black;
-            cell.textLabel!.numberOfLines = 0
-            cell.textLabel!.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+            cell.textLabel?.textColor = UIColor.black;
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
             
     //        cell.accessoryType = .disclosureIndicator;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
@@ -199,23 +199,23 @@ extension PKUserLevelController: UITableViewDataSource, UITableViewDelegate{
             cell.imageView?.contentMode = .scaleAspectFit
 
             let itemList = list[indexPath.section][indexPath.row]
-            cell.textLabel!.text = itemList[2]
+            cell.textLabel?.text = itemList[2]
             
 //            cell.getViewLayer()
             return cell
 
         case 1, 4:
             let cell = UITableViewCell.dequeueReusableCell(tableView)
-            cell.textLabel!.font = UIFont.systemFont(ofSize: 12)
-            cell.textLabel!.textColor = UIColor.textColor9;
-            cell.textLabel!.numberOfLines = 0
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
+            cell.textLabel?.textColor = UIColor.textColor9;
+            cell.textLabel?.numberOfLines = 0
             
     //        cell.accessoryType = .disclosureIndicator;
             cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
 
             
             let itemList = list[indexPath.section][indexPath.row]
-            cell.textLabel!.text = itemList[2]
+            cell.textLabel?.text = itemList[2]
             return cell
 
         case 2:

@@ -13,6 +13,16 @@
 
 #import <Masonry/Masonry.h>
 
+#ifdef __GNUC__
+__unused static void cleanUpBlock(__strong void(^*block)(void)) {
+    (*block)();
+}
+
+#define OnBlockExit __strong void(^attribute_cleanup_block)(void) __attribute__((cleanup(cleanUpBlock), unused)) = ^
+#endif
+
+
+
 @interface TextFieldViewController ()
 
 @property (nonatomic, strong) UITextField *textField;
@@ -67,10 +77,31 @@
 //    }];
 }
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+ 
+    [self cleanUp];
+}
+
 #pragma mark -funtions
 - (void)handleAction:(UIButton *)sender{
     sender.selected = !sender.selected;
 //    DDLog(@"isSelected_%@", @(sender.isSelected));
+}
+
+- (void)cleanUp {
+//    OnBlockExit(block_1) {
+//        NSLog(@"OnBlockExit 1");
+//    };
+//    OnBlockExit(block_2) {
+//        NSLog(@"OnBlockExit 2");
+//    };
+//    OnBlockExit(block_3) {
+//        NSLog(@"OnBlockExit 3");
+//    };
+    
+    NSLog(@"End");
 }
 
 

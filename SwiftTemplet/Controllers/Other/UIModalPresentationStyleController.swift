@@ -86,8 +86,8 @@ extension UIModalPresentationStyleController: UITableViewDataSource, UITableView
         
         cell.accessoryType = .disclosureIndicator;
         
-        cell.textLabel!.text = itemList[0]
-        cell.textLabel!.textColor = UIColor.theme;
+        cell.textLabel?.text = itemList[0]
+        cell.textLabel?.textColor = UIColor.theme;
         cell.detailTextLabel!.text = itemList[1];
         cell.detailTextLabel!.textColor = UIColor.gray;
         cell.detailTextLabel!.numberOfLines = 0;

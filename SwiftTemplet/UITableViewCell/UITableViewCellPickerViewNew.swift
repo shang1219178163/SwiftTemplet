@@ -136,7 +136,7 @@ import SwiftExpand
                         ["33333", "456"],
                     ]
         view.block({ (view, indexP) in
-            DDLog(indexP.string)
+            DDLog(indexP.toString)
             let cellItem = view.itemList![indexP.row] 
             self.textfield.text = cellItem.first
             self.viewBlock?(self,  cellItem.first!, cellItem)

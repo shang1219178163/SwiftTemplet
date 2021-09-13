@@ -219,7 +219,7 @@ class FourthViewController: UIViewController {
                         ["33333", "456"],
                     ]
         view.block({ (view, indexP) in
-            DDLog(indexP.string)
+            DDLog(indexP.toString)
             let cellItem = view.itemList![indexP.row]
             
         })
@@ -529,7 +529,7 @@ class FourthViewController: UIViewController {
     @objc func showPopoverAction(_ sender: UIButton) {
         let contentVC = SimpleListController()
         contentVC.block = { vc, indexP in
-            DDLog(indexP.string)
+            DDLog(indexP.toString)
 
             vc.navigationController?.pushVC(UIViewController.self, animated: true, block: { (sender) in
                 sender.view.backgroundColor = .systemGreen

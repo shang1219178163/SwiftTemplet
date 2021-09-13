@@ -88,7 +88,7 @@ enum SheetDirection: Int {
     func setupTitleView() {
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
-            if let imgView = (sender as! UIButton).imageView{
+            if let imgView = sender.imageView{
                 imgView.transformRotationCycle()
             }
             
@@ -236,7 +236,7 @@ extension NNSheetView: UITableViewDataSource, UITableViewDelegate {
         let value1 = itemList[1]
 
         let cell = UITableViewCell.dequeueReusableCell(tableView)
-        cell.textLabel?.text = value0 + indexPath.string
+        cell.textLabel?.text = value0 + indexPath.toString
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
         cell.textLabel?.textColor = indexP == indexPath ? .systemBlue : .gray;

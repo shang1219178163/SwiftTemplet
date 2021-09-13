@@ -54,7 +54,7 @@ class UICollectionExcelController: UIViewController{
 
 extension UICollectionExcelController: NNExcelViewDelegate {
     func excelView(_ label: UILabel, didSelectItemAt indexPath: IndexPath) {
-        DDLog(indexPath.string)
+        DDLog(indexPath.toString)
     }
     
 }

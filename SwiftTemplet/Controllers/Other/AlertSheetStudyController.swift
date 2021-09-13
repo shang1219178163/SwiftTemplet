@@ -425,15 +425,15 @@ extension AlertSheetStudyController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle)
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel!.textColor = UIColor.theme;
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = UIColor.theme;
 
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         
         let tuple = list[indexPath.row]
-        cell.textLabel!.text = tuple.1
+        cell.textLabel?.text = tuple.1
 
         cell.detailTextLabel?.text = "\(tuple.0)"
         return cell

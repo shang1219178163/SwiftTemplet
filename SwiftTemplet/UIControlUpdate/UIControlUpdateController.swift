@@ -107,9 +107,9 @@ extension UIControlUpdateController: UITableViewDataSource, UITableViewDelegate{
         cell.accessoryType = .disclosureIndicator;
         
         let itemList = list[indexPath.section][indexPath.row]
-        cell.textLabel!.text = itemList[1]
-//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
-        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+        cell.textLabel?.text = itemList[1]
+//        cell.textLabel?.text = NSLocalizedString(itemList[1], comment: "")
+        cell.textLabel?.text = Bundle.localizedString(forKey: itemList[1])
 
         cell.detailTextLabel?.text = itemList[0];
         

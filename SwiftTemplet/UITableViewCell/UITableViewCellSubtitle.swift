@@ -129,8 +129,8 @@ import SwiftExpand
         let view = UILabel(frame: CGRect.zero)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left
-        view.numberOfLines = 0
-        view.lineBreakMode = .byCharWrapping
+//        view.numberOfLines = 0
+//        view.lineBreakMode = .byCharWrapping
         
         return view
     }()
@@ -150,8 +150,8 @@ import SwiftExpand
         let view = UILabel(frame: CGRect.zero)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.textAlignment = .left
-        view.numberOfLines = 0
-        view.lineBreakMode = .byCharWrapping
+//        view.numberOfLines = 0
+//        view.lineBreakMode = .byCharWrapping
         
         return view
     }()
@@ -161,8 +161,8 @@ import SwiftExpand
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.font = UIFont.systemFont(ofSize: 15)
         view.textAlignment = .right
-        view.numberOfLines = 0
-        view.lineBreakMode = .byCharWrapping
+//        view.numberOfLines = 0
+//        view.lineBreakMode = .byCharWrapping
         view.font = UIFont.systemFont(ofSize: UIFont.labelFontSize - 2.0)
         view.isUserInteractionEnabled = true
         return view

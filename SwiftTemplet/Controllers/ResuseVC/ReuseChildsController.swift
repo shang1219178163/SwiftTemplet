@@ -73,18 +73,18 @@ extension ReuseChildsController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel!.textColor = UIColor.theme;
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = UIColor.theme;
 
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         
         
         let itemList = list[indexPath.section][indexPath.row]
-        cell.textLabel!.text = itemList[1]
-//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
-        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+        cell.textLabel?.text = itemList[1]
+//        cell.textLabel?.text = NSLocalizedString(itemList[1], comment: "")
+        cell.textLabel?.text = Bundle.localizedString(forKey: itemList[1])
 
         cell.detailTextLabel?.text = itemList[0];
         

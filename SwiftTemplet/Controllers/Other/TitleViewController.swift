@@ -236,6 +236,6 @@ class TitleViewController: NNTitleViewSelectController{
 
 extension TitleViewController: NNTitleViewSelectControllerDelegate{
     func titleViewSelect(_ controller: NNTitleViewSelectController, tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        DDLog(indexPath.string)
+        DDLog(indexPath.toString)
     }
 }

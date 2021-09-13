@@ -107,7 +107,7 @@ extension NNFontPickerController: UITableViewDataSource, UITableViewDelegate{
         
         cell.backgroundColor = .white.withAlphaComponent(0.5)
 
-        DDLog(cell.textLabel!.font.fontName)
+        DDLog(cell.textLabel?.font.fontName)
 
         return cell
     }
