@@ -15,14 +15,17 @@ class UITableViewCellDoubleLabel: UITableViewCell {
     
     public var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
 
-    public var fixedSpacing: CGFloat = 0
+    public var fixedSpacing: CGFloat = 5
     
+    public var labViews: [NNDoubleLabelView]{
+        return [labView, labView1, labView2, labView3, labView4, labView5,]
+    }
+
     // MARK: -life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
 
         contentView.addSubview(stackView)
-        stackView.addArrangedSubviews([labView, labView1, labView2, labView3, labView4, labView5,])
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +37,10 @@ class UITableViewCellDoubleLabel: UITableViewCell {
         super.layoutSubviews()
 
         guard bounds.height > 20 else { return }
+        
+        stackView.removeArrangedSubviews()
+        let items = labViews.filter { $0.isHidden == false }
+        stackView.addArrangedSubviews(items)
         stackView.snp.remakeConstraints { (make) in
             make.edges.equalToSuperview().inset(inset)
         }
@@ -42,7 +49,7 @@ class UITableViewCellDoubleLabel: UITableViewCell {
     lazy var stackView: UIStackView = {
         let view = UIStackView(frame: .zero)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.spacing = 0
+        view.spacing = fixedSpacing
         view.axis = .vertical
         //子视图的高度或宽度保持一致
 //        view.distribution = .fillProportionally

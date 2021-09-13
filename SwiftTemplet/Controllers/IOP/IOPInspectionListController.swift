@@ -1,5 +1,5 @@
 //
-//	IOPRoutingInspectionListController.swift
+//	IOPInspectionListController.swift
 //	MacTemplet
 //
 //	Created by Shang on 2021/08/16 18:03
@@ -15,7 +15,7 @@ import RxCocoa
 import RxSwift
 
 /// 列表
-@objcMembers class IOPRoutingInspectionListController: UIViewController{
+@objcMembers class IOPInspectionListController: UIViewController{
     
     let disposeBag = DisposeBag()
     
@@ -129,7 +129,7 @@ import RxSwift
     }
 }
 
-extension IOPRoutingInspectionListController: UITableViewDataSource, UITableViewDelegate{
+extension IOPInspectionListController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -184,7 +184,7 @@ extension IOPRoutingInspectionListController: UITableViewDataSource, UITableView
 }
 
 
-//extension IOPFeedBackListController: IOPGoodsListViewModelDelegate{
+//extension IOPWorkOrderListController: IOPGoodsListViewModelDelegate{
 //
 //    func request(with model: IOPGoodsListRootModel, isRefresh: Bool, hasNextPage: Bool) {
 //

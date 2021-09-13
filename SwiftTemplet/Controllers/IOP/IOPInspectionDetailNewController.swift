@@ -1,5 +1,5 @@
 //
-//    IOPRoutingInspectionDetailNewController.swift
+//    IOPInspectionDetailNewController.swift
 //    MacTemplet
 //
 //    Created by Shang on 2021/08/16 18:03
@@ -11,7 +11,7 @@ import UIKit
 import SwiftExpand
 
 /// 详情
-@objcMembers class IOPRoutingInspectionDetailNewController: UIViewController {
+@objcMembers class IOPInspectionDetailNewController: UIViewController {
     
     var recordID: String = ""
 
@@ -95,7 +95,7 @@ import SwiftExpand
 }
 
 
-extension IOPRoutingInspectionDetailNewController: UITableViewDataSource, UITableViewDelegate{
+extension IOPInspectionDetailNewController: UITableViewDataSource, UITableViewDelegate{
     //    MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return list.count
