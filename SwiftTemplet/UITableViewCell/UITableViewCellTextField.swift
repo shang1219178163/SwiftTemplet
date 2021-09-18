@@ -22,10 +22,18 @@ import SwiftExpand
     var hasAsterisk = false
     ///清空输入框
     var isBackDelete = true
+    
+    ///最大字数
+    var wordCount: Int?
+    ///汉字模式
+    var pattern: String? = "[^\\u4E00-\\u9FA5]"
+    ///最小值,最大值,几位小数
+    var moneyTuple: (CGFloat, CGFloat, Int)?
 
     // MARK: -life cycle
     deinit {
         labelLeft.removeObserver(self, forKeyPath: "text")
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: textfield)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,14 +52,10 @@ import SwiftExpand
 //        _ = textfield.asoryView(true, image: image)
 //        textfield.asoryView(true, unitName: "公斤(万元)");
 
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTextFieldChangedNotifation(_:)), name: UITextField.textDidChangeNotification, object: textfield)
+        
         labelLeft.numberOfLines = 1
         labelLeft.addObserver(self, forKeyPath: "text", options: .new, context: nil)
-//        textfield.addTarget(self, action: #selector(handleSend(_:)), for: [.editingChanged, .editingDidEnd, .editingDidEndOnExit])
-//        textfield.addActionHandler({ (sender) in
-//            guard let sender = control as? UITextField else { return }
-//            DDLog(sender.text)
-//
-//        }, for: [.editingChanged, .editingDidEndOnExit])
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -122,8 +126,34 @@ import SwiftExpand
         textFieldEditingChangedBlock?(textfield)
     }
     
-    @objc func handleSend(_ sender: UITextField) {
-        DDLog(sender.text)
+    @objc func handleTextFieldChangedNotifation(_ n: Notification) {
+        guard let textField = n.object as? UITextField else {
+            return
+        }
+        guard let wordCount = wordCount else {
+            return
+        }
+        //非 marketedText 才继续往下处理
+        guard let _: UITextRange = textField.markedTextRange else {
+            //记录当前光标的位置，后面需要进行修改
+            let cursorPostion = textField.offset(from: textField.endOfDocument, to: textField.selectedTextRange!.end)
+            
+            var text = textField.text!
+            if let pattern = pattern {
+                //判断非中文的正则表达式
+//                let pattern = "[^\\u4E00-\\u9FA5]"
+                text = textField.text!.pregReplace(pattern: pattern, with: "")
+            }
+            //限制最大输入长度
+            if text.count > wordCount {
+                text = String(text.prefix(wordCount))
+            }
+            textField.text = text
+            //让光标停留在正确的位置
+            let targetPosion = textField.position(from: textField.endOfDocument, offset: cursorPostion)!
+            textField.selectedTextRange = textField.textRange(from: targetPosion, to: targetPosion)
+            return
+        }
     }
     // MARK: -lazy
     public lazy var labelLeft: UILabel = {
@@ -176,11 +206,27 @@ extension UITableViewCellTextField: UITextFieldDelegate{
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if isBackDelete {
-            if string == "" {
+        if string == "" {
+            if isBackDelete {
                 textField.text = ""
-                textFieldEditingChangedBlock?(textField)
             }
+            textFieldEditingChangedBlock?(textField)
+            return true
+        }
+        
+        guard let text = textField.text else {
+            return true }
+        if let (minValue, maxValue, maxFractionDigits) = moneyTuple {
+//            DDLog(text.cgFloatValue, maxValue)
+            if string == "." && text.cgFloatValue >= maxValue{
+                return false
+            }
+            
+            let result = text.replacingCharacters(range.location, range.length, with: string)
+            if result.cgFloatValue > maxValue{
+                return false
+            }
+            return result.validMoney(maxFractionDigits)
         }
         return true
     }

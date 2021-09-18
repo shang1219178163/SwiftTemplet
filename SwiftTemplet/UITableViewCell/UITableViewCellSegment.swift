@@ -80,7 +80,7 @@ import SwiftExpand
             make.height.equalTo(height)
         }
         
-        let ctlWidth: CGFloat = CGFloat(segmentCtl.numberOfSegments)*68.0
+        let ctlWidth: CGFloat = CGFloat(segmentCtl.numberOfSegments)*75
         if isShowLeft == false {
             segmentCtl.snp.makeConstraints { (make) in
                 make.centerY.equalToSuperview()
