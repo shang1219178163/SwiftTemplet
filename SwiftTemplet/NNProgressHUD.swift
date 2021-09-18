@@ -10,8 +10,27 @@ import UIKit
 import MBProgressHUD
 import SwiftExpand
 
+
+/// 请求中...
+public let kRequesting = "请求中..."
+/// 加载中...
+public let kRequestLoading = "加载中..."
+/// 操作成功
+public let kRequestSuccess = "操作成功"
+/// 上传中...
+public let kRequestUpload = "上传中..."
+/// 操作失败,请稍后重试
+public let kRequestFail = "操作失败,请稍后重试"
+/// 数据解析错误
+public let kRequestParsingError = "数据解析错误"
+
+
 private let keyWindow: UIWindow = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first!
 
+private let hideDuration: TimeInterval = 1.5
+
+
+@available(*, deprecated, message: "因为有了更好的, 代替者 ZZProgressHUD")
 class NNProgressHUD: NSObject {
     
     @objc static func showText(_ text: String?, model: MBProgressHUDMode, imageName: String?, isHidden: Bool, inView: UIView = keyWindow) {
@@ -99,21 +118,36 @@ class NNProgressHUD: NSObject {
 }
 
 
-let hideDuration: TimeInterval = 1.5
-
 //let tupleDic: [Int: (UIColor, UIColor, UIImage)]  = [
 //    0: (UIColor, UIColor, UIImage)
 //]
 
 public extension UIView {
-    //显示等待消息
-    func showLoading(_ title: String) {
+    
+    /// 显示等待消息
+    func showLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
+        hud.minSize = CGSize(width: 90, height: 30)
+
+        if isDefaultAppearance == false {
+            hud.contentColor = .white
+            hud.bezelView.color = .black.withAlphaComponent(0.5)
+            hud.bezelView.style = .solidColor
+        }
+        
+        if let cancellBlock = cancellBlock {
+            hud.button.setTitle("取消", for: .normal)
+            hud.button.addActionHandler { sender in
+//                DDLog(sender.currentTitle)
+                cancellBlock(sender)
+                hud.hide(animated: true)
+            }
+        }
     }
     
-    ///当前展示 MBProgressHUD
+    /// 当前展示 MBProgressHUD
     var currentHUD: MBProgressHUD? {
         return MBProgressHUD.forView(self)
     }
@@ -128,34 +162,63 @@ public extension UIView {
         }
     }
     
-    //显示等待消息
+    /// 显示等待消息
     func hideHud(_ animated: Bool = true, delay: TimeInterval) {
         if let hud = MBProgressHUD.forView(self) {
             hud.hide(animated: animated, afterDelay: delay)
         }
     }
      
-    //显示普通消息
-    func showInfo(_ title: String, image: UIImage? = nil) {
+    /// 显示普通消息
+    func showInfo(_ title: String, image: UIImage? = nil, isDefaultAppearance: Bool = true) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
-        hud.mode = .customView //模式设置为自定义视图
-        if let image = image {
-            hud.customView = UIImageView(image: image)
-        }
+        hud.mode = .text
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
+        if let image = image {
+            hud.mode = .customView
+            hud.customView = UIImageView(image: image)
+        }
+        
+//        if hud.mode == .text {
+//            hud.minSize = CGSize(width: 80, height: 30)
+//            hud.margin = 5
+//        }
+        
+        if isDefaultAppearance == false {
+            hud.contentColor = .white
+            hud.bezelView.color = .black.withAlphaComponent(0.4)
+            hud.bezelView.style = .solidColor
+        }
         //HUD窗口显示1秒后自动隐藏
         hud.hide(animated: true, afterDelay: hideDuration)
     }
-     
-    //显示成功消息
-    func showSuccess(_ title: String, image: UIImage? = UIImage(named: "toast_success")) {
-        showInfo(title, image: image)
+    
+    /// 最小尺寸显示纯文本信息
+    func showText(_ text: String?, isDefaultAppearance: Bool = true) {
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud.mode = .text
+        hud.label.text = text
+        hud.label.numberOfLines = 0;
+
+        hud.minSize = CGSize(width: 80, height: 35);
+        hud.margin = 5;
+        if isDefaultAppearance == false {
+            hud.contentColor = .white
+            hud.bezelView.color = .black.withAlphaComponent(0.4)
+            hud.bezelView.style = .solidColor
+        }
+        hud.hide(animated: true, afterDelay: 1.5)
+    }
+    
+    /// 显示成功消息
+    func showSuccess(_ title: String, image: UIImage? = UIImage(named: "toast_success"), isDefaultAppearance: Bool = true) {
+        showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
  
-    //显示失败消息
-    func showError(_ title: String, image: UIImage? = UIImage(named: "toast_error")) {
-        showInfo(title, image: image)
+    /// 显示失败消息
+    func showError(_ title: String, image: UIImage? = UIImage(named: "toast_error"), isDefaultAppearance: Bool = true) {
+        showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
 }
 
@@ -172,143 +235,48 @@ public extension UIView {
 ////显示等待消息
 //self.view.showWait("请稍等")
 
-extension MBProgressHUD {
-    //显示等待消息
-    class func showLoading(_ title: String) {
-        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
-        hud.label.text = title
-        hud.removeFromSuperViewOnHide = true
-    }
-        
-    ///当前展示 MBProgressHUD
-    static var currentHUD: MBProgressHUD? {
-        return MBProgressHUD.forView(keyWindow)
-    }
-    /// 是否有 hud 正在展示
-    static var isShowing: Bool {
-        return currentHUD != nil;
-    }
-    /// 更新 hud 标题
-    static func updateLoading(_ title: String) {
-        if let hud = MBProgressHUD.forView(keyWindow) {
-            hud.label.text = title
-        }
-    }
-
-    //显示等待消息
-    class func hideHud(_ animated: Bool = true, delay: TimeInterval) {
-        if let hud = MBProgressHUD.forView(keyWindow) {
-            hud.hide(animated: animated, afterDelay: delay)
-        }
-    }
-     
-    //显示普通消息
-    class func showInfo(_ title: String, image: UIImage? = nil) {
-        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
-        hud.mode = .customView //模式设置为自定义视图
-        if let image = image {
-            hud.customView = UIImageView(image: image)
-        }
-        hud.label.text = title
-        hud.removeFromSuperViewOnHide = true
-        //HUD窗口显示1秒后自动隐藏
-        hud.hide(animated: true, afterDelay: hideDuration)
-    }
-     
-    //显示成功消息
-    class func showSuccess(_ title: String, image: UIImage? = UIImage(named: "toast_success")) {
-        showInfo(title, image: image)
-    }
- 
-    //显示失败消息
-    class func showError(_ title: String, image: UIImage? = UIImage(named: "toast_error")) {
-        showInfo(title, image: image)
-    }
- 
-}
-
-
-enum ZZProgressHUDStyle: Int {
-    case defaultBgColor, blackBgColor
-}
 
 class ZZProgressHUD: NSObject {
-    
-}
 
-extension ZZProgressHUD {
-    
-    static var style: ZZProgressHUDStyle = .defaultBgColor
-//    static var style: ZZProgressHUDStyle = .blackBgColor
-
-    //显示等待消息
-    static func showLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil) {
-        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
-        hud.label.text = title
-        if style != .defaultBgColor {
-            hud.contentColor = .white
-            hud.bezelView.color = .black.withAlphaComponent(0.5)
-            hud.bezelView.style = .solidColor
-        }
-        
-        if let cancellBlock = cancellBlock {
-            hud.button.setTitle("取消", for: .normal)
-            hud.button.addActionHandler { sender in
-//                DDLog(sender.currentTitle)
-                cancellBlock(sender)
-                hud.hide(animated: true)
-            }
-        }
-        hud.removeFromSuperViewOnHide = true
+    /// 显示等待消息
+    static func showLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
+        keyWindow.showLoading(title, cancellBlock: cancellBlock, isDefaultAppearance: isDefaultAppearance)
     }
-    ///当前展示 MBProgressHUD
+    /// 当前展示 MBProgressHUD
     static var currentHUD: MBProgressHUD? {
-        return MBProgressHUD.forView(keyWindow)
+        return keyWindow.currentHUD
     }
     /// 是否有 hud 正在展示
     static var isShowing: Bool {
-        return currentHUD != nil;
+        return keyWindow.isShowing
     }
     /// 更新 hud 标题
     static func updateLoading(_ title: String) {
-        if let hud = MBProgressHUD.forView(keyWindow) {
-            hud.label.text = title
-        }
+        keyWindow.updateLoading(title)
     }
 
-    //显示等待消息
-    static func hide(_ animated: Bool = true, delay: TimeInterval) {
-        if let hud = MBProgressHUD.forView(keyWindow) {
-            hud.hide(animated: animated, afterDelay: delay)
-        }
+    /// 显示等待消息
+    static func hideHud(_ animated: Bool = true, delay: TimeInterval) {
+        keyWindow.hideHud(animated, delay: delay)
     }
      
-    //显示普通消息
-    static func showInfo(_ title: String, image: UIImage? = nil) {
-        let hud = MBProgressHUD.showAdded(to: keyWindow, animated: true)
-        hud.mode = .customView //模式设置为自定义视图
-        hud.label.text = title
-        if let image = image {
-            hud.customView = UIImageView(image: image)
-        }
-        if style != .defaultBgColor {
-            hud.contentColor = .white
-            hud.bezelView.color = .black.withAlphaComponent(0.5)
-            hud.bezelView.style = .solidColor
-        }
-        hud.removeFromSuperViewOnHide = true
-        //HUD窗口显示1秒后自动隐藏
-        hud.hide(animated: true, afterDelay: hideDuration)
+    /// 显示普通消息
+    static func showInfo(_ title: String, image: UIImage? = nil, isDefaultAppearance: Bool = true) {
+        keyWindow.showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
-     
-    //显示成功消息
-    static func showSuccess(_ title: String, image: UIImage? = UIImage(named: "toast_success")) {
-        showInfo(title, image: image)
+    
+    ///最小尺寸显示纯文本信息
+    static func showText(_ text: String?, isDefaultAppearance: Bool = true) {
+        keyWindow.showText(text, isDefaultAppearance: isDefaultAppearance)
+    }
+    /// 显示成功消息
+    static func showSuccess(_ title: String, image: UIImage? = UIImage(named: "toast_success"), isDefaultAppearance: Bool = true) {
+        keyWindow.showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
  
-    //显示失败消息
-    static func showError(_ title: String, image: UIImage? = UIImage(named: "toast_error")) {
-        showInfo(title, image: image)
+    /// 显示失败消息
+    static func showError(_ title: String, image: UIImage? = UIImage(named: "toast_error"), isDefaultAppearance: Bool = true) {
+        keyWindow.showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
  
 //    //获取用于显示提示框的view
@@ -325,7 +293,4 @@ extension ZZProgressHUD {
 //        }
 //        return window!
 //    }
-    
 }
-
-
