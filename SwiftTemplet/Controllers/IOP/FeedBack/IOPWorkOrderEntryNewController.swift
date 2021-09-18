@@ -218,13 +218,13 @@ import SwiftExpand
 //            DDLog(dic)
 //            if let code = dic["code"] as? String {
 //                if code == "1" {
-//                    IOPProgressHUD.showSuccess(withStatus: kAPISuccess)
+//                    NNProgressHUD.showSuccess(withStatus: kAPISuccess)
 //                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
 //                        self.popToListController()
 //                    }
 //                }
 //            } else {
-//                IOPProgressHUD.showError(withStatus: dic["message"] as? String)
+//                NNProgressHUD.showError(withStatus: dic["message"] as? String)
 //            }
 //        }
 //    }
@@ -557,35 +557,126 @@ extension IOPWorkOrderEntryNewController: UIDocumentPickerDelegate{
     }
 }
 
-//struct StringTuple5 {
-//    var t0: String
-//    var t1: String
-//    var t2: String
-//    var t3: String
-//    var t4: String
+//extension IOPWorkOrderEntryNewController: NNUploadImagesViewDelegate {
+//    func didFinishPicker(_ sender: NNUploadImagesView, images: [UIImage], assets: [Any], isSelectOriginalPhoto: Bool) {
+////        DDLog(images.count)
+//        guard let assetList = assets as? [PHAsset] else {
+//            DDLog("[PHAsset] 异常")
+//            IOPProgressHUD.showError(withStatus: "多媒体数据签名异常")
+//            return
+//        }
 //
-//    init(_ t0: String, _ t1: String, _ t2: String, _ t3: String, _ t4: String) {
-//        self.t0 = t0
-//        self.t1 = t1
-//        self.t2 = t2
-//        self.t3 = t3
-//        self.t4 = t4
-//    }
-//}
-
-
-//struct CellModel {
-//    var title = "标题"
-//    var cellName = "UITableViewCell"
-//    var cellHeight = "60"
-//    var placeholder = "请输入"
-//    var modelProportyName = "请输入"
+//        guard let first = assetList.first else {
+//            return  }
 //
-//    init(_ title: String, _ cellName: String, _ cellHeight: String, _ placeholder: String, _ modelProportyName: String) {
-//        self.title = title
-//        self.cellName = cellName
-//        self.cellHeight = cellHeight
-//        self.placeholder = placeholder
-//        self.modelProportyName = modelProportyName
+//        if first.mediaType == .image {
+//            self.dataModel.uploadModels.removeAll()
+//        } else {
+//            self.dataModel.uploadVideoModels.removeAll()
+//        }
+//
+//
+//        let group = DispatchGroup()
+//        
+//        var tuples = [(Data, URL)]()
+//        assetList.forEach { asset in
+//            group.enter()
+//
+//            asset.getURL { url in
+//                guard let URL = url else {
+//                    DDLog("文件路径为空")
+//                    return }
+//                
+//                if let data = try? Data(contentsOf: URL) {
+//                    DDLog("____\(data.fileSize), \(URL)")
+//                    tuples.append((data, URL))
+//                }
+//                group.leave()
+//            }
+//        }
+//        group.notify(queue: .main) {
+//            let group1 = DispatchGroup()
+//            var dataModels = [IOPOSSUploadSignDataModel]()
+//
+//            tuples.forEach { (data, URL) in
+//                group1.enter()
+//                
+//                let signApi = IOPOSSUploadSignAPI()
+//                
+//                signApi.files = [URL.lastPathComponent]
+//                signApi.fileUrls = [URL]
+//                signApi.fileDatas = [data]
+//
+//                IOPProgressHUD.show(withStatus: kAPILoadingUpload)
+//                signApi.startRequest { manager, dic in
+//                    DDLog("signApi_\(signApi)_\(signApi.fileUrls.first!.absoluteString)")
+//                    guard let rootModel = IOPOSSUploadSignRootModel.yy_model(with: dic),
+//                          let data = rootModel.data,
+//                          let files = data.files,
+//                          let item = files.first else {
+//                        DDLog("数据结构错误")
+//                        IOPProgressHUD.showError(withStatus: "上传数据签名异常")
+//                        group1.leave()
+//                        return
+//                    }
+//                    dataModels.append(data)
+//                    DDLog(item.origin_name, item.name)
+//                    if item.origin_name.lowercased().hasSuffix(".mp4") {
+//                        self.dataModel.uploadVideoModels.append(item)
+//                    } else {
+//                        self.dataModel.uploadModels.append(item)
+//                    }
+//                    IOPProgressHUD.showSuccess(withStatus: kAPISuccess)
+//                    group1.leave()
+//
+//                } failedBlock: { manager, errorModel in
+//                    group1.leave()
+//                    IOPProgressHUD.showError(withStatus: errorModel.message ?? kAPIFail)
+//                }
+//
+//            }
+//            
+//            group1.notify(queue: .main) {
+//                
+//                let group2 = DispatchGroup()
+//                zip(tuples, dataModels).forEach { (arg0, dataModel) in
+//                    group2.enter()
+//
+//                    let (data, URL) = arg0
+//                    guard let files = dataModel.files,
+//                          let item = files.first else {
+//                        DDLog("数据结构错误")
+//                        IOPProgressHUD.showError(withStatus: "上传数据签名异常")
+//                        group2.leave()
+//                        return
+//                    }
+//                    
+//                    let uploadApi = IOPOSSUploadApi()
+//                    uploadApi.upload_url = dataModel.upload_url
+//                    uploadApi.app = dataModel.app
+//                    uploadApi.timestamp = dataModel.timestamp
+//
+//                    uploadApi.sign = item.sign
+//                    uploadApi.name = item.name
+//                    uploadApi.file = data
+//
+////                    if let data = signApi.fileDatas.first {
+////                        uploadApi.file = data
+////    //                         DDLog("upload_\(try? Data(contentsOf: URL).fileSize), \(URL)")
+////                    }
+//                    uploadApi.startRequest { manager, dic in
+//                        group2.leave()
+//                        DispatchQueue.main.async {
+//                            IOPProgressHUD.showSuccess(withStatus: kAPISuccess)
+//                            self.tableView.reloadRowList([0], section: 2)
+//                            self.tableView.reloadRowList([0], section: 3)
+//                        }
+//                    } failedBlock: { manager, errorModel in
+//                        group2.leave()
+//                        IOPProgressHUD.showError(withStatus: errorModel.message ?? kAPIFail)
+//                    }
+//                }
+//            }
+//        }
 //    }
 //}
