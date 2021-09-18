@@ -13,7 +13,7 @@ import MBProgressHUD
 
 class MBProgressHUDDemoController: UIViewController {
 
-    let list = [UIButton].init(count: 12) {
+    let list = [UIButton].init(count: 16) {
         let sender = UIButton(type: .custom)
         sender.setTitle("\($0)", for: .normal)
         sender.addTarget(self, action: #selector(handleAction(_:)), for: .touchUpInside)
@@ -33,7 +33,7 @@ class MBProgressHUDDemoController: UIViewController {
         navigationItem.rightBarButtonItems = ["hide", "dismiss"].map({
             UIBarButtonItem(obj: $0) { item in
                 if item.title == "hide" {
-                    MBProgressHUD.hideHud(delay: 0)
+                    ZZProgressHUD.hideHud(delay: 0)
                 } else {
                     self.view.hideHud(delay: 0)
                 }
@@ -51,60 +51,64 @@ class MBProgressHUDDemoController: UIViewController {
         super.viewDidLayoutSubviews()
         
         
-        list.updateItemsConstraint(CGRectMake(10, 10, kScreenWidth - 20, 200))
+        list.updateItemsConstraint(CGRectMake(10, 10, kScreenWidth - 20, 260), sectionInset: EdgeInsets(all: 10))
     }
 
     
     @objc func handleAction(_ sender: UIButton) {
+        let keyWindow: UIWindow = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first!
+
         switch sender.tag {
         case 0:
             //显示成功消息
-            MBProgressHUD.showSuccess("操作成功")
+            keyWindow.showSuccess("操作成功")
         case 1:
             //显示失败消息
-            MBProgressHUD.showError("操作失败")
+            keyWindow.showError("操作失败")
         case 2:
             //显示普通消息
-            MBProgressHUD.showInfo("这是普通提示消息")
+            keyWindow.showInfo("这是普通提示消息")
         case 3:
             //显示等待消息
-            MBProgressHUD.showLoading("请稍等")
-            DDLog(MBProgressHUD.isShowing)
-            MBProgressHUD.hideHud(delay: 0)
+            keyWindow.showLoading("请稍等")
+            DDLog(keyWindow.isShowing)
+            keyWindow.hideHud(delay: 2)
             
-            DispatchQueue.main.after(1) {
-                DDLog(MBProgressHUD.isShowing)
+            DispatchQueue.main.after(3) {
+                DDLog(keyWindow.isShowing)
             }
-
             
         case 4:
             //显示等待消息
-            view.showSuccess("操作成功")
+            view.showSuccess("操作成功", image: nil)
         case 5:
             //显示失败消息
-            view.showError("操作失败")
+            view.showError("操作失败", image: nil)
         case 6:
             //显示普通消息
             view.showInfo("这是普通提示消息")
         case 7:
             view.showLoading("请稍等")
             DDLog(view.isShowing)
-            view.hideHud(delay: 0)
-            DispatchQueue.main.after(1) {
-                DDLog(MBProgressHUD.isShowing)
+            view.hideHud(delay: 2)
+            DispatchQueue.main.after(3) {
+                DDLog(self.view.isShowing)
             }
             
         case 8:
             //显示等待消息
-            ZZProgressHUD.showSuccess("操作成功")
+            ZZProgressHUD.showSuccess("操作成功", isDefaultAppearance: false)
         case 9:
             //显示失败消息
-            ZZProgressHUD.showError("操作失败")
+            ZZProgressHUD.showError("操作失败", isDefaultAppearance: false)
         case 10:
             //显示普通消息
-            ZZProgressHUD.showInfo("这是普通提示消息")
+            ZZProgressHUD.showInfo("这是普通提示消息", isDefaultAppearance: false)
         case 11:
-            ZZProgressHUD.showLoading("请稍等")
+            ZZProgressHUD.showLoading(kRequestLoading, cancellBlock: { sender in
+                DDLog(sender.currentTitle)
+                
+            }, isDefaultAppearance: false)
             DDLog(ZZProgressHUD.isShowing)
             DispatchQueue.main.after(2) {
                 ZZProgressHUD.updateLoading("第二标题")
@@ -115,6 +119,13 @@ class MBProgressHUDDemoController: UIViewController {
 //            DispatchQueue.main.after(1) {
 //                DDLog(NNProgressHUD.isShowing)
 //            }
+        
+        case 12:
+            ZZProgressHUD.showText(kRequestSuccess)
+            
+        case 13:
+            ZZProgressHUD.showText(kRequestSuccess, isDefaultAppearance: false)
+            
         default:
             DDLog(sender.tag)
             break
