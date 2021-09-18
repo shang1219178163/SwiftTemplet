@@ -24,6 +24,33 @@ class FirstViewController: UIViewController{
         return view
     }()
     
+    lazy var footerView: NNTableFooterViewNew = {
+        let view = NNTableFooterViewNew(frame: CGRectMake(0, 0, kScreenWidth, 280))
+        view.spacing = 8
+        view.btn.addTarget(self, action: #selector(handleActionSend(_:)), for: .touchUpInside)
+        
+//        view.stackView.axis = .horizontal
+        
+        let imgView = UIImageView()
+        imgView.frame = CGRectMake(0, 0, 100, 50)
+        imgView.backgroundColor = .green
+        imgView.image = UIImage(named: "Skull.jpg")
+        view.contentView = imgView
+        
+        view.labelHeader.text = "随着经济社会的快速发展，乘坐飞机出行成为越来越多的人们的日常选择。由于各种不可预测因素的存在，"
+        view.labelFooter.text = "随着经济社会的快速发展，乘坐飞机出行成为越来越多的人们的日常选择。由于各种不可预测因素的存在，航空公司航班经常会出现延误或取消的情况，一旦无法及时实现航班恢复，乘客的出行受到影响，航空公司的经济和社会效益也面临诸多损失。不正常航班管理因此是航空公司运营管理的一大痛点。当不正常航班产生时，需采用何种方法来调整资源（包括航班时刻、飞机和机组等）的分配并重新安排旅客以实现航班计划的恢复呢？"
+
+        
+        view.getViewLayer()
+        return view
+    }()
+    
+    @objc func handleActionSend(_ sender: UIButton) {
+        view.endEditing(true)
+        DDLog(sender.currentTitle)
+
+    }
+    
     lazy var tipView: NNNetWorkOfflineView = {
         let view = NNNetWorkOfflineView(frame: .zero)
         return view
@@ -43,9 +70,17 @@ class FirstViewController: UIViewController{
     lazy var list: [[[String]]] = {
         return [
             [["AlertSheetStudyController", "Alert自定义", ],
-            ["SegmentControlStyleController", "SegmentControlStyle", ],
-                
-            ["NNButtonStudyController", "Swift 按钮封装", ],
+             ["TheadDemoController", "TheadDemoController", ],
+             ["MBProgressHUDDemoController", "MBProgressHUDDemo", ],
+             ["UICollectionDispalyController", "UICollectionDispaly", ],
+
+             ["UIImageDemoController", "UIImageDemo", ],
+             
+             ["InputViewViewController", "Swift InputView", ],
+
+             ["SegmentControlStyleController", "SegmentControlStyle", ],
+
+             ["NNButtonStudyController", "Swift 按钮封装", ],
              ["NNButtonDispalyController", "OC 按钮封装", ],
              ["NNButtonStudyController", "swift 按钮封装", ],
              
@@ -108,6 +143,7 @@ class FirstViewController: UIViewController{
         
         edgesForExtendedLayout = []
         view.backgroundColor = .white
+        title = "First"
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .action, action: { item in
             let vc = UIViewController()
@@ -165,6 +201,7 @@ class FirstViewController: UIViewController{
                 self.tipView.dismiss()
             }
         }
+        tableView.tableFooterView = footerView
         view.addSubview(tableView)
         
         
@@ -223,9 +260,17 @@ class FirstViewController: UIViewController{
 //        let b = Int(date.timeIntervalSince1970)
 //        DDLog(addTo(10)(1))
         
+        
+        var tuple = ("可抵扣时段", "UITableViewCellValue1", "40", "", "")
+        tuple.2 = "60"
+        DDLog(tuple)
         test()
 //        print(buildString())
         
+        let name = "uyut.MP4"
+        DDLog(name.lowercased().hasPrefixs([".mp4", ".mov"]))
+        DDLog(name.lowercased().hasSuffixs([".mp4", ".mov"]))
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -279,8 +324,6 @@ class FirstViewController: UIViewController{
         let array1 = [1,2,3,4,3,5,4,5,4,6,].unique.sorted()
         DDLog(array1)
     }
-    
-    
 }
 
 extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
@@ -298,7 +341,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle)
+        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle)
 
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
         cell.textLabel?.textColor = .theme;
@@ -308,11 +351,29 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
         cell.accessoryType = .disclosureIndicator;
         
         let itemList = list[indexPath.section][indexPath.row]
-        cell.textLabel!.text = itemList[1]
-//        cell.textLabel!.text = NSLocalizedString(itemList[1], comment: "")
-        cell.textLabel!.text = Bundle.localizedString(forKey: itemList[1])
+        cell.textLabel?.text = itemList[1]
+//        cell.textLabel?.text = NSLocalizedString(itemList[1], comment: "")
+        cell.textLabel?.text = Bundle.localizedString(forKey: itemList[1])
 
         cell.detailTextLabel?.text = itemList[0];
+        
+        
+        let colorDic = [
+            1 : 0x1D8FEE,
+            2 : 0x07CA54,
+            3 : 0xFC5B35,
+        ]
+        
+        let bgColorDic = [
+            1 : 0xE9F5FF,
+            2 : 0xE3FFEE,
+            3 : 0xFFF3ED,
+        ]
+        
+        if indexPath.row > 0 && indexPath.row < 4 {
+            cell.textLabel?.textColor = UIColor.hexValue(colorDic[indexPath.row]!)
+            cell.textLabel?.backgroundColor = UIColor.hexValue(bgColorDic[indexPath.row]!)
+        }
         
 //        let weights: [UIFont.Weight] = [.ultraLight, .thin, .regular, .medium, .semibold, .bold, .heavy, .black]
 //        if indexPath.row < weights.count {

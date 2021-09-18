@@ -124,7 +124,10 @@ import SnapKit
 //        label.attributedText = AttrString.test()
         label.attributedText = AttrString.testNew()
 
-        return
+        testSatues()
+    }
+    
+    func testAttributedText() {
         imgView.image = UIImage(named: "WechatIMG375.png")
         
         let str1: AttrString = """
@@ -169,7 +172,27 @@ import SnapKit
 //            .obliqueChain(0.3)
     }
         
+    func testSatues() {
+        label.backgroundColor = .white
+        
+        let image = UIImage(named: "icon_routingInspection_normal")!
+        let image1 = UIImage(named: "icon_routingInspection_ignore")!
+        let image2 = UIImage(named: "icon_routingInspection_hiddenTrouble")!
+        let image3 = UIImage(named: "icon_routingInspection_abnormal")!
+        
+        let att: AttrString = """
+          \(image: image, scale: 1.0, verticalOffSet: 0) \(image: image1, scale: 1.0, verticalOffSet: -13) \(image: image2, scale: 1.0, verticalOffSet: 13) \(image: image3, scale: 1.0, verticalOffSet: -3) \("状态", .font(UIFont.systemFont(ofSize: 12)))
+          """
+        
+        label.attributedText = att.attributedString
 
+//        let textAttachment = NSTextAttachment()
+//        textAttachment.image = image
+//        textAttachment.bounds = CGRect(origin: CGPoint.zero, size: image.size)
+//        let textAttachmentString = NSMutableAttributedString(attributedString: NSAttributedString(attachment: textAttachment))
+//
+//        label.attributedText = textAttachmentString + att.attributedString
+    }
     
 }
 

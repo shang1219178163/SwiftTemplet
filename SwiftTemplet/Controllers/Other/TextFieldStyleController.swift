@@ -180,6 +180,9 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
                 } action: { (sender) in
                     DDLog(sender.isSelected)
                 }
+                
+                cell.wordCount = 10
+                cell.pattern = "[^\\u4E00-\\u9FA5]"
 
             case 1:
 //                cell.textfield.addPasswordEveBlock { (sender) in
@@ -191,6 +194,10 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
                 } action: { (sender) in
                     DDLog(sender.isSelected)
                 }
+                
+                cell.wordCount = 20
+                cell.textfield.keyboardType = .numberPad
+                cell.pattern = "[^0-9]"
 
             default:
 //                cell.textfield.textAlignment = .right
@@ -257,8 +264,123 @@ extension TextFieldStyleController: UITableViewDataSource, UITableViewDelegate {
         
 }
 
-extension UITextField {
+
+
+class TextFieldMaxLengthController: UIViewController {
     
+    var inset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+
+    var labViews: [UITextField] {
+        return [textField, textFieldOne, textFieldTwo]
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        
+        view.addSubview(stackView)
+        
+        textField.delegate = self
+        textFieldOne.delegate = self
+        textFieldTwo.delegate = self
+
+        
+        labViews.forEach { e in
+            e.backgroundColor = .random
+        }
+        view.getViewLayer()
+    }
+        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        stackView.removeArrangedSubviews()
+        let items = labViews.filter { $0.isHidden == false }
+        stackView.addArrangedSubviews(items)
+        stackView.snp.remakeConstraints { (make) in
+            make.top.equalToSuperview().inset(inset.top)
+            make.left.equalToSuperview().inset(inset.left)
+            make.right.equalToSuperview().inset(inset.right)
+            make.height.equalTo(100)
+        }
+        
+        view.getViewLayer()
+
+    }
+    
+    // MARK: -lazy
+    lazy var stackView: UIStackView = {
+        let view = UIStackView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.spacing = 8
+        view.axis = .vertical
+        //子视图的高度或宽度保持一致
+        view.distribution = .fillProportionally
+//        view.distribution = .fillEqually
+        return view
+    }()
+    
+    public lazy var textField: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+    
+    
+    public lazy var textFieldOne: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+    
+    public lazy var textFieldTwo: UITextField = {
+         let view = UITextField(frame: .zero)
+         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+         view.textAlignment = .left
+         view.contentVerticalAlignment = .center
+         view.autocapitalizationType = .none
+         view.autocorrectionType = .no
+         view.clearButtonMode = .whileEditing
+         view.backgroundColor = .white
+         
+         return view
+    }()
+}
 
 
+extension TextFieldMaxLengthController: UITextFieldDelegate{
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+           
+        var maxLength: Int
+           
+        if textField == textFieldOne{
+           maxLength = 15
+        } else if textField == textFieldTwo{
+           maxLength = 10
+       } else {
+           maxLength = 20
+       }
+       
+       let currentString: NSString = textField.text! as NSString
+       let newString = currentString.replacingCharacters(in: range, with: string)
+       return newString.count <= maxLength
+    }
 }

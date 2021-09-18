@@ -36,6 +36,7 @@ class ThirdViewController: UIViewController{
             [["EntryViewController", "通用录入界面", ],
              ["IOPFuntionListController", "iop 视图", ],
              ["SuanfaViewController", "常见算法", ],
+             ["NSRegularExpressionController", "正则", ],
              
              ["AudioPlayerDemoController", "AudioPlayer", ],
 
@@ -62,7 +63,9 @@ class ThirdViewController: UIViewController{
              ["PlateKeybordController", "自定义车牌键盘", ],
 
 //             ["CellListController", "自定义Cell界面", ],
-             ["TextFieldStyleController", "TextField样式显示", ],                
+             ["TextFieldStyleController", "TextField样式显示", ],
+             ["TextFieldMaxLengthController", "MaxLength", ],
+             
              ["IOPPlateEntryController", "多车牌录入", ],
              ["FlipImageViewController", "FlipImageView", ],
              ["NNTitleViewSelectController", "导航栏下拉菜单封装", ],

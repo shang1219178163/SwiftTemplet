@@ -19,14 +19,38 @@ import RxCocoa
 
     
     lazy var tuples: [[(String, String)]] = {
-        return [[
-            ("IOPShopExamineDetailController", "审核详情"),
-            ("IOPShopWaitExamineForAddController", "待审核(新增审核)"),
-            ("IOPShopWaitExamineForAddCarCardController", "待审核(新增审核)"),
+        return [
+            [
+//             ("IOPWorkOrderEntryNewController", "问题反馈 IGListKit"),
+//             ("IOPEvaluateController", "问题反馈评价"),
+                
+                ("IOPWorkOrderListController", "问题反馈列表"),
+                ("IOPWorkOrderStartEvaluationController", "问题反馈评价"),
+                ("IOPWorkOrderReplayController", "问题回复"),
+                
+                ("IOPWorkOrderDetailController", "问题反馈详情"),
+                ("NNIssueReplayController", "cell自适应"),
+                ("IOPWorkOrderEntryController", "问题反馈"),
+                ("IOPWorkOrderEntryNewController", "问题反馈New"),
+                
+                ("IOPInspectionListController", "巡检"),
+                ("IOPInspectionDetailController", "巡检详情"),
+                ("IOPInspectionDetailNewController", "巡检详情1"),
+                
+            ],
             
-            ("IOPShopWaitExamineForCarOwnerController", "待审核(编辑车主)"),
-            ("IOPShopWaitExamineForCarController", "待审核(新增审核)车辆认证资料"),
-            ("IOPShopWaitExamineForParkingCardController", "待审核(购买车位卡)"),
+            [("IOPGoodsDetailController", "详情"),
+             ("IOPGoodsEntryController", "录入"),
+////            ("IOPGoodsListController", "审核详情"),
+            ],
+
+            [("IOPShopAuthDetailController", "审核详情"),
+            ("IOPShopAuthForAddController", "待审核(新增审核)"),
+            ("IOPShopAuthForAddCarCardController", "待审核(新增审核)"),
+            
+            ("IOPShopAuthForCarOwnerController", "待审核(编辑车主)"),
+            ("IOPShopAuthForCarController", "待审核(新增审核)车辆认证资料"),
+            ("IOPShopAuthForParkingCardController", "待审核(购买车位卡)"),
 
             ("NNExcelAlertViewController", "NNExcelAlertView" ),
             ("IOPPayInpartBaseInfoController", "支付进件基础信息"),
@@ -52,6 +76,7 @@ import RxCocoa
     lazy var rightBtn: UIButton = {
         let view = UIButton(type: .custom)
         view.setTitle("保存", for: .normal)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 15)
 
 //        view.isHidden = true;
         view.sizeToFit()
@@ -80,21 +105,7 @@ import RxCocoa
     }()
     
     
-    lazy var searchBar: UISearchBar = {
-//        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 50))
-//        view.layer.cornerRadius = 3;
-//        view.layer.masksToBounds = true;
-//
-//        view.showsCancelButton = false;
-//        view.backgroundColor = .white
-//        view.textField?.placeholder = "请输入商品名称搜索";
-////        view.textField?.tintColor = .white;
-//        view.textField?.font = UIFont.systemFont(ofSize: 13)
-//        view.textField?.borderStyle = .roundedRect;
-//        view.textField?.backgroundColor = UIColor.background
-//        view.textField?.layer.cornerRadius = 5;
-//        view.textField?.layer.masksToBounds = true;
-        
+    lazy var searchBar: UISearchBar = {        
         let view = UISearchBar(frame: CGRectMake(0, 0, kScreenWidth - 70, 50))
         view.textField?.placeholder = "请输入名称搜索";
 //        view.backgroundColor = .white
@@ -121,8 +132,10 @@ import RxCocoa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "KOP功能"
         edgesForExtendedLayout = []
+        view.backgroundColor = .clear
+        
+        title = "IOP功能"
         setupUI()
         
         searchBar.rxDrive { (query) in
@@ -132,6 +145,17 @@ import RxCocoa
         searchBar.rx.safeDrive { (query) in
             DDLog(query)
         }.disposed(by: disposeBag)
+        
+        searchBar.rx
+           .cancelButtonClicked
+           .asDriver(onErrorJustReturn: ())
+           .drive(onNext: { [weak searchBar] in
+              searchBar?.resignFirstResponder()
+              searchBar?.showsCancelButton = false
+//                self.requestList(true, title: nil)
+            DDLog("cancell")
+           })
+           .disposed(by: disposeBag)
     }
     
     override func viewDidLayoutSubviews() {
@@ -147,15 +171,13 @@ import RxCocoa
 //        navigationController?.navigationBar.shadowImage = UIImage()
         
         navigationController?.navigationBar.setBackgroudColor(.clear, for: .default)
-        navigationController?.navigationBar.setTextColor(.systemGreen)
+        navigationController?.navigationBar.setTextColor(.systemOrange)
     }
-        
-
     
     // MARK: - funtions
     func setupUI() {
+        edgesForExtendedLayout = []
         view.backgroundColor = UIColor.white
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         
         view.addSubview(tableView)
@@ -299,18 +321,18 @@ extension IOPFuntionListController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "cell1", style: .subtitle);
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 15)
-        cell.textLabel!.textColor = UIColor.theme;
+        let cell = tableView.dequeueReusableCell(for: UITableViewCell.self, identifier: "subtitle", style: .subtitle);
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell.textLabel?.textColor = UIColor.theme;
 
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 13)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell.detailTextLabel?.textColor = UIColor.gray;
         cell.accessoryType = .disclosureIndicator;
         
         let tuple = tuples[indexPath.section][indexPath.row]
-        cell.textLabel!.text = tuple.1
-//        cell.textLabel!.text = NSLocalizedString(tuple.1, comment: "")
-        cell.textLabel!.text = Bundle.localizedString(forKey: tuple.1)
+        cell.textLabel?.text = tuple.1
+//        cell.textLabel?.text = NSLocalizedString(tuple.1, comment: "")
+        cell.textLabel?.text = Bundle.localizedString(forKey: tuple.1)
 
         cell.detailTextLabel?.text = tuple.0
 
@@ -341,5 +363,38 @@ extension IOPFuntionListController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UILabel();
+    }
+}
+
+@objc public extension UITableView{
+    
+    /// [源]UITableView创建
+    static func create(_ rect: CGRect = .zero, style: UITableView.Style = .plain, rowHeight: CGFloat = 70.0) -> UITableView{
+        return UITableView(rect: rect, style: style, rowHeight: rowHeight)
+    }
+}
+
+
+public extension Array where Element : Equatable {
+
+//    mutating func removeFirst(_ element: Element, toIndex: Int) {
+//        if let index = firstIndex(of: element) {
+//            remove(at: index)
+//        }
+//    }
+//
+//    mutating func removeLast(_ element: Element) {
+//        if let index = lastIndex(of: element) {
+//            remove(at: index)
+//        }
+//    }
+
+    mutating func removeFirst(_ element: Element, toIndex: Int? = nil) {
+        if let index = firstIndex(of: element) {
+            remove(at: index)
+        }
+        if let toIndex = toIndex, toIndex < self.count - 1 {
+            insert(element, at: toIndex)
+        }
     }
 }

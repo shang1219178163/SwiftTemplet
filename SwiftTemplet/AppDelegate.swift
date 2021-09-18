@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationController.initializeMethod()
         UITextView.initializeMethod()
         UIControl.initializeMethod()
+        UITableView.initializeMethodForPlaceHolderView()
 //        UITapGestureRecognizer.initializeMethod()
 //        UIImageView.initializeMethod()
 //        UIColor.theme = UIColor.systemBlue
@@ -45,7 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        setupAppearance(.white, barTintColor: .theme)
         IQKeyboardManager.shared.enable = true
 
-
+        
+//        _ = {
+//            $0.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 12),
+//                                       .foregroundColor: UIColor.red
+//            ], for: .normal)
+//        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]))
+        
 //        var controller = UICtrFromString("MainViewController");
 //        controller = UICtrFromString("HomeViewController");
 
@@ -53,10 +60,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIApplication.mainWindow;
         window?.rootViewController = controller
-//
+
+        
+        DDLog(Int(Date().timeIntervalSince1970))
+        
+        let text = "Lots of cakes, with a piece of cake."
+        let find = "cake"
+        var count: Int = text.count - text.replacingOccurrences(of: find, with: "").count
+        count /= find.count
+        DDLog(count)
+
+        
+        let a = "aaabbbcccdddccc"
+        let list1 = a.components(separatedBy: "ccc")
+        DDLog(list1)
+
+        DDLog(text.countOccurencesOf(find))
+        DDLog(text.countOccurencesOf1(find))
+
+        let ac =
+        "http://oss-basic.dev.irainone.com/api/file?app=iop&timestamp=1629784497&name=iop/16297844970/科目一考试技巧与口诀.pdf&sign=9d99da578cfe48117833ecab56b351e2"
+        var list = ac.urlDecoded.components(separatedBy: CharacterSet(charactersIn: "/&"))
+        list.removeLast()
+        let name = list.last
+        DDLog(name)
+        
+        
+//        let urlStr = "http://public-oss.dev.irainone.com/oss/file?app=iop&path=iop/16303780370/垃圾分类指南.jpg"
+        let urlStr = "http://public-oss.dev.irainone.com/oss/file?app=iop&path=iop/16303780370/垃圾分类指南.JPG&app=iop"
+
+        let regex = ".*(BMP|JPG|JPEG|PNG|GIF)"
+        let matchs = regulayExpression(regularExpress: regex, validateString: urlStr)
+        DDLog(matchs)
+        
+//        let RE = try? NSRegularExpression(pattern: regex, options: .caseInsensitive)
+//        let modified = RE?.stringByReplacingMatches(in: urlStr, options: .reportProgress, range: NSRange(location: 0, length: urlStr.count))
+
 //        testFunc()
         return true
     }
+    
+    func regulayExpression(regularExpress: String, validateString: String) -> [String] {
+       do {
+           let regex = try NSRegularExpression.init(pattern: regularExpress, options: [])
+           let matches = regex.matches(in: validateString, options: [], range: NSRange(location: 0, length: validateString.count))
+           var res: [String] = []
+           for item in matches {
+               let str = (validateString as NSString).substring(with: item.range)
+               res.append(str)
+           }
+           return res
+       } catch {
+           return []
+       }
+   }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.absoluteString.hasSuffix("\(kPayURLScheme)://") {
@@ -286,17 +343,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.tintColor = tintColor
             $0.titleTextAttributes = [NSAttributedString.Key.foregroundColor: tintColor,]
           }(UINavigationBar.appearance())
-                
+        
+        if #available(iOS 11.0, *) {
+        _ = {
+            $0.tintColor = nil
+          }(UINavigationBar.appearance(whenContainedInInstancesOf: [UIDocumentBrowserViewController.self]))
+        }
+            
         _ = {
             $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-          }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIImagePickerController.self]))
-        
+        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIImagePickerController.self,
+                                                                  UIDocumentPickerViewController.self]))
         
         _ = {
             $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: tintColor], for: .normal)
-          }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]))
-        
-        
+        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]))
+
+        if let aClass = NSClassFromString("UICalloutBarButton")! as? UIButton.Type {
+            aClass.appearance().setTitleColor(.white, for: .normal)
+        }
+
 //        _ = {
 //            $0.barTintColor = barTintColor
 //            $0.tintColor = tintColor
@@ -375,7 +441,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.selectionStyle = .none
             $0.backgroundColor = .white
           }(UITableViewCell.appearance())
-
         
         _ = {
             $0.scrollsToTop = false
@@ -462,3 +527,5 @@ extension UIApplication{
 //        bgTask = UIBackgroundTaskIdentifier.invalid
 //    }
 }
+
+
