@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 /// 获取省-市-区
-class IOPParkDistrictApi: NNBaseRequestApi {
+class IOPParkDistrictApi: NNBaseRequestAPI {
     
     ///1省级 2市级 3区域级
     @objc var leveltype: String = ""
@@ -20,8 +21,8 @@ class IOPParkDistrictApi: NNBaseRequestApi {
         return "IOPAPIRequestURLSaasParkDistrict"
     }
 
-    override func requestType() -> String {
-        return kHTTPMethodGet
+    override func requestType() -> HTTPMethod {
+        return .get
     }
     
     

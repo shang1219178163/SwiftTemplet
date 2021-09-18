@@ -34,7 +34,7 @@ class BathRequestController: UIViewController {
     }
     
 
-    func batchRquest(_ list: [NNBaseRequestApi], success: @escaping NNRequestSuccessBlock, fail: @escaping NNRequestFailureBlock) {
+    func batchRquest(_ list: [NNBaseRequestAPI], success: @escaping NNRequestSuccessBlock, fail: @escaping NNRequestFailureBlock) {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = list.count
         list.forEach {api in
@@ -44,7 +44,7 @@ class BathRequestController: UIViewController {
         }
     }
     
-    func batchRquest(_ list: [NNBaseRequestApi], block: @escaping ((NNBaseRequestApi)->Void)) {
+    func batchRquest(_ list: [NNBaseRequestAPI], block: @escaping ((NNBaseRequestAPI)->Void)) {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = list.count
         list.forEach {api in

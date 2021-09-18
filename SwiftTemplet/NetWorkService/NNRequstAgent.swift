@@ -60,6 +60,7 @@ import SwiftExpand
                     let fileName = DateFormatter.stringFromDate(Date(), fmt: "yyyyMMddHHmmss")
                     let imageType = UIImage.contentType(obj as NSData)
                     let mimeType = "image/\(imageType)"
+//                    let mimeType = "video/mpeg4"
                     print("\(#function)_\(key)_\(obj.fileSize)_\(fileName)_\(mimeType)_")
                     
                     formData.append(obj, withName: key, fileName: fileName, mimeType: mimeType)

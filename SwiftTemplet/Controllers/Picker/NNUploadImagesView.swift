@@ -45,13 +45,17 @@ class NNUploadImagesView: UIView {
                 
                 if newValue.count > sender.tag {
                     let image = newValue[sender.tag]
-                    sender.setBackgroundImage(image, for: .normal)
+//                    sender.setBackgroundImage(image, for: .normal)
+                    sender.setImage(image, for: .normal)
+
                     sender.setTitle(nil, for: .normal)
                     sender.iconBtn.isHidden = (image == self.imageDefault)
                 }
                 sender.addActionHandler({ sender in
 //                     DDLog(sender.tag, sender.backgroundImage(for: .normal), self.imageDefault)
-                    guard let image = sender.backgroundImage(for: .normal) else {
+//                    guard let image = sender.backgroundImage(for: .normal) else {
+//                        return }
+                    guard let image = sender.image(for: .normal) else {
                         return }
                     if image == self.imageDefault {
                         self.pickerVC.show()

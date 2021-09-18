@@ -26,7 +26,7 @@ import SwiftExpand
 //        NNProgressHUD.showLoading("请求中...")
 //        licenseApi.imgUrl = imgUrl
 //        licenseApi.startRequest { (api, dic) in
-////            IOPProgressHUD.dismiss()
+////            NNProgressHUD.dismiss()
 ////            DDLog(dic)
 //            guard let rootModel = IOPOcrParamsRootModel.yy_model(with: dic),
 //                  let detailModel = rootModel.data
@@ -46,7 +46,7 @@ import SwiftExpand
 //        NNProgressHUD.showLoading("请求中...")
 //        idCardApi.imgUrl = imgUrl
 //        idCardApi.startRequest { (api, dic) in
-////            IOPProgressHUD.dismiss()
+////            NNProgressHUD.dismiss()
 ////            DDLog(dic)
 ////            block?(dic)
 //            guard let rootModel = IOPOcrParamsRootModel.yy_model(with: dic),

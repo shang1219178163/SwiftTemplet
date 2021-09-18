@@ -106,12 +106,12 @@ import SwiftExpand
             return
 //            let phone = self.textFieldView.textfield.text
 //            if phone == nil || phone!.count < 11 {
-//                IOPProgressHUD.showText("请输入有效的手机号码")
+//                NNProgressHUD.showText("请输入有效的手机号码")
 //                return
 //            }
 //            self.userVM.requestPhoneCode(phone) { (dic) in
 //                guard let code = dic["code"] as? NSNumber else {
-//                    IOPProgressHUD.showError(withStatus: "code 未返回")
+//                    NNProgressHUD.showError(withStatus: "code 未返回")
 //                    return }
 //                if code.intValue == 0 {
 //                    sender.timerStart(60)

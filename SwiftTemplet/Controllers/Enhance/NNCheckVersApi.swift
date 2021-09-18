@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Alamofire
 
-class NNCheckVersApi: NNBaseRequestApi {
+class NNCheckVersApi: NNBaseRequestAPI {
     override func requestURI() -> String {
         return "http://itunes.apple.com/cn/lookup?";
     }
     
-    override func requestType() -> String {
-        return kHTTPMethodGet
+    override func requestType() -> HTTPMethod {
+        return .get
     }
     
     override func requestParams() -> Dictionary<String, Any> {

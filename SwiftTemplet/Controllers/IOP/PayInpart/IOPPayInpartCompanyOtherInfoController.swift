@@ -165,7 +165,7 @@ import SnapKit
 
 //        let urlString = dataModel.valueText(forKeyPath: itemList[4], defalut: "")
 //        if urlString.hasPrefix("http") == false {
-//            IOPProgressHUD.showText("文件链接无效")
+//            NNProgressHUD.showText("文件链接无效")
 //            return
 //        }
 //

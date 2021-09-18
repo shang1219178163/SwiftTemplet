@@ -185,13 +185,13 @@ extension UITableViewCellWebView: WKNavigationDelegate{
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         webView.isHidden = true
 //        UIAlertController.showAlert("提示", message: error.localizedDescription, actionTitles: nil, handler: nil);
-//        IOPProgressHUD.showError(withStatus: error.localizedDescription)
+//        NNProgressHUD.showError(withStatus: error.localizedDescription)
     }
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         webView.isHidden = true
 //        UIAlertController.showAlert("提示", message: error.localizedDescription, actionTitles: nil, handler: nil);
-//        IOPProgressHUD.showError(withStatus: error.localizedDescription)
+//        NNProgressHUD.showError(withStatus: error.localizedDescription)
     }
     
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {

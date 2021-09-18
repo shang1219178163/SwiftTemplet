@@ -7,30 +7,30 @@
 //
 
 import UIKit
+import Alamofire
 
-@objcMembers class NNBaseRequestApi: NNRequstManager, NNRequestManagerProtocol {
+@objcMembers class NNBaseRequestAPI: NNRequstManager, NNRequestManagerProtocol {
 
-  
     override init() {
         super.init()
-        child = self;
+        child = self
     }
     
     func requestURI() -> String {
-        return "";
+        return ""
     }
     
-    func requestType() -> String {
-        return kHTTPMethodGet
+    func requestType() -> HTTPMethod {
+        return .get
     }
     
-    func requestParams() -> [String : Any] {
-        let dic:[String : Any] = [:]
-        return dic;
+    func requestParams() -> [String: Any] {
+        let dic = [String: Any]()
+        return dic
     }
 
     func validateParams() -> Bool {
-        return true;
+        return true
     }
     
     func needLogin() -> Bool {
@@ -42,7 +42,7 @@ import UIKit
     }
     
     func printLog() -> Bool {
-        return true;
+        return true
     }
 
 

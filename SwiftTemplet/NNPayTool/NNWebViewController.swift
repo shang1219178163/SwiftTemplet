@@ -341,12 +341,12 @@ extension NNWebViewController: WKNavigationDelegate{
     
 //    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
 ////        UIAlertController.showAlert("提示", message: (error as NSError).domain, actionTitles: nil, handler: nil);
-////        IOPProgressHUD.showError(withStatus: (error as NSError).domain)
+////        NNProgressHUD.showError(withStatus: (error as NSError).domain)
 //    }
 //
 //    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
 ////        UIAlertController.showAlert("提示", message: (error as NSError).domain, actionTitles: nil, handler: nil);
-////        IOPProgressHUD.showError(withStatus: (error as NSError).domain)
+////        NNProgressHUD.showError(withStatus: (error as NSError).domain)
 //    }
     
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {

@@ -11,47 +11,85 @@ import Alamofire
 import SwiftExpand
 
 
-let kHTTPMethodGet: String = "GET"
-let kHTTPMethodPOST: String = "POST"
-let kHTTPMethodUpload: String = "upload"
-let kHTTPMethodDownload: String = "download"
+//enum NNRequestType: String {
+//    case get = "GET"
+//    case post = "POST"
+//    case post_formData = "POST_FORM_DATA"
+//    case upload = "UPLOAD"
+//    case download = "DOWNLOAD"
+//}
+
+
+extension HTTPMethod{
+    ///
+    public static let upload = HTTPMethod(rawValue: "UPLOAD")
+    
+    public static let download = HTTPMethod(rawValue: "DOWNLOAD")
+
+}
 
 enum NNRequestCode: Int {
-    case Success         = 1        //请求成功
-    case ParamsError     = 100      //参数错误，
+    case success         = 1        //请求成功
+    case paramsError     = 100      //参数错误，
     case JSONError       = 101      //JSON解析错误
-    case Timeout         = 102      //请求超时
-    case NetworkError    = 103      //网络错误，
-    case ServerError     = 104      //服务端返回非200的状态码
-    case Cancel          = 105      //取消网络请求
-    case NoLogin         = 106      //未登录
-    case NotFound        = 107      //服务器找不到给定的资源；文档不存在
-    case InvalidRequest  = 108      //无效请求
-    case InvalidToken    = 109      //token失效
-    case RequestTooLarge = 413      //文件太大
-    case Unknown         = 110      //未知错误
+    case timeout         = 102      //请求超时
+    case networkError    = 103      //网络错误，
+    case serverError     = 104      //服务端返回非200的状态码
+    case cancel          = 105      //取消网络请求
+    case noLogin         = 106      //未登录
+    case notFound        = 107      //服务器找不到给定的资源；文档不存在
+    case invalidRequest  = 108      //无效请求
+    case invalidToken    = 109      //token失效
+    case requestTooLarge = 413      //文件太大
+    case unknown         = 110      //未知错误
 }
 
 /// 必须遵守的基础协议
-@objc protocol NNRequestManagerProtocol: NSObjectProtocol {
-    @objc func requestURI() -> String
-    @objc func requestType() -> String
+protocol NNRequestManagerProtocol: NSObjectProtocol {
+    
+    func requestURI() -> String
+    
+    func requestType() -> HTTPMethod
 
-    @objc func requestParams() -> [String: Any]
-    @objc func validateParams() -> Bool
-    @objc func shouldCache() -> Bool
-    @objc func needLogin() -> Bool
-    @objc func printLog() -> Bool
-
+    func requestParams() -> [String: Any]
+    
+    func validateParams() -> Bool
+}
+/// 可选协议方法
+extension NNRequestManagerProtocol {
+    
+    func shouldCache() -> Bool{
+        return false
+    }
+    
+    func needLogin() -> Bool{
+        return true
+    }
+    
+    func printLog() -> Bool{
+        return false
+    }
+    
     @discardableResult
-    @objc optional func saveJsonOfCache(_ json: [String: Any]?) -> Bool
-    @objc optional func jsonFromCache() -> [String: Any]?
+    func saveJsonOfCache(_ json: [String: Any]?) -> Bool{
+        return false
+    }
+    
+    func jsonFromCache() -> [String: Any]?{
+        return nil
+    }
 
-    @objc optional func clearCache()
+    func clearCache(){
+        
+    }
+    
+    func validateAppVer() -> Bool {
+        return true
+    }
 }
 
 /// 网络请求代理
-@objc protocol NNRequestManagerDelegate: NSObjectProtocol {
+protocol NNRequestManagerDelegate: NSObjectProtocol {
     func manager(_ manager: NNRequstManager, dic: Dictionary<String, Any>)
     func manager(_ manager: NNRequstManager, error: NSError)
 
@@ -70,7 +108,7 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
     
     var isLoading: Bool = false
     
-    weak var child: NNRequestManagerProtocol?
+    weak var child: NNRequestManagerProtocol!
     weak var delegate: NNRequestManagerDelegate?
 
     var successBlock: NNRequestSuccessBlock?
@@ -80,6 +118,7 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
         super.init()
     }
     
+    @discardableResult
     func startRequest(success: @escaping NNRequestSuccessBlock, fail: @escaping NNRequestFailureBlock) -> DataRequest? {
         successBlock = success;
         failureBlock = fail;
@@ -87,7 +126,7 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
     }
         
     func startRequest() -> DataRequest? {
-        if child?.validateParams() == false {
+        if child.validateParams() == false {
 //            let error = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
 //
 //            delegate?.manager(self, error: error);
@@ -95,7 +134,11 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
             return nil
         }
         
-        if let child = child, let cacheDic = child.jsonFromCache?() as [String: Any]? {
+        if child.validateAppVer() == false {
+            return nil
+        }
+        
+        if let cacheDic = child.jsonFromCache() {
             printLog(cacheDic, isRequest: false)
 
             delegate?.manager(self, dic: cacheDic);
@@ -124,7 +167,7 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
         printLog(params, isRequest: true)
         
         switch child.requestType() {
-        case kHTTPMethodUpload:
+        case .upload:
             return NNRequstAgent.shared.upload(url, parameters: params) { (progress) in
                 
             } handler: { (response) in
@@ -145,13 +188,14 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
                         print(statusCode)
                     }
                     
-                    self.didFailure(response, errorType: .ServerError)
+                    self.didFailure(response, errorType: .serverError)
                 }
             }
 
         default:
+            let method = child.requestType()
             return NNRequstAgent.shared.request(url,
-                                                method: HTTPMethod(rawValue: child.requestType()),
+                                                method: method,
                                                 parameters: params) { (response) in
                 self.isLoading = false
                 
@@ -171,7 +215,7 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
                         print(statusCode)
                     }
                     
-                    self.didFailure(response, errorType: .ServerError)
+                    self.didFailure(response, errorType: .serverError)
                 }
             }
         }
@@ -180,7 +224,7 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
     
     func didSuccess(_ response: AFDataResponse<Data?>, data: Data) {
         guard response.response?.statusCode == 200 else {
-            didFailure(response, errorType: .ServerError)
+            didFailure(response, errorType: .serverError)
             return;
         }
         
@@ -196,43 +240,43 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
         successBlock?(self, jsonDic)
         
         //缓存数据
-        child.saveJsonOfCache?(jsonDic)
+        child.saveJsonOfCache(jsonDic)
     }
     
     func didFailure(_ response: AFDataResponse<Data?>, errorType: NNRequestCode) {
         var tip: String = "请求失败,请稍后重试"
         switch errorType {
-        case .ParamsError:
+        case .paramsError:
             tip = "参数错误"
 
         case .JSONError:
             tip = "JSON解析错误"
 
-        case .Timeout:
+        case .timeout:
             tip = "请求超时"
 
-        case .NetworkError:
+        case .networkError:
             tip = "网络错误"
             
-        case .ServerError:
+        case .serverError:
             tip = "服务端返回非200的状态码"
             
-        case .Cancel:
+        case .cancel:
             tip = "取消网络请求"
             
-        case .NoLogin:
+        case .noLogin:
             tip = "未登录"
             
-        case .NotFound:
+        case .notFound:
             tip = "服务器找不到给定的资源；文档不存在"
             
-        case .InvalidRequest:
+        case .invalidRequest:
             tip = "无效请求"
             
-        case .InvalidToken:
+        case .invalidToken:
             tip = "token失效"
             
-        case .Unknown:
+        case .unknown:
             tip = "未知错误"
             
         default:
