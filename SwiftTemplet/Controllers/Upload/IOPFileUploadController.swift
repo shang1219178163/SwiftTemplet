@@ -6,6 +6,25 @@
 //  Copyright © 2020 Xi'an iRain IoT. Technology Service CO., Ltd. . All rights reserved.
 //
 
+//guard let resources = try? url.resourceValues(forKeys:[.fileSizeKey]),
+//      let fileSize = resources[.fileSizeKey] as? NSNumber
+//      else {
+//    IOPProgressHUD.showError(withStatus: "数据异常")
+//    return }
+//let sizeInMB: Double = fileSize.doubleValue/(1024*1024)
+//if sizeInMB > fileMaxSize {
+//    IOPProgressHUD.dismiss()
+//
+//    let message = "文件最大不能超过\(fileMaxSize)M"
+//    UIAlertController(title: nil, message: message, preferredStyle: .alert)
+//        .addActionTitles([kTitleKnow], handler: nil)
+//        .present()
+////            IOPProgressHUD.showError(withStatus: "\(fileMaxSize)")
+//    return
+//}
+
+
+
 import UIKit
 import QuickLook
 import Photos

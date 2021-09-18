@@ -16,8 +16,9 @@ class CenterViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
-        view.backgroundColor = .cyan;
-
+        view.backgroundColor = .white
+        
+        title = "Center"
                 
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .reply, action: { item in
             self.dismiss(animated: true, completion: nil)

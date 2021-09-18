@@ -25,6 +25,11 @@ class NNPageModel: NSObject {
         return currPage > firstPage;
     }
     
+    convenience init(limit: NSInteger) {
+        self.init()
+        self.limit = limit
+    }
+    
     func turnToFirstPage(_ page: NSInteger) {
         currPage = firstPage;
     }
