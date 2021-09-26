@@ -110,7 +110,7 @@ class DateDemoController: UIViewController {
         
         case 1:
             let formatter = RelativeDateTimeFormatter()
-            formatter.locale = Locale(identifier: "zh_CN")
+            formatter.locale = Locale.zh_CN
             formatter.dateTimeStyle = .named
 
             DDLog(formatter.localizedString(from: DateComponents(month: -1))) // 上个月
@@ -136,7 +136,7 @@ class DateDemoController: UIViewController {
 
             DDLog(formatter.string(from: startDate, to: endDate)) // 12/25/20, 9:41 AM – 12/26/20, 9:41 AM
         
-            formatter.locale = Locale(identifier: "zh_CN")
+            formatter.locale = Locale.zh_CN
             DDLog(formatter.string(from: startDate, to: endDate)) // 2020/12/25 上午8:41 – 2020/12/26 上午8:41
         
         case 3:

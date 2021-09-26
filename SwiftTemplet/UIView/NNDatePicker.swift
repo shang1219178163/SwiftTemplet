@@ -126,7 +126,7 @@ class NNDatePicker: UIView {
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "zh_CN")
+        datePicker.locale = Locale.zh_CN
         datePicker.backgroundColor = .white
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels

@@ -281,8 +281,8 @@ class IOPFileUploadController: UIViewController {
             self.localFileUrl = url as NSURL?
 //            self.previewVC.reloadData()
             
-            if error != nil {
-                NNProgressHUD.showError(error?.localizedDescription)
+            if let error = error {
+                NNProgressHUD.showError(error.localizedDescription)
             } else {
                 NNProgressHUD.dismiss()
             }

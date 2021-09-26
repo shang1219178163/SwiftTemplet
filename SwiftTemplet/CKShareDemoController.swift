@@ -53,8 +53,8 @@ class CKShareDemoController: UIViewController, UICloudSharingControllerDelegate 
             modifyRecordsOperation.timeoutIntervalForResource = 15
             
             modifyRecordsOperation.modifyRecordsCompletionBlock = { records, recordIDs, error in
-                if error != nil {
-                    print("Error: \(String(describing: error?.localizedDescription))")
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
                 }
                 preparationCompletionHandler(share, CKContainer.default(), error)
             }

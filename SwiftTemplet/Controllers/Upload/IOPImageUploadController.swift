@@ -290,8 +290,8 @@ extension IOPImageUploadController: UIImagePickerControllerDelegate, UINavigatio
     }
     
     @objc func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
-        if error != nil {
-            print("保存失败")
+        if let error = error {
+            print("保存失败:\(error.localizedDescription)")
         } else {
             print("保存成功")
         }

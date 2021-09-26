@@ -230,7 +230,6 @@ class ThirdViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-//        DDLog("viewWillAppear")
 
 //        let string = "[[\"\\u9655A91D6P\"]]";
 //        let obj = JSONSerialization.jsonObjectFromString(string);

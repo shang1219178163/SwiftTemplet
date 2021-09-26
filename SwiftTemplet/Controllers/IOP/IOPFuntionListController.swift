@@ -172,6 +172,7 @@ import RxCocoa
         
         navigationController?.navigationBar.setBackgroudColor(.clear, for: .default)
         navigationController?.navigationBar.setTextColor(.systemOrange)
+        navigationController?.navigationBar.setColor(.theme, background: .white)
     }
     
     // MARK: - funtions

@@ -31,7 +31,6 @@ import RxSwift
         let view = UITableView.create(self.view.bounds, style: .plain, rowHeight: 70)
         view.dataSource = self
         view.delegate = self
-
 //        view.mj_header = MJRefreshNormalHeader(refreshingBlock: {
 //            self.viewModel.requestRefresh()
 //        })
