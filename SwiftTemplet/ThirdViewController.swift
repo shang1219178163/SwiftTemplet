@@ -34,6 +34,8 @@ class ThirdViewController: UIViewController{
     lazy var list: [[[String]]] = {
         return [
             [["EntryViewController", "通用录入界面", ],
+             ["XiangceChooseDemoController", "XiangceChoose", ],
+             
              ["IOPFuntionListController", "iop 视图", ],
              ["SuanfaViewController", "常见算法", ],
              ["NSRegularExpressionController", "正则", ],
@@ -229,7 +231,9 @@ class ThirdViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.setColor(.theme, background: .white)
 
 //        let string = "[[\"\\u9655A91D6P\"]]";
 //        let obj = JSONSerialization.jsonObjectFromString(string);
@@ -319,11 +323,6 @@ class ThirdViewController: UIViewController{
         
         case 2:
             navController.present()
-        
-        
-
-            
-            
             
         case 3:
             let message = "我想要的功能非常简单。我已经设置了两个手指平移手势，并且我希望能够通过一些图像进行洗牌，具体取决于我移动的像素数。"

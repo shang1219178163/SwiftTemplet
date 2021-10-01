@@ -60,23 +60,23 @@ class TitleViewController: NNTitleViewSelectController{
         topView.list = list
         topView.tableView.reloadData()
                 
-        topView.btn = btn
-        topView.btn.addActionHandler({[weak self] (sender) in
-            guard let self = self else { return }
-            UIApplication.shared.keyWindow?.endEditing(true)
-            if let imgView = sender.imageView{
-                imgView.transformRotationCycle()
-            }
-
-            if self.topView.btn.imageView?.transform.isIdentity == false {
-                self.topView.show()
-            } else {
-                self.topView.dismiss()
-            }
-            let color = sender.titleColor(for:.normal)
-            DDLog(color)
-            DDLog(UIColor.white)
-        }, for: .touchUpInside)
+//        topView.btn = btn
+//        topView.btn.addActionHandler({[weak self] (sender) in
+//            guard let self = self else { return }
+//            UIApplication.shared.keyWindow?.endEditing(true)
+//            if let imgView = sender.imageView{
+//                imgView.transformRotationCycle()
+//            }
+//
+//            if self.topView.btn.imageView?.transform.isIdentity == false {
+//                self.topView.show()
+//            } else {
+//                self.topView.dismiss()
+//            }
+//            let color = sender.titleColor(for:.normal)
+//            DDLog(color)
+//            DDLog(UIColor.white)
+//        }, for: .touchUpInside)
         
         view.addSubview(stackView)
 
@@ -141,6 +141,22 @@ class TitleViewController: NNTitleViewSelectController{
             break
         }
     }
+
+    func showSheetPresentationController() {
+        let vc = FirstViewController()
+        if #available(iOS 15.0, *) {
+            if let sheet = vc.sheetPresentationController {
+                sheet.detents = [ .medium(), .large()]
+                sheet.prefersGrabberVisible = true
+//                sheet.smallestUndimmedDetentIdentifier = .medium
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.preferredCornerRadius = 30.0
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+        self.present(vc, animated: true)
+    }
     
     
     lazy var btn: UIButton = {
@@ -166,6 +182,9 @@ class TitleViewController: NNTitleViewSelectController{
         view.addActionHandler { sender in
             sender.isSelected.toggle()
             DDLog(sender.currentTitle)
+            
+            self.showSheetPresentationController()
+
         }
         return view
     }()

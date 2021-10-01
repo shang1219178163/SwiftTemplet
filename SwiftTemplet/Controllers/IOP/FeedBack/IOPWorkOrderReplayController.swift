@@ -89,7 +89,11 @@ import SwiftExpand
     lazy var docPickVC: UIDocumentPickerViewController = {
         let vc = UIDocumentPickerViewController(documentTypes: IOPFileUploadController.docTypes, in: .import)
         vc.modalPresentationStyle = .fullScreen
-        vc.allowsMultipleSelection = true
+        if #available(iOS 11.0, *) {
+            vc.allowsMultipleSelection = true
+        } else {
+            // Fallback on earlier versions
+        }
         vc.delegate = self
         
         vc.edgesForExtendedLayout = []

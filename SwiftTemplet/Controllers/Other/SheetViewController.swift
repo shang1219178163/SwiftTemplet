@@ -22,7 +22,7 @@ class SheetViewController: UIViewController {
         view.indexP = IndexPath(row: 0, section: 0)
         view.setupTitleView()
 
-//        view.delegate = self
+        view.delegate = self
         return view
     }()
     
@@ -57,7 +57,7 @@ class SheetViewController: UIViewController {
         
         sheetView.sender = sender
         sheetView.fromDirection = .other
-//        sheetView.location = .bottom
+        sheetView.fromDirection = .bottom
         sheetView.show()
     }
     
@@ -66,7 +66,23 @@ class SheetViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        edgesForExtendedLayout = []
+        view.backgroundColor = .white
         title = "SheetView"
+        
+        navigationItem.rightBarButtonItems = ["子类", "父类",].map({
+            UIBarButtonItem(obj: $0) { item in
+                switch item.title {
+                case "父类":
+                    let vc = NNSheetViewBaseController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                default:
+                    let vc = NNSheetViewBaseDemoController()
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        })
+                
         sheetView.list = list
         sheetView.tableView.reloadData()
         
@@ -79,9 +95,12 @@ class SheetViewController: UIViewController {
         btn.snp.makeConstraints { (make) in
             make.center.equalToSuperview().offset(0);
         }
+        
     }
     
 }
+
+
 extension SheetViewController: NNSheetViewDelegate {
 
     func sheetView(_ sheetView: NNSheetView, tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
