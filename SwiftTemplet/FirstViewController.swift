@@ -168,14 +168,18 @@ class FirstViewController: UIViewController{
             }
         })
         
-        navigationItem.rightBarButtonItems = ["黑色", "白色"].map({
+        navigationItem.rightBarButtonItems = ["主题色", "白色"].map({
             UIBarButtonItem(obj: $0) { item in
-                if item.title == "黑色" {
-                    self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
-                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+                if item.title == "主题色" {
+//                    self.navigationController?.navigationBar.setColors(withTint: .lightText, background: .black)
+//                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor: UIColor.clear], for: .normal)
+                    self.navigationController?.navigationBar.setColor(.white, background: .theme, shadowColor: nil)
+
                 } else {
-                    self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
-                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor : UIColor.clear], for: .normal)
+//                    self.navigationController?.navigationBar.setColors(withTint: .black, background: .white)
+//                    item.setTitleTextAttributes([NSAttributedString.Key.backgroundColor: UIColor.clear], for: .normal)
+                    self.navigationController?.navigationBar.setColor(.theme, background: .white, shadowColor: nil)
+
                 }
                 
                 let tuple = (name: "xiaoming", age: 18, sex: 1)
@@ -213,16 +217,20 @@ class FirstViewController: UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
             
-        let layout = UICollectionViewFlowLayout().then {
-            $0.minimumLineSpacing = 1
-            $0.minimumInteritemSpacing = 2
-            $0.itemSize = CGSize(width: 1, height: 2)
-        }
+//        let layout = UICollectionViewFlowLayout().then {
+//            $0.minimumLineSpacing = 1
+//            $0.minimumInteritemSpacing = 2
+//            $0.itemSize = CGSize(width: 1, height: 2)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
-//        DDLog("viewWillAppear")
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.setTextColor(.white)
+        navigationController?.navigationBar.setBackgroudColor(.theme, for: .default)
+
+        navigationController?.navigationBar.setColor(.white, background: .theme, shadowColor: nil)
         
 //        let z = (UIColor.white.cgColor == navigationController?.navigationBar.barTintColor?.cgColor)
 //        DDLog(z, UIColor.white, navigationController?.navigationBar.barTintColor)
@@ -245,8 +253,8 @@ class FirstViewController: UIViewController{
 //        DDLog(decryptText)
         
         
-        let cal = Calculator()
-        cal.add(5).add(8).print().multiply(2).print().divide(3).print()
+//        let cal = Calculator()
+//        cal.add(5).add(8).print().multiply(2).print().divide(3).print()
 //        cal.add(5).add(8).printResult().sub(2).printResult().clear().printResult();
         
 //        Calculator.zz_makeCalcuclate { (make) in
@@ -287,9 +295,7 @@ class FirstViewController: UIViewController{
         super.viewDidDisappear(animated)
         
     }
-    
-
-    
+        
     // MARK: -funtions
     func addTo(_ value: Int) -> (Int) -> Int{
         return { num  in

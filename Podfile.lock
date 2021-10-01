@@ -26,6 +26,9 @@ PODS:
   - FloatingPanel (1.7.5)
   - HandyJSON (5.0.2)
   - HFNavigationController (1.4.2)
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
   - Instructions (2.0.0)
   - IQKeyboardManagerSwift (6.5.5)
   - KeychainSwift (19.0.0)
@@ -98,6 +101,7 @@ DEPENDENCIES:
   - FloatingPanel
   - HandyJSON
   - HFNavigationController
+  - IGListKit
   - Instructions
   - IQKeyboardManagerSwift
   - KeychainSwift
@@ -139,6 +143,8 @@ SPEC REPOS:
     - FloatingPanel
     - HandyJSON
     - HFNavigationController
+    - IGListDiffKit
+    - IGListKit
     - Instructions
     - IQKeyboardManagerSwift
     - KeychainSwift
@@ -181,6 +187,8 @@ SPEC CHECKSUMS:
   FloatingPanel: bb17fd6fc7ae519f877f7bd30f4f6115a78acf07
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   HFNavigationController: 2d5d92ffcf0437f9f021c471df8bb764987ec46b
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   Instructions: debf9cedeaf8d095108fd35d2c54b97ccf769e65
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
@@ -212,6 +220,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: a383f3d56224f9c50c3ca9425b928e7652fd6d09
+PODFILE CHECKSUM: 656fe3dcb1de8f723cac5099142a7d52d13ccea9
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.2

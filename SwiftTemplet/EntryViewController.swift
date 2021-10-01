@@ -192,6 +192,9 @@ class EntryViewController: UIViewController {
     lazy var list: [[[String]]] = {
         let array: [[[String]]] = [
             [
+            ["cell边距", "UITableViewCellEdge", "70", "", "recharge", ],
+            ["cell边距", "UITableViewCellEdge1", "70", "", "recharge", ],
+
             ["问题回复", "UITableViewCellReplay", "180", "", "recharge", ],
 
             ["二维码券", "PHHQRcodeCouponChooseCell", "45.0", "", "recharge", ],
@@ -383,8 +386,44 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 
             cell.getViewLayer()
             return cell
-        
             
+        case "UITableViewCellEdge":
+            let cell = UITableViewCellEdge.dequeueReusableCell(tableView, identifier: "UITableViewCellEdge", style: .subtitle)
+
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+            cell.textLabel?.textColor = .textColor3
+
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
+            cell.detailTextLabel?.textColor = .textColor9
+            
+            cell.textLabel?.text = "textLabel"
+            cell.detailTextLabel?.text = "detailTextLabel"
+            
+            cell.accessoryType = .disclosureIndicator
+            
+            cell.indentationLevel = 1
+            cell.indentationWidth = -10
+
+            cell.getViewLayer()
+            return cell
+            
+        case "UITableViewCellEdge1":
+            let cell = UITableViewCellEdge.dequeueReusableCell(tableView, identifier: "UITableViewCellEdge1", style: .subtitle)
+            cell.inset = UIEdgeInsetsMake(8, -8, 8, 8)
+            
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
+            cell.textLabel?.textColor = .textColor3
+
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
+            cell.detailTextLabel?.textColor = .textColor9
+            
+            cell.textLabel?.text = "textLabel"
+            cell.detailTextLabel?.text = "detailTextLabel"
+            
+            cell.accessoryType = .disclosureIndicator
+
+            cell.getViewLayer()
+            return cell
         case "UITableViewCellExcel":
             let cell = UITableViewCellExcel.dequeueReusableCell(tableView)
             cell.isHidden = value2.cgFloatValue <= 0.0
@@ -633,7 +672,10 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
             cell.textfield.rightViewMode = .never;
             cell.textfield.textAlignment = .left
+            cell.textfield.textAlignment = .right
             
+            cell.moneyTuple = (1, 99999, 2)
+
             cell.labelLeft.text = value0
 //            cell.textfield.asoryView(true, text: itemList.last!)
             cell.textfield.addRightViewLabel { (sender) in
@@ -642,7 +684,6 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }
 
 //            cell.textfield.rightView = nil;
-            cell.textfield.textAlignment = .right
             
             cell.block { (textField) in
                 DDLog(textField.text)
@@ -1094,7 +1135,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
 //                        case 3:
 //                        default:
 //                            DDLog(title)
-//                            IOPProgressHUD.showText(kTitleDeveloping)
+//                            NNProgressHUD.showText(kTitleDeveloping)
 //                        }
                 }
             }

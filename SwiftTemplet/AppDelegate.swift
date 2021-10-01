@@ -337,32 +337,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func setupAppearance(_ tintColor: UIColor, barTintColor: UIColor) {
-
         _ = {
             $0.barTintColor = barTintColor
             $0.tintColor = tintColor
-            $0.titleTextAttributes = [NSAttributedString.Key.foregroundColor: tintColor,]
+            $0.titleTextAttributes = [.foregroundColor: tintColor,
+            ]
           }(UINavigationBar.appearance())
         
+        
         if #available(iOS 11.0, *) {
-        _ = {
-            $0.tintColor = nil
-          }(UINavigationBar.appearance(whenContainedInInstancesOf: [UIDocumentBrowserViewController.self]))
+            _ = {
+                $0.tintColor = nil
+            }(UINavigationBar.appearance(whenContainedInInstancesOf: [UIDocumentBrowserViewController.self]))
         }
+        
+        
+        if #available(iOS 13.0, *) {
+            let barAppearance = UINavigationBarAppearance.create(tintColor, background: barTintColor, shadowColor: nil)
+            _ = {
+                $0.standardAppearance = barAppearance
+                $0.scrollEdgeAppearance = barAppearance
+            }(UINavigationBar.appearance())
+
             
-        _ = {
-            $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .normal)
-        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIImagePickerController.self,
-                                                                  UIDocumentPickerViewController.self]))
+            let tabbarAppearance = UITabBarAppearance.create(barTintColor, background: tintColor)
+            _ = {
+                $0.standardAppearance = tabbarAppearance
+                if #available(iOS 15.0, *) {
+                    $0.scrollEdgeAppearance = tabbarAppearance
+                }
+            }(UITabBar.appearance())
+        } else {
+            // Fallback on earlier versions
+        }
+        
         
         _ = {
-            $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: tintColor], for: .normal)
-        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]))
-
-        if let aClass = NSClassFromString("UICalloutBarButton")! as? UIButton.Type {
-            aClass.appearance().setTitleColor(.white, for: .normal)
-        }
-
+            $0.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 15), ], for: .normal)
+            $0.setTitleTextAttributes([.font: UIFont.systemFont(ofSize: 15), ], for: .highlighted)
+        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UINavigationBar.self]))
+        
+//        _ = {
+//            $0.setTitleTextAttributes([.foregroundColor: tintColor], for: .normal)
+//        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]))
+        
+        _ = {
+            $0.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        }(UIBarButtonItem.appearance(whenContainedInInstancesOf: [UIImagePickerController.self]))
+        
 //        _ = {
 //            $0.barTintColor = barTintColor
 //            $0.tintColor = tintColor
@@ -372,23 +394,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //          }(UITabBar.appearance())
         
-        
 //        _ = {
 //            $0.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -5.0)
 //          }(UITabBarItem.appearance())
-        
+                
         _ = {
-            $0.setTitleColor(tintColor, for: .normal)
-            $0.titleLabel?.adjustsFontSizeToFitWidth = true
-            $0.titleLabel?.minimumScaleFactor = 1.0
-            $0.imageView?.contentMode = .scaleAspectFit
-            $0.isExclusiveTouch = true
-            $0.adjustsImageWhenHighlighted = false
-          }(UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]))
-        
-        
-        _ = {
-//            $0.setTitleColor(.black, for: .normal)
+            $0.setTitleColor(.black, for: .normal)
             $0.titleLabel?.adjustsFontSizeToFitWidth = true
             $0.titleLabel?.minimumScaleFactor = 1.0
             $0.imageView?.contentMode = .scaleAspectFit
@@ -396,20 +407,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.adjustsImageWhenHighlighted = false
           }(UIButton.appearance())
         
-
-        _ = {
-            $0.tintColor = tintColor
-
-            $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: tintColor,
-            ], for: .normal)
-            $0.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: barTintColor,
-            ], for: .selected)
-          }(UISegmentedControl.appearance(whenContainedInInstancesOf: [UINavigationBar.self]))
+        
+        if let aClass = NSClassFromString("UICalloutBarButton")! as? UIButton.Type {
+            aClass.appearance().setTitleColor(.white, for: .normal)
+        }
 
         
         _ = {
             $0.tintColor = tintColor
           }(UISegmentedControl.appearance())
+        
+        _ = {
+            $0.tintColor = tintColor
+
+            $0.setTitleTextAttributes([.foregroundColor: tintColor,
+            ], for: .normal)
+            $0.setTitleTextAttributes([.foregroundColor: barTintColor,
+            ], for: .selected)
+          }(UISegmentedControl.appearance(whenContainedInInstancesOf: [UINavigationBar.self]))
 
                 
         _ = {
@@ -441,6 +456,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.selectionStyle = .none
             $0.backgroundColor = .white
           }(UITableViewCell.appearance())
+
         
         _ = {
             $0.scrollsToTop = false
@@ -481,7 +497,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         _ = {
             $0.datePickerMode = .date
-            $0.locale = Locale(identifier: "zh_CN")
+            $0.locale = Locale.zh_CN
             $0.backgroundColor = .white
             if #available(iOS 13.4, *) {
                 $0.preferredDatePickerStyle = .wheels
@@ -500,9 +516,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.autoresizingMask = .flexibleWidth
           }(UISwitch.appearance())
         
-        _ = {
-            $0.tintColor = barTintColor
-          }(UIToolbar.appearance())
     }
 }
 

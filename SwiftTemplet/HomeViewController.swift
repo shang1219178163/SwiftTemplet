@@ -107,7 +107,22 @@ class HomeViewController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-//        configureCenterBtn();        
+//        configureCenterBtn()
+        
+//        if #available(iOS 13.0, *) {
+//            let appearance = UITabBarAppearance()
+//            appearance.configureWithOpaqueBackground()
+////            appearance.backgroundColor = .white
+//            appearance.selectionIndicatorTintColor = .white
+//
+//            appearance.backgroundImage = UIImage(color: .red)
+//            appearance.backgroundImageContentMode = .scaleToFill
+//            self.tabBar.standardAppearance = appearance
+//
+//        } else {
+//            // Fallback on earlier versions
+//        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

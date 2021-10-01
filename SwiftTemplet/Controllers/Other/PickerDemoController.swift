@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhotosUI
 import SwiftExpand
 
 ///颜色选择,字体选择
@@ -45,12 +46,36 @@ class PickerDemoController: UIViewController {
     }()
     
     
+    @available(iOS 14.0, *)
+    private lazy var imagePickerVC: PHPickerViewController = {
+        var config = PHPickerConfiguration()
+        // 可选择的资源数量，0表示不设限制，默认为1
+        config.selectionLimit = 0
+        // 可选择的资源类型
+        // 只显示图片（注：images 包含 livePhotos）
+        config.filter = .images
+        // 显示 Live Photos 和视频（注：livePhotos 不包含 images）
+        config.filter = .any(of: [.livePhotos, .videos])
+        // 如果要获取视频，最好设置该属性，避免系统对视频进行转码
+        config.preferredAssetRepresentationMode = .current
+
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = self
+
+        picker.modalPresentationStyle = .fullScreen
+        picker.edgesForExtendedLayout = []
+        
+        return picker
+    }()
+    
     // MARK: -lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         edgesForExtendedLayout = []
+        view.backgroundColor = .white
+        
         title = "选择器"
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(showFontPickerVC))
         if #available(iOS 14.0, *) {
@@ -145,11 +170,23 @@ class PickerDemoController: UIViewController {
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true, completion: nil)
         case 7:
+            if #available(iOS 14.0, *) {
+                present(imagePickerVC, animated: true, completion: {
+                    DDLog(self.imagePickerVC.children)
+                    if let first = self.imagePickerVC.children.first {
+                        first.edgesForExtendedLayout = []
+                    }
+                    
+                })
+            } else {
+                // Fallback on earlier versions
+            }
+            
+
+        default:
             sender.throttled()
             DDLog(sender.currentTitle)
             DDLog(CFAbsoluteTimeGetCurrent())
-
-        default:
             break
         }
 
@@ -183,7 +220,7 @@ extension PickerDemoController: UIFontPickerViewControllerDelegate{
 
 
 @available(iOS 14.0, *)
-extension PickerDemoController: UIColorPickerViewControllerDelegate{
+extension PickerDemoController: UIColorPickerViewControllerDelegate {
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         colorValueChanged(viewController.selectedColor)
         dismiss(animated: true, completion: nil)
@@ -193,3 +230,78 @@ extension PickerDemoController: UIColorPickerViewControllerDelegate{
         colorValueChanged(viewController.selectedColor)
     }
 }
+
+
+@available(iOS 14, *)
+extension PickerDemoController: PHPickerViewControllerDelegate {
+
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        // 首先需要 dismiss picker
+        picker.dismiss(animated: true, completion: nil)
+        
+        for result in results {
+            if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+                // 判断类型是否为 UIImage
+                if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+                    // 确认类型后，调用 loadObject 方法获取图片
+                    result.itemProvider.loadObject(ofClass: UIImage.self) { (data, error) in
+                        // 回调结果是在异步线程，展示时需要切换到主线程
+                        if let image = data as? UIImage {
+                            DDLog(image)
+                            DispatchQueue.main.async {
+    //                            self.showImage(image)
+                            }
+                        }
+                    }
+                }
+            } else {
+                // 类型为 Video
+                // 调用 loadFileRepresentation 方法获取视频的 url
+                // 这里 Type Identifier 我们用 UTType.movie.identifier (“public.movie”) 这个 UTI 可以获取所有格式的视频
+                result.itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { (url, error) in
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    // 系统会将视频文件存放到 tmp 文件夹下
+                    // 我们必须在这个回调结束前，将视频拷贝出去，一旦回调结束，系统就会把视频删掉
+                    // 所以一定要确定拷贝结束后，再切换到主线程做 UI 操作
+                    // 另外不用担心视频过大而导致拷贝的时间很久，系统将创建一个 APFS 的克隆项，因此拷贝的速度会非常快
+                    guard let url = url else { return }
+                    let fileName = "\(Int(Date().timeIntervalSince1970)).\(url.pathExtension)"
+                    let newUrl = URL(fileURLWithPath: NSTemporaryDirectory() + fileName)
+                    try? FileManager.default.copyItem(at: url, to: newUrl)
+                    DispatchQueue.main.async {
+//                        self.playVideo(newUrl)
+                        DDLog(newUrl)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+//public extension Array where Element : View{
+//
+//    ///更新 Button 集合视图
+//    func createItemsConstraint(_ width: CGFloat, itemHeightScale: CGFloat = 1.3, numberOfRow: Int = 4, minimumInteritemSpacing: CGFloat = kPadding, minimumLineSpacing: CGFloat = kPadding, sectionInset: EdgeInsets = EdgeInsets(top: 0, left: 0, bottom: 0, right: 0)) -> CGSize {
+//        if self.count == 0 || width <= 10 {
+//            return .zero;
+//        }
+//
+//        let rowCount = self.count % numberOfRow == 0 ? self.count/numberOfRow : self.count/numberOfRow + 1;
+//        let itemWidth: CGFloat = (width - sectionInset.left - sectionInset.right - CGFloat(numberOfRow - 1)*minimumInteritemSpacing)/CGFloat(numberOfRow)
+//        let itemHeight: CGFloat = itemWidth*itemHeightScale
+//        let height: CGFloat = sectionInset.top + sectionInset.bottom + CGFloat(rowCount)*itemHeight + CGFloat(rowCount - 1) * minimumLineSpacing
+//
+//        for e in self.enumerated() {
+//            let x = CGFloat(e.offset % numberOfRow) * (itemWidth + minimumInteritemSpacing)
+//            let y = CGFloat(e.offset / numberOfRow) * (itemHeight + minimumLineSpacing)
+//            let itemRect = CGRect(x: x, y: y, width: ceil(itemWidth), height: itemHeight)
+//            e.element.frame = itemRect
+//        }
+//        return CGSize(width: width, height: height)
+//    }
+//}

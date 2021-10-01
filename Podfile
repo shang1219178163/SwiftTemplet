@@ -102,7 +102,8 @@ def common_pods
 
     pod 'AlipaySDK-iOS'
     pod 'WechatOpenSDK'
-    
+    pod "IGListKit"
+
 #    pod 'UMCCommon'
 #    pod 'mob_sharesdk/ShareSDKUI'
 #    pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
@@ -118,6 +119,7 @@ def common_pods
     #SwiftUI 辅助库
 #    pod 'SwiftUIX'
 #    pod "Introspect"
+    
     
 end
 
