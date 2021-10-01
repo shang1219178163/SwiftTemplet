@@ -223,11 +223,11 @@ public extension UIView {
     
     
     /// 进度条弹窗
-    func showProgressLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
+    func showProgressLoading(_ mode: MBProgressHUDMode = .annularDeterminate, title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
-        hud.mode = .annularDeterminate
-
+        hud.mode = mode
         hud.label.text = title
+        hud.label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         hud.removeFromSuperViewOnHide = true
 
         if isDefaultAppearance == false {
@@ -319,8 +319,8 @@ class ZZProgressHUD: NSObject {
     }
  
     /// 进度条弹窗
-    static func showProgressLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
-        keyWindow.showProgressLoading(title, cancellBlock: cancellBlock, isDefaultAppearance: isDefaultAppearance)
+    static func showProgressLoading(_ mode: MBProgressHUDMode = .annularDeterminate, title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
+        keyWindow.showProgressLoading(mode, title: title, cancellBlock: cancellBlock, isDefaultAppearance: isDefaultAppearance)
     }
     
     /// 更新 进度条

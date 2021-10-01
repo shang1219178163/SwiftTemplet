@@ -126,6 +126,20 @@ class MBProgressHUDDemoController: UIViewController {
         case 13:
             ZZProgressHUD.showText(kRequestSuccess, isDefaultAppearance: false)
             
+        case 14:
+            ZZProgressHUD.showProgressLoading(.annularDeterminate, title: "下载中...", cancellBlock: { sender in
+                DDLog(sender.currentTitle)
+            }, isDefaultAppearance: true)
+            
+            var progress: Float = 0.0
+            while progress < 1.0 {
+                progress += 0.01
+                DispatchQueue.main.async {
+                    ZZProgressHUD.updateProgressLoading(progress)
+                }
+                usleep(50000)
+            }
+
         default:
             DDLog(sender.tag)
             break

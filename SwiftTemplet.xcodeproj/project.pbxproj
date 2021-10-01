@@ -33,7 +33,6 @@
 		140216E42702F14F0022002E /* DetailBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140216DF2702F14F0022002E /* DetailBrowseViewController.swift */; };
 		140216E52702F14F0022002E /* AlbumListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140216E02702F14F0022002E /* AlbumListCell.swift */; };
 		140216E727030B500022002E /* NNSheetViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140216E627030B500022002E /* NNSheetViewBaseController.swift */; };
-		140216EB27044C330022002E /* PHPickerDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140216EA27044C330022002E /* PHPickerDemoController.swift */; };
 		1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404FAF621E084FD00122E22 /* UIRecognizerController.swift */; };
 		1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1404FAFA21E0A70D00122E22 /* Skull.jpg */; };
 		1407831826984874007031F9 /* UIImage+System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407831726984874007031F9 /* UIImage+System.swift */; };
@@ -730,7 +729,6 @@
 		140216DF2702F14F0022002E /* DetailBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBrowseViewController.swift; sourceTree = "<group>"; };
 		140216E02702F14F0022002E /* AlbumListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListCell.swift; sourceTree = "<group>"; };
 		140216E627030B500022002E /* NNSheetViewBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSheetViewBaseController.swift; sourceTree = "<group>"; };
-		140216EA27044C330022002E /* PHPickerDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerDemoController.swift; sourceTree = "<group>"; };
 		1404FAF621E084FD00122E22 /* UIRecognizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerController.swift; sourceTree = "<group>"; };
 		1404FAFA21E0A70D00122E22 /* Skull.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Skull.jpg; sourceTree = "<group>"; };
 		1407831726984874007031F9 /* UIImage+System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+System.swift"; sourceTree = "<group>"; };
@@ -2594,7 +2592,6 @@
 				142B27F526D0B2650047141D /* NNTextViewInputView.swift */,
 				14107FD722D097400011344E /* NNProgressHUD.swift */,
 				14951D6E26E06184007B3B4D /* TheadDemoController.swift */,
-				140216EA27044C330022002E /* PHPickerDemoController.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -3208,7 +3205,6 @@
 				14E9350324E2C53C0023512F /* NNCopyrightView.swift in Sources */,
 				1479D5DF24480952007F7CC4 /* UILabelMultipleTapController.swift in Sources */,
 				14B7404E24CA705600569888 /* PKParkDetailController.swift in Sources */,
-				140216EB27044C330022002E /* PHPickerDemoController.swift in Sources */,
 				1473C222247784FE00092ECF /* UICollectionExcelController.swift in Sources */,
 				14F8991C266732B100825B7E /* ScanningDocumentsController.swift in Sources */,
 				146F09882229033E00E13F53 /* NNUpdateVersionView.swift in Sources */,
