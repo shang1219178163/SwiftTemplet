@@ -13,8 +13,6 @@ import SnapKit
 import SwiftExpand
         
 ///
-import SwiftExpand
-
 @objc protocol NNSheetViewDelegate{
     @objc func sheetView(_ sheetView: NNSheetView, tableView: UITableView, didSelectRowAt indexPath: IndexPath);
 
@@ -30,21 +28,25 @@ enum SheetDirection: Int {
 
 @objcMembers class NNSheetView: UIView {
     
-    weak var delegate: NNSheetViewDelegate?
+    public weak var delegate: NNSheetViewDelegate?
     
-    var fromDirection: SheetDirection = .other
+    public var fromDirection: SheetDirection = .other
     
-    var indexP: IndexPath = IndexPath(row: 0, section: 0)
+    public var indexP = IndexPath(row: 0, section: 0)
     
-    weak var parController: UIViewController?
-    var sender: UIView?{
+    public weak var parController: UIViewController?
+    
+    public var sender: UIView?{
         willSet{
-            guard let newValue = newValue else { return }
+            guard let newValue = newValue else {
+                return }
             let rect = parController!.view.convert(newValue.frame, to: parController!.view)
             self.contentView.originY = rect.maxY;
             self.tableView.sizeHeight = parController!.view.bounds.height - rect.maxY
         }
     }
+
+    public var isTapBackViewDismiss: Bool = true
 
     // MARK: -lifecycle
     deinit {
@@ -85,7 +87,7 @@ enum SheetDirection: Int {
     }
     
     //MARK: -func
-    func setupTitleView() {
+    public func setupTitleView() {
         btn.addActionHandler({ (sender) in
             UIApplication.shared.keyWindow?.endEditing(true)
             if let imgView = sender.imageView{
@@ -100,11 +102,11 @@ enum SheetDirection: Int {
             
         }, for: .touchUpInside)
         
-        self.parController!.navigationItem.titleView = btn
+        self.parController?.navigationItem.titleView = btn
         fromDirection = .top
     }
     
-    func show() {
+    public func show() {
         changeTableViewLocation(true, inblock: false)
         
         self.parController!.view.addSubview(self.contentView)
@@ -121,7 +123,7 @@ enum SheetDirection: Int {
         }
     }
     
-    func dismiss() {
+    public func dismiss() {
         changeTableViewLocation(false, inblock: false)
         
         UIView.animate(withDuration: kDurationShow, animations: {
@@ -136,7 +138,7 @@ enum SheetDirection: Int {
         })
     }
     
-    func changeTableViewLocation(_ isShow: Bool, inblock: Bool) {
+    public func changeTableViewLocation(_ isShow: Bool, inblock: Bool) {
         switch self.fromDirection {
         case .top:
             if isShow {
@@ -159,14 +161,16 @@ enum SheetDirection: Int {
     }
     
     //MARK: -lazy
-
-    lazy var btn: UIButton = {
+    private(set) lazy var btn: UIButton = {
         var view = UIButton(type: .custom)
         view.frame = CGRect(x: 0, y: 0, width: 150, height: 35)
-        view.setTitle("请选择", for: .normal);
-        view.setTitleColor(.white, for: .normal);
-        let image = UIImage(named: "img_arrowDown_black", podName: "SwiftExpand")
-        view.setImage(image, for: .normal)
+        view.setTitle("请选择", for: .normal)
+        view.setTitleColor(.white, for: .normal)
+//        let image = UIImage(named: "img_arrowDown_black", podName: "SwiftExpand")
+//        view.setImage(image, for: .normal)
+        
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        view.setImage(UIImage.img_arrowDown_black, for: .normal)
         view.adjustsImageWhenHighlighted = false
         
         view.layoutButton(direction: 3, imageTitleSpace: 5)
@@ -188,23 +192,28 @@ enum SheetDirection: Int {
         return array
     }()
     
+    
     lazy var contentView: UIView = {
         let view = UIView(frame: parController!.view.bounds)
-//        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
-
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
 
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.5)
         view.addSubview(tableView)
-        
+
+//        view.addGestureTap { tap in
+//            if self.isTapBackViewDismiss == false {
+//                return
+//            }
+//            self.dismiss()
+//        }
         return view
     }()
     
-    lazy var tableView: UITableView = {
-        let table = UITableView(rect: bounds, style: .plain, rowHeight: 60)
-        table.dataSource = self
-        table.delegate = self
-        return table
+    private(set) lazy var tableView: UITableView = {
+        let view = UITableView(rect: bounds, style: .plain, rowHeight: 60)
+        view.dataSource = self
+        view.delegate = self
+        return view
     }()
 }
 
@@ -228,7 +237,7 @@ extension NNSheetView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let delegateCell = delegate?.sheetView?(self, tableView: tableView, cellForRowAt: indexPath) {
             delegateCell.accessoryType = indexP == indexPath ? .checkmark : .none
-            return delegateCell;
+            return delegateCell
         }
         
         let itemList = list[indexPath.row]
@@ -256,8 +265,8 @@ extension NNSheetView: UITableViewDataSource, UITableViewDelegate {
             indexP = indexPath
         }
         dismiss()
-        if delegate != nil {
-            delegate?.sheetView(self, tableView: tableView, didSelectRowAt: indexPath)
+        if let delegate = delegate {
+            delegate.sheetView(self, tableView: tableView, didSelectRowAt: indexPath)
             return
         }
         
