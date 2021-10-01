@@ -220,6 +220,45 @@ public extension UIView {
     func showError(_ title: String, image: UIImage? = UIImage(named: "toast_error"), isDefaultAppearance: Bool = true) {
         showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
+    
+    
+    /// 进度条弹窗
+    func showProgressLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud.mode = .annularDeterminate
+
+        hud.label.text = title
+        hud.removeFromSuperViewOnHide = true
+
+        if isDefaultAppearance == false {
+            hud.contentColor = .white
+            hud.bezelView.color = .black.withAlphaComponent(0.5)
+            hud.bezelView.style = .solidColor
+        }
+        
+        if let cancellBlock = cancellBlock {
+            hud.button.setTitle("取消", for: .normal)
+            hud.button.addActionHandler { sender in
+//                DDLog(sender.currentTitle)
+                cancellBlock(sender)
+                hud.hide(animated: true)
+            }
+        }
+    }
+    
+    /// 更新 进度条
+    func updateProgressLoading(_ progress: Float) {
+        if let hud = MBProgressHUD.forView(self) {
+            let isProgressModel = [MBProgressHUDMode.determinate,
+                                   MBProgressHUDMode.annularDeterminate,
+                                   MBProgressHUDMode.determinateHorizontalBar,].contains(hud.mode)
+            if isProgressModel == true {
+                DispatchQueue.main.async {
+                    hud.progress = progress
+                }
+            }
+        }
+    }
 }
 
 
@@ -279,6 +318,15 @@ class ZZProgressHUD: NSObject {
         keyWindow.showInfo(title, image: image, isDefaultAppearance: isDefaultAppearance)
     }
  
+    /// 进度条弹窗
+    static func showProgressLoading(_ title: String, cancellBlock: ((UIButton) -> Void)? = nil, isDefaultAppearance: Bool = true) {
+        keyWindow.showProgressLoading(title, cancellBlock: cancellBlock, isDefaultAppearance: isDefaultAppearance)
+    }
+    
+    /// 更新 进度条
+    static func updateProgressLoading(_ progress: Float) {
+        keyWindow.updateProgressLoading(progress)
+    }
 //    //获取用于显示提示框的view
 //    static func viewToShow() -> UIView {
 //        var window = UIApplication.shared.keyWindow ?? UIApplication.shared.windows.first
