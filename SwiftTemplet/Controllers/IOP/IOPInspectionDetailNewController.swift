@@ -19,15 +19,15 @@ import SwiftExpand
 
     lazy var viewModel = NSObject()
         
-    lazy var list: [[CellModel]] = {
+    lazy var list: [[Tuple5]] = {
         return [
-            [CellModel("识别仪", "UITableViewCellDoubleLabel", "180", "", "statusDes"),
-             CellModel("道闸", "UITableViewCellDoubleLabel", "180", "", "park_name"),
-             CellModel("收费显示屏", "UITableViewCellDoubleLabel", "180", "请输入收款人", "park_name_copy"),
+            [Tuple5("识别仪", "UITableViewCellDoubleLabel", "180", "", "statusDes"),
+             Tuple5("道闸", "UITableViewCellDoubleLabel", "180", "", "park_name"),
+             Tuple5("收费显示屏", "UITableViewCellDoubleLabel", "180", "请输入收款人", "park_name_copy"),
             ],
             
-            [CellModel("满意度评价:", "UITableViewCellStarEvaluate", "40", "", "contact_phone"),
-             CellModel("*问题描述", "UITableViewCellTextView", "150.0", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
+            [Tuple5("满意度评价:", "UITableViewCellStarEvaluate", "40", "", "contact_phone"),
+             Tuple5("*问题描述", "UITableViewCellTextView", "150.0", "请您给我们的客服一些鼓励吧(选填)", "equipment_receiver"),
             ],
         ]
     }()
@@ -170,6 +170,7 @@ extension IOPInspectionDetailNewController: UITableViewDataSource, UITableViewDe
             cell.labView2.labelLeft.text = "补光灯工作情况"
             cell.labView3.labelLeft.text = "起落杆情况"
             cell.labView4.labelLeft.text = "防砸情况"
+            cell.labView5.isHidden = true
 
             let str1: AttrString = """
               \(image: UIImage(named: "icon_routingInspection_normal")!, scale: 1.0) 正常

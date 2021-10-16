@@ -121,10 +121,10 @@ import SnapKit
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
         
-//        label.attributedText = AttrString.test()
-        label.attributedText = AttrString.testNew()
+        label.attributedText = AttrString.test()
+//        label.attributedText = AttrString.testNew()
 
-        testSatues()
+//        testSatues()
     }
     
     func testAttributedText() {

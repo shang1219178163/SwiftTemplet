@@ -247,7 +247,7 @@ public extension UIView {
     }
     
     /// 更新 进度条
-    func updateProgressLoading(_ progress: Float) {
+    func updateProgressLoading(_ progress: Float, completion: ((Bool) -> Void)? = nil) {
         if let hud = MBProgressHUD.forView(self) {
             let isProgressModel = [MBProgressHUDMode.determinate,
                                    MBProgressHUDMode.annularDeterminate,
@@ -255,6 +255,7 @@ public extension UIView {
             if isProgressModel == true {
                 DispatchQueue.main.async {
                     hud.progress = progress
+                    completion?(progress >= 1)
                 }
             }
         }
@@ -324,8 +325,8 @@ class ZZProgressHUD: NSObject {
     }
     
     /// 更新 进度条
-    static func updateProgressLoading(_ progress: Float) {
-        keyWindow.updateProgressLoading(progress)
+    static func updateProgressLoading(_ progress: Float, completion: ((Bool) -> Void)? = nil) {
+        keyWindow.updateProgressLoading(progress, completion: completion)
     }
 //    //获取用于显示提示框的view
 //    static func viewToShow() -> UIView {

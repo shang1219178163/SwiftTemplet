@@ -173,6 +173,11 @@ import RxCocoa
         navigationController?.navigationBar.setBackgroudColor(.clear, for: .default)
         navigationController?.navigationBar.setTextColor(.systemOrange)
         navigationController?.navigationBar.setColor(.theme, background: .white)
+        
+        
+//        let e = CellModel("name", 18, true, ["a", "b"], ["a" : "aaa"], UIColor.white)
+        let e = CellModel("name", 18, true, ["a", "b"], ["a" : "aaa"])
+        DDLog(e)
     }
     
     // MARK: - funtions
