@@ -42,24 +42,6 @@ import SwiftExpand
     
 }
 
-import AVFoundation
-extension AVAudioSession{
-    
-    static func appAVAudioVolume(_ soundoff: Bool) {
-        if #available(iOS 10.0, *) {
-            let category: AVAudioSession.Category = soundoff == true ? AVAudioSession.Category.record : AVAudioSession.Category.ambient;
-            do {
-                try AVAudioSession.sharedInstance().setCategory(category, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-}
-
-
 
 @objc public extension UIBarButtonItem{
     

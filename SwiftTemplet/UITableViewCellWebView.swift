@@ -125,9 +125,7 @@ import SwiftExpand
         view.allowsBackForwardNavigationGestures = true
         view.scrollView.showsHorizontalScrollIndicator = false
         view.scrollView.showsVerticalScrollIndicator = true
-        if #available(iOS 10.0, *) {
-            view.scrollView.refreshControl = self.refreshControl;
-        }
+        view.scrollView.refreshControl = self.refreshControl;
         
         view.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         

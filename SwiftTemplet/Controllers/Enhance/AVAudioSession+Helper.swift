@@ -13,14 +13,12 @@ import AVFoundation
 
     ///音量开关
     static func volume(_ soundoff: Bool) {
-        if #available(iOS 10.0, *) {
-            let category: AVAudioSession.Category = soundoff == true ? .record : .ambient;
-            do {
-                try AVAudioSession.sharedInstance().setCategory(category, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
-            }
+        let category: AVAudioSession.Category = soundoff == true ? .record : .ambient;
+        do {
+            try AVAudioSession.sharedInstance().setCategory(category, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print(error)
         }
     }
 }

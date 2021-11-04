@@ -34,9 +34,8 @@ import SnapKitExtend
         view.allowsBackForwardNavigationGestures = true
         view.scrollView.showsHorizontalScrollIndicator = false
         view.scrollView.showsVerticalScrollIndicator = true
-        if #available(iOS 10.0, *) {
-            view.scrollView.refreshControl = self.refreshControl;
-        }
+
+        view.scrollView.refreshControl = self.refreshControl;
         view.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         view.addObserver(self, forKeyPath: "URL", options: .new, context: nil)
         return view
@@ -294,7 +293,7 @@ extension NNWebViewController: WKNavigationDelegate{
         //self.load  用来控制对 @"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?" 的拦截
         if absoluteString.contains("weixin://wap/pay") {
             isLoading = false
-            UIApplication.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             decisionHandler(.cancel)
         } else if absoluteString.contains("https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?") && !isLoading {
             let referer = refererUrl ?? (URLScheme + "://")
@@ -331,7 +330,7 @@ extension NNWebViewController: WKNavigationDelegate{
         }
         else if (absoluteString.contains("tbopen")) {//淘宝
             isLoading = false;
-            UIApplication.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             decisionHandler(.allow);
         }
         else {

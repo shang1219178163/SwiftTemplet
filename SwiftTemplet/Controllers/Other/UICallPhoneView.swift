@@ -229,7 +229,7 @@ class UICallPhoneView: UIView {
             let image = sender.isSelected == true ? UIImage(named: "icon_phone_soundoff") : UIImage(named: "icon_phone_soundon")
             sender.setImage(image, for: .normal)
             
-            AVAudioSession.appAVAudioVolume(sender.isSelected)
+            AVAudioSession.volume(sender.isSelected)
 
         case 3:
             DDLog("缩小")

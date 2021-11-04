@@ -112,7 +112,7 @@ extension NNOrderPayH5Controller: NNWebViewDelegate{
         //self.load  用来控制对 @"https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?" 的拦截
         if absoluteString.contains("weixin://wap/pay") {
             isLoading = false
-            UIApplication.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             decisionHandler(.cancel)
         } else if absoluteString.contains("https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb?") && !isLoading {
             let referer = URLScheme + "://"

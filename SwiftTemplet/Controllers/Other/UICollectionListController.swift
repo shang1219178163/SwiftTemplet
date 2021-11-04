@@ -113,7 +113,7 @@ extension UICollectionListController: UITableViewDataSource, UITableViewDelegate
 
         cell.detailTextLabel?.text = itemList[0];
         
-//        if #available(iOS 10.0, *) {
+
 //            let circleSize = CGSize(width: tableView.rowHeight - 10, height: tableView.rowHeight - 10)
 //            let renderer = UIGraphicsImageRenderer(bounds: CGRect(x: 0, y: 0, width: circleSize.width, height: circleSize.height))
 //
@@ -124,7 +124,7 @@ extension UICollectionListController: UITableViewDataSource, UITableViewDelegate
 //                ctx.cgContext.drawPath(using: .fill)
 //            }
 //            cell.imageView?.image = circleImage
-//        }
+
         return cell
     }
     

@@ -389,9 +389,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            $0.barTintColor = barTintColor
 //            $0.tintColor = tintColor
 //            $0.isTranslucent = false
-//            if #available(iOS 10.0, *) {
-//                $0.unselectedItemTintColor = .gray
-//            }
+//            $0.unselectedItemTintColor = .gray
 //          }(UITabBar.appearance())
         
 //        _ = {
