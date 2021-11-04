@@ -643,7 +643,6 @@
 		14EDF7B3251C4306007512CC /* BXKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EDF7B2251C4306007512CC /* BXKViewController.m */; };
 		14EDF7B6251C432C007512CC /* BXKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EDF7B5251C432C007512CC /* BXKWebViewController.m */; };
 		14EDF7B9251C438E007512CC /* BXKTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14EDF7B8251C438E007512CC /* BXKTestViewController.m */; };
-		14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EEBF8C23EBFD4A0056ABC9 /* UITableViewCellWebView.swift */; };
 		14EECE0124EFC0D800DEE094 /* NNSearchbarTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EECE0024EFC0D700DEE094 /* NNSearchbarTitleView.swift */; };
 		14EECE0B24F0F9B200DEE094 /* NNSudokuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EECE0A24F0F9B200DEE094 /* NNSudokuView.swift */; };
 		14EECE0D24F0FA2800DEE094 /* NNSudokuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EECE0C24F0FA2800DEE094 /* NNSudokuViewController.swift */; };
@@ -861,7 +860,7 @@
 		143F714527336A1700E2FC28 /* UICallPhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICallPhoneView.swift; sourceTree = "<group>"; };
 		143F714927336A5300E2FC28 /* NNWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNWebView.swift; sourceTree = "<group>"; };
 		143F714B27336A6A00E2FC28 /* NNWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNWebViewController.swift; sourceTree = "<group>"; };
-		143F714D27336A9400E2FC28 /* UITableViewCellWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellWebView.swift; sourceTree = "<group>"; };
+		143F714D27336A9400E2FC28 /* UITableViewCellWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UITableViewCellWebView.swift; path = SwiftTemplet/UITableViewCellWebView.swift; sourceTree = SOURCE_ROOT; };
 		14403E5D2331C091005DB45B /* NNItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNItemsView.swift; sourceTree = "<group>"; };
 		14403E5F2331C1B8005DB45B /* TmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmpViewController.swift; sourceTree = "<group>"; };
 		14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSEmergencyOpenView.swift; sourceTree = "<group>"; };
@@ -1392,7 +1391,6 @@
 		14EDF7B5251C432C007512CC /* BXKWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXKWebViewController.m; sourceTree = "<group>"; };
 		14EDF7B7251C438E007512CC /* BXKTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BXKTestViewController.h; sourceTree = "<group>"; };
 		14EDF7B8251C438E007512CC /* BXKTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BXKTestViewController.m; sourceTree = "<group>"; };
-		14EEBF8C23EBFD4A0056ABC9 /* UITableViewCellWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UITableViewCellWebView.swift; path = ../Controllers/UITableViewCellWebView.swift; sourceTree = "<group>"; };
 		14EECE0024EFC0D700DEE094 /* NNSearchbarTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSearchbarTitleView.swift; sourceTree = "<group>"; };
 		14EECE0A24F0F9B200DEE094 /* NNSudokuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNSudokuView.swift; sourceTree = "<group>"; };
 		14EECE0C24F0FA2800DEE094 /* NNSudokuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSudokuViewController.swift; sourceTree = "<group>"; };
@@ -2597,7 +2595,6 @@
 				142B27F326D0995F0047141D /* NNKeyBoradInputAccessoryViewNew.swift */,
 				142B27F526D0B2650047141D /* NNTextViewInputView.swift */,
 				14107FD722D097400011344E /* NNProgressHUD.swift */,
-				143F714D27336A9400E2FC28 /* UITableViewCellWebView.swift */,
 				14951D6E26E06184007B3B4D /* TheadDemoController.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
@@ -2655,6 +2652,7 @@
 		519E87C421367593002CCD86 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				143F714D27336A9400E2FC28 /* UITableViewCellWebView.swift */,
 				143EB47926CFA360000C3FB9 /* UITableViewCellDoubleLabel.swift */,
 				1439181224C6C98E00CBABF0 /* UITableViewCellRightBtn.swift */,
 				146D28C9244E86AE004655B1 /* UITableViewCellSixLable.swift */,
@@ -2662,7 +2660,6 @@
 				14D91B11234C874500554994 /* UITableViewCellAfford.swift */,
 				14D91B10234C874400554994 /* UITableViewCellPark.swift */,
 				1455106D240CAD76001772F5 /* UITableViewCellGoodsDuration.swift */,
-				14EEBF8C23EBFD4A0056ABC9 /* UITableViewCellWebView.swift */,
 				14E02F6F2420D88100E1EA2C /* UITableViewCellPhoto.swift */,
 				14A81D9A23F81979003E6EB4 /* UITableViewCellTitle.swift */,
 				14D6BF9822F83A44000B2B0E /* UITableViewCellCode.swift */,
@@ -3315,7 +3312,6 @@
 				14EC85582665E5840000839B /* KeyValueObserverController.swift in Sources */,
 				14129CA421EC72C5009BFA74 /* TitleViewController.swift in Sources */,
 				14CFBC002674581C00F1F4AE /* PickerDemoController.swift in Sources */,
-				14EEBF8D23EBFD4A0056ABC9 /* UITableViewCellWebView.swift in Sources */,
 				1439AE0C260B2DBC00B44476 /* NNAnnouncementAlertView.swift in Sources */,
 				14E2FED8256E66C9008B0CD6 /* NNPayManager.m in Sources */,
 				14244766222929990087372F /* PhotosViewController.swift in Sources */,
