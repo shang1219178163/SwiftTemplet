@@ -140,7 +140,7 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
             tableView.reloadSections([section], with: .fade)
         }
         
-        view.getViewLayer()
+//        view.getViewLayer()
         return view
     }
     
