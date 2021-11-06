@@ -164,6 +164,7 @@
 		14403E6223320689005DB45B /* CCSEmergencyOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */; };
 		14403E6423322028005DB45B /* CCSCouponRecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14403E6323322027005DB45B /* CCSCouponRecordController.swift */; };
 		1443F84B230BF2A70023C777 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1443F84A230BF2A70023C777 /* TestViewController.swift */; };
+		1446DA6A2736CB8700062FFA /* SFSafeSymbols.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1446DA692736CB8700062FFA /* SFSafeSymbols.txt */; };
 		144742312589AA5800BA550D /* UITableViewCellChoiceRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144742302589AA5800BA550D /* UITableViewCellChoiceRadio.swift */; };
 		144742332589B7AA00BA550D /* IOPPayInpartBaseInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144742322589B7AA00BA550D /* IOPPayInpartBaseInfoController.swift */; };
 		144742662589DDCA00BA550D /* IOPOrganizationTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144742652589DDCA00BA550D /* IOPOrganizationTypeView.swift */; };
@@ -866,6 +867,7 @@
 		14403E6123320689005DB45B /* CCSEmergencyOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSEmergencyOpenView.swift; sourceTree = "<group>"; };
 		14403E6323322027005DB45B /* CCSCouponRecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCSCouponRecordController.swift; sourceTree = "<group>"; };
 		1443F84A230BF2A70023C777 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		1446DA692736CB8700062FFA /* SFSafeSymbols.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SFSafeSymbols.txt; sourceTree = "<group>"; };
 		144742302589AA5800BA550D /* UITableViewCellChoiceRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellChoiceRadio.swift; sourceTree = "<group>"; };
 		144742322589B7AA00BA550D /* IOPPayInpartBaseInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPPayInpartBaseInfoController.swift; sourceTree = "<group>"; };
 		144742652589DDCA00BA550D /* IOPOrganizationTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOPOrganizationTypeView.swift; sourceTree = "<group>"; };
@@ -1466,6 +1468,7 @@
 		1401BE8D2277D3200078A722 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				1446DA692736CB8700062FFA /* SFSafeSymbols.txt */,
 				14C8D7F925C026CA00B0790E /* appLoginJson.geojson */,
 				14C8D7FD25C0280C00B0790E /* recursion.geojson */,
 				145C913F233484B900849E9D /* AppIconChange */,
@@ -2896,6 +2899,7 @@
 				145C90FA23332D5D00849E9D /* icon_toSmall@3x.png in Resources */,
 				147D79B924BEEC1C00458F3D /* video0.mp4 in Resources */,
 				1448871F224E1D2300B550AF /* capitalNormal@2x.png in Resources */,
+				1446DA6A2736CB8700062FFA /* SFSafeSymbols.txt in Resources */,
 				147D799324BEDACD00458F3D /* title2@2x.png in Resources */,
 				147D79BB24BEEC1C00458F3D /* LaunchImageAd.json in Resources */,
 				145C90F42333270C00849E9D /* icon_phone_refuse@3x.png in Resources */,
