@@ -101,12 +101,16 @@ import SnapKitExtend
         let backBarItem = UIBarButtonItem(image: UIImage(named: "icon_arrow_left_gray")!, style: .plain, target: self, action: #selector(handleActionItem(_:)))
         let closeBarItem = UIBarButtonItem(image: UIImage(named: "icon_close_gray")!, style: .plain, target: self, action: #selector(handleActionItem(_:)))
         let updateBarItem = UIBarButtonItem(title: "刷新", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        let clearCacheBarItem = UIBarButtonItem(title: "清缓存", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+
         backBarItem.tag = 0
         closeBarItem.tag = 1
         updateBarItem.tag = 2
+        clearCacheBarItem.tag = 3
+
         navigationItem.leftBarButtonItems = [backBarItem, closeBarItem,]
 //        navigationItem.leftBarButtonItems = [backBarItem,]
-        navigationItem.rightBarButtonItems = [updateBarItem,]
+        navigationItem.rightBarButtonItems = [updateBarItem, clearCacheBarItem]
                 
         view.addSubview(webView)
         webView.addSubview(progressView)
@@ -169,6 +173,10 @@ import SnapKitExtend
         case 2:
             webView.reload()
 
+        case 3:
+            webView.cleanCache {
+                UIAlertController(title: nil, message: "缓存清理成功!", preferredStyle: .alert).present()
+            }
         default:
             break
         }

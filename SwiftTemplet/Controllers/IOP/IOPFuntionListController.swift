@@ -91,15 +91,11 @@ import RxCocoa
         
         view.rxDrive { (sender) in
             DDLog(sender.currentTitle)
-        }.disposed(by: disposeBag)
         
-//        view.rx.safeDrive().asDriver().drive {
-//            DDLog(button.currentTitle)
-//        } onCompleted: {
-//
-//        } onDisposed: {
-//
-//        }
+            let webVC = NNWebViewController()
+            webVC.urlString = "https://image.baidu.com/"
+            self.navigationController?.pushViewController(webVC, animated: true)
+        }.disposed(by: disposeBag)
         
         return view
     }()

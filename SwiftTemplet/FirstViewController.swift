@@ -70,10 +70,10 @@ class FirstViewController: UIViewController{
     lazy var list: [[[String]]] = {
         return [
             [["AlertSheetStudyController", "Alert自定义", ],
+             
              ["TheadDemoController", "TheadDemoController", ],
              ["MBProgressHUDDemoController", "MBProgressHUDDemo", ],
              ["JumpSettingsController", "JumpSettingsController", ],
-
                         
              ["UICollectionDispalyController", "UICollectionDispaly", ],
 

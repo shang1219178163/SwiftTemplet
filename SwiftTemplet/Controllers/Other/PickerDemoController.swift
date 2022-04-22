@@ -176,7 +176,6 @@ class PickerDemoController: UIViewController {
                     if let first = self.imagePickerVC.children.first {
                         first.edgesForExtendedLayout = []
                     }
-                    
                 })
             } else {
                 // Fallback on earlier versions
