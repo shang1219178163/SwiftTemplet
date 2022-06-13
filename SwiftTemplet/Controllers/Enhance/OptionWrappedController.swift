@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftExpand
+import HandyJSON
 
 class OptionWrappedController: UIViewController {
 
@@ -15,12 +16,17 @@ class OptionWrappedController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         edgesForExtendedLayout = []
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "done", style: .plain, target: self, action: #selector(handleActionItem(_:)))
+        view.backgroundColor = .white
+        
+        navigationItem.rightBarButtonItems = [("done", #selector(actionDone(_:))),
+                                              ("hide", #selector(actionHide(_:)))].map({
+            UIBarButtonItem(obj: $0.0, target: self, action: $0.1)
+        })
+
     }
     
-    @objc func handleActionItem(_ item: UIBarButtonItem) {
+    @objc func actionDone(_ item: UIBarButtonItem) {
         NNPickerView.showPickerView { ( e ) in
             e.items = [String].init(count: 10, generator: { (idx) -> String in
                 return "item_\(idx)"
@@ -28,12 +34,64 @@ class OptionWrappedController: UIViewController {
         } block: { (e, idx) in
             DDLog(e, idx)
         }
-
     }
     
-
+    @objc func actionHide(_ item: UIBarButtonItem) {
+        print(Bar())
+        print(Bar().description())
+        print(Bar().toDic())
+    }
 }
 
+/// 结构体转json
+protocol JsonByStruct{
+    func toDic() -> [String: Any];
+}
+
+extension JsonByStruct{
+
+    func toDic() -> [String: Any] {
+        var dic = [String: Any]()
+
+        let mirror = Mirror(reflecting: self);
+        for child in mirror.children {
+            dic["\(child.label!)"] = child.value;
+        }
+        return dic
+    }
+}
+
+/// 结构体描述
+protocol DescriptionByStruct{
+    func description() -> String;
+}
+
+extension DescriptionByStruct{
+
+    func description() -> String {
+        let mirror = Mirror(reflecting: self);
+        print("对象类型：\(mirror.subjectType)")
+        print("对象属性个数：\(mirror.children.count)")
+        print("对象的属性及属性值")
+        
+        var result = ""
+        for child in mirror.children {
+            result += "\(child.label!): \(child.value)\n"
+        }
+        return result;
+    }
+}
+
+
+struct Bar: JsonByStruct, DescriptionByStruct {
+    var name = ""
+    var age = ""
+    
+    init(_ name: String = "小明", age: String = "18") {
+        self.name = name;
+        self.age = age;
+    }
+}
 
 public protocol DefaultValue {
     associatedtype Value: Codable
