@@ -38,19 +38,30 @@ class OptionWrappedController: UIViewController {
     
     @objc func actionHide(_ item: UIBarButtonItem) {
         print(Bar())
-        print(Bar().description())
-        print(Bar().toDic())
+//        print(Bar().description())
+//        print(Bar().toJson())
     }
 }
 
+//public enum DisplayStyle {
+//    case Struct
+//    case Class
+//    case Enum
+//    case Tuple
+//    case Optional
+//    case Collection
+//    case Dictionary
+//    case Set
+//}
+
 /// 结构体转json
-protocol JsonByStruct{
-    func toDic() -> [String: Any];
+protocol StructJsonAble{
+    func toJson() -> [String: Any];
 }
 
-extension JsonByStruct{
+extension StructJsonAble{
 
-    func toDic() -> [String: Any] {
+    func toJson() -> [String: Any] {
         var dic = [String: Any]()
 
         let mirror = Mirror(reflecting: self);
@@ -62,11 +73,11 @@ extension JsonByStruct{
 }
 
 /// 结构体描述
-protocol DescriptionByStruct{
+protocol StructDescriptionAble{
     func description() -> String;
 }
 
-extension DescriptionByStruct{
+extension StructDescriptionAble{
 
     func description() -> String {
         let mirror = Mirror(reflecting: self);
@@ -83,14 +94,19 @@ extension DescriptionByStruct{
 }
 
 
-struct Bar: JsonByStruct, DescriptionByStruct {
-    var name = ""
+struct Bar: StructJsonAble, StructDescriptionAble {
+    
+    @TestAble<String>("zhangsna", flagName: "name")
+    var name;
+    
     var age = ""
     
-    init(_ name: String = "小明", age: String = "18") {
-        self.name = name;
-        self.age = age;
-    }
+    var isMale = false;
+    
+//    init(_ name: String = "小明", age: String = "18") {
+//        self.name = name;
+//        self.age = age;
+//    }
 }
 
 public protocol DefaultValue {
@@ -114,6 +130,7 @@ struct Default<T: DefaultValue> where T == T.Value {
 
 }
 
+
 extension Array: DefaultValue where Element: DefaultValue, Element: Codable {
     public typealias Value = Array<Element>
     public static var defaultValue: Array<Element> {
@@ -129,9 +146,9 @@ extension Optional: DefaultValue where Wrapped: DefaultValue, Wrapped: Codable {
 }
 
 
-struct Video: Codable {
+struct Video {
 
-//    @Default var id: Int?
+//    @Default(0) var id: Int?
 //
 //    @Default(22) var age: Int
 //
@@ -144,3 +161,13 @@ struct Video: Codable {
 }
 
 
+
+@propertyWrapper struct TestAble<T> {
+    var wrappedValue: T;
+    var flagName: String;
+
+    init(_ value: T, flagName: String) {
+        self.wrappedValue = value;
+        self.flagName = flagName;
+    }
+}
