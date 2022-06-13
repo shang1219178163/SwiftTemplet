@@ -46,21 +46,23 @@ public extension UserDefaults {
 struct UserDefault<T> {
     ///这里的属性key 和 defaultValue 还有init方法都是实际业务中的业务代码
     ///我们不需要过多关注
-    let key: String
-    let defaultValue: T
+    private let key: String;
+    private let defaultValue: T;
+    private let storage: UserDefaults
 
-    init(_ key: String, defaultValue: T) {
-        self.key = key
-        self.defaultValue = defaultValue
+    init(_ key: String, defaultValue: T, storage: UserDefaults = .standard) {
+        self.key = key;
+        self.defaultValue = defaultValue;
+        self.storage = storage;
     }
     /// wrappedValue是@propertyWrapper必须要实现的属性
     /// 当操作我们要包裹的属性时, 其具体set get方法实际上走的都是wrappedValue 的set get 方法。
     var wrappedValue: T {
         get {
-            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+            return storage.object(forKey: key) as? T ?? defaultValue
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: key)
+            storage.set(newValue, forKey: key)
         }
     }
 }
