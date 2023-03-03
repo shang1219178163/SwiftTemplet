@@ -15,7 +15,10 @@ class CurryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        let input = ["a", "b", "c"];
+        let a = input.filter(containsAtSign);
+        let b = input.filter(containsA("@"));
+        print(a, b);
     }
     
     
@@ -47,7 +50,18 @@ class CurryViewController: UIViewController {
     // 可以绑定2、3参数的curry化函数
     private func curry2_3<A, B, C, D, E, F>(_ function: @escaping (A, B, C, D, E) -> F) -> (C, D) -> (A, B, E) -> F {
         return { c, d in { a, b, e in
-            function(a, b, c, d, e) } }
+            function(a, b, c, d, e) }
+        }
+    }
+    
+    func containsAtSign(_ string: String) -> Bool {
+        return string.contains("@");
+    }
+    
+    func containsA(_ substring: String) -> (String) -> Bool {
+        return { str -> Bool in
+            return str.contains(substring);
+        }
     }
 }
 

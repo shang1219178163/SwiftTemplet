@@ -24,14 +24,14 @@ public extension CustomStringConvertible {
 }
 
 ///映射协议
-public protocol MirrorReflectingConvertible{
+public protocol MirrorReflectingConvertible {
     
     var mirror: Mirror { get };
     
     func value(for label: String) -> Any?;
 }
 
-public extension MirrorReflectingConvertible{
+public extension MirrorReflectingConvertible {
     
     var mirror: Mirror{
         return Mirror(reflecting: self)

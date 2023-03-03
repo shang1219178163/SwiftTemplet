@@ -469,10 +469,10 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate{
 
 
 protocol Container{
-    associatedtype Item: Equatable
-    mutating func append(_ item: Item)
+    associatedtype ItemType: Equatable
+    mutating func append(_ item: ItemType)
     var count: Int { get }
-    subscript(i: Int) -> Item { get }
+    subscript(i: Int) -> ItemType { get }
 }
 
 
@@ -501,26 +501,26 @@ struct Stack<Element: Equatable>: Container {
 extension Stack where Element: Equatable {
     func isTop(_ item: Element) -> Bool {
         guard let topItem = items.last else {
-            return false
+            return false;
         }
-        return topItem == item
+        return topItem == item;
     }
 }
 
 
 protocol SuffixableContainer: Container {
-    associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
-    func suffix(_ size: Int) -> Suffix
+    associatedtype Suffix: SuffixableContainer where Suffix.ItemType == ItemType;
+    func suffix(_ size: Int) -> Suffix;
 }
 
 
 extension Stack: SuffixableContainer {
     func suffix(_ size: Int) -> Stack {
-        var result = Stack()
+        var result = Stack();
         for index in (count-size)..<count {
-            result.append(self[index])
+            result.append(self[index]);
         }
-        return result
+        return result;
     }
     // Inferred that Suffix is Stack.
 }
