@@ -563,6 +563,7 @@
 		14D91B15234C88B400554994 /* CellListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B14234C88B400554994 /* CellListController.swift */; };
 		14D91B17234DB51D00554994 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B16234DB51D00554994 /* PopViewController.swift */; };
 		14D91B19234DB96600554994 /* NNPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B18234DB96600554994 /* NNPopView.swift */; };
+		14D9CD3F29B1B06D009D8C5A /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9CD3E29B1B06D009D8C5A /* GenericViewController.swift */; };
 		14DC7F272657E11100812CF8 /* NNPlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC7F262657E11100812CF8 /* NNPlaceHolderViewController.swift */; };
 		14DC7F292657E62400812CF8 /* NNPlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */; };
 		14DFA01C26E5A12E006F9BC9 /* MultithreadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DFA01B26E5A12E006F9BC9 /* MultithreadingViewController.swift */; };
@@ -1304,6 +1305,7 @@
 		14D91B14234C88B400554994 /* CellListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellListController.swift; sourceTree = "<group>"; };
 		14D91B16234DB51D00554994 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		14D91B18234DB96600554994 /* NNPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPopView.swift; sourceTree = "<group>"; };
+		14D9CD3E29B1B06D009D8C5A /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
 		14DC7F262657E11100812CF8 /* NNPlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPlaceHolderViewController.swift; sourceTree = "<group>"; };
 		14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPlaceHolderView.swift; sourceTree = "<group>"; };
 		14DFA01B26E5A12E006F9BC9 /* MultithreadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultithreadingViewController.swift; sourceTree = "<group>"; };
@@ -2118,6 +2120,14 @@
 			path = leftright;
 			sourceTree = "<group>";
 		};
+		14D9CD3D29B1B06D009D8C5A /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				14D9CD3E29B1B06D009D8C5A /* GenericViewController.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
 		14DFA01A26E5A0FC006F9BC9 /* Thread */ = {
 			isa = PBXGroup;
 			children = (
@@ -2620,6 +2630,7 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14D9CD3D29B1B06D009D8C5A /* Generic */,
 				142C907626F18CCC00AB267D /* RegularExpression */,
 				14DFA01A26E5A0FC006F9BC9 /* Thread */,
 				1426A86926DA15A500B237C4 /* hud */,
@@ -3517,6 +3528,7 @@
 				14F39679228041AA000CD7B4 /* NNCheckVersRootClass.swift in Sources */,
 				1439166324C12FC500CBABF0 /* TZImageUploadOperation.m in Sources */,
 				1447427A258A0A4B00BA550D /* IOPPayInpartResultController.swift in Sources */,
+				14D9CD3F29B1B06D009D8C5A /* GenericViewController.swift in Sources */,
 				1466C82C26C35A7600B5579B /* IOPShopAuthDetailController.swift in Sources */,
 				148040AE240F89A90032EB07 /* NNTableHeaderView.swift in Sources */,
 				517D142D2140EE0C00F08FE5 /* FifthViewControlle.swift in Sources */,
@@ -3873,8 +3885,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftTemplet/SwiftTemplet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2JZLEXVN7E;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftTemplet/Controllers",
@@ -3913,7 +3925,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "\"-DDEBUG\" \"-DAPPTYPE_SWIFT\"";
-				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet.st123;
+				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
@@ -3934,8 +3946,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SwiftTemplet/SwiftTemplet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2JZLEXVN7E;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SwiftTemplet/Controllers",
@@ -3973,7 +3985,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "\"-DAPPTYPE_SWIFT\"";
-				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet.st123;
+				PRODUCT_BUNDLE_IDENTIFIER = BIN.SwiftTemplet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
