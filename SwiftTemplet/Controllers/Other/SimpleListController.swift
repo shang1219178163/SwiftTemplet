@@ -42,7 +42,7 @@ import SnapKit
             
 
     lazy var label: UILabel = {
-        let view = UILabel(frame: CGRectMake(0, 0, kScreenWidth, 50))
+        let view = UILabel(frame: CGRect(0, 0, kScreenWidth, 50))
         view.backgroundColor = .systemGreen
         view.numberOfLines = 0
         return view
@@ -86,7 +86,7 @@ import SnapKit
 //        tableView.tableHeaderView = searchBar
         view.addSubview(tableView);
         
-        label.frame = CGRectMake(0, 0, kScreenWidth, 225)
+        label.frame = CGRect(0, 0, kScreenWidth, 225)
         tableView.tableHeaderView = label
     }
 
@@ -150,7 +150,7 @@ extension SimpleListController: UITableViewDataSource, UITableViewDelegate{
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        DDLog(scrollView.contentOffset.y)
 //        if scrollView.contentOffset.y < 0 {
-//            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.y, 0)
+//            scrollView.contentOffset = CGPoint(scrollView.contentOffset.y, 0)
 //            return
 //        }
 //    }

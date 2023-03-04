@@ -123,7 +123,7 @@ import SwiftExpand
 extension NNTableHeaderView{
     
     static func create(_ image: UIImage = UIImage(named: "icon_avatar")!, title: String = "操作成功", topPadding: CGFloat = 25, height: CGFloat = 180) -> NNTableHeaderView {
-        let view = NNTableHeaderView(frame: CGRectMake(0, 0, UIScreen.sizeWidth, height))
+        let view = NNTableHeaderView(frame: CGRect(0, 0, UIScreen.sizeWidth, height))
         view.topPadding = topPadding
         view.hasCornerRadius = true;
         view.backgroundColor = UIColor.white

@@ -12,12 +12,12 @@ import SwiftExpand
 class GXSegmentPageViewExampleController: UIViewController {
     let inset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     
-     var titleView0: GXSegmentTitleView = GXSegmentTitleView(frame: CGRectMake(0, 0, kScreenWidth, 50))
-     var titleView1: GXSegmentTitleView = GXSegmentTitleView(frame: CGRectMake(0, 0, kScreenWidth, 50))
-     var titleView2: GXSegmentTitleView = GXSegmentTitleView(frame: CGRectMake(0, 0, kScreenWidth, 50))
-     var titleView3: GXSegmentTitleView = GXSegmentTitleView(frame: CGRectMake(0, 0, kScreenWidth, 50))
-     var titleView4: GXSegmentTitleView = GXSegmentTitleView(frame: CGRectMake(0, 0, kScreenWidth, 50))
-     var pageView: GXSegmentPageView = GXSegmentPageView(frame: CGRectMake(0, 0, kScreenWidth, 50))
+     var titleView0: GXSegmentTitleView = GXSegmentTitleView(frame: CGRect(0, 0, kScreenWidth, 50))
+     var titleView1: GXSegmentTitleView = GXSegmentTitleView(frame: CGRect(0, 0, kScreenWidth, 50))
+     var titleView2: GXSegmentTitleView = GXSegmentTitleView(frame: CGRect(0, 0, kScreenWidth, 50))
+     var titleView3: GXSegmentTitleView = GXSegmentTitleView(frame: CGRect(0, 0, kScreenWidth, 50))
+     var titleView4: GXSegmentTitleView = GXSegmentTitleView(frame: CGRect(0, 0, kScreenWidth, 50))
+     var pageView: GXSegmentPageView = GXSegmentPageView(frame: CGRect(0, 0, kScreenWidth, 50))
     
     private lazy var items: [String] = {
         return ["要闻", "推荐", "抗肺炎", "视频", "新时代",

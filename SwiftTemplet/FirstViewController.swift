@@ -25,14 +25,14 @@ class FirstViewController: UIViewController{
     }()
     
     lazy var footerView: NNTableFooterViewNew = {
-        let view = NNTableFooterViewNew(frame: CGRectMake(0, 0, kScreenWidth, 280))
+        let view = NNTableFooterViewNew(frame: CGRect(0, 0, kScreenWidth, 280))
         view.spacing = 8
         view.btn.addTarget(self, action: #selector(handleActionSend(_:)), for: .touchUpInside)
         
 //        view.stackView.axis = .horizontal
         
         let imgView = UIImageView()
-        imgView.frame = CGRectMake(0, 0, 100, 50)
+        imgView.frame = CGRect(0, 0, 100, 50)
         imgView.backgroundColor = .green
         imgView.image = UIImage(named: "Skull.jpg")
         view.contentView = imgView
@@ -196,7 +196,7 @@ class FirstViewController: UIViewController{
         btn.setTitle("Next", for: .normal)
 
         btn.sizeToFit()
-        btn.frame = CGRectMake(0, 0, 80, 40)
+        btn.frame = CGRect(0, 0, 80, 40)
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         btn.addActionHandler { (sender) in
             DDLog(sender)

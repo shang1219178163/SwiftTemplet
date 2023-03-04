@@ -99,7 +99,7 @@ class NNTagView: UIView {
         for i in 0..<tags.count {
             let btn: UIButton = UIButton(type: .custom)
             btn.adjustsImageWhenHighlighted = false
-            btn.frame = CGRectMake(i == 0 ? 0 : (marginX+leftX), topY, 100, btnH)
+            btn.frame = CGRect(i == 0 ? 0 : (marginX+leftX), topY, 100, btnH)
             btn.tag = 100+i
             // 默认选中第一个
             if i == index && hasDefaultIndex && canSelectedIndex {
@@ -122,7 +122,7 @@ class NNTagView: UIView {
                 topY += btnH+marginY
                 // 重置
                 leftX = 0
-                btn.frame = CGRectMake(0, topY, 100, btnH)
+                btn.frame = CGRect(0, topY, 100, btnH)
                 // 设置按钮的边距、间隙
                 setTagButtonMargin(btn, fontMargin: fontMargin)
             }
@@ -164,7 +164,7 @@ class NNTagView: UIView {
                         topY += self.btnH+self.marginY
                         // 重置
                         leftX = 0
-                        btn.frame = CGRectMake(0, topY, 100, self.btnH)
+                        btn.frame = CGRect(0, topY, 100, self.btnH)
                         // 设置按钮的边距、间隙
                         self.setTagButtonMargin(btn, fontMargin: self.fontMargin)
                     }
@@ -229,13 +229,13 @@ class NNTagView: UIView {
     
     // 根据颜色生成UIImage
     func imageWithColor(_ color: UIColor) -> UIImage {
-        let rect: CGRect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+        let rect = CGRect(0.0, 0.0, 1.0, 1.0)
         // 开始画图的上下文
         UIGraphicsBeginImageContext(rect.size)
         // 设置背景颜色
         color.set()
         // 设置填充区域
-        UIRectFill(CGRectMake(0, 0, rect.size.width, rect.size.height))
+        UIRectFill(CGRect(0, 0, rect.size.width, rect.size.height))
         // 返回UIImage
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         // 结束上下文

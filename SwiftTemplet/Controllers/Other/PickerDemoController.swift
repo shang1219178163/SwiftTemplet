@@ -11,6 +11,7 @@ import PhotosUI
 import SwiftExpand
 
 ///颜色选择,字体选择
+@available(iOS 14.0, *)
 class PickerDemoController: UIViewController {
 
     let items: [UIButton] = ["系统字体选择器", "present自定义字体选择器", "push自定义字体选择器", "系统颜色选择器", "折叠列表", "PickerVC", "PickerVC设置contentVC", "button"].enumerated().map { e in
@@ -30,14 +31,14 @@ class PickerDemoController: UIViewController {
         return sender
     }
     
-    @available(iOS 14.0, *)
+    
     private lazy var picker: UIColorPickerViewController = {
         let picker = UIColorPickerViewController()
         picker.delegate = self
         return picker
     }()
     
-    @available(iOS 14.0, *)
+//    @available(iOS 14.0, *)
     private lazy var colorWell: UIColorWell = {
         let sender = UIColorWell()
         sender.frame = CGRect(x: 0, y: 0, width: 44, height: 44);
@@ -46,7 +47,7 @@ class PickerDemoController: UIViewController {
     }()
     
     
-    @available(iOS 14.0, *)
+//    @available(iOS 14.0, *)
     private lazy var imagePickerVC: PHPickerViewController = {
         var config = PHPickerConfiguration()
         // 可选择的资源数量，0表示不设限制，默认为1
@@ -90,7 +91,7 @@ class PickerDemoController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        items.updateItemsConstraint(CGRectMake(10, 10, kScreenWidth - 20, 200))
+        items.updateItemsConstraint(CGRect(10, 10, kScreenWidth - 20, 200))
     }
     
     @objc func handleAction(_ sender: UIButton) {
@@ -204,7 +205,7 @@ class PickerDemoController: UIViewController {
 }
 
 
-@available(iOS 13.0, *)
+@available(iOS 14.0, *)
 extension PickerDemoController: UIFontPickerViewControllerDelegate{
 
     func fontPickerViewControllerDidPickFont(_ viewController: UIFontPickerViewController) {

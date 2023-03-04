@@ -35,7 +35,7 @@ import SwiftExpand
     private var currentSelectedIndex: Int = 0;
     var selectedIndex: Int{
         set{
-            let offset = CGPointMake(newValue.toCGFloat * scrollViewContent.sizeWidth, 0);
+            let offset = CGPoint(newValue.toCGFloat * scrollViewContent.sizeWidth, 0);
             scrollViewContent.setContentOffset(offset, animated: true)
             
             selectedView = items![newValue];
@@ -79,7 +79,7 @@ import SwiftExpand
 
         for e in items.enumerated() {
             let view: UIView = e.element;
-            view.frame = CGRectMake(e.offset.toCGFloat * bounds.width,
+            view.frame = CGRect(e.offset.toCGFloat * bounds.width,
                                     0,
                                     bounds.width,
                                     bounds.height)

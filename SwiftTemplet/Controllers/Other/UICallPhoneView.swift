@@ -194,7 +194,7 @@ class UICallPhoneView: UIView {
 //        let view = UIButton(type: .custom)
 //        view.frame = CGRectMake(20, 110, 70, 70)
         
-        let view = NNFloatingButton(frame: CGRectMake(20, 110, 70, 70))
+        let view = NNFloatingButton(frame: CGRect(20, 110, 70, 70))
         
         view.setTitleColor(UIColor.hexValue(0x39C179), for: .normal)
         view.setTitle("00:00", for: .normal)

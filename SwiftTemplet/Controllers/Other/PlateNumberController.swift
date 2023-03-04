@@ -64,14 +64,14 @@ class PlateNumberController: UIViewController {
     //MARK: -funtions
     func setupInputView() {
         textField.inputView = {
-            let view: UIView = UIView(frame: CGRectMake(0, 0, kScreenWidth, 216))
+            let view: UIView = UIView(frame: CGRect(0, 0, kScreenWidth, 216))
             view.backgroundColor = UIColor.green
             
             return view
         }()
         
         textField.inputAccessoryView = {
-            let view: UIView = UIView(frame: CGRectMake(0, 0, kScreenWidth, 50))
+            let view: UIView = UIView(frame: CGRect(0, 0, kScreenWidth, 50))
             view.backgroundColor = UIColor.red
             
             return view

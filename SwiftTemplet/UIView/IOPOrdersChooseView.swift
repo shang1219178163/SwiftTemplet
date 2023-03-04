@@ -176,7 +176,7 @@ extension IOPOrdersChooseView{
     
     /// 创建默认的确定按钮
 //    static func create(_ title: String = "确定", topPadding: CGFloat = 30, height: CGFloat = 180) -> NNTableFooterView {
-//        let view = NNTableFooterView(frame: CGRectMake(0, 0, UIScreen.sizeWidth, height))
+//        let view = NNTableFooterView(frame: CGRect(0, 0, UIScreen.sizeWidth, height))
 //        view.topPadding = topPadding;
 //        view.labelTop.font = UIFont.systemFont(ofSize: 12)
 //        view.labelTop.text = ""

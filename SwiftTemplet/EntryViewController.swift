@@ -47,7 +47,7 @@ class EntryViewController: UIViewController {
     
     lazy var uploadImagesView: NNUploadImagesView = {
         let view = NNUploadImagesView()
-        view.frame = CGRectMake(0, 0, self.view.bounds.width, 110)
+        view.frame = CGRect(0, 0, self.view.bounds.width, 110)
         view.currrentVC = self
         view.images = [view.imageDefault]
         view.maxCount = 9
@@ -177,7 +177,7 @@ class EntryViewController: UIViewController {
     }()
     
     lazy var floatingBtn: NNFloatingButton = {
-        let view = NNFloatingButton(frame: CGRectMake(kScreenWidth - 60, 80, 60, 60))
+        let view = NNFloatingButton(frame: CGRect(kScreenWidth - 60, 80, 60, 60))
           view.insets = UIEdgeInsets(top: 40, left: 0, bottom: 80, right: 0)
 //          view.parController = self
           view.addActionHandler({ (sender) in
@@ -1206,8 +1206,8 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             }
             cell.groupView.itemsIndexs = [0,]
             cell.groupView.disabledIndexs = [0, 1]
-            cell.groupView.block = { view, sender in
-                DDLog(view.itemsIndexs)
+            cell.groupView.block = { (view: NNGroupButton, sender: UIButton) in
+                DDLog(sender)
             }
             return cell;
             

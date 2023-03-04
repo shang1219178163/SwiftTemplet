@@ -49,7 +49,7 @@ extension FloatingPanelExampleController: NNFloatingPanelDelegate {
     }
     
     func nFloatingPanelDidEndDragging(_ vc: FloatingPanelController) {
-        if vc.position == .tip {
+        if vc.state == .tip {
             navigationController?.popViewController(animated: false)
         }
     }

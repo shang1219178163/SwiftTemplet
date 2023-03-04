@@ -121,7 +121,7 @@ extension IOPPlateEntryController: UITableViewDataSource, UITableViewDelegate{
             }
             
             let btn: UIButton = {
-                let rect = CGRectMake(0, 0, 22, 22)
+                let rect = CGRect(0, 0, 22, 22)
                 let view = UIButton(type: .custom)
                 view.frame = rect
                 return view
@@ -177,7 +177,7 @@ extension IOPPlateEntryController: UITableViewDataSource, UITableViewDelegate{
             
 //            if indexPath.row != list.count - 1 {
                 let btn: UIButton = {
-                    let rect = CGRectMake(0, 0, 20, 20)
+                    let rect = CGRect(0, 0, 20, 20)
                     let view = UIButton(type: .custom)
                     view.frame = rect
                     return view

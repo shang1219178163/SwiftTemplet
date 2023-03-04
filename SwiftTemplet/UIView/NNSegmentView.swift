@@ -107,13 +107,13 @@ import SwiftExpand
             self.indicatorView.layer.backgroundColor = self.selectedColor.cgColor;
             UIView.animate(withDuration: 0.15) {
                 if self.layout.scrollDirection == .horizontal {
-                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
+                    self.indicatorView.frame = CGRect(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
                                                           0,
                                                           self.layout.itemSize.width,
                                                           self.indicatorHeight);
                     
                 } else {
-                    self.indicatorView.frame = CGRectMake(0,
+                    self.indicatorView.frame = CGRect(0,
                                                           self.layout.itemSize.height * CGFloat(self.selectIndexPath.row),
                                                           self.indicatorHeight,
                                                           self.layout.itemSize.height);
@@ -125,13 +125,13 @@ import SwiftExpand
             self.indicatorView.layer.backgroundColor = self.selectedColor.cgColor;
             UIView.animate(withDuration: 0.15) {
                 if (self.layout.scrollDirection == .horizontal) {
-                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
+                    self.indicatorView.frame = CGRect(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
                                                           self.layout.itemSize.height - self.indicatorHeight,
                                                           self.layout.itemSize.width,
                                                           self.indicatorHeight);
                     
                 } else {
-                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width - self.indicatorHeight,
+                    self.indicatorView.frame = CGRect(self.layout.itemSize.width - self.indicatorHeight,
                                                           self.layout.itemSize.height * CGFloat(self.selectIndexPath.row),
                                                           self.indicatorHeight,
                                                           self.layout.itemSize.height);
@@ -143,13 +143,13 @@ import SwiftExpand
             self.indicatorView.layer.backgroundColor = self.selectedColor.withAlphaComponent(0.2).cgColor;
             UIView.animate(withDuration: 0.15) {
                 if (self.layout.scrollDirection == .horizontal) {
-                    self.indicatorView.frame = CGRectMake(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
+                    self.indicatorView.frame = CGRect(self.layout.itemSize.width * CGFloat(self.selectIndexPath.row),
                                                           0,
                                                           self.layout.itemSize.width,
                                                           self.layout.itemSize.height);
                     
                 } else {
-                    self.indicatorView.frame = CGRectMake(0,
+                    self.indicatorView.frame = CGRect(0,
                                                           self.layout.itemSize.height * CGFloat(self.selectIndexPath.row),
                                                           self.layout.itemSize.width,
                                                           self.layout.itemSize.height);

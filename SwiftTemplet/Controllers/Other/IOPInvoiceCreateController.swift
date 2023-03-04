@@ -83,7 +83,7 @@ class IOPInvoiceCreateController: UIViewController {
     }
     
 //    @objc lazy var imgViewMore: UIImageView = {
-//        let view: UIImageView = UIImageView.create(CGRectMake(0, 0, 8, 13), imgName: "img_arrowRight_gray")
+//        let view: UIImageView = UIImageView.create(CGRect(0, 0, 8, 13), imgName: "img_arrowRight_gray")
 //        let image = UIImage(named: "img_arrowRight_gray", podName: "SwiftExpand")
 //        view.image = image;
 //        
@@ -113,7 +113,7 @@ class IOPInvoiceCreateController: UIViewController {
         if isMoreRow {
 
             let imgView: UIImageView = {
-                let rect = CGRectMake(0, 0, 14, 14)
+                let rect = CGRect(0, 0, 14, 14)
                 let view: UIImageView = UIImageView(rect: rect, named: "icon_arrow_right_lightGray")
                 let image = UIImage(named: "img_arrowRight_gray", podName: "SwiftExpand")
                 view.image = image;

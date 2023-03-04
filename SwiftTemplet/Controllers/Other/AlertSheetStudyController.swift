@@ -511,7 +511,7 @@ class CustomAlertController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePicker.frame = CGRectMake(0, 0, size.width, size.height)
+        datePicker.frame = CGRect(0, 0, size.width, size.height)
         datePicker.center = view.center
         view.addSubview(datePicker)
         

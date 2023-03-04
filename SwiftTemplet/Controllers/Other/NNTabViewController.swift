@@ -16,7 +16,7 @@ class NNTabViewController: UIViewController {
         super.viewDidLoad()
 
         tabView.frame = view.bounds
-        tabView.frame = CGRectMake(5, 100, view.bounds.width - 10, view.bounds.height - 150)
+        tabView.frame = CGRect(5, 100, view.bounds.width - 10, view.bounds.height - 150)
 
 //        tabView.selectedView = twoVC.view;
         view.addSubview(tabView)

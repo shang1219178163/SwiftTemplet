@@ -128,7 +128,7 @@ import SwiftExpand
     
     lazy var lineDashView: NNLineDashView = {
         let view = NNLineDashView(frame: .zero);
-//        let view = NNLineDashView(frame: CGRectMake(0, 0, kScreenWidth, 5));
+//        let view = NNLineDashView(frame: CGRect(0, 0, kScreenWidth, 5));
 
         view.style = .line
         return view;

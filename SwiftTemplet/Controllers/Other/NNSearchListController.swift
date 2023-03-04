@@ -41,7 +41,7 @@ import SwiftExpand
         
     
     lazy var titleView: NNSearchbarTitleView = {
-        let view = NNSearchbarTitleView(frame: CGRectMake(0, 0, kScreenWidth - 2*15, 35))
+        let view = NNSearchbarTitleView(frame: CGRect(0, 0, kScreenWidth - 2*15, 35))
         view.searchBar.layer.cornerRadius = 5;
         view.searchBar.layer.masksToBounds = true;
         view.searchBar.delegate = self

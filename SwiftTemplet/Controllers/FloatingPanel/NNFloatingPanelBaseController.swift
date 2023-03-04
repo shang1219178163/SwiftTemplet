@@ -50,11 +50,11 @@ class NNFloatingPanelBaseController: UIViewController {
         // Initialize FloatingPanelController and add the view
         fpc.surfaceView.backgroundColor = .clear
         if #available(iOS 11, *) {
-            fpc.surfaceView.cornerRadius = 9.0
+            fpc.surfaceView.layer.cornerRadius = 9.0
         } else {
-            fpc.surfaceView.cornerRadius = 0.0
+            fpc.surfaceView.layer.cornerRadius = 0.0
         }
-        fpc.surfaceView.shadowHidden = false
+//        fpc.surfaceView.shadowHidden = false
 //        fpc.surfaceView.grabberHandle.isHidden = false
 
 //        // Set a content view controller
@@ -70,30 +70,30 @@ extension NNFloatingPanelBaseController: FloatingPanelControllerDelegate{
 
     // MARK: FloatingPanelControllerDelegate
     
-    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        if let layout = delegate?.nFloatingPanelLayout(vc) as NNPanelLandscapeBaseLayout? {
+    func floatingPanel(_ fpc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
+        if let layout = delegate?.nFloatingPanelLayout(fpc) as NNPanelLandscapeBaseLayout? {
             return layout
         }
         
         switch newCollection.verticalSizeClass {
         case .compact:
-            fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
-            fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
+            fpc.surfaceView.layer.borderWidth = 1.0 / traitCollection.displayScale
+            fpc.surfaceView.layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor;
             return NNPanelLandscapeBaseLayout()
         default:
-            fpc.surfaceView.borderWidth = 0.0
-            fpc.surfaceView.borderColor = nil
-            return nil
+            fpc.surfaceView.layer.borderWidth = 0.0
+            fpc.surfaceView.layer.borderColor = nil
+            return NNPanelLandscapeBaseLayout()
         }
     }
 
     func floatingPanelDidMove(_ vc: FloatingPanelController) {
         let y = vc.surfaceView.frame.origin.y
-        let tipY = vc.originYOfSurface(for: .tip)
-        if y > tipY - 44.0 {
-            let progress = max(0.0, min((tipY  - y) / 44.0, 1.0))
-//            fpc.scrollView?.alpha = progress
-        }
+//        let tipY = vc.originYOfSurface(for: .tip)
+//        if y > tipY - 44.0 {
+//            let progress = max(0.0, min((tipY  - y) / 44.0, 1.0))
+////            fpc.scrollView?.alpha = progress
+//        }
 //        debugPrint("NearbyPosition : ",vc.nearbyPosition)
     }
 
@@ -107,30 +107,31 @@ extension NNFloatingPanelBaseController: FloatingPanelControllerDelegate{
     
     func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
         delegate?.nFloatingPanelWillBeginDragging(vc)
-        if vc.position == .full {
+        if vc.state == .full {
 
         }
         
-        if vc.position == .half {
+        if vc.state == .half {
 //            canDragging = false
         }
     }
-
-    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
-        delegate?.nFloatingPanelDidEndDragging(vc)
-        if targetPosition != .full {
+    
+    func floatingPanelWillEndDragging(_ fpc: FloatingPanelController, withVelocity velocity: CGPoint, targetState: UnsafeMutablePointer<FloatingPanelState>) {
+        delegate?.nFloatingPanelDidEndDragging(fpc)
+        if targetState.pointee != .full {
             
         }
 
-        UIView.animate(withDuration: 0.25,
-                       delay: 0.0,
-                       options: .allowUserInteraction,
-                       animations: {
-                        if targetPosition == .tip {
-//                            self.fpc.scrollView?.alpha = 0.0
-                        } else {
-                            self.fpc.scrollView?.alpha = 1.0
-                        }
+        UIView.animate(
+            withDuration: 0.25,
+            delay: 0.0,
+            options: .allowUserInteraction,
+            animations: {
+                if targetState.pointee == .tip {
+    //              self.fpc.scrollView?.alpha = 0.0
+                } else {
+                    self.fpc.backdropView.alpha = 1.0
+                }
         }, completion: nil)
     }
 
@@ -138,16 +139,24 @@ extension NNFloatingPanelBaseController: FloatingPanelControllerDelegate{
 
 class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
     
+    var position: FloatingPanel.FloatingPanelPosition = .bottom;
+    
+    var initialState: FloatingPanel.FloatingPanelState = .half;
+    
+    var anchors: [FloatingPanel.FloatingPanelState: FloatingPanel.FloatingPanelLayoutAnchoring] = [:]
+    
+    
     var fullPosition: CGFloat = 16
     var tipPosition: CGFloat = 169
     var halfPosition: CGFloat = 216
     
-    var initPosition: FloatingPanelPosition = .half
-    var suportPositions: Set<FloatingPanelPosition> = [.full, .half, .tip]
+    var initPosition: FloatingPanelState = .half
+    var suportPositions: Set<FloatingPanelState> = [.full, .half, .tip]
     var backdropAlpha: CGFloat = 0
 
     var leftSpacing: CGFloat = 0
     var rightSpacing: CGFloat = 0
+    
 
     convenience init(tipPosition: CGFloat = 69, halfPosition: CGFloat = 216, fullPosition: CGFloat = 16) {
         self.init()
@@ -156,15 +165,15 @@ class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
         self.tipPosition = tipPosition
     }
     // MARK: -
-    public var initialPosition: FloatingPanelPosition {
+    public var initialPosition: FloatingPanelState {
         return initPosition
     }
     
-    public var supportedPositions: Set<FloatingPanelPosition> {
+    public var supportedPositions: Set<FloatingPanelState> {
         return suportPositions
     }
 
-    public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
+    public func insetFor(position: FloatingPanelState) -> CGFloat? {
         switch position {
         case .full:
             return fullPosition
@@ -191,8 +200,8 @@ class NNPanelLandscapeBaseLayout: FloatingPanelLayout {
             ]
         }
     }
-
-    public func backdropAlphaFor(position: FloatingPanelPosition) -> CGFloat {
+    
+    public func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
         return backdropAlpha
     }
 }

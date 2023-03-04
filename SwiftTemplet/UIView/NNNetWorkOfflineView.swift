@@ -39,7 +39,7 @@ import SwiftExpand
         super.init(frame: frame)
         
         if frame.equalTo(.zero) {
-            self.frame = CGRectMake(0, UIScreen.navBarHeight, kScreenWidth, 37)
+            self.frame = CGRect(0, UIScreen.navBarHeight, kScreenWidth, 37)
         }
         addSubview(imgView);
         addSubview(label);
@@ -60,7 +60,7 @@ import SwiftExpand
             self.dismiss()
             
             if let image = self.navigationController?.navigationBar.backgroundImage(for: .default), image == UIImage(color: .clear) {
-                self.frame = CGRectMake(0, 0, kScreenWidth, 37)
+                self.frame = CGRect(0, 0, kScreenWidth, 37)
             }
             let controller = NNOfflineTipController()
             self.navigationController?.pushViewController(controller, animated: true)

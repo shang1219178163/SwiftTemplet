@@ -14,75 +14,75 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - Alamofire (5.4.1)
-  - AlipaySDK-iOS (15.7.9)
-  - EAIntroView (2.12.0):
+  - Alamofire (5.4.4)
+  - AlipaySDK-iOS (15.8.11)
+  - EAIntroView (2.13.0):
     - EARestrictedScrollView (~> 1.1.0)
   - EARestrictedScrollView (1.1.0)
-  - EFQRCode (5.1.8):
-    - EFQRCode/Core (= 5.1.8)
-  - EFQRCode/Core (5.1.8)
-  - FLAnimatedImage (1.0.12)
-  - FloatingPanel (1.7.5)
+  - EFQRCode (6.2.1):
+    - swift_qrcodejs (~> 2.2.2)
+  - FLAnimatedImage (1.0.17)
+  - FloatingPanel (2.6.0)
   - HandyJSON (5.0.2)
-  - HFNavigationController (1.4.2)
+  - HFNavigationController (1.4.3)
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
-  - Instructions (2.0.0)
-  - IQKeyboardManagerSwift (6.5.5)
-  - KeychainSwift (19.0.0)
-  - Kingfisher (4.10.1)
+  - Instructions (2.2.0)
+  - IQKeyboardManagerSwift (6.5.11)
+  - KeychainSwift (20.0.0)
+  - Kingfisher (6.3.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
-  - MJRefresh (3.4.3)
+  - MJRefresh (3.7.5)
   - MMPopupView (1.7.2):
     - Masonry
-  - NNExcelView (1.0.3):
+  - NNExcelView (1.6.0):
     - SnapKit
-  - NNPlateKeyboard (1.4.2):
+  - NNPlateKeyboard (1.4.3):
     - SnapKit
     - SnapKitExtend
     - SwiftExpand
-  - NNPopoverButton (1.5.0)
-  - OHHTTPStubs (9.0.0):
-    - OHHTTPStubs/Default (= 9.0.0)
-  - OHHTTPStubs/Core (9.0.0)
-  - OHHTTPStubs/Default (9.0.0):
+  - NNPopoverButton (2.1.0)
+  - OHHTTPStubs (9.1.0):
+    - OHHTTPStubs/Default (= 9.1.0)
+  - OHHTTPStubs/Core (9.1.0)
+  - OHHTTPStubs/Default (9.1.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (9.0.0):
+  - OHHTTPStubs/JSON (9.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (9.0.0):
+  - OHHTTPStubs/NSURLSession (9.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (9.0.0)
-  - Reveal-SDK (26)
-  - RxAlamofire (5.7.1):
-    - RxAlamofire/Core (= 5.7.1)
-  - RxAlamofire/Core (5.7.1):
+  - OHHTTPStubs/OHPathHelpers (9.1.0)
+  - Reveal-SDK (36)
+  - RxAlamofire (6.1.1):
+    - RxAlamofire/Core (= 6.1.1)
+  - RxAlamofire/Core (6.1.1):
     - Alamofire (~> 5.4)
-    - RxSwift (~> 5.1)
-  - RxCocoa (5.1.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.1.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.1.1)
-  - RxWebKit (1.0.2):
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
-  - SDWebImage (5.8.3):
-    - SDWebImage/Core (= 5.8.3)
-  - SDWebImage/Core (5.8.3)
-  - SnapKit (4.2.0)
-  - SnapKitExtend (1.0.7):
+    - RxSwift (~> 6.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - SDWebImage (5.15.5):
+    - SDWebImage/Core (= 5.15.5)
+  - SDWebImage/Core (5.15.5)
+  - SnapKit (5.6.0)
+  - SnapKitExtend (1.1.0):
     - SnapKit
   - Starscream (4.0.4)
-  - SwiftExpand (7.7.2)
-  - Then (2.7.0)
-  - TZImagePickerController (3.3.2)
+  - SwiftExpand (7.24.0)
+  - Then (3.0.0)
+  - TZImagePickerController (3.8.3):
+    - TZImagePickerController/Basic (= 3.8.3)
+    - TZImagePickerController/Location (= 3.8.3)
+  - TZImagePickerController/Basic (3.8.3)
+  - TZImagePickerController/Location (3.8.3)
   - WechatOpenSDK (1.8.7.1)
   - XHLaunchAd (3.9.12):
     - FLAnimatedImage (~> 1.0.12)
@@ -117,7 +117,6 @@ DEPENDENCIES:
   - RxAlamofire
   - RxCocoa
   - RxSwift
-  - RxWebKit
   - SDWebImage
   - SnapKit
   - SnapKitExtend
@@ -125,7 +124,7 @@ DEPENDENCIES:
   - SwiftExpand
   - Then
   - TZImagePickerController
-  - WechatOpenSDK
+  - WechatOpenSDK (~> 1.8.6)
   - XHLaunchAd
   - YYCache
   - YYCategories
@@ -162,7 +161,6 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - RxWebKit
     - SDWebImage
     - SnapKit
     - SnapKitExtend
@@ -177,49 +175,48 @@ SPEC REPOS:
     - YYModel
 
 SPEC CHECKSUMS:
-  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
-  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
-  AlipaySDK-iOS: 94ff4c0e17c5e7d126b8207596d5033006534c25
-  EAIntroView: 249559079ddfdbe80e5bcb755c04c3b964b2ac27
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  AlipaySDK-iOS: a07b6eafa847a5b29acb6c150ea16d9792d5d167
+  EAIntroView: 9adedfc6b5c3fd3ebe19766da01dae573e6ce053
   EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
-  EFQRCode: de5eb598ca2e51bb25013d9ce484acc3152ce187
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  FloatingPanel: bb17fd6fc7ae519f877f7bd30f4f6115a78acf07
+  EFQRCode: a4d39ec3466b68dffa71de3b5caef7c9ceefdc53
+  FLAnimatedImage: bbf914596368867157cc71b38a8ec834b3eeb32b
+  FloatingPanel: 2d4a82745948d9c66be1daf51a03e9e70c9d2a2a
   HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
-  HFNavigationController: 2d5d92ffcf0437f9f021c471df8bb764987ec46b
+  HFNavigationController: 97b13e65afe3f232169baf3a83fdb2e245f6727d
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
-  Instructions: debf9cedeaf8d095108fd35d2c54b97ccf769e65
-  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
-  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Instructions: 07052901a398b42eb1d83de9755b8a0bac3e2f7d
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
-  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
+  MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
-  NNExcelView: 2481f5cc0e9e867525958386717d777533b06ac2
-  NNPlateKeyboard: feb53e620615c5a632f2049038e1414af6364558
-  NNPopoverButton: 315a96c50b73edf2342d449c7928a47592e390fa
-  OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
-  Reveal-SDK: 5f94f14aff3d5f2a49f246edcd266fa4472679e9
-  RxAlamofire: 8e144c62dcc01d68dcb366bfc542eb6dd46bab78
-  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  RxWebKit: a3085e7cd8b57182b452692686675702474014dd
-  SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SnapKitExtend: 00ee4db6d1f80bee01a1e75745f2a6ae695ba662
+  NNExcelView: 6ebafa27bc27ac3aa253ae66eaf70e710772aab7
+  NNPlateKeyboard: 69e84f0430a8f75925d2fa34ec67b181a07403ea
+  NNPopoverButton: 529d63381df956119c469b6426607a8875ccae35
+  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
+  Reveal-SDK: 2dd3ad8b66d4e05af485206f8904b2e5c8ffe060
+  RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  SwiftExpand: 7593736072d4378ae7d86b8579bf41a46c71eda8
-  Then: acfe0be7e98221c6204e12f8161459606d5d822d
-  TZImagePickerController: 36ca728ec681228918aa82e993aaab1962281b72
+  SwiftExpand: d9d39d4e3aa327a0dfabb8d16fe7ebbd3b427833
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
   XHLaunchAd: 6320f9c68732667323072fc3a5f104e40fbe9cfe
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 656fe3dcb1de8f723cac5099142a7d52d13ccea9
+PODFILE CHECKSUM: 2065440519e36c0c26ec13efc00454625f5bceac
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.3

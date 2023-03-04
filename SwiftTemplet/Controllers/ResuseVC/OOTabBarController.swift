@@ -137,7 +137,7 @@ import SwiftExpand
 //            toVC.view.alpha = 0
             
         }) { (finished) in
-            toVC.view.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height - 49.5)
+            toVC.view.frame = CGRect(0, 0, self.view.bounds.width, self.view.bounds.height - 49.5)
 
             if finished {
                 self.selectedViewController = toVC

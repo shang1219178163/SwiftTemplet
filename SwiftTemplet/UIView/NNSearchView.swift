@@ -175,7 +175,7 @@ class NNSearchView: UIView{
     //MARK: -lazy
 
     lazy var searchBar: UISearchBar = {
-        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 30))
+        let view = UISearchBar.create(CGRect(0, 0, kScreenWidth - 70, 30))
         view.layer.cornerRadius = 0;
         view.showsCancelButton = false;
         view.textField?.placeholder = "搜索";

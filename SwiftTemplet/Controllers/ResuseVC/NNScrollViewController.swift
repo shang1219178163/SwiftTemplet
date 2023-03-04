@@ -75,14 +75,14 @@ extension NNScrollViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         DDLog(scrollView.contentOffset.y)
 //        if scrollView.contentOffset.y < 0 {
-//            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0)
+//            scrollView.contentOffset = CGPoint(scrollView.contentOffset.x, 0)
 //            return
 //        }
 
 //        if scrollView.contentOffset.x > scrollView.contentOffset.y {
-//            scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0)
+//            scrollView.contentOffset = CGPoint(scrollView.contentOffset.x, 0)
 //        } else {
-//            scrollView.contentOffset = CGPointMake(0, scrollView.contentOffset.y)
+//            scrollView.contentOffset = CGPoint(0, scrollView.contentOffset.y)
 //        }
     }
     

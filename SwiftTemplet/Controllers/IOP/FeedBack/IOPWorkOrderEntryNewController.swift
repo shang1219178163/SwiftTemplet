@@ -83,7 +83,7 @@ import SwiftExpand
     
     lazy var uploadImageView: NNUploadImagesView = {
         let view = NNUploadImagesView()
-        view.frame = CGRectMake(0, 0, self.view.bounds.width, 110)
+        view.frame = CGRect(0, 0, self.view.bounds.width, 110)
         view.currrentVC = self
         view.images = [view.imageDefault]
         view.maxCount = 8
@@ -101,7 +101,7 @@ import SwiftExpand
     
     lazy var uploadVideoView: NNUploadImagesView = {
         let view = NNUploadImagesView()
-        view.frame = CGRectMake(0, 0, self.view.bounds.width, 110)
+        view.frame = CGRect(0, 0, self.view.bounds.width, 110)
         view.currrentVC = self
         view.images = [view.imageDefault]
         view.maxCount = 2

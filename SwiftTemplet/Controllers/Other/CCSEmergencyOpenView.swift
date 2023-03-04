@@ -126,7 +126,7 @@ class CCSEmergencyOpenView: UIView {
         
         let itemViewOneH = itemViewOne.itemViewHeight();
         scrollView.contentSize = CGSize(width: sizeWidth - (36+10)*2, height: itemViewOneH)
-        itemViewOne.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        itemViewOne.frame = CGRect(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
        
 //        DDLog(itemView.frame, scrollView.frame, scrollView.contentSize, itemViewOne.frame)
   

@@ -55,7 +55,7 @@ import SwiftExpand
     }()
     
     lazy var footerView: NNSudokuView = {
-        let view = NNSudokuView(frame: CGRectMake(0, 0, kScreenWidth, 65))
+        let view = NNSudokuView(frame: CGRect(0, 0, kScreenWidth, 65))
         view.backgroundColor = .white
         view.inset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         view.numOfRow = 2

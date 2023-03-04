@@ -148,7 +148,7 @@ import SwiftExpand
     
     lazy var contentView: UIView = {
         let view = UIView(frame: parController!.view.bounds)
-//        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
+//        var view = UIView(frame: CGRect(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
 
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
 

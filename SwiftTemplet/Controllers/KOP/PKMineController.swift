@@ -22,7 +22,7 @@ class PKMineController: UIViewController {
     }()
     
     lazy var centerView: NNUserCenterHeaderView = {
-        let view = NNUserCenterHeaderView(frame: CGRectMake(0, 0, kScreenWidth, 90+170+UIScreen.navBarHeight))
+        let view = NNUserCenterHeaderView(frame: CGRect(0, 0, kScreenWidth, 90+170+UIScreen.navBarHeight))
         view.userInfoView.inset = .zero
         view.userInfoView.name = "王小兰"
         view.userInfoView.level = "30"
@@ -124,7 +124,7 @@ extension PKMineController: UITableViewDataSource, UITableViewDelegate{
                         
                     } else {
                         let btn: UIButton = {
-                            let rect = CGRectMake(0, 0, 60, 11)
+                            let rect = CGRect(0, 0, 60, 11)
                             let view = UIButton(type: .custom)
                             view.titleLabel?.font = UIFont.systemFont(ofSize: 11)
                             view.frame = rect

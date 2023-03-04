@@ -24,7 +24,7 @@ class PKAppAbountController: UIViewController {
     
     lazy var headerView: NNTableHeaderView = {
 //        let view = NNTableHeaderView.create(title: "提交成功", topPadding: 25, height: 180)
-        let view = NNTableHeaderView(frame: CGRectMake(0, 0, UIScreen.sizeWidth, 180))
+        let view = NNTableHeaderView(frame: CGRect(0, 0, UIScreen.sizeWidth, 180))
         view.topPadding = 40;
         view.btn.setTitle("版本号: v\(UIApplication.appVer)", for: .normal)
         view.btn.setTitleColor(.textColor3, for: .normal)

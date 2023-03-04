@@ -27,7 +27,7 @@ import SwiftExpand
     weak var delegate: UUSementedControllerDelegate?
 
     lazy var segmentCtl: NNSegmentedControl = {
-        let rect = CGRectMake(0, 0, self.view.bounds.width, 44)
+        let rect = CGRect(0, 0, self.view.bounds.width, 44)
         let view = NNSegmentedControl(frame: rect)
         view.showStyle = .bottomLine
         view.normalColor = .gray

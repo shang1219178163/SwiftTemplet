@@ -16,7 +16,7 @@ class FoldSectionListController: UIViewController{
     //MARK: -lazy
 
     lazy var segmentCtl: NNSegmentedControl = {
-        let rect = CGRectMake(0, 0, 240, 44)
+        let rect = CGRect(0, 0, 240, 44)
         let view = NNSegmentedControl(frame: rect)
         view.showStyle = .bottomLine
         view.normalColor = .gray
@@ -119,7 +119,7 @@ extension FoldSectionListController: UITableViewDataSource, UITableViewDelegate{
 
         let view = UITableHeaderFooterViewZero.dequeueReusableHeaderFooterView(tableView)
 //        let view = tableView.dequeueReusableHeaderFooterView(for: UITableHeaderFooterViewZero.self)
-        view.backgroundView = UIView(frame: CGRectMake(0, 0, kScreenWidth, 55))
+        view.backgroundView = UIView(frame: CGRect(0, 0, kScreenWidth, 55))
         view.backgroundView?.backgroundColor = UIColor.clear
         view.backgroundView?.backgroundColor = UIColor.background
         

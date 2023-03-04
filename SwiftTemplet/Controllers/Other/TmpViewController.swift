@@ -15,12 +15,12 @@ class TmpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(btn)
-        btn.frame = CGRectMake(10, 10, 100, 1);
+        btn.frame = CGRect(10, 10, 100, 1);
 //        addLineDashLayer(color: UIColor.theme, width: 1, cornerRadius: 0, view:btn)
         
         
         view.addSubview(lineDashView)
-        lineDashView.frame = CGRectMake(10, 60, 100, 45);
+        lineDashView.frame = CGRect(10, 60, 100, 45);
         lineDashView.setNeedsLayout();
         
 //        itemView.items = NSArray.generate(3).map({ (index) in
@@ -196,7 +196,7 @@ class TmpViewController: UIViewController {
         
         let itemViewOneH = itemViewOne.itemViewHeight();
         scrollView.contentSize = CGSize(width: itemView.sizeWidth, height: itemViewOneH)
-        itemViewOne.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        itemViewOne.frame = CGRect(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
 
 //        DDLog(itemView.frame,scrollView.frame, scrollView.contentSize, itemViewOne.frame)
     }
@@ -331,7 +331,7 @@ class TmpViewController: UIViewController {
     }();
     
     lazy var lineDashView: NNLineDashView = {
-        let view = NNLineDashView(frame: CGRectMake(10, 60, 100, 45));
+        let view = NNLineDashView(frame: CGRect(10, 60, 100, 45));
         view.style = .line
 
         return view;

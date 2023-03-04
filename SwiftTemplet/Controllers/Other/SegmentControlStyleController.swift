@@ -24,7 +24,7 @@ class SegmentControlStyleController: UIViewController {
     }()
     
     lazy var segmentCtl: NNSegmentedControl = {
-        let rect = CGRectMake(0, 0, 240, 44)
+        let rect = CGRect(0, 0, 240, 44)
         let view = NNSegmentedControl(frame: rect)
         view.showStyle = .bottomLine
         view.normalColor = .black
@@ -40,7 +40,7 @@ class SegmentControlStyleController: UIViewController {
     
     //MARK: -lazy
     lazy var segmentCtl1: NNSegmentedControl = {
-        let rect = CGRectMake(0, 0, 240, 44)
+        let rect = CGRect(0, 0, 240, 44)
         let view = NNSegmentedControl(frame: rect)
         view.showStyle = .topLine
         view.normalColor = .black
@@ -56,7 +56,7 @@ class SegmentControlStyleController: UIViewController {
     
     //MARK: -lazy
     lazy var segmentCtl2: NNSegmentedControl = {
-        let rect = CGRectMake(0, 0, 240, 44)
+        let rect = CGRect(0, 0, 240, 44)
         let view = NNSegmentedControl(frame: rect)
         view.showStyle = .box
         view.normalColor = .black
@@ -70,7 +70,7 @@ class SegmentControlStyleController: UIViewController {
     }()
     
     lazy var segmentCtl3: NNSegmentedControl = {
-        let rect = CGRectMake(0, 0, 240, 44)
+        let rect = CGRect(0, 0, 240, 44)
         let view = NNSegmentedControl(frame: rect)
         view.showStyle = .bottomLine
         view.normalColor = .white.withAlphaComponent(0.6)

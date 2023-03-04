@@ -34,7 +34,7 @@ class CustomViewController: UIViewController {
         
         var rect = CGRect.make(20, itemView.frame.maxY+20, 80, 60)
 //        rect = CGRect(x: 20, y: itemView.frame.maxY+20, width: 60, height: 40)
-        rect = CGRectMake(120, itemView.frame.maxY+20, 80, 60)
+        rect = CGRect(120, itemView.frame.maxY+20, 80, 60)
         
         let btn = UIButton(type: .custom)
         btn.setTitle("自定义", for: .normal)
@@ -69,10 +69,10 @@ class CustomViewController: UIViewController {
         view.addSubview(self.defaultViewFail)
 
 
-        self.expandView.frame = CGRectMake(kX_GAP, defaultView.frame.maxY+20, UIScreen.sizeWidth - kX_GAP*2, 35)
+        self.expandView.frame = CGRect(kX_GAP, defaultView.frame.maxY+20, UIScreen.sizeWidth - kX_GAP*2, 35)
         view.addSubview(self.expandView)
         
-//        self.operationView.frame = CGRectMake(kX_GAP, view.bounds.maxY - 180 - kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 180)
+//        self.operationView.frame = CGRect(kX_GAP, view.bounds.maxY - 180 - kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 180)
         view.addSubview(operationView)
 
         view.getViewLayer()
@@ -122,7 +122,7 @@ class CustomViewController: UIViewController {
     }()
     
     lazy var defaultView: NNCellSubtitleView = {
-        let rect = CGRectMake(kX_GAP, kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 70)
+        let rect = CGRect(kX_GAP, kY_GAP, UIScreen.sizeWidth - kX_GAP*2, 70)
         let view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)
@@ -145,7 +145,7 @@ class CustomViewController: UIViewController {
     }()
     
     lazy var defaultViewFail: NNCellSubtitleView = {
-        let rect = CGRectMake(kX_GAP, kY_GAP+150, UIScreen.sizeWidth - kX_GAP*2, 70)
+        let rect = CGRect(kX_GAP, kY_GAP+150, UIScreen.sizeWidth - kX_GAP*2, 70)
         let view = NNCellSubtitleView(frame: rect)
         //        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.labelLeft.font = UIFont.systemFont(ofSize: 15)

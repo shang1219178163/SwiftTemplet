@@ -32,7 +32,7 @@ class CCSDeskViewController: UIViewController {
         
 //        UIApplication.setupAppearanceSearchbarCancellButton()
         let titleView: UIView = {
-            let titleView = UIView(frame: CGRectMake(0, 0, kScreenWidth-80, 35))
+            let titleView = UIView(frame: CGRect(0, 0, kScreenWidth-80, 35))
             titleView.backgroundColor = navigationController?.navigationBar.tintColor;
             
             searchView.frame = titleView.frame;

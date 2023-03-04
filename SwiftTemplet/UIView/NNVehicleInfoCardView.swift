@@ -69,7 +69,7 @@ class NNVehicleInfoCardView: UIView {
         super.layoutSubviews()
         
 //        gradientLayer.frame = bounds
-        gradientLayer.frame = CGRectMake(0, 0, bounds.width, bounds.height)
+        gradientLayer.frame = CGRect(0, 0, bounds.width, bounds.height)
 
         
         DDLog(gradientLayer.frame, gradientLayer.colors)
@@ -243,7 +243,7 @@ class NNVehicleInfoCardView: UIView {
     
     public lazy var gradientLayer: CAGradientLayer = {
         let colors = [UIColor.theme.withAlphaComponent(0.5).cgColor, UIColor.theme.withAlphaComponent(0.9).cgColor]
-        let layer = CAGradientLayer(colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+        let layer = CAGradientLayer(colors: colors, start: CGPoint(0, 0), end: CGPoint(1.0, 0))
         return layer
     }()
 }

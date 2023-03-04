@@ -205,15 +205,15 @@ class NNButtonStudyController: UIViewController{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        button.frame = CGRectMake(20, 20, 120, 30);
-        buttonRight.frame = CGRectMake(20, button.frame.maxY + 20, 120, 35);
-        buttonTop.frame = CGRectMake(20, buttonRight.frame.maxY + 20, 120, 35*2);
-        buttonBottom.frame = CGRectMake(20, buttonTop.frame.maxY + 20, 120, 35*2);
-        buttonAdd.frame = CGRectMake(20, buttonBottom.frame.maxY + 20, 75, 75);
+        button.frame = CGRect(20, 20, 120, 30);
+        buttonRight.frame = CGRect(20, button.frame.maxY + 20, 120, 35);
+        buttonTop.frame = CGRect(20, buttonRight.frame.maxY + 20, 120, 35*2);
+        buttonBottom.frame = CGRect(20, buttonTop.frame.maxY + 20, 120, 35*2);
+        buttonAdd.frame = CGRect(20, buttonBottom.frame.maxY + 20, 75, 75);
         
-        btn.frame = CGRectMake(20, buttonAdd.frame.maxY + 20, 120, 35);
-        checkBox.frame = CGRectMake(20, btn.frame.maxY + 20, 80, 80);
-        radioButton.frame = CGRectMake(20, checkBox.frame.maxY + 20,  120, 35);
+        btn.frame = CGRect(20, buttonAdd.frame.maxY + 20, 120, 35);
+        checkBox.frame = CGRect(20, btn.frame.maxY + 20, 80, 80);
+        radioButton.frame = CGRect(20, checkBox.frame.maxY + 20,  120, 35);
     }
     
     override func viewWillAppear(_ animated: Bool) {

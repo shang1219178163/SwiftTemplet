@@ -51,7 +51,7 @@ class MBProgressHUDDemoController: UIViewController {
         super.viewDidLayoutSubviews()
         
         
-        list.updateItemsConstraint(CGRectMake(10, 10, kScreenWidth - 20, 260), sectionInset: EdgeInsets(all: 10))
+        list.updateItemsConstraint(CGRect(10, 10, kScreenWidth - 20, 260), sectionInset: EdgeInsets(all: 10))
     }
 
     

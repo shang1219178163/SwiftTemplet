@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
 install!'cocoapods', :deterministic_uuids => false
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 def common_pods
@@ -54,7 +54,7 @@ def common_pods
 #    pod 'RxBlocking'
     pod 'RxCocoa'
     pod 'RxSwift'
-    pod 'RxWebKit'
+#    pod 'RxWebKit'
 
     pod 'OHHTTPStubs'
     
@@ -101,7 +101,9 @@ def common_pods
     pod 'EFQRCode'
 
     pod 'AlipaySDK-iOS'
-    pod 'WechatOpenSDK'
+    pod 'WechatOpenSDK', '~> 1.8.6'
+#    pod 'WechatOpenSDK-XCFramework'
+
     pod "IGListKit"
 
 #    pod 'UMCCommon'

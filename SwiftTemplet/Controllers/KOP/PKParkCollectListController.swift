@@ -56,7 +56,7 @@ import SwiftExpand
     }
     
     lazy var searchBar: UISearchBar = {
-        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 70, 50))
+        let view = UISearchBar.create(CGRect(0, 0, kScreenWidth - 70, 50))
         view.layer.cornerRadius = 0;
         view.showsCancelButton = false;
         view.backgroundColor = .white

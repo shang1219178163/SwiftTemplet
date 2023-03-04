@@ -65,9 +65,9 @@ class NNSliderControlView: UIView {
         labFront.backgroundColor = UIColor.hex("#2dae70")
         labBack.backgroundColor = UIColor.hex("#ff6b22")
         
-        imgView.frame = CGRectMake(0, 0, frame.height+15, frame.height);
-        labFront.frame = CGRectMake(0, 0, frame.width, frame.height);
-        labBack.frame = CGRectMake(0, 0, frame.width, imgView.frame.height);
+        imgView.frame = CGRect(0, 0, frame.height+15, frame.height);
+        labFront.frame = CGRect(0, 0, frame.width, frame.height);
+        labBack.frame = CGRect(0, 0, frame.width, imgView.frame.height);
         allCornerRadius = frame.height*0.2;
 
     }
@@ -101,9 +101,9 @@ class NNSliderControlView: UIView {
             }
         } else if keyPath == "frame" {
             let frame: CGRect = change![NSKeyValueChangeKey.newKey] as! CGRect
-            imgView.frame = CGRectMake(0, 0, frame.height+15, frame.height);
-            labFront.frame = CGRectMake(0, 0, frame.width, frame.height);
-            labBack.frame = CGRectMake(0, 0, frame.width, imgView.frame.height);
+            imgView.frame = CGRect(0, 0, frame.height+15, frame.height);
+            labFront.frame = CGRect(0, 0, frame.width, frame.height);
+            labBack.frame = CGRect(0, 0, frame.width, imgView.frame.height);
             allCornerRadius = frame.height/2.0;
           
 //            imgView.layer.borderWidth = 0.5;
@@ -176,7 +176,7 @@ class NNSliderControlView: UIView {
         
         //渐变色
 //        let colors = [UIColor.hex("#ffda6a").withAlphaComponent(0.9).cgColor, UIColor.hex("#ff6b22").withAlphaComponent(0.9).cgColor]
-//        let gradientLayer = CAGradientLayer.layerRect(self.bounds, colors: colors, start: CGPointMake(0, 0), end: CGPointMake(1.0, 0))
+//        let gradientLayer = CAGradientLayer.layerRect(self.bounds, colors: colors, start: CGPoint(0, 0), end: CGPoint(1.0, 0))
 //        //        gradientLayer.locations = [0.5,1.0]
 //        view.layer.insertSublayer(gradientLayer, at: 0)
         return view;

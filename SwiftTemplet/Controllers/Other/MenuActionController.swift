@@ -224,7 +224,7 @@ extension MenuActionController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 2 {
             cell.accessoryView = {
                 let image = UIImage.chevron_right
-                let sender = UIImageView(frame: CGRectMake(0, 0, 11, 13))
+                let sender = UIImageView(frame: CGRect(0, 0, 11, 13))
                 sender.tintColor = .black.withAlphaComponent(0.3)
                 sender.image = image
                 return sender

@@ -28,8 +28,8 @@ class ScrollViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = CGRectMake(0, 20, kScreenWidth, 40);
-        scrollViewOne.frame = CGRectMake(20, 80, 100, kScreenWidth);
+        scrollView.frame = CGRect(0, 20, kScreenWidth, 40);
+        scrollViewOne.frame = CGRect(20, 80, 100, kScreenWidth);
     }
     
     override func viewWillAppear(_ animated: Bool) {

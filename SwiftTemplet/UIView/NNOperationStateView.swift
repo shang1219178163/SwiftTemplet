@@ -175,9 +175,9 @@ class NNOperationStateView: UIView {
 //            make.left.right.equalTo(sliderControlView)
 //            make.bottom.equalToSuperview().offset(-kY_GAP)
 //        }
-        operationView5.frame = CGRectMake(0, btnBgViewH, kScreenWidth - kX_GAP*2, 120)
-        sliderControlView.frame = CGRectMake(0, kY_GAP, kScreenWidth - kX_GAP*2, 55);
-        operationView5LabelOne.frame = CGRectMake(0, sliderControlView.frame.maxY+kY_GAP, kScreenWidth - kX_GAP*2, 25)
+        operationView5.frame = CGRect(0, btnBgViewH, kScreenWidth - kX_GAP*2, 120)
+        sliderControlView.frame = CGRect(0, kY_GAP, kScreenWidth - kX_GAP*2, 55);
+        operationView5LabelOne.frame = CGRect(0, sliderControlView.frame.maxY+kY_GAP, kScreenWidth - kX_GAP*2, 25)
 
 //        operationView6.isHidden = type == 6 ? false : true
 //        label.isHidden = !operationView6.isHidden

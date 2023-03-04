@@ -28,7 +28,7 @@ import SwiftExpand
     }()
     
     lazy var headerView: NNTaskCenterHeaderView = {
-        let view = NNTaskCenterHeaderView(frame: CGRectMake(0, 0, self.view.bounds.width, 95))
+        let view = NNTaskCenterHeaderView(frame: CGRect(0, 0, self.view.bounds.width, 95))
         
         return view
     }()

@@ -46,7 +46,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
         didSet{
             scrollViewTop.selectIndexPath = IndexPath(row: oldValue, section: 0);
             
-            let offset = CGPointMake(oldValue.toCGFloat * scrollViewContent.sizeWidth, 0);
+            let offset = CGPoint(oldValue.toCGFloat * scrollViewContent.sizeWidth, 0);
             scrollViewContent.setContentOffset(offset, animated: true)
             
             selectedViewController = viewControllers![oldValue];
@@ -98,7 +98,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
                                                height: scrollViewContent.sizeHeight)
         for e in viewControllers!.enumerated() {
             let controller = e.element;
-            controller.view.frame = CGRectMake(e.offset.toCGFloat*scrollViewContent.sizeWidth,
+            controller.view.frame = CGRect(e.offset.toCGFloat*scrollViewContent.sizeWidth,
                                                0,
                                                scrollViewContent.sizeWidth,
                                                scrollViewContent.sizeHeight)
@@ -161,7 +161,7 @@ class NNTabController: UIViewController, UIScrollViewDelegate {
                 self.delegate!.tabController?(self, willSelect: chooseVC);
             }
             
-            let offset = CGPointMake(indexPath.row.toCGFloat * self.scrollViewContent.sizeWidth, 0);
+            let offset = CGPoint(indexPath.row.toCGFloat * self.scrollViewContent.sizeWidth, 0);
             self.scrollViewContent.setContentOffset(offset, animated: true)
             
             self.handleSelectedViewController(chooseVC)

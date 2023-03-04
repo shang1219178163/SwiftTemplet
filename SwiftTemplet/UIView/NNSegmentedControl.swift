@@ -143,27 +143,27 @@ class NNSegmentedControl: UISegmentedControl {
         /// 0: default, 1, topLine, 2,bottomLine, 3,box
         switch showStyle {
         case .topLine:
-            self.lineView.frame = CGRectMake(0, 0, bounds.width, 0.35)
+            self.lineView.frame = CGRect(0, 0, bounds.width, 0.35)
             bringSubviewToFront(lineView)
 
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.indicatorHeight)
+                self.indicator.frame = CGRect(originX, 0, segmentWidth, self.indicatorHeight)
             }
             bringSubviewToFront(indicator)
 
         case .bottomLine:
-            self.lineView.frame = CGRectMake(0, bounds.height - 0.35, bounds.width, 0.35)
+            self.lineView.frame = CGRect(0, bounds.height - 0.35, bounds.width, 0.35)
             bringSubviewToFront(lineView)
 
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, self.bounds.height - self.indicatorHeight, segmentWidth, self.indicatorHeight)
+                self.indicator.frame = CGRect(originX, self.bounds.height - self.indicatorHeight, segmentWidth, self.indicatorHeight)
             }
             bringSubviewToFront(indicator)
 
         case .box:
             self.lineView.frame = .zero
             UIView.animate(withDuration: duration) {
-                self.indicator.frame = CGRectMake(originX, 0, segmentWidth, self.frame.height)
+                self.indicator.frame = CGRect(originX, 0, segmentWidth, self.frame.height)
             }
             bringSubviewToFront(indicator)
         case .seprateLine:

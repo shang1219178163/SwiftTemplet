@@ -127,7 +127,7 @@ class PopViewController: UIViewController, UITextFieldDelegate {
 
     
     lazy var searchBar: UISearchBar = {
-        let view = UISearchBar.create(CGRectMake(0, 0, kScreenWidth - 100, 30))
+        let view = UISearchBar.create(CGRect(0, 0, kScreenWidth - 100, 30))
         view.textField?.placeholder = "请输入流水号、商品信息或会员信息";
         view.textField?.delegate = self;
         view.delegate = self;

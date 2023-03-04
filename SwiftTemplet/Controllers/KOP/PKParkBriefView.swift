@@ -106,31 +106,31 @@ import SwiftExpand
 //        let cornerRadius: CGFloat = 10
 //
 //        let maskPath = UIBezierPath()
-//        maskPath.move(to: CGPointMake(0, cornerRadius))
-//        maskPath.addArc(withCenter: CGPointMake(cornerRadius, cornerRadius),
+//        maskPath.move(to: CGPoint(0, cornerRadius))
+//        maskPath.addArc(withCenter: CGPoint(cornerRadius, cornerRadius),
 //                        radius: cornerRadius,
 //                        startAngle: CGRadianFromDegrees(180),
 //                        endAngle: CGRadianFromDegrees(270),
 //                        clockwise: true)
 //
-//        let pointBtnLeft = CGPointMake(bounds.width - 26 - btnSize.width, 0)
+//        let pointBtnLeft = CGPoint(bounds.width - 26 - btnSize.width, 0)
 //        maskPath.addLine(to: pointBtnLeft)
-//        maskPath.addArc(withCenter: CGPointMake(pointBtnLeft.x + btnSize.width*0.5, 0),
+//        maskPath.addArc(withCenter: CGPoint(pointBtnLeft.x + btnSize.width*0.5, 0),
 //                        radius: 33,
 //                        startAngle: CGRadianFromDegrees(180),
 //                        endAngle: CGRadianFromDegrees(0),
 //                        clockwise: true)
 //
-//        maskPath.addLine(to: CGPointMake(bounds.width - cornerRadius, 0))
-//        maskPath.addArc(withCenter: CGPointMake(bounds.width - cornerRadius, cornerRadius),
+//        maskPath.addLine(to: CGPoint(bounds.width - cornerRadius, 0))
+//        maskPath.addArc(withCenter: CGPoint(bounds.width - cornerRadius, cornerRadius),
 //                        radius: cornerRadius,
 //                        startAngle: CGRadianFromDegrees(270),
 //                        endAngle: CGRadianFromDegrees(0),
 //                        clockwise: true)
 //
-//        maskPath.addLine(to: CGPointMake(bounds.width, bounds.height))
-//        maskPath.addLine(to: CGPointMake(0, bounds.height))
-//        maskPath.addLine(to: CGPointMake(0, bounds.height - cornerRadius))
+//        maskPath.addLine(to: CGPoint(bounds.width, bounds.height))
+//        maskPath.addLine(to: CGPoint(0, bounds.height))
+//        maskPath.addLine(to: CGPoint(0, bounds.height - cornerRadius))
 //        maskPath.close()
 //
 //        let maskLayer = CAShapeLayer()

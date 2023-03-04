@@ -188,6 +188,14 @@ func testPropertyWrapper(){
 //    func encoded() throws -> Data {
 //        return try JSONEncoder().encode(self)
 //    }
+//    
+//    var asDictionary: [String: Any] {
+//        guard let data = try? JSONEncoder().encode(self) else { return [:] }
+//        guard let dictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+//            return [:]
+//        }
+//        return dictionary
+//    }
 //}
 //
 //extension Data {
@@ -210,6 +218,7 @@ func testPropertyWrapper(){
 //    // the call site read very nicely.
 //    let otherUser = try data.decoded() as User
 //}
+
 
 class Node {
     private(set) weak var parent: Node?

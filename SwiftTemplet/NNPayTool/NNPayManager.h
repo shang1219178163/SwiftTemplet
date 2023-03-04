@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <AlipaySDK/AlipaySDK.h>
 #import <WechatOpenSDK/WXApi.h>
+//#import <WechatOpenSDK-XCFramework/WXApi.h>
 
 #define kNoncestr_WX    @"noncestr"
 #define kPackage_WX     @"package"

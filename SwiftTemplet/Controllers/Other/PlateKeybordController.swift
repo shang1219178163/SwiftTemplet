@@ -67,7 +67,7 @@ class PlateKeybordController: UIViewController {
     }
     
     lazy var searchView: NNSearchView = {
-        let view = NNSearchView(frame: CGRectMake(0, 45, self.view.bounds.width, 45))
+        let view = NNSearchView(frame: CGRect(0, 45, self.view.bounds.width, 45))
         view.parController = self
 //        view.searchBar.textField?.leftViewMode = .never
         view.searchBar.textField?.placeholder = "搜索车场名称";

@@ -27,7 +27,7 @@ import SwiftExpand
     }()
     
     lazy var headerView: PKPointsCenterHeaderView = {
-        let view = PKPointsCenterHeaderView(frame: CGRectMake(0, 0, self.view.bounds.width, 120))
+        let view = PKPointsCenterHeaderView(frame: CGRect(0, 0, self.view.bounds.width, 120))
         
         return view
     }()

@@ -111,7 +111,7 @@ import SwiftExpand
     //MARK: -lazy
     lazy var contentView: UIView = {
         var view = UIView(frame: parController!.view.bounds)
-//        var view = UIView(frame: CGRectMake(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
+//        var view = UIView(frame: CGRect(0, 50, parController!.view.bounds.width, parController!.view.bounds.height))
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3);
 
         tableView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height*0.5)
@@ -131,7 +131,7 @@ import SwiftExpand
     }()
     
     lazy var footerView: UIView = {
-        let view = UIButton.createGroupView(CGRectMake(0, 0, kScreenWidth, 50), list: [kTitleDefault, kTitleSure], numberOfRow: 2, padding: 0) { (control) in
+        let view = UIButton.createGroupView(CGRect(0, 0, kScreenWidth, 50), list: [kTitleDefault, kTitleSure], numberOfRow: 2, padding: 0) { (control) in
             guard let sender = control as? UIButton else { return }
 //            DDLog(sender.currentTitle)
             self.delegate?.couponFliterDropView(self, btn: sender)

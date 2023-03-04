@@ -40,7 +40,7 @@ import SnapKit
     }()
     
     lazy var processingView: NNProcessingView = {
-        var view = NNProcessingView(frame: CGRectMake(0, 0, self.view.bounds.width, 70))
+        var view = NNProcessingView(frame: CGRect(0, 0, self.view.bounds.width, 70))
         
         var list: [String] = []
         view.items = ["基础信息", "企业信息", "完成"]

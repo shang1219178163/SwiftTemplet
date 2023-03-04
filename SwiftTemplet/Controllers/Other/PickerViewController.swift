@@ -30,16 +30,16 @@ class PickerViewController: UIViewController {
         // 创建一个按钮，点击按钮获得选择框被选中的索引
         view.addSubview(btn)
 
-        cardView.frame = CGRectMake(kX_GAP, itemView.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 170)
+        cardView.frame = CGRect(kX_GAP, itemView.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 170)
         view.addSubview(cardView)
         
-        cardViewOne.frame = CGRectMake(kX_GAP, cardView.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 170)
+        cardViewOne.frame = CGRect(kX_GAP, cardView.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 170)
         view.addSubview(cardViewOne)
         
-        payCardView.frame = CGRectMake(kX_GAP, cardViewOne.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 120)
+        payCardView.frame = CGRect(kX_GAP, cardViewOne.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 120)
         view.addSubview(payCardView)
         
-        mileageCardView.frame = CGRectMake(kX_GAP, payCardView.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 120)
+        mileageCardView.frame = CGRect(kX_GAP, payCardView.frame.maxY + kY_GAP, kScreenWidth - kX_GAP*2, 120)
         view.addSubview(mileageCardView)
                 
         cardView.addGestureTap { (control) in
@@ -63,7 +63,7 @@ class PickerViewController: UIViewController {
     // MARK: - lazy
     
     lazy var btn: UIButton = {
-        let view = UIButton(frame: CGRectMake(0, 0, 100, 30))
+        let view = UIButton(frame: CGRect(0, 0, 100, 30))
         view.center = self.view.center
         view.backgroundColor = UIColor.systemBlue
         view.setTitle("获取信息", for: .normal)
@@ -80,7 +80,7 @@ class PickerViewController: UIViewController {
    
     lazy var pickerView: UIPickerView = {
         let view = UIPickerView();
-        view.frame = CGRectMake(0, kY_GAP, kScreenWidth, kScreenWidth*kRatioIDCard)
+        view.frame = CGRect(0, kY_GAP, kScreenWidth, kScreenWidth*kRatioIDCard)
          
         view.delegate = self;
         view.dataSource = self
