@@ -98,6 +98,8 @@ class ThirdViewController: UIViewController{
             
             
             [["ValidateProtocolController", "MixIn协议扩展", ],
+             ["OperatorViewController", "Operator", ],
+             ["GenericViewController", "Generic", ],
             ["CurryViewController", "Curry", ],
             ["IteratorDemoController", "IteratorDemo", ],
             ["NNUserLogInController", "RxSwift函数响应型编程", ],

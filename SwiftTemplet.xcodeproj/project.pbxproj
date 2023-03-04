@@ -35,6 +35,7 @@
 		140216E727030B500022002E /* NNSheetViewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140216E627030B500022002E /* NNSheetViewBaseController.swift */; };
 		1404FAF721E084FD00122E22 /* UIRecognizerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1404FAF621E084FD00122E22 /* UIRecognizerController.swift */; };
 		1404FAFB21E0A70D00122E22 /* Skull.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1404FAFA21E0A70D00122E22 /* Skull.jpg */; };
+		1405E19F29B30018002917EC /* OperatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1405E19E29B30018002917EC /* OperatorViewController.swift */; };
 		1407831826984874007031F9 /* UIImage+System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407831726984874007031F9 /* UIImage+System.swift */; };
 		140B6D4521D4D57900050C8F /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 140B6D4421D4D57900050C8F /* bug.png */; };
 		140D5E6825A707FA00F3FBB2 /* OHHTTPStubsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D5E6725A707FA00F3FBB2 /* OHHTTPStubsHelper.swift */; };
@@ -736,6 +737,7 @@
 		140216E627030B500022002E /* NNSheetViewBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNSheetViewBaseController.swift; sourceTree = "<group>"; };
 		1404FAF621E084FD00122E22 /* UIRecognizerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerController.swift; sourceTree = "<group>"; };
 		1404FAFA21E0A70D00122E22 /* Skull.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Skull.jpg; sourceTree = "<group>"; };
+		1405E19E29B30018002917EC /* OperatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorViewController.swift; sourceTree = "<group>"; };
 		1407831726984874007031F9 /* UIImage+System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+System.swift"; sourceTree = "<group>"; };
 		140B6D4421D4D57900050C8F /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug.png; sourceTree = "<group>"; };
 		140D5E6725A707FA00F3FBB2 /* OHHTTPStubsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OHHTTPStubsHelper.swift; sourceTree = "<group>"; };
@@ -1544,6 +1546,14 @@
 				140216DA2702F1410022002E /* XiangceChooseDemoController.swift */,
 			);
 			path = Xiangce;
+			sourceTree = "<group>";
+		};
+		1405E19D29B30004002917EC /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				1405E19E29B30018002917EC /* OperatorViewController.swift */,
+			);
+			path = Operator;
 			sourceTree = "<group>";
 		};
 		141495B4242B4F4700141A9F /* AddressPicker */ = {
@@ -2630,6 +2640,7 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1405E19D29B30004002917EC /* Operator */,
 				14D9CD3D29B1B06D009D8C5A /* Generic */,
 				142C907626F18CCC00AB267D /* RegularExpression */,
 				14DFA01A26E5A0FC006F9BC9 /* Thread */,
@@ -3294,6 +3305,7 @@
 				14BF265F24E27B460024726E /* UICTViewCellLevel.swift in Sources */,
 				1472C23D245991C6000F8441 /* UUSementedController.swift in Sources */,
 				14E32F8926CCF65200E864C3 /* UITableViewCellRightLabel.swift in Sources */,
+				1405E19F29B30018002917EC /* OperatorViewController.swift in Sources */,
 				14E2047E24E629DF0075AB47 /* CustomBannerColors.swift in Sources */,
 				14E2FF99256F922A008B0CD6 /* AttrStringViewController.swift in Sources */,
 				14E2048324E635240075AB47 /* NNNetWorkOfflineView.swift in Sources */,
