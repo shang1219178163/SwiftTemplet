@@ -38,6 +38,16 @@ class OperatorViewController: UIViewController {
         print("a2: \(a2)");//a1: Optional(<UITableView: 0x7feda0830600;
         print("b2: \(b2)");//b1: <UITableView: 0x7feda0830600
         
+        let c = "abc"*0;
+        print("c: \(c)");//c: abcabcabc
+        
+        let edg1 = UIEdgeInsets(top: 1, left: 2, bottom: 3, right: 4);
+        let edg2 = UIEdgeInsets(top: 4, left: 3, bottom: 2, right: 1);
+        
+        let e = edg1 + edg2;
+        print("edg1: \(edg1)");//edg1: UIEdgeInsets(top: 1.0, left: 2.0, bottom: 3.0, right: 4.0)
+        print("edg2: \(edg2)");//edg2: UIEdgeInsets(top: 4.0, left: 3.0, bottom: 2.0, right: 1.0)
+        print("e: \(e)");//e: UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
     }
 
 }
@@ -68,3 +78,23 @@ func ??= <T>(lhs: inout T?, rhs: T) -> T {
 //func ± <T: Numeric>(lhs: T, rhs: T) -> (T, T) {
 //    return (lhs + rhs, lhs - rhs)
 //}
+
+
+public extension String{
+
+    static func * (lhs: String, rhs: Int) -> String {
+        return String(repeating: lhs, count: rhs);
+     }
+}
+
+
+extension UIEdgeInsets{
+
+    static func + (lhs: UIEdgeInsets, rhs: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets(lhs.top + rhs.top,
+                            lhs.left + rhs.left,
+                            lhs.bottom + rhs.bottom,
+                            lhs.right + rhs.right
+        );
+     }
+}
