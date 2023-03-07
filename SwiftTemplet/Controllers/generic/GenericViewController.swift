@@ -96,7 +96,7 @@ struct Stack1<T>: BoxOne {
 }
 
 
-
+/// 自定义元祖类型(2元素)
 class Tuple2<T0, T1> where T0: Comparable & Hashable, T1: Comparable & Hashable {
     
     var t0: T0;
@@ -117,7 +117,7 @@ class Tuple2<T0, T1> where T0: Comparable & Hashable, T1: Comparable & Hashable 
     }
 
     var description: String {
-        return "(\(self.t0), \(self.t1))";
+        return "Tuple2(\(self.t0), \(self.t1)) \(self)";
     }
     
     var hashValue: Int {
