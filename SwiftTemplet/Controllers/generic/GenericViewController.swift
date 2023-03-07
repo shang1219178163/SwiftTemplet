@@ -100,11 +100,20 @@ struct Stack1<T>: BoxOne {
 class Tuple2<T0, T1> where T0: Comparable & Hashable, T1: Comparable & Hashable {
     
     var t0: T0;
+    
     var t1: T1;
     
     required init(_ t0: T0, t1: T1) {
         self.t0 = t0;
         self.t1 = t1;
+    }
+    
+    func toList() -> Array<Any> {
+        return [self.t0, self.t1];
+    }
+    
+    var length: Int {
+        return 2;
     }
 
     var description: String {

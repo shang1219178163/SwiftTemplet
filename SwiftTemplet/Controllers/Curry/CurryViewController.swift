@@ -87,4 +87,33 @@ extension Validator {
  //使用：
 class NNLoginController: UIViewController, Validator {
      //想怎么用怎么用
+    
+
+}
+
+
+/// 缓存函数
+func cached<In: Hashable, Out>(_ f: @escaping (In) -> Out) -> (In) -> Out {
+    var cache = [In: Out]()
+    
+    return { (input: In) -> Out in
+        if let cachedValue = cache[input] {
+            return cachedValue
+        }
+        let result = f(input)
+        cache[input] = result
+        return result
+    }
+}
+
+
+class FuncCachedController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        let cachedCos = cached { (x: Double) in cos(x) }
+//
+//        cachedCos(.pi * 2) // value of cos for 2π is now cached
+    }
 }
