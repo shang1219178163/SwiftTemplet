@@ -49,6 +49,7 @@ class OperatorViewController: UIViewController {
 //        print("edg2: \(edg2)");//edg2: UIEdgeInsets(top: 4.0, left: 3.0, bottom: 2.0, right: 1.0)
         print("e: \(e)");//e: UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         
+        
 //        testHightFunc();
 //        testUrl();
     }
@@ -94,7 +95,7 @@ class OperatorViewController: UIViewController {
 
 
 //infix operator ??=: AssignmentPrecedence
-infix operator ??=: NilCoalescingPrecedence
+infix operator ??=: NilCoalescingPrecedence;
 
 func ??= <T>(lhs: inout T?, rhs: T) -> T {
     if lhs == nil {
@@ -128,3 +129,19 @@ extension UIEdgeInsets{
         );
      }
 }
+
+
+/// 自定义级联运算符
+infix operator ..: AssignmentPrecedence;
+
+func .. <T: AnyObject>(lhs: inout T, rhs: (ReferenceWritableKeyPath<AnyObject, T>, T)) -> T {
+    lhs[keyPath: rhs.0] = rhs.1;
+    return lhs;
+ }
+
+
+//func .. <T: AnyObject>(lhs: inout T,
+//                       rhs: (property: ReferenceWritableKeyPath<AnyObject, T>, value: T)) -> T {
+//    lhs[keyPath: rhs.property] = rhs.value;
+//    return lhs;
+// }

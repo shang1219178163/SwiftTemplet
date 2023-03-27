@@ -29,7 +29,7 @@ class OptionalTestController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        testOptinal()
+        testOptinal()
     }
     
 
@@ -75,5 +75,13 @@ class OptionalTestController: UIViewController {
         
         let err: Error? = nil
         print(err ?? APPError.otherError(message: "其他错误"))
+        
+        
+        var dic: Dictionary<String, String?> = [:]
+        dic["a"] = "aa";
+        print("dic:\(dic)")
+        dic["a"] = nil;
+        print("dic1:\(dic)")
+
     }
 }

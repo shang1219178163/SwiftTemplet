@@ -43,7 +43,9 @@ class AnimationSequence {
     //            .run()
 }
 
-public func debounced(delay: TimeInterval, queue: DispatchQueue = .main, action: @escaping (() -> Void)) -> () -> Void {
+public func debounced(delay: TimeInterval,
+                      queue: DispatchQueue = .main,
+                      action: @escaping (() -> Void)) -> () -> Void {
     var workItem: DispatchWorkItem?
     
     return {
