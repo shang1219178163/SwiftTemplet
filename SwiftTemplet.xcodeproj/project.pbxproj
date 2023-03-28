@@ -568,6 +568,7 @@
 		14D91B19234DB96600554994 /* NNPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D91B18234DB96600554994 /* NNPopView.swift */; };
 		14D9CD3F29B1B06D009D8C5A /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9CD3E29B1B06D009D8C5A /* GenericViewController.swift */; };
 		14D9CD4229B57CC7009D8C5A /* WithProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D9CD4129B57CC7009D8C5A /* WithProtocol.swift */; };
+		14DB52AF29D314B700631F0C /* UIWindowScene+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB52AE29D314B700631F0C /* UIWindowScene+Helper.swift */; };
 		14DC7F272657E11100812CF8 /* NNPlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC7F262657E11100812CF8 /* NNPlaceHolderViewController.swift */; };
 		14DC7F292657E62400812CF8 /* NNPlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */; };
 		14DFA01C26E5A12E006F9BC9 /* MultithreadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DFA01B26E5A12E006F9BC9 /* MultithreadingViewController.swift */; };
@@ -1314,6 +1315,7 @@
 		14D91B18234DB96600554994 /* NNPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPopView.swift; sourceTree = "<group>"; };
 		14D9CD3E29B1B06D009D8C5A /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
 		14D9CD4129B57CC7009D8C5A /* WithProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithProtocol.swift; sourceTree = "<group>"; };
+		14DB52AE29D314B700631F0C /* UIWindowScene+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+Helper.swift"; sourceTree = "<group>"; };
 		14DC7F262657E11100812CF8 /* NNPlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPlaceHolderViewController.swift; sourceTree = "<group>"; };
 		14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPlaceHolderView.swift; sourceTree = "<group>"; };
 		14DFA01B26E5A12E006F9BC9 /* MultithreadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultithreadingViewController.swift; sourceTree = "<group>"; };
@@ -2422,6 +2424,7 @@
 				14E32F7F26CCE57300E864C3 /* AudioViewController.h */,
 				14E32F8026CCE57300E864C3 /* AudioViewController.m */,
 				14E32F8E26CDDA2600E864C3 /* SuanfaViewController.swift */,
+				14DB52AE29D314B700631F0C /* UIWindowScene+Helper.swift */,
 			);
 			path = Enhance;
 			sourceTree = "<group>";
@@ -3273,6 +3276,7 @@
 				1401BEA32277D7780078A722 /* NNCacheKey.swift in Sources */,
 				1401BE972277D6FF0078A722 /* NNRequstAgent.swift in Sources */,
 				14403E5E2331C091005DB45B /* NNItemsView.swift in Sources */,
+				14DB52AF29D314B700631F0C /* UIWindowScene+Helper.swift in Sources */,
 				14E2049A24E686970075AB47 /* PopoverAction.m in Sources */,
 				14F7AAB721E722B300FB7570 /* IOPAuthDetailController.swift in Sources */,
 				14B7406424CC429300569888 /* NNNavigationControllerDelegate.swift in Sources */,
