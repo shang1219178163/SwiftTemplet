@@ -98,6 +98,8 @@ class ThirdViewController: UIViewController{
             
             
             [["ValidateProtocolController", "MixIn协议扩展", ],
+             ["NNAbsorbPointerViewController", "事件拦截", ],
+             
              ["OperatorViewController", "Operator", ],
              ["GenericViewController", "Generic", ],
              ["ClosureViewController", "Closure", ],

@@ -118,6 +118,8 @@
 		142D7F142594558700D15E3B /* RxCocoaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7F132594558700D15E3B /* RxCocoaHelper.swift */; };
 		142EB9E224810C8400950B63 /* NNMultipleSectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EB9E124810C8300950B63 /* NNMultipleSectionFlowLayout.swift */; };
 		142EB9E424810CD700950B63 /* UICollectionMultipleSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EB9E324810CD700950B63 /* UICollectionMultipleSectionController.swift */; };
+		142EEDBB29DAAF9E0084A41E /* NNAbsorbPointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EEDBA29DAAF9E0084A41E /* NNAbsorbPointerView.swift */; };
+		142EEDBD29DAB24B0084A41E /* NNAbsorbPointerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EEDBC29DAB24B0084A41E /* NNAbsorbPointerViewController.swift */; };
 		142F527D29C1CE3D0093E2EE /* ClosureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142F527C29C1CE3D0093E2EE /* ClosureViewController.swift */; };
 		143010AF237AB989009E8AAC /* NNLabelsVerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143010AE237AB989009E8AAC /* NNLabelsVerView.swift */; };
 		14305D7D2466A29D00B4CB3F /* NNProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14305D7C2466A29D00B4CB3F /* NNProcessingView.swift */; };
@@ -827,6 +829,8 @@
 		142D7F132594558700D15E3B /* RxCocoaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaHelper.swift; sourceTree = "<group>"; };
 		142EB9E124810C8300950B63 /* NNMultipleSectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNMultipleSectionFlowLayout.swift; sourceTree = "<group>"; };
 		142EB9E324810CD700950B63 /* UICollectionMultipleSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionMultipleSectionController.swift; sourceTree = "<group>"; };
+		142EEDBA29DAAF9E0084A41E /* NNAbsorbPointerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAbsorbPointerView.swift; sourceTree = "<group>"; };
+		142EEDBC29DAB24B0084A41E /* NNAbsorbPointerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAbsorbPointerViewController.swift; sourceTree = "<group>"; };
 		142F527C29C1CE3D0093E2EE /* ClosureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureViewController.swift; sourceTree = "<group>"; };
 		143010AE237AB989009E8AAC /* NNLabelsVerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNLabelsVerView.swift; sourceTree = "<group>"; };
 		14305D7C2466A29D00B4CB3F /* NNProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNProcessingView.swift; sourceTree = "<group>"; };
@@ -2375,6 +2379,8 @@
 				14E31F17269E74D9001506B1 /* ToorbarViewController.swift */,
 				140216E627030B500022002E /* NNSheetViewBaseController.swift */,
 				146AD0E129D16F07002A161A /* TestBlockController.swift */,
+				142EEDBA29DAAF9E0084A41E /* NNAbsorbPointerView.swift */,
+				142EEDBC29DAB24B0084A41E /* NNAbsorbPointerViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3190,6 +3196,7 @@
 				1407831826984874007031F9 /* UIImage+System.swift in Sources */,
 				143917E224C2D42100CBABF0 /* UITableViewCellRightAvart.swift in Sources */,
 				14F3966B227ED0F2000CD7B4 /* NNCheckVersApi.swift in Sources */,
+				142EEDBB29DAAF9E0084A41E /* NNAbsorbPointerView.swift in Sources */,
 				146D28CF244EDC3A004655B1 /* UIScrollView+MJRefresh.swift in Sources */,
 				14BC619A254FA1670043FFC6 /* NNAlertTableController.swift in Sources */,
 				1468C26329B2DC8A0058CA8B /* NNButtonGroupView.swift in Sources */,
@@ -3390,6 +3397,7 @@
 				148B7D4825AEC74200D2BA59 /* TextFieldViewController.m in Sources */,
 				1472C24124599B00000F8441 /* NNParentTwoController.swift in Sources */,
 				14EBBC9724EE352D00D97528 /* NNScrollLabelView.swift in Sources */,
+				142EEDBD29DAB24B0084A41E /* NNAbsorbPointerViewController.swift in Sources */,
 				143F714627336A1700E2FC28 /* UICallPhoneView.swift in Sources */,
 				14F0F0DE24BF1ED700263DAA /* NNOfflineTipController.swift in Sources */,
 				1436CDF823D1844900154CC2 /* UITableViewCellPayBill.swift in Sources */,
