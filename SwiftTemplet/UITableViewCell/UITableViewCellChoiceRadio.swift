@@ -58,7 +58,7 @@ import SwiftExpand
             make.top.equalToSuperview().offset(inset.top);
             make.right.equalToSuperview().offset(-inset.right);
             make.bottom.equalToSuperview().offset(-inset.bottom);
-            make.width.equalTo(segmentWidth*items.count.cgFloat)
+            make.width.equalTo(segmentWidth*items.count.cgFloatValue)
         }
         
         labelLeft.snp.remakeConstraints { (make) in

@@ -83,7 +83,7 @@ class UIStackViewController: UIViewController {
         
         stackView.axis = UIApplication.shared.statusBarOrientation.isPortrait ? .vertical : .horizontal
         stackView.axis = .horizontal
-        stackView.frame = self.view.bounds.inset(by: UIEdgeInsetsMake(10, 10, 10, 10))
+        stackView.frame = self.view.bounds.inset(by: UIEdgeInsets(10, 10, 10, 10))
         
         stackView.setSubViewMultiplier(0.1, at: 0)
         stackView.setSubViewMultiplier(0.1, at: 1)

@@ -47,8 +47,8 @@ class NNButtonStudyController: UIViewController{
         
         sender.adjustsImageWhenHighlighted = false
         sender.sizeToFit()
-//        sender.titleEdgeInsets = UIEdgeInsetsMake(0, -sender.imageView!.bounds.width, 0, sender.imageView!.bounds.width)
-//        sender.imageEdgeInsets = UIEdgeInsetsMake(0, sender.titleLabel!.bounds.width+0.0, 0, -sender.titleLabel!.bounds.width-0.0)
+//        sender.titleEdgeInsets = UIEdgeInsets(0, -sender.imageView!.bounds.width, 0, sender.imageView!.bounds.width)
+//        sender.imageEdgeInsets = UIEdgeInsets(0, sender.titleLabel!.bounds.width+0.0, 0, -sender.titleLabel!.bounds.width-0.0)
         sender.layoutButton(direction: 0, imageTitleSpace: 16)
         sender.addTarget(self, action: #selector(handActionBtn(_:)), for: .touchUpInside)
 
@@ -166,8 +166,8 @@ class NNButtonStudyController: UIViewController{
         sender.direction = .none
         sender.iconLocation = .rightTop
         
-        sender.iconSize = GGSizeMake(20, 20)
-        sender.iconOffset = UIOffsetMake(8, -8)
+        sender.iconSize = CGSize(20, 20)
+        sender.iconOffset = UIOffset(8, -8)
         sender.eventInsetDX = 8;
         sender.eventInsetDY = 8;
         sender.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)

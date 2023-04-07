@@ -46,7 +46,7 @@ import SwiftExpand
             return;
         }
         
-        tableView.rowHeight = bounds.height/list.count.toCGFloat;
+        tableView.rowHeight = bounds.height/list.count.cgFloatValue;
         for e in list.enumerated() {
             e.element.frame = CGRect(8, 0, bounds.width - 8, tableView.rowHeight)
         }

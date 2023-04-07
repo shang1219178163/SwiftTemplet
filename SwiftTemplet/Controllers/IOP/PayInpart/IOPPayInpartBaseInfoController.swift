@@ -44,7 +44,7 @@ import SnapKit
         
         var list: [String] = []
         view.items = ["基础信息", "企业信息", "完成"]
-        view.contentInset = UIEdgeInsetsMake(0, 20, 0, 20)
+        view.contentInset = UIEdgeInsets(0, 20, 0, 20)
         view.padding = 90
         view.index = 0
         
@@ -114,7 +114,7 @@ import SnapKit
             return values[2].cgFloatValue
         }).reduce(0, +)
         
-        let inset: UIEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        let inset: UIEdgeInsets = UIEdgeInsets(10, 10, 10, 10)
         view.frame = CGRect(x: inset.left, y: inset.top, width: kScreenWidth - (inset.left + inset.right), height: height)
         
         view.layer.borderWidth = 0.5
@@ -264,7 +264,7 @@ extension IOPPayInpartBaseInfoController: UITableViewDataSource, UITableViewDele
         case "UITableViewCellSudokuButton":
             let cell = UITableViewCellSudokuButton.dequeueReusableCell(tableView);
 //            cell.accessoryType = .disclosureIndicator
-            cell.inset = UIEdgeInsetsMake(15, 15, 15, 15)
+            cell.inset = UIEdgeInsets(15, 15, 15, 15)
             cell.interitemSpacing = 70
             let items = itemList.last!.components(separatedBy: ",")
             

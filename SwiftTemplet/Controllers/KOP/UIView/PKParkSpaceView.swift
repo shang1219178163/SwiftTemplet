@@ -122,7 +122,7 @@ extension PKParkSpaceView: UITableViewDataSource, UITableViewDelegate{
 
             cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
             cell.detailTextLabel?.textColor = UIColor.theme
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
             cell.imageView?.image = UIImage(named: "icon_park_location")
             cell.textLabel?.text = value0
@@ -130,17 +130,17 @@ extension PKParkSpaceView: UITableViewDataSource, UITableViewDelegate{
             cell.textLabel?.text = "雁塔区天谷八路211号"
 
 //            let result: String = dataModel.valueText(forKeyPath: value4, defalut: "-")
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 //            cell.getViewLayer()
             return cell;
 
         case "UITableViewCellButton":
             let cell = UITableViewCellButton.dequeueReusableCell(tableView);
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
-            cell.inset = UIEdgeInsetsMake(0, 15, 0, 15)
+            cell.inset = UIEdgeInsets(0, 15, 0, 15)
             cell.btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-            cell.btn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+            cell.btn.contentEdgeInsets = UIEdgeInsets(0, 10, 0, 0)
             cell.btn.contentHorizontalAlignment = .left
             cell.btn.layer.cornerRadius = 5
             cell.btn.layer.masksToBounds = true
@@ -188,7 +188,7 @@ extension PKParkSpaceView: UITableViewDataSource, UITableViewDelegate{
             DDLog(cell.items.first!)
             cell.items.filter { $0.tag >= items.count }.forEach({ $0.isHidden = true })
             
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.getViewLayer();
             return cell;

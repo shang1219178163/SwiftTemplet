@@ -67,7 +67,7 @@ class FourthViewController: UIViewController {
             list.append("\(i)")
         }
         view.items = ["昨天", "今天", "明天"]
-        view.contentInset = UIEdgeInsetsMake(0, 50, 0, 50)
+        view.contentInset = UIEdgeInsets(0, 50, 0, 50)
         view.padding = 60
         view.index = 1
         return view;
@@ -219,7 +219,7 @@ class FourthViewController: UIViewController {
                         ["33333", "456"],
                     ]
         view.block({ (view, indexP) in
-            DDLog(indexP.toString)
+            DDLog(indexP.toString())
             let cellItem = view.itemList![indexP.row]
             
         })
@@ -529,7 +529,7 @@ class FourthViewController: UIViewController {
     @objc func showPopoverAction(_ sender: UIButton) {
         let contentVC = SimpleListController()
         contentVC.block = { vc, indexP in
-            DDLog(indexP.toString)
+            DDLog(indexP.toString())
 
             vc.navigationController?.pushVC(UIViewController.self, animated: true, block: { (sender) in
                 sender.view.backgroundColor = .systemGreen

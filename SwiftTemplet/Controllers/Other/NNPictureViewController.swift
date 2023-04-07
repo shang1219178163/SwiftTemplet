@@ -29,7 +29,7 @@ class NNPictureViewController: UIViewController {
         // Do any additional setup after loading the view.
         let urlArray = ["http://upload-images.jianshu.io/upload_images/1714291-6c664d526b380115.jpg",                        "http://img.parkingwang.com/6100000074/629906_1.jpg",                            "http://upload-images.jianshu.io/upload_images/3580598-482508548410c111.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"];
         
-        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.toCGFloat)
+        let rect = CGRect(x: 20, y: 20, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.cgFloatValue)
         
         let photosView = createGroupView(rect, list: urlArray, numberOfRow: 3, padding: 10, type: 1) { (tap) in
             guard let itemView = tap.view as? UIImageView else { return }
@@ -43,7 +43,7 @@ class NNPictureViewController: UIViewController {
         view.addSubview(photosView)
         
         
-        cycleScrollView.frame = CGRect(x: 20, y: 200, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.toCGFloat)
+        cycleScrollView.frame = CGRect(x: 20, y: 200, width: kScreenWidth - 40.0, height: (kScreenWidth - 40.0)/urlArray.count.cgFloatValue)
         view.addSubview(cycleScrollView)
 
         

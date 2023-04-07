@@ -183,8 +183,8 @@ extension IOPShopAuthForParkingCardController: UITableViewDataSource, UITableVie
             cell.textLabel?.text = value0
             cell.detailTextLabel?.text = "-"
                         
-//            cell.separatorInset = indexPath.section > 0 && indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
+//            cell.separatorInset = indexPath.section > 0 && indexPath.row == 0 ? .zero : UIEdgeInsets(0, 0, 0, kScreenWidth)
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth)
 
 //            cell.getViewLayer()
             return cell;
@@ -229,7 +229,7 @@ extension IOPShopAuthForParkingCardController: UITableViewDataSource, UITableVie
             
             cell.excelView.reloadData()
             
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth)
 
             return cell
             

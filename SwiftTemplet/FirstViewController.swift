@@ -526,17 +526,45 @@ extension Stack: SuffixableContainer {
 }
 
 
-extension Int{
+public extension Int{
     
     /// add value
     func add(_ value: Int) -> Self {
         return self + value
     }
+    
+    func clamp(lowerLimit: Self, upperLimit: Self) -> Self {
+        if self < lowerLimit {
+            return lowerLimit
+        }
+
+        if self > upperLimit {
+            return upperLimit
+        }
+        return self
+    }
+
+}
+
+
+public extension Double{
+
+    func clamp(lowerLimit: Self, upperLimit: Self) -> Self {
+        if self < lowerLimit {
+            return lowerLimit
+        }
+
+        if self > upperLimit {
+            return upperLimit
+        }
+        return self
+    }
+
 }
 
 extension Array{
     
-    mutating func swapIndex(_ i: Int, _ j: Int) {
+    mutating func swap(_ i: Int, _ j: Int) {
         (self[i], self[j]) = (self[j], self[i])
     }
     

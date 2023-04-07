@@ -61,8 +61,8 @@ import SwiftExpand
         if keyPath == "text" {
 //            btn.layoutButton(direction: 3, imageTitleSpace: 5)
             btn.sizeToFit()
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
-            btn.imageEdgeInsets = UIEdgeInsetsMake(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
+            btn.titleEdgeInsets = UIEdgeInsets(0, -btn.imageView!.bounds.width, 0, btn.imageView!.bounds.width)
+            btn.imageEdgeInsets = UIEdgeInsets(0, btn.titleLabel!.bounds.width+5.0, 0, -btn.titleLabel!.bounds.width-5.0)
         }
         else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -129,8 +129,8 @@ import SwiftExpand
         
         view.layoutButton(direction: 3, imageTitleSpace: 5)
 //        view.sizeToFit()
-//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
+//        view.titleEdgeInsets = UIEdgeInsets(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
+//        view.imageEdgeInsets = UIEdgeInsets(0, view.titleLabel!.bounds.width+5.0, 0, -view.titleLabel!.bounds.width-5.0)
         return view
     }()
         
@@ -194,7 +194,7 @@ extension NNTopSheetView: UITableViewDataSource, UITableViewDelegate {
         let value1 = itemList[1]
 
         let cell = UITableViewCell.dequeueReusableCell(tableView)
-        cell.textLabel?.text = value0 + indexPath.toString
+        cell.textLabel?.text = value0 + indexPath.toString()
         cell.textLabel?.textAlignment = .center
         cell.isHidden = value1.cgFloatValue > 0.0 ? false : true
         cell.textLabel?.textColor = indexP == indexPath ? UIColor.theme : UIColor.black;

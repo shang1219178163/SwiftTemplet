@@ -171,7 +171,7 @@ extension IOPGoodsDetailController: UITableViewDataSource, UITableViewDelegate{
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
                 cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
             }
-            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.getViewLayer()
             return cell;

@@ -118,7 +118,7 @@ extension SimpleListController: UITableViewDataSource, UITableViewDelegate{
         cell.detailTextLabel?.textColor = UIColor.textColor6;
         cell.accessoryType = .disclosureIndicator;
         
-        cell.textLabel?.text = indexPath.toString
+        cell.textLabel?.text = indexPath.toString()
 
 //        cell.getViewLayer()
         return cell;

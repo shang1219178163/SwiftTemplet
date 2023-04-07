@@ -149,7 +149,7 @@ extension PKUserLevelController: UICollectionViewDataSource, UICollectionViewDel
         cell.lab.text = String(format:"%ditem",indexPath.row)
         cell.imgView.image = UIImage(named: "bg_level_card_\(indexPath.row)")
         cell.inset = .zero
-//        cell.inset = UIEdgeInsetsMake(0, 10, 30, 10)
+//        cell.inset = UIEdgeInsets(0, 10, 30, 10)
     
         if indexPath.row < 3 {
             cell.progressView.progress.progress = 1
@@ -194,7 +194,7 @@ extension PKUserLevelController: UITableViewDataSource, UITableViewDelegate{
             cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
             
     //        cell.accessoryType = .disclosureIndicator;
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
             cell.imageView?.image = UIImage(named: "icon_bulb_black")
             cell.imageView?.contentMode = .scaleAspectFit
 
@@ -211,7 +211,7 @@ extension PKUserLevelController: UITableViewDataSource, UITableViewDelegate{
             cell.textLabel?.numberOfLines = 0
             
     //        cell.accessoryType = .disclosureIndicator;
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
             
             let itemList = list[indexPath.section][indexPath.row]
@@ -220,8 +220,8 @@ extension PKUserLevelController: UITableViewDataSource, UITableViewDelegate{
 
         case 2:
             let cell = UITableViewCellButton.dequeueReusableCell(tableView);
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth)
-            cell.inset = UIEdgeInsetsMake(0, 0, 25, 0)
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth)
+            cell.inset = UIEdgeInsets(0, 0, 25, 0)
             cell.btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             cell.btn.setTitleColor(.theme, for: .normal)
             cell.btn.setBackgroundImage(UIImage(color: .white), for: .normal)

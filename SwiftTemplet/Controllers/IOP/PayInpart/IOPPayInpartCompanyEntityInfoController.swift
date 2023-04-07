@@ -28,7 +28,7 @@ import HFNavigationController
         
         var list: [String] = []
         view.items = ["基础信息", "企业信息", "完成"]
-        view.contentInset = UIEdgeInsetsMake(0, 20, 0, 20)
+        view.contentInset = UIEdgeInsets(0, 20, 0, 20)
         view.padding = 90
         view.index = 1
         

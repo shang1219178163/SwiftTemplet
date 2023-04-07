@@ -92,10 +92,10 @@ class NNUserInfoView: UIView {
         btnLevel.adjustsImageWhenHighlighted = true
         btnLevel.setBackgroundImage(UIImage(named: "bg_level"), for: .normal)
         btnLevel.setTitleColor(UIColor.hexValue(0xFAC993), for: .normal);
-        btnLevel.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0)
+        btnLevel.titleEdgeInsets = UIEdgeInsets(0, 15, 0, 0)
                 
         btnPoints.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-        btnPoints.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 5)
+        btnPoints.contentEdgeInsets = UIEdgeInsets(0, 5, 0, 5)
         btnPoints.adjustsImageWhenHighlighted = true
         btnPoints.setBackgroundImage(UIImage(named: "bg_gradient_orange_1"), for: .normal)
         btnPoints.setTitleColor(UIColor.hexValue(0x814F0B), for: .normal);
@@ -104,7 +104,7 @@ class NNUserInfoView: UIView {
         btnCoupon.setImage(UIImage(named: "icon_coupon"), for: .normal)
 //        btnCoupon.setTitle("卡券(12)", for: .normal)
         btnCoupon.setTitleColor(.white, for: .normal)
-        btnCoupon.imageEdgeInsets = UIEdgeInsetsMake(3, -3, 3, 0)
+        btnCoupon.imageEdgeInsets = UIEdgeInsets(3, -3, 3, 0)
 
 //        name = "王小兰"
 //        level = "30"

@@ -161,7 +161,7 @@ extension IOPInspectionDetailController: UITableViewDataSource, UITableViewDeleg
                 cell.textLabel?.font = UIFont.systemFont(ofSize: 13)
                 cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 13)
             }
-            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.getViewLayer()
             return cell;
@@ -257,7 +257,7 @@ extension IOPInspectionDetailController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if [0, 1].contains(section) {
-            let inset = UIEdgeInsetsMake(10, 10, 10, 10)
+            let inset = UIEdgeInsets(10, 10, 10, 10)
             return tableView.createSectionViewLabel(45, labelInset: inset) { sender in
 //                sender.backgroundColor = .clear
                 sender.textColor = .textColor6

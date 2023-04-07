@@ -18,7 +18,7 @@ import SwiftExpand
     var inset: UIEdgeInsets = .zero
     
     
-    var redPointOffset: UIOffset = UIOffsetMake(0, -8)
+    var redPointOffset = UIOffset(0, -8)
     
     var redPointSize: CGSize = CGSize(width: 5, height: 5)
 

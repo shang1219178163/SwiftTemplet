@@ -62,7 +62,7 @@ class NNTaskCenterHeaderView: UIImageView {
         btnLevel.setBackgroundImage(UIImage(named: "bg_level"), for: .normal)
 //        btnLevel.contentHorizontalAlignment = .right
         btnLevel.setTitleColor(UIColor.hexValue(0xFAC993), for: .normal);
-        btnLevel.titleEdgeInsets = UIEdgeInsetsMake(0, 15, 0, 0)
+        btnLevel.titleEdgeInsets = UIEdgeInsets(0, 15, 0, 0)
 
         btnPoints.titleLabel?.font = UIFont.systemFont(ofSize: 11)
         btnPoints.adjustsImageWhenHighlighted = true

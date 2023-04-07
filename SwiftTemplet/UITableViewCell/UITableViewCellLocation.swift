@@ -113,7 +113,7 @@ import SwiftExpand
         }
         
         let labelStartX: CGFloat = imgView.isHidden == false ? inset.left + imagSize.width + 8 : inset.left
-//        let labelEndX: CGFloat = limitPlates.count == 0 ? inset.right : inset.right + 26 + limitPlates.count.toCGFloat*(10+4) - 4 + 8*2
+//        let labelEndX: CGFloat = limitPlates.count == 0 ? inset.right : inset.right + 26 + limitPlates.count.cgFloatValue*(10+4) - 4 + 8*2
 //        let labelHeight: CGFloat = (self.bounds.height - inset.top - inset.bottom - 5)*0.5
         
         imgView.snp.makeConstraints { (make) in

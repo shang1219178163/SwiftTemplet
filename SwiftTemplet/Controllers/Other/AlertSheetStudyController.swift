@@ -488,7 +488,7 @@ extension AlertSheetStudyController: UIPickerViewDelegate, UIPickerViewDataSourc
 
 class CustomAlertController: UIViewController {
     
-    var edge = UIEdgeInsetsMake(0, 0, 0, 0)
+    var edge = UIEdgeInsets(0, 0, 0, 0)
     
     var size = CGSize(width: kScreenWidth - 60, height: 216)
 

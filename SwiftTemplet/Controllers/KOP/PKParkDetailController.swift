@@ -217,7 +217,7 @@ extension PKParkDetailController: UITableViewDataSource, UITableViewDelegate{
             cell.detailTextLabel?.text = "上传"
                         
             let result: String = dataModel.valueText(forKeyPath: value4, defalut: "-")
-            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.getViewLayer()
             return cell;
@@ -236,7 +236,7 @@ extension PKParkDetailController: UITableViewDataSource, UITableViewDelegate{
                         
             let result: String = dataModel.valueText(forKeyPath: value4, defalut: "-")
 
-            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.getViewLayer()
             return cell;

@@ -63,7 +63,7 @@ import SwiftExpand
     func showPopover(_ sender: UIButton) {
         PopoverView.show(sender, titles: popoverTitles, block: { (popover) in
             popover.separatorColor = UIColor.hexValue(0xE8E8E8)
-            popover.cellSeparatorInset = UIEdgeInsetsMake(0, 18, 0, 18)
+            popover.cellSeparatorInset = UIEdgeInsets(0, 18, 0, 18)
             popover.arrowStyle = .none
             popover.contentWidth = 120
             popover.lockArrowUp = true
@@ -136,7 +136,7 @@ extension PKUserPointsListController: UITableViewDataSource, UITableViewDelegate
             sender.frame = CGRect(x: 0, y: 0, width: 63, height: 22)
             sender.setTitleColor(.white, for: .normal)
             sender.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-            sender.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10)
+            sender.titleEdgeInsets = UIEdgeInsets(0, 0, 0, 10)
             
             sender.setBackgroundImage(UIImage(named: "bg_btn_arrow_down"), for: .normal)
             sender.setBackgroundImage(UIImage(named: "bg_btn_arrow_up"), for: .selected)

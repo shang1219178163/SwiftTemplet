@@ -97,7 +97,7 @@
     [tableView addSectionRoundCorner:10 padding:15 cell:cell forRowAt:indexPath];
     return;
 //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
+//    cell.separatorInset = UIEdgeInsets(0, 10, 0, 10);
 //    //圆率
 //    CGFloat cornerRadius = 15.0;
 //    //大小

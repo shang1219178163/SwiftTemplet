@@ -186,13 +186,13 @@ extension PKParkBriefView: UITableViewDataSource, UITableViewDelegate{
 
             cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 15)
             cell.detailTextLabel?.textColor = UIColor.theme
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.textLabel?.text = value0
             cell.detailTextLabel?.text = "上传"
 
 //            let result: String = dataModel.valueText(forKeyPath: value4, defalut: "-")
-//            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+//            cell.separatorInset = indexPath.row == 0 ? .zero : UIEdgeInsets(0, 0, 0, kScreenWidth);
 //            cell.getViewLayer()
             return cell;
             
@@ -202,7 +202,7 @@ extension PKParkBriefView: UITableViewDataSource, UITableViewDelegate{
             cell.labelLeft.font = UIFont.systemFont(ofSize: 17, weight: .medium)
             cell.labelLeft.textColor = UIColor.textColor3
             cell.isHidden = value2.cgFloatValue <= 0.0
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.btn.isHidden = true
 //            cell.labelLeft.text = dataModel.name ?? "--"
@@ -215,8 +215,8 @@ extension PKParkBriefView: UITableViewDataSource, UITableViewDelegate{
                         
         case "UITableViewCellParkInfo":
             let cell = UITableViewCellParkInfo.dequeueReusableCell(tableView);
-            cell.inset = UIEdgeInsetsMake(5, 15, 5, 10)
-            cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, kScreenWidth);
+            cell.inset = UIEdgeInsets(5, 15, 5, 10)
+            cell.separatorInset = UIEdgeInsets(0, 0, 0, kScreenWidth);
 
 //            cell.btnOne.isHidden = ![dataModel.etc, dataModel.alipay, dataModel.wechat].contains(true)
 //            cell.btnTwo.isHidden = !dataModel.cash

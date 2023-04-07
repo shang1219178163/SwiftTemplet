@@ -33,7 +33,7 @@ class NNUserCenterHeaderView: UIImageView {
         addSubview(imgView)
         addSubview(imgViewArc)
         
-//        userInfoView.inset = UIEdgeInsetsMake(10, 15, 0, 15)
+//        userInfoView.inset = UIEdgeInsets(10, 15, 0, 15)
         imgViewArc.image = UIImage(named: "mask_radian")
         imgView.image = UIImage(named: "ad_user")
     }

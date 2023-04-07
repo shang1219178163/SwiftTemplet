@@ -156,7 +156,7 @@ extension SystemColorShowController: UITableViewDataSource, UITableViewDelegate{
         cell.detailTextLabel?.textColor = UIColor.textColor6;
         cell.accessoryType = .disclosureIndicator;
         
-        cell.textLabel?.text = indexPath.toString
+        cell.textLabel?.text = indexPath.toString()
         
         let color = list[indexPath.section][indexPath.row]
 //        DDLog(indexPath.string, color.description)
@@ -181,7 +181,7 @@ extension SystemColorShowController: UITableViewDataSource, UITableViewDelegate{
         cell.textLabel?.textColor = color
         
         if indexPath.section != 1 && list[1].contains(color) {
-            DDLog(indexPath.toString, color)
+            DDLog(indexPath.toString(), color)
         }
 
         return cell;

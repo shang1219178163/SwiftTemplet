@@ -136,6 +136,7 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['SWIFT_VERSION'] = '5.5';
       config.build_settings["CODE_SIGNING_ALLOWED"] = false;
-      end
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+    end
   end
 end

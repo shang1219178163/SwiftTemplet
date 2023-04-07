@@ -62,8 +62,8 @@ class NNPopView: UIView {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             sender!.sizeToFit()
-            sender!.titleEdgeInsets = UIEdgeInsetsMake(0, -sender!.imageView!.bounds.width, 0, sender!.imageView!.bounds.width)
-            sender!.imageEdgeInsets = UIEdgeInsetsMake(0, sender!.titleLabel!.bounds.width+5.0, 0, -sender!.titleLabel!.bounds.width-5.0)
+            sender!.titleEdgeInsets = UIEdgeInsets(0, -sender!.imageView!.bounds.width, 0, sender!.imageView!.bounds.width)
+            sender!.imageEdgeInsets = UIEdgeInsets(0, sender!.titleLabel!.bounds.width+5.0, 0, -sender!.titleLabel!.bounds.width-5.0)
         }
         else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)

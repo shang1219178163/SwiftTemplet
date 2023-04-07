@@ -54,8 +54,8 @@ import SwiftExpand
         view.adjustsImageWhenHighlighted = false
         
         view.sizeToFit()
-//        view.titleEdgeInsets = UIEdgeInsetsMake(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
-//        view.imageEdgeInsets = UIEdgeInsetsMake(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
+//        view.titleEdgeInsets = UIEdgeInsets(0, -view.imageView!.bounds.width, 0, view.imageView!.bounds.width)
+//        view.imageEdgeInsets = UIEdgeInsets(0, view.titleLabel!.bounds.width+0.0, 0, -view.titleLabel!.bounds.width-0.0)
         view.layoutButton(direction: 1, imageTitleSpace: 2)
         view.addActionHandler({ (sender) in
             sender.isSelected = !sender.isSelected

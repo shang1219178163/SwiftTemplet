@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftExpand
 
 
 @objc protocol IOPGoodsToolViewDelegate{
@@ -25,7 +26,7 @@ class IOPGoodsToolView: UIView {
     var titleColor: UIColor = UIColor.gray;
     
     var btnWidth: CGFloat {
-        return (UIScreen.sizeWidth - (numberOfRow + 2).toCGFloat*10.0)/numberOfRow.toCGFloat;
+        return (UIScreen.sizeWidth - (numberOfRow + 2).cgFloatValue*10.0)/numberOfRow.cgFloatValue;
     }
     
     var btnHeight: CGFloat {

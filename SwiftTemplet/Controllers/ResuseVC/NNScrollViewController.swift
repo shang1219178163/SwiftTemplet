@@ -11,7 +11,7 @@ import SwiftExpand
 
 class NNScrollViewController: UIViewController{
     
-    var inset = UIEdgeInsetsMake(0, 0, 0, 0)
+    var inset = UIEdgeInsets(0, 0, 0, 0)
     
 
     lazy var scrollView: UIScrollView = {

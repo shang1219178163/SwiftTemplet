@@ -96,7 +96,7 @@ extension NNTitleViewSelectController: NNTopSheetViewDelegate {
         cell.labelRight.textAlignment = .left
 
         cell.labelLeft.text = value0
-        cell.labelRight.text = indexPath.toString
+        cell.labelRight.text = indexPath.toString()
         cell.isHidden = value1.cgFloatValue <= 0.0
 
 //        cell.getViewLayer()

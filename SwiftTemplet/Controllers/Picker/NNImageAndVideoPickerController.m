@@ -190,7 +190,7 @@
     /*
     [imagePickerVc setNavLeftBarButtonSettingBlock:^(UIButton *leftButton){
         [leftButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-        [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 20)];
+        [leftButton setImageEdgeInsets:UIEdgeInsets(0, -10, 0, 20)];
     }];
     imagePickerVc.delegate = self;
     */

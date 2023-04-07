@@ -39,9 +39,8 @@ PODS:
     - Masonry
   - NNExcelView (1.6.0):
     - SnapKit
-  - NNPlateKeyboard (1.4.3):
+  - NNPlateKeyboard (2.1.0):
     - SnapKit
-    - SnapKitExtend
     - SwiftExpand
   - NNPopoverButton (2.1.0)
   - OHHTTPStubs (9.1.0):
@@ -196,7 +195,7 @@ SPEC CHECKSUMS:
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   MMPopupView: fe1dd010824029dfb632fdf1a531db5dd5386020
   NNExcelView: 6ebafa27bc27ac3aa253ae66eaf70e710772aab7
-  NNPlateKeyboard: 69e84f0430a8f75925d2fa34ec67b181a07403ea
+  NNPlateKeyboard: 7c8cc45e1e7d785920f13cb2a80a9b3af98bfb94
   NNPopoverButton: 529d63381df956119c469b6426607a8875ccae35
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
   Reveal-SDK: 2dd3ad8b66d4e05af485206f8904b2e5c8ffe060
@@ -217,6 +216,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 2065440519e36c0c26ec13efc00454625f5bceac
+PODFILE CHECKSUM: e7d73f159bd133e432cb76614af3eac6a9470c5e
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

@@ -49,9 +49,9 @@ import SwiftExpand
             guard let imageView = btn.imageView, let titleLabel = btn.titleLabel else { return }
             btn.sizeToFit()
             btn.center = self.contentView.center
-            btn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageView.bounds.width, 0, imageView.bounds.width)
+            btn.titleEdgeInsets = UIEdgeInsets(0, -imageView.bounds.width, 0, imageView.bounds.width)
             if btn.imageView?.image != nil {
-                btn.imageEdgeInsets = UIEdgeInsetsMake(0, titleLabel.bounds.width+3.0, 0, -titleLabel.bounds.width-3.0)
+                btn.imageEdgeInsets = UIEdgeInsets(0, titleLabel.bounds.width+3.0, 0, -titleLabel.bounds.width-3.0)
             }
         }
         else {

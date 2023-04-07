@@ -42,7 +42,7 @@ class NNCollectionViewHorizontalController: UIViewController{
 //        let spacing: CGFloat = 10
 //        let width = UIScreen.main.bounds.width
 //
-//        let itemWidth = (width - (numOfRow.toCGFloat + 1)*spacing - layout.sectionInset.left - layout.sectionInset.right)/numOfRow.toCGFloat
+//        let itemWidth = (width - (numOfRow.cgFloatValue + 1)*spacing - layout.sectionInset.left - layout.sectionInset.right)/numOfRow.cgFloatValue
 //        let itemHeight = itemWidth/0.75
 //
 //        let itemSize = CGSize(width: round(itemWidth), height: itemHeight)
@@ -103,7 +103,7 @@ extension NNCollectionViewHorizontalController: UICollectionViewDataSource, UICo
         let cell: UICTViewCellOne = collectionView.dequeueReusableCell(for: UICTViewCellOne.self, indexPath: indexPath)
         cell.contentView.backgroundColor = UIColor.random
         cell.imgView.isHidden = true;
-        cell.lab.text = "标题_\(indexPath.toString)"
+        cell.lab.text = "标题_\(indexPath.toString())"
 
         return cell;
     }

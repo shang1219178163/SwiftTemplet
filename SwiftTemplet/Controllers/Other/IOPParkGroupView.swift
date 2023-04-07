@@ -162,7 +162,7 @@ class IOPParkGroupView: UIView {
     // MARK: -funtions
     func itemViewHeight(_ itemHeight: CGFloat = 40) -> CGFloat {
         let rowCount = itemList.count % numberOfRow == 0 ? itemList.count/numberOfRow : itemList.count/numberOfRow + 1;
-        return rowCount.toCGFloat * itemHeight + (rowCount - 1).toCGFloat * padding;
+        return rowCount.cgFloatValue * itemHeight + (rowCount - 1).cgFloatValue * padding;
     }
     
     func block(_ action: @escaping ((IOPParkGroupView, UIControl) -> Void)) {

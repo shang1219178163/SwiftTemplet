@@ -409,7 +409,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             
         case "UITableViewCellEdge1":
             let cell = UITableViewCellEdge.dequeueReusableCell(tableView, identifier: "UITableViewCellEdge1", style: .subtitle)
-            cell.inset = UIEdgeInsetsMake(8, -8, 8, 8)
+            cell.inset = UIEdgeInsets(8, -8, 8, 8)
             
             cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
             cell.textLabel?.textColor = .textColor3
@@ -620,7 +620,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
             cell.hasAsterisk = value0.hasPrefix("*")
             
             cell.labelLeft.isHidden = true
-            cell.inset = UIEdgeInsetsMake(15, 10, 15, 10)
+            cell.inset = UIEdgeInsets(15, 10, 15, 10)
             
             cell.labelLeft.text = value0
             let titles = itemList.last!.components(separatedBy: ",")
@@ -720,7 +720,7 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
         case "UITableViewCellCycle":
             let cell = UITableViewCell.dequeueReusableCell(tableView, identifier: "UITableViewCellCycle")
             
-            let inset = UIEdgeInsetsMake(10, 10, 10, 10)
+            let inset = UIEdgeInsets(10, 10, 10, 10)
             cell.contentView.createSubTypeView(NNCycleScrollView.self, tag: 100, inset: inset) { (view) in
                 view.direction = .vertical
                 view.list =  ["我们对权限控制做了升级，现在可以精准控制app端的权限了","由管理员在网页端设置。如果您发现您原来“运营”菜单中有的功能不见了，请联系集团管理员添加，给您带来不便敬请谅解。", "qqqqqqqqqqqqqqqq"]

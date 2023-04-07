@@ -35,7 +35,7 @@ import SwiftExpand
     private var currentSelectedIndex: Int = 0;
     var selectedIndex: Int{
         set{
-            let offset = CGPoint(newValue.toCGFloat * scrollViewContent.sizeWidth, 0);
+            let offset = CGPoint(newValue.cgFloatValue * scrollViewContent.sizeWidth, 0);
             scrollViewContent.setContentOffset(offset, animated: true)
             
             selectedView = items![newValue];
@@ -71,15 +71,15 @@ import SwiftExpand
         scrollViewContent.snp.makeConstraints { (make) in
             make.edges.equalToSuperview();
         }
-//        DDLog("items_\(items!.count)_\(items!.count.toCGFloat))
+//        DDLog("items_\(items!.count)_\(items!.count.cgFloatValue))
 
-        scrollViewContent.contentSize = CGSize(width: items.count.toCGFloat * bounds.width,
+        scrollViewContent.contentSize = CGSize(width: items.count.cgFloatValue * bounds.width,
                                                height: bounds.height)
 //        DDLog("contentSize_\(scrollViewContent.contentSize)")
 
         for e in items.enumerated() {
             let view: UIView = e.element;
-            view.frame = CGRect(e.offset.toCGFloat * bounds.width,
+            view.frame = CGRect(e.offset.cgFloatValue * bounds.width,
                                     0,
                                     bounds.width,
                                     bounds.height)

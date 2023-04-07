@@ -19,7 +19,7 @@ import SwiftExpand
     
     weak var delegate: NNAnnouncementAlertViewDelegate?
 
-    let edge = UIEdgeInsetsMake(120, 20, 120, 20)
+    let edge = UIEdgeInsets(120, 20, 120, 20)
     
     let btnH: CGFloat = 45
     let contentPadding: CGFloat = 15
