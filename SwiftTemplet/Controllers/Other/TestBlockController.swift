@@ -7,13 +7,32 @@
 //
 
 import UIKit
+import SwiftExpand
+
 
 class TestBlockController: UIViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItems = ["done"].map({
+            UIBarButtonItem(obj: $0) {item in
+                debugPrint("result: \(item)")
+            }
+        })
+        
+        var dic = [AnyHashable : Any]()
+        dic["a"] = "aa"
+        debugPrint(dic)
+    }
+    
+    @available(iOS 13.0.0, *)
+    func request(_ page: Int = 1) async -> [String] {
+        return Array(count: 3, generator: { i in
+            return "index_\(i)"
+        });
     }
     
     //    = UNUserNotificationCenter.current().isAuthorized
@@ -38,4 +57,25 @@ extension UNUserNotificationCenter{
             return false
         }
     }
+}
+
+
+struct Amodel {
+ 
+}
+
+class UModel: NSCopying {
+
+
+    func copy(with zone: NSZone? = nil) -> Any {
+
+    }
+}
+
+class UOneModel: NSMutableCopying {
+
+    func mutableCopy(with zone: NSZone? = nil) -> Any {
+
+    }
+
 }

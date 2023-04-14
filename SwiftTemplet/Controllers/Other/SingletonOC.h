@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SingletonOC : NSObject
 
+@property(nonatomic, readonly) SingletonOC *sharedInstance;
+
 @end
 
 NS_ASSUME_NONNULL_END

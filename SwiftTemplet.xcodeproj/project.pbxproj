@@ -235,6 +235,8 @@
 		1455106E240CAD76001772F5 /* UITableViewCellGoodsDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455106D240CAD76001772F5 /* UITableViewCellGoodsDuration.swift */; };
 		1455ED7A2678526600E43943 /* SwiftTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455ED792678526600E43943 /* SwiftTips.swift */; };
 		14579B9B2293F28C001FEB0C /* NNUserLogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14579B9A2293F28C001FEB0C /* NNUserLogInController.swift */; };
+		1457E0D429E4EB06002AC3D6 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1457E0D329E4EB06002AC3D6 /* Singleton.swift */; };
+		1457E0D729E4EBE2002AC3D6 /* SingletonOC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1457E0D629E4EBE2002AC3D6 /* SingletonOC.m */; };
 		1458F81D249C96C8007555EF /* UITableViewCellLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458F81C249C96C8007555EF /* UITableViewCellLog.swift */; };
 		1458F822249CB1A4007555EF /* UITableViewCellHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458F821249CB1A4007555EF /* UITableViewCellHorizontal.swift */; };
 		1458F827249CDA9A007555EF /* UITableViewCellVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1458F826249CDA9A007555EF /* UITableViewCellVertical.swift */; };
@@ -952,6 +954,9 @@
 		1455106D240CAD76001772F5 /* UITableViewCellGoodsDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellGoodsDuration.swift; sourceTree = "<group>"; };
 		1455ED792678526600E43943 /* SwiftTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftTips.swift; sourceTree = "<group>"; };
 		14579B9A2293F28C001FEB0C /* NNUserLogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNUserLogInController.swift; sourceTree = "<group>"; };
+		1457E0D329E4EB06002AC3D6 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		1457E0D529E4EBE2002AC3D6 /* SingletonOC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingletonOC.h; sourceTree = "<group>"; };
+		1457E0D629E4EBE2002AC3D6 /* SingletonOC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingletonOC.m; sourceTree = "<group>"; };
 		1458F81C249C96C8007555EF /* UITableViewCellLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellLog.swift; sourceTree = "<group>"; };
 		1458F821249CB1A4007555EF /* UITableViewCellHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellHorizontal.swift; sourceTree = "<group>"; };
 		1458F826249CDA9A007555EF /* UITableViewCellVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellVertical.swift; sourceTree = "<group>"; };
@@ -2381,6 +2386,9 @@
 				146AD0E129D16F07002A161A /* TestBlockController.swift */,
 				142EEDBA29DAAF9E0084A41E /* NNAbsorbPointerView.swift */,
 				142EEDBC29DAB24B0084A41E /* NNAbsorbPointerViewController.swift */,
+				1457E0D329E4EB06002AC3D6 /* Singleton.swift */,
+				1457E0D529E4EBE2002AC3D6 /* SingletonOC.h */,
+				1457E0D629E4EBE2002AC3D6 /* SingletonOC.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3244,6 +3252,7 @@
 				14923E9024E13F9000E56939 /* NNChatKeyboardView.swift in Sources */,
 				1451EBEA2498BF2400059BDC /* NNTableShowCell.swift in Sources */,
 				1439180F24C57A5100CBABF0 /* UICTViewCellValue.swift in Sources */,
+				1457E0D429E4EB06002AC3D6 /* Singleton.swift in Sources */,
 				14B6F921249F3394000CCD55 /* BathRequestController.swift in Sources */,
 				14E2049F24E687270075AB47 /* PopoverView+Helper.m in Sources */,
 				14EFA01B24E95F7600A9C94C /* UICollectionTagsController.swift in Sources */,
@@ -3397,6 +3406,7 @@
 				148B7D4825AEC74200D2BA59 /* TextFieldViewController.m in Sources */,
 				1472C24124599B00000F8441 /* NNParentTwoController.swift in Sources */,
 				14EBBC9724EE352D00D97528 /* NNScrollLabelView.swift in Sources */,
+				1457E0D729E4EBE2002AC3D6 /* SingletonOC.m in Sources */,
 				142EEDBD29DAB24B0084A41E /* NNAbsorbPointerViewController.swift in Sources */,
 				143F714627336A1700E2FC28 /* UICallPhoneView.swift in Sources */,
 				14F0F0DE24BF1ED700263DAA /* NNOfflineTipController.swift in Sources */,

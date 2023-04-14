@@ -112,6 +112,9 @@ class ThirdViewController: UIViewController{
             ["AppleSignInViewController", "AppleSignIn", ],
             ["RecursionViewController", "Recursion", ],
             ["TestViewController", "新想法测试", ],
+             ["TestBlockController", "新想法测试", ],
+
+             
             ],
             
             [["SystemColorShowController", "SystemColor", ],
