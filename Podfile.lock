@@ -75,7 +75,7 @@ PODS:
   - SnapKitExtend (1.1.0):
     - SnapKit
   - Starscream (4.0.4)
-  - SwiftExpand (7.24.0)
+  - SwiftExpand (8.1.1)
   - Then (3.0.0)
   - TZImagePickerController (3.8.3):
     - TZImagePickerController/Basic (= 3.8.3)
@@ -207,7 +207,7 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  SwiftExpand: d9d39d4e3aa327a0dfabb8d16fe7ebbd3b427833
+  SwiftExpand: 03d366642f986bf87aca22d80ade9de140d3cab0
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
   TZImagePickerController: e9909edbadf7381140efc5b5c9f5bdbfd630f7d4
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
