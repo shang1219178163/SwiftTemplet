@@ -41,6 +41,20 @@ class TestBlockController: UIViewController {
         let result = await authorized();
         return result;
     }
+    
+    var testView: NNTestView<TestModel> {
+        let view = NNTestView<TestModel>(frame: CGRect.zero)
+        view.block = { (val) -> Array<TestModel> in
+            if case .authorized = await UNUserNotificationCenter
+                .current()
+                .notificationSettings()
+                .authorizationStatus {
+                return [];
+            }
+            return [];
+        }
+        return view
+    }
 }
 
 
@@ -58,6 +72,7 @@ extension UNUserNotificationCenter{
         }
     }
 }
+
 
 
 struct Amodel {
@@ -79,3 +94,36 @@ class UOneModel: NSMutableCopying {
     }
 
 }
+
+
+class NNTestView<M>: UIView {
+ 
+    var block: ((Int) async -> Array<M>)? = nil
+    
+
+    // MARK: - 重写加载方法
+    override init(frame: CGRect) {
+        super.init(frame: frame);
+
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        
+    }
+    
+
+    // MARK: - 私有方法
+    
+
+}
+
+class TestModel {
+    
+}
+
