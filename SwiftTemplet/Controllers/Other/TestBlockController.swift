@@ -75,25 +75,25 @@ extension UNUserNotificationCenter{
 
 
 
-struct Amodel {
- 
-}
-
-class UModel: NSCopying {
-
-
-    func copy(with zone: NSZone? = nil) -> Any {
-
-    }
-}
-
-class UOneModel: NSMutableCopying {
-
-    func mutableCopy(with zone: NSZone? = nil) -> Any {
-
-    }
-
-}
+//struct Amodel {
+// 
+//}
+//
+//class UModel: NSCopying {
+//
+//
+//    func copy(with zone: NSZone? = nil) -> Any {
+//
+//    }
+//}
+//
+//class UOneModel: NSMutableCopying {
+//
+//    func mutableCopy(with zone: NSZone? = nil) -> Any {
+//
+//    }
+//
+//}
 
 
 class NNTestView<M>: UIView {
