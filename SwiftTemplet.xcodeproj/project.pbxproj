@@ -116,6 +116,7 @@
 		142D7E6225931EA000D15E3B /* UITableViewCellUploadNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7E6125931EA000D15E3B /* UITableViewCellUploadNew.swift */; };
 		142D7E642593250400D15E3B /* UITableViewCellUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7E632593250400D15E3B /* UITableViewCellUpload.swift */; };
 		142D7F142594558700D15E3B /* RxCocoaHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142D7F132594558700D15E3B /* RxCocoaHelper.swift */; };
+		142E19E22A88E8EF009B3495 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142E19E12A88E8EF009B3495 /* EventBus.swift */; };
 		142EB9E224810C8400950B63 /* NNMultipleSectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EB9E124810C8300950B63 /* NNMultipleSectionFlowLayout.swift */; };
 		142EB9E424810CD700950B63 /* UICollectionMultipleSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EB9E324810CD700950B63 /* UICollectionMultipleSectionController.swift */; };
 		142EEDBB29DAAF9E0084A41E /* NNAbsorbPointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142EEDBA29DAAF9E0084A41E /* NNAbsorbPointerView.swift */; };
@@ -829,6 +830,7 @@
 		142D7E6125931EA000D15E3B /* UITableViewCellUploadNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellUploadNew.swift; sourceTree = "<group>"; };
 		142D7E632593250400D15E3B /* UITableViewCellUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellUpload.swift; sourceTree = "<group>"; };
 		142D7F132594558700D15E3B /* RxCocoaHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCocoaHelper.swift; sourceTree = "<group>"; };
+		142E19E12A88E8EF009B3495 /* EventBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		142EB9E124810C8300950B63 /* NNMultipleSectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNMultipleSectionFlowLayout.swift; sourceTree = "<group>"; };
 		142EB9E324810CD700950B63 /* UICollectionMultipleSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionMultipleSectionController.swift; sourceTree = "<group>"; };
 		142EEDBA29DAAF9E0084A41E /* NNAbsorbPointerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAbsorbPointerView.swift; sourceTree = "<group>"; };
@@ -2389,6 +2391,7 @@
 				1457E0D329E4EB06002AC3D6 /* Singleton.swift */,
 				1457E0D529E4EBE2002AC3D6 /* SingletonOC.h */,
 				1457E0D629E4EBE2002AC3D6 /* SingletonOC.m */,
+				142E19E12A88E8EF009B3495 /* EventBus.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -3335,6 +3338,7 @@
 				145C91512334CD0E00849E9D /* NNTabController.swift in Sources */,
 				14A86A7523557ABD00AD9BC1 /* NNSearchResultController.swift in Sources */,
 				14B0A2902531660B00C930B1 /* GXSegmentTitleView.swift in Sources */,
+				142E19E22A88E8EF009B3495 /* EventBus.swift in Sources */,
 				14775DEE248657FD0093DC3D /* UITableViewCellTags.swift in Sources */,
 				14B0CAE72664B5BB005E6149 /* CryptoKitController.swift in Sources */,
 				1426A86B26DA15BB00B237C4 /* MBProgressHUDDemoController.swift in Sources */,
@@ -3938,6 +3942,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftTemplet/SwiftTemplet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4119,6 +4124,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwiftTemplet/SwiftTemplet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

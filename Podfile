@@ -133,10 +133,21 @@ end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
+    
+    if target.name == 'TUICore'
+      target.build_configurations.each do |config|
+        config.build_settings['GENERATE_INFOPLIST_FILE'] = 'NO'
+      end
+    end
+    
+    
     target.build_configurations.each do |config|
       config.build_settings['SWIFT_VERSION'] = '5.5';
       config.build_settings["CODE_SIGNING_ALLOWED"] = false;
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      config.build_settingsL'ENABLE_BITCODE'] = NO
+#      config.build_settings['VALID_ARCHS'] = 'arm64 arm64e ×86_64'
+#      config.build_settings['VALID_ARCHS[sdk=iphonesimulator*]'] = '×86_64'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "11.O"
     end
   end
 end
