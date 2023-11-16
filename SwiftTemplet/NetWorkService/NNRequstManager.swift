@@ -53,7 +53,7 @@ protocol NNRequestManagerProtocol: NSObjectProtocol {
 
     func requestParams() -> [String: Any]
     
-    func validateParams() -> Bool
+    func validateParams() -> (Bool, String);
 }
 /// 可选协议方法
 extension NNRequestManagerProtocol {
@@ -126,11 +126,13 @@ typealias NNRequestFailureBlock = ((NNRequstManager, NSError) -> Void)
     }
         
     func startRequest() -> DataRequest? {
-        if child.validateParams() == false {
-//            let error = NSError.error("validateParams参数校验失败", code: NNRequestCode.ParamsError.rawValue);
-//
-//            delegate?.manager(self, error: error);
-//            failureBlock?(self, error)
+        if child.validateParams().0 == false {
+            let error = NSError.error("validateParams参数校验失败",
+                                      code: NNRequestCode.paramsError.rawValue
+            );
+
+            delegate?.manager(self, error: error);
+            failureBlock?(self, error)
             return nil
         }
         

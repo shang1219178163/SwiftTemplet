@@ -23,9 +23,6 @@ class NNCheckVersApi: NNBaseRequestAPI {
         ];
     }
     
-    override func validateParams() -> Bool {
-        return true;
-    }
     
     func saveJsonOfCache(_ json: Dictionary<String, Any>?) -> Bool {
         guard let json = json else {

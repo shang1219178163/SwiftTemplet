@@ -35,12 +35,11 @@ import SwiftExpand
 //    }
 //
 
-    override func validateParams() -> Bool {
+    override func validateParams() -> (Bool, String) {
         if recordID.isEmpty {
-            NNProgressHUD.showText("id 不能为空")
-            return false
+            return (false, "id 不能为空");
         }
-        return true
+        return (true, "");
     }
        
 //    override func isOriginDic() -> Bool {

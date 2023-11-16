@@ -53,12 +53,11 @@ import Alamofire
         return params
     }
 
-    override func validateParams() -> Bool {
+    override func validateParams() -> (Bool, String) {
         if park_code.isEmpty {
-            NNProgressHUD.showText("请选择车场")
-            return false;
+            return (false, "请选择车场");
         }
-        return true;
+        return (true, "");
     }
 
 //    override func isOriginDic() -> Bool {

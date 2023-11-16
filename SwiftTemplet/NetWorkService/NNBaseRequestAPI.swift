@@ -11,6 +11,7 @@ import Alamofire
 
 @objcMembers class NNBaseRequestAPI: NNRequstManager, NNRequestManagerProtocol {
 
+
     override init() {
         super.init()
         child = self
@@ -29,8 +30,8 @@ import Alamofire
         return dic
     }
 
-    func validateParams() -> Bool {
-        return true
+    func validateParams() -> (Bool, String) {
+        return (true, "");
     }
     
     func needLogin() -> Bool {

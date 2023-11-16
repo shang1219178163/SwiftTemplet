@@ -58,24 +58,20 @@ import SwiftExpand
         return params
     }
     
-    override func validateParams() -> Bool {
+    override func validateParams() -> (Bool, String) {
         if let title = title, title.isEmpty == false, title.count < 2 {
-            NNProgressHUD.showError("最少需要输入两个字才能搜索哦！")
-            return false;
+            return (false, "最少需要输入两个字才能搜索哦！");
         }
         if start_time.count < 10 {
-            NNProgressHUD.showText("起始时间无效")
-            return false;
+            return (false, "起始时间无效");
         }
         if start_time.count < 10 {
-            NNProgressHUD.showText("起始时间无效")
-            return false;
+            return (false, "起始时间无效");
         }
         if end_time.count < 10 {
-            NNProgressHUD.showText("截止时间无效")
-            return false;
+            return (false, "截止时间无效");
         }
-        return true;
+        return (true, "");
     }
         
 //    override func isOriginDic() -> Bool {
