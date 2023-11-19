@@ -128,6 +128,10 @@ class WebSocketViewController: UIViewController {
 }
 
 extension WebSocketManager: WebSocketDelegate{
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
+        
+    }
+    
     
     public func didReceive(event: WebSocketEvent, client: WebSocket) {
         switch event {
@@ -162,6 +166,8 @@ extension WebSocketManager: WebSocketDelegate{
         case .error(let error):
             isConnected = false
             handleError(error)
+        case .peerClosed:
+            isConnected = false
         }
     }
 }

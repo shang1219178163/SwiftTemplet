@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
 install!'cocoapods', :deterministic_uuids => false
-platform :ios, '11.0'
+platform :ios, '13.0'
 use_frameworks!
 
 def common_pods
@@ -76,7 +76,7 @@ def common_pods
 #    pod 'KeychainAccess'
 #    pod 'SwiftOCR'
 #    pod "Koloda" #探探主页效果
-    pod 'KeychainSwift'
+#    pod 'KeychainSwift'
 
     pod 'NNPlateKeyboard'
     pod 'NNPopoverButton'
@@ -144,10 +144,10 @@ post_install do |installer|
     target.build_configurations.each do |config|
       config.build_settings['SWIFT_VERSION'] = '5.5';
       config.build_settings["CODE_SIGNING_ALLOWED"] = false;
-      config.build_settingsL'ENABLE_BITCODE'] = NO
 #      config.build_settings['VALID_ARCHS'] = 'arm64 arm64e ×86_64'
 #      config.build_settings['VALID_ARCHS[sdk=iphonesimulator*]'] = '×86_64'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "11.O"
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "13.O"
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
   end
 end

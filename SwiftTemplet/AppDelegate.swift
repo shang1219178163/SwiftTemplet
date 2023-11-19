@@ -17,6 +17,15 @@ let AppSerivcePhone = "400-966-8001"
 let AppPlatformAgreement = "http://api.parkingwang.com/app/iop/register.html"
 let AppPrivacyAgreement = "http://iop.parkingwang.com/static/protocol/parkingwang.html"
 
+let kUniversalLink = "";
+/////应用注册scheme,Info.plist定义URL types
+let kPayURLScheme = "";
+
+let kAliAppId = "";
+
+let kWeChatAppId = "";
+let kWeChatAppSecret = "";
+
 
 public extension Notification.Name {
     static let appLogOut = Notification.Name(rawValue: "AppLogOut")  // 值改变通知
@@ -119,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.absoluteString.hasSuffix("\(kPayURLScheme)://") {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "payReturn"), object: nil)
         } else if url.host == "safepay" || url.scheme == kWeChatAppId {
-            NNPayManager.shared().handlePayResultOpen(url)
+//            NNPayManager.shared().handlePayResultOpen(url);
         }
         return true
     }

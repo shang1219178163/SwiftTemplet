@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objcMembers class Person: NSObject, NSCoder {
+@objcMembers class Person: NSCoder {
     var name: String = ""
     var age: String = "0"
     var number: String = ""
