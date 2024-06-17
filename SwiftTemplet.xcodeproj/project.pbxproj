@@ -670,6 +670,7 @@
 		14F0F0DE24BF1ED700263DAA /* NNOfflineTipController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0F0DD24BF1ED700263DAA /* NNOfflineTipController.swift */; };
 		14F0F0E124BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */; };
 		14F18E852382346D0018626C /* UITableViewCellFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F18E842382346D0018626C /* UITableViewCellFee.swift */; };
+		14F2C3CA2C20378000A2162A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 14F2C3C92C20377600A2162A /* PrivacyInfo.xcprivacy */; };
 		14F3966B227ED0F2000CD7B4 /* NNCheckVersApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3966A227ED0F2000CD7B4 /* NNCheckVersApi.swift */; };
 		14F3966D227ED405000CD7B4 /* NNBaseRequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3966C227ED405000CD7B4 /* NNBaseRequestAPI.swift */; };
 		14F3967622804160000CD7B4 /* ESCheckVersRootClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */; };
@@ -706,6 +707,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		147BE3302C0EF7090044FC4C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14991B48247E075D006FA52A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1433,6 +1444,7 @@
 		14F0F0DD24BF1ED700263DAA /* NNOfflineTipController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNOfflineTipController.swift; sourceTree = "<group>"; };
 		14F0F0E024BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSudokuButtonNew.swift; sourceTree = "<group>"; };
 		14F18E842382346D0018626C /* UITableViewCellFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellFee.swift; sourceTree = "<group>"; };
+		14F2C3C92C20377600A2162A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		14F3966A227ED0F2000CD7B4 /* NNCheckVersApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCheckVersApi.swift; sourceTree = "<group>"; };
 		14F3966C227ED405000CD7B4 /* NNBaseRequestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNBaseRequestAPI.swift; sourceTree = "<group>"; };
 		14F3967422804160000CD7B4 /* ESCheckVersRootClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESCheckVersRootClass.swift; sourceTree = "<group>"; };
@@ -2655,6 +2667,7 @@
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
+				14F2C3C92C20377600A2162A /* PrivacyInfo.xcprivacy */,
 				51685A14208EA7C500CE8099 /* PrefixHeader.pch */,
 				146050AD23A2303900C10F34 /* InfoPlist.strings */,
 				146050B323A23A0100C10F34 /* Localizable.strings */,
@@ -2874,6 +2887,7 @@
 				14B617F2239790CD00A9336D /* BundleVersion */,
 				14991B48247E075D006FA52A /* Embed Frameworks */,
 				026CD4CE5803E94198B0AE18 /* [CP] Copy Pods Resources */,
+				147BE3302C0EF7090044FC4C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -2890,7 +2904,7 @@
 		516859F5208EA75600CE8099 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = BN;
 				TargetAttributes = {
@@ -2933,6 +2947,7 @@
 				147D798B24BEDACD00458F3D /* bg3@2x.png in Resources */,
 				147D79BD24BEEC1C00458F3D /* image1.jpg in Resources */,
 				147D79BE24BEEC1C00458F3D /* image12.gif in Resources */,
+				14F2C3CA2C20378000A2162A /* PrivacyInfo.xcprivacy in Resources */,
 				146050B123A23A0100C10F34 /* Localizable.strings in Resources */,
 				147D798C24BEDACD00458F3D /* pageDot@2x.png in Resources */,
 				145C9147233484B900849E9D /* parkingWang@3x.png in Resources */,
@@ -3934,6 +3949,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D423F25D0AA19F6618C6D919 /* Pods-SwiftTemplet.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -4115,6 +4131,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C68F0651040FE28ABDC47FA7 /* Pods-SwiftTemplet.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
