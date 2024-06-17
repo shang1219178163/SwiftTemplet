@@ -109,7 +109,8 @@ struct Stack1<T>: BoxOne {
 
 
 /// 自定义元祖类型(2元素)
-class Tuple2<T0, T1> where T0: Comparable & Hashable, T1: Comparable & Hashable {
+class Tuple2<T0, T1> where T0: Comparable & Hashable, 
+                            T1: Comparable & Hashable {
     
     var t0: T0;
     
@@ -121,7 +122,7 @@ class Tuple2<T0, T1> where T0: Comparable & Hashable, T1: Comparable & Hashable 
     }
     
     func toList() -> Array<Any> {
-        return [self.t0, self.t1];
+        return [t0, t1];
     }
     
     var length: Int {
@@ -129,11 +130,11 @@ class Tuple2<T0, T1> where T0: Comparable & Hashable, T1: Comparable & Hashable 
     }
 
     var description: String {
-        return "Tuple2(\(self.t0), \(self.t1)) \(self)";
+        return "Tuple2(\(t0), \(t1)) \(self)";
     }
     
     var hashValue: Int {
-        return self.t0.hashValue ^ self.t1.hashValue;
+        return t0.hashValue ^ t1.hashValue;
     }
     
     static func == (lhs: Tuple2, rhs: Tuple2) -> Bool {
