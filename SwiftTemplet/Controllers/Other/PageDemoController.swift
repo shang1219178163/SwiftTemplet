@@ -15,9 +15,9 @@ class PageDemoController: UIViewController {
     var controllers = [UIViewController]()
     
     lazy var pageController: UIPageViewController = {
-        let pageController = UIPageViewController(transitionStyle: .scroll,
-                                                  navigationOrientation: .horizontal,
-                                                  options: nil)
+        let pageController = UIPageViewController(transitionStyle: .pageCurl,
+                                                  navigationOrientation: .horizontal
+                                                  )
         pageController.dataSource = self
         pageController.delegate = self
         return pageController
@@ -41,8 +41,9 @@ class PageDemoController: UIViewController {
 //        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[pageController]|", options: [], metrics: nil, views: views))
 //        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[pageController]|", options: [], metrics: nil, views: views))
 
-        for _ in 1 ... 5 {
-            let vc = UIViewController()
+        for e in 1 ... 10 {
+            let vc = PageDetailController()
+            vc.content = "index: \(e)"
             vc.view.backgroundColor = randomColor()
             controllers.append(vc)
         }
@@ -101,5 +102,39 @@ extension PageDemoController: UIPageViewControllerDataSource, UIPageViewControll
         guard let index = controllers.firstIndex(of: viewController) else { return nil }
         return index < controllers.count - 1 ? controllers[index + 1] : nil;
     }
+    
+//    func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
+//        return .mid
+//    }
 }
 
+
+
+class PageDetailController: UIViewController {
+    
+    var content: String? // The equivalent of the 'content' property in Swift
+
+    private var contentLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = randomColor()
+        
+        contentLabel = UILabel(frame: CGRect(x: 0, y: 50, width: self.view.bounds.size.width, height: 100))
+        contentLabel.numberOfLines = 0
+        contentLabel.backgroundColor = randomColor()
+        self.view.addSubview(contentLabel)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentLabel.text = content
+    }
+
+    private func randomColor() -> UIColor {
+        let red = CGFloat(arc4random_uniform(256)) / 255.0
+        let green = CGFloat(arc4random_uniform(256)) / 255.0
+        let blue = CGFloat(arc4random_uniform(256)) / 255.0
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
+}
