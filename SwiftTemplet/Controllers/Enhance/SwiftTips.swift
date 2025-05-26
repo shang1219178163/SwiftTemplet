@@ -233,8 +233,8 @@ class Node {
     
 }
 
-
-enum Result<T> {
+/// 请求结果
+enum RequestResult<T> {
     case success(result: T)
     case failure(error: String)
 }
