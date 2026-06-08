@@ -70,6 +70,7 @@ PODS:
   - SDWebImage (5.18.3):
     - SDWebImage/Core (= 5.18.3)
   - SDWebImage/Core (5.18.3)
+  - SmartCodable (4.3.7)
   - SnapKit (5.6.0)
   - SnapKitExtend (1.1.0):
     - SnapKit
@@ -115,6 +116,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - SDWebImage
+  - SmartCodable
   - SnapKit
   - SnapKitExtend
   - Starscream
@@ -158,6 +160,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SmartCodable
     - SnapKit
     - SnapKitExtend
     - Starscream
@@ -200,6 +203,7 @@ SPEC CHECKSUMS:
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SDWebImage: 96e0c18ef14010b7485210e92fac888587ebb958
+  SmartCodable: 56babd0a912588ce299f2d0799633126f4c427c2
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
   Starscream: fb2c4510bebf908c62bd383bcf05e673720e91fd
@@ -212,6 +216,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: c9d4e1c0421355ff5dbeda4809318fb2c18903c1
+PODFILE CHECKSUM: 137c3d200d1638ea45eee31135b6e06c362266f7
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.15.2

@@ -576,6 +576,8 @@
 		14DB52AF29D314B700631F0C /* UIWindowScene+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB52AE29D314B700631F0C /* UIWindowScene+Helper.swift */; };
 		14DC7F272657E11100812CF8 /* NNPlaceHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC7F262657E11100812CF8 /* NNPlaceHolderViewController.swift */; };
 		14DC7F292657E62400812CF8 /* NNPlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */; };
+		14DF1FEA2D9BE74000C21C41 /* ZJSmartCodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF1FE92D9BE73C00C21C41 /* ZJSmartCodableModel.swift */; };
+		14DF1FEC2D9BE89100C21C41 /* ModelCodablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DF1FEB2D9BE87400C21C41 /* ModelCodablePage.swift */; };
 		14DFA01C26E5A12E006F9BC9 /* MultithreadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DFA01B26E5A12E006F9BC9 /* MultithreadingViewController.swift */; };
 		14DFDE85268ABB8D00FC4438 /* ProtocolTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DFDE84268ABB8D00FC4438 /* ProtocolTips.swift */; };
 		14DFDEB1268DB2FE00FC4438 /* OptionalTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DFDEB0268DB2FE00FC4438 /* OptionalTestController.swift */; };
@@ -687,6 +689,11 @@
 		14FB99F625482881007C7C6D /* NNPageSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB99F325482881007C7C6D /* NNPageSegmentViewController.swift */; };
 		14FB99F725482881007C7C6D /* NNPageTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB99F425482881007C7C6D /* NNPageTitleViewController.swift */; };
 		14FB99F825482881007C7C6D /* NNPageSegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FB99F525482881007C7C6D /* NNPageSegmentedControlController.swift */; };
+		14FD33C92CE831A700036535 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD33C82CE831A600036535 /* Speech.framework */; };
+		14FD33CB2CE831EB00036535 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD33CA2CE831EB00036535 /* TranslationService.swift */; };
+		14FD33CD2CE833A300036535 /* Translation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD33CC2CE833A300036535 /* Translation.framework */; };
+		14FD33CF2CE8370800036535 /* NaturalLanguage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FD33CE2CE8370800036535 /* NaturalLanguage.framework */; };
+		14FD33D12CE83B9800036535 /* SpeechToTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD33D02CE83B9800036535 /* SpeechToTextViewController.swift */; };
 		14FE3C32245ABB12006B14D4 /* OOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */; };
 		14FE3C34245AC206006B14D4 /* FlipImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
@@ -1340,6 +1347,8 @@
 		14DB52AE29D314B700631F0C /* UIWindowScene+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+Helper.swift"; sourceTree = "<group>"; };
 		14DC7F262657E11100812CF8 /* NNPlaceHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPlaceHolderViewController.swift; sourceTree = "<group>"; };
 		14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPlaceHolderView.swift; sourceTree = "<group>"; };
+		14DF1FE92D9BE73C00C21C41 /* ZJSmartCodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJSmartCodableModel.swift; sourceTree = "<group>"; };
+		14DF1FEB2D9BE87400C21C41 /* ModelCodablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCodablePage.swift; sourceTree = "<group>"; };
 		14DFA01B26E5A12E006F9BC9 /* MultithreadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultithreadingViewController.swift; sourceTree = "<group>"; };
 		14DFDE84268ABB8D00FC4438 /* ProtocolTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTips.swift; sourceTree = "<group>"; };
 		14DFDEB0268DB2FE00FC4438 /* OptionalTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTestController.swift; sourceTree = "<group>"; };
@@ -1461,6 +1470,11 @@
 		14FB99F325482881007C7C6D /* NNPageSegmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPageSegmentViewController.swift; sourceTree = "<group>"; };
 		14FB99F425482881007C7C6D /* NNPageTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPageTitleViewController.swift; sourceTree = "<group>"; };
 		14FB99F525482881007C7C6D /* NNPageSegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNPageSegmentedControlController.swift; sourceTree = "<group>"; };
+		14FD33C82CE831A600036535 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		14FD33CA2CE831EB00036535 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		14FD33CC2CE833A300036535 /* Translation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Translation.framework; path = System/Library/Frameworks/Translation.framework; sourceTree = SDKROOT; };
+		14FD33CE2CE8370800036535 /* NaturalLanguage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaturalLanguage.framework; path = System/Library/Frameworks/NaturalLanguage.framework; sourceTree = SDKROOT; };
+		14FD33D02CE83B9800036535 /* SpeechToTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextViewController.swift; sourceTree = "<group>"; };
 		14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OOTabBarController.swift; sourceTree = "<group>"; };
 		14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipImageViewController.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
@@ -1493,10 +1507,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14FD33CF2CE8370800036535 /* NaturalLanguage.framework in Frameworks */,
 				14E2FF62256E6D66008B0CD6 /* libWeChatSDK.a in Frameworks */,
+				14FD33CD2CE833A300036535 /* Translation.framework in Frameworks */,
 				1448872A224E203D00B550AF /* CoreGraphics.framework in Frameworks */,
 				14BEED06240FBEF800289BA6 /* CloudKit.framework in Frameworks */,
 				14488728224E1D9F00B550AF /* QuartzCore.framework in Frameworks */,
+				14FD33C92CE831A700036535 /* Speech.framework in Frameworks */,
 				0A2AC3251F1B947CCE79E270 /* Pods_SwiftTemplet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1562,6 +1579,7 @@
 				14A3756624BAD983002C9E4B /* RxRequestVendor.swift */,
 				146D28CE244EDC3A004655B1 /* UIScrollView+MJRefresh.swift */,
 				140D5E6725A707FA00F3FBB2 /* OHHTTPStubsHelper.swift */,
+				14FD33CA2CE831EB00036535 /* TranslationService.swift */,
 			);
 			path = NetWorkService;
 			sourceTree = "<group>";
@@ -2664,6 +2682,7 @@
 				14951D6E26E06184007B3B4D /* TheadDemoController.swift */,
 				14785C8E274E49E1005CBA5E /* WKWebView+Ext.swift */,
 				14AB974F2812379E00665A80 /* IteratorDemoController.swift */,
+				14FD33D02CE83B9800036535 /* SpeechToTextViewController.swift */,
 				1401BE8F2277D6760078A722 /* NetWorkService */,
 				1401BE8E2277D6630078A722 /* Storage */,
 				51685A0C208EA75900CE8099 /* Info.plist */,
@@ -2680,6 +2699,7 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14DF1FEB2D9BE87400C21C41 /* ModelCodablePage.swift */,
 				142F527B29C1CE1A0093E2EE /* Closure */,
 				1405E19D29B30004002917EC /* Operator */,
 				14D9CD3D29B1B06D009D8C5A /* Generic */,
@@ -2716,6 +2736,7 @@
 		51824425213E74C300071A9D /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				14DF1FE92D9BE73C00C21C41 /* ZJSmartCodableModel.swift */,
 				14BEDC6024A85E330031852F /* Person.swift */,
 			);
 			path = DataModel;
@@ -2863,6 +2884,9 @@
 		D00BFF54645FD929E4AB5244 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14FD33CE2CE8370800036535 /* NaturalLanguage.framework */,
+				14FD33CC2CE833A300036535 /* Translation.framework */,
+				14FD33C82CE831A600036535 /* Speech.framework */,
 				14E2FF61256E6D66008B0CD6 /* libWeChatSDK.a */,
 				14BEED05240FBEF800289BA6 /* CloudKit.framework */,
 				14488729224E203D00B550AF /* CoreGraphics.framework */,
@@ -3102,6 +3126,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SmartCodable/SmartCodable.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKitExtend/SnapKitExtend.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
@@ -3143,6 +3168,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmartCodable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKitExtend.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
@@ -3426,6 +3452,7 @@
 				1457E0D729E4EBE2002AC3D6 /* SingletonOC.m in Sources */,
 				142EEDBD29DAB24B0084A41E /* NNAbsorbPointerViewController.swift in Sources */,
 				143F714627336A1700E2FC28 /* UICallPhoneView.swift in Sources */,
+				14DF1FEC2D9BE89100C21C41 /* ModelCodablePage.swift in Sources */,
 				14F0F0DE24BF1ED700263DAA /* NNOfflineTipController.swift in Sources */,
 				1436CDF823D1844900154CC2 /* UITableViewCellPayBill.swift in Sources */,
 				142A76F722275EE10016D3DA /* NNSliderControlView.swift in Sources */,
@@ -3510,6 +3537,7 @@
 				140216E22702F14F0022002E /* ImagePickerViewController.swift in Sources */,
 				14B03DCE26AD019D00B8634F /* NNToolbar.swift in Sources */,
 				14E546F724C062E00095B22D /* PKUserInfoEditController.swift in Sources */,
+				14FD33D12CE83B9800036535 /* SpeechToTextViewController.swift in Sources */,
 				145ECEAF250B0BBD00952360 /* NNPullDownAnimator.swift in Sources */,
 				1451EBFC2499B7BE00059BDC /* NNCollectionSectionBackgroundView.swift in Sources */,
 				1447427B258A0A4B00BA550D /* IOPPayInpartCompanyMaterialInfoController.swift in Sources */,
@@ -3536,6 +3564,7 @@
 				1439180124C5331200CBABF0 /* PKParkCollectListController.swift in Sources */,
 				142C909526F31C7D00AB267D /* IOPWorkOrderListAPI.swift in Sources */,
 				14D6BF9922F83A44000B2B0E /* UITableViewCellCode.swift in Sources */,
+				14FD33CB2CE831EB00036535 /* TranslationService.swift in Sources */,
 				14488718224E1D2300B550AF /* KeyBoardTipImageView.swift in Sources */,
 				1451EBF82499B5A600059BDC /* SubscribeListController.swift in Sources */,
 				14B0CB5E2665C12D005E6149 /* OptionWrappedController.swift in Sources */,
@@ -3753,6 +3782,7 @@
 				14A86A932357256500AD9BC1 /* CCSDeskViewController.swift in Sources */,
 				14B7405724CAB54700569888 /* PKFuntionListController.swift in Sources */,
 				14E2046F24E629D30075AB47 /* String+heightForConstrainedWidth.swift in Sources */,
+				14DF1FEA2D9BE74000C21C41 /* ZJSmartCodableModel.swift in Sources */,
 				14B0CAE326647051005E6149 /* UserDefaults+PropertyWrapper.swift in Sources */,
 				1487B83E262BE63E00DDF1EB /* SwiftCollectionsController.swift in Sources */,
 				14EFA01924E95E5800A9C94C /* NNCollectionViewTagsFlowLayout.swift in Sources */,

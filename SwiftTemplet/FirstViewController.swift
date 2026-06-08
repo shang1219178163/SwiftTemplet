@@ -134,7 +134,10 @@ class FirstViewController: UIViewController{
              ["TestWebViewController", "TestWebView", ],
              ["FeedbackGeneratorDemoController", "触感反馈", ],
              ["ForExampleController", "For stride", ],
+             ["SpeechToTextViewController", "translate", ],
 
+             
+             
             ]
         ]
     }()

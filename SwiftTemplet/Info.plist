@@ -106,7 +106,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>202311191309</string>
+	<string>202503171417</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
@@ -152,11 +152,13 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App需要您的地理位置,为您提供周边服务信息</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>App需要在评价语音留言中访问麦克风功能</string>
+	<string>您的应用需要访问麦克风以便进行语音输入。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>App需要在上传头像图片服务中访问您的相册权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要在上传头像图片服务中访问您的相册权限</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>您的应用需要访问语音识别以便进行翻译。</string>
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>UIFileSharingEnabled</key>

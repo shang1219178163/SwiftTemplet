@@ -61,6 +61,7 @@ def common_pods
     pod 'Starscream'
 
     pod 'HandyJSON'
+    pod 'SmartCodable'
     pod 'Then'
     #骨架屏
 #    pod 'SkeletonView'
