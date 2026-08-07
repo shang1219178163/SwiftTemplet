@@ -4011,7 +4011,7 @@
 					"\"$(SRCROOT)/Pods/WechatOpenSDK/OpenSDK1.8.7.1/libWeChatSDK.a\"",
 				);
 				INFOPLIST_FILE = SwiftTemplet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4192,7 +4192,7 @@
 					"\"$(SRCROOT)/Pods/WechatOpenSDK/OpenSDK1.8.7.1/libWeChatSDK.a\"",
 				);
 				INFOPLIST_FILE = SwiftTemplet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

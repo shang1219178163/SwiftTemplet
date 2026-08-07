@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 source 'https://github.com/CocoaPods/Specs.git'
 install!'cocoapods', :deterministic_uuids => false
-platform :ios, '13.0'
+platform :ios, '15.0'
 use_frameworks!
 
 def common_pods
@@ -147,7 +147,7 @@ post_install do |installer|
       config.build_settings["CODE_SIGNING_ALLOWED"] = false;
 #      config.build_settings['VALID_ARCHS'] = 'arm64 arm64e ×86_64'
 #      config.build_settings['VALID_ARCHS[sdk=iphonesimulator*]'] = '×86_64'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "13.O"
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = "15.0"
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
   end
