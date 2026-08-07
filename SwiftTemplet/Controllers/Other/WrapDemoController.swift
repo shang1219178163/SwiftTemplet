@@ -190,13 +190,13 @@ class WrapDemoController: UIViewController {
     }
     
     @objc private func onAlignmentChanged(_ sender: UISegmentedControl) {
-        let map: [WrapAlignment] = [.start, .center, .end, .spaceBetween, .spaceAround, .spaceEvenly]
+        let map: [NNMainAxisAlignment] = [.start, .center, .end, .spaceBetween, .spaceAround, .spaceEvenly]
         wrapView.alignment = map[sender.selectedSegmentIndex]
         view.setNeedsLayout()
     }
 
     @objc private func onRunAlignmentChanged(_ sender: UISegmentedControl) {
-        let map: [WrapAlignment] = [.start, .center, .end, .spaceBetween, .spaceAround, .spaceEvenly]
+        let map: [NNMainAxisAlignment] = [.start, .center, .end, .spaceBetween, .spaceAround, .spaceEvenly]
         wrapView.runAlignment = map[sender.selectedSegmentIndex]
         wrapView.setNeedsLayout()
         view.setNeedsLayout()
