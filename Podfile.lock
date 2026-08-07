@@ -55,7 +55,6 @@ PODS:
   - OHHTTPStubs/NSURLSession (9.1.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (9.1.0)
-  - Reveal-SDK (36)
   - RxAlamofire (6.1.1):
     - RxAlamofire/Core (= 6.1.1)
   - RxAlamofire/Core (6.1.1):
@@ -111,7 +110,6 @@ DEPENDENCIES:
   - NNPlateKeyboard
   - NNPopoverButton
   - OHHTTPStubs
-  - Reveal-SDK
   - RxAlamofire
   - RxCocoa
   - RxSwift
@@ -154,7 +152,6 @@ SPEC REPOS:
     - NNPlateKeyboard
     - NNPopoverButton
     - OHHTTPStubs
-    - Reveal-SDK
     - RxAlamofire
     - RxCocoa
     - RxRelay
@@ -197,7 +194,6 @@ SPEC CHECKSUMS:
   NNPlateKeyboard: 7c8cc45e1e7d785920f13cb2a80a9b3af98bfb94
   NNPopoverButton: 529d63381df956119c469b6426607a8875ccae35
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
-  Reveal-SDK: 2dd3ad8b66d4e05af485206f8904b2e5c8ffe060
   RxAlamofire: beb75a1c452d0de225651db4903f5d29d034a620
   RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
@@ -216,6 +212,6 @@ SPEC CHECKSUMS:
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: eed966b41f6773c970b7ad7631246f6b2ac922a6
+PODFILE CHECKSUM: 4926b14699da440f53302f57096b1ab74ccb310a
 
 COCOAPODS: 1.13.0

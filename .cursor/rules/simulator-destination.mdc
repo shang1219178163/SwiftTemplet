@@ -1,0 +1,15 @@
+---
+description: Default iOS Simulator for build/run
+alwaysApply: true
+---
+
+# Simulator Destination
+
+When building, running, or installing this app with `xcodebuild` / `simctl`, always use:
+
+- **Device**: iPhone 16
+- **OS**: iOS 18.4
+- **Destination**: `platform=iOS Simulator,name=iPhone 16,OS=18.4`
+- **UDID** (if needed): `9C49E6FE-3EE1-422C-8476-2E5EE27DA658`
+
+Do not switch to other simulators unless the user explicitly asks.

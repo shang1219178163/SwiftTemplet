@@ -115,14 +115,12 @@ def common_pods
 #    pod 'mob_sharesdk/ShareSDKExtension'
     
     #  :configurations => ['Debug'] 只是在xcode debug 时才会加入；
-    pod 'Reveal-SDK', :configurations => ['Debug']
+#    pod 'Reveal-SDK', :configurations => ['Debug']
 
-#    pod 'BXKAdvertSDK'
     
     #SwiftUI 辅助库
 #    pod 'SwiftUIX'
 #    pod "Introspect"
-    
     
 end
 
