@@ -21,19 +21,17 @@ enum WrapVerticalDirection: Int {
 /// Flutter `Wrap` 的 UIKit 实现。
 ///
 /// - 使用 **frame 布局**子视图：会将 child 的 `translatesAutoresizingMaskIntoConstraints` 设为 `true`。
+///   子视图**内部**约束（如 label 贴边）可保留；不要用父级约束把 child 钉在 Wrap 上。
 /// - `isHidden == true` 的子视图不参与测量与占位（对齐 Flutter `Visibility(visible: false)`）。
 /// - Auto Layout 下请设置 `preferredMaxLayoutWidth`（水平）或 `preferredMaxLayoutHeight`（垂直），
 ///   并与父约束宽度/高度保持一致，否则固有尺寸与真实换行可能不一致。
+/// - **子视图文案 / 显隐 / intrinsic 变化后必须调用 `reload()`**（组件不会自动观察子内容）。
 ///
 /// ```swift
 /// let wrap = NNWrapView()
-/// wrap.direction = .horizontal
-/// wrap.alignment = .start
-/// wrap.spacing = 8
-/// wrap.runAlignment = .start
-/// wrap.runSpacing = 8
-/// wrap.crossAxisAlignment = .start
+/// wrap.preferredMaxLayoutWidth = 320
 /// wrap.children = [label1, label2, button]
+/// label1.text = "updated"
 /// wrap.reload() // 子视图内容变化后刷新
 /// ```
 class NNWrapView: UIView {
@@ -84,7 +82,7 @@ class NNWrapView: UIView {
     }
 
     /// 对应 `Wrap.clipBehavior`，默认 `.none`
-    /// - Note: `antiAliasWithSaveLayer` 目前与 `antiAlias` 行为相同（未做离屏 save-layer 合成）。
+    /// - Note: `antiAliasWithSaveLayer` 使用 `shouldRasterize` 近似，非完全等价 Flutter save-layer。
     var clipBehavior: NNClipBehavior = .none {
         didSet { guard oldValue != clipBehavior else { return }; applyClipBehavior() }
     }
@@ -495,7 +493,7 @@ class NNWrapView: UIView {
             if size.height <= 0 || !size.height.isFinite { size.height = fitting.height }
         }
 
-        // 3) 显式宽高约束覆盖（忽略 0 占位约束；含 superview 上安装的约束）
+        // 3) 显式宽高约束覆盖（忽略 0 占位；含 superview / 反向 first-second）
         let constrained = explicitSizeConstraints(of: child)
         if let w = constrained.width, w > 0 { size.width = w }
         if let h = constrained.height, h > 0 { size.height = h }
@@ -509,11 +507,30 @@ class NNWrapView: UIView {
         if !size.width.isFinite { size.width = 0 }
         if !size.height.isFinite { size.height = 0 }
 
+        // 5) 主轴钳制后按固定主轴再测交叉轴（多行文本行高）
         switch direction {
         case .horizontal:
-            if mainAxisLimit > 0, size.width > mainAxisLimit { size.width = mainAxisLimit }
+            if mainAxisLimit > 0, size.width > mainAxisLimit {
+                size.width = mainAxisLimit
+                let refit = child.sizeThatFits(CGSize(
+                    width: mainAxisLimit,
+                    height: CGFloat.greatestFiniteMagnitude
+                ))
+                if refit.height > 0, refit.height.isFinite {
+                    size.height = refit.height
+                }
+            }
         case .vertical:
-            if mainAxisLimit > 0, size.height > mainAxisLimit { size.height = mainAxisLimit }
+            if mainAxisLimit > 0, size.height > mainAxisLimit {
+                size.height = mainAxisLimit
+                let refit = child.sizeThatFits(CGSize(
+                    width: CGFloat.greatestFiniteMagnitude,
+                    height: mainAxisLimit
+                ))
+                if refit.width > 0, refit.width.isFinite {
+                    size.width = refit.width
+                }
+            }
         }
         return size
     }
@@ -523,14 +540,17 @@ class NNWrapView: UIView {
         var height: CGFloat?
         let candidates = view.constraints + (view.superview?.constraints ?? [])
         for constraint in candidates where constraint.isActive {
-            guard constraint.firstItem === view, constraint.secondItem == nil else { continue }
-            switch constraint.firstAttribute {
-            case .width where constraint.constant > 0:
-                width = constraint.constant
-            case .height where constraint.constant > 0:
-                height = constraint.constant
-            default:
-                break
+            guard constraint.multiplier == 1 else { continue }
+            let constant = abs(constraint.constant)
+            guard constant > 0 else { continue }
+
+            // view.width/height == constant，或 constant == view.width/height
+            if constraint.firstItem === view, constraint.secondItem == nil {
+                if constraint.firstAttribute == .width { width = constant }
+                if constraint.firstAttribute == .height { height = constant }
+            } else if constraint.secondItem === view, constraint.firstItem == nil {
+                if constraint.secondAttribute == .width { width = constant }
+                if constraint.secondAttribute == .height { height = constant }
             }
         }
         return (width, height)
@@ -637,11 +657,12 @@ class NNWrapView: UIView {
                     main: childMainAxisOffset,
                     cross: runCrossAxisOffset + childCrossAxisOffset
                 )
-                // Wrap 使用 frame 布局；会覆盖 child 上已有的 Auto Layout 约束效果
+                // Wrap 使用 frame 布局 child 自身；允许 child 内部约束
                 #if DEBUG
-                if !child.translatesAutoresizingMaskIntoConstraints,
-                   child.constraints.contains(where: { $0.isActive }) {
-                    assertionFailure("NNWrapView 对 \(type(of: child)) 使用 frame 布局，将忽略其 Auto Layout 约束")
+                if hasExtrinsicSizeConstraintsPinning(child) {
+                    assertionFailure(
+                        "NNWrapView 对 \(type(of: child)) 使用 frame 布局；请勿用父视图约束将其钉在 Wrap 上"
+                    )
                 }
                 #endif
                 if !child.translatesAutoresizingMaskIntoConstraints {
@@ -698,6 +719,24 @@ class NNWrapView: UIView {
         switch direction {
         case .horizontal: return CGPoint(x: main, y: cross)
         case .vertical: return CGPoint(x: cross, y: main)
+        }
+    }
+
+    /// 检测是否被父视图（非 self 内部）用位置约束钉住——此类约束会与 frame 布局冲突
+    private func hasExtrinsicSizeConstraintsPinning(_ child: UIView) -> Bool {
+        guard let superview = child.superview, superview === self else { return false }
+        return superview.constraints.contains { constraint in
+            guard constraint.isActive else { return false }
+            let involvesChild =
+                constraint.firstItem === child || constraint.secondItem === child
+            guard involvesChild else { return false }
+            switch constraint.firstAttribute {
+            case .leading, .trailing, .left, .right, .top, .bottom,
+                 .centerX, .centerY, .firstBaseline, .lastBaseline:
+                return true
+            default:
+                return false
+            }
         }
     }
 }

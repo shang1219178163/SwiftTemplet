@@ -2,10 +2,11 @@
 //  AnimatedCrossFadeDemoController.swift
 //  SwiftTemplet
 //
-//  Flutter AnimatedCrossFade 对齐组件演示。
+//  Flutter AnimatedCrossFade 对齐组件演示（SnapKit）。
 //
 
 import UIKit
+import SnapKit
 import SwiftExpand
 
 class AnimatedCrossFadeDemoController: UIViewController {
@@ -16,18 +17,22 @@ class AnimatedCrossFadeDemoController: UIViewController {
         CGSize(width: firstPanelSize.width * 1.5, height: firstPanelSize.height * 1.5)
     }
 
+    private let contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.alwaysBounceVertical = true
         return view
     }()
 
+    private lazy var contentView = UIView()
+
     private lazy var tipLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
-        label.text = "NNAnimatedCrossFadeView · 对齐 Flutter AnimatedCrossFade\nsecondChild = firstChild × 1.5 · alignment 控制尺寸动画锚点"
+        label.text = "NNAnimatedCrossFadeView · SnapKit\nsecondChild = firstChild × 1.5 · alignment 控制尺寸动画锚点"
         return label
     }()
 
@@ -36,7 +41,6 @@ class AnimatedCrossFadeDemoController: UIViewController {
     private lazy var curveTitleLabel: UILabel = makeParamTitleLabel("sizeCurve")
     private lazy var durationTitleLabel: UILabel = makeParamTitleLabel("duration")
 
-    /// 与分段选项一一对应
     private let alignmentOptions: [NNAlignment] = [
         .topCenter, .center, .bottomCenter, .centerLeft, .centerRight
     ]
@@ -49,7 +53,6 @@ class AnimatedCrossFadeDemoController: UIViewController {
     }()
 
     private lazy var alignmentControl: UISegmentedControl = {
-        // Flutter 默认 topCenter；另提供常用锚点便于对比
         let control = UISegmentedControl(items: ["topCenter", "center", "bottomCenter", "centerLeft", "centerRight"])
         control.selectedSegmentIndex = 1 // center
         control.addTarget(self, action: #selector(onAlignmentChanged(_:)), for: .valueChanged)
@@ -70,6 +73,18 @@ class AnimatedCrossFadeDemoController: UIViewController {
         return control
     }()
 
+    private lazy var controlsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            makeLabeledControl(title: stateTitleLabel, control: stateControl),
+            makeLabeledControl(title: alignmentTitleLabel, control: alignmentControl),
+            makeLabeledControl(title: curveTitleLabel, control: curveControl),
+            makeLabeledControl(title: durationTitleLabel, control: durationControl),
+        ])
+        stack.axis = .vertical
+        stack.spacing = 12
+        return stack
+    }()
+
     private lazy var toggleButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Toggle crossFadeState", for: .normal)
@@ -88,6 +103,14 @@ class AnimatedCrossFadeDemoController: UIViewController {
         label.textAlignment = .center
         label.text = "state: showFirst"
         return label
+    }()
+
+    /// 固定槽位：容纳 secondChild 最大尺寸，crossFade 在其内按 alignment 锚定
+    private lazy var slotView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.systemGray5
+        view.layer.cornerRadius = 12
+        return view
     }()
 
     private lazy var firstChild: UIView = {
@@ -144,82 +167,87 @@ class AnimatedCrossFadeDemoController: UIViewController {
         if title?.isEmpty != false {
             title = "AnimatedCrossFade"
         }
-
-        view.addSubview(scrollView)
-        [tipLabel, stateTitleLabel, stateControl,
-         alignmentTitleLabel, alignmentControl,
-         curveTitleLabel, curveControl,
-         durationTitleLabel, durationControl,
-         toggleButton, statusLabel, crossFadeView].forEach {
-            scrollView.addSubview($0)
-        }
-        
-
+        setupHierarchy()
+        setupConstraints()
+        applyAlignmentConstraints()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    // MARK: Setup
 
-        let inset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        scrollView.frame = view.bounds
-        let width = scrollView.bounds.width - inset.left - inset.right
-        let titleH: CGFloat = 18
-        let controlH: CGFloat = 32
-        var y = inset.top
+    private func setupHierarchy() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        [tipLabel, controlsStack, toggleButton, statusLabel, slotView].forEach {
+            contentView.addSubview($0)
+        }
+        slotView.addSubview(crossFadeView)
+    }
 
-        tipLabel.frame = CGRect(x: inset.left, y: y, width: width, height: 44)
-        y = tipLabel.frame.maxY + 12
+    private func setupConstraints() {
+        let slot = secondPanelSize
 
-        stateTitleLabel.frame = CGRect(x: inset.left, y: y, width: width, height: titleH)
-        y = stateTitleLabel.frame.maxY + 4
-        stateControl.frame = CGRect(x: inset.left, y: y, width: width, height: controlH)
-        y = stateControl.frame.maxY + 12
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
 
-        alignmentTitleLabel.frame = CGRect(x: inset.left, y: y, width: width, height: titleH)
-        y = alignmentTitleLabel.frame.maxY + 4
-        alignmentControl.frame = CGRect(x: inset.left, y: y, width: width, height: controlH)
-        y = alignmentControl.frame.maxY + 12
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+        }
 
-        curveTitleLabel.frame = CGRect(x: inset.left, y: y, width: width, height: titleH)
-        y = curveTitleLabel.frame.maxY + 4
-        curveControl.frame = CGRect(x: inset.left, y: y, width: width, height: controlH)
-        y = curveControl.frame.maxY + 12
+        tipLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(contentInset.top)
+            make.leading.trailing.equalToSuperview().inset(contentInset.left)
+        }
 
-        durationTitleLabel.frame = CGRect(x: inset.left, y: y, width: width, height: titleH)
-        y = durationTitleLabel.frame.maxY + 4
-        durationControl.frame = CGRect(x: inset.left, y: y, width: width, height: controlH)
-        y = durationControl.frame.maxY + 16
+        controlsStack.snp.makeConstraints { make in
+            make.top.equalTo(tipLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(contentInset.left)
+        }
 
-        toggleButton.frame = CGRect(x: inset.left, y: y, width: width, height: 44)
-        y = toggleButton.frame.maxY + 8
+        toggleButton.snp.makeConstraints { make in
+            make.top.equalTo(controlsStack.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(contentInset.left)
+            make.height.equalTo(44)
+        }
 
-        statusLabel.frame = CGRect(x: inset.left, y: y, width: width, height: 20)
-        y = statusLabel.frame.maxY + 16
+        statusLabel.snp.makeConstraints { make in
+            make.top.equalTo(toggleButton.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(contentInset.left)
+        }
 
-        // 预留 secondChild 大小的槽位；按 alignment 锚点放置，切换时相对该锚点缩放
-        let slotSize = secondPanelSize
-        let slotFrame = CGRect(
-            x: inset.left + (width - slotSize.width) / 2,
-            y: y,
-            width: slotSize.width,
-            height: slotSize.height
-        )
-        let fadeSize = crossFadeView.sizeThatFits(CGSize(
-            width: CGFloat.greatestFiniteMagnitude,
-            height: CGFloat.greatestFiniteMagnitude
-        ))
-        let originInSlot = crossFadeView.alignment.origin(childSize: fadeSize, in: slotSize)
-        crossFadeView.frame = CGRect(
-            x: slotFrame.minX + originInSlot.x,
-            y: slotFrame.minY + originInSlot.y,
-            width: fadeSize.width,
-            height: fadeSize.height
-        )
+        slotView.snp.makeConstraints { make in
+            make.top.equalTo(statusLabel.snp.bottom).offset(16)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(slot)
+            make.bottom.equalToSuperview().inset(contentInset.bottom + 24)
+        }
+    }
 
-        scrollView.contentSize = CGSize(
-            width: scrollView.bounds.width,
-            height: slotFrame.maxY + inset.bottom + 40
-        )
+    /// 按 `alignment` 将 crossFadeView 锚定在 slot 内（配合组件 Auto Layout 尺寸动画）
+    private func applyAlignmentConstraints() {
+        let (ax, ay) = crossFadeView.alignment.xy
+
+        crossFadeView.snp.remakeConstraints { make in
+            switch ax {
+            case ..<(-0.5):
+                make.leading.equalToSuperview()
+            case ...0.5:
+                make.centerX.equalToSuperview()
+            default:
+                make.trailing.equalToSuperview()
+            }
+
+            switch ay {
+            case ..<(-0.5):
+                make.top.equalToSuperview()
+            case ...0.5:
+                make.centerY.equalToSuperview()
+            default:
+                make.bottom.equalToSuperview()
+            }
+        }
     }
 
     // MARK: Actions
@@ -227,14 +255,12 @@ class AnimatedCrossFadeDemoController: UIViewController {
     @objc private func onStateChanged(_ sender: UISegmentedControl) {
         crossFadeView.crossFadeState = sender.selectedSegmentIndex == 0 ? .showFirst : .showSecond
         statusLabel.text = "animating → \(stateText)"
-        view.setNeedsLayout()
     }
 
     @objc private func onAlignmentChanged(_ sender: UISegmentedControl) {
         let index = min(max(sender.selectedSegmentIndex, 0), alignmentOptions.count - 1)
         crossFadeView.alignment = alignmentOptions[index]
-        crossFadeView.setNeedsLayout()
-        view.setNeedsLayout()
+        applyAlignmentConstraints()
     }
 
     @objc private func onCurveChanged(_ sender: UISegmentedControl) {
@@ -254,7 +280,6 @@ class AnimatedCrossFadeDemoController: UIViewController {
         stateControl.selectedSegmentIndex = next == .showFirst ? 0 : 1
         crossFadeView.crossFadeState = next
         statusLabel.text = "animating → \(stateText)"
-        view.setNeedsLayout()
     }
 
     // MARK: Helpers
@@ -265,6 +290,16 @@ class AnimatedCrossFadeDemoController: UIViewController {
         label.font = .systemFont(ofSize: 13, weight: .medium)
         label.textColor = .label
         return label
+    }
+
+    private func makeLabeledControl(title: UILabel, control: UIControl) -> UIStackView {
+        let stack = UIStackView(arrangedSubviews: [title, control])
+        stack.axis = .vertical
+        stack.spacing = 4
+        control.snp.makeConstraints { make in
+            make.height.equalTo(32)
+        }
+        return stack
     }
 
     private func makePanel(title: String, subtitle: String, color: UIColor, size: CGSize) -> UIView {
@@ -288,8 +323,18 @@ class AnimatedCrossFadeDemoController: UIViewController {
 
         panel.addSubview(titleLabel)
         panel.addSubview(subLabel)
-        titleLabel.frame = CGRect(x: 8, y: size.height / 2 - 22, width: size.width - 16, height: 22)
-        subLabel.frame = CGRect(x: 8, y: size.height / 2 + 2, width: size.width - 16, height: 20)
+        titleLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-12)
+            make.leading.greaterThanOrEqualToSuperview().offset(8)
+            make.trailing.lessThanOrEqualToSuperview().offset(-8)
+        }
+        subLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.leading.greaterThanOrEqualToSuperview().offset(8)
+            make.trailing.lessThanOrEqualToSuperview().offset(-8)
+        }
         return panel
     }
 }

@@ -2,21 +2,50 @@
 //  WrapDemoController.swift
 //  SwiftTemplet
 //
-//  Flutter Wrap 对齐组件演示：20 个彩色子项自动换行。
+//  Flutter Wrap 对齐组件演示：20 个彩色子项自动换行（SnapKit）。
 //
 
 import UIKit
+import SnapKit
 import SwiftExpand
 
 class WrapDemoController: UIViewController {
 
     private let itemCount = 20
+    private let spacingValues: [CGFloat] = [8, 16, 24]
+    private let crossAxisExtra: CGFloat = 140
+    private let verticalWrapHeight: CGFloat = 360
+    private let contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
         view.alwaysBounceVertical = true
         view.keyboardDismissMode = .onDrag
         return view
+    }()
+
+    private lazy var contentView = UIView()
+
+    private lazy var tipLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 13)
+        label.textColor = .secondaryLabel
+        label.numberOfLines = 0
+        label.text = "NNWrapView · SnapKit\nspacing / runSpacing 可调 · 内容自适应\nrunAlignment 作用在交叉轴剩余空间（灰底区域内）"
+        return label
+    }()
+
+    private lazy var controlsStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [
+            makeLabeledControl(title: directionTitleLabel, control: directionControl),
+            makeLabeledControl(title: alignmentTitleLabel, control: alignmentControl),
+            makeLabeledControl(title: runAlignmentTitleLabel, control: runAlignmentControl),
+            makeLabeledControl(title: spacingTitleLabel, control: spacingControl),
+            makeLabeledControl(title: runSpacingTitleLabel, control: runSpacingControl),
+        ])
+        stack.axis = .vertical
+        stack.spacing = 12
+        return stack
     }()
 
     private lazy var wrapView: NNWrapView = {
@@ -31,10 +60,10 @@ class WrapDemoController: UIViewController {
         view.backgroundColor = UIColor.systemGray6
         view.layer.cornerRadius = 8
         view.clipBehavior = .hardEdge
+        view.setContentHuggingPriority(.required, for: .vertical)
+        view.setContentCompressionResistancePriority(.required, for: .vertical)
         return view
     }()
-
-    private let spacingValues: [CGFloat] = [8, 16, 24]
 
     private lazy var directionTitleLabel: UILabel = makeParamTitleLabel("direction")
     private lazy var alignmentTitleLabel: UILabel = makeParamTitleLabel("alignment")
@@ -50,7 +79,6 @@ class WrapDemoController: UIViewController {
     }()
 
     private lazy var runAlignmentControl: UISegmentedControl = {
-        // 与 Flutter Wrap.runAlignment 一致；需容器交叉轴有剩余空间才可见
         let control = UISegmentedControl(items: ["start", "center", "end", "between", "around", "evenly"])
         control.selectedSegmentIndex = 0
         control.addTarget(self, action: #selector(onRunAlignmentChanged(_:)), for: .valueChanged)
@@ -78,14 +106,8 @@ class WrapDemoController: UIViewController {
         return control
     }()
 
-    private lazy var tipLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 13)
-        label.textColor = .secondaryLabel
-        label.numberOfLines = 0
-        label.text = "NNWrapView · 对齐 Flutter Wrap\nspacing=8 · runSpacing=8 · 内容自适应\nrunAlignment 作用在交叉轴剩余空间（灰底区域内上下/左右）"
-        return label
-    }()
+    private var lastContentWidth: CGFloat = 0
+    private var needsWrapSizeRefresh = true
 
     // MARK: - Lifecycle
 
@@ -96,122 +118,119 @@ class WrapDemoController: UIViewController {
         if title?.isEmpty != false {
             title = "WrapDemo"
         }
-
-        view.addSubview(scrollView)
-        scrollView.addSubview(tipLabel)
-        scrollView.addSubview(directionTitleLabel)
-        scrollView.addSubview(directionControl)
-        scrollView.addSubview(alignmentTitleLabel)
-        scrollView.addSubview(alignmentControl)
-        scrollView.addSubview(runAlignmentTitleLabel)
-        scrollView.addSubview(runAlignmentControl)
-        scrollView.addSubview(spacingTitleLabel)
-        scrollView.addSubview(spacingControl)
-        scrollView.addSubview(runSpacingTitleLabel)
-        scrollView.addSubview(runSpacingControl)
-        scrollView.addSubview(wrapView)
+        setupHierarchy()
+        setupConstraints()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let width = contentView.bounds.width - contentInset.left - contentInset.right
+        guard width > 0, abs(width - lastContentWidth) > 0.5 || needsWrapSizeRefresh else { return }
+        lastContentWidth = width
+        needsWrapSizeRefresh = false
+        updateWrapSizeConstraints(contentWidth: width)
+    }
 
-        let inset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        scrollView.frame = view.bounds
+    // MARK: - Setup
 
-        let contentWidth = scrollView.bounds.width - inset.left - inset.right
-        let titleHeight: CGFloat = 18
-        let controlHeight: CGFloat = 32
-        var y = inset.top
+    private func setupHierarchy() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(tipLabel)
+        contentView.addSubview(controlsStack)
+        contentView.addSubview(wrapView)
+    }
 
-        // tip 两行说明稍高一些
-        tipLabel.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: 56)
-        y = tipLabel.frame.maxY + 12
+    private func setupConstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
 
-        directionTitleLabel.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: titleHeight)
-        y = directionTitleLabel.frame.maxY + 4
-        directionControl.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: controlHeight)
-        y = directionControl.frame.maxY + 12
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+        }
 
-        alignmentTitleLabel.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: titleHeight)
-        y = alignmentTitleLabel.frame.maxY + 4
-        alignmentControl.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: controlHeight)
-        y = alignmentControl.frame.maxY + 12
+        tipLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(contentInset.top)
+            make.leading.trailing.equalToSuperview().inset(contentInset.left)
+        }
 
-        runAlignmentTitleLabel.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: titleHeight)
-        y = runAlignmentTitleLabel.frame.maxY + 4
-        runAlignmentControl.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: controlHeight)
-        y = runAlignmentControl.frame.maxY + 12
+        controlsStack.snp.makeConstraints { make in
+            make.top.equalTo(tipLabel.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(contentInset.left)
+        }
 
-        spacingTitleLabel.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: titleHeight)
-        y = spacingTitleLabel.frame.maxY + 4
-        spacingControl.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: controlHeight)
-        y = spacingControl.frame.maxY + 12
+        wrapView.snp.makeConstraints { make in
+            make.top.equalTo(controlsStack.snp.bottom).offset(16)
+            make.leading.equalToSuperview().inset(contentInset.left)
+            make.trailing.equalToSuperview().inset(contentInset.right)
+            make.height.equalTo(200)
+            make.bottom.equalToSuperview().inset(contentInset.bottom)
+        }
+    }
 
-        runSpacingTitleLabel.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: titleHeight)
-        y = runSpacingTitleLabel.frame.maxY + 4
-        runSpacingControl.frame = CGRect(x: inset.left, y: y, width: contentWidth, height: controlHeight)
-        y = runSpacingControl.frame.maxY + 16
-
-        // 交叉轴额外留白：否则内容撑满容器时 runAlignment 无可见效果（与 Flutter 一致）
-        let crossAxisExtra: CGFloat = 140
-        let wrapSize: CGSize
+    private func updateWrapSizeConstraints(contentWidth: CGFloat) {
         switch wrapView.direction {
         case .horizontal:
             wrapView.preferredMaxLayoutWidth = contentWidth
-            wrapSize = wrapView.contentSize(mainAxisLimit: contentWidth)
-            wrapView.frame = CGRect(
-                x: inset.left,
-                y: y,
-                width: contentWidth,
-                height: wrapSize.height + crossAxisExtra
-            )
+            wrapView.preferredMaxLayoutHeight = 0
+            let contentHeight = wrapView.contentSize(mainAxisLimit: contentWidth).height
+            wrapView.snp.remakeConstraints { make in
+                make.top.equalTo(controlsStack.snp.bottom).offset(16)
+                make.leading.trailing.equalToSuperview().inset(contentInset.left)
+                make.height.equalTo(contentHeight + crossAxisExtra)
+                make.bottom.equalToSuperview().inset(contentInset.bottom)
+            }
         case .vertical:
-            let wrapHeight: CGFloat = 360
-            wrapView.preferredMaxLayoutHeight = wrapHeight
-            wrapSize = wrapView.contentSize(mainAxisLimit: wrapHeight)
-            wrapView.frame = CGRect(
-                x: inset.left,
-                y: y,
-                width: wrapSize.width + crossAxisExtra,
-                height: wrapHeight
-            )
+            wrapView.preferredMaxLayoutWidth = 0
+            wrapView.preferredMaxLayoutHeight = verticalWrapHeight
+            let contentWidthNeeded = wrapView.contentSize(mainAxisLimit: verticalWrapHeight).width
+            wrapView.snp.remakeConstraints { make in
+                make.top.equalTo(controlsStack.snp.bottom).offset(16)
+                make.leading.equalToSuperview().inset(contentInset.left)
+                make.width.equalTo(contentWidthNeeded + crossAxisExtra)
+                make.height.equalTo(verticalWrapHeight)
+                make.bottom.equalToSuperview().inset(contentInset.bottom)
+            }
         }
+        wrapView.reload()
+    }
 
-        scrollView.contentSize = CGSize(
-            width: scrollView.bounds.width,
-            height: wrapView.frame.maxY + inset.bottom
-        )
+    private func refreshWrapLayout() {
+        needsWrapSizeRefresh = true
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
 
     // MARK: - Actions
+
     @objc private func onDirectionChanged(_ sender: UISegmentedControl) {
         wrapView.direction = sender.selectedSegmentIndex == 0 ? .horizontal : .vertical
-        view.setNeedsLayout()
+        refreshWrapLayout()
     }
-    
+
     @objc private func onAlignmentChanged(_ sender: UISegmentedControl) {
         let map: [NNMainAxisAlignment] = [.start, .center, .end, .spaceBetween, .spaceAround, .spaceEvenly]
         wrapView.alignment = map[sender.selectedSegmentIndex]
-        view.setNeedsLayout()
+        wrapView.reload()
     }
 
     @objc private func onRunAlignmentChanged(_ sender: UISegmentedControl) {
         let map: [NNMainAxisAlignment] = [.start, .center, .end, .spaceBetween, .spaceAround, .spaceEvenly]
         wrapView.runAlignment = map[sender.selectedSegmentIndex]
-        wrapView.setNeedsLayout()
-        view.setNeedsLayout()
+        wrapView.reload()
     }
 
     @objc private func onSpacingChanged(_ sender: UISegmentedControl) {
         wrapView.spacing = spacingValues[sender.selectedSegmentIndex]
-        wrapView.setNeedsLayout()
-        view.setNeedsLayout()
+        refreshWrapLayout()
     }
 
     @objc private func onRunSpacingChanged(_ sender: UISegmentedControl) {
         wrapView.runSpacing = spacingValues[sender.selectedSegmentIndex]
-        wrapView.setNeedsLayout()
-        view.setNeedsLayout()
+        refreshWrapLayout()
     }
 
     // MARK: - Helpers
@@ -222,6 +241,16 @@ class WrapDemoController: UIViewController {
         label.font = .systemFont(ofSize: 13, weight: .medium)
         label.textColor = .label
         return label
+    }
+
+    private func makeLabeledControl(title: UILabel, control: UIControl) -> UIStackView {
+        let stack = UIStackView(arrangedSubviews: [title, control])
+        stack.axis = .vertical
+        stack.spacing = 4
+        control.snp.makeConstraints { make in
+            make.height.equalTo(32)
+        }
+        return stack
     }
 
     private func makeColorItems(count: Int) -> [UIView] {
@@ -235,7 +264,6 @@ class WrapDemoController: UIViewController {
             .systemTeal.withAlphaComponent(0.7), .systemIndigo.withAlphaComponent(0.7),
         ]
 
-        // 文案长短不一，便于验证内容自适应宽高
         let titles = [
             "1", "22", "Wrap", "Swift", "Flutter",
             "自适应", "NNWrapView", "Hello", "iOS 18", "Chip",
@@ -287,6 +315,9 @@ private final class WrapDemoChipView: UIView {
         layer.borderWidth = 2
         layer.borderColor = borderColor.cgColor
         addSubview(label)
+        label.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(contentInset)
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -314,10 +345,5 @@ private final class WrapDemoChipView: UIView {
             width: ceil(textSize.width) + contentInset.left + contentInset.right,
             height: ceil(textSize.height) + contentInset.top + contentInset.bottom
         )
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        label.frame = bounds.inset(by: contentInset)
     }
 }

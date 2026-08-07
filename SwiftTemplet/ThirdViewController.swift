@@ -35,6 +35,7 @@ class ThirdViewController: UIViewController{
         return [
             [["WrapDemoController", "WrapDemo", ],
              ["AnimatedCrossFadeDemoController", "AnimatedCrossFade", ],
+             ["CrossFadeDemoController", "NNCrossFade", ],
              ["EntryViewController", "通用录入界面", ],
              ["XiangceChooseDemoController", "XiangceChoose", ],
              

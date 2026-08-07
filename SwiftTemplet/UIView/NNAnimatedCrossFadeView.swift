@@ -47,13 +47,16 @@ private final class CrossFadeDisplayLinkProxy: NSObject {
 /// Flutter `AnimatedCrossFade` 的 UIKit 实现。
 ///
 /// - 尺寸动画同时支持 frame 布局与 Auto Layout（后者通过内部宽高约束 + intrinsic）。
-/// - 子视图理想尺寸会缓存；内容变化后请调用 `invalidateChildSizes()`。
-/// - `layoutBuilder` 应布局 `contentView` 上的 top/bottom child。
+/// - **子视图理想尺寸会缓存**；文案 / 约束 / intrinsic 变化后必须调用 `invalidateChildSizes()`，
+///   否则尺寸动画与布局会使用过期测量。
+/// - `layoutBuilder` 应改 `contentView` 上 top/bottom 的 **frame**（`contentView` 本身为 frame 布局）。
 ///
 /// ```swift
 /// let fade = NNAnimatedCrossFadeView(firstChild: a, secondChild: b)
 /// fade.duration = 0.35
 /// fade.crossFadeState = .showSecond
+/// // label.text 变更后：
+/// fade.invalidateChildSizes()
 /// ```
 class NNAnimatedCrossFadeView: UIView {
 
@@ -61,12 +64,20 @@ class NNAnimatedCrossFadeView: UIView {
 
     /// 对应 `AnimatedCrossFade.firstChild`
     var firstChild: UIView? {
-        didSet { syncChild(oldValue, with: firstChild); setNeedsCrossFadeLayout() }
+        didSet {
+            if isAnimating { interruptAnimation(completed: false) }
+            syncChild(oldValue, with: firstChild)
+            setNeedsCrossFadeLayout()
+        }
     }
 
     /// 对应 `AnimatedCrossFade.secondChild`
     var secondChild: UIView? {
-        didSet { syncChild(oldValue, with: secondChild); setNeedsCrossFadeLayout() }
+        didSet {
+            if isAnimating { interruptAnimation(completed: false) }
+            syncChild(oldValue, with: secondChild)
+            setNeedsCrossFadeLayout()
+        }
     }
 
     /// 对应 `AnimatedCrossFade.crossFadeState`；变更时自动播放动画
@@ -105,6 +116,12 @@ class NNAnimatedCrossFadeView: UIView {
         didSet { applyFocusPolicy() }
     }
 
+    /// 是否由本视图自身驱动尺寸动画（改 `frame` / 宽高约束）。
+    ///
+    /// 嵌入外层容器并用 Auto Layout 钉边时请设为 `false`，仅通过
+    /// `intrinsicContentSize` 驱动宿主尺寸，避免「edges + 宽高常量」冲突。
+    var animatesOwnSize: Bool = true
+
     /// 对应 `AnimatedCrossFade.clipBehavior`，默认 `.hardEdge`
     /// - Note: `antiAliasWithSaveLayer` 使用 `shouldRasterize` 近似，非完全等价 Flutter save-layer。
     var clipBehavior: NNClipBehavior = .hardEdge {
@@ -137,6 +154,9 @@ class NNAnimatedCrossFadeView: UIView {
 
     private var animatedWidthConstraint: NSLayoutConstraint?
     private var animatedHeightConstraint: NSLayoutConstraint?
+
+    /// 上次应用的上下层方向，避免动画中每帧改 z-order
+    private var lastTopIsSecond: Bool?
 
     // MARK: Lifecycle
 
@@ -234,8 +254,12 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
-    /// 重新测量并缓存子视图理想尺寸（子视图文案/约束/frame 变化后必须调用）
+    /// 重新测量并缓存子视图理想尺寸。
+    ///
+    /// - Important: 子视图文案、约束、`intrinsicContentSize` / frame 变化后**必须**调用，
+    ///   否则 `preferredSizeCache` 会继续使用旧尺寸。
     func invalidateChildSizes() {
+        preferredSizeCache.removeAll(keepingCapacity: true)
         if let firstChild {
             preferredSizeCache[ObjectIdentifier(firstChild)] = capturePreferredSize(firstChild)
         }
@@ -350,11 +374,21 @@ class NNAnimatedCrossFadeView: UIView {
     /// 自身尺寸跟随动画（对齐 Flutter AnimatedSize），锚点由 `alignment` 决定
     private func syncAnimatedSizeToProgress() {
         let size = animatedSize(at: progress)
-        guard size.width > 0, size.height > 0 else { return }
+        // 允许单轴为 0；仅当双轴都无效时跳过
+        guard size.width > 0 || size.height > 0 else { return }
+        let width = max(0, size.width)
+        let height = max(0, size.height)
+
+        // 嵌入宿主（如 NNCrossFadeView）时只刷新 intrinsic，避免与钉边约束冲突
+        guard animatesOwnSize else {
+            invalidateIntrinsicContentSize()
+            superview?.invalidateIntrinsicContentSize()
+            return
+        }
 
         if translatesAutoresizingMaskIntoConstraints {
             var f = frame
-            guard abs(f.width - size.width) > 0.5 || abs(f.height - size.height) > 0.5 else { return }
+            guard abs(f.width - width) > 0.5 || abs(f.height - height) > 0.5 else { return }
             let (ax, ay) = alignment.xy
             let anchorX = (ax + 1) / 2
             let anchorY = (ay + 1) / 2
@@ -362,26 +396,28 @@ class NNAnimatedCrossFadeView: UIView {
                 x: f.origin.x + f.width * anchorX,
                 y: f.origin.y + f.height * anchorY
             )
-            f.size = size
-            f.origin.x = anchor.x - size.width * anchorX
-            f.origin.y = anchor.y - size.height * anchorY
+            f.size = CGSize(width: width, height: height)
+            f.origin.x = anchor.x - width * anchorX
+            f.origin.y = anchor.y - height * anchorY
             frame = f
         } else {
-            ensureAnimatedSizeConstraints()
-            animatedWidthConstraint?.constant = size.width
-            animatedHeightConstraint?.constant = size.height
+            ensureAnimatedSizeConstraints(seed: CGSize(width: width, height: height))
+            if width > 0 { animatedWidthConstraint?.constant = width }
+            if height > 0 { animatedHeightConstraint?.constant = height }
         }
     }
 
-    private func ensureAnimatedSizeConstraints() {
+    private func ensureAnimatedSizeConstraints(seed: CGSize) {
         if animatedWidthConstraint == nil {
-            let width = widthAnchor.constraint(equalToConstant: bounds.width)
+            let initial = seed.width > 0 ? seed.width : max(bounds.width, 1)
+            let width = widthAnchor.constraint(equalToConstant: initial)
             width.priority = UILayoutPriority(999)
             width.isActive = true
             animatedWidthConstraint = width
         }
         if animatedHeightConstraint == nil {
-            let height = heightAnchor.constraint(equalToConstant: bounds.height)
+            let initial = seed.height > 0 ? seed.height : max(bounds.height, 1)
+            let height = heightAnchor.constraint(equalToConstant: initial)
             height.priority = UILayoutPriority(999)
             height.isActive = true
             animatedHeightConstraint = height
@@ -389,6 +425,8 @@ class NNAnimatedCrossFadeView: UIView {
     }
 
     private func requestHostLayout() {
+        // 宿主若用 intrinsic 决定高度（NNCrossFadeView），必须同步失效
+        superview?.invalidateIntrinsicContentSize()
         superview?.setNeedsLayout()
     }
 
@@ -427,12 +465,14 @@ class NNAnimatedCrossFadeView: UIView {
             if old.superview === contentView || old.superview === self {
                 old.removeFromSuperview()
             }
+            lastTopIsSecond = nil
         }
         if let new {
             preferredSizeCache[ObjectIdentifier(new)] = capturePreferredSize(new)
             if new.superview !== contentView {
                 contentView.addSubview(new)
             }
+            lastTopIsSecond = nil
         }
     }
 
@@ -463,6 +503,26 @@ class NNAnimatedCrossFadeView: UIView {
             bottom.accessibilityElementsHidden = false
             top.accessibilityElementsHidden = false
         }
+    }
+
+    /// 只把命中交给当前上层（可见）child，避免「上层 alpha≈0 仍占交互 / 下层已禁用」导致点击失灵。
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        guard isUserInteractionEnabled, !isHidden, alpha > 0.01, self.point(inside: point, with: event) else {
+            return nil
+        }
+        guard let firstChild, let secondChild else {
+            return super.hitTest(point, with: event)
+        }
+        let top = isForwardOrCompleted ? secondChild : firstChild
+        let p = convert(point, to: top)
+        if let hit = top.hitTest(p, with: event) {
+            return hit
+        }
+        // 点在容器内但不在 top 理想 frame 内时，仍把交互交给 top（对齐 Flutter 上层接收手势）
+        if contentView.point(inside: convert(point, to: contentView), with: event) {
+            return top
+        }
+        return nil
     }
 
     private func applyVisualState(progress t: CGFloat, layoutBounds: CGSize) {
@@ -506,8 +566,11 @@ class NNAnimatedCrossFadeView: UIView {
             )
         }
 
-        contentView.insertSubview(bottomChild, at: 0)
-        contentView.bringSubviewToFront(topChild)
+        if lastTopIsSecond != topIsSecond {
+            contentView.insertSubview(bottomChild, at: 0)
+            contentView.bringSubviewToFront(topChild)
+            lastTopIsSecond = topIsSecond
+        }
         applyFocusPolicy()
     }
 
@@ -586,12 +649,15 @@ class NNAnimatedCrossFadeView: UIView {
 
         let candidates = child.constraints + (child.superview?.constraints ?? [])
         for constraint in candidates where constraint.isActive {
-            guard constraint.firstItem === child, constraint.secondItem == nil else { continue }
-            if constraint.firstAttribute == .width, constraint.constant > 0 {
-                size.width = constraint.constant
-            }
-            if constraint.firstAttribute == .height, constraint.constant > 0 {
-                size.height = constraint.constant
+            guard constraint.multiplier == 1 else { continue }
+            let constant = abs(constraint.constant)
+            guard constant > 0 else { continue }
+            if constraint.firstItem === child, constraint.secondItem == nil {
+                if constraint.firstAttribute == .width { size.width = constant }
+                if constraint.firstAttribute == .height { size.height = constant }
+            } else if constraint.secondItem === child, constraint.firstItem == nil {
+                if constraint.secondAttribute == .width { size.width = constant }
+                if constraint.secondAttribute == .height { size.height = constant }
             }
         }
 
@@ -603,12 +669,34 @@ class NNAnimatedCrossFadeView: UIView {
             size.height = intrinsic.height
         }
 
+        // 多行文本等宽度敏感视图：禁止用 infinite 宽测算（否则会压成单行，展开/收起无差别）
+        let proposedWidth = proposedMeasureWidth(for: child, knownWidth: size.width)
         let fitted = child.sizeThatFits(CGSize(
-            width: CGFloat.greatestFiniteMagnitude,
+            width: proposedWidth,
             height: CGFloat.greatestFiniteMagnitude
         ))
-        if size.width <= 0, fitted.width > 0 { size.width = fitted.width }
-        if size.height <= 0, fitted.height > 0 { size.height = fitted.height }
+        if size.width <= 0, fitted.width > 0, fitted.width.isFinite { size.width = fitted.width }
+        if size.height <= 0, fitted.height > 0, fitted.height.isFinite { size.height = fitted.height }
+        // 已有固定宽时，高度仍以该宽下的 sizeThatFits 为准（覆盖错误的单行 intrinsic）
+        if proposedWidth > 0, fitted.height > 0, fitted.height.isFinite {
+            size.height = fitted.height
+            if size.width <= 0 { size.width = proposedWidth }
+        }
+
+        // Auto Layout 压缩测算（纯约束子视图）
+        if size.width <= 0 || size.height <= 0 || !size.width.isFinite || !size.height.isFinite {
+            let target = CGSize(
+                width: proposedWidth > 0 ? proposedWidth : UIView.layoutFittingCompressedSize.width,
+                height: UIView.layoutFittingCompressedSize.height
+            )
+            let fitting = child.systemLayoutSizeFitting(
+                target,
+                withHorizontalFittingPriority: proposedWidth > 0 ? .required : .fittingSizeLevel,
+                verticalFittingPriority: .fittingSizeLevel
+            )
+            if size.width <= 0 || !size.width.isFinite { size.width = fitting.width }
+            if size.height <= 0 || !size.height.isFinite { size.height = fitting.height }
+        }
 
         if size.width <= 0, child.frame.width > 0 { size.width = child.frame.width }
         if size.height <= 0, child.frame.height > 0 { size.height = child.frame.height }
@@ -616,5 +704,15 @@ class NNAnimatedCrossFadeView: UIView {
         if size.height <= 0, child.bounds.height > 0 { size.height = child.bounds.height }
 
         return CGSize(width: max(0, size.width), height: max(0, size.height))
+    }
+
+    /// 宽度敏感 child 的测量宽：优先容器 / child 已布局宽度，避免 infinite
+    private func proposedMeasureWidth(for child: UIView, knownWidth: CGFloat) -> CGFloat {
+        if bounds.width > 1 { return bounds.width }
+        if contentView.bounds.width > 1 { return contentView.bounds.width }
+        if child.bounds.width > 1 { return child.bounds.width }
+        if knownWidth > 1, knownWidth.isFinite, knownWidth < 10_000 { return knownWidth }
+        let screen = UIScreen.main.bounds.width
+        return screen > 1 ? screen : 320
     }
 }
