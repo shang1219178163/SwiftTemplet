@@ -33,7 +33,9 @@ class ThirdViewController: UIViewController{
 
     lazy var list: [[[String]]] = {
         return [
-            [["EntryViewController", "通用录入界面", ],
+            [["WrapDemoController", "WrapDemo", ],
+             ["AnimatedCrossFadeDemoController", "AnimatedCrossFade", ],
+             ["EntryViewController", "通用录入界面", ],
              ["XiangceChooseDemoController", "XiangceChoose", ],
              
              ["IOPFuntionListController", "iop 视图", ],
