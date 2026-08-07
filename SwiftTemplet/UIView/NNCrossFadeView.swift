@@ -17,9 +17,16 @@ import SnapKit
 /// Flutter 每次 `build` 都会重建 child；本组件仅在 **赋值 builder** 或调用
 /// `reloadChildren()` 时重建。builder 闭包内依赖的外部状态变化后请调用 `reloadChildren()`。
 ///
+/// ## 子视图布局约束
+/// 底层 `NNAnimatedCrossFadeView` 会对 child 设置 `translatesAutoresizingMaskIntoConstraints = true`
+/// 并写入 **frame**。子视图内部请用 frame 布局（或自行兼容 TAMIC）；不要在 child 上挂
+/// 依赖 Auto Layout 的竖向/宽高链，否则会与交叉淡入淡出布局冲突。
+///
 /// ## 尺寸
-/// 宽度敏感的子视图（多行 Label 等）在 bounds 宽度变化时会自动 `invalidateChildSizes()`。
+/// 宽度敏感的子视图（多行 Label 等）在 bounds 宽度变化时会自动重新测量（下一 runloop，
+/// 避免在 `layoutSubviews` 内 `setNeedsLayout`）。
 /// 仅文案/intrinsic 变化、宽度不变时，仍需手动调用 `invalidateChildSizes()`。
+/// `sizeThatFits(_:)` 会把传入宽度传给测量（适合布局前测算）。
 ///
 /// ## 状态回调
 /// - `toggle()` / 子视图 `onToggle`：切换并触发 `onChanged`
@@ -108,6 +115,8 @@ class NNCrossFadeView: UIView {
     private var suppressIsFirstAnimation = false
     private var suppressBuilderRebuild = false
     private var lastLaidOutWidth: CGFloat = -1
+    /// 避免 `layoutSubviews` 内同步 invalidate 触发额外 layout pass
+    private var widthInvalidateScheduled = false
 
     // MARK: - Lifecycle
 
@@ -168,10 +177,10 @@ class NNCrossFadeView: UIView {
         super.layoutSubviews()
         let width = bounds.width
         guard width > 1 else { return }
-        // 宽度敏感 child（多行 Label）在宽度变化后需重新测量
+        // 宽度敏感 child：宽度变化后延期重测，避免 layout 过程中 invalidate + setNeedsLayout
         if lastLaidOutWidth < 0 || abs(width - lastLaidOutWidth) > 0.5 {
             lastLaidOutWidth = width
-            invalidateChildSizes()
+            scheduleChildSizeInvalidation(proposedWidth: width)
         }
     }
 
@@ -202,14 +211,33 @@ class NNCrossFadeView: UIView {
     }
 
     /// 子视图尺寸变化后刷新测量缓存（不重建 child）。
-    /// 宽度变化时组件会在 `layoutSubviews` 中自动调用。
-    func invalidateChildSizes() {
-        crossFade.invalidateChildSizes()
-        invalidateIntrinsicContentSize()
+    /// 宽度变化时组件会在 `layoutSubviews` 之后自动调度调用。
+    /// - Parameter proposedWidth: 测量宽；默认用当前 `bounds.width`（若有效）。
+    func invalidateChildSizes(proposedWidth: CGFloat? = nil) {
+        let width = proposedWidth ?? (bounds.width > 1 ? bounds.width : nil)
+        let before = crossFade.intrinsicContentSize
+        crossFade.invalidateChildSizes(proposedWidth: width)
+        let after = crossFade.intrinsicContentSize
+        if abs(before.width - after.width) > 0.5 || abs(before.height - after.height) > 0.5 {
+            invalidateIntrinsicContentSize()
+        }
         setNeedsLayout()
     }
 
     // MARK: - Private
+
+    private func scheduleChildSizeInvalidation(proposedWidth: CGFloat) {
+        guard !widthInvalidateScheduled else { return }
+        widthInvalidateScheduled = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.widthInvalidateScheduled = false
+            let width = self.bounds.width > 1 ? self.bounds.width : proposedWidth
+            guard width > 1 else { return }
+            self.lastLaidOutWidth = width
+            self.invalidateChildSizes(proposedWidth: width)
+        }
+    }
 
     private func rebuildChildren() {
         if let firstChild {
@@ -227,7 +255,8 @@ class NNCrossFadeView: UIView {
             crossFade.secondChild = nil
         }
         applyCrossFadeState(animated: false)
-        crossFade.invalidateChildSizes()
+        let width = bounds.width > 1 ? bounds.width : nil
+        crossFade.invalidateChildSizes(proposedWidth: width)
         invalidateIntrinsicContentSize()
     }
 

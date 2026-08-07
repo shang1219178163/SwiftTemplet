@@ -22,17 +22,17 @@ class CrossFadeDemoController: UIViewController {
         let text = tipText
         let view = NNCrossFadeView(
             firstChild: { onToggle in
-                ExpandableTipLabelView(
+                ExpandPanelView(
                     text: text,
-                    numberOfLines: 9,
+                    numberOfLines: 2,
                     actionTitle: "展开",
                     onToggle: onToggle
                 )
             },
             secondChild: { onToggle in
-                ExpandableTipLabelView(
+                ExpandPanelView(
                     text: text,
-                    numberOfLines: 2,
+                    numberOfLines: 0,
                     actionTitle: "收起",
                     onToggle: onToggle
                 )
@@ -41,9 +41,8 @@ class CrossFadeDemoController: UIViewController {
             isFirst: true,
             duration: 0.35
         )
-        view.onChanged = { [weak self] isFirst in
-            let tipState = isFirst ? "收起(最多两行)" : "展开(全部)"
-            self?.statusLabel.text = "tip: \(tipState) · panel isFirst: \(self?.panelCrossFadeView.isFirst ?? true)"
+        view.onChanged = { [weak self] _ in
+            self?.updateStatusLabel()
         }
         return view
     }()
@@ -93,10 +92,8 @@ class CrossFadeDemoController: UIViewController {
             isFirst: true,
             duration: 0.35
         )
-        view.onChanged = { [weak self] isFirst in
-            let tipCollapsed = self?.tipCrossFadeView.isFirst ?? true
-            let tipState = tipCollapsed ? "收起(最多两行)" : "展开(全部)"
-            self?.statusLabel.text = "tip: \(tipState) · panel isFirst: \(isFirst)"
+        view.onChanged = { [weak self] _ in
+            self?.updateStatusLabel()
         }
         view.backgroundColor = UIColor.systemGray6
         view.layer.cornerRadius = 12
@@ -135,12 +132,18 @@ class CrossFadeDemoController: UIViewController {
             make.top.equalTo(statusLabel.snp.bottom).offset(24)
             make.centerX.equalToSuperview()
         }
+        updateStatusLabel()
     }
 
     // MARK: Actions
 
     @objc private func onExternalToggle() {
         panelCrossFadeView.toggle()
+    }
+
+    private func updateStatusLabel() {
+        let tipState = tipCrossFadeView.isFirst ? "收起(最多两行)" : "展开(全部)"
+        statusLabel.text = "tip: \(tipState) · panel isFirst: \(panelCrossFadeView.isFirst)"
     }
 
     // MARK: Helpers
@@ -162,14 +165,14 @@ class CrossFadeDemoController: UIViewController {
     }
 }
 
-// MARK: - Tip label (collapsed 2 lines / expanded all)
+// MARK: - ExpandPanelView (collapsed N lines / expanded all)
 
-/// 可点按切换的 tip：收起最多两行，展开全部。
+/// 可点按展开/收起的文案视图。
 /// 使用 frame 布局，避免被 `NNAnimatedCrossFadeView` 改写 frame + TAMIC 时与内部约束冲突。
-private final class ExpandableTipLabelView: UIView, UIGestureRecognizerDelegate {
+private final class ExpandPanelView: UIView, UIGestureRecognizerDelegate {
 
     private let label = UILabel()
-    private let actionButton = CallbackButton(type: .system)
+    private let actionButton = CallbackButton(frame: .zero)
     private let onToggle: () -> Void
     private let actionSpacing: CGFloat = 4
 
@@ -239,6 +242,11 @@ private final class ExpandableTipLabelView: UIView, UIGestureRecognizerDelegate 
         )
     }
 
+    /// 收起动画时容器可能高于内容；只响应文案+按钮区域，避免点到下方空白误触发 toggle。
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        label.frame.contains(point) || actionButton.frame.contains(point)
+    }
+
     override var intrinsicContentSize: CGSize {
         let fitted = sizeThatFits(CGSize(
             width: preferredMaxLayoutWidthForMeasure(),
@@ -294,11 +302,12 @@ private final class ExpandableTipLabelView: UIView, UIGestureRecognizerDelegate 
 }
 
 /// 固定尺寸面板：内部用 frame 布局，避免被 cross-fade 改写 frame 后与 SnapKit 冲突。
-private final class FixedSizeTogglePanel: UIView {
+private final class FixedSizeTogglePanel: UIView, UIGestureRecognizerDelegate {
     private let fixedSize: CGSize
     private let titleLabel = UILabel()
     private let subLabel = UILabel()
     private let button = CallbackButton(frame: .zero)
+    private let onToggle: () -> Void
 
     init(
         fixedSize: CGSize,
@@ -308,6 +317,7 @@ private final class FixedSizeTogglePanel: UIView {
         onToggle: @escaping () -> Void
     ) {
         self.fixedSize = fixedSize
+        self.onToggle = onToggle
         super.init(frame: CGRect(origin: .zero, size: fixedSize))
 
         translatesAutoresizingMaskIntoConstraints = true
@@ -315,6 +325,7 @@ private final class FixedSizeTogglePanel: UIView {
         layer.cornerRadius = 12
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemBlue.cgColor
+        isUserInteractionEnabled = true
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = true
         titleLabel.text = title
@@ -335,6 +346,10 @@ private final class FixedSizeTogglePanel: UIView {
         button.backgroundColor = UIColor.white.withAlphaComponent(0.85)
         button.layer.cornerRadius = 8
         button.onTap = onToggle
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.delegate = self
+        addGestureRecognizer(tap)
 
         addSubview(titleLabel)
         addSubview(subLabel)
@@ -363,6 +378,21 @@ private final class FixedSizeTogglePanel: UIView {
             width: buttonWidth,
             height: buttonHeight
         )
+    }
+
+    @objc private func handleTap() {
+        onToggle()
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view is UIControl { return false }
+        var view = touch.view
+        while let current = view {
+            if current is UIControl { return false }
+            if current === self { break }
+            view = current.superview
+        }
+        return true
     }
 }
 

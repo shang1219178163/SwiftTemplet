@@ -152,6 +152,9 @@ class NNAnimatedCrossFadeView: UIView {
     /// 子视图“理想尺寸”缓存（避免 layout 改写 frame 后污染 measure）
     private var preferredSizeCache: [ObjectIdentifier: CGSize] = [:]
 
+    /// `sizeThatFits` / `invalidateChildSizes(proposedWidth:)` 传入的测量宽度提示
+    private var measureWidthHint: CGFloat?
+
     private var animatedWidthConstraint: NSLayoutConstraint?
     private var animatedHeightConstraint: NSLayoutConstraint?
 
@@ -228,7 +231,9 @@ class NNAnimatedCrossFadeView: UIView {
     }
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        _ = size
+        if let width = Self.sanitizedMeasureWidth(size.width) {
+            remeasureChildren(proposedWidth: width)
+        }
         return animatedSize(at: progress)
     }
 
@@ -258,7 +263,20 @@ class NNAnimatedCrossFadeView: UIView {
     ///
     /// - Important: 子视图文案、约束、`intrinsicContentSize` / frame 变化后**必须**调用，
     ///   否则 `preferredSizeCache` 会继续使用旧尺寸。
-    func invalidateChildSizes() {
+    /// - Parameter proposedWidth: 宽度敏感 child（多行 Label）的测量宽；`nil` 时用 bounds / 回退值。
+    func invalidateChildSizes(proposedWidth: CGFloat? = nil) {
+        remeasureChildren(proposedWidth: proposedWidth)
+        setNeedsCrossFadeLayout()
+        syncAnimatedSizeToProgress()
+    }
+
+    /// 用可选宽度提示重新测量并写入缓存
+    private func remeasureChildren(proposedWidth: CGFloat?) {
+        if let width = Self.sanitizedMeasureWidth(proposedWidth) {
+            measureWidthHint = width
+        }
+        defer { measureWidthHint = nil }
+
         preferredSizeCache.removeAll(keepingCapacity: true)
         if let firstChild {
             preferredSizeCache[ObjectIdentifier(firstChild)] = capturePreferredSize(firstChild)
@@ -266,8 +284,11 @@ class NNAnimatedCrossFadeView: UIView {
         if let secondChild {
             preferredSizeCache[ObjectIdentifier(secondChild)] = capturePreferredSize(secondChild)
         }
-        setNeedsCrossFadeLayout()
-        syncAnimatedSizeToProgress()
+    }
+
+    private static func sanitizedMeasureWidth(_ width: CGFloat?) -> CGFloat? {
+        guard let width, width.isFinite, width > 1, width < 10_000 else { return nil }
+        return width
     }
 
     // MARK: Animation (Flutter AnimationController)
@@ -706,12 +727,13 @@ class NNAnimatedCrossFadeView: UIView {
         return CGSize(width: max(0, size.width), height: max(0, size.height))
     }
 
-    /// 宽度敏感 child 的测量宽：优先容器 / child 已布局宽度，避免 infinite
+    /// 宽度敏感 child 的测量宽：优先 hint / 容器 / child 已布局宽度，避免 infinite
     private func proposedMeasureWidth(for child: UIView, knownWidth: CGFloat) -> CGFloat {
+        if let measureWidthHint { return measureWidthHint }
         if bounds.width > 1 { return bounds.width }
         if contentView.bounds.width > 1 { return contentView.bounds.width }
         if child.bounds.width > 1 { return child.bounds.width }
-        if knownWidth > 1, knownWidth.isFinite, knownWidth < 10_000 { return knownWidth }
+        if let known = Self.sanitizedMeasureWidth(knownWidth) { return known }
         let screen = UIScreen.main.bounds.width
         return screen > 1 ? screen : 320
     }
