@@ -37,6 +37,7 @@ typealias AnimatedCrossFadeEndHandler = (_ completed: Bool) -> Void
 private final class CrossFadeDisplayLinkProxy: NSObject {
     weak var target: NNAnimatedCrossFadeView?
 
+    /// CADisplayLink 回调入口，弱引用转发至 `handleDisplayLink`
     @objc func handle(_ link: CADisplayLink) {
         target?.handleDisplayLink(link)
     }
@@ -163,11 +164,13 @@ class NNAnimatedCrossFadeView: UIView {
 
     // MARK: Lifecycle
 
+    /// 以 frame 初始化，并配置 contentView 与裁剪行为
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
+    /// Interface Builder / Storyboard 解码初始化
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
@@ -214,10 +217,12 @@ class NNAnimatedCrossFadeView: UIView {
         setNeedsCrossFadeLayout()
     }
 
+    /// 销毁时停止 CADisplayLink，避免循环引用与泄漏
     deinit {
         displayLink?.invalidate()
     }
 
+    /// 共享初始化：绑定 DisplayLink 代理、挂载 contentView、应用 clipBehavior
     private func commonInit() {
         displayLinkProxy.target = self
         clipsToBounds = true
@@ -226,10 +231,12 @@ class NNAnimatedCrossFadeView: UIView {
         applyClipBehavior()
     }
 
+    /// 当前动画进度下的内在尺寸（对齐 Flutter AnimatedSize）
     override var intrinsicContentSize: CGSize {
         animatedSize(at: progress)
     }
 
+    /// 按提议尺寸重测子视图后，返回当前进度对应的交叉淡入淡出尺寸
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         if let width = Self.sanitizedMeasureWidth(size.width) {
             remeasureChildren(proposedWidth: width)
@@ -237,6 +244,7 @@ class NNAnimatedCrossFadeView: UIView {
         return animatedSize(at: progress)
     }
 
+    /// 布局子视图：按 progress 更新透明度、尺寸与 Stack 位置
     override func layoutSubviews() {
         super.layoutSubviews()
         applyVisualState(progress: progress, layoutBounds: bounds.size)
@@ -286,6 +294,7 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
+    /// 过滤无效测量宽度（非有限、过小或过大）
     private static func sanitizedMeasureWidth(_ width: CGFloat?) -> CGFloat? {
         guard let width, width.isFinite, width > 1, width < 10_000 else { return nil }
         return width
@@ -293,6 +302,7 @@ class NNAnimatedCrossFadeView: UIView {
 
     // MARK: Animation (Flutter AnimationController)
 
+    /// 无动画跳转到目标状态，同步 progress 与尺寸
     private func applyStateWithoutAnimation(_ state: CrossFadeState) {
         let previous = crossFadeState
         progress = state == .showSecond ? 1 : 0
@@ -307,6 +317,7 @@ class NNAnimatedCrossFadeView: UIView {
         layoutIfNeeded()
     }
 
+    /// 根据 `crossFadeState` 启动或更新 CADisplayLink 尺寸/透明度动画
     private func animateToCurrentState() {
         if suppressAnimation {
             progress = crossFadeState == .showSecond ? 1 : 0
@@ -358,6 +369,7 @@ class NNAnimatedCrossFadeView: UIView {
         displayLink = link
     }
 
+    /// 停止进行中的动画并触发 `onEnd`（`completed` 表示是否完整播完）
     private func interruptAnimation(completed: Bool) {
         guard isAnimating || displayLink != nil else { return }
         displayLink?.invalidate()
@@ -369,6 +381,7 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
+    /// DisplayLink 每帧驱动：插值 progress、同步尺寸，结束时清理并回调
     fileprivate func handleDisplayLink(_ link: CADisplayLink) {
         let elapsed = CACurrentMediaTime() - animationStartTime
         let t = min(max(elapsed / max(animationDuration, .ulpOfOne), 0), 1)
@@ -428,6 +441,7 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
+    /// 懒创建宽高约束（priority 999），用于 Auto Layout 模式下的尺寸动画
     private func ensureAnimatedSizeConstraints(seed: CGSize) {
         if animatedWidthConstraint == nil {
             let initial = seed.width > 0 ? seed.width : max(bounds.width, 1)
@@ -445,6 +459,7 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
+    /// 通知父视图失效 intrinsic 并重新布局（嵌入 NNCrossFadeView 等宿主时必需）
     private func requestHostLayout() {
         // 宿主若用 intrinsic 决定高度（NNCrossFadeView），必须同步失效
         superview?.invalidateIntrinsicContentSize()
@@ -453,11 +468,13 @@ class NNAnimatedCrossFadeView: UIView {
 
     // MARK: Layout / Visual
 
+    /// 标记需要重新测量与布局（失效 intrinsic + setNeedsLayout）
     private func setNeedsCrossFadeLayout() {
         invalidateIntrinsicContentSize()
         setNeedsLayout()
     }
 
+    /// 按 `clipBehavior` 配置 clipsToBounds、抗锯齿与栅格化
     private func applyClipBehavior() {
         switch clipBehavior {
         case .none:
@@ -480,6 +497,7 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
+    /// 子视图增删时更新 contentView 层级、缓存与 z-order 标记
     private func syncChild(_ old: UIView?, with new: UIView?) {
         if let old, old !== new {
             preferredSizeCache.removeValue(forKey: ObjectIdentifier(old))
@@ -505,6 +523,7 @@ class NNAnimatedCrossFadeView: UIView {
         return crossFadeState == .showSecond
     }
 
+    /// 按上下层关系禁用下层交互与无障碍焦点（对齐 Flutter excludeBottomFocus）
     private func applyFocusPolicy() {
         guard let firstChild, let secondChild else {
             firstChild?.isUserInteractionEnabled = true
@@ -546,6 +565,7 @@ class NNAnimatedCrossFadeView: UIView {
         return nil
     }
 
+    /// 按 progress 应用透明度、contentView 尺寸、layoutBuilder 与 z-order
     private func applyVisualState(progress t: CGFloat, layoutBounds: CGSize) {
         // 仅一侧存在时降级为单 child 展示
         if firstChild == nil || secondChild == nil {
@@ -595,6 +615,7 @@ class NNAnimatedCrossFadeView: UIView {
         applyFocusPolicy()
     }
 
+    /// 仅有一个 child 时的降级布局：按 alignment 放置并恢复交互
     private func layoutSingleChildIfNeeded(layoutBounds: CGSize) {
         contentView.subviews.forEach { $0.alpha = 1 }
         guard let only = firstChild ?? secondChild else {
@@ -641,6 +662,7 @@ class NNAnimatedCrossFadeView: UIView {
         topChild.frame = CGRect(origin: topOrigin, size: topSize)
     }
 
+    /// 在 progress `t` 处按 `sizeCurve` 插值两子视图的宽高
     private func animatedSize(at t: CGFloat) -> CGSize {
         let firstSize = measure(firstChild)
         let secondSize = measure(secondChild)
@@ -653,6 +675,7 @@ class NNAnimatedCrossFadeView: UIView {
         )
     }
 
+    /// 读取子视图理想尺寸，优先使用 `preferredSizeCache`
     private func measure(_ child: UIView?) -> CGSize {
         guard let child else { return .zero }
         if let cached = preferredSizeCache[ObjectIdentifier(child)],

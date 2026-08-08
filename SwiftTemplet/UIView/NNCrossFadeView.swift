@@ -111,20 +111,26 @@ class NNCrossFadeView: UIView {
 
     // MARK: - Private
 
+    /// 底层 `NNAnimatedCrossFadeView`，承载交叉淡入淡出与 child 布局
     private let crossFade = NNAnimatedCrossFadeView()
+    /// 为 `true` 时 `isFirst` 赋值不触发动画（`setIsFirst(_:animated: false)` 使用）
     private var suppressIsFirstAnimation = false
+    /// 为 `true` 时 builder 赋值不触发 `rebuildChildren`（convenience init 批量赋值时使用）
     private var suppressBuilderRebuild = false
+    /// 上次 `layoutSubviews` 时的 bounds 宽度，用于检测宽度变化并重测 child
     private var lastLaidOutWidth: CGFloat = -1
     /// 避免 `layoutSubviews` 内同步 invalidate 触发额外 layout pass
     private var widthInvalidateScheduled = false
 
     // MARK: - Lifecycle
 
+    /// 指定 frame 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
+    /// Storyboard / XIB 解码初始化
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
@@ -153,6 +159,7 @@ class NNCrossFadeView: UIView {
         setIsFirst(isFirst, animated: false)
     }
 
+    /// 公共初始化：挂载 crossFade、配置约束与初始 crossFade 状态
     private func commonInit() {
         addSubview(crossFade)
         // 钉边填满宿主；尺寸动画只走 intrinsic，避免与内部宽高常量约束冲突
@@ -165,14 +172,17 @@ class NNCrossFadeView: UIView {
         applyCrossFadeState(animated: false)
     }
 
+    /// 透传底层 crossFade 的固有尺寸（对齐 Flutter 当前可见 child 的测量结果）
     override var intrinsicContentSize: CGSize {
         crossFade.intrinsicContentSize
     }
 
+    /// 在给定约束尺寸下测量；会将 `size.width` 传给 child 测量（布局前测算用）
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         crossFade.sizeThatFits(size)
     }
 
+    /// 布局时检测 bounds 宽度变化，调度子视图尺寸重测（对齐宽度敏感 child）
     override func layoutSubviews() {
         super.layoutSubviews()
         let width = bounds.width
@@ -226,6 +236,7 @@ class NNCrossFadeView: UIView {
 
     // MARK: - Private
 
+    /// 下一 runloop 调度 `invalidateChildSizes`，避免在 `layoutSubviews` 内同步 invalidate
     private func scheduleChildSizeInvalidation(proposedWidth: CGFloat) {
         guard !widthInvalidateScheduled else { return }
         widthInvalidateScheduled = true
@@ -239,6 +250,7 @@ class NNCrossFadeView: UIView {
         }
     }
 
+    /// 用当前 `firstChild` / `secondChild` builder 重建子视图并刷新测量缓存
     private func rebuildChildren() {
         if let firstChild {
             crossFade.firstChild = firstChild { [weak self] in
@@ -260,6 +272,7 @@ class NNCrossFadeView: UIView {
         invalidateIntrinsicContentSize()
     }
 
+    /// 将 `isFirst` 同步为底层 crossFade 的 showFirst / showSecond 状态
     private func applyCrossFadeState(animated: Bool) {
         let state: CrossFadeState = isFirst ? .showFirst : .showSecond
         crossFade.setCrossFadeState(state, animated: animated)
