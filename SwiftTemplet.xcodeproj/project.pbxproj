@@ -439,6 +439,7 @@
 		149946892384E5E5005E43CC /* UIRecognizerUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */; };
 		149A4D18255B78F400092DA0 /* ShowActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4D17255B78F400092DA0 /* ShowActivityController.swift */; };
 		149A4D1E255B7E4D00092DA0 /* NNActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149A4D1D255B7E4D00092DA0 /* NNActivity.swift */; };
+		149A6E723026F5210006F822 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 149A6E713026F5210006F822 /* CHANGELOG.md */; };
 		149B66F421E5FAB3007B84A8 /* UITableViewCellTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */; };
 		149B66F621E607B7007B84A8 /* IOPAuthRechargeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */; };
 		149E401C23AA0811006C05BC /* ObserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E401B23AA0811006C05BC /* ObserveViewController.swift */; };
@@ -682,15 +683,15 @@
 		14F7A101A1B2C3D400000004 /* WrapDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000003 /* WrapDemoController.swift */; };
 		14F7A101A1B2C3D400000006 /* NNAnimatedCrossFadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000005 /* NNAnimatedCrossFadeView.swift */; };
 		14F7A101A1B2C3D400000008 /* AnimatedCrossFadeDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000007 /* AnimatedCrossFadeDemoController.swift */; };
-		14F7A101A1B2C3D40000001D /* NNCrossFadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000001C /* NNCrossFadeView.swift */; };
-		14F7A101A1B2C3D40000001F /* CrossFadeDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000001E /* CrossFadeDemoController.swift */; };
 		14F7A101A1B2C3D40000000A /* NNAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000009 /* NNAlignment.swift */; };
 		14F7A101A1B2C3D40000000D /* NNClipBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000000C /* NNClipBehavior.swift */; };
 		14F7A101A1B2C3D40000000F /* NNAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000000E /* NNAxis.swift */; };
-		14F7A101A1B2C3D400000013 /* NNCrossAxisAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000012 /* NNCrossAxisAlignment.swift */; };
 		14F7A101A1B2C3D400000011 /* NNMainAxisAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000010 /* NNMainAxisAlignment.swift */; };
+		14F7A101A1B2C3D400000013 /* NNCrossAxisAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000012 /* NNCrossAxisAlignment.swift */; };
 		14F7A101A1B2C3D400000015 /* NNTextDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D400000014 /* NNTextDirection.swift */; };
 		14F7A101A1B2C3D40000001B /* NNCurves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000001A /* NNCurves.swift */; };
+		14F7A101A1B2C3D40000001D /* NNCrossFadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000001C /* NNCrossFadeView.swift */; };
+		14F7A101A1B2C3D40000001F /* CrossFadeDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7A101A1B2C3D40000001E /* CrossFadeDemoController.swift */; };
 		14F7AAA721E7095A00FB7570 /* UITableViewCellTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */; };
 		14F7AAA921E7096E00FB7570 /* UITableViewCellSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */; };
 		14F7AAAB21E7097C00FB7570 /* UITableViewCellSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */; };
@@ -1211,6 +1212,7 @@
 		149946882384E5E5005E43CC /* UIRecognizerUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRecognizerUpdateController.swift; sourceTree = "<group>"; };
 		149A4D17255B78F400092DA0 /* ShowActivityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowActivityController.swift; sourceTree = "<group>"; };
 		149A4D1D255B7E4D00092DA0 /* NNActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNActivity.swift; sourceTree = "<group>"; };
+		149A6E713026F5210006F822 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		149B66F321E5FAB3007B84A8 /* UITableViewCellTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextField.swift; sourceTree = "<group>"; };
 		149B66F521E607B7007B84A8 /* IOPAuthRechargeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOPAuthRechargeController.swift; sourceTree = "<group>"; };
 		149E401B23AA0811006C05BC /* ObserveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserveViewController.swift; sourceTree = "<group>"; };
@@ -1476,15 +1478,15 @@
 		14F7A101A1B2C3D400000003 /* WrapDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapDemoController.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D400000005 /* NNAnimatedCrossFadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAnimatedCrossFadeView.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D400000007 /* AnimatedCrossFadeDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCrossFadeDemoController.swift; sourceTree = "<group>"; };
-		14F7A101A1B2C3D40000001C /* NNCrossFadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCrossFadeView.swift; sourceTree = "<group>"; };
-		14F7A101A1B2C3D40000001E /* CrossFadeDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossFadeDemoController.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D400000009 /* NNAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAlignment.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D40000000C /* NNClipBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNClipBehavior.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D40000000E /* NNAxis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNAxis.swift; sourceTree = "<group>"; };
-		14F7A101A1B2C3D400000012 /* NNCrossAxisAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCrossAxisAlignment.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D400000010 /* NNMainAxisAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNMainAxisAlignment.swift; sourceTree = "<group>"; };
+		14F7A101A1B2C3D400000012 /* NNCrossAxisAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCrossAxisAlignment.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D400000014 /* NNTextDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTextDirection.swift; sourceTree = "<group>"; };
 		14F7A101A1B2C3D40000001A /* NNCurves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCurves.swift; sourceTree = "<group>"; };
+		14F7A101A1B2C3D40000001C /* NNCrossFadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCrossFadeView.swift; sourceTree = "<group>"; };
+		14F7A101A1B2C3D40000001E /* CrossFadeDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossFadeDemoController.swift; sourceTree = "<group>"; };
 		14F7AAA621E7095A00FB7570 /* UITableViewCellTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellTextView.swift; sourceTree = "<group>"; };
 		14F7AAA821E7096D00FB7570 /* UITableViewCellSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSegment.swift; sourceTree = "<group>"; };
 		14F7AAAA21E7097C00FB7570 /* UITableViewCellSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellSwitch.swift; sourceTree = "<group>"; };
@@ -2672,6 +2674,7 @@
 		516859F4208EA75600CE8099 = {
 			isa = PBXGroup;
 			children = (
+				149A6E713026F5210006F822 /* CHANGELOG.md */,
 				516859FF208EA75700CE8099 /* SwiftTemplet */,
 				14E85619232A4D860006E4C2 /* SwiftTempletOne */,
 				516859FE208EA75700CE8099 /* Products */,
@@ -3033,6 +3036,7 @@
 				147D798D24BEDACD00458F3D /* title3@2x.png in Resources */,
 				14E204A424E688C50075AB47 /* PopoverViewMedia.xcassets in Resources */,
 				146050AB23A2303900C10F34 /* InfoPlist.strings in Resources */,
+				149A6E723026F5210006F822 /* CHANGELOG.md in Resources */,
 				14E2FF9B256F9472008B0CD6 /* WechatIMG375.png in Resources */,
 				145C90E62333111500849E9D /* icon_coupon_fail@3x.png in Resources */,
 				145C910723338DF300849E9D /* icon_phone_soundon@2x.png in Resources */,
