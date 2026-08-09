@@ -36,12 +36,11 @@ class NNUploadImagesView: UIView {
             guard images != newValue else { return }
             itemList = updateButtonItems(newValue.count, type: NNButton.self, hanler: { (sender) in
 //                DDLog(self.images.count, newValue.count, sender.tag)
-                sender.iconLocation = .rightTop
-                sender.iconSize = CGSize(width: 20, height: 20)
-                sender.iconOffset = UIOffset(horizontal: 8, vertical: -8)
-                sender.eventInsetDX = 8
-                sender.eventInsetDY = 8
-                sender.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
+                sender.badgeLocation = .rightTop
+                sender.badgeSize = CGSize(width: 20, height: 20)
+                sender.badgeOffset = UIOffset(horizontal: 8, vertical: 8)
+                sender.eventInset = 8
+                sender.badgeBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
                 
                 if newValue.count > sender.tag {
                     let image = newValue[sender.tag]
@@ -49,7 +48,7 @@ class NNUploadImagesView: UIView {
                     sender.setImage(image, for: .normal)
 
                     sender.setTitle(nil, for: .normal)
-                    sender.iconBtn.isHidden = (image == self.imageDefault)
+                    sender.badgeBtn.isHidden = (image == self.imageDefault)
                 }
                 sender.addActionHandler({ sender in
 //                     DDLog(sender.tag, sender.backgroundImage(for: .normal), self.imageDefault)
@@ -64,7 +63,7 @@ class NNUploadImagesView: UIView {
                     }
                  }, for: .touchUpInside)
                  
-                 sender.iconBtn.addActionHandler({ sender in
+                 sender.badgeBtn.addActionHandler({ sender in
 //                     DDLog(sender.tag)
                      if self.images.count > sender.tag {
                          self.images.remove(at: sender.tag)

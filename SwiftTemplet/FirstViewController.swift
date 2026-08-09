@@ -83,9 +83,7 @@ class FirstViewController: UIViewController{
 
              ["SegmentControlStyleController", "SegmentControlStyle", ],
 
-             ["NNButtonStudyController", "Swift 按钮封装", ],
-             ["NNButtonDispalyController", "OC 按钮封装", ],
-             ["NNButtonStudyController", "swift 按钮封装", ],
+             ["NNButtonDispalyController", "NNButton 演示", ],
              
              ["TextFieldViewController", "OC TextField下拉列表", ],
              ["PropertyWrapperController", "PropertyWrapper", ],            

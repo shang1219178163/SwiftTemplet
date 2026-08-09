@@ -52,7 +52,7 @@ class ThirdViewController: UIViewController{
              ["ReuseChildsController", "控制器复用", ],
              ["AttrStringViewController", "优雅的富文本", ],
              ["AttrStringEffectiveController", "AttrString(OC)", ],
-             ["NNButtonStudyController", "按钮封装", ],
+             ["NNButtonDispalyController", "NNButton 演示", ],
 //             ["SubscribeListNewController", "微信公众号信息列表1", ],
              ["FloatingPanelExampleController", "FloatingPanel浮层", ],             
 

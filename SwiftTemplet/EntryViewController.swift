@@ -1069,11 +1069,11 @@ extension EntryViewController: UITableViewDataSource, UITableViewDelegate {
                 guard let sender = $0 as? NNButton else { return }
                 sender.direction = .top
                 sender.setImage(UIImage(named: "icon_selected_yes_blue"), for: .normal)
-                sender.iconBtn.setTitle("价值100", for: .normal)
-//                sender.iconBtn.setImage(UIImage(named: "icon_discount_orange"), for: .normal)
-                sender.iconBtn.setBackgroundColor(UIColor.theme, for: .normal)
-//                sender.iconBtn.sizeToFit()
-                sender.iconSize = CGSize(width: 50, height: 20)
+                sender.badgeBtn.setTitle("价值100", for: .normal)
+//                sender.badgeBtn.setImage(UIImage(named: "icon_discount_orange"), for: .normal)
+                sender.badgeBtn.setBackgroundColor(UIColor.theme, for: .normal)
+//                sender.badgeBtn.sizeToFit()
+                sender.badgeSize = CGSize(width: 50, height: 20)
                 sender.setNeedsLayout()
                 
 //                sender.direction = .left

@@ -23,3 +23,7 @@ DerivedData
 Pods
 !Podfile
 !Podfile.lock
+
+# graphify
+graphify-out/
+**/graphify-out/

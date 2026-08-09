@@ -197,17 +197,16 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
 
                 guard let sender = $0 as? NNButton else { return }
                 sender.direction = .top
-                sender.iconLocation = .rightTop
-                sender.iconSize = CGSize(width: 20, height: 20)
-                sender.iconOffset = UIOffset(horizontal: 8, vertical: -8)
-                sender.eventInsetDX = 8
-                sender.eventInsetDY = 8
-                sender.iconBtn.setBackgroundColor(.red, for: .normal)
+                sender.badgeLocation = .rightTop
+                sender.badgeSize = CGSize(width: 20, height: 20)
+                sender.badgeOffset = UIOffset(horizontal: 8, vertical: 8)
+                sender.eventInset = 8
+                sender.badgeBtn.setBackgroundColor(.red, for: .normal)
 
                 if self.images.count > sender.tag {
                     let image = self.images[sender.tag]
                     sender.setBackgroundImage(image, for: .normal)
-                    sender.iconBtn.isHidden = (image == self.imageDefault)
+                    sender.badgeBtn.isHidden = (image == self.imageDefault)
                     
                     sender.setTitle(nil, for: .normal)
                 }
@@ -217,7 +216,6 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
                 sender.setNeedsLayout()
 
                 sender.addActionHandler({ control in
-                    
                     DDLog(sender.tag)
                     
                     if let image = sender.backgroundImage(for: .normal), image == self.imageDefault {
@@ -225,7 +223,7 @@ extension PKFeedBackController: UITableViewDataSource, UITableViewDelegate{
                     }
                 }, for: .touchUpInside)
                 
-                sender.iconBtn.addActionHandler({ control in
+                sender.badgeBtn.addActionHandler({ control in
                     
                     DDLog(sender.tag)
                     if self.images.count > control.tag {

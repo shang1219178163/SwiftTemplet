@@ -210,8 +210,7 @@
 		144976EB25BB295F00256043 /* UITextField+Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 144976EA25BB295F00256043 /* UITextField+Menu.m */; };
 		1449774D25BBA96E00256043 /* UIButton+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449774C25BBA96E00256043 /* UIButton+Layer.swift */; };
 		1449775025BBB2D000256043 /* UIControlUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449774F25BBB2D000256043 /* UIControlUpdateController.swift */; };
-		1449775325BBB68400256043 /* NNButtonDispalyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1449775225BBB68400256043 /* NNButtonDispalyController.m */; };
-		1449775625BBB6A700256043 /* NNButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1449775525BBB6A700256043 /* NNButton.m */; };
+		1449775325BBB68400256043 /* NNButtonDispalyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1449775225BBB68400256043 /* NNButtonDispalyController.swift */; };
 		144FE77E24BD9B0300334FD9 /* NNTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144FE77D24BD9B0300334FD9 /* NNTextFieldView.swift */; };
 		1450C7C32630037D00522534 /* NNPasswordLevelLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1450C7C22630037D00522534 /* NNPasswordLevelLabel.swift */; };
 		1451DC3024DE330E00F67A0D /* NNInstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451DC2F24DE330E00F67A0D /* NNInstructionView.swift */; };
@@ -457,7 +456,6 @@
 		14A3756724BAD983002C9E4B /* RxRequestVendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3756624BAD983002C9E4B /* RxRequestVendor.swift */; };
 		14A3CB522516F9C600EBF764 /* UITableViewCellBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3CB512516F9C600EBF764 /* UITableViewCellBanner.swift */; };
 		14A4B4E42421E906007FC3A1 /* NNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4B4E32421E906007FC3A1 /* NNButton.swift */; };
-		14A4B4E6242305FD007FC3A1 /* NNButtonStudyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A4B4E5242305FD007FC3A1 /* NNButtonStudyController.swift */; };
 		14A736BF24FA16CC0098D6E2 /* NSString+Encrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A736BE24FA16CC0098D6E2 /* NSString+Encrypt.m */; };
 		14A79E282543027E0048B01B /* NNCycleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A79E272543027E0048B01B /* NNCycleController.swift */; };
 		14A79E2B2543C41F0048B01B /* NNScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A79E2A2543C41F0048B01B /* NNScrollViewController.swift */; };
@@ -960,10 +958,7 @@
 		144976EA25BB295F00256043 /* UITextField+Menu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Menu.m"; sourceTree = "<group>"; };
 		1449774C25BBA96E00256043 /* UIButton+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Layer.swift"; sourceTree = "<group>"; };
 		1449774F25BBB2D000256043 /* UIControlUpdateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlUpdateController.swift; sourceTree = "<group>"; };
-		1449775125BBB68400256043 /* NNButtonDispalyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNButtonDispalyController.h; sourceTree = "<group>"; };
-		1449775225BBB68400256043 /* NNButtonDispalyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNButtonDispalyController.m; sourceTree = "<group>"; };
-		1449775425BBB6A600256043 /* NNButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNButton.h; sourceTree = "<group>"; };
-		1449775525BBB6A700256043 /* NNButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNButton.m; sourceTree = "<group>"; };
+		1449775225BBB68400256043 /* NNButtonDispalyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNButtonDispalyController.swift; sourceTree = "<group>"; };
 		144FE77D24BD9B0300334FD9 /* NNTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNTextFieldView.swift; sourceTree = "<group>"; };
 		1450C7C22630037D00522534 /* NNPasswordLevelLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNPasswordLevelLabel.swift; sourceTree = "<group>"; };
 		1451DC2F24DE330E00F67A0D /* NNInstructionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNInstructionView.swift; sourceTree = "<group>"; };
@@ -1230,7 +1225,6 @@
 		14A3756624BAD983002C9E4B /* RxRequestVendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRequestVendor.swift; sourceTree = "<group>"; };
 		14A3CB512516F9C600EBF764 /* UITableViewCellBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellBanner.swift; sourceTree = "<group>"; };
 		14A4B4E32421E906007FC3A1 /* NNButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNButton.swift; sourceTree = "<group>"; };
-		14A4B4E5242305FD007FC3A1 /* NNButtonStudyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNButtonStudyController.swift; sourceTree = "<group>"; };
 		14A736BD24FA16CC0098D6E2 /* NSString+Encrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Encrypt.h"; sourceTree = "<group>"; };
 		14A736BE24FA16CC0098D6E2 /* NSString+Encrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Encrypt.m"; sourceTree = "<group>"; };
 		14A79E272543027E0048B01B /* NNCycleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNCycleController.swift; sourceTree = "<group>"; };
@@ -1826,11 +1820,7 @@
 			isa = PBXGroup;
 			children = (
 				1449774F25BBB2D000256043 /* UIControlUpdateController.swift */,
-				14A4B4E5242305FD007FC3A1 /* NNButtonStudyController.swift */,
-				1449775125BBB68400256043 /* NNButtonDispalyController.h */,
-				1449775225BBB68400256043 /* NNButtonDispalyController.m */,
-				1449775425BBB6A600256043 /* NNButton.h */,
-				1449775525BBB6A700256043 /* NNButton.m */,
+				1449775225BBB68400256043 /* NNButtonDispalyController.swift */,
 				148B7D4625AEC74200D2BA59 /* TextFieldViewController.h */,
 				148B7D4725AEC74200D2BA59 /* TextFieldViewController.m */,
 				144976E925BB295F00256043 /* UITextField+Menu.h */,
@@ -3566,7 +3556,6 @@
 				145ECEC32511A9D300952360 /* TestScrollViewController.swift in Sources */,
 				148F3B0826D5CFE90022B6E8 /* IOPWorkOrderListController.swift in Sources */,
 				14F0F0E124BF2C8B00263DAA /* UITableViewCellSudokuButtonNew.swift in Sources */,
-				1449775625BBB6A700256043 /* NNButton.m in Sources */,
 				142A76FA22275EE10016D3DA /* NNDatePicker.swift in Sources */,
 				14BF266124E27C630024726E /* NNLevelProgressView.swift in Sources */,
 				1447438E258C8BE100BA550D /* IOPInfoEntryBaseController.swift in Sources */,
@@ -3581,7 +3570,6 @@
 				14B0CAE92664C44B005E6149 /* ProtocolChainController.swift in Sources */,
 				145ECEA4250B037900952360 /* NNSmallAnimator.swift in Sources */,
 				14B80BF2262D8A34001E5774 /* PasswordStrengthCheckController.m in Sources */,
-				14A4B4E6242305FD007FC3A1 /* NNButtonStudyController.swift in Sources */,
 				14C38A882411253600816A8E /* IOPFileUploadController.swift in Sources */,
 				14E2049C24E686970075AB47 /* PopoverViewCell.m in Sources */,
 				140216E22702F14F0022002E /* ImagePickerViewController.swift in Sources */,
@@ -3737,7 +3725,7 @@
 				14B2D465262D597700A3990A /* ChainExampleController.m in Sources */,
 				14F0D2E221E6E34B00674460 /* UITableHeaderFooterViewTwo.swift in Sources */,
 				144976EB25BB295F00256043 /* UITextField+Menu.m in Sources */,
-				1449775325BBB68400256043 /* NNButtonDispalyController.m in Sources */,
+				1449775325BBB68400256043 /* NNButtonDispalyController.swift in Sources */,
 				1422A9D124495B21002D6145 /* NNAlertShowController.swift in Sources */,
 				14E32F6C26CA6F8F00E864C3 /* IOPInspectionDetailController.swift in Sources */,
 				14A1AB192553D97F00AB4CE5 /* PKRootModel.swift in Sources */,

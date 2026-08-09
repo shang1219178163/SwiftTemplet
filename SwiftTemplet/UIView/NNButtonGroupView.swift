@@ -100,8 +100,8 @@ import UIKit
                 view.setBackgroundImage(self.selectedBackgroudImage, for: .disabled)
                 view.adjustsImageWhenHighlighted = false;
 
-                view.iconSize = self.iconSize
-                view.iconLocation = self.iconLocation
+                view.badgeSize = self.iconSize
+                view.badgeLocation = self.iconLocation
                 
                 let title = newValue[view.tag]
                 view.setTitle(title, for: .normal)

@@ -27,9 +27,7 @@ class UIControlUpdateController: UIViewController{
     
     lazy var list: [[[String]]] = {
         var array: [[[String]]] = [
-            [["NNButtonStudyController", "Swift 封装", ],
-             ],
-            [["NNButtonDispalyController", "OC 按钮封装", ],
+            [["NNButtonDispalyController", "NNButton 演示", ],
              ["TextFieldViewController", "TextField下拉列表", ],
              ],
         ]

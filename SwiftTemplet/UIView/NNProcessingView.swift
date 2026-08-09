@@ -101,7 +101,7 @@ class NNProcessingView: UIView {
     func createBtn(rect:CGRect, title: String, tag: NSInteger) -> UIButton {
         let view = NNButton(type:.custom);
         view.direction = .top
-        view.iconLocation = .leftTop
+        view.badgeLocation = .leftTop
 //        view.backgroundColor = UIColor.theme;
         
         view.titleLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -114,7 +114,6 @@ class NNProcessingView: UIView {
         view.setImage(seletedImage, for: .selected)
         
         view.isExclusiveTouch = true;
-        view.adjustsImageWhenHighlighted = false;
         view.tag = tag;
         return view;
     }
