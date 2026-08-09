@@ -32,6 +32,9 @@ typealias AnimatedCrossFadeLayoutBuilder = (
 /// `onEnd` 回调：`completed == true` 表示播完；`false` 表示被中断
 typealias AnimatedCrossFadeEndHandler = (_ completed: Bool) -> Void
 
+/// `onChanged` 回调：`crossFadeState` 切换时触发（含动画 / 无动画）
+typealias AnimatedCrossFadeChangeHandler = (_ state: CrossFadeState) -> Void
+
 // MARK: - DisplayLink weak proxy
 
 private final class CrossFadeDisplayLinkProxy: NSObject {
@@ -58,6 +61,7 @@ private final class CrossFadeDisplayLinkProxy: NSObject {
 /// ```swift
 /// let fade = NNAnimatedCrossFadeView(firstChild: a, secondChild: b)
 /// fade.duration = 0.35
+/// fade.onChanged = { state in print(state) }
 /// fade.crossFadeState = .showSecond
 /// // label.text 变更后：
 /// fade.invalidateChildSizes()
@@ -91,11 +95,14 @@ class NNAnimatedCrossFadeView: UIView {
         }
     }
 
-    /// 对应 `AnimatedCrossFade.crossFadeState`；变更时自动播放动画
+    /// 对应 `AnimatedCrossFade.crossFadeState`；变更时自动播放动画并触发 `onChanged`
     var crossFadeState: CrossFadeState = .showFirst {
         didSet {
             guard oldValue != crossFadeState else { return }
             animateToCurrentState()
+            if !suppressChangeCallback {
+                onChanged?(crossFadeState)
+            }
         }
     }
 
@@ -142,6 +149,9 @@ class NNAnimatedCrossFadeView: UIView {
     /// 对应 `AnimatedCrossFade.onEnd`；参数表示是否完整播完
     var onEnd: AnimatedCrossFadeEndHandler?
 
+    /// `crossFadeState` 切换回调（赋值 / `setCrossFadeState` 在状态变化时触发；初始化赋值不触发）
+    var onChanged: AnimatedCrossFadeChangeHandler?
+
     // MARK: Private
 
     /// 动画进度：0 = showFirst，1 = showSecond（对齐 Flutter AnimationController）
@@ -154,6 +164,8 @@ class NNAnimatedCrossFadeView: UIView {
     private var animationDuration: TimeInterval = 0
     private var isAnimating = false
     private var suppressAnimation = false
+    /// 为 `true` 时 `crossFadeState` 变更不触发 `onChanged`（convenience init 初始赋值）
+    private var suppressChangeCallback = false
 
     /// 子视图容器（自定义 `layoutBuilder` 时的布局目标）
     private let contentView = UIView()
@@ -205,6 +217,7 @@ class NNAnimatedCrossFadeView: UIView {
         excludeBottomFocus: Bool = true,
         clipBehavior: NNClipBehavior = .hardEdge,
         layoutBuilder: AnimatedCrossFadeLayoutBuilder? = nil,
+        onChanged: AnimatedCrossFadeChangeHandler? = nil,
         onEnd: AnimatedCrossFadeEndHandler? = nil
     ) {
         self.init(frame: .zero)
@@ -217,6 +230,7 @@ class NNAnimatedCrossFadeView: UIView {
         self.excludeBottomFocus = excludeBottomFocus
         self.clipBehavior = clipBehavior
         self.layoutBuilder = layoutBuilder
+        self.onChanged = onChanged
         self.onEnd = onEnd
         // init 内不触发 didSet，手动同步
         self.firstChild = firstChild
@@ -224,8 +238,10 @@ class NNAnimatedCrossFadeView: UIView {
         syncChild(nil, with: firstChild)
         syncChild(nil, with: secondChild)
         suppressAnimation = true
+        suppressChangeCallback = true
         self.crossFadeState = crossFadeState
         progress = crossFadeState == .showSecond ? 1 : 0
+        suppressChangeCallback = false
         suppressAnimation = false
         clipBehavior.apply(to: self)
         applyFocusPolicy()

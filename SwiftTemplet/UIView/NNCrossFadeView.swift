@@ -30,8 +30,8 @@ import SnapKit
 /// 只上报高度，避免与 leading/trailing 约束冲突。
 ///
 /// ## 状态回调
-/// - `toggle()` / 子视图 `onToggle`：切换并触发 `onChanged`
-/// - 直接写 `isFirst` 或 `setIsFirst`：**不**触发 `onChanged`（对齐 Flutter `didUpdateWidget`）
+/// - `isFirst` 变化时触发 `onChanged`（`toggle()` / `onToggle` / 直接赋值 / `setIsFirst`）
+/// - convenience init 的初始 `isFirst` **不**触发 `onChanged`
 /// - 无动画更新请用 `setIsFirst(_:animated: false)`；直接赋 `isFirst` 会带动画
 ///
 /// ```swift
@@ -81,15 +81,18 @@ class NNCrossFadeView: UIView {
     /// 对应 `NCrossFade.isFirst`：是否显示 firstChild。
     ///
     /// 直接赋值会**带动画**切换；无动画请用 `setIsFirst(_:animated:)`。
-    /// 不会触发 `onChanged`（仅 `toggle()` / 子视图 `onToggle` 会触发）。
+    /// 状态变化时触发 `onChanged`（初始化赋值除外）。
     var isFirst: Bool = true {
         didSet {
             guard oldValue != isFirst else { return }
             applyState(animated: !suppressAnimation)
+            if !suppressChangeCallback {
+                onChanged?(isFirst)
+            }
         }
     }
 
-    /// 对应 `NCrossFade.onChanged`：仅在 `toggle()` / 子视图 `onToggle` 后回调。
+    /// `isFirst` 切换回调（`toggle` / `onToggle` / 赋值 / `setIsFirst`；初始化不触发）
     var onChanged: ((Bool) -> Void)?
 
     /// 透传底层交叉淡入淡出结束回调（`completed` 区分播完/中断）
@@ -106,6 +109,8 @@ class NNCrossFadeView: UIView {
     private var suppressAnimation = false
     /// 为 `true` 时 builder 赋值不触发 `rebuildChildren`（convenience init 批量赋值时使用）
     private var suppressRebuild = false
+    /// 为 `true` 时 `isFirst` 变更不触发 `onChanged`（convenience init 初始赋值）
+    private var suppressChangeCallback = false
 
     // MARK: - Lifecycle
 
@@ -139,7 +144,9 @@ class NNCrossFadeView: UIView {
         self.secondChild = secondChild
         suppressRebuild = false
         rebuildChildren()
+        suppressChangeCallback = true
         setIsFirst(isFirst, animated: false)
+        suppressChangeCallback = false
     }
 
     /// 公共初始化：挂载 crossFade、配置约束与初始 crossFade 状态
@@ -177,13 +184,12 @@ class NNCrossFadeView: UIView {
 
     // MARK: - Public (Flutter onToggle)
 
-    /// 对应 Flutter `onToggle`：切换 first/second，并触发 `onChanged`
+    /// 对应 Flutter `onToggle`：切换 first/second（经 `isFirst` 触发 `onChanged`）
     func toggle() {
         isFirst.toggle()
-        onChanged?(isFirst)
     }
 
-    /// 设置 `isFirst`（可控制是否动画）。**不**触发 `onChanged`。
+    /// 设置 `isFirst`（可控制是否动画）。状态变化时触发 `onChanged`。
     func setIsFirst(_ value: Bool, animated: Bool) {
         if isFirst == value {
             if !animated { applyState(animated: false) }

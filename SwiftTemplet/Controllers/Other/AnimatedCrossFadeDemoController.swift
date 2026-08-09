@@ -146,6 +146,11 @@ class AnimatedCrossFadeDemoController: UIViewController {
         )
         view.backgroundColor = UIColor.systemGray6
         view.layer.cornerRadius = 12
+        view.onChanged = { [weak self] state in
+            guard let self else { return }
+            self.stateControl.selectedSegmentIndex = state == .showFirst ? 0 : 1
+            self.statusLabel.text = "onChanged → \(state.name)"
+        }
         view.onEnd = { [weak self] completed in
             guard let self else { return }
             self.statusLabel.text = "onEnd(completed: \(completed)) · state: \(self.stateText)"
