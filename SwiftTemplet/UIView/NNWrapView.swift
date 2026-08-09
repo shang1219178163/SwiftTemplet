@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Wrap-local enums
 
 /// 对应 Flutter `VerticalDirection`
-enum WrapVerticalDirection: Int {
+enum WrapVerticalDirection: Int, NNEnumName {
     case up
     case down
 }
@@ -85,7 +85,7 @@ class NNWrapView: UIView {
     /// 对应 `Wrap.clipBehavior`，默认 `.none`
     /// - Note: `antiAliasWithSaveLayer` 使用 `shouldRasterize` 近似，非完全等价 Flutter save-layer。
     var clipBehavior: NNClipBehavior = .none {
-        didSet { guard oldValue != clipBehavior else { return }; applyClipBehavior() }
+        didSet { guard oldValue != clipBehavior else { return }; clipBehavior.apply(to: self) }
     }
 
     /// 对应 `Wrap.children`。赋值时会将仍挂在其他父视图上的 child re-parent 到本视图。
@@ -126,12 +126,8 @@ class NNWrapView: UIView {
         /// 从 `CGSize` 按 `direction` 拆为主轴 / 交叉轴
         init(size: CGSize, direction: NNAxis) {
             switch direction {
-            case .horizontal:
-                main = size.width
-                cross = size.height
-            case .vertical:
-                main = size.height
-                cross = size.width
+            case .horizontal: (main, cross) = (size.width, size.height)
+            case .vertical: (main, cross) = (size.height, size.width)
             }
         }
 
@@ -157,9 +153,7 @@ class NNWrapView: UIView {
         }
 
         /// 原地累加另一个 `AxisSize`
-        mutating func formAddition(_ other: AxisSize) {
-            self = self + other
-        }
+        mutating func formAddition(_ other: AxisSize) { self = self + other }
     }
 
     /// 对应 Flutter `_RunMetrics`：单行 / 单列 run 的度量
@@ -183,17 +177,13 @@ class NNWrapView: UIView {
             spacing: CGFloat,
             maxMainExtent: CGFloat
         ) -> RunMetrics? {
-            let needsNewRun =
-                axisSize.main + childSize.main + spacing - maxMainExtent
-                > NNWrapView.precisionErrorTolerance
-            if needsNewRun {
+            if axisSize.main + childSize.main + spacing - maxMainExtent
+                > NNWrapView.precisionErrorTolerance {
                 return RunMetrics(leadingChild: child, axisSize: childSize)
             }
             axisSize.formAddition(childSize + AxisSize(main: spacing, cross: 0))
             childCount += 1
-            if flipMainAxis {
-                leadingChild = child
-            }
+            if flipMainAxis { leadingChild = child }
             return nil
         }
     }
@@ -211,13 +201,13 @@ class NNWrapView: UIView {
     /// 标准 frame 初始化，并应用 `clipBehavior`
     override init(frame: CGRect) {
         super.init(frame: frame)
-        applyClipBehavior()
+        clipBehavior.apply(to: self)
     }
 
     /// Interface Builder / Storyboard 解码初始化
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        applyClipBehavior()
+        clipBehavior.apply(to: self)
     }
 
     /// 对齐 Flutter `Wrap(...)` 构造参数顺序
@@ -246,7 +236,7 @@ class NNWrapView: UIView {
         // 初始化上下文中不会触发 didSet，需手动同步子视图
         self.children = children
         syncChildren([])
-        applyClipBehavior()
+        clipBehavior.apply(to: self)
     }
 
     /// 固有尺寸：交叉轴返回内容高度/宽度，主轴为 `noIntrinsicMetric`（需父级约束宽度/高度）
@@ -257,23 +247,14 @@ class NNWrapView: UIView {
         }
         let size = contentSize(mainAxisLimit: limit)
         switch direction {
-        case .horizontal:
-            return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
-        case .vertical:
-            return CGSize(width: size.width, height: UIView.noIntrinsicMetric)
+        case .horizontal: return CGSize(width: UIView.noIntrinsicMetric, height: size.height)
+        case .vertical: return CGSize(width: size.width, height: UIView.noIntrinsicMetric)
         }
     }
 
     /// 在给定容器尺寸下测算 Wrap 内容尺寸（主轴取 `size` 对应边或固有上限）
     override func sizeThatFits(_ size: CGSize) -> CGSize {
-        let limit: CGFloat
-        switch direction {
-        case .horizontal:
-            limit = size.width > 0 ? size.width : mainAxisLimitForIntrinsicSize()
-        case .vertical:
-            limit = size.height > 0 ? size.height : mainAxisLimitForIntrinsicSize()
-        }
-        guard limit.isFinite, limit > 0 else {
+        guard let limit = resolvedMainAxisLimit(preferring: mainAxisComponent(of: size)) else {
             return CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
         }
         return contentSize(mainAxisLimit: limit)
@@ -282,34 +263,20 @@ class NNWrapView: UIView {
     /// `textDirection == nil` 时，布局方向变化则重新布局（对齐 Flutter 跟随 locale）
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        guard textDirection == nil else { return }
-        if previousTraitCollection?.layoutDirection != traitCollection.layoutDirection {
-            setNeedsWrapLayout()
-        }
+        guard textDirection == nil,
+              previousTraitCollection?.layoutDirection != traitCollection.layoutDirection else { return }
+        setNeedsWrapLayout()
     }
 
-    /// Auto Layout  fitting：按 `targetSize` 主轴上限计算换行后的内容尺寸
+    /// Auto Layout fitting：按 `targetSize` 主轴上限计算换行后的内容尺寸
     override func systemLayoutSizeFitting(
         _ targetSize: CGSize,
         withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
         verticalFittingPriority: UILayoutPriority
     ) -> CGSize {
-        let limit: CGFloat
-        switch direction {
-        case .horizontal:
-            if targetSize.width > 0, targetSize.width < CGFloat.greatestFiniteMagnitude / 2 {
-                limit = targetSize.width
-            } else {
-                limit = mainAxisLimitForIntrinsicSize()
-            }
-        case .vertical:
-            if targetSize.height > 0, targetSize.height < CGFloat.greatestFiniteMagnitude / 2 {
-                limit = targetSize.height
-            } else {
-                limit = mainAxisLimitForIntrinsicSize()
-            }
-        }
-        guard limit.isFinite, limit > 0 else {
+        let proposed = mainAxisComponent(of: targetSize)
+        let usable = proposed > 0 && proposed < .greatestFiniteMagnitude / 2 ? proposed : 0
+        guard let limit = resolvedMainAxisLimit(preferring: usable) else {
             return super.systemLayoutSizeFitting(
                 targetSize,
                 withHorizontalFittingPriority: horizontalFittingPriority,
@@ -322,7 +289,7 @@ class NNWrapView: UIView {
     /// 布局子视图 frame；bounds 主轴变化时刷新固有尺寸缓存
     override func layoutSubviews() {
         super.layoutSubviews()
-        let mainLimit: CGFloat = direction == .horizontal ? bounds.width : bounds.height
+        let mainLimit = mainAxisComponent(of: bounds.size)
         // 未设置 preferredMax* 时固有尺寸依赖 bounds；宽度变化需刷新缓存的 intrinsic
         if usesBoundsForIntrinsicMainAxisLimit,
            lastLaidOutMainAxisLimit >= 0,
@@ -340,10 +307,7 @@ class NNWrapView: UIView {
         let visible = visibleChildren()
         guard !visible.isEmpty else { return .zero }
         let measured = measureChildren(visible, mainAxisLimit: mainAxisLimit)
-        let (_, childrenAxisSize) = computeRuns(
-            measured: measured,
-            mainAxisLimit: mainAxisLimit
-        )
+        let (_, childrenAxisSize) = computeRuns(measured: measured, mainAxisLimit: mainAxisLimit)
         return childrenAxisSize.toSize(direction: direction)
     }
 
@@ -368,30 +332,6 @@ class NNWrapView: UIView {
         setNeedsLayout()
     }
 
-    /// 按 `clipBehavior` 配置 `clipsToBounds` 与抗锯齿 / 栅格化（对齐 Flutter `Clip`）
-    private func applyClipBehavior() {
-        switch clipBehavior {
-        case .none:
-            clipsToBounds = false
-            layer.allowsEdgeAntialiasing = false
-            layer.shouldRasterize = false
-        case .hardEdge:
-            clipsToBounds = true
-            layer.allowsEdgeAntialiasing = false
-            layer.shouldRasterize = false
-        case .antiAlias:
-            clipsToBounds = true
-            layer.allowsEdgeAntialiasing = true
-            layer.shouldRasterize = false
-        case .antiAliasWithSaveLayer:
-            // 近似 Flutter save-layer：离屏栅格化后再合成（非完全等价）
-            clipsToBounds = true
-            layer.allowsEdgeAntialiasing = true
-            layer.shouldRasterize = true
-            layer.rasterizationScale = UIScreen.main.scale
-        }
-    }
-
     /// 同步 `children` 与 subview 层级：增删、re-parent、保持声明顺序
     private func syncChildren(_ oldChildren: [UIView]) {
         #if DEBUG
@@ -399,23 +339,17 @@ class NNWrapView: UIView {
         assert(Set(ids).count == ids.count, "NNWrapView.children 不应包含重复引用")
         #endif
 
-        let oldSet = Set(oldChildren.map { ObjectIdentifier($0) })
-        let newSet = Set(children.map { ObjectIdentifier($0) })
-
-        for view in oldChildren where !newSet.contains(ObjectIdentifier(view)) {
-            if view.superview === self {
-                view.removeFromSuperview()
-            }
+        let newSet = Set(children.map(ObjectIdentifier.init))
+        for view in oldChildren where !newSet.contains(ObjectIdentifier(view)) && view.superview === self {
+            view.removeFromSuperview()
         }
-        for view in children where !oldSet.contains(ObjectIdentifier(view)) || view.superview !== self {
-            if let superview = view.superview, superview !== self {
-                #if DEBUG
+        for view in children where view.superview !== self {
+            #if DEBUG
+            if let superview = view.superview {
                 assertionFailure("NNWrapView 将 re-parent \(type(of: view))（原父视图 \(type(of: superview))）")
-                #endif
-                addSubview(view)
-            } else if view.superview !== self {
-                addSubview(view)
             }
+            #endif
+            addSubview(view)
         }
         // 保持 children 声明顺序
         for (index, view) in children.enumerated() {
@@ -426,24 +360,25 @@ class NNWrapView: UIView {
 
     /// 未设置 `preferredMaxLayout*` 时，固有尺寸主轴上限取自 `bounds`
     private var usesBoundsForIntrinsicMainAxisLimit: Bool {
-        switch direction {
-        case .horizontal: return preferredMaxLayoutWidth <= 0
-        case .vertical: return preferredMaxLayoutHeight <= 0
-        }
+        direction == .horizontal ? preferredMaxLayoutWidth <= 0 : preferredMaxLayoutHeight <= 0
+    }
+
+    /// 从 `CGSize` 取当前 `direction` 的主轴分量
+    private func mainAxisComponent(of size: CGSize) -> CGFloat {
+        direction == .horizontal ? size.width : size.height
     }
 
     /// 固有尺寸测算用的主轴上限（优先 `preferredMaxLayout*`，否则 `bounds`）
     private func mainAxisLimitForIntrinsicSize() -> CGFloat {
-        switch direction {
-        case .horizontal:
-            if preferredMaxLayoutWidth > 0 { return preferredMaxLayoutWidth }
-            if bounds.width > 0 { return bounds.width }
-            return 0
-        case .vertical:
-            if preferredMaxLayoutHeight > 0 { return preferredMaxLayoutHeight }
-            if bounds.height > 0 { return bounds.height }
-            return 0
-        }
+        let preferred = direction == .horizontal ? preferredMaxLayoutWidth : preferredMaxLayoutHeight
+        if preferred > 0 { return preferred }
+        return mainAxisComponent(of: bounds.size)
+    }
+
+    /// 解析有效主轴上限：`preferring > 0` 时优先用它，否则回退到固有上限
+    private func resolvedMainAxisLimit(preferring: CGFloat) -> CGFloat? {
+        let limit = preferring > 0 ? preferring : mainAxisLimitForIntrinsicSize()
+        return (limit.isFinite && limit > 0) ? limit : nil
     }
 
     /// 可见子视图（`isHidden == false`，对齐 Flutter 不参与布局的隐藏 child）
@@ -455,62 +390,44 @@ class NNWrapView: UIView {
     private func layoutChildren(in containerSize: CGSize) {
         let visible = visibleChildren()
         guard !visible.isEmpty else { return }
-
-        let mainAxisLimit: CGFloat
-        switch direction {
-        case .horizontal: mainAxisLimit = containerSize.width
-        case .vertical: mainAxisLimit = containerSize.height
-        }
+        let mainAxisLimit = mainAxisComponent(of: containerSize)
         guard mainAxisLimit > 0 else { return }
 
         let measured = measureChildren(visible, mainAxisLimit: mainAxisLimit)
-        let (runMetrics, childrenAxisSize) = computeRuns(
-            measured: measured,
-            mainAxisLimit: mainAxisLimit
-        )
-
+        let (runMetrics, childrenAxisSize) = computeRuns(measured: measured, mainAxisLimit: mainAxisLimit)
         let containerAxisSize = AxisSize(size: containerSize, direction: direction)
-        let freeAxisSize = containerAxisSize - childrenAxisSize
         positionChildren(
             runMetrics: runMetrics,
             measured: measured,
             orderedChildren: visible,
-            freeAxisSize: freeAxisSize,
+            freeAxisSize: containerAxisSize - childrenAxisSize,
             containerAxisSize: containerAxisSize
         )
     }
 
     /// 批量测算可见子视图的 `preferredSize`
     private func measureChildren(_ views: [UIView], mainAxisLimit: CGFloat) -> [MeasuredChild] {
-        views.map { view in
-            MeasuredChild(view: view, size: preferredSize(of: view, mainAxisLimit: mainAxisLimit))
-        }
+        views.map { MeasuredChild(view: $0, size: preferredSize(of: $0, mainAxisLimit: mainAxisLimit)) }
     }
 
     /// 对齐 Flutter：按子视图内容自适应测算尺寸（主轴不超过 `mainAxisLimit`）
     private func preferredSize(of child: UIView, mainAxisLimit: CGFloat) -> CGSize {
-        let target: CGSize
-        switch direction {
-        case .horizontal:
-            target = CGSize(width: mainAxisLimit, height: CGFloat.greatestFiniteMagnitude)
-        case .vertical:
-            target = CGSize(width: CGFloat.greatestFiniteMagnitude, height: mainAxisLimit)
-        }
+        let target = direction == .horizontal
+            ? CGSize(width: mainAxisLimit, height: .greatestFiniteMagnitude)
+            : CGSize(width: .greatestFiniteMagnitude, height: mainAxisLimit)
 
         // 1) 内容尺寸优先：sizeThatFits / intrinsicContentSize
         var size = child.sizeThatFits(target)
         let intrinsic = child.intrinsicContentSize
-        if (size.width <= 0 || !size.width.isFinite),
-           intrinsic.width > 0, intrinsic.width < UIView.noIntrinsicMetric / 2 {
+        if !isPositiveFinite(size.width), isUsableIntrinsic(intrinsic.width) {
             size.width = intrinsic.width
         }
-        if (size.height <= 0 || !size.height.isFinite),
-           intrinsic.height > 0, intrinsic.height < UIView.noIntrinsicMetric / 2 {
+        if !isPositiveFinite(size.height), isUsableIntrinsic(intrinsic.height) {
             size.height = intrinsic.height
         }
 
         // 2) Auto Layout 压缩测算
-        if size.width <= 0 || size.height <= 0 || !size.width.isFinite || !size.height.isFinite {
+        if !isPositiveFinite(size.width) || !isPositiveFinite(size.height) {
             let fitting = child.systemLayoutSizeFitting(
                 CGSize(
                     width: direction == .horizontal ? mainAxisLimit : UIView.layoutFittingCompressedSize.width,
@@ -519,8 +436,8 @@ class NNWrapView: UIView {
                 withHorizontalFittingPriority: .fittingSizeLevel,
                 verticalFittingPriority: .fittingSizeLevel
             )
-            if size.width <= 0 || !size.width.isFinite { size.width = fitting.width }
-            if size.height <= 0 || !size.height.isFinite { size.height = fitting.height }
+            if !isPositiveFinite(size.width) { size.width = fitting.width }
+            if !isPositiveFinite(size.height) { size.height = fitting.height }
         }
 
         // 3) 显式宽高约束覆盖（忽略 0 占位；含 superview / 反向 first-second）
@@ -529,52 +446,47 @@ class NNWrapView: UIView {
         if let h = constrained.height, h > 0 { size.height = h }
 
         // 4) 兜底：已有 bounds / frame
-        if size.width <= 0, child.bounds.width > 0 { size.width = child.bounds.width }
-        if size.height <= 0, child.bounds.height > 0 { size.height = child.bounds.height }
-        if size.width <= 0, child.frame.width > 0 { size.width = child.frame.width }
-        if size.height <= 0, child.frame.height > 0 { size.height = child.frame.height }
-
+        if size.width <= 0 { size.width = max(child.bounds.width, child.frame.width) }
+        if size.height <= 0 { size.height = max(child.bounds.height, child.frame.height) }
         if !size.width.isFinite { size.width = 0 }
         if !size.height.isFinite { size.height = 0 }
 
         // 5) 主轴钳制后按固定主轴再测交叉轴（多行文本行高）
-        switch direction {
-        case .horizontal:
-            if mainAxisLimit > 0, size.width > mainAxisLimit {
+        if mainAxisLimit > 0 {
+            switch direction {
+            case .horizontal where size.width > mainAxisLimit:
                 size.width = mainAxisLimit
-                let refit = child.sizeThatFits(CGSize(
-                    width: mainAxisLimit,
-                    height: CGFloat.greatestFiniteMagnitude
-                ))
-                if refit.height > 0, refit.height.isFinite {
-                    size.height = refit.height
-                }
-            }
-        case .vertical:
-            if mainAxisLimit > 0, size.height > mainAxisLimit {
+                let refit = child.sizeThatFits(CGSize(width: mainAxisLimit, height: .greatestFiniteMagnitude))
+                if isPositiveFinite(refit.height) { size.height = refit.height }
+            case .vertical where size.height > mainAxisLimit:
                 size.height = mainAxisLimit
-                let refit = child.sizeThatFits(CGSize(
-                    width: CGFloat.greatestFiniteMagnitude,
-                    height: mainAxisLimit
-                ))
-                if refit.width > 0, refit.width.isFinite {
-                    size.width = refit.width
-                }
+                let refit = child.sizeThatFits(CGSize(width: .greatestFiniteMagnitude, height: mainAxisLimit))
+                if isPositiveFinite(refit.width) { size.width = refit.width }
+            default:
+                break
             }
         }
         return size
+    }
+
+    /// 是否为可用于布局的正有限尺寸
+    private func isPositiveFinite(_ value: CGFloat) -> Bool {
+        value > 0 && value.isFinite
+    }
+
+    /// 是否为可用的 `intrinsicContentSize` 分量（排除 `noIntrinsicMetric`）
+    private func isUsableIntrinsic(_ value: CGFloat) -> Bool {
+        // `UIView.noIntrinsicMetric` 为 -1，不能用 `< noIntrinsicMetric/2`（恒为 false）
+        value.isFinite && value > 0 && abs(value - UIView.noIntrinsicMetric) > 0.5
     }
 
     /// 读取子视图自身显式宽高约束（用于测量覆盖 intrinsic）
     private func explicitSizeConstraints(of view: UIView) -> (width: CGFloat?, height: CGFloat?) {
         var width: CGFloat?
         var height: CGFloat?
-        let candidates = view.constraints + (view.superview?.constraints ?? [])
-        for constraint in candidates where constraint.isActive {
-            guard constraint.multiplier == 1 else { continue }
+        for constraint in view.constraints + (view.superview?.constraints ?? []) where constraint.isActive {
+            guard constraint.multiplier == 1, abs(constraint.constant) > 0 else { continue }
             let constant = abs(constraint.constant)
-            guard constant > 0 else { continue }
-
             // view.width/height == constant，或 constant == view.width/height
             if constraint.firstItem === view, constraint.secondItem == nil {
                 if constraint.firstAttribute == .width { width = constant }
@@ -611,7 +523,6 @@ class NNWrapView: UIView {
             } else {
                 newRun = RunMetrics(leadingChild: item.view, axisSize: childSize)
             }
-
             if let newRun {
                 runMetrics.append(newRun)
                 if let currentRun {
@@ -621,10 +532,7 @@ class NNWrapView: UIView {
             }
         }
 
-        guard let lastRun = currentRun else {
-            return ([], .empty)
-        }
-
+        guard let lastRun = currentRun else { return ([], .empty) }
         let totalRunSpacing = runSpacing * CGFloat(max(runMetrics.count - 1, 0))
         childrenAxisSize.formAddition(AxisSize(main: totalRunSpacing, cross: 0) + lastRun.axisSize.flipped)
         return (runMetrics, childrenAxisSize.flipped)
@@ -643,20 +551,17 @@ class NNWrapView: UIView {
         let sizeByView = Dictionary(uniqueKeysWithValues: measured.map {
             (ObjectIdentifier($0.view), $0.size)
         })
-
-        let crossAxisFreeSpace = max(0, freeAxisSize.cross)
         let (flipMainAxis, flipCrossAxis) = areAxesFlipped()
         let effectiveCrossAlignment = flipCrossAxis ? crossAxisAlignment.flipped : crossAxisAlignment
         let (runLeadingSpace, runBetweenSpace) = runAlignment.distributeSpace(
-            freeSpace: crossAxisFreeSpace,
+            freeSpace: max(0, freeAxisSize.cross),
             itemSpacing: runSpacing,
             itemCount: runMetrics.count,
             flipped: flipCrossAxis
         )
 
-        let runs: [RunMetrics] = flipCrossAxis ? runMetrics.reversed() : runMetrics
+        let runs = flipCrossAxis ? runMetrics.reversed() : runMetrics
         var runCrossAxisOffset = runLeadingSpace
-
         // 可见 children 顺序索引，用于在 run 内按正/反方向遍历
         let indexByView = Dictionary(uniqueKeysWithValues: orderedChildren.enumerated().map {
             (ObjectIdentifier($0.element), $0.offset)
@@ -664,32 +569,24 @@ class NNWrapView: UIView {
 
         for run in runs {
             let runCrossAxisExtent = run.axisSize.cross
-            let childCount = run.childCount
-            let mainAxisFreeSpace = max(0, containerAxisSize.main - run.axisSize.main)
             let (childLeadingSpace, childBetweenSpace) = alignment.distributeSpace(
-                freeSpace: mainAxisFreeSpace,
+                freeSpace: max(0, containerAxisSize.main - run.axisSize.main),
                 itemSpacing: spacing,
-                itemCount: childCount,
+                itemCount: run.childCount,
                 flipped: flipMainAxis
             )
 
             var childMainAxisOffset = childLeadingSpace
-            let runChildren = childrenInRun(
+            for child in childrenInRun(
                 run,
                 orderedChildren: orderedChildren,
                 indexByView: indexByView,
                 flipMainAxis: flipMainAxis
-            )
-
-            for child in runChildren {
+            ) {
                 let childSize = sizeByView[ObjectIdentifier(child)] ?? .zero
                 let childAxis = AxisSize(size: childSize, direction: direction)
                 let childCrossAxisOffset =
                     effectiveCrossAlignment.alignmentFactor * (runCrossAxisExtent - childAxis.cross)
-                let origin = offset(
-                    main: childMainAxisOffset,
-                    cross: runCrossAxisOffset + childCrossAxisOffset
-                )
                 // Wrap 使用 frame 布局 child 自身；允许 child 内部约束
                 #if DEBUG
                 if hasExtrinsicSizeConstraintsPinning(child) {
@@ -698,10 +595,14 @@ class NNWrapView: UIView {
                     )
                 }
                 #endif
-                if !child.translatesAutoresizingMaskIntoConstraints {
-                    child.translatesAutoresizingMaskIntoConstraints = true
-                }
-                child.frame = CGRect(origin: origin, size: childSize)
+                child.translatesAutoresizingMaskIntoConstraints = true
+                child.frame = CGRect(
+                    origin: offset(
+                        main: childMainAxisOffset,
+                        cross: runCrossAxisOffset + childCrossAxisOffset
+                    ),
+                    size: childSize
+                )
                 childMainAxisOffset += childAxis.main + childBetweenSpace
             }
             runCrossAxisOffset += runCrossAxisExtent + runBetweenSpace
@@ -715,57 +616,44 @@ class NNWrapView: UIView {
         indexByView: [ObjectIdentifier: Int],
         flipMainAxis: Bool
     ) -> [UIView] {
-        guard let startIndex = indexByView[ObjectIdentifier(run.leadingChild)] else { return [] }
-
+        guard let start = indexByView[ObjectIdentifier(run.leadingChild)] else { return [] }
+        let count = run.childCount
         if flipMainAxis {
             // leadingChild 是该 run 最后一个（原序），向前取 childCount 个再正序布局
-            let end = startIndex
-            let begin = max(0, end - run.childCount + 1)
-            return (begin...end).reversed().compactMap { idx in
-                orderedChildren.indices.contains(idx) ? orderedChildren[idx] : nil
+            let begin = max(0, start - count + 1)
+            return (begin...start).reversed().compactMap {
+                orderedChildren.indices.contains($0) ? orderedChildren[$0] : nil
             }
-        } else {
-            let end = min(orderedChildren.count - 1, startIndex + run.childCount - 1)
-            return (startIndex...end).compactMap { idx in
-                orderedChildren.indices.contains(idx) ? orderedChildren[idx] : nil
-            }
+        }
+        let end = min(orderedChildren.count - 1, start + count - 1)
+        return (start...end).compactMap {
+            orderedChildren.indices.contains($0) ? orderedChildren[$0] : nil
         }
     }
 
     /// 解析有效 `textDirection`（显式值或跟随 `effectiveUserInterfaceLayoutDirection`）
     private func resolvedTextDirection() -> NNTextDirection {
-        if let textDirection { return textDirection }
-        return effectiveUserInterfaceLayoutDirection == .rightToLeft ? .rtl : .ltr
+        textDirection ?? (effectiveUserInterfaceLayoutDirection == .rightToLeft ? .rtl : .ltr)
     }
 
     /// 根据 `textDirection` 与 `verticalDirection` 判断主轴 / 交叉轴是否反向布局
     private func areAxesFlipped() -> (flipMainAxis: Bool, flipCrossAxis: Bool) {
-        let flipHorizontal = resolvedTextDirection() == .rtl
-        let flipVertical = verticalDirection == .up
-        switch direction {
-        case .horizontal:
-            return (flipHorizontal, flipVertical)
-        case .vertical:
-            return (flipVertical, flipHorizontal)
-        }
+        let flipH = resolvedTextDirection() == .rtl
+        let flipV = verticalDirection == .up
+        return direction == .horizontal ? (flipH, flipV) : (flipV, flipH)
     }
 
     /// 主轴 / 交叉轴偏移量转换为 `CGPoint`（随 `direction` 映射 x/y）
     private func offset(main: CGFloat, cross: CGFloat) -> CGPoint {
-        switch direction {
-        case .horizontal: return CGPoint(x: main, y: cross)
-        case .vertical: return CGPoint(x: cross, y: main)
-        }
+        direction == .horizontal ? CGPoint(x: main, y: cross) : CGPoint(x: cross, y: main)
     }
 
     /// 检测是否被父视图（非 self 内部）用位置约束钉住——此类约束会与 frame 布局冲突
     private func hasExtrinsicSizeConstraintsPinning(_ child: UIView) -> Bool {
-        guard let superview = child.superview, superview === self else { return false }
-        return superview.constraints.contains { constraint in
-            guard constraint.isActive else { return false }
-            let involvesChild =
-                constraint.firstItem === child || constraint.secondItem === child
-            guard involvesChild else { return false }
+        guard child.superview === self else { return false }
+        return constraints.contains { constraint in
+            guard constraint.isActive,
+                  constraint.firstItem === child || constraint.secondItem === child else { return false }
             switch constraint.firstAttribute {
             case .leading, .trailing, .left, .right, .top, .bottom,
                  .centerX, .centerY, .firstBaseline, .lastBaseline:

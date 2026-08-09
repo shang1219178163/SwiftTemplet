@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1524,6 +1524,10 @@
 		D423F25D0AA19F6618C6D919 /* Pods-SwiftTemplet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		149A6E773028C3830006F822 /* Protocol */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Protocol; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		516859FA208EA75700CE8099 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -2844,6 +2848,7 @@
 		519E87C5213675A5002CCD86 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				149A6E773028C3830006F822 /* Protocol */,
 				14F7A101A1B2C3D40000000B /* Enum */,
 				1468C26229B2DC8A0058CA8B /* NNButtonGroupView.swift */,
 				14DC7F282657E62400812CF8 /* NNPlaceHolderView.swift */,
@@ -2956,6 +2961,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				149A6E773028C3830006F822 /* Protocol */,
 			);
 			name = SwiftTemplet;
 			productName = SwiftTemplet;

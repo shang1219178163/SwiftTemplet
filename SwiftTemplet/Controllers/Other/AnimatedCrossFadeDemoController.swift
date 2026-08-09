@@ -41,9 +41,7 @@ class AnimatedCrossFadeDemoController: UIViewController {
     private lazy var curveTitleLabel: UILabel = makeParamTitleLabel("sizeCurve")
     private lazy var durationTitleLabel: UILabel = makeParamTitleLabel("duration")
 
-    private let alignmentOptions: [NNAlignment] = [
-        .topCenter, .center, .bottomCenter, .centerLeft, .centerRight
-    ]
+    private let alignmentOptions: [NNAlignment] = NNAlignment.allCases
 
     private lazy var stateControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["showFirst", "showSecond"])
@@ -53,8 +51,9 @@ class AnimatedCrossFadeDemoController: UIViewController {
     }()
 
     private lazy var alignmentControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["topCenter", "center", "bottomCenter", "centerLeft", "centerRight"])
-        control.selectedSegmentIndex = 1 // center
+        let titles = alignmentOptions.map(\.shortName)
+        let control = UISegmentedControl(items: titles)
+        control.selectedSegmentIndex = alignmentOptions.firstIndex(of: .center) ?? 0
         control.addTarget(self, action: #selector(onAlignmentChanged(_:)), for: .valueChanged)
         return control
     }()
