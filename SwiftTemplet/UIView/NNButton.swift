@@ -5,14 +5,16 @@
 //  Created by Bin Shang on 2020/3/18.
 //  Copyright © 2020 BN. All rights reserved.
 //
-//  自定义图文方位按钮 + 角标。在 layoutSubviews 中写 imageView / titleLabel / iconBtn 的 frame。
+//  自定义图文方位按钮 + 角标。在 layoutSubviews 中写 imageView / titleLabel / badgeBtn 的 frame。
+//  - 尺寸由内容自适应（intrinsicContentSize / sizeThatFits）
+//  - 使用 `padding` 作为内容内边距（角标仍相对 bounds 四角）
 //  - 忽略 contentEdgeInsets / imageEdgeInsets / titleEdgeInsets / content*Alignment
 //  - 状态边框请用 SwiftExpand：`setBorderColor` / `setBorderWidth` / `setCornerRadius`
 //
 
 import UIKit
 
-/// 自定义图像方向按钮（frame 布局）
+/// 自定义图像方向按钮（frame 布局，内容自适应尺寸）
 @objcMembers class NNButton: UIButton {
 
     /// 主图相对文字的方位（上 / 左 / 下 / 右）；`.none` / `.center` 时图文居中叠放规则见 `layoutImageAndTitle`
@@ -20,21 +22,22 @@ import UIKit
         didSet {
             guard oldValue != direction else { return }
             setNeedsLayout()
+            invalidateIntrinsicContentSize()
         }
     }
 
-    /// 角标 `iconBtn` 的角落位置；`.none` 时隐藏角标
-    var iconLocation: UIView.Location = .rightTop {
+    /// 角标 `badgeBtn` 的角落位置；`.none` 时隐藏角标
+    var badgeLocation: UIView.Location = .rightTop {
         didSet {
-            guard oldValue != iconLocation else { return }
+            guard oldValue != badgeLocation else { return }
             setNeedsLayout()
         }
     }
 
     /// 角标相对角落的外向偏移（`horizontal` / `vertical` 均为非负时表示沿该角向外）
-    var iconOffset: UIOffset = .zero {
+    var badgeOffset: UIOffset = .zero {
         didSet {
-            guard oldValue != iconOffset else { return }
+            guard oldValue != badgeOffset else { return }
             setNeedsLayout()
         }
     }
@@ -43,26 +46,28 @@ import UIKit
     var eventInset: CGFloat = 0
 
     /// 角标尺寸
-    var iconSize: CGSize = CGSize(width: 24, height: 24) {
+    var badgeSize: CGSize = CGSize(width: 24, height: 24) {
         didSet {
-            guard oldValue != iconSize else { return }
+            guard oldValue != badgeSize else { return }
             setNeedsLayout()
         }
     }
 
-    /// 主图（`imageView`）尺寸；宽或高 ≤ 0 时该边按布局区域自适应
+    /// 主图（`imageView`）尺寸；宽或高 ≤ 0 时该边取图片固有尺寸
     var imageSize: CGSize = .zero {
         didSet {
             guard oldValue != imageSize else { return }
             setNeedsLayout()
+            invalidateIntrinsicContentSize()
         }
     }
 
-    /// 文字区域高度（top / bottom / 横排时标题条高度）
+    /// 文字区域高度（> 0 时作为标题占用高度；≤ 0 时按文字实测）
     var labelHeight: CGFloat = 25 {
         didSet {
             guard oldValue != labelHeight else { return }
             setNeedsLayout()
+            invalidateIntrinsicContentSize()
         }
     }
 
@@ -71,11 +76,21 @@ import UIKit
         didSet {
             guard oldValue != spacing else { return }
             setNeedsLayout()
+            invalidateIntrinsicContentSize()
+        }
+    }
+
+    /// 内容区内边距（图文排布在 `bounds.inset(by: padding)` 内；角标仍相对按钮四角）
+    var padding: UIEdgeInsets = .zero {
+        didSet {
+            guard oldValue != padding else { return }
+            setNeedsLayout()
+            invalidateIntrinsicContentSize()
         }
     }
 
     /// 角标按钮（可单独加 target，如删除）
-    private(set) lazy var iconBtn: UIButton = {
+    private(set) lazy var badgeBtn: UIButton = {
         let view = UIButton(type: .custom)
         view.translatesAutoresizingMaskIntoConstraints = true
         view.autoresizingMask = []
@@ -100,7 +115,8 @@ import UIKit
 
     /// 公共初始化：挂载角标、默认样式
     private func commonInit() {
-        addSubview(iconBtn)
+        clipsToBounds = false
+        ensureBadgeInHierarchy()
 
         let normalTextColor = UIColor.black.withAlphaComponent(0.3)
         let selectedTextColor = UIColor.systemBlue
@@ -112,18 +128,64 @@ import UIKit
 
         imageView?.tintColor = UIColor.theme
         imageView?.contentMode = .scaleAspectFit
+
+        setContentHuggingPriority(.required, for: .horizontal)
+        setContentHuggingPriority(.required, for: .vertical)
+        setContentCompressionResistancePriority(.required, for: .horizontal)
+        setContentCompressionResistancePriority(.required, for: .vertical)
+    }
+
+    /// 保证角标在视图层级中（兼容 `NNButton(type:)` 未走 `init(frame:)` 的情况）
+    private func ensureBadgeInHierarchy() {
+        if badgeBtn.superview !== self {
+            addSubview(badgeBtn)
+        }
+    }
+
+    // MARK: - Content
+
+    override func setTitle(_ title: String?, for state: UIControl.State) {
+        super.setTitle(title, for: state)
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+    }
+
+    override func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State) {
+        super.setAttributedTitle(title, for: state)
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+    }
+
+    override func setImage(_ image: UIImage?, for state: UIControl.State) {
+        super.setImage(image, for: state)
+        invalidateIntrinsicContentSize()
+        setNeedsLayout()
+    }
+
+    // MARK: - Sizing
+
+    /// 由图片、标题、`direction` / `spacing` / `imageSize` / `labelHeight` / `padding` 计算内容尺寸
+    override var intrinsicContentSize: CGSize {
+        fittedSize(for: CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric))
+    }
+
+    /// 在给定约束下测算内容尺寸
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        fittedSize(for: size)
     }
 
     // MARK: - Layout
 
-    /// 按 `direction` 排布主图文，再按 `iconLocation` 排布角标
+    /// 按 `direction` 排布主图文，再按 `badgeLocation` 排布角标
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        guard bounds.height > 10, bounds.width > 1 else { return }
-        guard let imageView, let titleLabel else { return }
+        ensureBadgeInHierarchy()
+        guard bounds.width > 0, bounds.height > 0 else { return }
 
-        layoutImageAndTitle(imageView: imageView, titleLabel: titleLabel)
+        if let imageView, let titleLabel {
+            layoutImageAndTitle(imageView: imageView, titleLabel: titleLabel)
+        }
         layoutBadge()
     }
 
@@ -133,193 +195,320 @@ import UIKit
         return eventBounds.contains(point)
     }
 
-    // MARK: - Private
+    // MARK: - Private · Metrics
 
-    /// 排布主 `imageView` 与 `titleLabel`
-    private func layoutImageAndTitle(imageView: UIImageView, titleLabel: UILabel) {
-        let hasImage = currentImage != nil && !imageView.isHidden
-        let hasTitle = !(currentTitle ?? "").isEmpty && !titleLabel.isHidden
+    private var hasImageContent: Bool {
+        currentImage != nil && !(imageView?.isHidden ?? false)
+    }
 
-        if hasImage, !hasTitle {
-            imageView.frame = bounds
-            titleLabel.frame = .zero
-            return
-        }
-        if hasTitle, !hasImage {
-            titleLabel.frame = bounds
-            imageView.frame = .zero
-            return
-        }
-        if !hasImage, !hasTitle {
-            imageView.frame = .zero
-            titleLabel.frame = .zero
-            return
+    private var hasTitleContent: Bool {
+        let hasText = !(currentTitle ?? "").isEmpty || (currentAttributedTitle?.length ?? 0) > 0
+        return hasText && !(titleLabel?.isHidden ?? false)
+    }
+
+    /// 规范化后的内边距（负值按 0）
+    private var safePadding: UIEdgeInsets {
+        UIEdgeInsets(
+            top: max(0, padding.top),
+            left: max(0, padding.left),
+            bottom: max(0, padding.bottom),
+            right: max(0, padding.right)
+        )
+    }
+
+    private var paddingWidth: CGFloat { safePadding.left + safePadding.right }
+    private var paddingHeight: CGFloat { safePadding.top + safePadding.bottom }
+
+    /// 图文内容区（扣除 `padding`）
+    private var contentRect: CGRect {
+        bounds.inset(by: safePadding)
+    }
+
+    /// 主图目标尺寸（`imageSize` 优先，否则图片固有尺寸），并钳制到 `maxSize`
+    private func preferredImageSize(maxSize: CGSize) -> CGSize {
+        guard let image = currentImage else { return .zero }
+        let natural = image.size
+        var width = imageSize.width > 0 ? imageSize.width : max(0, natural.width)
+        var height = imageSize.height > 0 ? imageSize.height : max(0, natural.height)
+
+        if imageSize.width > 0, imageSize.height <= 0, natural.width > 0 {
+            height = width * (natural.height / natural.width)
+        } else if imageSize.height > 0, imageSize.width <= 0, natural.height > 0 {
+            width = height * (natural.width / natural.height)
         }
 
-        let safeLabelHeight = min(max(0, labelHeight), bounds.height)
+        if maxSize.width < CGFloat.greatestFiniteMagnitude / 2 {
+            width = min(width, max(0, maxSize.width))
+        }
+        if maxSize.height < CGFloat.greatestFiniteMagnitude / 2 {
+            height = min(height, max(0, maxSize.height))
+        }
+        return CGSize(width: width, height: height)
+    }
+
+    /// 标题目标尺寸；`labelHeight` > 0 时高度取 `labelHeight`
+    private func preferredTitleSize(maxWidth: CGFloat) -> CGSize {
+        let limit = maxWidth > 0 && maxWidth < CGFloat.greatestFiniteMagnitude / 2
+            ? maxWidth
+            : CGFloat.greatestFiniteMagnitude
+
+        var measured: CGSize = .zero
+        if let attributed = currentAttributedTitle, attributed.length > 0 {
+            let rect = attributed.boundingRect(
+                with: CGSize(width: limit, height: CGFloat.greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                context: nil
+            )
+            measured = CGSize(width: ceil(rect.width), height: ceil(rect.height))
+        } else if let title = currentTitle, !title.isEmpty {
+            let font = titleLabel?.font ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)
+            let rect = (title as NSString).boundingRect(
+                with: CGSize(width: limit, height: CGFloat.greatestFiniteMagnitude),
+                options: [.usesLineFragmentOrigin, .usesFontLeading],
+                attributes: [.font: font],
+                context: nil
+            )
+            measured = CGSize(width: ceil(rect.width), height: ceil(rect.height))
+        }
+
+        guard measured.width > 0 || measured.height > 0 else { return .zero }
+        let height = labelHeight > 0 ? labelHeight : measured.height
+        return CGSize(width: measured.width, height: height)
+    }
+
+    /// 综合图文与方位，计算适配尺寸（含 `padding`）
+    private func fittedSize(for proposed: CGSize) -> CGSize {
+        let padW = paddingWidth
+        let padH = paddingHeight
+        let maxW = proposed.width > 0
+            ? max(0, proposed.width - padW)
+            : CGFloat.greatestFiniteMagnitude
+        let maxH = proposed.height > 0
+            ? max(0, proposed.height - padH)
+            : CGFloat.greatestFiniteMagnitude
+        let content = contentFittedSize(maxWidth: maxW, maxHeight: maxH)
+        var size = CGSize(width: content.width + padW, height: content.height + padH)
+        if proposed.width > 0 {
+            size.width = min(size.width, proposed.width)
+        }
+        if proposed.height > 0 {
+            size.height = min(size.height, proposed.height)
+        }
+        return size
+    }
+
+    /// 不含 padding 的图文内容尺寸
+    private func contentFittedSize(maxWidth: CGFloat, maxHeight: CGFloat) -> CGSize {
+        let maxW = maxWidth
+        let maxH = maxHeight
+        let maxSize = CGSize(width: maxW, height: maxH)
         let safeSpacing = max(0, spacing)
+
+        let imageOnly = hasImageContent && !hasTitleContent
+        let titleOnly = hasTitleContent && !hasImageContent
+        if imageOnly {
+            return preferredImageSize(maxSize: maxSize)
+        }
+        if titleOnly {
+            return preferredTitleSize(maxWidth: maxW)
+        }
+        if !hasImageContent, !hasTitleContent {
+            return .zero
+        }
+
+        switch direction {
+        case .top, .bottom:
+            let title = preferredTitleSize(maxWidth: maxW)
+            let imageMaxH = maxH < CGFloat.greatestFiniteMagnitude / 2
+                ? max(0, maxH - title.height - safeSpacing)
+                : CGFloat.greatestFiniteMagnitude
+            let image = preferredImageSize(maxSize: CGSize(width: maxW, height: imageMaxH))
+            return CGSize(
+                width: min(max(image.width, title.width), maxW),
+                height: min(image.height + safeSpacing + title.height, maxH)
+            )
+
+        case .left, .right:
+            let image = preferredImageSize(maxSize: maxSize)
+            let titleMaxW = maxW < CGFloat.greatestFiniteMagnitude / 2
+                ? max(0, maxW - image.width - safeSpacing)
+                : CGFloat.greatestFiniteMagnitude
+            let title = preferredTitleSize(maxWidth: titleMaxW)
+            return CGSize(
+                width: min(image.width + safeSpacing + title.width, maxW),
+                height: min(max(image.height, title.height), maxH)
+            )
+
+        case .center, .none:
+            let image = preferredImageSize(maxSize: maxSize)
+            let title = preferredTitleSize(maxWidth: maxW)
+            return CGSize(
+                width: min(max(image.width, title.width), maxW),
+                height: min(max(image.height, title.height), maxH)
+            )
+
+        @unknown default:
+            let image = preferredImageSize(maxSize: maxSize)
+            let titleMaxW = maxW < CGFloat.greatestFiniteMagnitude / 2
+                ? max(0, maxW - image.width - safeSpacing)
+                : CGFloat.greatestFiniteMagnitude
+            let title = preferredTitleSize(maxWidth: titleMaxW)
+            return CGSize(
+                width: min(image.width + safeSpacing + title.width, maxW),
+                height: min(max(image.height, title.height), maxH)
+            )
+        }
+    }
+
+    // MARK: - Private · Layout
+
+    /// 排布主 `imageView` 与 `titleLabel`（在 `contentRect` 内）
+    private func layoutImageAndTitle(imageView: UIImageView, titleLabel: UILabel) {
+        let box = contentRect
+        guard box.width > 0, box.height > 0 else {
+            imageView.frame = .zero
+            titleLabel.frame = .zero
+            return
+        }
+
+        if hasImageContent, !hasTitleContent {
+            let imgSize = preferredImageSize(maxSize: box.size)
+            imageView.frame = CGRect(
+                x: box.minX + (box.width - imgSize.width) * 0.5,
+                y: box.minY + (box.height - imgSize.height) * 0.5,
+                width: imgSize.width,
+                height: imgSize.height
+            )
+            titleLabel.frame = .zero
+            return
+        }
+        if hasTitleContent, !hasImageContent {
+            titleLabel.frame = box
+            titleLabel.textAlignment = .center
+            imageView.frame = .zero
+            return
+        }
+        if !hasImageContent, !hasTitleContent {
+            imageView.frame = .zero
+            titleLabel.frame = .zero
+            return
+        }
+
+        let safeSpacing = max(0, spacing)
+        let imgSize = preferredImageSize(maxSize: box.size)
 
         switch direction {
         case .top:
-            let maxImageHeight = max(0, bounds.height - safeLabelHeight - safeSpacing)
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: bounds.width, height: maxImageHeight),
-                maxSize: CGSize(width: bounds.width, height: maxImageHeight)
-            )
+            let title = preferredTitleSize(maxWidth: box.width)
             titleLabel.textAlignment = .center
             imageView.frame = CGRect(
-                x: (bounds.width - imgSize.width) * 0.5,
-                y: 0,
+                x: box.minX + (box.width - imgSize.width) * 0.5,
+                y: box.minY,
                 width: imgSize.width,
                 height: imgSize.height
             )
             titleLabel.frame = CGRect(
-                x: 0,
+                x: box.minX,
                 y: imageView.frame.maxY + safeSpacing,
-                width: bounds.width,
-                height: max(0, safeLabelHeight)
+                width: box.width,
+                height: title.height
             )
 
         case .bottom:
-            let maxImageHeight = max(0, bounds.height - safeLabelHeight - safeSpacing)
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: bounds.width, height: maxImageHeight),
-                maxSize: CGSize(width: bounds.width, height: maxImageHeight)
-            )
+            let title = preferredTitleSize(maxWidth: box.width)
             titleLabel.textAlignment = .center
-            titleLabel.frame = CGRect(x: 0, y: 0, width: bounds.width, height: max(0, safeLabelHeight))
+            titleLabel.frame = CGRect(x: box.minX, y: box.minY, width: box.width, height: title.height)
             imageView.frame = CGRect(
-                x: (bounds.width - imgSize.width) * 0.5,
+                x: box.minX + (box.width - imgSize.width) * 0.5,
                 y: titleLabel.frame.maxY + safeSpacing,
                 width: imgSize.width,
                 height: imgSize.height
             )
 
         case .right:
-            // 图在右：标题宽度 = 总宽 - 图宽 - spacing（只扣一次，避免居中后视觉上 spacing 无效）
-            let defaultSide = min(bounds.height, bounds.width)
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: defaultSide, height: defaultSide),
-                maxSize: bounds.size
-            )
             imageView.frame = CGRect(
-                x: bounds.width - imgSize.width,
-                y: (bounds.height - imgSize.height) * 0.5,
+                x: box.maxX - imgSize.width,
+                y: box.minY + (box.height - imgSize.height) * 0.5,
                 width: imgSize.width,
                 height: imgSize.height
             )
+            let titleWidth = max(0, imageView.frame.minX - box.minX - safeSpacing)
+            let title = preferredTitleSize(maxWidth: titleWidth)
             titleLabel.textAlignment = .right
             titleLabel.frame = CGRect(
-                x: 0,
-                y: (bounds.height - safeLabelHeight) * 0.5,
-                width: max(0, imageView.frame.minX - safeSpacing),
-                height: safeLabelHeight
+                x: box.minX,
+                y: box.minY + (box.height - title.height) * 0.5,
+                width: titleWidth,
+                height: title.height
             )
 
         case .left:
-            // 图在左：标题从 image.maxX + spacing 起铺满剩余宽度
-            let defaultSide = min(bounds.height, bounds.width)
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: defaultSide, height: defaultSide),
-                maxSize: bounds.size
-            )
             imageView.frame = CGRect(
-                x: 0,
-                y: (bounds.height - imgSize.height) * 0.5,
+                x: box.minX,
+                y: box.minY + (box.height - imgSize.height) * 0.5,
                 width: imgSize.width,
                 height: imgSize.height
             )
             let titleX = imageView.frame.maxX + safeSpacing
+            let titleWidth = max(0, box.maxX - titleX)
+            let title = preferredTitleSize(maxWidth: titleWidth)
             titleLabel.textAlignment = .left
             titleLabel.frame = CGRect(
                 x: titleX,
-                y: (bounds.height - safeLabelHeight) * 0.5,
-                width: max(0, bounds.width - titleX),
-                height: safeLabelHeight
+                y: box.minY + (box.height - title.height) * 0.5,
+                width: titleWidth,
+                height: title.height
             )
 
         case .center:
-            // 图文都居中叠放（适合仅装饰场景）
-            let defaultSide = min(bounds.height, bounds.width) * 0.5
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: defaultSide, height: defaultSide),
-                maxSize: bounds.size
-            )
             titleLabel.textAlignment = .center
             imageView.frame = CGRect(
-                x: (bounds.width - imgSize.width) * 0.5,
-                y: (bounds.height - imgSize.height) * 0.5,
+                x: box.minX + (box.width - imgSize.width) * 0.5,
+                y: box.minY + (box.height - imgSize.height) * 0.5,
                 width: imgSize.width,
                 height: imgSize.height
             )
-            titleLabel.frame = bounds
+            titleLabel.frame = box
 
         case .none:
-            let defaultSide = min(bounds.height, bounds.width)
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: defaultSide, height: defaultSide),
-                maxSize: bounds.size
-            )
             titleLabel.textAlignment = .center
             imageView.frame = CGRect(
-                x: (bounds.width - imgSize.width) * 0.5,
-                y: (bounds.height - imgSize.height) * 0.5,
+                x: box.minX + (box.width - imgSize.width) * 0.5,
+                y: box.minY + (box.height - imgSize.height) * 0.5,
                 width: imgSize.width,
                 height: imgSize.height
             )
-            titleLabel.frame = bounds
+            titleLabel.frame = box
 
         @unknown default:
-            let defaultSide = min(bounds.height, bounds.width)
-            let imgSize = resolvedImageSize(
-                defaultSize: CGSize(width: defaultSide, height: defaultSide),
-                maxSize: bounds.size
-            )
             imageView.frame = CGRect(
-                x: 0,
-                y: (bounds.height - imgSize.height) * 0.5,
+                x: box.minX,
+                y: box.minY + (box.height - imgSize.height) * 0.5,
                 width: imgSize.width,
                 height: imgSize.height
             )
             let titleX = imageView.frame.maxX + safeSpacing
+            let titleWidth = max(0, box.maxX - titleX)
+            let title = preferredTitleSize(maxWidth: titleWidth)
             titleLabel.textAlignment = .left
             titleLabel.frame = CGRect(
                 x: titleX,
-                y: (bounds.height - safeLabelHeight) * 0.5,
-                width: max(0, bounds.width - titleX),
-                height: safeLabelHeight
+                y: box.minY + (box.height - title.height) * 0.5,
+                width: titleWidth,
+                height: title.height
             )
         }
-    }
-
-    /// 解析主图尺寸：`imageSize` 宽/高 > 0 时采用并钳制到 `maxSize`，否则用 `defaultSize`
-    private func resolvedImageSize(defaultSize: CGSize, maxSize: CGSize) -> CGSize {
-        let width: CGFloat
-        if imageSize.width > 0 {
-            width = min(imageSize.width, max(0, maxSize.width))
-        } else {
-            width = max(0, defaultSize.width)
-        }
-
-        let height: CGFloat
-        if imageSize.height > 0 {
-            height = min(imageSize.height, max(0, maxSize.height))
-        } else {
-            height = max(0, defaultSize.height)
-        }
-
-        return CGSize(width: width, height: height)
     }
 
     /// 排布角标并更新显隐（每轮布局重算，避免隐藏后无法恢复）
     private func layoutBadge() {
         let hasBadgeContent =
-            iconBtn.currentImage != nil
-            || !(iconBtn.currentTitle ?? "").isEmpty
-            || iconBtn.backgroundImage(for: .normal) != nil
+            badgeBtn.currentImage != nil
+            || !(badgeBtn.currentTitle ?? "").isEmpty
+            || badgeBtn.backgroundImage(for: .normal) != nil
 
         let showBadge: Bool
-        switch iconLocation {
+        switch badgeLocation {
         case .leftTop, .leftBottom, .rightTop, .rightBottom:
             showBadge = hasBadgeContent
         case .none:
@@ -328,19 +517,17 @@ import UIKit
             showBadge = false
         }
 
-        iconBtn.isHidden = !showBadge
+        badgeBtn.isHidden = !showBadge
         guard showBadge else { return }
 
-        let size = CGSize(width: max(0, iconSize.width), height: max(0, iconSize.height))
-        let dx = iconOffset.horizontal
-        let dy = iconOffset.vertical
+        let size = CGSize(width: max(0, badgeSize.width), height: max(0, badgeSize.height))
+        let dx = badgeOffset.horizontal
+        let dy = badgeOffset.vertical
         let frame: CGRect
-        switch iconLocation {
+        switch badgeLocation {
         case .leftTop:
-            // 左上：向左 / 向上为外向
             frame = CGRect(x: -dx, y: -dy, width: size.width, height: size.height)
         case .leftBottom:
-            // 左下：向左 / 向下为外向
             frame = CGRect(
                 x: -dx,
                 y: bounds.height - size.height + dy,
@@ -348,7 +535,6 @@ import UIKit
                 height: size.height
             )
         case .rightTop:
-            // 右上：向右 / 向上为外向
             frame = CGRect(
                 x: bounds.width - size.width + dx,
                 y: -dy,
@@ -356,7 +542,6 @@ import UIKit
                 height: size.height
             )
         case .rightBottom:
-            // 右下：向右 / 向下为外向
             frame = CGRect(
                 x: bounds.width - size.width + dx,
                 y: bounds.height - size.height + dy,
@@ -369,7 +554,7 @@ import UIKit
             return
         }
 
-        iconBtn.frame = frame
-        bringSubviewToFront(iconBtn)
+        badgeBtn.frame = frame
+        bringSubviewToFront(badgeBtn)
     }
 }

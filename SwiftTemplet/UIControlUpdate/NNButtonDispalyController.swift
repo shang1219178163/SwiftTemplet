@@ -12,7 +12,8 @@ import SwiftExpand
 class NNButtonDispalyController: UIViewController {
 
     private let contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-    private let spacingValues: [CGFloat] = [0, 3, 8, 16]
+    private let spacingValues: [CGFloat] = [0, 4, 8, 16]
+    private let paddingValues: [CGFloat] = [0, 4, 8, 12]
     private let imageSizeValues: [CGFloat] = [0, 16, 20, 28]
     private let labelHeightValues: [CGFloat] = [18, 25, 32]
     private let eventInsetValues: [CGFloat] = [0, 8, 16]
@@ -36,8 +37,8 @@ class NNButtonDispalyController: UIViewController {
         label.numberOfLines = 0
         label.text = """
         NNButton · SnapKit
-        direction 控制主图相对文字方位；imageSize 控制主图尺寸（0=自适应）；iconLocation 控制角标角落。
-        点按演示按钮切换 selected；角标按钮可单独响应。
+        尺寸由内容自适应。direction / imageSize / spacing / padding / labelHeight 会改变 intrinsicContentSize。
+        badgeLocation 控制角标角落；点按切换 selected，角标可单独响应。
         """
         return label
     }()
@@ -46,8 +47,9 @@ class NNButtonDispalyController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [
             makeLabeledControl(title: directionTitleLabel, control: directionControl),
             makeLabeledControl(title: imageSizeTitleLabel, control: imageSizeControl),
-            makeLabeledControl(title: iconLocationTitleLabel, control: iconLocationControl),
+            makeLabeledControl(title: badgeLocationTitleLabel, control: badgeLocationControl),
             makeLabeledControl(title: spacingTitleLabel, control: spacingControl),
+            makeLabeledControl(title: paddingTitleLabel, control: paddingControl),
             makeLabeledControl(title: labelHeightTitleLabel, control: labelHeightControl),
             makeLabeledControl(title: eventInsetTitleLabel, control: eventInsetControl),
         ])
@@ -58,8 +60,9 @@ class NNButtonDispalyController: UIViewController {
 
     private lazy var directionTitleLabel: UILabel = makeParamTitleLabel("direction")
     private lazy var imageSizeTitleLabel: UILabel = makeParamTitleLabel("imageSize")
-    private lazy var iconLocationTitleLabel: UILabel = makeParamTitleLabel("iconLocation")
+    private lazy var badgeLocationTitleLabel: UILabel = makeParamTitleLabel("badgeLocation")
     private lazy var spacingTitleLabel: UILabel = makeParamTitleLabel("spacing")
+    private lazy var paddingTitleLabel: UILabel = makeParamTitleLabel("padding")
     private lazy var labelHeightTitleLabel: UILabel = makeParamTitleLabel("labelHeight")
     private lazy var eventInsetTitleLabel: UILabel = makeParamTitleLabel("eventInset")
 
@@ -70,7 +73,7 @@ class NNButtonDispalyController: UIViewController {
         return control
     }()
 
-    private lazy var iconLocationControl: UISegmentedControl = {
+    private lazy var badgeLocationControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["none", "LT", "LB", "RT", "RB"])
         control.selectedSegmentIndex = 3
         control.addTarget(self, action: #selector(onControlChanged(_:)), for: .valueChanged)
@@ -91,6 +94,13 @@ class NNButtonDispalyController: UIViewController {
         return control
     }()
 
+    private lazy var paddingControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: paddingValues.map { "\(Int($0))" })
+        control.selectedSegmentIndex = 2
+        control.addTarget(self, action: #selector(onControlChanged(_:)), for: .valueChanged)
+        return control
+    }()
+
     private lazy var labelHeightControl: UISegmentedControl = {
         let control = UISegmentedControl(items: labelHeightValues.map { "\(Int($0))" })
         control.selectedSegmentIndex = 1
@@ -107,10 +117,10 @@ class NNButtonDispalyController: UIViewController {
 
     /// 受控演示按钮：参数面板实时驱动
     private lazy var demoButton: NNButton = {
-        let sender = makeButton(title: "浪迹天涯", direction: .left, iconLocation: .rightTop)
-        sender.iconSize = CGSize(width: 20, height: 20)
-        sender.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
-        sender.iconBtn.addTarget(self, action: #selector(onBadgeTapped(_:)), for: .touchUpInside)
+        let sender = makeButton(title: "浪迹天涯", direction: .left, badgeLocation: .rightTop)
+        sender.badgeSize = CGSize(width: 20, height: 20)
+        sender.badgeBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
+        sender.badgeBtn.addTarget(self, action: #selector(onBadgeTapped(_:)), for: .touchUpInside)
         return sender
     }()
 
@@ -172,8 +182,7 @@ class NNButtonDispalyController: UIViewController {
         demoButton.snp.makeConstraints { make in
             make.top.equalTo(controlsStack.snp.bottom).offset(20)
             make.leading.equalToSuperview().inset(contentInset.left)
-            make.width.equalTo(140)
-            make.height.equalTo(sampleHeight(for: .left))
+            // 宽高由内容自适应（intrinsicContentSize）
         }
 
         statusLabel.snp.makeConstraints { make in
@@ -206,49 +215,38 @@ class NNButtonDispalyController: UIViewController {
         let locations: [UIView.Location] = [.none, .leftTop, .leftBottom, .rightTop, .rightBottom]
 
         demoButton.direction = directions[directionControl.selectedSegmentIndex]
-        demoButton.iconLocation = locations[iconLocationControl.selectedSegmentIndex]
+        demoButton.badgeLocation = locations[badgeLocationControl.selectedSegmentIndex]
         let side = imageSizeValues[imageSizeControl.selectedSegmentIndex]
         demoButton.imageSize = side > 0 ? CGSize(width: side, height: side) : .zero
         demoButton.spacing = spacingValues[spacingControl.selectedSegmentIndex]
+        let pad = paddingValues[paddingControl.selectedSegmentIndex]
+        demoButton.padding = UIEdgeInsets(top: pad, left: pad, bottom: pad, right: pad)
         demoButton.labelHeight = labelHeightValues[labelHeightControl.selectedSegmentIndex]
         demoButton.eventInset = eventInsetValues[eventInsetControl.selectedSegmentIndex]
 
-        let showBadge = demoButton.iconLocation != .none
+        let showBadge = demoButton.badgeLocation != .none
         if showBadge {
-            demoButton.iconBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
-            demoButton.iconSize = CGSize(width: 20, height: 20)
+            demoButton.badgeBtn.setBackgroundImage(UIImage(named: "icon_delete"), for: .normal)
+            demoButton.badgeSize = CGSize(width: 20, height: 20)
             // 正值表示沿该角向外偏移（各角落一致）
-            demoButton.iconOffset = UIOffset(horizontal: 8, vertical: 8)
+            demoButton.badgeOffset = UIOffset(horizontal: 8, vertical: 8)
         } else {
-            demoButton.iconBtn.setBackgroundImage(nil, for: .normal)
-            demoButton.iconBtn.setTitle(nil, for: .normal)
-            demoButton.iconOffset = .zero
+            demoButton.badgeBtn.setBackgroundImage(nil, for: .normal)
+            demoButton.badgeBtn.setTitle(nil, for: .normal)
+            demoButton.badgeOffset = .zero
         }
 
-        demoButton.snp.updateConstraints { make in
-            make.height.equalTo(sampleHeight(for: demoButton.direction))
-        }
+        demoButton.invalidateIntrinsicContentSize()
         demoButton.setNeedsLayout()
         demoButton.layoutIfNeeded()
-    }
-
-    private func sampleHeight(for direction: UIView.Direction) -> CGFloat {
-        switch direction {
-        case .top, .bottom:
-            return 70
-        case .none:
-            return 64
-        default:
-            return 36
-        }
     }
 
     private func makeButton(
         title: String,
         direction: UIView.Direction,
-        iconLocation: UIView.Location
+        badgeLocation: UIView.Location
     ) -> NNButton {
-        let sender = NNButton(type: .custom)
+        let sender = NNButton(frame: .zero)
         sender.setTitle(title, for: .normal)
         sender.setImage(normalImage, for: .normal)
         sender.setImage(selectedImage, for: .selected)
@@ -256,7 +254,7 @@ class NNButtonDispalyController: UIViewController {
         sender.setBorderColor(.systemBlue, for: .selected)
         sender.setCornerRadius(4, for: .normal)
         sender.direction = direction
-        sender.iconLocation = iconLocation
+        sender.badgeLocation = badgeLocation
         sender.addTarget(self, action: #selector(onDemoTapped(_:)), for: .touchUpInside)
         return sender
     }
