@@ -8,7 +8,7 @@
 import UIKit
 
 /// 对应 Flutter `WrapCrossAlignment`（交叉轴对齐）
-enum NNCrossAxisAlignment: Int {
+enum NNCrossAxisAlignment: Int, NNEnumName {
     case start
     case end
     case center

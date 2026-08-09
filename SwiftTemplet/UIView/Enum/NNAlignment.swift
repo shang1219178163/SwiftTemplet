@@ -8,7 +8,7 @@
 import UIKit
 
 /// 通用二维对齐（对齐 Flutter `Alignment`，坐标范围 [-1, 1]）
-enum NNAlignment: Int {
+enum NNAlignment: Int, CaseIterable, NNEnumName {
     case topLeft
     case topCenter
     case topRight

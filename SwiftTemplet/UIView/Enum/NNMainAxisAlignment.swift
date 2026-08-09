@@ -8,7 +8,7 @@
 import UIKit
 
 /// 对应 Flutter `WrapAlignment`（主轴对齐）
-enum NNMainAxisAlignment: Int {
+enum NNMainAxisAlignment: Int, NNEnumName {
     case start
     case end
     case center

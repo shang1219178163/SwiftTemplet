@@ -8,7 +8,7 @@
 import UIKit
 
 /// 对应 Flutter `Curve`（常用曲线；也支持自定义 cubic）
-enum NNCurves {
+enum NNCurves: NNEnumName {
     case linear
     case easeIn
     case easeOut

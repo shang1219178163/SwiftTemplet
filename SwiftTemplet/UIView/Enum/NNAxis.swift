@@ -8,7 +8,7 @@
 import UIKit
 
 /// 对应 Flutter `Axis`
-enum NNAxis: Int {
+enum NNAxis: Int, NNEnumName {
     case horizontal
     case vertical
 }

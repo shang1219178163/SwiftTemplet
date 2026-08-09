@@ -8,7 +8,7 @@
 import UIKit
 
 /// 对应 Flutter `TextDirection`
-enum NNTextDirection: Int {
+enum NNTextDirection: Int, NNEnumName {
     case ltr
     case rtl
 }
