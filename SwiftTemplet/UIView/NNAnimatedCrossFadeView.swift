@@ -46,6 +46,7 @@ private final class CrossFadeDisplayLinkProxy: NSObject {
 // MARK: - NNAnimatedCrossFadeView
 
 /// Flutter `AnimatedCrossFade` 的 UIKit 实现。
+/// 一句话：progress 驱动双层 alpha + 容器尺寸插值；DisplayLink 逐帧刷新；frame 叠放 + 测量缓存保证布局和点击正确。
 ///
 /// - 尺寸动画同时支持 frame 布局与 Auto Layout（后者通过内部宽高约束 + intrinsic）。
 /// - **子视图理想尺寸会缓存**；文案 / 约束 / intrinsic 变化后必须调用 `invalidateChildSizes()`，

@@ -19,6 +19,7 @@ enum WrapVerticalDirection: Int {
 // MARK: - NNWrapView
 
 /// Flutter `Wrap` 的 UIKit 实现。
+/// 一句话：测尺寸 → 按 Flutter 规则分包成 run → 按对齐写 frame；UIKit 只负责宿主约束和刷新入口。
 ///
 /// - 使用 **frame 布局**子视图：会将 child 的 `translatesAutoresizingMaskIntoConstraints` 设为 `true`。
 ///   子视图**内部**约束（如 label 贴边）可保留；不要用父级约束把 child 钉在 Wrap 上。
