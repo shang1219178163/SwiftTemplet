@@ -710,6 +710,7 @@
 		14FD33D12CE83B9800036535 /* SpeechToTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FD33D02CE83B9800036535 /* SpeechToTextViewController.swift */; };
 		14FE3C32245ABB12006B14D4 /* OOTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */; };
 		14FE3C34245AC206006B14D4 /* FlipImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */; };
+		14FEA335303B388F00896911 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 14FEA331303B388F00896911 /* iCarousel.m */; };
 		515AA75D21426DA400C8D0AA /* UITableViewCellDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */; };
 		51685A01208EA75700CE8099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51685A00208EA75700CE8099 /* AppDelegate.swift */; };
 		51685A08208EA75800CE8099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51685A07208EA75800CE8099 /* Assets.xcassets */; };
@@ -725,6 +726,8 @@
 		51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */; };
 		51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B590211D17B4003E9AA7 /* FourthViewController.swift */; };
 		51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B592211D17F8003E9AA7 /* HomeViewController.swift */; };
+		F1A90A59C45A6740BCC66E41 /* NNResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A9E87FD7F2C0D925EB08D8 /* NNResourceManager.swift */; };
+		F1A919C8657871DB6771B470 /* ICarouselDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FEA336303B38EF00896911 /* ICarouselDemoController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1503,6 +1506,9 @@
 		14FD33D02CE83B9800036535 /* SpeechToTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToTextViewController.swift; sourceTree = "<group>"; };
 		14FE3C31245ABB12006B14D4 /* OOTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OOTabBarController.swift; sourceTree = "<group>"; };
 		14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipImageViewController.swift; sourceTree = "<group>"; };
+		14FEA330303B388F00896911 /* iCarousel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		14FEA331303B388F00896911 /* iCarousel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		14FEA336303B38EF00896911 /* ICarouselDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICarouselDemoController.swift; sourceTree = "<group>"; };
 		515AA75C21426DA400C8D0AA /* UITableViewCellDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellDatePicker.swift; sourceTree = "<group>"; };
 		516859FD208EA75700CE8099 /* SwiftTemplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftTemplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51685A00208EA75700CE8099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1526,6 +1532,7 @@
 		53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTemplet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68F0651040FE28ABDC47FA7 /* Pods-SwiftTemplet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.release.xcconfig"; path = "Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.release.xcconfig"; sourceTree = "<group>"; };
 		D423F25D0AA19F6618C6D919 /* Pods-SwiftTemplet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.debug.xcconfig"; sourceTree = "<group>"; };
+		F1A9E87FD7F2C0D925EB08D8 /* NNResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NNResourceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -1582,6 +1589,7 @@
 		1401BE8E2277D6630078A722 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				F1A9E87FD7F2C0D925EB08D8 /* NNResourceManager.swift */,
 				1401BEA02277D76B0078A722 /* NNCacheManager.swift */,
 				1401BEA42277D7860078A722 /* NNMemoryCache.swift */,
 				1401BEA62277D7950078A722 /* NNDiskCache.swift */,
@@ -2601,6 +2609,7 @@
 		14F030AB223B8AFE00C3DE5B /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				14FEA333303B388F00896911 /* iCarousel */,
 				14BF668D257A789C006B5BE9 /* MarqueeLabel */,
 				14B0A28B2531660B00C930B1 /* GXSegmentPageView */,
 				14E2049324E686960075AB47 /* PopoverView */,
@@ -2667,6 +2676,15 @@
 				14F7A101A1B2C3D400000014 /* NNTextDirection.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		14FEA333303B388F00896911 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				14FEA330303B388F00896911 /* iCarousel.h */,
+				14FEA331303B388F00896911 /* iCarousel.m */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		516859F4208EA75600CE8099 = {
@@ -2745,6 +2763,7 @@
 		51824424213E74B200071A9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14FEA336303B38EF00896911 /* ICarouselDemoController.swift */,
 				14DF1FEB2D9BE87400C21C41 /* ModelCodablePage.swift */,
 				142F527B29C1CE1A0093E2EE /* Closure */,
 				1405E19D29B30004002917EC /* Operator */,
@@ -3474,6 +3493,7 @@
 				14403E6223320689005DB45B /* CCSEmergencyOpenView.swift in Sources */,
 				1458F829249CE249007555EF /* UITableViewCellSudokuLabel.swift in Sources */,
 				14A3755F24B72018002C9E4B /* RxRequestHelper.swift in Sources */,
+				14FEA335303B388F00896911 /* iCarousel.m in Sources */,
 				143F713A2733696C00E2FC28 /* NSObject+Helper.swift in Sources */,
 				14D91B19234DB96600554994 /* NNPopView.swift in Sources */,
 				148040B4240F8E4C0032EB07 /* IOPOrdersChooseView.swift in Sources */,
@@ -3591,6 +3611,7 @@
 				14E2049C24E686970075AB47 /* PopoverViewCell.m in Sources */,
 				140216E22702F14F0022002E /* ImagePickerViewController.swift in Sources */,
 				14B03DCE26AD019D00B8634F /* NNToolbar.swift in Sources */,
+				F1A90A59C45A6740BCC66E41 /* NNResourceManager.swift in Sources */,
 				14E546F724C062E00095B22D /* PKUserInfoEditController.swift in Sources */,
 				14FD33D12CE83B9800036535 /* SpeechToTextViewController.swift in Sources */,
 				145ECEAF250B0BBD00952360 /* NNPullDownAnimator.swift in Sources */,
@@ -3749,6 +3770,7 @@
 				14AB52C32468E0DF00D075D3 /* IOPPlateEntryController.swift in Sources */,
 				14CA757024D530BF00D649DC /* NNLeftTableViewCell.swift in Sources */,
 				14E2046C24E629D30075AB47 /* StatusBarNotificationBanner.swift in Sources */,
+				F1A919C8657871DB6771B470 /* ICarouselDemoController.swift in Sources */,
 				144742E2258B4BA100BA550D /* IOPUserDetailModel.m in Sources */,
 				14A11DC12693F6EE007963A3 /* MenuActionController.swift in Sources */,
 				14DFA01C26E5A12E006F9BC9 /* MultithreadingViewController.swift in Sources */,

@@ -6,6 +6,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <YYModel/YYModel.h>
 #import <YYCache/YYCache.h>
+#import "iCarousel.h"
 
 #import "NNPayManager.h"
 

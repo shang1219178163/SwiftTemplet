@@ -31,7 +31,7 @@ enum RoutePageSearchHelper {
             "UICollectionBatchUpdateController",
             "UICollectionTagsController",
         ]
-        let excludedNames: Set<String> = ["HomeViewController", "RouteSearchController"].union(subPageNames)
+        let excludedNames: Set<String> = ["HomeViewController", "RouteSearchController"]
         var pageNames: [String] = []
         for cls in buffer {
             guard Bundle(for: cls) == Bundle.main,
