@@ -58,7 +58,7 @@ class HomeViewController: UITabBarController {
     //MARK:属性
     lazy var items: [(UIViewController, String, UIImage?, UIImage?)] = {
         return [
-            (FirstViewController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
+            (RouteSearchController(), "首页", UIImage(named: "Item_first_N"), UIImage(named: "Item_first_H")),
 //            (SecondViewController(), "圈子", UIImage(named: "Item_second_N"), UIImage(named: "Item_second_H")),
 //            (CenterViewController(), "总览", UIImage(named: "Item_center_N"), UIImage(named: "Item_center_H")),
             (ThirdViewController(), "总览", UIImage(named: "Item_third_N"), UIImage(named: "Item_third_H")),
@@ -99,8 +99,7 @@ class HomeViewController: UITabBarController {
 //        delegate = self
 //        view.addGestureRecognizer(panGesture)
         
-        selectedIndex = 1
-        selectedIndex = items.count - 1
+        selectedIndex = 0
     }
 
     
