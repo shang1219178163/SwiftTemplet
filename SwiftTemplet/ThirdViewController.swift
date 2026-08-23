@@ -85,7 +85,7 @@ class ThirdViewController: UIViewController{
 //             ["PlateKeybordController", "自定义车牌键盘", ],
              ["TitleViewController", "导航栏下拉菜单", ],
              
-            ["UICollectionListController", "FlowLayoutStyle", ],
+            ["UICollectionMainController", "FlowLayoutStyle", ],
 //             ["NNTabViewController", "NNTabView组件", ],
              ["CustomViewController", "自定义View", ],
              ["CalendarViewController", "CalenderView", ],

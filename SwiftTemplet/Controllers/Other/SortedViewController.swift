@@ -13,12 +13,8 @@ class SortedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
-        let controller = UICtrFromString("UICollectionDispalyController")
-        
-        self.addChild(controller)
-        self.view.addSubview(controller.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {

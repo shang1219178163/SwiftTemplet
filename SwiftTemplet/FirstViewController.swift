@@ -74,8 +74,6 @@ class FirstViewController: UIViewController{
              ["TheadDemoController", "TheadDemoController", ],
              ["MBProgressHUDDemoController", "MBProgressHUDDemo", ],
              ["JumpSettingsController", "JumpSettingsController", ],
-                        
-             ["UICollectionDispalyController", "UICollectionDispaly", ],
 
              ["UIImageDemoController", "UIImageDemo", ],
              
@@ -109,7 +107,7 @@ class FirstViewController: UIViewController{
              ["QRCodeViewController", "二维码", ],
              ["TestScrollViewController", "TestScrollViewController", ],
              ["NNCellDefaultViewController", "NNCellDefaultView", ],
-             ["UICollectionListController", "FlowLayoutStyle", ],
+             ["UICollectionMainController", "FlowLayoutStyle", ],
              ["ConstraintArrayDSLController", "Snapkit 扩展", ],
              ["ChatInputController", "聊天输入框", ],
              ["NNInstructionViewController", "NNInstructionView", ],

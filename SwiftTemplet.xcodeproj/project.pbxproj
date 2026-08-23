@@ -157,7 +157,7 @@
 		143F713A2733696C00E2FC28 /* NSObject+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F71392733696C00E2FC28 /* NSObject+Helper.swift */; };
 		143F713C273369A500E2FC28 /* AVAudioSession+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F713B273369A500E2FC28 /* AVAudioSession+Helper.swift */; };
 		143F7140273369E200E2FC28 /* JumpSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F713D273369E100E2FC28 /* JumpSettingsController.swift */; };
-		143F7141273369E200E2FC28 /* UICollectionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F713E273369E200E2FC28 /* UICollectionListController.swift */; };
+		143F7141273369E200E2FC28 /* UICollectionMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F713E273369E200E2FC28 /* UICollectionMainController.swift */; };
 		143F7142273369E200E2FC28 /* TestWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F713F273369E200E2FC28 /* TestWebViewController.swift */; };
 		143F7144273369F900E2FC28 /* NNUpdateVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F7143273369F900E2FC28 /* NNUpdateVersionView.swift */; };
 		143F714627336A1700E2FC28 /* UICallPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143F714527336A1700E2FC28 /* UICallPhoneView.swift */; };
@@ -446,6 +446,8 @@
 		14A11DC12693F6EE007963A3 /* MenuActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A11DC02693F6EE007963A3 /* MenuActionController.swift */; };
 		14A11DC326955013007963A3 /* MenuActionChooseOneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A11DC226955013007963A3 /* MenuActionChooseOneController.swift */; };
 		14A1AB192553D97F00AB4CE5 /* PKRootModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */; };
+		14A1B2C30000000000000001 /* RouteSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1B2C40000000000000001 /* RouteSearchController.swift */; };
+		14A1B2C50000000000000001 /* RoutePageSearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1B2C60000000000000001 /* RoutePageSearchHelper.swift */; };
 		14A294732579D819001E4B2D /* MKMapView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A294722579D819001E4B2D /* MKMapView+Helper.swift */; };
 		14A2949A257A1CD1001E4B2D /* ValidateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A29499257A1CD1001E4B2D /* ValidateProtocol.swift */; };
 		14A29511257A3018001E4B2D /* UIRefreshControl+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A29510257A3018001E4B2D /* UIRefreshControl+Helper.swift */; };
@@ -723,8 +725,6 @@
 		51C9B58F211D17A6003E9AA7 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */; };
 		51C9B591211D17B4003E9AA7 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B590211D17B4003E9AA7 /* FourthViewController.swift */; };
 		51C9B593211D17F8003E9AA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C9B592211D17F8003E9AA7 /* HomeViewController.swift */; };
-		14A1B2C30000000000000001 /* RouteSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1B2C40000000000000001 /* RouteSearchController.swift */; };
-		14A1B2C50000000000000001 /* RoutePageSearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A1B2C60000000000000001 /* RoutePageSearchHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -905,7 +905,7 @@
 		143F71392733696C00E2FC28 /* NSObject+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Helper.swift"; sourceTree = "<group>"; };
 		143F713B273369A500E2FC28 /* AVAudioSession+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Helper.swift"; sourceTree = "<group>"; };
 		143F713D273369E100E2FC28 /* JumpSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpSettingsController.swift; sourceTree = "<group>"; };
-		143F713E273369E200E2FC28 /* UICollectionListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionListController.swift; sourceTree = "<group>"; };
+		143F713E273369E200E2FC28 /* UICollectionMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionMainController.swift; sourceTree = "<group>"; };
 		143F713F273369E200E2FC28 /* TestWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestWebViewController.swift; sourceTree = "<group>"; };
 		143F7143273369F900E2FC28 /* NNUpdateVersionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NNUpdateVersionView.swift; sourceTree = "<group>"; };
 		143F714527336A1700E2FC28 /* UICallPhoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICallPhoneView.swift; sourceTree = "<group>"; };
@@ -1217,6 +1217,8 @@
 		14A11DC02693F6EE007963A3 /* MenuActionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuActionController.swift; sourceTree = "<group>"; };
 		14A11DC226955013007963A3 /* MenuActionChooseOneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuActionChooseOneController.swift; sourceTree = "<group>"; };
 		14A1AB182553D97F00AB4CE5 /* PKRootModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKRootModel.swift; sourceTree = "<group>"; };
+		14A1B2C40000000000000001 /* RouteSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchController.swift; sourceTree = "<group>"; };
+		14A1B2C60000000000000001 /* RoutePageSearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageSearchHelper.swift; sourceTree = "<group>"; };
 		14A294722579D819001E4B2D /* MKMapView+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Helper.swift"; sourceTree = "<group>"; };
 		14A29499257A1CD1001E4B2D /* ValidateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateProtocol.swift; sourceTree = "<group>"; };
 		14A29510257A3018001E4B2D /* UIRefreshControl+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Helper.swift"; sourceTree = "<group>"; };
@@ -1521,8 +1523,6 @@
 		51C9B58E211D17A6003E9AA7 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		51C9B590211D17B4003E9AA7 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 		51C9B592211D17F8003E9AA7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		14A1B2C40000000000000001 /* RouteSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSearchController.swift; sourceTree = "<group>"; };
-		14A1B2C60000000000000001 /* RoutePageSearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePageSearchHelper.swift; sourceTree = "<group>"; };
 		53FA16E175FDA483AB189D99 /* Pods_SwiftTemplet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftTemplet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C68F0651040FE28ABDC47FA7 /* Pods-SwiftTemplet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.release.xcconfig"; path = "Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.release.xcconfig"; sourceTree = "<group>"; };
 		D423F25D0AA19F6618C6D919 /* Pods-SwiftTemplet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftTemplet.debug.xcconfig"; path = "Target Support Files/Pods-SwiftTemplet/Pods-SwiftTemplet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -2321,7 +2321,7 @@
 			children = (
 				143F713D273369E100E2FC28 /* JumpSettingsController.swift */,
 				143F713F273369E200E2FC28 /* TestWebViewController.swift */,
-				143F713E273369E200E2FC28 /* UICollectionListController.swift */,
+				143F713E273369E200E2FC28 /* UICollectionMainController.swift */,
 				14DFDEB0268DB2FE00FC4438 /* OptionalTestController.swift */,
 				1479D5CD24455A4C007F7CC4 /* TabbarAnimator.swift */,
 				14FE3C33245AC206006B14D4 /* FlipImageViewController.swift */,
@@ -2982,8 +2982,9 @@
 		516859F5208EA75600CE8099 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1630;
 				ORGANIZATIONNAME = BN;
 				TargetAttributes = {
 					516859FC208EA75700CE8099 = {
@@ -3582,7 +3583,7 @@
 				14E2047224E629D30075AB47 /* BaseNotificationBanner.swift in Sources */,
 				14DFDE85268ABB8D00FC4438 /* ProtocolTips.swift in Sources */,
 				145ECEB7250B164D00952360 /* NNLeftAnimator.swift in Sources */,
-				143F7141273369E200E2FC28 /* UICollectionListController.swift in Sources */,
+				143F7141273369E200E2FC28 /* UICollectionMainController.swift in Sources */,
 				14B0CAE92664C44B005E6149 /* ProtocolChainController.swift in Sources */,
 				145ECEA4250B037900952360 /* NNSmallAnimator.swift in Sources */,
 				14B80BF2262D8A34001E5774 /* PasswordStrengthCheckController.m in Sources */,
@@ -3920,7 +3921,6 @@
 		51685A0D208EA75900CE8099 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -3985,7 +3985,6 @@
 		51685A0E208EA75900CE8099 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4045,7 +4044,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D423F25D0AA19F6618C6D919 /* Pods-SwiftTemplet.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -4225,7 +4223,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C68F0651040FE28ABDC47FA7 /* Pods-SwiftTemplet.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;

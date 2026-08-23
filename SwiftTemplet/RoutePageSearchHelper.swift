@@ -22,7 +22,16 @@ enum RoutePageSearchHelper {
         let actualCount: Int32 = objc_getClassList(classList, classCount)
         guard actualCount > 0 else { return [] }
         let buffer = UnsafeBufferPointer(start: rawPointer, count: Int(actualCount))
-        let excludedNames: Set<String> = ["HomeViewController", "RouteSearchController"]
+        // UICollectionMainController 已横向分页集成，子页面无需在路由列表单独展示
+        let subPageNames: Set<String> = [
+            "UICollectionMultipleSectionController",
+            "NNCollectionViewHorizontalController",
+            "UICollectionViewCardController",
+            "UICollectionDispalyController",
+            "UICollectionBatchUpdateController",
+            "UICollectionTagsController",
+        ]
+        let excludedNames: Set<String> = ["HomeViewController", "RouteSearchController"].union(subPageNames)
         var pageNames: [String] = []
         for cls in buffer {
             guard Bundle(for: cls) == Bundle.main,
